@@ -1,0 +1,3 @@
+def emit(tup, stream=None, anchors=[]):
+    emittuple(tup, stream=stream, anchors=anchors)
+    return readMsg()

@@ -1,0 +1,4 @@
+def sendToParent(s):
+    print s
+    print 'end'
+    sys.stdout.flush()

@@ -1,0 +1,8 @@
+def readStringMsg():
+    msg = ''
+    while True:
+        line = sys.stdin.readline()[0:(-1)]
+        if (line == 'end'):
+            break
+        msg = ((msg + line) + '\n')
+    return msg[0:(-1)]

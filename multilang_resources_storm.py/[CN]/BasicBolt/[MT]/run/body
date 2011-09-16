@@ -1,0 +1,13 @@
+def run(self):
+    global ANCHOR_TUPLE
+    (conf, context) = initbolt()
+    self.initialize(conf, context)
+    try:
+        while True:
+            tup = readtuple()
+            ANCHOR_TUPLE = tup
+            self.process(tup)
+            ack(tup)
+            sync()
+    except Exception as e:
+        log(traceback.format_exc(e))

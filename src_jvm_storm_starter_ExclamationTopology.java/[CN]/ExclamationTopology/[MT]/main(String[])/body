@@ -1,0 +1,12 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(1,new TestWordSpout(),10);
+  builder.setBolt(2,new ExclamationBolt(),3).shuffleGrouping(1);
+  Map conf=new HashMap();
+  conf.put(Config.TOPOLOGY_DEBUG,true);
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology("test",conf,builder.createTopology());
+  Utils.sleep(10000);
+  cluster.killTopology("test");
+  cluster.shutdown();
+}

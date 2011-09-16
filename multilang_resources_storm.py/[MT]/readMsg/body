@@ -1,0 +1,2 @@
+def readMsg():
+    return json_decode(readStringMsg())

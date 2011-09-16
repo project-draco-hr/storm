@@ -1,0 +1,12 @@
+{
+  String username=args[0];
+  String pwd=args[1];
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(1,new TwitterSampleSpout(username,pwd));
+  Map conf=new HashMap();
+  conf.put(Config.TOPOLOGY_DEBUG,true);
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology("test",conf,builder.createTopology());
+  Utils.sleep(10000);
+  cluster.shutdown();
+}
