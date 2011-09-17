@@ -1,0 +1,15 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('ShellComponent')
+    if (self.execution_command != None):
+        oprot.writeFieldBegin('execution_command', TType.STRING, 1)
+        oprot.writeString(self.execution_command.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.script != None):
+        oprot.writeFieldBegin('script', TType.STRING, 2)
+        oprot.writeString(self.script.encode('utf-8'))
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

@@ -1,0 +1,4 @@
+{
+  _bolt.prepare(stormConf,context);
+  _collector=new BasicOutputCollector(collector);
+}

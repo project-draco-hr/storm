@@ -1,0 +1,5 @@
+{
+  if (!is_set_msg()) {
+    throw new TProtocolException("Required field 'msg' is unset! Struct:" + toString());
+  }
+}

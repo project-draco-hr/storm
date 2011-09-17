@@ -1,0 +1,47 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.LIST):
+                self.fields = []
+                (_etype3, _size0) = iprot.readListBegin()
+                for _i4 in xrange(_size0):
+                    _elem5 = iprot.readString().decode('utf-8')
+                    self.fields.append(_elem5)
+                iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 2):
+            if (ftype == TType.STRUCT):
+                self.shuffle = NullStruct()
+                self.shuffle.read(iprot)
+            else:
+                iprot.skip(ftype)
+        elif (fid == 3):
+            if (ftype == TType.STRUCT):
+                self.all = NullStruct()
+                self.all.read(iprot)
+            else:
+                iprot.skip(ftype)
+        elif (fid == 4):
+            if (ftype == TType.STRUCT):
+                self.none = NullStruct()
+                self.none.read(iprot)
+            else:
+                iprot.skip(ftype)
+        elif (fid == 5):
+            if (ftype == TType.STRUCT):
+                self.direct = NullStruct()
+                self.direct.read(iprot)
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

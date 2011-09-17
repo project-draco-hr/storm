@@ -1,0 +1,3 @@
+def __init__(self, execution_command=None, script=None):
+    self.execution_command = execution_command
+    self.script = script

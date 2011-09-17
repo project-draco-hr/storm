@@ -1,0 +1,22 @@
+{
+  if (that == null)   return false;
+  boolean this_present_emitted=true && this.is_set_emitted();
+  boolean that_present_emitted=true && that.is_set_emitted();
+  if (this_present_emitted || that_present_emitted) {
+    if (!(this_present_emitted && that_present_emitted))     return false;
+    if (!this.emitted.equals(that.emitted))     return false;
+  }
+  boolean this_present_transferred=true && this.is_set_transferred();
+  boolean that_present_transferred=true && that.is_set_transferred();
+  if (this_present_transferred || that_present_transferred) {
+    if (!(this_present_transferred && that_present_transferred))     return false;
+    if (!this.transferred.equals(that.transferred))     return false;
+  }
+  boolean this_present_specific=true && this.is_set_specific();
+  boolean that_present_specific=true && that.is_set_specific();
+  if (this_present_specific || that_present_specific) {
+    if (!(this_present_specific && that_present_specific))     return false;
+    if (!this.specific.equals(that.specific))     return false;
+  }
+  return true;
+}

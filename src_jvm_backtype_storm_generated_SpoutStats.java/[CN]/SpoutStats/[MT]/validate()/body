@@ -1,0 +1,11 @@
+{
+  if (!is_set_acked()) {
+    throw new TProtocolException("Required field 'acked' is unset! Struct:" + toString());
+  }
+  if (!is_set_failed()) {
+    throw new TProtocolException("Required field 'failed' is unset! Struct:" + toString());
+  }
+  if (!is_set_complete_ms_avg()) {
+    throw new TProtocolException("Required field 'complete_ms_avg' is unset! Struct:" + toString());
+  }
+}

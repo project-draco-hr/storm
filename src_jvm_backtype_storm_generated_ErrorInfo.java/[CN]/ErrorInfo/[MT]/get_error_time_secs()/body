@@ -1,0 +1,3 @@
+{
+  return this.error_time_secs;
+}

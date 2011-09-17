@@ -1,0 +1,28 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  execute_args typedOther=(execute_args)other;
+  lastComparison=Boolean.valueOf(is_set_functionName()).compareTo(typedOther.is_set_functionName());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_functionName()) {
+    lastComparison=TBaseHelper.compareTo(this.functionName,typedOther.functionName);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_funcArgs()).compareTo(typedOther.is_set_funcArgs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_funcArgs()) {
+    lastComparison=TBaseHelper.compareTo(this.funcArgs,typedOther.funcArgs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

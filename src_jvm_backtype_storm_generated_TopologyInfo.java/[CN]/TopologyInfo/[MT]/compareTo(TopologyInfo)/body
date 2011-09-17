@@ -1,0 +1,48 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  TopologyInfo typedOther=(TopologyInfo)other;
+  lastComparison=Boolean.valueOf(is_set_id()).compareTo(typedOther.is_set_id());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_id()) {
+    lastComparison=TBaseHelper.compareTo(this.id,typedOther.id);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_name()).compareTo(typedOther.is_set_name());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_name()) {
+    lastComparison=TBaseHelper.compareTo(this.name,typedOther.name);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_uptime_secs()).compareTo(typedOther.is_set_uptime_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_uptime_secs()) {
+    lastComparison=TBaseHelper.compareTo(this.uptime_secs,typedOther.uptime_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_tasks()).compareTo(typedOther.is_set_tasks());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_tasks()) {
+    lastComparison=TBaseHelper.compareTo(this.tasks,typedOther.tasks);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

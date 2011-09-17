@@ -1,0 +1,22 @@
+{
+  _size.acquire();
+synchronized (_lock) {
+    Object key=_keyOrder.get(_currIndex);
+    Queue<V> queue=_queues.get(key);
+    V ret=queue.remove();
+    if (queue.isEmpty()) {
+      _keyOrder.remove(_currIndex);
+      _queues.remove(key);
+      if (_keyOrder.size() == 0) {
+        _currIndex=0;
+      }
+ else {
+        _currIndex=_currIndex % _keyOrder.size();
+      }
+    }
+ else {
+      _currIndex=(_currIndex + 1) % _keyOrder.size();
+    }
+    return ret;
+  }
+}

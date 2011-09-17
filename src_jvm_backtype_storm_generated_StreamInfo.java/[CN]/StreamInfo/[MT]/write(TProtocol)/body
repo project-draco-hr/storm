@@ -1,0 +1,20 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.output_fields != null) {
+    oprot.writeFieldBegin(OUTPUT_FIELDS_FIELD_DESC);
+{
+      oprot.writeListBegin(new TList(TType.STRING,this.output_fields.size()));
+      for (      String _iter7 : this.output_fields) {
+        oprot.writeString(_iter7);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(DIRECT_FIELD_DESC);
+  oprot.writeBool(this.direct);
+  oprot.writeFieldEnd();
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

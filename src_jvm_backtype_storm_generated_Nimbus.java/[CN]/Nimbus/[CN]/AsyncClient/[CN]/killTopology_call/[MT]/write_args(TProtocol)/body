@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new TMessage("killTopology",TMessageType.CALL,0));
+  killTopology_args args=new killTopology_args();
+  args.set_name(name);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

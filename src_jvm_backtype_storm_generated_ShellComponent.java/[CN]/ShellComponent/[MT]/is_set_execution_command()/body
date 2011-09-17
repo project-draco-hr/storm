@@ -1,0 +1,3 @@
+{
+  return this.execution_command != null;
+}

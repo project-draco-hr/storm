@@ -1,0 +1,38 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  SpoutSpec typedOther=(SpoutSpec)other;
+  lastComparison=Boolean.valueOf(is_set_spout_object()).compareTo(typedOther.is_set_spout_object());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_spout_object()) {
+    lastComparison=TBaseHelper.compareTo(this.spout_object,typedOther.spout_object);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_common()).compareTo(typedOther.is_set_common());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_common()) {
+    lastComparison=TBaseHelper.compareTo(this.common,typedOther.common);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_distributed()).compareTo(typedOther.is_set_distributed());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_distributed()) {
+    lastComparison=TBaseHelper.compareTo(this.distributed,typedOther.distributed);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

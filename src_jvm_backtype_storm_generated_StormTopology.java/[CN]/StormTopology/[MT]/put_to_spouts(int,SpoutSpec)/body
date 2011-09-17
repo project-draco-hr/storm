@@ -1,0 +1,6 @@
+{
+  if (this.spouts == null) {
+    this.spouts=new HashMap<Integer,SpoutSpec>();
+  }
+  this.spouts.put(key,val);
+}

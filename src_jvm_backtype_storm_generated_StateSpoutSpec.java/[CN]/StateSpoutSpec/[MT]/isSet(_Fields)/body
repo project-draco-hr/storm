@@ -1,0 +1,9 @@
+{
+switch (field) {
+case STATE_SPOUT_OBJECT:
+    return is_set_state_spout_object();
+case COMMON:
+  return is_set_common();
+}
+throw new IllegalStateException();
+}

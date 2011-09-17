@@ -1,0 +1,11 @@
+{
+  oprot_.writeMessageBegin(new TMessage("submitTopology",TMessageType.CALL,++seqid_));
+  submitTopology_args args=new submitTopology_args();
+  args.set_name(name);
+  args.set_uploadedJarLocation(uploadedJarLocation);
+  args.set_jsonConf(jsonConf);
+  args.set_topology(topology);
+  args.write(oprot_);
+  oprot_.writeMessageEnd();
+  oprot_.getTransport().flush();
+}

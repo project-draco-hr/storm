@@ -1,0 +1,18 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  AlreadyAliveException typedOther=(AlreadyAliveException)other;
+  lastComparison=Boolean.valueOf(is_set_msg()).compareTo(typedOther.is_set_msg());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_msg()) {
+    lastComparison=TBaseHelper.compareTo(this.msg,typedOther.msg);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

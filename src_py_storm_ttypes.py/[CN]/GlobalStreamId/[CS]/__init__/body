@@ -1,0 +1,3 @@
+def __init__(self, componentId=None, streamId=None):
+    self.componentId = componentId
+    self.streamId = streamId

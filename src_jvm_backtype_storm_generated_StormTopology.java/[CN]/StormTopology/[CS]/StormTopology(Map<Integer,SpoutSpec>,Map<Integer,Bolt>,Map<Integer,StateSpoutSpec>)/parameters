@@ -1,0 +1,3 @@
+Map<Integer,SpoutSpec> spouts
+Map<Integer,Bolt> bolts
+Map<Integer,StateSpoutSpec> state_spouts

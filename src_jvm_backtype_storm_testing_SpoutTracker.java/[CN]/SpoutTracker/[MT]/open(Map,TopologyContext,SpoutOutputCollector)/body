@@ -1,0 +1,4 @@
+{
+  _tracker=new SpoutTrackOutputCollector(collector);
+  _delegate.open(conf,context,new SpoutOutputCollector(_tracker));
+}

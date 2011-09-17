@@ -1,0 +1,16 @@
+{
+switch (fieldId) {
+case 1:
+    return ID;
+case 2:
+  return NAME;
+case 3:
+return NUM_TASKS;
+case 4:
+return NUM_WORKERS;
+case 5:
+return UPTIME_SECS;
+default :
+return null;
+}
+}

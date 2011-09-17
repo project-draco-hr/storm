@@ -1,0 +1,19 @@
+{
+switch (field) {
+case TASK_ID:
+    return new Integer(get_task_id());
+case COMPONENT_ID:
+  return new Integer(get_component_id());
+case HOST:
+return get_host();
+case PORT:
+return new Integer(get_port());
+case UPTIME_SECS:
+return new Integer(get_uptime_secs());
+case ERRORS:
+return get_errors();
+case STATS:
+return get_stats();
+}
+throw new IllegalStateException();
+}

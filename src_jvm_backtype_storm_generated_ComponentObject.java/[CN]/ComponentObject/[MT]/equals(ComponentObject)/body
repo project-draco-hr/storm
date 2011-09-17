@@ -1,0 +1,3 @@
+{
+  return other != null && getSetField() == other.getSetField() && ((value_ instanceof byte[]) ? Arrays.equals((byte[])getFieldValue(),(byte[])other.getFieldValue()) : getFieldValue().equals(other.getFieldValue()));
+}

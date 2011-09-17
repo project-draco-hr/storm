@@ -1,0 +1,5 @@
+{
+  _collector.setContext(input);
+  _bolt.execute(input,_collector);
+  _collector.getOutputter().ack(input);
+}

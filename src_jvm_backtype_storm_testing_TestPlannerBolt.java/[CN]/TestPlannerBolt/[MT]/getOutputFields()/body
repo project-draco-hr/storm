@@ -1,0 +1,3 @@
+{
+  return new Fields("field1","field2");
+}

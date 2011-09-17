@@ -1,0 +1,6 @@
+def send_getClusterInfo(self):
+    self._oprot.writeMessageBegin('getClusterInfo', TMessageType.CALL, self._seqid)
+    args = getClusterInfo_args()
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

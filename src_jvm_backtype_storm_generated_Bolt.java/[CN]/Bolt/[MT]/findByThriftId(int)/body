@@ -1,0 +1,12 @@
+{
+switch (fieldId) {
+case 1:
+    return INPUTS;
+case 2:
+  return BOLT_OBJECT;
+case 3:
+return COMMON;
+default :
+return null;
+}
+}

@@ -1,0 +1,16 @@
+{
+  __isset_bit_vector.clear();
+  __isset_bit_vector.or(other.__isset_bit_vector);
+  if (other.is_set_streams()) {
+    Map<Integer,StreamInfo> __this__streams=new HashMap<Integer,StreamInfo>();
+    for (    Map.Entry<Integer,StreamInfo> other_element : other.streams.entrySet()) {
+      Integer other_element_key=other_element.getKey();
+      StreamInfo other_element_value=other_element.getValue();
+      Integer __this__streams_copy_key=other_element_key;
+      StreamInfo __this__streams_copy_value=new StreamInfo(other_element_value);
+      __this__streams.put(__this__streams_copy_key,__this__streams_copy_value);
+    }
+    this.streams=__this__streams;
+  }
+  this.parallelism_hint=other.parallelism_hint;
+}

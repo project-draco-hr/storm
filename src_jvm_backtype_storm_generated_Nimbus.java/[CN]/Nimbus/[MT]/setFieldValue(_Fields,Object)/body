@@ -1,0 +1,36 @@
+{
+switch (field) {
+case NAME:
+    if (value == null) {
+      unset_name();
+    }
+ else {
+      set_name((String)value);
+    }
+  break;
+case UPLOADED_JAR_LOCATION:
+if (value == null) {
+  unset_uploadedJarLocation();
+}
+ else {
+  set_uploadedJarLocation((String)value);
+}
+break;
+case JSON_CONF:
+if (value == null) {
+unset_jsonConf();
+}
+ else {
+set_jsonConf((String)value);
+}
+break;
+case TOPOLOGY:
+if (value == null) {
+unset_topology();
+}
+ else {
+set_topology((StormTopology)value);
+}
+break;
+}
+}

@@ -1,0 +1,110 @@
+{
+  TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 1:
+      if (field.type == TType.MAP) {
+{
+          TMap _map41=iprot.readMapBegin();
+          this.acked=new HashMap<String,Map<GlobalStreamId,Long>>(2 * _map41.size);
+          for (int _i42=0; _i42 < _map41.size; ++_i42) {
+            String _key43;
+            Map<GlobalStreamId,Long> _val44;
+            _key43=iprot.readString();
+{
+              TMap _map45=iprot.readMapBegin();
+              _val44=new HashMap<GlobalStreamId,Long>(2 * _map45.size);
+              for (int _i46=0; _i46 < _map45.size; ++_i46) {
+                GlobalStreamId _key47;
+                long _val48;
+                _key47=new GlobalStreamId();
+                _key47.read(iprot);
+                _val48=iprot.readI64();
+                _val44.put(_key47,_val48);
+              }
+              iprot.readMapEnd();
+            }
+            this.acked.put(_key43,_val44);
+          }
+          iprot.readMapEnd();
+        }
+      }
+ else {
+        TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+case 2:
+  if (field.type == TType.MAP) {
+{
+      TMap _map49=iprot.readMapBegin();
+      this.failed=new HashMap<String,Map<GlobalStreamId,Long>>(2 * _map49.size);
+      for (int _i50=0; _i50 < _map49.size; ++_i50) {
+        String _key51;
+        Map<GlobalStreamId,Long> _val52;
+        _key51=iprot.readString();
+{
+          TMap _map53=iprot.readMapBegin();
+          _val52=new HashMap<GlobalStreamId,Long>(2 * _map53.size);
+          for (int _i54=0; _i54 < _map53.size; ++_i54) {
+            GlobalStreamId _key55;
+            long _val56;
+            _key55=new GlobalStreamId();
+            _key55.read(iprot);
+            _val56=iprot.readI64();
+            _val52.put(_key55,_val56);
+          }
+          iprot.readMapEnd();
+        }
+        this.failed.put(_key51,_val52);
+      }
+      iprot.readMapEnd();
+    }
+  }
+ else {
+    TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == TType.MAP) {
+{
+  TMap _map57=iprot.readMapBegin();
+  this.process_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>(2 * _map57.size);
+  for (int _i58=0; _i58 < _map57.size; ++_i58) {
+    String _key59;
+    Map<GlobalStreamId,Double> _val60;
+    _key59=iprot.readString();
+{
+      TMap _map61=iprot.readMapBegin();
+      _val60=new HashMap<GlobalStreamId,Double>(2 * _map61.size);
+      for (int _i62=0; _i62 < _map61.size; ++_i62) {
+        GlobalStreamId _key63;
+        double _val64;
+        _key63=new GlobalStreamId();
+        _key63.read(iprot);
+        _val64=iprot.readDouble();
+        _val60.put(_key63,_val64);
+      }
+      iprot.readMapEnd();
+    }
+    this.process_ms_avg.put(_key59,_val60);
+  }
+  iprot.readMapEnd();
+}
+}
+ else {
+TProtocolUtil.skip(iprot,field.type);
+}
+break;
+default :
+TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}

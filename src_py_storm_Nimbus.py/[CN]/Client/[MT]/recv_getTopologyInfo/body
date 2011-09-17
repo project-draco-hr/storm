@@ -1,0 +1,15 @@
+def recv_getTopologyInfo(self):
+    (fname, mtype, rseqid) = self._iprot.readMessageBegin()
+    if (mtype == TMessageType.EXCEPTION):
+        x = TApplicationException()
+        x.read(self._iprot)
+        self._iprot.readMessageEnd()
+        raise x
+    result = getTopologyInfo_result()
+    result.read(self._iprot)
+    self._iprot.readMessageEnd()
+    if (result.success != None):
+        return result.success
+    if (result.e != None):
+        raise result.e
+    raise TApplicationException(TApplicationException.MISSING_RESULT, 'getTopologyInfo failed: unknown result')

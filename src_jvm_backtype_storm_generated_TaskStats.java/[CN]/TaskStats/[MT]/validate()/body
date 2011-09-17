@@ -1,0 +1,11 @@
+{
+  if (!is_set_emitted()) {
+    throw new TProtocolException("Required field 'emitted' is unset! Struct:" + toString());
+  }
+  if (!is_set_transferred()) {
+    throw new TProtocolException("Required field 'transferred' is unset! Struct:" + toString());
+  }
+  if (!is_set_specific()) {
+    throw new TProtocolException("Required field 'specific' is unset! Struct:" + toString());
+  }
+}

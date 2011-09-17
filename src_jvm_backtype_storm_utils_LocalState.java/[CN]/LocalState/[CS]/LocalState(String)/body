@@ -1,0 +1,3 @@
+{
+  _vs=new VersionedStore(backingDir);
+}

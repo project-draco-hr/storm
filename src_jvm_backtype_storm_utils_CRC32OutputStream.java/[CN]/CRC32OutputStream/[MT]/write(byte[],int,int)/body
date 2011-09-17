@@ -1,0 +1,3 @@
+{
+  hasher.update(bytes,start,end);
+}

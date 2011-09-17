@@ -1,0 +1,11 @@
+{
+switch (field) {
+case INPUTS:
+    return is_set_inputs();
+case BOLT_OBJECT:
+  return is_set_bolt_object();
+case COMMON:
+return is_set_common();
+}
+throw new IllegalStateException();
+}

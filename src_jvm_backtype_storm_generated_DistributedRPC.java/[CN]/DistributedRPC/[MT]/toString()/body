@@ -1,0 +1,23 @@
+{
+  StringBuilder sb=new StringBuilder("execute_args(");
+  boolean first=true;
+  sb.append("functionName:");
+  if (this.functionName == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.functionName);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("funcArgs:");
+  if (this.funcArgs == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.funcArgs);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

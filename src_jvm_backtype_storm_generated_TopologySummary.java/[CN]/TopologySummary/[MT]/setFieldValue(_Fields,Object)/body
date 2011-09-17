@@ -1,0 +1,44 @@
+{
+switch (field) {
+case ID:
+    if (value == null) {
+      unset_id();
+    }
+ else {
+      set_id((String)value);
+    }
+  break;
+case NAME:
+if (value == null) {
+  unset_name();
+}
+ else {
+  set_name((String)value);
+}
+break;
+case NUM_TASKS:
+if (value == null) {
+unset_num_tasks();
+}
+ else {
+set_num_tasks((Integer)value);
+}
+break;
+case NUM_WORKERS:
+if (value == null) {
+unset_num_workers();
+}
+ else {
+set_num_workers((Integer)value);
+}
+break;
+case UPTIME_SECS:
+if (value == null) {
+unset_uptime_secs();
+}
+ else {
+set_uptime_secs((Integer)value);
+}
+break;
+}
+}

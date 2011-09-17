@@ -1,0 +1,3 @@
+{
+  _feeds.get(_id).add(tuple);
+}

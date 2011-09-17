@@ -1,0 +1,19 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_id=true && (is_set_id());
+  builder.append(present_id);
+  if (present_id)   builder.append(id);
+  boolean present_name=true && (is_set_name());
+  builder.append(present_name);
+  if (present_name)   builder.append(name);
+  boolean present_num_tasks=true;
+  builder.append(present_num_tasks);
+  if (present_num_tasks)   builder.append(num_tasks);
+  boolean present_num_workers=true;
+  builder.append(present_num_workers);
+  if (present_num_workers)   builder.append(num_workers);
+  boolean present_uptime_secs=true;
+  builder.append(present_uptime_secs);
+  if (present_uptime_secs)   builder.append(uptime_secs);
+  return builder.toHashCode();
+}

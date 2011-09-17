@@ -1,0 +1,28 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  StreamInfo typedOther=(StreamInfo)other;
+  lastComparison=Boolean.valueOf(is_set_output_fields()).compareTo(typedOther.is_set_output_fields());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_output_fields()) {
+    lastComparison=TBaseHelper.compareTo(this.output_fields,typedOther.output_fields);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_direct()).compareTo(typedOther.is_set_direct());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_direct()) {
+    lastComparison=TBaseHelper.compareTo(this.direct,typedOther.direct);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

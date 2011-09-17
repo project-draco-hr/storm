@@ -1,0 +1,12 @@
+{
+  String name=new File(path).getName();
+  if (name.endsWith(FINISHED_VERSION_SUFFIX)) {
+    name=name.substring(0,name.length() - FINISHED_VERSION_SUFFIX.length());
+  }
+  try {
+    return Long.parseLong(name);
+  }
+ catch (  NumberFormatException e) {
+    return null;
+  }
+}

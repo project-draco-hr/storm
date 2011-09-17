@@ -1,0 +1,2 @@
+def sendMsgToParent(amap):
+    sendToParent(json_encode(amap))

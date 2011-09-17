@@ -1,0 +1,4 @@
+def submitTopology(self, name, uploadedJarLocation, jsonConf, topology):
+    '\n    Parameters:\n     - name\n     - uploadedJarLocation\n     - jsonConf\n     - topology\n    '
+    self.send_submitTopology(name, uploadedJarLocation, jsonConf, topology)
+    self.recv_submitTopology()

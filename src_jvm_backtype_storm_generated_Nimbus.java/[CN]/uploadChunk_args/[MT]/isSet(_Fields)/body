@@ -1,0 +1,9 @@
+{
+switch (field) {
+case LOCATION:
+    return is_set_location();
+case CHUNK:
+  return is_set_chunk();
+}
+throw new IllegalStateException();
+}

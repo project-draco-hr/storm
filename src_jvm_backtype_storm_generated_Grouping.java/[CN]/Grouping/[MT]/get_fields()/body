@@ -1,0 +1,8 @@
+{
+  if (getSetField() == _Fields.FIELDS) {
+    return (List<String>)getFieldValue();
+  }
+ else {
+    throw new RuntimeException("Cannot get field 'fields' because union is currently set to " + getFieldDesc(getSetField()).name);
+  }
+}

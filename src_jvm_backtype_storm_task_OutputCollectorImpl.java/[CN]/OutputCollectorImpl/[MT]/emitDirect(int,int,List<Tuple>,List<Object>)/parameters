@@ -1,0 +1,4 @@
+int taskId
+int streamId
+List<Tuple> anchors
+List<Object> tuple

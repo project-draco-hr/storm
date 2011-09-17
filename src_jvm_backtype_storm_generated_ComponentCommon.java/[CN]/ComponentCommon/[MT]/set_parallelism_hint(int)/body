@@ -1,0 +1,4 @@
+{
+  this.parallelism_hint=parallelism_hint;
+  set_parallelism_hint_isSet(true);
+}

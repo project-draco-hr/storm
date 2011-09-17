@@ -1,0 +1,10 @@
+{
+  if (_cleanup != null) {
+    try {
+      _cleanup.invoke(_collector);
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+}

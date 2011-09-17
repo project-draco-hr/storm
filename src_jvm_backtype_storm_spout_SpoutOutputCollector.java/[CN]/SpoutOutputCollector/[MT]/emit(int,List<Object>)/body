@@ -1,0 +1,3 @@
+{
+  return emit(streamId,tuple,null);
+}

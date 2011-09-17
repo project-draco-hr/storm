@@ -1,0 +1,11 @@
+{
+  try {
+    initializeSubprocess(context);
+    _collector=collector;
+    sendToSubprocess(JSONValue.toJSONString(stormConf));
+    sendToSubprocess(context.toJSONString());
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

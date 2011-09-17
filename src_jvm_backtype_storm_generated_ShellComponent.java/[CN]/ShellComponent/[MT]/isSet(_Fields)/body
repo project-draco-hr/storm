@@ -1,0 +1,9 @@
+{
+switch (field) {
+case EXECUTION_COMMAND:
+    return is_set_execution_command();
+case SCRIPT:
+  return is_set_script();
+}
+throw new IllegalStateException();
+}

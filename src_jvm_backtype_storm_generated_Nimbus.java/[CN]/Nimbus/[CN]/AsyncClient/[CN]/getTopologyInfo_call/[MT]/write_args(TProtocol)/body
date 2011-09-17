@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new TMessage("getTopologyInfo",TMessageType.CALL,0));
+  getTopologyInfo_args args=new getTopologyInfo_args();
+  args.set_id(id);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

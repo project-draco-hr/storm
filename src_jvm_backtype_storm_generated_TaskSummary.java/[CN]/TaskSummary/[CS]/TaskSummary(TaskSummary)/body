@@ -1,0 +1,21 @@
+{
+  __isset_bit_vector.clear();
+  __isset_bit_vector.or(other.__isset_bit_vector);
+  this.task_id=other.task_id;
+  this.component_id=other.component_id;
+  if (other.is_set_host()) {
+    this.host=other.host;
+  }
+  this.port=other.port;
+  this.uptime_secs=other.uptime_secs;
+  if (other.is_set_errors()) {
+    List<ErrorInfo> __this__errors=new ArrayList<ErrorInfo>();
+    for (    ErrorInfo other_element : other.errors) {
+      __this__errors.add(new ErrorInfo(other_element));
+    }
+    this.errors=__this__errors;
+  }
+  if (other.is_set_stats()) {
+    this.stats=new TaskStats(other.stats);
+  }
+}

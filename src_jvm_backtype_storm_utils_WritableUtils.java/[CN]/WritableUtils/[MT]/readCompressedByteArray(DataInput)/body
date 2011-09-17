@@ -1,0 +1,17 @@
+{
+  int length=in.readInt();
+  if (length == -1)   return null;
+  byte[] buffer=new byte[length];
+  in.readFully(buffer);
+  GZIPInputStream gzi=new GZIPInputStream(new ByteArrayInputStream(buffer,0,buffer.length));
+  byte[] outbuf=new byte[length];
+  ByteArrayOutputStream bos=new ByteArrayOutputStream();
+  int len;
+  while ((len=gzi.read(outbuf,0,outbuf.length)) != -1) {
+    bos.write(outbuf,0,len);
+  }
+  byte[] decompressed=bos.toByteArray();
+  bos.close();
+  gzi.close();
+  return decompressed;
+}

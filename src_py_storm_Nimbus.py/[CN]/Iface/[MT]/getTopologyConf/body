@@ -1,0 +1,3 @@
+def getTopologyConf(self, id):
+    '\n    Parameters:\n     - id\n    '
+    pass

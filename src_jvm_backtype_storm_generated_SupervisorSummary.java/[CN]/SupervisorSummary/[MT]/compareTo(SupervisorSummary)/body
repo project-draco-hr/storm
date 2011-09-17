@@ -1,0 +1,48 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  SupervisorSummary typedOther=(SupervisorSummary)other;
+  lastComparison=Boolean.valueOf(is_set_host()).compareTo(typedOther.is_set_host());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_host()) {
+    lastComparison=TBaseHelper.compareTo(this.host,typedOther.host);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_uptime_secs()).compareTo(typedOther.is_set_uptime_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_uptime_secs()) {
+    lastComparison=TBaseHelper.compareTo(this.uptime_secs,typedOther.uptime_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_num_workers()).compareTo(typedOther.is_set_num_workers());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_num_workers()) {
+    lastComparison=TBaseHelper.compareTo(this.num_workers,typedOther.num_workers);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_num_used_workers()).compareTo(typedOther.is_set_num_used_workers());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_num_used_workers()) {
+    lastComparison=TBaseHelper.compareTo(this.num_used_workers,typedOther.num_used_workers);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

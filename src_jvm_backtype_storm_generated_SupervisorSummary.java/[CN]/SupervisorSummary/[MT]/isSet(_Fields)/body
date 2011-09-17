@@ -1,0 +1,13 @@
+{
+switch (field) {
+case HOST:
+    return is_set_host();
+case UPTIME_SECS:
+  return is_set_uptime_secs();
+case NUM_WORKERS:
+return is_set_num_workers();
+case NUM_USED_WORKERS:
+return is_set_num_used_workers();
+}
+throw new IllegalStateException();
+}

@@ -1,0 +1,7 @@
+{
+  byte[] toWrite=Utils.serialize(val);
+  String newPath=_vs.createVersion();
+  FileUtils.writeByteArrayToFile(new File(newPath),toWrite);
+  _vs.succeedVersion(newPath);
+  _vs.cleanup(4);
+}

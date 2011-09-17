@@ -1,0 +1,9 @@
+{
+switch (field) {
+case ERROR:
+    return is_set_error();
+case ERROR_TIME_SECS:
+  return is_set_error_time_secs();
+}
+throw new IllegalStateException();
+}

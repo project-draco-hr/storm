@@ -1,0 +1,11 @@
+{
+switch (field) {
+case EMITTED:
+    return get_emitted();
+case TRANSFERRED:
+  return get_transferred();
+case SPECIFIC:
+return get_specific();
+}
+throw new IllegalStateException();
+}

@@ -1,0 +1,3 @@
+{
+  setStateSpout(id,stateSpout,null);
+}

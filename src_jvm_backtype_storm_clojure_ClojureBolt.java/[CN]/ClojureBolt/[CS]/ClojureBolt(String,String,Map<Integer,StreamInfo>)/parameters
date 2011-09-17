@@ -1,0 +1,3 @@
+String namespace
+String fnName
+Map<Integer,StreamInfo> fields

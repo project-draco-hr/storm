@@ -1,0 +1,6 @@
+{
+  if (this.bolts == null) {
+    this.bolts=new HashMap<Integer,Bolt>();
+  }
+  this.bolts.put(key,val);
+}

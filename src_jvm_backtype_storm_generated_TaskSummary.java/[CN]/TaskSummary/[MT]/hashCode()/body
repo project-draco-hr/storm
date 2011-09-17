@@ -1,0 +1,25 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_task_id=true;
+  builder.append(present_task_id);
+  if (present_task_id)   builder.append(task_id);
+  boolean present_component_id=true;
+  builder.append(present_component_id);
+  if (present_component_id)   builder.append(component_id);
+  boolean present_host=true && (is_set_host());
+  builder.append(present_host);
+  if (present_host)   builder.append(host);
+  boolean present_port=true;
+  builder.append(present_port);
+  if (present_port)   builder.append(port);
+  boolean present_uptime_secs=true;
+  builder.append(present_uptime_secs);
+  if (present_uptime_secs)   builder.append(uptime_secs);
+  boolean present_errors=true && (is_set_errors());
+  builder.append(present_errors);
+  if (present_errors)   builder.append(errors);
+  boolean present_stats=true && (is_set_stats());
+  builder.append(present_stats);
+  if (present_stats)   builder.append(stats);
+  return builder.toHashCode();
+}

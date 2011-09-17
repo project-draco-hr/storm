@@ -1,0 +1,10 @@
+{
+  this();
+  this.host=host;
+  this.uptime_secs=uptime_secs;
+  set_uptime_secs_isSet(true);
+  this.num_workers=num_workers;
+  set_num_workers_isSet(true);
+  this.num_used_workers=num_used_workers;
+  set_num_used_workers_isSet(true);
+}

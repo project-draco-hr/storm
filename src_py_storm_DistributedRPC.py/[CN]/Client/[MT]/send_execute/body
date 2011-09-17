@@ -1,0 +1,8 @@
+def send_execute(self, functionName, funcArgs):
+    self._oprot.writeMessageBegin('execute', TMessageType.CALL, self._seqid)
+    args = execute_args()
+    args.functionName = functionName
+    args.funcArgs = funcArgs
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

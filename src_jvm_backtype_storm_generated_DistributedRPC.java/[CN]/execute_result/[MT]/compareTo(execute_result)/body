@@ -1,0 +1,18 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  execute_result typedOther=(execute_result)other;
+  lastComparison=Boolean.valueOf(is_set_success()).compareTo(typedOther.is_set_success());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_success()) {
+    lastComparison=TBaseHelper.compareTo(this.success,typedOther.success);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

@@ -1,0 +1,5 @@
+String id
+AsyncMethodCallback<getTopology_call> resultHandler
+TAsyncClient client
+TProtocolFactory protocolFactory
+TNonblockingTransport transport

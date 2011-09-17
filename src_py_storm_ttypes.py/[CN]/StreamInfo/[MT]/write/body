@@ -1,0 +1,18 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('StreamInfo')
+    if (self.output_fields != None):
+        oprot.writeFieldBegin('output_fields', TType.LIST, 1)
+        oprot.writeListBegin(TType.STRING, len(self.output_fields))
+        for iter13 in self.output_fields:
+            oprot.writeString(iter13.encode('utf-8'))
+        oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    if (self.direct != None):
+        oprot.writeFieldBegin('direct', TType.BOOL, 2)
+        oprot.writeBool(self.direct)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

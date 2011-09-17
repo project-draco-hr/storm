@@ -1,0 +1,5 @@
+{
+  this();
+  this.execution_command=execution_command;
+  this.script=script;
+}

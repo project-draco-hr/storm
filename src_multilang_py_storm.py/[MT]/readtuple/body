@@ -1,0 +1,3 @@
+def readtuple():
+    tupmap = readMsg()
+    return Tuple(tupmap['id'], tupmap['comp'], tupmap['stream'], tupmap['task'], tupmap['tuple'])

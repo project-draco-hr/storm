@@ -1,0 +1,13 @@
+{
+  List<Long> versions=getAllVersions();
+  if (versionsToKeep >= 0) {
+    versions=versions.subList(0,Math.min(versions.size(),versionsToKeep));
+  }
+  HashSet<Long> keepers=new HashSet<Long>(versions);
+  for (  String p : listDir(_root)) {
+    Long v=parseVersion(p);
+    if (v != null && !keepers.contains(v)) {
+      deleteVersion(v);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+def process_killTopology(self, seqid, iprot, oprot):
+    args = killTopology_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = killTopology_result()
+    try:
+        self._handler.killTopology(args.name)
+    except NotAliveException as e:
+        result.e = e
+    oprot.writeMessageBegin('killTopology', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

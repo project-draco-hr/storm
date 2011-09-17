@@ -1,0 +1,22 @@
+{
+  if (that == null)   return false;
+  boolean this_present_spouts=true && this.is_set_spouts();
+  boolean that_present_spouts=true && that.is_set_spouts();
+  if (this_present_spouts || that_present_spouts) {
+    if (!(this_present_spouts && that_present_spouts))     return false;
+    if (!this.spouts.equals(that.spouts))     return false;
+  }
+  boolean this_present_bolts=true && this.is_set_bolts();
+  boolean that_present_bolts=true && that.is_set_bolts();
+  if (this_present_bolts || that_present_bolts) {
+    if (!(this_present_bolts && that_present_bolts))     return false;
+    if (!this.bolts.equals(that.bolts))     return false;
+  }
+  boolean this_present_state_spouts=true && this.is_set_state_spouts();
+  boolean that_present_state_spouts=true && that.is_set_state_spouts();
+  if (this_present_state_spouts || that_present_state_spouts) {
+    if (!(this_present_state_spouts && that_present_state_spouts))     return false;
+    if (!this.state_spouts.equals(that.state_spouts))     return false;
+  }
+  return true;
+}

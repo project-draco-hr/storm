@@ -1,0 +1,6 @@
+{
+  super(vals.length);
+  for (  Object o : vals) {
+    add(o);
+  }
+}

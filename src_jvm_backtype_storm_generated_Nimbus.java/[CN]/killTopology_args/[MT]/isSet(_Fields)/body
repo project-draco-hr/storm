@@ -1,0 +1,7 @@
+{
+switch (field) {
+case NAME:
+    return is_set_name();
+}
+throw new IllegalStateException();
+}

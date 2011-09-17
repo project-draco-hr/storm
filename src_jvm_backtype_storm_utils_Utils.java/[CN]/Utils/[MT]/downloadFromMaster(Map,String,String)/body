@@ -1,0 +1,13 @@
+{
+  NimbusClient client=NimbusClient.getConfiguredClient(conf);
+  String id=client.getClient().beginFileDownload(file);
+  FileOutputStream out=new FileOutputStream(localFile);
+  while (true) {
+    byte[] chunk=client.getClient().downloadChunk(id);
+    if (chunk.length == 0) {
+      break;
+    }
+    out.write(chunk);
+  }
+  out.close();
+}

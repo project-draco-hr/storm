@@ -1,0 +1,3 @@
+def __init__(self, output_fields=None, direct=None):
+    self.output_fields = output_fields
+    self.direct = direct

@@ -1,0 +1,3 @@
+int id
+IRichSpout spout
+Integer parallelism_hint

@@ -1,0 +1,4 @@
+{
+  send_getTopologyConf(id);
+  return recv_getTopologyConf();
+}

@@ -1,0 +1,7 @@
+{
+  this();
+  this.supervisors=supervisors;
+  this.nimbus_uptime_secs=nimbus_uptime_secs;
+  set_nimbus_uptime_secs_isSet(true);
+  this.topologies=topologies;
+}

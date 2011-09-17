@@ -1,0 +1,18 @@
+{
+  StringBuilder sb=new StringBuilder("StreamInfo(");
+  boolean first=true;
+  sb.append("output_fields:");
+  if (this.output_fields == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.output_fields);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("direct:");
+  sb.append(this.direct);
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

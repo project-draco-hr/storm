@@ -1,0 +1,28 @@
+{
+  if (that == null)   return false;
+  boolean this_present_host=true && this.is_set_host();
+  boolean that_present_host=true && that.is_set_host();
+  if (this_present_host || that_present_host) {
+    if (!(this_present_host && that_present_host))     return false;
+    if (!this.host.equals(that.host))     return false;
+  }
+  boolean this_present_uptime_secs=true;
+  boolean that_present_uptime_secs=true;
+  if (this_present_uptime_secs || that_present_uptime_secs) {
+    if (!(this_present_uptime_secs && that_present_uptime_secs))     return false;
+    if (this.uptime_secs != that.uptime_secs)     return false;
+  }
+  boolean this_present_num_workers=true;
+  boolean that_present_num_workers=true;
+  if (this_present_num_workers || that_present_num_workers) {
+    if (!(this_present_num_workers && that_present_num_workers))     return false;
+    if (this.num_workers != that.num_workers)     return false;
+  }
+  boolean this_present_num_used_workers=true;
+  boolean that_present_num_used_workers=true;
+  if (this_present_num_used_workers || that_present_num_used_workers) {
+    if (!(this_present_num_used_workers && that_present_num_used_workers))     return false;
+    if (this.num_used_workers != that.num_used_workers)     return false;
+  }
+  return true;
+}

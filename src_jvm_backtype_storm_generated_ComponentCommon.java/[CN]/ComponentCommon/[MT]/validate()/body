@@ -1,0 +1,5 @@
+{
+  if (!is_set_streams()) {
+    throw new TProtocolException("Required field 'streams' is unset! Struct:" + toString());
+  }
+}

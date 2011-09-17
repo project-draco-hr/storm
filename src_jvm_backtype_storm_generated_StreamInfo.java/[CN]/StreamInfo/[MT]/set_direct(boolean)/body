@@ -1,0 +1,4 @@
+{
+  this.direct=direct;
+  set_direct_isSet(true);
+}

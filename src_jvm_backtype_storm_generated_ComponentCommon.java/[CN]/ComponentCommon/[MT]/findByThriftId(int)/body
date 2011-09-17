@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return STREAMS;
+case 2:
+  return PARALLELISM_HINT;
+default :
+return null;
+}
+}

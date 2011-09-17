@@ -1,0 +1,5 @@
+def sendpid(heartbeatdir):
+    pid = os.getpid()
+    print pid
+    sys.stdout.flush()
+    open(((heartbeatdir + '/') + str(pid)), 'w').close()

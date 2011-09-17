@@ -1,0 +1,18 @@
+{
+  __isset_bit_vector.clear();
+  __isset_bit_vector.or(other.__isset_bit_vector);
+  if (other.is_set_id()) {
+    this.id=other.id;
+  }
+  if (other.is_set_name()) {
+    this.name=other.name;
+  }
+  this.uptime_secs=other.uptime_secs;
+  if (other.is_set_tasks()) {
+    List<TaskSummary> __this__tasks=new ArrayList<TaskSummary>();
+    for (    TaskSummary other_element : other.tasks) {
+      __this__tasks.add(new TaskSummary(other_element));
+    }
+    this.tasks=__this__tasks;
+  }
+}

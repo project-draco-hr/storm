@@ -1,0 +1,25 @@
+{
+  _collector=collector;
+  try {
+    clojure.lang.Compiler.eval(RT.readString("(require '" + _namespace + ")"));
+  }
+ catch (  Exception e) {
+  }
+  IFn hof=(IFn)RT.var(_namespace,_fnName).deref();
+  try {
+    Object fns=hof.applyTo(RT.seq(_args));
+    if (fns instanceof Map) {
+      Map fnMap=(Map)fns;
+      IFn prepare=(IFn)fnMap.get(Keyword.intern("prepare"));
+      if (prepare != null)       prepare.invoke(stormConf,context,collector);
+      _execute=(IFn)fnMap.get(Keyword.intern("execute"));
+      _cleanup=(IFn)fnMap.get(Keyword.intern("cleanup"));
+    }
+ else {
+      _execute=(IFn)fns;
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

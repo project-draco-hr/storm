@@ -1,0 +1,3 @@
+def __init__(self, error=None, error_time_secs=None):
+    self.error = error
+    self.error_time_secs = error_time_secs

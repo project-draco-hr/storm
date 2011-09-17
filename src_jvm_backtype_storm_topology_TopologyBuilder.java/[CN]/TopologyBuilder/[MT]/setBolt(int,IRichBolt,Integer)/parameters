@@ -1,0 +1,3 @@
+int id
+IRichBolt bolt
+Integer parallelism_hint

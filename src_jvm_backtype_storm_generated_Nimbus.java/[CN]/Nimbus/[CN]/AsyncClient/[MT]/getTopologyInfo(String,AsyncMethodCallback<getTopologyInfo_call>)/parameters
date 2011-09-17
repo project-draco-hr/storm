@@ -1,0 +1,2 @@
+String id
+AsyncMethodCallback<getTopologyInfo_call> resultHandler

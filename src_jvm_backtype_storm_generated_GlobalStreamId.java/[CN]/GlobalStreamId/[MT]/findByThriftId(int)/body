@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return COMPONENT_ID;
+case 2:
+  return STREAM_ID;
+default :
+return null;
+}
+}

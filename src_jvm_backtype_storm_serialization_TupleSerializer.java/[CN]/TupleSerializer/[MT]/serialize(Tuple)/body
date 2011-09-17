@@ -1,0 +1,9 @@
+{
+  _outputter.reset();
+  WritableUtils.writeVInt(_dataOutputter,tuple.getSourceTask());
+  WritableUtils.writeVInt(_dataOutputter,tuple.getSourceStreamId());
+  tuple.getMessageId().serialize(_dataOutputter);
+  ValuesSerializer streamSerializers=getValuesSerializer(_fieldSerializers,tuple);
+  streamSerializers.serializeInto(tuple.getValues(),_dataOutputter);
+  return _outputter.toByteArray();
+}

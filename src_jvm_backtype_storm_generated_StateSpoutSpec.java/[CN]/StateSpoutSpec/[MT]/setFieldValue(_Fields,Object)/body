@@ -1,0 +1,20 @@
+{
+switch (field) {
+case STATE_SPOUT_OBJECT:
+    if (value == null) {
+      unset_state_spout_object();
+    }
+ else {
+      set_state_spout_object((ComponentObject)value);
+    }
+  break;
+case COMMON:
+if (value == null) {
+  unset_common();
+}
+ else {
+  set_common((ComponentCommon)value);
+}
+break;
+}
+}

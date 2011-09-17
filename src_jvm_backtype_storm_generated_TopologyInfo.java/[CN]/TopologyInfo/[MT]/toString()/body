@@ -1,0 +1,36 @@
+{
+  StringBuilder sb=new StringBuilder("TopologyInfo(");
+  boolean first=true;
+  sb.append("id:");
+  if (this.id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.id);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("name:");
+  if (this.name == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.name);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("uptime_secs:");
+  sb.append(this.uptime_secs);
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("tasks:");
+  if (this.tasks == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.tasks);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

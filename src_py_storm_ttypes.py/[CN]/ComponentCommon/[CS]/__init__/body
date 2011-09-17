@@ -1,0 +1,3 @@
+def __init__(self, streams=None, parallelism_hint=None):
+    self.streams = streams
+    self.parallelism_hint = parallelism_hint

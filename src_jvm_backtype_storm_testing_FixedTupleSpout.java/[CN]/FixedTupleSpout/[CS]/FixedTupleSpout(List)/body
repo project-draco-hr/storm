@@ -1,0 +1,13 @@
+{
+  _tuples=new ArrayList<FixedTuple>();
+  for (  Object o : tuples) {
+    FixedTuple ft;
+    if (o instanceof FixedTuple) {
+      ft=(FixedTuple)o;
+    }
+ else {
+      ft=new FixedTuple((List)o);
+    }
+    _tuples.add(ft);
+  }
+}

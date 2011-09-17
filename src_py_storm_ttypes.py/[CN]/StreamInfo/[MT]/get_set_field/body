@@ -1,0 +1,4 @@
+def get_set_field(self):
+    for attr in self.__dict__:
+        if (not (self.__dict__[attr] is None)):
+            return attr

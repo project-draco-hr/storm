@@ -1,0 +1,4 @@
+{
+  simulating.set(false);
+  threadSleepTimes=null;
+}

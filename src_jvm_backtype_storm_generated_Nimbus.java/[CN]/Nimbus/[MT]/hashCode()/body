@@ -1,0 +1,16 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_name=true && (is_set_name());
+  builder.append(present_name);
+  if (present_name)   builder.append(name);
+  boolean present_uploadedJarLocation=true && (is_set_uploadedJarLocation());
+  builder.append(present_uploadedJarLocation);
+  if (present_uploadedJarLocation)   builder.append(uploadedJarLocation);
+  boolean present_jsonConf=true && (is_set_jsonConf());
+  builder.append(present_jsonConf);
+  if (present_jsonConf)   builder.append(jsonConf);
+  boolean present_topology=true && (is_set_topology());
+  builder.append(present_topology);
+  if (present_topology)   builder.append(topology);
+  return builder.toHashCode();
+}

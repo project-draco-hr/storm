@@ -1,0 +1,9 @@
+{
+switch (field) {
+case FUNCTION_NAME:
+    return is_set_functionName();
+case FUNC_ARGS:
+  return is_set_funcArgs();
+}
+throw new IllegalStateException();
+}

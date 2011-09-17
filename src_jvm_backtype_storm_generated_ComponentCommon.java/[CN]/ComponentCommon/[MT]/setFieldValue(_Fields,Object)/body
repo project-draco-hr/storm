@@ -1,0 +1,20 @@
+{
+switch (field) {
+case STREAMS:
+    if (value == null) {
+      unset_streams();
+    }
+ else {
+      set_streams((Map<Integer,StreamInfo>)value);
+    }
+  break;
+case PARALLELISM_HINT:
+if (value == null) {
+  unset_parallelism_hint();
+}
+ else {
+  set_parallelism_hint((Integer)value);
+}
+break;
+}
+}

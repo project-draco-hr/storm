@@ -1,0 +1,22 @@
+{
+  if (that == null)   return false;
+  boolean this_present_acked=true && this.is_set_acked();
+  boolean that_present_acked=true && that.is_set_acked();
+  if (this_present_acked || that_present_acked) {
+    if (!(this_present_acked && that_present_acked))     return false;
+    if (!this.acked.equals(that.acked))     return false;
+  }
+  boolean this_present_failed=true && this.is_set_failed();
+  boolean that_present_failed=true && that.is_set_failed();
+  if (this_present_failed || that_present_failed) {
+    if (!(this_present_failed && that_present_failed))     return false;
+    if (!this.failed.equals(that.failed))     return false;
+  }
+  boolean this_present_process_ms_avg=true && this.is_set_process_ms_avg();
+  boolean that_present_process_ms_avg=true && that.is_set_process_ms_avg();
+  if (this_present_process_ms_avg || that_present_process_ms_avg) {
+    if (!(this_present_process_ms_avg && that_present_process_ms_avg))     return false;
+    if (!this.process_ms_avg.equals(that.process_ms_avg))     return false;
+  }
+  return true;
+}

@@ -1,0 +1,5 @@
+{
+  if (that == null)   return false;
+  if (that instanceof ComponentCommon)   return this.equals((ComponentCommon)that);
+  return false;
+}

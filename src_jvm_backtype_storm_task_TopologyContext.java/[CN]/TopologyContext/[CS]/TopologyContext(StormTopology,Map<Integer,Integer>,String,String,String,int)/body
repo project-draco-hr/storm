@@ -1,0 +1,16 @@
+{
+  _topology=topology;
+  _taskToComponent=taskToComponent;
+  _stormId=stormId;
+  _taskId=taskId;
+  _componentToTasks=new HashMap<Integer,List<Integer>>();
+  _pidDir=pidDir;
+  _codeDir=codeDir;
+  for (  Integer task : taskToComponent.keySet()) {
+    int component=taskToComponent.get(task);
+    List<Integer> curr=_componentToTasks.get(component);
+    if (curr == null)     curr=new ArrayList<Integer>();
+    curr.add(task);
+    _componentToTasks.put(component,curr);
+  }
+}

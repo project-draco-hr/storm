@@ -1,0 +1,8 @@
+{
+  if (!is_set_output_fields()) {
+    throw new TProtocolException("Required field 'output_fields' is unset! Struct:" + toString());
+  }
+  if (!is_set_direct()) {
+    throw new TProtocolException("Required field 'direct' is unset! Struct:" + toString());
+  }
+}

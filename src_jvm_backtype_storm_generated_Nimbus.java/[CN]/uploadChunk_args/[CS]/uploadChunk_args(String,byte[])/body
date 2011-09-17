@@ -1,0 +1,5 @@
+{
+  this();
+  this.location=location;
+  this.chunk=chunk;
+}

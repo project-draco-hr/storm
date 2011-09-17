@@ -1,0 +1,4 @@
+{
+  _pendingAcks.remove(input);
+  _collector.fail(input);
+}

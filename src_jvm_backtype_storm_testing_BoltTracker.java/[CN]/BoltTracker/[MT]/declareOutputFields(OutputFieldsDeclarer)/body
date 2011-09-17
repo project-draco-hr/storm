@@ -1,0 +1,6 @@
+{
+  if (_delegate instanceof IRichBolt) {
+    ((IRichBolt)_delegate).declareOutputFields(declarer);
+  }
+  declarer.declareStream(TrackerAggregator.TRACK_STREAM,new Fields("processed","transferred","spoutEmitted"));
+}

@@ -1,0 +1,3 @@
+{
+  _collector.reportError(error);
+}

@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_output_fields=true && this.is_set_output_fields();
+  boolean that_present_output_fields=true && that.is_set_output_fields();
+  if (this_present_output_fields || that_present_output_fields) {
+    if (!(this_present_output_fields && that_present_output_fields))     return false;
+    if (!this.output_fields.equals(that.output_fields))     return false;
+  }
+  boolean this_present_direct=true;
+  boolean that_present_direct=true;
+  if (this_present_direct || that_present_direct) {
+    if (!(this_present_direct && that_present_direct))     return false;
+    if (this.direct != that.direct)     return false;
+  }
+  return true;
+}

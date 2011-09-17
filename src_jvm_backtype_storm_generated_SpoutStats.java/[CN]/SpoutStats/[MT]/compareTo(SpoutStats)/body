@@ -1,0 +1,38 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  SpoutStats typedOther=(SpoutStats)other;
+  lastComparison=Boolean.valueOf(is_set_acked()).compareTo(typedOther.is_set_acked());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_acked()) {
+    lastComparison=TBaseHelper.compareTo(this.acked,typedOther.acked);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_failed()).compareTo(typedOther.is_set_failed());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_failed()) {
+    lastComparison=TBaseHelper.compareTo(this.failed,typedOther.failed);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_complete_ms_avg()).compareTo(typedOther.is_set_complete_ms_avg());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_complete_ms_avg()) {
+    lastComparison=TBaseHelper.compareTo(this.complete_ms_avg,typedOther.complete_ms_avg);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

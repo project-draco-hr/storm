@@ -1,0 +1,20 @@
+{
+switch (field) {
+case EXECUTION_COMMAND:
+    if (value == null) {
+      unset_execution_command();
+    }
+ else {
+      set_execution_command((String)value);
+    }
+  break;
+case SCRIPT:
+if (value == null) {
+  unset_script();
+}
+ else {
+  set_script((String)value);
+}
+break;
+}
+}

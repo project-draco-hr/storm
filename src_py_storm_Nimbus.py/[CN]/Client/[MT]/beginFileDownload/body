@@ -1,0 +1,4 @@
+def beginFileDownload(self, file):
+    '\n    Parameters:\n     - file\n    '
+    self.send_beginFileDownload(file)
+    return self.recv_beginFileDownload()

@@ -1,0 +1,30 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('Grouping')
+    if (self.fields != None):
+        oprot.writeFieldBegin('fields', TType.LIST, 1)
+        oprot.writeListBegin(TType.STRING, len(self.fields))
+        for iter6 in self.fields:
+            oprot.writeString(iter6.encode('utf-8'))
+        oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    if (self.shuffle != None):
+        oprot.writeFieldBegin('shuffle', TType.STRUCT, 2)
+        self.shuffle.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.all != None):
+        oprot.writeFieldBegin('all', TType.STRUCT, 3)
+        self.all.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.none != None):
+        oprot.writeFieldBegin('none', TType.STRUCT, 4)
+        self.none.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.direct != None):
+        oprot.writeFieldBegin('direct', TType.STRUCT, 5)
+        self.direct.write(oprot)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

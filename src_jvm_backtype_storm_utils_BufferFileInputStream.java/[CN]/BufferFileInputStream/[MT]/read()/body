@@ -1,0 +1,13 @@
+{
+  int length=stream.read(buffer);
+  if (length == -1) {
+    close();
+    return new byte[0];
+  }
+ else   if (length == buffer.length) {
+    return buffer;
+  }
+ else {
+    return Arrays.copyOf(buffer,length);
+  }
+}

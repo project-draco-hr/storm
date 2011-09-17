@@ -1,0 +1,6 @@
+{
+  this();
+  this.output_fields=output_fields;
+  this.direct=direct;
+  set_direct_isSet(true);
+}

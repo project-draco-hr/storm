@@ -1,0 +1,5 @@
+def __init__(self, handler):
+    self._handler = handler
+    self._processMap = {}
+    self._processMap['execute'] = Processor.process_execute
+    self._processMap['result'] = Processor.process_result

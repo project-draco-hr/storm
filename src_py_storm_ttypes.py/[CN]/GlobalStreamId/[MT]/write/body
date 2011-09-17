@@ -1,0 +1,15 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('GlobalStreamId')
+    if (self.componentId != None):
+        oprot.writeFieldBegin('componentId', TType.I32, 1)
+        oprot.writeI32(self.componentId)
+        oprot.writeFieldEnd()
+    if (self.streamId != None):
+        oprot.writeFieldBegin('streamId', TType.I32, 2)
+        oprot.writeI32(self.streamId)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

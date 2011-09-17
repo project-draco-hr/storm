@@ -1,0 +1,11 @@
+{
+  if (_serveTuples.size() > 0) {
+    FixedTuple ft=_serveTuples.remove(0);
+    String id=UUID.randomUUID().toString();
+    _pending.put(id,ft);
+    _collector.emit(ft.stream,ft.values,id);
+  }
+ else {
+    Utils.sleep(100);
+  }
+}

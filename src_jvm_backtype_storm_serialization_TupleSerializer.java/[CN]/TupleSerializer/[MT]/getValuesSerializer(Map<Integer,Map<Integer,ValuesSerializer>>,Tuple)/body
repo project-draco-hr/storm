@@ -1,0 +1,13 @@
+{
+  Map<Integer,ValuesSerializer> streamToSerializers=serializers.get(tuple.getSourceComponent());
+  if (streamToSerializers == null) {
+    streamToSerializers=new HashMap<Integer,ValuesSerializer>();
+    serializers.put(tuple.getSourceComponent(),streamToSerializers);
+  }
+  ValuesSerializer streamSerializers=streamToSerializers.get(tuple.getSourceStreamId());
+  if (streamSerializers == null) {
+    streamSerializers=new ValuesSerializer(_conf);
+    streamToSerializers.put(tuple.getSourceStreamId(),streamSerializers);
+  }
+  return streamSerializers;
+}

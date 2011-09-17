@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_location=true && this.is_set_location();
+  boolean that_present_location=true && that.is_set_location();
+  if (this_present_location || that_present_location) {
+    if (!(this_present_location && that_present_location))     return false;
+    if (!this.location.equals(that.location))     return false;
+  }
+  boolean this_present_chunk=true && this.is_set_chunk();
+  boolean that_present_chunk=true && that.is_set_chunk();
+  if (this_present_chunk || that_present_chunk) {
+    if (!(this_present_chunk && that_present_chunk))     return false;
+    if (!java.util.Arrays.equals(this.chunk,that.chunk))     return false;
+  }
+  return true;
+}

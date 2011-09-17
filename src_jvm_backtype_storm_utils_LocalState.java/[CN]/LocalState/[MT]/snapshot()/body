@@ -1,0 +1,5 @@
+{
+  String latestPath=_vs.mostRecentVersionPath();
+  if (latestPath == null)   return new HashMap<Object,Object>();
+  return (Map<Object,Object>)Utils.deserialize(FileUtils.readFileToByteArray(new File(latestPath)));
+}

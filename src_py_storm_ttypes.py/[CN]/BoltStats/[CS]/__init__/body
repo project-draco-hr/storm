@@ -1,0 +1,4 @@
+def __init__(self, acked=None, failed=None, process_ms_avg=None):
+    self.acked = acked
+    self.failed = failed
+    self.process_ms_avg = process_ms_avg

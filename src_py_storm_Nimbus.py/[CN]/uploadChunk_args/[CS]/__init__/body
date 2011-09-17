@@ -1,0 +1,3 @@
+def __init__(self, location=None, chunk=None):
+    self.location = location
+    self.chunk = chunk

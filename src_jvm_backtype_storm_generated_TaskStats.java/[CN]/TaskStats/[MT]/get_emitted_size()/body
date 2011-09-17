@@ -1,0 +1,3 @@
+{
+  return (this.emitted == null) ? 0 : this.emitted.size();
+}

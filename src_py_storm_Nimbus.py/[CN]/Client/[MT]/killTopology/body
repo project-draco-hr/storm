@@ -1,0 +1,4 @@
+def killTopology(self, name):
+    '\n    Parameters:\n     - name\n    '
+    self.send_killTopology(name)
+    self.recv_killTopology()

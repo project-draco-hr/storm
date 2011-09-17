@@ -1,0 +1,25 @@
+{
+  TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 0:
+      if (field.type == TType.STRING) {
+        this.success=iprot.readString();
+      }
+ else {
+        TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+default :
+  TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}

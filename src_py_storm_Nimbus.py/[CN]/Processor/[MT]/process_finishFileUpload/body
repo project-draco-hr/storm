@@ -1,0 +1,10 @@
+def process_finishFileUpload(self, seqid, iprot, oprot):
+    args = finishFileUpload_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = finishFileUpload_result()
+    self._handler.finishFileUpload(args.location)
+    oprot.writeMessageBegin('finishFileUpload', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

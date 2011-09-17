@@ -1,0 +1,7 @@
+{
+switch (field) {
+case MSG:
+    return is_set_msg();
+}
+throw new IllegalStateException();
+}

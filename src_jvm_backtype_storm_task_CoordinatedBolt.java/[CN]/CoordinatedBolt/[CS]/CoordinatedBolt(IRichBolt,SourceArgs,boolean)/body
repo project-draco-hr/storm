@@ -1,0 +1,5 @@
+{
+  _sourceArgs=sourceArgs;
+  _delegate=delegate;
+  _allOut=allOut;
+}

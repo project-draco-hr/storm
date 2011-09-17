@@ -1,0 +1,5 @@
+{
+  List<Integer> ret=_componentToTasks.get(componentId);
+  if (ret == null)   return new ArrayList<Integer>();
+ else   return new ArrayList<Integer>(ret);
+}

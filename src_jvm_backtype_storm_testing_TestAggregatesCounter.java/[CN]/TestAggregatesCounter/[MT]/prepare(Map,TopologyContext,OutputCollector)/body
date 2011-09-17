@@ -1,0 +1,4 @@
+{
+  _collector=collector;
+  _counts=new HashMap<String,Integer>();
+}

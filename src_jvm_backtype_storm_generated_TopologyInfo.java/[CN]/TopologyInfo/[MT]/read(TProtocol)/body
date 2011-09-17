@@ -1,0 +1,60 @@
+{
+  TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 1:
+      if (field.type == TType.STRING) {
+        this.id=iprot.readString();
+      }
+ else {
+        TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+case 2:
+  if (field.type == TType.STRING) {
+    this.name=iprot.readString();
+  }
+ else {
+    TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == TType.I32) {
+this.uptime_secs=iprot.readI32();
+set_uptime_secs_isSet(true);
+}
+ else {
+TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 4:
+if (field.type == TType.LIST) {
+{
+TList _list125=iprot.readListBegin();
+this.tasks=new ArrayList<TaskSummary>(_list125.size);
+for (int _i126=0; _i126 < _list125.size; ++_i126) {
+TaskSummary _elem127;
+_elem127=new TaskSummary();
+_elem127.read(iprot);
+this.tasks.add(_elem127);
+}
+iprot.readListEnd();
+}
+}
+ else {
+TProtocolUtil.skip(iprot,field.type);
+}
+break;
+default :
+TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}

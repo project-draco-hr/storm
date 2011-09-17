@@ -1,0 +1,16 @@
+{
+switch (fieldId) {
+case 1:
+    return FIELDS;
+case 2:
+  return SHUFFLE;
+case 3:
+return ALL;
+case 4:
+return NONE;
+case 5:
+return DIRECT;
+default :
+return null;
+}
+}

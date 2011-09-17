@@ -1,0 +1,6 @@
+self
+id
+name
+num_tasks
+num_workers
+uptime_secs

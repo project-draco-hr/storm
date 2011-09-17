@@ -1,0 +1,10 @@
+def process_getClusterInfo(self, seqid, iprot, oprot):
+    args = getClusterInfo_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getClusterInfo_result()
+    result.success = self._handler.getClusterInfo()
+    oprot.writeMessageBegin('getClusterInfo', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

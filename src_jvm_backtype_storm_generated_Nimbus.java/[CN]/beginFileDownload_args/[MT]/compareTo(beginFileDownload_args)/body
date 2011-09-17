@@ -1,0 +1,18 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  beginFileDownload_args typedOther=(beginFileDownload_args)other;
+  lastComparison=Boolean.valueOf(is_set_file()).compareTo(typedOther.is_set_file());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_file()) {
+    lastComparison=TBaseHelper.compareTo(this.file,typedOther.file);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

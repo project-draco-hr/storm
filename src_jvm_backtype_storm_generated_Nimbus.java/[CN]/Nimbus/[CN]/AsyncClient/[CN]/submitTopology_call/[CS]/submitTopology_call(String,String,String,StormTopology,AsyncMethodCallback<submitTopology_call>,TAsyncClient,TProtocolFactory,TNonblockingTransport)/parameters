@@ -1,0 +1,8 @@
+String name
+String uploadedJarLocation
+String jsonConf
+StormTopology topology
+AsyncMethodCallback<submitTopology_call> resultHandler
+TAsyncClient client
+TProtocolFactory protocolFactory
+TNonblockingTransport transport

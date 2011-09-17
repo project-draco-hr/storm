@@ -1,0 +1,9 @@
+{
+  for (  int token : _serializations.keySet()) {
+    ISerialization ser=_serializations.get(token);
+    if (ser.accept(klass)) {
+      return getSerializationForToken(token);
+    }
+  }
+  throw new RuntimeException("Could not find serialization for class " + klass.toString());
+}

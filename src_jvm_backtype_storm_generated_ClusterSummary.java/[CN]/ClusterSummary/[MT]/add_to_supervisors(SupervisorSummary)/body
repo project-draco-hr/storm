@@ -1,0 +1,6 @@
+{
+  if (this.supervisors == null) {
+    this.supervisors=new ArrayList<SupervisorSummary>();
+  }
+  this.supervisors.add(elem);
+}

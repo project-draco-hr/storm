@@ -1,0 +1,10 @@
+def process_downloadChunk(self, seqid, iprot, oprot):
+    args = downloadChunk_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = downloadChunk_result()
+    result.success = self._handler.downloadChunk(args.id)
+    oprot.writeMessageBegin('downloadChunk', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

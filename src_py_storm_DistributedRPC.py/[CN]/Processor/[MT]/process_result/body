@@ -1,0 +1,10 @@
+def process_result(self, seqid, iprot, oprot):
+    args = result_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = result_result()
+    self._handler.result(args.id, args.result)
+    oprot.writeMessageBegin('result', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

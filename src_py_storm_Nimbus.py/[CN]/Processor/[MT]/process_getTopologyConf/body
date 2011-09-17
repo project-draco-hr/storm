@@ -1,0 +1,13 @@
+def process_getTopologyConf(self, seqid, iprot, oprot):
+    args = getTopologyConf_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getTopologyConf_result()
+    try:
+        result.success = self._handler.getTopologyConf(args.id)
+    except NotAliveException as e:
+        result.e = e
+    oprot.writeMessageBegin('getTopologyConf', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

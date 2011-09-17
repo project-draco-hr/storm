@@ -1,0 +1,20 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.host != null) {
+    oprot.writeFieldBegin(HOST_FIELD_DESC);
+    oprot.writeString(this.host);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(this.uptime_secs);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(NUM_WORKERS_FIELD_DESC);
+  oprot.writeI32(this.num_workers);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(NUM_USED_WORKERS_FIELD_DESC);
+  oprot.writeI32(this.num_used_workers);
+  oprot.writeFieldEnd();
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

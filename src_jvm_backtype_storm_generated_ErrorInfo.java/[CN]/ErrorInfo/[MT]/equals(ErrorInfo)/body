@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_error=true && this.is_set_error();
+  boolean that_present_error=true && that.is_set_error();
+  if (this_present_error || that_present_error) {
+    if (!(this_present_error && that_present_error))     return false;
+    if (!this.error.equals(that.error))     return false;
+  }
+  boolean this_present_error_time_secs=true;
+  boolean that_present_error_time_secs=true;
+  if (this_present_error_time_secs || that_present_error_time_secs) {
+    if (!(this_present_error_time_secs && that_present_error_time_secs))     return false;
+    if (this.error_time_secs != that.error_time_secs)     return false;
+  }
+  return true;
+}

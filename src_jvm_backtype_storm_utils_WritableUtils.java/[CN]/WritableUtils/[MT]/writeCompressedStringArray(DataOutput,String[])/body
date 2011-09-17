@@ -1,0 +1,10 @@
+{
+  if (s == null) {
+    out.writeInt(-1);
+    return;
+  }
+  out.writeInt(s.length);
+  for (int i=0; i < s.length; i++) {
+    writeCompressedString(out,s[i]);
+  }
+}

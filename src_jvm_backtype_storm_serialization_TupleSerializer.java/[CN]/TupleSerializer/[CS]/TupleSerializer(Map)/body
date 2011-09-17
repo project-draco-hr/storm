@@ -1,0 +1,5 @@
+{
+  _outputter=new ByteArrayOutputStream();
+  _dataOutputter=new DataOutputStream(_outputter);
+  _conf=conf;
+}

@@ -1,0 +1,14 @@
+{
+  if (other.is_set_name()) {
+    this.name=other.name;
+  }
+  if (other.is_set_uploadedJarLocation()) {
+    this.uploadedJarLocation=other.uploadedJarLocation;
+  }
+  if (other.is_set_jsonConf()) {
+    this.jsonConf=other.jsonConf;
+  }
+  if (other.is_set_topology()) {
+    this.topology=new StormTopology(other.topology);
+  }
+}

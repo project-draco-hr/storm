@@ -1,0 +1,22 @@
+{
+  uploadChunk_args args=new uploadChunk_args();
+  try {
+    args.read(iprot);
+  }
+ catch (  TProtocolException e) {
+    iprot.readMessageEnd();
+    TApplicationException x=new TApplicationException(TApplicationException.PROTOCOL_ERROR,e.getMessage());
+    oprot.writeMessageBegin(new TMessage("uploadChunk",TMessageType.EXCEPTION,seqid));
+    x.write(oprot);
+    oprot.writeMessageEnd();
+    oprot.getTransport().flush();
+    return;
+  }
+  iprot.readMessageEnd();
+  uploadChunk_result result=new uploadChunk_result();
+  iface_.uploadChunk(args.location,args.chunk);
+  oprot.writeMessageBegin(new TMessage("uploadChunk",TMessageType.REPLY,seqid));
+  result.write(oprot);
+  oprot.writeMessageEnd();
+  oprot.getTransport().flush();
+}

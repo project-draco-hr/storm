@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return EXECUTION_COMMAND;
+case 2:
+  return SCRIPT;
+default :
+return null;
+}
+}

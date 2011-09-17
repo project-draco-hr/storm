@@ -1,0 +1,38 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  ClusterSummary typedOther=(ClusterSummary)other;
+  lastComparison=Boolean.valueOf(is_set_supervisors()).compareTo(typedOther.is_set_supervisors());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_supervisors()) {
+    lastComparison=TBaseHelper.compareTo(this.supervisors,typedOther.supervisors);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_nimbus_uptime_secs()).compareTo(typedOther.is_set_nimbus_uptime_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_nimbus_uptime_secs()) {
+    lastComparison=TBaseHelper.compareTo(this.nimbus_uptime_secs,typedOther.nimbus_uptime_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_topologies()).compareTo(typedOther.is_set_topologies());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_topologies()) {
+    lastComparison=TBaseHelper.compareTo(this.topologies,typedOther.topologies);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

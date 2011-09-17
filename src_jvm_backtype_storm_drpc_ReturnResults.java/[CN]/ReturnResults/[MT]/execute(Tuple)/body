@@ -1,0 +1,19 @@
+{
+  String result=(String)input.getValue(0);
+  String returnInfo=(String)input.getValue(1);
+  if (returnInfo != null) {
+    Map retMap=(Map)JSONValue.parse(returnInfo);
+    String ip=(String)retMap.get("ip");
+    Long port=(Long)retMap.get("port");
+    String id=(String)retMap.get("id");
+    try {
+      DRPCClient client=new DRPCClient(ip,(int)port.longValue());
+      client.result(id,result);
+      client.close();
+      _collector.ack(input);
+    }
+ catch (    TException e) {
+      _collector.fail(input);
+    }
+  }
+}

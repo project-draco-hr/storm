@@ -1,0 +1,9 @@
+{
+switch (field) {
+case OUTPUT_FIELDS:
+    return is_set_output_fields();
+case DIRECT:
+  return is_set_direct();
+}
+throw new IllegalStateException();
+}

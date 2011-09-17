@@ -1,0 +1,12 @@
+import sys
+import os
+import traceback
+try:
+    import cjson
+    json_encode = cjson.encode
+    json_decode = (lambda x: cjson.decode(x, all_unicode=True))
+except ImportError:
+    import json
+    json_encode = (lambda x: json.dumps(x, ensure_ascii=False))
+    json_decode = (lambda x: json.loads(unicode(x)))
+ANCHOR_TUPLE = None

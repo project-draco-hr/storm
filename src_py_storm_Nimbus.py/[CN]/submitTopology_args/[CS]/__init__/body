@@ -1,0 +1,5 @@
+def __init__(self, name=None, uploadedJarLocation=None, jsonConf=None, topology=None):
+    self.name = name
+    self.uploadedJarLocation = uploadedJarLocation
+    self.jsonConf = jsonConf
+    self.topology = topology

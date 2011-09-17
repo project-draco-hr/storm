@@ -1,0 +1,11 @@
+{
+synchronized (_lock) {
+    Iterator<HashMap<K,V>> it=_buckets.iterator();
+    HashMap<K,V> bucket=it.next();
+    bucket.put(key,value);
+    while (it.hasNext()) {
+      bucket=it.next();
+      bucket.remove(key);
+    }
+  }
+}

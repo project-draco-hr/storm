@@ -1,0 +1,3 @@
+{
+  return (this.transferred == null) ? 0 : this.transferred.size();
+}

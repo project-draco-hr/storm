@@ -1,0 +1,63 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.acked != null) {
+    oprot.writeFieldBegin(ACKED_FIELD_DESC);
+{
+      oprot.writeMapBegin(new TMap(TType.STRING,TType.MAP,this.acked.size()));
+      for (      Map.Entry<String,Map<Integer,Long>> _iter95 : this.acked.entrySet()) {
+        oprot.writeString(_iter95.getKey());
+{
+          oprot.writeMapBegin(new TMap(TType.I32,TType.I64,_iter95.getValue().size()));
+          for (          Map.Entry<Integer,Long> _iter96 : _iter95.getValue().entrySet()) {
+            oprot.writeI32(_iter96.getKey());
+            oprot.writeI64(_iter96.getValue());
+          }
+          oprot.writeMapEnd();
+        }
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.failed != null) {
+    oprot.writeFieldBegin(FAILED_FIELD_DESC);
+{
+      oprot.writeMapBegin(new TMap(TType.STRING,TType.MAP,this.failed.size()));
+      for (      Map.Entry<String,Map<Integer,Long>> _iter97 : this.failed.entrySet()) {
+        oprot.writeString(_iter97.getKey());
+{
+          oprot.writeMapBegin(new TMap(TType.I32,TType.I64,_iter97.getValue().size()));
+          for (          Map.Entry<Integer,Long> _iter98 : _iter97.getValue().entrySet()) {
+            oprot.writeI32(_iter98.getKey());
+            oprot.writeI64(_iter98.getValue());
+          }
+          oprot.writeMapEnd();
+        }
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.complete_ms_avg != null) {
+    oprot.writeFieldBegin(COMPLETE_MS_AVG_FIELD_DESC);
+{
+      oprot.writeMapBegin(new TMap(TType.STRING,TType.MAP,this.complete_ms_avg.size()));
+      for (      Map.Entry<String,Map<Integer,Double>> _iter99 : this.complete_ms_avg.entrySet()) {
+        oprot.writeString(_iter99.getKey());
+{
+          oprot.writeMapBegin(new TMap(TType.I32,TType.DOUBLE,_iter99.getValue().size()));
+          for (          Map.Entry<Integer,Double> _iter100 : _iter99.getValue().entrySet()) {
+            oprot.writeI32(_iter100.getKey());
+            oprot.writeDouble(_iter100.getValue());
+          }
+          oprot.writeMapEnd();
+        }
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

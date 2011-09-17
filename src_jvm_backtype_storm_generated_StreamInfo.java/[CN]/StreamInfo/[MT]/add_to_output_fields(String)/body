@@ -1,0 +1,6 @@
+{
+  if (this.output_fields == null) {
+    this.output_fields=new ArrayList<String>();
+  }
+  this.output_fields.add(elem);
+}

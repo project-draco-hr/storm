@@ -1,0 +1,9 @@
+{
+  List<Object> tuple=_feeds.get(_id).poll();
+  if (tuple != null) {
+    _collector.emit(tuple,UUID.randomUUID().toString());
+  }
+ else {
+    Utils.sleep(100);
+  }
+}

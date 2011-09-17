@@ -1,0 +1,7 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_success=true && (is_set_success());
+  builder.append(present_success);
+  if (present_success)   builder.append(success);
+  return builder.toHashCode();
+}

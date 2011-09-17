@@ -1,0 +1,10 @@
+{
+  try {
+    conn=new TFramedTransport(new TSocket(host,port));
+    client=new DistributedRPC.Client(new TBinaryProtocol(conn));
+    conn.open();
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

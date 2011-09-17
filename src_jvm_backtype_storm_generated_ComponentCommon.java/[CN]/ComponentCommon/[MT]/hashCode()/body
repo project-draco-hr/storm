@@ -1,0 +1,10 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_streams=true && (is_set_streams());
+  builder.append(present_streams);
+  if (present_streams)   builder.append(streams);
+  boolean present_parallelism_hint=true && (is_set_parallelism_hint());
+  builder.append(present_parallelism_hint);
+  if (present_parallelism_hint)   builder.append(parallelism_hint);
+  return builder.toHashCode();
+}

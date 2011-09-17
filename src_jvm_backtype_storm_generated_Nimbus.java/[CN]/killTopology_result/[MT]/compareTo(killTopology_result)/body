@@ -1,0 +1,18 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  killTopology_result typedOther=(killTopology_result)other;
+  lastComparison=Boolean.valueOf(is_set_e()).compareTo(typedOther.is_set_e());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_e()) {
+    lastComparison=TBaseHelper.compareTo(this.e,typedOther.e);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

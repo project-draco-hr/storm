@@ -1,0 +1,4 @@
+{
+  stream=new FileInputStream(file);
+  buffer=new byte[bufferSize];
+}

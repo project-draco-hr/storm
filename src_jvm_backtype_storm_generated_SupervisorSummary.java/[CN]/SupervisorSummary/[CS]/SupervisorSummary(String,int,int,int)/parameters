@@ -1,0 +1,4 @@
+String host
+int uptime_secs
+int num_workers
+int num_used_workers

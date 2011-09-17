@@ -1,0 +1,11 @@
+{
+  if (!is_set_spouts()) {
+    throw new TProtocolException("Required field 'spouts' is unset! Struct:" + toString());
+  }
+  if (!is_set_bolts()) {
+    throw new TProtocolException("Required field 'bolts' is unset! Struct:" + toString());
+  }
+  if (!is_set_state_spouts()) {
+    throw new TProtocolException("Required field 'state_spouts' is unset! Struct:" + toString());
+  }
+}

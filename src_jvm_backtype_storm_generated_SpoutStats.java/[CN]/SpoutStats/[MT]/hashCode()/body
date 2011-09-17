@@ -1,0 +1,13 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_acked=true && (is_set_acked());
+  builder.append(present_acked);
+  if (present_acked)   builder.append(acked);
+  boolean present_failed=true && (is_set_failed());
+  builder.append(present_failed);
+  if (present_failed)   builder.append(failed);
+  boolean present_complete_ms_avg=true && (is_set_complete_ms_avg());
+  builder.append(present_complete_ms_avg);
+  if (present_complete_ms_avg)   builder.append(complete_ms_avg);
+  return builder.toHashCode();
+}

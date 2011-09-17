@@ -1,0 +1,14 @@
+{
+switch (fieldId) {
+case 1:
+    return ID;
+case 2:
+  return NAME;
+case 3:
+return UPTIME_SECS;
+case 4:
+return TASKS;
+default :
+return null;
+}
+}

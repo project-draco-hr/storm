@@ -1,0 +1,11 @@
+def recv_finishFileUpload(self):
+    (fname, mtype, rseqid) = self._iprot.readMessageBegin()
+    if (mtype == TMessageType.EXCEPTION):
+        x = TApplicationException()
+        x.read(self._iprot)
+        self._iprot.readMessageEnd()
+        raise x
+    result = finishFileUpload_result()
+    result.read(self._iprot)
+    self._iprot.readMessageEnd()
+    return

@@ -1,0 +1,5 @@
+{
+  if (that == null)   return false;
+  if (that instanceof ShellComponent)   return this.equals((ShellComponent)that);
+  return false;
+}

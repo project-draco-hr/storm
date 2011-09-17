@@ -1,0 +1,7 @@
+{
+switch (field) {
+case FILE:
+    return is_set_file();
+}
+throw new IllegalStateException();
+}

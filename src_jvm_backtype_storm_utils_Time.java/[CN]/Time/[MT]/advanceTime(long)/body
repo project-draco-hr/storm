@@ -1,0 +1,4 @@
+{
+  if (!simulating.get())   throw new IllegalStateException("Cannot simulate time unless in simulation mode");
+  simulatedCurrTimeMs.set(simulatedCurrTimeMs.get() + ms);
+}

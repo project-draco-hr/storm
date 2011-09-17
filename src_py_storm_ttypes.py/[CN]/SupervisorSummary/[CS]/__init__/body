@@ -1,0 +1,5 @@
+def __init__(self, host=None, uptime_secs=None, num_workers=None, num_used_workers=None):
+    self.host = host
+    self.uptime_secs = uptime_secs
+    self.num_workers = num_workers
+    self.num_used_workers = num_used_workers

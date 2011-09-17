@@ -1,0 +1,10 @@
+{
+  __isset_bit_vector.clear();
+  __isset_bit_vector.or(other.__isset_bit_vector);
+  if (other.is_set_host()) {
+    this.host=other.host;
+  }
+  this.uptime_secs=other.uptime_secs;
+  this.num_workers=other.num_workers;
+  this.num_used_workers=other.num_used_workers;
+}

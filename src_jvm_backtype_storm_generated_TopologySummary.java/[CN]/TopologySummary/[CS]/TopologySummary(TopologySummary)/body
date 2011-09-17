@@ -1,0 +1,13 @@
+{
+  __isset_bit_vector.clear();
+  __isset_bit_vector.or(other.__isset_bit_vector);
+  if (other.is_set_id()) {
+    this.id=other.id;
+  }
+  if (other.is_set_name()) {
+    this.name=other.name;
+  }
+  this.num_tasks=other.num_tasks;
+  this.num_workers=other.num_workers;
+  this.uptime_secs=other.uptime_secs;
+}

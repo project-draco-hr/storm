@@ -1,0 +1,16 @@
+{
+switch (setField) {
+case FIELDS:
+    return FIELDS_FIELD_DESC;
+case SHUFFLE:
+  return SHUFFLE_FIELD_DESC;
+case ALL:
+return ALL_FIELD_DESC;
+case NONE:
+return NONE_FIELD_DESC;
+case DIRECT:
+return DIRECT_FIELD_DESC;
+default :
+throw new IllegalArgumentException("Unknown field id " + setField);
+}
+}

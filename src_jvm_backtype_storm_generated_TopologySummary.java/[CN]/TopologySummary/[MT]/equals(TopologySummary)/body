@@ -1,0 +1,34 @@
+{
+  if (that == null)   return false;
+  boolean this_present_id=true && this.is_set_id();
+  boolean that_present_id=true && that.is_set_id();
+  if (this_present_id || that_present_id) {
+    if (!(this_present_id && that_present_id))     return false;
+    if (!this.id.equals(that.id))     return false;
+  }
+  boolean this_present_name=true && this.is_set_name();
+  boolean that_present_name=true && that.is_set_name();
+  if (this_present_name || that_present_name) {
+    if (!(this_present_name && that_present_name))     return false;
+    if (!this.name.equals(that.name))     return false;
+  }
+  boolean this_present_num_tasks=true;
+  boolean that_present_num_tasks=true;
+  if (this_present_num_tasks || that_present_num_tasks) {
+    if (!(this_present_num_tasks && that_present_num_tasks))     return false;
+    if (this.num_tasks != that.num_tasks)     return false;
+  }
+  boolean this_present_num_workers=true;
+  boolean that_present_num_workers=true;
+  if (this_present_num_workers || that_present_num_workers) {
+    if (!(this_present_num_workers && that_present_num_workers))     return false;
+    if (this.num_workers != that.num_workers)     return false;
+  }
+  boolean this_present_uptime_secs=true;
+  boolean that_present_uptime_secs=true;
+  if (this_present_uptime_secs || that_present_uptime_secs) {
+    if (!(this_present_uptime_secs && that_present_uptime_secs))     return false;
+    if (this.uptime_secs != that.uptime_secs)     return false;
+  }
+  return true;
+}

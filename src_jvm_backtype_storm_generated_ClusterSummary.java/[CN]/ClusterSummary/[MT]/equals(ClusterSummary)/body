@@ -1,0 +1,22 @@
+{
+  if (that == null)   return false;
+  boolean this_present_supervisors=true && this.is_set_supervisors();
+  boolean that_present_supervisors=true && that.is_set_supervisors();
+  if (this_present_supervisors || that_present_supervisors) {
+    if (!(this_present_supervisors && that_present_supervisors))     return false;
+    if (!this.supervisors.equals(that.supervisors))     return false;
+  }
+  boolean this_present_nimbus_uptime_secs=true;
+  boolean that_present_nimbus_uptime_secs=true;
+  if (this_present_nimbus_uptime_secs || that_present_nimbus_uptime_secs) {
+    if (!(this_present_nimbus_uptime_secs && that_present_nimbus_uptime_secs))     return false;
+    if (this.nimbus_uptime_secs != that.nimbus_uptime_secs)     return false;
+  }
+  boolean this_present_topologies=true && this.is_set_topologies();
+  boolean that_present_topologies=true && that.is_set_topologies();
+  if (this_present_topologies || that_present_topologies) {
+    if (!(this_present_topologies && that_present_topologies))     return false;
+    if (!this.topologies.equals(that.topologies))     return false;
+  }
+  return true;
+}

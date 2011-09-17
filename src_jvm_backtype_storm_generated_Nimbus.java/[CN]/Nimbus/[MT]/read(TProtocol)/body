@@ -1,0 +1,50 @@
+{
+  TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 1:
+      if (field.type == TType.STRING) {
+        this.name=iprot.readString();
+      }
+ else {
+        TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+case 2:
+  if (field.type == TType.STRING) {
+    this.uploadedJarLocation=iprot.readString();
+  }
+ else {
+    TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == TType.STRING) {
+this.jsonConf=iprot.readString();
+}
+ else {
+TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 4:
+if (field.type == TType.STRUCT) {
+this.topology=new StormTopology();
+this.topology.read(iprot);
+}
+ else {
+TProtocolUtil.skip(iprot,field.type);
+}
+break;
+default :
+TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}

@@ -1,0 +1,31 @@
+{
+switch (setField) {
+case FIELDS:
+    if (value instanceof List) {
+      break;
+    }
+  throw new ClassCastException("Was expecting value of type List<String> for field 'fields', but got " + value.getClass().getSimpleName());
+case SHUFFLE:
+if (value instanceof NullStruct) {
+  break;
+}
+throw new ClassCastException("Was expecting value of type NullStruct for field 'shuffle', but got " + value.getClass().getSimpleName());
+case ALL:
+if (value instanceof NullStruct) {
+break;
+}
+throw new ClassCastException("Was expecting value of type NullStruct for field 'all', but got " + value.getClass().getSimpleName());
+case NONE:
+if (value instanceof NullStruct) {
+break;
+}
+throw new ClassCastException("Was expecting value of type NullStruct for field 'none', but got " + value.getClass().getSimpleName());
+case DIRECT:
+if (value instanceof NullStruct) {
+break;
+}
+throw new ClassCastException("Was expecting value of type NullStruct for field 'direct', but got " + value.getClass().getSimpleName());
+default :
+throw new IllegalArgumentException("Unknown field id " + setField);
+}
+}

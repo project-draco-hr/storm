@@ -1,0 +1,16 @@
+{
+  this.values=values;
+  this.taskId=taskId;
+  this.streamId=streamId;
+  this.id=id;
+  this.context=context;
+  if (streamId >= 0) {
+    int componentId=context.getComponentId(taskId);
+    if (componentId >= 0) {
+      Fields schema=context.getComponentOutputFields(componentId,streamId);
+      if (values.size() != schema.size()) {
+        throw new IllegalArgumentException("Tuple created with wrong number of fields. " + "Expected " + schema.size() + " fields but got "+ values.size()+ " fields");
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_inputs=true && (is_set_inputs());
+  builder.append(present_inputs);
+  if (present_inputs)   builder.append(inputs);
+  boolean present_bolt_object=true && (is_set_bolt_object());
+  builder.append(present_bolt_object);
+  if (present_bolt_object)   builder.append(bolt_object);
+  boolean present_common=true && (is_set_common());
+  builder.append(present_common);
+  if (present_common)   builder.append(common);
+  return builder.toHashCode();
+}

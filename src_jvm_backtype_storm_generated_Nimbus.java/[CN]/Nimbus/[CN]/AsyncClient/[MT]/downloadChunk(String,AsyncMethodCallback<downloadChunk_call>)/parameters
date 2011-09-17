@@ -1,0 +1,2 @@
+String id
+AsyncMethodCallback<downloadChunk_call> resultHandler

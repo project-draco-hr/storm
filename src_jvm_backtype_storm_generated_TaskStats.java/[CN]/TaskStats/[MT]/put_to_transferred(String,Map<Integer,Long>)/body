@@ -1,0 +1,6 @@
+{
+  if (this.transferred == null) {
+    this.transferred=new HashMap<String,Map<Integer,Long>>();
+  }
+  this.transferred.put(key,val);
+}

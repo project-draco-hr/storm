@@ -1,0 +1,11 @@
+{
+  ByteArrayInputStream bin=new ByteArrayInputStream(ser);
+  DataInputStream in=new DataInputStream(bin);
+  int taskId=WritableUtils.readVInt(in);
+  int streamId=WritableUtils.readVInt(in);
+  MessageId id=MessageId.deserialize(in);
+  int componentId=_context.getComponentId(taskId);
+  ValuesDeserializer streamSerializers=getValuesDeserializer(_fieldSerializers,componentId,streamId);
+  List<Object> values=streamSerializers.deserializeFrom(in);
+  return new Tuple(_context,values,taskId,streamId,id);
+}

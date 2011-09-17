@@ -1,0 +1,16 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.execution_command != null) {
+    oprot.writeFieldBegin(EXECUTION_COMMAND_FIELD_DESC);
+    oprot.writeString(this.execution_command);
+    oprot.writeFieldEnd();
+  }
+  if (this.script != null) {
+    oprot.writeFieldBegin(SCRIPT_FIELD_DESC);
+    oprot.writeString(this.script);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

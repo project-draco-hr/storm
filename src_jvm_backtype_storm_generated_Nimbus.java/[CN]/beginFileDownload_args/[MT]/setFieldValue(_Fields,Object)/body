@@ -1,0 +1,12 @@
+{
+switch (field) {
+case FILE:
+    if (value == null) {
+      unset_file();
+    }
+ else {
+      set_file((String)value);
+    }
+  break;
+}
+}

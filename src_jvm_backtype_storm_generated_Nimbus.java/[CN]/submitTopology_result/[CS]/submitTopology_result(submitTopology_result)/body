@@ -1,0 +1,8 @@
+{
+  if (other.is_set_e()) {
+    this.e=new AlreadyAliveException(other.e);
+  }
+  if (other.is_set_ite()) {
+    this.ite=new InvalidTopologyException(other.ite);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_id=true && (is_set_id());
+  builder.append(present_id);
+  if (present_id)   builder.append(id);
+  return builder.toHashCode();
+}

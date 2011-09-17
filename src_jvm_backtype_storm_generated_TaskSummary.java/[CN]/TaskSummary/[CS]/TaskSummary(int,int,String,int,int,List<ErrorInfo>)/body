@@ -1,0 +1,13 @@
+{
+  this();
+  this.task_id=task_id;
+  set_task_id_isSet(true);
+  this.component_id=component_id;
+  set_component_id_isSet(true);
+  this.host=host;
+  this.port=port;
+  set_port_isSet(true);
+  this.uptime_secs=uptime_secs;
+  set_uptime_secs_isSet(true);
+  this.errors=errors;
+}

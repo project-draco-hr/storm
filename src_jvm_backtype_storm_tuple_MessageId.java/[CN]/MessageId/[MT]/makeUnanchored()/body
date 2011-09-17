@@ -1,0 +1,3 @@
+{
+  return makeId(new HashMap<Long,Long>());
+}

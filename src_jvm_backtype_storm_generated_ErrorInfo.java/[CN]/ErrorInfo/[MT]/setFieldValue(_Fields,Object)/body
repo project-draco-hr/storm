@@ -1,0 +1,20 @@
+{
+switch (field) {
+case ERROR:
+    if (value == null) {
+      unset_error();
+    }
+ else {
+      set_error((String)value);
+    }
+  break;
+case ERROR_TIME_SECS:
+if (value == null) {
+  unset_error_time_secs();
+}
+ else {
+  set_error_time_secs((Integer)value);
+}
+break;
+}
+}

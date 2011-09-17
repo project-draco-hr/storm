@@ -1,0 +1,4 @@
+def finishFileUpload(self, location):
+    '\n    Parameters:\n     - location\n    '
+    self.send_finishFileUpload(location)
+    self.recv_finishFileUpload()

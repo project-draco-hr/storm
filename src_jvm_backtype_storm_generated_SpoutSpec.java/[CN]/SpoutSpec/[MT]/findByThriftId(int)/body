@@ -1,0 +1,12 @@
+{
+switch (fieldId) {
+case 1:
+    return SPOUT_OBJECT;
+case 2:
+  return COMMON;
+case 3:
+return DISTRIBUTED;
+default :
+return null;
+}
+}

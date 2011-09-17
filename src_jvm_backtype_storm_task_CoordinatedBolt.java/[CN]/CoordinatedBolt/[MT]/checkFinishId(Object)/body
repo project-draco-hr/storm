@@ -1,0 +1,19 @@
+{
+synchronized (_tracked) {
+    TrackingInfo track=_tracked.get(id);
+    if (track != null && (_sourceArgs == null || track.reportCount == _numSourceReports && track.expectedTupleCount == track.receivedTuples)) {
+      if (_delegate instanceof FinishedCallback) {
+        ((FinishedCallback)_delegate).finishedId(id);
+      }
+      Iterator<Integer> outTasks;
+      if (_allOut)       outTasks=_countOutTasks.iterator();
+ else       outTasks=track.taskEmittedTuples.keySet().iterator();
+      while (outTasks.hasNext()) {
+        int task=outTasks.next();
+        int numTuples=get(track.taskEmittedTuples,task,0);
+        _collector.emitDirect(task,Constants.COORDINATED_STREAM_ID,tuple(id,numTuples));
+      }
+      _tracked.remove(id);
+    }
+  }
+}

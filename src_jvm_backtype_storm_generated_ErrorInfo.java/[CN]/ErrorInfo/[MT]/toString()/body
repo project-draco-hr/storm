@@ -1,0 +1,18 @@
+{
+  StringBuilder sb=new StringBuilder("ErrorInfo(");
+  boolean first=true;
+  sb.append("error:");
+  if (this.error == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.error);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("error_time_secs:");
+  sb.append(this.error_time_secs);
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

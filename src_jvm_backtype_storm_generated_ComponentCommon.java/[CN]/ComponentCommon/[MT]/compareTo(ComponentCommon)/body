@@ -1,0 +1,28 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  ComponentCommon typedOther=(ComponentCommon)other;
+  lastComparison=Boolean.valueOf(is_set_streams()).compareTo(typedOther.is_set_streams());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_streams()) {
+    lastComparison=TBaseHelper.compareTo(this.streams,typedOther.streams);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_parallelism_hint()).compareTo(typedOther.is_set_parallelism_hint());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_parallelism_hint()) {
+    lastComparison=TBaseHelper.compareTo(this.parallelism_hint,typedOther.parallelism_hint);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

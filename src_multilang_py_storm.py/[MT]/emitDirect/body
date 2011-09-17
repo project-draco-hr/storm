@@ -1,0 +1,2 @@
+def emitDirect(task, tup, stream=None, anchors=[]):
+    emittuple(tup, stream=stream, anchors=anchors, directTask=task)

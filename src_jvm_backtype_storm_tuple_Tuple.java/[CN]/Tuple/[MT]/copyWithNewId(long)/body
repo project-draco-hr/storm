@@ -1,0 +1,7 @@
+{
+  Map<Long,Long> newIds=new HashMap<Long,Long>();
+  for (  Long anchor : this.id.getAnchorsToIds().keySet()) {
+    newIds.put(anchor,id);
+  }
+  return new Tuple(this.context,this.values,this.taskId,this.streamId,MessageId.makeId(newIds));
+}

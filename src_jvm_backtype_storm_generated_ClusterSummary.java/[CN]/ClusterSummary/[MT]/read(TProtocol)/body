@@ -1,0 +1,62 @@
+{
+  TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 1:
+      if (field.type == TType.LIST) {
+{
+          TList _list33=iprot.readListBegin();
+          this.supervisors=new ArrayList<SupervisorSummary>(_list33.size);
+          for (int _i34=0; _i34 < _list33.size; ++_i34) {
+            SupervisorSummary _elem35;
+            _elem35=new SupervisorSummary();
+            _elem35.read(iprot);
+            this.supervisors.add(_elem35);
+          }
+          iprot.readListEnd();
+        }
+      }
+ else {
+        TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+case 2:
+  if (field.type == TType.I32) {
+    this.nimbus_uptime_secs=iprot.readI32();
+    set_nimbus_uptime_secs_isSet(true);
+  }
+ else {
+    TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == TType.LIST) {
+{
+  TList _list36=iprot.readListBegin();
+  this.topologies=new ArrayList<TopologySummary>(_list36.size);
+  for (int _i37=0; _i37 < _list36.size; ++_i37) {
+    TopologySummary _elem38;
+    _elem38=new TopologySummary();
+    _elem38.read(iprot);
+    this.topologies.add(_elem38);
+  }
+  iprot.readListEnd();
+}
+}
+ else {
+TProtocolUtil.skip(iprot,field.type);
+}
+break;
+default :
+TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}

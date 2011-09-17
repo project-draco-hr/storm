@@ -1,0 +1,20 @@
+{
+switch (field) {
+case COMPONENT_ID:
+    if (value == null) {
+      unset_componentId();
+    }
+ else {
+      set_componentId((Integer)value);
+    }
+  break;
+case STREAM_ID:
+if (value == null) {
+  unset_streamId();
+}
+ else {
+  set_streamId((Integer)value);
+}
+break;
+}
+}

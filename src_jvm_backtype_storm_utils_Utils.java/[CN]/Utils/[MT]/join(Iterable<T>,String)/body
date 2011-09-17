@@ -1,0 +1,11 @@
+{
+  Iterator<T> it=coll.iterator();
+  String ret="";
+  while (it.hasNext()) {
+    ret=ret + it.next();
+    if (it.hasNext()) {
+      ret=ret + sep;
+    }
+  }
+  return ret;
+}

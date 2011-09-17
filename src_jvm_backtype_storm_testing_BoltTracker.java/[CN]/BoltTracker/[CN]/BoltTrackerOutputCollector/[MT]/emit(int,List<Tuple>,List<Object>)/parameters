@@ -1,0 +1,3 @@
+int streamId
+List<Tuple> anchors
+List<Object> tuple

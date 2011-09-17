@@ -1,0 +1,10 @@
+{
+  InputStream is=Object.class.getResourceAsStream("/" + name);
+  if (is == null) {
+    if (mustExist)     throw new RuntimeException("Could not find config file on classpath " + name);
+ else     return new HashMap();
+  }
+  Map ret=(Map)YAML.load(new InputStreamReader(is));
+  if (ret == null)   ret=new HashMap();
+  return new HashMap(ret);
+}

@@ -1,0 +1,6 @@
+{
+  this();
+  this.inputs=inputs;
+  this.bolt_object=bolt_object;
+  this.common=common;
+}

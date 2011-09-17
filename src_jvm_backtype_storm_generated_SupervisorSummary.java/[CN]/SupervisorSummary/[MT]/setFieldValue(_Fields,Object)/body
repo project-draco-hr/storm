@@ -1,0 +1,36 @@
+{
+switch (field) {
+case HOST:
+    if (value == null) {
+      unset_host();
+    }
+ else {
+      set_host((String)value);
+    }
+  break;
+case UPTIME_SECS:
+if (value == null) {
+  unset_uptime_secs();
+}
+ else {
+  set_uptime_secs((Integer)value);
+}
+break;
+case NUM_WORKERS:
+if (value == null) {
+unset_num_workers();
+}
+ else {
+set_num_workers((Integer)value);
+}
+break;
+case NUM_USED_WORKERS:
+if (value == null) {
+unset_num_used_workers();
+}
+ else {
+set_num_used_workers((Integer)value);
+}
+break;
+}
+}

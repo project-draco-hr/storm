@@ -1,0 +1,4 @@
+def execute(self, functionName, funcArgs):
+    '\n    Parameters:\n     - functionName\n     - funcArgs\n    '
+    self.send_execute(functionName, funcArgs)
+    return self.recv_execute()

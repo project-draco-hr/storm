@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return ERROR;
+case 2:
+  return ERROR_TIME_SECS;
+default :
+return null;
+}
+}

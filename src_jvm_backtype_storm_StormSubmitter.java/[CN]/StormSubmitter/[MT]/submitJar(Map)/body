@@ -1,0 +1,10 @@
+{
+  if (submittedJar == null) {
+    LOG.info("Jar not uploaded to master yet. Submitting jar...");
+    String localJar=System.getenv("STORM_JAR");
+    submittedJar=submitJar(conf,localJar);
+  }
+ else {
+    LOG.info("Jar already uploaded to master. Not submitting jar.");
+  }
+}

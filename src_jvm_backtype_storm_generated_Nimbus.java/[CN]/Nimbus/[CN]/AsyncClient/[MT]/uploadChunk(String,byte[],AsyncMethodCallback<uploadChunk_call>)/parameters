@@ -1,0 +1,3 @@
+String location
+byte[] chunk
+AsyncMethodCallback<uploadChunk_call> resultHandler

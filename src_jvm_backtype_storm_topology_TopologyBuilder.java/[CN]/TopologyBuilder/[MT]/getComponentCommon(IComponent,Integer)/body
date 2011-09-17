@@ -1,0 +1,9 @@
+{
+  OutputFieldsGetter getter=new OutputFieldsGetter();
+  component.declareOutputFields(getter);
+  ComponentCommon common=new ComponentCommon(getter.getFieldsDeclaration());
+  if (parallelism_hint != null) {
+    common.set_parallelism_hint(parallelism_hint);
+  }
+  return common;
+}

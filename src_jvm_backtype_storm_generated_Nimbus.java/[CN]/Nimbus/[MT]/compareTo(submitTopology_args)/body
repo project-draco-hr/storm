@@ -1,0 +1,48 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  submitTopology_args typedOther=(submitTopology_args)other;
+  lastComparison=Boolean.valueOf(is_set_name()).compareTo(typedOther.is_set_name());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_name()) {
+    lastComparison=TBaseHelper.compareTo(this.name,typedOther.name);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_uploadedJarLocation()).compareTo(typedOther.is_set_uploadedJarLocation());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_uploadedJarLocation()) {
+    lastComparison=TBaseHelper.compareTo(this.uploadedJarLocation,typedOther.uploadedJarLocation);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_jsonConf()).compareTo(typedOther.is_set_jsonConf());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_jsonConf()) {
+    lastComparison=TBaseHelper.compareTo(this.jsonConf,typedOther.jsonConf);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_topology()).compareTo(typedOther.is_set_topology());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_topology()) {
+    lastComparison=TBaseHelper.compareTo(this.topology,typedOther.topology);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

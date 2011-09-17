@@ -1,0 +1,5 @@
+{
+  checkReady();
+  beginFileDownload_call method_call=new beginFileDownload_call(file,resultHandler,this,protocolFactory,transport);
+  manager.call(method_call);
+}

@@ -1,0 +1,8 @@
+def send_result(self, id, result):
+    self._oprot.writeMessageBegin('result', TMessageType.CALL, self._seqid)
+    args = result_args()
+    args.id = id
+    args.result = result
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

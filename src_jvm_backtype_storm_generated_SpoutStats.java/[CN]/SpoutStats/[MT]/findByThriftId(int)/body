@@ -1,0 +1,12 @@
+{
+switch (fieldId) {
+case 1:
+    return ACKED;
+case 2:
+  return FAILED;
+case 3:
+return COMPLETE_MS_AVG;
+default :
+return null;
+}
+}

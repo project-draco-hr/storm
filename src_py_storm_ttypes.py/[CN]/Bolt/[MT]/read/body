@@ -1,0 +1,38 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.MAP):
+                self.inputs = {}
+                (_ktype24, _vtype25, _size23) = iprot.readMapBegin()
+                for _i27 in xrange(_size23):
+                    _key28 = GlobalStreamId()
+                    _key28.read(iprot)
+                    _val29 = Grouping()
+                    _val29.read(iprot)
+                    self.inputs[_key28] = _val29
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 2):
+            if (ftype == TType.STRUCT):
+                self.bolt_object = ComponentObject()
+                self.bolt_object.read(iprot)
+            else:
+                iprot.skip(ftype)
+        elif (fid == 3):
+            if (ftype == TType.STRUCT):
+                self.common = ComponentCommon()
+                self.common.read(iprot)
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

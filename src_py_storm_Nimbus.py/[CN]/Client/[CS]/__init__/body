@@ -1,0 +1,5 @@
+def __init__(self, iprot, oprot=None):
+    self._iprot = self._oprot = iprot
+    if (oprot != None):
+        self._oprot = oprot
+    self._seqid = 0

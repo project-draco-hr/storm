@@ -1,0 +1,7 @@
+def send_beginFileDownload(self, file):
+    self._oprot.writeMessageBegin('beginFileDownload', TMessageType.CALL, self._seqid)
+    args = beginFileDownload_args()
+    args.file = file
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

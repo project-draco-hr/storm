@@ -1,0 +1,20 @@
+{
+switch (field) {
+case LOCATION:
+    if (value == null) {
+      unset_location();
+    }
+ else {
+      set_location((String)value);
+    }
+  break;
+case CHUNK:
+if (value == null) {
+  unset_chunk();
+}
+ else {
+  set_chunk((byte[])value);
+}
+break;
+}
+}

@@ -1,0 +1,36 @@
+{
+  getTopologyConf_args args=new getTopologyConf_args();
+  try {
+    args.read(iprot);
+  }
+ catch (  TProtocolException e) {
+    iprot.readMessageEnd();
+    TApplicationException x=new TApplicationException(TApplicationException.PROTOCOL_ERROR,e.getMessage());
+    oprot.writeMessageBegin(new TMessage("getTopologyConf",TMessageType.EXCEPTION,seqid));
+    x.write(oprot);
+    oprot.writeMessageEnd();
+    oprot.getTransport().flush();
+    return;
+  }
+  iprot.readMessageEnd();
+  getTopologyConf_result result=new getTopologyConf_result();
+  try {
+    result.success=iface_.getTopologyConf(args.id);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+catch (  Throwable th) {
+    LOGGER.error("Internal error processing getTopologyConf",th);
+    TApplicationException x=new TApplicationException(TApplicationException.INTERNAL_ERROR,"Internal error processing getTopologyConf");
+    oprot.writeMessageBegin(new TMessage("getTopologyConf",TMessageType.EXCEPTION,seqid));
+    x.write(oprot);
+    oprot.writeMessageEnd();
+    oprot.getTransport().flush();
+    return;
+  }
+  oprot.writeMessageBegin(new TMessage("getTopologyConf",TMessageType.REPLY,seqid));
+  result.write(oprot);
+  oprot.writeMessageEnd();
+  oprot.getTransport().flush();
+}

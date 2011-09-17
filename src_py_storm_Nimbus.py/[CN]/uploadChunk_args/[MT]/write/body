@@ -1,0 +1,15 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('uploadChunk_args')
+    if (self.location != None):
+        oprot.writeFieldBegin('location', TType.STRING, 1)
+        oprot.writeString(self.location.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.chunk != None):
+        oprot.writeFieldBegin('chunk', TType.STRING, 2)
+        oprot.writeString(self.chunk)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

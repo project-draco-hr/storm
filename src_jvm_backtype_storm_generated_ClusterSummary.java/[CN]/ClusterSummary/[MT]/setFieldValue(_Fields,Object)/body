@@ -1,0 +1,28 @@
+{
+switch (field) {
+case SUPERVISORS:
+    if (value == null) {
+      unset_supervisors();
+    }
+ else {
+      set_supervisors((List<SupervisorSummary>)value);
+    }
+  break;
+case NIMBUS_UPTIME_SECS:
+if (value == null) {
+  unset_nimbus_uptime_secs();
+}
+ else {
+  set_nimbus_uptime_secs((Integer)value);
+}
+break;
+case TOPOLOGIES:
+if (value == null) {
+unset_topologies();
+}
+ else {
+set_topologies((List<TopologySummary>)value);
+}
+break;
+}
+}

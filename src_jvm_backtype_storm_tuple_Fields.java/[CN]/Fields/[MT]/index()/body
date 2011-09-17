@@ -1,0 +1,5 @@
+{
+  for (int i=0; i < _fields.size(); i++) {
+    _index.put(_fields.get(i),i);
+  }
+}

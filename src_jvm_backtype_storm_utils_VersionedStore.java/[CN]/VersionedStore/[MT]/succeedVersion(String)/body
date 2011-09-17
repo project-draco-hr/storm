@@ -1,0 +1,4 @@
+{
+  long version=validateAndGetVersion(path);
+  createNewFile(tokenPath(version));
+}

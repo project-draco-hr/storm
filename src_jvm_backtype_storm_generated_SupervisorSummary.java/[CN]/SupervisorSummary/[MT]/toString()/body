@@ -1,0 +1,26 @@
+{
+  StringBuilder sb=new StringBuilder("SupervisorSummary(");
+  boolean first=true;
+  sb.append("host:");
+  if (this.host == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.host);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("uptime_secs:");
+  sb.append(this.uptime_secs);
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("num_workers:");
+  sb.append(this.num_workers);
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("num_used_workers:");
+  sb.append(this.num_used_workers);
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

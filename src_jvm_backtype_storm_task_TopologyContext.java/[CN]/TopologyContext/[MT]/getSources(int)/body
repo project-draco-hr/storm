@@ -1,0 +1,5 @@
+{
+  Bolt bolt=_topology.get_bolts().get(componentId);
+  if (bolt == null)   return null;
+  return bolt.get_inputs();
+}

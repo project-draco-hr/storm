@@ -1,0 +1,8 @@
+{
+  if (!simulating.get())   throw new IllegalStateException("Must be in simulation mode");
+  AtomicLong time;
+synchronized (sleepTimesLock) {
+    time=threadSleepTimes.get(t);
+  }
+  return time != null && currentTimeMillis() < time.longValue();
+}

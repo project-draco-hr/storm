@@ -1,0 +1,12 @@
+{
+synchronized (_lock) {
+    Queue<V> queue=_queues.get(key);
+    if (queue == null) {
+      queue=new LinkedList<V>();
+      _queues.put(key,queue);
+      _keyOrder.add(key);
+    }
+    queue.add(val);
+  }
+  _size.release();
+}

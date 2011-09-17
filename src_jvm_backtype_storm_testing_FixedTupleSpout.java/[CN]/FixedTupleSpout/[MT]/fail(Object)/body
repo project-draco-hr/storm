@@ -1,0 +1,6 @@
+{
+synchronized (failed) {
+    int curr=get(failed,_context.getStormId(),0);
+    failed.put(_context.getStormId(),curr + 1);
+  }
+}

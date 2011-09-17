@@ -1,0 +1,13 @@
+{
+switch (field) {
+case ID:
+    return get_id();
+case NAME:
+  return get_name();
+case UPTIME_SECS:
+return new Integer(get_uptime_secs());
+case TASKS:
+return get_tasks();
+}
+throw new IllegalStateException();
+}

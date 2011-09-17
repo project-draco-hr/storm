@@ -1,0 +1,5 @@
+{
+  iface_=iface;
+  processMap_.put("execute",new execute());
+  processMap_.put("result",new result());
+}

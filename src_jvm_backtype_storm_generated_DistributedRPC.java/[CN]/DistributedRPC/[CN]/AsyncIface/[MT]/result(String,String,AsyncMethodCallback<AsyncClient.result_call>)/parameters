@@ -1,0 +1,3 @@
+String id
+String result
+AsyncMethodCallback<AsyncClient.result_call> resultHandler

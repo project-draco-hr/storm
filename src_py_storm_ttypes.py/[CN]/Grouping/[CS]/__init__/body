@@ -1,0 +1,6 @@
+def __init__(self, fields=None, shuffle=None, all=None, none=None, direct=None):
+    self.fields = fields
+    self.shuffle = shuffle
+    self.all = all
+    self.none = none
+    self.direct = direct

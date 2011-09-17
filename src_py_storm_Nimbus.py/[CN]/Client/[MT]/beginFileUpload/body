@@ -1,0 +1,3 @@
+def beginFileUpload(self):
+    self.send_beginFileUpload()
+    return self.recv_beginFileUpload()

@@ -1,0 +1,8 @@
+{
+  if (other instanceof Grouping) {
+    return equals((Grouping)other);
+  }
+ else {
+    return false;
+  }
+}

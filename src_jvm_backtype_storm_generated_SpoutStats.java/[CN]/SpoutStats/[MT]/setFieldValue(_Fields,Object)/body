@@ -1,0 +1,28 @@
+{
+switch (field) {
+case ACKED:
+    if (value == null) {
+      unset_acked();
+    }
+ else {
+      set_acked((Map<String,Map<Integer,Long>>)value);
+    }
+  break;
+case FAILED:
+if (value == null) {
+  unset_failed();
+}
+ else {
+  set_failed((Map<String,Map<Integer,Long>>)value);
+}
+break;
+case COMPLETE_MS_AVG:
+if (value == null) {
+unset_complete_ms_avg();
+}
+ else {
+set_complete_ms_avg((Map<String,Map<Integer,Double>>)value);
+}
+break;
+}
+}

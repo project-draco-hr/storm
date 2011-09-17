@@ -1,0 +1,10 @@
+{
+  CRC32OutputStream hasher=new CRC32OutputStream();
+  try {
+    getValuesSerializer(_fieldSerializers,tuple).serializeInto(tuple.getValues(),new DataOutputStream(hasher));
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  return hasher.getValue();
+}

@@ -1,0 +1,35 @@
+{
+  if (other.is_set_spouts()) {
+    Map<Integer,SpoutSpec> __this__spouts=new HashMap<Integer,SpoutSpec>();
+    for (    Map.Entry<Integer,SpoutSpec> other_element : other.spouts.entrySet()) {
+      Integer other_element_key=other_element.getKey();
+      SpoutSpec other_element_value=other_element.getValue();
+      Integer __this__spouts_copy_key=other_element_key;
+      SpoutSpec __this__spouts_copy_value=new SpoutSpec(other_element_value);
+      __this__spouts.put(__this__spouts_copy_key,__this__spouts_copy_value);
+    }
+    this.spouts=__this__spouts;
+  }
+  if (other.is_set_bolts()) {
+    Map<Integer,Bolt> __this__bolts=new HashMap<Integer,Bolt>();
+    for (    Map.Entry<Integer,Bolt> other_element : other.bolts.entrySet()) {
+      Integer other_element_key=other_element.getKey();
+      Bolt other_element_value=other_element.getValue();
+      Integer __this__bolts_copy_key=other_element_key;
+      Bolt __this__bolts_copy_value=new Bolt(other_element_value);
+      __this__bolts.put(__this__bolts_copy_key,__this__bolts_copy_value);
+    }
+    this.bolts=__this__bolts;
+  }
+  if (other.is_set_state_spouts()) {
+    Map<Integer,StateSpoutSpec> __this__state_spouts=new HashMap<Integer,StateSpoutSpec>();
+    for (    Map.Entry<Integer,StateSpoutSpec> other_element : other.state_spouts.entrySet()) {
+      Integer other_element_key=other_element.getKey();
+      StateSpoutSpec other_element_value=other_element.getValue();
+      Integer __this__state_spouts_copy_key=other_element_key;
+      StateSpoutSpec __this__state_spouts_copy_value=new StateSpoutSpec(other_element_value);
+      __this__state_spouts.put(__this__state_spouts_copy_key,__this__state_spouts_copy_value);
+    }
+    this.state_spouts=__this__state_spouts;
+  }
+}

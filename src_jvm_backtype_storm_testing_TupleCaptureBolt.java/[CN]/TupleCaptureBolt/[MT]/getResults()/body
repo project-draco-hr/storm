@@ -1,0 +1,6 @@
+{
+  if (_results == null) {
+    _results=emitted_tuples.remove(_name);
+  }
+  return _results;
+}

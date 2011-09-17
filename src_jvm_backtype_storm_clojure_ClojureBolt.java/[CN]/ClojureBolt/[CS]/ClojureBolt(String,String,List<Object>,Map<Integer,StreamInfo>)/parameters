@@ -1,0 +1,4 @@
+String namespace
+String fnName
+List<Object> args
+Map<Integer,StreamInfo> fields

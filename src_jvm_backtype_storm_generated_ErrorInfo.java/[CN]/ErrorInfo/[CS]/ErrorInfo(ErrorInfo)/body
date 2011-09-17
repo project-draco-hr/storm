@@ -1,0 +1,8 @@
+{
+  __isset_bit_vector.clear();
+  __isset_bit_vector.or(other.__isset_bit_vector);
+  if (other.is_set_error()) {
+    this.error=other.error;
+  }
+  this.error_time_secs=other.error_time_secs;
+}

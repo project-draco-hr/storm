@@ -1,0 +1,12 @@
+{
+switch (fieldId) {
+case 1:
+    return EMITTED;
+case 2:
+  return TRANSFERRED;
+case 3:
+return SPECIFIC;
+default :
+return null;
+}
+}

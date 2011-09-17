@@ -1,0 +1,16 @@
+{
+  HashCodeBuilder hcb=new HashCodeBuilder();
+  hcb.append(this.getClass().getName());
+  TFieldIdEnum setField=getSetField();
+  if (setField != null) {
+    hcb.append(setField.getThriftFieldId());
+    Object value=getFieldValue();
+    if (value instanceof TEnum) {
+      hcb.append(((TEnum)getFieldValue()).getValue());
+    }
+ else {
+      hcb.append(value);
+    }
+  }
+  return hcb.toHashCode();
+}

@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return SERIALIZED_JAVA;
+case 2:
+  return SHELL;
+default :
+return null;
+}
+}

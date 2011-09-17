@@ -1,0 +1,28 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  getTopologyInfo_result typedOther=(getTopologyInfo_result)other;
+  lastComparison=Boolean.valueOf(is_set_success()).compareTo(typedOther.is_set_success());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_success()) {
+    lastComparison=TBaseHelper.compareTo(this.success,typedOther.success);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_e()).compareTo(typedOther.is_set_e());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_e()) {
+    lastComparison=TBaseHelper.compareTo(this.e,typedOther.e);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

@@ -1,0 +1,11 @@
+{
+  int processed=input.getInteger(0);
+  int transferred=input.getInteger(1);
+  int spoutEmitted=input.getInteger(2);
+synchronized (_stats) {
+    TrackStats stats=_stats.get(_id);
+    stats.processed+=processed;
+    stats.spoutEmitted+=spoutEmitted;
+    stats.transferred+=transferred;
+  }
+}

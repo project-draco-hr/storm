@@ -1,0 +1,10 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_location=true && (is_set_location());
+  builder.append(present_location);
+  if (present_location)   builder.append(location);
+  boolean present_chunk=true && (is_set_chunk());
+  builder.append(present_chunk);
+  if (present_chunk)   builder.append(chunk);
+  return builder.toHashCode();
+}

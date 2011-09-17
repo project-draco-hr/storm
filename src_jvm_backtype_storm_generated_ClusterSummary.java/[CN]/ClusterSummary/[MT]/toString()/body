@@ -1,0 +1,27 @@
+{
+  StringBuilder sb=new StringBuilder("ClusterSummary(");
+  boolean first=true;
+  sb.append("supervisors:");
+  if (this.supervisors == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.supervisors);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("nimbus_uptime_secs:");
+  sb.append(this.nimbus_uptime_secs);
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("topologies:");
+  if (this.topologies == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.topologies);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

@@ -1,0 +1,8 @@
+{
+  if (other.is_set_success()) {
+    this.success=new StormTopology(other.success);
+  }
+  if (other.is_set_e()) {
+    this.e=new NotAliveException(other.e);
+  }
+}

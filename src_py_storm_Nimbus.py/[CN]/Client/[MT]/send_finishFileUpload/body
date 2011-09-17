@@ -1,0 +1,7 @@
+def send_finishFileUpload(self, location):
+    self._oprot.writeMessageBegin('finishFileUpload', TMessageType.CALL, self._seqid)
+    args = finishFileUpload_args()
+    args.location = location
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

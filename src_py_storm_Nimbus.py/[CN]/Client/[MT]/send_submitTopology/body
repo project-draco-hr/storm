@@ -1,0 +1,10 @@
+def send_submitTopology(self, name, uploadedJarLocation, jsonConf, topology):
+    self._oprot.writeMessageBegin('submitTopology', TMessageType.CALL, self._seqid)
+    args = submitTopology_args()
+    args.name = name
+    args.uploadedJarLocation = uploadedJarLocation
+    args.jsonConf = jsonConf
+    args.topology = topology
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

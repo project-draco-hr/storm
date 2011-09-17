@@ -1,0 +1,60 @@
+{
+switch (field) {
+case TASK_ID:
+    if (value == null) {
+      unset_task_id();
+    }
+ else {
+      set_task_id((Integer)value);
+    }
+  break;
+case COMPONENT_ID:
+if (value == null) {
+  unset_component_id();
+}
+ else {
+  set_component_id((Integer)value);
+}
+break;
+case HOST:
+if (value == null) {
+unset_host();
+}
+ else {
+set_host((String)value);
+}
+break;
+case PORT:
+if (value == null) {
+unset_port();
+}
+ else {
+set_port((Integer)value);
+}
+break;
+case UPTIME_SECS:
+if (value == null) {
+unset_uptime_secs();
+}
+ else {
+set_uptime_secs((Integer)value);
+}
+break;
+case ERRORS:
+if (value == null) {
+unset_errors();
+}
+ else {
+set_errors((List<ErrorInfo>)value);
+}
+break;
+case STATS:
+if (value == null) {
+unset_stats();
+}
+ else {
+set_stats((TaskStats)value);
+}
+break;
+}
+}

@@ -1,0 +1,7 @@
+def send_getTopologyConf(self, id):
+    self._oprot.writeMessageBegin('getTopologyConf', TMessageType.CALL, self._seqid)
+    args = getTopologyConf_args()
+    args.id = id
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

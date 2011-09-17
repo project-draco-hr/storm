@@ -1,0 +1,3 @@
+def result(self, id, result):
+    '\n    Parameters:\n     - id\n     - result\n    '
+    pass

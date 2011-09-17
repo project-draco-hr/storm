@@ -1,0 +1,4 @@
+{
+  _collector.ack(input);
+  transferred+=input.getMessageId().getAnchors().size();
+}

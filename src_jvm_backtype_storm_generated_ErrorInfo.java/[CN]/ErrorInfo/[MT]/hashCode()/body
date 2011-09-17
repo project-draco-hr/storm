@@ -1,0 +1,10 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_error=true && (is_set_error());
+  builder.append(present_error);
+  if (present_error)   builder.append(error);
+  boolean present_error_time_secs=true;
+  builder.append(present_error_time_secs);
+  if (present_error_time_secs)   builder.append(error_time_secs);
+  return builder.toHashCode();
+}

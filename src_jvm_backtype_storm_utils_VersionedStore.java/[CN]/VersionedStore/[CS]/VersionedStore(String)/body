@@ -1,0 +1,4 @@
+{
+  _root=path;
+  mkdirs(_root);
+}

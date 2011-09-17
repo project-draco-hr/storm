@@ -1,0 +1,22 @@
+{
+  beginFileDownload_args args=new beginFileDownload_args();
+  try {
+    args.read(iprot);
+  }
+ catch (  TProtocolException e) {
+    iprot.readMessageEnd();
+    TApplicationException x=new TApplicationException(TApplicationException.PROTOCOL_ERROR,e.getMessage());
+    oprot.writeMessageBegin(new TMessage("beginFileDownload",TMessageType.EXCEPTION,seqid));
+    x.write(oprot);
+    oprot.writeMessageEnd();
+    oprot.getTransport().flush();
+    return;
+  }
+  iprot.readMessageEnd();
+  beginFileDownload_result result=new beginFileDownload_result();
+  result.success=iface_.beginFileDownload(args.file);
+  oprot.writeMessageBegin(new TMessage("beginFileDownload",TMessageType.REPLY,seqid));
+  result.write(oprot);
+  oprot.writeMessageEnd();
+  oprot.getTransport().flush();
+}

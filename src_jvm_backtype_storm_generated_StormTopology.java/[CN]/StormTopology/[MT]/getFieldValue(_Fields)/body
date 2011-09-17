@@ -1,0 +1,11 @@
+{
+switch (field) {
+case SPOUTS:
+    return get_spouts();
+case BOLTS:
+  return get_bolts();
+case STATE_SPOUTS:
+return get_state_spouts();
+}
+throw new IllegalStateException();
+}

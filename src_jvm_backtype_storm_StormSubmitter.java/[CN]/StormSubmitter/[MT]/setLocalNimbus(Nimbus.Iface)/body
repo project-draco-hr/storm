@@ -1,0 +1,3 @@
+{
+  StormSubmitter.localNimbus=localNimbusHandler;
+}

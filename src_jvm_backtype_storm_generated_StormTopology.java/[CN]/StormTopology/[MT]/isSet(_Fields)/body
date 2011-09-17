@@ -1,0 +1,11 @@
+{
+switch (field) {
+case SPOUTS:
+    return is_set_spouts();
+case BOLTS:
+  return is_set_bolts();
+case STATE_SPOUTS:
+return is_set_state_spouts();
+}
+throw new IllegalStateException();
+}

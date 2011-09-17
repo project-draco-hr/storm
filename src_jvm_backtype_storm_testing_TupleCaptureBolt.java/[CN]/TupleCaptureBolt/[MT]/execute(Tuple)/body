@@ -1,0 +1,9 @@
+{
+  int component=input.getSourceComponent();
+  Map<Integer,List<FixedTuple>> captured=emitted_tuples.get(_name);
+  if (!captured.containsKey(component)) {
+    captured.put(component,new ArrayList<FixedTuple>());
+  }
+  captured.get(component).add(new FixedTuple(input.getSourceStreamId(),input.getValues()));
+  _collector.ack(input);
+}

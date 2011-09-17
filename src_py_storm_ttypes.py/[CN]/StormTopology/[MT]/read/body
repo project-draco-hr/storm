@@ -1,0 +1,49 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.MAP):
+                self.spouts = {}
+                (_ktype33, _vtype34, _size32) = iprot.readMapBegin()
+                for _i36 in xrange(_size32):
+                    _key37 = iprot.readI32()
+                    _val38 = SpoutSpec()
+                    _val38.read(iprot)
+                    self.spouts[_key37] = _val38
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 2):
+            if (ftype == TType.MAP):
+                self.bolts = {}
+                (_ktype40, _vtype41, _size39) = iprot.readMapBegin()
+                for _i43 in xrange(_size39):
+                    _key44 = iprot.readI32()
+                    _val45 = Bolt()
+                    _val45.read(iprot)
+                    self.bolts[_key44] = _val45
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 3):
+            if (ftype == TType.MAP):
+                self.state_spouts = {}
+                (_ktype47, _vtype48, _size46) = iprot.readMapBegin()
+                for _i50 in xrange(_size46):
+                    _key51 = iprot.readI32()
+                    _val52 = StateSpoutSpec()
+                    _val52.read(iprot)
+                    self.state_spouts[_key51] = _val52
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

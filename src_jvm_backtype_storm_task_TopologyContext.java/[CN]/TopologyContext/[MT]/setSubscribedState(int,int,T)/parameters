@@ -1,0 +1,3 @@
+int componentId
+int streamId
+T obj

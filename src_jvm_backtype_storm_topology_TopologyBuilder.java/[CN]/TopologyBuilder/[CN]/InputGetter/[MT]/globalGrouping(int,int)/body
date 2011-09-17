@@ -1,0 +1,3 @@
+{
+  return grouping(componentId,streamId,Grouping.fields(new ArrayList<String>()));
+}

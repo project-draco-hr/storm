@@ -1,0 +1,49 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.emitted != null) {
+    oprot.writeFieldBegin(EMITTED_FIELD_DESC);
+{
+      oprot.writeMapBegin(new TMap(TType.STRING,TType.MAP,this.emitted.size()));
+      for (      Map.Entry<String,Map<Integer,Long>> _iter117 : this.emitted.entrySet()) {
+        oprot.writeString(_iter117.getKey());
+{
+          oprot.writeMapBegin(new TMap(TType.I32,TType.I64,_iter117.getValue().size()));
+          for (          Map.Entry<Integer,Long> _iter118 : _iter117.getValue().entrySet()) {
+            oprot.writeI32(_iter118.getKey());
+            oprot.writeI64(_iter118.getValue());
+          }
+          oprot.writeMapEnd();
+        }
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.transferred != null) {
+    oprot.writeFieldBegin(TRANSFERRED_FIELD_DESC);
+{
+      oprot.writeMapBegin(new TMap(TType.STRING,TType.MAP,this.transferred.size()));
+      for (      Map.Entry<String,Map<Integer,Long>> _iter119 : this.transferred.entrySet()) {
+        oprot.writeString(_iter119.getKey());
+{
+          oprot.writeMapBegin(new TMap(TType.I32,TType.I64,_iter119.getValue().size()));
+          for (          Map.Entry<Integer,Long> _iter120 : _iter119.getValue().entrySet()) {
+            oprot.writeI32(_iter120.getKey());
+            oprot.writeI64(_iter120.getValue());
+          }
+          oprot.writeMapEnd();
+        }
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.specific != null) {
+    oprot.writeFieldBegin(SPECIFIC_FIELD_DESC);
+    this.specific.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

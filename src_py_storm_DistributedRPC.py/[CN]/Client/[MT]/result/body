@@ -1,0 +1,4 @@
+def result(self, id, result):
+    '\n    Parameters:\n     - id\n     - result\n    '
+    self.send_result(id, result)
+    self.recv_result()

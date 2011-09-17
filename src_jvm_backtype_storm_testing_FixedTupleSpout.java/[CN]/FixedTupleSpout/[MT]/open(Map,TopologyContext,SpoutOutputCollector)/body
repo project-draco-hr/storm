@@ -1,0 +1,16 @@
+{
+  _context=context;
+  List<Integer> tasks=context.getComponentTasks(context.getThisComponentId());
+  int startIndex;
+  for (startIndex=0; startIndex < tasks.size(); startIndex++) {
+    if (tasks.get(startIndex) == context.getThisTaskId()) {
+      break;
+    }
+  }
+  _collector=collector;
+  _pending=new HashMap<String,FixedTuple>();
+  _serveTuples=new ArrayList<FixedTuple>();
+  for (int i=startIndex; i < _tuples.size(); i+=tasks.size()) {
+    _serveTuples.add(_tuples.get(i));
+  }
+}

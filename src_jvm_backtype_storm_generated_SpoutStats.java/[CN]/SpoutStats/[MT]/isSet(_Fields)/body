@@ -1,0 +1,11 @@
+{
+switch (field) {
+case ACKED:
+    return is_set_acked();
+case FAILED:
+  return is_set_failed();
+case COMPLETE_MS_AVG:
+return is_set_complete_ms_avg();
+}
+throw new IllegalStateException();
+}

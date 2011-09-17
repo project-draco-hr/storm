@@ -1,0 +1,16 @@
+{
+switch (setField) {
+case SERIALIZED_JAVA:
+    if (value instanceof byte[]) {
+      break;
+    }
+  throw new ClassCastException("Was expecting value of type byte[] for field 'serialized_java', but got " + value.getClass().getSimpleName());
+case SHELL:
+if (value instanceof ShellComponent) {
+  break;
+}
+throw new ClassCastException("Was expecting value of type ShellComponent for field 'shell', but got " + value.getClass().getSimpleName());
+default :
+throw new IllegalArgumentException("Unknown field id " + setField);
+}
+}

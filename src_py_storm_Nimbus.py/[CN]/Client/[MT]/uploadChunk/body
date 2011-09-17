@@ -1,0 +1,4 @@
+def uploadChunk(self, location, chunk):
+    '\n    Parameters:\n     - location\n     - chunk\n    '
+    self.send_uploadChunk(location, chunk)
+    self.recv_uploadChunk()

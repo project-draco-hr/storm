@@ -1,0 +1,3 @@
+{
+  return (this.spouts == null) ? 0 : this.spouts.size();
+}

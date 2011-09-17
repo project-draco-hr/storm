@@ -1,0 +1,3 @@
+def __init__(self, state_spout_object=None, common=None):
+    self.state_spout_object = state_spout_object
+    self.common = common

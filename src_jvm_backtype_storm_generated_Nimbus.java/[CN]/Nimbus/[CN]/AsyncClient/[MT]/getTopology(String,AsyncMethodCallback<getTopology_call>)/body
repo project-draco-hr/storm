@@ -1,0 +1,5 @@
+{
+  checkReady();
+  getTopology_call method_call=new getTopology_call(id,resultHandler,this,protocolFactory,transport);
+  manager.call(method_call);
+}

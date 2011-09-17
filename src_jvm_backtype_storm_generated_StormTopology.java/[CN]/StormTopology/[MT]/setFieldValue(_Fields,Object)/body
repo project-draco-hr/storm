@@ -1,0 +1,28 @@
+{
+switch (field) {
+case SPOUTS:
+    if (value == null) {
+      unset_spouts();
+    }
+ else {
+      set_spouts((Map<Integer,SpoutSpec>)value);
+    }
+  break;
+case BOLTS:
+if (value == null) {
+  unset_bolts();
+}
+ else {
+  set_bolts((Map<Integer,Bolt>)value);
+}
+break;
+case STATE_SPOUTS:
+if (value == null) {
+unset_state_spouts();
+}
+ else {
+set_state_spouts((Map<Integer,StateSpoutSpec>)value);
+}
+break;
+}
+}

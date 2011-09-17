@@ -1,0 +1,38 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  StormTopology typedOther=(StormTopology)other;
+  lastComparison=Boolean.valueOf(is_set_spouts()).compareTo(typedOther.is_set_spouts());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_spouts()) {
+    lastComparison=TBaseHelper.compareTo(this.spouts,typedOther.spouts);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_bolts()).compareTo(typedOther.is_set_bolts());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_bolts()) {
+    lastComparison=TBaseHelper.compareTo(this.bolts,typedOther.bolts);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_state_spouts()).compareTo(typedOther.is_set_state_spouts());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_state_spouts()) {
+    lastComparison=TBaseHelper.compareTo(this.state_spouts,typedOther.state_spouts);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

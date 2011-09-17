@@ -1,0 +1,6 @@
+{
+  if (this.process_ms_avg == null) {
+    this.process_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>();
+  }
+  this.process_ms_avg.put(key,val);
+}

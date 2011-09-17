@@ -1,0 +1,4 @@
+def getTopologyConf(self, id):
+    '\n    Parameters:\n     - id\n    '
+    self.send_getTopologyConf(id)
+    return self.recv_getTopologyConf()

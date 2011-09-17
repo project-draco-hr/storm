@@ -1,0 +1,9 @@
+{
+  if (other.is_set_location()) {
+    this.location=other.location;
+  }
+  if (other.is_set_chunk()) {
+    this.chunk=new byte[other.chunk.length];
+    System.arraycopy(other.chunk,0,chunk,0,other.chunk.length);
+  }
+}

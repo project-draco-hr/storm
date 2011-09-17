@@ -1,0 +1,4 @@
+{
+  this.streamId=streamId;
+  set_streamId_isSet(true);
+}

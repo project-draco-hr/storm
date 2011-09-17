@@ -1,0 +1,42 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.spouts != null) {
+    oprot.writeFieldBegin(SPOUTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new TMap(TType.I32,TType.STRUCT,this.spouts.size()));
+      for (      Map.Entry<Integer,SpoutSpec> _iter30 : this.spouts.entrySet()) {
+        oprot.writeI32(_iter30.getKey());
+        _iter30.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.bolts != null) {
+    oprot.writeFieldBegin(BOLTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new TMap(TType.I32,TType.STRUCT,this.bolts.size()));
+      for (      Map.Entry<Integer,Bolt> _iter31 : this.bolts.entrySet()) {
+        oprot.writeI32(_iter31.getKey());
+        _iter31.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.state_spouts != null) {
+    oprot.writeFieldBegin(STATE_SPOUTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new TMap(TType.I32,TType.STRUCT,this.state_spouts.size()));
+      for (      Map.Entry<Integer,StateSpoutSpec> _iter32 : this.state_spouts.entrySet()) {
+        oprot.writeI32(_iter32.getKey());
+        _iter32.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

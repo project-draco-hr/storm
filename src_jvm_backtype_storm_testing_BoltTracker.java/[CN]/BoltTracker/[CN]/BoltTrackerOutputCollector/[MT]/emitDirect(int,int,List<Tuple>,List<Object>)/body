@@ -1,0 +1,4 @@
+{
+  _collector.emitDirect(taskId,streamId,anchors,tuple);
+  transferred++;
+}

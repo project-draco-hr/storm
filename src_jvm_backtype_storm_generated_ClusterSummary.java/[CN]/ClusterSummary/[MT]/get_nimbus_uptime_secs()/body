@@ -1,0 +1,3 @@
+{
+  return this.nimbus_uptime_secs;
+}

@@ -1,0 +1,6 @@
+{
+  int length=in.readInt();
+  if (length != -1) {
+    skipFully(in,length);
+  }
+}

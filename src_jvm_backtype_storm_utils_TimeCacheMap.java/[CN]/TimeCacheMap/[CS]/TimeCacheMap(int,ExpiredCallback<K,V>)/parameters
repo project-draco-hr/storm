@@ -1,0 +1,2 @@
+int expirationSecs
+ExpiredCallback<K,V> callback

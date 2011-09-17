@@ -1,0 +1,13 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_emitted=true && (is_set_emitted());
+  builder.append(present_emitted);
+  if (present_emitted)   builder.append(emitted);
+  boolean present_transferred=true && (is_set_transferred());
+  builder.append(present_transferred);
+  if (present_transferred)   builder.append(transferred);
+  boolean present_specific=true && (is_set_specific());
+  builder.append(present_specific);
+  if (present_specific)   builder.append(specific);
+  return builder.toHashCode();
+}

@@ -1,0 +1,14 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.error != null) {
+    oprot.writeFieldBegin(ERROR_FIELD_DESC);
+    oprot.writeString(this.error);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(ERROR_TIME_SECS_FIELD_DESC);
+  oprot.writeI32(this.error_time_secs);
+  oprot.writeFieldEnd();
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

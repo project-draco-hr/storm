@@ -1,0 +1,4 @@
+def downloadChunk(self, id):
+    '\n    Parameters:\n     - id\n    '
+    self.send_downloadChunk(id)
+    return self.recv_downloadChunk()

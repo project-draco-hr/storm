@@ -1,0 +1,41 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  oprot.writeFieldBegin(TASK_ID_FIELD_DESC);
+  oprot.writeI32(this.task_id);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(COMPONENT_ID_FIELD_DESC);
+  oprot.writeI32(this.component_id);
+  oprot.writeFieldEnd();
+  if (this.host != null) {
+    oprot.writeFieldBegin(HOST_FIELD_DESC);
+    oprot.writeString(this.host);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(PORT_FIELD_DESC);
+  oprot.writeI32(this.port);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(this.uptime_secs);
+  oprot.writeFieldEnd();
+  if (this.errors != null) {
+    oprot.writeFieldBegin(ERRORS_FIELD_DESC);
+{
+      oprot.writeListBegin(new TList(TType.STRUCT,this.errors.size()));
+      for (      ErrorInfo _iter124 : this.errors) {
+        _iter124.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.stats != null) {
+    if (is_set_stats()) {
+      oprot.writeFieldBegin(STATS_FIELD_DESC);
+      this.stats.write(oprot);
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}
