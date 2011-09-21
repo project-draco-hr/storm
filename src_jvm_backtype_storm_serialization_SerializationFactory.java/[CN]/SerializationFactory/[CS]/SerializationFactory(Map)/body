@@ -5,7 +5,7 @@
   for (  Object tokenObj : customSerializations.keySet()) {
     String serializationClassName=customSerializations.get(tokenObj);
     int token=toToken(tokenObj);
-    if (token <= 32) {
+    if (token <= SERIALIZATION_TOKEN_BOUNDARY) {
       throw new RuntimeException("Illegal token " + token + " for "+ serializationClassName);
     }
     try {
