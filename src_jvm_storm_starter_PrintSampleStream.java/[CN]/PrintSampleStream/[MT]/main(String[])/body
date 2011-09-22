@@ -3,8 +3,8 @@
   String pwd=args[1];
   TopologyBuilder builder=new TopologyBuilder();
   builder.setSpout(1,new TwitterSampleSpout(username,pwd));
-  Map conf=new HashMap();
-  conf.put(Config.TOPOLOGY_DEBUG,true);
+  Config conf=new Config();
+  conf.setDebug(true);
   LocalCluster cluster=new LocalCluster();
   cluster.submitTopology("test",conf,builder.createTopology());
   Utils.sleep(10000);

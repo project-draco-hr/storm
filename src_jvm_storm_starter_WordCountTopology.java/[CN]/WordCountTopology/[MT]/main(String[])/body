@@ -3,9 +3,9 @@
   builder.setSpout(1,new RandomSentenceSpout(),5);
   builder.setBolt(2,new SplitSentence(),8).shuffleGrouping(1);
   builder.setBolt(3,new WordCount(),12).fieldsGrouping(2,new Fields("word"));
-  Map conf=new HashMap();
-  conf.put(Config.TOPOLOGY_DEBUG,true);
-  conf.put(Config.TOPOLOGY_MAX_TASK_PARALLELISM,3);
+  Config conf=new Config();
+  conf.setDebug(true);
+  conf.setMaxTaskParallelism(3);
   LocalCluster cluster=new LocalCluster();
   cluster.submitTopology("word-count",conf,builder.createTopology());
   Thread.sleep(10000);
