@@ -1,0 +1,12 @@
+{
+  if (o.equals(STREAM_KEYWORD)) {
+    return getSourceStreamId();
+  }
+ else   if (o.equals(COMPONENT_KEYWORD)) {
+    return getSourceComponent();
+  }
+ else   if (o.equals(TASK_KEYWORD)) {
+    return getSourceTask();
+  }
+  return null;
+}
