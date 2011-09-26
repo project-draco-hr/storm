@@ -1,0 +1,2 @@
+int token
+Class<? extends ISerialization> serialization
