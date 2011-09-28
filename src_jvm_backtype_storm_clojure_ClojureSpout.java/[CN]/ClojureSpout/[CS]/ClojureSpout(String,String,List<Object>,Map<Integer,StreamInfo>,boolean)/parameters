@@ -1,0 +1,5 @@
+String namespace
+String fnName
+List<Object> params
+Map<Integer,StreamInfo> fields
+boolean isDistributed

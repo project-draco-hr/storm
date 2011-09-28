@@ -4,15 +4,15 @@
     IFn preparer=(IFn)hof.applyTo(RT.seq(_params));
     List<Object> args=new ArrayList<Object>(){
 {
-        add(stormConf);
+        add(conf);
         add(context);
         add(collector);
       }
     }
 ;
-    _bolt=(IBolt)preparer.applyTo(RT.seq(args));
+    _spout=(ISpout)preparer.applyTo(RT.seq(args));
     try {
-      _bolt.prepare(stormConf,context,collector);
+      _spout.open(conf,context,collector);
     }
  catch (    AbstractMethodError ame) {
     }
