@@ -1,8 +1,3 @@
 {
-  try {
-    _execute.invoke(input,_collector);
-  }
- catch (  Exception e) {
-    throw new RuntimeException(e);
-  }
+  _bolt.execute(input);
 }

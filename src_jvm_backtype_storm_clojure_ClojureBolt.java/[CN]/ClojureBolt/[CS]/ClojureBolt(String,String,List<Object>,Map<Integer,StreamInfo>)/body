@@ -1,6 +1,6 @@
 {
   _namespace=namespace;
   _fnName=fnName;
-  _args=args;
+  _params=params;
   _fields=fields;
 }
