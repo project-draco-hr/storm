@@ -4,6 +4,6 @@
     Utils.sleep(50);
   }
  else {
-    _collector.emit(tuple(ret));
+    _collector.emit(new Values(ret));
   }
 }
