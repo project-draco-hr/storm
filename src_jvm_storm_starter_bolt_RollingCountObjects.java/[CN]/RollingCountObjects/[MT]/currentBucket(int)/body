@@ -1,0 +1,3 @@
+{
+  return (currentSecond() / secondsPerBucket(buckets)) % buckets;
+}

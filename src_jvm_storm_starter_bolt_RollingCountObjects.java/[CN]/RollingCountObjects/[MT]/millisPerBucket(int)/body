@@ -1,0 +1,3 @@
+{
+  return (long)secondsPerBucket(buckets) * 1000;
+}

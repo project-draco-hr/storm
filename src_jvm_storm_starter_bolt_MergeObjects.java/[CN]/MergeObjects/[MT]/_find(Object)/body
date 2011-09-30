@@ -1,0 +1,9 @@
+{
+  for (int i=0; i < _rankings.size(); ++i) {
+    Object cur=_rankings.get(i).get(0);
+    if (cur.equals(tag)) {
+      return i;
+    }
+  }
+  return null;
+}

@@ -1,0 +1,34 @@
+{
+  _collector=collector;
+  cleaner=new Thread(new Runnable(){
+    public void run(){
+      Integer lastBucket=currentBucket(_numBuckets);
+      while (true) {
+        int currBucket=currentBucket(_numBuckets);
+        if (currBucket != lastBucket) {
+          int bucketToWipe=(currBucket + 1) % _numBuckets;
+synchronized (_objectCounts) {
+            Set objs=new HashSet(_objectCounts.keySet());
+            for (            Object obj : objs) {
+              long[] counts=_objectCounts.get(obj);
+              long currBucketVal=counts[bucketToWipe];
+              counts[bucketToWipe]=0;
+              long total=totalObjects(obj);
+              if (currBucketVal != 0) {
+                _collector.emit(new Values(obj,total));
+              }
+              if (total == 0) {
+                _objectCounts.remove(obj);
+              }
+            }
+          }
+          lastBucket=currBucket;
+        }
+        long delta=millisPerBucket(_numBuckets) - (System.currentTimeMillis() % millisPerBucket(_numBuckets));
+        Utils.sleep(delta);
+      }
+    }
+  }
+);
+  cleaner.start();
+}

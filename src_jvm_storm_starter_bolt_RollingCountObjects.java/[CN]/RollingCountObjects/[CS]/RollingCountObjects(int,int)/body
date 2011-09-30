@@ -1,0 +1,4 @@
+{
+  _numBuckets=numBuckets;
+  _trackMinutes=trackMinutes;
+}

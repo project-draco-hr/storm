@@ -1,0 +1,28 @@
+{
+  List<List> merging=(List)JSONValue.parse(tuple.getString(0));
+  for (  List pair : merging) {
+    Integer existingIndex=_find(pair.get(0));
+    if (null != existingIndex) {
+      _rankings.set(existingIndex,pair);
+    }
+ else {
+      _rankings.add(pair);
+    }
+    Collections.sort(_rankings,new Comparator<List>(){
+      public int compare(      List o1,      List o2){
+        return _compare(o1,o2);
+      }
+    }
+);
+    if (_rankings.size() > _count) {
+      _rankings.subList(_count,_rankings.size()).clear();
+    }
+  }
+  long currentTime=System.currentTimeMillis();
+  if (_lastTime == null || currentTime >= _lastTime + 2000) {
+    String fullRankings=JSONValue.toJSONString(_rankings);
+    collector.emit(new Values(fullRankings));
+    LOG.info("Rankings: " + fullRankings);
+    _lastTime=currentTime;
+  }
+}
