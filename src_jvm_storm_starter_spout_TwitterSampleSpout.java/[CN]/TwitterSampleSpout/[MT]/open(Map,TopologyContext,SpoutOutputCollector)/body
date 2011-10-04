@@ -3,7 +3,7 @@
   _collector=collector;
   StatusListener listener=new StatusListener(){
     @Override public void onStatus(    Status status){
-      queue.offer(status.toString());
+      queue.offer(DataObjectFactory.getRawJSON(status));
     }
     @Override public void onDeletionNotice(    StatusDeletionNotice sdn){
     }
