@@ -1,3 +1,7 @@
 {
-  return new Fields(getComponentCommon(componentId).get_streams().get(streamId).get_output_fields());
+  StreamInfo streamInfo=getComponentCommon(componentId).get_streams().get(streamId);
+  if (streamInfo == null) {
+    throw new IllegalArgumentException("No output fields defined for component:stream " + componentId + ":"+ streamId);
+  }
+  return new Fields(streamInfo.get_output_fields());
 }
