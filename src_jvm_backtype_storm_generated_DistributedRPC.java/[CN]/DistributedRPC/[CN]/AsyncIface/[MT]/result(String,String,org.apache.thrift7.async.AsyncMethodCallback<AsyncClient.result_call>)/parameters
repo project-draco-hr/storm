@@ -1,0 +1,3 @@
+String id
+String result
+org.apache.thrift7.async.AsyncMethodCallback<AsyncClient.result_call> resultHandler

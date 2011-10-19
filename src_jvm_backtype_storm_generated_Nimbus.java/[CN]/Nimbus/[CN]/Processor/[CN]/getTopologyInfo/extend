@@ -1,1 +1,1 @@
-org.apache.thrift.ProcessFunction<I,getTopologyInfo_args>
+org.apache.thrift7.ProcessFunction<I,getTopologyInfo_args>

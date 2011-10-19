@@ -1,0 +1,6 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift7.protocol.TMessage("beginFileUpload",org.apache.thrift7.protocol.TMessageType.CALL,0));
+  beginFileUpload_args args=new beginFileUpload_args();
+  args.write(prot);
+  prot.writeMessageEnd();
+}

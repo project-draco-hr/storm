@@ -1,7 +1,0 @@
-{
-  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("beginFileDownload",org.apache.thrift.protocol.TMessageType.CALL,0));
-  beginFileDownload_args args=new beginFileDownload_args();
-  args.set_file(file);
-  args.write(prot);
-  prot.writeMessageEnd();
-}

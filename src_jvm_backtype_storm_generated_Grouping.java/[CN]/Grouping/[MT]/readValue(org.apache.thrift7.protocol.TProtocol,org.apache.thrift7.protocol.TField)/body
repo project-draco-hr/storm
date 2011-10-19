@@ -1,0 +1,76 @@
+{
+  _Fields setField=_Fields.findByThriftId(field.id);
+  if (setField != null) {
+switch (setField) {
+case FIELDS:
+      if (field.type == FIELDS_FIELD_DESC.type) {
+        List<String> fields;
+{
+          org.apache.thrift7.protocol.TList _list0=iprot.readListBegin();
+          fields=new ArrayList<String>(_list0.size);
+          for (int _i1=0; _i1 < _list0.size; ++_i1) {
+            String _elem2;
+            _elem2=iprot.readString();
+            fields.add(_elem2);
+          }
+          iprot.readListEnd();
+        }
+        return fields;
+      }
+ else {
+        org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+        return null;
+      }
+case SHUFFLE:
+    if (field.type == SHUFFLE_FIELD_DESC.type) {
+      NullStruct shuffle;
+      shuffle=new NullStruct();
+      shuffle.read(iprot);
+      return shuffle;
+    }
+ else {
+      org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+      return null;
+    }
+case ALL:
+  if (field.type == ALL_FIELD_DESC.type) {
+    NullStruct all;
+    all=new NullStruct();
+    all.read(iprot);
+    return all;
+  }
+ else {
+    org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+    return null;
+  }
+case NONE:
+if (field.type == NONE_FIELD_DESC.type) {
+  NullStruct none;
+  none=new NullStruct();
+  none.read(iprot);
+  return none;
+}
+ else {
+  org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+  return null;
+}
+case DIRECT:
+if (field.type == DIRECT_FIELD_DESC.type) {
+NullStruct direct;
+direct=new NullStruct();
+direct.read(iprot);
+return direct;
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+default :
+throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+}
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+}

@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_acked()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.acked,typedOther.acked);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.acked,typedOther.acked);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_failed()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.failed,typedOther.failed);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.failed,typedOther.failed);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -29,7 +29,7 @@
     return lastComparison;
   }
   if (is_set_complete_ms_avg()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.complete_ms_avg,typedOther.complete_ms_avg);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.complete_ms_avg,typedOther.complete_ms_avg);
     if (lastComparison != 0) {
       return lastComparison;
     }

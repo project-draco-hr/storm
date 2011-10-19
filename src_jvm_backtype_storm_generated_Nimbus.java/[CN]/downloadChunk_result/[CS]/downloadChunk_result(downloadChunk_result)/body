@@ -1,6 +1,6 @@
 {
   if (other.is_set_success()) {
-    this.success=org.apache.thrift.TBaseHelper.copyBinary(other.success);
+    this.success=org.apache.thrift7.TBaseHelper.copyBinary(other.success);
     ;
   }
 }

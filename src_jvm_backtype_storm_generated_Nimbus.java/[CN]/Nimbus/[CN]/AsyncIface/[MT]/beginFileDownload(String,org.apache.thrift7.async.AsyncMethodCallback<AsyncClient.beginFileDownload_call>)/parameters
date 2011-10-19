@@ -1,0 +1,2 @@
+String file
+org.apache.thrift7.async.AsyncMethodCallback<AsyncClient.beginFileDownload_call> resultHandler

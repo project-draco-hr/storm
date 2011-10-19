@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_host()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.host,typedOther.host);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.host,typedOther.host);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_uptime_secs()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uptime_secs,typedOther.uptime_secs);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.uptime_secs,typedOther.uptime_secs);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -29,7 +29,7 @@
     return lastComparison;
   }
   if (is_set_num_workers()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.num_workers,typedOther.num_workers);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.num_workers,typedOther.num_workers);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -39,7 +39,7 @@
     return lastComparison;
   }
   if (is_set_num_used_workers()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.num_used_workers,typedOther.num_used_workers);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.num_used_workers,typedOther.num_used_workers);
     if (lastComparison != 0) {
       return lastComparison;
     }

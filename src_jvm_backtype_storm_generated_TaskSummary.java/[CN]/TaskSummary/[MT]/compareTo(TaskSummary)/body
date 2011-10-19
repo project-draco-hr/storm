@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_task_id()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.task_id,typedOther.task_id);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.task_id,typedOther.task_id);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_component_id()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.component_id,typedOther.component_id);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.component_id,typedOther.component_id);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -29,7 +29,7 @@
     return lastComparison;
   }
   if (is_set_host()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.host,typedOther.host);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.host,typedOther.host);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -39,7 +39,7 @@
     return lastComparison;
   }
   if (is_set_port()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.port,typedOther.port);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.port,typedOther.port);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -49,7 +49,7 @@
     return lastComparison;
   }
   if (is_set_uptime_secs()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uptime_secs,typedOther.uptime_secs);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.uptime_secs,typedOther.uptime_secs);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -59,7 +59,7 @@
     return lastComparison;
   }
   if (is_set_errors()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.errors,typedOther.errors);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.errors,typedOther.errors);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -69,7 +69,7 @@
     return lastComparison;
   }
   if (is_set_stats()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.stats,typedOther.stats);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.stats,typedOther.stats);
     if (lastComparison != 0) {
       return lastComparison;
     }

@@ -1,0 +1,30 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.id != null) {
+    oprot.writeFieldBegin(ID_FIELD_DESC);
+    oprot.writeString(this.id);
+    oprot.writeFieldEnd();
+  }
+  if (this.name != null) {
+    oprot.writeFieldBegin(NAME_FIELD_DESC);
+    oprot.writeString(this.name);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(this.uptime_secs);
+  oprot.writeFieldEnd();
+  if (this.tasks != null) {
+    oprot.writeFieldBegin(TASKS_FIELD_DESC);
+{
+      oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRUCT,this.tasks.size()));
+      for (      TaskSummary _iter128 : this.tasks) {
+        _iter128.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

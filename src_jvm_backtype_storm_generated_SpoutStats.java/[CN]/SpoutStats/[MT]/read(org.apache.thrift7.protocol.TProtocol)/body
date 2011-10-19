@@ -1,0 +1,107 @@
+{
+  org.apache.thrift7.protocol.TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == org.apache.thrift7.protocol.TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 1:
+      if (field.type == org.apache.thrift7.protocol.TType.MAP) {
+{
+          org.apache.thrift7.protocol.TMap _map71=iprot.readMapBegin();
+          this.acked=new HashMap<String,Map<Integer,Long>>(2 * _map71.size);
+          for (int _i72=0; _i72 < _map71.size; ++_i72) {
+            String _key73;
+            Map<Integer,Long> _val74;
+            _key73=iprot.readString();
+{
+              org.apache.thrift7.protocol.TMap _map75=iprot.readMapBegin();
+              _val74=new HashMap<Integer,Long>(2 * _map75.size);
+              for (int _i76=0; _i76 < _map75.size; ++_i76) {
+                int _key77;
+                long _val78;
+                _key77=iprot.readI32();
+                _val78=iprot.readI64();
+                _val74.put(_key77,_val78);
+              }
+              iprot.readMapEnd();
+            }
+            this.acked.put(_key73,_val74);
+          }
+          iprot.readMapEnd();
+        }
+      }
+ else {
+        org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+case 2:
+  if (field.type == org.apache.thrift7.protocol.TType.MAP) {
+{
+      org.apache.thrift7.protocol.TMap _map79=iprot.readMapBegin();
+      this.failed=new HashMap<String,Map<Integer,Long>>(2 * _map79.size);
+      for (int _i80=0; _i80 < _map79.size; ++_i80) {
+        String _key81;
+        Map<Integer,Long> _val82;
+        _key81=iprot.readString();
+{
+          org.apache.thrift7.protocol.TMap _map83=iprot.readMapBegin();
+          _val82=new HashMap<Integer,Long>(2 * _map83.size);
+          for (int _i84=0; _i84 < _map83.size; ++_i84) {
+            int _key85;
+            long _val86;
+            _key85=iprot.readI32();
+            _val86=iprot.readI64();
+            _val82.put(_key85,_val86);
+          }
+          iprot.readMapEnd();
+        }
+        this.failed.put(_key81,_val82);
+      }
+      iprot.readMapEnd();
+    }
+  }
+ else {
+    org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == org.apache.thrift7.protocol.TType.MAP) {
+{
+  org.apache.thrift7.protocol.TMap _map87=iprot.readMapBegin();
+  this.complete_ms_avg=new HashMap<String,Map<Integer,Double>>(2 * _map87.size);
+  for (int _i88=0; _i88 < _map87.size; ++_i88) {
+    String _key89;
+    Map<Integer,Double> _val90;
+    _key89=iprot.readString();
+{
+      org.apache.thrift7.protocol.TMap _map91=iprot.readMapBegin();
+      _val90=new HashMap<Integer,Double>(2 * _map91.size);
+      for (int _i92=0; _i92 < _map91.size; ++_i92) {
+        int _key93;
+        double _val94;
+        _key93=iprot.readI32();
+        _val94=iprot.readDouble();
+        _val90.put(_key93,_val94);
+      }
+      iprot.readMapEnd();
+    }
+    this.complete_ms_avg.put(_key89,_val90);
+  }
+  iprot.readMapEnd();
+}
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+default :
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}

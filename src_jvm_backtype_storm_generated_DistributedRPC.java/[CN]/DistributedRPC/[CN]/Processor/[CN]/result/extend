@@ -1,1 +1,1 @@
-org.apache.thrift.ProcessFunction<I,result_args>
+org.apache.thrift7.ProcessFunction<I,result_args>

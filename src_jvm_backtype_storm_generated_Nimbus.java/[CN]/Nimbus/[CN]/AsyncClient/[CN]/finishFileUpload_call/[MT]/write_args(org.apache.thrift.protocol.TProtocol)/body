@@ -1,7 +1,0 @@
-{
-  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("finishFileUpload",org.apache.thrift.protocol.TMessageType.CALL,0));
-  finishFileUpload_args args=new finishFileUpload_args();
-  args.set_location(location);
-  args.write(prot);
-  prot.writeMessageEnd();
-}

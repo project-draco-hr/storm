@@ -1,0 +1,2 @@
+org.apache.thrift7.async.TAsyncClientManager clientManager
+org.apache.thrift7.protocol.TProtocolFactory protocolFactory

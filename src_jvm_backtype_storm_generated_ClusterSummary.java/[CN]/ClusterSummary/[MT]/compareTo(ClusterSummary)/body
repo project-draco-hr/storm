@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_supervisors()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.supervisors,typedOther.supervisors);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.supervisors,typedOther.supervisors);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_nimbus_uptime_secs()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.nimbus_uptime_secs,typedOther.nimbus_uptime_secs);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.nimbus_uptime_secs,typedOther.nimbus_uptime_secs);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -29,7 +29,7 @@
     return lastComparison;
   }
   if (is_set_topologies()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topologies,typedOther.topologies);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.topologies,typedOther.topologies);
     if (lastComparison != 0) {
       return lastComparison;
     }
