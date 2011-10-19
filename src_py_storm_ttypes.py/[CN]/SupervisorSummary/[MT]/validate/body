@@ -1,0 +1,10 @@
+def validate(self):
+    if (self.host is None):
+        raise TProtocol.TProtocolException(message='Required field host is unset!')
+    if (self.uptime_secs is None):
+        raise TProtocol.TProtocolException(message='Required field uptime_secs is unset!')
+    if (self.num_workers is None):
+        raise TProtocol.TProtocolException(message='Required field num_workers is unset!')
+    if (self.num_used_workers is None):
+        raise TProtocol.TProtocolException(message='Required field num_used_workers is unset!')
+    return

@@ -5,7 +5,7 @@ case SPOUT_OBJECT:
 case COMMON:
   return get_common();
 case DISTRIBUTED:
-return new Boolean(is_distributed());
+return Boolean.valueOf(is_distributed());
 }
 throw new IllegalStateException();
 }

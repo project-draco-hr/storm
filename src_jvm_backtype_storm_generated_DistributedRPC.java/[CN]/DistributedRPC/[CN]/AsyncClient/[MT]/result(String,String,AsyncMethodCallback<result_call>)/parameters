@@ -1,3 +1,0 @@
-String id
-String result
-AsyncMethodCallback<result_call> resultHandler

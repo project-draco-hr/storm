@@ -1,3 +1,0 @@
-String functionName
-String funcArgs
-AsyncMethodCallback<execute_call> resultHandler

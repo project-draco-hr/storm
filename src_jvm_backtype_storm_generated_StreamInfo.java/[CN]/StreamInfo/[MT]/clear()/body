@@ -1,0 +1,5 @@
+{
+  this.output_fields=null;
+  set_direct_isSet(false);
+  this.direct=false;
+}

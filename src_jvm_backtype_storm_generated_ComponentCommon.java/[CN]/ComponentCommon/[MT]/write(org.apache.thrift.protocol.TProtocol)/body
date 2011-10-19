@@ -1,0 +1,23 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.streams != null) {
+    oprot.writeFieldBegin(STREAMS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.I32,org.apache.thrift.protocol.TType.STRUCT,this.streams.size()));
+      for (      Map.Entry<Integer,StreamInfo> _iter12 : this.streams.entrySet()) {
+        oprot.writeI32(_iter12.getKey());
+        _iter12.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (is_set_parallelism_hint()) {
+    oprot.writeFieldBegin(PARALLELISM_HINT_FIELD_DESC);
+    oprot.writeI32(this.parallelism_hint);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

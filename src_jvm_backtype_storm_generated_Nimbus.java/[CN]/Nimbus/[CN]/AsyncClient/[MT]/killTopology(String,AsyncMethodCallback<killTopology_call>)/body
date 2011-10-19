@@ -1,5 +1,0 @@
-{
-  checkReady();
-  killTopology_call method_call=new killTopology_call(name,resultHandler,this,protocolFactory,transport);
-  manager.call(method_call);
-}

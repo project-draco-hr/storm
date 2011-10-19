@@ -1,0 +1,6 @@
+{
+  checkReady();
+  uploadChunk_call method_call=new uploadChunk_call(location,chunk,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

@@ -1,0 +1,32 @@
+{
+switch (setField_) {
+case FIELDS:
+    List<String> fields=(List<String>)value_;
+{
+    oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,fields.size()));
+    for (    String _iter3 : fields) {
+      oprot.writeString(_iter3);
+    }
+    oprot.writeListEnd();
+  }
+return;
+case SHUFFLE:
+NullStruct shuffle=(NullStruct)value_;
+shuffle.write(oprot);
+return;
+case ALL:
+NullStruct all=(NullStruct)value_;
+all.write(oprot);
+return;
+case NONE:
+NullStruct none=(NullStruct)value_;
+none.write(oprot);
+return;
+case DIRECT:
+NullStruct direct=(NullStruct)value_;
+direct.write(oprot);
+return;
+default :
+throw new IllegalStateException("Cannot write union with unknown field " + setField_);
+}
+}

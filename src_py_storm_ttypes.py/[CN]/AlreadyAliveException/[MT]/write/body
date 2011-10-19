@@ -3,7 +3,7 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('AlreadyAliveException')
-    if (self.msg != None):
+    if (self.msg is not None):
         oprot.writeFieldBegin('msg', TType.STRING, 1)
         oprot.writeString(self.msg.encode('utf-8'))
         oprot.writeFieldEnd()

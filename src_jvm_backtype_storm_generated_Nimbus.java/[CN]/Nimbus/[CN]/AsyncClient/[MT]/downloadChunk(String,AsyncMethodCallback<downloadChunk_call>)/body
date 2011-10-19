@@ -1,5 +1,0 @@
-{
-  checkReady();
-  downloadChunk_call method_call=new downloadChunk_call(id,resultHandler,this,protocolFactory,transport);
-  manager.call(method_call);
-}

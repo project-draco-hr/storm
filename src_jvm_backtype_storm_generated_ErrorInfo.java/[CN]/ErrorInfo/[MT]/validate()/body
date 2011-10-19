@@ -1,8 +1,8 @@
 {
   if (!is_set_error()) {
-    throw new TProtocolException("Required field 'error' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'error' is unset! Struct:" + toString());
   }
   if (!is_set_error_time_secs()) {
-    throw new TProtocolException("Required field 'error_time_secs' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'error_time_secs' is unset! Struct:" + toString());
   }
 }

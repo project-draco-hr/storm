@@ -1,7 +1,0 @@
-{
-  prot.writeMessageBegin(new TMessage("downloadChunk",TMessageType.CALL,0));
-  downloadChunk_args args=new downloadChunk_args();
-  args.set_id(id);
-  args.write(prot);
-  prot.writeMessageEnd();
-}

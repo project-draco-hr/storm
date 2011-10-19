@@ -4,7 +4,7 @@
   boolean that_present_success=true && that.is_set_success();
   if (this_present_success || that_present_success) {
     if (!(this_present_success && that_present_success))     return false;
-    if (!java.util.Arrays.equals(this.success,that.success))     return false;
+    if (!this.success.equals(that.success))     return false;
   }
   return true;
 }

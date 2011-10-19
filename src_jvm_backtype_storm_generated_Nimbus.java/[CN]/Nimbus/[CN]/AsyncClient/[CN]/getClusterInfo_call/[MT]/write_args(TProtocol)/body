@@ -1,6 +1,0 @@
-{
-  prot.writeMessageBegin(new TMessage("getClusterInfo",TMessageType.CALL,0));
-  getClusterInfo_args args=new getClusterInfo_args();
-  args.write(prot);
-  prot.writeMessageEnd();
-}

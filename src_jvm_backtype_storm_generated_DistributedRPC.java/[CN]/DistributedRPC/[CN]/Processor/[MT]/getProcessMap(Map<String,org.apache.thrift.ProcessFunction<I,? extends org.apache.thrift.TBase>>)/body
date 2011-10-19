@@ -1,0 +1,5 @@
+{
+  processMap.put("execute",new execute());
+  processMap.put("result",new result());
+  return processMap;
+}

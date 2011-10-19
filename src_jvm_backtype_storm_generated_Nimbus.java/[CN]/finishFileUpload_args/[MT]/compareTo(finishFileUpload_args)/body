@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_location()) {
-    lastComparison=TBaseHelper.compareTo(this.location,typedOther.location);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.location,typedOther.location);
     if (lastComparison != 0) {
       return lastComparison;
     }

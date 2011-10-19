@@ -1,0 +1,2 @@
+String id
+org.apache.thrift.async.AsyncMethodCallback<AsyncClient.downloadChunk_call> resultHandler

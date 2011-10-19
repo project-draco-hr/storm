@@ -1,0 +1,5 @@
+{
+  execute_result result=new execute_result();
+  result.success=iface.execute(args.functionName,args.funcArgs);
+  return result;
+}

@@ -1,0 +1,14 @@
+def validate(self):
+    if (self.task_id is None):
+        raise TProtocol.TProtocolException(message='Required field task_id is unset!')
+    if (self.component_id is None):
+        raise TProtocol.TProtocolException(message='Required field component_id is unset!')
+    if (self.host is None):
+        raise TProtocol.TProtocolException(message='Required field host is unset!')
+    if (self.port is None):
+        raise TProtocol.TProtocolException(message='Required field port is unset!')
+    if (self.uptime_secs is None):
+        raise TProtocol.TProtocolException(message='Required field uptime_secs is unset!')
+    if (self.errors is None):
+        raise TProtocol.TProtocolException(message='Required field errors is unset!')
+    return

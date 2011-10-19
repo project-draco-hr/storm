@@ -1,8 +1,5 @@
 {
-  if (getSetField() == _Fields.SERIALIZED_JAVA) {
-    return (byte[])getFieldValue();
-  }
- else {
-    throw new RuntimeException("Cannot get field 'serialized_java' because union is currently set to " + getFieldDesc(getSetField()).name);
-  }
+  set_serialized_java(org.apache.thrift.TBaseHelper.rightSize(buffer_for_serialized_java()));
+  ByteBuffer b=buffer_for_serialized_java();
+  return b == null ? null : b.array();
 }

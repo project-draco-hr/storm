@@ -1,0 +1,5 @@
+{
+  downloadChunk_result result=new downloadChunk_result();
+  result.success=iface.downloadChunk(args.id);
+  return result;
+}

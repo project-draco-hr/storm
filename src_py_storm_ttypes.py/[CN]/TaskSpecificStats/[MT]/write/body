@@ -3,11 +3,11 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('TaskSpecificStats')
-    if (self.bolt != None):
+    if (self.bolt is not None):
         oprot.writeFieldBegin('bolt', TType.STRUCT, 1)
         self.bolt.write(oprot)
         oprot.writeFieldEnd()
-    if (self.spout != None):
+    if (self.spout is not None):
         oprot.writeFieldBegin('spout', TType.STRUCT, 2)
         self.spout.write(oprot)
         oprot.writeFieldEnd()

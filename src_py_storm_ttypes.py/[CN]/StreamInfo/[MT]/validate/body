@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.output_fields is None):
+        raise TProtocol.TProtocolException(message='Required field output_fields is unset!')
+    if (self.direct is None):
+        raise TProtocol.TProtocolException(message='Required field direct is unset!')
+    return

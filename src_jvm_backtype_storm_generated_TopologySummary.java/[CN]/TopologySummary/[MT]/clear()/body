@@ -1,0 +1,10 @@
+{
+  this.id=null;
+  this.name=null;
+  set_num_tasks_isSet(false);
+  this.num_tasks=0;
+  set_num_workers_isSet(false);
+  this.num_workers=0;
+  set_uptime_secs_isSet(false);
+  this.uptime_secs=0;
+}

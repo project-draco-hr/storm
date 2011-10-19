@@ -3,11 +3,11 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('GlobalStreamId')
-    if (self.componentId != None):
+    if (self.componentId is not None):
         oprot.writeFieldBegin('componentId', TType.I32, 1)
         oprot.writeI32(self.componentId)
         oprot.writeFieldEnd()
-    if (self.streamId != None):
+    if (self.streamId is not None):
         oprot.writeFieldBegin('streamId', TType.I32, 2)
         oprot.writeI32(self.streamId)
         oprot.writeFieldEnd()

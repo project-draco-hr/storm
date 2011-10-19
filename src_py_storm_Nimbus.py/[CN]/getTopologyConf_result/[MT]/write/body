@@ -3,11 +3,11 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('getTopologyConf_result')
-    if (self.success != None):
+    if (self.success is not None):
         oprot.writeFieldBegin('success', TType.STRING, 0)
         oprot.writeString(self.success.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.e != None):
+    if (self.e is not None):
         oprot.writeFieldBegin('e', TType.STRUCT, 1)
         self.e.write(oprot)
         oprot.writeFieldEnd()

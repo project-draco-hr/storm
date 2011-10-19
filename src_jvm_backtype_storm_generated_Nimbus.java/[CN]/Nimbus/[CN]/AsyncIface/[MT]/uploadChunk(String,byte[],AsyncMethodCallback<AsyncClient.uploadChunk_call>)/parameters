@@ -1,3 +1,0 @@
-String location
-byte[] chunk
-AsyncMethodCallback<AsyncClient.uploadChunk_call> resultHandler

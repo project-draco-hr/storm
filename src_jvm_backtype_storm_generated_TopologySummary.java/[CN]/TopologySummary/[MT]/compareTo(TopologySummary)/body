@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_id()) {
-    lastComparison=TBaseHelper.compareTo(this.id,typedOther.id);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.id,typedOther.id);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_name()) {
-    lastComparison=TBaseHelper.compareTo(this.name,typedOther.name);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.name,typedOther.name);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -29,7 +29,7 @@
     return lastComparison;
   }
   if (is_set_num_tasks()) {
-    lastComparison=TBaseHelper.compareTo(this.num_tasks,typedOther.num_tasks);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.num_tasks,typedOther.num_tasks);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -39,7 +39,7 @@
     return lastComparison;
   }
   if (is_set_num_workers()) {
-    lastComparison=TBaseHelper.compareTo(this.num_workers,typedOther.num_workers);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.num_workers,typedOther.num_workers);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -49,7 +49,7 @@
     return lastComparison;
   }
   if (is_set_uptime_secs()) {
-    lastComparison=TBaseHelper.compareTo(this.uptime_secs,typedOther.uptime_secs);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uptime_secs,typedOther.uptime_secs);
     if (lastComparison != 0) {
       return lastComparison;
     }

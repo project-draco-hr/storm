@@ -1,0 +1,8 @@
+def validate(self):
+    if (self.inputs is None):
+        raise TProtocol.TProtocolException(message='Required field inputs is unset!')
+    if (self.bolt_object is None):
+        raise TProtocol.TProtocolException(message='Required field bolt_object is unset!')
+    if (self.common is None):
+        raise TProtocol.TProtocolException(message='Required field common is unset!')
+    return

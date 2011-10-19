@@ -5,11 +5,11 @@ case ID:
 case NAME:
   return get_name();
 case NUM_TASKS:
-return new Integer(get_num_tasks());
+return Integer.valueOf(get_num_tasks());
 case NUM_WORKERS:
-return new Integer(get_num_workers());
+return Integer.valueOf(get_num_workers());
 case UPTIME_SECS:
-return new Integer(get_uptime_secs());
+return Integer.valueOf(get_uptime_secs());
 }
 throw new IllegalStateException();
 }

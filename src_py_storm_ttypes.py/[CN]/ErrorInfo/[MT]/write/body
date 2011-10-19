@@ -3,11 +3,11 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('ErrorInfo')
-    if (self.error != None):
+    if (self.error is not None):
         oprot.writeFieldBegin('error', TType.STRING, 1)
         oprot.writeString(self.error.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.error_time_secs != None):
+    if (self.error_time_secs is not None):
         oprot.writeFieldBegin('error_time_secs', TType.I32, 2)
         oprot.writeI32(self.error_time_secs)
         oprot.writeFieldEnd()

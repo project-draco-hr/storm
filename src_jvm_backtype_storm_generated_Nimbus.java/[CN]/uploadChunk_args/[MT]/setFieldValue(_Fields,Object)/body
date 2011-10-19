@@ -13,7 +13,7 @@ if (value == null) {
   unset_chunk();
 }
  else {
-  set_chunk((byte[])value);
+  set_chunk((ByteBuffer)value);
 }
 break;
 }

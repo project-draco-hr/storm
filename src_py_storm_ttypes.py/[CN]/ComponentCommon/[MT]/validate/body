@@ -1,0 +1,4 @@
+def validate(self):
+    if (self.streams is None):
+        raise TProtocol.TProtocolException(message='Required field streams is unset!')
+    return

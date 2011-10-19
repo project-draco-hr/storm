@@ -1,0 +1,13 @@
+{
+  submitTopology_result result=new submitTopology_result();
+  try {
+    iface.submitTopology(args.name,args.uploadedJarLocation,args.jsonConf,args.topology);
+  }
+ catch (  AlreadyAliveException e) {
+    result.e=e;
+  }
+catch (  InvalidTopologyException ite) {
+    result.ite=ite;
+  }
+  return result;
+}

@@ -3,19 +3,19 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('SupervisorSummary')
-    if (self.host != None):
+    if (self.host is not None):
         oprot.writeFieldBegin('host', TType.STRING, 1)
         oprot.writeString(self.host.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.uptime_secs != None):
+    if (self.uptime_secs is not None):
         oprot.writeFieldBegin('uptime_secs', TType.I32, 2)
         oprot.writeI32(self.uptime_secs)
         oprot.writeFieldEnd()
-    if (self.num_workers != None):
+    if (self.num_workers is not None):
         oprot.writeFieldBegin('num_workers', TType.I32, 3)
         oprot.writeI32(self.num_workers)
         oprot.writeFieldEnd()
-    if (self.num_used_workers != None):
+    if (self.num_used_workers is not None):
         oprot.writeFieldBegin('num_used_workers', TType.I32, 4)
         oprot.writeI32(self.num_used_workers)
         oprot.writeFieldEnd()

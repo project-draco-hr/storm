@@ -3,7 +3,7 @@ switch (field) {
 case SUPERVISORS:
     return get_supervisors();
 case NIMBUS_UPTIME_SECS:
-  return new Integer(get_nimbus_uptime_secs());
+  return Integer.valueOf(get_nimbus_uptime_secs());
 case TOPOLOGIES:
 return get_topologies();
 }

@@ -3,7 +3,7 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('SpoutStats')
-    if (self.acked != None):
+    if (self.acked is not None):
         oprot.writeFieldBegin('acked', TType.MAP, 1)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.acked))
         for (kiter169, viter170) in self.acked.items():
@@ -15,7 +15,7 @@ def write(self, oprot):
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
-    if (self.failed != None):
+    if (self.failed is not None):
         oprot.writeFieldBegin('failed', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.failed))
         for (kiter173, viter174) in self.failed.items():
@@ -27,7 +27,7 @@ def write(self, oprot):
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
-    if (self.complete_ms_avg != None):
+    if (self.complete_ms_avg is not None):
         oprot.writeFieldBegin('complete_ms_avg', TType.MAP, 3)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.complete_ms_avg))
         for (kiter177, viter178) in self.complete_ms_avg.items():

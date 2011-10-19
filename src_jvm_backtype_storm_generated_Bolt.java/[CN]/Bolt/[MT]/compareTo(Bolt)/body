@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_inputs()) {
-    lastComparison=TBaseHelper.compareTo(this.inputs,typedOther.inputs);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.inputs,typedOther.inputs);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_bolt_object()) {
-    lastComparison=TBaseHelper.compareTo(this.bolt_object,typedOther.bolt_object);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.bolt_object,typedOther.bolt_object);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -29,7 +29,7 @@
     return lastComparison;
   }
   if (is_set_common()) {
-    lastComparison=TBaseHelper.compareTo(this.common,typedOther.common);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.common,typedOther.common);
     if (lastComparison != 0) {
       return lastComparison;
     }

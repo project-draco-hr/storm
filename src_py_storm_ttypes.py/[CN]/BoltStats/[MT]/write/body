@@ -3,7 +3,7 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('BoltStats')
-    if (self.acked != None):
+    if (self.acked is not None):
         oprot.writeFieldBegin('acked', TType.MAP, 1)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.acked))
         for (kiter115, viter116) in self.acked.items():
@@ -15,7 +15,7 @@ def write(self, oprot):
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
-    if (self.failed != None):
+    if (self.failed is not None):
         oprot.writeFieldBegin('failed', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.failed))
         for (kiter119, viter120) in self.failed.items():
@@ -27,7 +27,7 @@ def write(self, oprot):
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
-    if (self.process_ms_avg != None):
+    if (self.process_ms_avg is not None):
         oprot.writeFieldBegin('process_ms_avg', TType.MAP, 3)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.process_ms_avg))
         for (kiter123, viter124) in self.process_ms_avg.items():

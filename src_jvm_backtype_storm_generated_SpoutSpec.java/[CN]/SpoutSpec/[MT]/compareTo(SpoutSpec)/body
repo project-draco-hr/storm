@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_spout_object()) {
-    lastComparison=TBaseHelper.compareTo(this.spout_object,typedOther.spout_object);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.spout_object,typedOther.spout_object);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_common()) {
-    lastComparison=TBaseHelper.compareTo(this.common,typedOther.common);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.common,typedOther.common);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -29,7 +29,7 @@
     return lastComparison;
   }
   if (is_set_distributed()) {
-    lastComparison=TBaseHelper.compareTo(this.distributed,typedOther.distributed);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.distributed,typedOther.distributed);
     if (lastComparison != 0) {
       return lastComparison;
     }

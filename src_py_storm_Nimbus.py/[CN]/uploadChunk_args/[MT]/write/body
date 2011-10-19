@@ -3,11 +3,11 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('uploadChunk_args')
-    if (self.location != None):
+    if (self.location is not None):
         oprot.writeFieldBegin('location', TType.STRING, 1)
         oprot.writeString(self.location.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.chunk != None):
+    if (self.chunk is not None):
         oprot.writeFieldBegin('chunk', TType.STRING, 2)
         oprot.writeString(self.chunk)
         oprot.writeFieldEnd()

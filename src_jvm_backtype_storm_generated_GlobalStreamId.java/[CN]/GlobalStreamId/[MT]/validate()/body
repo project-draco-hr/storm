@@ -1,8 +1,8 @@
 {
   if (!is_set_componentId()) {
-    throw new TProtocolException("Required field 'componentId' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'componentId' is unset! Struct:" + toString());
   }
   if (!is_set_streamId()) {
-    throw new TProtocolException("Required field 'streamId' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'streamId' is unset! Struct:" + toString());
   }
 }

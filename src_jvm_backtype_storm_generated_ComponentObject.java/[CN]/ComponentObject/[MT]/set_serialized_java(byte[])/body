@@ -1,5 +1,3 @@
 {
-  if (value == null)   throw new NullPointerException();
-  setField_=_Fields.SERIALIZED_JAVA;
-  value_=value;
+  set_serialized_java(ByteBuffer.wrap(value));
 }

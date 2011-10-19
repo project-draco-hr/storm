@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.state_spout_object is None):
+        raise TProtocol.TProtocolException(message='Required field state_spout_object is unset!')
+    if (self.common is None):
+        raise TProtocol.TProtocolException(message='Required field common is unset!')
+    return

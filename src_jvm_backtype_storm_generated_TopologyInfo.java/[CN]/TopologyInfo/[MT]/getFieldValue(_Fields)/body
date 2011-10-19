@@ -5,7 +5,7 @@ case ID:
 case NAME:
   return get_name();
 case UPTIME_SECS:
-return new Integer(get_uptime_secs());
+return Integer.valueOf(get_uptime_secs());
 case TASKS:
 return get_tasks();
 }

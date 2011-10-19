@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_state_spout_object()) {
-    lastComparison=TBaseHelper.compareTo(this.state_spout_object,typedOther.state_spout_object);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.state_spout_object,typedOther.state_spout_object);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_common()) {
-    lastComparison=TBaseHelper.compareTo(this.common,typedOther.common);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.common,typedOther.common);
     if (lastComparison != 0) {
       return lastComparison;
     }

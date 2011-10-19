@@ -1,4 +1,7 @@
 {
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
 switch (field) {
 case SPOUT_OBJECT:
     return is_set_spout_object();

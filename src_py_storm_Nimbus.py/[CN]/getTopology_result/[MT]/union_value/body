@@ -1,6 +1,0 @@
-def union_value(self):
-    d = self.__dict__
-    for key in d:
-        val = d[key]
-        if (not (val is None)):
-            return val

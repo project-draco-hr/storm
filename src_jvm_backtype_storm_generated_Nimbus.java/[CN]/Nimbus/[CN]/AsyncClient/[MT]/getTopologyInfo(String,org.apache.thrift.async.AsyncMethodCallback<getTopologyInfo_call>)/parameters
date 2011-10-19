@@ -1,0 +1,2 @@
+String id
+org.apache.thrift.async.AsyncMethodCallback<getTopologyInfo_call> resultHandler

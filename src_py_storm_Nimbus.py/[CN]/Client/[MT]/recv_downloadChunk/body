@@ -8,6 +8,6 @@ def recv_downloadChunk(self):
     result = downloadChunk_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
-    if (result.success != None):
+    if (result.success is not None):
         return result.success
     raise TApplicationException(TApplicationException.MISSING_RESULT, 'downloadChunk failed: unknown result')

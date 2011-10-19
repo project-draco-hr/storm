@@ -1,4 +1,0 @@
-AsyncMethodCallback<getClusterInfo_call> resultHandler
-TAsyncClient client
-TProtocolFactory protocolFactory
-TNonblockingTransport transport
