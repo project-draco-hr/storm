@@ -1,0 +1,8 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift7.protocol.TMessage("killTopologyWithOpts",org.apache.thrift7.protocol.TMessageType.CALL,0));
+  killTopologyWithOpts_args args=new killTopologyWithOpts_args();
+  args.set_name(name);
+  args.set_options(options);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

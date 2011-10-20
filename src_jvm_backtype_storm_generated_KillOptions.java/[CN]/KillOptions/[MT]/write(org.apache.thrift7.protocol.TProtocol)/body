@@ -1,0 +1,11 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (is_set_wait_secs()) {
+    oprot.writeFieldBegin(WAIT_SECS_FIELD_DESC);
+    oprot.writeI32(this.wait_secs);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

@@ -1,0 +1,10 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case WAIT_SECS:
+    return is_set_wait_secs();
+}
+throw new IllegalStateException();
+}

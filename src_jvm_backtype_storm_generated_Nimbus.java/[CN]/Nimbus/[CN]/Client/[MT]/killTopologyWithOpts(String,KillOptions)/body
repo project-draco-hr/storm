@@ -1,0 +1,4 @@
+{
+  send_killTopologyWithOpts(name,options);
+  recv_killTopologyWithOpts();
+}

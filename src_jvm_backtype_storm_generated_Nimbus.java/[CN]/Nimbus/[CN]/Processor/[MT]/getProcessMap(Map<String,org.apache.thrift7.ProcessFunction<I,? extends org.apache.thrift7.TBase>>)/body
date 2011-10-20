@@ -1,6 +1,7 @@
 {
   processMap.put("submitTopology",new submitTopology());
   processMap.put("killTopology",new killTopology());
+  processMap.put("killTopologyWithOpts",new killTopologyWithOpts());
   processMap.put("beginFileUpload",new beginFileUpload());
   processMap.put("uploadChunk",new uploadChunk());
   processMap.put("finishFileUpload",new finishFileUpload());
