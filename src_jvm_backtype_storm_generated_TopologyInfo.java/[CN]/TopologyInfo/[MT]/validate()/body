@@ -11,4 +11,7 @@
   if (!is_set_tasks()) {
     throw new org.apache.thrift7.protocol.TProtocolException("Required field 'tasks' is unset! Struct:" + toString());
   }
+  if (!is_set_status()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'status' is unset! Struct:" + toString());
+  }
 }

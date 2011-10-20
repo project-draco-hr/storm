@@ -32,5 +32,13 @@ unset_tasks();
 set_tasks((List<TaskSummary>)value);
 }
 break;
+case STATUS:
+if (value == null) {
+unset_status();
+}
+ else {
+set_status((String)value);
+}
+break;
 }
 }

@@ -8,4 +8,5 @@
   set_num_workers_isSet(true);
   this.uptime_secs=uptime_secs;
   set_uptime_secs_isSet(true);
+  this.status=status;
 }

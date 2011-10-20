@@ -8,6 +8,8 @@ case UPTIME_SECS:
 return Integer.valueOf(get_uptime_secs());
 case TASKS:
 return get_tasks();
+case STATUS:
+return get_status();
 }
 throw new IllegalStateException();
 }

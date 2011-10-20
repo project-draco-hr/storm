@@ -25,6 +25,11 @@
     }
     oprot.writeFieldEnd();
   }
+  if (this.status != null) {
+    oprot.writeFieldBegin(STATUS_FIELD_DESC);
+    oprot.writeString(this.status);
+    oprot.writeFieldEnd();
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

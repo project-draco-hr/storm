@@ -7,4 +7,5 @@
   this.num_workers=0;
   set_uptime_secs_isSet(false);
   this.uptime_secs=0;
+  this.status=null;
 }

@@ -12,5 +12,8 @@
   boolean present_tasks=true && (is_set_tasks());
   builder.append(present_tasks);
   if (present_tasks)   builder.append(tasks);
+  boolean present_status=true && (is_set_status());
+  builder.append(present_status);
+  if (present_status)   builder.append(status);
   return builder.toHashCode();
 }

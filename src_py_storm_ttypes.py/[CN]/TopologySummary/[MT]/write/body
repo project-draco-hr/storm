@@ -23,5 +23,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('uptime_secs', TType.I32, 5)
         oprot.writeI32(self.uptime_secs)
         oprot.writeFieldEnd()
+    if (self.status is not None):
+        oprot.writeFieldBegin('status', TType.STRING, 6)
+        oprot.writeString(self.status.encode('utf-8'))
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

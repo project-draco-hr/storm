@@ -7,4 +7,6 @@ def validate(self):
         raise TProtocol.TProtocolException(message='Required field uptime_secs is unset!')
     if (self.tasks is None):
         raise TProtocol.TProtocolException(message='Required field tasks is unset!')
+    if (self.status is None):
+        raise TProtocol.TProtocolException(message='Required field status is unset!')
     return

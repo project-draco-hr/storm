@@ -33,6 +33,11 @@ def read(self, iprot):
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
+        elif (fid == 5):
+            if (ftype == TType.STRING):
+                self.status = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

@@ -20,6 +20,11 @@
   oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
   oprot.writeI32(this.uptime_secs);
   oprot.writeFieldEnd();
+  if (this.status != null) {
+    oprot.writeFieldBegin(STATUS_FIELD_DESC);
+    oprot.writeString(this.status);
+    oprot.writeFieldEnd();
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

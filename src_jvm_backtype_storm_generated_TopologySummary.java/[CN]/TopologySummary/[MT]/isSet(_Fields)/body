@@ -13,6 +13,8 @@ case NUM_WORKERS:
 return is_set_num_workers();
 case UPTIME_SECS:
 return is_set_uptime_secs();
+case STATUS:
+return is_set_status();
 }
 throw new IllegalStateException();
 }

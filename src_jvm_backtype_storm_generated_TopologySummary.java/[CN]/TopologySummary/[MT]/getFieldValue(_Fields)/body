@@ -10,6 +10,8 @@ case NUM_WORKERS:
 return Integer.valueOf(get_num_workers());
 case UPTIME_SECS:
 return Integer.valueOf(get_uptime_secs());
+case STATUS:
+return get_status();
 }
 throw new IllegalStateException();
 }

@@ -5,4 +5,5 @@
   this.uptime_secs=uptime_secs;
   set_uptime_secs_isSet(true);
   this.tasks=tasks;
+  this.status=status;
 }
