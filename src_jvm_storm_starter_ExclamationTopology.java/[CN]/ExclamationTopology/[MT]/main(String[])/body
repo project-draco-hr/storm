@@ -5,9 +5,15 @@
   builder.setBolt(3,new ExclamationBolt(),2).shuffleGrouping(2);
   Config conf=new Config();
   conf.setDebug(true);
-  LocalCluster cluster=new LocalCluster();
-  cluster.submitTopology("test",conf,builder.createTopology());
-  Utils.sleep(10000);
-  cluster.killTopology("test");
-  cluster.shutdown();
+  if (args.length > 0) {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopology(args[0],conf,builder.createTopology());
+  }
+ else {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("test",conf,builder.createTopology());
+    Utils.sleep(10000);
+    cluster.killTopology("test");
+    cluster.shutdown();
+  }
 }
