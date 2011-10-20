@@ -1,0 +1,8 @@
+{
+  try {
+    return (Serializable)new ObjectInputStream(stream).readObject();
+  }
+ catch (  ClassNotFoundException e) {
+    throw new IOException(e);
+  }
+}

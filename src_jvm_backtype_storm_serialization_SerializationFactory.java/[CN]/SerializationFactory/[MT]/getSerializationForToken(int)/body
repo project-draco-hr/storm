@@ -1,7 +1,12 @@
 {
   ISerialization ser=_serializations.get(token);
   if (ser == null) {
-    throw new RuntimeException("Could not find serialization for token " + token);
+    if (token == JAVA_SERIALIZATION_TOKEN) {
+      ser=_javaSerializer;
+    }
+ else {
+      throw new RuntimeException("Could not find serialization for token " + token);
+    }
   }
   return new FieldSerialization(token,ser);
 }

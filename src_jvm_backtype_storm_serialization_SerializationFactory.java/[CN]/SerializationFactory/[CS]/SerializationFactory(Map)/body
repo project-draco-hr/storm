@@ -1,4 +1,5 @@
 {
+  _useJavaSerialization=(Boolean)conf.get(Config.TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION);
   boolean skipMissing=(Boolean)conf.get(Config.TOPOLOGY_SKIP_MISSING_SERIALIZATIONS);
   Map<Object,String> customSerializations=(Map<Object,String>)conf.get(Config.TOPOLOGY_SERIALIZATIONS);
   if (customSerializations == null)   customSerializations=new HashMap<Object,String>();
@@ -27,5 +28,8 @@ catch (    InstantiationException e) {
 catch (    IllegalAccessException e) {
       throw new RuntimeException(e);
     }
+  }
+  if (_serializations.containsKey(JAVA_SERIALIZATION_TOKEN)) {
+    throw new RuntimeException("Should not have a serialization with the java serialization token");
   }
 }

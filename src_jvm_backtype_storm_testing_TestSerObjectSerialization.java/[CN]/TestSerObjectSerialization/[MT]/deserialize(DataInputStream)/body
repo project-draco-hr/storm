@@ -1,0 +1,5 @@
+{
+  int f1=stream.readInt();
+  int f2=stream.readInt();
+  return new TestSerObject(f1,f2);
+}

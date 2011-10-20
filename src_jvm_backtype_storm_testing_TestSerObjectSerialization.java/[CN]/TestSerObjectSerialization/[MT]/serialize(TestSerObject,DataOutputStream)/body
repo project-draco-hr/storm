@@ -1,0 +1,4 @@
+{
+  stream.writeInt(object.f1);
+  stream.writeInt(object.f2);
+}

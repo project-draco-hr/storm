@@ -5,5 +5,8 @@
       return getSerializationForToken(token);
     }
   }
+  if (_useJavaSerialization && _javaSerializer.accept(klass)) {
+    return new FieldSerialization(JAVA_SERIALIZATION_TOKEN,_javaSerializer);
+  }
   throw new RuntimeException("Could not find serialization for class " + klass.toString());
 }
