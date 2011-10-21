@@ -1,0 +1,16 @@
+{
+  LinkedBlockingQueue<Object> queue=getQueue(port);
+  Object ret;
+  try {
+    ret=queue.take();
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException(e);
+  }
+synchronized (_lock) {
+    if (queue.size() == 0) {
+      _queues.remove(port);
+    }
+  }
+  return ret;
+}
