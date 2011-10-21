@@ -1,7 +1,6 @@
 {
   LinkedBlockingQueue<Object> queue=getQueue(port);
-  Object ret;
-  ret=queue.poll();
+  Object ret=queue.poll();
 synchronized (_lock) {
     if (queue.size() == 0) {
       _queues.remove(port);

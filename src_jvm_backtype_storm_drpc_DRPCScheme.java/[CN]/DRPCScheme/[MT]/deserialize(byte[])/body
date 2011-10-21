@@ -1,7 +1,7 @@
 {
   try {
     Map obj=(Map)JSONValue.parse(new String(bytes,"UTF-8"));
-    return tuple(obj.get("args"),obj.get("return"));
+    return new Values(obj.get("args"),obj.get("return"));
   }
  catch (  UnsupportedEncodingException e) {
     throw new RuntimeException(e);
