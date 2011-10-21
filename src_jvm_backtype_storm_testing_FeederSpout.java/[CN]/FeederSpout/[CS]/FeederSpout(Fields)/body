@@ -1,5 +1,4 @@
 {
-  _id=UUID.randomUUID().toString();
-  _feeds.put(_id,new LinkedBlockingQueue<List<Object>>());
+  _id=InprocMessaging.acquireNewPort();
   _outFields=outFields;
 }
