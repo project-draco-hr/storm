@@ -1,3 +1,10 @@
 {
-  client.failRequest(id);
+  try {
+    if (client == null)     connect();
+    client.failRequest(id);
+  }
+ catch (  TException e) {
+    client=null;
+    throw e;
+  }
 }

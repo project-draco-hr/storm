@@ -1,3 +1,10 @@
 {
-  client.result(id,result);
+  try {
+    if (client == null)     connect();
+    client.result(id,result);
+  }
+ catch (  TException e) {
+    client=null;
+    throw e;
+  }
 }

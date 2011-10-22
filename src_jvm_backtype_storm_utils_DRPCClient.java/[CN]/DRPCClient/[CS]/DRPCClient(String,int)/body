@@ -2,9 +2,7 @@
   try {
     this.host=host;
     this.port=port;
-    conn=new TFramedTransport(new TSocket(host,port));
-    client=new DistributedRPC.Client(new TBinaryProtocol(conn));
-    conn.open();
+    connect();
   }
  catch (  TException e) {
     throw new RuntimeException(e);
