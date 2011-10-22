@@ -5,6 +5,11 @@
     oprot.writeString(this.success);
     oprot.writeFieldEnd();
   }
+ else   if (this.is_set_e()) {
+    oprot.writeFieldBegin(E_FIELD_DESC);
+    this.e.write(oprot);
+    oprot.writeFieldEnd();
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

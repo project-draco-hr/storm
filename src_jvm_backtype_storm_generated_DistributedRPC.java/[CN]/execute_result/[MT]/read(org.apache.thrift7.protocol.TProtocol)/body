@@ -15,8 +15,17 @@ case 0:
         org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
       }
     break;
+case 1:
+  if (field.type == org.apache.thrift7.protocol.TType.STRUCT) {
+    this.e=new DRPCExecutionException();
+    this.e.read(iprot);
+  }
+ else {
+    org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+  }
+break;
 default :
-  org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
 }
 iprot.readFieldEnd();
 }

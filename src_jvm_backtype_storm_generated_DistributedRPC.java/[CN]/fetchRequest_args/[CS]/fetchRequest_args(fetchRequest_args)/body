@@ -1,0 +1,5 @@
+{
+  if (other.is_set_functionName()) {
+    this.functionName=other.functionName;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  fetchRequest_result result=new fetchRequest_result();
+  receiveBase(result,"fetchRequest");
+  if (result.is_set_success()) {
+    return result.success;
+  }
+  throw new org.apache.thrift7.TApplicationException(org.apache.thrift7.TApplicationException.MISSING_RESULT,"fetchRequest failed: unknown result");
+}

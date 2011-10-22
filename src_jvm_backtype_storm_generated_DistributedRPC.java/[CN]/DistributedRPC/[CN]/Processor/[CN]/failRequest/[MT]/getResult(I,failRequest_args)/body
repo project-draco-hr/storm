@@ -1,0 +1,5 @@
+{
+  failRequest_result result=new failRequest_result();
+  iface.failRequest(args.id);
+  return result;
+}

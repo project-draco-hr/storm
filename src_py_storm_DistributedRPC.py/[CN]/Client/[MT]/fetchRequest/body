@@ -1,0 +1,4 @@
+def fetchRequest(self, functionName):
+    '\n    Parameters:\n     - functionName\n    '
+    self.send_fetchRequest(functionName)
+    return self.recv_fetchRequest()

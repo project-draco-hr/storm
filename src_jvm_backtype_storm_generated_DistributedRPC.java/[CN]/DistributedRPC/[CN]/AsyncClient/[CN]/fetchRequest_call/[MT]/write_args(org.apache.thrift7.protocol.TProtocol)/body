@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift7.protocol.TMessage("fetchRequest",org.apache.thrift7.protocol.TMessageType.CALL,0));
+  fetchRequest_args args=new fetchRequest_args();
+  args.set_functionName(functionName);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

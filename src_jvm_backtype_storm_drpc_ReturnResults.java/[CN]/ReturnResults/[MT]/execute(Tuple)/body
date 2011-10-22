@@ -3,22 +3,25 @@
   String returnInfo=(String)input.getValue(1);
   if (returnInfo != null) {
     Map retMap=(Map)JSONValue.parse(returnInfo);
-    String ip=(String)retMap.get("ip");
+    String host=(String)retMap.get("host");
     int port=(int)((Long)retMap.get("port")).longValue();
     String id=(String)retMap.get("id");
+    DistributedRPC.Iface client;
     if (local) {
-      InprocMessaging.sendMessage(port,new Object[]{id,result});
+      client=(ILocalDRPC)ServiceRegistry.getService(host);
     }
  else {
-      try {
-        DRPCClient client=new DRPCClient(ip,port);
-        client.result(id,result);
-        client.close();
-        _collector.ack(input);
+      client=new DRPCClient(host,port);
+    }
+    try {
+      client.result(id,result);
+      if (!local) {
+        ((DRPCClient)client).close();
       }
- catch (      TException e) {
-        _collector.fail(input);
-      }
+      _collector.ack(input);
+    }
+ catch (    TException e) {
+      _collector.fail(input);
     }
   }
 }

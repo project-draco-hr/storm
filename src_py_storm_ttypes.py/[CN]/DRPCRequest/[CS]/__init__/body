@@ -1,0 +1,3 @@
+def __init__(self, func_args=None, request_id=None):
+    self.func_args = func_args
+    self.request_id = request_id

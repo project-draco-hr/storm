@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.func_args is None):
+        raise TProtocol.TProtocolException(message='Required field func_args is unset!')
+    if (self.request_id is None):
+        raise TProtocol.TProtocolException(message='Required field request_id is unset!')
+    return

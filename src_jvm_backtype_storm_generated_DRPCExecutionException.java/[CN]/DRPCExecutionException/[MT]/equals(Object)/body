@@ -1,0 +1,5 @@
+{
+  if (that == null)   return false;
+  if (that instanceof DRPCExecutionException)   return this.equals((DRPCExecutionException)that);
+  return false;
+}

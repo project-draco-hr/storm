@@ -1,0 +1,7 @@
+def send_fetchRequest(self, functionName):
+    self._oprot.writeMessageBegin('fetchRequest', TMessageType.CALL, self._seqid)
+    args = fetchRequest_args()
+    args.functionName = functionName
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

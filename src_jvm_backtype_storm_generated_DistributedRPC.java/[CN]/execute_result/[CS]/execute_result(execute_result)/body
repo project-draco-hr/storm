@@ -2,4 +2,7 @@
   if (other.is_set_success()) {
     this.success=other.success;
   }
+  if (other.is_set_e()) {
+    this.e=new DRPCExecutionException(other.e);
+  }
 }

@@ -1,0 +1,5 @@
+{
+  fetchRequest_result result=new fetchRequest_result();
+  result.success=iface.fetchRequest(args.functionName);
+  return result;
+}

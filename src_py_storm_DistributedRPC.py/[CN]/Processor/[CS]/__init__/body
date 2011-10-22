@@ -3,3 +3,5 @@ def __init__(self, handler):
     self._processMap = {}
     self._processMap['execute'] = Processor.process_execute
     self._processMap['result'] = Processor.process_result
+    self._processMap['fetchRequest'] = Processor.process_fetchRequest
+    self._processMap['failRequest'] = Processor.process_failRequest

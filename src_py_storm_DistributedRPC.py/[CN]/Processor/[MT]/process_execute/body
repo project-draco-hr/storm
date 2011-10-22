@@ -3,7 +3,10 @@ def process_execute(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = execute_result()
-    result.success = self._handler.execute(args.functionName, args.funcArgs)
+    try:
+        result.success = self._handler.execute(args.functionName, args.funcArgs)
+    except DRPCExecutionException as e:
+        result.e = e
     oprot.writeMessageBegin('execute', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

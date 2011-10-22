@@ -1,0 +1,4 @@
+def failRequest(self, id):
+    '\n    Parameters:\n     - id\n    '
+    self.send_failRequest(id)
+    self.recv_failRequest()

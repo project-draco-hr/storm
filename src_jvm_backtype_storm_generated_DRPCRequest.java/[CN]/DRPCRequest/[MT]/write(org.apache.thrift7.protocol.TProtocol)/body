@@ -1,0 +1,16 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.func_args != null) {
+    oprot.writeFieldBegin(FUNC_ARGS_FIELD_DESC);
+    oprot.writeString(this.func_args);
+    oprot.writeFieldEnd();
+  }
+  if (this.request_id != null) {
+    oprot.writeFieldBegin(REQUEST_ID_FIELD_DESC);
+    oprot.writeString(this.request_id);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

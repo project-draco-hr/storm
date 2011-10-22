@@ -1,0 +1,7 @@
+def send_failRequest(self, id):
+    self._oprot.writeMessageBegin('failRequest', TMessageType.CALL, self._seqid)
+    args = failRequest_args()
+    args.id = id
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case FUNC_ARGS:
+    return is_set_func_args();
+case REQUEST_ID:
+  return is_set_request_id();
+}
+throw new IllegalStateException();
+}

@@ -1,3 +1,0 @@
-{
-  _spout.feed(new Values(args,returnInfo));
-}

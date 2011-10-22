@@ -1,0 +1,2 @@
+String id
+org.apache.thrift7.async.AsyncMethodCallback<failRequest_call> resultHandler

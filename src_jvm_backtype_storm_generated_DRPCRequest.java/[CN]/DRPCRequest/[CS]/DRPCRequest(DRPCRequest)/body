@@ -1,0 +1,8 @@
+{
+  if (other.is_set_func_args()) {
+    this.func_args=other.func_args;
+  }
+  if (other.is_set_request_id()) {
+    this.request_id=other.request_id;
+  }
+}
