@@ -8,7 +8,6 @@
     if (servers.isEmpty()) {
       throw new RuntimeException("No DRPC servers configured for topology");
     }
-    _clients=new ArrayList<DRPCClient>();
     if (numTasks < servers.size()) {
       for (      String s : servers) {
         _clients.add(new DRPCClient(s,port));

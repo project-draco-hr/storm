@@ -21,7 +21,7 @@
     }
   }
  else {
-    ILocalDRPC drpc=(ILocalDRPC)ServiceRegistry.getService(_local_drpc_id);
+    DistributedRPC.Iface drpc=(DistributedRPC.Iface)ServiceRegistry.getService(_local_drpc_id);
     try {
       DRPCRequest req=drpc.fetchRequest(_function);
       if (req.get_request_id().length() > 0) {
