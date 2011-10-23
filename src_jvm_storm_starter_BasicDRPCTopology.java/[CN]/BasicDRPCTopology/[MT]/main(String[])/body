@@ -1,0 +1,18 @@
+{
+  LinearDRPCTopologyBuilder builder=new LinearDRPCTopologyBuilder("exclamation");
+  builder.addBolt(new ExclaimBolt(),3);
+  Config conf=new Config();
+  conf.setDebug(true);
+  if (args.length == 0) {
+    LocalDRPC drpc=new LocalDRPC();
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("drpc-demo",conf,builder.createLocalTopology(drpc));
+    for (    String word : new String[]{"hello","goodbye"}) {
+      System.out.println("Result for \"" + word + "\": "+ drpc.execute("exclamation",word));
+    }
+  }
+ else {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopology(args[0],conf,builder.createRemoteTopology());
+  }
+}

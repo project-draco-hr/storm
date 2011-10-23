@@ -1,0 +1,10 @@
+{
+  Object id=tuple.getValue(0);
+  Set<String> curr=_sets.get(id);
+  if (curr == null) {
+    curr=new HashSet<String>();
+    _sets.put(id,curr);
+  }
+  curr.add(tuple.getString(1));
+  _collector.ack(tuple);
+}
