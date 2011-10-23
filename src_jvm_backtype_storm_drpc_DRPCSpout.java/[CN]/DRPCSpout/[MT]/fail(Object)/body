@@ -5,7 +5,7 @@
     client=_clients.get(did.index);
   }
  else {
-    client=(ILocalDRPC)ServiceRegistry.getService(_local_drpc_id);
+    client=(DistributedRPC.Iface)ServiceRegistry.getService(_local_drpc_id);
   }
   try {
     client.failRequest(did.id);

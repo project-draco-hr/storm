@@ -1,0 +1,5 @@
+{
+  Component component=new Component(bolt,parallelism);
+  _components.add(component);
+  return new InputDeclarerImpl(component);
+}

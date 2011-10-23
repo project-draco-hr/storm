@@ -1,0 +1,5 @@
+{
+  if (_bolt instanceof FinishedCallback) {
+    ((FinishedCallback)_bolt).finishedId(id);
+  }
+}

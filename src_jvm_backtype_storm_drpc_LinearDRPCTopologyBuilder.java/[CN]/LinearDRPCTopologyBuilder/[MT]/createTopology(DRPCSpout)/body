@@ -1,0 +1,49 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(1,spout);
+  builder.setBolt(2,new PrepareRequest()).noneGrouping(1);
+  int id=3;
+  for (int i=0; i < _components.size(); i++) {
+    Component component=_components.get(i);
+    SourceArgs source;
+    if (i == 0) {
+      source=null;
+    }
+ else     if (i == 1) {
+      source=SourceArgs.single();
+    }
+ else {
+      source=SourceArgs.all();
+    }
+    boolean allOut=(i < _components.size() - 2);
+    InputDeclarer declarer=builder.setBolt(id,new CoordinatedBolt(component.bolt,source,allOut),component.parallelism);
+    if (i == 0 && component.declarations.size() == 0) {
+      declarer.noneGrouping(2,PrepareRequest.ARGS_STREAM);
+    }
+ else {
+      for (      InputDeclaration declaration : component.declarations) {
+        declaration.declare(id - 1,declarer);
+      }
+    }
+    if (i > 0) {
+      declarer.directGrouping(id - 1,Constants.COORDINATED_STREAM_ID);
+    }
+    id++;
+  }
+  IRichBolt lastBolt=_components.get(_components.size() - 1).bolt;
+  OutputFieldsGetter getter=new OutputFieldsGetter();
+  lastBolt.declareOutputFields(getter);
+  Map<Integer,StreamInfo> streams=getter.getFieldsDeclaration();
+  if (streams.size() != 1) {
+    throw new RuntimeException("Must declare exactly one stream from last bolt in LinearDRPCTopology");
+  }
+  int outputStream=streams.keySet().iterator().next();
+  List<String> fields=streams.get(outputStream).get_output_fields();
+  if (fields.size() != 2) {
+    throw new RuntimeException("Output stream of last component in LinearDRPCTopology must contain exactly two fields. The first should be the request id, and the second should be the result.");
+  }
+  builder.setBolt(id,new JoinResult(2)).fieldsGrouping(id - 1,outputStream,new Fields(fields.get(0))).fieldsGrouping(2,PrepareRequest.RETURN_STREAM,new Fields("request"));
+  id++;
+  builder.setBolt(id,new ReturnResults()).noneGrouping(id - 1);
+  return builder.createTopology();
+}

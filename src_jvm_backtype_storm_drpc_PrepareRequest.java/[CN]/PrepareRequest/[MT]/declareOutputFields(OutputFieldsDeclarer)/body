@@ -1,0 +1,4 @@
+{
+  declarer.declareStream(ARGS_STREAM,new Fields("request","args"));
+  declarer.declareStream(RETURN_STREAM,new Fields("request","return"));
+}
