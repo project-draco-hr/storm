@@ -1,4 +1,0 @@
-{
-  super(bolt);
-  _bolt=bolt;
-}

@@ -1,3 +1,0 @@
-{
-  return addBolt(new StintBoltExecutor(bolt),parallelism);
-}
