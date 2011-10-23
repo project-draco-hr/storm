@@ -1,5 +1,5 @@
 {
-  String ret=queue.poll();
+  Status ret=queue.poll();
   if (ret == null) {
     Utils.sleep(50);
   }
