@@ -1,0 +1,3 @@
+{
+  return getComponentOutputFields(id.get_componentId(),id.get_streamId());
+}
