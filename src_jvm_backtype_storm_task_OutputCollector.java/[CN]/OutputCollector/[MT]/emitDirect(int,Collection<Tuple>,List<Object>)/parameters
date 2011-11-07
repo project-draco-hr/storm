@@ -1,3 +1,3 @@
 int taskId
-List<Tuple> anchors
+Collection<Tuple> anchors
 List<Object> tuple

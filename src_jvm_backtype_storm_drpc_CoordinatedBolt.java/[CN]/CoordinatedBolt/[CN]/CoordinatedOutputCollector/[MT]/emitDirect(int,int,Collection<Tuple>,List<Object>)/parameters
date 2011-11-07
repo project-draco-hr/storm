@@ -1,4 +1,4 @@
 int task
 int stream
-List<Tuple> anchors
+Collection<Tuple> anchors
 List<Object> tuple
