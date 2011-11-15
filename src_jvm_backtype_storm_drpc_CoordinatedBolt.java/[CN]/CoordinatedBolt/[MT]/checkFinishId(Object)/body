@@ -1,13 +1,11 @@
 {
 synchronized (_tracked) {
     TrackingInfo track=_tracked.get(id);
-    if (track != null && (_sourceArgs == null || track.reportCount == _numSourceReports && track.expectedTupleCount == track.receivedTuples)) {
+    if (track != null && track.receivedId && (_sourceArgs == null || track.reportCount == _numSourceReports && track.expectedTupleCount == track.receivedTuples)) {
       if (_delegate instanceof FinishedCallback) {
         ((FinishedCallback)_delegate).finishedId(id);
       }
-      Iterator<Integer> outTasks;
-      if (_allOut)       outTasks=_countOutTasks.iterator();
- else       outTasks=track.taskEmittedTuples.keySet().iterator();
+      Iterator<Integer> outTasks=_countOutTasks.iterator();
       while (outTasks.hasNext()) {
         int task=outTasks.next();
         int numTuples=get(track.taskEmittedTuples,task,0);

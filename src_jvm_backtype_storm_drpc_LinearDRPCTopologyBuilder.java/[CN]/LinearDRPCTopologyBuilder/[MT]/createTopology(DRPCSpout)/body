@@ -15,8 +15,14 @@
  else {
       source=SourceArgs.all();
     }
-    boolean allOut=(i < _components.size() - 2);
-    InputDeclarer declarer=builder.setBolt(id,new CoordinatedBolt(component.bolt,source,allOut),component.parallelism);
+    Integer idComponent=null;
+    if (i == _components.size() - 1 && component.bolt instanceof FinishedCallback) {
+      idComponent=2;
+    }
+    InputDeclarer declarer=builder.setBolt(id,new CoordinatedBolt(component.bolt,source,idComponent),component.parallelism);
+    if (idComponent != null) {
+      declarer.fieldsGrouping(idComponent,PrepareRequest.ID_STREAM,new Fields("request"));
+    }
     if (i == 0 && component.declarations.size() == 0) {
       declarer.noneGrouping(2,PrepareRequest.ARGS_STREAM);
     }

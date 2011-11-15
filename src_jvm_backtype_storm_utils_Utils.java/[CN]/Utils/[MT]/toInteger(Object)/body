@@ -1,0 +1,6 @@
+{
+  if (o == null)   return null;
+ else   if (o instanceof Integer)   return (Integer)o;
+ else   if (o instanceof Long)   return ((Long)o).intValue();
+ else   throw new RuntimeException("Could not coerce " + o + " to integer");
+}
