@@ -10,6 +10,11 @@ if (value instanceof ShellComponent) {
   break;
 }
 throw new ClassCastException("Was expecting value of type ShellComponent for field 'shell', but got " + value.getClass().getSimpleName());
+case JAVA_OBJECT:
+if (value instanceof JavaObject) {
+break;
+}
+throw new ClassCastException("Was expecting value of type JavaObject for field 'java_object', but got " + value.getClass().getSimpleName());
 default :
 throw new IllegalArgumentException("Unknown field id " + setField);
 }

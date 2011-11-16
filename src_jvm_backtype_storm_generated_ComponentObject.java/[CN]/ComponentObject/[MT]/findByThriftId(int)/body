@@ -4,6 +4,8 @@ case 1:
     return SERIALIZED_JAVA;
 case 2:
   return SHELL;
+case 3:
+return JAVA_OBJECT;
 default :
 return null;
 }

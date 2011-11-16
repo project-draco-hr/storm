@@ -23,8 +23,19 @@ case SHELL:
       org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
       return null;
     }
+case JAVA_OBJECT:
+  if (field.type == JAVA_OBJECT_FIELD_DESC.type) {
+    JavaObject java_object;
+    java_object=new JavaObject();
+    java_object.read(iprot);
+    return java_object;
+  }
+ else {
+    org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+    return null;
+  }
 default :
-  throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
 }
 }
  else {
