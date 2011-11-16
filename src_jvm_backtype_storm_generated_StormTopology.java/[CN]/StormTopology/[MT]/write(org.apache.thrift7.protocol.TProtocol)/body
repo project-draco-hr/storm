@@ -5,9 +5,9 @@
     oprot.writeFieldBegin(SPOUTS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift7.protocol.TMap(org.apache.thrift7.protocol.TType.I32,org.apache.thrift7.protocol.TType.STRUCT,this.spouts.size()));
-      for (      Map.Entry<Integer,SpoutSpec> _iter30 : this.spouts.entrySet()) {
-        oprot.writeI32(_iter30.getKey());
-        _iter30.getValue().write(oprot);
+      for (      Map.Entry<Integer,SpoutSpec> _iter34 : this.spouts.entrySet()) {
+        oprot.writeI32(_iter34.getKey());
+        _iter34.getValue().write(oprot);
       }
       oprot.writeMapEnd();
     }
@@ -17,9 +17,9 @@
     oprot.writeFieldBegin(BOLTS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift7.protocol.TMap(org.apache.thrift7.protocol.TType.I32,org.apache.thrift7.protocol.TType.STRUCT,this.bolts.size()));
-      for (      Map.Entry<Integer,Bolt> _iter31 : this.bolts.entrySet()) {
-        oprot.writeI32(_iter31.getKey());
-        _iter31.getValue().write(oprot);
+      for (      Map.Entry<Integer,Bolt> _iter35 : this.bolts.entrySet()) {
+        oprot.writeI32(_iter35.getKey());
+        _iter35.getValue().write(oprot);
       }
       oprot.writeMapEnd();
     }
@@ -29,9 +29,9 @@
     oprot.writeFieldBegin(STATE_SPOUTS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift7.protocol.TMap(org.apache.thrift7.protocol.TType.I32,org.apache.thrift7.protocol.TType.STRUCT,this.state_spouts.size()));
-      for (      Map.Entry<Integer,StateSpoutSpec> _iter32 : this.state_spouts.entrySet()) {
-        oprot.writeI32(_iter32.getKey());
-        _iter32.getValue().write(oprot);
+      for (      Map.Entry<Integer,StateSpoutSpec> _iter36 : this.state_spouts.entrySet()) {
+        oprot.writeI32(_iter36.getKey());
+        _iter36.getValue().write(oprot);
       }
       oprot.writeMapEnd();
     }

@@ -10,13 +10,13 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.inputs = {}
-                (_ktype24, _vtype25, _size23) = iprot.readMapBegin()
-                for _i27 in xrange(_size23):
-                    _key28 = GlobalStreamId()
-                    _key28.read(iprot)
-                    _val29 = Grouping()
-                    _val29.read(iprot)
-                    self.inputs[_key28] = _val29
+                (_ktype31, _vtype32, _size30) = iprot.readMapBegin()
+                for _i34 in xrange(_size30):
+                    _key35 = GlobalStreamId()
+                    _key35.read(iprot)
+                    _val36 = Grouping()
+                    _val36.read(iprot)
+                    self.inputs[_key35] = _val36
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

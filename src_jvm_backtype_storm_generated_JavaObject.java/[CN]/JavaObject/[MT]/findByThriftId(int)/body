@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return FULL_CLASS_NAME;
+case 2:
+  return ARGS_LIST;
+default :
+return null;
+}
+}

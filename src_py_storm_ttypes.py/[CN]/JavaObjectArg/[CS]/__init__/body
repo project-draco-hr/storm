@@ -1,0 +1,7 @@
+def __init__(self, int_arg=None, long_arg=None, string_arg=None, bool_arg=None, binary_arg=None, double_arg=None):
+    self.int_arg = int_arg
+    self.long_arg = long_arg
+    self.string_arg = string_arg
+    self.bool_arg = bool_arg
+    self.binary_arg = binary_arg
+    self.double_arg = double_arg

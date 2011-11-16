@@ -1,0 +1,3 @@
+{
+  return (this.args_list == null) ? null : this.args_list.iterator();
+}

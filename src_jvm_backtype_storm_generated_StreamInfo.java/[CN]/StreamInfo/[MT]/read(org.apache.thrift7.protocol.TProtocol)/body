@@ -10,12 +10,12 @@ switch (field.id) {
 case 1:
       if (field.type == org.apache.thrift7.protocol.TType.LIST) {
 {
-          org.apache.thrift7.protocol.TList _list4=iprot.readListBegin();
-          this.output_fields=new ArrayList<String>(_list4.size);
-          for (int _i5=0; _i5 < _list4.size; ++_i5) {
-            String _elem6;
-            _elem6=iprot.readString();
-            this.output_fields.add(_elem6);
+          org.apache.thrift7.protocol.TList _list8=iprot.readListBegin();
+          this.output_fields=new ArrayList<String>(_list8.size);
+          for (int _i9=0; _i9 < _list8.size; ++_i9) {
+            String _elem10;
+            _elem10=iprot.readString();
+            this.output_fields.add(_elem10);
           }
           iprot.readListEnd();
         }

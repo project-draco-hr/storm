@@ -5,9 +5,9 @@
     oprot.writeFieldBegin(INPUTS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift7.protocol.TMap(org.apache.thrift7.protocol.TType.STRUCT,org.apache.thrift7.protocol.TType.STRUCT,this.inputs.size()));
-      for (      Map.Entry<GlobalStreamId,Grouping> _iter17 : this.inputs.entrySet()) {
-        _iter17.getKey().write(oprot);
-        _iter17.getValue().write(oprot);
+      for (      Map.Entry<GlobalStreamId,Grouping> _iter21 : this.inputs.entrySet()) {
+        _iter21.getKey().write(oprot);
+        _iter21.getValue().write(oprot);
       }
       oprot.writeMapEnd();
     }

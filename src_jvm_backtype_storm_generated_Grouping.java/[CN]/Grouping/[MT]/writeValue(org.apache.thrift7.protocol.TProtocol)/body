@@ -4,8 +4,8 @@ case FIELDS:
     List<String> fields=(List<String>)value_;
 {
     oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRING,fields.size()));
-    for (    String _iter3 : fields) {
-      oprot.writeString(_iter3);
+    for (    String _iter7 : fields) {
+      oprot.writeString(_iter7);
     }
     oprot.writeListEnd();
   }
@@ -25,6 +25,14 @@ return;
 case DIRECT:
 NullStruct direct=(NullStruct)value_;
 direct.write(oprot);
+return;
+case CUSTOM_OBJECT:
+JavaObject custom_object=(JavaObject)value_;
+custom_object.write(oprot);
+return;
+case CUSTOM_SERIALIZED:
+ByteBuffer custom_serialized=(ByteBuffer)value_;
+oprot.writeBinary(custom_serialized);
 return;
 default :
 throw new IllegalStateException("Cannot write union with unknown field " + setField_);

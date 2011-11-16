@@ -1,0 +1,4 @@
+{
+  this.full_class_name=null;
+  this.args_list=null;
+}

@@ -6,25 +6,25 @@ def write(self, oprot):
     if (self.spouts is not None):
         oprot.writeFieldBegin('spouts', TType.MAP, 1)
         oprot.writeMapBegin(TType.I32, TType.STRUCT, len(self.spouts))
-        for (kiter53, viter54) in self.spouts.items():
-            oprot.writeI32(kiter53)
-            viter54.write(oprot)
+        for (kiter60, viter61) in self.spouts.items():
+            oprot.writeI32(kiter60)
+            viter61.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.bolts is not None):
         oprot.writeFieldBegin('bolts', TType.MAP, 2)
         oprot.writeMapBegin(TType.I32, TType.STRUCT, len(self.bolts))
-        for (kiter55, viter56) in self.bolts.items():
-            oprot.writeI32(kiter55)
-            viter56.write(oprot)
+        for (kiter62, viter63) in self.bolts.items():
+            oprot.writeI32(kiter62)
+            viter63.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.state_spouts is not None):
         oprot.writeFieldBegin('state_spouts', TType.MAP, 3)
         oprot.writeMapBegin(TType.I32, TType.STRUCT, len(self.state_spouts))
-        for (kiter57, viter58) in self.state_spouts.items():
-            oprot.writeI32(kiter57)
-            viter58.write(oprot)
+        for (kiter64, viter65) in self.state_spouts.items():
+            oprot.writeI32(kiter64)
+            viter65.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

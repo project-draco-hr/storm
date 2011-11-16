@@ -1,0 +1,8 @@
+{
+  if (other instanceof JavaObjectArg) {
+    return equals((JavaObjectArg)other);
+  }
+ else {
+    return false;
+  }
+}

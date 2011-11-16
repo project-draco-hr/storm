@@ -5,8 +5,8 @@
     oprot.writeFieldBegin(OUTPUT_FIELDS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRING,this.output_fields.size()));
-      for (      String _iter7 : this.output_fields) {
-        oprot.writeString(_iter7);
+      for (      String _iter11 : this.output_fields) {
+        oprot.writeString(_iter11);
       }
       oprot.writeListEnd();
     }

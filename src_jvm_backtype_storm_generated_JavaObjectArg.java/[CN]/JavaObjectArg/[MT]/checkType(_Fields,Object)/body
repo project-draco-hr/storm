@@ -1,0 +1,36 @@
+{
+switch (setField) {
+case INT_ARG:
+    if (value instanceof Integer) {
+      break;
+    }
+  throw new ClassCastException("Was expecting value of type Integer for field 'int_arg', but got " + value.getClass().getSimpleName());
+case LONG_ARG:
+if (value instanceof Long) {
+  break;
+}
+throw new ClassCastException("Was expecting value of type Long for field 'long_arg', but got " + value.getClass().getSimpleName());
+case STRING_ARG:
+if (value instanceof String) {
+break;
+}
+throw new ClassCastException("Was expecting value of type String for field 'string_arg', but got " + value.getClass().getSimpleName());
+case BOOL_ARG:
+if (value instanceof Boolean) {
+break;
+}
+throw new ClassCastException("Was expecting value of type Boolean for field 'bool_arg', but got " + value.getClass().getSimpleName());
+case BINARY_ARG:
+if (value instanceof ByteBuffer) {
+break;
+}
+throw new ClassCastException("Was expecting value of type ByteBuffer for field 'binary_arg', but got " + value.getClass().getSimpleName());
+case DOUBLE_ARG:
+if (value instanceof Double) {
+break;
+}
+throw new ClassCastException("Was expecting value of type Double for field 'double_arg', but got " + value.getClass().getSimpleName());
+default :
+throw new IllegalArgumentException("Unknown field id " + setField);
+}
+}

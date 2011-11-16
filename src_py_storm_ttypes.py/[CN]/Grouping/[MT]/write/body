@@ -6,8 +6,8 @@ def write(self, oprot):
     if (self.fields is not None):
         oprot.writeFieldBegin('fields', TType.LIST, 1)
         oprot.writeListBegin(TType.STRING, len(self.fields))
-        for iter6 in self.fields:
-            oprot.writeString(iter6.encode('utf-8'))
+        for iter13 in self.fields:
+            oprot.writeString(iter13.encode('utf-8'))
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.shuffle is not None):
@@ -25,6 +25,14 @@ def write(self, oprot):
     if (self.direct is not None):
         oprot.writeFieldBegin('direct', TType.STRUCT, 5)
         self.direct.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.custom_object is not None):
+        oprot.writeFieldBegin('custom_object', TType.STRUCT, 6)
+        self.custom_object.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.custom_serialized is not None):
+        oprot.writeFieldBegin('custom_serialized', TType.STRING, 7)
+        oprot.writeString(self.custom_serialized)
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

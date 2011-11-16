@@ -1,0 +1,3 @@
+{
+  return setField_ == _Fields.DOUBLE_ARG;
+}

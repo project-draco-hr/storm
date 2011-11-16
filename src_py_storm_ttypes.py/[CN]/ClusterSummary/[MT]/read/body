@@ -10,11 +10,11 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.LIST):
                 self.supervisors = []
-                (_etype62, _size59) = iprot.readListBegin()
-                for _i63 in xrange(_size59):
-                    _elem64 = SupervisorSummary()
-                    _elem64.read(iprot)
-                    self.supervisors.append(_elem64)
+                (_etype69, _size66) = iprot.readListBegin()
+                for _i70 in xrange(_size66):
+                    _elem71 = SupervisorSummary()
+                    _elem71.read(iprot)
+                    self.supervisors.append(_elem71)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
@@ -26,11 +26,11 @@ def read(self, iprot):
         elif (fid == 3):
             if (ftype == TType.LIST):
                 self.topologies = []
-                (_etype68, _size65) = iprot.readListBegin()
-                for _i69 in xrange(_size65):
-                    _elem70 = TopologySummary()
-                    _elem70.read(iprot)
-                    self.topologies.append(_elem70)
+                (_etype75, _size72) = iprot.readListBegin()
+                for _i76 in xrange(_size72):
+                    _elem77 = TopologySummary()
+                    _elem77.read(iprot)
+                    self.topologies.append(_elem77)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

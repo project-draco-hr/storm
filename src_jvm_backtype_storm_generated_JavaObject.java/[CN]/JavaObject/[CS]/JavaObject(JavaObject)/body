@@ -1,0 +1,12 @@
+{
+  if (other.is_set_full_class_name()) {
+    this.full_class_name=other.full_class_name;
+  }
+  if (other.is_set_args_list()) {
+    List<JavaObjectArg> __this__args_list=new ArrayList<JavaObjectArg>();
+    for (    JavaObjectArg other_element : other.args_list) {
+      __this__args_list.add(new JavaObjectArg(other_element));
+    }
+    this.args_list=__this__args_list;
+  }
+}

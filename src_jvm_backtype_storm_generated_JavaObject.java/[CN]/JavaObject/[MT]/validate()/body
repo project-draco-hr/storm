@@ -1,0 +1,8 @@
+{
+  if (!is_set_full_class_name()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'full_class_name' is unset! Struct:" + toString());
+  }
+  if (!is_set_args_list()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'args_list' is unset! Struct:" + toString());
+  }
+}

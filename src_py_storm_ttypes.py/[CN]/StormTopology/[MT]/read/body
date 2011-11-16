@@ -10,36 +10,36 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.spouts = {}
-                (_ktype33, _vtype34, _size32) = iprot.readMapBegin()
-                for _i36 in xrange(_size32):
-                    _key37 = iprot.readI32()
-                    _val38 = SpoutSpec()
-                    _val38.read(iprot)
-                    self.spouts[_key37] = _val38
+                (_ktype40, _vtype41, _size39) = iprot.readMapBegin()
+                for _i43 in xrange(_size39):
+                    _key44 = iprot.readI32()
+                    _val45 = SpoutSpec()
+                    _val45.read(iprot)
+                    self.spouts[_key44] = _val45
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 2):
             if (ftype == TType.MAP):
                 self.bolts = {}
-                (_ktype40, _vtype41, _size39) = iprot.readMapBegin()
-                for _i43 in xrange(_size39):
-                    _key44 = iprot.readI32()
-                    _val45 = Bolt()
-                    _val45.read(iprot)
-                    self.bolts[_key44] = _val45
+                (_ktype47, _vtype48, _size46) = iprot.readMapBegin()
+                for _i50 in xrange(_size46):
+                    _key51 = iprot.readI32()
+                    _val52 = Bolt()
+                    _val52.read(iprot)
+                    self.bolts[_key51] = _val52
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 3):
             if (ftype == TType.MAP):
                 self.state_spouts = {}
-                (_ktype47, _vtype48, _size46) = iprot.readMapBegin()
-                for _i50 in xrange(_size46):
-                    _key51 = iprot.readI32()
-                    _val52 = StateSpoutSpec()
-                    _val52.read(iprot)
-                    self.state_spouts[_key51] = _val52
+                (_ktype54, _vtype55, _size53) = iprot.readMapBegin()
+                for _i57 in xrange(_size53):
+                    _key58 = iprot.readI32()
+                    _val59 = StateSpoutSpec()
+                    _val59.read(iprot)
+                    self.state_spouts[_key58] = _val59
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

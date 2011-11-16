@@ -10,16 +10,16 @@ switch (field.id) {
 case 1:
       if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
-          org.apache.thrift7.protocol.TMap _map13=iprot.readMapBegin();
-          this.inputs=new HashMap<GlobalStreamId,Grouping>(2 * _map13.size);
-          for (int _i14=0; _i14 < _map13.size; ++_i14) {
-            GlobalStreamId _key15;
-            Grouping _val16;
-            _key15=new GlobalStreamId();
-            _key15.read(iprot);
-            _val16=new Grouping();
-            _val16.read(iprot);
-            this.inputs.put(_key15,_val16);
+          org.apache.thrift7.protocol.TMap _map17=iprot.readMapBegin();
+          this.inputs=new HashMap<GlobalStreamId,Grouping>(2 * _map17.size);
+          for (int _i18=0; _i18 < _map17.size; ++_i18) {
+            GlobalStreamId _key19;
+            Grouping _val20;
+            _key19=new GlobalStreamId();
+            _key19.read(iprot);
+            _val20=new Grouping();
+            _val20.read(iprot);
+            this.inputs.put(_key19,_val20);
           }
           iprot.readMapEnd();
         }

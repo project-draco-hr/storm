@@ -10,15 +10,15 @@ switch (field.id) {
 case 1:
       if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
-          org.apache.thrift7.protocol.TMap _map8=iprot.readMapBegin();
-          this.streams=new HashMap<Integer,StreamInfo>(2 * _map8.size);
-          for (int _i9=0; _i9 < _map8.size; ++_i9) {
-            int _key10;
-            StreamInfo _val11;
-            _key10=iprot.readI32();
-            _val11=new StreamInfo();
-            _val11.read(iprot);
-            this.streams.put(_key10,_val11);
+          org.apache.thrift7.protocol.TMap _map12=iprot.readMapBegin();
+          this.streams=new HashMap<Integer,StreamInfo>(2 * _map12.size);
+          for (int _i13=0; _i13 < _map12.size; ++_i13) {
+            int _key14;
+            StreamInfo _val15;
+            _key14=iprot.readI32();
+            _val15=new StreamInfo();
+            _val15.read(iprot);
+            this.streams.put(_key14,_val15);
           }
           iprot.readMapEnd();
         }

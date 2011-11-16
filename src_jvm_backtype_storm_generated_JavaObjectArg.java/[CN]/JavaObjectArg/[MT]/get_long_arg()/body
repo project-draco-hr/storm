@@ -1,0 +1,8 @@
+{
+  if (getSetField() == _Fields.LONG_ARG) {
+    return (Long)getFieldValue();
+  }
+ else {
+    throw new RuntimeException("Cannot get field 'long_arg' because union is currently set to " + getFieldDesc(getSetField()).name);
+  }
+}

@@ -6,8 +6,8 @@ def write(self, oprot):
     if (self.output_fields is not None):
         oprot.writeFieldBegin('output_fields', TType.LIST, 1)
         oprot.writeListBegin(TType.STRING, len(self.output_fields))
-        for iter13 in self.output_fields:
-            oprot.writeString(iter13.encode('utf-8'))
+        for iter20 in self.output_fields:
+            oprot.writeString(iter20.encode('utf-8'))
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.direct is not None):

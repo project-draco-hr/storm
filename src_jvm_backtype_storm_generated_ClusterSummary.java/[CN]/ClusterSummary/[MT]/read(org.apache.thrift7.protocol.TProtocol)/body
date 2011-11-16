@@ -10,13 +10,13 @@ switch (field.id) {
 case 1:
       if (field.type == org.apache.thrift7.protocol.TType.LIST) {
 {
-          org.apache.thrift7.protocol.TList _list33=iprot.readListBegin();
-          this.supervisors=new ArrayList<SupervisorSummary>(_list33.size);
-          for (int _i34=0; _i34 < _list33.size; ++_i34) {
-            SupervisorSummary _elem35;
-            _elem35=new SupervisorSummary();
-            _elem35.read(iprot);
-            this.supervisors.add(_elem35);
+          org.apache.thrift7.protocol.TList _list37=iprot.readListBegin();
+          this.supervisors=new ArrayList<SupervisorSummary>(_list37.size);
+          for (int _i38=0; _i38 < _list37.size; ++_i38) {
+            SupervisorSummary _elem39;
+            _elem39=new SupervisorSummary();
+            _elem39.read(iprot);
+            this.supervisors.add(_elem39);
           }
           iprot.readListEnd();
         }
@@ -37,13 +37,13 @@ break;
 case 3:
 if (field.type == org.apache.thrift7.protocol.TType.LIST) {
 {
-  org.apache.thrift7.protocol.TList _list36=iprot.readListBegin();
-  this.topologies=new ArrayList<TopologySummary>(_list36.size);
-  for (int _i37=0; _i37 < _list36.size; ++_i37) {
-    TopologySummary _elem38;
-    _elem38=new TopologySummary();
-    _elem38.read(iprot);
-    this.topologies.add(_elem38);
+  org.apache.thrift7.protocol.TList _list40=iprot.readListBegin();
+  this.topologies=new ArrayList<TopologySummary>(_list40.size);
+  for (int _i41=0; _i41 < _list40.size; ++_i41) {
+    TopologySummary _elem42;
+    _elem42=new TopologySummary();
+    _elem42.read(iprot);
+    this.topologies.add(_elem42);
   }
   iprot.readListEnd();
 }

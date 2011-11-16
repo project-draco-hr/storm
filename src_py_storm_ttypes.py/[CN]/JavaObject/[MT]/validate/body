@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.full_class_name is None):
+        raise TProtocol.TProtocolException(message='Required field full_class_name is unset!')
+    if (self.args_list is None):
+        raise TProtocol.TProtocolException(message='Required field args_list is unset!')
+    return

@@ -6,12 +6,12 @@ case FIELDS:
       if (field.type == FIELDS_FIELD_DESC.type) {
         List<String> fields;
 {
-          org.apache.thrift7.protocol.TList _list0=iprot.readListBegin();
-          fields=new ArrayList<String>(_list0.size);
-          for (int _i1=0; _i1 < _list0.size; ++_i1) {
-            String _elem2;
-            _elem2=iprot.readString();
-            fields.add(_elem2);
+          org.apache.thrift7.protocol.TList _list4=iprot.readListBegin();
+          fields=new ArrayList<String>(_list4.size);
+          for (int _i5=0; _i5 < _list4.size; ++_i5) {
+            String _elem6;
+            _elem6=iprot.readString();
+            fields.add(_elem6);
           }
           iprot.readListEnd();
         }
@@ -60,6 +60,27 @@ NullStruct direct;
 direct=new NullStruct();
 direct.read(iprot);
 return direct;
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+case CUSTOM_OBJECT:
+if (field.type == CUSTOM_OBJECT_FIELD_DESC.type) {
+JavaObject custom_object;
+custom_object=new JavaObject();
+custom_object.read(iprot);
+return custom_object;
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+case CUSTOM_SERIALIZED:
+if (field.type == CUSTOM_SERIALIZED_FIELD_DESC.type) {
+ByteBuffer custom_serialized;
+custom_serialized=iprot.readBinary();
+return custom_serialized;
 }
  else {
 org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
