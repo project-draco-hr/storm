@@ -1,6 +1,5 @@
 {
   _outputter=new ByteArrayOutputStream();
   _dataOutputter=new DataOutputStream(_outputter);
-  _kryo=KryoFactory.getKryo(conf);
-  _delegate=new ListDelegate();
+  _kryo=new KryoValuesSerializer(conf);
 }

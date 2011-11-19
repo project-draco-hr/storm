@@ -1,4 +1,4 @@
 {
-  _kryo=KryoFactory.getKryo(conf);
+  _kryo=new KryoValuesDeserializer(conf);
   _context=context;
 }
