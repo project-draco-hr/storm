@@ -1,0 +1,5 @@
+{
+  CRC32OutputStream hasher=new CRC32OutputStream();
+  _kryo.writeObject(hasher,tuple.getValues());
+  return hasher.getValue();
+}

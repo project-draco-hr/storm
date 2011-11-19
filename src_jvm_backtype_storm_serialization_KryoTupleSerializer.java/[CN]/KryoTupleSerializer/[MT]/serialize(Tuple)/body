@@ -1,0 +1,9 @@
+{
+  _outputter.reset();
+  WritableUtils.writeVInt(_dataOutputter,tuple.getSourceTask());
+  WritableUtils.writeVInt(_dataOutputter,tuple.getSourceStreamId());
+  tuple.getMessageId().serialize(_dataOutputter);
+  _delegate.setDelegate(tuple.getValues());
+  _kryo.writeObject(_outputter,_delegate);
+  return _outputter.toByteArray();
+}

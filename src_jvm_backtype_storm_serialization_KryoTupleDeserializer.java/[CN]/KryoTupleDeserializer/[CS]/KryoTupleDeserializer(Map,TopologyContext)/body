@@ -1,0 +1,4 @@
+{
+  _kryo=KryoFactory.getKryo(conf);
+  _context=context;
+}

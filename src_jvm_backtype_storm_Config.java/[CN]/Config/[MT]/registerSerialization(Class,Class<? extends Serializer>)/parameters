@@ -1,0 +1,2 @@
+Class klass
+Class<? extends Serializer> serializerClass

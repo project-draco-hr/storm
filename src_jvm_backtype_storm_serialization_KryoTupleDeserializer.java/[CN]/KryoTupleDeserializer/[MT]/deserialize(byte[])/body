@@ -1,0 +1,9 @@
+{
+  ByteArrayInputStream bin=new ByteArrayInputStream(ser);
+  DataInputStream in=new DataInputStream(bin);
+  int taskId=WritableUtils.readVInt(in);
+  int streamId=WritableUtils.readVInt(in);
+  MessageId id=MessageId.deserialize(in);
+  List<Object> values=(List<Object>)_kryo.readObject(in,ArrayList.class);
+  return new Tuple(_context,values,taskId,streamId,id);
+}
