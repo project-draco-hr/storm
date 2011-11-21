@@ -1,6 +1,6 @@
 {
   addDeclaration(new InputDeclaration(){
-    @Override public void declare(    int prevComponent,    InputDeclarer declarer){
+    @Override public void declare(    String prevComponent,    InputDeclarer declarer){
       declarer.allGrouping(prevComponent);
     }
   }

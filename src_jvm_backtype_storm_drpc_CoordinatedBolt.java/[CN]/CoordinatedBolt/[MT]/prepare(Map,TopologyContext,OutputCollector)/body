@@ -2,7 +2,7 @@
   _tracked=new TimeCacheMap<Object,TrackingInfo>(Utils.toInteger(config.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS)));
   _collector=collector;
   _delegate.prepare(config,context,new CoordinatedOutputCollector(collector));
-  for (  Integer component : Utils.get(context.getThisTargets(),Constants.COORDINATED_STREAM_ID,new HashMap<Integer,Grouping>()).keySet()) {
+  for (  String component : Utils.get(context.getThisTargets(),Constants.COORDINATED_STREAM_ID,new HashMap<String,Grouping>()).keySet()) {
     for (    Integer task : context.getComponentTasks(component)) {
       _countOutTasks.add(task);
     }
@@ -12,7 +12,7 @@
       _numSourceReports=1;
     }
  else {
-      int sourceComponent=context.getThisSources().keySet().iterator().next().get_componentId();
+      String sourceComponent=context.getThisSources().keySet().iterator().next().get_componentId();
       _numSourceReports=context.getComponentTasks(sourceComponent).size();
     }
   }

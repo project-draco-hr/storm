@@ -1,0 +1,3 @@
+{
+  return streamNametoId.get(component).get(stream);
+}

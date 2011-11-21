@@ -1,6 +1,6 @@
 {
   Object requestId=tuple.getValue(0);
-  if (tuple.getSourceComponent() == returnComponent) {
+  if (tuple.getSourceComponent().equals(returnComponent)) {
     returns.put(requestId,tuple);
   }
  else {
