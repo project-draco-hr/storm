@@ -8,18 +8,16 @@
     }
 switch (field.id) {
 case 1:
-      if (field.type == org.apache.thrift7.protocol.TType.I32) {
-        this.componentId=iprot.readI32();
-        set_componentId_isSet(true);
+      if (field.type == org.apache.thrift7.protocol.TType.STRING) {
+        this.componentId=iprot.readString();
       }
  else {
         org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
       }
     break;
 case 2:
-  if (field.type == org.apache.thrift7.protocol.TType.I32) {
-    this.streamId=iprot.readI32();
-    set_streamId_isSet(true);
+  if (field.type == org.apache.thrift7.protocol.TType.STRING) {
+    this.streamId=iprot.readString();
   }
  else {
     org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);

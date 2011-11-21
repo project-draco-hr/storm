@@ -8,9 +8,9 @@ def write(self, oprot):
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.acked))
         for (kiter176, viter177) in self.acked.items():
             oprot.writeString(kiter176.encode('utf-8'))
-            oprot.writeMapBegin(TType.I32, TType.I64, len(viter177))
+            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter177))
             for (kiter178, viter179) in viter177.items():
-                oprot.writeI32(kiter178)
+                oprot.writeString(kiter178.encode('utf-8'))
                 oprot.writeI64(viter179)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
@@ -20,9 +20,9 @@ def write(self, oprot):
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.failed))
         for (kiter180, viter181) in self.failed.items():
             oprot.writeString(kiter180.encode('utf-8'))
-            oprot.writeMapBegin(TType.I32, TType.I64, len(viter181))
+            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter181))
             for (kiter182, viter183) in viter181.items():
-                oprot.writeI32(kiter182)
+                oprot.writeString(kiter182.encode('utf-8'))
                 oprot.writeI64(viter183)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
@@ -32,9 +32,9 @@ def write(self, oprot):
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.complete_ms_avg))
         for (kiter184, viter185) in self.complete_ms_avg.items():
             oprot.writeString(kiter184.encode('utf-8'))
-            oprot.writeMapBegin(TType.I32, TType.DOUBLE, len(viter185))
+            oprot.writeMapBegin(TType.STRING, TType.DOUBLE, len(viter185))
             for (kiter186, viter187) in viter185.items():
-                oprot.writeI32(kiter186)
+                oprot.writeString(kiter186.encode('utf-8'))
                 oprot.writeDouble(viter187)
             oprot.writeMapEnd()
         oprot.writeMapEnd()

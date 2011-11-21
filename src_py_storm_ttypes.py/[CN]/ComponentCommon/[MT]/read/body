@@ -12,7 +12,7 @@ def read(self, iprot):
                 self.streams = {}
                 (_ktype22, _vtype23, _size21) = iprot.readMapBegin()
                 for _i25 in xrange(_size21):
-                    _key26 = iprot.readI32()
+                    _key26 = iprot.readString().decode('utf-8')
                     _val27 = StreamInfo()
                     _val27.read(iprot)
                     self.streams[_key26] = _val27

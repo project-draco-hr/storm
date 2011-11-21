@@ -5,7 +5,7 @@ case SPOUTS:
       unset_spouts();
     }
  else {
-      set_spouts((Map<Integer,SpoutSpec>)value);
+      set_spouts((Map<String,SpoutSpec>)value);
     }
   break;
 case BOLTS:
@@ -13,7 +13,7 @@ if (value == null) {
   unset_bolts();
 }
  else {
-  set_bolts((Map<Integer,Bolt>)value);
+  set_bolts((Map<String,Bolt>)value);
 }
 break;
 case STATE_SPOUTS:
@@ -21,7 +21,7 @@ if (value == null) {
 unset_state_spouts();
 }
  else {
-set_state_spouts((Map<Integer,StateSpoutSpec>)value);
+set_state_spouts((Map<String,StateSpoutSpec>)value);
 }
 break;
 }

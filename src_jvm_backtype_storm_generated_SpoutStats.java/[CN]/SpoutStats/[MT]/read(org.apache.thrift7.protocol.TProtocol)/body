@@ -11,18 +11,18 @@ case 1:
       if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
           org.apache.thrift7.protocol.TMap _map75=iprot.readMapBegin();
-          this.acked=new HashMap<String,Map<Integer,Long>>(2 * _map75.size);
+          this.acked=new HashMap<String,Map<String,Long>>(2 * _map75.size);
           for (int _i76=0; _i76 < _map75.size; ++_i76) {
             String _key77;
-            Map<Integer,Long> _val78;
+            Map<String,Long> _val78;
             _key77=iprot.readString();
 {
               org.apache.thrift7.protocol.TMap _map79=iprot.readMapBegin();
-              _val78=new HashMap<Integer,Long>(2 * _map79.size);
+              _val78=new HashMap<String,Long>(2 * _map79.size);
               for (int _i80=0; _i80 < _map79.size; ++_i80) {
-                int _key81;
+                String _key81;
                 long _val82;
-                _key81=iprot.readI32();
+                _key81=iprot.readString();
                 _val82=iprot.readI64();
                 _val78.put(_key81,_val82);
               }
@@ -41,18 +41,18 @@ case 2:
   if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
       org.apache.thrift7.protocol.TMap _map83=iprot.readMapBegin();
-      this.failed=new HashMap<String,Map<Integer,Long>>(2 * _map83.size);
+      this.failed=new HashMap<String,Map<String,Long>>(2 * _map83.size);
       for (int _i84=0; _i84 < _map83.size; ++_i84) {
         String _key85;
-        Map<Integer,Long> _val86;
+        Map<String,Long> _val86;
         _key85=iprot.readString();
 {
           org.apache.thrift7.protocol.TMap _map87=iprot.readMapBegin();
-          _val86=new HashMap<Integer,Long>(2 * _map87.size);
+          _val86=new HashMap<String,Long>(2 * _map87.size);
           for (int _i88=0; _i88 < _map87.size; ++_i88) {
-            int _key89;
+            String _key89;
             long _val90;
-            _key89=iprot.readI32();
+            _key89=iprot.readString();
             _val90=iprot.readI64();
             _val86.put(_key89,_val90);
           }
@@ -71,18 +71,18 @@ case 3:
 if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
   org.apache.thrift7.protocol.TMap _map91=iprot.readMapBegin();
-  this.complete_ms_avg=new HashMap<String,Map<Integer,Double>>(2 * _map91.size);
+  this.complete_ms_avg=new HashMap<String,Map<String,Double>>(2 * _map91.size);
   for (int _i92=0; _i92 < _map91.size; ++_i92) {
     String _key93;
-    Map<Integer,Double> _val94;
+    Map<String,Double> _val94;
     _key93=iprot.readString();
 {
       org.apache.thrift7.protocol.TMap _map95=iprot.readMapBegin();
-      _val94=new HashMap<Integer,Double>(2 * _map95.size);
+      _val94=new HashMap<String,Double>(2 * _map95.size);
       for (int _i96=0; _i96 < _map95.size; ++_i96) {
-        int _key97;
+        String _key97;
         double _val98;
-        _key97=iprot.readI32();
+        _key97=iprot.readString();
         _val98=iprot.readDouble();
         _val94.put(_key97,_val98);
       }

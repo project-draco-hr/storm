@@ -1,0 +1,6 @@
+{
+  if (this.complete_ms_avg == null) {
+    this.complete_ms_avg=new HashMap<String,Map<String,Double>>();
+  }
+  this.complete_ms_avg.put(key,val);
+}

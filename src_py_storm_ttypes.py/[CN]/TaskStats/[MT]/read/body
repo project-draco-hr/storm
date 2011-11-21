@@ -16,7 +16,7 @@ def read(self, iprot):
                     _val194 = {}
                     (_ktype196, _vtype197, _size195) = iprot.readMapBegin()
                     for _i199 in xrange(_size195):
-                        _key200 = iprot.readI32()
+                        _key200 = iprot.readString().decode('utf-8')
                         _val201 = iprot.readI64()
                         _val194[_key200] = _val201
                     iprot.readMapEnd()
@@ -33,7 +33,7 @@ def read(self, iprot):
                     _val208 = {}
                     (_ktype210, _vtype211, _size209) = iprot.readMapBegin()
                     for _i213 in xrange(_size209):
-                        _key214 = iprot.readI32()
+                        _key214 = iprot.readString().decode('utf-8')
                         _val215 = iprot.readI64()
                         _val208[_key214] = _val215
                     iprot.readMapEnd()

@@ -5,7 +5,7 @@ case STREAMS:
       unset_streams();
     }
  else {
-      set_streams((Map<Integer,StreamInfo>)value);
+      set_streams((Map<String,StreamInfo>)value);
     }
   break;
 case PARALLELISM_HINT:

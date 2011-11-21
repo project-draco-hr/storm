@@ -13,7 +13,7 @@ if (value == null) {
   unset_component_id();
 }
  else {
-  set_component_id((Integer)value);
+  set_component_id((String)value);
 }
 break;
 case HOST:

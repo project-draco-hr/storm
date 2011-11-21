@@ -11,11 +11,11 @@ case 1:
       if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
           org.apache.thrift7.protocol.TMap _map22=iprot.readMapBegin();
-          this.spouts=new HashMap<Integer,SpoutSpec>(2 * _map22.size);
+          this.spouts=new HashMap<String,SpoutSpec>(2 * _map22.size);
           for (int _i23=0; _i23 < _map22.size; ++_i23) {
-            int _key24;
+            String _key24;
             SpoutSpec _val25;
-            _key24=iprot.readI32();
+            _key24=iprot.readString();
             _val25=new SpoutSpec();
             _val25.read(iprot);
             this.spouts.put(_key24,_val25);
@@ -31,11 +31,11 @@ case 2:
   if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
       org.apache.thrift7.protocol.TMap _map26=iprot.readMapBegin();
-      this.bolts=new HashMap<Integer,Bolt>(2 * _map26.size);
+      this.bolts=new HashMap<String,Bolt>(2 * _map26.size);
       for (int _i27=0; _i27 < _map26.size; ++_i27) {
-        int _key28;
+        String _key28;
         Bolt _val29;
-        _key28=iprot.readI32();
+        _key28=iprot.readString();
         _val29=new Bolt();
         _val29.read(iprot);
         this.bolts.put(_key28,_val29);
@@ -51,11 +51,11 @@ case 3:
 if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
   org.apache.thrift7.protocol.TMap _map30=iprot.readMapBegin();
-  this.state_spouts=new HashMap<Integer,StateSpoutSpec>(2 * _map30.size);
+  this.state_spouts=new HashMap<String,StateSpoutSpec>(2 * _map30.size);
   for (int _i31=0; _i31 < _map30.size; ++_i31) {
-    int _key32;
+    String _key32;
     StateSpoutSpec _val33;
-    _key32=iprot.readI32();
+    _key32=iprot.readString();
     _val33=new StateSpoutSpec();
     _val33.read(iprot);
     this.state_spouts.put(_key32,_val33);

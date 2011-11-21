@@ -1,6 +1,4 @@
 {
-  set_componentId_isSet(false);
-  this.componentId=0;
-  set_streamId_isSet(false);
-  this.streamId=0;
+  this.componentId=null;
+  this.streamId=null;
 }

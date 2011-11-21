@@ -17,9 +17,8 @@ case 1:
       }
     break;
 case 2:
-  if (field.type == org.apache.thrift7.protocol.TType.I32) {
-    this.component_id=iprot.readI32();
-    set_component_id_isSet(true);
+  if (field.type == org.apache.thrift7.protocol.TType.STRING) {
+    this.component_id=iprot.readString();
   }
  else {
     org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);

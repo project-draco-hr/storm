@@ -1,0 +1,6 @@
+{
+  if (this.emitted == null) {
+    this.emitted=new HashMap<String,Map<String,Long>>();
+  }
+  this.emitted.put(key,val);
+}

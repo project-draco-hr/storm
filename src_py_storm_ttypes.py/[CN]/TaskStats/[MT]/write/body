@@ -8,9 +8,9 @@ def write(self, oprot):
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.emitted))
         for (kiter216, viter217) in self.emitted.items():
             oprot.writeString(kiter216.encode('utf-8'))
-            oprot.writeMapBegin(TType.I32, TType.I64, len(viter217))
+            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter217))
             for (kiter218, viter219) in viter217.items():
-                oprot.writeI32(kiter218)
+                oprot.writeString(kiter218.encode('utf-8'))
                 oprot.writeI64(viter219)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
@@ -20,9 +20,9 @@ def write(self, oprot):
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.transferred))
         for (kiter220, viter221) in self.transferred.items():
             oprot.writeString(kiter220.encode('utf-8'))
-            oprot.writeMapBegin(TType.I32, TType.I64, len(viter221))
+            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter221))
             for (kiter222, viter223) in viter221.items():
-                oprot.writeI32(kiter222)
+                oprot.writeString(kiter222.encode('utf-8'))
                 oprot.writeI64(viter223)
             oprot.writeMapEnd()
         oprot.writeMapEnd()

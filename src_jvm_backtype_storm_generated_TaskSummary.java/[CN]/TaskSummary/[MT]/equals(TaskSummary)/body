@@ -6,11 +6,11 @@
     if (!(this_present_task_id && that_present_task_id))     return false;
     if (this.task_id != that.task_id)     return false;
   }
-  boolean this_present_component_id=true;
-  boolean that_present_component_id=true;
+  boolean this_present_component_id=true && this.is_set_component_id();
+  boolean that_present_component_id=true && that.is_set_component_id();
   if (this_present_component_id || that_present_component_id) {
     if (!(this_present_component_id && that_present_component_id))     return false;
-    if (this.component_id != that.component_id)     return false;
+    if (!this.component_id.equals(that.component_id))     return false;
   }
   boolean this_present_host=true && this.is_set_host();
   boolean that_present_host=true && that.is_set_host();

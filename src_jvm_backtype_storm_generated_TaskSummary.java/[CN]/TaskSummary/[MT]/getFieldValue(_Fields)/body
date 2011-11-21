@@ -3,7 +3,7 @@ switch (field) {
 case TASK_ID:
     return Integer.valueOf(get_task_id());
 case COMPONENT_ID:
-  return Integer.valueOf(get_component_id());
+  return get_component_id();
 case HOST:
 return get_host();
 case PORT:

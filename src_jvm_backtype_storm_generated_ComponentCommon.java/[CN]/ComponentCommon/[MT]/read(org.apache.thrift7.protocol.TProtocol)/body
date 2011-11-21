@@ -11,11 +11,11 @@ case 1:
       if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
           org.apache.thrift7.protocol.TMap _map12=iprot.readMapBegin();
-          this.streams=new HashMap<Integer,StreamInfo>(2 * _map12.size);
+          this.streams=new HashMap<String,StreamInfo>(2 * _map12.size);
           for (int _i13=0; _i13 < _map12.size; ++_i13) {
-            int _key14;
+            String _key14;
             StreamInfo _val15;
-            _key14=iprot.readI32();
+            _key14=iprot.readString();
             _val15=new StreamInfo();
             _val15.read(iprot);
             this.streams.put(_key14,_val15);

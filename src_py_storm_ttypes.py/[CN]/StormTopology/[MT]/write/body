@@ -5,25 +5,25 @@ def write(self, oprot):
     oprot.writeStructBegin('StormTopology')
     if (self.spouts is not None):
         oprot.writeFieldBegin('spouts', TType.MAP, 1)
-        oprot.writeMapBegin(TType.I32, TType.STRUCT, len(self.spouts))
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.spouts))
         for (kiter60, viter61) in self.spouts.items():
-            oprot.writeI32(kiter60)
+            oprot.writeString(kiter60.encode('utf-8'))
             viter61.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.bolts is not None):
         oprot.writeFieldBegin('bolts', TType.MAP, 2)
-        oprot.writeMapBegin(TType.I32, TType.STRUCT, len(self.bolts))
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.bolts))
         for (kiter62, viter63) in self.bolts.items():
-            oprot.writeI32(kiter62)
+            oprot.writeString(kiter62.encode('utf-8'))
             viter63.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.state_spouts is not None):
         oprot.writeFieldBegin('state_spouts', TType.MAP, 3)
-        oprot.writeMapBegin(TType.I32, TType.STRUCT, len(self.state_spouts))
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.state_spouts))
         for (kiter64, viter65) in self.state_spouts.items():
-            oprot.writeI32(kiter64)
+            oprot.writeString(kiter64.encode('utf-8'))
             viter65.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
