@@ -1,4 +1,5 @@
 {
   _delegate.ack(msgId);
-  _tracker._collector.emit(TrackerAggregator.TRACK_STREAM,new Values(1,0,0));
+  Map stats=(Map)RegisteredGlobalState.getState(_trackId);
+  ((AtomicInteger)stats.get("processed")).incrementAndGet();
 }

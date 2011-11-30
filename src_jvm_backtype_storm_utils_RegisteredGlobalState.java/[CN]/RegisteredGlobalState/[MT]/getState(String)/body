@@ -1,0 +1,6 @@
+{
+synchronized (_lock) {
+    Object ret=_states.get(id);
+    return ret;
+  }
+}

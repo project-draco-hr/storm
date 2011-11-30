@@ -1,4 +1,3 @@
 {
-  _trackCollector=new BoltTrackerOutputCollector(collector);
-  _delegate.prepare(stormConf,context,_trackCollector);
+  _delegate.prepare(stormConf,context,collector);
 }

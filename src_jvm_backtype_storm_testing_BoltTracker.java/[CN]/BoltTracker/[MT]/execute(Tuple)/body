@@ -1,5 +1,5 @@
 {
-  int currTransferred=_trackCollector.transferred;
   _delegate.execute(input);
-  _trackCollector._collector.emit(TrackerAggregator.TRACK_STREAM,new Values(1,_trackCollector.transferred - currTransferred,0));
+  Map stats=(Map)RegisteredGlobalState.getState(_trackId);
+  ((AtomicInteger)stats.get("processed")).incrementAndGet();
 }
