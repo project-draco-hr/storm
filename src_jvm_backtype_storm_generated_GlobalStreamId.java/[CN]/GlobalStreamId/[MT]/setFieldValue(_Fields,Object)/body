@@ -5,7 +5,7 @@ case COMPONENT_ID:
       unset_componentId();
     }
  else {
-      set_componentId((Integer)value);
+      set_componentId((String)value);
     }
   break;
 case STREAM_ID:
@@ -13,7 +13,7 @@ if (value == null) {
   unset_streamId();
 }
  else {
-  set_streamId((Integer)value);
+  set_streamId((String)value);
 }
 break;
 }

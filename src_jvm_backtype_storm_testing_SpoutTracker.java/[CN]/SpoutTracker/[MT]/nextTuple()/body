@@ -1,9 +1,3 @@
 {
-  int curr=_tracker.transferred;
-  int currEmitted=_tracker.emitted;
   _delegate.nextTuple();
-  int transferred=_tracker.transferred - curr;
-  if (transferred > 0) {
-    _tracker._collector.emit(TrackerAggregator.TRACK_STREAM,new Values(0,transferred,_tracker.emitted - currEmitted));
-  }
 }

@@ -1,5 +1,5 @@
 {
-  for (  Integer stream : _fields.keySet()) {
+  for (  String stream : _fields.keySet()) {
     StreamInfo info=_fields.get(stream);
     declarer.declareStream(stream,info.is_direct(),new Fields(info.get_output_fields()));
   }

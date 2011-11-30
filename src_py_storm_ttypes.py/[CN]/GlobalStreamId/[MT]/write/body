@@ -4,12 +4,12 @@ def write(self, oprot):
         return
     oprot.writeStructBegin('GlobalStreamId')
     if (self.componentId is not None):
-        oprot.writeFieldBegin('componentId', TType.I32, 1)
-        oprot.writeI32(self.componentId)
+        oprot.writeFieldBegin('componentId', TType.STRING, 1)
+        oprot.writeString(self.componentId.encode('utf-8'))
         oprot.writeFieldEnd()
     if (self.streamId is not None):
-        oprot.writeFieldBegin('streamId', TType.I32, 2)
-        oprot.writeI32(self.streamId)
+        oprot.writeFieldBegin('streamId', TType.STRING, 2)
+        oprot.writeString(self.streamId.encode('utf-8'))
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

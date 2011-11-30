@@ -5,7 +5,7 @@ case ACKED:
       unset_acked();
     }
  else {
-      set_acked((Map<String,Map<Integer,Long>>)value);
+      set_acked((Map<String,Map<String,Long>>)value);
     }
   break;
 case FAILED:
@@ -13,7 +13,7 @@ if (value == null) {
   unset_failed();
 }
  else {
-  set_failed((Map<String,Map<Integer,Long>>)value);
+  set_failed((Map<String,Map<String,Long>>)value);
 }
 break;
 case COMPLETE_MS_AVG:
@@ -21,7 +21,7 @@ if (value == null) {
 unset_complete_ms_avg();
 }
  else {
-set_complete_ms_avg((Map<String,Map<Integer,Double>>)value);
+set_complete_ms_avg((Map<String,Map<String,Double>>)value);
 }
 break;
 }

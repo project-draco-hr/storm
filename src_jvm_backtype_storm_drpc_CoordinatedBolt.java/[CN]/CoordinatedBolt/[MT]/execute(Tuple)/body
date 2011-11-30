@@ -10,13 +10,13 @@ synchronized (_tracked) {
     }
   }
   boolean checkFinish=false;
-  if (_idComponent != null && tuple.getSourceComponent() == _idComponent && tuple.getSourceStreamId() == PrepareRequest.ID_STREAM) {
+  if (_idComponent != null && tuple.getSourceComponent().equals(_idComponent) && tuple.getSourceStreamId().equals(PrepareRequest.ID_STREAM)) {
 synchronized (_tracked) {
       track.receivedId=true;
     }
     checkFinish=true;
   }
- else   if (_sourceArgs != null && tuple.getSourceStreamId() == Constants.COORDINATED_STREAM_ID) {
+ else   if (_sourceArgs != null && tuple.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID)) {
     int count=(Integer)tuple.getValue(1);
 synchronized (_tracked) {
       track.reportCount++;

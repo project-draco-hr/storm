@@ -1,3 +1,0 @@
-int streamId
-Collection<Tuple> anchors
-List<Object> tuple

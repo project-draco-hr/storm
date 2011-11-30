@@ -1,6 +1,0 @@
-{
-  _collector.emitDirect(taskId,streamId,tuple,messageId);
-  emitted++;
-  transferred++;
-  if (messageId != null)   transferred++;
-}

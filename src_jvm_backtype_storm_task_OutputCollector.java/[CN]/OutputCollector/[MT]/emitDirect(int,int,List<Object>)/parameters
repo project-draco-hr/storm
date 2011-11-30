@@ -1,3 +1,0 @@
-int taskId
-int streamId
-List<Object> tuple

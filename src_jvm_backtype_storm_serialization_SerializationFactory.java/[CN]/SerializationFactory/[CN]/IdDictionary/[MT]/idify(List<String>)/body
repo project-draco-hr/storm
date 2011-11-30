@@ -1,0 +1,10 @@
+{
+  Collections.sort(names);
+  Map<String,Integer> ret=new HashMap<String,Integer>();
+  int i=1;
+  for (  String name : names) {
+    ret.put(name,i);
+    i++;
+  }
+  return ret;
+}

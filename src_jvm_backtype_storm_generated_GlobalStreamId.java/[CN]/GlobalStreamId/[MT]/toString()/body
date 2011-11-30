@@ -2,11 +2,21 @@
   StringBuilder sb=new StringBuilder("GlobalStreamId(");
   boolean first=true;
   sb.append("componentId:");
-  sb.append(this.componentId);
+  if (this.componentId == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.componentId);
+  }
   first=false;
   if (!first)   sb.append(", ");
   sb.append("streamId:");
-  sb.append(this.streamId);
+  if (this.streamId == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.streamId);
+  }
   first=false;
   sb.append(")");
   return sb.toString();

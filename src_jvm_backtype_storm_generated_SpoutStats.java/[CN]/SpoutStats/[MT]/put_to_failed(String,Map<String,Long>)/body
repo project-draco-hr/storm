@@ -1,0 +1,6 @@
+{
+  if (this.failed == null) {
+    this.failed=new HashMap<String,Map<String,Long>>();
+  }
+  this.failed.put(key,val);
+}

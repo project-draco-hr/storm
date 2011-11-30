@@ -1,0 +1,6 @@
+{
+  _outputter=new ByteArrayOutputStream();
+  _dataOutputter=new DataOutputStream(_outputter);
+  _kryo=new KryoValuesSerializer(conf);
+  _ids=new SerializationFactory.IdDictionary(context.getRawTopology());
+}

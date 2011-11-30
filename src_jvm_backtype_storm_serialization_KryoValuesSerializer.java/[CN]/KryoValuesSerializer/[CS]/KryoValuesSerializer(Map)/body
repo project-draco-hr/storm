@@ -1,4 +1,4 @@
 {
-  _kryo=KryoFactory.getKryo(conf);
+  _kryo=SerializationFactory.getKryo(conf);
   _delegate=new ListDelegate();
 }

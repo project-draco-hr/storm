@@ -1,7 +1,0 @@
-{
-  this();
-  this.componentId=componentId;
-  set_componentId_isSet(true);
-  this.streamId=streamId;
-  set_streamId_isSet(true);
-}

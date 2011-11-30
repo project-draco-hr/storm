@@ -1,4 +1,4 @@
 {
   _name=name;
-  emitted_tuples.put(name,new HashMap<Integer,List<FixedTuple>>());
+  emitted_tuples.put(name,new HashMap<String,List<FixedTuple>>());
 }

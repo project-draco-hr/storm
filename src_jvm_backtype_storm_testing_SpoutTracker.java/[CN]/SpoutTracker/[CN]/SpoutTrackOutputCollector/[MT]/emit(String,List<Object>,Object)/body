@@ -1,0 +1,5 @@
+{
+  List<Integer> ret=_collector.emit(streamId,tuple,messageId);
+  recordSpoutEmit();
+  return ret;
+}

@@ -12,7 +12,7 @@ def read(self, iprot):
                 self.spouts = {}
                 (_ktype40, _vtype41, _size39) = iprot.readMapBegin()
                 for _i43 in xrange(_size39):
-                    _key44 = iprot.readI32()
+                    _key44 = iprot.readString().decode('utf-8')
                     _val45 = SpoutSpec()
                     _val45.read(iprot)
                     self.spouts[_key44] = _val45
@@ -24,7 +24,7 @@ def read(self, iprot):
                 self.bolts = {}
                 (_ktype47, _vtype48, _size46) = iprot.readMapBegin()
                 for _i50 in xrange(_size46):
-                    _key51 = iprot.readI32()
+                    _key51 = iprot.readString().decode('utf-8')
                     _val52 = Bolt()
                     _val52.read(iprot)
                     self.bolts[_key51] = _val52
@@ -36,7 +36,7 @@ def read(self, iprot):
                 self.state_spouts = {}
                 (_ktype54, _vtype55, _size53) = iprot.readMapBegin()
                 for _i57 in xrange(_size53):
-                    _key58 = iprot.readI32()
+                    _key58 = iprot.readString().decode('utf-8')
                     _val59 = StateSpoutSpec()
                     _val59.read(iprot)
                     self.state_spouts[_key58] = _val59

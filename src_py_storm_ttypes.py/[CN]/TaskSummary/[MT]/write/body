@@ -8,8 +8,8 @@ def write(self, oprot):
         oprot.writeI32(self.task_id)
         oprot.writeFieldEnd()
     if (self.component_id is not None):
-        oprot.writeFieldBegin('component_id', TType.I32, 2)
-        oprot.writeI32(self.component_id)
+        oprot.writeFieldBegin('component_id', TType.STRING, 2)
+        oprot.writeString(self.component_id.encode('utf-8'))
         oprot.writeFieldEnd()
     if (self.host is not None):
         oprot.writeFieldBegin('host', TType.STRING, 3)

@@ -5,9 +5,9 @@ def write(self, oprot):
     oprot.writeStructBegin('ComponentCommon')
     if (self.streams is not None):
         oprot.writeFieldBegin('streams', TType.MAP, 1)
-        oprot.writeMapBegin(TType.I32, TType.STRUCT, len(self.streams))
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.streams))
         for (kiter28, viter29) in self.streams.items():
-            oprot.writeI32(kiter28)
+            oprot.writeString(kiter28.encode('utf-8'))
             viter29.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()

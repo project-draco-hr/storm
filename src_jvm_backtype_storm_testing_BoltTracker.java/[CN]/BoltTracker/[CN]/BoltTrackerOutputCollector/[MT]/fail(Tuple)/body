@@ -1,4 +1,0 @@
-{
-  _collector.fail(input);
-  transferred+=input.getMessageId().getAnchors().size();
-}

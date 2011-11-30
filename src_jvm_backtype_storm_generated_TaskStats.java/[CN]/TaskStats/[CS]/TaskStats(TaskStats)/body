@@ -1,15 +1,15 @@
 {
   if (other.is_set_emitted()) {
-    Map<String,Map<Integer,Long>> __this__emitted=new HashMap<String,Map<Integer,Long>>();
-    for (    Map.Entry<String,Map<Integer,Long>> other_element : other.emitted.entrySet()) {
+    Map<String,Map<String,Long>> __this__emitted=new HashMap<String,Map<String,Long>>();
+    for (    Map.Entry<String,Map<String,Long>> other_element : other.emitted.entrySet()) {
       String other_element_key=other_element.getKey();
-      Map<Integer,Long> other_element_value=other_element.getValue();
+      Map<String,Long> other_element_value=other_element.getValue();
       String __this__emitted_copy_key=other_element_key;
-      Map<Integer,Long> __this__emitted_copy_value=new HashMap<Integer,Long>();
-      for (      Map.Entry<Integer,Long> other_element_value_element : other_element_value.entrySet()) {
-        Integer other_element_value_element_key=other_element_value_element.getKey();
+      Map<String,Long> __this__emitted_copy_value=new HashMap<String,Long>();
+      for (      Map.Entry<String,Long> other_element_value_element : other_element_value.entrySet()) {
+        String other_element_value_element_key=other_element_value_element.getKey();
         Long other_element_value_element_value=other_element_value_element.getValue();
-        Integer __this__emitted_copy_value_copy_key=other_element_value_element_key;
+        String __this__emitted_copy_value_copy_key=other_element_value_element_key;
         Long __this__emitted_copy_value_copy_value=other_element_value_element_value;
         __this__emitted_copy_value.put(__this__emitted_copy_value_copy_key,__this__emitted_copy_value_copy_value);
       }
@@ -18,16 +18,16 @@
     this.emitted=__this__emitted;
   }
   if (other.is_set_transferred()) {
-    Map<String,Map<Integer,Long>> __this__transferred=new HashMap<String,Map<Integer,Long>>();
-    for (    Map.Entry<String,Map<Integer,Long>> other_element : other.transferred.entrySet()) {
+    Map<String,Map<String,Long>> __this__transferred=new HashMap<String,Map<String,Long>>();
+    for (    Map.Entry<String,Map<String,Long>> other_element : other.transferred.entrySet()) {
       String other_element_key=other_element.getKey();
-      Map<Integer,Long> other_element_value=other_element.getValue();
+      Map<String,Long> other_element_value=other_element.getValue();
       String __this__transferred_copy_key=other_element_key;
-      Map<Integer,Long> __this__transferred_copy_value=new HashMap<Integer,Long>();
-      for (      Map.Entry<Integer,Long> other_element_value_element : other_element_value.entrySet()) {
-        Integer other_element_value_element_key=other_element_value_element.getKey();
+      Map<String,Long> __this__transferred_copy_value=new HashMap<String,Long>();
+      for (      Map.Entry<String,Long> other_element_value_element : other_element_value.entrySet()) {
+        String other_element_value_element_key=other_element_value_element.getKey();
         Long other_element_value_element_value=other_element_value_element.getValue();
-        Integer __this__transferred_copy_value_copy_key=other_element_value_element_key;
+        String __this__transferred_copy_value_copy_key=other_element_value_element_key;
         Long __this__transferred_copy_value_copy_value=other_element_value_element_value;
         __this__transferred_copy_value.put(__this__transferred_copy_value_copy_key,__this__transferred_copy_value_copy_value);
       }

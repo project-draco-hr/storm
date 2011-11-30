@@ -1,4 +1,3 @@
 {
   _delegate.declareOutputFields(declarer);
-  declarer.declareStream(TrackerAggregator.TRACK_STREAM,new Fields("processed","transferred","spoutEmitted"));
 }

@@ -2,7 +2,7 @@
   try {
     _outputter.reset();
     WritableUtils.writeVInt(_dataOutputter,tuple.getSourceTask());
-    WritableUtils.writeVInt(_dataOutputter,tuple.getSourceStreamId());
+    WritableUtils.writeVInt(_dataOutputter,_ids.getStreamId(tuple.getSourceComponent(),tuple.getSourceStreamId()));
     tuple.getMessageId().serialize(_dataOutputter);
     _kryo.serializeInto(tuple.getValues(),_outputter);
     return _outputter.toByteArray();

@@ -4,9 +4,11 @@
   oprot.writeFieldBegin(TASK_ID_FIELD_DESC);
   oprot.writeI32(this.task_id);
   oprot.writeFieldEnd();
-  oprot.writeFieldBegin(COMPONENT_ID_FIELD_DESC);
-  oprot.writeI32(this.component_id);
-  oprot.writeFieldEnd();
+  if (this.component_id != null) {
+    oprot.writeFieldBegin(COMPONENT_ID_FIELD_DESC);
+    oprot.writeString(this.component_id);
+    oprot.writeFieldEnd();
+  }
   if (this.host != null) {
     oprot.writeFieldBegin(HOST_FIELD_DESC);
     oprot.writeString(this.host);

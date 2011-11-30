@@ -1,4 +1,0 @@
-{
-  this.component_id=component_id;
-  set_component_id_isSet(true);
-}
