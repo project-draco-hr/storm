@@ -1,10 +1,7 @@
 {
-  LinearDRPCTopologyBuilder builder=new LinearDRPCTopologyBuilder("reach");
-  builder.addBolt(new GetTweeters(),3);
-  builder.addBolt(new GetFollowers(),12).shuffleGrouping();
-  builder.addBolt(new PartialUniquer(),6).fieldsGrouping(new Fields("id","follower"));
-  builder.addBolt(new CountAggregator(),2).fieldsGrouping(new Fields("id"));
+  LinearDRPCTopologyBuilder builder=construct();
   Config conf=new Config();
+  conf.setDebug(true);
   if (args == null || args.length == 0) {
     conf.setMaxTaskParallelism(3);
     LocalDRPC drpc=new LocalDRPC();
