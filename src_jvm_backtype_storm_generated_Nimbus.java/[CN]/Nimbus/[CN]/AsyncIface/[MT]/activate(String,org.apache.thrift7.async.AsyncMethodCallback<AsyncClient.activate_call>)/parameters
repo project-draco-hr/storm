@@ -1,0 +1,2 @@
+String name
+org.apache.thrift7.async.AsyncMethodCallback<AsyncClient.activate_call> resultHandler

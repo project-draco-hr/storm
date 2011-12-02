@@ -1,0 +1,8 @@
+{
+  deactivate_result result=new deactivate_result();
+  receiveBase(result,"deactivate");
+  if (result.e != null) {
+    throw result.e;
+  }
+  return;
+}

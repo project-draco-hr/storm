@@ -1,0 +1,13 @@
+def process_activate(self, seqid, iprot, oprot):
+    args = activate_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = activate_result()
+    try:
+        self._handler.activate(args.name)
+    except NotAliveException as e:
+        result.e = e
+    oprot.writeMessageBegin('activate', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

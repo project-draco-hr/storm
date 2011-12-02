@@ -1,0 +1,10 @@
+{
+  deactivate_result result=new deactivate_result();
+  try {
+    iface.deactivate(args.name);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+  return result;
+}

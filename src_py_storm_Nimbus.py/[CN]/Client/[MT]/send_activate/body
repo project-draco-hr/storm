@@ -1,0 +1,7 @@
+def send_activate(self, name):
+    self._oprot.writeMessageBegin('activate', TMessageType.CALL, self._seqid)
+    args = activate_args()
+    args.name = name
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

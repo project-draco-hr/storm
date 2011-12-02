@@ -1,0 +1,3 @@
+def deactivate(self, name):
+    '\n    Parameters:\n     - name\n    '
+    pass

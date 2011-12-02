@@ -1,0 +1,10 @@
+{
+  activate_result result=new activate_result();
+  try {
+    iface.activate(args.name);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+  return result;
+}
