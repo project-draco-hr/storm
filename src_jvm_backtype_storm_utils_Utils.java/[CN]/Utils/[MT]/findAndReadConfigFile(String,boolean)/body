@@ -6,7 +6,8 @@
  else       return new HashMap();
     }
     URL resource=(URL)resources.nextElement();
-    Map ret=(Map)YAML.load(new InputStreamReader(resource.openStream()));
+    Yaml yaml=new Yaml();
+    Map ret=(Map)yaml.load(new InputStreamReader(resource.openStream()));
     if (ret == null)     ret=new HashMap();
     if (resources.hasMoreElements()) {
       throw new RuntimeException("Found multiple " + name + " resources");
