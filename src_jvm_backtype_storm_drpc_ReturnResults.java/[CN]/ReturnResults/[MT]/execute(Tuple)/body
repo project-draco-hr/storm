@@ -28,6 +28,7 @@
       _collector.ack(input);
     }
  catch (    TException e) {
+      LOG.error("Failed to return results to DRPC server",e);
       _collector.fail(input);
     }
   }
