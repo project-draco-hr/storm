@@ -15,6 +15,7 @@ synchronized (_tracked) {
       track.receivedId=true;
     }
     checkFinish=true;
+    _collector.ack(tuple);
   }
  else   if (_sourceArgs != null && tuple.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID)) {
     int count=(Integer)tuple.getValue(1);
@@ -23,6 +24,7 @@ synchronized (_tracked) {
       track.expectedTupleCount+=count;
     }
     checkFinish=true;
+    _collector.ack(tuple);
   }
  else {
     _delegate.execute(tuple);
