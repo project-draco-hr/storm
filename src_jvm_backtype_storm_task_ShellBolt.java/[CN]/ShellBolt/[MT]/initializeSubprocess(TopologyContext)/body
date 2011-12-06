@@ -1,5 +1,5 @@
 {
-  ProcessBuilder builder=new ProcessBuilder(_shellCommand,_codeResource);
+  ProcessBuilder builder=new ProcessBuilder(command);
   builder.directory(new File(context.getCodeDir()));
   try {
     _subprocess=builder.start();
