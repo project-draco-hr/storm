@@ -1,7 +1,7 @@
 {
   if (submittedJar == null) {
     LOG.info("Jar not uploaded to master yet. Submitting jar...");
-    String localJar=System.getenv("STORM_JAR");
+    String localJar=System.getProperty("storm.jar");
     submittedJar=submitJar(conf,localJar);
   }
  else {
