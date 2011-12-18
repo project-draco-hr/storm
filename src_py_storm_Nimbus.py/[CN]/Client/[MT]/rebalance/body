@@ -1,0 +1,4 @@
+def rebalance(self, name, options):
+    '\n    Parameters:\n     - name\n     - options\n    '
+    self.send_rebalance(name, options)
+    self.recv_rebalance()

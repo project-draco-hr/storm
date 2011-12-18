@@ -1,0 +1,13 @@
+def process_rebalance(self, seqid, iprot, oprot):
+    args = rebalance_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = rebalance_result()
+    try:
+        self._handler.rebalance(args.name, args.options)
+    except NotAliveException as e:
+        result.e = e
+    oprot.writeMessageBegin('rebalance', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

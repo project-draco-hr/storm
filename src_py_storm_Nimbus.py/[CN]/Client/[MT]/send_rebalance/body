@@ -1,0 +1,8 @@
+def send_rebalance(self, name, options):
+    self._oprot.writeMessageBegin('rebalance', TMessageType.CALL, self._seqid)
+    args = rebalance_args()
+    args.name = name
+    args.options = options
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

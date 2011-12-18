@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_name=true && this.is_set_name();
+  boolean that_present_name=true && that.is_set_name();
+  if (this_present_name || that_present_name) {
+    if (!(this_present_name && that_present_name))     return false;
+    if (!this.name.equals(that.name))     return false;
+  }
+  boolean this_present_options=true && this.is_set_options();
+  boolean that_present_options=true && that.is_set_options();
+  if (this_present_options || that_present_options) {
+    if (!(this_present_options && that_present_options))     return false;
+    if (!this.options.equals(that.options))     return false;
+  }
+  return true;
+}
