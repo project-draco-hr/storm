@@ -1,0 +1,28 @@
+{
+switch (field) {
+case SPOUT_OBJECT:
+    if (value == null) {
+      unset_spout_object();
+    }
+ else {
+      set_spout_object((ComponentObject)value);
+    }
+  break;
+case COMMON:
+if (value == null) {
+  unset_common();
+}
+ else {
+  set_common((ComponentCommon)value);
+}
+break;
+case DISTRIBUTED:
+if (value == null) {
+unset_distributed();
+}
+ else {
+set_distributed((Boolean)value);
+}
+break;
+}
+}

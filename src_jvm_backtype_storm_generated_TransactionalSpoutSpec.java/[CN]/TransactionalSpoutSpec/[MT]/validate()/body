@@ -1,0 +1,11 @@
+{
+  if (!is_set_spout_object()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'spout_object' is unset! Struct:" + toString());
+  }
+  if (!is_set_common()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'common' is unset! Struct:" + toString());
+  }
+  if (!is_set_distributed()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'distributed' is unset! Struct:" + toString());
+  }
+}

@@ -1,0 +1,4 @@
+{
+  this.distributed=distributed;
+  set_distributed_isSet(true);
+}

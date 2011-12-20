@@ -1,0 +1,11 @@
+{
+switch (field) {
+case SPOUT_OBJECT:
+    return get_spout_object();
+case COMMON:
+  return get_common();
+case DISTRIBUTED:
+return Boolean.valueOf(is_distributed());
+}
+throw new IllegalStateException();
+}

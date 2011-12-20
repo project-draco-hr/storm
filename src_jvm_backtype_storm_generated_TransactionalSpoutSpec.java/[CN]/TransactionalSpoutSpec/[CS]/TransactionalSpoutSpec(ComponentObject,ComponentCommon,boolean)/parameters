@@ -1,0 +1,3 @@
+ComponentObject spout_object
+ComponentCommon common
+boolean distributed
