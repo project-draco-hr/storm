@@ -1,3 +1,4 @@
-Collection<Tuple> anchors
+int taskId
 String streamId
+IAnchorable anchor
 List<Object> tuple

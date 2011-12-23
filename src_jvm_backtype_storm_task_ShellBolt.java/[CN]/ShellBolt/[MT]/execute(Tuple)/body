@@ -57,7 +57,7 @@
           if (stream == null)           stream=Utils.DEFAULT_STREAM_ID;
           Long task=(Long)action.get("task");
           List<Object> tuple=(List)action.get("tuple");
-          List<Tuple> anchors=new ArrayList<Tuple>();
+          List<IAnchorable> anchors=new ArrayList<IAnchorable>();
           Object anchorObj=action.get("anchors");
           if (anchorObj != null) {
             if (anchorObj instanceof Long) {

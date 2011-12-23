@@ -1,7 +1,7 @@
 {
   Map<Long,Long> anchorsToIds=new HashMap<Long,Long>();
   if (anchors != null) {
-    for (    Tuple anchor : anchors) {
+    for (    IAnchorable anchor : anchors) {
       long newId=MessageId.generateId();
       getExistingOutput(anchor).add(newId);
       for (      long root : anchor.getMessageId().getAnchorsToIds().keySet()) {
