@@ -2,4 +2,5 @@
   _conf=conf;
   _context=context;
   _collector=collector;
+  _openTransactions=new TimeCacheMap<TransactionAttempt,ITransactionalBolt>(Utils.getInt(conf.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS)));
 }

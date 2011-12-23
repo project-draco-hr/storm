@@ -1,3 +1,16 @@
 {
-  throw new UnsupportedOperationException("Not supported yet.");
+  TransactionAttempt attempt=(TransactionAttempt)input.getValue(0);
+  if (!_openTransactions.containsKey(attempt)) {
+    _openTransactions.put(attempt,(ITransactionalBolt)Utils.deserialize(_boltSer));
+  }
+  ITransactionalBolt bolt=_openTransactions.get(attempt);
+  if (bolt != null) {
+    if (input.getSourceStreamId().equals(Constants.TRANSACTION_COMMIT_STREAM_ID)) {
+      bolt.commit(new TransactionTuple(input),_collector);
+    }
+ else {
+      bolt.execute(input);
+    }
+  }
+  _collector.ack(input);
 }
