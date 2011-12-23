@@ -6,10 +6,6 @@ case BOLTS:
   return get_bolts();
 case STATE_SPOUTS:
 return get_state_spouts();
-case TRANSACTIONAL_SPOUTS:
-return get_transactional_spouts();
-case TRANSACTIONAL_BOLTS:
-return get_transactional_bolts();
 }
 throw new IllegalStateException();
 }

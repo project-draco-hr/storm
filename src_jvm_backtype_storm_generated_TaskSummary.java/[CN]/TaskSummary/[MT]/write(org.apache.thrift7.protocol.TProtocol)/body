@@ -24,8 +24,8 @@
     oprot.writeFieldBegin(ERRORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRUCT,this.errors.size()));
-      for (      ErrorInfo _iter142 : this.errors) {
-        _iter142.write(oprot);
+      for (      ErrorInfo _iter128 : this.errors) {
+        _iter128.write(oprot);
       }
       oprot.writeListEnd();
     }

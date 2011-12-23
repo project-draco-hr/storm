@@ -1,6 +1,4 @@
-def __init__(self, spouts=None, bolts=None, state_spouts=None, transactional_spouts=None, transactional_bolts=None):
+def __init__(self, spouts=None, bolts=None, state_spouts=None):
     self.spouts = spouts
     self.bolts = bolts
     self.state_spouts = state_spouts
-    self.transactional_spouts = transactional_spouts
-    self.transactional_bolts = transactional_bolts

@@ -1,9 +1,0 @@
-{
-  try {
-    __isset_bit_vector=new BitSet(1);
-    read(new org.apache.thrift7.protocol.TCompactProtocol(new org.apache.thrift7.transport.TIOStreamTransport(in)));
-  }
- catch (  org.apache.thrift7.TException te) {
-    throw new java.io.IOException(te);
-  }
-}

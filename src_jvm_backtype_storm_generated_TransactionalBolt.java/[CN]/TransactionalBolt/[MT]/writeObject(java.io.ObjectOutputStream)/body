@@ -1,8 +1,0 @@
-{
-  try {
-    write(new org.apache.thrift7.protocol.TCompactProtocol(new org.apache.thrift7.transport.TIOStreamTransport(out)));
-  }
- catch (  org.apache.thrift7.TException te) {
-    throw new java.io.IOException(te);
-  }
-}

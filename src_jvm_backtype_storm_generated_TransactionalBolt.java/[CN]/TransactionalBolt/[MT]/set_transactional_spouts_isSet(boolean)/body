@@ -1,5 +1,0 @@
-{
-  if (!value) {
-    this.transactional_spouts=null;
-  }
-}

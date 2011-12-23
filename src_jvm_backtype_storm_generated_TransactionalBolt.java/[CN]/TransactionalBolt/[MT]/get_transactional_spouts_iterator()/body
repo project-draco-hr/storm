@@ -1,3 +1,0 @@
-{
-  return (this.transactional_spouts == null) ? null : this.transactional_spouts.iterator();
-}

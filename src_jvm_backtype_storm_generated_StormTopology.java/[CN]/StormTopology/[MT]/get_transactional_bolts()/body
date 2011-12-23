@@ -1,3 +1,0 @@
-{
-  return this.transactional_bolts;
-}

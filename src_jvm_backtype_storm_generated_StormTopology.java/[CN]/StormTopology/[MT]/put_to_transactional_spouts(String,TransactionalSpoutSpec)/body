@@ -1,6 +1,0 @@
-{
-  if (this.transactional_spouts == null) {
-    this.transactional_spouts=new HashMap<String,TransactionalSpoutSpec>();
-  }
-  this.transactional_spouts.put(key,val);
-}

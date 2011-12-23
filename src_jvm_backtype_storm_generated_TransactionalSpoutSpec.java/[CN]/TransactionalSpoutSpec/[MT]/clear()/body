@@ -1,6 +1,0 @@
-{
-  this.spout_object=null;
-  this.common=null;
-  set_distributed_isSet(false);
-  this.distributed=false;
-}

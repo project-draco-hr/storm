@@ -1,3 +1,0 @@
-List<String> transactional_spouts
-ComponentObject bolt_object
-ComponentCommon common

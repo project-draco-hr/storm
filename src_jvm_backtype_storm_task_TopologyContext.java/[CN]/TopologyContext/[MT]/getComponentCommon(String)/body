@@ -12,12 +12,6 @@
       if (component instanceof StateSpoutSpec) {
         return ((StateSpoutSpec)component).get_common();
       }
-      if (component instanceof TransactionalBolt) {
-        return ((TransactionalBolt)component).get_common();
-      }
-      if (component instanceof TransactionalSpoutSpec) {
-        return ((TransactionalSpoutSpec)component).get_common();
-      }
       throw new RuntimeException("Unreachable code! No get_common conversion for component " + component);
     }
   }

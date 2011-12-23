@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof TransactionalSpoutSpec)   return this.equals((TransactionalSpoutSpec)that);
-  return false;
-}

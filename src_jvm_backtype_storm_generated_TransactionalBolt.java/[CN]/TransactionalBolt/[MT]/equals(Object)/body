@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof TransactionalBolt)   return this.equals((TransactionalBolt)that);
-  return false;
-}

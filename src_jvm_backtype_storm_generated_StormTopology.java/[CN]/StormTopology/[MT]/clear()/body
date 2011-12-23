@@ -2,6 +2,4 @@
   this.spouts=null;
   this.bolts=null;
   this.state_spouts=null;
-  this.transactional_spouts=null;
-  this.transactional_bolts=null;
 }

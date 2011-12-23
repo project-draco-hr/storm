@@ -1,4 +1,0 @@
-def __init__(self, spout_object=None, common=None, distributed=None):
-    self.spout_object = spout_object
-    self.common = common
-    self.distributed = distributed

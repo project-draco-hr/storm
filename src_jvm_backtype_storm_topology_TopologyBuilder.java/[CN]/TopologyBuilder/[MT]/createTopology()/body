@@ -10,5 +10,5 @@
     }
     boltSpecs.put(boltId,new Bolt(ComponentObject.serialized_java(Utils.serialize(bolt)),common));
   }
-  return new StormTopology(new HashMap<String,SpoutSpec>(_spouts),boltSpecs,new HashMap<String,StateSpoutSpec>(_stateSpouts),new HashMap<String,TransactionalSpoutSpec>(),new HashMap<String,TransactionalBolt>());
+  return new StormTopology(new HashMap<String,SpoutSpec>(_spouts),boltSpecs,new HashMap<String,StateSpoutSpec>(_stateSpouts));
 }

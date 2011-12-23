@@ -1,8 +1,0 @@
-{
-  this();
-  this.spouts=spouts;
-  this.bolts=bolts;
-  this.state_spouts=state_spouts;
-  this.transactional_spouts=transactional_spouts;
-  this.transactional_bolts=transactional_bolts;
-}

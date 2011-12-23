@@ -27,24 +27,6 @@
     sb.append(this.state_spouts);
   }
   first=false;
-  if (!first)   sb.append(", ");
-  sb.append("transactional_spouts:");
-  if (this.transactional_spouts == null) {
-    sb.append("null");
-  }
- else {
-    sb.append(this.transactional_spouts);
-  }
-  first=false;
-  if (!first)   sb.append(", ");
-  sb.append("transactional_bolts:");
-  if (this.transactional_bolts == null) {
-    sb.append("null");
-  }
- else {
-    sb.append(this.transactional_bolts);
-  }
-  first=false;
   sb.append(")");
   return sb.toString();
 }

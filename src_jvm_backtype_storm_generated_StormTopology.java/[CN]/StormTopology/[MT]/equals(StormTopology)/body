@@ -18,17 +18,5 @@
     if (!(this_present_state_spouts && that_present_state_spouts))     return false;
     if (!this.state_spouts.equals(that.state_spouts))     return false;
   }
-  boolean this_present_transactional_spouts=true && this.is_set_transactional_spouts();
-  boolean that_present_transactional_spouts=true && that.is_set_transactional_spouts();
-  if (this_present_transactional_spouts || that_present_transactional_spouts) {
-    if (!(this_present_transactional_spouts && that_present_transactional_spouts))     return false;
-    if (!this.transactional_spouts.equals(that.transactional_spouts))     return false;
-  }
-  boolean this_present_transactional_bolts=true && this.is_set_transactional_bolts();
-  boolean that_present_transactional_bolts=true && that.is_set_transactional_bolts();
-  if (this_present_transactional_bolts || that_present_transactional_bolts) {
-    if (!(this_present_transactional_bolts && that_present_transactional_bolts))     return false;
-    if (!this.transactional_bolts.equals(that.transactional_bolts))     return false;
-  }
   return true;
 }

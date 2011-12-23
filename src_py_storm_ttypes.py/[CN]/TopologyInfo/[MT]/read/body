@@ -25,11 +25,11 @@ def read(self, iprot):
         elif (fid == 4):
             if (ftype == TType.LIST):
                 self.tasks = []
-                (_etype259, _size256) = iprot.readListBegin()
-                for _i260 in xrange(_size256):
-                    _elem261 = TaskSummary()
-                    _elem261.read(iprot)
-                    self.tasks.append(_elem261)
+                (_etype234, _size231) = iprot.readListBegin()
+                for _i235 in xrange(_size231):
+                    _elem236 = TaskSummary()
+                    _elem236.read(iprot)
+                    self.tasks.append(_elem236)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

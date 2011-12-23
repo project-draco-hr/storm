@@ -8,10 +8,4 @@
   if (!is_set_state_spouts()) {
     throw new org.apache.thrift7.protocol.TProtocolException("Required field 'state_spouts' is unset! Struct:" + toString());
   }
-  if (!is_set_transactional_spouts()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'transactional_spouts' is unset! Struct:" + toString());
-  }
-  if (!is_set_transactional_bolts()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'transactional_bolts' is unset! Struct:" + toString());
-  }
 }

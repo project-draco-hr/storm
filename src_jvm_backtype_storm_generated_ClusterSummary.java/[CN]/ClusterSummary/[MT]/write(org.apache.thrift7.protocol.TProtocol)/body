@@ -5,8 +5,8 @@
     oprot.writeFieldBegin(SUPERVISORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRUCT,this.supervisors.size()));
-      for (      SupervisorSummary _iter57 : this.supervisors) {
-        _iter57.write(oprot);
+      for (      SupervisorSummary _iter43 : this.supervisors) {
+        _iter43.write(oprot);
       }
       oprot.writeListEnd();
     }
@@ -19,8 +19,8 @@
     oprot.writeFieldBegin(TOPOLOGIES_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRUCT,this.topologies.size()));
-      for (      TopologySummary _iter58 : this.topologies) {
-        _iter58.write(oprot);
+      for (      TopologySummary _iter44 : this.topologies) {
+        _iter44.write(oprot);
       }
       oprot.writeListEnd();
     }

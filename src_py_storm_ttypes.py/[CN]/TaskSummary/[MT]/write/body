@@ -26,8 +26,8 @@ def write(self, oprot):
     if (self.errors is not None):
         oprot.writeFieldBegin('errors', TType.LIST, 6)
         oprot.writeListBegin(TType.STRUCT, len(self.errors))
-        for iter255 in self.errors:
-            iter255.write(oprot)
+        for iter230 in self.errors:
+            iter230.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.stats is not None):

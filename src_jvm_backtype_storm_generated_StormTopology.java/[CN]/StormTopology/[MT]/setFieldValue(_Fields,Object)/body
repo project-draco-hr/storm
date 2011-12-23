@@ -24,21 +24,5 @@ unset_state_spouts();
 set_state_spouts((Map<String,StateSpoutSpec>)value);
 }
 break;
-case TRANSACTIONAL_SPOUTS:
-if (value == null) {
-unset_transactional_spouts();
-}
- else {
-set_transactional_spouts((Map<String,TransactionalSpoutSpec>)value);
-}
-break;
-case TRANSACTIONAL_BOLTS:
-if (value == null) {
-unset_transactional_bolts();
-}
- else {
-set_transactional_bolts((Map<String,TransactionalBolt>)value);
-}
-break;
 }
 }

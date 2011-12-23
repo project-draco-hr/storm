@@ -5,8 +5,4 @@ def validate(self):
         raise TProtocol.TProtocolException(message='Required field bolts is unset!')
     if (self.state_spouts is None):
         raise TProtocol.TProtocolException(message='Required field state_spouts is unset!')
-    if (self.transactional_spouts is None):
-        raise TProtocol.TProtocolException(message='Required field transactional_spouts is unset!')
-    if (self.transactional_bolts is None):
-        raise TProtocol.TProtocolException(message='Required field transactional_bolts is unset!')
     return
