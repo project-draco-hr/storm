@@ -1,4 +1,4 @@
 {
   validateUnusedId(id);
-  _spouts.put(id,new SpoutSpec(ComponentObject.serialized_java(Utils.serialize(spout)),getComponentCommon(spout,parallelism_hint),spout.isDistributed()));
+  _spouts.put(id,new SpoutSpec(ComponentObject.serialized_java(Utils.serialize(spout)),getComponentCommon(null,spout,parallelism_hint),spout.isDistributed()));
 }

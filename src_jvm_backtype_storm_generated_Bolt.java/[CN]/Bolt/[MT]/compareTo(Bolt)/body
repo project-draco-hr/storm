@@ -4,16 +4,6 @@
   }
   int lastComparison=0;
   Bolt typedOther=(Bolt)other;
-  lastComparison=Boolean.valueOf(is_set_inputs()).compareTo(typedOther.is_set_inputs());
-  if (lastComparison != 0) {
-    return lastComparison;
-  }
-  if (is_set_inputs()) {
-    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.inputs,typedOther.inputs);
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-  }
   lastComparison=Boolean.valueOf(is_set_bolt_object()).compareTo(typedOther.is_set_bolt_object());
   if (lastComparison != 0) {
     return lastComparison;

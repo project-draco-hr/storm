@@ -1,4 +1,4 @@
 {
-  _delegate=delegate;
-  _trackId=id;
+  super(delegate,id);
+  _richDelegate=delegate;
 }

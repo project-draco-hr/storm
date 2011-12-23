@@ -1,0 +1,3 @@
+{
+  return (this.transactional_bolts == null) ? 0 : this.transactional_bolts.size();
+}

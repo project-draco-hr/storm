@@ -1,15 +1,6 @@
 {
   StringBuilder sb=new StringBuilder("Bolt(");
   boolean first=true;
-  sb.append("inputs:");
-  if (this.inputs == null) {
-    sb.append("null");
-  }
- else {
-    sb.append(this.inputs);
-  }
-  first=false;
-  if (!first)   sb.append(", ");
   sb.append("bolt_object:");
   if (this.bolt_object == null) {
     sb.append("null");

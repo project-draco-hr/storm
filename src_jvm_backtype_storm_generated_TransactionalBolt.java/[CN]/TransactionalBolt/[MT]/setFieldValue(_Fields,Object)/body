@@ -1,0 +1,28 @@
+{
+switch (field) {
+case TRANSACTIONAL_SPOUTS:
+    if (value == null) {
+      unset_transactional_spouts();
+    }
+ else {
+      set_transactional_spouts((List<String>)value);
+    }
+  break;
+case BOLT_OBJECT:
+if (value == null) {
+  unset_bolt_object();
+}
+ else {
+  set_bolt_object((ComponentObject)value);
+}
+break;
+case COMMON:
+if (value == null) {
+unset_common();
+}
+ else {
+set_common((ComponentCommon)value);
+}
+break;
+}
+}

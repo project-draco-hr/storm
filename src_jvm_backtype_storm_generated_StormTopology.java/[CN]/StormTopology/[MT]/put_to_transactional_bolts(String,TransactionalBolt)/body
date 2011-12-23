@@ -1,0 +1,6 @@
+{
+  if (this.transactional_bolts == null) {
+    this.transactional_bolts=new HashMap<String,TransactionalBolt>();
+  }
+  this.transactional_bolts.put(key,val);
+}

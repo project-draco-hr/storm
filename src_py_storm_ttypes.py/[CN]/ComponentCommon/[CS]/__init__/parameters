@@ -1,3 +1,4 @@
 self
+inputs
 streams
 parallelism_hint

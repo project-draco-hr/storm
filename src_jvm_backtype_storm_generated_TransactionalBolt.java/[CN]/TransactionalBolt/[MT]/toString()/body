@@ -1,0 +1,32 @@
+{
+  StringBuilder sb=new StringBuilder("TransactionalBolt(");
+  boolean first=true;
+  sb.append("transactional_spouts:");
+  if (this.transactional_spouts == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.transactional_spouts);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("bolt_object:");
+  if (this.bolt_object == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.bolt_object);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("common:");
+  if (this.common == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.common);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

@@ -53,13 +53,13 @@ break;
 case 6:
 if (field.type == org.apache.thrift7.protocol.TType.LIST) {
 {
-org.apache.thrift7.protocol.TList _list125=iprot.readListBegin();
-this.errors=new ArrayList<ErrorInfo>(_list125.size);
-for (int _i126=0; _i126 < _list125.size; ++_i126) {
-ErrorInfo _elem127;
-_elem127=new ErrorInfo();
-_elem127.read(iprot);
-this.errors.add(_elem127);
+org.apache.thrift7.protocol.TList _list139=iprot.readListBegin();
+this.errors=new ArrayList<ErrorInfo>(_list139.size);
+for (int _i140=0; _i140 < _list139.size; ++_i140) {
+ErrorInfo _elem141;
+_elem141=new ErrorInfo();
+_elem141.read(iprot);
+this.errors.add(_elem141);
 }
 iprot.readListEnd();
 }

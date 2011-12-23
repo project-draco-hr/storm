@@ -2,3 +2,5 @@ self
 spouts
 bolts
 state_spouts
+transactional_spouts
+transactional_bolts

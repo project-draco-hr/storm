@@ -1,5 +1,4 @@
 {
-  this.inputs=null;
   this.bolt_object=null;
   this.common=null;
 }

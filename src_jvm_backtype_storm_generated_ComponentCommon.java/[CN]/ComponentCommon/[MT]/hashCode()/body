@@ -1,5 +1,8 @@
 {
   HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_inputs=true && (is_set_inputs());
+  builder.append(present_inputs);
+  if (present_inputs)   builder.append(inputs);
   boolean present_streams=true && (is_set_streams());
   builder.append(present_streams);
   if (present_streams)   builder.append(streams);

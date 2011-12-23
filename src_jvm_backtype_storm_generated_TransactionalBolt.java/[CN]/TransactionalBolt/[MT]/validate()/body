@@ -1,0 +1,11 @@
+{
+  if (!is_set_transactional_spouts()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'transactional_spouts' is unset! Struct:" + toString());
+  }
+  if (!is_set_bolt_object()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'bolt_object' is unset! Struct:" + toString());
+  }
+  if (!is_set_common()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'common' is unset! Struct:" + toString());
+  }
+}

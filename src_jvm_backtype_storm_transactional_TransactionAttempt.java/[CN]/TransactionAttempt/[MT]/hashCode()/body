@@ -1,0 +1,3 @@
+{
+  return 13 * _txid + _attemptId;
+}

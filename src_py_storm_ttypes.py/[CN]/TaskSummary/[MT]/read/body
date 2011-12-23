@@ -35,11 +35,11 @@ def read(self, iprot):
         elif (fid == 6):
             if (ftype == TType.LIST):
                 self.errors = []
-                (_etype227, _size224) = iprot.readListBegin()
-                for _i228 in xrange(_size224):
-                    _elem229 = ErrorInfo()
-                    _elem229.read(iprot)
-                    self.errors.append(_elem229)
+                (_etype252, _size249) = iprot.readListBegin()
+                for _i253 in xrange(_size249):
+                    _elem254 = ErrorInfo()
+                    _elem254.read(iprot)
+                    self.errors.append(_elem254)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

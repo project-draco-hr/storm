@@ -1,6 +1,17 @@
 {
   __isset_bit_vector.clear();
   __isset_bit_vector.or(other.__isset_bit_vector);
+  if (other.is_set_inputs()) {
+    Map<GlobalStreamId,Grouping> __this__inputs=new HashMap<GlobalStreamId,Grouping>();
+    for (    Map.Entry<GlobalStreamId,Grouping> other_element : other.inputs.entrySet()) {
+      GlobalStreamId other_element_key=other_element.getKey();
+      Grouping other_element_value=other_element.getValue();
+      GlobalStreamId __this__inputs_copy_key=new GlobalStreamId(other_element_key);
+      Grouping __this__inputs_copy_value=new Grouping(other_element_value);
+      __this__inputs.put(__this__inputs_copy_key,__this__inputs_copy_value);
+    }
+    this.inputs=__this__inputs;
+  }
   if (other.is_set_streams()) {
     Map<String,StreamInfo> __this__streams=new HashMap<String,StreamInfo>();
     for (    Map.Entry<String,StreamInfo> other_element : other.streams.entrySet()) {

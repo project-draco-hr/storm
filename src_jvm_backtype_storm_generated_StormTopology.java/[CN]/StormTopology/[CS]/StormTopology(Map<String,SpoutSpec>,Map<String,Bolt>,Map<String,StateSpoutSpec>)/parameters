@@ -1,3 +1,0 @@
-Map<String,SpoutSpec> spouts
-Map<String,Bolt> bolts
-Map<String,StateSpoutSpec> state_spouts

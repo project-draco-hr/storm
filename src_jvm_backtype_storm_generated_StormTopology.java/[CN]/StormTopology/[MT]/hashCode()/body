@@ -9,5 +9,11 @@
   boolean present_state_spouts=true && (is_set_state_spouts());
   builder.append(present_state_spouts);
   if (present_state_spouts)   builder.append(state_spouts);
+  boolean present_transactional_spouts=true && (is_set_transactional_spouts());
+  builder.append(present_transactional_spouts);
+  if (present_transactional_spouts)   builder.append(transactional_spouts);
+  boolean present_transactional_bolts=true && (is_set_transactional_bolts());
+  builder.append(present_transactional_bolts);
+  if (present_transactional_bolts)   builder.append(transactional_bolts);
   return builder.toHashCode();
 }

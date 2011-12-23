@@ -1,0 +1,6 @@
+{
+  if (this.transactional_spouts == null) {
+    this.transactional_spouts=new ArrayList<String>();
+  }
+  this.transactional_spouts.add(elem);
+}

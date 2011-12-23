@@ -1,0 +1,5 @@
+{
+  this();
+  this.inputs=inputs;
+  this.streams=streams;
+}

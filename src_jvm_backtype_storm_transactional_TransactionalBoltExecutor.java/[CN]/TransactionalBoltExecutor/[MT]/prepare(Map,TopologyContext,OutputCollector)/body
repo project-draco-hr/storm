@@ -1,0 +1,5 @@
+{
+  _conf=conf;
+  _context=context;
+  _collector=collector;
+}

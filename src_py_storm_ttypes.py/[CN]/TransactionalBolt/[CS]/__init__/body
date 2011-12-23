@@ -1,0 +1,4 @@
+def __init__(self, transactional_spouts=None, bolt_object=None, common=None):
+    self.transactional_spouts = transactional_spouts
+    self.bolt_object = bolt_object
+    self.common = common

@@ -6,6 +6,10 @@ case 2:
   return BOLTS;
 case 3:
 return STATE_SPOUTS;
+case 4:
+return TRANSACTIONAL_SPOUTS;
+case 5:
+return TRANSACTIONAL_BOLTS;
 default :
 return null;
 }

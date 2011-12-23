@@ -1,0 +1,5 @@
+{
+  this.transactional_spouts=null;
+  this.bolt_object=null;
+  this.common=null;
+}

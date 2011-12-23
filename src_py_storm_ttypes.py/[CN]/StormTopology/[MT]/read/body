@@ -10,36 +10,60 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.spouts = {}
-                (_ktype40, _vtype41, _size39) = iprot.readMapBegin()
-                for _i43 in xrange(_size39):
-                    _key44 = iprot.readString().decode('utf-8')
-                    _val45 = SpoutSpec()
-                    _val45.read(iprot)
-                    self.spouts[_key44] = _val45
+                (_ktype47, _vtype48, _size46) = iprot.readMapBegin()
+                for _i50 in xrange(_size46):
+                    _key51 = iprot.readString().decode('utf-8')
+                    _val52 = SpoutSpec()
+                    _val52.read(iprot)
+                    self.spouts[_key51] = _val52
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 2):
             if (ftype == TType.MAP):
                 self.bolts = {}
-                (_ktype47, _vtype48, _size46) = iprot.readMapBegin()
-                for _i50 in xrange(_size46):
-                    _key51 = iprot.readString().decode('utf-8')
-                    _val52 = Bolt()
-                    _val52.read(iprot)
-                    self.bolts[_key51] = _val52
+                (_ktype54, _vtype55, _size53) = iprot.readMapBegin()
+                for _i57 in xrange(_size53):
+                    _key58 = iprot.readString().decode('utf-8')
+                    _val59 = Bolt()
+                    _val59.read(iprot)
+                    self.bolts[_key58] = _val59
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 3):
             if (ftype == TType.MAP):
                 self.state_spouts = {}
-                (_ktype54, _vtype55, _size53) = iprot.readMapBegin()
-                for _i57 in xrange(_size53):
-                    _key58 = iprot.readString().decode('utf-8')
-                    _val59 = StateSpoutSpec()
-                    _val59.read(iprot)
-                    self.state_spouts[_key58] = _val59
+                (_ktype61, _vtype62, _size60) = iprot.readMapBegin()
+                for _i64 in xrange(_size60):
+                    _key65 = iprot.readString().decode('utf-8')
+                    _val66 = StateSpoutSpec()
+                    _val66.read(iprot)
+                    self.state_spouts[_key65] = _val66
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 4):
+            if (ftype == TType.MAP):
+                self.transactional_spouts = {}
+                (_ktype68, _vtype69, _size67) = iprot.readMapBegin()
+                for _i71 in xrange(_size67):
+                    _key72 = iprot.readString().decode('utf-8')
+                    _val73 = TransactionalSpoutSpec()
+                    _val73.read(iprot)
+                    self.transactional_spouts[_key72] = _val73
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 5):
+            if (ftype == TType.MAP):
+                self.transactional_bolts = {}
+                (_ktype75, _vtype76, _size74) = iprot.readMapBegin()
+                for _i78 in xrange(_size74):
+                    _key79 = iprot.readString().decode('utf-8')
+                    _val80 = TransactionalBolt()
+                    _val80.read(iprot)
+                    self.transactional_bolts[_key79] = _val80
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

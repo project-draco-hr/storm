@@ -6,25 +6,41 @@ def write(self, oprot):
     if (self.spouts is not None):
         oprot.writeFieldBegin('spouts', TType.MAP, 1)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.spouts))
-        for (kiter60, viter61) in self.spouts.items():
-            oprot.writeString(kiter60.encode('utf-8'))
-            viter61.write(oprot)
+        for (kiter81, viter82) in self.spouts.items():
+            oprot.writeString(kiter81.encode('utf-8'))
+            viter82.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.bolts is not None):
         oprot.writeFieldBegin('bolts', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.bolts))
-        for (kiter62, viter63) in self.bolts.items():
-            oprot.writeString(kiter62.encode('utf-8'))
-            viter63.write(oprot)
+        for (kiter83, viter84) in self.bolts.items():
+            oprot.writeString(kiter83.encode('utf-8'))
+            viter84.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.state_spouts is not None):
         oprot.writeFieldBegin('state_spouts', TType.MAP, 3)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.state_spouts))
-        for (kiter64, viter65) in self.state_spouts.items():
-            oprot.writeString(kiter64.encode('utf-8'))
-            viter65.write(oprot)
+        for (kiter85, viter86) in self.state_spouts.items():
+            oprot.writeString(kiter85.encode('utf-8'))
+            viter86.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.transactional_spouts is not None):
+        oprot.writeFieldBegin('transactional_spouts', TType.MAP, 4)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.transactional_spouts))
+        for (kiter87, viter88) in self.transactional_spouts.items():
+            oprot.writeString(kiter87.encode('utf-8'))
+            viter88.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.transactional_bolts is not None):
+        oprot.writeFieldBegin('transactional_bolts', TType.MAP, 5)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.transactional_bolts))
+        for (kiter89, viter90) in self.transactional_bolts.items():
+            oprot.writeString(kiter89.encode('utf-8'))
+            viter90.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

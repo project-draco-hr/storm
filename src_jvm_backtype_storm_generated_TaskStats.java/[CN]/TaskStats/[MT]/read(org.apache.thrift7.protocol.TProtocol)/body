@@ -10,25 +10,25 @@ switch (field.id) {
 case 1:
       if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
-          org.apache.thrift7.protocol.TMap _map105=iprot.readMapBegin();
-          this.emitted=new HashMap<String,Map<String,Long>>(2 * _map105.size);
-          for (int _i106=0; _i106 < _map105.size; ++_i106) {
-            String _key107;
-            Map<String,Long> _val108;
-            _key107=iprot.readString();
+          org.apache.thrift7.protocol.TMap _map119=iprot.readMapBegin();
+          this.emitted=new HashMap<String,Map<String,Long>>(2 * _map119.size);
+          for (int _i120=0; _i120 < _map119.size; ++_i120) {
+            String _key121;
+            Map<String,Long> _val122;
+            _key121=iprot.readString();
 {
-              org.apache.thrift7.protocol.TMap _map109=iprot.readMapBegin();
-              _val108=new HashMap<String,Long>(2 * _map109.size);
-              for (int _i110=0; _i110 < _map109.size; ++_i110) {
-                String _key111;
-                long _val112;
-                _key111=iprot.readString();
-                _val112=iprot.readI64();
-                _val108.put(_key111,_val112);
+              org.apache.thrift7.protocol.TMap _map123=iprot.readMapBegin();
+              _val122=new HashMap<String,Long>(2 * _map123.size);
+              for (int _i124=0; _i124 < _map123.size; ++_i124) {
+                String _key125;
+                long _val126;
+                _key125=iprot.readString();
+                _val126=iprot.readI64();
+                _val122.put(_key125,_val126);
               }
               iprot.readMapEnd();
             }
-            this.emitted.put(_key107,_val108);
+            this.emitted.put(_key121,_val122);
           }
           iprot.readMapEnd();
         }
@@ -40,25 +40,25 @@ case 1:
 case 2:
   if (field.type == org.apache.thrift7.protocol.TType.MAP) {
 {
-      org.apache.thrift7.protocol.TMap _map113=iprot.readMapBegin();
-      this.transferred=new HashMap<String,Map<String,Long>>(2 * _map113.size);
-      for (int _i114=0; _i114 < _map113.size; ++_i114) {
-        String _key115;
-        Map<String,Long> _val116;
-        _key115=iprot.readString();
+      org.apache.thrift7.protocol.TMap _map127=iprot.readMapBegin();
+      this.transferred=new HashMap<String,Map<String,Long>>(2 * _map127.size);
+      for (int _i128=0; _i128 < _map127.size; ++_i128) {
+        String _key129;
+        Map<String,Long> _val130;
+        _key129=iprot.readString();
 {
-          org.apache.thrift7.protocol.TMap _map117=iprot.readMapBegin();
-          _val116=new HashMap<String,Long>(2 * _map117.size);
-          for (int _i118=0; _i118 < _map117.size; ++_i118) {
-            String _key119;
-            long _val120;
-            _key119=iprot.readString();
-            _val120=iprot.readI64();
-            _val116.put(_key119,_val120);
+          org.apache.thrift7.protocol.TMap _map131=iprot.readMapBegin();
+          _val130=new HashMap<String,Long>(2 * _map131.size);
+          for (int _i132=0; _i132 < _map131.size; ++_i132) {
+            String _key133;
+            long _val134;
+            _key133=iprot.readString();
+            _val134=iprot.readI64();
+            _val130.put(_key133,_val134);
           }
           iprot.readMapEnd();
         }
-        this.transferred.put(_key115,_val116);
+        this.transferred.put(_key129,_val130);
       }
       iprot.readMapEnd();
     }

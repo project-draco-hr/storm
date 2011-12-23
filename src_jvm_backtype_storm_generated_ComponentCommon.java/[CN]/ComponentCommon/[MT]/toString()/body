@@ -1,6 +1,15 @@
 {
   StringBuilder sb=new StringBuilder("ComponentCommon(");
   boolean first=true;
+  sb.append("inputs:");
+  if (this.inputs == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.inputs);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
   sb.append("streams:");
   if (this.streams == null) {
     sb.append("null");

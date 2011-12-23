@@ -1,0 +1,3 @@
+Map<GlobalStreamId,Grouping> inputs
+IComponent component
+Integer parallelism_hint

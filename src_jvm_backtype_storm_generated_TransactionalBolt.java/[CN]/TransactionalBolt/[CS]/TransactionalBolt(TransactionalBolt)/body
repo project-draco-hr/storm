@@ -1,0 +1,15 @@
+{
+  if (other.is_set_transactional_spouts()) {
+    List<String> __this__transactional_spouts=new ArrayList<String>();
+    for (    String other_element : other.transactional_spouts) {
+      __this__transactional_spouts.add(other_element);
+    }
+    this.transactional_spouts=__this__transactional_spouts;
+  }
+  if (other.is_set_bolt_object()) {
+    this.bolt_object=new ComponentObject(other.bolt_object);
+  }
+  if (other.is_set_common()) {
+    this.common=new ComponentCommon(other.common);
+  }
+}

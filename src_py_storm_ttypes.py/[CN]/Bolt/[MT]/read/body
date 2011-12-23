@@ -8,25 +8,12 @@ def read(self, iprot):
         if (ftype == TType.STOP):
             break
         if (fid == 1):
-            if (ftype == TType.MAP):
-                self.inputs = {}
-                (_ktype31, _vtype32, _size30) = iprot.readMapBegin()
-                for _i34 in xrange(_size30):
-                    _key35 = GlobalStreamId()
-                    _key35.read(iprot)
-                    _val36 = Grouping()
-                    _val36.read(iprot)
-                    self.inputs[_key35] = _val36
-                iprot.readMapEnd()
-            else:
-                iprot.skip(ftype)
-        elif (fid == 2):
             if (ftype == TType.STRUCT):
                 self.bolt_object = ComponentObject()
                 self.bolt_object.read(iprot)
             else:
                 iprot.skip(ftype)
-        elif (fid == 3):
+        elif (fid == 2):
             if (ftype == TType.STRUCT):
                 self.common = ComponentCommon()
                 self.common.read(iprot)

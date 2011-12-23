@@ -1,0 +1,6 @@
+{
+  this();
+  this.transactional_spouts=transactional_spouts;
+  this.bolt_object=bolt_object;
+  this.common=common;
+}

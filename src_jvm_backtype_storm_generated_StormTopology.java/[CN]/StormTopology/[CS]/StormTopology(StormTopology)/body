@@ -32,4 +32,26 @@
     }
     this.state_spouts=__this__state_spouts;
   }
+  if (other.is_set_transactional_spouts()) {
+    Map<String,TransactionalSpoutSpec> __this__transactional_spouts=new HashMap<String,TransactionalSpoutSpec>();
+    for (    Map.Entry<String,TransactionalSpoutSpec> other_element : other.transactional_spouts.entrySet()) {
+      String other_element_key=other_element.getKey();
+      TransactionalSpoutSpec other_element_value=other_element.getValue();
+      String __this__transactional_spouts_copy_key=other_element_key;
+      TransactionalSpoutSpec __this__transactional_spouts_copy_value=new TransactionalSpoutSpec(other_element_value);
+      __this__transactional_spouts.put(__this__transactional_spouts_copy_key,__this__transactional_spouts_copy_value);
+    }
+    this.transactional_spouts=__this__transactional_spouts;
+  }
+  if (other.is_set_transactional_bolts()) {
+    Map<String,TransactionalBolt> __this__transactional_bolts=new HashMap<String,TransactionalBolt>();
+    for (    Map.Entry<String,TransactionalBolt> other_element : other.transactional_bolts.entrySet()) {
+      String other_element_key=other_element.getKey();
+      TransactionalBolt other_element_value=other_element.getValue();
+      String __this__transactional_bolts_copy_key=other_element_key;
+      TransactionalBolt __this__transactional_bolts_copy_value=new TransactionalBolt(other_element_value);
+      __this__transactional_bolts.put(__this__transactional_bolts_copy_key,__this__transactional_bolts_copy_value);
+    }
+    this.transactional_bolts=__this__transactional_bolts;
+  }
 }

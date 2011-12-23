@@ -1,9 +1,11 @@
 {
 switch (fieldId) {
 case 1:
-    return STREAMS;
+    return INPUTS;
 case 2:
-  return PARALLELISM_HINT;
+  return STREAMS;
+case 3:
+return PARALLELISM_HINT;
 default :
 return null;
 }

@@ -1,5 +1,11 @@
 {
   if (that == null)   return false;
+  boolean this_present_inputs=true && this.is_set_inputs();
+  boolean that_present_inputs=true && that.is_set_inputs();
+  if (this_present_inputs || that_present_inputs) {
+    if (!(this_present_inputs && that_present_inputs))     return false;
+    if (!this.inputs.equals(that.inputs))     return false;
+  }
   boolean this_present_streams=true && this.is_set_streams();
   boolean that_present_streams=true && that.is_set_streams();
   if (this_present_streams || that_present_streams) {

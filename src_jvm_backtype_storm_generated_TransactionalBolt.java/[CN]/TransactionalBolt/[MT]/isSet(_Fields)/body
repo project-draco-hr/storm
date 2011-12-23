@@ -1,0 +1,14 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case TRANSACTIONAL_SPOUTS:
+    return is_set_transactional_spouts();
+case BOLT_OBJECT:
+  return is_set_bolt_object();
+case COMMON:
+return is_set_common();
+}
+throw new IllegalStateException();
+}

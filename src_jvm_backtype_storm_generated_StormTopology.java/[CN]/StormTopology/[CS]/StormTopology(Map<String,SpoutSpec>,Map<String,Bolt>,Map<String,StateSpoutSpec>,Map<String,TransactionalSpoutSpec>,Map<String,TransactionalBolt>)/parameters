@@ -1,0 +1,5 @@
+Map<String,SpoutSpec> spouts
+Map<String,Bolt> bolts
+Map<String,StateSpoutSpec> state_spouts
+Map<String,TransactionalSpoutSpec> transactional_spouts
+Map<String,TransactionalBolt> transactional_bolts

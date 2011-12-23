@@ -1,11 +1,5 @@
 {
   if (that == null)   return false;
-  boolean this_present_inputs=true && this.is_set_inputs();
-  boolean that_present_inputs=true && that.is_set_inputs();
-  if (this_present_inputs || that_present_inputs) {
-    if (!(this_present_inputs && that_present_inputs))     return false;
-    if (!this.inputs.equals(that.inputs))     return false;
-  }
   boolean this_present_bolt_object=true && this.is_set_bolt_object();
   boolean that_present_bolt_object=true && that.is_set_bolt_object();
   if (this_present_bolt_object || that_present_bolt_object) {
