@@ -9,6 +9,7 @@
   if (bolt != null) {
     if (input.getSourceStreamId().equals(Constants.TRANSACTION_COMMIT_STREAM_ID)) {
       bolt.commit(new TransactionTuple(input),_collector);
+      _openTransactions.remove(attempt);
     }
  else {
       bolt.execute(input);
