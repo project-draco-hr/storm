@@ -1,0 +1,6 @@
+{
+  _sourceArgs=sourceArgs;
+  if (_sourceArgs == null)   _sourceArgs=new HashMap<String,SourceArgs>();
+  _delegate=delegate;
+  _idSource=idSource;
+}

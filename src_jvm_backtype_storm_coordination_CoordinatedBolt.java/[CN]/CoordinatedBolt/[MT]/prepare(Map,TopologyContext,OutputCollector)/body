@@ -7,18 +7,14 @@
       _countOutTasks.add(task);
     }
   }
-  if (_sourceArgs != null) {
-    if (_sourceArgs.singleCount) {
-      _numSourceReports=1;
-    }
+  if (!_sourceArgs.isEmpty()) {
+    _numSourceReports=0;
+    for (    Entry<String,SourceArgs> entry : _sourceArgs.entrySet()) {
+      if (entry.getValue().singleCount) {
+        _numSourceReports+=1;
+      }
  else {
-      Iterator<GlobalStreamId> it=context.getThisSources().keySet().iterator();
-      while (it.hasNext()) {
-        String sourceComponent=it.next().get_componentId();
-        if (_idSource == null || !sourceComponent.equals(_idSource.get_componentId())) {
-          _numSourceReports=context.getComponentTasks(sourceComponent).size();
-          break;
-        }
+        _numSourceReports+=context.getComponentTasks(entry.getKey()).size();
       }
     }
   }

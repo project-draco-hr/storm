@@ -2,7 +2,7 @@
   Object id=tup.getValue(0);
 synchronized (_tracked) {
     TrackingInfo track=_tracked.get(id);
-    if (track != null && track.receivedId && (_sourceArgs == null || track.reportCount == _numSourceReports && track.expectedTupleCount == track.receivedTuples)) {
+    if (track != null && track.receivedId && (_sourceArgs.isEmpty() || track.reportCount == _numSourceReports && track.expectedTupleCount == track.receivedTuples)) {
       if (_delegate instanceof FinishedCallback) {
         ((FinishedCallback)_delegate).finishedId(new FinishedTupleImpl(tup));
       }

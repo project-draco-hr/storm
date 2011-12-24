@@ -16,7 +16,7 @@ synchronized (_tracked) {
     checkFinishId(tuple);
     _collector.ack(tuple);
   }
- else   if (_sourceArgs != null && tuple.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID)) {
+ else   if (!_sourceArgs.isEmpty() && tuple.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID)) {
     int count=(Integer)tuple.getValue(1);
 synchronized (_tracked) {
       track.reportCount++;
