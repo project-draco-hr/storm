@@ -1,0 +1,7 @@
+{
+  _collector.setAnchor(id);
+  ITransactionalBolt bolt=_openTransactions.get((TransactionAttempt)id);
+  if (bolt != null) {
+    bolt.finishBatch();
+  }
+}

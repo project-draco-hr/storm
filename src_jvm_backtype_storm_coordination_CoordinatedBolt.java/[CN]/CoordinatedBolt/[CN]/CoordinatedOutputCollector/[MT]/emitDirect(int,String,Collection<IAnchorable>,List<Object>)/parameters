@@ -1,0 +1,4 @@
+int task
+String stream
+Collection<IAnchorable> anchors
+List<Object> tuple

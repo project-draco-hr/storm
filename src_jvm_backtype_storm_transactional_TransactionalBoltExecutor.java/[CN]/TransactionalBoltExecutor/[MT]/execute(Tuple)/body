@@ -6,11 +6,11 @@
   if (stream.equals(TransactionalSpoutCoordinator.TRANSACTION_COMMIT_STREAM_ID)) {
     if (bolt != null) {
       ((ICommittable)bolt).commit();
-      _collector.ack();
+      _collector.ack(input);
       _openTransactions.remove(attempt);
     }
  else {
-      _collector.fail();
+      _collector.fail(input);
     }
   }
  else {
@@ -22,6 +22,6 @@
     if (!stream.equals(TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID)) {
       bolt.execute(input);
     }
-    _collector.ack();
+    _collector.ack(input);
   }
 }

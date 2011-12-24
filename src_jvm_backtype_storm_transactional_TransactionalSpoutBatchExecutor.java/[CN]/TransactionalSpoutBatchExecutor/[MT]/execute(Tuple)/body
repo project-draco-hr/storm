@@ -1,5 +1,5 @@
 {
   _collector.setAnchor(input);
   _spout.emitBatch((TransactionAttempt)input.getValue(0),_collector);
-  _collector.ack();
+  _collector.ack(input);
 }

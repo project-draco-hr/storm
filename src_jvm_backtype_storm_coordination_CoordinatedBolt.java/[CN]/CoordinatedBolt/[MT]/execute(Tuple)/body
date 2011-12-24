@@ -1,0 +1,31 @@
+{
+  Object id=tuple.getValue(0);
+  TrackingInfo track;
+synchronized (_tracked) {
+    track=_tracked.get(id);
+    if (track == null) {
+      track=new TrackingInfo();
+      if (_idComponent == null)       track.receivedId=true;
+      _tracked.put(id,track);
+    }
+  }
+  if (_idComponent != null && tuple.getSourceComponent().equals(_idComponent) && tuple.getSourceStreamId().equals(PrepareRequest.ID_STREAM)) {
+synchronized (_tracked) {
+      track.receivedId=true;
+    }
+    checkFinishId(tuple);
+    _collector.ack(tuple);
+  }
+ else   if (_sourceArgs != null && tuple.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID)) {
+    int count=(Integer)tuple.getValue(1);
+synchronized (_tracked) {
+      track.reportCount++;
+      track.expectedTupleCount+=count;
+    }
+    checkFinishId(tuple);
+    _collector.ack(tuple);
+  }
+ else {
+    _delegate.execute(tuple);
+  }
+}
