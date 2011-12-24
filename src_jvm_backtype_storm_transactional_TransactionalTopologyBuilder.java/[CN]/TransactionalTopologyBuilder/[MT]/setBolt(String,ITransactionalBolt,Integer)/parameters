@@ -1,0 +1,3 @@
+String id
+ITransactionalBolt bolt
+Integer parallelism
