@@ -15,7 +15,7 @@
       Iterator<GlobalStreamId> it=context.getThisSources().keySet().iterator();
       while (it.hasNext()) {
         String sourceComponent=it.next().get_componentId();
-        if (_idComponent == null || !sourceComponent.equals(_idComponent)) {
+        if (_idSource == null || !sourceComponent.equals(_idSource.get_componentId())) {
           _numSourceReports=context.getComponentTasks(sourceComponent).size();
           break;
         }

@@ -5,11 +5,11 @@ synchronized (_tracked) {
     track=_tracked.get(id);
     if (track == null) {
       track=new TrackingInfo();
-      if (_idComponent == null)       track.receivedId=true;
+      if (_idSource == null)       track.receivedId=true;
       _tracked.put(id,track);
     }
   }
-  if (_idComponent != null && tuple.getSourceComponent().equals(_idComponent) && tuple.getSourceStreamId().equals(PrepareRequest.ID_STREAM)) {
+  if (_idSource != null && tuple.getSourceComponent().equals(_idSource.get_componentId()) && tuple.getSourceStreamId().equals(_idSource.get_streamId())) {
 synchronized (_tracked) {
       track.receivedId=true;
     }

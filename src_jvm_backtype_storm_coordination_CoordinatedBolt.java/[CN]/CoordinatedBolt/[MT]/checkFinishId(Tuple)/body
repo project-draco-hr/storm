@@ -10,7 +10,7 @@ synchronized (_tracked) {
       while (outTasks.hasNext()) {
         int task=outTasks.next();
         int numTuples=get(track.taskEmittedTuples,task,0);
-        _collector.emitDirect(task,Constants.COORDINATED_STREAM_ID,new Values(id,numTuples));
+        _collector.emitDirect(task,Constants.COORDINATED_STREAM_ID,tup,new Values(id,numTuples));
       }
       _tracked.remove(id);
     }
