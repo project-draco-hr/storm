@@ -1,0 +1,5 @@
+{
+  TransactionAttempt tx=(TransactionAttempt)msgId;
+  _activeTx.remove(tx);
+  sync();
+}

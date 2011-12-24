@@ -1,0 +1,3 @@
+{
+  return _collector.emit(streamId,_anchor,tuple);
+}

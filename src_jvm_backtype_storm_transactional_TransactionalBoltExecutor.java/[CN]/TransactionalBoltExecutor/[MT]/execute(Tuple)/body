@@ -1,19 +1,27 @@
 {
+  _collector.setAnchor(input);
   TransactionAttempt attempt=(TransactionAttempt)input.getValue(0);
-  if (!_openTransactions.containsKey(attempt)) {
-    ITransactionalBolt bolt=(ITransactionalBolt)Utils.deserialize(_boltSer);
-    bolt.prepare(_conf,_context,attempt.getTransactionId());
-    _openTransactions.put(attempt,bolt);
-  }
+  String stream=input.getSourceStreamId();
   ITransactionalBolt bolt=_openTransactions.get(attempt);
-  if (bolt != null) {
-    if (input.getSourceStreamId().equals(Constants.TRANSACTION_COMMIT_STREAM_ID)) {
-      bolt.commit(new TransactionTuple(input),_collector);
+  if (stream.equals(TransactionalSpoutCoordinator.TRANSACTION_COMMIT_STREAM_ID)) {
+    if (bolt != null) {
+      ((ICommittable)bolt).commit();
+      _collector.ack();
       _openTransactions.remove(attempt);
     }
  else {
-      bolt.execute(input);
+      _collector.fail();
     }
   }
-  _collector.ack(input);
+ else {
+    if (bolt == null) {
+      bolt=newTransactionalBolt();
+      bolt.prepare(_conf,_context,_collector,attempt);
+      _openTransactions.put(attempt,bolt);
+    }
+    if (!stream.equals(TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID)) {
+      bolt.execute(input);
+    }
+    _collector.ack();
+  }
 }

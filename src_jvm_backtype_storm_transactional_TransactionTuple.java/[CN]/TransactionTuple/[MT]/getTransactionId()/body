@@ -1,3 +1,0 @@
-{
-  return ((TransactionAttempt)_delegate.getValue(0)).getTransactionId();
-}

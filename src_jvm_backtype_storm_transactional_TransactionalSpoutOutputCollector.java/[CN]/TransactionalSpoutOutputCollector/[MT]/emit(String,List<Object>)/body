@@ -1,3 +1,0 @@
-{
-  return _delegate.emit(Utils.DEFAULT_STREAM_ID,tuple);
-}

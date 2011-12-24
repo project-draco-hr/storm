@@ -1,0 +1,5 @@
+{
+  _state=_spout.getState();
+  _state.open(conf,context);
+  _collector=collector;
+}

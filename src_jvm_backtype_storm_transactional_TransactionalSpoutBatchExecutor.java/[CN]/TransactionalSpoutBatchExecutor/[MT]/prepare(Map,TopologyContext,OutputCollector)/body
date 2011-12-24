@@ -1,0 +1,4 @@
+{
+  _collector=new TransactionalOutputCollectorImpl(collector);
+  _spout.open(conf,context);
+}

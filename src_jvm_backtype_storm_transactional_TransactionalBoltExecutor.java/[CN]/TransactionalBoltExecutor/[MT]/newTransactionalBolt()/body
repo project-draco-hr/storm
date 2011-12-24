@@ -1,0 +1,3 @@
+{
+  return (ITransactionalBolt)Utils.deserialize(_boltSer);
+}
