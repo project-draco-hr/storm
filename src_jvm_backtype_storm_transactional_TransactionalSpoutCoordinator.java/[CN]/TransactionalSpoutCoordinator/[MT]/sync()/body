@@ -1,19 +1,15 @@
 {
-  TransactionAttempt first=_activeTx.firstKey();
-  if (_activeTx.get(first) == AttemptStatus.PROCESSED && first.getTransactionId() == _currTransaction) {
-    _activeTx.put(first,AttemptStatus.COMMITTING);
-    _collector.emit(TRANSACTION_COMMIT_STREAM_ID,new Values(first),first);
+  TransactionStatus maybeCommit=_activeTx.get(_currTransaction);
+  if (maybeCommit != null && maybeCommit.status == AttemptStatus.PROCESSED) {
+    maybeCommit.status=AttemptStatus.COMMITTING;
+    _collector.emit(TRANSACTION_COMMIT_STREAM_ID,new Values(maybeCommit.attempt),maybeCommit.attempt);
   }
   if (_activeTx.size() < _maxTransactionActive) {
-    Set<Integer> activeTxid=new HashSet<Integer>();
-    for (    TransactionAttempt attempt : _activeTx.keySet()) {
-      activeTxid.add(attempt.getTransactionId());
-    }
     int curr=_currTransaction;
     for (int i=0; i < _maxTransactionActive; i++) {
-      if (!activeTxid.contains(curr)) {
+      if (!_activeTx.containsKey(curr)) {
         TransactionAttempt attempt=new TransactionAttempt(curr,Utils.randomLong());
-        _activeTx.put(attempt,AttemptStatus.PROCESSING);
+        _activeTx.put(curr,new TransactionStatus(attempt));
         _collector.emit(TRANSACTION_BATCH_STREAM_ID,new Values(attempt),attempt);
       }
       curr=nextTransactionId(curr);

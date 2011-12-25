@@ -1,11 +1,14 @@
 {
   TransactionAttempt tx=(TransactionAttempt)msgId;
-  AttemptStatus status=_activeTx.get(tx);
-  if (status == AttemptStatus.PROCESSING) {
-    _activeTx.put(tx,AttemptStatus.PROCESSED);
+  TransactionStatus status=_activeTx.get(tx.getTransactionId());
+  if (!tx.equals(status.attempt)) {
+    throw new IllegalStateException("Coordinator got into a bad state: acked transaction " + tx.toString() + " does not match up with stored attempt: "+ status);
   }
- else   if (status == AttemptStatus.COMMITTING) {
-    _activeTx.remove(tx);
+  if (status.status == AttemptStatus.PROCESSING) {
+    status.status=AttemptStatus.PROCESSED;
+  }
+ else   if (status.status == AttemptStatus.COMMITTING) {
+    _activeTx.remove(tx.getTransactionId());
     _currTransaction=nextTransactionId(tx.getTransactionId());
     _state.setTransactionId(_currTransaction);
   }
