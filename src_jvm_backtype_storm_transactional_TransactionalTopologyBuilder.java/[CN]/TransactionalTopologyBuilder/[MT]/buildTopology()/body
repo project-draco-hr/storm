@@ -2,7 +2,7 @@
   String coordinator=_spoutId + "/coordinator";
   TopologyBuilder builder=new TopologyBuilder();
   builder.setSpout(coordinator,new TransactionalSpoutCoordinator(_spout));
-  builder.setBolt(_spoutId,new CoordinatedBolt(new TransactionalSpoutBatchExecutor(_spout),coordinator,null,null),_spoutParallelism);
+  builder.setBolt(_spoutId,new CoordinatedBolt(new TransactionalSpoutBatchExecutor(_spout),coordinator,null,null),_spoutParallelism).allGrouping(coordinator,TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID);
   for (  String id : _bolts.keySet()) {
     Component component=_bolts.get(id);
     Map<String,SourceArgs> coordinatedArgs=new HashMap<String,SourceArgs>();
@@ -18,6 +18,7 @@
     }
     if (component.committer) {
       input.allGrouping(coordinator,TransactionalSpoutCoordinator.TRANSACTION_COMMIT_STREAM_ID);
+      input.allGrouping(coordinator,TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID);
     }
   }
   return builder.createTopology();
