@@ -1,0 +1,5 @@
+{
+  int t=((Integer)getTransactionId()).compareTo(t2.getTransactionId());
+  if (t != 0)   return t;
+  return ((Long)getAttemptId()).compareTo(t2.getAttemptId());
+}

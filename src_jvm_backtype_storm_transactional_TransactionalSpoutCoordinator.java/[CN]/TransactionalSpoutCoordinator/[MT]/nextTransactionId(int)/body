@@ -1,0 +1,4 @@
+{
+  long next=((long)id) + 1;
+  return (int)(next % Integer.MAX_VALUE);
+}

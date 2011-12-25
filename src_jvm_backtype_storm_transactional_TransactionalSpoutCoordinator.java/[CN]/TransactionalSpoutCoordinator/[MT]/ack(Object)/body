@@ -1,6 +1,13 @@
 {
   TransactionAttempt tx=(TransactionAttempt)msgId;
-  _completedTx.add(tx.getTransactionId());
-  _activeTx.remove(tx);
+  AttemptStatus status=_activeTx.get(tx);
+  if (status == AttemptStatus.PROCESSING) {
+    _activeTx.put(tx,AttemptStatus.PROCESSED);
+  }
+ else   if (status == AttemptStatus.COMMITTING) {
+    _activeTx.remove(tx);
+    _currTransaction=nextTransactionId(tx.getTransactionId());
+    _state.setTransactionId(_currTransaction);
+  }
   sync();
 }
