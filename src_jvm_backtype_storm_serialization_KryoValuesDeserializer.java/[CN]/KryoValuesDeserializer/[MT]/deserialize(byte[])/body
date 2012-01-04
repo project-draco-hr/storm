@@ -1,0 +1,3 @@
+{
+  return deserializeFrom(new ByteArrayInputStream(ser));
+}
