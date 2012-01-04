@@ -2,7 +2,7 @@
   boolean gotRequest=false;
   if (_local_drpc_id == null) {
     for (int i=0; i < _clients.size(); i++) {
-      DRPCClient client=_clients.get(i);
+      DRPCInvocationsClient client=_clients.get(i);
       try {
         DRPCRequest req=client.fetchRequest(_function);
         if (req.get_request_id().length() > 0) {
@@ -21,7 +21,7 @@
     }
   }
  else {
-    DistributedRPC.Iface drpc=(DistributedRPC.Iface)ServiceRegistry.getService(_local_drpc_id);
+    DistributedRPCInvocations.Iface drpc=(DistributedRPCInvocations.Iface)ServiceRegistry.getService(_local_drpc_id);
     try {
       DRPCRequest req=drpc.fetchRequest(_function);
       if (req.get_request_id().length() > 0) {

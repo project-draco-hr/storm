@@ -6,9 +6,9 @@
     final String host=(String)retMap.get("host");
     final int port=Utils.getInt(retMap.get("port"));
     String id=(String)retMap.get("id");
-    DistributedRPC.Iface client;
+    DistributedRPCInvocations.Iface client;
     if (local) {
-      client=(DistributedRPC.Iface)ServiceRegistry.getService(host);
+      client=(DistributedRPCInvocations.Iface)ServiceRegistry.getService(host);
     }
  else {
       List server=new ArrayList(){
@@ -19,7 +19,7 @@
       }
 ;
       if (!_clients.containsKey(server)) {
-        _clients.put(server,new DRPCClient(host,port));
+        _clients.put(server,new DRPCInvocationsClient(host,port));
       }
       client=_clients.get(server);
     }

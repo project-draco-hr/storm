@@ -1,0 +1,14 @@
+def process(self, iprot, oprot):
+    (name, type, seqid) = iprot.readMessageBegin()
+    if (name not in self._processMap):
+        iprot.skip(TType.STRUCT)
+        iprot.readMessageEnd()
+        x = TApplicationException(TApplicationException.UNKNOWN_METHOD, ('Unknown function %s' % name))
+        oprot.writeMessageBegin(name, TMessageType.EXCEPTION, seqid)
+        x.write(oprot)
+        oprot.writeMessageEnd()
+        oprot.trans.flush()
+        return
+    else:
+        self._processMap[name](self, seqid, iprot, oprot)
+    return True

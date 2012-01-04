@@ -1,5 +1,5 @@
 {
-  for (  DRPCClient client : _clients) {
+  for (  DRPCInvocationsClient client : _clients) {
     client.close();
   }
 }
