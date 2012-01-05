@@ -1,11 +1,11 @@
 {
   DRPCMessageId did=(DRPCMessageId)msgId;
-  DistributedRPC.Iface client;
+  DistributedRPCInvocations.Iface client;
   if (_local_drpc_id == null) {
     client=_clients.get(did.index);
   }
  else {
-    client=(DistributedRPC.Iface)ServiceRegistry.getService(_local_drpc_id);
+    client=(DistributedRPCInvocations.Iface)ServiceRegistry.getService(_local_drpc_id);
   }
   try {
     client.failRequest(did.id);
