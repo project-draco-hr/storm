@@ -1,4 +1,0 @@
-{
-  if (k instanceof Keyword)   return assoc(((Keyword)k).getName(),v);
-  return toMap().assoc(k,v);
-}
