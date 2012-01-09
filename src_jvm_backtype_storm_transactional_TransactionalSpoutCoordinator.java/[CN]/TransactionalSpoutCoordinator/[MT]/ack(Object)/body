@@ -10,7 +10,6 @@
  else   if (status.status == AttemptStatus.COMMITTING) {
     _activeTx.remove(tx.getTransactionId());
     _currTransaction=nextTransactionId(tx.getTransactionId());
-    _state.setTransactionId(_currTransaction);
   }
   sync();
 }

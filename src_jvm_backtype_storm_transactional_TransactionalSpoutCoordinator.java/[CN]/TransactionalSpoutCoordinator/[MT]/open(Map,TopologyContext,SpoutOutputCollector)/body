@@ -1,7 +1,5 @@
 {
-  _state=_spout.getState();
   _state.open(conf,context);
   _collector=collector;
-  _currTransaction=_state.getTransactionId();
   _maxTransactionActive=Utils.getInt(conf.get(Config.TOPOLOGY_MAX_SPOUT_PENDING));
 }
