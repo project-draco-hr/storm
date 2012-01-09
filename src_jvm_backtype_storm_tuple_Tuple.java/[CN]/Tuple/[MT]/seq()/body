@@ -1,0 +1,6 @@
+{
+  if (values.size() > 0) {
+    return new Seq(getFields().toList(),values,0);
+  }
+  return null;
+}
