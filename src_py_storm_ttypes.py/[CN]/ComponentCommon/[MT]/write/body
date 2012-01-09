@@ -23,5 +23,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('parallelism_hint', TType.I32, 3)
         oprot.writeI32(self.parallelism_hint)
         oprot.writeFieldEnd()
+    if (self.json_conf is not None):
+        oprot.writeFieldBegin('json_conf', TType.STRING, 4)
+        oprot.writeString(self.json_conf.encode('utf-8'))
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

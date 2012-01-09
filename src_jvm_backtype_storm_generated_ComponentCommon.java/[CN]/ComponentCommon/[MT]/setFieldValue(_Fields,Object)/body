@@ -24,5 +24,13 @@ unset_parallelism_hint();
 set_parallelism_hint((Integer)value);
 }
 break;
+case JSON_CONF:
+if (value == null) {
+unset_json_conf();
+}
+ else {
+set_json_conf((String)value);
+}
+break;
 }
 }

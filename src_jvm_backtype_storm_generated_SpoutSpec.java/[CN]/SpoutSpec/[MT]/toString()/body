@@ -18,10 +18,6 @@
     sb.append(this.common);
   }
   first=false;
-  if (!first)   sb.append(", ");
-  sb.append("distributed:");
-  sb.append(this.distributed);
-  first=false;
   sb.append(")");
   return sb.toString();
 }

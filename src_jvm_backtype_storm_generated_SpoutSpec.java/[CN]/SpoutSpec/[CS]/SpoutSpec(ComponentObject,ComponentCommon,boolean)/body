@@ -1,7 +1,0 @@
-{
-  this();
-  this.spout_object=spout_object;
-  this.common=common;
-  this.distributed=distributed;
-  set_distributed_isSet(true);
-}

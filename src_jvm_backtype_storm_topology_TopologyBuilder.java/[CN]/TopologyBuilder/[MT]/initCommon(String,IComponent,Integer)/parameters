@@ -1,0 +1,3 @@
+String id
+IComponent component
+Integer parallelism

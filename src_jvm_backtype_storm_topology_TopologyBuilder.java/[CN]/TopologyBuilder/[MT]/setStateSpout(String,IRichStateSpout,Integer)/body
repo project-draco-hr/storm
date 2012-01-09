@@ -1,4 +1,3 @@
 {
   validateUnusedId(id);
-  _stateSpouts.put(id,new StateSpoutSpec(ComponentObject.serialized_java(Utils.serialize(stateSpout)),getComponentCommon(null,stateSpout,parallelism_hint)));
 }

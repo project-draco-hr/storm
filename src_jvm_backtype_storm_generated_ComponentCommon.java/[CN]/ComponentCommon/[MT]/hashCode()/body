@@ -9,5 +9,8 @@
   boolean present_parallelism_hint=true && (is_set_parallelism_hint());
   builder.append(present_parallelism_hint);
   if (present_parallelism_hint)   builder.append(parallelism_hint);
+  boolean present_json_conf=true && (is_set_json_conf());
+  builder.append(present_json_conf);
+  if (present_json_conf)   builder.append(json_conf);
   return builder.toHashCode();
 }

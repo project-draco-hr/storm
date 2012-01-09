@@ -1,0 +1,7 @@
+{
+  ComponentCommon common=new ComponentCommon();
+  common.set_parallelism_hint(parallelism);
+  Map conf=component.getComponentConfiguration();
+  common.set_json_conf(JSONValue.toJSONString(conf));
+  _commons.put(id,common);
+}

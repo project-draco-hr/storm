@@ -57,6 +57,14 @@ set_parallelism_hint_isSet(true);
 org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
 }
 break;
+case 4:
+if (field.type == org.apache.thrift7.protocol.TType.STRING) {
+this.json_conf=iprot.readString();
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
 default :
 org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
 }

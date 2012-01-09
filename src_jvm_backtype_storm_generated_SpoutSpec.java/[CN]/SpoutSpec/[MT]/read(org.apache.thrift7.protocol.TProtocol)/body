@@ -25,15 +25,6 @@ case 2:
     org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
   }
 break;
-case 3:
-if (field.type == org.apache.thrift7.protocol.TType.BOOL) {
-this.distributed=iprot.readBool();
-set_distributed_isSet(true);
-}
- else {
-org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
-}
-break;
 default :
 org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
 }

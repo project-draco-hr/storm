@@ -2,3 +2,4 @@ self
 inputs
 streams
 parallelism_hint
+json_conf

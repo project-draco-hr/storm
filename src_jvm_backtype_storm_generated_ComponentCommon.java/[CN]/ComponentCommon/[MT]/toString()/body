@@ -24,6 +24,17 @@
     sb.append(this.parallelism_hint);
     first=false;
   }
+  if (is_set_json_conf()) {
+    if (!first)     sb.append(", ");
+    sb.append("json_conf:");
+    if (this.json_conf == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.json_conf);
+    }
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

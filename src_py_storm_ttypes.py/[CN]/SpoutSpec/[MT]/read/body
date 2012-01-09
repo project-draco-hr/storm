@@ -19,11 +19,6 @@ def read(self, iprot):
                 self.common.read(iprot)
             else:
                 iprot.skip(ftype)
-        elif (fid == 3):
-            if (ftype == TType.BOOL):
-                self.distributed = iprot.readBool()
-            else:
-                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

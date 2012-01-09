@@ -12,11 +12,5 @@
     if (!(this_present_common && that_present_common))     return false;
     if (!this.common.equals(that.common))     return false;
   }
-  boolean this_present_distributed=true;
-  boolean that_present_distributed=true;
-  if (this_present_distributed || that_present_distributed) {
-    if (!(this_present_distributed && that_present_distributed))     return false;
-    if (this.distributed != that.distributed)     return false;
-  }
   return true;
 }

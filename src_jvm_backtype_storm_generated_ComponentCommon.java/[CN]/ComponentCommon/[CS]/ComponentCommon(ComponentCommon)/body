@@ -24,4 +24,7 @@
     this.streams=__this__streams;
   }
   this.parallelism_hint=other.parallelism_hint;
+  if (other.is_set_json_conf()) {
+    this.json_conf=other.json_conf;
+  }
 }

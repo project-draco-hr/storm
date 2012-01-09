@@ -18,5 +18,11 @@
     if (!(this_present_parallelism_hint && that_present_parallelism_hint))     return false;
     if (this.parallelism_hint != that.parallelism_hint)     return false;
   }
+  boolean this_present_json_conf=true && this.is_set_json_conf();
+  boolean that_present_json_conf=true && that.is_set_json_conf();
+  if (this_present_json_conf || that_present_json_conf) {
+    if (!(this_present_json_conf && that_present_json_conf))     return false;
+    if (!this.json_conf.equals(that.json_conf))     return false;
+  }
   return true;
 }

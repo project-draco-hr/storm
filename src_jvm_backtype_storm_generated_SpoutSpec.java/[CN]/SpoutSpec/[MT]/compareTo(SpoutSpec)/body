@@ -24,15 +24,5 @@
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_distributed()).compareTo(typedOther.is_set_distributed());
-  if (lastComparison != 0) {
-    return lastComparison;
-  }
-  if (is_set_distributed()) {
-    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.distributed,typedOther.distributed);
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-  }
   return 0;
 }

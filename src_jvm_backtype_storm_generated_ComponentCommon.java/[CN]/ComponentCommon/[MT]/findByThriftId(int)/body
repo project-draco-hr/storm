@@ -6,6 +6,8 @@ case 2:
   return STREAMS;
 case 3:
 return PARALLELISM_HINT;
+case 4:
+return JSON_CONF;
 default :
 return null;
 }

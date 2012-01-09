@@ -30,6 +30,13 @@
     oprot.writeI32(this.parallelism_hint);
     oprot.writeFieldEnd();
   }
+  if (this.json_conf != null) {
+    if (is_set_json_conf()) {
+      oprot.writeFieldBegin(JSON_CONF_FIELD_DESC);
+      oprot.writeString(this.json_conf);
+      oprot.writeFieldEnd();
+    }
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }
