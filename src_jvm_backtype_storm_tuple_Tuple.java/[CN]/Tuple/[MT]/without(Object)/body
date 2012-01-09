@@ -1,0 +1,4 @@
+{
+  if (k instanceof Keyword)   return without(((Keyword)k).getName());
+  return toMap().without(k);
+}

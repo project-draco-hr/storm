@@ -1,0 +1,4 @@
+{
+  if (k instanceof Keyword)   return assocEx(((Keyword)k).getName(),v);
+  return toMap().assocEx(k,v);
+}
