@@ -1,0 +1,3 @@
+{
+  return addConfiguration(Config.TOPOLOGY_DEBUG,debug);
+}
