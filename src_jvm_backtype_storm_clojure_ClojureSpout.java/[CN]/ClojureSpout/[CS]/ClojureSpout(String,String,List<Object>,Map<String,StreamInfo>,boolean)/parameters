@@ -1,5 +1,0 @@
-String namespace
-String fnName
-List<Object> params
-Map<String,StreamInfo> fields
-boolean isDistributed

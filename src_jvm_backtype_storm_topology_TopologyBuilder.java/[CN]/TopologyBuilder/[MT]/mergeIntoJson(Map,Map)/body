@@ -1,5 +1,5 @@
 {
   Map res=new HashMap(into);
-  res.putAll(newMap);
+  if (newMap != null)   res.putAll(newMap);
   return JSONValue.toJSONString(res);
 }

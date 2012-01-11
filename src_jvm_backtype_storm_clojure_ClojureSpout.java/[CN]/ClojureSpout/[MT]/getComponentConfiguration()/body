@@ -1,7 +1,9 @@
 {
-  Map<String,Object> ret=new HashMap<String,Object>();
-  if (!_isDistributed) {
-    ret.put(Config.TOPOLOGY_MAX_TASK_PARALLELISM,1);
+  IFn hof=Utils.loadClojureFn(_confSpec.get(0),_confSpec.get(1));
+  try {
+    return (Map)hof.applyTo(RT.seq(_params));
   }
-  return ret;
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
 }
