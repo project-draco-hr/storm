@@ -9,6 +9,7 @@
   }
  else   if (status.status == AttemptStatus.COMMITTING) {
     _activeTx.remove(tx.getTransactionId());
+    _spout.cleanupTransaction(_currTransaction);
     _currTransaction=nextTransactionId(tx.getTransactionId());
   }
   sync();
