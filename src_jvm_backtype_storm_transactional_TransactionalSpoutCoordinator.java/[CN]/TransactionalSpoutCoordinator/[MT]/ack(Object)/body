@@ -11,6 +11,7 @@
     _activeTx.remove(tx.getTransactionId());
     _spout.cleanupTransaction(_currTransaction);
     _currTransaction=nextTransactionId(tx.getTransactionId());
+    _state.setData(CURRENT_TX,_currTransaction);
   }
   sync();
 }

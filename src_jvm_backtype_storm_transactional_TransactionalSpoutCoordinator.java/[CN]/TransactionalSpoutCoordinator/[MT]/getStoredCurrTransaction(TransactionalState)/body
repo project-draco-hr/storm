@@ -1,0 +1,5 @@
+{
+  Integer ret=(Integer)state.getData(CURRENT_TX);
+  if (ret == null)   return 0;
+ else   return ret;
+}
