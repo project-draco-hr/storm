@@ -1,4 +1,5 @@
 {
   this.bolt=bolt;
   this.parallelism=parallelism;
+  this.componentConfs=new ArrayList();
 }

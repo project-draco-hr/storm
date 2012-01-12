@@ -1,0 +1,16 @@
+{
+  try {
+    conf=new HashMap(conf);
+    conf.put(Config.TOPOLOGY_KRYO_REGISTER,spout.getComponentConfiguration().get(Config.TOPOLOGY_KRYO_REGISTER));
+    String rootDir=conf.get(Config.TRANSACTIONAL_ZOOKEEPER_ROOT) + "/" + spout.getId()+ "/"+ subroot;
+    CuratorFramework initter=Utils.newCurator(conf);
+    initter.create().creatingParentsIfNeeded().forPath(rootDir);
+    initter.close();
+    _curator=Utils.newCurator(conf,rootDir);
+    _ser=new KryoValuesSerializer(conf);
+    _des=new KryoValuesDeserializer(conf);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

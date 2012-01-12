@@ -10,9 +10,7 @@
   JavaBridge clojureSerializersBridge=new JavaBridge();
   clojureSerializersBridge.registerClojureCollections(k);
   clojureSerializersBridge.registerClojurePrimitives(k);
-  Map<String,String> registrations=(Map<String,String>)conf.get(Config.TOPOLOGY_KRYO_REGISTER);
-  if (registrations == null)   registrations=new HashMap<String,String>();
-  registrations=new TreeMap<String,String>(registrations);
+  Map<String,String> registrations=normalizeKryoRegister(conf);
   boolean skipMissing=(Boolean)conf.get(Config.TOPOLOGY_SKIP_MISSING_KRYO_REGISTRATIONS);
   for (  String klassName : registrations.keySet()) {
     String serializerClassName=registrations.get(klassName);
