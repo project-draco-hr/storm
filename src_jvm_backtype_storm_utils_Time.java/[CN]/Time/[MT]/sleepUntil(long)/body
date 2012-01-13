@@ -1,13 +1,17 @@
 {
   if (simulating.get()) {
+    try {
 synchronized (sleepTimesLock) {
-      threadSleepTimes.put(Thread.currentThread(),new AtomicLong(targetTimeMs));
+        threadSleepTimes.put(Thread.currentThread(),new AtomicLong(targetTimeMs));
+      }
+      while (simulatedCurrTimeMs.get() < targetTimeMs) {
+        Thread.sleep(10);
+      }
     }
-    while (simulatedCurrTimeMs.get() < targetTimeMs) {
-      Thread.sleep(10);
-    }
+  finally {
 synchronized (sleepTimesLock) {
-      threadSleepTimes.remove(Thread.currentThread());
+        threadSleepTimes.remove(Thread.currentThread());
+      }
     }
   }
  else {
