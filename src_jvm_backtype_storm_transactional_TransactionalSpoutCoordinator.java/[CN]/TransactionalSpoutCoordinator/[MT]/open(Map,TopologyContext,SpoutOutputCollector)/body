@@ -1,5 +1,6 @@
 {
   _state=TransactionalState.newCoordinatorState(conf,_spout);
+  _coordinatorState=new RotatingTransactionalState(_state,META_DIR,new StateInitializer(),true);
   _collector=collector;
   _spout.open(conf,context);
   _currTransaction=getStoredCurrTransaction(_state);

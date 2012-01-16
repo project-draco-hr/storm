@@ -1,0 +1,25 @@
+{
+  if (!_curr.containsKey(txid)) {
+    SortedMap<BigInteger,Object> prevMap=_curr.headMap(txid);
+    SortedMap<BigInteger,Object> afterMap=_curr.tailMap(txid);
+    BigInteger prev=null;
+    if (!prevMap.isEmpty())     prev=prevMap.lastKey();
+    if (prev == null && !txid.equals(TransactionalSpoutCoordinator.INIT_TXID)) {
+      throw new IllegalStateException("Trying to initialize transaction for which there should be a previous state");
+    }
+    if (_strictOrder && prev != null && !prev.equals(txid.subtract(ONE))) {
+      throw new IllegalStateException("Expecting previous txid state to be the previous transaction");
+    }
+    Object prevData;
+    if (prev != null) {
+      prevData=_curr.get(prev);
+    }
+ else {
+      prevData=null;
+    }
+    Object data=_init.init(txid,prevData);
+    _curr.put(txid,data);
+    _state.setData(txPath(txid),data);
+  }
+  return _curr.get(txid);
+}

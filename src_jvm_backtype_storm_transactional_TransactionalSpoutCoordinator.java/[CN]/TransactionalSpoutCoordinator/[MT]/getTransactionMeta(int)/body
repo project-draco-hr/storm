@@ -1,4 +1,0 @@
-{
-  String path=txMetaPath(txid);
-  Object ret=_state.getData(path);
-}

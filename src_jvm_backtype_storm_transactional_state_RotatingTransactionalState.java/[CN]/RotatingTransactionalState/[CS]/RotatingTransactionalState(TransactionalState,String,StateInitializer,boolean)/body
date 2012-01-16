@@ -1,0 +1,8 @@
+{
+  _state=state;
+  _subdir=subdir;
+  _init=init;
+  _strictOrder=strictOrder;
+  state.mkdir(subdir);
+  sync();
+}

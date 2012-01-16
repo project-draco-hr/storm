@@ -1,0 +1,4 @@
+TransactionalState state
+String subdir
+StateInitializer init
+boolean strictOrder

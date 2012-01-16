@@ -5,12 +5,12 @@
     _collector.emit(TRANSACTION_COMMIT_STREAM_ID,new Values(maybeCommit.attempt),maybeCommit.attempt);
   }
   if (_activeTx.size() < _maxTransactionActive) {
-    int curr=_currTransaction;
+    BigInteger curr=_currTransaction;
     for (int i=0; i < _maxTransactionActive; i++) {
       if (!_activeTx.containsKey(curr)) {
         TransactionAttempt attempt=new TransactionAttempt(curr,Utils.randomLong());
         _activeTx.put(curr,new TransactionStatus(attempt));
-        _collector.emit(TRANSACTION_BATCH_STREAM_ID,new Values(attempt),attempt);
+        _collector.emit(TRANSACTION_BATCH_STREAM_ID,new Values(attempt,_coordinatorState.getState(curr)),attempt);
       }
       curr=nextTransactionId(curr);
     }

@@ -1,0 +1,7 @@
+{
+  SortedMap<BigInteger,Object> toDelete=_curr.headMap(txid);
+  for (  BigInteger tx : toDelete.keySet()) {
+    _curr.remove(tx);
+    _state.delete(txPath(tx));
+  }
+}
