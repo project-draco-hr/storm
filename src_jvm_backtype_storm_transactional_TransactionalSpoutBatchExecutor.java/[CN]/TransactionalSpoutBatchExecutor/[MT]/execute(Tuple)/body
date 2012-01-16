@@ -1,5 +1,12 @@
 {
-  _collector.setAnchor(input);
-  _spout.emitBatch((TransactionAttempt)input.getValue(0),_collector);
-  _collector.ack(input);
+  TransactionAttempt attempt=(TransactionAttempt)input.getValue(0);
+  if (input.getSourceStreamId().equals(TransactionalSpoutCoordinator.TRANSACTION_COMMIT_STREAM_ID)) {
+    _collector.ack(input);
+    _emitter.cleanupBefore(attempt.getTransactionId());
+  }
+ else {
+    _collector.setAnchor(input);
+    _emitter.emitBatch((TransactionAttempt)input.getValue(0),_collector);
+    _collector.ack(input);
+  }
 }

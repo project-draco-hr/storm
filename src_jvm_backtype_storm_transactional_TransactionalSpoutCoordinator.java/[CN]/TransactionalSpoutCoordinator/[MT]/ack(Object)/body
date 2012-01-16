@@ -9,7 +9,6 @@
   }
  else   if (status.status == AttemptStatus.COMMITTING) {
     _activeTx.remove(tx.getTransactionId());
-    _spout.cleanupTransaction(_currTransaction);
     _coordinatorState.commit(tx.getTransactionId());
     _currTransaction=nextTransactionId(tx.getTransactionId());
     _state.setData(CURRENT_TX,_currTransaction);
