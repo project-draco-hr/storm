@@ -1,5 +1,4 @@
 {
-  _collector.setAnchor(input);
   TransactionAttempt attempt=(TransactionAttempt)input.getValue(0);
   String stream=input.getSourceStreamId();
   ITransactionalBolt bolt=_openTransactions.get(attempt);
