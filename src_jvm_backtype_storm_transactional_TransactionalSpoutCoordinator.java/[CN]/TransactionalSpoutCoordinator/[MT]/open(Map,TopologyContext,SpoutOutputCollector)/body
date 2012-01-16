@@ -1,8 +1,9 @@
 {
   _state=TransactionalState.newCoordinatorState(conf,_spout);
-  _coordinatorState=new RotatingTransactionalState(_state,META_DIR,new StateInitializer(),true);
+  _coordinatorState=new RotatingTransactionalState(_state,META_DIR,true);
   _collector=collector;
   _coordinator=_spout.getCoordinator(conf,context);
   _currTransaction=getStoredCurrTransaction(_state);
   _maxTransactionActive=Utils.getInt(conf.get(Config.TOPOLOGY_MAX_SPOUT_PENDING));
+  _initializer=new StateInitializer();
 }

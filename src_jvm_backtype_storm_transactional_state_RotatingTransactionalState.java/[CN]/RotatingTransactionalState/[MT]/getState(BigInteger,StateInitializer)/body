@@ -22,7 +22,7 @@
  else {
         prevData=null;
       }
-      data=_init.init(txid,prevData);
+      data=init.init(txid,prevData);
     }
  else {
       data=null;

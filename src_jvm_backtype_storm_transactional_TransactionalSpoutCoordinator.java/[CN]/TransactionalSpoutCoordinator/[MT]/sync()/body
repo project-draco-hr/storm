@@ -10,7 +10,8 @@
       if (!_activeTx.containsKey(curr)) {
         TransactionAttempt attempt=new TransactionAttempt(curr,Utils.randomLong());
         _activeTx.put(curr,new TransactionStatus(attempt));
-        _collector.emit(TRANSACTION_BATCH_STREAM_ID,new Values(attempt,_coordinatorState.getState(curr)),attempt);
+        Object state=_coordinatorState.getState(curr,_initializer);
+        _collector.emit(TRANSACTION_BATCH_STREAM_ID,new Values(attempt,state),attempt);
       }
       curr=nextTransactionId(curr);
     }

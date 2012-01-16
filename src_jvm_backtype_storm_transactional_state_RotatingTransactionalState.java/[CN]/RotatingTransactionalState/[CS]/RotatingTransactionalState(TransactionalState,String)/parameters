@@ -1,3 +1,2 @@
 TransactionalState state
 String subdir
-StateInitializer init
