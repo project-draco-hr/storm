@@ -1,5 +1,5 @@
 {
-  int partitions=(int)coordinatorMeta;
+  int partitions=(Integer)coordinatorMeta;
   for (int i=_index; i < partitions; i+=_numTasks) {
     if (!_partitionStates.containsKey(i)) {
       _partitionStates.put(i,new RotatingTransactionalState(_state,"" + i));
