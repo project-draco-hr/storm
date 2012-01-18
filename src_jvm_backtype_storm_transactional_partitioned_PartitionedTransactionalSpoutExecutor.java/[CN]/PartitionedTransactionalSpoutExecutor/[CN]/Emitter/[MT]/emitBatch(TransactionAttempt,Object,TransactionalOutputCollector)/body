@@ -1,6 +1,17 @@
 {
   int partitions=(Integer)coordinatorMeta;
-  for (int i=_index; i < partitions; i+=_numTasks) {
+  TreeMap<Integer,Integer> allocationsMap=Utils.integerDivided(partitions,_numTasks);
+  List<Integer> allocations=new ArrayList<Integer>();
+  for (  Integer amt : allocationsMap.descendingKeySet()) {
+    for (int i=0; i < allocationsMap.get(amt); i++) {
+      allocations.add(amt);
+    }
+  }
+  int startPartition=0;
+  for (int i=0; i < _index; i++) {
+    startPartition+=allocations.get(i);
+  }
+  for (int i=startPartition; i < startPartition + allocations.get(_index); i+=1) {
     if (!_partitionStates.containsKey(i)) {
       _partitionStates.put(i,new RotatingTransactionalState(_state,"" + i));
     }
