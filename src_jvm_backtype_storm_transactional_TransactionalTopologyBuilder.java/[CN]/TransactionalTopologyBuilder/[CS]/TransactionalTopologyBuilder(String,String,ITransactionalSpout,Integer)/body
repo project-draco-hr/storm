@@ -1,4 +1,5 @@
 {
+  _id=id;
   _spoutId=spoutId;
   _spout=spout;
   _spoutParallelism=spoutParallelism;

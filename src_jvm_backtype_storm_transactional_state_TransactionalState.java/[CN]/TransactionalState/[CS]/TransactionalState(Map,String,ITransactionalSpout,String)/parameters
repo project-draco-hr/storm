@@ -1,3 +1,4 @@
 Map conf
+String id
 ITransactionalSpout spout
 String subroot
