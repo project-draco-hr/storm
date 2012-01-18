@@ -1,0 +1,4 @@
+TransactionAttempt attempt
+TransactionalOutputCollector collector
+int partition
+BatchMeta lastMeta

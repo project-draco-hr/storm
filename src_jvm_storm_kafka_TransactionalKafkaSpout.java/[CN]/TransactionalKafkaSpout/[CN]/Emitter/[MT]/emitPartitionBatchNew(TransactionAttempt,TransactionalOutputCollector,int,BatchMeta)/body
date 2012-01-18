@@ -1,0 +1,17 @@
+{
+  SimpleConsumer consumer=connect(partition);
+  long offset=0;
+  if (lastMeta != null) {
+    offset=lastMeta.nextOffset;
+  }
+  ByteBufferMessageSet msgs=consumer.fetch(new FetchRequest(_config.topic,partition % _config.partitionsPerHost,offset,_config.fetchSizeBytes));
+  long endoffset=offset;
+  for (  Message msg : msgs) {
+    emit(attempt,collector,msg);
+    endoffset+=MessageSet.entrySize(msg);
+  }
+  BatchMeta newMeta=new BatchMeta();
+  newMeta.offset=offset;
+  newMeta.nextOffset=endoffset;
+  return newMeta;
+}

@@ -1,0 +1,7 @@
+{
+  if (!_kafka.containsKey(partition)) {
+    int hostIndex=partition % _config.hosts.size();
+    _kafka.put(partition,new SimpleConsumer(_config.hosts.get(hostIndex),_config.port,_config.socketTimeoutMs,_config.bufferSizeBytes));
+  }
+  return _kafka.get(partition);
+}

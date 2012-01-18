@@ -1,0 +1,7 @@
+{
+  List<Object> values=_config.scheme.deserialize(Utils.toByteArray(msg.payload()));
+  List<Object> toEmit=new ArrayList<Object>();
+  toEmit.add(attempt);
+  toEmit.addAll(values);
+  collector.emit(toEmit);
+}
