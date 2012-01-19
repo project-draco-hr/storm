@@ -1,4 +1,5 @@
 {
+  path="/" + path;
   byte[] ser=_ser.serializeObject(obj);
   try {
     if (_curator.checkExists().forPath(path) != null) {

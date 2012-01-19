@@ -1,4 +1,5 @@
 {
+  path="/" + path;
   try {
     if (_curator.checkExists().forPath(path) != null) {
       return _des.deserializeObject(_curator.getData().forPath(path));
