@@ -1,5 +1,0 @@
-{
-  this.bolt=bolt;
-  this.parallelism=parallelism;
-  this.committer=committer;
-}

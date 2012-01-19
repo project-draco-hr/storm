@@ -1,7 +1,0 @@
-{
-  Set<String> ret=new HashSet<String>();
-  for (  InputDeclaration d : component.declarations) {
-    ret.add(d.getComponent());
-  }
-  return ret;
-}

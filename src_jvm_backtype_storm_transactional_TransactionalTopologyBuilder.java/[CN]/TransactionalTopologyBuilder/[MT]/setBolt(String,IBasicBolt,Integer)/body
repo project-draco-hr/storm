@@ -1,3 +1,0 @@
-{
-  return setBolt(id,new BasicBoltExecutor(bolt),parallelism,false);
-}

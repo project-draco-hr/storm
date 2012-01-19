@@ -1,5 +1,0 @@
-{
-  Component component=new Component(bolt,parallelism,committer);
-  _bolts.put(id,component);
-  return new BoltDeclarerImpl(component);
-}
