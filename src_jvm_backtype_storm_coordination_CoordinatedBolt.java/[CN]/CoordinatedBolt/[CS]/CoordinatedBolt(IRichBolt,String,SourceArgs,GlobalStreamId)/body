@@ -1,3 +1,0 @@
-{
-  this(delegate,singleSourceArgs(sourceComponent,sourceArgs),idSource);
-}

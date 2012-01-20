@@ -1,4 +1,4 @@
 IRichBolt delegate
 String sourceComponent
 SourceArgs sourceArgs
-GlobalStreamId idSource
+IdStreamSpec idStreamSpec

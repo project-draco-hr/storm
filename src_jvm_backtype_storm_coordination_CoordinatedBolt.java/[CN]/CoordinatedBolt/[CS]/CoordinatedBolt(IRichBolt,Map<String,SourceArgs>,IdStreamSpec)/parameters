@@ -1,3 +1,3 @@
 IRichBolt delegate
 Map<String,SourceArgs> sourceArgs
-GlobalStreamId idSource
+IdStreamSpec idStreamSpec

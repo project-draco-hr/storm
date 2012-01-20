@@ -5,16 +5,21 @@ synchronized (_tracked) {
     track=_tracked.get(id);
     if (track == null) {
       track=new TrackingInfo();
-      if (_idSource == null)       track.receivedId=true;
+      if (_idStreamSpec == null)       track.receivedId=true;
       _tracked.put(id,track);
     }
   }
-  if (_idSource != null && tuple.getSourceComponent().equals(_idSource.get_componentId()) && tuple.getSourceStreamId().equals(_idSource.get_streamId())) {
+  if (_idStreamSpec != null && tuple.getSourceGlobalStreamid().equals(_idStreamSpec._id)) {
 synchronized (_tracked) {
       track.receivedId=true;
     }
+    if (_idStreamSpec._passTupleThrough) {
+      _delegate.execute(tuple);
+    }
     checkFinishId(tuple);
-    _collector.ack(tuple);
+    if (!_idStreamSpec._passTupleThrough) {
+      _collector.ack(tuple);
+    }
   }
  else   if (!_sourceArgs.isEmpty() && tuple.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID)) {
     int count=(Integer)tuple.getValue(1);
