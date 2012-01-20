@@ -1,0 +1,3 @@
+IRichBolt bolt
+int parallelism
+boolean committer
