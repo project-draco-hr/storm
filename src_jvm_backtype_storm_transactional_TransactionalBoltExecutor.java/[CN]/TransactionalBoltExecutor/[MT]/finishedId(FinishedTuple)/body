@@ -1,10 +1,11 @@
 {
   TransactionAttempt attempt=(TransactionAttempt)tup.getId();
-  ITransactionalBolt bolt=_openTransactions.get(attempt);
-  if (bolt != null) {
-    if (!(bolt instanceof ICommittable)) {
+  OpenTransaction tx=_openTransactions.get(attempt);
+  if (tx != null) {
+    if (!(tx instanceof ICommittable)) {
       _openTransactions.remove(attempt);
     }
-    bolt.finishBatch();
+    tx.bolt.finishBatch();
+    tx.finished=true;
   }
 }

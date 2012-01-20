@@ -1,10 +1,10 @@
 {
   TransactionAttempt attempt=(TransactionAttempt)input.getValue(0);
   String stream=input.getSourceStreamId();
-  ITransactionalBolt bolt=_openTransactions.get(attempt);
+  OpenTransaction tx=_openTransactions.get(attempt);
   if (stream.equals(TransactionalSpoutCoordinator.TRANSACTION_COMMIT_STREAM_ID)) {
-    if (bolt != null) {
-      ((ICommittable)bolt).commit();
+    if (tx != null && tx.finished) {
+      ((ICommittable)tx.bolt).commit();
       _collector.ack(input);
       _openTransactions.remove(attempt);
     }
@@ -13,13 +13,13 @@
     }
   }
  else {
-    if (bolt == null) {
-      bolt=newTransactionalBolt();
-      bolt.prepare(_conf,_context,_collector,attempt);
-      _openTransactions.put(attempt,bolt);
+    if (tx == null) {
+      tx=new OpenTransaction();
+      tx.bolt.prepare(_conf,_context,_collector,attempt);
+      _openTransactions.put(attempt,tx);
     }
     if (!stream.equals(TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID)) {
-      bolt.execute(input);
+      tx.bolt.execute(input);
     }
     _collector.ack(input);
   }
