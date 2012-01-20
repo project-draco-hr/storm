@@ -9,6 +9,7 @@
       _openTransactions.remove(attempt);
     }
  else {
+      LOG.info("Failing transaction attempt: " + attempt + " with state "+ tx);
       _collector.fail(input);
     }
   }
