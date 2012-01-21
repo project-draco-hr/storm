@@ -1,0 +1,3 @@
+Fields fields
+String stream
+List<Object> values

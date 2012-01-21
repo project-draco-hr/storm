@@ -1,0 +1,3 @@
+String streamId
+Collection<IAnchorable> anchors
+List<Object> tuple
