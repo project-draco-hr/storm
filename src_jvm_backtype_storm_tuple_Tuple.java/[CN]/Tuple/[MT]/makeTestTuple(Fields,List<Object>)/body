@@ -1,3 +1,0 @@
-{
-  return makeTestTuple(fields,Utils.DEFAULT_STREAM_ID,values);
-}

@@ -1,0 +1,4 @@
+{
+  declarer.declareStream(BATCH_STREAM,new Fields("tx","count"));
+  declarer.declareStream(COMMIT_STREAM,new Fields("tx","count"));
+}

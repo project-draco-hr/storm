@@ -2,7 +2,7 @@
   TransactionAttempt attempt=(TransactionAttempt)tup.getId();
   OpenTransaction tx=_openTransactions.get(attempt);
   if (tx != null) {
-    if (!(tx instanceof ICommittable)) {
+    if (!(tx.bolt instanceof ICommittable)) {
       _openTransactions.remove(attempt);
     }
     tx.bolt.finishBatch();
