@@ -1,6 +1,7 @@
 {
   Object id=tuple.getValue(0);
   TrackingInfo track;
+  boolean failed=false;
 synchronized (_tracked) {
     track=_tracked.get(id);
     if (track == null) {
@@ -8,6 +9,7 @@ synchronized (_tracked) {
       if (_idStreamSpec == null)       track.receivedId=true;
       _tracked.put(id,track);
     }
+    failed=track.failedTuples > 0;
   }
   if (_idStreamSpec != null && tuple.getSourceGlobalStreamid().equals(_idStreamSpec._id)) {
 synchronized (_tracked) {
@@ -18,7 +20,12 @@ synchronized (_tracked) {
     }
     checkFinishId(tuple);
     if (!_idStreamSpec._passTupleThrough) {
-      _collector.ack(tuple);
+      if (failed) {
+        _collector.fail(tuple);
+      }
+ else {
+        _collector.ack(tuple);
+      }
     }
   }
  else   if (!_sourceArgs.isEmpty() && tuple.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID)) {
@@ -28,7 +35,12 @@ synchronized (_tracked) {
       track.expectedTupleCount+=count;
     }
     checkFinishId(tuple);
-    _collector.ack(tuple);
+    if (failed) {
+      _collector.fail(tuple);
+    }
+ else {
+      _collector.ack(tuple);
+    }
   }
  else {
     _delegate.execute(tuple);
