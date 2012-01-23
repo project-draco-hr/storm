@@ -1,3 +1,0 @@
-{
-  return new TransactionalState(conf,id,spout,"coordinator");
-}

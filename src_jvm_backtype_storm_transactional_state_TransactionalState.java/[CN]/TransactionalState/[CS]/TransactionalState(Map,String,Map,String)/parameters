@@ -1,4 +1,4 @@
 Map conf
 String id
-ITransactionalSpout spout
+Map componentConf
 String subroot
