@@ -4,8 +4,14 @@
   OpenTransaction tx=_openTransactions.get(attempt);
   if (stream.equals(TransactionalSpoutCoordinator.TRANSACTION_COMMIT_STREAM_ID)) {
     if (tx != null && tx.finished) {
-      ((ICommittable)tx.bolt).commit();
-      _collector.ack(input);
+      try {
+        ((ICommittable)tx.bolt).commit();
+        _collector.ack(input);
+      }
+ catch (      FailedTransactionException e) {
+        LOG.warn("Failed to commit transaction",e);
+        _collector.fail(input);
+      }
       _openTransactions.remove(attempt);
     }
  else {
@@ -19,9 +25,15 @@
       tx.bolt.prepare(_conf,_context,_collector,attempt);
       _openTransactions.put(attempt,tx);
     }
-    if (!stream.equals(TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID)) {
-      tx.bolt.execute(input);
+    try {
+      if (!stream.equals(TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID)) {
+        tx.bolt.execute(input);
+      }
+      _collector.ack(input);
     }
-    _collector.ack(input);
+ catch (    FailedTransactionException e) {
+      LOG.warn("Failed to process tuple in transaction",e);
+      _collector.fail(input);
+    }
   }
 }
