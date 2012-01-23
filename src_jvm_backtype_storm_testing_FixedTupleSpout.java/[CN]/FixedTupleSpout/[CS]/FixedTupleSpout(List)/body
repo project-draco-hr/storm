@@ -1,4 +1,11 @@
 {
+  _id=UUID.randomUUID().toString();
+synchronized (acked) {
+    acked.put(_id,0);
+  }
+synchronized (failed) {
+    failed.put(_id,0);
+  }
   _tuples=new ArrayList<FixedTuple>();
   for (  Object o : tuples) {
     FixedTuple ft;
