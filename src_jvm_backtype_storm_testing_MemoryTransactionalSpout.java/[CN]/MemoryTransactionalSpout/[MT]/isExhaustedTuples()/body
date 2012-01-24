@@ -1,6 +1,7 @@
 {
+  Map<Integer,Boolean> statuses=getFinishedStatuses();
   for (  Integer partition : getQueues().keySet()) {
-    if (!getFinishedStatuses().get(partition)) {
+    if (!statuses.containsKey(partition) || !getFinishedStatuses().get(partition)) {
       return false;
     }
   }
