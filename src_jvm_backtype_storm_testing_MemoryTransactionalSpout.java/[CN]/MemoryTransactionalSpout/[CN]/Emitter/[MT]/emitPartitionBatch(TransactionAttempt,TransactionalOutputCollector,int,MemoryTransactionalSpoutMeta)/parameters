@@ -1,0 +1,4 @@
+TransactionAttempt tx
+TransactionalOutputCollector collector
+int partition
+MemoryTransactionalSpoutMeta partitionMeta

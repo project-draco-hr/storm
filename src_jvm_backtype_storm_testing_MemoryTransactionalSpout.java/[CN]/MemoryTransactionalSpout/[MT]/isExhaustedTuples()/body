@@ -1,0 +1,8 @@
+{
+  for (  Integer partition : getQueues().keySet()) {
+    if (!getFinishedStatuses().get(partition)) {
+      return false;
+    }
+  }
+  return true;
+}

@@ -1,0 +1,10 @@
+{
+  _id=RegisteredGlobalState.registerState(partitions);
+  Map<Integer,Boolean> finished=Collections.synchronizedMap(new HashMap<Integer,Boolean>());
+  for (  Integer partition : partitions.keySet()) {
+    finished.put(partition,false);
+  }
+  _finishedPartitionsId=RegisteredGlobalState.registerState(finished);
+  _takeAmt=takeAmt;
+  _outFields=outFields;
+}

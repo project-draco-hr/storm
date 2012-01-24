@@ -1,0 +1,6 @@
+{
+  List<List<Object>> queue=getQueues().get(partition);
+  for (int i=partitionMeta.index; i < partitionMeta.index + partitionMeta.amt; i++) {
+    collector.emit(queue.get(i));
+  }
+}
