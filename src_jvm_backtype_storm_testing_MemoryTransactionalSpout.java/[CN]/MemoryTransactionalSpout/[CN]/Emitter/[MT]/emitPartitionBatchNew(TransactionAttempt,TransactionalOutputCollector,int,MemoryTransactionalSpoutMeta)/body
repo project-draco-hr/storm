@@ -10,9 +10,8 @@
   int total=queue.size();
   int left=total - index;
   int toTake=Math.min(left,_takeAmt);
-  for (int i=index; i < index + toTake; i++) {
-    collector.emit(queue.get(i));
-  }
+  MemoryTransactionalSpoutMeta ret=new MemoryTransactionalSpoutMeta(index,toTake);
+  emitPartitionBatch(tx,collector,partition,ret);
   if (toTake == 0) {
     int curr=Utils.get(_emptyPartitions,partition,0) + 1;
     _emptyPartitions.put(partition,curr);
@@ -20,5 +19,5 @@
       getFinishedStatuses().put(partition,true);
     }
   }
-  return new MemoryTransactionalSpoutMeta(index,toTake);
+  return ret;
 }

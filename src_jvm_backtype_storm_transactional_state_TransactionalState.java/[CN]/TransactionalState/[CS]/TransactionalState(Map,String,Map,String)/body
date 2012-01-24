@@ -6,7 +6,11 @@
     }
     String rootDir=conf.get(Config.TRANSACTIONAL_ZOOKEEPER_ROOT) + "/" + id+ "/"+ subroot;
     CuratorFramework initter=Utils.newCurator(conf);
-    initter.create().creatingParentsIfNeeded().forPath(rootDir);
+    try {
+      initter.create().creatingParentsIfNeeded().forPath(rootDir);
+    }
+ catch (    KeeperException.NodeExistsException e) {
+    }
     initter.close();
     _curator=Utils.newCurator(conf,rootDir);
     _ser=new KryoValuesSerializer(conf);

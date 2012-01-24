@@ -1,3 +1,5 @@
 {
-  declarer.declare(_outFields);
+  List<String> toDeclare=new ArrayList<String>(_outFields.toList());
+  toDeclare.add(0,TX_FIELD);
+  declarer.declare(new Fields(toDeclare));
 }
