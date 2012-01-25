@@ -15,17 +15,12 @@ synchronized (_tracked) {
 synchronized (_tracked) {
       track.receivedId=true;
     }
-    if (_idStreamSpec._passTupleThrough) {
-      _delegate.execute(tuple);
-    }
     checkFinishId(tuple);
-    if (!_idStreamSpec._passTupleThrough) {
-      if (failed) {
-        _collector.fail(tuple);
-      }
+    if (failed) {
+      _collector.fail(tuple);
+    }
  else {
-        _collector.ack(tuple);
-      }
+      _collector.ack(tuple);
     }
   }
  else   if (!_sourceArgs.isEmpty() && tuple.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID)) {

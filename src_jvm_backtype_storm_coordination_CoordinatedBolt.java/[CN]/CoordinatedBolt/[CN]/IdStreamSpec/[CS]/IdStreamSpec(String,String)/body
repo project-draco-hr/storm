@@ -1,4 +1,3 @@
 {
   _id=new GlobalStreamId(component,stream);
-  _passTupleThrough=passTupleThrough;
 }
