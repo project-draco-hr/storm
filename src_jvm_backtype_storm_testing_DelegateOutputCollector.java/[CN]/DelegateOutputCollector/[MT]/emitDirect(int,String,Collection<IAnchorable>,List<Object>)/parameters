@@ -1,4 +1,0 @@
-int taskId
-String streamId
-Collection<IAnchorable> anchors
-List<Object> tuple

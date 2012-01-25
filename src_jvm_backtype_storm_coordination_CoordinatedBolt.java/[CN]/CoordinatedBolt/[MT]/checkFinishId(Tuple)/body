@@ -4,7 +4,7 @@ synchronized (_tracked) {
     TrackingInfo track=_tracked.get(id);
     if (track != null && track.receivedId && (_sourceArgs.isEmpty() || track.reportCount == _numSourceReports && track.expectedTupleCount == track.receivedTuples)) {
       if (_delegate instanceof FinishedCallback) {
-        ((FinishedCallback)_delegate).finishedId(new FinishedTupleImpl(tup));
+        ((FinishedCallback)_delegate).finishedId(id);
       }
       if (!(_sourceArgs.isEmpty() || tup.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID) || (_idStreamSpec != null && tup.getSourceGlobalStreamid().equals(_idStreamSpec._id)))) {
         throw new IllegalStateException("Coordination condition met on a non-coordinating tuple. Should be impossible");

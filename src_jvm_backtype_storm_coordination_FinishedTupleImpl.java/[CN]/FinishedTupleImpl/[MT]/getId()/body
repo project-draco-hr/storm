@@ -1,3 +1,0 @@
-{
-  return _delegate.getValue(0);
-}

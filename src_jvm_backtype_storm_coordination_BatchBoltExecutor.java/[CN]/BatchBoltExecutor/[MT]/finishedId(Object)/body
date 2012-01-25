@@ -1,0 +1,10 @@
+{
+  IBatchBolt bolt=getBatchBolt(id);
+  _openTransactions.remove(id);
+  try {
+    bolt.finishBatch();
+  }
+ catch (  FailedBatchException e) {
+    throw e;
+  }
+}

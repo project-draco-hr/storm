@@ -10,7 +10,7 @@
     Tuple result=results.remove(requestId);
     Tuple returner=returns.remove(requestId);
     LOG.debug(result.getValue(1).toString());
-    List<IAnchorable> anchors=new ArrayList<IAnchorable>();
+    List<Tuple> anchors=new ArrayList<Tuple>();
     anchors.add(result);
     anchors.add(returner);
     _collector.emit(anchors,new Values("" + result.getValue(1),returner.getValue(1)));
