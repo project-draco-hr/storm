@@ -15,6 +15,7 @@ synchronized (_tracked) {
         int numTuples=get(track.taskEmittedTuples,task,0);
         _collector.emitDirect(task,Constants.COORDINATED_STREAM_ID,tup,new Values(id,numTuples));
       }
+      track.finished=true;
       _tracked.remove(id);
     }
   }

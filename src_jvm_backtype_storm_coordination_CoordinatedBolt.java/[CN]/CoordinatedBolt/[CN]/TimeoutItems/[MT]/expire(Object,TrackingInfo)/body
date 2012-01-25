@@ -1,5 +1,7 @@
 {
 synchronized (_tracked) {
-    ((TimeoutCallback)_delegate).timeoutId(id);
+    if (!val.finished) {
+      ((TimeoutCallback)_delegate).timeoutId(id);
+    }
   }
 }
