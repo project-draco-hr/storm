@@ -1,6 +1,0 @@
-{
-  _conf=conf;
-  _context=context;
-  _collector=new TransactionalOutputCollectorImpl(collector);
-  _openTransactions=new TimeCacheMap<TransactionAttempt,OpenTransaction>(Utils.getInt(conf.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS)));
-}

@@ -6,7 +6,7 @@
     declarer.addConfigurations(conf);
   }
   declarer.addConfiguration(Config.TOPOLOGY_TRANSACTIONAL_ID,_id);
-  builder.setBolt(_spoutId,new CoordinatedBolt(new TransactionalSpoutBatchExecutor(_spout),null,null),_spoutParallelism).allGrouping(coordinator,TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID).allGrouping(coordinator,TransactionalSpoutCoordinator.TRANSACTION_COMMIT_STREAM_ID).addConfiguration(Config.TOPOLOGY_TRANSACTIONAL_ID,_id);
+  builder.setBolt(_spoutId,new CoordinatedBolt(new TransactionalSpoutBatchExecutor(_spout),null,null),_spoutParallelism).allGrouping(coordinator,TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID).addConfiguration(Config.TOPOLOGY_TRANSACTIONAL_ID,_id);
   for (  String id : _bolts.keySet()) {
     Component component=_bolts.get(id);
     Map<String,SourceArgs> coordinatedArgs=new HashMap<String,SourceArgs>();
@@ -15,7 +15,7 @@
     }
     IdStreamSpec idSpec=null;
     if (component.committer) {
-      idSpec=IdStreamSpec.makePassThroughSpec(coordinator,TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID);
+      idSpec=IdStreamSpec.makeDetectSpec(coordinator,TransactionalSpoutCoordinator.TRANSACTION_COMMIT_STREAM_ID);
     }
     BoltDeclarer input=builder.setBolt(id,new CoordinatedBolt(component.bolt,coordinatedArgs,idSpec),component.parallelism);
     for (    Map conf : component.componentConfs) {
@@ -29,7 +29,6 @@
     }
     if (component.committer) {
       input.allGrouping(coordinator,TransactionalSpoutCoordinator.TRANSACTION_COMMIT_STREAM_ID);
-      input.allGrouping(coordinator,TransactionalSpoutCoordinator.TRANSACTION_BATCH_STREAM_ID);
     }
   }
   return builder.createTopology();

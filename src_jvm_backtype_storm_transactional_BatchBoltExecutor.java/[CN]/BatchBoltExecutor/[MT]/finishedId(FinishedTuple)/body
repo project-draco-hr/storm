@@ -1,0 +1,11 @@
+{
+  TransactionAttempt attempt=(TransactionAttempt)tup.getId();
+  IBatchBolt bolt=getTransactionalBolt(attempt);
+  _openTransactions.remove(attempt);
+  try {
+    bolt.finishBatch();
+  }
+ catch (  FailedTransactionException e) {
+    throw e;
+  }
+}

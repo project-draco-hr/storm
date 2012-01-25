@@ -1,0 +1,3 @@
+{
+  newCommitterBolt().declareOutputFields(declarer);
+}

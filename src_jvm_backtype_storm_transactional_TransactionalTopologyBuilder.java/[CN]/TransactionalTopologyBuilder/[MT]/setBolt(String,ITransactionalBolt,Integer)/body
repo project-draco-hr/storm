@@ -1,3 +1,0 @@
-{
-  return setBolt(id,new TransactionalBoltExecutor(bolt),parallelism,bolt instanceof ICommittable);
-}

@@ -1,0 +1,11 @@
+{
+  TransactionAttempt attempt=(TransactionAttempt)tup.getId();
+  ICommitterBolt bolt=getCommitterBolt(attempt);
+  _openTransactions.remove(attempt);
+  try {
+    bolt.commit(_collector);
+  }
+ catch (  FailedTransactionException e) {
+    throw e;
+  }
+}

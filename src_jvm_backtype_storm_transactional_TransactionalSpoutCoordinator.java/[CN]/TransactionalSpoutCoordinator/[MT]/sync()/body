@@ -12,7 +12,7 @@
           TransactionAttempt attempt=new TransactionAttempt(curr,Utils.randomLong());
           Object state=_coordinatorState.getState(curr,_initializer);
           _activeTx.put(curr,new TransactionStatus(attempt));
-          _collector.emit(TRANSACTION_BATCH_STREAM_ID,new Values(attempt,state),attempt);
+          _collector.emit(TRANSACTION_BATCH_STREAM_ID,new Values(attempt,state,_currTransaction),attempt);
         }
         curr=nextTransactionId(curr);
       }

@@ -1,0 +1,3 @@
+{
+  return (ICommitterBolt)Utils.deserialize(_boltSer);
+}

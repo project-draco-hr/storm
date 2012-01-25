@@ -43,6 +43,8 @@ synchronized (_tracked) {
     }
   }
  else {
-    _delegate.execute(tuple);
+synchronized (_tracked) {
+      _delegate.execute(tuple);
+    }
   }
 }
