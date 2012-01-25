@@ -1,9 +1,0 @@
-{
-  ICommitterBolt bolt=_openTransactions.get(attempt);
-  if (bolt == null) {
-    bolt=newCommitterBolt();
-    bolt.prepare(_conf,_context,attempt);
-    _openTransactions.put(attempt,bolt);
-  }
-  return bolt;
-}

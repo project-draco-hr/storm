@@ -1,3 +1,3 @@
 {
-  newCommitterBolt().declareOutputFields(declarer);
+  _delegate.declareOutputFields(declarer);
 }

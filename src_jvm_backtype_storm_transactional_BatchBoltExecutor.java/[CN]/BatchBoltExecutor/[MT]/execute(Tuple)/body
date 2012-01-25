@@ -1,12 +1,12 @@
 {
   TransactionAttempt attempt=(TransactionAttempt)input.getValue(0);
-  IBatchBolt bolt=getTransactionalBolt(attempt);
+  IBatchBolt bolt=getBatchBolt(attempt);
   try {
     bolt.execute(input);
     _collector.ack(input);
   }
- catch (  FailedTransactionException e) {
-    LOG.warn("Failed to process tuple in transaction",e);
+ catch (  FailedBatchException e) {
+    LOG.warn("Failed to process tuple in batch",e);
     _collector.fail(input);
   }
 }

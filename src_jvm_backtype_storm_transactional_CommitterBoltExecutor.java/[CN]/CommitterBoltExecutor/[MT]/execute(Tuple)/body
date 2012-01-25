@@ -1,12 +1,3 @@
 {
-  TransactionAttempt attempt=(TransactionAttempt)input.getValue(0);
-  ICommitterBolt bolt=getCommitterBolt(attempt);
-  try {
-    bolt.execute(input);
-    _collector.ack(input);
-  }
- catch (  FailedTransactionException e) {
-    LOG.warn("Failed to process tuple in transaction",e);
-    _collector.fail(input);
-  }
+  _delegate.execute(tuple);
 }

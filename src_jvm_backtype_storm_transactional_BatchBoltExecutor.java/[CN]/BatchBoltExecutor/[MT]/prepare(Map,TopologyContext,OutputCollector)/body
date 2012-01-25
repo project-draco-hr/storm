@@ -1,6 +1,6 @@
 {
   _conf=conf;
   _context=context;
-  _collector=new TransactionalOutputCollectorImpl(collector);
-  _openTransactions=new HashMap<TransactionAttempt,IBatchBolt>();
+  _collector=new BatchOutputCollectorImpl(collector);
+  _openTransactions=new HashMap<Object,IBatchBolt>();
 }
