@@ -4,11 +4,12 @@
   _collector=collector;
   _coordinator=_spout.getCoordinator(conf,context);
   _currTransaction=getStoredCurrTransaction(_state);
-  if (!conf.containsKey(Config.TOPOLOGY_MAX_SPOUT_PENDING)) {
+  Object active=conf.get(Config.TOPOLOGY_MAX_SPOUT_PENDING);
+  if (active == null) {
     _maxTransactionActive=1;
   }
  else {
-    _maxTransactionActive=Utils.getInt(conf.get(Config.TOPOLOGY_MAX_SPOUT_PENDING));
+    _maxTransactionActive=Utils.getInt(active);
   }
   _initializer=new StateInitializer();
 }
