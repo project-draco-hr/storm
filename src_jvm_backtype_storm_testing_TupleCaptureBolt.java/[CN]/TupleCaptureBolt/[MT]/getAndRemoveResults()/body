@@ -1,0 +1,3 @@
+{
+  return emitted_tuples.remove(_name);
+}
