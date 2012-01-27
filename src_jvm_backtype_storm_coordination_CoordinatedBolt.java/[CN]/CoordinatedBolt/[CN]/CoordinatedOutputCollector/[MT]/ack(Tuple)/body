@@ -1,12 +1,9 @@
 {
   Object id=tuple.getValue(0);
-  boolean failed=false;
 synchronized (_tracked) {
-    TrackingInfo info=_tracked.get(id);
-    info.receivedTuples++;
-    failed=info.failedTuples > 0;
+    _tracked.get(id).receivedTuples++;
   }
-  checkFinishId(tuple);
+  boolean failed=checkFinishId(tuple);
   if (failed) {
     _delegate.fail(tuple);
   }

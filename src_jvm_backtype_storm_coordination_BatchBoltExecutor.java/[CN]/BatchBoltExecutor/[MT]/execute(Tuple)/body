@@ -6,7 +6,7 @@
     _collector.ack(input);
   }
  catch (  FailedBatchException e) {
-    LOG.warn("Failed to process tuple in batch",e);
+    LOG.error("Failed to process tuple in batch",e);
     _collector.fail(input);
   }
 }

@@ -1,7 +1,6 @@
 {
   Object id=tuple.getValue(0);
   TrackingInfo track;
-  boolean failed=false;
 synchronized (_tracked) {
     track=_tracked.get(id);
     if (track == null) {
@@ -9,13 +8,12 @@ synchronized (_tracked) {
       if (_idStreamSpec == null)       track.receivedId=true;
       _tracked.put(id,track);
     }
-    failed=track.failedTuples > 0;
   }
   if (_idStreamSpec != null && tuple.getSourceGlobalStreamid().equals(_idStreamSpec._id)) {
 synchronized (_tracked) {
       track.receivedId=true;
     }
-    checkFinishId(tuple);
+    boolean failed=checkFinishId(tuple);
     if (failed) {
       _collector.fail(tuple);
     }
@@ -29,7 +27,7 @@ synchronized (_tracked) {
       track.reportCount++;
       track.expectedTupleCount+=count;
     }
-    checkFinishId(tuple);
+    boolean failed=checkFinishId(tuple);
     if (failed) {
       _collector.fail(tuple);
     }
