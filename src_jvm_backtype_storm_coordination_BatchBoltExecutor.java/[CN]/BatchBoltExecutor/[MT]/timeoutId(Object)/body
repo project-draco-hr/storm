@@ -1,3 +1,3 @@
 {
-  _openTransactions.remove((TransactionAttempt)attempt);
+  _openTransactions.remove(attempt);
 }

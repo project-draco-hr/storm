@@ -1,6 +1,6 @@
 {
-  TransactionAttempt attempt=(TransactionAttempt)input.getValue(0);
-  IBatchBolt bolt=getBatchBolt(attempt);
+  Object id=input.getValue(0);
+  IBatchBolt bolt=getBatchBolt(id);
   try {
     bolt.execute(input);
     _collector.ack(input);
