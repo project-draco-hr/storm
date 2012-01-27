@@ -1,4 +1,4 @@
 TransactionAttempt attempt
-TransactionalOutputCollector collector
+BatchOutputCollector collector
 int partition
 BatchMeta lastMeta
