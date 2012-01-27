@@ -1,3 +1,0 @@
-{
-  return setBolt(id,new BatchBoltExecutor(new CommitterBoltExecutor(bolt)),parallelism,true);
-}

@@ -1,3 +1,0 @@
-{
-  _delegate.commit(_collector);
-}
