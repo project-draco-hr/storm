@@ -1,0 +1,11 @@
+{
+  for (  String key : _counts.keySet()) {
+    Value val=DATABASE.get(key);
+    if (!val.txid.equals(_id)) {
+      val.txid=_id.getTransactionId();
+      val.count=val.count + _counts.get(key);
+      DATABASE.put(key,val);
+    }
+    _collector.emit(new Values(_id,key,val.count));
+  }
+}
