@@ -1,0 +1,20 @@
+{
+  for (  String key : _counts.keySet()) {
+    CountValue val=COUNT_DATABASE.get(key);
+    CountValue newVal;
+    if (val == null || !val.txid.equals(_id)) {
+      newVal=new CountValue();
+      newVal.txid=_id.getTransactionId();
+      if (val != null) {
+        newVal.prev_count=val.count;
+        newVal.count=val.count;
+      }
+      newVal.count=newVal.count + _counts.get(key);
+      COUNT_DATABASE.put(key,val);
+    }
+ else {
+      newVal=val;
+    }
+    _collector.emit(new Values(_id,key,newVal.count,newVal.prev_count));
+  }
+}

@@ -1,5 +1,0 @@
-{
-  Integer reach=_counts.get(id);
-  if (reach == null)   reach=0;
-  _collector.emit(new Values(id,reach));
-}
