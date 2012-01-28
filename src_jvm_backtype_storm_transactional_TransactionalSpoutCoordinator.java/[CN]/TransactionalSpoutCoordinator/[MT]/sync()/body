@@ -18,7 +18,7 @@
       }
     }
   }
- catch (  FailedBatchException e) {
+ catch (  FailedException e) {
     LOG.warn("Failed to get metadata for a transaction",e);
   }
 }
