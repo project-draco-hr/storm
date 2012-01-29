@@ -1,9 +1,8 @@
 {
   MemoryTransactionalSpout spout=new MemoryTransactionalSpout(DATA,new Fields("word"),PARTITION_TAKE_PER_BATCH);
-  TransactionalTopologyBuilder builder=new TransactionalTopologyBuilder("global-count","spout",spout,2);
-  builder.setBolt("partial-count",new BatchCount(),5).shuffleGrouping("spout");
-  builder.setCommitterBolt("sum",new BatchSum()).globalGrouping("partial-count");
-  builder.setBolt("to-db",new CommitToDB()).shuffleGrouping("sum");
+  TransactionalTopologyBuilder builder=new TransactionalTopologyBuilder("global-count","spout",spout,3);
+  builder.setBolt("partial-count",new BatchCount(),5).noneGrouping("spout");
+  builder.setBolt("sum",new UpdateGlobalCount()).globalGrouping("partial-count");
   LocalCluster cluster=new LocalCluster();
   Config config=new Config();
   config.setDebug(true);

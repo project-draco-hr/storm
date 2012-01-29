@@ -1,3 +1,0 @@
-{
-  _collector.emit(new Values(_id,_sum));
-}

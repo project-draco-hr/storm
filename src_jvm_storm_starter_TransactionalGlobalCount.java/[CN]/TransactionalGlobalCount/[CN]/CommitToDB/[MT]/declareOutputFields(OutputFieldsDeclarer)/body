@@ -1,3 +1,0 @@
-{
-  declarer.declare(new Fields("attempt","global-count"));
-}
