@@ -1,0 +1,4 @@
+IRichBolt delegate
+String sourceComponent
+SourceArgs sourceArgs
+IdStreamSpec idStreamSpec

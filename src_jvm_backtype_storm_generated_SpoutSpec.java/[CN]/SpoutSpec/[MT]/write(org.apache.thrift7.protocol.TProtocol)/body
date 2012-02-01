@@ -11,9 +11,6 @@
     this.common.write(oprot);
     oprot.writeFieldEnd();
   }
-  oprot.writeFieldBegin(DISTRIBUTED_FIELD_DESC);
-  oprot.writeBool(this.distributed);
-  oprot.writeFieldEnd();
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

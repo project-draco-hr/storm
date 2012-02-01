@@ -1,19 +1,35 @@
 {
 switch (field) {
-case STREAMS:
+case INPUTS:
     if (value == null) {
-      unset_streams();
+      unset_inputs();
     }
  else {
-      set_streams((Map<String,StreamInfo>)value);
+      set_inputs((Map<GlobalStreamId,Grouping>)value);
     }
   break;
-case PARALLELISM_HINT:
+case STREAMS:
 if (value == null) {
-  unset_parallelism_hint();
+  unset_streams();
 }
  else {
-  set_parallelism_hint((Integer)value);
+  set_streams((Map<String,StreamInfo>)value);
+}
+break;
+case PARALLELISM_HINT:
+if (value == null) {
+unset_parallelism_hint();
+}
+ else {
+set_parallelism_hint((Integer)value);
+}
+break;
+case JSON_CONF:
+if (value == null) {
+unset_json_conf();
+}
+ else {
+set_json_conf((String)value);
 }
 break;
 }

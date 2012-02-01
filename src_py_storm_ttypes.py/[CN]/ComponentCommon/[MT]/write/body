@@ -3,17 +3,29 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('ComponentCommon')
+    if (self.inputs is not None):
+        oprot.writeFieldBegin('inputs', TType.MAP, 1)
+        oprot.writeMapBegin(TType.STRUCT, TType.STRUCT, len(self.inputs))
+        for (kiter35, viter36) in self.inputs.items():
+            kiter35.write(oprot)
+            viter36.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
     if (self.streams is not None):
-        oprot.writeFieldBegin('streams', TType.MAP, 1)
+        oprot.writeFieldBegin('streams', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.streams))
-        for (kiter28, viter29) in self.streams.items():
-            oprot.writeString(kiter28.encode('utf-8'))
-            viter29.write(oprot)
+        for (kiter37, viter38) in self.streams.items():
+            oprot.writeString(kiter37.encode('utf-8'))
+            viter38.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.parallelism_hint is not None):
-        oprot.writeFieldBegin('parallelism_hint', TType.I32, 2)
+        oprot.writeFieldBegin('parallelism_hint', TType.I32, 3)
         oprot.writeI32(self.parallelism_hint)
+        oprot.writeFieldEnd()
+    if (self.json_conf is not None):
+        oprot.writeFieldBegin('json_conf', TType.STRING, 4)
+        oprot.writeString(self.json_conf.encode('utf-8'))
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

@@ -1,0 +1,5 @@
+{
+  this();
+  this.spout_object=spout_object;
+  this.common=common;
+}

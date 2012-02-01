@@ -1,6 +1,6 @@
 {
 synchronized (acked) {
-    int curr=get(acked,_context.getStormId(),0);
-    acked.put(_context.getStormId(),curr + 1);
+    int curr=get(acked,_id,0);
+    acked.put(_id,curr + 1);
   }
 }

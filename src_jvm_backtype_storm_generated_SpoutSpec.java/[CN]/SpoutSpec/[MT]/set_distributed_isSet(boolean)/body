@@ -1,3 +1,0 @@
-{
-  __isset_bit_vector.set(__DISTRIBUTED_ISSET_ID,value);
-}

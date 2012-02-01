@@ -1,0 +1,3 @@
+IRichBolt delegate
+Map<String,SourceArgs> sourceArgs
+IdStreamSpec idStreamSpec

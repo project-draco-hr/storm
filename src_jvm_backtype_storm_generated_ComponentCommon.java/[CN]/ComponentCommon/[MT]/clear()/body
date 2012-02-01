@@ -1,5 +1,7 @@
 {
+  this.inputs=null;
   this.streams=null;
   set_parallelism_hint_isSet(false);
   this.parallelism_hint=0;
+  this.json_conf=null;
 }

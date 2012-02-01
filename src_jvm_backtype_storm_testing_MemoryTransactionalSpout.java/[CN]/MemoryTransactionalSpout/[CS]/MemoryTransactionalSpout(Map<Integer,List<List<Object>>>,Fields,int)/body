@@ -1,0 +1,7 @@
+{
+  _id=RegisteredGlobalState.registerState(partitions);
+  Map<Integer,Boolean> finished=Collections.synchronizedMap(new HashMap<Integer,Boolean>());
+  _finishedPartitionsId=RegisteredGlobalState.registerState(finished);
+  _takeAmt=takeAmt;
+  _outFields=outFields;
+}

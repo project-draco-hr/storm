@@ -1,0 +1,9 @@
+{
+  IBatchBolt bolt=_openTransactions.get(id);
+  if (bolt == null) {
+    bolt=newTransactionalBolt();
+    bolt.prepare(_conf,_context,_collector,id);
+    _openTransactions.put(id,bolt);
+  }
+  return bolt;
+}

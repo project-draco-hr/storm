@@ -1,0 +1,7 @@
+{
+  List<String> txids=_state.list(_subdir);
+  for (  String txid_s : txids) {
+    Object data=_state.getData(txPath(txid_s));
+    _curr.put(new BigInteger(txid_s),data);
+  }
+}

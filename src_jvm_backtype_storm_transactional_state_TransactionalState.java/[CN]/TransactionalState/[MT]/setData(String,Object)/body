@@ -1,0 +1,15 @@
+{
+  path="/" + path;
+  byte[] ser=_ser.serializeObject(obj);
+  try {
+    if (_curator.checkExists().forPath(path) != null) {
+      _curator.setData().forPath(path,ser);
+    }
+ else {
+      _curator.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path,ser);
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

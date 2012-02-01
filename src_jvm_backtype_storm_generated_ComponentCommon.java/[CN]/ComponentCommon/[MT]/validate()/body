@@ -1,4 +1,7 @@
 {
+  if (!is_set_inputs()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'inputs' is unset! Struct:" + toString());
+  }
   if (!is_set_streams()) {
     throw new org.apache.thrift7.protocol.TProtocolException("Required field 'streams' is unset! Struct:" + toString());
   }

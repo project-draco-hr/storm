@@ -1,0 +1,23 @@
+{
+  int index;
+  if (lastPartitionMeta == null) {
+    index=0;
+  }
+ else {
+    index=lastPartitionMeta.index + lastPartitionMeta.amt;
+  }
+  List<List<Object>> queue=getQueues().get(partition);
+  int total=queue.size();
+  int left=total - index;
+  int toTake=Math.min(left,_takeAmt);
+  MemoryTransactionalSpoutMeta ret=new MemoryTransactionalSpoutMeta(index,toTake);
+  emitPartitionBatch(tx,collector,partition,ret);
+  if (toTake == 0) {
+    int curr=Utils.get(_emptyPartitions,partition,0) + 1;
+    _emptyPartitions.put(partition,curr);
+    if (curr > _maxSpoutPending) {
+      getFinishedStatuses().put(partition,true);
+    }
+  }
+  return ret;
+}

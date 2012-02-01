@@ -1,6 +1,3 @@
 {
-  if (_results == null) {
-    _results=emitted_tuples.remove(_name);
-  }
-  return _results;
+  return emitted_tuples.get(_name);
 }

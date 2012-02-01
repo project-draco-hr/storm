@@ -3,6 +3,4 @@ def validate(self):
         raise TProtocol.TProtocolException(message='Required field spout_object is unset!')
     if (self.common is None):
         raise TProtocol.TProtocolException(message='Required field common is unset!')
-    if (self.distributed is None):
-        raise TProtocol.TProtocolException(message='Required field distributed is unset!')
     return

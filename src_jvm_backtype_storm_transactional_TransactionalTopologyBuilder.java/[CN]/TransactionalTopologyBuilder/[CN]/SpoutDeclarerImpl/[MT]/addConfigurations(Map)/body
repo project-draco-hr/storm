@@ -1,0 +1,4 @@
+{
+  _spoutConfs.add(conf);
+  return this;
+}

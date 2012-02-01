@@ -1,0 +1,11 @@
+{
+  int ackedAmt;
+  int failedAmt;
+synchronized (acked) {
+    ackedAmt=acked.get(_id);
+  }
+synchronized (failed) {
+    failedAmt=failed.get(_id);
+  }
+  return ackedAmt + failedAmt;
+}

@@ -1,0 +1,8 @@
+{
+  if (conf != null && conf.containsKey(Config.TOPOLOGY_KRYO_REGISTER)) {
+    throw new IllegalArgumentException("Cannot set serializations for a component using fluent API");
+  }
+  String currConf=_commons.get(_id).get_json_conf();
+  _commons.get(_id).set_json_conf(mergeIntoJson(parseJson(currConf),conf));
+  return (T)this;
+}

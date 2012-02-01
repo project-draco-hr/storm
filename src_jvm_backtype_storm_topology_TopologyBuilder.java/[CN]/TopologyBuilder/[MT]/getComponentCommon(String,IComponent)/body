@@ -1,0 +1,7 @@
+{
+  ComponentCommon ret=new ComponentCommon(_commons.get(id));
+  OutputFieldsGetter getter=new OutputFieldsGetter();
+  component.declareOutputFields(getter);
+  ret.set_streams(getter.getFieldsDeclaration());
+  return ret;
+}

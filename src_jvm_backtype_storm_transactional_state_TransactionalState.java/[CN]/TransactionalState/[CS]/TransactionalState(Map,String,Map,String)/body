@@ -1,0 +1,25 @@
+{
+  try {
+    conf=new HashMap(conf);
+    if (componentConf != null) {
+      conf.put(Config.TOPOLOGY_KRYO_REGISTER,componentConf.get(Config.TOPOLOGY_KRYO_REGISTER));
+    }
+    String rootDir=conf.get(Config.TRANSACTIONAL_ZOOKEEPER_ROOT) + "/" + id+ "/"+ subroot;
+    List<String> servers=(List<String>)getWithBackup(conf,Config.TRANSACTIONAL_ZOOKEEPER_SERVERS,Config.STORM_ZOOKEEPER_SERVERS);
+    Object port=getWithBackup(conf,Config.TRANSACTIONAL_ZOOKEEPER_PORT,Config.STORM_ZOOKEEPER_PORT);
+    Object sessionTimeout=conf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT);
+    CuratorFramework initter=Utils.newCurator(servers,port,sessionTimeout);
+    try {
+      initter.create().creatingParentsIfNeeded().forPath(rootDir);
+    }
+ catch (    KeeperException.NodeExistsException e) {
+    }
+    initter.close();
+    _curator=Utils.newCurator(servers,port,sessionTimeout,rootDir);
+    _ser=new KryoValuesSerializer(conf);
+    _des=new KryoValuesDeserializer(conf);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

@@ -11,9 +11,5 @@ def write(self, oprot):
         oprot.writeFieldBegin('common', TType.STRUCT, 2)
         self.common.write(oprot)
         oprot.writeFieldEnd()
-    if (self.distributed is not None):
-        oprot.writeFieldBegin('distributed', TType.BOOL, 3)
-        oprot.writeBool(self.distributed)
-        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

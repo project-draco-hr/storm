@@ -1,0 +1,6 @@
+{
+  _fnSpec=fnSpec;
+  _confSpec=confSpec;
+  _params=params;
+  _fields=fields;
+}

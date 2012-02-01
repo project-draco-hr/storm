@@ -7,25 +7,25 @@
   int i=0;
   for (; i < _components.size(); i++) {
     Component component=_components.get(i);
-    SourceArgs source;
-    if (i == 0) {
-      source=null;
+    Map<String,SourceArgs> source=new HashMap<String,SourceArgs>();
+    if (i == 1) {
+      source.put(boltId(i - 1),SourceArgs.single());
     }
- else     if (i == 1) {
-      source=SourceArgs.single();
+ else     if (i >= 2) {
+      source.put(boltId(i - 1),SourceArgs.all());
     }
- else {
-      source=SourceArgs.all();
-    }
-    String idComponent=null;
+    IdStreamSpec idSpec=null;
     if (i == _components.size() - 1 && component.bolt instanceof FinishedCallback) {
-      idComponent=PREPARE_ID;
+      idSpec=IdStreamSpec.makeDetectSpec(PREPARE_ID,PrepareRequest.ID_STREAM);
     }
-    InputDeclarer declarer=builder.setBolt(boltId(i),new CoordinatedBolt(component.bolt,source,idComponent),component.parallelism);
-    if (idComponent != null) {
-      declarer.fieldsGrouping(idComponent,PrepareRequest.ID_STREAM,new Fields("request"));
+    BoltDeclarer declarer=builder.setBolt(boltId(i),new CoordinatedBolt(component.bolt,source,idSpec),component.parallelism);
+    for (    Map conf : component.componentConfs) {
+      declarer.addConfigurations(conf);
     }
-    if (i == 0 && component.declarations.size() == 0) {
+    if (idSpec != null) {
+      declarer.fieldsGrouping(idSpec.getGlobalStreamId().get_componentId(),PrepareRequest.ID_STREAM,new Fields("request"));
+    }
+    if (i == 0 && component.declarations.isEmpty()) {
       declarer.noneGrouping(PREPARE_ID,PrepareRequest.ARGS_STREAM);
     }
  else {

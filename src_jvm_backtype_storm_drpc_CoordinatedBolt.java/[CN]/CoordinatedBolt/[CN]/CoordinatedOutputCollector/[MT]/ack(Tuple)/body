@@ -1,8 +1,0 @@
-{
-  _delegate.ack(tuple);
-  Object id=tuple.getValue(0);
-synchronized (_tracked) {
-    _tracked.get(id).receivedTuples++;
-  }
-  checkFinishId(id);
-}

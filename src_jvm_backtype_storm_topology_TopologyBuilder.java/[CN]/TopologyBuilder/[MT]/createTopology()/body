@@ -1,14 +1,15 @@
 {
   Map<String,Bolt> boltSpecs=new HashMap<String,Bolt>();
+  Map<String,SpoutSpec> spoutSpecs=new HashMap<String,SpoutSpec>();
   for (  String boltId : _bolts.keySet()) {
     IRichBolt bolt=_bolts.get(boltId);
-    Integer parallelism_hint=_boltParallelismHints.get(boltId);
-    Map<GlobalStreamId,Grouping> inputs=_inputs.get(boltId);
-    ComponentCommon common=getComponentCommon(bolt,parallelism_hint);
-    if (parallelism_hint != null) {
-      common.set_parallelism_hint(parallelism_hint);
-    }
-    boltSpecs.put(boltId,new Bolt(inputs,ComponentObject.serialized_java(Utils.serialize(bolt)),common));
+    ComponentCommon common=getComponentCommon(boltId,bolt);
+    boltSpecs.put(boltId,new Bolt(ComponentObject.serialized_java(Utils.serialize(bolt)),common));
   }
-  return new StormTopology(new HashMap<String,SpoutSpec>(_spouts),boltSpecs,new HashMap<String,StateSpoutSpec>(_stateSpouts));
+  for (  String spoutId : _spouts.keySet()) {
+    IRichSpout spout=_spouts.get(spoutId);
+    ComponentCommon common=getComponentCommon(spoutId,spout);
+    spoutSpecs.put(spoutId,new SpoutSpec(ComponentObject.serialized_java(Utils.serialize(spout)),common));
+  }
+  return new StormTopology(spoutSpecs,boltSpecs,new HashMap<String,StateSpoutSpec>());
 }

@@ -1,11 +1,9 @@
 {
 switch (fieldId) {
 case 1:
-    return INPUTS;
+    return BOLT_OBJECT;
 case 2:
-  return BOLT_OBJECT;
-case 3:
-return COMMON;
+  return COMMON;
 default :
 return null;
 }
