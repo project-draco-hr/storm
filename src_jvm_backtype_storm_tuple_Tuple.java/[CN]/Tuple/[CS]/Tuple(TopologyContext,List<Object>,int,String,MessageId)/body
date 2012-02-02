@@ -5,7 +5,6 @@
   this.streamId=streamId;
   this.id=id;
   this.context=context;
-  this._meta=new PersistentArrayMap(new Object[]{makeKeyword("stream"),getSourceStreamId(),makeKeyword("component"),getSourceComponent(),makeKeyword("task"),getSourceTask()});
   String componentId=context.getComponentId(taskId);
   Fields schema=context.getComponentOutputFields(componentId,streamId);
   if (values.size() != schema.size()) {

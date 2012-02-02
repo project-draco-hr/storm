@@ -1,4 +1,0 @@
-{
-  _map=map;
-  return _map;
-}

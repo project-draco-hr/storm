@@ -1,4 +1,0 @@
-{
-  if (k instanceof Keyword)   return containsKey(((Keyword)k).getName());
-  return getMap().containsKey(k);
-}

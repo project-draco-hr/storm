@@ -1,6 +1,0 @@
-{
-  if (o instanceof Keyword) {
-    return valAt(((Keyword)o).getName());
-  }
-  return getMap().valAt(o);
-}
