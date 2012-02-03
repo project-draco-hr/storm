@@ -6,9 +6,9 @@
   }
   ByteBufferMessageSet msgs=consumer.fetch(new FetchRequest(_config.topic,partition % _config.partitionsPerHost,offset,_config.fetchSizeBytes));
   long endoffset=offset;
-  for (  Message msg : msgs) {
-    emit(attempt,collector,msg);
-    endoffset+=MessageSet.entrySize(msg);
+  for (  MessageAndOffset msg : msgs) {
+    emit(attempt,collector,msg.message());
+    endoffset=msg.offset();
   }
   BatchMeta newMeta=new BatchMeta();
   newMeta.offset=offset;
