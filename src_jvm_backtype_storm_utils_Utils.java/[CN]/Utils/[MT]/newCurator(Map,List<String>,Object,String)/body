@@ -5,8 +5,7 @@
   }
   String zkStr=StringUtils.join(serverPorts,",") + root;
   try {
-    CuratorFramework ret=CuratorFrameworkFactory.newClient(zkStr,Utils.getInt(sessionTimeout),15000,new RetryNTimes(5,1000));
-    ret.start();
+    CuratorFramework ret=CuratorFrameworkFactory.newClient(zkStr,Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT)),15000,new RetryNTimes(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL))));
     return ret;
   }
  catch (  IOException e) {
