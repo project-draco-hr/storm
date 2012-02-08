@@ -1,13 +1,9 @@
 {
+  Worker worker=_manager.acquire();
   try {
-    _outputter.reset();
-    WritableUtils.writeVInt(_dataOutputter,tuple.getSourceTask());
-    WritableUtils.writeVInt(_dataOutputter,_ids.getStreamId(tuple.getSourceComponent(),tuple.getSourceStreamId()));
-    tuple.getMessageId().serialize(_dataOutputter);
-    _kryo.serializeInto(tuple.getValues(),_outputter);
-    return _outputter.toByteArray();
+    return worker.serialize(tuple);
   }
- catch (  IOException e) {
-    throw new RuntimeException(e);
+  finally {
+    _manager.release(worker);
   }
 }

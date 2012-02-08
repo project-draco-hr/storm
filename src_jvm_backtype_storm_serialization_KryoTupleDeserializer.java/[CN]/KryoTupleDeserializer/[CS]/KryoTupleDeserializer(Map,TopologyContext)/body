@@ -1,5 +1,8 @@
 {
-  _kryo=new KryoValuesDeserializer(conf);
-  _context=context;
-  _ids=new SerializationFactory.IdDictionary(context.getRawTopology());
+  _manager=new ThreadResourceManager<Worker>(new ThreadResourceManager.ResourceFactory<Worker>(){
+    @Override public Worker makeResource(){
+      return new Worker(conf,context);
+    }
+  }
+);
 }
