@@ -1,4 +1,5 @@
 {
+  super(null);
   _context=context;
   _collector=collector;
 }

@@ -5,7 +5,7 @@
   }
   _tracked=new TimeCacheMap<Object,TrackingInfo>(Utils.getInt(config.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS)),callback);
   _collector=collector;
-  _delegate.prepare(config,context,new CoordinatedOutputCollector(collector));
+  _delegate.prepare(config,context,new OutputCollector(new CoordinatedOutputCollector(collector)));
   for (  String component : Utils.get(context.getThisTargets(),Constants.COORDINATED_STREAM_ID,new HashMap<String,Grouping>()).keySet()) {
     for (    Integer task : context.getComponentTasks(component)) {
       _countOutTasks.add(task);

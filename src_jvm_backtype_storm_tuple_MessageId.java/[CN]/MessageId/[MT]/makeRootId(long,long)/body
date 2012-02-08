@@ -1,5 +1,5 @@
 {
   Map<Long,Long> anchorsToIds=new HashMap<Long,Long>();
-  anchorsToIds.put(id,id);
+  anchorsToIds.put(id,val);
   return new MessageId(anchorsToIds);
 }
