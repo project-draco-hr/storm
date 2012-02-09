@@ -1,3 +1,0 @@
-{
-  return _collector.emit(anchorTuple(anchors,streamId,tuple));
-}
