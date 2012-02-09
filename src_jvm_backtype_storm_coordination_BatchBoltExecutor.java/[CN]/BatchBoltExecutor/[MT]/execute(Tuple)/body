@@ -5,7 +5,7 @@
     bolt.execute(input);
     _collector.ack(input);
   }
- catch (  FailedBatchException e) {
+ catch (  FailedException e) {
     LOG.error("Failed to process tuple in batch",e);
     _collector.fail(input);
   }

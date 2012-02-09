@@ -1,3 +1,0 @@
-{
-  return newCurator(servers,port,sessionTimeout,"");
-}

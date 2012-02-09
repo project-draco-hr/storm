@@ -1,5 +1,0 @@
-{
-  List<Long> generated=getExistingOutput(input);
-  _pendingAcks.remove(input);
-  _collector.ack(input,generated);
-}

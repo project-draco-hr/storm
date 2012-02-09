@@ -1,0 +1,7 @@
+{
+  T ret=_resources.poll();
+  if (ret == null) {
+    ret=_factory.makeResource();
+  }
+  return ret;
+}

@@ -1,0 +1,10 @@
+{
+  try {
+    CRC32OutputStream hasher=new CRC32OutputStream();
+    _kryo.serializeInto(tuple.getValues(),hasher);
+    return hasher.getValue();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}
