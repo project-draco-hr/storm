@@ -1,8 +1,8 @@
 {
   TransactionAttempt tx=(TransactionAttempt)msgId;
   TransactionStatus stored=_activeTx.remove(tx.getTransactionId());
-  if (!tx.equals(stored.attempt)) {
-    throw new IllegalStateException("Coordinator got into a bad state: failed transaction " + tx.toString() + " does not match up with stored attempt: "+ stored);
+  if (stored != null && tx.equals(stored.attempt)) {
+    _activeTx.tailMap(tx.getTransactionId()).clear();
+    sync();
   }
-  sync();
 }
