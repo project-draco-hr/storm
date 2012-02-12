@@ -1,0 +1,3 @@
+{
+  _connections=new KafkaPartitionConnections(_config);
+}

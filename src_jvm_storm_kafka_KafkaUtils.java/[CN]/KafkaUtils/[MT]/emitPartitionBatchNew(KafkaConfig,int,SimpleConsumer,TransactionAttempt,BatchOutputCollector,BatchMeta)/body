@@ -1,0 +1,16 @@
+{
+  long offset=0;
+  if (lastMeta != null) {
+    offset=lastMeta.nextOffset;
+  }
+  ByteBufferMessageSet msgs=consumer.fetch(new FetchRequest(config.topic,partition % config.partitionsPerHost,offset,config.fetchSizeBytes));
+  long endoffset=offset;
+  for (  Message msg : msgs) {
+    emit(config,attempt,collector,msg);
+    endoffset+=MessageSet.entrySize(msg);
+  }
+  BatchMeta newMeta=new BatchMeta();
+  newMeta.offset=offset;
+  newMeta.nextOffset=endoffset;
+  return newMeta;
+}
