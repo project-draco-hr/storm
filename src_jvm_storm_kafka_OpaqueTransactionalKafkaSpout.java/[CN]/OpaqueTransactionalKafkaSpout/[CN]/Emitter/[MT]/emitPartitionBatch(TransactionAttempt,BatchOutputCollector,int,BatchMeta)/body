@@ -1,4 +1,18 @@
 {
-  SimpleConsumer consumer=_connections.getConsumer(partition);
-  return KafkaUtils.emitPartitionBatchNew(_config,partition,consumer,attempt,collector,lastMeta);
+  try {
+    SimpleConsumer consumer=_connections.getConsumer(partition);
+    return KafkaUtils.emitPartitionBatchNew(_config,partition,consumer,attempt,collector,lastMeta);
+  }
+ catch (  FailedFetchException e) {
+    LOG.warn("Failed to fetch from partition " + partition);
+    if (lastMeta == null) {
+      return null;
+    }
+ else {
+      BatchMeta ret=new BatchMeta();
+      ret.offset=lastMeta.nextOffset;
+      ret.nextOffset=lastMeta.nextOffset;
+      return ret;
+    }
+  }
 }
