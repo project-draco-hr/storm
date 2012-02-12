@@ -1,0 +1,5 @@
+{
+  List<String> fields=new ArrayList<String>(_config.scheme.getOutputFields().toList());
+  fields.add(0,ATTEMPT_FIELD);
+  declarer.declare(new Fields(fields));
+}

@@ -1,5 +1,5 @@
 {
-  SimpleConsumer consumer=connect(partition);
+  SimpleConsumer consumer=_connections.getConsumer(partition);
   ByteBufferMessageSet msgs=consumer.fetch(new FetchRequest(_config.topic,partition % _config.partitionsPerHost,meta.offset,_config.fetchSizeBytes));
   long offset=meta.offset;
   for (  MessageAndOffset msg : msgs) {
@@ -7,7 +7,7 @@
     if (offset > meta.nextOffset) {
       throw new RuntimeException("Error when re-emitting batch. overshot the end offset");
     }
-    emit(attempt,collector,msg.message());
+    KafkaUtils.emit(_config,attempt,collector,msg.message());
     offset=msg.offset();
   }
 }
