@@ -1,0 +1,4 @@
+{
+  if (_curr.isEmpty())   return null;
+ else   return _curr.lastEntry().getValue();
+}

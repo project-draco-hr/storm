@@ -1,0 +1,15 @@
+{
+  Map<Integer,Object> metas=new HashMap<Integer,Object>();
+  _cachedMetas.put(tx.getTransactionId(),metas);
+  int partitions=_emitter.numPartitions();
+  for (int i=_index; i < partitions; i+=_numTasks) {
+    RotatingTransactionalState state=_partitionStates.get(i);
+    if (state == null) {
+      state=new RotatingTransactionalState(_state,"" + i);
+      _partitionStates.put(i,state);
+    }
+    state.removeState(tx.getTransactionId());
+    Object meta=_emitter.emitPartitionBatch(tx,collector,i,state.getLastState());
+    metas.put(i,meta);
+  }
+}
