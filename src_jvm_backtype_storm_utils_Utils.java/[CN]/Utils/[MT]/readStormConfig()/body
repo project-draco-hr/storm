@@ -4,6 +4,7 @@
   ret.putAll(storm);
   String commandOptions=System.getProperty("storm.options");
   if (commandOptions != null) {
+    commandOptions=commandOptions.replaceAll("%%%%"," ");
     String[] configs=commandOptions.split(",");
     for (    String config : configs) {
       String[] options=config.split("=");
