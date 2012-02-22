@@ -1,6 +1,8 @@
 def run(self):
+    global MODE
+    MODE = Bolt
     global ANCHOR_TUPLE
-    (conf, context) = initbolt()
+    (conf, context) = initComponent()
     self.initialize(conf, context)
     try:
         while True:

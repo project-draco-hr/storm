@@ -10,6 +10,7 @@ except ImportError:
     import json
     json_encode = (lambda x: json.dumps(x, ensure_ascii=False))
     json_decode = (lambda x: json.loads(unicode(x)))
+MODE = None
 ANCHOR_TUPLE = None
 pending_commands = deque()
 pending_taskids = deque()

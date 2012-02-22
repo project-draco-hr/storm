@@ -1,0 +1,2 @@
+def fail(self, id):
+    emit([self.pending[id]], id=id)

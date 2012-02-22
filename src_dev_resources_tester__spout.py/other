@@ -1,0 +1,6 @@
+from storm import Spout, emit, log
+from random import choice
+from time import sleep
+from uuid import uuid4
+words = ['nathan', 'mike', 'jackson', 'golda', 'bertels']
+TesterSpout().run()

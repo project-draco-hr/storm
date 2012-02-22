@@ -1,0 +1,2 @@
+def ack(self, id):
+    del self.pending[id]

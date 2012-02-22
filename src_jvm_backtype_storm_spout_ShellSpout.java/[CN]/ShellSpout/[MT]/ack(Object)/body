@@ -1,3 +1,8 @@
 {
-  throw new UnsupportedOperationException("Not supported yet.");
+  if (_ack == null) {
+    _ack=new JSONObject();
+    _ack.put("command","ack");
+  }
+  _ack.put("id",msgId);
+  querySubprocess(_ack);
 }

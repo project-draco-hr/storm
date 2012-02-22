@@ -1,0 +1,3 @@
+def initialize(self, conf, context):
+    emit(['spout initializing'])
+    self.pending = {}

@@ -1,0 +1,3 @@
+import storm
+from random import random
+TesterBolt().run()
