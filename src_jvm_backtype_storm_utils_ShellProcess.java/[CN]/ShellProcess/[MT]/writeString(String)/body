@@ -1,0 +1,4 @@
+{
+  processIn.writeBytes(string + "\nend\n");
+  processIn.flush();
+}

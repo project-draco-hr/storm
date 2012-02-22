@@ -1,6 +1,7 @@
 import sys
 import os
 import traceback
+from collections import deque
 try:
     import cjson
     json_encode = cjson.encode
@@ -10,3 +11,5 @@ except ImportError:
     json_encode = (lambda x: json.dumps(x, ensure_ascii=False))
     json_decode = (lambda x: json.loads(unicode(x)))
 ANCHOR_TUPLE = None
+pending_commands = deque()
+pending_taskids = deque()

@@ -3,8 +3,7 @@ def run(self):
     self.initialize(conf, context)
     try:
         while True:
-            tup = readtuple()
+            tup = readTuple()
             self.process(tup)
-            sync()
     except Exception as e:
         log(traceback.format_exc(e))
