@@ -1,3 +1,2 @@
-String script
-String command
+String[] command
 Map<String,StreamInfo> outputs

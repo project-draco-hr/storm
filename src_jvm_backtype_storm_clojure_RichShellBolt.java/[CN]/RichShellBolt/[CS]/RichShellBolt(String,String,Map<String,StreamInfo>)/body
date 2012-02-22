@@ -1,4 +1,0 @@
-{
-  super(script,command);
-  _outputs=outputs;
-}
