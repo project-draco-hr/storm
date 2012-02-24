@@ -1,5 +1,5 @@
 {
-  Long id=(Long)action.get("id");
+  String id=(String)action.get("id");
   Tuple failed=_inputs.remove(id);
   if (failed == null) {
     throw new RuntimeException("Failed a non-existent or already acked/failed id: " + id);

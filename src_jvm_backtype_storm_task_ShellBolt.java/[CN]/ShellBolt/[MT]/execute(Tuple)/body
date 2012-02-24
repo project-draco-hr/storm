@@ -1,5 +1,5 @@
 {
-  long genId=MessageId.generateId();
+  String genId=Long.toString(MessageId.generateId());
   _inputs.put(genId,input);
   try {
     JSONObject obj=new JSONObject();
