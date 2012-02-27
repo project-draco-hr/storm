@@ -1,3 +1,3 @@
 {
-  System.out.println(tuple);
+  System.out.println(tuple.toString());
 }
