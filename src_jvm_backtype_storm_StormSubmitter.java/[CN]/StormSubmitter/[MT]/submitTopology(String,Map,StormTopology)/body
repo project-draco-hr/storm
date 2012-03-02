@@ -1,4 +1,6 @@
 {
+  stormConf=new HashMap(stormConf);
+  stormConf.putAll(Utils.readCommandLineOpts());
   Map conf=Utils.readStormConfig();
   conf.putAll(stormConf);
   try {
