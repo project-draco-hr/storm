@@ -1,0 +1,28 @@
+{
+  if (conf == null)   return new HashMap();
+  if (conf instanceof Map) {
+    Map confMap=new HashMap((Map)conf);
+    for (    Object key : confMap.keySet()) {
+      Object val=confMap.get(key);
+      confMap.put(key,normalizeConf(val));
+    }
+    return confMap;
+  }
+ else   if (conf instanceof List) {
+    List confList=new ArrayList((List)conf);
+    for (int i=0; i < confList.size(); i++) {
+      Object val=confList.get(i);
+      confList.set(i,normalizeConf(val));
+    }
+    return confList;
+  }
+ else   if (conf instanceof Integer) {
+    return ((Integer)conf).longValue();
+  }
+ else   if (conf instanceof Float) {
+    return ((Float)conf).doubleValue();
+  }
+ else {
+    return conf;
+  }
+}
