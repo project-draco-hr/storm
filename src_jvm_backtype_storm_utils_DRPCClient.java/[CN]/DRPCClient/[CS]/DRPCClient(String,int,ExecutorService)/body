@@ -1,4 +1,0 @@
-{
-  this(host,port);
-  this.executor=executor;
-}

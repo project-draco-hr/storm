@@ -1,9 +1,0 @@
-{
-  Future<String> future=this.executor.submit(new Callable<String>(){
-    @Override public String call() throws Exception {
-      return execute(func,args);
-    }
-  }
-);
-  return future;
-}

@@ -1,4 +1,3 @@
 {
   conn.close();
-  this.executor.shutdown();
 }
