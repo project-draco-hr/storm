@@ -1,5 +1,5 @@
 {
-  Integer max=Utils.getInt(topologyConfig.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS));
+  Integer max=Utils.getInt(_stormConf.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS));
   for (  String spout : getRawTopology().get_spouts().keySet()) {
     ComponentCommon common=getComponentCommon(spout);
     String jsonConf=common.get_json_conf();

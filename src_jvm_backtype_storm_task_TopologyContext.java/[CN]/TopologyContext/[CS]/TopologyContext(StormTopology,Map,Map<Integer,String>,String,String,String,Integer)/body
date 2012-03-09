@@ -1,5 +1,6 @@
 {
   _topology=topology;
+  _stormConf=stormConf;
   _taskToComponent=taskToComponent;
   _stormId=stormId;
   _taskId=taskId;
