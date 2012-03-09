@@ -1,0 +1,3 @@
+List<Object> values
+String stream
+Collection<Integer> outTasks

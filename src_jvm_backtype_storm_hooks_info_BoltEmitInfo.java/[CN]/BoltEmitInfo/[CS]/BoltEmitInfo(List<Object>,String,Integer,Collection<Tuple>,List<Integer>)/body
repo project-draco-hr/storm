@@ -1,7 +1,0 @@
-{
-  this.values=values;
-  this.stream=stream;
-  this.directTask=directTask;
-  this.anchors=anchors;
-  this.outTasks=outTasks;
-}

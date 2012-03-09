@@ -1,5 +1,0 @@
-List<Object> values
-String stream
-Integer directTask
-Collection<Tuple> anchors
-List<Integer> outTasks
