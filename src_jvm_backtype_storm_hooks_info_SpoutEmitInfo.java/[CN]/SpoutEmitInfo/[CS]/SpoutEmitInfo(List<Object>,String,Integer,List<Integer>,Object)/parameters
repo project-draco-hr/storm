@@ -1,0 +1,5 @@
+List<Object> values
+String stream
+Integer directTask
+List<Integer> outTasks
+Object messageId

@@ -1,0 +1,7 @@
+{
+  this.values=values;
+  this.stream=stream;
+  this.directTask=directTask;
+  this.messageId=messageId;
+  this.outTasks=outTasks;
+}

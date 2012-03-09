@@ -1,0 +1,3 @@
+{
+  _hooks.add(hook);
+}
