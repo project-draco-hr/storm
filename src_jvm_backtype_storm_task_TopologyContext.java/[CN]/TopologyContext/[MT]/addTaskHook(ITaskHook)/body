@@ -1,3 +1,4 @@
 {
+  hook.prepare(_stormConf,this);
   _hooks.add(hook);
 }
