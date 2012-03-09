@@ -1,2 +1,2 @@
 Tuple tuple
-long completeLatencyMs
+long processLatencyMs

@@ -1,4 +1,4 @@
 {
   this.tuple=tuple;
-  this.completeLatencyMs=completeLatencyMs;
+  this.processLatencyMs=processLatencyMs;
 }
