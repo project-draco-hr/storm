@@ -1,5 +1,9 @@
 {
-  conn=new TFramedTransport(new TSocket(host,port));
+  TSocket socket=new TSocket(host,port);
+  if (timeout != null) {
+    socket.setTimeout(timeout);
+  }
+  conn=new TFramedTransport(socket);
   client=new DistributedRPC.Client(new TBinaryProtocol(conn));
   conn.open();
 }
