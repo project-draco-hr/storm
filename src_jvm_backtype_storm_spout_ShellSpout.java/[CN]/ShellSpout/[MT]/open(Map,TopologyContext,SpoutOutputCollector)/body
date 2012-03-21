@@ -2,7 +2,7 @@
   _process=new ShellProcess(_command);
   _collector=collector;
   try {
-    String subpid=_process.launch(stormConf,context);
+    int subpid=_process.launch(stormConf,context);
     LOG.info("Launched subprocess with pid " + subpid);
   }
  catch (  IOException e) {

@@ -1,4 +1,4 @@
 def initComponent():
-    heartbeatdir = readStringMsg()
+    heartbeatdir = readMsg()
     sendpid(heartbeatdir)
     return readenv()
