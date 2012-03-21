@@ -1,6 +1,3 @@
 {
-  LinkedBlockingQueue<Object> queue=getQueue(port);
-synchronized (_lock) {
-    queue.add(msg);
-  }
+  getQueue(port).add(msg);
 }
