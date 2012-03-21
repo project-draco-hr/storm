@@ -4,12 +4,6 @@
   _subprocess=builder.start();
   processIn=new DataOutputStream(_subprocess.getOutputStream());
   processOut=new BufferedReader(new InputStreamReader(_subprocess.getInputStream()));
-  Runtime.getRuntime().addShutdownHook(new Thread(){
-    public void run(){
-      _subprocess.destroy();
-    }
-  }
-);
   writeString(context.getPIDDir());
   String pid=readString();
   writeObject(conf);
