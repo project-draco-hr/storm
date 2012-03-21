@@ -1,0 +1,15 @@
+{
+  String string=readString();
+  if (string.equals("sync")) {
+    return null;
+  }
+ else {
+    Map map=(Map)JSONValue.parse(string);
+    if (map != null) {
+      return map;
+    }
+ else {
+      throw new IOException("unable to parse: " + string);
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  for (  String stream : _outputs.keySet()) {
+    StreamInfo def=_outputs.get(stream);
+    if (def.is_direct()) {
+      declarer.declareStream(stream,true,new Fields(def.get_output_fields()));
+    }
+ else {
+      declarer.declareStream(stream,new Fields(def.get_output_fields()));
+    }
+  }
+}

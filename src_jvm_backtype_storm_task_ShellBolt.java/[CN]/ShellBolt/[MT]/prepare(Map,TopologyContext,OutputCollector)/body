@@ -1,11 +1,60 @@
 {
+  _process=new ShellProcess(_command);
+  _collector=collector;
   try {
-    initializeSubprocess(context);
-    _collector=collector;
-    sendToSubprocess(JSONValue.toJSONString(stormConf));
-    sendToSubprocess(context.toJSONString());
+    String subpid=_process.launch(stormConf,context);
+    LOG.info("Launched subprocess with pid " + subpid);
   }
  catch (  IOException e) {
     throw new RuntimeException("Error when launching multilang subprocess",e);
   }
+  new Thread(new Runnable(){
+    public void run(){
+      while (_running) {
+        try {
+          Map action=_process.readMap();
+          if (action == null) {
+          }
+          String command=(String)action.get("command");
+          if (command.equals("ack")) {
+            handleAck(action);
+          }
+ else           if (command.equals("fail")) {
+            handleFail(action);
+          }
+ else           if (command.equals("log")) {
+            String msg=(String)action.get("msg");
+            LOG.info("Shell msg: " + msg);
+          }
+ else           if (command.equals("emit")) {
+            handleEmit(action);
+          }
+        }
+ catch (        IOException e) {
+          throw new RuntimeException(e);
+        }
+catch (        InterruptedException e) {
+        }
+      }
+    }
+  }
+).start();
+  new Thread(new Runnable(){
+    public void run(){
+      while (_running) {
+        try {
+          Object write=_pendingWrites.poll(1,SECONDS);
+          if (write != null) {
+            _process.writeObject(write);
+          }
+        }
+ catch (        IOException e) {
+          throw new RuntimeException(e);
+        }
+catch (        InterruptedException e) {
+        }
+      }
+    }
+  }
+).start();
 }
