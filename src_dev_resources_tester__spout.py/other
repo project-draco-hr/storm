@@ -2,5 +2,5 @@ from storm import Spout, emit, log
 from random import choice
 from time import sleep
 from uuid import uuid4
-words = ['nathan', 'mike', 'jackson', 'golda', 'bertels\xe4\xba\xba']
+words = [u'nathan', u'mike', u'jackson', u'golda', u'bertels\u4eba']
 TesterSpout().run()
