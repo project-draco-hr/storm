@@ -4,9 +4,9 @@
   _subprocess=builder.start();
   processIn=new DataOutputStream(_subprocess.getOutputStream());
   processOut=new BufferedReader(new InputStreamReader(_subprocess.getInputStream()));
-  writeString(context.getPIDDir());
-  String pid=readString();
-  writeObject(conf);
-  writeObject(context);
+  writeMessage(context.getPIDDir());
+  int pid=((Number)readMessage()).intValue();
+  writeMessage(conf);
+  writeMessage(context);
   return pid;
 }

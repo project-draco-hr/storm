@@ -2,7 +2,7 @@
   _process=new ShellProcess(_command);
   _collector=collector;
   try {
-    String subpid=_process.launch(stormConf,context);
+    int subpid=_process.launch(stormConf,context);
     LOG.info("Launched subprocess with pid " + subpid);
   }
  catch (  IOException e) {
@@ -12,7 +12,7 @@
     public void run(){
       while (_running) {
         try {
-          Map action=_process.readMap();
+          Map action=(Map)_process.readMessage();
           if (action == null) {
           }
           String command=(String)action.get("command");
@@ -46,7 +46,7 @@ catch (        InterruptedException e) {
         try {
           Object write=_pendingWrites.poll(1,SECONDS);
           if (write != null) {
-            _process.writeObject(write);
+            _process.writeMessage(write);
           }
         }
  catch (        IOException e) {

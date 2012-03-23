@@ -1,8 +1,8 @@
 {
   try {
-    _process.writeObject(query);
+    _process.writeMessage(query);
     while (true) {
-      Map action=_process.readMap();
+      Map action=(Map)_process.readMessage();
       if (action == null)       return;
       String command=(String)action.get("command");
       if (command.equals("log")) {
@@ -17,7 +17,7 @@
         Object messageId=(Object)action.get("id");
         if (task == null) {
           List<Integer> outtasks=_collector.emit(stream,tuple,messageId);
-          _process.writeObject(outtasks);
+          _process.writeMessage(outtasks);
         }
  else {
           _collector.emitDirect((int)task.longValue(),stream,tuple,messageId);
