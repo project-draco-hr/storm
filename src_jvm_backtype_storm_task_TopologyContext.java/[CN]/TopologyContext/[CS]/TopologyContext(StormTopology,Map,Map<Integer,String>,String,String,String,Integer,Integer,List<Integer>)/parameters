@@ -6,3 +6,4 @@ String codeDir
 String pidDir
 Integer taskId
 Integer workerPort
+List<Integer> workerTasks

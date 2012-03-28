@@ -1,4 +1,4 @@
-def __init__(self, fields=None, shuffle=None, all=None, none=None, direct=None, custom_object=None, custom_serialized=None):
+def __init__(self, fields=None, shuffle=None, all=None, none=None, direct=None, custom_object=None, custom_serialized=None, local_or_shuffle=None):
     self.fields = fields
     self.shuffle = shuffle
     self.all = all
@@ -6,3 +6,4 @@ def __init__(self, fields=None, shuffle=None, all=None, none=None, direct=None, 
     self.direct = direct
     self.custom_object = custom_object
     self.custom_serialized = custom_serialized
+    self.local_or_shuffle = local_or_shuffle

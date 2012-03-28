@@ -52,6 +52,12 @@ def read(self, iprot):
                 self.custom_serialized = iprot.readString()
             else:
                 iprot.skip(ftype)
+        elif (fid == 8):
+            if (ftype == TType.STRUCT):
+                self.local_or_shuffle = NullStruct()
+                self.local_or_shuffle.read(iprot)
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

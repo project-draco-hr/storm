@@ -86,6 +86,17 @@ return custom_serialized;
 org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
 return null;
 }
+case LOCAL_OR_SHUFFLE:
+if (field.type == LOCAL_OR_SHUFFLE_FIELD_DESC.type) {
+NullStruct local_or_shuffle;
+local_or_shuffle=new NullStruct();
+local_or_shuffle.read(iprot);
+return local_or_shuffle;
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
 default :
 throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
 }

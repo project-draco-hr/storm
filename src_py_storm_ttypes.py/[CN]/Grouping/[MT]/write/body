@@ -34,5 +34,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('custom_serialized', TType.STRING, 7)
         oprot.writeString(self.custom_serialized)
         oprot.writeFieldEnd()
+    if (self.local_or_shuffle is not None):
+        oprot.writeFieldBegin('local_or_shuffle', TType.STRUCT, 8)
+        self.local_or_shuffle.write(oprot)
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

@@ -35,6 +35,11 @@ if (value instanceof ByteBuffer) {
 break;
 }
 throw new ClassCastException("Was expecting value of type ByteBuffer for field 'custom_serialized', but got " + value.getClass().getSimpleName());
+case LOCAL_OR_SHUFFLE:
+if (value instanceof NullStruct) {
+break;
+}
+throw new ClassCastException("Was expecting value of type NullStruct for field 'local_or_shuffle', but got " + value.getClass().getSimpleName());
 default :
 throw new IllegalArgumentException("Unknown field id " + setField);
 }
