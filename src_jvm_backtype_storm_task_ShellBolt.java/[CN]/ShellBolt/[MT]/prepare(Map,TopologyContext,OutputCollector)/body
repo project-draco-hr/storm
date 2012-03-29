@@ -2,7 +2,7 @@
   _process=new ShellProcess(_command);
   _collector=collector;
   try {
-    int subpid=_process.launch(stormConf,context);
+    Number subpid=_process.launch(stormConf,context);
     LOG.info("Launched subprocess with pid " + subpid);
   }
  catch (  IOException e) {
@@ -12,7 +12,7 @@
     public void run(){
       while (_running) {
         try {
-          Map action=(Map)_process.readMessage();
+          JSONObject action=_process.readMessage();
           if (action == null) {
           }
           String command=(String)action.get("command");

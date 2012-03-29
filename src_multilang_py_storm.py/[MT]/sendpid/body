@@ -1,4 +1,4 @@
 def sendpid(heartbeatdir):
     pid = os.getpid()
-    sendMsgToParent(pid)
+    sendMsgToParent({'pid': pid, })
     open(((heartbeatdir + '/') + str(pid)), 'w').close()

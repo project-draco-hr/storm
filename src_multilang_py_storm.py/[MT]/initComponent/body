@@ -1,4 +1,5 @@
 def initComponent():
-    heartbeatdir = readMsg()
+    heartbeatdir = readMsg()['pidDir']
     sendpid(heartbeatdir)
-    return readenv()
+    setupInfo = readMsg()
+    return [setupInfo['conf'], setupInfo['context']]

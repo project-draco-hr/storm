@@ -3,9 +3,6 @@
   while (true) {
     String subline=processOut.readLine();
     if (subline == null)     throw new RuntimeException("Pipe to subprocess seems to be broken!");
-    if (subline.equals("sync")) {
-      return subline;
-    }
     if (subline.equals("end")) {
       break;
     }

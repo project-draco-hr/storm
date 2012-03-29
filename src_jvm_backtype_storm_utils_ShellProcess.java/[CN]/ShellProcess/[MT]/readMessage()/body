@@ -1,15 +1,10 @@
 {
   String string=readString();
-  if (string.equals("sync")) {
-    return null;
+  JSONObject msg=(JSONObject)JSONValue.parse(string);
+  if (msg != null) {
+    return msg;
   }
  else {
-    Object msg=JSONValue.parse(string);
-    if (msg != null) {
-      return msg;
-    }
- else {
-      throw new IOException("unable to parse: " + string);
-    }
+    throw new IOException("unable to parse: " + string);
   }
 }
