@@ -1,24 +1,9 @@
 {
-  _topology=topology;
-  _stormConf=stormConf;
+  super(topology,stormConf,taskToComponent,stormId);
   _workerPort=workerPort;
-  _taskToComponent=taskToComponent;
-  _stormId=stormId;
   _taskId=taskId;
-  _componentToTasks=new HashMap<String,List<Integer>>();
   _pidDir=pidDir;
   _codeDir=codeDir;
   _workerTasks=new ArrayList<Integer>(workerTasks);
   Collections.sort(_workerTasks);
-  for (  Integer task : taskToComponent.keySet()) {
-    String component=taskToComponent.get(task);
-    List<Integer> curr=_componentToTasks.get(component);
-    if (curr == null)     curr=new ArrayList<Integer>();
-    curr.add(task);
-    _componentToTasks.put(component,curr);
-  }
-  for (  String component : _componentToTasks.keySet()) {
-    List<Integer> tasks=_componentToTasks.get(component);
-    Collections.sort(tasks);
-  }
 }
