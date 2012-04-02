@@ -1,0 +1,3 @@
+String topologyId
+Map topologyConf
+GeneralTopologyContext context

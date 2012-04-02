@@ -1,0 +1,5 @@
+{
+  this.topologyId=topologyId;
+  this.topologyConf=topologyConf;
+  this.context=context;
+}
