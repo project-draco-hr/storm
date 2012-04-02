@@ -1,0 +1,6 @@
+{
+  this.name=null;
+  this.uploadedJarLocation=null;
+  this.jsonConf=null;
+  this.topology=null;
+}

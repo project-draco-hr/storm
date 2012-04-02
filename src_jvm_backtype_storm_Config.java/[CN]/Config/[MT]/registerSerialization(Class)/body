@@ -1,0 +1,3 @@
+{
+  getRegisteredSerializations().add(klass.getName());
+}

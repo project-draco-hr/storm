@@ -1,0 +1,21 @@
+{
+  _collector=collector;
+  if (_local_drpc_id == null) {
+    int numTasks=context.getComponentTasks(context.getThisComponentId()).size();
+    int index=context.getThisTaskIndex();
+    int port=Utils.getInt(conf.get(Config.DRPC_INVOCATIONS_PORT));
+    List<String> servers=(List<String>)conf.get(Config.DRPC_SERVERS);
+    if (servers == null || servers.isEmpty()) {
+      throw new RuntimeException("No DRPC servers configured for topology");
+    }
+    if (numTasks < servers.size()) {
+      for (      String s : servers) {
+        _clients.add(new DRPCInvocationsClient(s,port));
+      }
+    }
+ else {
+      int i=index % servers.size();
+      _clients.add(new DRPCInvocationsClient(servers.get(i),port));
+    }
+  }
+}

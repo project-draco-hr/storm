@@ -1,0 +1,7 @@
+{
+  Object id=tuple.getValue(0);
+synchronized (_tracked) {
+    _tracked.get(id).failed=true;
+  }
+  _delegate.fail(tuple);
+}

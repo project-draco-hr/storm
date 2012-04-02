@@ -1,0 +1,9 @@
+{
+switch (field) {
+case FUNC_ARGS:
+    return get_func_args();
+case REQUEST_ID:
+  return get_request_id();
+}
+throw new IllegalStateException();
+}

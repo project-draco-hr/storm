@@ -1,0 +1,10 @@
+{
+  rebalance_result result=new rebalance_result();
+  try {
+    iface.rebalance(args.name,args.options);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+  return result;
+}

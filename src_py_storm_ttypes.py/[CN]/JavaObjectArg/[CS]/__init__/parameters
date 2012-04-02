@@ -1,0 +1,7 @@
+self
+int_arg
+long_arg
+string_arg
+bool_arg
+binary_arg
+double_arg

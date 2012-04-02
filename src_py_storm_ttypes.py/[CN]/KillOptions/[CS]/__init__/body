@@ -1,0 +1,2 @@
+def __init__(self, wait_secs=None):
+    self.wait_secs = wait_secs

@@ -6,5 +6,11 @@
     if (!(this_present_success && that_present_success))     return false;
     if (!this.success.equals(that.success))     return false;
   }
+  boolean this_present_e=true && this.is_set_e();
+  boolean that_present_e=true && that.is_set_e();
+  if (this_present_e || that_present_e) {
+    if (!(this_present_e && that_present_e))     return false;
+    if (!this.e.equals(that.e))     return false;
+  }
   return true;
 }

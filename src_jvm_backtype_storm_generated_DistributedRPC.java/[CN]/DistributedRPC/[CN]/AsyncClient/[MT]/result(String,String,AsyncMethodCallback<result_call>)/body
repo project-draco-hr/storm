@@ -1,5 +1,0 @@
-{
-  checkReady();
-  result_call method_call=new result_call(id,result,resultHandler,this,protocolFactory,transport);
-  manager.call(method_call);
-}

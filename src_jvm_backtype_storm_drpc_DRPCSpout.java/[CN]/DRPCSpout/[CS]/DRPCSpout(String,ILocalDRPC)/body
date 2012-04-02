@@ -1,0 +1,4 @@
+{
+  _function=function;
+  _local_drpc_id=drpc.getServiceId();
+}

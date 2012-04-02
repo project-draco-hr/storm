@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_name()) {
-    lastComparison=TBaseHelper.compareTo(this.name,typedOther.name);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.name,typedOther.name);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_uploadedJarLocation()) {
-    lastComparison=TBaseHelper.compareTo(this.uploadedJarLocation,typedOther.uploadedJarLocation);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.uploadedJarLocation,typedOther.uploadedJarLocation);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -29,7 +29,7 @@
     return lastComparison;
   }
   if (is_set_jsonConf()) {
-    lastComparison=TBaseHelper.compareTo(this.jsonConf,typedOther.jsonConf);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.jsonConf,typedOther.jsonConf);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -39,7 +39,7 @@
     return lastComparison;
   }
   if (is_set_topology()) {
-    lastComparison=TBaseHelper.compareTo(this.topology,typedOther.topology);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.topology,typedOther.topology);
     if (lastComparison != 0) {
       return lastComparison;
     }

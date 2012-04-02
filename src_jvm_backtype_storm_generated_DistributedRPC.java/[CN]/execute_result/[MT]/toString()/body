@@ -9,6 +9,15 @@
     sb.append(this.success);
   }
   first=false;
+  if (!first)   sb.append(", ");
+  sb.append("e:");
+  if (this.e == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.e);
+  }
+  first=false;
   sb.append(")");
   return sb.toString();
 }

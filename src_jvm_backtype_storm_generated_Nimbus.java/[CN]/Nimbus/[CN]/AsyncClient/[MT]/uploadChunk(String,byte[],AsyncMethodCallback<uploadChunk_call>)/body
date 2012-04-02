@@ -1,5 +1,0 @@
-{
-  checkReady();
-  uploadChunk_call method_call=new uploadChunk_call(location,chunk,resultHandler,this,protocolFactory,transport);
-  manager.call(method_call);
-}

@@ -1,0 +1,3 @@
+{
+  put(Config.TOPOLOGY_SKIP_MISSING_KRYO_REGISTRATIONS,skip);
+}

@@ -1,0 +1,5 @@
+{
+  IBatchBolt bolt=getBatchBolt(id);
+  _openTransactions.remove(id);
+  bolt.finishBatch();
+}

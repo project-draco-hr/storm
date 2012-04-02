@@ -1,0 +1,9 @@
+{
+  Worker worker=_manager.acquire();
+  try {
+    return worker.deserialize(ser);
+  }
+  finally {
+    _manager.release(worker);
+  }
+}

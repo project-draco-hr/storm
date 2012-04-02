@@ -1,0 +1,3 @@
+{
+  return addConfiguration(Config.TOPOLOGY_MAX_SPOUT_PENDING,val);
+}

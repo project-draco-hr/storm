@@ -1,0 +1,8 @@
+{
+  this.id=null;
+  this.name=null;
+  set_uptime_secs_isSet(false);
+  this.uptime_secs=0;
+  this.tasks=null;
+  this.status=null;
+}

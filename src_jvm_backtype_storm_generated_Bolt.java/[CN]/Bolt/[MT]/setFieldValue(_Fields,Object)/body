@@ -1,27 +1,19 @@
 {
 switch (field) {
-case INPUTS:
+case BOLT_OBJECT:
     if (value == null) {
-      unset_inputs();
+      unset_bolt_object();
     }
  else {
-      set_inputs((Map<GlobalStreamId,Grouping>)value);
+      set_bolt_object((ComponentObject)value);
     }
   break;
-case BOLT_OBJECT:
-if (value == null) {
-  unset_bolt_object();
-}
- else {
-  set_bolt_object((ComponentObject)value);
-}
-break;
 case COMMON:
 if (value == null) {
-unset_common();
+  unset_common();
 }
  else {
-set_common((ComponentCommon)value);
+  set_common((ComponentCommon)value);
 }
 break;
 }

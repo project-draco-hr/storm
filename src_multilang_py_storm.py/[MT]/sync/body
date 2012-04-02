@@ -1,3 +1,2 @@
 def sync():
-    print 'sync'
-    sys.stdout.flush()
+    sendMsgToParent({'command': 'sync', })

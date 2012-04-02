@@ -2,7 +2,9 @@
 switch (fieldId) {
 case 0:
     return SUCCESS;
+case 1:
+  return E;
 default :
-  return null;
+return null;
 }
 }

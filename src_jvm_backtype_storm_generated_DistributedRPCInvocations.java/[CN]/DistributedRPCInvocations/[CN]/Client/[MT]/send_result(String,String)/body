@@ -1,0 +1,6 @@
+{
+  result_args args=new result_args();
+  args.set_id(id);
+  args.set_result(result);
+  sendBase("result",args);
+}

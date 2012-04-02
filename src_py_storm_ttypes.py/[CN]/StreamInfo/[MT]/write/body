@@ -3,14 +3,14 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('StreamInfo')
-    if (self.output_fields != None):
+    if (self.output_fields is not None):
         oprot.writeFieldBegin('output_fields', TType.LIST, 1)
         oprot.writeListBegin(TType.STRING, len(self.output_fields))
-        for iter13 in self.output_fields:
-            oprot.writeString(iter13.encode('utf-8'))
+        for iter20 in self.output_fields:
+            oprot.writeString(iter20.encode('utf-8'))
         oprot.writeListEnd()
         oprot.writeFieldEnd()
-    if (self.direct != None):
+    if (self.direct is not None):
         oprot.writeFieldBegin('direct', TType.BOOL, 2)
         oprot.writeBool(self.direct)
         oprot.writeFieldEnd()

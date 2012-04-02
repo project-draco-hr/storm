@@ -1,5 +1,0 @@
-String name
-String uploadedJarLocation
-String jsonConf
-StormTopology topology
-AsyncMethodCallback<AsyncClient.submitTopology_call> resultHandler

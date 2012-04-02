@@ -3,22 +3,22 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('ClusterSummary')
-    if (self.supervisors != None):
+    if (self.supervisors is not None):
         oprot.writeFieldBegin('supervisors', TType.LIST, 1)
         oprot.writeListBegin(TType.STRUCT, len(self.supervisors))
-        for iter71 in self.supervisors:
-            iter71.write(oprot)
+        for iter78 in self.supervisors:
+            iter78.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
-    if (self.nimbus_uptime_secs != None):
+    if (self.nimbus_uptime_secs is not None):
         oprot.writeFieldBegin('nimbus_uptime_secs', TType.I32, 2)
         oprot.writeI32(self.nimbus_uptime_secs)
         oprot.writeFieldEnd()
-    if (self.topologies != None):
+    if (self.topologies is not None):
         oprot.writeFieldBegin('topologies', TType.LIST, 3)
         oprot.writeListBegin(TType.STRUCT, len(self.topologies))
-        for iter72 in self.topologies:
-            iter72.write(oprot)
+        for iter79 in self.topologies:
+            iter79.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

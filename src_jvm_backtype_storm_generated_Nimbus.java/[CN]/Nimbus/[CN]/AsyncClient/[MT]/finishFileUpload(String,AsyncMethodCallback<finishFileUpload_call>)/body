@@ -1,5 +1,0 @@
-{
-  checkReady();
-  finishFileUpload_call method_call=new finishFileUpload_call(location,resultHandler,this,protocolFactory,transport);
-  manager.call(method_call);
-}

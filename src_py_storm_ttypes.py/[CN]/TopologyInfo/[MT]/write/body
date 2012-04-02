@@ -3,24 +3,28 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('TopologyInfo')
-    if (self.id != None):
+    if (self.id is not None):
         oprot.writeFieldBegin('id', TType.STRING, 1)
         oprot.writeString(self.id.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.name != None):
+    if (self.name is not None):
         oprot.writeFieldBegin('name', TType.STRING, 2)
         oprot.writeString(self.name.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.uptime_secs != None):
+    if (self.uptime_secs is not None):
         oprot.writeFieldBegin('uptime_secs', TType.I32, 3)
         oprot.writeI32(self.uptime_secs)
         oprot.writeFieldEnd()
-    if (self.tasks != None):
+    if (self.tasks is not None):
         oprot.writeFieldBegin('tasks', TType.LIST, 4)
         oprot.writeListBegin(TType.STRUCT, len(self.tasks))
-        for iter230 in self.tasks:
-            iter230.write(oprot)
+        for iter237 in self.tasks:
+            iter237.write(oprot)
         oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    if (self.status is not None):
+        oprot.writeFieldBegin('status', TType.STRING, 5)
+        oprot.writeString(self.status.encode('utf-8'))
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

@@ -1,0 +1,3 @@
+String id
+IBasicBolt bolt
+Integer parallelism_hint

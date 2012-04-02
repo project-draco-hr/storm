@@ -4,6 +4,8 @@ case SERIALIZED_JAVA:
     return SERIALIZED_JAVA_FIELD_DESC;
 case SHELL:
   return SHELL_FIELD_DESC;
+case JAVA_OBJECT:
+return JAVA_OBJECT_FIELD_DESC;
 default :
 throw new IllegalArgumentException("Unknown field id " + setField);
 }

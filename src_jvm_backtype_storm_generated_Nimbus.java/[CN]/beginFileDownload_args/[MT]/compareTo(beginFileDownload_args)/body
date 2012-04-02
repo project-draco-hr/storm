@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_file()) {
-    lastComparison=TBaseHelper.compareTo(this.file,typedOther.file);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.file,typedOther.file);
     if (lastComparison != 0) {
       return lastComparison;
     }

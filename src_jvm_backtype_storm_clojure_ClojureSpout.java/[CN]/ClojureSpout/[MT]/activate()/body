@@ -1,0 +1,7 @@
+{
+  try {
+    _spout.activate();
+  }
+ catch (  AbstractMethodError ame) {
+  }
+}

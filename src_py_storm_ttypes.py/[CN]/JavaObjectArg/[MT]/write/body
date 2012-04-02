@@ -1,0 +1,31 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('JavaObjectArg')
+    if (self.int_arg is not None):
+        oprot.writeFieldBegin('int_arg', TType.I32, 1)
+        oprot.writeI32(self.int_arg)
+        oprot.writeFieldEnd()
+    if (self.long_arg is not None):
+        oprot.writeFieldBegin('long_arg', TType.I64, 2)
+        oprot.writeI64(self.long_arg)
+        oprot.writeFieldEnd()
+    if (self.string_arg is not None):
+        oprot.writeFieldBegin('string_arg', TType.STRING, 3)
+        oprot.writeString(self.string_arg.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.bool_arg is not None):
+        oprot.writeFieldBegin('bool_arg', TType.BOOL, 4)
+        oprot.writeBool(self.bool_arg)
+        oprot.writeFieldEnd()
+    if (self.binary_arg is not None):
+        oprot.writeFieldBegin('binary_arg', TType.STRING, 5)
+        oprot.writeString(self.binary_arg)
+        oprot.writeFieldEnd()
+    if (self.double_arg is not None):
+        oprot.writeFieldBegin('double_arg', TType.DOUBLE, 6)
+        oprot.writeDouble(self.double_arg)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

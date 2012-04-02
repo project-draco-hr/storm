@@ -1,0 +1,11 @@
+{
+  StringBuilder sb=new StringBuilder("RebalanceOptions(");
+  boolean first=true;
+  if (is_set_wait_secs()) {
+    sb.append("wait_secs:");
+    sb.append(this.wait_secs);
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

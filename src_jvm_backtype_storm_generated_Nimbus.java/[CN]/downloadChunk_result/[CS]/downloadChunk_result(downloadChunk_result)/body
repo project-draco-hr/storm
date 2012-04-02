@@ -1,6 +1,6 @@
 {
   if (other.is_set_success()) {
-    this.success=new byte[other.success.length];
-    System.arraycopy(other.success,0,success,0,other.success.length);
+    this.success=org.apache.thrift7.TBaseHelper.copyBinary(other.success);
+    ;
   }
 }

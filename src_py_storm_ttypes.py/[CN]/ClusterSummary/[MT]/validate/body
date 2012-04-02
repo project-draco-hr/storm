@@ -1,0 +1,8 @@
+def validate(self):
+    if (self.supervisors is None):
+        raise TProtocol.TProtocolException(message='Required field supervisors is unset!')
+    if (self.nimbus_uptime_secs is None):
+        raise TProtocol.TProtocolException(message='Required field nimbus_uptime_secs is unset!')
+    if (self.topologies is None):
+        raise TProtocol.TProtocolException(message='Required field topologies is unset!')
+    return

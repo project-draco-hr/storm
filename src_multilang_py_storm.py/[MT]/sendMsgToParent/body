@@ -1,2 +1,4 @@
-def sendMsgToParent(amap):
-    sendToParent(json_encode(amap))
+def sendMsgToParent(msg):
+    print json_encode(msg)
+    print 'end'
+    sys.stdout.flush()

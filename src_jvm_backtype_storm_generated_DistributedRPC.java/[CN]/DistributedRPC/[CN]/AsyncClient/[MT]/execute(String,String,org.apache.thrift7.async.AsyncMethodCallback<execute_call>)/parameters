@@ -1,0 +1,3 @@
+String functionName
+String funcArgs
+org.apache.thrift7.async.AsyncMethodCallback<execute_call> resultHandler

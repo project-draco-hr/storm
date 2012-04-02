@@ -3,28 +3,40 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('Grouping')
-    if (self.fields != None):
+    if (self.fields is not None):
         oprot.writeFieldBegin('fields', TType.LIST, 1)
         oprot.writeListBegin(TType.STRING, len(self.fields))
-        for iter6 in self.fields:
-            oprot.writeString(iter6.encode('utf-8'))
+        for iter13 in self.fields:
+            oprot.writeString(iter13.encode('utf-8'))
         oprot.writeListEnd()
         oprot.writeFieldEnd()
-    if (self.shuffle != None):
+    if (self.shuffle is not None):
         oprot.writeFieldBegin('shuffle', TType.STRUCT, 2)
         self.shuffle.write(oprot)
         oprot.writeFieldEnd()
-    if (self.all != None):
+    if (self.all is not None):
         oprot.writeFieldBegin('all', TType.STRUCT, 3)
         self.all.write(oprot)
         oprot.writeFieldEnd()
-    if (self.none != None):
+    if (self.none is not None):
         oprot.writeFieldBegin('none', TType.STRUCT, 4)
         self.none.write(oprot)
         oprot.writeFieldEnd()
-    if (self.direct != None):
+    if (self.direct is not None):
         oprot.writeFieldBegin('direct', TType.STRUCT, 5)
         self.direct.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.custom_object is not None):
+        oprot.writeFieldBegin('custom_object', TType.STRUCT, 6)
+        self.custom_object.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.custom_serialized is not None):
+        oprot.writeFieldBegin('custom_serialized', TType.STRING, 7)
+        oprot.writeString(self.custom_serialized)
+        oprot.writeFieldEnd()
+    if (self.local_or_shuffle is not None):
+        oprot.writeFieldBegin('local_or_shuffle', TType.STRUCT, 8)
+        self.local_or_shuffle.write(oprot)
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

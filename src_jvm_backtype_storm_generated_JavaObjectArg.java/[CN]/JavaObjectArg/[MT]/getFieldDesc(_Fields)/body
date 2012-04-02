@@ -1,0 +1,18 @@
+{
+switch (setField) {
+case INT_ARG:
+    return INT_ARG_FIELD_DESC;
+case LONG_ARG:
+  return LONG_ARG_FIELD_DESC;
+case STRING_ARG:
+return STRING_ARG_FIELD_DESC;
+case BOOL_ARG:
+return BOOL_ARG_FIELD_DESC;
+case BINARY_ARG:
+return BINARY_ARG_FIELD_DESC;
+case DOUBLE_ARG:
+return DOUBLE_ARG_FIELD_DESC;
+default :
+throw new IllegalArgumentException("Unknown field id " + setField);
+}
+}

@@ -1,22 +1,7 @@
 {
-  int lastComparison=TBaseHelper.compareTo(getSetField(),other.getSetField());
+  int lastComparison=org.apache.thrift7.TBaseHelper.compareTo(getSetField(),other.getSetField());
   if (lastComparison == 0) {
-    Object myValue=getFieldValue();
-    if (myValue instanceof byte[]) {
-      return TBaseHelper.compareTo((byte[])myValue,(byte[])other.getFieldValue());
-    }
- else     if (myValue instanceof List) {
-      return TBaseHelper.compareTo((List)myValue,(List)other.getFieldValue());
-    }
- else     if (myValue instanceof Set) {
-      return TBaseHelper.compareTo((Set)myValue,(Set)other.getFieldValue());
-    }
- else     if (myValue instanceof Map) {
-      return TBaseHelper.compareTo((Map)myValue,(Map)other.getFieldValue());
-    }
- else {
-      return TBaseHelper.compareTo((Comparable)myValue,(Comparable)other.getFieldValue());
-    }
+    return org.apache.thrift7.TBaseHelper.compareTo(getFieldValue(),other.getFieldValue());
   }
   return lastComparison;
 }

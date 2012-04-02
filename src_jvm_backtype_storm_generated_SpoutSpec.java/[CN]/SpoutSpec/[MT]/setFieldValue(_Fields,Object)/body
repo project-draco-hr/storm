@@ -16,13 +16,5 @@ if (value == null) {
   set_common((ComponentCommon)value);
 }
 break;
-case DISTRIBUTED:
-if (value == null) {
-unset_distributed();
-}
- else {
-set_distributed((Boolean)value);
-}
-break;
 }
 }

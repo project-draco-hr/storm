@@ -1,0 +1,3 @@
+{
+  return new MapEntry(fields.get(i),values.get(i));
+}

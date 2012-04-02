@@ -1,6 +1,0 @@
-StormTopology topology
-Map<Integer,Integer> taskToComponent
-String stormId
-String codeDir
-String pidDir
-int taskId

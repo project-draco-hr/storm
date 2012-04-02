@@ -1,5 +1,11 @@
 {
   _collector.setContext(input);
-  _bolt.execute(input,_collector);
-  _collector.getOutputter().ack(input);
+  try {
+    _bolt.execute(input,_collector);
+    _collector.getOutputter().ack(input);
+  }
+ catch (  FailedException e) {
+    LOG.warn("Failed to process tuple",e);
+    _collector.getOutputter().fail(input);
+  }
 }

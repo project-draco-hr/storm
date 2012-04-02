@@ -3,11 +3,11 @@ switch (field) {
 case HOST:
     return get_host();
 case UPTIME_SECS:
-  return new Integer(get_uptime_secs());
+  return Integer.valueOf(get_uptime_secs());
 case NUM_WORKERS:
-return new Integer(get_num_workers());
+return Integer.valueOf(get_num_workers());
 case NUM_USED_WORKERS:
-return new Integer(get_num_used_workers());
+return Integer.valueOf(get_num_used_workers());
 }
 throw new IllegalStateException();
 }

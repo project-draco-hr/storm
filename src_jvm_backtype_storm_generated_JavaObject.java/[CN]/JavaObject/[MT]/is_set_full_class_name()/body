@@ -1,0 +1,3 @@
+{
+  return this.full_class_name != null;
+}

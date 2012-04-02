@@ -1,5 +1,0 @@
-String id
-String name
-int num_tasks
-int num_workers
-int uptime_secs

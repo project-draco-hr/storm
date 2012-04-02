@@ -1,0 +1,4 @@
+{
+  if (k instanceof Keyword)   return entryAt(((Keyword)k).getName());
+  return getMap().entryAt(k);
+}

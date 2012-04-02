@@ -1,0 +1,18 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  fetchRequest_args typedOther=(fetchRequest_args)other;
+  lastComparison=Boolean.valueOf(is_set_functionName()).compareTo(typedOther.is_set_functionName());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_functionName()) {
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.functionName,typedOther.functionName);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

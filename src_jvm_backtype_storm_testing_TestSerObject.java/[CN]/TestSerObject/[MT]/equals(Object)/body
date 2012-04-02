@@ -1,0 +1,4 @@
+{
+  TestSerObject other=(TestSerObject)o;
+  return f1 == other.f1 && f2 == other.f2;
+}

@@ -1,0 +1,5 @@
+{
+  JavaObjectArg x=new JavaObjectArg();
+  x.set_string_arg(value);
+  return x;
+}

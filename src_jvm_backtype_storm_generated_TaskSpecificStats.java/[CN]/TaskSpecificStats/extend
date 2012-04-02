@@ -1,1 +1,1 @@
-TUnion<TaskSpecificStats,TaskSpecificStats._Fields>
+org.apache.thrift7.TUnion<TaskSpecificStats,TaskSpecificStats._Fields>

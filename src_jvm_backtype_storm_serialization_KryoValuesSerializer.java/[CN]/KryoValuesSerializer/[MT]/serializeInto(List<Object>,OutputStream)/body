@@ -1,0 +1,4 @@
+{
+  _delegate.setDelegate(values);
+  _kryo.writeObject(out,_delegate);
+}

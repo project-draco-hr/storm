@@ -1,3 +1,5 @@
-def __init__(self, streams=None, parallelism_hint=None):
+def __init__(self, inputs=None, streams=None, parallelism_hint=None, json_conf=None):
+    self.inputs = inputs
     self.streams = streams
     self.parallelism_hint = parallelism_hint
+    self.json_conf = json_conf

@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_wait_secs=true && this.is_set_wait_secs();
+  boolean that_present_wait_secs=true && that.is_set_wait_secs();
+  if (this_present_wait_secs || that_present_wait_secs) {
+    if (!(this_present_wait_secs && that_present_wait_secs))     return false;
+    if (this.wait_secs != that.wait_secs)     return false;
+  }
+  return true;
+}

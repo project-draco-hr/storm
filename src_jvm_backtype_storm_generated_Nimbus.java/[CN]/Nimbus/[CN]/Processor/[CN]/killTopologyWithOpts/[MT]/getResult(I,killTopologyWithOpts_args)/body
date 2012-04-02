@@ -1,0 +1,10 @@
+{
+  killTopologyWithOpts_result result=new killTopologyWithOpts_result();
+  try {
+    iface.killTopologyWithOpts(args.name,args.options);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+  return result;
+}

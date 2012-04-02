@@ -1,13 +1,14 @@
 def run(self):
+    global MODE
+    MODE = Bolt
     global ANCHOR_TUPLE
-    (conf, context) = initbolt()
+    (conf, context) = initComponent()
     self.initialize(conf, context)
     try:
         while True:
-            tup = readtuple()
+            tup = readTuple()
             ANCHOR_TUPLE = tup
             self.process(tup)
             ack(tup)
-            sync()
     except Exception as e:
         log(traceback.format_exc(e))

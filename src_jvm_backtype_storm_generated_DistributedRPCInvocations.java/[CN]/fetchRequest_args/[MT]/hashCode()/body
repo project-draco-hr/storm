@@ -1,0 +1,7 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_functionName=true && (is_set_functionName());
+  builder.append(present_functionName);
+  if (present_functionName)   builder.append(functionName);
+  return builder.toHashCode();
+}

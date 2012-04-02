@@ -1,0 +1,6 @@
+{
+  byte[] strBytes=str.getBytes("UTF-8");
+  processIn.write(strBytes,0,strBytes.length);
+  processIn.writeBytes("\nend\n");
+  processIn.flush();
+}

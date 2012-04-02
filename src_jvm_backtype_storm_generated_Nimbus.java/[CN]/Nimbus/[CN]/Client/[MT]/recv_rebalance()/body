@@ -1,0 +1,8 @@
+{
+  rebalance_result result=new rebalance_result();
+  receiveBase(result,"rebalance");
+  if (result.e != null) {
+    throw result.e;
+  }
+  return;
+}

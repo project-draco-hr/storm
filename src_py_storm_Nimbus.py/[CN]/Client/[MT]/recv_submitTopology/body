@@ -8,8 +8,8 @@ def recv_submitTopology(self):
     result = submitTopology_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
-    if (result.e != None):
+    if (result.e is not None):
         raise result.e
-    if (result.ite != None):
+    if (result.ite is not None):
         raise result.ite
     return

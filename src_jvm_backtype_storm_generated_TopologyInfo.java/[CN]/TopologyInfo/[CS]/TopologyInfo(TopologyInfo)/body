@@ -15,4 +15,7 @@
     }
     this.tasks=__this__tasks;
   }
+  if (other.is_set_status()) {
+    this.status=other.status;
+  }
 }

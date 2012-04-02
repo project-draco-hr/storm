@@ -1,0 +1,7 @@
+{
+switch (field) {
+case WAIT_SECS:
+    return Integer.valueOf(get_wait_secs());
+}
+throw new IllegalStateException();
+}

@@ -1,5 +1,11 @@
 {
   if (that == null)   return false;
+  boolean this_present_inputs=true && this.is_set_inputs();
+  boolean that_present_inputs=true && that.is_set_inputs();
+  if (this_present_inputs || that_present_inputs) {
+    if (!(this_present_inputs && that_present_inputs))     return false;
+    if (!this.inputs.equals(that.inputs))     return false;
+  }
   boolean this_present_streams=true && this.is_set_streams();
   boolean that_present_streams=true && that.is_set_streams();
   if (this_present_streams || that_present_streams) {
@@ -11,6 +17,12 @@
   if (this_present_parallelism_hint || that_present_parallelism_hint) {
     if (!(this_present_parallelism_hint && that_present_parallelism_hint))     return false;
     if (this.parallelism_hint != that.parallelism_hint)     return false;
+  }
+  boolean this_present_json_conf=true && this.is_set_json_conf();
+  boolean that_present_json_conf=true && that.is_set_json_conf();
+  if (this_present_json_conf || that_present_json_conf) {
+    if (!(this_present_json_conf && that_present_json_conf))     return false;
+    if (!this.json_conf.equals(that.json_conf))     return false;
   }
   return true;
 }

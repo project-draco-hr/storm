@@ -1,0 +1,24 @@
+{
+  TransactionStatus maybeCommit=_activeTx.get(_currTransaction);
+  if (maybeCommit != null && maybeCommit.status == AttemptStatus.PROCESSED) {
+    maybeCommit.status=AttemptStatus.COMMITTING;
+    _collector.emit(TRANSACTION_COMMIT_STREAM_ID,new Values(maybeCommit.attempt),maybeCommit.attempt);
+  }
+  try {
+    if (_activeTx.size() < _maxTransactionActive) {
+      BigInteger curr=_currTransaction;
+      for (int i=0; i < _maxTransactionActive; i++) {
+        if ((_coordinatorState.hasCache(curr) || _coordinator.isReady()) && !_activeTx.containsKey(curr)) {
+          TransactionAttempt attempt=new TransactionAttempt(curr,Utils.randomLong());
+          Object state=_coordinatorState.getState(curr,_initializer);
+          _activeTx.put(curr,new TransactionStatus(attempt));
+          _collector.emit(TRANSACTION_BATCH_STREAM_ID,new Values(attempt,state,previousTransactionId(_currTransaction)),attempt);
+        }
+        curr=nextTransactionId(curr);
+      }
+    }
+  }
+ catch (  FailedException e) {
+    LOG.warn("Failed to get metadata for a transaction",e);
+  }
+}

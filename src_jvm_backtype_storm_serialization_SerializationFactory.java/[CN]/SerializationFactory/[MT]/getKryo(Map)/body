@@ -1,0 +1,46 @@
+{
+  KryoSerializableDefault k=new KryoSerializableDefault();
+  k.setRegistrationOptional((Boolean)conf.get(Config.TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION));
+  k.register(byte[].class);
+  k.register(ListDelegate.class);
+  k.register(ArrayList.class);
+  k.register(HashMap.class);
+  k.register(HashSet.class);
+  k.register(BigInteger.class,new BigIntegerSerializer());
+  k.register(TransactionAttempt.class);
+  JavaBridge clojureSerializersBridge=new JavaBridge();
+  clojureSerializersBridge.registerClojureCollections(k);
+  clojureSerializersBridge.registerClojurePrimitives(k);
+  Map<String,String> registrations=normalizeKryoRegister(conf);
+  boolean skipMissing=(Boolean)conf.get(Config.TOPOLOGY_SKIP_MISSING_KRYO_REGISTRATIONS);
+  for (  String klassName : registrations.keySet()) {
+    String serializerClassName=registrations.get(klassName);
+    try {
+      Class klass=Class.forName(klassName);
+      Class serializerClass=null;
+      if (serializerClassName != null)       serializerClass=Class.forName(serializerClassName);
+      if (serializerClass == null) {
+        k.register(klass);
+      }
+ else {
+        k.register(klass,(Serializer)serializerClass.newInstance());
+      }
+    }
+ catch (    ClassNotFoundException e) {
+      if (skipMissing) {
+        LOG.info("Could not find serialization or class for " + serializerClassName + ". Skipping registration...");
+      }
+ else {
+        throw new RuntimeException(e);
+      }
+    }
+catch (    InstantiationException e) {
+      throw new RuntimeException(e);
+    }
+catch (    IllegalAccessException e) {
+      throw new RuntimeException(e);
+    }
+  }
+  k.overrideDefault(true);
+  return new ObjectBuffer(k,2000,2000000000);
+}

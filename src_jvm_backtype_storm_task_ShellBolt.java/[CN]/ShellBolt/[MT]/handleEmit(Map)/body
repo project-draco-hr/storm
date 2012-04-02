@@ -1,0 +1,27 @@
+{
+  String stream=(String)action.get("stream");
+  if (stream == null)   stream=Utils.DEFAULT_STREAM_ID;
+  Long task=(Long)action.get("task");
+  List<Object> tuple=(List)action.get("tuple");
+  List<Tuple> anchors=new ArrayList<Tuple>();
+  Object anchorObj=action.get("anchors");
+  if (anchorObj != null) {
+    if (anchorObj instanceof String) {
+      anchorObj=Arrays.asList(anchorObj);
+    }
+    for (    Object o : (List)anchorObj) {
+      Tuple t=_inputs.get((String)o);
+      if (t == null) {
+        throw new RuntimeException("Anchored onto " + o + " after ack/fail");
+      }
+      anchors.add(t);
+    }
+  }
+  if (task == null) {
+    List<Integer> outtasks=_collector.emit(stream,anchors,tuple);
+    _pendingWrites.put(outtasks);
+  }
+ else {
+    _collector.emitDirect((int)task.longValue(),stream,anchors,tuple);
+  }
+}

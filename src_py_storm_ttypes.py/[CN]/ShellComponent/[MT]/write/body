@@ -3,11 +3,11 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('ShellComponent')
-    if (self.execution_command != None):
+    if (self.execution_command is not None):
         oprot.writeFieldBegin('execution_command', TType.STRING, 1)
         oprot.writeString(self.execution_command.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.script != None):
+    if (self.script is not None):
         oprot.writeFieldBegin('script', TType.STRING, 2)
         oprot.writeString(self.script.encode('utf-8'))
         oprot.writeFieldEnd()

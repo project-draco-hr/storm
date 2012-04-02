@@ -1,0 +1,4 @@
+{
+  if (k instanceof Keyword)   return without(((Keyword)k).getName());
+  return new IndifferentAccessMap(getMap().without(k));
+}

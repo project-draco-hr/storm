@@ -1,0 +1,5 @@
+{
+  finishFileUpload_result result=new finishFileUpload_result();
+  iface.finishFileUpload(args.location);
+  return result;
+}

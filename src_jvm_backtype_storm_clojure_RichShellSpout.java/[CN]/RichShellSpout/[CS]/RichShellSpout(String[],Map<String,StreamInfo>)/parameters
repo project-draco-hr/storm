@@ -1,0 +1,2 @@
+String[] command
+Map<String,StreamInfo> outputs

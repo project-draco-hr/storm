@@ -3,13 +3,17 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('ComponentObject')
-    if (self.serialized_java != None):
+    if (self.serialized_java is not None):
         oprot.writeFieldBegin('serialized_java', TType.STRING, 1)
         oprot.writeString(self.serialized_java)
         oprot.writeFieldEnd()
-    if (self.shell != None):
+    if (self.shell is not None):
         oprot.writeFieldBegin('shell', TType.STRUCT, 2)
         self.shell.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.java_object is not None):
+        oprot.writeFieldBegin('java_object', TType.STRUCT, 3)
+        self.java_object.write(oprot)
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

@@ -1,0 +1,10 @@
+{
+  try {
+    this.host=host;
+    this.port=port;
+    connect();
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return _kryo.readClassAndObject(new ByteArrayInputStream(ser));
+}

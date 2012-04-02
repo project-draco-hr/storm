@@ -8,8 +8,8 @@ def recv_getTopology(self):
     result = getTopology_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
-    if (result.success != None):
+    if (result.success is not None):
         return result.success
-    if (result.e != None):
+    if (result.e is not None):
         raise result.e
     raise TApplicationException(TApplicationException.MISSING_RESULT, 'getTopology failed: unknown result')

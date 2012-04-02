@@ -1,0 +1,68 @@
+{
+  org.apache.thrift7.protocol.TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == org.apache.thrift7.protocol.TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 1:
+      if (field.type == org.apache.thrift7.protocol.TType.STRING) {
+        this.id=iprot.readString();
+      }
+ else {
+        org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+case 2:
+  if (field.type == org.apache.thrift7.protocol.TType.STRING) {
+    this.name=iprot.readString();
+  }
+ else {
+    org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == org.apache.thrift7.protocol.TType.I32) {
+this.uptime_secs=iprot.readI32();
+set_uptime_secs_isSet(true);
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 4:
+if (field.type == org.apache.thrift7.protocol.TType.LIST) {
+{
+org.apache.thrift7.protocol.TList _list129=iprot.readListBegin();
+this.tasks=new ArrayList<TaskSummary>(_list129.size);
+for (int _i130=0; _i130 < _list129.size; ++_i130) {
+TaskSummary _elem131;
+_elem131=new TaskSummary();
+_elem131.read(iprot);
+this.tasks.add(_elem131);
+}
+iprot.readListEnd();
+}
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 5:
+if (field.type == org.apache.thrift7.protocol.TType.STRING) {
+this.status=iprot.readString();
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+default :
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}

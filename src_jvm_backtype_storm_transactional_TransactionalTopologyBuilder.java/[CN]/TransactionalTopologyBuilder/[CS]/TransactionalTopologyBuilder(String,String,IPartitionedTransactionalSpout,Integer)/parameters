@@ -1,0 +1,4 @@
+String id
+String spoutId
+IPartitionedTransactionalSpout spout
+Integer spoutParallelism

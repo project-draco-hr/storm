@@ -10,6 +10,12 @@ case 4:
 return NONE;
 case 5:
 return DIRECT;
+case 6:
+return CUSTOM_OBJECT;
+case 7:
+return CUSTOM_SERIALIZED;
+case 8:
+return LOCAL_OR_SHUFFLE;
 default :
 return null;
 }

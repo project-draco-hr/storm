@@ -8,5 +8,13 @@ case SUCCESS:
       set_success((String)value);
     }
   break;
+case E:
+if (value == null) {
+  unset_e();
+}
+ else {
+  set_e((DRPCExecutionException)value);
+}
+break;
 }
 }

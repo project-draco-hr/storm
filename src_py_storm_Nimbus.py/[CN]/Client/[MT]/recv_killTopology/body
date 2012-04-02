@@ -8,6 +8,6 @@ def recv_killTopology(self):
     result = killTopology_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
-    if (result.e != None):
+    if (result.e is not None):
         raise result.e
     return

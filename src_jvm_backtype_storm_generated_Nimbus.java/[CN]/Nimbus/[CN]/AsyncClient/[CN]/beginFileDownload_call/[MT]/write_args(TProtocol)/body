@@ -1,7 +1,0 @@
-{
-  prot.writeMessageBegin(new TMessage("beginFileDownload",TMessageType.CALL,0));
-  beginFileDownload_args args=new beginFileDownload_args();
-  args.set_file(file);
-  args.write(prot);
-  prot.writeMessageEnd();
-}

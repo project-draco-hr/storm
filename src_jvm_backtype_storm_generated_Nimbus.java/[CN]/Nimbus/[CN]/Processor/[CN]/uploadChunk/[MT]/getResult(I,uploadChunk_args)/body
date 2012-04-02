@@ -1,0 +1,5 @@
+{
+  uploadChunk_result result=new uploadChunk_result();
+  iface.uploadChunk(args.location,args.chunk);
+  return result;
+}

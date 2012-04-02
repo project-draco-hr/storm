@@ -1,15 +1,15 @@
 {
   if (other.is_set_acked()) {
-    Map<String,Map<Integer,Long>> __this__acked=new HashMap<String,Map<Integer,Long>>();
-    for (    Map.Entry<String,Map<Integer,Long>> other_element : other.acked.entrySet()) {
+    Map<String,Map<String,Long>> __this__acked=new HashMap<String,Map<String,Long>>();
+    for (    Map.Entry<String,Map<String,Long>> other_element : other.acked.entrySet()) {
       String other_element_key=other_element.getKey();
-      Map<Integer,Long> other_element_value=other_element.getValue();
+      Map<String,Long> other_element_value=other_element.getValue();
       String __this__acked_copy_key=other_element_key;
-      Map<Integer,Long> __this__acked_copy_value=new HashMap<Integer,Long>();
-      for (      Map.Entry<Integer,Long> other_element_value_element : other_element_value.entrySet()) {
-        Integer other_element_value_element_key=other_element_value_element.getKey();
+      Map<String,Long> __this__acked_copy_value=new HashMap<String,Long>();
+      for (      Map.Entry<String,Long> other_element_value_element : other_element_value.entrySet()) {
+        String other_element_value_element_key=other_element_value_element.getKey();
         Long other_element_value_element_value=other_element_value_element.getValue();
-        Integer __this__acked_copy_value_copy_key=other_element_value_element_key;
+        String __this__acked_copy_value_copy_key=other_element_value_element_key;
         Long __this__acked_copy_value_copy_value=other_element_value_element_value;
         __this__acked_copy_value.put(__this__acked_copy_value_copy_key,__this__acked_copy_value_copy_value);
       }
@@ -18,16 +18,16 @@
     this.acked=__this__acked;
   }
   if (other.is_set_failed()) {
-    Map<String,Map<Integer,Long>> __this__failed=new HashMap<String,Map<Integer,Long>>();
-    for (    Map.Entry<String,Map<Integer,Long>> other_element : other.failed.entrySet()) {
+    Map<String,Map<String,Long>> __this__failed=new HashMap<String,Map<String,Long>>();
+    for (    Map.Entry<String,Map<String,Long>> other_element : other.failed.entrySet()) {
       String other_element_key=other_element.getKey();
-      Map<Integer,Long> other_element_value=other_element.getValue();
+      Map<String,Long> other_element_value=other_element.getValue();
       String __this__failed_copy_key=other_element_key;
-      Map<Integer,Long> __this__failed_copy_value=new HashMap<Integer,Long>();
-      for (      Map.Entry<Integer,Long> other_element_value_element : other_element_value.entrySet()) {
-        Integer other_element_value_element_key=other_element_value_element.getKey();
+      Map<String,Long> __this__failed_copy_value=new HashMap<String,Long>();
+      for (      Map.Entry<String,Long> other_element_value_element : other_element_value.entrySet()) {
+        String other_element_value_element_key=other_element_value_element.getKey();
         Long other_element_value_element_value=other_element_value_element.getValue();
-        Integer __this__failed_copy_value_copy_key=other_element_value_element_key;
+        String __this__failed_copy_value_copy_key=other_element_value_element_key;
         Long __this__failed_copy_value_copy_value=other_element_value_element_value;
         __this__failed_copy_value.put(__this__failed_copy_value_copy_key,__this__failed_copy_value_copy_value);
       }
@@ -36,16 +36,16 @@
     this.failed=__this__failed;
   }
   if (other.is_set_complete_ms_avg()) {
-    Map<String,Map<Integer,Double>> __this__complete_ms_avg=new HashMap<String,Map<Integer,Double>>();
-    for (    Map.Entry<String,Map<Integer,Double>> other_element : other.complete_ms_avg.entrySet()) {
+    Map<String,Map<String,Double>> __this__complete_ms_avg=new HashMap<String,Map<String,Double>>();
+    for (    Map.Entry<String,Map<String,Double>> other_element : other.complete_ms_avg.entrySet()) {
       String other_element_key=other_element.getKey();
-      Map<Integer,Double> other_element_value=other_element.getValue();
+      Map<String,Double> other_element_value=other_element.getValue();
       String __this__complete_ms_avg_copy_key=other_element_key;
-      Map<Integer,Double> __this__complete_ms_avg_copy_value=new HashMap<Integer,Double>();
-      for (      Map.Entry<Integer,Double> other_element_value_element : other_element_value.entrySet()) {
-        Integer other_element_value_element_key=other_element_value_element.getKey();
+      Map<String,Double> __this__complete_ms_avg_copy_value=new HashMap<String,Double>();
+      for (      Map.Entry<String,Double> other_element_value_element : other_element_value.entrySet()) {
+        String other_element_value_element_key=other_element_value_element.getKey();
         Double other_element_value_element_value=other_element_value_element.getValue();
-        Integer __this__complete_ms_avg_copy_value_copy_key=other_element_value_element_key;
+        String __this__complete_ms_avg_copy_value_copy_key=other_element_value_element_key;
         Double __this__complete_ms_avg_copy_value_copy_value=other_element_value_element_value;
         __this__complete_ms_avg_copy_value.put(__this__complete_ms_avg_copy_value_copy_key,__this__complete_ms_avg_copy_value_copy_value);
       }

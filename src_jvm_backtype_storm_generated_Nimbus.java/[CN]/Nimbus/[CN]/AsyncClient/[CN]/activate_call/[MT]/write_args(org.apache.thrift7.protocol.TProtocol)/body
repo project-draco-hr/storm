@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift7.protocol.TMessage("activate",org.apache.thrift7.protocol.TMessageType.CALL,0));
+  activate_args args=new activate_args();
+  args.set_name(name);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

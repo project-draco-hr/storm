@@ -1,0 +1,10 @@
+{
+  execute_result result=new execute_result();
+  try {
+    result.success=iface.execute(args.functionName,args.funcArgs);
+  }
+ catch (  DRPCExecutionException e) {
+    result.e=e;
+  }
+  return result;
+}

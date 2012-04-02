@@ -1,0 +1,42 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.spouts != null) {
+    oprot.writeFieldBegin(SPOUTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift7.protocol.TMap(org.apache.thrift7.protocol.TType.STRING,org.apache.thrift7.protocol.TType.STRUCT,this.spouts.size()));
+      for (      Map.Entry<String,SpoutSpec> _iter34 : this.spouts.entrySet()) {
+        oprot.writeString(_iter34.getKey());
+        _iter34.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.bolts != null) {
+    oprot.writeFieldBegin(BOLTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift7.protocol.TMap(org.apache.thrift7.protocol.TType.STRING,org.apache.thrift7.protocol.TType.STRUCT,this.bolts.size()));
+      for (      Map.Entry<String,Bolt> _iter35 : this.bolts.entrySet()) {
+        oprot.writeString(_iter35.getKey());
+        _iter35.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.state_spouts != null) {
+    oprot.writeFieldBegin(STATE_SPOUTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift7.protocol.TMap(org.apache.thrift7.protocol.TType.STRING,org.apache.thrift7.protocol.TType.STRUCT,this.state_spouts.size()));
+      for (      Map.Entry<String,StateSpoutSpec> _iter36 : this.state_spouts.entrySet()) {
+        oprot.writeString(_iter36.getKey());
+        _iter36.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

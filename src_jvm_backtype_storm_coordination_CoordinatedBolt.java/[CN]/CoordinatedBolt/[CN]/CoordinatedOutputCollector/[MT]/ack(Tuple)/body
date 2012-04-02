@@ -1,0 +1,13 @@
+{
+  Object id=tuple.getValue(0);
+synchronized (_tracked) {
+    _tracked.get(id).receivedTuples++;
+  }
+  boolean failed=checkFinishId(tuple);
+  if (failed) {
+    _delegate.fail(tuple);
+  }
+ else {
+    _delegate.ack(tuple);
+  }
+}

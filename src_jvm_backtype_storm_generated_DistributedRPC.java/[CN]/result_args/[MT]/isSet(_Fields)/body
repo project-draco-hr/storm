@@ -1,9 +1,0 @@
-{
-switch (field) {
-case ID:
-    return is_set_id();
-case RESULT:
-  return is_set_result();
-}
-throw new IllegalStateException();
-}

@@ -1,0 +1,10 @@
+{
+  try {
+    if (client == null)     connect();
+    return client.fetchRequest(func);
+  }
+ catch (  TException e) {
+    client=null;
+    throw e;
+  }
+}

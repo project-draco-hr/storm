@@ -25,12 +25,17 @@ def read(self, iprot):
         elif (fid == 4):
             if (ftype == TType.LIST):
                 self.tasks = []
-                (_etype227, _size224) = iprot.readListBegin()
-                for _i228 in xrange(_size224):
-                    _elem229 = TaskSummary()
-                    _elem229.read(iprot)
-                    self.tasks.append(_elem229)
+                (_etype234, _size231) = iprot.readListBegin()
+                for _i235 in xrange(_size231):
+                    _elem236 = TaskSummary()
+                    _elem236.read(iprot)
+                    self.tasks.append(_elem236)
                 iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 5):
+            if (ftype == TType.STRING):
+                self.status = iprot.readString().decode('utf-8')
             else:
                 iprot.skip(ftype)
         else:

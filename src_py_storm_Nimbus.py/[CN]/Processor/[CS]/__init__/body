@@ -3,6 +3,10 @@ def __init__(self, handler):
     self._processMap = {}
     self._processMap['submitTopology'] = Processor.process_submitTopology
     self._processMap['killTopology'] = Processor.process_killTopology
+    self._processMap['killTopologyWithOpts'] = Processor.process_killTopologyWithOpts
+    self._processMap['activate'] = Processor.process_activate
+    self._processMap['deactivate'] = Processor.process_deactivate
+    self._processMap['rebalance'] = Processor.process_rebalance
     self._processMap['beginFileUpload'] = Processor.process_beginFileUpload
     self._processMap['uploadChunk'] = Processor.process_uploadChunk
     self._processMap['finishFileUpload'] = Processor.process_finishFileUpload

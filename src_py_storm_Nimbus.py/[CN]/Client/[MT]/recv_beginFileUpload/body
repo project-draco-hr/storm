@@ -8,6 +8,6 @@ def recv_beginFileUpload(self):
     result = beginFileUpload_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
-    if (result.success != None):
+    if (result.success is not None):
         return result.success
     raise TApplicationException(TApplicationException.MISSING_RESULT, 'beginFileUpload failed: unknown result')

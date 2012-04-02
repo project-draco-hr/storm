@@ -3,7 +3,7 @@ switch (field) {
 case OUTPUT_FIELDS:
     return get_output_fields();
 case DIRECT:
-  return new Boolean(is_direct());
+  return Boolean.valueOf(is_direct());
 }
 throw new IllegalStateException();
 }

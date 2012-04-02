@@ -1,0 +1,3 @@
+{
+  return getComponentCommon(componentId).get_inputs();
+}

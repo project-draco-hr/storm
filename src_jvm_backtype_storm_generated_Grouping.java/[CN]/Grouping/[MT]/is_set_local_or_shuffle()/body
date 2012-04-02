@@ -1,0 +1,3 @@
+{
+  return setField_ == _Fields.LOCAL_OR_SHUFFLE;
+}

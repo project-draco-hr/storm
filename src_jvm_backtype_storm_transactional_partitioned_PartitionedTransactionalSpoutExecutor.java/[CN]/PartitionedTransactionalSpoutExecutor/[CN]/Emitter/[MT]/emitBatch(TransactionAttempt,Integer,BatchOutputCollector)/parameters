@@ -1,0 +1,3 @@
+TransactionAttempt tx
+Integer partitions
+BatchOutputCollector collector

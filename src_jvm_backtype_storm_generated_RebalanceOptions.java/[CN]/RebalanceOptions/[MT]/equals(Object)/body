@@ -1,0 +1,5 @@
+{
+  if (that == null)   return false;
+  if (that instanceof RebalanceOptions)   return this.equals((RebalanceOptions)that);
+  return false;
+}

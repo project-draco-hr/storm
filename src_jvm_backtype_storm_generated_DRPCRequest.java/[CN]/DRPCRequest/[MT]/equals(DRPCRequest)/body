@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_func_args=true && this.is_set_func_args();
+  boolean that_present_func_args=true && that.is_set_func_args();
+  if (this_present_func_args || that_present_func_args) {
+    if (!(this_present_func_args && that_present_func_args))     return false;
+    if (!this.func_args.equals(that.func_args))     return false;
+  }
+  boolean this_present_request_id=true && this.is_set_request_id();
+  boolean that_present_request_id=true && that.is_set_request_id();
+  if (this_present_request_id || that_present_request_id) {
+    if (!(this_present_request_id && that_present_request_id))     return false;
+    if (!this.request_id.equals(that.request_id))     return false;
+  }
+  return true;
+}

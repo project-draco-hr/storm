@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_functionName=true && this.is_set_functionName();
+  boolean that_present_functionName=true && that.is_set_functionName();
+  if (this_present_functionName || that_present_functionName) {
+    if (!(this_present_functionName && that_present_functionName))     return false;
+    if (!this.functionName.equals(that.functionName))     return false;
+  }
+  return true;
+}

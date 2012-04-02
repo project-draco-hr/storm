@@ -1,0 +1,2 @@
+org.apache.thrift7.protocol.TProtocol iprot
+org.apache.thrift7.protocol.TField field

@@ -1,0 +1,3 @@
+def __init__(self, full_class_name=None, args_list=None):
+    self.full_class_name = full_class_name
+    self.args_list = args_list

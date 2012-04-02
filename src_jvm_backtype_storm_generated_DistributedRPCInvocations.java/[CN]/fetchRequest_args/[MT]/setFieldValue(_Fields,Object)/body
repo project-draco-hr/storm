@@ -1,0 +1,12 @@
+{
+switch (field) {
+case FUNCTION_NAME:
+    if (value == null) {
+      unset_functionName();
+    }
+ else {
+      set_functionName((String)value);
+    }
+  break;
+}
+}

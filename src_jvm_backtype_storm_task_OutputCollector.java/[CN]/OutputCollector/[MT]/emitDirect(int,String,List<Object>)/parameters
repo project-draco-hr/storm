@@ -1,0 +1,3 @@
+int taskId
+String streamId
+List<Object> tuple

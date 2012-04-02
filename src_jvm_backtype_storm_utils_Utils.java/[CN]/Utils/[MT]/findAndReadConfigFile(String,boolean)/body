@@ -1,10 +1,20 @@
 {
-  InputStream is=Utils.class.getResourceAsStream("/" + name);
-  if (is == null) {
-    if (mustExist)     throw new RuntimeException("Could not find config file on classpath " + name);
- else     return new HashMap();
+  try {
+    List<URL> resources=findResources(name);
+    if (resources.isEmpty()) {
+      if (mustExist)       throw new RuntimeException("Could not find config file on classpath " + name);
+ else       return new HashMap();
+    }
+    if (resources.size() > 1) {
+      throw new RuntimeException("Found multiple " + name + " resources");
+    }
+    URL resource=resources.get(0);
+    Yaml yaml=new Yaml();
+    Map ret=(Map)yaml.load(new InputStreamReader(resource.openStream()));
+    if (ret == null)     ret=new HashMap();
+    return new HashMap(ret);
   }
-  Map ret=(Map)YAML.load(new InputStreamReader(is));
-  if (ret == null)   ret=new HashMap();
-  return new HashMap(ret);
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
 }

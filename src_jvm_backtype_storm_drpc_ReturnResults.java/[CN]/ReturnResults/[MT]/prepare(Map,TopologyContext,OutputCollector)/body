@@ -1,3 +1,4 @@
 {
   _collector=collector;
+  local=stormConf.get(Config.STORM_CLUSTER_MODE).equals("local");
 }

@@ -1,0 +1,7 @@
+{
+  Map<V,K> ret=new HashMap<V,K>();
+  for (  K key : map.keySet()) {
+    ret.put(map.get(key),key);
+  }
+  return ret;
+}

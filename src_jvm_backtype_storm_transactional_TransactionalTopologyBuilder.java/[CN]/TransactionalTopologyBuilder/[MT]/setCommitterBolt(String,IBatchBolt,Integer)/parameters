@@ -1,0 +1,3 @@
+String id
+IBatchBolt bolt
+Integer parallelism

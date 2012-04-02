@@ -1,7 +1,5 @@
 {
-  _subprocess.destroy();
+  _running=false;
+  _process.destroy();
   _inputs.clear();
-  _processin=null;
-  _processout=null;
-  _collector=null;
 }

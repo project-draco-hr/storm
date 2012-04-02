@@ -3,19 +3,19 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('submitTopology_args')
-    if (self.name != None):
+    if (self.name is not None):
         oprot.writeFieldBegin('name', TType.STRING, 1)
         oprot.writeString(self.name.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.uploadedJarLocation != None):
+    if (self.uploadedJarLocation is not None):
         oprot.writeFieldBegin('uploadedJarLocation', TType.STRING, 2)
         oprot.writeString(self.uploadedJarLocation.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.jsonConf != None):
+    if (self.jsonConf is not None):
         oprot.writeFieldBegin('jsonConf', TType.STRING, 3)
         oprot.writeString(self.jsonConf.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.topology != None):
+    if (self.topology is not None):
         oprot.writeFieldBegin('topology', TType.STRUCT, 4)
         self.topology.write(oprot)
         oprot.writeFieldEnd()

@@ -1,0 +1,4 @@
+{
+  this.componentId=null;
+  this.streamId=null;
+}

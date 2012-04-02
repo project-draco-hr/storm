@@ -1,0 +1,4 @@
+{
+  this.messageId=messageId;
+  this.failLatencyMs=failLatencyMs;
+}

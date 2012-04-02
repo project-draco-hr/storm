@@ -10,4 +10,7 @@
   this.num_tasks=other.num_tasks;
   this.num_workers=other.num_workers;
   this.uptime_secs=other.uptime_secs;
+  if (other.is_set_status()) {
+    this.status=other.status;
+  }
 }

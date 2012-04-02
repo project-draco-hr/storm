@@ -1,3 +1,4 @@
-def __init__(self, serialized_java=None, shell=None):
+def __init__(self, serialized_java=None, shell=None, java_object=None):
     self.serialized_java = serialized_java
     self.shell = shell
+    self.java_object = java_object

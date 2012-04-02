@@ -40,5 +40,13 @@ unset_uptime_secs();
 set_uptime_secs((Integer)value);
 }
 break;
+case STATUS:
+if (value == null) {
+unset_status();
+}
+ else {
+set_status((String)value);
+}
+break;
 }
 }

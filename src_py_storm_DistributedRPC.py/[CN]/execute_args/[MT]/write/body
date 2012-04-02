@@ -3,11 +3,11 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('execute_args')
-    if (self.functionName != None):
+    if (self.functionName is not None):
         oprot.writeFieldBegin('functionName', TType.STRING, 1)
         oprot.writeString(self.functionName.encode('utf-8'))
         oprot.writeFieldEnd()
-    if (self.funcArgs != None):
+    if (self.funcArgs is not None):
         oprot.writeFieldBegin('funcArgs', TType.STRING, 2)
         oprot.writeString(self.funcArgs.encode('utf-8'))
         oprot.writeFieldEnd()

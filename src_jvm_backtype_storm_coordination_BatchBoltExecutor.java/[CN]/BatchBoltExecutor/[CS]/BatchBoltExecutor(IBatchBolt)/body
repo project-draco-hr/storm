@@ -1,0 +1,3 @@
+{
+  _boltSer=Utils.serialize(bolt);
+}

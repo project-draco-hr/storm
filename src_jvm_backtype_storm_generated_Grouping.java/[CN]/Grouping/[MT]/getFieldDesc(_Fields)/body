@@ -10,6 +10,12 @@ case NONE:
 return NONE_FIELD_DESC;
 case DIRECT:
 return DIRECT_FIELD_DESC;
+case CUSTOM_OBJECT:
+return CUSTOM_OBJECT_FIELD_DESC;
+case CUSTOM_SERIALIZED:
+return CUSTOM_SERIALIZED_FIELD_DESC;
+case LOCAL_OR_SHUFFLE:
+return LOCAL_OR_SHUFFLE_FIELD_DESC;
 default :
 throw new IllegalArgumentException("Unknown field id " + setField);
 }

@@ -10,7 +10,7 @@
   boolean that_present_chunk=true && that.is_set_chunk();
   if (this_present_chunk || that_present_chunk) {
     if (!(this_present_chunk && that_present_chunk))     return false;
-    if (!java.util.Arrays.equals(this.chunk,that.chunk))     return false;
+    if (!this.chunk.equals(that.chunk))     return false;
   }
   return true;
 }

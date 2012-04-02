@@ -3,7 +3,7 @@
   boolean present_task_id=true;
   builder.append(present_task_id);
   if (present_task_id)   builder.append(task_id);
-  boolean present_component_id=true;
+  boolean present_component_id=true && (is_set_component_id());
   builder.append(present_component_id);
   if (present_component_id)   builder.append(component_id);
   boolean present_host=true && (is_set_host());

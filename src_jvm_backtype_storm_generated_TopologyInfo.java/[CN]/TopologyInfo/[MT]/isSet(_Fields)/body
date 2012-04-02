@@ -1,4 +1,7 @@
 {
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
 switch (field) {
 case ID:
     return is_set_id();
@@ -8,6 +11,8 @@ case UPTIME_SECS:
 return is_set_uptime_secs();
 case TASKS:
 return is_set_tasks();
+case STATUS:
+return is_set_status();
 }
 throw new IllegalStateException();
 }

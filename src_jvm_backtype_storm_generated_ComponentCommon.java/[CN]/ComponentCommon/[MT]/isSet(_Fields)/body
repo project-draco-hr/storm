@@ -1,9 +1,16 @@
 {
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
 switch (field) {
+case INPUTS:
+    return is_set_inputs();
 case STREAMS:
-    return is_set_streams();
+  return is_set_streams();
 case PARALLELISM_HINT:
-  return is_set_parallelism_hint();
+return is_set_parallelism_hint();
+case JSON_CONF:
+return is_set_json_conf();
 }
 throw new IllegalStateException();
 }

@@ -1,0 +1,5 @@
+{
+  this.acked=null;
+  this.failed=null;
+  this.process_ms_avg=null;
+}

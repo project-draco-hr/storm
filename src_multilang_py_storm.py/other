@@ -1,12 +1,14 @@
 import sys
 import os
 import traceback
+from collections import deque
 try:
-    import cjson
-    json_encode = cjson.encode
-    json_decode = (lambda x: cjson.decode(x, all_unicode=True))
+    import simplejson as json
 except ImportError:
     import json
-    json_encode = (lambda x: json.dumps(x, ensure_ascii=False))
-    json_decode = (lambda x: json.loads(unicode(x)))
+json_encode = (lambda x: json.dumps(x))
+json_decode = (lambda x: json.loads(x))
+MODE = None
 ANCHOR_TUPLE = None
+pending_commands = deque()
+pending_taskids = deque()

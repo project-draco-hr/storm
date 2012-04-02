@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_execution_command()) {
-    lastComparison=TBaseHelper.compareTo(this.execution_command,typedOther.execution_command);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.execution_command,typedOther.execution_command);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_script()) {
-    lastComparison=TBaseHelper.compareTo(this.script,typedOther.script);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.script,typedOther.script);
     if (lastComparison != 0) {
       return lastComparison;
     }

@@ -1,0 +1,30 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.id != null) {
+    oprot.writeFieldBegin(ID_FIELD_DESC);
+    oprot.writeString(this.id);
+    oprot.writeFieldEnd();
+  }
+  if (this.name != null) {
+    oprot.writeFieldBegin(NAME_FIELD_DESC);
+    oprot.writeString(this.name);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(NUM_TASKS_FIELD_DESC);
+  oprot.writeI32(this.num_tasks);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(NUM_WORKERS_FIELD_DESC);
+  oprot.writeI32(this.num_workers);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(this.uptime_secs);
+  oprot.writeFieldEnd();
+  if (this.status != null) {
+    oprot.writeFieldBegin(STATUS_FIELD_DESC);
+    oprot.writeString(this.status);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

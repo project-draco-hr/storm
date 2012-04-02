@@ -1,0 +1,16 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.componentId != null) {
+    oprot.writeFieldBegin(COMPONENT_ID_FIELD_DESC);
+    oprot.writeString(this.componentId);
+    oprot.writeFieldEnd();
+  }
+  if (this.streamId != null) {
+    oprot.writeFieldBegin(STREAM_ID_FIELD_DESC);
+    oprot.writeString(this.streamId);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

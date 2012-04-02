@@ -1,4 +1,3 @@
-def __init__(self, inputs=None, bolt_object=None, common=None):
-    self.inputs = inputs
+def __init__(self, bolt_object=None, common=None):
     self.bolt_object = bolt_object
     self.common = common

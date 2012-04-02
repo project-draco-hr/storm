@@ -1,0 +1,5 @@
+{
+  this();
+  this.full_class_name=full_class_name;
+  this.args_list=args_list;
+}

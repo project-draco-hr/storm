@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.error is None):
+        raise TProtocol.TProtocolException(message='Required field error is unset!')
+    if (self.error_time_secs is None):
+        raise TProtocol.TProtocolException(message='Required field error_time_secs is unset!')
+    return

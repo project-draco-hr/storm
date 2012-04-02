@@ -1,0 +1,4 @@
+{
+  _name=UUID.randomUUID().toString();
+  emitted_tuples.put(_name,new HashMap<String,List<FixedTuple>>());
+}

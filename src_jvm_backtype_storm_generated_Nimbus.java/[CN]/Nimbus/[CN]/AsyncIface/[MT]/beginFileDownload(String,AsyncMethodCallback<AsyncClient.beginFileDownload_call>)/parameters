@@ -1,2 +1,0 @@
-String file
-AsyncMethodCallback<AsyncClient.beginFileDownload_call> resultHandler

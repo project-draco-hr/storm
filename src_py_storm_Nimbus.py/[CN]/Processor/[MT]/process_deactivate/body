@@ -1,0 +1,13 @@
+def process_deactivate(self, seqid, iprot, oprot):
+    args = deactivate_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = deactivate_result()
+    try:
+        self._handler.deactivate(args.name)
+    except NotAliveException as e:
+        result.e = e
+    oprot.writeMessageBegin('deactivate', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

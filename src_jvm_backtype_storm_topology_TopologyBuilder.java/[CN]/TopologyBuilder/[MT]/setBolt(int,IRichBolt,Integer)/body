@@ -1,7 +1,0 @@
-{
-  validateUnusedId(id);
-  _bolts.put(id,bolt);
-  _boltParallelismHints.put(id,parallelism_hint);
-  _inputs.put(id,new HashMap<GlobalStreamId,Grouping>());
-  return new InputGetter(id);
-}

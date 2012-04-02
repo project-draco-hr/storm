@@ -1,0 +1,12 @@
+{
+  set_task_id_isSet(false);
+  this.task_id=0;
+  this.component_id=null;
+  this.host=null;
+  set_port_isSet(false);
+  this.port=0;
+  set_uptime_secs_isSet(false);
+  this.uptime_secs=0;
+  this.errors=null;
+  this.stats=null;
+}

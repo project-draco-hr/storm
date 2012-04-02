@@ -1,3 +1,0 @@
-{
-  return "reportCount: " + reportCount + "\n"+ "expectedTupleCount: "+ expectedTupleCount+ "\n"+ "receivedTuples: "+ receivedTuples+ "\n"+ taskEmittedTuples.toString();
-}

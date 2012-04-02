@@ -1,0 +1,10 @@
+{
+  killTopology_result result=new killTopology_result();
+  try {
+    iface.killTopology(args.name);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+  return result;
+}

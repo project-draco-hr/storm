@@ -1,5 +1,0 @@
-{
-  _processin.writeBytes(str + "\n");
-  _processin.writeBytes("end\n");
-  _processin.flush();
-}

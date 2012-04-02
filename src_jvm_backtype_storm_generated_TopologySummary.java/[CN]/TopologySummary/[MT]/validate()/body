@@ -1,17 +1,20 @@
 {
   if (!is_set_id()) {
-    throw new TProtocolException("Required field 'id' is unset! Struct:" + toString());
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'id' is unset! Struct:" + toString());
   }
   if (!is_set_name()) {
-    throw new TProtocolException("Required field 'name' is unset! Struct:" + toString());
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'name' is unset! Struct:" + toString());
   }
   if (!is_set_num_tasks()) {
-    throw new TProtocolException("Required field 'num_tasks' is unset! Struct:" + toString());
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'num_tasks' is unset! Struct:" + toString());
   }
   if (!is_set_num_workers()) {
-    throw new TProtocolException("Required field 'num_workers' is unset! Struct:" + toString());
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'num_workers' is unset! Struct:" + toString());
   }
   if (!is_set_uptime_secs()) {
-    throw new TProtocolException("Required field 'uptime_secs' is unset! Struct:" + toString());
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'uptime_secs' is unset! Struct:" + toString());
+  }
+  if (!is_set_status()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'status' is unset! Struct:" + toString());
   }
 }

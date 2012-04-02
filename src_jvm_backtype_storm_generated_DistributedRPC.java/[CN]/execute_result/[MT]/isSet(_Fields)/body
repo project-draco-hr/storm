@@ -1,7 +1,12 @@
 {
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
 switch (field) {
 case SUCCESS:
     return is_set_success();
+case E:
+  return is_set_e();
 }
 throw new IllegalStateException();
 }

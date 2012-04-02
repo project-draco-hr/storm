@@ -1,0 +1,5 @@
+{
+  __isset_bit_vector.clear();
+  __isset_bit_vector.or(other.__isset_bit_vector);
+  this.wait_secs=other.wait_secs;
+}

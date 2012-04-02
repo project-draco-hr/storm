@@ -1,9 +1,9 @@
 {
-  List<Object> tuple=_feeds.get(_id).poll();
+  List<Object> tuple=(List<Object>)InprocMessaging.pollMessage(_id);
   if (tuple != null) {
     _collector.emit(tuple,UUID.randomUUID().toString());
   }
  else {
-    Utils.sleep(100);
+    Utils.sleep(10);
   }
 }

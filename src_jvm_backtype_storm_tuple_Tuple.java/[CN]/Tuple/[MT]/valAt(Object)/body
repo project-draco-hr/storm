@@ -1,12 +1,13 @@
 {
-  if (o.equals(STREAM_KEYWORD)) {
-    return getSourceStreamId();
+  try {
+    if (o instanceof Keyword) {
+      return getValueByField(((Keyword)o).getName());
+    }
+ else     if (o instanceof String) {
+      return getValueByField((String)o);
+    }
   }
- else   if (o.equals(COMPONENT_KEYWORD)) {
-    return getSourceComponent();
-  }
- else   if (o.equals(TASK_KEYWORD)) {
-    return getSourceTask();
+ catch (  IllegalArgumentException e) {
   }
   return null;
 }

@@ -1,0 +1,4 @@
+{
+  _state.close();
+  _emitter.close();
+}

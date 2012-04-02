@@ -1,0 +1,6 @@
+{
+  validateUnusedId(id);
+  initCommon(id,spout,parallelism_hint);
+  _spouts.put(id,spout);
+  return new SpoutGetter(id);
+}

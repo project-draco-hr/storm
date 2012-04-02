@@ -1,6 +1,0 @@
-def get_set_field_id(self):
-    for (idx, tup) in enumerate(self.__class__.thrift_spec):
-        if tup:
-            key = tup[2]
-            if (not (self.__dict__[key] is None)):
-                return idx

@@ -1,0 +1,4 @@
+def deactivate(self, name):
+    '\n    Parameters:\n     - name\n    '
+    self.send_deactivate(name)
+    self.recv_deactivate()

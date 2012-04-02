@@ -1,0 +1,6 @@
+{
+  validateUnusedId(id);
+  initCommon(id,bolt,parallelism_hint);
+  _bolts.put(id,bolt);
+  return new BoltGetter(id);
+}

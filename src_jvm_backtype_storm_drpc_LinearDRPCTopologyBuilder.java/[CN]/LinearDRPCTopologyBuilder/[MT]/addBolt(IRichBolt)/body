@@ -1,0 +1,3 @@
+{
+  return addBolt(bolt,1);
+}

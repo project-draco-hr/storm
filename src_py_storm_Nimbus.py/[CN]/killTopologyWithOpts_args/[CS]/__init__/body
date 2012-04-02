@@ -1,0 +1,3 @@
+def __init__(self, name=None, options=None):
+    self.name = name
+    self.options = options

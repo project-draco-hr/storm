@@ -1,0 +1,13 @@
+def process_killTopologyWithOpts(self, seqid, iprot, oprot):
+    args = killTopologyWithOpts_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = killTopologyWithOpts_result()
+    try:
+        self._handler.killTopologyWithOpts(args.name, args.options)
+    except NotAliveException as e:
+        result.e = e
+    oprot.writeMessageBegin('killTopologyWithOpts', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

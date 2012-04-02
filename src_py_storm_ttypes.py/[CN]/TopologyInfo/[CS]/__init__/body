@@ -1,5 +1,6 @@
-def __init__(self, id=None, name=None, uptime_secs=None, tasks=None):
+def __init__(self, id=None, name=None, uptime_secs=None, tasks=None, status=None):
     self.id = id
     self.name = name
     self.uptime_secs = uptime_secs
     self.tasks = tasks
+    self.status = status

@@ -1,16 +1,16 @@
 {
   if (that == null)   return false;
-  boolean this_present_componentId=true;
-  boolean that_present_componentId=true;
+  boolean this_present_componentId=true && this.is_set_componentId();
+  boolean that_present_componentId=true && that.is_set_componentId();
   if (this_present_componentId || that_present_componentId) {
     if (!(this_present_componentId && that_present_componentId))     return false;
-    if (this.componentId != that.componentId)     return false;
+    if (!this.componentId.equals(that.componentId))     return false;
   }
-  boolean this_present_streamId=true;
-  boolean that_present_streamId=true;
+  boolean this_present_streamId=true && this.is_set_streamId();
+  boolean that_present_streamId=true && that.is_set_streamId();
   if (this_present_streamId || that_present_streamId) {
     if (!(this_present_streamId && that_present_streamId))     return false;
-    if (this.streamId != that.streamId)     return false;
+    if (!this.streamId.equals(that.streamId))     return false;
   }
   return true;
 }

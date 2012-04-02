@@ -1,0 +1,8 @@
+{
+  if (other.is_set_name()) {
+    this.name=other.name;
+  }
+  if (other.is_set_options()) {
+    this.options=new KillOptions(other.options);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  int ret;
+synchronized (_lock) {
+    ret=port;
+    port++;
+  }
+  return ret;
+}

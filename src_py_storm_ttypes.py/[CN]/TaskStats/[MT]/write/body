@@ -3,31 +3,31 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('TaskStats')
-    if (self.emitted != None):
+    if (self.emitted is not None):
         oprot.writeFieldBegin('emitted', TType.MAP, 1)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.emitted))
-        for (kiter209, viter210) in self.emitted.items():
-            oprot.writeString(kiter209.encode('utf-8'))
-            oprot.writeMapBegin(TType.I32, TType.I64, len(viter210))
-            for (kiter211, viter212) in viter210.items():
-                oprot.writeI32(kiter211)
-                oprot.writeI64(viter212)
+        for (kiter216, viter217) in self.emitted.items():
+            oprot.writeString(kiter216.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter217))
+            for (kiter218, viter219) in viter217.items():
+                oprot.writeString(kiter218.encode('utf-8'))
+                oprot.writeI64(viter219)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
-    if (self.transferred != None):
+    if (self.transferred is not None):
         oprot.writeFieldBegin('transferred', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.transferred))
-        for (kiter213, viter214) in self.transferred.items():
-            oprot.writeString(kiter213.encode('utf-8'))
-            oprot.writeMapBegin(TType.I32, TType.I64, len(viter214))
-            for (kiter215, viter216) in viter214.items():
-                oprot.writeI32(kiter215)
-                oprot.writeI64(viter216)
+        for (kiter220, viter221) in self.transferred.items():
+            oprot.writeString(kiter220.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter221))
+            for (kiter222, viter223) in viter221.items():
+                oprot.writeString(kiter222.encode('utf-8'))
+                oprot.writeI64(viter223)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
-    if (self.specific != None):
+    if (self.specific is not None):
         oprot.writeFieldBegin('specific', TType.STRUCT, 3)
         self.specific.write(oprot)
         oprot.writeFieldEnd()

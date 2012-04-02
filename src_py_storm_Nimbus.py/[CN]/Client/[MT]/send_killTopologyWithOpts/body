@@ -1,0 +1,8 @@
+def send_killTopologyWithOpts(self, name, options):
+    self._oprot.writeMessageBegin('killTopologyWithOpts', TMessageType.CALL, self._seqid)
+    args = killTopologyWithOpts_args()
+    args.name = name
+    args.options = options
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

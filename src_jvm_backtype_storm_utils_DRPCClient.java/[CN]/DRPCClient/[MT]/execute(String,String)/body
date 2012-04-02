@@ -1,3 +1,14 @@
 {
-  return client.execute(func,args);
+  try {
+    if (client == null)     connect();
+    return client.execute(func,args);
+  }
+ catch (  TException e) {
+    client=null;
+    throw e;
+  }
+catch (  DRPCExecutionException e) {
+    client=null;
+    throw e;
+  }
 }

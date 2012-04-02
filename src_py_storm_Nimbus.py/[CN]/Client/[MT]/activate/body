@@ -1,0 +1,4 @@
+def activate(self, name):
+    '\n    Parameters:\n     - name\n    '
+    self.send_activate(name)
+    self.recv_activate()

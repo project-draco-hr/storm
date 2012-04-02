@@ -1,0 +1,6 @@
+{
+  checkReady();
+  submitTopology_call method_call=new submitTopology_call(name,uploadedJarLocation,jsonConf,topology,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

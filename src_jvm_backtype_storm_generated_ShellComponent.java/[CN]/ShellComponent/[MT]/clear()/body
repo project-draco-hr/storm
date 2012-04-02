@@ -1,0 +1,4 @@
+{
+  this.execution_command=null;
+  this.script=null;
+}

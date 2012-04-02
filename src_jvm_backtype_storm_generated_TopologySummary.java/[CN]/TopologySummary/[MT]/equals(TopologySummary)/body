@@ -30,5 +30,11 @@
     if (!(this_present_uptime_secs && that_present_uptime_secs))     return false;
     if (this.uptime_secs != that.uptime_secs)     return false;
   }
+  boolean this_present_status=true && this.is_set_status();
+  boolean that_present_status=true && that.is_set_status();
+  if (this_present_status || that_present_status) {
+    if (!(this_present_status && that_present_status))     return false;
+    if (!this.status.equals(that.status))     return false;
+  }
   return true;
 }

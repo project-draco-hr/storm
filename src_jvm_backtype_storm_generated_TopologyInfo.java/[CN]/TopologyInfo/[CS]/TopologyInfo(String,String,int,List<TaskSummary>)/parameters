@@ -1,4 +1,0 @@
-String id
-String name
-int uptime_secs
-List<TaskSummary> tasks

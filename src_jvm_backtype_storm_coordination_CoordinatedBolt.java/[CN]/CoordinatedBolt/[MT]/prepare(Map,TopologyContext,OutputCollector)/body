@@ -1,0 +1,25 @@
+{
+  TimeCacheMap.ExpiredCallback<Object,TrackingInfo> callback=null;
+  if (_delegate instanceof TimeoutCallback) {
+    callback=new TimeoutItems();
+  }
+  _tracked=new TimeCacheMap<Object,TrackingInfo>(context.maxTopologyMessageTimeout(),callback);
+  _collector=collector;
+  _delegate.prepare(config,context,new OutputCollector(new CoordinatedOutputCollector(collector)));
+  for (  String component : Utils.get(context.getThisTargets(),Constants.COORDINATED_STREAM_ID,new HashMap<String,Grouping>()).keySet()) {
+    for (    Integer task : context.getComponentTasks(component)) {
+      _countOutTasks.add(task);
+    }
+  }
+  if (!_sourceArgs.isEmpty()) {
+    _numSourceReports=0;
+    for (    Entry<String,SourceArgs> entry : _sourceArgs.entrySet()) {
+      if (entry.getValue().singleCount) {
+        _numSourceReports+=1;
+      }
+ else {
+        _numSourceReports+=context.getComponentTasks(entry.getKey()).size();
+      }
+    }
+  }
+}

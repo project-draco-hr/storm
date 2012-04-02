@@ -3,16 +3,32 @@
   String returnInfo=(String)input.getValue(1);
   if (returnInfo != null) {
     Map retMap=(Map)JSONValue.parse(returnInfo);
-    String ip=(String)retMap.get("ip");
-    Long port=(Long)retMap.get("port");
+    final String host=(String)retMap.get("host");
+    final int port=Utils.getInt(retMap.get("port"));
     String id=(String)retMap.get("id");
+    DistributedRPCInvocations.Iface client;
+    if (local) {
+      client=(DistributedRPCInvocations.Iface)ServiceRegistry.getService(host);
+    }
+ else {
+      List server=new ArrayList(){
+{
+          add(host);
+          add(port);
+        }
+      }
+;
+      if (!_clients.containsKey(server)) {
+        _clients.put(server,new DRPCInvocationsClient(host,port));
+      }
+      client=_clients.get(server);
+    }
     try {
-      DRPCClient client=new DRPCClient(ip,(int)port.longValue());
       client.result(id,result);
-      client.close();
       _collector.ack(input);
     }
  catch (    TException e) {
+      LOG.error("Failed to return results to DRPC server",e);
       _collector.fail(input);
     }
   }

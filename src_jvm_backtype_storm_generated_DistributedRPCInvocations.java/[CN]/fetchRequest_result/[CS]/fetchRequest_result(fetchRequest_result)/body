@@ -1,0 +1,5 @@
+{
+  if (other.is_set_success()) {
+    this.success=new DRPCRequest(other.success);
+  }
+}

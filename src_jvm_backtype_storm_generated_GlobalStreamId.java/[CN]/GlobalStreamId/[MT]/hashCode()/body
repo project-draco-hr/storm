@@ -1,9 +1,9 @@
 {
   HashCodeBuilder builder=new HashCodeBuilder();
-  boolean present_componentId=true;
+  boolean present_componentId=true && (is_set_componentId());
   builder.append(present_componentId);
   if (present_componentId)   builder.append(componentId);
-  boolean present_streamId=true;
+  boolean present_streamId=true && (is_set_streamId());
   builder.append(present_streamId);
   if (present_streamId)   builder.append(streamId);
   return builder.toHashCode();

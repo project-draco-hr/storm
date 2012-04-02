@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.componentId is None):
+        raise TProtocol.TProtocolException(message='Required field componentId is unset!')
+    if (self.streamId is None):
+        raise TProtocol.TProtocolException(message='Required field streamId is unset!')
+    return

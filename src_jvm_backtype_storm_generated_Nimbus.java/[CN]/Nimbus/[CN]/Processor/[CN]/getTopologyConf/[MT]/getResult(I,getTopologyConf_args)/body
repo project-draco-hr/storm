@@ -1,0 +1,10 @@
+{
+  getTopologyConf_result result=new getTopologyConf_result();
+  try {
+    result.success=iface.getTopologyConf(args.id);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+  return result;
+}

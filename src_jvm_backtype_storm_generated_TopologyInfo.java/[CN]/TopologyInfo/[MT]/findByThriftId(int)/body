@@ -8,6 +8,8 @@ case 3:
 return UPTIME_SECS;
 case 4:
 return TASKS;
+case 5:
+return STATUS;
 default :
 return null;
 }

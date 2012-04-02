@@ -1,0 +1,19 @@
+{
+  Object res=conf.get(Config.TOPOLOGY_KRYO_REGISTER);
+  if (res == null)   return new TreeMap<String,String>();
+  Map<String,String> ret=new HashMap<String,String>();
+  if (res instanceof Map) {
+    ret=(Map<String,String>)res;
+  }
+ else {
+    for (    Object o : (List)res) {
+      if (o instanceof Map) {
+        ret.putAll((Map)o);
+      }
+ else {
+        ret.put((String)o,null);
+      }
+    }
+  }
+  return new TreeMap<String,String>(ret);
+}

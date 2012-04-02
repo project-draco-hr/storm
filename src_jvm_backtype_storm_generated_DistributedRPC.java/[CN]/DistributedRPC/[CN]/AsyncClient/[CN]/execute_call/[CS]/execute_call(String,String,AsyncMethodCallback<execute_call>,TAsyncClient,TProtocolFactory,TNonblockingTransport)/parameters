@@ -1,6 +1,0 @@
-String functionName
-String funcArgs
-AsyncMethodCallback<execute_call> resultHandler
-TAsyncClient client
-TProtocolFactory protocolFactory
-TNonblockingTransport transport

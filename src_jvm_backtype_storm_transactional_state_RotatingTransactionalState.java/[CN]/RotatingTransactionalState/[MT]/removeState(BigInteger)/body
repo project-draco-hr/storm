@@ -1,0 +1,6 @@
+{
+  if (_curr.containsKey(txid)) {
+    _curr.remove(txid);
+    _state.delete(txPath(txid));
+  }
+}

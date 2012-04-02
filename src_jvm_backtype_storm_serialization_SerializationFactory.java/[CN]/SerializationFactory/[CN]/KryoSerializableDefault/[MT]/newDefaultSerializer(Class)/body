@@ -1,0 +1,8 @@
+{
+  if (_override) {
+    return new SerializableSerializer();
+  }
+ else {
+    return super.newDefaultSerializer(type);
+  }
+}

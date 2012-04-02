@@ -3,7 +3,7 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('getTopologyConf_args')
-    if (self.id != None):
+    if (self.id is not None):
         oprot.writeFieldBegin('id', TType.STRING, 1)
         oprot.writeString(self.id.encode('utf-8'))
         oprot.writeFieldEnd()

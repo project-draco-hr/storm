@@ -1,6 +1,6 @@
 {
-  int component=input.getSourceComponent();
-  Map<Integer,List<FixedTuple>> captured=emitted_tuples.get(_name);
+  String component=input.getSourceComponent();
+  Map<String,List<FixedTuple>> captured=emitted_tuples.get(_name);
   if (!captured.containsKey(component)) {
     captured.put(component,new ArrayList<FixedTuple>());
   }

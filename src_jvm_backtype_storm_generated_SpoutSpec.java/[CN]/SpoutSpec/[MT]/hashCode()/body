@@ -6,8 +6,5 @@
   boolean present_common=true && (is_set_common());
   builder.append(present_common);
   if (present_common)   builder.append(common);
-  boolean present_distributed=true;
-  builder.append(present_distributed);
-  if (present_distributed)   builder.append(distributed);
   return builder.toHashCode();
 }

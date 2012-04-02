@@ -1,4 +1,0 @@
-{
-  _id=UUID.randomUUID().toString();
-  _stats.put(_id,new TrackStats());
-}

@@ -1,6 +1,0 @@
-{
-  if (this.state_spouts == null) {
-    this.state_spouts=new HashMap<Integer,StateSpoutSpec>();
-  }
-  this.state_spouts.put(key,val);
-}

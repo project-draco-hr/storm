@@ -1,0 +1,5 @@
+{
+  if (other.is_set_e()) {
+    this.e=new NotAliveException(other.e);
+  }
+}

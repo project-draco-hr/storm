@@ -1,6 +1,0 @@
-String id
-String result
-AsyncMethodCallback<result_call> resultHandler
-TAsyncClient client
-TProtocolFactory protocolFactory
-TNonblockingTransport transport

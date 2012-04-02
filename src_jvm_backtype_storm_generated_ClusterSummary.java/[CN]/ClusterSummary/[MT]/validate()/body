@@ -1,11 +1,11 @@
 {
   if (!is_set_supervisors()) {
-    throw new TProtocolException("Required field 'supervisors' is unset! Struct:" + toString());
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'supervisors' is unset! Struct:" + toString());
   }
   if (!is_set_nimbus_uptime_secs()) {
-    throw new TProtocolException("Required field 'nimbus_uptime_secs' is unset! Struct:" + toString());
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'nimbus_uptime_secs' is unset! Struct:" + toString());
   }
   if (!is_set_topologies()) {
-    throw new TProtocolException("Required field 'topologies' is unset! Struct:" + toString());
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'topologies' is unset! Struct:" + toString());
   }
 }

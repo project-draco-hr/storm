@@ -1,3 +1,0 @@
-Map<String,Map<Integer,Long>> emitted
-Map<String,Map<Integer,Long>> transferred
-TaskSpecificStats specific

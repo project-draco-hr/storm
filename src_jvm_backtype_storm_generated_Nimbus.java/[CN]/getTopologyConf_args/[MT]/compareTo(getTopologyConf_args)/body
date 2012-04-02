@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_id()) {
-    lastComparison=TBaseHelper.compareTo(this.id,typedOther.id);
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.id,typedOther.id);
     if (lastComparison != 0) {
       return lastComparison;
     }

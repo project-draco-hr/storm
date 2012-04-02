@@ -1,0 +1,8 @@
+def validate(self):
+    if (self.acked is None):
+        raise TProtocol.TProtocolException(message='Required field acked is unset!')
+    if (self.failed is None):
+        raise TProtocol.TProtocolException(message='Required field failed is unset!')
+    if (self.complete_ms_avg is None):
+        raise TProtocol.TProtocolException(message='Required field complete_ms_avg is unset!')
+    return

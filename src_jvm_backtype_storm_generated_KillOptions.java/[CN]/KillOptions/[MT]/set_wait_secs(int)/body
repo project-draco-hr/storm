@@ -1,0 +1,4 @@
+{
+  this.wait_secs=wait_secs;
+  set_wait_secs_isSet(true);
+}

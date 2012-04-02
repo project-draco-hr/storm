@@ -5,7 +5,7 @@ case SUCCESS:
       unset_success();
     }
  else {
-      set_success((byte[])value);
+      set_success((ByteBuffer)value);
     }
   break;
 }

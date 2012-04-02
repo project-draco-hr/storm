@@ -1,0 +1,7 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_wait_secs=true && (is_set_wait_secs());
+  builder.append(present_wait_secs);
+  if (present_wait_secs)   builder.append(wait_secs);
+  return builder.toHashCode();
+}

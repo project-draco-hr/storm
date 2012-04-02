@@ -1,7 +1,0 @@
-{
-  _isDistributed=isDistributed;
-  _namespace=namespace;
-  _fnName=fnName;
-  _params=params;
-  _fields=fields;
-}

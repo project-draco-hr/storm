@@ -1,8 +1,8 @@
 {
   if (!is_set_state_spout_object()) {
-    throw new TProtocolException("Required field 'state_spout_object' is unset! Struct:" + toString());
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'state_spout_object' is unset! Struct:" + toString());
   }
   if (!is_set_common()) {
-    throw new TProtocolException("Required field 'common' is unset! Struct:" + toString());
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'common' is unset! Struct:" + toString());
   }
 }

@@ -6,7 +6,12 @@
   first=false;
   if (!first)   sb.append(", ");
   sb.append("component_id:");
-  sb.append(this.component_id);
+  if (this.component_id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.component_id);
+  }
   first=false;
   if (!first)   sb.append(", ");
   sb.append("host:");

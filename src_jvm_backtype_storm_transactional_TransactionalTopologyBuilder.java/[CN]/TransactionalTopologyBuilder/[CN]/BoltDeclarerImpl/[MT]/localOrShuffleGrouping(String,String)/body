@@ -1,0 +1,12 @@
+{
+  addDeclaration(new InputDeclaration(){
+    @Override public void declare(    InputDeclarer declarer){
+      declarer.localOrShuffleGrouping(component,streamId);
+    }
+    @Override public String getComponent(){
+      return component;
+    }
+  }
+);
+  return this;
+}

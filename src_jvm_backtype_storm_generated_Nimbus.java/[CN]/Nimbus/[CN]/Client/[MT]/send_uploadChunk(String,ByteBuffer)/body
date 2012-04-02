@@ -1,0 +1,6 @@
+{
+  uploadChunk_args args=new uploadChunk_args();
+  args.set_location(location);
+  args.set_chunk(chunk);
+  sendBase("uploadChunk",args);
+}

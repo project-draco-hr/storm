@@ -1,0 +1,5 @@
+{
+  activate_args args=new activate_args();
+  args.set_name(name);
+  sendBase("activate",args);
+}

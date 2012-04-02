@@ -1,0 +1,8 @@
+{
+  String args=tuple.getString(0);
+  String returnInfo=tuple.getString(1);
+  long requestId=rand.nextLong();
+  collector.emit(ARGS_STREAM,new Values(requestId,args));
+  collector.emit(RETURN_STREAM,new Values(requestId,returnInfo));
+  collector.emit(ID_STREAM,new Values(requestId));
+}

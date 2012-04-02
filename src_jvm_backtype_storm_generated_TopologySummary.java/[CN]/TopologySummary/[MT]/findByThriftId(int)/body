@@ -10,6 +10,8 @@ case 4:
 return NUM_WORKERS;
 case 5:
 return UPTIME_SECS;
+case 6:
+return STATUS;
 default :
 return null;
 }

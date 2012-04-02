@@ -1,0 +1,18 @@
+{
+switch (fieldId) {
+case 1:
+    return INT_ARG;
+case 2:
+  return LONG_ARG;
+case 3:
+return STRING_ARG;
+case 4:
+return BOOL_ARG;
+case 5:
+return BINARY_ARG;
+case 6:
+return DOUBLE_ARG;
+default :
+return null;
+}
+}

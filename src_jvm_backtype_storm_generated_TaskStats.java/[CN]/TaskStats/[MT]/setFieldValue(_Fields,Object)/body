@@ -5,7 +5,7 @@ case EMITTED:
       unset_emitted();
     }
  else {
-      set_emitted((Map<String,Map<Integer,Long>>)value);
+      set_emitted((Map<String,Map<String,Long>>)value);
     }
   break;
 case TRANSFERRED:
@@ -13,7 +13,7 @@ if (value == null) {
   unset_transferred();
 }
  else {
-  set_transferred((Map<String,Map<Integer,Long>>)value);
+  set_transferred((Map<String,Map<String,Long>>)value);
 }
 break;
 case SPECIFIC:

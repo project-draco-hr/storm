@@ -1,0 +1,3 @@
+def killTopologyWithOpts(self, name, options):
+    '\n    Parameters:\n     - name\n     - options\n    '
+    pass

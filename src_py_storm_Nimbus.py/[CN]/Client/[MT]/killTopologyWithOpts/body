@@ -1,0 +1,4 @@
+def killTopologyWithOpts(self, name, options):
+    '\n    Parameters:\n     - name\n     - options\n    '
+    self.send_killTopologyWithOpts(name, options)
+    self.recv_killTopologyWithOpts()

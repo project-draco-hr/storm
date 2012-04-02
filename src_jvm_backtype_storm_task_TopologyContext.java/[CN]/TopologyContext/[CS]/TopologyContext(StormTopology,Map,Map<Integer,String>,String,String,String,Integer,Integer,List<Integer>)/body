@@ -1,0 +1,9 @@
+{
+  super(topology,stormConf,taskToComponent,stormId);
+  _workerPort=workerPort;
+  _taskId=taskId;
+  _pidDir=pidDir;
+  _codeDir=codeDir;
+  _workerTasks=new ArrayList<Integer>(workerTasks);
+  Collections.sort(_workerTasks);
+}
