@@ -1,4 +1,0 @@
-def readenv():
-    conf = readMsg()
-    context = readMsg()
-    return [conf, context]

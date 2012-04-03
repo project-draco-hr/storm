@@ -1,4 +1,0 @@
-def initbolt():
-    heartbeatdir = readStringMsg()
-    sendpid(heartbeatdir)
-    return readenv()

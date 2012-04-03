@@ -1,10 +1,11 @@
 def run(self):
-    (conf, context) = initbolt()
+    global MODE
+    MODE = Bolt
+    (conf, context) = initComponent()
     self.initialize(conf, context)
     try:
         while True:
-            tup = readtuple()
+            tup = readTuple()
             self.process(tup)
-            sync()
     except Exception as e:
         log(traceback.format_exc(e))

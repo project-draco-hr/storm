@@ -1,4 +1,4 @@
-def emittuple(tup, stream=None, anchors=[], directTask=None):
+def emitBolt(tup, stream=None, anchors=[], directTask=None):
     global ANCHOR_TUPLE
     if (ANCHOR_TUPLE is not None):
         anchors = [ANCHOR_TUPLE]
