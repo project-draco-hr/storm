@@ -1,0 +1,4 @@
+{
+  WorkerSlot other=(WorkerSlot)o;
+  return this.port == other.port && this.nodeId.equals(other.nodeId);
+}
