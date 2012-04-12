@@ -1,9 +1,12 @@
 {
 synchronized (_tracked) {
-    Map<Integer,Integer> taskEmittedTuples=_tracked.get(id).taskEmittedTuples;
-    for (    Integer task : tasks) {
-      int newCount=get(taskEmittedTuples,task,0) + 1;
-      taskEmittedTuples.put(task,newCount);
+    TrackingInfo track=_tracked.get(id);
+    if (track != null) {
+      Map<Integer,Integer> taskEmittedTuples=track.taskEmittedTuples;
+      for (      Integer task : tasks) {
+        int newCount=get(taskEmittedTuples,task,0) + 1;
+        taskEmittedTuples.put(task,newCount);
+      }
     }
   }
 }
