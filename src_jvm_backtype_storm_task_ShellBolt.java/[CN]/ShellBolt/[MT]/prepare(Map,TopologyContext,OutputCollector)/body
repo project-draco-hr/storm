@@ -31,7 +31,7 @@
           }
         }
  catch (        IOException e) {
-          throw new RuntimeException(e);
+          die(e);
         }
 catch (        InterruptedException e) {
         }
@@ -50,7 +50,7 @@ catch (        InterruptedException e) {
           }
         }
  catch (        IOException e) {
-          throw new RuntimeException(e);
+          die(e);
         }
 catch (        InterruptedException e) {
         }
