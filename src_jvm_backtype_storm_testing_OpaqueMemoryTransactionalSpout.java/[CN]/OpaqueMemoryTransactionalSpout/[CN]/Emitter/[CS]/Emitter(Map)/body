@@ -1,0 +1,5 @@
+{
+  Object c=conf.get(Config.TOPOLOGY_MAX_SPOUT_PENDING);
+  if (c == null)   _maxSpoutPending=1;
+ else   _maxSpoutPending=Utils.getInt(c);
+}

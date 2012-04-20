@@ -30,10 +30,10 @@
             handleEmit(action);
           }
         }
- catch (        IOException e) {
-          throw new RuntimeException(e);
+ catch (        InterruptedException e) {
         }
-catch (        InterruptedException e) {
+catch (        Throwable t) {
+          die(t);
         }
       }
     }
@@ -49,10 +49,10 @@ catch (        InterruptedException e) {
             _process.writeMessage(write);
           }
         }
- catch (        IOException e) {
-          throw new RuntimeException(e);
+ catch (        InterruptedException e) {
         }
-catch (        InterruptedException e) {
+catch (        Throwable t) {
+          die(t);
         }
       }
     }
