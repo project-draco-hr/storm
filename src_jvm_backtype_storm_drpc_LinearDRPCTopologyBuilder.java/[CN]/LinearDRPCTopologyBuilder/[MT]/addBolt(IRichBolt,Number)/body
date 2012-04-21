@@ -1,0 +1,6 @@
+{
+  if (parallelism == null)   parallelism=1;
+  Component component=new Component(bolt,parallelism.intValue());
+  _components.add(component);
+  return new InputDeclarerImpl(component);
+}

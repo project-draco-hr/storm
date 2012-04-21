@@ -1,3 +1,0 @@
-{
-  return addConfiguration(Config.TOPOLOGY_MAX_TASK_PARALLELISM,val);
-}
