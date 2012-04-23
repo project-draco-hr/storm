@@ -1,0 +1,4 @@
+String id
+IRichBolt bolt
+Number parallelism
+boolean committer

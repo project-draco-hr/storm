@@ -1,0 +1,3 @@
+String id
+IRichSpout spout
+Number parallelism_hint
