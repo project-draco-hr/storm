@@ -1,0 +1,6 @@
+{
+  _lastUpdateMs=System.currentTimeMillis();
+  for (  PartitionManager manager : _managers.values()) {
+    manager.commit();
+  }
+}

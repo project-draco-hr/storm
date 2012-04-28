@@ -1,0 +1,6 @@
+{
+  _partition=partition;
+  _committedTo=(Long)_state.getData(committedPath());
+  if (_committedTo == null)   _committedTo=0L;
+  _emittedToOffset=_committedTo;
+}

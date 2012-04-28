@@ -1,0 +1,4 @@
+{
+  KafkaMessageId id=(KafkaMessageId)msgId;
+  _managers.get(id.partition).ack(id.offset);
+}

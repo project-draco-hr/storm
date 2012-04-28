@@ -1,0 +1,8 @@
+{
+  if (_waitingToEmit.isEmpty())   fill();
+  MessageAndOffset toEmit=_waitingToEmit.pollFirst();
+  if (toEmit == null)   return false;
+  List<Object> tup=_kafkaConfig.scheme.deserialize(Utils.toByteArray(toEmit.message().payload()));
+  _collector.emit(tup,new KafkaMessageId(_partition,actualOffset(toEmit)));
+  return true;
+}

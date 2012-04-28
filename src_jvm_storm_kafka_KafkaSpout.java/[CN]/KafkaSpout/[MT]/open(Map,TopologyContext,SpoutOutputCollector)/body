@@ -1,0 +1,20 @@
+{
+  _collector=collector;
+  Map stateConf=new HashMap(conf);
+  List<String> zkServers=_spoutConfig.zkServers;
+  if (zkServers == null)   zkServers=(List<String>)conf.get(Config.STORM_ZOOKEEPER_SERVERS);
+  Integer zkPort=_spoutConfig.zkPort;
+  if (zkPort == null)   zkPort=((Number)conf.get(Config.STORM_ZOOKEEPER_PORT)).intValue();
+  String zkRoot=_spoutConfig.zkRoot;
+  stateConf.put(Config.TRANSACTIONAL_ZOOKEEPER_SERVERS,zkServers);
+  stateConf.put(Config.TRANSACTIONAL_ZOOKEEPER_PORT,zkPort);
+  stateConf.put(Config.TRANSACTIONAL_ZOOKEEPER_ROOT,zkRoot);
+  _state=TransactionalState.newUserState(stateConf,_spoutConfig.id,null);
+  _partitions=new KafkaPartitionConnections(_kafkaConfig);
+  int totalPartitions=_kafkaConfig.partitionsPerHost * _kafkaConfig.hosts.size();
+  int numTasks=context.getComponentTasks(context.getThisComponentId()).size();
+  for (int p=context.getThisTaskIndex(); p < totalPartitions; p+=numTasks) {
+    _managedPartitions.add(p);
+    _managers.put(p,new PartitionManager(p));
+  }
+}

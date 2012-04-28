@@ -1,0 +1,9 @@
+{
+  SimpleConsumer consumer=_partitions.getConsumer(_partition);
+  ByteBufferMessageSet msgs=consumer.fetch(new FetchRequest(_kafkaConfig.topic,_partitions.getHostPartition(_partition),_emittedToOffset,_kafkaConfig.fetchSizeBytes));
+  for (  MessageAndOffset msg : msgs) {
+    _pending.add(actualOffset(msg));
+    _waitingToEmit.add(msg);
+    _emittedToOffset=msg.offset();
+  }
+}

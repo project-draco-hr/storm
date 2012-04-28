@@ -1,0 +1,13 @@
+{
+  long committedTo;
+  if (_pending.isEmpty()) {
+    committedTo=_emittedToOffset;
+  }
+ else {
+    committedTo=_pending.first();
+  }
+  if (committedTo != _committedTo) {
+    _state.setData(committedPath(),committedTo);
+    _committedTo=committedTo;
+  }
+}

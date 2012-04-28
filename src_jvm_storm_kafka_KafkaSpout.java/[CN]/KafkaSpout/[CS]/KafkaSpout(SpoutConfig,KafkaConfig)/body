@@ -1,0 +1,4 @@
+{
+  _kafkaConfig=kafkaConfig;
+  _spoutConfig=spoutConf;
+}
