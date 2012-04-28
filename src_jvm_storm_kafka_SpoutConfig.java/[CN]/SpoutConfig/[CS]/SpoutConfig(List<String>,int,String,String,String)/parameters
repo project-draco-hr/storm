@@ -1,0 +1,5 @@
+List<String> hosts
+int partitionsPerHost
+String topic
+String zkRoot
+String id

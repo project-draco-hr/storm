@@ -10,8 +10,8 @@
   stateConf.put(Config.TRANSACTIONAL_ZOOKEEPER_PORT,zkPort);
   stateConf.put(Config.TRANSACTIONAL_ZOOKEEPER_ROOT,zkRoot);
   _state=TransactionalState.newUserState(stateConf,_spoutConfig.id,null);
-  _partitions=new KafkaPartitionConnections(_kafkaConfig);
-  int totalPartitions=_kafkaConfig.partitionsPerHost * _kafkaConfig.hosts.size();
+  _partitions=new KafkaPartitionConnections(_spoutConfig);
+  int totalPartitions=_spoutConfig.partitionsPerHost * _spoutConfig.hosts.size();
   int numTasks=context.getComponentTasks(context.getThisComponentId()).size();
   for (int p=context.getThisTaskIndex(); p < totalPartitions; p+=numTasks) {
     _managedPartitions.add(p);

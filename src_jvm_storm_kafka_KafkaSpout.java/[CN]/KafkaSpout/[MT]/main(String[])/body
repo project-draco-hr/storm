@@ -2,9 +2,8 @@
   TopologyBuilder builder=new TopologyBuilder();
   List<String> hosts=new ArrayList<String>();
   hosts.add("localhost");
-  KafkaConfig kafkaConf=new KafkaConfig(hosts,3,"nathan");
-  kafkaConf.scheme=new StringScheme();
-  SpoutConfig spoutConf=new SpoutConfig("/kafka","id");
+  SpoutConfig spoutConf=new SpoutConfig(hosts,3,"nathan","/kafka","id");
+  spoutConf.scheme=new StringScheme();
   spoutConf.zkServers=new ArrayList<String>(){
 {
       add("localhost");
@@ -12,7 +11,7 @@
   }
 ;
   spoutConf.zkPort=2181;
-  builder.setSpout("spout",new KafkaSpout(spoutConf,kafkaConf));
+  builder.setSpout("spout",new KafkaSpout(spoutConf));
   Config conf=new Config();
   conf.setDebug(true);
   LocalCluster cluster=new LocalCluster();
