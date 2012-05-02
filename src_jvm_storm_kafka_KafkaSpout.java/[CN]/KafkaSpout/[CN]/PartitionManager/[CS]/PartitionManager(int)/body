@@ -1,6 +1,11 @@
 {
   _partition=partition;
   _committedTo=(Long)_state.getData(committedPath());
-  if (_committedTo == null)   _committedTo=0L;
+  SimpleConsumer consumer=_partitions.getConsumer(_partition);
+  int hostPartition=_partitions.getHostPartition(_partition);
+  if (_committedTo == null || _spoutConfig.forceFromStart) {
+    _committedTo=consumer.getOffsetsBefore(_spoutConfig.topic,hostPartition,_spoutConfig.startOffsetTime,1)[0];
+  }
+  LOG.info("Starting Kafka " + consumer.host() + ":"+ hostPartition+ " from offset "+ _committedTo);
   _emittedToOffset=_committedTo;
 }
