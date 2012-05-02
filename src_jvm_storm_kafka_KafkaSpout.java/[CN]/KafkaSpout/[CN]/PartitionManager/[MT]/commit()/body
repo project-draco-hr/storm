@@ -7,7 +7,7 @@
     committedTo=_pending.first();
   }
   if (committedTo != _committedTo) {
-    _state.setData(committedPath(),committedTo);
+    _state.setData(committedPath(),new ZooMeta(_uuid,committedTo));
     _committedTo=committedTo;
   }
 }

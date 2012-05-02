@@ -4,7 +4,7 @@
   hosts.add("localhost");
   SpoutConfig spoutConf=new SpoutConfig(hosts,8,"clicks","/kafkastorm","id");
   spoutConf.scheme=new StringScheme();
-  spoutConf.forceStartOffsetTime(1335774001000L);
+  spoutConf.forceStartOffsetTime(-2);
   builder.setSpout("spout",new KafkaSpout(spoutConf),3);
   Config conf=new Config();
   LocalCluster cluster=new LocalCluster();

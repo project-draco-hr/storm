@@ -1,10 +1,13 @@
 {
   _partition=partition;
-  _committedTo=(Long)_state.getData(committedPath());
+  ZooMeta zooMeta=(ZooMeta)_state.getData(committedPath());
   SimpleConsumer consumer=_partitions.getConsumer(_partition);
   int hostPartition=_partitions.getHostPartition(_partition);
-  if (_committedTo == null || _spoutConfig.forceFromStart) {
+  if (zooMeta == null || (!_uuid.equals(zooMeta.id) && _spoutConfig.forceFromStart)) {
     _committedTo=consumer.getOffsetsBefore(_spoutConfig.topic,hostPartition,_spoutConfig.startOffsetTime,1)[0];
+  }
+ else {
+    _committedTo=zooMeta.offset;
   }
   LOG.info("Starting Kafka " + consumer.host() + ":"+ hostPartition+ " from offset "+ _committedTo);
   _emittedToOffset=_committedTo;

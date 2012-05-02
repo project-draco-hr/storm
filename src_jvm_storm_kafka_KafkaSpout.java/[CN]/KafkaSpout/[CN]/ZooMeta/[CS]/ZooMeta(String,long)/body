@@ -1,0 +1,4 @@
+{
+  this.id=id;
+  this.offset=offset;
+}
