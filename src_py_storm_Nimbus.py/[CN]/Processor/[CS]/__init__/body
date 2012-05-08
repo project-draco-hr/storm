@@ -16,3 +16,4 @@ def __init__(self, handler):
     self._processMap['getTopologyInfo'] = Processor.process_getTopologyInfo
     self._processMap['getTopologyConf'] = Processor.process_getTopologyConf
     self._processMap['getTopology'] = Processor.process_getTopology
+    self._processMap['getUserTopology'] = Processor.process_getUserTopology

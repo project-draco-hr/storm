@@ -1,0 +1,10 @@
+{
+  getUserTopology_result result=new getUserTopology_result();
+  try {
+    result.success=iface.getUserTopology(args.id);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+  return result;
+}

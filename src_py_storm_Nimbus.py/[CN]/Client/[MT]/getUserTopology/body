@@ -1,0 +1,4 @@
+def getUserTopology(self, id):
+    '\n    Parameters:\n     - id\n    '
+    self.send_getUserTopology(id)
+    return self.recv_getUserTopology()

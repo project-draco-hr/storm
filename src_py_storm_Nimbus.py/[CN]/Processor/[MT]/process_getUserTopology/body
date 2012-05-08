@@ -1,0 +1,13 @@
+def process_getUserTopology(self, seqid, iprot, oprot):
+    args = getUserTopology_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getUserTopology_result()
+    try:
+        result.success = self._handler.getUserTopology(args.id)
+    except NotAliveException as e:
+        result.e = e
+    oprot.writeMessageBegin('getUserTopology', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

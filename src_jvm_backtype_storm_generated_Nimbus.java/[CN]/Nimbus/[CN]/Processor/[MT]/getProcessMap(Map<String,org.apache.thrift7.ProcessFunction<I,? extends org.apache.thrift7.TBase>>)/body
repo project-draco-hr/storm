@@ -14,5 +14,6 @@
   processMap.put("getTopologyInfo",new getTopologyInfo());
   processMap.put("getTopologyConf",new getTopologyConf());
   processMap.put("getTopology",new getTopology());
+  processMap.put("getUserTopology",new getUserTopology());
   return processMap;
 }

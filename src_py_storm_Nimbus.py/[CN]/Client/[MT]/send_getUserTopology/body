@@ -1,0 +1,7 @@
+def send_getUserTopology(self, id):
+    self._oprot.writeMessageBegin('getUserTopology', TMessageType.CALL, self._seqid)
+    args = getUserTopology_args()
+    args.id = id
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()
