@@ -5,6 +5,10 @@
 switch (field) {
 case WAIT_SECS:
     return is_set_wait_secs();
+case NUM_WORKERS:
+  return is_set_num_workers();
+case NUM_EXECUTORS:
+return is_set_num_executors();
 }
 throw new IllegalStateException();
 }

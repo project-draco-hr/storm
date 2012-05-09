@@ -7,5 +7,17 @@ def write(self, oprot):
         oprot.writeFieldBegin('wait_secs', TType.I32, 1)
         oprot.writeI32(self.wait_secs)
         oprot.writeFieldEnd()
+    if (self.num_workers is not None):
+        oprot.writeFieldBegin('num_workers', TType.I32, 2)
+        oprot.writeI32(self.num_workers)
+        oprot.writeFieldEnd()
+    if (self.num_executors is not None):
+        oprot.writeFieldBegin('num_executors', TType.MAP, 3)
+        oprot.writeMapBegin(TType.STRING, TType.I32, len(self.num_executors))
+        for (kiter245, viter246) in self.num_executors.items():
+            oprot.writeString(kiter245.encode('utf-8'))
+            oprot.writeI32(viter246)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

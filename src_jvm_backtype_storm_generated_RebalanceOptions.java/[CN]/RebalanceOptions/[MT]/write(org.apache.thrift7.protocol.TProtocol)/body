@@ -6,6 +6,25 @@
     oprot.writeI32(this.wait_secs);
     oprot.writeFieldEnd();
   }
+  if (is_set_num_workers()) {
+    oprot.writeFieldBegin(NUM_WORKERS_FIELD_DESC);
+    oprot.writeI32(this.num_workers);
+    oprot.writeFieldEnd();
+  }
+  if (this.num_executors != null) {
+    if (is_set_num_executors()) {
+      oprot.writeFieldBegin(NUM_EXECUTORS_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift7.protocol.TMap(org.apache.thrift7.protocol.TType.STRING,org.apache.thrift7.protocol.TType.I32,this.num_executors.size()));
+        for (        Map.Entry<String,Integer> _iter137 : this.num_executors.entrySet()) {
+          oprot.writeString(_iter137.getKey());
+          oprot.writeI32(_iter137.getValue());
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

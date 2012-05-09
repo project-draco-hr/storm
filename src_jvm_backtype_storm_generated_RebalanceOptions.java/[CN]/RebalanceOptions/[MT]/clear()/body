@@ -1,4 +1,7 @@
 {
   set_wait_secs_isSet(false);
   this.wait_secs=0;
+  set_num_workers_isSet(false);
+  this.num_workers=0;
+  this.num_executors=null;
 }

@@ -6,5 +6,17 @@
     if (!(this_present_wait_secs && that_present_wait_secs))     return false;
     if (this.wait_secs != that.wait_secs)     return false;
   }
+  boolean this_present_num_workers=true && this.is_set_num_workers();
+  boolean that_present_num_workers=true && that.is_set_num_workers();
+  if (this_present_num_workers || that_present_num_workers) {
+    if (!(this_present_num_workers && that_present_num_workers))     return false;
+    if (this.num_workers != that.num_workers)     return false;
+  }
+  boolean this_present_num_executors=true && this.is_set_num_executors();
+  boolean that_present_num_executors=true && that.is_set_num_executors();
+  if (this_present_num_executors || that_present_num_executors) {
+    if (!(this_present_num_executors && that_present_num_executors))     return false;
+    if (!this.num_executors.equals(that.num_executors))     return false;
+  }
   return true;
 }

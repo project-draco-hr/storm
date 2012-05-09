@@ -12,6 +12,22 @@ def read(self, iprot):
                 self.wait_secs = iprot.readI32()
             else:
                 iprot.skip(ftype)
+        elif (fid == 2):
+            if (ftype == TType.I32):
+                self.num_workers = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 3):
+            if (ftype == TType.MAP):
+                self.num_executors = {}
+                (_ktype239, _vtype240, _size238) = iprot.readMapBegin()
+                for _i242 in xrange(_size238):
+                    _key243 = iprot.readString().decode('utf-8')
+                    _val244 = iprot.readI32()
+                    self.num_executors[_key243] = _val244
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

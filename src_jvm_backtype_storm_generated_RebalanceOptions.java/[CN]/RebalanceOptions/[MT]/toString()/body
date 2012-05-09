@@ -6,6 +6,23 @@
     sb.append(this.wait_secs);
     first=false;
   }
+  if (is_set_num_workers()) {
+    if (!first)     sb.append(", ");
+    sb.append("num_workers:");
+    sb.append(this.num_workers);
+    first=false;
+  }
+  if (is_set_num_executors()) {
+    if (!first)     sb.append(", ");
+    sb.append("num_executors:");
+    if (this.num_executors == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.num_executors);
+    }
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

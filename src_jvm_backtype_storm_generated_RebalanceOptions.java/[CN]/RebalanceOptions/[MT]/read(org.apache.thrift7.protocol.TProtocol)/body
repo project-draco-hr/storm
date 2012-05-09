@@ -16,8 +16,36 @@ case 1:
         org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
       }
     break;
+case 2:
+  if (field.type == org.apache.thrift7.protocol.TType.I32) {
+    this.num_workers=iprot.readI32();
+    set_num_workers_isSet(true);
+  }
+ else {
+    org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == org.apache.thrift7.protocol.TType.MAP) {
+{
+  org.apache.thrift7.protocol.TMap _map133=iprot.readMapBegin();
+  this.num_executors=new HashMap<String,Integer>(2 * _map133.size);
+  for (int _i134=0; _i134 < _map133.size; ++_i134) {
+    String _key135;
+    int _val136;
+    _key135=iprot.readString();
+    _val136=iprot.readI32();
+    this.num_executors.put(_key135,_val136);
+  }
+  iprot.readMapEnd();
+}
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
 default :
-  org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
 }
 iprot.readFieldEnd();
 }

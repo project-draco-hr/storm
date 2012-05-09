@@ -1,2 +1,4 @@
 self
 wait_secs
+num_workers
+num_executors
