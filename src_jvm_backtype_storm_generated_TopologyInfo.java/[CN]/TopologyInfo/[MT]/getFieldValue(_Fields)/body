@@ -10,6 +10,8 @@ case TASKS:
 return get_tasks();
 case STATUS:
 return get_status();
+case ERRORS:
+return get_errors();
 }
 throw new IllegalStateException();
 }

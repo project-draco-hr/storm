@@ -20,17 +20,6 @@
   oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
   oprot.writeI32(this.uptime_secs);
   oprot.writeFieldEnd();
-  if (this.errors != null) {
-    oprot.writeFieldBegin(ERRORS_FIELD_DESC);
-{
-      oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRUCT,this.errors.size()));
-      for (      ErrorInfo _iter128 : this.errors) {
-        _iter128.write(oprot);
-      }
-      oprot.writeListEnd();
-    }
-    oprot.writeFieldEnd();
-  }
   if (this.stats != null) {
     if (is_set_stats()) {
       oprot.writeFieldBegin(STATS_FIELD_DESC);

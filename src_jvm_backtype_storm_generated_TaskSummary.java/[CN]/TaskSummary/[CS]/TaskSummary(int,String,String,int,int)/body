@@ -8,5 +8,4 @@
   set_port_isSet(true);
   this.uptime_secs=uptime_secs;
   set_uptime_secs_isSet(true);
-  this.errors=errors;
 }

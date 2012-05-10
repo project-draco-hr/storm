@@ -10,6 +10,8 @@ case 4:
 return TASKS;
 case 5:
 return STATUS;
+case 6:
+return ERRORS;
 default :
 return null;
 }

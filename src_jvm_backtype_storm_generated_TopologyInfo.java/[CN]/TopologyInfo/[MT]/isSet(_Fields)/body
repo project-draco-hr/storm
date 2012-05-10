@@ -13,6 +13,8 @@ case TASKS:
 return is_set_tasks();
 case STATUS:
 return is_set_status();
+case ERRORS:
+return is_set_errors();
 }
 throw new IllegalStateException();
 }

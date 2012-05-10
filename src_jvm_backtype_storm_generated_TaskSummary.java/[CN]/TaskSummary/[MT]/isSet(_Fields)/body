@@ -13,8 +13,6 @@ case PORT:
 return is_set_port();
 case UPTIME_SECS:
 return is_set_uptime_secs();
-case ERRORS:
-return is_set_errors();
 case STATS:
 return is_set_stats();
 }

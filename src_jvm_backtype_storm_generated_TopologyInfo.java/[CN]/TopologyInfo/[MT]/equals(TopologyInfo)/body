@@ -30,5 +30,11 @@
     if (!(this_present_status && that_present_status))     return false;
     if (!this.status.equals(that.status))     return false;
   }
+  boolean this_present_errors=true && this.is_set_errors();
+  boolean that_present_errors=true && that.is_set_errors();
+  if (this_present_errors || that_present_errors) {
+    if (!(this_present_errors && that_present_errors))     return false;
+    if (!this.errors.equals(that.errors))     return false;
+  }
   return true;
 }

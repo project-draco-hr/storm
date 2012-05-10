@@ -9,4 +9,6 @@ def validate(self):
         raise TProtocol.TProtocolException(message='Required field tasks is unset!')
     if (self.status is None):
         raise TProtocol.TProtocolException(message='Required field status is unset!')
+    if (self.errors is None):
+        raise TProtocol.TProtocolException(message='Required field errors is unset!')
     return

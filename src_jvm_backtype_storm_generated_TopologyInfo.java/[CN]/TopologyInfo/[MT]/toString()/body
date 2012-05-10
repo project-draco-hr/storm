@@ -40,6 +40,15 @@
     sb.append(this.status);
   }
   first=false;
+  if (!first)   sb.append(", ");
+  sb.append("errors:");
+  if (this.errors == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.errors);
+  }
+  first=false;
   sb.append(")");
   return sb.toString();
 }

@@ -10,13 +10,6 @@
   }
   this.port=other.port;
   this.uptime_secs=other.uptime_secs;
-  if (other.is_set_errors()) {
-    List<ErrorInfo> __this__errors=new ArrayList<ErrorInfo>();
-    for (    ErrorInfo other_element : other.errors) {
-      __this__errors.add(new ErrorInfo(other_element));
-    }
-    this.errors=__this__errors;
-  }
   if (other.is_set_stats()) {
     this.stats=new TaskStats(other.stats);
   }

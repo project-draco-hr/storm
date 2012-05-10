@@ -35,13 +35,13 @@ break;
 case 4:
 if (field.type == org.apache.thrift7.protocol.TType.LIST) {
 {
-org.apache.thrift7.protocol.TList _list129=iprot.readListBegin();
-this.tasks=new ArrayList<TaskSummary>(_list129.size);
-for (int _i130=0; _i130 < _list129.size; ++_i130) {
-TaskSummary _elem131;
-_elem131=new TaskSummary();
-_elem131.read(iprot);
-this.tasks.add(_elem131);
+org.apache.thrift7.protocol.TList _list125=iprot.readListBegin();
+this.tasks=new ArrayList<TaskSummary>(_list125.size);
+for (int _i126=0; _i126 < _list125.size; ++_i126) {
+TaskSummary _elem127;
+_elem127=new TaskSummary();
+_elem127.read(iprot);
+this.tasks.add(_elem127);
 }
 iprot.readListEnd();
 }
@@ -53,6 +53,35 @@ break;
 case 5:
 if (field.type == org.apache.thrift7.protocol.TType.STRING) {
 this.status=iprot.readString();
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 6:
+if (field.type == org.apache.thrift7.protocol.TType.MAP) {
+{
+org.apache.thrift7.protocol.TMap _map128=iprot.readMapBegin();
+this.errors=new HashMap<String,List<ErrorInfo>>(2 * _map128.size);
+for (int _i129=0; _i129 < _map128.size; ++_i129) {
+String _key130;
+List<ErrorInfo> _val131;
+_key130=iprot.readString();
+{
+org.apache.thrift7.protocol.TList _list132=iprot.readListBegin();
+_val131=new ArrayList<ErrorInfo>(_list132.size);
+for (int _i133=0; _i133 < _list132.size; ++_i133) {
+ErrorInfo _elem134;
+_elem134=new ErrorInfo();
+_elem134.read(iprot);
+_val131.add(_elem134);
+}
+iprot.readListEnd();
+}
+this.errors.put(_key130,_val131);
+}
+iprot.readMapEnd();
+}
 }
  else {
 org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
