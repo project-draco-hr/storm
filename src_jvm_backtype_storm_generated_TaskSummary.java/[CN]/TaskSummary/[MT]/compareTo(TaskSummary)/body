@@ -54,16 +54,6 @@
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_errors()).compareTo(typedOther.is_set_errors());
-  if (lastComparison != 0) {
-    return lastComparison;
-  }
-  if (is_set_errors()) {
-    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.errors,typedOther.errors);
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-  }
   lastComparison=Boolean.valueOf(is_set_stats()).compareTo(typedOther.is_set_stats());
   if (lastComparison != 0) {
     return lastComparison;

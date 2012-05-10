@@ -40,5 +40,13 @@ unset_status();
 set_status((String)value);
 }
 break;
+case ERRORS:
+if (value == null) {
+unset_errors();
+}
+ else {
+set_errors((Map<String,List<ErrorInfo>>)value);
+}
+break;
 }
 }

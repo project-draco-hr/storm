@@ -23,13 +23,6 @@ def write(self, oprot):
         oprot.writeFieldBegin('uptime_secs', TType.I32, 5)
         oprot.writeI32(self.uptime_secs)
         oprot.writeFieldEnd()
-    if (self.errors is not None):
-        oprot.writeFieldBegin('errors', TType.LIST, 6)
-        oprot.writeListBegin(TType.STRUCT, len(self.errors))
-        for iter230 in self.errors:
-            iter230.write(oprot)
-        oprot.writeListEnd()
-        oprot.writeFieldEnd()
     if (self.stats is not None):
         oprot.writeFieldBegin('stats', TType.STRUCT, 7)
         self.stats.write(oprot)

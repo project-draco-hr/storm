@@ -7,6 +7,5 @@
   this.port=0;
   set_uptime_secs_isSet(false);
   this.uptime_secs=0;
-  this.errors=null;
   this.stats=null;
 }

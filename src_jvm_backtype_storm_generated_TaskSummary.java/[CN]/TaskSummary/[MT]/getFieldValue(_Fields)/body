@@ -10,8 +10,6 @@ case PORT:
 return Integer.valueOf(get_port());
 case UPTIME_SECS:
 return Integer.valueOf(get_uptime_secs());
-case ERRORS:
-return get_errors();
 case STATS:
 return get_stats();
 }

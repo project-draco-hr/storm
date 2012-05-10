@@ -5,4 +5,5 @@
   this.uptime_secs=0;
   this.tasks=null;
   this.status=null;
+  this.errors=null;
 }

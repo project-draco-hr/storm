@@ -40,14 +40,6 @@ unset_uptime_secs();
 set_uptime_secs((Integer)value);
 }
 break;
-case ERRORS:
-if (value == null) {
-unset_errors();
-}
- else {
-set_errors((List<ErrorInfo>)value);
-}
-break;
 case STATS:
 if (value == null) {
 unset_stats();

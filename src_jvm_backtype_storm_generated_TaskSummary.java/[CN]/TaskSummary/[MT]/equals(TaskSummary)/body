@@ -30,12 +30,6 @@
     if (!(this_present_uptime_secs && that_present_uptime_secs))     return false;
     if (this.uptime_secs != that.uptime_secs)     return false;
   }
-  boolean this_present_errors=true && this.is_set_errors();
-  boolean that_present_errors=true && that.is_set_errors();
-  if (this_present_errors || that_present_errors) {
-    if (!(this_present_errors && that_present_errors))     return false;
-    if (!this.errors.equals(that.errors))     return false;
-  }
   boolean this_present_stats=true && this.is_set_stats();
   boolean that_present_stats=true && that.is_set_stats();
   if (this_present_stats || that_present_stats) {

@@ -1,6 +1,0 @@
-{
-  if (this.errors == null) {
-    this.errors=new ArrayList<ErrorInfo>();
-  }
-  this.errors.add(elem);
-}

@@ -15,5 +15,8 @@
   boolean present_status=true && (is_set_status());
   builder.append(present_status);
   if (present_status)   builder.append(status);
+  boolean present_errors=true && (is_set_errors());
+  builder.append(present_errors);
+  if (present_errors)   builder.append(errors);
   return builder.toHashCode();
 }

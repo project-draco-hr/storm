@@ -3,4 +3,3 @@ String component_id
 String host
 int port
 int uptime_secs
-List<ErrorInfo> errors

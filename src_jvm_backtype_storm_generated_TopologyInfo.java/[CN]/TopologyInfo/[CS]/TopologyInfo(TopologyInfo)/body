@@ -18,4 +18,18 @@
   if (other.is_set_status()) {
     this.status=other.status;
   }
+  if (other.is_set_errors()) {
+    Map<String,List<ErrorInfo>> __this__errors=new HashMap<String,List<ErrorInfo>>();
+    for (    Map.Entry<String,List<ErrorInfo>> other_element : other.errors.entrySet()) {
+      String other_element_key=other_element.getKey();
+      List<ErrorInfo> other_element_value=other_element.getValue();
+      String __this__errors_copy_key=other_element_key;
+      List<ErrorInfo> __this__errors_copy_value=new ArrayList<ErrorInfo>();
+      for (      ErrorInfo other_element_value_element : other_element_value) {
+        __this__errors_copy_value.add(new ErrorInfo(other_element_value_element));
+      }
+      __this__errors.put(__this__errors_copy_key,__this__errors_copy_value);
+    }
+    this.errors=__this__errors;
+  }
 }

@@ -3,3 +3,4 @@ String name
 int uptime_secs
 List<TaskSummary> tasks
 String status
+Map<String,List<ErrorInfo>> errors

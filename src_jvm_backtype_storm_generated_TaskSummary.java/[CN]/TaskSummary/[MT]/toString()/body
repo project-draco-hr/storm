@@ -30,15 +30,6 @@
   sb.append("uptime_secs:");
   sb.append(this.uptime_secs);
   first=false;
-  if (!first)   sb.append(", ");
-  sb.append("errors:");
-  if (this.errors == null) {
-    sb.append("null");
-  }
- else {
-    sb.append(this.errors);
-  }
-  first=false;
   if (is_set_stats()) {
     if (!first)     sb.append(", ");
     sb.append("stats:");

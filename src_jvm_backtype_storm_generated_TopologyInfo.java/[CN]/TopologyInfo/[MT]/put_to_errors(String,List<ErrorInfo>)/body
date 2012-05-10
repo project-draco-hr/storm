@@ -1,0 +1,6 @@
+{
+  if (this.errors == null) {
+    this.errors=new HashMap<String,List<ErrorInfo>>();
+  }
+  this.errors.put(key,val);
+}

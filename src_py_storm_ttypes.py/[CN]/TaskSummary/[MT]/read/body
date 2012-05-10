@@ -32,17 +32,6 @@ def read(self, iprot):
                 self.uptime_secs = iprot.readI32()
             else:
                 iprot.skip(ftype)
-        elif (fid == 6):
-            if (ftype == TType.LIST):
-                self.errors = []
-                (_etype227, _size224) = iprot.readListBegin()
-                for _i228 in xrange(_size224):
-                    _elem229 = ErrorInfo()
-                    _elem229.read(iprot)
-                    self.errors.append(_elem229)
-                iprot.readListEnd()
-            else:
-                iprot.skip(ftype)
         elif (fid == 7):
             if (ftype == TType.STRUCT):
                 self.stats = TaskStats()
