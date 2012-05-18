@@ -1,0 +1,4 @@
+String id
+String host
+Object schedulerMeta
+Collection<Integer> allPorts

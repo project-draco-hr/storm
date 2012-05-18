@@ -1,0 +1,8 @@
+{
+  for (  int task : this.taskToSlots.keySet()) {
+    WorkerSlot ws=this.taskToSlots.get(task);
+    if (ws.equals(slot)) {
+      this.taskToSlots.remove(task);
+    }
+  }
+}

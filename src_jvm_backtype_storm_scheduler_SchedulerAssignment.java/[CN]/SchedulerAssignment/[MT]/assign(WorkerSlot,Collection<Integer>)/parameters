@@ -1,0 +1,2 @@
+WorkerSlot slot
+Collection<Integer> tasks

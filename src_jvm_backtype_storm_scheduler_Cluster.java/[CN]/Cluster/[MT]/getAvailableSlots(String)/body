@@ -1,0 +1,7 @@
+{
+  List<WorkerSlot> slots=new ArrayList<WorkerSlot>();
+  for (  SupervisorDetails supervisor : this.supervisors.values()) {
+    slots.addAll(supervisor.getAvailableSlots(this));
+  }
+  return slots;
+}

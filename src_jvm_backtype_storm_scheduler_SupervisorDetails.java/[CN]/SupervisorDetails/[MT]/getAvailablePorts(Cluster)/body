@@ -1,0 +1,7 @@
+{
+  List<Integer> usedPorts=this.getUsedPorts(cluster);
+  List<Integer> ret=new ArrayList<Integer>();
+  ret.addAll(this.allPorts);
+  ret.removeAll(usedPorts);
+  return ret;
+}

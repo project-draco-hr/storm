@@ -1,0 +1,10 @@
+{
+  List<String> nodeIds=this.hostToIds.get(host);
+  List<SupervisorDetails> ret=new ArrayList<SupervisorDetails>();
+  if (nodeIds != null) {
+    for (    String nodeId : nodeIds) {
+      ret.add(this.getSupervisorById(nodeId));
+    }
+  }
+  return ret;
+}

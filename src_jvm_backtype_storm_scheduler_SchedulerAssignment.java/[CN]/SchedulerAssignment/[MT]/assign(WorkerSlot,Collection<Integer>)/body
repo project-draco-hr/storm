@@ -1,0 +1,5 @@
+{
+  for (  Integer task : tasks) {
+    this.taskToSlots.put(task,slot);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  List<Integer> ports=this.getAvailablePorts(cluster);
+  List<WorkerSlot> slots=new ArrayList<WorkerSlot>(ports.size());
+  for (  Integer port : ports) {
+    slots.add(new WorkerSlot(this.id,port));
+  }
+  return slots;
+}

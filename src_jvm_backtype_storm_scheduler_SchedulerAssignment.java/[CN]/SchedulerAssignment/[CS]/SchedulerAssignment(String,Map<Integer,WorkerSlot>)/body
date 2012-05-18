@@ -1,0 +1,7 @@
+{
+  this.topologyId=topologyId;
+  this.taskToSlots=new HashMap<Integer,WorkerSlot>(0);
+  if (taskToSlots != null) {
+    this.taskToSlots.putAll(taskToSlots);
+  }
+}
