@@ -27,7 +27,7 @@ def read(self, iprot):
                 self.tasks = []
                 (_etype227, _size224) = iprot.readListBegin()
                 for _i228 in xrange(_size224):
-                    _elem229 = TaskSummary()
+                    _elem229 = ExecutorSummary()
                     _elem229.read(iprot)
                     self.tasks.append(_elem229)
                 iprot.readListEnd()

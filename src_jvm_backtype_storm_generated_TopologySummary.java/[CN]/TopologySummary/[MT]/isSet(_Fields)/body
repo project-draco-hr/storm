@@ -9,6 +9,8 @@ case NAME:
   return is_set_name();
 case NUM_TASKS:
 return is_set_num_tasks();
+case NUM_EXECUTORS:
+return is_set_num_executors();
 case NUM_WORKERS:
 return is_set_num_workers();
 case UPTIME_SECS:

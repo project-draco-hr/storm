@@ -24,6 +24,14 @@ unset_num_tasks();
 set_num_tasks((Integer)value);
 }
 break;
+case NUM_EXECUTORS:
+if (value == null) {
+unset_num_executors();
+}
+ else {
+set_num_executors((Integer)value);
+}
+break;
 case NUM_WORKERS:
 if (value == null) {
 unset_num_workers();

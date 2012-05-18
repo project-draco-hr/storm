@@ -8,6 +8,9 @@
   if (!is_set_num_tasks()) {
     throw new org.apache.thrift7.protocol.TProtocolException("Required field 'num_tasks' is unset! Struct:" + toString());
   }
+  if (!is_set_num_executors()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'num_executors' is unset! Struct:" + toString());
+  }
   if (!is_set_num_workers()) {
     throw new org.apache.thrift7.protocol.TProtocolException("Required field 'num_workers' is unset! Struct:" + toString());
   }

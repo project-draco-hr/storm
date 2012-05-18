@@ -1,5 +1,0 @@
-{
-  TaskSpecificStats x=new TaskSpecificStats();
-  x.set_bolt(value);
-  return x;
-}

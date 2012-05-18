@@ -1,0 +1,8 @@
+{
+  if (!is_set_task_start()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'task_start' is unset! Struct:" + toString());
+  }
+  if (!is_set_task_end()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'task_end' is unset! Struct:" + toString());
+  }
+}

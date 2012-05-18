@@ -9,9 +9,9 @@
   }
   this.uptime_secs=other.uptime_secs;
   if (other.is_set_tasks()) {
-    List<TaskSummary> __this__tasks=new ArrayList<TaskSummary>();
-    for (    TaskSummary other_element : other.tasks) {
-      __this__tasks.add(new TaskSummary(other_element));
+    List<ExecutorSummary> __this__tasks=new ArrayList<ExecutorSummary>();
+    for (    ExecutorSummary other_element : other.tasks) {
+      __this__tasks.add(new ExecutorSummary(other_element));
     }
     this.tasks=__this__tasks;
   }

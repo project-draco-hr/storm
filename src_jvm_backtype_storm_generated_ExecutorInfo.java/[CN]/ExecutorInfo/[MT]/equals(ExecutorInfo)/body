@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_task_start=true;
+  boolean that_present_task_start=true;
+  if (this_present_task_start || that_present_task_start) {
+    if (!(this_present_task_start && that_present_task_start))     return false;
+    if (this.task_start != that.task_start)     return false;
+  }
+  boolean this_present_task_end=true;
+  boolean that_present_task_end=true;
+  if (this_present_task_end || that_present_task_end) {
+    if (!(this_present_task_end && that_present_task_end))     return false;
+    if (this.task_end != that.task_end)     return false;
+  }
+  return true;
+}

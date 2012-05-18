@@ -29,7 +29,7 @@ if (value == null) {
 unset_tasks();
 }
  else {
-set_tasks((List<TaskSummary>)value);
+set_tasks((List<ExecutorSummary>)value);
 }
 break;
 case STATUS:

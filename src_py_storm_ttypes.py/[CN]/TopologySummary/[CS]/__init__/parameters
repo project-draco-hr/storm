@@ -2,6 +2,7 @@ self
 id
 name
 num_tasks
+num_executors
 num_workers
 uptime_secs
 status
