@@ -1,0 +1,9 @@
+{
+  Collection<Integer> allTasks=topology.getTasks();
+  SchedulerAssignment assignment=this.assignments.get(topology.getId());
+  if (assignment != null) {
+    Collection<Integer> assignedTasks=assignment.getTasks();
+    allTasks.removeAll(assignedTasks);
+  }
+  return topology.selectTaskToComponents(allTasks);
+}

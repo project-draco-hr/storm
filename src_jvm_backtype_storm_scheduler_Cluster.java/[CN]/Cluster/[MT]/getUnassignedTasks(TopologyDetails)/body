@@ -2,7 +2,7 @@
   if (topology == null) {
     return new ArrayList<Integer>(0);
   }
-  Set<Integer> allTasks=topology.getTasks();
+  Collection<Integer> allTasks=topology.getTasks();
   SchedulerAssignment assignment=this.getAssignmentById(topology.getId());
   if (assignment != null) {
     Set<Integer> assignedTasks=assignment.getTasks();

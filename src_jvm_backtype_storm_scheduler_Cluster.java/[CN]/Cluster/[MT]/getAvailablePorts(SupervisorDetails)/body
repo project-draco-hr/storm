@@ -1,7 +1,7 @@
 {
-  List<Integer> usedPorts=this.getUsedPorts(cluster);
+  List<Integer> usedPorts=this.getUsedPorts(supervisor);
   List<Integer> ret=new ArrayList<Integer>();
-  ret.addAll(this.allPorts);
+  ret.addAll(supervisor.allPorts);
   ret.removeAll(usedPorts);
   return ret;
 }

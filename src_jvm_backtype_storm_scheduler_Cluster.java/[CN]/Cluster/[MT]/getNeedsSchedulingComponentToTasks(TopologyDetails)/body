@@ -1,0 +1,12 @@
+{
+  Map<Integer,String> taskToComponents=this.getNeedsSchedulingTaskToComponents(topology);
+  Map<String,List<Integer>> componentToTasks=new HashMap<String,List<Integer>>();
+  for (  int task : taskToComponents.keySet()) {
+    String component=taskToComponents.get(task);
+    if (!componentToTasks.containsKey(component)) {
+      componentToTasks.put(component,new ArrayList<Integer>());
+    }
+    componentToTasks.get(component).add(task);
+  }
+  return componentToTasks;
+}

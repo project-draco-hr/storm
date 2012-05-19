@@ -1,9 +1,9 @@
 {
-  Map<String,SchedulerAssignment> assignments=cluster.getAssignments();
+  Map<String,SchedulerAssignment> assignments=this.getAssignments();
   List<Integer> usedPorts=new ArrayList<Integer>();
   for (  SchedulerAssignment assignment : assignments.values()) {
     for (    WorkerSlot slot : assignment.getTaskToSlots().values()) {
-      if (slot.getNodeId().equals(this.id)) {
+      if (slot.getNodeId().equals(supervisor.getId())) {
         usedPorts.add(slot.getPort());
       }
     }

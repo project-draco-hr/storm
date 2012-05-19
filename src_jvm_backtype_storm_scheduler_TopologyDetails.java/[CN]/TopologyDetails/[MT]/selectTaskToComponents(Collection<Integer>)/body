@@ -1,0 +1,10 @@
+{
+  Map<Integer,String> ret=new HashMap<Integer,String>(tasks.size());
+  for (  int task : tasks) {
+    String compId=this.taskToComponents.get(task);
+    if (compId != null) {
+      ret.put(task,compId);
+    }
+  }
+  return ret;
+}
