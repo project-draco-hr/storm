@@ -1,19 +1,4 @@
 {
-  super(topology,stormConf,taskToComponent,stormId);
-  _workerPort=workerPort;
+  super(topology,stormConf,taskToComponent,stormId,codeDir,pidDir,workerPort,workerTasks);
   _taskId=taskId;
-  try {
-    if (pidDir != null) {
-      _pidDir=new File(pidDir).getCanonicalPath();
-    }
- else {
-      _pidDir=null;
-    }
-  }
- catch (  IOException e) {
-    throw new RuntimeException("Could not get canonical path for " + _pidDir,e);
-  }
-  _codeDir=codeDir;
-  _workerTasks=new ArrayList<Integer>(workerTasks);
-  Collections.sort(_workerTasks);
 }
