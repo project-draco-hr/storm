@@ -23,12 +23,12 @@
   sb.append(this.uptime_secs);
   first=false;
   if (!first)   sb.append(", ");
-  sb.append("tasks:");
-  if (this.tasks == null) {
+  sb.append("executors:");
+  if (this.executors == null) {
     sb.append("null");
   }
  else {
-    sb.append(this.tasks);
+    sb.append(this.executors);
   }
   first=false;
   if (!first)   sb.append(", ");

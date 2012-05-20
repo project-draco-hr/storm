@@ -18,11 +18,11 @@
     if (!(this_present_uptime_secs && that_present_uptime_secs))     return false;
     if (this.uptime_secs != that.uptime_secs)     return false;
   }
-  boolean this_present_tasks=true && this.is_set_tasks();
-  boolean that_present_tasks=true && that.is_set_tasks();
-  if (this_present_tasks || that_present_tasks) {
-    if (!(this_present_tasks && that_present_tasks))     return false;
-    if (!this.tasks.equals(that.tasks))     return false;
+  boolean this_present_executors=true && this.is_set_executors();
+  boolean that_present_executors=true && that.is_set_executors();
+  if (this_present_executors || that_present_executors) {
+    if (!(this_present_executors && that_present_executors))     return false;
+    if (!this.executors.equals(that.executors))     return false;
   }
   boolean this_present_status=true && this.is_set_status();
   boolean that_present_status=true && that.is_set_status();

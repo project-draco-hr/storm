@@ -8,12 +8,12 @@
     this.name=other.name;
   }
   this.uptime_secs=other.uptime_secs;
-  if (other.is_set_tasks()) {
-    List<ExecutorSummary> __this__tasks=new ArrayList<ExecutorSummary>();
-    for (    ExecutorSummary other_element : other.tasks) {
-      __this__tasks.add(new ExecutorSummary(other_element));
+  if (other.is_set_executors()) {
+    List<ExecutorSummary> __this__executors=new ArrayList<ExecutorSummary>();
+    for (    ExecutorSummary other_element : other.executors) {
+      __this__executors.add(new ExecutorSummary(other_element));
     }
-    this.tasks=__this__tasks;
+    this.executors=__this__executors;
   }
   if (other.is_set_status()) {
     this.status=other.status;

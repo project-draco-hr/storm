@@ -14,11 +14,11 @@
   oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
   oprot.writeI32(this.uptime_secs);
   oprot.writeFieldEnd();
-  if (this.tasks != null) {
-    oprot.writeFieldBegin(TASKS_FIELD_DESC);
+  if (this.executors != null) {
+    oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
 {
-      oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRUCT,this.tasks.size()));
-      for (      ExecutorSummary _iter135 : this.tasks) {
+      oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRUCT,this.executors.size()));
+      for (      ExecutorSummary _iter135 : this.executors) {
         _iter135.write(oprot);
       }
       oprot.writeListEnd();

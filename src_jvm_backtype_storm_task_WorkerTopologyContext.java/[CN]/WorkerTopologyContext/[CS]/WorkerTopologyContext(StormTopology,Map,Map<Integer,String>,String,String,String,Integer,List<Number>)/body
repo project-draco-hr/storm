@@ -13,6 +13,9 @@
     throw new RuntimeException("Could not get canonical path for " + _pidDir,e);
   }
   _workerPort=workerPort;
-  _workerTasks=new ArrayList<Integer>(workerTasks);
+  _workerTasks=new ArrayList<Integer>();
+  for (  Number n : workerTasks) {
+    _workerTasks.add(n.intValue());
+  }
   Collections.sort(_workerTasks);
 }

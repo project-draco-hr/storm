@@ -8,8 +8,8 @@
   if (!is_set_uptime_secs()) {
     throw new org.apache.thrift7.protocol.TProtocolException("Required field 'uptime_secs' is unset! Struct:" + toString());
   }
-  if (!is_set_tasks()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'tasks' is unset! Struct:" + toString());
+  if (!is_set_executors()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'executors' is unset! Struct:" + toString());
   }
   if (!is_set_status()) {
     throw new org.apache.thrift7.protocol.TProtocolException("Required field 'status' is unset! Struct:" + toString());

@@ -36,12 +36,12 @@ case 4:
 if (field.type == org.apache.thrift7.protocol.TType.LIST) {
 {
 org.apache.thrift7.protocol.TList _list125=iprot.readListBegin();
-this.tasks=new ArrayList<ExecutorSummary>(_list125.size);
+this.executors=new ArrayList<ExecutorSummary>(_list125.size);
 for (int _i126=0; _i126 < _list125.size; ++_i126) {
 ExecutorSummary _elem127;
 _elem127=new ExecutorSummary();
 _elem127.read(iprot);
-this.tasks.add(_elem127);
+this.executors.add(_elem127);
 }
 iprot.readListEnd();
 }

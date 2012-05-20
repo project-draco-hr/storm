@@ -24,12 +24,12 @@ unset_uptime_secs();
 set_uptime_secs((Integer)value);
 }
 break;
-case TASKS:
+case EXECUTORS:
 if (value == null) {
-unset_tasks();
+unset_executors();
 }
  else {
-set_tasks((List<ExecutorSummary>)value);
+set_executors((List<ExecutorSummary>)value);
 }
 break;
 case STATUS:
