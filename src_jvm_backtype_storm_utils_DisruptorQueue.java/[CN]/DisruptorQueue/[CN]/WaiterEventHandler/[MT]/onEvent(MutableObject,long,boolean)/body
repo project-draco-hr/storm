@@ -1,0 +1,28 @@
+{
+  Object o=t.getObject();
+  if (o == HALT_PROCESSING) {
+    _cached=null;
+    halted=true;
+  }
+  if (_cached != null && o != MARKER) {
+    handleEvent(o,sequence,isBatchEnd);
+  }
+ else {
+    if (!halted) {
+      if (_promise != null) {
+        _cached=_promise;
+        for (        CachedEvent e : _toHandle) {
+          handleEvent(e.o,e.seq,e.isBatchEnd);
+        }
+        _toHandle.clear();
+        if (o != MARKER)         handleEvent(o,sequence,isBatchEnd);
+      }
+ else {
+        if (o == MARKER) {
+          throw new RuntimeException("Got marker object before promise was set");
+        }
+        _toHandle.add(new CachedEvent(o,sequence,isBatchEnd));
+      }
+    }
+  }
+}

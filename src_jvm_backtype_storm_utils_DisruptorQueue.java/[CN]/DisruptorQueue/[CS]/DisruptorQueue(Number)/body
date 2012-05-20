@@ -1,0 +1,7 @@
+{
+  _executor=Executors.newSingleThreadExecutor();
+  _disruptor=new Disruptor(new ObjectEventFactory(),_executor,new MultiThreadedClaimStrategy(bufferSize.intValue()),new YieldingWaitStrategy());
+  _handler=new WaiterEventHandler();
+  _disruptor.handleEventsWith(_handler);
+  _buffer=_disruptor.start();
+}
