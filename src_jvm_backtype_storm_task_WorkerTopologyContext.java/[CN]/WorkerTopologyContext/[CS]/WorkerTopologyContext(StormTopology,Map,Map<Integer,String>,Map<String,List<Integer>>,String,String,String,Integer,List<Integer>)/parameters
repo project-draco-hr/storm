@@ -1,8 +1,9 @@
 StormTopology topology
 Map stormConf
 Map<Integer,String> taskToComponent
+Map<String,List<Integer>> componentToSortedTasks
 String stormId
 String codeDir
 String pidDir
 Integer workerPort
-List<Number> workerTasks
+List<Integer> workerTasks

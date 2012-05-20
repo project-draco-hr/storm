@@ -1,4 +1,0 @@
-{
-  super(topology,stormConf,taskToComponent,stormId,codeDir,pidDir,workerPort,workerTasks);
-  _taskId=taskId;
-}

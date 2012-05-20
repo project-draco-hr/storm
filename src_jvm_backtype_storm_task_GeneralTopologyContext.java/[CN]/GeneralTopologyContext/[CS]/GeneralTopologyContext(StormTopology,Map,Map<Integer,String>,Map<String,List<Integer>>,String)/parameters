@@ -1,4 +1,5 @@
 StormTopology topology
 Map stormConf
 Map<Integer,String> taskToComponent
+Map<String,List<Integer>> componentToSortedTasks
 String stormId

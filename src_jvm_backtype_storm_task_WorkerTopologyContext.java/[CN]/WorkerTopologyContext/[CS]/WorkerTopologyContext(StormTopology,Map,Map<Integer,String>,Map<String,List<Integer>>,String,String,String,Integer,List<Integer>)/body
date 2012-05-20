@@ -1,5 +1,5 @@
 {
-  super(topology,stormConf,taskToComponent,stormId);
+  super(topology,stormConf,taskToComponent,componentToSortedTasks,stormId);
   _codeDir=codeDir;
   try {
     if (pidDir != null) {
@@ -13,9 +13,5 @@
     throw new RuntimeException("Could not get canonical path for " + _pidDir,e);
   }
   _workerPort=workerPort;
-  _workerTasks=new ArrayList<Integer>();
-  for (  Number n : workerTasks) {
-    _workerTasks.add(n.intValue());
-  }
-  Collections.sort(_workerTasks);
+  _workerTasks=workerTasks;
 }
