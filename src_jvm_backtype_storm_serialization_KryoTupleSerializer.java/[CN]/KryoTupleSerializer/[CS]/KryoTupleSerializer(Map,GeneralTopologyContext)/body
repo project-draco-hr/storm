@@ -1,8 +1,6 @@
 {
-  _manager=new ThreadResourceManager<Worker>(new ThreadResourceManager.ResourceFactory<Worker>(){
-    @Override public Worker makeResource(){
-      return new Worker(conf,context);
-    }
-  }
-);
+  _outputter=new ByteArrayOutputStream();
+  _dataOutputter=new DataOutputStream(_outputter);
+  _kryo=new KryoValuesSerializer(conf);
+  _ids=new SerializationFactory.IdDictionary(context.getRawTopology());
 }

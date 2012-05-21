@@ -1,9 +1,10 @@
 {
-  Worker worker=_manager.acquire();
   try {
-    return worker.crc32(tuple);
+    CRC32OutputStream hasher=new CRC32OutputStream();
+    _kryo.serializeInto(tuple.getValues(),hasher);
+    return hasher.getValue();
   }
-  finally {
-    _manager.release(worker);
+ catch (  IOException e) {
+    throw new RuntimeException(e);
   }
 }
