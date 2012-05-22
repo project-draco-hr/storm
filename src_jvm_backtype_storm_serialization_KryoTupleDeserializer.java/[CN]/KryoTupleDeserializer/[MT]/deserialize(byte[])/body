@@ -8,7 +8,7 @@
     String streamName=_ids.getStreamName(componentName,streamId);
     MessageId id=MessageId.deserialize(in);
     List<Object> values=_kryo.deserializeFrom(bin);
-    return new Tuple(_context,values,taskId,streamName,id);
+    return new TupleImpl(_context,values,taskId,streamName,id);
   }
  catch (  IOException e) {
     throw new RuntimeException(e);
