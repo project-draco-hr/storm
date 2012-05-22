@@ -1,5 +1,5 @@
 {
-  super(topology,stormConf,taskToComponent,componentToSortedTasks,stormId);
+  super(topology,stormConf,taskToComponent,componentToSortedTasks,componentToStreamToFields,stormId);
   _codeDir=codeDir;
   try {
     if (pidDir != null) {
