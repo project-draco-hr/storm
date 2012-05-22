@@ -4,4 +4,16 @@
   _taskToComponent=taskToComponent;
   _stormId=stormId;
   _componentToTasks=componentToSortedTasks;
+  for (  String component : getComponentIds()) {
+    Map<String,Fields> streamToFields=_componentToStreamToFields.get(component);
+    if (streamToFields == null) {
+      streamToFields=new HashMap();
+      _componentToStreamToFields.put(component,streamToFields);
+    }
+    ComponentCommon common=getComponentCommon(component);
+    for (    String stream : common.get_streams().keySet()) {
+      StreamInfo info=common.get_streams().get(stream);
+      streamToFields.put(stream,new Fields(info.get_output_fields()));
+    }
+  }
 }
