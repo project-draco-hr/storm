@@ -1,3 +1,4 @@
 {
-  return _kryo.readClassAndObject(new ByteArrayInputStream(ser));
+  _kryoInput.setBuffer(ser);
+  return _kryo.readClassAndObject(_kryoInput);
 }
