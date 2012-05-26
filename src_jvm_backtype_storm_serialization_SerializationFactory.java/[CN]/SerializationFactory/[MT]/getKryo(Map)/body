@@ -4,9 +4,9 @@
   k.setReferences(false);
   k.register(byte[].class);
   k.register(ListDelegate.class);
-  k.register(ArrayList.class);
-  k.register(HashMap.class);
-  k.register(HashSet.class);
+  k.register(ArrayList.class,new ArrayListSerializer(k));
+  k.register(HashMap.class,new HashMapSerializer(k));
+  k.register(HashSet.class,new HashSetSerializer(k));
   k.register(BigInteger.class,new BigIntegerSerializer());
   k.register(TransactionAttempt.class);
   k.register(Values.class);
