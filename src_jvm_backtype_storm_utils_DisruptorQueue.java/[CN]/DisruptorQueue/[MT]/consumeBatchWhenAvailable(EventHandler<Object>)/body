@@ -1,6 +1,7 @@
 {
   try {
-    final long availableSequence=_barrier.waitFor(_consumer.get() + 1);
+    final long nextSequence=_consumer.get() + 1;
+    final long availableSequence=_barrier.waitFor(nextSequence);
     consumeBatchToCursor(availableSequence,handler);
   }
  catch (  AlertException e) {
