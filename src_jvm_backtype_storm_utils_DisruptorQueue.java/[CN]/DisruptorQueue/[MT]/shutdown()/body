@@ -1,4 +1,0 @@
-{
-  _disruptor.shutdown();
-  _executor.shutdownNow();
-}

@@ -1,0 +1,4 @@
+{
+  consumerStartedFlag=true;
+  flushCache();
+}

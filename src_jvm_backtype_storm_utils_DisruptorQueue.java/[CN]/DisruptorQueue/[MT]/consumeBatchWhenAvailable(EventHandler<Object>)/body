@@ -1,0 +1,12 @@
+{
+  try {
+    final long availableSequence=_barrier.waitFor(_consumer.get() + 1);
+    consumeBatchToCursor(availableSequence,handler);
+  }
+ catch (  AlertException e) {
+    throw new RuntimeException(e);
+  }
+catch (  InterruptedException e) {
+    throw new RuntimeException(e);
+  }
+}

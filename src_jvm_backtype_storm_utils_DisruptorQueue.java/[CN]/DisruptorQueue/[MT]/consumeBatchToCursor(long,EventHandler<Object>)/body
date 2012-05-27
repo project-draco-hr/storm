@@ -1,0 +1,22 @@
+{
+  for (long curr=_consumer.get() + 1; curr <= cursor; curr++) {
+    try {
+      Object o=_buffer.get(curr).o;
+      if (o == FLUSH_CACHE) {
+        Object c=null;
+        while (true) {
+          c=_cache.poll();
+          if (c == null)           break;
+ else           handler.onEvent(c,curr,true);
+        }
+      }
+ else {
+        handler.onEvent(o,curr,curr == cursor);
+      }
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+  _consumer.set(cursor);
+}
