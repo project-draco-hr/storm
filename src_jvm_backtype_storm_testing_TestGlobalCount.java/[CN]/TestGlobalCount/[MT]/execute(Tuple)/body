@@ -1,5 +1,5 @@
 {
   _count++;
-  _collector.emit(tuple(_count));
+  _collector.emit(input,new Values(_count));
   _collector.ack(input);
 }
