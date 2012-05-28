@@ -1,0 +1,3 @@
+{
+  ((Set)RegisteredGlobalState.getState(_acked)).add(id);
+}
