@@ -1,0 +1,8 @@
+{
+  if (other instanceof ExecutorSpecificStats) {
+    return equals((ExecutorSpecificStats)other);
+  }
+ else {
+    return false;
+  }
+}

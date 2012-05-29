@@ -1,0 +1,13 @@
+{
+  StringBuilder sb=new StringBuilder("ExecutorInfo(");
+  boolean first=true;
+  sb.append("task_start:");
+  sb.append(this.task_start);
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("task_end:");
+  sb.append(this.task_end);
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

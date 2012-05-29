@@ -16,7 +16,10 @@
     int curr=Utils.get(_emptyPartitions,partition,0) + 1;
     _emptyPartitions.put(partition,curr);
     if (curr > _maxSpoutPending) {
-      getFinishedStatuses().put(partition,true);
+      Map<Integer,Boolean> finishedStatuses=getFinishedStatuses();
+      if (finishedStatuses != null) {
+        finishedStatuses.put(partition,true);
+      }
     }
   }
   return ret;

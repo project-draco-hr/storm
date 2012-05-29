@@ -1,3 +1,0 @@
-WorkerSlot slot
-String topologyId
-Collection<Integer> tasks

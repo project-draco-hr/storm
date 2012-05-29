@@ -7,10 +7,12 @@ case 2:
 case 3:
 return NUM_TASKS;
 case 4:
-return NUM_WORKERS;
+return NUM_EXECUTORS;
 case 5:
-return UPTIME_SECS;
+return NUM_WORKERS;
 case 6:
+return UPTIME_SECS;
+case 7:
 return STATUS;
 default :
 return null;

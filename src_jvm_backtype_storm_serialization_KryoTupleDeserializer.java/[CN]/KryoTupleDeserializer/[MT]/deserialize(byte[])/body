@@ -1,9 +1,16 @@
 {
-  Worker worker=_manager.acquire();
   try {
-    return worker.deserialize(ser);
+    ByteArrayInputStream bin=new ByteArrayInputStream(ser);
+    DataInputStream in=new DataInputStream(bin);
+    int taskId=WritableUtils.readVInt(in);
+    int streamId=WritableUtils.readVInt(in);
+    String componentName=_context.getComponentId(taskId);
+    String streamName=_ids.getStreamName(componentName,streamId);
+    MessageId id=MessageId.deserialize(in);
+    List<Object> values=_kryo.deserializeFrom(bin);
+    return new TupleImpl(_context,values,taskId,streamName,id);
   }
-  finally {
-    _manager.release(worker);
+ catch (  IOException e) {
+    throw new RuntimeException(e);
   }
 }

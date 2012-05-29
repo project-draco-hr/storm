@@ -8,6 +8,7 @@
   k.register(HashSet.class);
   k.register(BigInteger.class,new BigIntegerSerializer());
   k.register(TransactionAttempt.class);
+  k.register(Values.class);
   JavaBridge clojureSerializersBridge=new JavaBridge();
   clojureSerializersBridge.registerClojureCollections(k);
   clojureSerializersBridge.registerClojurePrimitives(k);

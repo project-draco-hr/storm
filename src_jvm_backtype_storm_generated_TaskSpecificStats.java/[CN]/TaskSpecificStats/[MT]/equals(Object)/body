@@ -1,8 +1,0 @@
-{
-  if (other instanceof TaskSpecificStats) {
-    return equals((TaskSpecificStats)other);
-  }
- else {
-    return false;
-  }
-}

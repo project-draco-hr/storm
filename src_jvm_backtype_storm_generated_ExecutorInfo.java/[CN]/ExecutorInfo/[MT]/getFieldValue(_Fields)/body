@@ -1,0 +1,9 @@
+{
+switch (field) {
+case TASK_START:
+    return Integer.valueOf(get_task_start());
+case TASK_END:
+  return Integer.valueOf(get_task_end());
+}
+throw new IllegalStateException();
+}

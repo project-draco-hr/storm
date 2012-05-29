@@ -2,7 +2,7 @@
   Map<String,SchedulerAssignment> assignments=this.getAssignments();
   List<Integer> usedPorts=new ArrayList<Integer>();
   for (  SchedulerAssignment assignment : assignments.values()) {
-    for (    WorkerSlot slot : assignment.getTaskToSlots().values()) {
+    for (    WorkerSlot slot : assignment.getExecutorToSlots().values()) {
       if (slot.getNodeId().equals(supervisor.getId())) {
         usedPorts.add(slot.getPort());
       }

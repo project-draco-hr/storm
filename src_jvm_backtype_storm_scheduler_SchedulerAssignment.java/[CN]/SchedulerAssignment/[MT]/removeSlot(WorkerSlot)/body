@@ -1,8 +1,8 @@
 {
-  for (  int task : this.taskToSlots.keySet()) {
-    WorkerSlot ws=this.taskToSlots.get(task);
+  for (  ExecutorDetails executor : this.executorToSlots.keySet()) {
+    WorkerSlot ws=this.executorToSlots.get(executor);
     if (ws.equals(slot)) {
-      this.taskToSlots.remove(task);
+      this.executorToSlots.remove(executor);
     }
   }
 }

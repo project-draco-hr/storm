@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case TASK_START:
+    return is_set_task_start();
+case TASK_END:
+  return is_set_task_end();
+}
+throw new IllegalStateException();
+}

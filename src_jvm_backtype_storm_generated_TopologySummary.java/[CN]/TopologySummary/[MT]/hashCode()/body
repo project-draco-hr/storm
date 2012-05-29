@@ -9,6 +9,9 @@
   boolean present_num_tasks=true;
   builder.append(present_num_tasks);
   if (present_num_tasks)   builder.append(num_tasks);
+  boolean present_num_executors=true;
+  builder.append(present_num_executors);
+  if (present_num_executors)   builder.append(num_executors);
   boolean present_num_workers=true;
   builder.append(present_num_workers);
   if (present_num_workers)   builder.append(num_workers);

@@ -1,0 +1,6 @@
+{
+  final long id=_buffer.next();
+  final MutableObject m=_buffer.get(id);
+  m.setObject(o);
+  _buffer.publish(id);
+}

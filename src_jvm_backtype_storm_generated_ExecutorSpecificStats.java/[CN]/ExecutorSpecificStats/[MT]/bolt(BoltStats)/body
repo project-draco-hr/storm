@@ -1,0 +1,5 @@
+{
+  ExecutorSpecificStats x=new ExecutorSpecificStats();
+  x.set_bolt(value);
+  return x;
+}

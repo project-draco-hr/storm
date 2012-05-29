@@ -1,0 +1,12 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  oprot.writeFieldBegin(TASK_START_FIELD_DESC);
+  oprot.writeI32(this.task_start);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(TASK_END_FIELD_DESC);
+  oprot.writeI32(this.task_end);
+  oprot.writeFieldEnd();
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

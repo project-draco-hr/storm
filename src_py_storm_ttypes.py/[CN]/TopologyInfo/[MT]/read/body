@@ -24,12 +24,12 @@ def read(self, iprot):
                 iprot.skip(ftype)
         elif (fid == 4):
             if (ftype == TType.LIST):
-                self.tasks = []
+                self.executors = []
                 (_etype227, _size224) = iprot.readListBegin()
                 for _i228 in xrange(_size224):
-                    _elem229 = TaskSummary()
+                    _elem229 = ExecutorSummary()
                     _elem229.read(iprot)
-                    self.tasks.append(_elem229)
+                    self.executors.append(_elem229)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

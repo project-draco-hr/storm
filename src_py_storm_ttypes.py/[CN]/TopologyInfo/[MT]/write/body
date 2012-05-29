@@ -15,10 +15,10 @@ def write(self, oprot):
         oprot.writeFieldBegin('uptime_secs', TType.I32, 3)
         oprot.writeI32(self.uptime_secs)
         oprot.writeFieldEnd()
-    if (self.tasks is not None):
-        oprot.writeFieldBegin('tasks', TType.LIST, 4)
-        oprot.writeListBegin(TType.STRUCT, len(self.tasks))
-        for iter243 in self.tasks:
+    if (self.executors is not None):
+        oprot.writeFieldBegin('executors', TType.LIST, 4)
+        oprot.writeListBegin(TType.STRUCT, len(self.executors))
+        for iter243 in self.executors:
             iter243.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()

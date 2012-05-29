@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof TaskStats)   return this.equals((TaskStats)that);
-  return false;
-}

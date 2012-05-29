@@ -1,0 +1,5 @@
+{
+  this.o=o;
+  this.seq=seq;
+  this.isBatchEnd=isBatchEnd;
+}

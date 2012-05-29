@@ -1,3 +1,5 @@
 {
-  return (Map<Integer,List<List<Object>>>)RegisteredGlobalState.getState(_id);
+  Map<Integer,List<List<Object>>> ret=(Map<Integer,List<List<Object>>>)RegisteredGlobalState.getState(_id);
+  if (ret != null)   return ret;
+ else   return _initialPartitions;
 }

@@ -1,12 +1,12 @@
 {
-  Map<Integer,String> taskToComponents=this.getNeedsSchedulingTaskToComponents(topology);
-  Map<String,List<Integer>> componentToTasks=new HashMap<String,List<Integer>>();
-  for (  int task : taskToComponents.keySet()) {
-    String component=taskToComponents.get(task);
-    if (!componentToTasks.containsKey(component)) {
-      componentToTasks.put(component,new ArrayList<Integer>());
+  Map<ExecutorDetails,String> executorToComponents=this.getNeedsSchedulingExecutorToComponents(topology);
+  Map<String,List<ExecutorDetails>> componentToExecutors=new HashMap<String,List<ExecutorDetails>>();
+  for (  ExecutorDetails executor : executorToComponents.keySet()) {
+    String component=executorToComponents.get(executor);
+    if (!componentToExecutors.containsKey(component)) {
+      componentToExecutors.put(component,new ArrayList<ExecutorDetails>());
     }
-    componentToTasks.get(component).add(task);
+    componentToExecutors.get(component).add(executor);
   }
-  return componentToTasks;
+  return componentToExecutors;
 }

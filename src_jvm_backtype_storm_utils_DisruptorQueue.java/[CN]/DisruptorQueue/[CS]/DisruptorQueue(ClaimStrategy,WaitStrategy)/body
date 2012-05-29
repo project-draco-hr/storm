@@ -1,0 +1,7 @@
+{
+  _executor=Executors.newCachedThreadPool();
+  _disruptor=new Disruptor(new ObjectEventFactory(),_executor,claim,wait);
+  _handler=new WaiterEventHandler();
+  _disruptor.handleEventsWith(_handler);
+  _buffer=_disruptor.start();
+}

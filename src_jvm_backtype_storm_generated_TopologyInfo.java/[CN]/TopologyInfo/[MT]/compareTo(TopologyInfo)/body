@@ -34,12 +34,12 @@
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_tasks()).compareTo(typedOther.is_set_tasks());
+  lastComparison=Boolean.valueOf(is_set_executors()).compareTo(typedOther.is_set_executors());
   if (lastComparison != 0) {
     return lastComparison;
   }
-  if (is_set_tasks()) {
-    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.tasks,typedOther.tasks);
+  if (is_set_executors()) {
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.executors,typedOther.executors);
     if (lastComparison != 0) {
       return lastComparison;
     }

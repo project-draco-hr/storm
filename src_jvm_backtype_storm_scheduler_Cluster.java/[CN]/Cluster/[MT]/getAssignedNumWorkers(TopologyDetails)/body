@@ -4,6 +4,6 @@
     return 0;
   }
   Set<WorkerSlot> slots=new HashSet<WorkerSlot>();
-  slots.addAll(assignment.getTaskToSlots().values());
+  slots.addAll(assignment.getExecutorToSlots().values());
   return slots.size();
 }

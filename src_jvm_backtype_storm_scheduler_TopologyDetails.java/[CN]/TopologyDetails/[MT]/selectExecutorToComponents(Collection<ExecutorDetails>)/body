@@ -1,0 +1,10 @@
+{
+  Map<ExecutorDetails,String> ret=new HashMap<ExecutorDetails,String>(executors.size());
+  for (  ExecutorDetails executor : executors) {
+    String compId=this.executorToComponents.get(executor);
+    if (compId != null) {
+      ret.put(executor,compId);
+    }
+  }
+  return ret;
+}

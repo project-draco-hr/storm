@@ -1,4 +1,0 @@
-String topologyId
-Map topologyConf
-StormTopology topology
-Map<Integer,String> taskToComponents

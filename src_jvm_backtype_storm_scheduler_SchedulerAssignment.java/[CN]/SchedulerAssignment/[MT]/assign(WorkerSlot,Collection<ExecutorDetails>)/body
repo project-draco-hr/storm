@@ -1,0 +1,5 @@
+{
+  for (  ExecutorDetails executor : executors) {
+    this.executorToSlots.put(executor,slot);
+  }
+}

@@ -4,5 +4,5 @@
   if (desiredNumWorkers > assignedNumWorkers) {
     return true;
   }
-  return this.getUnassignedTasks(topology).size() > 0;
+  return this.getUnassignedExecutors(topology).size() > 0;
 }

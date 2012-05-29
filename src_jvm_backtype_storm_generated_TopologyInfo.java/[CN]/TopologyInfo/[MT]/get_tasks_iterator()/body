@@ -1,3 +1,0 @@
-{
-  return (this.tasks == null) ? null : this.tasks.iterator();
-}

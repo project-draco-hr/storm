@@ -23,6 +23,10 @@
   sb.append(this.num_tasks);
   first=false;
   if (!first)   sb.append(", ");
+  sb.append("num_executors:");
+  sb.append(this.num_executors);
+  first=false;
+  if (!first)   sb.append(", ");
   sb.append("num_workers:");
   sb.append(this.num_workers);
   first=false;

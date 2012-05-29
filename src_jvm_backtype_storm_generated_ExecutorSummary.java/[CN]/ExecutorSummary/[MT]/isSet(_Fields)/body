@@ -1,0 +1,20 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case EXECUTOR_INFO:
+    return is_set_executor_info();
+case COMPONENT_ID:
+  return is_set_component_id();
+case HOST:
+return is_set_host();
+case PORT:
+return is_set_port();
+case UPTIME_SECS:
+return is_set_uptime_secs();
+case STATS:
+return is_set_stats();
+}
+throw new IllegalStateException();
+}
