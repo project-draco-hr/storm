@@ -5,8 +5,8 @@
   Collection<ExecutorDetails> allExecutors=topology.getExecutors();
   SchedulerAssignment assignment=this.getAssignmentById(topology.getId());
   if (assignment != null) {
-    Set<ExecutorDetails> assignedTasks=assignment.getExecutors();
-    allExecutors.removeAll(assignedTasks);
+    Set<ExecutorDetails> assignedExecutors=assignment.getExecutors();
+    allExecutors.removeAll(assignedExecutors);
   }
   List<ExecutorDetails> ret=new ArrayList<ExecutorDetails>(allExecutors.size());
   ret.addAll(allExecutors);
