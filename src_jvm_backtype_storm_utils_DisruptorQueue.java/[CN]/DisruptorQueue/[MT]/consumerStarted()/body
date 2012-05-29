@@ -1,4 +1,6 @@
 {
-  consumerStartedFlag=true;
-  flushCache();
+  if (!consumerStartedFlag) {
+    consumerStartedFlag=true;
+    flushCache();
+  }
 }
