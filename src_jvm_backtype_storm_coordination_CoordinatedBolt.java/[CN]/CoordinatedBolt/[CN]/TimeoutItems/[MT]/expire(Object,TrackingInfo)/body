@@ -1,5 +1,6 @@
 {
 synchronized (_tracked) {
+    val.failed=true;
     if (!val.finished) {
       ((TimeoutCallback)_delegate).timeoutId(id);
     }

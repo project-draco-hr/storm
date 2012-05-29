@@ -4,7 +4,7 @@ synchronized (_tracked) {
     TrackingInfo track=_tracked.get(id);
     if (track != null)     track.receivedTuples++;
   }
-  boolean failed=checkFinishId(tuple);
+  boolean failed=checkFinishId(tuple,TupleType.REGULAR);
   if (failed) {
     _delegate.fail(tuple);
   }
