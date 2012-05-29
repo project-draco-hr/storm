@@ -1,8 +1,10 @@
 {
-  for (  HashMap<K,V> bucket : _buckets) {
-    if (bucket.containsKey(key)) {
-      return true;
+synchronized (_lock) {
+    for (    HashMap<K,V> bucket : _buckets) {
+      if (bucket.containsKey(key)) {
+        return true;
+      }
     }
+    return false;
   }
-  return false;
 }
