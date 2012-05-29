@@ -1,0 +1,62 @@
+{
+  Object id=tup.getValue(0);
+  boolean failed=false;
+synchronized (_tracked) {
+    TrackingInfo track=_tracked.get(id);
+    try {
+      if (track != null) {
+        boolean delayed=false;
+        if (_idStreamSpec == null && type == TupleType.COORD || _idStreamSpec != null && type == TupleType.ID) {
+          track.ackTuples.add(tup);
+          delayed=true;
+        }
+        if (track.failed) {
+          failed=true;
+          for (          Tuple t : track.ackTuples) {
+            _collector.fail(t);
+          }
+          _tracked.remove(id);
+        }
+ else         if (track.receivedId && (_sourceArgs.isEmpty() || track.reportCount == _numSourceReports && track.expectedTupleCount == track.receivedTuples)) {
+          if (_delegate instanceof FinishedCallback) {
+            ((FinishedCallback)_delegate).finishedId(id);
+          }
+          if (!(_sourceArgs.isEmpty() || type != TupleType.REGULAR)) {
+            throw new IllegalStateException("Coordination condition met on a non-coordinating tuple. Should be impossible");
+          }
+          Iterator<Integer> outTasks=_countOutTasks.iterator();
+          while (outTasks.hasNext()) {
+            int task=outTasks.next();
+            int numTuples=get(track.taskEmittedTuples,task,0);
+            _collector.emitDirect(task,Constants.COORDINATED_STREAM_ID,tup,new Values(id,numTuples));
+          }
+          for (          Tuple t : track.ackTuples) {
+            _collector.ack(t);
+          }
+          track.finished=true;
+          _tracked.remove(id);
+        }
+        if (!delayed && type != TupleType.REGULAR) {
+          if (track.failed) {
+            _collector.fail(tup);
+          }
+ else {
+            _collector.ack(tup);
+          }
+        }
+      }
+ else {
+        if (type != TupleType.REGULAR)         _collector.fail(tup);
+      }
+    }
+ catch (    FailedException e) {
+      LOG.error("Failed to finish batch",e);
+      for (      Tuple t : track.ackTuples) {
+        _collector.fail(t);
+      }
+      _tracked.remove(id);
+      failed=true;
+    }
+  }
+  return failed;
+}
