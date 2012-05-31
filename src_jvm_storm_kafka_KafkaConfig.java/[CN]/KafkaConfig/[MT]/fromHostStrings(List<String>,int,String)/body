@@ -1,0 +1,3 @@
+{
+  return new KafkaConfig(convertHosts(hosts),partitionsPerHost,topic);
+}
