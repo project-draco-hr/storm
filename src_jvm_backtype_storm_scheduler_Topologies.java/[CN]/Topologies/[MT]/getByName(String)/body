@@ -1,5 +1,5 @@
 {
-  String topologyId=this.nameToIds.get(topologyName);
+  String topologyId=this.nameToId.get(topologyName);
   if (topologyId == null) {
     return null;
   }

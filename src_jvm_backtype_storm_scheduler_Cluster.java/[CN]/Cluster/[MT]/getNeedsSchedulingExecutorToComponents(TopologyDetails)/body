@@ -5,5 +5,5 @@
     Collection<ExecutorDetails> assignedExecutors=assignment.getExecutors();
     allExecutors.removeAll(assignedExecutors);
   }
-  return topology.selectExecutorToComponents(allExecutors);
+  return topology.selectExecutorToComponent(allExecutors);
 }
