@@ -1,4 +1,7 @@
 {
+  if (this.isSlotOccupied(slot)) {
+    new RuntimeException("slot: [" + slot.getNodeId() + ", "+ slot.getPort()+ "] is already occupied.");
+  }
   SchedulerAssignment assignment=this.getAssignmentById(topologyId);
   if (assignment == null) {
     assignment=new SchedulerAssignment(topologyId,new HashMap<ExecutorDetails,WorkerSlot>());
