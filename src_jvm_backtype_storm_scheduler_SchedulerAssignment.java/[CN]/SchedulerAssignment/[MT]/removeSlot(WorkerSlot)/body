@@ -1,8 +1,12 @@
 {
+  List<ExecutorDetails> executors=new ArrayList<ExecutorDetails>();
   for (  ExecutorDetails executor : this.executorToSlots.keySet()) {
     WorkerSlot ws=this.executorToSlots.get(executor);
     if (ws.equals(slot)) {
-      this.executorToSlots.remove(executor);
+      executors.add(executor);
     }
+  }
+  for (  ExecutorDetails executor : executors) {
+    this.executorToSlots.remove(executor);
   }
 }

@@ -1,0 +1,3 @@
+{
+  return 13 * this.startTask + 17 * this.endTask;
+}
