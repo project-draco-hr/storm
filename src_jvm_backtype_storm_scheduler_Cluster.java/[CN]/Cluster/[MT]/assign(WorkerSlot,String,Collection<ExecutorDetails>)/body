@@ -1,0 +1,8 @@
+{
+  SchedulerAssignment assignment=this.getAssignmentById(topologyId);
+  if (assignment == null) {
+    assignment=new SchedulerAssignment(topologyId,new HashMap<ExecutorDetails,WorkerSlot>());
+    this.assignments.put(topologyId,assignment);
+  }
+  assignment.assign(slot,executors);
+}

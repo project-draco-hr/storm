@@ -1,0 +1,7 @@
+{
+  this.topologyId=topologyId;
+  this.executorToSlots=new HashMap<ExecutorDetails,WorkerSlot>(0);
+  if (executorToSlots != null) {
+    this.executorToSlots.putAll(executorToSlots);
+  }
+}

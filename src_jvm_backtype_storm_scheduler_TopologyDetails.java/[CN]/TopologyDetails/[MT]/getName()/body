@@ -1,0 +1,3 @@
+{
+  return (String)this.topologyConf.get(Config.TOPOLOGY_NAME);
+}

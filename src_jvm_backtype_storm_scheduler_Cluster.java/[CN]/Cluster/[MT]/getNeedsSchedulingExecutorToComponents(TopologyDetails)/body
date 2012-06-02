@@ -1,0 +1,9 @@
+{
+  Collection<ExecutorDetails> allExecutors=topology.getExecutors();
+  SchedulerAssignment assignment=this.assignments.get(topology.getId());
+  if (assignment != null) {
+    Collection<ExecutorDetails> assignedExecutors=assignment.getExecutors();
+    allExecutors.removeAll(assignedExecutors);
+  }
+  return topology.selectExecutorToComponents(allExecutors);
+}
