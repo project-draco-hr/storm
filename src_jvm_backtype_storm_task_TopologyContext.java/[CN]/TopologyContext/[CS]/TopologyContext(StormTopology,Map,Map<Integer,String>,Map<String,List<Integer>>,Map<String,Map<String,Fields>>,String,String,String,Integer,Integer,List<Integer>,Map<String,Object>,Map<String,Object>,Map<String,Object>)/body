@@ -1,4 +1,5 @@
 {
   super(topology,stormConf,taskToComponent,componentToSortedTasks,componentToStreamToFields,stormId,codeDir,pidDir,workerPort,workerTasks,defaultResources,userResources);
   _taskId=taskId;
+  _executorData=executorData;
 }

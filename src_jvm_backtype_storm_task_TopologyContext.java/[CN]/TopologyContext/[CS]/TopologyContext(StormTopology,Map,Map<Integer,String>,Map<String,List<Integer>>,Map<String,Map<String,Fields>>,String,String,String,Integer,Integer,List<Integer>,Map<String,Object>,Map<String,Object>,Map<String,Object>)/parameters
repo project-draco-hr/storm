@@ -11,3 +11,4 @@ Integer workerPort
 List<Integer> workerTasks
 Map<String,Object> defaultResources
 Map<String,Object> userResources
+Map<String,Object> executorData
