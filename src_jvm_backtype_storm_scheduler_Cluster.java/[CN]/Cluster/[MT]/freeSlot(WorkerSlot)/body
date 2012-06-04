@@ -3,7 +3,7 @@
   if (supervisor != null) {
     for (    SchedulerAssignment assignment : this.assignments.values()) {
       if (assignment.isSlotOccupied(slot)) {
-        assignment.removeSlot(slot);
+        assignment.unassignBySlot(slot);
         break;
       }
     }

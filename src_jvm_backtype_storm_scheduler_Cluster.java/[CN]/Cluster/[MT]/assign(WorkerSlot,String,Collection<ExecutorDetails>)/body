@@ -1,11 +1,18 @@
 {
   if (this.isSlotOccupied(slot)) {
-    new RuntimeException("slot: [" + slot.getNodeId() + ", "+ slot.getPort()+ "] is already occupied.");
+    throw new RuntimeException("slot: [" + slot.getNodeId() + ", "+ slot.getPort()+ "] is already occupied.");
   }
   SchedulerAssignment assignment=this.getAssignmentById(topologyId);
   if (assignment == null) {
     assignment=new SchedulerAssignment(topologyId,new HashMap<ExecutorDetails,WorkerSlot>());
     this.assignments.put(topologyId,assignment);
+  }
+ else {
+    for (    ExecutorDetails executor : executors) {
+      if (assignment.isExecutorAssigned(executor)) {
+        throw new RuntimeException("the executor is already assigned, you should unassign it before assign it to another slot.");
+      }
+    }
   }
   assignment.assign(slot,executors);
 }

@@ -1,9 +1,3 @@
 {
-  Collection<WorkerSlot> slots=this.executorToSlot.values();
-  for (  WorkerSlot slot1 : slots) {
-    if (slot1.equals(slot)) {
-      return true;
-    }
-  }
-  return false;
+  return this.executorToSlot.containsValue(slot);
 }
