@@ -6,5 +6,9 @@ Map<String,Map<String,Fields>> componentToStreamToFields
 String stormId
 String codeDir
 String pidDir
+Integer taskId
 Integer workerPort
 List<Integer> workerTasks
+Map<String,Object> defaultResources
+Map<String,Object> userResources
+Map<String,Object> executorData
