@@ -1,0 +1,7 @@
+{
+  if (other == null || !(other instanceof ExecutorDetails)) {
+    return false;
+  }
+  ExecutorDetails executor=(ExecutorDetails)other;
+  return (this.startTask == executor.startTask) && (this.endTask == executor.endTask);
+}

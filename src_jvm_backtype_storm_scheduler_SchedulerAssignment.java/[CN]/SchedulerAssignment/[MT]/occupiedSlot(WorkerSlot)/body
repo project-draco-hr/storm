@@ -1,9 +1,0 @@
-{
-  Collection<WorkerSlot> slots=this.executorToSlots.values();
-  for (  WorkerSlot slot1 : slots) {
-    if (slot1.equals(slot)) {
-      return true;
-    }
-  }
-  return false;
-}

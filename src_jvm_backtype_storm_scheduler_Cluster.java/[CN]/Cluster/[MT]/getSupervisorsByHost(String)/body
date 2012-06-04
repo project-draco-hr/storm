@@ -1,5 +1,5 @@
 {
-  List<String> nodeIds=this.hostToIds.get(host);
+  List<String> nodeIds=this.hostToId.get(host);
   List<SupervisorDetails> ret=new ArrayList<SupervisorDetails>();
   if (nodeIds != null) {
     for (    String nodeId : nodeIds) {

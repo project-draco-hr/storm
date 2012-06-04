@@ -1,9 +1,9 @@
 {
   this.topologies=new HashMap<String,TopologyDetails>(topologies.size());
   this.topologies.putAll(topologies);
-  this.nameToIds=new HashMap<String,String>(topologies.size());
+  this.nameToId=new HashMap<String,String>(topologies.size());
   for (  String topologyId : topologies.keySet()) {
     TopologyDetails topology=topologies.get(topologyId);
-    this.nameToIds.put(topology.getName(),topologyId);
+    this.nameToId.put(topology.getName(),topologyId);
   }
 }
