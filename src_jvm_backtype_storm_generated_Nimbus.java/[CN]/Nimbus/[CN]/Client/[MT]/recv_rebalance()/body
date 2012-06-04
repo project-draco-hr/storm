@@ -4,5 +4,8 @@
   if (result.e != null) {
     throw result.e;
   }
+  if (result.ite != null) {
+    throw result.ite;
+  }
   return;
 }

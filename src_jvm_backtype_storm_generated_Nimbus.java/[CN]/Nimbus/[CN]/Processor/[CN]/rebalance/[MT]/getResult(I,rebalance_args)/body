@@ -6,5 +6,8 @@
  catch (  NotAliveException e) {
     result.e=e;
   }
+catch (  InvalidTopologyException ite) {
+    result.ite=ite;
+  }
   return result;
 }
