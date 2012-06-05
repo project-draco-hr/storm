@@ -7,6 +7,8 @@ def process_rebalance(self, seqid, iprot, oprot):
         self._handler.rebalance(args.name, args.options)
     except NotAliveException as e:
         result.e = e
+    except InvalidTopologyException as ite:
+        result.ite = ite
     oprot.writeMessageBegin('rebalance', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
