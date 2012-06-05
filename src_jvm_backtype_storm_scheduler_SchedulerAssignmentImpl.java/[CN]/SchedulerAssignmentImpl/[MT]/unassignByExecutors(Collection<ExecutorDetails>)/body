@@ -1,5 +1,0 @@
-{
-  for (  ExecutorDetails executor : executors) {
-    this.unassignByExecutor(executor);
-  }
-}
