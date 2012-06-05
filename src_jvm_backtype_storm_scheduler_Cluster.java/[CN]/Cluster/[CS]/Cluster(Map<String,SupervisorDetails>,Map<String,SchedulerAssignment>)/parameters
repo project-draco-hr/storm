@@ -1,2 +1,0 @@
-Map<String,SupervisorDetails> supervisors
-Map<String,SchedulerAssignment> assignments
