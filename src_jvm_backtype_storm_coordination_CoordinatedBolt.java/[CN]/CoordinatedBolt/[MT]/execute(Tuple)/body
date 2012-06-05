@@ -1,6 +1,7 @@
 {
   Object id=tuple.getValue(0);
   TrackingInfo track;
+  TupleType type=getTupleType(tuple);
 synchronized (_tracked) {
     track=_tracked.get(id);
     if (track == null) {
@@ -9,31 +10,19 @@ synchronized (_tracked) {
       _tracked.put(id,track);
     }
   }
-  if (_idStreamSpec != null && tuple.getSourceGlobalStreamid().equals(_idStreamSpec._id)) {
+  if (type == TupleType.ID) {
 synchronized (_tracked) {
       track.receivedId=true;
     }
-    boolean failed=checkFinishId(tuple);
-    if (failed) {
-      _collector.fail(tuple);
-    }
- else {
-      _collector.ack(tuple);
-    }
+    checkFinishId(tuple,type);
   }
- else   if (!_sourceArgs.isEmpty() && tuple.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID)) {
+ else   if (type == TupleType.COORD) {
     int count=(Integer)tuple.getValue(1);
 synchronized (_tracked) {
       track.reportCount++;
       track.expectedTupleCount+=count;
     }
-    boolean failed=checkFinishId(tuple);
-    if (failed) {
-      _collector.fail(tuple);
-    }
- else {
-      _collector.ack(tuple);
-    }
+    checkFinishId(tuple,type);
   }
  else {
 synchronized (_tracked) {

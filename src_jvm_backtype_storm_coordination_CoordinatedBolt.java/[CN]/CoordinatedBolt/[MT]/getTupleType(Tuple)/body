@@ -1,0 +1,11 @@
+{
+  if (_idStreamSpec != null && tuple.getSourceGlobalStreamid().equals(_idStreamSpec._id)) {
+    return TupleType.ID;
+  }
+ else   if (!_sourceArgs.isEmpty() && tuple.getSourceStreamId().equals(Constants.COORDINATED_STREAM_ID)) {
+    return TupleType.COORD;
+  }
+ else {
+    return TupleType.REGULAR;
+  }
+}

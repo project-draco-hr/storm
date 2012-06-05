@@ -1,3 +1,0 @@
-{
-  return (List<Object>)_kryo.readObject(in,ArrayList.class);
-}

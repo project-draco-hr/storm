@@ -1,6 +1,12 @@
 {
-  final long id=_buffer.next();
-  final MutableObject m=_buffer.get(id);
-  m.setObject(o);
-  _buffer.publish(id);
+  if (consumerStartedFlag) {
+    final long id=_buffer.next();
+    final MutableObject m=_buffer.get(id);
+    m.setObject(obj);
+    _buffer.publish(id);
+  }
+ else {
+    _cache.add(obj);
+    if (consumerStartedFlag)     flushCache();
+  }
 }

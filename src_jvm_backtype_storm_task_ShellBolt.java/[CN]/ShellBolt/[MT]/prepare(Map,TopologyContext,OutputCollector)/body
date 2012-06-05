@@ -1,4 +1,5 @@
 {
+  _rand=new Random();
   _process=new ShellProcess(_command);
   _collector=collector;
   try {

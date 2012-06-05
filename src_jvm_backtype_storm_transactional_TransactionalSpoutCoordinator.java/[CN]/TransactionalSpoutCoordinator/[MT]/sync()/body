@@ -9,7 +9,7 @@
       BigInteger curr=_currTransaction;
       for (int i=0; i < _maxTransactionActive; i++) {
         if ((_coordinatorState.hasCache(curr) || _coordinator.isReady()) && !_activeTx.containsKey(curr)) {
-          TransactionAttempt attempt=new TransactionAttempt(curr,Utils.randomLong());
+          TransactionAttempt attempt=new TransactionAttempt(curr,_rand.nextLong());
           Object state=_coordinatorState.getState(curr,_initializer);
           _activeTx.put(curr,new TransactionStatus(attempt));
           _collector.emit(TRANSACTION_BATCH_STREAM_ID,new Values(attempt,state,previousTransactionId(_currTransaction)),attempt);

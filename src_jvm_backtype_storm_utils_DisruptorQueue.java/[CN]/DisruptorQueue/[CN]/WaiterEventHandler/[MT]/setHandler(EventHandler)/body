@@ -1,6 +1,0 @@
-{
-  if (_promise != null) {
-    throw new RuntimeException("Cannot set event handler more than once");
-  }
-  _promise=handler;
-}

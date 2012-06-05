@@ -1,4 +1,5 @@
 {
   _kryo=SerializationFactory.getKryo(conf);
   _delegate=new ListDelegate();
+  _kryoOut=new Output(2000,2000000000);
 }

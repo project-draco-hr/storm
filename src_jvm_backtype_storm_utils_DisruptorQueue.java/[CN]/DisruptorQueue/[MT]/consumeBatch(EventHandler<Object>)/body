@@ -1,0 +1,3 @@
+{
+  consumeBatchToCursor(_barrier.getCursor(),handler);
+}

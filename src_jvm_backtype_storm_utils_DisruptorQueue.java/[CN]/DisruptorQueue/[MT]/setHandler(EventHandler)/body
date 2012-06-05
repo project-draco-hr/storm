@@ -1,4 +1,0 @@
-{
-  _handler.setHandler(handler);
-  publish(MARKER);
-}

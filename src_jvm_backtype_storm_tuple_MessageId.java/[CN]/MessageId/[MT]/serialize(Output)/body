@@ -1,0 +1,7 @@
+{
+  out.writeInt(_anchorsToIds.size(),true);
+  for (  Entry<Long,Long> anchorToId : _anchorsToIds.entrySet()) {
+    out.writeLong(anchorToId.getKey());
+    out.writeLong(anchorToId.getValue());
+  }
+}

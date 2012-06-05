@@ -1,0 +1,3 @@
+{
+  ((Set)RegisteredGlobalState.getState(_failed)).add(id);
+}
