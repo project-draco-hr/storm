@@ -2,9 +2,9 @@
   if (this.isSlotOccupied(slot)) {
     throw new RuntimeException("slot: [" + slot.getNodeId() + ", "+ slot.getPort()+ "] is already occupied.");
   }
-  SchedulerAssignment assignment=this.getAssignmentById(topologyId);
+  SchedulerAssignmentImpl assignment=(SchedulerAssignmentImpl)this.getAssignmentById(topologyId);
   if (assignment == null) {
-    assignment=new SchedulerAssignment(topologyId,new HashMap<ExecutorDetails,WorkerSlot>());
+    assignment=new SchedulerAssignmentImpl(topologyId,new HashMap<ExecutorDetails,WorkerSlot>());
     this.assignments.put(topologyId,assignment);
   }
  else {

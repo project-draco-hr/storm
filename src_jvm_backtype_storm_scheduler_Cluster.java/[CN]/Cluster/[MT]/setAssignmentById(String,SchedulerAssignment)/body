@@ -1,3 +1,0 @@
-{
-  this.assignments.put(topologyId,assignment);
-}

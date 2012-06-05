@@ -1,3 +1,7 @@
 {
-  return this.assignments;
+  Map<String,SchedulerAssignment> ret=new HashMap<String,SchedulerAssignment>(this.assignments.size());
+  for (  String topologyId : this.assignments.keySet()) {
+    ret.put(topologyId,this.assignments.get(topologyId));
+  }
+  return ret;
 }
