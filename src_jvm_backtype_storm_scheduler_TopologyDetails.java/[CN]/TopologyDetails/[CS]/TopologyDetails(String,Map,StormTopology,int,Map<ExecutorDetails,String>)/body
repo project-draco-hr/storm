@@ -1,7 +1,5 @@
 {
-  this.topologyId=topologyId;
-  this.topologyConf=topologyConf;
-  this.topology=topology;
+  this(topologyId,topologyConf,topology,numWorkers);
   this.executorToComponent=new HashMap<ExecutorDetails,String>(0);
   if (executorToComponents != null) {
     this.executorToComponent.putAll(executorToComponents);

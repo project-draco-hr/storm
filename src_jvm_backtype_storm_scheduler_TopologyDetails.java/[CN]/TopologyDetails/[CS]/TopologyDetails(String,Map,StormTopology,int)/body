@@ -2,4 +2,5 @@
   this.topologyId=topologyId;
   this.topologyConf=topologyConf;
   this.topology=topology;
+  this.numWorkers=numWorkers;
 }
