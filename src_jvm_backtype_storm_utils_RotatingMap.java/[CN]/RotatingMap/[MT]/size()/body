@@ -1,0 +1,7 @@
+{
+  int size=0;
+  for (  HashMap<K,V> bucket : _buckets) {
+    size+=bucket.size();
+  }
+  return size;
+}

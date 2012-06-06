@@ -2,6 +2,6 @@ self
 id
 name
 uptime_secs
-tasks
+executors
 status
 errors

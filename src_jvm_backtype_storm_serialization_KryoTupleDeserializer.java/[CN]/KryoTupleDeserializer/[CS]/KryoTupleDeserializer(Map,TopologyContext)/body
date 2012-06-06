@@ -1,8 +1,0 @@
-{
-  _manager=new ThreadResourceManager<Worker>(new ThreadResourceManager.ResourceFactory<Worker>(){
-    @Override public Worker makeResource(){
-      return new Worker(conf,context);
-    }
-  }
-);
-}

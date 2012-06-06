@@ -1,3 +1,0 @@
-{
-  return __isset_bit_vector.get(__TASK_ID_ISSET_ID);
-}

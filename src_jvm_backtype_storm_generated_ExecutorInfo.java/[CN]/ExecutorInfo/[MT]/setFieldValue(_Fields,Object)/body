@@ -1,0 +1,20 @@
+{
+switch (field) {
+case TASK_START:
+    if (value == null) {
+      unset_task_start();
+    }
+ else {
+      set_task_start((Integer)value);
+    }
+  break;
+case TASK_END:
+if (value == null) {
+  unset_task_end();
+}
+ else {
+  set_task_end((Integer)value);
+}
+break;
+}
+}

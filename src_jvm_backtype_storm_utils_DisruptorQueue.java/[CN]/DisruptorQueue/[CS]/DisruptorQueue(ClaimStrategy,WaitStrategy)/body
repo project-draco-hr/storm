@@ -1,0 +1,9 @@
+{
+  _buffer=new RingBuffer<MutableObject>(new ObjectEventFactory(),claim,wait);
+  _consumer=new Sequence();
+  _barrier=_buffer.newBarrier();
+  _buffer.setGatingSequences(_consumer);
+  if (claim instanceof SingleThreadedClaimStrategy) {
+    consumerStartedFlag=true;
+  }
+}

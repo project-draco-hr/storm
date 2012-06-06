@@ -1,0 +1,12 @@
+def validate(self):
+    if (self.executor_info is None):
+        raise TProtocol.TProtocolException(message='Required field executor_info is unset!')
+    if (self.component_id is None):
+        raise TProtocol.TProtocolException(message='Required field component_id is unset!')
+    if (self.host is None):
+        raise TProtocol.TProtocolException(message='Required field host is unset!')
+    if (self.port is None):
+        raise TProtocol.TProtocolException(message='Required field port is unset!')
+    if (self.uptime_secs is None):
+        raise TProtocol.TProtocolException(message='Required field uptime_secs is unset!')
+    return

@@ -34,6 +34,15 @@ org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
 break;
 case 4:
 if (field.type == org.apache.thrift7.protocol.TType.I32) {
+this.num_executors=iprot.readI32();
+set_num_executors_isSet(true);
+}
+ else {
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 5:
+if (field.type == org.apache.thrift7.protocol.TType.I32) {
 this.num_workers=iprot.readI32();
 set_num_workers_isSet(true);
 }
@@ -41,7 +50,7 @@ set_num_workers_isSet(true);
 org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
 }
 break;
-case 5:
+case 6:
 if (field.type == org.apache.thrift7.protocol.TType.I32) {
 this.uptime_secs=iprot.readI32();
 set_uptime_secs_isSet(true);
@@ -50,7 +59,7 @@ set_uptime_secs_isSet(true);
 org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
 }
 break;
-case 6:
+case 7:
 if (field.type == org.apache.thrift7.protocol.TType.STRING) {
 this.status=iprot.readString();
 }

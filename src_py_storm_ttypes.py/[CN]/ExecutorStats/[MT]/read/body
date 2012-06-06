@@ -1,0 +1,53 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.MAP):
+                self.emitted = {}
+                (_ktype189, _vtype190, _size188) = iprot.readMapBegin()
+                for _i192 in xrange(_size188):
+                    _key193 = iprot.readString().decode('utf-8')
+                    _val194 = {}
+                    (_ktype196, _vtype197, _size195) = iprot.readMapBegin()
+                    for _i199 in xrange(_size195):
+                        _key200 = iprot.readString().decode('utf-8')
+                        _val201 = iprot.readI64()
+                        _val194[_key200] = _val201
+                    iprot.readMapEnd()
+                    self.emitted[_key193] = _val194
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 2):
+            if (ftype == TType.MAP):
+                self.transferred = {}
+                (_ktype203, _vtype204, _size202) = iprot.readMapBegin()
+                for _i206 in xrange(_size202):
+                    _key207 = iprot.readString().decode('utf-8')
+                    _val208 = {}
+                    (_ktype210, _vtype211, _size209) = iprot.readMapBegin()
+                    for _i213 in xrange(_size209):
+                        _key214 = iprot.readString().decode('utf-8')
+                        _val215 = iprot.readI64()
+                        _val208[_key214] = _val215
+                    iprot.readMapEnd()
+                    self.transferred[_key207] = _val208
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 3):
+            if (ftype == TType.STRUCT):
+                self.specific = ExecutorSpecificStats()
+                self.specific.read(iprot)
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

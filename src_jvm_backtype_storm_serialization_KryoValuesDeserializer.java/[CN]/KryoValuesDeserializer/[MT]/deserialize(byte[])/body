@@ -1,3 +1,4 @@
 {
-  return deserializeFrom(new ByteArrayInputStream(ser));
+  _kryoInput.setBuffer(ser);
+  return deserializeFrom(_kryoInput);
 }

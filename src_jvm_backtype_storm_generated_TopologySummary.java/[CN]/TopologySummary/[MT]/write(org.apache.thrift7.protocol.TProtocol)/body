@@ -14,6 +14,9 @@
   oprot.writeFieldBegin(NUM_TASKS_FIELD_DESC);
   oprot.writeI32(this.num_tasks);
   oprot.writeFieldEnd();
+  oprot.writeFieldBegin(NUM_EXECUTORS_FIELD_DESC);
+  oprot.writeI32(this.num_executors);
+  oprot.writeFieldEnd();
   oprot.writeFieldBegin(NUM_WORKERS_FIELD_DESC);
   oprot.writeI32(this.num_workers);
   oprot.writeFieldEnd();

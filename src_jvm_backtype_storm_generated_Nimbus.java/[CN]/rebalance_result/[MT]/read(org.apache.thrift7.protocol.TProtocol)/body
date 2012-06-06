@@ -16,8 +16,17 @@ case 1:
         org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
       }
     break;
+case 2:
+  if (field.type == org.apache.thrift7.protocol.TType.STRUCT) {
+    this.ite=new InvalidTopologyException();
+    this.ite.read(iprot);
+  }
+ else {
+    org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+  }
+break;
 default :
-  org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
+org.apache.thrift7.protocol.TProtocolUtil.skip(iprot,field.type);
 }
 iprot.readFieldEnd();
 }

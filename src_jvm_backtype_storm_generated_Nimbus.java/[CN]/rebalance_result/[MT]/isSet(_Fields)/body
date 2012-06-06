@@ -5,6 +5,8 @@
 switch (field) {
 case E:
     return is_set_e();
+case ITE:
+  return is_set_ite();
 }
 throw new IllegalStateException();
 }

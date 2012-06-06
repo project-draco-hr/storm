@@ -1,0 +1,9 @@
+{
+  List<TopologyDetails> ret=new ArrayList<TopologyDetails>();
+  for (  TopologyDetails topology : topologies.getTopologies()) {
+    if (needsScheduling(topology)) {
+      ret.add(topology);
+    }
+  }
+  return ret;
+}

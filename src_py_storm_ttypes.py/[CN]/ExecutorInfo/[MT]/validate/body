@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.task_start is None):
+        raise TProtocol.TProtocolException(message='Required field task_start is unset!')
+    if (self.task_end is None):
+        raise TProtocol.TProtocolException(message='Required field task_end is unset!')
+    return

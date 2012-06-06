@@ -1,9 +1,0 @@
-{
-  Worker worker=_manager.acquire();
-  try {
-    return worker.crc32(tuple);
-  }
-  finally {
-    _manager.release(worker);
-  }
-}

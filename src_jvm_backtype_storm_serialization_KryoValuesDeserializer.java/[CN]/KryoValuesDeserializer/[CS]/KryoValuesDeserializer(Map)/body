@@ -1,3 +1,4 @@
 {
   _kryo=SerializationFactory.getKryo(conf);
+  _kryoInput=new Input(1);
 }

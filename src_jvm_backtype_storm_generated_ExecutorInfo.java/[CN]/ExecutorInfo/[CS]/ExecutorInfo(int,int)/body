@@ -1,0 +1,7 @@
+{
+  this();
+  this.task_start=task_start;
+  set_task_start_isSet(true);
+  this.task_end=task_end;
+  set_task_end_isSet(true);
+}

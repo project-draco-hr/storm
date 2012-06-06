@@ -9,8 +9,8 @@ case NAME:
   return is_set_name();
 case UPTIME_SECS:
 return is_set_uptime_secs();
-case TASKS:
-return is_set_tasks();
+case EXECUTORS:
+return is_set_executors();
 case STATUS:
 return is_set_status();
 case ERRORS:

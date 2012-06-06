@@ -18,6 +18,12 @@
     if (!(this_present_num_tasks && that_present_num_tasks))     return false;
     if (this.num_tasks != that.num_tasks)     return false;
   }
+  boolean this_present_num_executors=true;
+  boolean that_present_num_executors=true;
+  if (this_present_num_executors || that_present_num_executors) {
+    if (!(this_present_num_executors && that_present_num_executors))     return false;
+    if (this.num_executors != that.num_executors)     return false;
+  }
   boolean this_present_num_workers=true;
   boolean that_present_num_workers=true;
   if (this_present_num_workers || that_present_num_workers) {

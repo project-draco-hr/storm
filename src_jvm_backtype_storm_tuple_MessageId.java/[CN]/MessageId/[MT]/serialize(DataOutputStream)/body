@@ -1,7 +1,0 @@
-{
-  WritableUtils.writeVInt(out,_anchorsToIds.size());
-  for (  Entry<Long,Long> anchorToId : _anchorsToIds.entrySet()) {
-    out.writeLong(anchorToId.getKey());
-    out.writeLong(anchorToId.getValue());
-  }
-}

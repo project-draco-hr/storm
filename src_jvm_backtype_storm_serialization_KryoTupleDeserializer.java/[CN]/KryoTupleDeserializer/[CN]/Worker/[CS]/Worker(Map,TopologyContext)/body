@@ -1,5 +1,0 @@
-{
-  _kryo=new KryoValuesDeserializer(conf);
-  _context=context;
-  _ids=new SerializationFactory.IdDictionary(context.getRawTopology());
-}

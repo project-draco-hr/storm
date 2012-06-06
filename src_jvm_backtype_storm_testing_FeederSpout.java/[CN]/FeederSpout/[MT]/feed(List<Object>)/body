@@ -1,3 +1,3 @@
 {
-  InprocMessaging.sendMessage(_id,tuple);
+  feed(tuple,UUID.randomUUID().toString());
 }

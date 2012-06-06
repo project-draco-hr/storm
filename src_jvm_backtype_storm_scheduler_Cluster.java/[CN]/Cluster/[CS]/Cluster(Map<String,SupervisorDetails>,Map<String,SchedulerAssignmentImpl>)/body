@@ -1,0 +1,15 @@
+{
+  this.supervisors=new HashMap<String,SupervisorDetails>(supervisors.size());
+  this.supervisors.putAll(supervisors);
+  this.assignments=new HashMap<String,SchedulerAssignmentImpl>(assignments.size());
+  this.assignments.putAll(assignments);
+  this.hostToId=new HashMap<String,List<String>>();
+  for (  String nodeId : supervisors.keySet()) {
+    SupervisorDetails supervisor=supervisors.get(nodeId);
+    String host=supervisor.getHost();
+    if (!this.supervisors.containsKey(host)) {
+      this.hostToId.put(host,new ArrayList<String>());
+    }
+    this.hostToId.get(host).add(nodeId);
+  }
+}

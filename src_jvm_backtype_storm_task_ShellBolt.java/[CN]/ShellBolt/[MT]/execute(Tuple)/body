@@ -2,7 +2,7 @@
   if (_exception != null) {
     throw new RuntimeException(_exception);
   }
-  String genId=Long.toString(MessageId.generateId());
+  String genId=Long.toString(_rand.nextLong());
   _inputs.put(genId,input);
   try {
     JSONObject obj=new JSONObject();
