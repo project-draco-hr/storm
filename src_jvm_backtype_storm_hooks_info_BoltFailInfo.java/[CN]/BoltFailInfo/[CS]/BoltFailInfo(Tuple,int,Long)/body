@@ -1,4 +1,5 @@
 {
   this.tuple=tuple;
+  this.failingTaskId=failingTaskId;
   this.failLatencyMs=failLatencyMs;
 }
