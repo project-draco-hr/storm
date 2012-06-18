@@ -7,5 +7,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('e', TType.STRUCT, 1)
         self.e.write(oprot)
         oprot.writeFieldEnd()
+    if (self.ite is not None):
+        oprot.writeFieldBegin('ite', TType.STRUCT, 2)
+        self.ite.write(oprot)
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

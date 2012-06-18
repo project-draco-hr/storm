@@ -1,0 +1,5 @@
+String topologyId
+Map topologyConf
+StormTopology topology
+int numWorkers
+Map<ExecutorDetails,String> executorToComponents

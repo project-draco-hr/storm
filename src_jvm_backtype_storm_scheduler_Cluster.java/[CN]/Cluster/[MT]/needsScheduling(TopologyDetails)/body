@@ -1,0 +1,8 @@
+{
+  int desiredNumWorkers=topology.getNumWorkers();
+  int assignedNumWorkers=this.getAssignedNumWorkers(topology);
+  if (desiredNumWorkers > assignedNumWorkers) {
+    return true;
+  }
+  return this.getUnassignedExecutors(topology).size() > 0;
+}

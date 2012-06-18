@@ -1,2 +1,3 @@
-def __init__(self, e=None):
+def __init__(self, e=None, ite=None):
     self.e = e
+    self.ite = ite

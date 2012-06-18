@@ -6,5 +6,11 @@
     if (!(this_present_e && that_present_e))     return false;
     if (!this.e.equals(that.e))     return false;
   }
+  boolean this_present_ite=true && this.is_set_ite();
+  boolean that_present_ite=true && that.is_set_ite();
+  if (this_present_ite || that_present_ite) {
+    if (!(this_present_ite && that_present_ite))     return false;
+    if (!this.ite.equals(that.ite))     return false;
+  }
   return true;
 }

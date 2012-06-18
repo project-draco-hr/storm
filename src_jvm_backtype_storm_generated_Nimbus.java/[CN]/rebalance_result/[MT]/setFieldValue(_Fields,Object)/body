@@ -8,5 +8,13 @@ case E:
       set_e((NotAliveException)value);
     }
   break;
+case ITE:
+if (value == null) {
+  unset_ite();
+}
+ else {
+  set_ite((InvalidTopologyException)value);
+}
+break;
 }
 }

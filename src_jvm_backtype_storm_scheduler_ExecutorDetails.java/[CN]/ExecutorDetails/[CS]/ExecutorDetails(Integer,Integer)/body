@@ -1,0 +1,4 @@
+{
+  this.startTask=startTask;
+  this.endTask=endTask;
+}
