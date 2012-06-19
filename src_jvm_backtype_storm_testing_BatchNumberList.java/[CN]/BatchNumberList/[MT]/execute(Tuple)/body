@@ -1,0 +1,9 @@
+{
+  System.out.println("RECEIVED: " + tuple.toString());
+  if (tuple.getSourceComponent().equals(_wordComponent)) {
+    this.word=tuple.getString(1);
+  }
+ else {
+    intSet.add(tuple.getInteger(1));
+  }
+}

@@ -1,0 +1,3 @@
+String id
+IRichBolt bolt
+Number parallelism

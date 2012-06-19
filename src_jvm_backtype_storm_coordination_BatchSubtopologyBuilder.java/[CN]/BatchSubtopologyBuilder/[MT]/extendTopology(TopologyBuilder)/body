@@ -1,0 +1,33 @@
+{
+  BoltDeclarer declarer=builder.setBolt(_masterId,new CoordinatedBolt(_masterBolt.bolt),_masterBolt.parallelism);
+  for (  InputDeclaration decl : _masterBolt.declarations) {
+    decl.declare(declarer);
+  }
+  for (  Map conf : _masterBolt.componentConfs) {
+    declarer.addConfigurations(conf);
+  }
+  for (  String id : _bolts.keySet()) {
+    Component component=_bolts.get(id);
+    Map<String,SourceArgs> coordinatedArgs=new HashMap<String,SourceArgs>();
+    for (    String c : componentBoltSubscriptions(component)) {
+      SourceArgs source;
+      if (c.equals(_masterId)) {
+        source=SourceArgs.single();
+      }
+ else {
+        source=SourceArgs.all();
+      }
+      coordinatedArgs.put(c,source);
+    }
+    BoltDeclarer input=builder.setBolt(id,new CoordinatedBolt(component.bolt,coordinatedArgs,null),component.parallelism);
+    for (    Map conf : component.componentConfs) {
+      input.addConfigurations(conf);
+    }
+    for (    String c : componentBoltSubscriptions(component)) {
+      input.directGrouping(c,Constants.COORDINATED_STREAM_ID);
+    }
+    for (    InputDeclaration d : component.declarations) {
+      d.declare(input);
+    }
+  }
+}

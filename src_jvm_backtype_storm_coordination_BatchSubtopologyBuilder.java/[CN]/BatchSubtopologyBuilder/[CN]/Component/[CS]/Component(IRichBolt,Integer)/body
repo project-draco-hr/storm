@@ -1,0 +1,4 @@
+{
+  this.bolt=bolt;
+  this.parallelism=parallelism;
+}

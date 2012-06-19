@@ -1,0 +1,4 @@
+{
+  _collector=collector;
+  System.out.println("STARTED: " + id);
+}

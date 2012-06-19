@@ -1,0 +1,5 @@
+{
+  Integer p=boltParallelism == null ? null : boltParallelism.intValue();
+  _masterBolt=new Component(new BasicBoltExecutor(masterBolt),p);
+  _masterId=masterBoltId;
+}
