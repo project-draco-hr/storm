@@ -1,0 +1,3 @@
+{
+  return setBolt(id,new BatchBoltExecutor(bolt),parallelism);
+}

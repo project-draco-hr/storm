@@ -1,0 +1,7 @@
+{
+  long id=Utils.secureRandomLong();
+  List<Object> toEmit=new ArrayList<Object>();
+  toEmit.add(id);
+  toEmit.addAll(input.getValues());
+  collector.emit(toEmit);
+}
