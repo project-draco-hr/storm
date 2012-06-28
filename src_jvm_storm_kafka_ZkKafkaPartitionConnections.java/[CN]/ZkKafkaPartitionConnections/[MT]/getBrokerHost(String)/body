@@ -2,8 +2,8 @@
   try {
     String zkData=new String(_zkClient.getData(_brokerZkPath + "/" + zkPath,true,new Stat()));
     String[] hostString=zkData.split(":");
-    String host=hostString[hostString.length - 1];
-    int port=Integer.parseInt(hostString[hostString.length - 2]);
+    String host=hostString[hostString.length - 2];
+    int port=Integer.parseInt(hostString[hostString.length - 1]);
     return new HostPort(host,port);
   }
  catch (  KeeperException e) {
