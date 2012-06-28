@@ -1,0 +1,11 @@
+{
+  super(conf);
+  _brokerZkPath=conf.brokerZkPath;
+  try {
+    _zkClient=new ZooKeeper(conf.brokerZkHost,2000,eventWatcher);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Error while creating zkClient: " + e);
+  }
+  setupHosts();
+}

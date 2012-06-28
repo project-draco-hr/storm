@@ -12,7 +12,12 @@
   Config componentConf=new Config();
   componentConf.registerSerialization(ZooMeta.class);
   _state=TransactionalState.newUserState(stateConf,_spoutConfig.id,componentConf);
-  _partitions=new KafkaPartitionConnections(_spoutConfig);
+  if (_spoutConfig.hosts == null) {
+    _partitions=new ZkKafkaPartitionConnections(_spoutConfig);
+  }
+ else {
+    _partitions=new KafkaPartitionConnections(_spoutConfig);
+  }
   int totalPartitions=_spoutConfig.partitionsPerHost * _spoutConfig.hosts.size();
   int numTasks=context.getComponentTasks(context.getThisComponentId()).size();
   for (int p=context.getThisTaskIndex(); p < totalPartitions; p+=numTasks) {

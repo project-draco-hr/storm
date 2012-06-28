@@ -1,0 +1,6 @@
+String brokerZkHost
+String brokerZkPath
+int partitionsPerHost
+String topic
+String zkRoot
+String id
