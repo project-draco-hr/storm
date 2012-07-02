@@ -3,8 +3,8 @@ def run(self):
     MODE = Bolt
     global ANCHOR_TUPLE
     (conf, context) = initComponent()
-    self.initialize(conf, context)
     try:
+        self.initialize(conf, context)
         while True:
             tup = readTuple()
             ANCHOR_TUPLE = tup

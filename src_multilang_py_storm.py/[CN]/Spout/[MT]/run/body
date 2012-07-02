@@ -2,8 +2,8 @@ def run(self):
     global MODE
     MODE = Spout
     (conf, context) = initComponent()
-    self.initialize(conf, context)
     try:
+        self.initialize(conf, context)
         while True:
             msg = readCommand()
             if (msg['command'] == 'next'):
