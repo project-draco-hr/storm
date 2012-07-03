@@ -1,5 +1,6 @@
 {
   _state=state;
+  _partition=id;
   _connections=connections;
   _spoutConfig=spoutConfig;
   _topologyInstanceId=topologyInstanceId;
