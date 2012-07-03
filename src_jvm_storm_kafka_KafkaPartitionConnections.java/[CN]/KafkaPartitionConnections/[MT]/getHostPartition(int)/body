@@ -1,3 +1,0 @@
-{
-  return globalPartition % _config.partitionsPerHost;
-}

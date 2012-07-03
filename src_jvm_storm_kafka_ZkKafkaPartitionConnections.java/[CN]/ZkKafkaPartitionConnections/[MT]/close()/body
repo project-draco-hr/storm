@@ -1,9 +1,0 @@
-{
-  super.close();
-  try {
-    _zkClient.close();
-  }
- catch (  InterruptedException e) {
-    throw new RuntimeException("Error while closing client");
-  }
-}

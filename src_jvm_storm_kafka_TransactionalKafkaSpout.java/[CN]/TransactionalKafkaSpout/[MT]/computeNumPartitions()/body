@@ -1,3 +1,4 @@
 {
-  return _config.hosts.size() * _config.partitionsPerHost;
+  StaticHosts hosts=(StaticHosts)_config.hosts;
+  return hosts.hosts.size() * hosts.partitionsPerHost;
 }

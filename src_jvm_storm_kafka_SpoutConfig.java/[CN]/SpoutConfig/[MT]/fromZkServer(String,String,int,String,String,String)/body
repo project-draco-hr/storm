@@ -1,6 +1,0 @@
-{
-  SpoutConfig conf=new SpoutConfig(null,partitionsPerHost,topic,zkRoot,id);
-  conf.brokerZkHost=brokerZkHost;
-  conf.brokerZkPath=brokerZkPath;
-  return conf;
-}

@@ -1,0 +1,5 @@
+DynamicPartitionConnections connections
+String topologyInstanceId
+SpoutConfig spoutConfig
+TransactionalState state
+GlobalPartitionId id

@@ -1,3 +1,5 @@
 {
-  _connections=new KafkaPartitionConnections(_config);
+  _connections=new StaticPartitionConnections(_config);
+  StaticHosts hosts=(StaticHosts)_config.hosts;
+  partitionsPerHost=hosts.partitionsPerHost;
 }

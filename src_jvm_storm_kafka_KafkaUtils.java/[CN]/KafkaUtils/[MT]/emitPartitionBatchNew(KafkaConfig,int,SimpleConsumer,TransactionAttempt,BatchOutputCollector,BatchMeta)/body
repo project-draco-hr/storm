@@ -1,11 +1,12 @@
 {
+  StaticHosts hosts=(StaticHosts)config.hosts;
   long offset=0;
   if (lastMeta != null) {
     offset=lastMeta.nextOffset;
   }
   ByteBufferMessageSet msgs;
   try {
-    msgs=consumer.fetch(new FetchRequest(config.topic,partition % config.partitionsPerHost,offset,config.fetchSizeBytes));
+    msgs=consumer.fetch(new FetchRequest(config.topic,partition % hosts.partitionsPerHost,offset,config.fetchSizeBytes));
   }
  catch (  Exception e) {
     if (e instanceof ConnectException) {

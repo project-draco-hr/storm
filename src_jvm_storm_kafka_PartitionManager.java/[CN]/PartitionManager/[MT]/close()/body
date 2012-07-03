@@ -1,0 +1,3 @@
+{
+  _connections.unregister(_partition.host,_partition.partition);
+}

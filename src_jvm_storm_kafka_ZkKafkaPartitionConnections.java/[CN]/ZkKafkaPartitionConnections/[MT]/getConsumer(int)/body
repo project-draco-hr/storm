@@ -1,4 +1,0 @@
-{
-  int hostIndex=partition / _config.partitionsPerHost;
-  return _kafka.get(hostIndex);
-}

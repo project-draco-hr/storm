@@ -1,3 +1,0 @@
-{
-  return new SpoutConfig(KafkaConfig.convertHosts(hosts),partitionsPerHost,topic,zkRoot,id);
-}

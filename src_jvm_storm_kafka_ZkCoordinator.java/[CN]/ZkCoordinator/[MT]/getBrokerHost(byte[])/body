@@ -1,0 +1,11 @@
+{
+  try {
+    String[] hostString=new String(contents,"UTF-8").split(":");
+    String host=hostString[hostString.length - 2];
+    int port=Integer.parseInt(hostString[hostString.length - 1]);
+    return new HostPort(host,port);
+  }
+ catch (  UnsupportedEncodingException e) {
+    throw new RuntimeException(e);
+  }
+}

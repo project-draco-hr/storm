@@ -1,0 +1,6 @@
+DynamicPartitionConnections connections
+SpoutConfig config
+int taskIndex
+int totalTasks
+TransactionalState state
+String topologyInstanceId

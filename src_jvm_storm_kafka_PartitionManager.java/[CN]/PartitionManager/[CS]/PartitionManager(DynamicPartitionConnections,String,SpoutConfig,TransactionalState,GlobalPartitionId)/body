@@ -1,0 +1,16 @@
+{
+  _state=state;
+  _connections=connections;
+  _spoutConfig=spoutConfig;
+  _topologyInstanceId=topologyInstanceId;
+  ZooMeta zooMeta=(ZooMeta)_state.getData(committedPath());
+  _consumer=connections.register(id.host,id.partition);
+  if (zooMeta == null || (!topologyInstanceId.equals(zooMeta.id) && spoutConfig.forceFromStart)) {
+    _committedTo=_consumer.getOffsetsBefore(spoutConfig.topic,id.partition,spoutConfig.startOffsetTime,1)[0];
+  }
+ else {
+    _committedTo=zooMeta.offset;
+  }
+  LOG.info("Starting Kafka " + _consumer.host() + ":"+ id.partition+ " from offset "+ _committedTo);
+  _emittedToOffset=_committedTo;
+}

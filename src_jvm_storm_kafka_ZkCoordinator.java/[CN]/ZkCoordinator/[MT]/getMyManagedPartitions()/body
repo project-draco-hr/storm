@@ -1,0 +1,6 @@
+{
+  if (_lastRefreshTime == null || (System.currentTimeMillis() - _lastRefreshTime) > _refreshFreqMs) {
+    refresh();
+  }
+  return _cachedList;
+}

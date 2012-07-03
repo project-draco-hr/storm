@@ -1,5 +1,0 @@
-{
-  super(hosts,partitionsPerHost,topic);
-  this.zkRoot=zkRoot;
-  this.id=id;
-}
