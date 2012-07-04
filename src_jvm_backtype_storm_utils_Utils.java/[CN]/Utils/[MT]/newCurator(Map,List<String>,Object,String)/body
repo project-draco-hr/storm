@@ -1,14 +1,3 @@
 {
-  List<String> serverPorts=new ArrayList<String>();
-  for (  String zkServer : (List<String>)servers) {
-    serverPorts.add(zkServer + ":" + Utils.getInt(port));
-  }
-  String zkStr=StringUtils.join(serverPorts,",") + root;
-  try {
-    CuratorFramework ret=CuratorFrameworkFactory.newClient(zkStr,Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_CONNECTION_TIMEOUT)),new RetryNTimes(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL))));
-    return ret;
-  }
- catch (  IOException e) {
-    throw new RuntimeException(e);
-  }
+  return newCurator(conf,servers,port,root,null);
 }
