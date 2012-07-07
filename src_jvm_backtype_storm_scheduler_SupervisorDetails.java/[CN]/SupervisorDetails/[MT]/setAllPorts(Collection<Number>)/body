@@ -1,0 +1,8 @@
+{
+  this.allPorts=new ArrayList<Integer>();
+  if (allPorts != null) {
+    for (    Number n : allPorts) {
+      this.allPorts.add(n.intValue());
+    }
+  }
+}

@@ -1,9 +1,0 @@
-{
-  this.id=id;
-  this.host=host;
-  this.schedulerMeta=schedulerMeta;
-  this.allPorts=new ArrayList<Integer>();
-  if (allPorts != null && !allPorts.isEmpty()) {
-    this.allPorts.addAll(allPorts);
-  }
-}

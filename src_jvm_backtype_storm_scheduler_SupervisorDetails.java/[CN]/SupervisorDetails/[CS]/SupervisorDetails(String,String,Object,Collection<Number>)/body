@@ -1,0 +1,6 @@
+{
+  this.id=id;
+  this.host=host;
+  this.schedulerMeta=schedulerMeta;
+  setAllPorts(allPorts);
+}
