@@ -1,8 +1,10 @@
 {
   try {
     final long nextSequence=_consumer.get() + 1;
-    final long availableSequence=_barrier.waitFor(nextSequence);
-    consumeBatchToCursor(availableSequence,handler);
+    final long availableSequence=_barrier.waitFor(nextSequence,10,TimeUnit.MILLISECONDS);
+    if (availableSequence >= nextSequence) {
+      consumeBatchToCursor(availableSequence,handler);
+    }
   }
  catch (  AlertException e) {
     throw new RuntimeException(e);
