@@ -6,7 +6,7 @@
   }
   List<Object> tup=_spoutConfig.scheme.deserialize(Utils.toByteArray(toEmit.msg.payload()));
   collector.emit(tup,new KafkaMessageId(_partition,toEmit.offset));
-  if (_waitingToEmit.size() > 0) {
+  if (!_waitingToEmit.isEmpty()) {
     return EmitState.EMITTED_MORE_LEFT;
   }
  else {

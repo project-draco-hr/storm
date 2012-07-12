@@ -7,4 +7,5 @@
     _waitingToEmit.add(new MessageAndRealOffset(msg.message(),_emittedToOffset));
     _emittedToOffset=msg.offset();
   }
+  LOG.info("Added " + msgs.underlying().size() + " messages from Kafka: "+ _consumer.host()+ ":"+ _partition.partition+ " to internal buffers");
 }
