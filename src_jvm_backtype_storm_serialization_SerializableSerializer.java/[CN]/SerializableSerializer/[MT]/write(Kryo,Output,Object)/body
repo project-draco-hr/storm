@@ -1,0 +1,14 @@
+{
+  ByteArrayOutputStream bos=new ByteArrayOutputStream();
+  try {
+    ObjectOutputStream oos=new ObjectOutputStream(bos);
+    oos.writeObject(object);
+    oos.flush();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  byte[] ser=bos.toByteArray();
+  output.writeInt(ser.length);
+  output.writeBytes(ser);
+}

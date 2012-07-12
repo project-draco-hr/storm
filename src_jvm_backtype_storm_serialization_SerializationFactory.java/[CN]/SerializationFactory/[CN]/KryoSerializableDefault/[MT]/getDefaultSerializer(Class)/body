@@ -1,6 +1,6 @@
 {
   if (_override) {
-    return new JavaSerializer();
+    return new SerializableSerializer();
   }
  else {
     return super.getDefaultSerializer(type);
