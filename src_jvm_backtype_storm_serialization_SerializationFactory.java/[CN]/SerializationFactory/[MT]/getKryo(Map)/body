@@ -29,7 +29,7 @@
         k.register(klass);
       }
  else {
-        k.register(klass,(Serializer)serializerClass.newInstance());
+        k.register(klass,resolveSerializerInstance(k,klass,serializerClass));
       }
     }
  catch (    ClassNotFoundException e) {
@@ -39,12 +39,6 @@
  else {
         throw new RuntimeException(e);
       }
-    }
-catch (    InstantiationException e) {
-      throw new RuntimeException(e);
-    }
-catch (    IllegalAccessException e) {
-      throw new RuntimeException(e);
     }
   }
   k.overrideDefault(true);
