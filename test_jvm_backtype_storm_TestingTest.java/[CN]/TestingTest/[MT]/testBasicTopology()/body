@@ -1,0 +1,23 @@
+{
+  Testing.withSimulatedTimeLocalCluster(new TestJob(){
+    @Override public Object run(    Map clusterMap){
+      TopologyBuilder builder=new TopologyBuilder();
+      builder.setSpout("1",new TestWordSpout(true),3);
+      builder.setBolt("2",new TestWordCounter(),4).fieldsGrouping("1",new Fields("word"));
+      builder.setBolt("3",new TestGlobalCount()).globalGrouping("1");
+      builder.setBolt("4",new TestAggregatesCounter()).globalGrouping("2");
+      StormTopology topology=builder.createTopology();
+      MockedSources mockedSources=new MockedSources();
+      mockedSources.addMockedData("1",new Values("nathan"),new Values("bob"),new Values("joey"),new Values("nathan"));
+      Config conf=new Config();
+      conf.setNumWorkers(2);
+      Map result=Testing.completeTopology(clusterMap,topology,mockedSources,conf);
+      assertTrue(Testing.eq(Utils.list(new Values("nathan"),new Values("bob"),new Values("joey"),new Values("nathan")),Testing.readTuples(result,"1")));
+      assertTrue(Testing.eq(Utils.list(new Values("nathan",1),new Values("nathan",2),new Values("bob",1),new Values("joey",1)),Testing.readTuples(result,"2")));
+      assertTrue(Testing.eq(Utils.list(new Values(1),new Values(2),new Values(3),new Values(4)),Testing.readTuples(result,"3")));
+      assertTrue(Testing.eq(Utils.list(new Values(1),new Values(2),new Values(3),new Values(4)),Testing.readTuples(result,"4")));
+      return null;
+    }
+  }
+);
+}

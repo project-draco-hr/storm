@@ -1,0 +1,10 @@
+{
+  if (!data.containsKey(spoutId)) {
+    data.put(spoutId,new ArrayList<FixedTuple>());
+  }
+  List<FixedTuple> tuples=data.get(spoutId);
+  for (int i=0; i < valueses.length; i++) {
+    FixedTuple tuple=new FixedTuple(streamId,valueses[i]);
+    tuples.add(tuple);
+  }
+}
