@@ -1,0 +1,4 @@
+{
+  Object daemonConf=get(Keyword.intern("daemon-conf"));
+  return (daemonConf == null) ? null : (Config)daemonConf;
+}

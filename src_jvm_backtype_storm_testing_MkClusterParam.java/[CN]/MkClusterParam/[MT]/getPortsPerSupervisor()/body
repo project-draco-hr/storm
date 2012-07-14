@@ -1,0 +1,4 @@
+{
+  Object portsPerSupervisor=get(Keyword.intern("ports-per-supervisor"));
+  return (portsPerSupervisor == null) ? null : (Integer)portsPerSupervisor;
+}
