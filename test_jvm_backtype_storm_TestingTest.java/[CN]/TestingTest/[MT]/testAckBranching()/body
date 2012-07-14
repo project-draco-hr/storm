@@ -5,8 +5,8 @@
       FeederSpout feederSpout=ackTrackingFeeder(tracker,"num");
       TopologyBuilder builder=new TopologyBuilder();
       builder.setSpout("1",feederSpout);
-      builder.setBolt("2",new IdentityBolt()).shuffleGrouping("1");
-      builder.setBolt("3",new IdentityBolt()).shuffleGrouping("1");
+      builder.setBolt("2",new IdentityBolt(new Fields("num"))).shuffleGrouping("1");
+      builder.setBolt("3",new IdentityBolt(new Fields("num"))).shuffleGrouping("1");
       builder.setBolt("4",new AggBolt(4)).shuffleGrouping("2").shuffleGrouping("3");
       StormTopology topology=builder.createTopology();
       TrackedTopology tracked=Testing.mkTrackedTopology(cluster,topology);
