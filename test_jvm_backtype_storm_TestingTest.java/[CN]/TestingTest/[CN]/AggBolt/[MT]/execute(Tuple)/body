@@ -1,0 +1,10 @@
+{
+  seen.add(input);
+  if (seen.size() == this.amt) {
+    _collector.emit(seen,new Values(1));
+    for (    Tuple tuple : seen) {
+      _collector.ack(tuple);
+    }
+    seen.clear();
+  }
+}

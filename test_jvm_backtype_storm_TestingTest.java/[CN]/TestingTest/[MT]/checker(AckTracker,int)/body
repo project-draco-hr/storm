@@ -1,0 +1,4 @@
+{
+  assertEquals(val,tracker.getNumAcks());
+  tracker.resetNumAcks();
+}
