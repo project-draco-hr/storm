@@ -1,3 +1,0 @@
-{
-  put(Keyword.intern("ports-per-supervisor"),portsPerSupervisor);
-}
