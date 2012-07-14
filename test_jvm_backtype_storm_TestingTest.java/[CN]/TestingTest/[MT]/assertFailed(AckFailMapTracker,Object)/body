@@ -1,0 +1,21 @@
+{
+  boolean notAllFailed=true;
+  while (notAllFailed) {
+    try {
+      Thread.sleep(1);
+    }
+ catch (    InterruptedException e) {
+      e.printStackTrace();
+    }
+    int notFailedCnt=0;
+    for (int i=0; i < ids.length; i++) {
+      if (!tracker.isFailed(ids[i])) {
+        notFailedCnt+=1;
+        break;
+      }
+    }
+    if (notFailedCnt == 0) {
+      notAllFailed=false;
+    }
+  }
+}

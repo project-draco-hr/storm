@@ -1,0 +1,6 @@
+{
+  flag=!flag;
+  if (flag) {
+    _collector.ack(input);
+  }
+}

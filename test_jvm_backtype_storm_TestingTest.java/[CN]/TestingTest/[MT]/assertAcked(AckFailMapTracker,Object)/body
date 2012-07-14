@@ -1,0 +1,21 @@
+{
+  boolean notAllAcked=true;
+  while (notAllAcked) {
+    try {
+      Thread.sleep(1);
+    }
+ catch (    InterruptedException e) {
+      e.printStackTrace();
+    }
+    int notAckedCnt=0;
+    for (int i=0; i < ids.length; i++) {
+      if (!tracker.isAcked(ids[i])) {
+        notAckedCnt+=1;
+        break;
+      }
+    }
+    if (notAckedCnt == 0) {
+      notAllAcked=false;
+    }
+  }
+}
