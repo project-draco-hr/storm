@@ -1,0 +1,10 @@
+{
+  assertFalse(Time.isSimulating());
+  Testing.withSimulatedTime(new Runnable(){
+    @Override public void run(){
+      assertTrue(Time.isSimulating());
+    }
+  }
+);
+  assertFalse(Time.isSimulating());
+}
