@@ -4,6 +4,7 @@
   _subprocess=builder.start();
   processIn=new DataOutputStream(_subprocess.getOutputStream());
   processOut=new BufferedReader(new InputStreamReader(_subprocess.getInputStream()));
+  processErrorStream=_subprocess.getErrorStream();
   JSONObject setupInfo=new JSONObject();
   setupInfo.put("pidDir",context.getPIDDir());
   setupInfo.put("conf",conf);
