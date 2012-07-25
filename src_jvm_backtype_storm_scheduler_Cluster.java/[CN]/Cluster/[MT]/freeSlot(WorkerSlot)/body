@@ -1,11 +1,7 @@
 {
-  SupervisorDetails supervisor=this.supervisors.get(slot.getNodeId());
-  if (supervisor != null) {
-    for (    SchedulerAssignmentImpl assignment : this.assignments.values()) {
-      if (assignment.isSlotOccupied(slot)) {
-        assignment.unassignBySlot(slot);
-        break;
-      }
+  for (  SchedulerAssignmentImpl assignment : this.assignments.values()) {
+    if (assignment.isSlotOccupied(slot)) {
+      assignment.unassignBySlot(slot);
     }
   }
 }
