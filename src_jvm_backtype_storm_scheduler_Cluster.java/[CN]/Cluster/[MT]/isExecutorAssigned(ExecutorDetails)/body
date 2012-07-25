@@ -1,8 +1,0 @@
-{
-  for (  SchedulerAssignment assignment : this.assignments.values()) {
-    if (assignment.isExecutorAssigned(executor)) {
-      return true;
-    }
-  }
-  return false;
-}
