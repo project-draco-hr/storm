@@ -1,6 +1,5 @@
 {
-  Collection<ExecutorDetails> allExecutors=new ArrayList<ExecutorDetails>();
-  allExecutors.addAll(topology.getExecutors());
+  Collection<ExecutorDetails> allExecutors=new HashSet(topology.getExecutors());
   SchedulerAssignment assignment=this.assignments.get(topology.getId());
   if (assignment != null) {
     Collection<ExecutorDetails> assignedExecutors=assignment.getExecutors();
