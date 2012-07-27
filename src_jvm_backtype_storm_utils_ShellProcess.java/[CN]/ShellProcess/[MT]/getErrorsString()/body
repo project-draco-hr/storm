@@ -1,0 +1,13 @@
+{
+  if (processErrorStream != null) {
+    try {
+      return IOUtils.toString(processErrorStream);
+    }
+ catch (    IOException e) {
+      return "(Unable to capture error stream)";
+    }
+  }
+ else {
+    return "";
+  }
+}
