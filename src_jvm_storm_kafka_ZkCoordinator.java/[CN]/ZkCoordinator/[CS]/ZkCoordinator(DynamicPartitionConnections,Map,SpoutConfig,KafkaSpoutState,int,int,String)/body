@@ -1,11 +1,11 @@
 {
-  _config=config;
+  _spoutConfig=spoutConfig;
   _connections=connections;
   _taskIndex=taskIndex;
   _totalTasks=totalTasks;
-  _state=state;
   _topologyInstanceId=topologyInstanceId;
-  _brokerConf=(ZkHosts)config.hosts;
+  _state=state;
+  _brokerConf=(ZkHosts)_spoutConfig.hosts;
   _refreshFreqMs=_brokerConf.refreshFreqSecs * 1000;
   try {
     _curator=CuratorFrameworkFactory.newClient(_brokerConf.brokerZkStr,Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT)),15000,new RetryNTimes(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL))));

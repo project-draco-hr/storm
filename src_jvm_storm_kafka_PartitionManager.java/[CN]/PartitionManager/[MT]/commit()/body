@@ -9,7 +9,10 @@
   }
   if (committedTo != _committedTo) {
     LOG.info("Writing committed offset to ZK: " + committedTo);
-    _state.setData(committedPath(),new ZooMeta(_topologyInstanceId,committedTo));
+    Map<String,Object> data=new LinkedHashMap<String,Object>();
+    data.put("id",_topologyInstanceId);
+    data.put("offset",committedTo);
+    _state.writeData(committedPath(),data);
     LOG.info("Wrote committed offset to ZK: " + committedTo);
     _committedTo=committedTo;
   }

@@ -1,5 +1,5 @@
 DynamicPartitionConnections connections
 String topologyInstanceId
+KafkaSpoutState state
 SpoutConfig spoutConfig
-TransactionalState state
 GlobalPartitionId id

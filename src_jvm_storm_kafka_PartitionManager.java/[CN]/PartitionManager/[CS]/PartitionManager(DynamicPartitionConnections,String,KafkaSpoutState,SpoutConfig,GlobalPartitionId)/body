@@ -1,16 +1,17 @@
 {
-  _state=state;
   _partition=id;
   _connections=connections;
   _spoutConfig=spoutConfig;
   _topologyInstanceId=topologyInstanceId;
-  ZooMeta zooMeta=(ZooMeta)_state.getData(committedPath());
   _consumer=connections.register(id.host,id.partition);
-  if (zooMeta == null || (!topologyInstanceId.equals(zooMeta.id) && spoutConfig.forceFromStart)) {
+  _state=state;
+  Map<String,Object> st=_state.readData(committedPath());
+  if (st == null || (!topologyInstanceId.equals((String)st.get("id")) && spoutConfig.forceFromStart)) {
     _committedTo=_consumer.getOffsetsBefore(spoutConfig.topic,id.partition,spoutConfig.startOffsetTime,1)[0];
   }
  else {
-    _committedTo=zooMeta.offset;
+    _committedTo=(Long)st.get("offset");
+    LOG.info("Read last commit offset from zookeeper: " + _committedTo);
   }
   LOG.info("Starting Kafka " + _consumer.host() + ":"+ id.partition+ " from offset "+ _committedTo);
   _emittedToOffset=_committedTo;
