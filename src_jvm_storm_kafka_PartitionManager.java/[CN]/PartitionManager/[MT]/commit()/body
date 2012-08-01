@@ -12,7 +12,7 @@
     Map<String,Object> data=new LinkedHashMap<String,Object>();
     data.put("id",_topologyInstanceId);
     data.put("offset",committedTo);
-    _state.writeData(committedPath(),data);
+    _state.writeJSON(committedPath(),data);
     LOG.info("Wrote committed offset to ZK: " + committedTo);
     _committedTo=committedTo;
   }

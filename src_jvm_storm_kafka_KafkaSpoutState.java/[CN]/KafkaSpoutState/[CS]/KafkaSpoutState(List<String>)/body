@@ -1,3 +1,0 @@
-{
-  _zkClient=new ZkClient(Utils.join(zkServers,","),10000);
-}

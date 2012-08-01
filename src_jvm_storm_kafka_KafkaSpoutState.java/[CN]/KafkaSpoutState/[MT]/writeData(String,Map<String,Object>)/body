@@ -1,6 +1,0 @@
-{
-  if (!_zkClient.exists(path)) {
-    _zkClient.createPersistent(path,true);
-  }
-  _zkClient.writeData(path,JSONValue.toJSONString(data));
-}

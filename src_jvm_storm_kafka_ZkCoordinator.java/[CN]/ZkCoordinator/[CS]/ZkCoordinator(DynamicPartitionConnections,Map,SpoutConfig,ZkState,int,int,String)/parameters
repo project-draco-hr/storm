@@ -1,7 +1,7 @@
 DynamicPartitionConnections connections
 Map conf
 SpoutConfig spoutConfig
-KafkaSpoutState state
+ZkState state
 int taskIndex
 int totalTasks
 String topologyInstanceId
