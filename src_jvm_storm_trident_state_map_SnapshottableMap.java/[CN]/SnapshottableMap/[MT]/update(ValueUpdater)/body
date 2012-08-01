@@ -1,0 +1,4 @@
+{
+  List<ValueUpdater> updaters=Arrays.asList(updater);
+  return multiUpdate(_keys,updaters).get(0);
+}

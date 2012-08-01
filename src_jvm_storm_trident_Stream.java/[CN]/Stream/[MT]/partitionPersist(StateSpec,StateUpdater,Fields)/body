@@ -1,0 +1,3 @@
+{
+  return partitionPersist(stateSpec,null,updater,functionFields);
+}

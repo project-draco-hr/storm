@@ -1,0 +1,12 @@
+{
+  return new PriorityQueue(_n,new Comparator<TridentTuple>(){
+    @Override public int compare(    TridentTuple t1,    TridentTuple t2){
+      Comparable c1=(Comparable)t1.getValueByField(_sortField);
+      Comparable c2=(Comparable)t2.getValueByField(_sortField);
+      int ret=c1.compareTo(c2);
+      if (_reverse)       ret*=-1;
+      return ret;
+    }
+  }
+);
+}

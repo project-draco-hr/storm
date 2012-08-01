@@ -1,0 +1,3 @@
+{
+  return merge(streams.get(0).getOutputFields(),streams);
+}

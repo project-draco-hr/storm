@@ -1,0 +1,5 @@
+{
+  for (  Node n : _nodes) {
+    declarer.declareStream(n.streamId,TridentUtils.fieldsConcat(new Fields("$batchId"),n.allOutputFields));
+  }
+}

@@ -1,0 +1,4 @@
+{
+  IndexedEdge other=(IndexedEdge)o;
+  return source.equals(other.source) && target.equals(other.target) && index == other.index;
+}

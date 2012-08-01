@@ -1,0 +1,25 @@
+{
+  Map<Integer,Object> metas=new HashMap<Integer,Object>();
+  _cachedMetas.put(tx.getTransactionId(),metas);
+  long partitions=_emitter.numPartitions();
+  Entry<Long,Map<Integer,Object>> entry=_cachedMetas.lowerEntry(tx.getTransactionId());
+  Map<Integer,Object> prevCached;
+  if (entry != null) {
+    prevCached=entry.getValue();
+  }
+ else {
+    prevCached=new HashMap<Integer,Object>();
+  }
+  for (int i=_index; i < partitions; i+=_numTasks) {
+    RotatingTransactionalState state=_partitionStates.get(i);
+    if (state == null) {
+      state=new RotatingTransactionalState(_state,"" + i);
+      _partitionStates.put(i,state);
+    }
+    state.removeState(tx.getTransactionId());
+    Object lastMeta=prevCached.get(i);
+    if (lastMeta == null)     lastMeta=state.getLastState();
+    Object meta=_emitter.emitPartitionBatch(tx,collector,i,lastMeta);
+    metas.put(i,meta);
+  }
+}

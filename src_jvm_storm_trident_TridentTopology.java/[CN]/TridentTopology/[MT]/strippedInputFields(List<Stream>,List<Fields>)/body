@@ -1,0 +1,7 @@
+{
+  List<Fields> ret=new ArrayList<Fields>();
+  for (int i=0; i < streams.size(); i++) {
+    ret.add(TridentUtils.fieldsSubtract(streams.get(i).getOutputFields(),joinFields.get(i)));
+  }
+  return ret;
+}

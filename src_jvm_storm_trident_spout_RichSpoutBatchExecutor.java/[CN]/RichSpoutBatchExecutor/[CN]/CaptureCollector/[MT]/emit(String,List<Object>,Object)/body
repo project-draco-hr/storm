@@ -1,0 +1,6 @@
+{
+  if (id != null)   ids.add(id);
+  numEmitted++;
+  _collector.emit(values);
+  return null;
+}

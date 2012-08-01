@@ -1,0 +1,4 @@
+Fields inputFields
+Aggregator agg
+Fields functionFields
+boolean isCombiner

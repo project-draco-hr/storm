@@ -1,0 +1,6 @@
+{
+  this.nodeId=UUID.randomUUID().toString();
+  this.allOutputFields=allOutputFields;
+  this.streamId=streamId;
+  this.creationIndex=INDEX.incrementAndGet();
+}

@@ -1,0 +1,7 @@
+{
+  tracked.failed=true;
+  if (tracked.delayedAck != null) {
+    _collector.fail(tracked.delayedAck);
+    tracked.delayedAck=null;
+  }
+}

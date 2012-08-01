@@ -1,0 +1,13 @@
+{
+  List<Fields> fullInputFields=new ArrayList<Fields>();
+  List<Stream> streams=new ArrayList<Stream>();
+  List<Fields> fullGroupFields=new ArrayList<Fields>();
+  for (int i=0; i < groupedStreams.size(); i++) {
+    GroupedStream gs=groupedStreams.get(i);
+    Fields groupFields=gs.getGroupFields();
+    fullGroupFields.add(groupFields);
+    streams.add(gs.toStream().partitionBy(groupFields));
+    fullInputFields.add(TridentUtils.fieldsUnion(groupFields,inputFields.get(i)));
+  }
+  return multiReduce(fullInputFields,streams,new GroupedMultiReducerExecutor(function,fullGroupFields,inputFields),outputFields);
+}

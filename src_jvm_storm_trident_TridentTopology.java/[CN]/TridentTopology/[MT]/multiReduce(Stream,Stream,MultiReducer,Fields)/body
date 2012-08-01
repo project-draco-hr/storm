@@ -1,0 +1,3 @@
+{
+  return multiReduce(Arrays.asList(s1,s2),function,outputFields);
+}

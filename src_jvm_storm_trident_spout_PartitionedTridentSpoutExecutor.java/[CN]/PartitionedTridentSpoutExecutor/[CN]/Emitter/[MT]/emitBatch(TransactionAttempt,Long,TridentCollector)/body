@@ -1,0 +1,18 @@
+{
+  for (int i=_index; i < partitions; i+=_numTasks) {
+    if (!_partitionStates.containsKey(i)) {
+      _partitionStates.put(i,new RotatingTransactionalState(_state,"" + i));
+    }
+    RotatingTransactionalState state=_partitionStates.get(i);
+    final int partition=i;
+    Object meta=state.getStateOrCreate(tx.getTransactionId(),new RotatingTransactionalState.StateInitializer(){
+      @Override public Object init(      long txid,      Object lastState){
+        return _emitter.emitPartitionBatchNew(tx,collector,partition,lastState);
+      }
+    }
+);
+    if (meta != null) {
+      _emitter.emitPartitionBatch(tx,collector,partition,meta);
+    }
+  }
+}

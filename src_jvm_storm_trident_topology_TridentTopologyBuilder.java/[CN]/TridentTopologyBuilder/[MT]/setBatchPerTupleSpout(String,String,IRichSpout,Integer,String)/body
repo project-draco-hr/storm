@@ -1,0 +1,8 @@
+{
+  Map<String,String> batchGroups=new HashMap();
+  batchGroups.put(streamName,batchGroup);
+  markBatchGroups(id,batchGroups);
+  SpoutComponent c=new SpoutComponent(spout,streamName,parallelism,batchGroup);
+  _batchPerTupleSpouts.put(id,c);
+  return new SpoutDeclarerImpl(c);
+}

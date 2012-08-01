@@ -1,0 +1,7 @@
+{
+  Object ret=stored;
+  for (  TridentTuple t : tuples) {
+    ret=this.agg.reduce(ret,t);
+  }
+  return ret;
+}

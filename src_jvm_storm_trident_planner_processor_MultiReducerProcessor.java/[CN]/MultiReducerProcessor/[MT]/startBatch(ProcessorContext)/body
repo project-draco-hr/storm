@@ -1,0 +1,4 @@
+{
+  _collector.setContext(processorContext);
+  processorContext.state[_context.getStateIndex()]=_reducer.init(_collector);
+}

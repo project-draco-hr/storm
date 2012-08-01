@@ -1,0 +1,9 @@
+{
+  List<IndexedEdge> incoming=new ArrayList(g.incomingEdgesOf(n));
+  Collections.sort(incoming);
+  List<T> ret=new ArrayList();
+  for (  IndexedEdge e : incoming) {
+    ret.add((T)e.source);
+  }
+  return ret;
+}

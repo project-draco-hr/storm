@@ -1,0 +1,3 @@
+{
+  _collector.emit(streamId,new ConsList(context.batchId,tuple));
+}

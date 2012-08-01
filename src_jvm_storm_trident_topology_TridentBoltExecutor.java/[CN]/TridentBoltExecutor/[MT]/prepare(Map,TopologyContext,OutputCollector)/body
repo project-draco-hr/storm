@@ -1,0 +1,33 @@
+{
+  _batches=new RotatingMap(2);
+  _context=context;
+  _collector=collector;
+  _coordCollector=new CoordinatedOutputCollector(collector);
+  _coordOutputCollector=new BatchOutputCollectorImpl(new OutputCollector(_coordCollector));
+  _coordConditions=(Map)context.getExecutorData("__coordConditions");
+  if (_coordConditions == null) {
+    _coordConditions=new HashMap();
+    for (    String batchGroup : _coordSpecs.keySet()) {
+      CoordSpec spec=_coordSpecs.get(batchGroup);
+      CoordCondition cond=new CoordCondition();
+      cond.commitStream=spec.commitStream;
+      cond.expectedTaskReports=0;
+      for (      String comp : spec.coords.keySet()) {
+        CoordType ct=spec.coords.get(comp);
+        if (ct.equals(CoordType.single())) {
+          cond.expectedTaskReports+=1;
+        }
+ else {
+          cond.expectedTaskReports+=context.getComponentTasks(comp).size();
+        }
+      }
+      cond.targetTasks=new HashSet<Integer>();
+      for (      String component : Utils.get(context.getThisTargets(),COORD_STREAM(batchGroup),new HashMap<String,Grouping>()).keySet()) {
+        cond.targetTasks.addAll(context.getComponentTasks(component));
+      }
+      _coordConditions.put(batchGroup,cond);
+    }
+    context.setExecutorData("_coordConditions",_coordConditions);
+  }
+  _bolt.prepare(conf,context,_coordOutputCollector);
+}

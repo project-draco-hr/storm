@@ -1,0 +1,8 @@
+{
+  List<IndexedEdge> outgoing=new ArrayList(g.outgoingEdgesOf(n));
+  List<T> ret=new ArrayList();
+  for (  IndexedEdge e : outgoing) {
+    ret.add((T)e.target);
+  }
+  return ret;
+}

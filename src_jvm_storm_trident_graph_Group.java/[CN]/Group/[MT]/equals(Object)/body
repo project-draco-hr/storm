@@ -1,0 +1,3 @@
+{
+  return id.equals(((Group)o).id);
+}

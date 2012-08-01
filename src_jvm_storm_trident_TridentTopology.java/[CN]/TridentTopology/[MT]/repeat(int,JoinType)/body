@@ -1,0 +1,7 @@
+{
+  List<JoinType> ret=new ArrayList<JoinType>();
+  for (int i=0; i < n; i++) {
+    ret.add(type);
+  }
+  return ret;
+}

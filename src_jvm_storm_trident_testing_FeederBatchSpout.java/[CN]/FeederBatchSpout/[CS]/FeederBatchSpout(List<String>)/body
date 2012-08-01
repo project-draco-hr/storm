@@ -1,0 +1,5 @@
+{
+  _outFields=new Fields(fields);
+  _id=RegisteredGlobalState.registerState(new CopyOnWriteArrayList());
+  _semaphoreId=RegisteredGlobalState.registerState(new CopyOnWriteArrayList());
+}

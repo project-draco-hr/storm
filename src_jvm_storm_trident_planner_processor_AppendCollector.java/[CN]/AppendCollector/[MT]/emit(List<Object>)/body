@@ -1,0 +1,6 @@
+{
+  TridentTuple toEmit=_factory.create((TridentTupleView)tuple,values);
+  for (  TupleReceiver r : _triContext.getReceivers()) {
+    r.execute(context,_triContext.getOutStreamId(),toEmit);
+  }
+}

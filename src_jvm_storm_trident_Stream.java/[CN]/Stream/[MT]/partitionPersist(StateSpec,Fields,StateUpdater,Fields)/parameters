@@ -1,0 +1,4 @@
+StateSpec stateSpec
+Fields inputFields
+StateUpdater updater
+Fields functionFields

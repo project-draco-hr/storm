@@ -1,0 +1,9 @@
+{
+  Node ret=null;
+  for (  Node n : g) {
+    if (ret == null || n.creationIndex > ret.creationIndex) {
+      ret=n;
+    }
+  }
+  return ret;
+}

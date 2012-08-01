@@ -1,0 +1,3 @@
+{
+  return _stream.partitionBy(_groupFields).stateQuery(state,inputFields,function,functionFields);
+}

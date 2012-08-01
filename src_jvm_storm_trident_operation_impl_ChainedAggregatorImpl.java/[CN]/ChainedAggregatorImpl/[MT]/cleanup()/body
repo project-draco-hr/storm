@@ -1,0 +1,5 @@
+{
+  for (  Aggregator a : _aggs) {
+    a.cleanup();
+  }
+}

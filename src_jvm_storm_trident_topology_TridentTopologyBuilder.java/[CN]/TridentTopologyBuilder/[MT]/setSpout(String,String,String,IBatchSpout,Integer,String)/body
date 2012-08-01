@@ -1,0 +1,3 @@
+{
+  return setSpout(id,streamName,txStateId,new BatchSpoutExecutor(spout),parallelism,batchGroup);
+}

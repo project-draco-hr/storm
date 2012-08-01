@@ -1,0 +1,5 @@
+{
+  for (  String stream : batchGroups.keySet()) {
+    _batchIds.put(new GlobalStreamId(component,stream),batchGroups.get(stream));
+  }
+}

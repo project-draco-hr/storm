@@ -1,0 +1,6 @@
+{
+  ois.defaultReadObject();
+  byte[] ser=new byte[ois.readInt()];
+  ois.readFully(ser);
+  this.thriftGrouping=TridentUtils.thriftDeserialize(Grouping.class,ser);
+}

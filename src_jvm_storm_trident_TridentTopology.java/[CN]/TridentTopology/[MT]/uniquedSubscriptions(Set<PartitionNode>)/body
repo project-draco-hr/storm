@@ -1,0 +1,11 @@
+{
+  Map<String,PartitionNode> ret=new HashMap();
+  for (  PartitionNode n : subscriptions) {
+    PartitionNode curr=ret.get(n.streamId);
+    if (curr != null && !curr.thriftGrouping.equals(n.thriftGrouping)) {
+      throw new RuntimeException("Multiple subscriptions to the same stream with different groupings. Should be impossible since that is explicitly guarded against.");
+    }
+    ret.put(n.streamId,n);
+  }
+  return ret.values();
+}

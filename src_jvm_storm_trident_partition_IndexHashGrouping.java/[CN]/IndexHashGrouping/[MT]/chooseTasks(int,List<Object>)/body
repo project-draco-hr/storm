@@ -1,0 +1,4 @@
+{
+  int i=objectToIndex(values.get(_index),_targets.size());
+  return Arrays.asList(_targets.get(i));
+}

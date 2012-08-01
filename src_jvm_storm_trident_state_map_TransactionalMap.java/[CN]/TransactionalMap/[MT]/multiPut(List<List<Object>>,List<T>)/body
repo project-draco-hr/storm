@@ -1,0 +1,7 @@
+{
+  List<TransactionalValue> newVals=new ArrayList<TransactionalValue>(vals.size());
+  for (  T val : vals) {
+    newVals.add(new TransactionalValue(_currTx,val));
+  }
+  _backing.multiPut(keys,newVals);
+}

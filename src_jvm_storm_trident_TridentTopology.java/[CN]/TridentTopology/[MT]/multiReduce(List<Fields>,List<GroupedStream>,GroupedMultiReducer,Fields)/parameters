@@ -1,0 +1,4 @@
+List<Fields> inputFields
+List<GroupedStream> groupedStreams
+GroupedMultiReducer function
+Fields outputFields

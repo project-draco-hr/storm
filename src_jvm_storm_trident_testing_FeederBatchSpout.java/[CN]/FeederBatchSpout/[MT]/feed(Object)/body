@@ -1,0 +1,11 @@
+{
+  Semaphore sem=new Semaphore(0);
+  ((List)RegisteredGlobalState.getState(_semaphoreId)).add(sem);
+  ((List)RegisteredGlobalState.getState(_id)).add(tuples);
+  try {
+    sem.acquire();
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException(e);
+  }
+}

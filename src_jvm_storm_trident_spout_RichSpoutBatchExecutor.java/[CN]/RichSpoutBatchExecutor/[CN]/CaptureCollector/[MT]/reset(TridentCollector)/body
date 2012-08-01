@@ -1,0 +1,4 @@
+{
+  _collector=c;
+  ids=new ArrayList<Object>();
+}

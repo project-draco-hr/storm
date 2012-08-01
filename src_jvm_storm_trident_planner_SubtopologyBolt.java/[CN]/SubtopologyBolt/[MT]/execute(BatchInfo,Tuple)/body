@@ -1,0 +1,8 @@
+{
+  String sourceStream=tuple.getSourceStreamId();
+  InitialReceiver ir=_roots.get(sourceStream);
+  if (ir == null) {
+    throw new RuntimeException("Received unexpected tuple " + tuple.toString());
+  }
+  ir.receive((ProcessorContext)batchInfo.state,tuple);
+}

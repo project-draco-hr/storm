@@ -1,0 +1,4 @@
+{
+  _spout.open(conf,context);
+  return new BatchSpoutEmitter();
+}

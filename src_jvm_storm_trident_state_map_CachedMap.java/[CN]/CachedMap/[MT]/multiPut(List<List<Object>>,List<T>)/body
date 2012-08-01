@@ -1,0 +1,4 @@
+{
+  cache(keys,vals);
+  _delegate.multiPut(keys,vals);
+}

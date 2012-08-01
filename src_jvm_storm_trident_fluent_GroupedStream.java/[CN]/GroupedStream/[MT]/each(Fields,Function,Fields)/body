@@ -1,0 +1,4 @@
+{
+  Stream s=_stream.each(inputFields,function,functionFields);
+  return new GroupedStream(s,_groupFields);
+}

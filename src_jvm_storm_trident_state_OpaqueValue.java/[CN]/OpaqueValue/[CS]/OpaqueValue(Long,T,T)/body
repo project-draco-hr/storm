@@ -1,0 +1,5 @@
+{
+  this.curr=val;
+  this.currTxid=currTxid;
+  this.prev=prev;
+}

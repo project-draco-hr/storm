@@ -1,0 +1,8 @@
+{
+  Map<String,String> ret=new HashMap();
+  Set<PartitionNode> externalGroupOutputs=externalGroupOutputs(g);
+  for (  PartitionNode n : externalGroupOutputs) {
+    ret.put(n.streamId,batchGroupMap.get(n));
+  }
+  return ret;
+}

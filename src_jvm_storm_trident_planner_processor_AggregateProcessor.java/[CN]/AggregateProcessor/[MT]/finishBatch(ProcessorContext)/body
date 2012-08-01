@@ -1,0 +1,4 @@
+{
+  _collector.setContext(processorContext);
+  _agg.complete(processorContext.state[_context.getStateIndex()],_collector);
+}

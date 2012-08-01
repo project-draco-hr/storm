@@ -1,0 +1,7 @@
+{
+  List<T> parents=getParents(g,n);
+  if (parents.size() != 1) {
+    throw new RuntimeException("Expected a single parent");
+  }
+  return parents.get(0);
+}

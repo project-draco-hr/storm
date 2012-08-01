@@ -1,0 +1,4 @@
+{
+  super(maxSize + 1,1.0f,true);
+  _maxSize=maxSize;
+}

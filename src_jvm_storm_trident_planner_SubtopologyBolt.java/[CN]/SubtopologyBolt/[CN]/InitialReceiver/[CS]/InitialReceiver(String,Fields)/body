@@ -1,0 +1,7 @@
+{
+  _stream=stream;
+  _factory=new RootFactory(allFields);
+  List<String> projected=new ArrayList(allFields.toList());
+  projected.remove(0);
+  _project=new ProjectionFactory(_factory,new Fields(projected));
+}

@@ -1,0 +1,6 @@
+Fields inputFields1
+GroupedStream s1
+Fields inputFields2
+GroupedStream s2
+GroupedMultiReducer function
+Fields outputFields

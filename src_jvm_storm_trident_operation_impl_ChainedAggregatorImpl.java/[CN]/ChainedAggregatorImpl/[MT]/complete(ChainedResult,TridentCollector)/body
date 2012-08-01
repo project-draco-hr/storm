@@ -1,0 +1,22 @@
+{
+  val.setFollowThroughCollector(collector);
+  for (int i=0; i < _aggs.length; i++) {
+    _aggs[i].complete(val.objs[i],val.collectors[i]);
+  }
+  if (_aggs.length > 1) {
+    int[] indices=new int[val.collectors.length];
+    for (int i=0; i < indices.length; i++) {
+      indices[i]=0;
+    }
+    boolean keepGoing=true;
+    while (keepGoing) {
+      List[] combined=new List[_aggs.length];
+      for (int i=0; i < _aggs.length; i++) {
+        CaptureCollector capturer=(CaptureCollector)val.collectors[i];
+        combined[i]=capturer.captured.get(indices[i]);
+      }
+      collector.emit(_fact.create(combined));
+      keepGoing=increment(val.collectors,indices,indices.length - 1);
+    }
+  }
+}

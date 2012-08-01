@@ -1,0 +1,8 @@
+{
+  for (  GlobalStreamId g : context.getThisSources().keySet()) {
+    if (g.get_streamId().equals(sourceStream)) {
+      return context.getComponentOutputFields(g);
+    }
+  }
+  throw new RuntimeException("Could not find fields for source stream " + sourceStream);
+}

@@ -1,0 +1,24 @@
+{
+  Map<List<Object>,T> results=new HashMap();
+  List<List<Object>> toGet=new ArrayList();
+  for (  List<Object> key : keys) {
+    if (_cache.containsKey(key)) {
+      results.put(key,(T)_cache.get(key));
+    }
+ else {
+      toGet.add(key);
+    }
+  }
+  List<T> fetchedVals=_delegate.multiGet(toGet);
+  for (int i=0; i < toGet.size(); i++) {
+    List<Object> key=toGet.get(i);
+    T val=fetchedVals.get(i);
+    _cache.put(key,val);
+    results.put(key,val);
+  }
+  List<T> ret=new ArrayList(keys.size());
+  for (  List<Object> key : keys) {
+    ret.add(results.get(key));
+  }
+  return ret;
+}

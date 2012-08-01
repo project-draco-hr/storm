@@ -1,0 +1,5 @@
+{
+  declarer.declareStream(BATCH_STREAM_ID,new Fields("tx"));
+  declarer.declareStream(COMMIT_STREAM_ID,new Fields("tx"));
+  declarer.declareStream(SUCCESS_STREAM_ID,new Fields("tx"));
+}

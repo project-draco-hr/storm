@@ -1,0 +1,8 @@
+{
+  List<List<Object>> tuples=coordinatorMeta.get(_index);
+  if (tuples != null) {
+    for (    List<Object> t : tuples) {
+      collector.emit(t);
+    }
+  }
+}

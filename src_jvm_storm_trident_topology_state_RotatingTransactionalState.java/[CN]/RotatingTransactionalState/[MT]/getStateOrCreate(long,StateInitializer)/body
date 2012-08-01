@@ -1,0 +1,9 @@
+{
+  if (_curr.containsKey(txid)) {
+    return _curr.get(txid);
+  }
+ else {
+    getState(txid,init);
+    return null;
+  }
+}

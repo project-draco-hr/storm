@@ -1,0 +1,7 @@
+{
+  if (tuples.size() != 1) {
+    throw new IllegalArgumentException("Combiner state updater should receive a single tuple. Received: " + tuples.toString());
+  }
+  Object newVal=state.update(new CombinerValueUpdater(_agg,tuples.get(0).getValue(0)));
+  collector.emit(new Values(newVal));
+}

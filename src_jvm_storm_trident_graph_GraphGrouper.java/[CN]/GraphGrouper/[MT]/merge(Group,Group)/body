@@ -1,0 +1,9 @@
+{
+  Group newGroup=new Group(g1,g2);
+  currGroups.remove(g1);
+  currGroups.remove(g2);
+  currGroups.add(newGroup);
+  for (  Node n : newGroup.nodes) {
+    groupIndex.put(n,newGroup);
+  }
+}

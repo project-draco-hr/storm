@@ -1,0 +1,6 @@
+{
+  _agg=agg;
+  _groupFields=groupFields;
+  _inputFields=inputFields;
+  _factory=new ComboList.Factory(groupFields.size(),1);
+}

@@ -1,0 +1,3 @@
+ITridentBatchBolt bolt
+Integer parallelism
+Set<String> committerBatches

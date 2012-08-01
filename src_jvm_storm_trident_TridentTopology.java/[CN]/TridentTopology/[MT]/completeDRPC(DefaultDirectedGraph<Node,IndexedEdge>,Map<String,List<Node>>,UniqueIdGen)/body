@@ -1,0 +1,15 @@
+{
+  List<Set<Node>> connectedComponents=new ConnectivityInspector<Node,IndexedEdge>(graph).connectedSets();
+  for (  Set<Node> g : connectedComponents) {
+    checkValidJoins(g);
+  }
+  TridentTopology helper=new TridentTopology(graph,colocate,gen);
+  for (  Set<Node> g : connectedComponents) {
+    SpoutNode drpcNode=getDRPCSpoutNode(g);
+    if (drpcNode != null) {
+      Stream lastStream=new Stream(helper,getLastAddedNode(g));
+      Stream s=new Stream(helper,drpcNode);
+      helper.multiReduce(s.project(new Fields("return-info")).batchGlobal(),lastStream.batchGlobal(),new ReturnResultsReducer(),new Fields());
+    }
+  }
+}

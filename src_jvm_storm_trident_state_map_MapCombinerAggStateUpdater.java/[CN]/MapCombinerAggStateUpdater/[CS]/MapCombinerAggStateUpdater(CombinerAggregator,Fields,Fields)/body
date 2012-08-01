@@ -1,0 +1,9 @@
+{
+  _agg=agg;
+  _groupFields=groupFields;
+  _inputFields=inputFields;
+  if (inputFields.size() != 1) {
+    throw new IllegalArgumentException("Combiner aggs only take a single field as input. Got this instead: " + inputFields.toString());
+  }
+  _factory=new ComboList.Factory(groupFields.size(),inputFields.size());
+}

@@ -1,0 +1,11 @@
+{
+  List<Factory> parents=tridentContext.getParentTupleFactories();
+  if (parents.size() != 1) {
+    throw new RuntimeException("Partition persist operation can only have one parent");
+  }
+  _context=tridentContext;
+  _state=(State)context.getTaskData(_stateId);
+  _projection=new ProjectionFactory(parents.get(0),_inputFields);
+  _collector=new FreshCollector(tridentContext);
+  _updater.prepare(conf,new TridentOperationContext(context,_projection));
+}

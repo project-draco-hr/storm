@@ -1,0 +1,7 @@
+{
+  Map<String,ValuePointer> ret=new HashMap<String,ValuePointer>();
+  for (  ValuePointer ptr : pointers) {
+    ret.put(ptr.field,ptr);
+  }
+  return ret;
+}

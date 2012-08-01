@@ -1,0 +1,5 @@
+{
+  for (  String word : tuple.getString(0).split(" ")) {
+    collector.emit(new Values(word));
+  }
+}

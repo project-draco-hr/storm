@@ -1,0 +1,3 @@
+JoinState state
+TridentTuple group
+TridentCollector collector

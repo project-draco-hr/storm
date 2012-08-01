@@ -1,0 +1,6 @@
+{
+  Map<String,Object> ret=_bolt.getComponentConfiguration();
+  if (ret == null)   ret=new HashMap();
+  ret.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS,null);
+  return ret;
+}

@@ -1,0 +1,7 @@
+{
+  Set<String> ret=new HashSet<String>();
+  for (  Fields f : fields) {
+    if (f != null)     ret.addAll(f.toList());
+  }
+  return new Fields(new ArrayList<String>(ret));
+}

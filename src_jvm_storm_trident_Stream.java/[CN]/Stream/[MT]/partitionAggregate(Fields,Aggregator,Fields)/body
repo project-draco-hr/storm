@@ -1,0 +1,3 @@
+{
+  return _topology.addSourcedNode(this,new ProcessorNode(_topology.getUniqueStreamId(),functionFields,functionFields,new AggregateProcessor(inputFields,agg)));
+}

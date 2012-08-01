@@ -1,0 +1,3 @@
+{
+  return join(Arrays.asList(s1,s2),Arrays.asList(joinFields1,joinFields2),outFields);
+}

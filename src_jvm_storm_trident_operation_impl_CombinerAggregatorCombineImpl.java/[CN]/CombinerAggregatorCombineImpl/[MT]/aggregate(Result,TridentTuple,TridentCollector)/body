@@ -1,0 +1,9 @@
+{
+  Object v=tuple.getValue(0);
+  if (val.obj == null) {
+    val.obj=v;
+  }
+ else {
+    val.obj=_agg.combine(val.obj,v);
+  }
+}

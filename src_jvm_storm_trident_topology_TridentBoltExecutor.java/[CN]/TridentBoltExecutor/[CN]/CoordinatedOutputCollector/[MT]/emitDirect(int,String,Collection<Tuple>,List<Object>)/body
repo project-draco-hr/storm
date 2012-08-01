@@ -1,0 +1,4 @@
+{
+  updateTaskCounts(Arrays.asList(task));
+  _delegate.emitDirect(task,stream,anchors,tuple);
+}

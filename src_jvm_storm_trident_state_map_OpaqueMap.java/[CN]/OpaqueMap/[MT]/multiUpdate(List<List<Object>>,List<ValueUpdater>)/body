@@ -1,0 +1,28 @@
+{
+  List<OpaqueValue> curr=_backing.multiGet(keys);
+  List<OpaqueValue> newVals=new ArrayList(curr.size());
+  List<T> ret=new ArrayList();
+  for (int i=0; i < curr.size(); i++) {
+    OpaqueValue val=curr.get(i);
+    ValueUpdater updater=updaters.get(i);
+    Object prev;
+    if (val == null) {
+      prev=null;
+    }
+ else {
+      prev=val.get(_currTx);
+    }
+    Object newVal=updater.update(prev);
+    ret.add((T)newVal);
+    OpaqueValue newOpaqueVal;
+    if (val == null) {
+      newOpaqueVal=new OpaqueValue(_currTx,newVal);
+    }
+ else {
+      newOpaqueVal=val.update(_currTx,newVal);
+    }
+    newVals.add(newOpaqueVal);
+  }
+  _backing.multiPut(keys,newVals);
+  return ret;
+}

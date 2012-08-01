@@ -1,0 +1,4 @@
+{
+  _groupFactory=context.makeProjectionFactory(_groupFields);
+  _inputFactory=context.makeProjectionFactory(_inputFields);
+}

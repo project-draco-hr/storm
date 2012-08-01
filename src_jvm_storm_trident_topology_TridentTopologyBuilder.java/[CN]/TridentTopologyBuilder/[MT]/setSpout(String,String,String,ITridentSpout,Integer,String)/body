@@ -1,0 +1,8 @@
+{
+  Map<String,String> batchGroups=new HashMap();
+  batchGroups.put(streamName,batchGroup);
+  markBatchGroups(id,batchGroups);
+  TransactionalSpoutComponent c=new TransactionalSpoutComponent(spout,streamName,parallelism,txStateId,batchGroup);
+  _spouts.put(id,c);
+  return new SpoutDeclarerImpl(c);
+}

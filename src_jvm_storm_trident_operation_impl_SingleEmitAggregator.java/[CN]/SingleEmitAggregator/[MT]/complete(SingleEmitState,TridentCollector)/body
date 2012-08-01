@@ -1,0 +1,11 @@
+{
+  if (!val.received) {
+    if (this.myPartitionIndex == _batchToPartition.partitionIndex(val.batchId,this.totalPartitions)) {
+      val.state=_agg.init(val.batchId,collector);
+      _agg.complete(val.state,collector);
+    }
+  }
+ else {
+    _agg.complete(val.state,collector);
+  }
+}

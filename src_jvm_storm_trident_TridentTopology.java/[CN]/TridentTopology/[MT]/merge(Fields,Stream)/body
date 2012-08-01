@@ -1,0 +1,3 @@
+{
+  return merge(outputFields,Arrays.asList(streams));
+}

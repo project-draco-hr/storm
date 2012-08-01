@@ -1,0 +1,18 @@
+{
+  boolean hasDRPCSpout=false;
+  boolean hasBatchSpout=false;
+  for (  Node n : g) {
+    if (n instanceof SpoutNode) {
+      SpoutNode.SpoutType type=((SpoutNode)n).type;
+      if (type == SpoutNode.SpoutType.BATCH) {
+        hasBatchSpout=true;
+      }
+ else       if (type == SpoutNode.SpoutType.DRPC) {
+        hasDRPCSpout=true;
+      }
+    }
+  }
+  if (hasBatchSpout && hasDRPCSpout) {
+    throw new RuntimeException("Cannot join DRPC stream with streams originating from other spouts");
+  }
+}

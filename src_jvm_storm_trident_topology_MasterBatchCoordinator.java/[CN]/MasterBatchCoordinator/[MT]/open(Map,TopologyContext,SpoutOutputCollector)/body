@@ -1,0 +1,19 @@
+{
+  _rand=new Random(Utils.secureRandomLong());
+  for (  String spoutId : _managedSpoutIds) {
+    _states.add(TransactionalState.newCoordinatorState(conf,spoutId));
+  }
+  _currTransaction=getStoredCurrTransaction();
+  _collector=collector;
+  Number active=(Number)conf.get(Config.TOPOLOGY_MAX_SPOUT_PENDING);
+  if (active == null) {
+    _maxTransactionActive=1;
+  }
+ else {
+    _maxTransactionActive=active.intValue();
+  }
+  for (int i=0; i < _spouts.size(); i++) {
+    String txId=_managedSpoutIds.get(i);
+    _coordinators.add(_spouts.get(i).getCoordinator(txId,conf,context));
+  }
+}

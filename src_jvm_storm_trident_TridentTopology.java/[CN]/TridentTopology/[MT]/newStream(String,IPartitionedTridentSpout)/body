@@ -1,0 +1,3 @@
+{
+  return newStream(txId,new PartitionedTridentSpoutExecutor(spout));
+}

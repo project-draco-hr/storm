@@ -1,0 +1,26 @@
+{
+  if (tracked.failed) {
+    failBatch(tracked);
+    _collector.fail(tuple);
+    return;
+  }
+  CoordCondition cond=tracked.condition;
+  boolean delayed=tracked.delayedAck == null && (cond.commitStream != null && type == TupleType.COMMIT || cond.commitStream == null);
+  if (delayed) {
+    tracked.delayedAck=tuple;
+  }
+  boolean failed=false;
+  if (tracked.receivedCommit && tracked.reportedTasks == cond.expectedTaskReports) {
+    if (tracked.receivedTuples == tracked.expectedTupleCount) {
+      finishBatch(tracked,tuple);
+    }
+ else {
+      failBatch(tracked);
+      _collector.fail(tuple);
+      failed=true;
+    }
+  }
+  if (!delayed && !failed) {
+    _collector.ack(tuple);
+  }
+}

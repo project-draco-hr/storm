@@ -1,0 +1,4 @@
+{
+  _collector.setContext(processorContext,tuple);
+  _function.execute(_projection.create(tuple),_collector);
+}

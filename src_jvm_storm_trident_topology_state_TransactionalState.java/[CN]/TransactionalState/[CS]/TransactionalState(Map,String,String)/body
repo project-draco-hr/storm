@@ -1,0 +1,19 @@
+{
+  try {
+    conf=new HashMap(conf);
+    String rootDir=conf.get(Config.TRANSACTIONAL_ZOOKEEPER_ROOT) + "/" + id+ "/"+ subroot;
+    List<String> servers=(List<String>)getWithBackup(conf,Config.TRANSACTIONAL_ZOOKEEPER_SERVERS,Config.STORM_ZOOKEEPER_SERVERS);
+    Object port=getWithBackup(conf,Config.TRANSACTIONAL_ZOOKEEPER_PORT,Config.STORM_ZOOKEEPER_PORT);
+    CuratorFramework initter=Utils.newCuratorStarted(conf,servers,port);
+    try {
+      initter.create().creatingParentsIfNeeded().forPath(rootDir);
+    }
+ catch (    KeeperException.NodeExistsException e) {
+    }
+    initter.close();
+    _curator=Utils.newCuratorStarted(conf,servers,port,rootDir);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

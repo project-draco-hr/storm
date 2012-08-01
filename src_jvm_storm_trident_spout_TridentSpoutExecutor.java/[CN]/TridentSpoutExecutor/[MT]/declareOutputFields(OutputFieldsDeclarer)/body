@@ -1,0 +1,5 @@
+{
+  List<String> fields=new ArrayList(_spout.getOutputFields().toList());
+  fields.add(0,ID_FIELD);
+  declarer.declareStream(_streamName,new Fields(fields));
+}

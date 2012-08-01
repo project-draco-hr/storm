@@ -1,0 +1,4 @@
+{
+  _delegate=delegate;
+  _keys=Arrays.asList(snapshotKey);
+}

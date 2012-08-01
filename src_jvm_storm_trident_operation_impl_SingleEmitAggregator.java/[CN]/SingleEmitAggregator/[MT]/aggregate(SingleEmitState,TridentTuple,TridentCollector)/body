@@ -1,0 +1,7 @@
+{
+  if (!val.received) {
+    val.state=_agg.init(val.batchId,collector);
+    val.received=true;
+  }
+  _agg.aggregate(val.state,tuple,collector);
+}

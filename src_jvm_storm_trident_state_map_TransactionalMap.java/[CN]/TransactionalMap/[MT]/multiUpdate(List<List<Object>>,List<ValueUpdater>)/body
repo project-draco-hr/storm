@@ -1,0 +1,25 @@
+{
+  List<TransactionalValue> curr=_backing.multiGet(keys);
+  List<TransactionalValue> newVals=new ArrayList(curr.size());
+  List<T> ret=new ArrayList();
+  for (int i=0; i < curr.size(); i++) {
+    TransactionalValue val=curr.get(i);
+    ValueUpdater updater=updaters.get(i);
+    TransactionalValue newVal;
+    if (val == null) {
+      newVal=new TransactionalValue(_currTx,updater.update(null));
+    }
+ else {
+      if (_currTx != null && _currTx.equals(val.getTxid())) {
+        newVal=val;
+      }
+ else {
+        newVal=new TransactionalValue(_currTx,updater.update(val.getVal()));
+      }
+    }
+    ret.add((T)newVal.getVal());
+    newVals.add(newVal);
+  }
+  _backing.multiPut(keys,newVals);
+  return ret;
+}

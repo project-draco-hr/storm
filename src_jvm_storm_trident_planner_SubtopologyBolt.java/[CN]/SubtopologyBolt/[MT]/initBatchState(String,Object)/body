@@ -1,0 +1,7 @@
+{
+  ProcessorContext ret=new ProcessorContext(batchId,new Object[_nodes.size()]);
+  for (  TridentProcessor p : _myTopologicallyOrdered.get(batchGroup)) {
+    p.startBatch(ret);
+  }
+  return ret;
+}

@@ -1,0 +1,8 @@
+{
+  _fieldIndex=new HashMap<String,ValuePointer>();
+  for (int i=0; i < selfFields.size(); i++) {
+    String field=selfFields.get(i);
+    _fieldIndex.put(field,new ValuePointer(0,i,field));
+  }
+  _index=ValuePointer.buildIndex(selfFields,_fieldIndex);
+}

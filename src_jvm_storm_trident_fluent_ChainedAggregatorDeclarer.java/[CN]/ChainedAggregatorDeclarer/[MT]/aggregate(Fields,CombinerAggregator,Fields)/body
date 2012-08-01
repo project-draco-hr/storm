@@ -1,0 +1,4 @@
+{
+  initCombiner(inputFields,agg,functionFields);
+  return aggregate(functionFields,new CombinerAggregatorCombineImpl(agg),functionFields,true);
+}

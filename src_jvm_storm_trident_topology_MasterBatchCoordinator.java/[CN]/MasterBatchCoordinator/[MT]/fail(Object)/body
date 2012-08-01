@@ -1,0 +1,8 @@
+{
+  TransactionAttempt tx=(TransactionAttempt)msgId;
+  TransactionStatus stored=_activeTx.remove(tx.getTransactionId());
+  if (stored != null && tx.equals(stored.attempt)) {
+    _activeTx.tailMap(tx.getTransactionId()).clear();
+    sync();
+  }
+}

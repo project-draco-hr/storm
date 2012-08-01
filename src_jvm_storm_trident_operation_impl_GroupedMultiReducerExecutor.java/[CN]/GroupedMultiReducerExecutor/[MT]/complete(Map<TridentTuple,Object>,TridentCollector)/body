@@ -1,0 +1,7 @@
+{
+  for (  Map.Entry e : state.entrySet()) {
+    TridentTuple group=(TridentTuple)e.getKey();
+    Object val=e.getValue();
+    _reducer.complete(val,group,collector);
+  }
+}

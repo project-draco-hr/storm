@@ -1,0 +1,4 @@
+{
+  this.agg=agg;
+  this.tuples=tuples;
+}

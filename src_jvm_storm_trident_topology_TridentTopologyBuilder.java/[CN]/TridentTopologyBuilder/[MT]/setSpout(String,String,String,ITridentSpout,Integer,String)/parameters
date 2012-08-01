@@ -1,0 +1,6 @@
+String id
+String streamName
+String txStateId
+ITridentSpout spout
+Integer parallelism
+String batchGroup

@@ -1,0 +1,10 @@
+{
+  DRPCSpout spout;
+  if (server == null) {
+    spout=new DRPCSpout(function);
+  }
+ else {
+    spout=new DRPCSpout(function,server);
+  }
+  return newDRPCStream(spout);
+}

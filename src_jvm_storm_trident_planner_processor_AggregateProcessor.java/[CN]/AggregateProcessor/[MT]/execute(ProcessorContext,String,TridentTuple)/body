@@ -1,0 +1,4 @@
+{
+  _collector.setContext(processorContext);
+  _agg.aggregate(processorContext.state[_context.getStateIndex()],_projection.create(tuple),_collector);
+}

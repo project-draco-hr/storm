@@ -1,0 +1,11 @@
+{
+  Map<Group,String> ret=new HashMap();
+  int ctr=0;
+  for (  Group g : groups) {
+    if (!isSpoutGroup(g)) {
+      ret.put(g,"bolt" + ctr);
+      ctr++;
+    }
+  }
+  return ret;
+}

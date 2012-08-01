@@ -1,0 +1,20 @@
+{
+  boolean success=true;
+  try {
+    _bolt.finishBatch(tracked.info);
+    String stream=COORD_STREAM(tracked.info.batchGroup);
+    for (    Integer task : tracked.condition.targetTasks) {
+      _collector.emitDirect(task,stream,finishTuple,new Values(tracked.info.batchId,Utils.get(tracked.taskEmittedTuples,task,0)));
+    }
+    if (tracked.delayedAck != null) {
+      _collector.ack(tracked.delayedAck);
+      tracked.delayedAck=null;
+    }
+  }
+ catch (  FailedException e) {
+    failBatch(tracked);
+    success=false;
+  }
+  _batches.remove(tracked.info.batchId);
+  return success;
+}

@@ -1,0 +1,10 @@
+{
+  try {
+    T ret=(T)c.newInstance();
+    des.deserialize((TBase)ret,b);
+    return ret;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

@@ -1,0 +1,11 @@
+{
+  List<T> curr=_backing.multiGet(keys);
+  List<T> ret=new ArrayList(curr.size());
+  for (int i=0; i < curr.size(); i++) {
+    T currVal=curr.get(i);
+    ValueUpdater updater=updaters.get(i);
+    ret.add((T)updater.update(currVal));
+  }
+  _backing.multiPut(keys,ret);
+  return ret;
+}

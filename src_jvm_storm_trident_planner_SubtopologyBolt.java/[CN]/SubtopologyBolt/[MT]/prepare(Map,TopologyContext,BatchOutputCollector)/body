@@ -1,0 +1,51 @@
+{
+  int thisComponentNumTasks=context.getComponentTasks(context.getThisComponentId()).size();
+  for (  Node n : _nodes) {
+    if (n.stateInfo != null) {
+      State s=n.stateInfo.spec.stateFactory.makeState(conf,context.getThisTaskIndex(),thisComponentNumTasks);
+      context.setTaskData(n.stateInfo.id,s);
+    }
+  }
+  DirectedSubgraph<Node,Object> subgraph=new DirectedSubgraph(_graph,_nodes,null);
+  TopologicalOrderIterator it=new TopologicalOrderIterator<Node,Object>(subgraph);
+  int stateIndex=0;
+  while (it.hasNext()) {
+    Node n=(Node)it.next();
+    if (n instanceof ProcessorNode) {
+      ProcessorNode pn=(ProcessorNode)n;
+      String batchGroup=_batchGroups.get(n);
+      if (!_myTopologicallyOrdered.containsKey(batchGroup)) {
+        _myTopologicallyOrdered.put(batchGroup,new ArrayList());
+      }
+      _myTopologicallyOrdered.get(batchGroup).add(pn.processor);
+      List<String> parentStreams=new ArrayList();
+      List<Factory> parentFactories=new ArrayList();
+      for (      Node p : TridentUtils.getParents(_graph,n)) {
+        parentStreams.add(p.streamId);
+        if (_nodes.contains(p)) {
+          parentFactories.add(_outputFactories.get(p));
+        }
+ else {
+          if (!_roots.containsKey(p.streamId)) {
+            _roots.put(p.streamId,new InitialReceiver(p.streamId,getSourceOutputFields(context,p.streamId)));
+          }
+          _roots.get(p.streamId).addReceiver(pn.processor);
+          parentFactories.add(_roots.get(p.streamId).getOutputFactory());
+        }
+      }
+      List<TupleReceiver> targets=new ArrayList();
+      for (      Node cn : TridentUtils.getChildren(_graph,n)) {
+        if (_nodes.contains(cn)) {
+          targets.add(((ProcessorNode)cn).processor);
+        }
+ else {
+          targets.add(new BridgeReceiver(batchCollector));
+        }
+      }
+      TridentContext triContext=new TridentContext(pn.selfOutFields,parentFactories,parentStreams,targets,pn.streamId,stateIndex,batchCollector);
+      pn.processor.prepare(conf,context,triContext);
+      _outputFactories.put(n,pn.processor.getOutputFactory());
+    }
+    stateIndex++;
+  }
+}

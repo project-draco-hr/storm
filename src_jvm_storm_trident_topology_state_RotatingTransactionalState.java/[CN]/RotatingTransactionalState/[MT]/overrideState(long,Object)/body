@@ -1,0 +1,4 @@
+{
+  _state.setData(txPath(txid),state);
+  _curr.put(txid,state);
+}

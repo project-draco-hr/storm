@@ -1,0 +1,7 @@
+{
+  List<String> ret=new ArrayList<String>();
+  for (  ValuePointer p : index) {
+    ret.add(p.field);
+  }
+  return ret;
+}

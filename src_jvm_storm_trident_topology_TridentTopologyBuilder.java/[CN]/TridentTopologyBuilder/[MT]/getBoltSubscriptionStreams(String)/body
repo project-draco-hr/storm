@@ -1,0 +1,8 @@
+{
+  List<GlobalStreamId> ret=new ArrayList();
+  Component c=_bolts.get(id);
+  for (  InputDeclaration d : c.declarations) {
+    ret.add(new GlobalStreamId(d.getComponent(),d.getStream()));
+  }
+  return ret;
+}

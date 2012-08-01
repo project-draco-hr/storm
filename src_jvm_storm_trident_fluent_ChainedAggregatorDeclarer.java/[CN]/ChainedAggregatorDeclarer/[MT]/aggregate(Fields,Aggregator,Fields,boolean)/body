@@ -1,0 +1,12 @@
+{
+  if (isCombiner) {
+    if (_type == null) {
+      _type=AggType.FULL_COMBINE;
+    }
+  }
+ else {
+    _type=AggType.FULL;
+  }
+  _aggs.add(new AggSpec(inputFields,agg,functionFields));
+  return this;
+}

@@ -1,0 +1,11 @@
+{
+  List allBatches=(List)RegisteredGlobalState.getState(_id);
+  if (allBatches.size() > _masterEmitted) {
+    _masterEmitted++;
+    return true;
+  }
+ else {
+    Utils.sleep(2);
+    return false;
+  }
+}

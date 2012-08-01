@@ -1,0 +1,2 @@
+Map<TridentTuple,Object> state
+TridentCollector collector

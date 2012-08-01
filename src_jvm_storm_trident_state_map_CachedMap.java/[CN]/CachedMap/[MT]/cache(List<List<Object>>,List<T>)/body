@@ -1,0 +1,5 @@
+{
+  for (int i=0; i < keys.size(); i++) {
+    _cache.put(keys.get(i),vals.get(i));
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return aggregate(inputFields,new ReducerAggregatorImpl(agg),functionFields);
+}

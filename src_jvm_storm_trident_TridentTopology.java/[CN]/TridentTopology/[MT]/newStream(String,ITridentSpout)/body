@@ -1,0 +1,4 @@
+{
+  Node n=new SpoutNode(getUniqueStreamId(),spout.getOutputFields(),txId,spout,SpoutNode.SpoutType.BATCH);
+  return addNode(n);
+}

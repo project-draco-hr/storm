@@ -1,0 +1,3 @@
+IRichSpout delegate
+String streamName
+String batchGroup

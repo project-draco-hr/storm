@@ -1,0 +1,16 @@
+{
+  int total=0;
+  for (  int size : sizes) {
+    total+=size;
+  }
+  index=new Pointer[total];
+  int i=0;
+  int j=0;
+  for (  int size : sizes) {
+    for (int z=0; z < size; z++) {
+      index[j]=new Pointer(i,z);
+      j++;
+    }
+    i++;
+  }
+}

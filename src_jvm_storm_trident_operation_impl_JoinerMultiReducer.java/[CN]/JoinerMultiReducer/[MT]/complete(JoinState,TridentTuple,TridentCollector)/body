@@ -1,0 +1,13 @@
+{
+  List<List>[] sides=state.sides;
+  boolean wasEmpty=state.numSidesReceived < sides.length;
+  for (int i=0; i < sides.length; i++) {
+    if (sides[i].isEmpty() && _types.get(i) == JoinType.OUTER) {
+      state.numSidesReceived++;
+      sides[i].add(makeNullList(_sideFields.get(i).size()));
+    }
+  }
+  if (wasEmpty && state.numSidesReceived == sides.length) {
+    emitCrossJoin(state,collector,-1,null);
+  }
+}

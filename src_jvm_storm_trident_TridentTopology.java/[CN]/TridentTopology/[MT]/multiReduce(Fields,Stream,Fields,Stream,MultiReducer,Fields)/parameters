@@ -1,0 +1,6 @@
+Fields inputFields1
+Stream s1
+Fields inputFields2
+Stream s2
+MultiReducer function
+Fields outputFields

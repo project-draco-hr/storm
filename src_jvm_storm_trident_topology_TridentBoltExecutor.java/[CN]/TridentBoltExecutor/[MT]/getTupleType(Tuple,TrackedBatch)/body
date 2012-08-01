@@ -1,0 +1,12 @@
+{
+  CoordCondition cond=batch.condition;
+  if (cond.commitStream != null && tuple.getSourceGlobalStreamid().equals(cond.commitStream)) {
+    return TupleType.COMMIT;
+  }
+ else   if (cond.expectedTaskReports > 0 && tuple.getSourceStreamId().startsWith(COORD_STREAM_PREFIX)) {
+    return TupleType.COORD;
+  }
+ else {
+    return TupleType.REGULAR;
+  }
+}

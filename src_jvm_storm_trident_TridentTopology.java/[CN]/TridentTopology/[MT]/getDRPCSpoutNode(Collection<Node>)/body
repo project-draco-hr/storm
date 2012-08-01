@@ -1,0 +1,11 @@
+{
+  for (  Node n : g) {
+    if (n instanceof SpoutNode) {
+      SpoutNode.SpoutType type=((SpoutNode)n).type;
+      if (type == SpoutNode.SpoutType.DRPC) {
+        return (SpoutNode)n;
+      }
+    }
+  }
+  return null;
+}

@@ -1,0 +1,6 @@
+{
+  oos.defaultWriteObject();
+  byte[] ser=TridentUtils.thriftSerialize(thriftGrouping);
+  oos.writeInt(ser.length);
+  oos.write(ser);
+}

@@ -1,0 +1,3 @@
+SingleEmitState val
+TridentTuple tuple
+TridentCollector collector

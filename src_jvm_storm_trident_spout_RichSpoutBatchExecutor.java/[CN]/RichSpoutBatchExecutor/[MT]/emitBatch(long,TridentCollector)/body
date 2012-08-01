@@ -1,0 +1,21 @@
+{
+  _collector.reset(collector);
+  SortedMap<Long,List<Object>> toFail=idsMap.tailMap(txid);
+  for (  long failTx : idsMap.keySet()) {
+    for (    Object id : idsMap.get(failTx)) {
+      _spout.fail(id);
+    }
+  }
+  toFail.clear();
+  if (!prepared) {
+    _spout.open(_conf,_context,new SpoutOutputCollector(_collector));
+    prepared=true;
+  }
+  for (int i=0; i < _maxBatchSize; i++) {
+    _spout.nextTuple();
+    if (_collector.numEmitted < i) {
+      break;
+    }
+    idsMap.put(txid,_collector.ids);
+  }
+}

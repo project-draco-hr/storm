@@ -1,0 +1,4 @@
+{
+  int numTasks=context.getComponentTasks(TridentTopologyBuilder.spoutIdFromCoordinatorId(context.getThisComponentId())).size();
+  return new FeederCoordinator(numTasks);
+}

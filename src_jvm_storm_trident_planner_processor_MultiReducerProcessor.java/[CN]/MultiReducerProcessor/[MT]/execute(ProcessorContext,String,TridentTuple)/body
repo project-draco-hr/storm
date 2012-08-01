@@ -1,0 +1,5 @@
+{
+  _collector.setContext(processorContext);
+  int i=_streamToIndex.get(streamId);
+  _reducer.execute(processorContext.state[_context.getStateIndex()],i,_projectionFactories[i].create(tuple),_collector);
+}

@@ -1,0 +1,7 @@
+{
+  _inputFactories=new ProjectionFactory[_inputFields.length];
+  for (int i=0; i < _inputFields.length; i++) {
+    _inputFactories[i]=context.makeProjectionFactory(_inputFields[i]);
+    _aggs[i].prepare(conf,new TridentOperationContext(context,_inputFactories[i]));
+  }
+}

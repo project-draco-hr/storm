@@ -1,0 +1,10 @@
+{
+  if (j == -1)   return false;
+  indices[j]++;
+  CaptureCollector capturer=(CaptureCollector)lengths[j];
+  if (indices[j] >= capturer.captured.size()) {
+    indices[j]=0;
+    return increment(lengths,indices,j - 1);
+  }
+  return true;
+}

@@ -1,0 +1,7 @@
+{
+  SortedMap<Long,Object> toDelete=_curr.headMap(txid);
+  for (  long tx : new HashSet<Long>(toDelete.keySet())) {
+    _curr.remove(tx);
+    _state.delete(txPath(tx));
+  }
+}

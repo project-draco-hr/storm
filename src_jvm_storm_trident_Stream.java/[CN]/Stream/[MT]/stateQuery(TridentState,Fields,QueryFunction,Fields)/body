@@ -1,0 +1,6 @@
+{
+  String stateId=state._node.stateInfo.id;
+  Node n=new ProcessorNode(_topology.getUniqueStreamId(),TridentUtils.fieldsConcat(getOutputFields(),functionFields),functionFields,new StateQueryProcessor(stateId,inputFields,function));
+  _topology._colocate.get(stateId).add(n);
+  return _topology.addSourcedNode(this,n);
+}

@@ -1,0 +1,8 @@
+{
+  _delegate.open(conf,context,new SpoutOutputCollector(new StreamOverrideCollector(collector)));
+  _outputTasks=new ArrayList<Integer>();
+  for (  String component : Utils.get(context.getThisTargets(),_coordStream,new HashMap<String,Grouping>()).keySet()) {
+    _outputTasks.addAll(context.getComponentTasks(component));
+  }
+  _rand=new Random(Utils.secureRandomLong());
+}

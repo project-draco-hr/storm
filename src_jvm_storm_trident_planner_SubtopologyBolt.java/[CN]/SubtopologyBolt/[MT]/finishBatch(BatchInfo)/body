@@ -1,0 +1,5 @@
+{
+  for (  TridentProcessor p : _myTopologicallyOrdered.get(batchInfo.batchGroup)) {
+    p.finishBatch((ProcessorContext)batchInfo.state);
+  }
+}

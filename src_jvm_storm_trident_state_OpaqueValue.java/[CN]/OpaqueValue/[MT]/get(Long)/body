@@ -1,0 +1,8 @@
+{
+  if (batchTxid != null && batchTxid.equals(currTxid)) {
+    return prev;
+  }
+ else {
+    return curr;
+  }
+}

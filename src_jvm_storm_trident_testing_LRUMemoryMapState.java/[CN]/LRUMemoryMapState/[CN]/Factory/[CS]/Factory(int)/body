@@ -1,0 +1,4 @@
+{
+  _maxSize=maxSize;
+  _id=UUID.randomUUID().toString();
+}

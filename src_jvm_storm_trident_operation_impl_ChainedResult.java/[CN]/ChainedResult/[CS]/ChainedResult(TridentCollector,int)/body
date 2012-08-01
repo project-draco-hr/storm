@@ -1,0 +1,12 @@
+{
+  objs=new Object[size];
+  collectors=new TridentCollector[size];
+  for (int i=0; i < size; i++) {
+    if (size == 1) {
+      collectors[i]=collector;
+    }
+ else {
+      collectors[i]=new CaptureCollector();
+    }
+  }
+}

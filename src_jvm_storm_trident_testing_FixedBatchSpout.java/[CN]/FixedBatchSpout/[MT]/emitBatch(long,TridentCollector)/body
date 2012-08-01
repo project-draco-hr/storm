@@ -1,0 +1,8 @@
+{
+  if (index >= outputs.length && cycle) {
+    index=0;
+  }
+  for (int i=0; index < outputs.length && i < maxBatchSize; index++, i++) {
+    collector.emit(outputs[index]);
+  }
+}

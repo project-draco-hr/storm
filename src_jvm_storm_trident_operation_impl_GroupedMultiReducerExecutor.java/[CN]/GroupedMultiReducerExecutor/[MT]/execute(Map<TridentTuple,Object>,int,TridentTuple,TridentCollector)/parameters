@@ -1,0 +1,4 @@
+Map<TridentTuple,Object> state
+int streamIndex
+TridentTuple full
+TridentCollector collector

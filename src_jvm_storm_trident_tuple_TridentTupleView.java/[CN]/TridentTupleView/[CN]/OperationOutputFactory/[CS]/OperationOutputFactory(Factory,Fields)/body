@@ -1,0 +1,18 @@
+{
+  _parent=parent;
+  _fieldIndex=parent.getFieldIndex();
+  int myIndex=parent.numDelegates();
+  for (int i=0; i < selfFields.size(); i++) {
+    String field=selfFields.get(i);
+    _fieldIndex.put(field,new ValuePointer(myIndex,i,field));
+  }
+  List<String> myOrder=new ArrayList<String>(parent.getOutputFields());
+  Set<String> parentFieldsSet=new HashSet<String>(myOrder);
+  for (  String f : selfFields) {
+    if (parentFieldsSet.contains(f)) {
+      throw new IllegalArgumentException("Additive operations cannot add fields with same name as already exists. " + "Tried adding " + selfFields + " to "+ parent.getOutputFields());
+    }
+    myOrder.add(f);
+  }
+  _index=ValuePointer.buildIndex(new Fields(myOrder),_fieldIndex);
+}

@@ -1,0 +1,5 @@
+{
+  List<T> vals=_delegate.multiUpdate(keys,updaters);
+  cache(keys,vals);
+  return vals;
+}

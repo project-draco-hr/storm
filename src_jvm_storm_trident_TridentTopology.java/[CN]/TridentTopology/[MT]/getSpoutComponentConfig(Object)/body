@@ -1,0 +1,11 @@
+{
+  if (spout instanceof IRichSpout) {
+    return ((IRichSpout)spout).getComponentConfiguration();
+  }
+ else   if (spout instanceof IBatchSpout) {
+    return ((IBatchSpout)spout).getComponentConfiguration();
+  }
+ else {
+    return ((ITridentSpout)spout).getComponentConfiguration();
+  }
+}

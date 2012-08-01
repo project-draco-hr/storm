@@ -1,0 +1,4 @@
+{
+  this.val=val;
+  this.txid=txid;
+}

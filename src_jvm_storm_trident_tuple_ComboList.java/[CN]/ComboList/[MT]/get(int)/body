@@ -1,0 +1,4 @@
+{
+  Pointer ptr=_index[i];
+  return _delegates[ptr.listIndex].get(ptr.subIndex);
+}

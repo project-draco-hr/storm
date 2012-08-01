@@ -1,0 +1,10 @@
+{
+  _parent=parent;
+  if (projectFields == null)   projectFields=new Fields();
+  Map<String,ValuePointer> parentFieldIndex=parent.getFieldIndex();
+  _fieldIndex=new HashMap<String,ValuePointer>();
+  for (  String f : projectFields) {
+    _fieldIndex.put(f,parentFieldIndex.get(f));
+  }
+  _index=ValuePointer.buildIndex(projectFields,_fieldIndex);
+}

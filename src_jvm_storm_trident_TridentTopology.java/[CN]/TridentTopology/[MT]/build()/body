@@ -1,0 +1,123 @@
+{
+  DefaultDirectedGraph<Node,IndexedEdge> graph=(DefaultDirectedGraph)_graph.clone();
+  completeDRPC(graph,_colocate,_gen);
+  List<SpoutNode> spoutNodes=new ArrayList<SpoutNode>();
+  Set<Node> boltNodes=new HashSet<Node>();
+  for (  Node n : graph.vertexSet()) {
+    if (n instanceof SpoutNode) {
+      spoutNodes.add((SpoutNode)n);
+    }
+ else     if (!(n instanceof PartitionNode)) {
+      boltNodes.add(n);
+    }
+  }
+  Set<Group> initialGroups=new HashSet<Group>();
+  for (  List<Node> colocate : _colocate.values()) {
+    Group g=new Group(graph,colocate);
+    boltNodes.removeAll(colocate);
+    initialGroups.add(g);
+  }
+  for (  Node n : boltNodes) {
+    initialGroups.add(new Group(graph,n));
+  }
+  GraphGrouper grouper=new GraphGrouper(graph,initialGroups);
+  grouper.mergeFully();
+  Collection<Group> mergedGroups=grouper.getAllGroups();
+  for (  IndexedEdge<Node> e : new HashSet<IndexedEdge>(graph.edgeSet())) {
+    if (!(e.source instanceof PartitionNode) && !(e.target instanceof PartitionNode)) {
+      Group g1=grouper.nodeGroup(e.source);
+      Group g2=grouper.nodeGroup(e.target);
+      if (g1 == null && !(e.source instanceof SpoutNode))       throw new RuntimeException("Planner exception: Null source group must indicate a spout node at this phase of planning");
+      if (g1 == null || !g1.equals(g2)) {
+        graph.removeEdge(e);
+        PartitionNode pNode=makeIdentityPartition(e.source);
+        graph.addVertex(pNode);
+        graph.addEdge(e.source,pNode,new IndexedEdge(e.source,pNode,0));
+        graph.addEdge(pNode,e.target,new IndexedEdge(pNode,e.target,e.index));
+      }
+    }
+  }
+  List<Node> forNewGroups=new ArrayList<Node>();
+  for (  Group g : mergedGroups) {
+    for (    PartitionNode n : extraPartitionInputs(g)) {
+      Node idNode=makeIdentityNode(n.allOutputFields);
+      Node newPartitionNode=new PartitionNode(idNode.streamId,idNode.allOutputFields,n.thriftGrouping);
+      Node parentNode=TridentUtils.getParent(graph,n);
+      Set<IndexedEdge> outgoing=graph.outgoingEdgesOf(n);
+      graph.removeVertex(n);
+      graph.addVertex(idNode);
+      graph.addVertex(newPartitionNode);
+      addEdge(graph,parentNode,idNode,0);
+      addEdge(graph,idNode,newPartitionNode,0);
+      for (      IndexedEdge e : outgoing) {
+        addEdge(graph,newPartitionNode,e.target,e.index);
+      }
+      Group parentGroup=grouper.nodeGroup(parentNode);
+      if (parentGroup == null) {
+        forNewGroups.add(idNode);
+      }
+ else {
+        parentGroup.nodes.add(idNode);
+      }
+    }
+  }
+  for (  Node n : forNewGroups) {
+    grouper.addGroup(new Group(graph,n));
+  }
+  for (  Node n : spoutNodes) {
+    grouper.addGroup(new Group(graph,n));
+  }
+  grouper.reindex();
+  mergedGroups=grouper.getAllGroups();
+  Map<Node,String> batchGroupMap=new HashMap();
+  List<Set<Node>> connectedComponents=new ConnectivityInspector<Node,IndexedEdge>(graph).connectedSets();
+  for (int i=0; i < connectedComponents.size(); i++) {
+    String groupId="bg" + i;
+    for (    Node n : connectedComponents.get(i)) {
+      batchGroupMap.put(n,groupId);
+    }
+  }
+  Map<Group,Integer> parallelisms=getGroupParallelisms(graph,grouper,mergedGroups);
+  TridentTopologyBuilder builder=new TridentTopologyBuilder();
+  Map<Node,String> spoutIds=genSpoutIds(spoutNodes);
+  Map<Group,String> boltIds=genBoltIds(mergedGroups);
+  for (  SpoutNode sn : spoutNodes) {
+    Integer parallelism=parallelisms.get(grouper.nodeGroup(sn));
+    if (sn.type == SpoutNode.SpoutType.DRPC) {
+      builder.setBatchPerTupleSpout(spoutIds.get(sn),sn.streamId,(IRichSpout)sn.spout,parallelism,batchGroupMap.get(sn));
+    }
+ else {
+      ITridentSpout s;
+      if (sn.spout instanceof IBatchSpout) {
+        s=new BatchSpoutExecutor((IBatchSpout)sn.spout);
+      }
+ else       if (sn.spout instanceof ITridentSpout) {
+        s=(ITridentSpout)sn.spout;
+      }
+ else {
+        throw new RuntimeException("Regular rich spouts not supported yet... try wrapping in a RichSpoutBatchExecutor");
+      }
+      builder.setSpout(spoutIds.get(sn),sn.streamId,sn.txId,s,parallelism,batchGroupMap.get(sn));
+    }
+  }
+  for (  Group g : mergedGroups) {
+    if (!isSpoutGroup(g)) {
+      Integer p=parallelisms.get(g);
+      Map<String,String> streamToGroup=getOutputStreamBatchGroups(g,batchGroupMap);
+      BoltDeclarer d=builder.setBolt(boltIds.get(g),new SubtopologyBolt(graph,g.nodes,batchGroupMap),p,committerBatches(g,batchGroupMap),streamToGroup);
+      Collection<PartitionNode> inputs=uniquedSubscriptions(externalGroupInputs(g));
+      for (      PartitionNode n : inputs) {
+        Node parent=TridentUtils.getParent(graph,n);
+        String componentId;
+        if (parent instanceof SpoutNode) {
+          componentId=spoutIds.get(parent);
+        }
+ else {
+          componentId=boltIds.get(grouper.nodeGroup(parent));
+        }
+        d.grouping(new GlobalStreamId(componentId,n.streamId),n.thriftGrouping);
+      }
+    }
+  }
+  return builder.buildTopology();
+}

@@ -1,0 +1,18 @@
+{
+  TransactionAttempt tx=(TransactionAttempt)msgId;
+  TransactionStatus status=_activeTx.get(tx.getTransactionId());
+  if (status != null && tx.equals(status.attempt)) {
+    if (status.status == AttemptStatus.PROCESSING) {
+      status.status=AttemptStatus.PROCESSED;
+    }
+ else     if (status.status == AttemptStatus.COMMITTING) {
+      _activeTx.remove(tx.getTransactionId());
+      _collector.emit(SUCCESS_STREAM_ID,new Values(tx));
+      _currTransaction=nextTransactionId(tx.getTransactionId());
+      for (      TransactionalState state : _states) {
+        state.setData(CURRENT_TX,_currTransaction);
+      }
+    }
+    sync();
+  }
+}

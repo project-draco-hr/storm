@@ -1,0 +1,10 @@
+{
+  List<List> side=state.sides[streamIndex];
+  if (side.isEmpty()) {
+    state.numSidesReceived++;
+  }
+  side.add(input);
+  if (state.numSidesReceived == state.sides.length) {
+    emitCrossJoin(state,collector,streamIndex,input);
+  }
+}

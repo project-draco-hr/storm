@@ -1,0 +1,4 @@
+StateFactory stateFactory
+Fields inputFields
+ReducerAggregator agg
+Fields functionFields

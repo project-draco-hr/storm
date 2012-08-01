@@ -1,0 +1,4 @@
+{
+  if (stored == null)   return arg;
+ else   return agg.combine(stored,arg);
+}

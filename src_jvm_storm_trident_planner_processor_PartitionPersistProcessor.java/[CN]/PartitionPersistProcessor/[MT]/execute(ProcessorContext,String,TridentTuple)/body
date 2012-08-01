@@ -1,0 +1,3 @@
+{
+  ((List)processorContext.state[_context.getStateIndex()]).add(_projection.create(tuple));
+}

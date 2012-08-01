@@ -1,0 +1,3 @@
+IPersistentVector delegates
+ValuePointer[] index
+Map<String,ValuePointer> fieldIndex

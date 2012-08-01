@@ -1,0 +1,6 @@
+{
+  Number batchSize=(Number)conf.get(MAX_BATCH_SIZE_CONF);
+  if (batchSize == null)   batchSize=1000;
+  _maxBatchSize=batchSize.intValue();
+  _collector=new CaptureCollector();
+}

@@ -1,0 +1,8 @@
+{
+  int[] sizes=new int[_sideFields.size() + 1];
+  sizes[0]=_numGroupFields;
+  for (int i=0; i < _sideFields.size() - 1; i++) {
+    sizes[i + 1]=_sideFields.get(i).size();
+  }
+  _factory=new ComboList.Factory(sizes);
+}

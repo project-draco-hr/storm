@@ -1,0 +1,15 @@
+{
+  List<Factory> parents=tridentContext.getParentTupleFactories();
+  _context=tridentContext;
+  _streamToIndex=new HashMap<String,Integer>();
+  List<String> parentStreams=tridentContext.getParentStreams();
+  for (int i=0; i < parentStreams.size(); i++) {
+    _streamToIndex.put(parentStreams.get(i),i);
+  }
+  _projectionFactories=new ProjectionFactory[_projectFields.size()];
+  for (int i=0; i < _projectFields.size(); i++) {
+    _projectionFactories[i]=new ProjectionFactory(parents.get(i),_projectFields.get(i));
+  }
+  _collector=new FreshCollector(tridentContext);
+  _reducer.prepare(conf,new TridentMultiReducerContext((List)Arrays.asList(_projectionFactories)));
+}

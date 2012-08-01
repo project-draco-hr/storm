@@ -1,0 +1,5 @@
+{
+  _inputFactory=context.makeProjectionFactory(_inFields);
+  _groupFactory=context.makeProjectionFactory(_groupFields);
+  _agg.prepare(conf,new TridentOperationContext(context,_inputFactory));
+}

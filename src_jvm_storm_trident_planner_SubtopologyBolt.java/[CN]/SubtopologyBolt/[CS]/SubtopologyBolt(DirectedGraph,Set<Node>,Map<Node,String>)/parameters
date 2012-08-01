@@ -1,0 +1,3 @@
+DirectedGraph graph
+Set<Node> nodes
+Map<Node,String> batchGroups

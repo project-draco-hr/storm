@@ -1,0 +1,5 @@
+Stream s1
+Fields joinFields1
+Stream s2
+Fields joinFields2
+Fields outFields

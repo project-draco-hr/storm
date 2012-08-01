@@ -1,0 +1,25 @@
+{
+  if (!_curr.containsKey(txid)) {
+    SortedMap<Long,Object> prevMap=_curr.headMap(txid);
+    SortedMap<Long,Object> afterMap=_curr.tailMap(txid);
+    Long prev=null;
+    if (!prevMap.isEmpty())     prev=prevMap.lastKey();
+    Object data;
+    if (afterMap.isEmpty()) {
+      Object prevData;
+      if (prev != null) {
+        prevData=_curr.get(prev);
+      }
+ else {
+        prevData=null;
+      }
+      data=init.init(txid,prevData);
+    }
+ else {
+      data=null;
+    }
+    _curr.put(txid,data);
+    _state.setData(txPath(txid),data);
+  }
+  return _curr.get(txid);
+}

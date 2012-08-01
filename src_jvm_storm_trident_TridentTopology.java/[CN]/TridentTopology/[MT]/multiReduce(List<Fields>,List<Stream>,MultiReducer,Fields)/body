@@ -1,0 +1,4 @@
+{
+  Node n=new ProcessorNode(getUniqueStreamId(),outputFields,outputFields,new MultiReducerProcessor(inputFields,function));
+  return addSourcedNode(streams,n);
+}

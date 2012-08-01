@@ -1,0 +1,7 @@
+{
+  val.setFollowThroughCollector(collector);
+  for (int i=0; i < _aggs.length; i++) {
+    TridentTuple projected=_inputFactories[i].create((TridentTupleView)tuple);
+    _aggs[i].aggregate(val.objs[i],projected,val.collectors[i]);
+  }
+}

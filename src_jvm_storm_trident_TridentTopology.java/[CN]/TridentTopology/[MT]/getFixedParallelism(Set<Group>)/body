@@ -1,0 +1,15 @@
+{
+  Integer ret=null;
+  for (  Group g : groups) {
+    for (    Node n : g.nodes) {
+      if (n.stateInfo != null && n.stateInfo.spec.requiredNumPartitions != null) {
+        int reqPartitions=n.stateInfo.spec.requiredNumPartitions;
+        if (ret != null && ret != reqPartitions) {
+          throw new RuntimeException("Cannot have one group have fixed parallelism of two different values");
+        }
+        ret=reqPartitions;
+      }
+    }
+  }
+  return ret;
+}

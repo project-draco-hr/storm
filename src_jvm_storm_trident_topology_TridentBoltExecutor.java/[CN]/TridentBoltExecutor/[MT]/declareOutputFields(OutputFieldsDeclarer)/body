@@ -1,0 +1,6 @@
+{
+  _bolt.declareOutputFields(declarer);
+  for (  String batchGroup : _coordSpecs.keySet()) {
+    declarer.declareStream(COORD_STREAM(batchGroup),true,new Fields("id","count"));
+  }
+}

@@ -1,0 +1,5 @@
+{
+  IPersistentVector curr=parent._delegates;
+  curr=(IPersistentVector)RT.conj(curr,selfVals);
+  return new TridentTupleView(curr,_index,_fieldIndex);
+}

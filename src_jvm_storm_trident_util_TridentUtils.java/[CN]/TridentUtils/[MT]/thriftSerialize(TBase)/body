@@ -1,0 +1,8 @@
+{
+  try {
+    return ser.serialize(t);
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

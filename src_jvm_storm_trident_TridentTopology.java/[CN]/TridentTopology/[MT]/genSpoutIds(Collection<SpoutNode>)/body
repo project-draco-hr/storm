@@ -1,0 +1,9 @@
+{
+  Map<Node,String> ret=new HashMap();
+  int ctr=0;
+  for (  SpoutNode n : spoutNodes) {
+    ret.put(n,"spout" + ctr);
+    ctr++;
+  }
+  return ret;
+}

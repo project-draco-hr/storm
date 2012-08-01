@@ -1,0 +1,4 @@
+{
+  this.graph=graph;
+  this.id=UUID.randomUUID().toString();
+}

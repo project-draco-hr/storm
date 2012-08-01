@@ -1,0 +1,21 @@
+{
+  List<PartitionNode> ret=new ArrayList();
+  Set<PartitionNode> inputs=externalGroupInputs(g);
+  Map<String,List<PartitionNode>> grouped=new HashMap();
+  for (  PartitionNode n : inputs) {
+    if (!grouped.containsKey(n.streamId)) {
+      grouped.put(n.streamId,new ArrayList());
+    }
+    grouped.get(n.streamId).add(n);
+  }
+  for (  List<PartitionNode> group : grouped.values()) {
+    PartitionNode anchor=group.get(0);
+    for (int i=1; i < group.size(); i++) {
+      PartitionNode n=group.get(i);
+      if (!n.thriftGrouping.equals(anchor.thriftGrouping)) {
+        ret.add(n);
+      }
+    }
+  }
+  return ret;
+}

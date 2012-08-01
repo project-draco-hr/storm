@@ -1,0 +1,5 @@
+{
+  for (  RotatingTransactionalState state : _partitionStates.values()) {
+    state.cleanupBefore(tx.getTransactionId());
+  }
+}

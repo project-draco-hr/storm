@@ -1,0 +1,5 @@
+{
+  _stateId=stateId;
+  _function=function;
+  _inputFields=inputFields;
+}

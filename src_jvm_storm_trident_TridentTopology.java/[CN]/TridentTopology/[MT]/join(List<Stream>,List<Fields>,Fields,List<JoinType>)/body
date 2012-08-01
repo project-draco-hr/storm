@@ -1,0 +1,3 @@
+{
+  return multiReduce(strippedInputFields(streams,joinFields),groupedStreams(streams,joinFields),new JoinerMultiReducer(mixed,joinFields.get(0).size(),strippedInputFields(streams,joinFields)),outFields);
+}

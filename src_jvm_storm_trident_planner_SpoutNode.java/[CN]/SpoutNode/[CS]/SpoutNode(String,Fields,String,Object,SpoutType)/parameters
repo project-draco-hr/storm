@@ -1,0 +1,5 @@
+String streamId
+Fields allOutputFields
+String txid
+Object spout
+SpoutType type

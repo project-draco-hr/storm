@@ -1,0 +1,5 @@
+String id
+String streamName
+IRichSpout spout
+Integer parallelism
+String batchGroup

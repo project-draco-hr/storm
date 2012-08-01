@@ -1,0 +1,4 @@
+{
+  _node.parallelismHint=parallelism;
+  return this;
+}

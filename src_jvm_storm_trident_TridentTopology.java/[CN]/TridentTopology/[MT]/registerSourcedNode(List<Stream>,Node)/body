@@ -1,0 +1,8 @@
+{
+  registerNode(newNode);
+  int streamIndex=0;
+  for (  Stream s : sources) {
+    _graph.addEdge(s._node,newNode,new IndexedEdge(s._node,newNode,streamIndex));
+    streamIndex++;
+  }
+}

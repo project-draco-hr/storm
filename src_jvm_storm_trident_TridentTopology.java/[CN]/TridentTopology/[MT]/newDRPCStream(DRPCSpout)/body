@@ -1,0 +1,5 @@
+{
+  Node n=new SpoutNode(getUniqueStreamId(),TridentUtils.getSingleOutputStreamFields(spout),null,spout,SpoutNode.SpoutType.DRPC);
+  Stream nextStream=addNode(n);
+  return nextStream.project(new Fields("args"));
+}

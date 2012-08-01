@@ -1,0 +1,4 @@
+String streamId
+Fields allOutputFields
+Fields selfOutFields
+TridentProcessor processor

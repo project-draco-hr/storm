@@ -1,0 +1,7 @@
+{
+  ChainedResult initted=new ChainedResult(collector,_aggs.length);
+  for (int i=0; i < _aggs.length; i++) {
+    initted.objs[i]=_aggs[i].init(batchId,initted.collectors[i]);
+  }
+  return initted;
+}

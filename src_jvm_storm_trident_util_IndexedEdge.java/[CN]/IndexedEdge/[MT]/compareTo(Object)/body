@@ -1,0 +1,4 @@
+{
+  IndexedEdge other=(IndexedEdge)t;
+  return index - other.index;
+}

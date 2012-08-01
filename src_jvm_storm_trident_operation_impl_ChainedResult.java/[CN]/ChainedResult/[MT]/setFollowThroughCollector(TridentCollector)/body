@@ -1,0 +1,7 @@
+{
+  if (collectors.length > 1) {
+    for (    TridentCollector c : collectors) {
+      ((CaptureCollector)c).setCollector(collector);
+    }
+  }
+}

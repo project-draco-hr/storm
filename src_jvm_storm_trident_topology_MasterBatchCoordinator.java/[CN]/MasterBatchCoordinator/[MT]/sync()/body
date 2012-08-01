@@ -1,0 +1,20 @@
+{
+  TransactionStatus maybeCommit=_activeTx.get(_currTransaction);
+  if (maybeCommit != null && maybeCommit.status == AttemptStatus.PROCESSED) {
+    maybeCommit.status=AttemptStatus.COMMITTING;
+    _collector.emit(COMMIT_STREAM_ID,new Values(maybeCommit.attempt),maybeCommit.attempt);
+  }
+  if (_active) {
+    if (_activeTx.size() < _maxTransactionActive) {
+      Long curr=_currTransaction;
+      for (int i=0; i < _maxTransactionActive; i++) {
+        if (!_activeTx.containsKey(curr) && isReady(curr)) {
+          TransactionAttempt attempt=new TransactionAttempt(curr,_rand.nextLong());
+          _activeTx.put(curr,new TransactionStatus(attempt));
+          _collector.emit(BATCH_STREAM_ID,new Values(attempt),attempt);
+        }
+        curr=nextTransactionId(curr);
+      }
+    }
+  }
+}

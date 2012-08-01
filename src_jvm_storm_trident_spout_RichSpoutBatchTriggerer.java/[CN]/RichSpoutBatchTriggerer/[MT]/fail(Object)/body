@@ -1,0 +1,7 @@
+{
+  Long batchId=_msgIdToBatchId.remove((Long)msgId);
+  FinishCondition cond=_finishConditions.remove(batchId);
+  if (cond != null) {
+    _delegate.fail(cond.msgId);
+  }
+}
