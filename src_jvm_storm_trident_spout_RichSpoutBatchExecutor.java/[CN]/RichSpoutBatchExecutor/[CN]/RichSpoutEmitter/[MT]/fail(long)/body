@@ -1,0 +1,8 @@
+{
+  List<Object> ids=(List<Object>)idsMap.remove(batchId);
+  if (ids != null) {
+    for (    Object id : ids) {
+      _spout.fail(id);
+    }
+  }
+}

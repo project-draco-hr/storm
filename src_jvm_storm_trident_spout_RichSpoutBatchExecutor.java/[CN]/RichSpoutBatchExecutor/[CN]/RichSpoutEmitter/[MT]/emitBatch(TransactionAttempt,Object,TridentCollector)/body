@@ -1,13 +1,15 @@
 {
+  long txid=tx.getTransactionId();
   long now=System.currentTimeMillis();
   if (now - lastRotate > rotateTime) {
     Map<Long,List<Object>> failed=idsMap.rotate();
-    for (    List<Object> failedIds : failed.values()) {
-      for (      Object id : failedIds) {
-        _spout.fail(id);
-      }
+    for (    Long id : failed.keySet()) {
+      fail(id);
     }
     lastRotate=now;
+  }
+  if (idsMap.containsKey(txid)) {
+    fail(txid);
   }
   _collector.reset(collector);
   if (!prepared) {
@@ -20,5 +22,5 @@
       break;
     }
   }
-  idsMap.put(tx.getTransactionId(),_collector.ids);
+  idsMap.put(txid,_collector.ids);
 }
