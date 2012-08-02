@@ -6,13 +6,14 @@
   }
   boolean keepGoing=true;
   while (keepGoing) {
-    List[] combined=new List[sides.length];
+    List[] combined=new List[sides.length + 1];
+    combined[0]=state.group;
     for (int i=0; i < sides.length; i++) {
       if (i == overrideIndex) {
-        combined[i]=overrideTuple;
+        combined[i + 1]=overrideTuple;
       }
  else {
-        combined[i]=sides[i].get(indices[i]);
+        combined[i + 1]=sides[i].get(indices[i]);
       }
     }
     collector.emit(_factory.create(combined));

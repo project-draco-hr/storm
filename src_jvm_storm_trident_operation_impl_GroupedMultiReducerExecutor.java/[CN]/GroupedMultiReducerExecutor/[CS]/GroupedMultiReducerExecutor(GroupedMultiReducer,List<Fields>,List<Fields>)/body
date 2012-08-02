@@ -4,4 +4,5 @@
   }
   _groupFields=groupFields;
   _inputFields=inputFields;
+  _reducer=reducer;
 }

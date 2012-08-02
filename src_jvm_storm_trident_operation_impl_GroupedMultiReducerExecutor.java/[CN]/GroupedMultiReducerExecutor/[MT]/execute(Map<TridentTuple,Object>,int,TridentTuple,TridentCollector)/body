@@ -2,10 +2,10 @@
   ProjectionFactory groupFactory=_groupFactories.get(streamIndex);
   ProjectionFactory inputFactory=_inputFactories.get(streamIndex);
   TridentTuple group=groupFactory.create(full);
-  TridentTuple input=groupFactory.create(full);
+  TridentTuple input=inputFactory.create(full);
   Object curr;
   if (!state.containsKey(group)) {
-    curr=_reducer.init(collector);
+    curr=_reducer.init(collector,group);
     state.put(group,curr);
   }
  else {
