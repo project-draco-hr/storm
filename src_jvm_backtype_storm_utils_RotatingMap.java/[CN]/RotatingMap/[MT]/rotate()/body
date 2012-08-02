@@ -6,4 +6,5 @@
       _callback.expire(entry.getKey(),entry.getValue());
     }
   }
+  return dead;
 }

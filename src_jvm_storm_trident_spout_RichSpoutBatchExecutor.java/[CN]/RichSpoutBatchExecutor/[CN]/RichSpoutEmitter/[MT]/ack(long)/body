@@ -1,5 +1,5 @@
 {
-  List<Object> ids=idsMap.remove(batchId);
+  List<Object> ids=(List<Object>)idsMap.remove(batchId);
   if (ids != null) {
     for (    Object id : ids) {
       _spout.ack(id);
