@@ -1,4 +1,6 @@
 {
+  _messageTimeoutMs=context.maxTopologyMessageTimeout() * 1000L;
+  _lastRotate=System.currentTimeMillis();
   _batches=new RotatingMap(2);
   _context=context;
   _collector=collector;
