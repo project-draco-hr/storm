@@ -1,4 +1,4 @@
 {
-  int val=id.host.hashCode() + 23 * id.partition;
+  int val=Math.abs(id.host.hashCode() + 23 * id.partition);
   return val % _totalTasks == _taskIndex;
 }
