@@ -1,3 +1,4 @@
 {
+  _cached.clear();
   _delegate.beginCommit(txid);
 }
