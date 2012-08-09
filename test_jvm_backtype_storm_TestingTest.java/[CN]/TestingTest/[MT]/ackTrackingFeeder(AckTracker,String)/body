@@ -1,5 +1,0 @@
-{
-  FeederSpout feeder=createFeederSpout(fields);
-  feeder.setAckFailDelegate(tracker);
-  return feeder;
-}
