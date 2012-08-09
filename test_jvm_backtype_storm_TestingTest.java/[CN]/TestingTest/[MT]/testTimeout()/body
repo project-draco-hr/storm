@@ -4,7 +4,7 @@
   MkClusterParam mkClusterParam=new MkClusterParam();
   mkClusterParam.setDaemonConf(daemonConfig);
   Testing.withSimulatedTimeLocalCluster(mkClusterParam,new TestJob(){
-    @Override public void run(    Cluster cluster){
+    @Override public void run(    ILocalCluster cluster){
       AckFailMapTracker tracker=new AckFailMapTracker();
       FeederSpout feeder=createFeederSpout("field1");
       feeder.setAckFailDelegate(tracker);

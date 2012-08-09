@@ -1,6 +1,6 @@
 {
   Testing.withTrackedCluster(new TestJob(){
-    @Override public void run(    Cluster cluster){
+    @Override public void run(    ILocalCluster cluster){
       AckTracker tracker=new AckTracker();
       FeederSpout feederSpout=ackTrackingFeeder(tracker,"num");
       TopologyBuilder builder=new TopologyBuilder();

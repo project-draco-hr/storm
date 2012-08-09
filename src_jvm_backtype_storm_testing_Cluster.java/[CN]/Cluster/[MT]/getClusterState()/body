@@ -1,3 +1,0 @@
-{
-  return get(Keyword.intern("storm-cluster-state"));
-}

@@ -6,9 +6,8 @@
   daemonConf.put(Config.SUPERVISOR_ENABLE,false);
   daemonConf.put(Config.TOPOLOGY_ACKER_EXECUTORS,0);
   Testing.withLocalCluster(mkClusterParam,new TestJob(){
-    @Override public void run(    Cluster cluster){
-      assertNotNull(cluster.getNimbus());
-      assertNotNull(cluster.getClusterState());
+    @Override public void run(    ILocalCluster cluster){
+      assertNotNull(cluster.getState());
     }
   }
 );

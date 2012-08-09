@@ -1,3 +1,0 @@
-{
-  return (Cluster)get(Keyword.intern("cluster"));
-}

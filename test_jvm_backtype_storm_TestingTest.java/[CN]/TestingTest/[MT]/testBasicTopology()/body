@@ -5,7 +5,7 @@
   daemonConf.put(Config.STORM_LOCAL_MODE_ZMQ,false);
   mkClusterParam.setDaemonConf(daemonConf);
   Testing.withSimulatedTimeLocalCluster(mkClusterParam,new TestJob(){
-    @Override public void run(    Cluster cluster){
+    @Override public void run(    ILocalCluster cluster){
       TopologyBuilder builder=new TopologyBuilder();
       builder.setSpout("1",new TestWordSpout(true),3);
       builder.setBolt("2",new TestWordCounter(),4).fieldsGrouping("1",new Fields("word"));
