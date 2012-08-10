@@ -1,7 +1,7 @@
 {
-  List<ValueUpdater> updaters=new ArrayList(vals.size());
+  List<ValueUpdater> updaters=new ArrayList<ValueUpdater>(vals.size());
   for (  T val : vals) {
-    updaters.add(new ReplaceUpdater(val));
+    updaters.add(new ReplaceUpdater<T>(val));
   }
   multiUpdate(keys,updaters);
 }

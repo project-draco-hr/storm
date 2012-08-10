@@ -1,3 +1,0 @@
-{
-  return new CachedBatchReadsMap(new OpaqueMap(backing));
-}
