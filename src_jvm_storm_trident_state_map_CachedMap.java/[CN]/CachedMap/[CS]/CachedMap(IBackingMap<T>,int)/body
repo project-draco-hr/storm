@@ -1,0 +1,4 @@
+{
+  _cache=new LRUMap<List<Object>,T>(cacheSize);
+  _delegate=delegate;
+}

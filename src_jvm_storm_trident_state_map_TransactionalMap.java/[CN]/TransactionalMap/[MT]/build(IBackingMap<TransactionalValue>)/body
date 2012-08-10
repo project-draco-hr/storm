@@ -1,3 +1,0 @@
-{
-  return new CachedBatchReadsMap(new TransactionalMap(backing));
-}

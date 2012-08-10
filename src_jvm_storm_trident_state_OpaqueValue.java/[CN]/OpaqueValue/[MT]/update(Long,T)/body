@@ -6,5 +6,5 @@
  else {
     prev=this.curr;
   }
-  return new OpaqueValue(batchTxid,newVal,prev);
+  return new OpaqueValue<T>(batchTxid,newVal,prev);
 }
