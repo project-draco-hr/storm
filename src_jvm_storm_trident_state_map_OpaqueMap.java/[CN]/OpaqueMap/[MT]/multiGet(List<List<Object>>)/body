@@ -1,9 +1,9 @@
 {
-  List<OpaqueValue<T>> curr=_backing.multiGet(keys);
+  List<OpaqueValue> curr=_backing.multiGet(keys);
   List<T> ret=new ArrayList<T>(curr.size());
-  for (  OpaqueValue<T> val : curr) {
+  for (  OpaqueValue val : curr) {
     if (val != null) {
-      ret.add(val.get(_currTx));
+      ret.add((T)val.get(_currTx));
     }
  else {
       ret.add(null);

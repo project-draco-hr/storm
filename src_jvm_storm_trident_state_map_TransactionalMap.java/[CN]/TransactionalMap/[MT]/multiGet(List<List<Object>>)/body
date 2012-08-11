@@ -1,9 +1,9 @@
 {
-  List<TransactionalValue<T>> vals=_backing.multiGet(keys);
+  List<TransactionalValue> vals=_backing.multiGet(keys);
   List<T> ret=new ArrayList<T>(vals.size());
-  for (  TransactionalValue<T> v : vals) {
+  for (  TransactionalValue v : vals) {
     if (v != null) {
-      ret.add(v.getVal());
+      ret.add((T)v.getVal());
     }
  else {
       ret.add(null);

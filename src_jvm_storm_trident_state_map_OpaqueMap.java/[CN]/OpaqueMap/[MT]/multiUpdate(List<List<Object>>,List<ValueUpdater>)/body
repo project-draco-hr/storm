@@ -1,6 +1,6 @@
 {
-  List<OpaqueValue<T>> curr=_backing.multiGet(keys);
-  List<OpaqueValue<T>> newVals=new ArrayList<OpaqueValue<T>>(curr.size());
+  List<OpaqueValue> curr=_backing.multiGet(keys);
+  List<OpaqueValue> newVals=new ArrayList<OpaqueValue>(curr.size());
   List<T> ret=new ArrayList<T>();
   for (int i=0; i < curr.size(); i++) {
     OpaqueValue<T> val=curr.get(i);
