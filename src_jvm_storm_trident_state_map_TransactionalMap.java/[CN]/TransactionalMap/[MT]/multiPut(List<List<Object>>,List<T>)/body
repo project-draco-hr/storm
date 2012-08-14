@@ -1,5 +1,5 @@
 {
-  List<TransactionalValue<T>> newVals=new ArrayList<TransactionalValue<T>>(vals.size());
+  List<TransactionalValue> newVals=new ArrayList<TransactionalValue>(vals.size());
   for (  T val : vals) {
     newVals.add(new TransactionalValue<T>(_currTx,val));
   }

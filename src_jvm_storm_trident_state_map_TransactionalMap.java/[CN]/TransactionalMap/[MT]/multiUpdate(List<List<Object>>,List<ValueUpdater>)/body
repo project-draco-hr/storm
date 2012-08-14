@@ -1,6 +1,6 @@
 {
-  List<TransactionalValue<T>> curr=_backing.multiGet(keys);
-  List<TransactionalValue<T>> newVals=new ArrayList<TransactionalValue<T>>(curr.size());
+  List<TransactionalValue> curr=_backing.multiGet(keys);
+  List<TransactionalValue> newVals=new ArrayList<TransactionalValue>(curr.size());
   List<T> ret=new ArrayList<T>();
   for (int i=0; i < curr.size(); i++) {
     TransactionalValue<T> val=curr.get(i);
