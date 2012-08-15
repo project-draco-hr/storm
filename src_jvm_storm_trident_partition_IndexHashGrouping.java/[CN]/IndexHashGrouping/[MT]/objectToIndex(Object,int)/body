@@ -1,4 +1,4 @@
 {
   if (val == null)   return 0;
- else   return val.hashCode() % numPartitions;
+ else   return Math.abs(val.hashCode()) % numPartitions;
 }
