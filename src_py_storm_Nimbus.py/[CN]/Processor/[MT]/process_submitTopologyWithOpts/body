@@ -1,0 +1,15 @@
+def process_submitTopologyWithOpts(self, seqid, iprot, oprot):
+    args = submitTopologyWithOpts_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = submitTopologyWithOpts_result()
+    try:
+        self._handler.submitTopologyWithOpts(args.name, args.uploadedJarLocation, args.jsonConf, args.topology, args.options)
+    except AlreadyAliveException as e:
+        result.e = e
+    except InvalidTopologyException as ite:
+        result.ite = ite
+    oprot.writeMessageBegin('submitTopologyWithOpts', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

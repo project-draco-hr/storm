@@ -1,0 +1,4 @@
+def validate(self):
+    if (self.initial_status is None):
+        raise TProtocol.TProtocolException(message='Required field initial_status is unset!')
+    return

@@ -1,0 +1,5 @@
+{
+  if (other.is_set_initial_status()) {
+    this.initial_status=other.initial_status;
+  }
+}

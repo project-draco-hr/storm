@@ -1,0 +1,20 @@
+{
+switch (field) {
+case E:
+    if (value == null) {
+      unset_e();
+    }
+ else {
+      set_e((AlreadyAliveException)value);
+    }
+  break;
+case ITE:
+if (value == null) {
+  unset_ite();
+}
+ else {
+  set_ite((InvalidTopologyException)value);
+}
+break;
+}
+}
