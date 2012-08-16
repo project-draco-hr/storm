@@ -1,0 +1,3 @@
+{
+  collector.emit(new Values(state.count));
+}
