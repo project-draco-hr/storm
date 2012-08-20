@@ -1,0 +1,3 @@
+{
+  return _spout.getCoordinator(txStateId,conf,context);
+}

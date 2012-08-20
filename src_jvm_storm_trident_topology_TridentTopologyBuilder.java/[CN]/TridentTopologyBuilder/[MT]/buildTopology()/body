@@ -1,6 +1,7 @@
 {
   TopologyBuilder builder=new TopologyBuilder();
-  Map<GlobalStreamId,String> batchIds=fleshOutStreamBatchIds();
+  Map<GlobalStreamId,String> batchIdsForSpouts=fleshOutStreamBatchIds(false);
+  Map<GlobalStreamId,String> batchIdsForBolts=fleshOutStreamBatchIds(true);
   Map<String,List<String>> batchesToCommitIds=new HashMap<String,List<String>>();
   Map<String,List<ITridentSpout>> batchesToSpouts=new HashMap<String,List<ITridentSpout>>();
   for (  String id : _spouts.keySet()) {
@@ -24,7 +25,7 @@
       }
       Map<String,TridentBoltExecutor.CoordSpec> specs=new HashMap();
       specs.put(c.batchGroupId,new CoordSpec());
-      BoltDeclarer bd=builder.setBolt(id,new TridentBoltExecutor(new TridentSpoutExecutor(c.commitStateId,c.streamName,((ITridentSpout)c.spout)),batchIds,specs),c.parallelism);
+      BoltDeclarer bd=builder.setBolt(id,new TridentBoltExecutor(new TridentSpoutExecutor(c.commitStateId,c.streamName,((ITridentSpout)c.spout)),batchIdsForSpouts,specs),c.parallelism);
       bd.allGrouping(spoutCoordinator(id),MasterBatchCoordinator.BATCH_STREAM_ID);
       bd.allGrouping(masterCoordinator(batchGroup),MasterBatchCoordinator.SUCCESS_STREAM_ID);
       if (c.spout instanceof ICommitterTridentSpout) {
@@ -50,7 +51,7 @@
     Component c=_bolts.get(id);
     Map<String,CoordSpec> specs=new HashMap();
     for (    GlobalStreamId s : getBoltSubscriptionStreams(id)) {
-      String batch=batchIds.get(s);
+      String batch=batchIdsForBolts.get(s);
       if (!specs.containsKey(batch))       specs.put(batch,new CoordSpec());
       CoordSpec spec=specs.get(batch);
       CoordType ct;
@@ -65,7 +66,7 @@
     for (    String b : c.committerBatches) {
       specs.get(b).commitStream=new GlobalStreamId(masterCoordinator(b),MasterBatchCoordinator.COMMIT_STREAM_ID);
     }
-    BoltDeclarer d=builder.setBolt(id,new TridentBoltExecutor(c.bolt,batchIds,specs),c.parallelism);
+    BoltDeclarer d=builder.setBolt(id,new TridentBoltExecutor(c.bolt,batchIdsForBolts,specs),c.parallelism);
     for (    Map conf : c.componentConfs) {
       d.addConfigurations(conf);
     }
