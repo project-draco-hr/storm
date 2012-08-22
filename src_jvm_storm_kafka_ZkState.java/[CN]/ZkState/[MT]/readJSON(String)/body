@@ -2,7 +2,7 @@
   try {
     byte[] b=readBytes(path);
     if (b == null)     return null;
-    return (Map<String,Object>)JSONValue.parse(new String(b,"UTF-8"));
+    return (Map<Object,Object>)JSONValue.parse(new String(b,"UTF-8"));
   }
  catch (  Exception e) {
     throw new RuntimeException(e);

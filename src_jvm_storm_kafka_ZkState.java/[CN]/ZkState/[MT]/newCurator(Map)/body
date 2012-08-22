@@ -4,5 +4,5 @@
   for (  String server : (List<String>)stateConf.get(Config.TRANSACTIONAL_ZOOKEEPER_SERVERS)) {
     serverPorts=serverPorts + server + ":"+ port+ ",";
   }
-  return CuratorFrameworkFactory.newClient("localhost:2181,",Utils.getInt(stateConf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT)),15000,new RetryNTimes(Utils.getInt(stateConf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES)),Utils.getInt(stateConf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL))));
+  return CuratorFrameworkFactory.newClient(serverPorts,Utils.getInt(stateConf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT)),15000,new RetryNTimes(Utils.getInt(stateConf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES)),Utils.getInt(stateConf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL))));
 }
