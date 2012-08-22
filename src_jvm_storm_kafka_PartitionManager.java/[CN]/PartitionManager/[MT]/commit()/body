@@ -9,9 +9,7 @@
   }
   if (committedTo != _committedTo) {
     LOG.info("Writing committed offset to ZK: " + committedTo);
-    Map<String,Object> data=new LinkedHashMap<String,Object>();
-    data.put("id",_topologyInstanceId);
-    data.put("offset",committedTo);
+    Map<Object,Object> data=(Map<Object,Object>)ImmutableMap.builder().put("topology",ImmutableMap.of("id",_topologyInstanceId,"name",_stormConf.get(Config.TOPOLOGY_NAME))).put("offset",committedTo).put("partition",_partition.partition).put("broker",ImmutableMap.of("host",_partition.host.host,"port",_partition.host.port)).put("topic",_spoutConfig.topic).build();
     _state.writeJSON(committedPath(),data);
     LOG.info("Wrote committed offset to ZK: " + committedTo);
     _committedTo=committedTo;

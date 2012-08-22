@@ -4,11 +4,12 @@
   _taskIndex=taskIndex;
   _totalTasks=totalTasks;
   _topologyInstanceId=topologyInstanceId;
+  _stormConf=stormConf;
   _state=state;
   _brokerConf=(ZkHosts)_spoutConfig.hosts;
   _refreshFreqMs=_brokerConf.refreshFreqSecs * 1000;
   try {
-    _curator=CuratorFrameworkFactory.newClient(_brokerConf.brokerZkStr,Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT)),15000,new RetryNTimes(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL))));
+    _curator=CuratorFrameworkFactory.newClient(_brokerConf.brokerZkStr,Utils.getInt(stormConf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT)),15000,new RetryNTimes(Utils.getInt(stormConf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES)),Utils.getInt(stormConf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL))));
     _curator.start();
   }
  catch (  IOException e) {
