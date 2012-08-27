@@ -1,3 +1,8 @@
 {
-  return _topology.addSourcedNode(this,new PartitionNode(_node.streamId,getOutputFields(),grouping));
+  if (_node instanceof PartitionNode) {
+    return each(new Fields(),new TrueFilter()).partition(grouping);
+  }
+ else {
+    return _topology.addSourcedNode(this,new PartitionNode(_node.streamId,getOutputFields(),grouping));
+  }
 }

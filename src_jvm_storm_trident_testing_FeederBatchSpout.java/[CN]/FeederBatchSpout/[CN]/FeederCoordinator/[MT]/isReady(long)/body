@@ -1,4 +1,5 @@
 {
+  if (!_waitToEmit)   return true;
   List allBatches=(List)RegisteredGlobalState.getState(_id);
   if (allBatches.size() > _masterEmitted) {
     _masterEmitted++;

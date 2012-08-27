@@ -1,4 +1,0 @@
-{
-  _cache=new LRUMap(cacheSize);
-  _delegate=delegate;
-}

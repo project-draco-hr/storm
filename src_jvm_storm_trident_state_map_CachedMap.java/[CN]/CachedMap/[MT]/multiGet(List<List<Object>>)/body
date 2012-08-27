@@ -1,9 +1,9 @@
 {
-  Map<List<Object>,T> results=new HashMap();
-  List<List<Object>> toGet=new ArrayList();
+  Map<List<Object>,T> results=new HashMap<List<Object>,T>();
+  List<List<Object>> toGet=new ArrayList<List<Object>>();
   for (  List<Object> key : keys) {
     if (_cache.containsKey(key)) {
-      results.put(key,(T)_cache.get(key));
+      results.put(key,_cache.get(key));
     }
  else {
       toGet.add(key);
@@ -16,7 +16,7 @@
     _cache.put(key,val);
     results.put(key,val);
   }
-  List<T> ret=new ArrayList(keys.size());
+  List<T> ret=new ArrayList<T>(keys.size());
   for (  List<Object> key : keys) {
     ret.add(results.get(key));
   }
