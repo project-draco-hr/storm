@@ -50,7 +50,6 @@
       Class klass=Class.forName(klassName);
       IKryoDecorator decorator=(IKryoDecorator)klass.newInstance();
       decorator.decorate(k);
-      System.out.println(klassName + ".. executed decorate.");
     }
  catch (    ClassNotFoundException e) {
       if (skipMissing) {
