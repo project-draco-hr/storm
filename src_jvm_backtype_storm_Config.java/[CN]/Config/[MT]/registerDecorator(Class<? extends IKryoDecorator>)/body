@@ -1,0 +1,3 @@
+{
+  getRegisteredDecorators().add(klass.getName());
+}
