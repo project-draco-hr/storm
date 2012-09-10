@@ -1,0 +1,5 @@
+{
+  super(null,new Values("$MEMORY-MAP-STATE-GLOBAL$"));
+  _memoryMapState=new MemoryMapState(id);
+  setDelegate(OpaqueMap.build(_memoryMapState));
+}
