@@ -1,8 +1,7 @@
 {
   List<Object> ret=new ArrayList<Object>(args.size());
-  Iterator<List<Object>> tuplesIterator=((ITupleCollection)state).getTuples();
   for (int i=0; i < args.size(); i++) {
-    ret.add(tuplesIterator);
+    ret.add(((ITupleCollection)state).getTuples());
   }
   return ret;
 }
