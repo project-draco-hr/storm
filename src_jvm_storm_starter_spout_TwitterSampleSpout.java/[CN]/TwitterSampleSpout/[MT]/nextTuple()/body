@@ -1,9 +1,0 @@
-{
-  Status ret=queue.poll();
-  if (ret == null) {
-    Utils.sleep(50);
-  }
- else {
-    _collector.emit(new Values(ret));
-  }
-}
