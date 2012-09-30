@@ -1,5 +1,4 @@
 {
-  _rand=new Random(Utils.secureRandomLong());
   _throttler=new WindowedTimeThrottler((Number)conf.get(Config.TOPOLOGY_TRIDENT_BATCH_EMIT_INTERVAL_MILLIS),1);
   for (  String spoutId : _managedSpoutIds) {
     _states.add(TransactionalState.newCoordinatorState(conf,spoutId));
@@ -13,6 +12,7 @@
  else {
     _maxTransactionActive=active.intValue();
   }
+  _attemptIds=getStoredCurrAttempts(_currTransaction,_maxTransactionActive);
   for (int i=0; i < _spouts.size(); i++) {
     String txId=_managedSpoutIds.get(i);
     _coordinators.add(_spouts.get(i).getCoordinator(txId,conf,context));

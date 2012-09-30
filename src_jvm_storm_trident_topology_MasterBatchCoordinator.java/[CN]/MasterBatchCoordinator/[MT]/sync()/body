@@ -9,7 +9,18 @@
       Long curr=_currTransaction;
       for (int i=0; i < _maxTransactionActive; i++) {
         if (!_activeTx.containsKey(curr) && isReady(curr)) {
-          TransactionAttempt attempt=new TransactionAttempt(curr,_rand.nextLong());
+          Integer attemptId=_attemptIds.get(curr);
+          if (attemptId == null) {
+            attemptId=0;
+          }
+ else {
+            attemptId++;
+          }
+          _attemptIds.put(curr,attemptId);
+          for (          TransactionalState state : _states) {
+            state.setData(CURRENT_ATTEMPTS,_attemptIds);
+          }
+          TransactionAttempt attempt=new TransactionAttempt(curr,attemptId);
           _activeTx.put(curr,new TransactionStatus(attempt));
           _collector.emit(BATCH_STREAM_ID,new Values(attempt),attempt);
           _throttler.markEvent();
