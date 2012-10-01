@@ -14,11 +14,20 @@
     _collector.ack(tuple);
     return;
   }
-  Object id=tuple.getValue(0);
-  TrackedBatch tracked=(TrackedBatch)_batches.get(id);
+  IBatchID id=(IBatchID)tuple.getValue(0);
+  TrackedBatch tracked=(TrackedBatch)_batches.get(id.getId());
+  if (tracked != null) {
+    if (id.getAttemptId() > tracked.attemptId) {
+      _batches.remove(id.getId());
+      tracked=null;
+    }
+ else     if (id.getAttemptId() < tracked.attemptId) {
+      return;
+    }
+  }
   if (tracked == null) {
-    tracked=new TrackedBatch(new BatchInfo(batchGroup,id,_bolt.initBatchState(batchGroup,id)),_coordConditions.get(batchGroup));
-    _batches.put(id,tracked);
+    tracked=new TrackedBatch(new BatchInfo(batchGroup,id,_bolt.initBatchState(batchGroup,id)),_coordConditions.get(batchGroup),id.getAttemptId());
+    _batches.put(id.getId(),tracked);
   }
   _coordCollector.setCurrBatch(tracked);
   TupleType t=getTupleType(tuple,tracked);

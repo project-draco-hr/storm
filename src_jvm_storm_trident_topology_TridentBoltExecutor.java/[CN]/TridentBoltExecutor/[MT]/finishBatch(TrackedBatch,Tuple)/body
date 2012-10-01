@@ -15,6 +15,6 @@
     failBatch(tracked);
     success=false;
   }
-  _batches.remove(tracked.info.batchId);
+  _batches.remove(tracked.info.batchId.getId());
   return success;
 }
