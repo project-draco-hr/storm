@@ -3,12 +3,16 @@
   for (  TransactionalState state : _states) {
     Map<Object,Number> attempts=(Map)state.getData(CURRENT_ATTEMPTS);
     if (attempts == null)     attempts=new HashMap();
-    for (    Object o : attempts.keySet()) {
-      if (o instanceof String) {
-        o=Long.parseLong((String)o);
+    for (    Entry<Object,Number> e : attempts.entrySet()) {
+      Number txidObj;
+      if (e.getKey() instanceof String) {
+        txidObj=Long.parseLong((String)e.getKey());
       }
-      long txid=((Number)o).longValue();
-      int attemptId=((Number)attempts.get(txid)).intValue();
+ else {
+        txidObj=(Number)e.getKey();
+      }
+      long txid=((Number)txidObj).longValue();
+      int attemptId=((Number)e.getValue()).intValue();
       Integer curr=ret.get(txid);
       if (curr == null || attemptId > curr) {
         ret.put(txid,attemptId);
