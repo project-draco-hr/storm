@@ -1,0 +1,3 @@
+{
+  conf.put(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS,secs);
+}

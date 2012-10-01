@@ -1,3 +1,3 @@
 {
-  put(Config.TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION,fallback);
+  setFallBackOnJavaSerialization(this,fallback);
 }
