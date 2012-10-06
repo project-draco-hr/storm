@@ -1,0 +1,6 @@
+{
+  checkReady();
+  getNimbusConf_call method_call=new getNimbusConf_call(resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

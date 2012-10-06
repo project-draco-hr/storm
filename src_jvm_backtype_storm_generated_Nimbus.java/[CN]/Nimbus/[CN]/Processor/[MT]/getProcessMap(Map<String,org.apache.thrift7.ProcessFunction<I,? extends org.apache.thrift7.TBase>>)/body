@@ -10,6 +10,7 @@
   processMap.put("finishFileUpload",new finishFileUpload());
   processMap.put("beginFileDownload",new beginFileDownload());
   processMap.put("downloadChunk",new downloadChunk());
+  processMap.put("getNimbusConf",new getNimbusConf());
   processMap.put("getClusterInfo",new getClusterInfo());
   processMap.put("getTopologyInfo",new getTopologyInfo());
   processMap.put("getTopologyConf",new getTopologyConf());
