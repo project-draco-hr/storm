@@ -1,0 +1,3 @@
+{
+  conf.put(Config.TOPOLOGY_MAX_SPOUT_PENDING,max);
+}

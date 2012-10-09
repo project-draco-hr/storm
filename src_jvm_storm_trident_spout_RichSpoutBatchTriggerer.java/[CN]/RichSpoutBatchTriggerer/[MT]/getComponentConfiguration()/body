@@ -1,3 +1,7 @@
 {
-  return _delegate.getComponentConfiguration();
+  Map<String,Object> conf=_delegate.getComponentConfiguration();
+  if (conf == null)   conf=new HashMap();
+ else   conf=new HashMap(conf);
+  Config.registerSerialization(conf,RichSpoutBatchId.class,RichSpoutBatchIdSerializer.class);
+  return conf;
 }

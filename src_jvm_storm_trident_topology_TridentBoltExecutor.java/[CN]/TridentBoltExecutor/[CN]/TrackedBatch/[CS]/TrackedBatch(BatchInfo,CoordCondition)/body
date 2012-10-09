@@ -1,5 +1,0 @@
-{
-  this.info=info;
-  this.condition=condition;
-  receivedCommit=condition.commitStream == null;
-}

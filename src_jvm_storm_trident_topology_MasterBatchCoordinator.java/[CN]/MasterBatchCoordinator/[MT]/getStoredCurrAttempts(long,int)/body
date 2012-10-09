@@ -1,0 +1,25 @@
+{
+  TreeMap<Long,Integer> ret=new TreeMap<Long,Integer>();
+  for (  TransactionalState state : _states) {
+    Map<Object,Number> attempts=(Map)state.getData(CURRENT_ATTEMPTS);
+    if (attempts == null)     attempts=new HashMap();
+    for (    Entry<Object,Number> e : attempts.entrySet()) {
+      Number txidObj;
+      if (e.getKey() instanceof String) {
+        txidObj=Long.parseLong((String)e.getKey());
+      }
+ else {
+        txidObj=(Number)e.getKey();
+      }
+      long txid=((Number)txidObj).longValue();
+      int attemptId=((Number)e.getValue()).intValue();
+      Integer curr=ret.get(txid);
+      if (curr == null || attemptId > curr) {
+        ret.put(txid,attemptId);
+      }
+    }
+  }
+  ret.headMap(currTransaction).clear();
+  ret.tailMap(currTransaction + maxBatches - 1).clear();
+  return ret;
+}
