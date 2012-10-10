@@ -1,6 +1,6 @@
 {
   String stateId=getUniqueStateId();
-  Node n=new Node(getUniqueStreamId(),new Fields());
+  Node n=new Node(getUniqueStreamId(),null,new Fields());
   n.stateInfo=new NodeStateInfo(stateId,spec);
   registerNode(n);
   return new TridentState(this,n);

@@ -3,7 +3,14 @@
   int ctr=0;
   for (  Group g : groups) {
     if (!isSpoutGroup(g)) {
-      ret.put(g,"bolt" + ctr);
+      List<String> name=new ArrayList();
+      name.add("b");
+      name.add("" + ctr);
+      String groupName=getGroupName(g);
+      if (groupName != null && !groupName.isEmpty()) {
+        name.add(getGroupName(g));
+      }
+      ret.put(g,Utils.join(name,"-"));
       ctr++;
     }
   }

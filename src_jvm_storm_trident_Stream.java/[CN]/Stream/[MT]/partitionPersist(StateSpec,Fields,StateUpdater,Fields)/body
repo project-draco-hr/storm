@@ -1,6 +1,6 @@
 {
   String id=_topology.getUniqueStateId();
-  ProcessorNode n=new ProcessorNode(_topology.getUniqueStreamId(),functionFields,functionFields,new PartitionPersistProcessor(id,inputFields,updater));
+  ProcessorNode n=new ProcessorNode(_topology.getUniqueStreamId(),_name,functionFields,functionFields,new PartitionPersistProcessor(id,inputFields,updater));
   n.committer=true;
   n.stateInfo=new NodeStateInfo(id,stateSpec);
   return _topology.addSourcedStateNode(this,n);

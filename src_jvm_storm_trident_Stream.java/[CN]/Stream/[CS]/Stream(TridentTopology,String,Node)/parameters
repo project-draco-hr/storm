@@ -1,2 +1,3 @@
 TridentTopology topology
+String name
 Node node

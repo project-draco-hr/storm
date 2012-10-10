@@ -1,4 +1,4 @@
 {
   registerSourcedNode(sources,newNode);
-  return new Stream(this,newNode);
+  return new Stream(this,newNode.name,newNode);
 }

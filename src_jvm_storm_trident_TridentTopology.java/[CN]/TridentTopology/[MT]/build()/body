@@ -41,7 +41,7 @@
   for (  Group g : mergedGroups) {
     for (    PartitionNode n : extraPartitionInputs(g)) {
       Node idNode=makeIdentityNode(n.allOutputFields);
-      Node newPartitionNode=new PartitionNode(idNode.streamId,idNode.allOutputFields,n.thriftGrouping);
+      Node newPartitionNode=new PartitionNode(idNode.streamId,n.name,idNode.allOutputFields,n.thriftGrouping);
       Node parentNode=TridentUtils.getParent(graph,n);
       Set<IndexedEdge> outgoing=graph.outgoingEdgesOf(n);
       graph.removeVertex(n);

@@ -1,0 +1,17 @@
+{
+  TreeMap<Integer,String> sortedNames=new TreeMap();
+  for (  Node n : g.nodes) {
+    if (n.name != null) {
+      sortedNames.put(n.creationIndex,n.name);
+    }
+  }
+  List<String> names=new ArrayList<String>();
+  String prevName=null;
+  for (  String n : sortedNames.values()) {
+    if (prevName == null || !n.equals(prevName)) {
+      prevName=n;
+      names.add(n);
+    }
+  }
+  return Utils.join(names,"-");
+}
