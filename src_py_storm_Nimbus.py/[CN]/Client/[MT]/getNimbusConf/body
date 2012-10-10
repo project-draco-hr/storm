@@ -1,0 +1,3 @@
+def getNimbusConf(self):
+    self.send_getNimbusConf()
+    return self.recv_getNimbusConf()

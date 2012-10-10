@@ -1,0 +1,6 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

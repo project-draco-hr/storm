@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_success=true && this.is_set_success();
+  boolean that_present_success=true && that.is_set_success();
+  if (this_present_success || that_present_success) {
+    if (!(this_present_success && that_present_success))     return false;
+    if (!this.success.equals(that.success))     return false;
+  }
+  return true;
+}

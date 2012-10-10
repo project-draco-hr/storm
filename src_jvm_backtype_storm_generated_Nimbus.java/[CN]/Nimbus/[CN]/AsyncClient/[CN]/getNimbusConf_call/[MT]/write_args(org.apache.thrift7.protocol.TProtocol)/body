@@ -1,0 +1,6 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift7.protocol.TMessage("getNimbusConf",org.apache.thrift7.protocol.TMessageType.CALL,0));
+  getNimbusConf_args args=new getNimbusConf_args();
+  args.write(prot);
+  prot.writeMessageEnd();
+}
