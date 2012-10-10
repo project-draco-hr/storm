@@ -1,0 +1,3 @@
+{
+  return _delegate.multiUpdate(keys,updaters);
+}

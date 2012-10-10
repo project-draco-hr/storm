@@ -1,0 +1,6 @@
+{
+  if (!_dbs.containsKey(id)) {
+    _dbs.put(id,new HashMap());
+  }
+  this.db=(Map<List<Object>,T>)_dbs.get(id);
+}
