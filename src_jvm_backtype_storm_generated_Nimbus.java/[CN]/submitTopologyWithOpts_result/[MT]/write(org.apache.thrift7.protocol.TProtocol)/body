@@ -1,0 +1,15 @@
+{
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.is_set_e()) {
+    oprot.writeFieldBegin(E_FIELD_DESC);
+    this.e.write(oprot);
+    oprot.writeFieldEnd();
+  }
+ else   if (this.is_set_ite()) {
+    oprot.writeFieldBegin(ITE_FIELD_DESC);
+    this.ite.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

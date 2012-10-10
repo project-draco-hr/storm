@@ -1,0 +1,3 @@
+{
+  return this.initial_status != null;
+}

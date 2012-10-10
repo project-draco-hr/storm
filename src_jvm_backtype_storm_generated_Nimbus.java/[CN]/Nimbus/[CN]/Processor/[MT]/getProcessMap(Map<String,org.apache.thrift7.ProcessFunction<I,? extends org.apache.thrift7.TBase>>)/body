@@ -1,5 +1,6 @@
 {
   processMap.put("submitTopology",new submitTopology());
+  processMap.put("submitTopologyWithOpts",new submitTopologyWithOpts());
   processMap.put("killTopology",new killTopology());
   processMap.put("killTopologyWithOpts",new killTopologyWithOpts());
   processMap.put("activate",new activate());

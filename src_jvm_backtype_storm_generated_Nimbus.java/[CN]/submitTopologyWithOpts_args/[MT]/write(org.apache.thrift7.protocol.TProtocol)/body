@@ -1,0 +1,31 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.name != null) {
+    oprot.writeFieldBegin(NAME_FIELD_DESC);
+    oprot.writeString(this.name);
+    oprot.writeFieldEnd();
+  }
+  if (this.uploadedJarLocation != null) {
+    oprot.writeFieldBegin(UPLOADED_JAR_LOCATION_FIELD_DESC);
+    oprot.writeString(this.uploadedJarLocation);
+    oprot.writeFieldEnd();
+  }
+  if (this.jsonConf != null) {
+    oprot.writeFieldBegin(JSON_CONF_FIELD_DESC);
+    oprot.writeString(this.jsonConf);
+    oprot.writeFieldEnd();
+  }
+  if (this.topology != null) {
+    oprot.writeFieldBegin(TOPOLOGY_FIELD_DESC);
+    this.topology.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  if (this.options != null) {
+    oprot.writeFieldBegin(OPTIONS_FIELD_DESC);
+    this.options.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

@@ -1,0 +1,11 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.initial_status != null) {
+    oprot.writeFieldBegin(INITIAL_STATUS_FIELD_DESC);
+    oprot.writeI32(this.initial_status.getValue());
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

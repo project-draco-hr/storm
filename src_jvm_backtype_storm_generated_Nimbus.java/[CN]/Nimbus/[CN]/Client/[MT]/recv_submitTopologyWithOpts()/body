@@ -1,0 +1,11 @@
+{
+  submitTopologyWithOpts_result result=new submitTopologyWithOpts_result();
+  receiveBase(result,"submitTopologyWithOpts");
+  if (result.e != null) {
+    throw result.e;
+  }
+  if (result.ite != null) {
+    throw result.ite;
+  }
+  return;
+}

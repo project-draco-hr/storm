@@ -1,0 +1,12 @@
+{
+switch (field) {
+case INITIAL_STATUS:
+    if (value == null) {
+      unset_initial_status();
+    }
+ else {
+      set_initial_status((TopologyInitialStatus)value);
+    }
+  break;
+}
+}
