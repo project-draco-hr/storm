@@ -1,0 +1,6 @@
+def send_getNimbusConf(self):
+    self._oprot.writeMessageBegin('getNimbusConf', TMessageType.CALL, self._seqid)
+    args = getNimbusConf_args()
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

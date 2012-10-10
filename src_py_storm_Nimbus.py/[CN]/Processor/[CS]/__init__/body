@@ -12,6 +12,7 @@ def __init__(self, handler):
     self._processMap['finishFileUpload'] = Processor.process_finishFileUpload
     self._processMap['beginFileDownload'] = Processor.process_beginFileDownload
     self._processMap['downloadChunk'] = Processor.process_downloadChunk
+    self._processMap['getNimbusConf'] = Processor.process_getNimbusConf
     self._processMap['getClusterInfo'] = Processor.process_getClusterInfo
     self._processMap['getTopologyInfo'] = Processor.process_getTopologyInfo
     self._processMap['getTopologyConf'] = Processor.process_getTopologyConf
