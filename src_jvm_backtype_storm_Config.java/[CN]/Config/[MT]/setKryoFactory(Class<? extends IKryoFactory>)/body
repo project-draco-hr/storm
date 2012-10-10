@@ -1,3 +1,3 @@
 {
-  put(Config.TOPOLOGY_KRYO_FACTORY,klass.getName());
+  setKryoFactory(this,klass);
 }

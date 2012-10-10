@@ -1,0 +1,4 @@
+{
+  send_getNimbusConf();
+  return recv_getNimbusConf();
+}

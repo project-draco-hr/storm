@@ -1,0 +1,8 @@
+{
+  getNimbusConf_result result=new getNimbusConf_result();
+  receiveBase(result,"getNimbusConf");
+  if (result.is_set_success()) {
+    return result.success;
+  }
+  throw new org.apache.thrift7.TApplicationException(org.apache.thrift7.TApplicationException.MISSING_RESULT,"getNimbusConf failed: unknown result");
+}

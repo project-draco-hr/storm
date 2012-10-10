@@ -1,4 +1,10 @@
 {
-  Node n=new ProcessorNode(getUniqueStreamId(),outputFields,outputFields,new MultiReducerProcessor(inputFields,function));
+  List<String> names=new ArrayList<String>();
+  for (  Stream s : streams) {
+    if (s._name != null) {
+      names.add(s._name);
+    }
+  }
+  Node n=new ProcessorNode(getUniqueStreamId(),Utils.join(names,"-"),outputFields,outputFields,new MultiReducerProcessor(inputFields,function));
   return addSourcedNode(streams,n);
 }

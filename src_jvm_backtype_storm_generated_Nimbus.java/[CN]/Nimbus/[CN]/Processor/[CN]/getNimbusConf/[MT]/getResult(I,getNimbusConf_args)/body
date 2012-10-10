@@ -1,0 +1,5 @@
+{
+  getNimbusConf_result result=new getNimbusConf_result();
+  result.success=iface.getNimbusConf();
+  return result;
+}

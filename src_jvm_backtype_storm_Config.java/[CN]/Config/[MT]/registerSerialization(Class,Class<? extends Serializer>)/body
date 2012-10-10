@@ -1,5 +1,3 @@
 {
-  Map<String,String> register=new HashMap<String,String>();
-  register.put(klass.getName(),serializerClass.getName());
-  getRegisteredSerializations().add(register);
+  registerSerialization(this,klass,serializerClass);
 }

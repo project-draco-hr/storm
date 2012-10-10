@@ -1,0 +1,11 @@
+{
+  List ret;
+  if (!conf.containsKey(Config.TOPOLOGY_KRYO_REGISTER)) {
+    ret=new ArrayList();
+  }
+ else {
+    ret=new ArrayList((List)conf.get(Config.TOPOLOGY_KRYO_REGISTER));
+  }
+  conf.put(Config.TOPOLOGY_KRYO_REGISTER,ret);
+  return ret;
+}

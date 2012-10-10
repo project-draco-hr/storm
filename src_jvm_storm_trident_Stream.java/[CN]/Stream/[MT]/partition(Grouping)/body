@@ -3,6 +3,6 @@
     return each(new Fields(),new TrueFilter()).partition(grouping);
   }
  else {
-    return _topology.addSourcedNode(this,new PartitionNode(_node.streamId,getOutputFields(),grouping));
+    return _topology.addSourcedNode(this,new PartitionNode(_node.streamId,_name,getOutputFields(),grouping));
   }
 }

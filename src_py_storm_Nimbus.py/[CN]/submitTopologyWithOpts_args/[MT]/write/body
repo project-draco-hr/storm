@@ -1,0 +1,27 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('submitTopologyWithOpts_args')
+    if (self.name is not None):
+        oprot.writeFieldBegin('name', TType.STRING, 1)
+        oprot.writeString(self.name.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.uploadedJarLocation is not None):
+        oprot.writeFieldBegin('uploadedJarLocation', TType.STRING, 2)
+        oprot.writeString(self.uploadedJarLocation.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.jsonConf is not None):
+        oprot.writeFieldBegin('jsonConf', TType.STRING, 3)
+        oprot.writeString(self.jsonConf.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.topology is not None):
+        oprot.writeFieldBegin('topology', TType.STRUCT, 4)
+        self.topology.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.options is not None):
+        oprot.writeFieldBegin('options', TType.STRUCT, 5)
+        self.options.write(oprot)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

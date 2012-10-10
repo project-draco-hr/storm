@@ -1,0 +1,6 @@
+{
+  checkReady();
+  submitTopologyWithOpts_call method_call=new submitTopologyWithOpts_call(name,uploadedJarLocation,jsonConf,topology,options,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

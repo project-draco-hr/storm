@@ -1,0 +1,14 @@
+{
+  StringBuilder sb=new StringBuilder("SubmitOptions(");
+  boolean first=true;
+  sb.append("initial_status:");
+  if (this.initial_status == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.initial_status);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

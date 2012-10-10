@@ -7,8 +7,8 @@
   for (  Set<Node> g : connectedComponents) {
     SpoutNode drpcNode=getDRPCSpoutNode(g);
     if (drpcNode != null) {
-      Stream lastStream=new Stream(helper,getLastAddedNode(g));
-      Stream s=new Stream(helper,drpcNode);
+      Stream lastStream=new Stream(helper,null,getLastAddedNode(g));
+      Stream s=new Stream(helper,null,drpcNode);
       helper.multiReduce(s.project(new Fields("return-info")).batchGlobal(),lastStream.batchGlobal(),new ReturnResultsReducer(),new Fields());
     }
   }

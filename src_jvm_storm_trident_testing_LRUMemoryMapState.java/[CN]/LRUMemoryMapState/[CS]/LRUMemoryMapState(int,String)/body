@@ -1,6 +1,4 @@
 {
-  if (!_dbs.containsKey(id)) {
-    _dbs.put(id,new LRUMap<List<Object>,Object>(cacheSize));
-  }
-  this.db=(Map<List<Object>,T>)_dbs.get(id);
+  _backing=new LRUMemoryMapStateBacking(cacheSize,id);
+  _delegate=new SnapshottableMap(OpaqueMap.build(_backing),new Values("$MEMORY-MAP-STATE-GLOBAL$"));
 }

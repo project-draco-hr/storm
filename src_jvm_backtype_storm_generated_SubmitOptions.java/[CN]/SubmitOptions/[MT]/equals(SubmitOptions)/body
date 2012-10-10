@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_initial_status=true && this.is_set_initial_status();
+  boolean that_present_initial_status=true && that.is_set_initial_status();
+  if (this_present_initial_status || that_present_initial_status) {
+    if (!(this_present_initial_status && that_present_initial_status))     return false;
+    if (!this.initial_status.equals(that.initial_status))     return false;
+  }
+  return true;
+}

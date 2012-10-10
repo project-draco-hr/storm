@@ -1,0 +1,4 @@
+String name
+Map stormConf
+StormTopology topology
+SubmitOptions opts
