@@ -1,6 +1,0 @@
-{
-  if (!containsKey(Config.TOPOLOGY_KRYO_REGISTER)) {
-    put(Config.TOPOLOGY_KRYO_REGISTER,new ArrayList());
-  }
-  return (List)get(Config.TOPOLOGY_KRYO_REGISTER);
-}

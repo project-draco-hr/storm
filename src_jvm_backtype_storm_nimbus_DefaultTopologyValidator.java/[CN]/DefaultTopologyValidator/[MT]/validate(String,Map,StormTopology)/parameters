@@ -1,0 +1,3 @@
+String topologyName
+Map topologyConf
+StormTopology topology

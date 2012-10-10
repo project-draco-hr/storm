@@ -7,6 +7,7 @@
     }
  else     if (status.status == AttemptStatus.COMMITTING) {
       _activeTx.remove(tx.getTransactionId());
+      _attemptIds.remove(tx.getTransactionId());
       _collector.emit(SUCCESS_STREAM_ID,new Values(tx));
       _currTransaction=nextTransactionId(tx.getTransactionId());
       for (      TransactionalState state : _states) {

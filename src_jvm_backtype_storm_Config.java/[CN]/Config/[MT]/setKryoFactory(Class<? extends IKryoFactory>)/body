@@ -1,0 +1,3 @@
+{
+  setKryoFactory(this,klass);
+}
