@@ -1,5 +1,4 @@
 {
-  Iterator<List<Object>> tuplesIterator=(Iterator<List<Object>>)result;
   while (tuplesIterator.hasNext()) {
     collector.emit(tuplesIterator.next());
   }

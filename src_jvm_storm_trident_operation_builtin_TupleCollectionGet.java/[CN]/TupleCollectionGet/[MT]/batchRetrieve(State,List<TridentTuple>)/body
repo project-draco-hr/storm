@@ -1,5 +1,5 @@
 {
-  List<Object> ret=new ArrayList<Object>(args.size());
+  List<Iterator<List<Object>>> ret=new ArrayList(args.size());
   for (int i=0; i < args.size(); i++) {
     ret.add(((ITupleCollection)state).getTuples());
   }

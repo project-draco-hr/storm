@@ -1,1 +1,1 @@
-BaseQueryFunction<State,Object>
+BaseQueryFunction<State,Iterator<List<Object>>>
