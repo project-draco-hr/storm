@@ -1,0 +1,2 @@
+Map conf
+Class<? extends IKryoFactory> klass

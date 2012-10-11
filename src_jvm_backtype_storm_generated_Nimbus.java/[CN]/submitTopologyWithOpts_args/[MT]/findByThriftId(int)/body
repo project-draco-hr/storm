@@ -1,0 +1,16 @@
+{
+switch (fieldId) {
+case 1:
+    return NAME;
+case 2:
+  return UPLOADED_JAR_LOCATION;
+case 3:
+return JSON_CONF;
+case 4:
+return TOPOLOGY;
+case 5:
+return OPTIONS;
+default :
+return null;
+}
+}

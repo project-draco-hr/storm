@@ -1,0 +1,10 @@
+def process_getNimbusConf(self, seqid, iprot, oprot):
+    args = getNimbusConf_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getNimbusConf_result()
+    result.success = self._handler.getNimbusConf()
+    oprot.writeMessageBegin('getNimbusConf', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

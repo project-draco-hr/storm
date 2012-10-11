@@ -1,7 +1,3 @@
 {
-  for (int i=0; i < keys.size(); i++) {
-    List<Object> key=keys.get(i);
-    T val=vals.get(i);
-    db.put(key,val);
-  }
+  _delegate.multiPut(keys,vals);
 }

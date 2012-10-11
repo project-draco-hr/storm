@@ -1,0 +1,4 @@
+String streamId
+String name
+Fields allOutputFields
+Grouping grouping

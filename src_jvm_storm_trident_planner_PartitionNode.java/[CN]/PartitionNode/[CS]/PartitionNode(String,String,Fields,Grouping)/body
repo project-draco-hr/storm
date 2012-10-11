@@ -1,0 +1,4 @@
+{
+  super(streamId,name,allOutputFields);
+  this.thriftGrouping=grouping;
+}

@@ -1,5 +1,0 @@
-{
-  super(streamId,allOutputFields);
-  this.processor=processor;
-  this.selfOutFields=selfOutFields;
-}

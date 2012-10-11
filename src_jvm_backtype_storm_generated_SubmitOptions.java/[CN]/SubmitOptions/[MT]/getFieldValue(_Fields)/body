@@ -1,0 +1,7 @@
+{
+switch (field) {
+case INITIAL_STATUS:
+    return get_initial_status();
+}
+throw new IllegalStateException();
+}

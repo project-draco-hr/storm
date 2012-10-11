@@ -1,0 +1,9 @@
+{
+  try {
+    Class c=Class.forName(klass);
+    return c.newInstance();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

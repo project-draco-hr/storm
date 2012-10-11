@@ -1,34 +1,3 @@
 {
-  if (!Utils.isValidConf(stormConf)) {
-    throw new IllegalArgumentException("Storm conf is not valid. Must be json-serializable");
-  }
-  stormConf=new HashMap(stormConf);
-  stormConf.putAll(Utils.readCommandLineOpts());
-  Map conf=Utils.readStormConfig();
-  conf.putAll(stormConf);
-  try {
-    String serConf=JSONValue.toJSONString(stormConf);
-    if (localNimbus != null) {
-      LOG.info("Submitting topology " + name + " in local mode");
-      localNimbus.submitTopology(name,null,serConf,topology);
-    }
- else {
-      NimbusClient client=NimbusClient.getConfiguredClient(conf);
-      if (topologyNameExists(conf,name)) {
-        throw new RuntimeException("Topology with name `" + name + "` already exists on cluster");
-      }
-      submitJar(conf);
-      try {
-        LOG.info("Submitting topology " + name + " in distributed mode with conf "+ serConf);
-        client.getClient().submitTopology(name,submittedJar,serConf,topology);
-      }
-  finally {
-        client.close();
-      }
-    }
-    LOG.info("Finished submitting topology: " + name);
-  }
- catch (  TException e) {
-    throw new RuntimeException(e);
-  }
+  submitTopology(name,stormConf,topology,new SubmitOptions(TopologyInitialStatus.ACTIVE));
 }

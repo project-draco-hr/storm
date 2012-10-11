@@ -1,0 +1,13 @@
+{
+  submitTopologyWithOpts_result result=new submitTopologyWithOpts_result();
+  try {
+    iface.submitTopologyWithOpts(args.name,args.uploadedJarLocation,args.jsonConf,args.topology,args.options);
+  }
+ catch (  AlreadyAliveException e) {
+    result.e=e;
+  }
+catch (  InvalidTopologyException ite) {
+    result.ite=ite;
+  }
+  return result;
+}

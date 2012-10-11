@@ -1,0 +1,7 @@
+{
+switch (field) {
+case SUCCESS:
+    return get_success();
+}
+throw new IllegalStateException();
+}

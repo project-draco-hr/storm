@@ -1,0 +1,4 @@
+def submitTopologyWithOpts(self, name, uploadedJarLocation, jsonConf, topology, options):
+    '\n    Parameters:\n     - name\n     - uploadedJarLocation\n     - jsonConf\n     - topology\n     - options\n    '
+    self.send_submitTopologyWithOpts(name, uploadedJarLocation, jsonConf, topology, options)
+    self.recv_submitTopologyWithOpts()

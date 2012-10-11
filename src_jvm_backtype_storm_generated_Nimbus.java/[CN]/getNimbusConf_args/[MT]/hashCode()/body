@@ -1,0 +1,4 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  return builder.toHashCode();
+}
