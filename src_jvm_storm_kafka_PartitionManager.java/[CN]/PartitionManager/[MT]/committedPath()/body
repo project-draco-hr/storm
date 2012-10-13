@@ -1,0 +1,3 @@
+{
+  return _spoutConfig.zkRoot + "/" + _spoutConfig.id+ "/"+ _partition;
+}

@@ -1,13 +1,2 @@
 {
-  TopologyBuilder builder=new TopologyBuilder();
-  List<String> hosts=new ArrayList<String>();
-  hosts.add("localhost");
-  SpoutConfig spoutConf=SpoutConfig.fromHostStrings(hosts,8,"clicks","/kafkastorm","id");
-  spoutConf.scheme=new StringScheme();
-  spoutConf.forceStartOffsetTime(-2);
-  builder.setSpout("spout",new KafkaSpout(spoutConf),3);
-  Config conf=new Config();
-  LocalCluster cluster=new LocalCluster();
-  cluster.submitTopology("kafka-test",conf,builder.createTopology());
-  Utils.sleep(600000);
 }

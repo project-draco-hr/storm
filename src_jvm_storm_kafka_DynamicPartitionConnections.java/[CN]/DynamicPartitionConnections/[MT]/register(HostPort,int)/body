@@ -1,0 +1,8 @@
+{
+  if (!_connections.containsKey(host)) {
+    _connections.put(host,new ConnectionInfo(new SimpleConsumer(host.host,host.port,_config.socketTimeoutMs,_config.bufferSizeBytes)));
+  }
+  ConnectionInfo info=_connections.get(host);
+  info.partitions.add(partition);
+  return info.consumer;
+}

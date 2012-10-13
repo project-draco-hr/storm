@@ -1,9 +1,10 @@
 {
-  for (int i=0; i < _managedPartitions.size(); i++) {
-    int partition=_managedPartitions.get(_currPartitionIndex);
-    EmitState state=_managers.get(partition).next();
+  List<PartitionManager> managers=_coordinator.getMyManagedPartitions();
+  for (int i=0; i < managers.size(); i++) {
+    _currPartitionIndex=_currPartitionIndex % managers.size();
+    EmitState state=managers.get(_currPartitionIndex).next(_collector);
     if (state != EmitState.EMITTED_MORE_LEFT) {
-      _currPartitionIndex=(_currPartitionIndex + 1) % _managedPartitions.size();
+      _currPartitionIndex=(_currPartitionIndex + 1) % managers.size();
     }
     if (state != EmitState.NO_EMITTED) {
       break;

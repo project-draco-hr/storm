@@ -1,4 +1,7 @@
 {
   KafkaMessageId id=(KafkaMessageId)msgId;
-  _managers.get(id.partition).fail(id.offset);
+  PartitionManager m=_coordinator.getManager(id.partition);
+  if (m != null) {
+    m.fail(id.offset);
+  }
 }

@@ -1,0 +1,4 @@
+{
+  StaticHosts hosts=(StaticHosts)_config.hosts;
+  return hosts.hosts.size() * hosts.partitionsPerHost;
+}

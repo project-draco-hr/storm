@@ -1,0 +1,23 @@
+{
+  if (_waitingToEmit.isEmpty())   fill();
+  while (true) {
+    MessageAndRealOffset toEmit=_waitingToEmit.pollFirst();
+    if (toEmit == null) {
+      return EmitState.NO_EMITTED;
+    }
+    List<Object> tup=_spoutConfig.scheme.deserialize(Utils.toByteArray(toEmit.msg.payload()));
+    if (tup != null) {
+      collector.emit(tup,new KafkaMessageId(_partition,toEmit.offset));
+      break;
+    }
+ else {
+      ack(toEmit.offset);
+    }
+  }
+  if (!_waitingToEmit.isEmpty()) {
+    return EmitState.EMITTED_MORE_LEFT;
+  }
+ else {
+    return EmitState.EMITTED_END;
+  }
+}

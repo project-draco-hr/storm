@@ -1,0 +1,3 @@
+{
+  return _config.coordinator.isReady(txid);
+}

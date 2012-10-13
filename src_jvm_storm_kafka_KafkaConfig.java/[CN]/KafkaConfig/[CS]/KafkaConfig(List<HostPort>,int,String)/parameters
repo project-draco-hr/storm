@@ -1,3 +1,0 @@
-List<HostPort> hosts
-int partitionsPerHost
-String topic

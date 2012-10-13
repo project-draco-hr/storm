@@ -1,0 +1,6 @@
+DynamicPartitionConnections connections
+String topologyInstanceId
+ZkState state
+Map stormConf
+SpoutConfig spoutConfig
+GlobalPartitionId id

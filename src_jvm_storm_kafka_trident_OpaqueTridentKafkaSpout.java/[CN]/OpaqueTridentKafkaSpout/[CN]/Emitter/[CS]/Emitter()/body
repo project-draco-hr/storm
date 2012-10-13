@@ -1,0 +1,3 @@
+{
+  _connections=new StaticPartitionConnections(_config);
+}

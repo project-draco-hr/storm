@@ -1,12 +1,2 @@
 {
-  List<String> hosts=new ArrayList<String>();
-  hosts.add("localhost");
-  KafkaConfig kafkaConf=KafkaConfig.fromHostStrings(hosts,3,"test");
-  kafkaConf.scheme=new StringScheme();
-  LocalCluster cluster=new LocalCluster();
-  TransactionalTopologyBuilder builder=new TransactionalTopologyBuilder("id","spout",new OpaqueTransactionalKafkaSpout(kafkaConf),1);
-  builder.setBolt("printer",new PrinterBolt()).shuffleGrouping("spout");
-  Config config=new Config();
-  cluster.submitTopology("kafka-test",config,builder.buildTopology());
-  Thread.sleep(600000);
 }

@@ -1,0 +1,4 @@
+{
+  this.hosts=hosts;
+  this.topic=topic;
+}
