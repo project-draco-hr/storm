@@ -1,3 +1,3 @@
 {
-  return host.toString() + ":" + partition;
+  return getId();
 }

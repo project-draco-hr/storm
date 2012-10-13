@@ -1,5 +1,3 @@
 {
-  _connections=new StaticPartitionConnections(_config);
-  StaticHosts hosts=(StaticHosts)_config.hosts;
-  partitionsPerHost=hosts.partitionsPerHost;
+  _connections=new DynamicPartitionConnections(_config);
 }

@@ -1,0 +1,6 @@
+TridentKafkaConfig config
+SimpleConsumer consumer
+int partition
+TridentCollector collector
+Map lastMeta
+String topologyInstanceId
