@@ -1,25 +1,31 @@
 {
-  Map<Integer,Object> metas=new HashMap<Integer,Object>();
+  if (_savedCoordinatorMeta == null || !_savedCoordinatorMeta.equals(coordinatorMeta)) {
+    List<ISpoutPartition> partitions=_emitter.getOrderedPartitions(coordinatorMeta);
+    _partitionStates.clear();
+    for (int i=_index; i < partitions.size(); i+=_numTasks) {
+      ISpoutPartition p=partitions.get(i);
+      String id=p.getId();
+      _partitionStates.put(id,new EmitterPartitionState(new RotatingTransactionalState(_state,id),p));
+    }
+    _savedCoordinatorMeta=coordinatorMeta;
+    _changedMeta=true;
+  }
+  Map<String,Object> metas=new HashMap<String,Object>();
   _cachedMetas.put(tx.getTransactionId(),metas);
-  long partitions=_emitter.numPartitions();
-  Entry<Long,Map<Integer,Object>> entry=_cachedMetas.lowerEntry(tx.getTransactionId());
-  Map<Integer,Object> prevCached;
+  Entry<Long,Map<String,Object>> entry=_cachedMetas.lowerEntry(tx.getTransactionId());
+  Map<String,Object> prevCached;
   if (entry != null) {
     prevCached=entry.getValue();
   }
  else {
-    prevCached=new HashMap<Integer,Object>();
+    prevCached=new HashMap<String,Object>();
   }
-  for (int i=_index; i < partitions; i+=_numTasks) {
-    RotatingTransactionalState state=_partitionStates.get(i);
-    if (state == null) {
-      state=new RotatingTransactionalState(_state,"" + i);
-      _partitionStates.put(i,state);
-    }
-    state.removeState(tx.getTransactionId());
-    Object lastMeta=prevCached.get(i);
-    if (lastMeta == null)     lastMeta=state.getLastState();
-    Object meta=_emitter.emitPartitionBatch(tx,collector,i,lastMeta);
-    metas.put(i,meta);
+  for (  String id : _partitionStates.keySet()) {
+    EmitterPartitionState s=_partitionStates.get(id);
+    s.rotatingState.removeState(tx.getTransactionId());
+    Object lastMeta=prevCached.get(id);
+    if (lastMeta == null)     lastMeta=s.rotatingState.getLastState();
+    Object meta=_emitter.emitPartitionBatch(tx,collector,s.partition,lastMeta);
+    metas.put(id,meta);
   }
 }

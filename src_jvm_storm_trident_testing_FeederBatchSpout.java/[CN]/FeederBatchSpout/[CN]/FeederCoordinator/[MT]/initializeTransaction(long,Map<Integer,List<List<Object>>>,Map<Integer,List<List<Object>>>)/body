@@ -1,4 +1,5 @@
 {
+  if (currMetadata != null)   return currMetadata;
   List allBatches=(List)RegisteredGlobalState.getState(_id);
   if (allBatches.size() > _emittedIndex) {
     Object batchInfo=allBatches.get(_emittedIndex);
