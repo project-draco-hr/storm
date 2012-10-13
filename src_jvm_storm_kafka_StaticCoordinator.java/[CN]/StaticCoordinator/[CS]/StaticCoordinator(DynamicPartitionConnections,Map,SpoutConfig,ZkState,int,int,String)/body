@@ -8,7 +8,7 @@
   }
   for (int i=taskIndex; i < allPartitionIds.size(); i+=totalTasks) {
     GlobalPartitionId myPartition=allPartitionIds.get(i);
-    _managers.put(myPartition,new PartitionManager(connections,topologyInstanceId,config,state,myPartition));
+    _managers.put(myPartition,new PartitionManager(connections,topologyInstanceId,state,stormConf,config,myPartition));
   }
   _allManagers=new ArrayList(_managers.values());
 }

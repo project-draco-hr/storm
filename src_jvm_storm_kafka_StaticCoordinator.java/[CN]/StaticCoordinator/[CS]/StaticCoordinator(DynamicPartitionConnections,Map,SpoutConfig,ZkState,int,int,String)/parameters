@@ -1,6 +1,7 @@
 DynamicPartitionConnections connections
+Map stormConf
 SpoutConfig config
+ZkState state
 int taskIndex
 int totalTasks
-TransactionalState state
 String topologyInstanceId

@@ -27,7 +27,7 @@
     }
     LOG.info("New partition managers: " + newPartitions.toString());
     for (    GlobalPartitionId id : newPartitions) {
-      PartitionManager man=new PartitionManager(_connections,_topologyInstanceId,_config,_state,id);
+      PartitionManager man=new PartitionManager(_connections,_topologyInstanceId,_state,_stormConf,_spoutConfig,id);
       _managers.put(id,man);
     }
   }
