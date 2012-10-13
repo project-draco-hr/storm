@@ -1,0 +1,18 @@
+{
+  try {
+    SimpleConsumer consumer=_connections.getConsumer(partition);
+    return KafkaUtils.emitPartitionBatchNew(_config,partition,consumer,attempt,collector,lastMeta,_topologyInstanceId);
+  }
+ catch (  FailedFetchException e) {
+    LOG.warn("Failed to fetch from partition " + partition);
+    if (lastMeta == null) {
+      return null;
+    }
+ else {
+      Map ret=new HashMap();
+      ret.put("offset",lastMeta.get("nextOffset"));
+      ret.put("nextOffset",lastMeta.get("nextOffset"));
+      return ret;
+    }
+  }
+}

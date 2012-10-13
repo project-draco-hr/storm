@@ -1,0 +1,6 @@
+{
+  List<Object> values=config.scheme.deserialize(Utils.toByteArray(msg.payload()));
+  if (values != null) {
+    collector.emit(values);
+  }
+}
