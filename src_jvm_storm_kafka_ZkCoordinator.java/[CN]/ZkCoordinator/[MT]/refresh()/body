@@ -1,24 +1,18 @@
 {
   try {
     LOG.info("Refreshing partition manager connections");
-    String topicBrokersPath=_brokerConf.brokerZkPath + "/topics/" + _config.topic;
-    String brokerInfoPath=_brokerConf.brokerZkPath + "/ids";
-    List<String> children=_curator.getChildren().forPath(topicBrokersPath);
+    Map<String,List> brokerInfo=_reader.getBrokerInfo();
     Set<GlobalPartitionId> mine=new HashSet();
-    for (    String c : children) {
-      try {
-        byte[] numPartitionsData=_curator.getData().forPath(topicBrokersPath + "/" + c);
-        byte[] hostPortData=_curator.getData().forPath(brokerInfoPath + "/" + c);
-        HostPort hp=getBrokerHost(hostPortData);
-        int numPartitions=getNumPartitions(numPartitionsData);
-        for (int i=0; i < numPartitions; i++) {
-          GlobalPartitionId id=new GlobalPartitionId(hp,i);
-          if (myOwnership(id)) {
-            mine.add(id);
-          }
+    for (    String host : brokerInfo.keySet()) {
+      List info=brokerInfo.get(host);
+      long port=(Long)info.get(0);
+      HostPort hp=new HostPort(host,(int)port);
+      long numPartitions=(Long)info.get(1);
+      for (int i=0; i < numPartitions; i++) {
+        GlobalPartitionId id=new GlobalPartitionId(hp,i);
+        if (myOwnership(id)) {
+          mine.add(id);
         }
-      }
- catch (      org.apache.zookeeper.KeeperException.NoNodeException e) {
       }
     }
     Set<GlobalPartitionId> curr=_managers.keySet();
