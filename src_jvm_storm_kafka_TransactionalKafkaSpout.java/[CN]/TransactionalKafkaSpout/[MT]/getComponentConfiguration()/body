@@ -1,5 +1,0 @@
-{
-  backtype.storm.Config conf=new backtype.storm.Config();
-  conf.registerSerialization(BatchMeta.class);
-  return conf;
-}

@@ -1,4 +1,0 @@
-TransactionAttempt attempt
-BatchOutputCollector collector
-int partition
-BatchMeta lastMeta

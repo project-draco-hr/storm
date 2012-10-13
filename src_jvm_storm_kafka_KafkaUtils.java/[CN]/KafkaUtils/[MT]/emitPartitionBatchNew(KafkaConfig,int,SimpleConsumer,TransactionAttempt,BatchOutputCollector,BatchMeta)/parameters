@@ -1,6 +1,0 @@
-KafkaConfig config
-int partition
-SimpleConsumer consumer
-TransactionAttempt attempt
-BatchOutputCollector collector
-BatchMeta lastMeta
