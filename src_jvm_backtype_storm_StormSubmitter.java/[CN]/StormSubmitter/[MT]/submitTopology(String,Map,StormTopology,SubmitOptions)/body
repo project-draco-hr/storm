@@ -20,7 +20,12 @@
       submitJar(conf);
       try {
         LOG.info("Submitting topology " + name + " in distributed mode with conf "+ serConf);
-        client.getClient().submitTopologyWithOpts(name,submittedJar,serConf,topology,opts);
+        if (opts != null) {
+          client.getClient().submitTopologyWithOpts(name,submittedJar,serConf,topology,opts);
+        }
+ else {
+          client.getClient().submitTopology(name,submittedJar,serConf,topology);
+        }
       }
  catch (      InvalidTopologyException e) {
         LOG.warn("Topology submission exception",e);

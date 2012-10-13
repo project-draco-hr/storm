@@ -2,5 +2,4 @@
   _coord=_spout.getCoordinator(_id,conf,context);
   _underlyingState=TransactionalState.newCoordinatorState(conf,_id);
   _state=new RotatingTransactionalState(_underlyingState,META_DIR);
-  _initializer=new StateInitializer();
 }
