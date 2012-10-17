@@ -1,0 +1,5 @@
+{
+  acc.count++;
+  acc.sum+=(Double)input;
+  return acc;
+}
