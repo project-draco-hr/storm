@@ -2,8 +2,8 @@ def run(self):
     global MODE
     MODE = Bolt
     (conf, context) = initComponent()
-    self.initialize(conf, context)
     try:
+        self.initialize(conf, context)
         while True:
             tup = readTuple()
             self.process(tup)
