@@ -1,5 +1,5 @@
 {
-  this.allPorts=new ArrayList<Integer>();
+  this.allPorts=new HashSet<Integer>();
   if (allPorts != null) {
     for (    Number n : allPorts) {
       this.allPorts.add(n.intValue());
