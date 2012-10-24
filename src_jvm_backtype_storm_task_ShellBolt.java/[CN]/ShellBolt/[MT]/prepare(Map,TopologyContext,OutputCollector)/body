@@ -23,6 +23,9 @@
  else           if (command.equals("fail")) {
             handleFail(action);
           }
+ else           if (command.equals("error")) {
+            handleError(action);
+          }
  else           if (command.equals("log")) {
             String msg=(String)action.get("msg");
             LOG.info("Shell msg: " + msg);
