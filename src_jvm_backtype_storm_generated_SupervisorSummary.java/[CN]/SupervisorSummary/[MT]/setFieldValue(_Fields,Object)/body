@@ -32,5 +32,13 @@ unset_num_used_workers();
 set_num_used_workers((Integer)value);
 }
 break;
+case SUPERVISOR_ID:
+if (value == null) {
+unset_supervisor_id();
+}
+ else {
+set_supervisor_id((String)value);
+}
+break;
 }
 }

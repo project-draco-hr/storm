@@ -11,4 +11,7 @@
   if (!is_set_num_used_workers()) {
     throw new org.apache.thrift7.protocol.TProtocolException("Required field 'num_used_workers' is unset! Struct:" + toString());
   }
+  if (!is_set_supervisor_id()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'supervisor_id' is unset! Struct:" + toString());
+  }
 }

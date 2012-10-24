@@ -8,6 +8,8 @@ case 3:
 return NUM_WORKERS;
 case 4:
 return NUM_USED_WORKERS;
+case 5:
+return SUPERVISOR_ID;
 default :
 return null;
 }

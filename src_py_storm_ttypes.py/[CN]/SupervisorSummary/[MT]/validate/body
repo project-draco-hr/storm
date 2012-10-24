@@ -7,4 +7,6 @@ def validate(self):
         raise TProtocol.TProtocolException(message='Required field num_workers is unset!')
     if (self.num_used_workers is None):
         raise TProtocol.TProtocolException(message='Required field num_used_workers is unset!')
+    if (self.supervisor_id is None):
+        raise TProtocol.TProtocolException(message='Required field supervisor_id is unset!')
     return
