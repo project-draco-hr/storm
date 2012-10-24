@@ -8,4 +8,4 @@ def run(self):
             tup = readTuple()
             self.process(tup)
     except Exception as e:
-        log(traceback.format_exc(e))
+        reportError(traceback.format_exc(e))

@@ -1,6 +1,4 @@
 {
   String msg=(String)action.get("msg");
-  if (msg != null) {
-    _collector.reportError(new Exception("Shell Process Exception: " + msg));
-  }
+  _collector.reportError(new Exception("Shell Process Exception: " + msg));
 }
