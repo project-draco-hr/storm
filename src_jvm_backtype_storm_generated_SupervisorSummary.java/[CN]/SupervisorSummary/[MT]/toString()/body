@@ -21,6 +21,15 @@
   sb.append("num_used_workers:");
   sb.append(this.num_used_workers);
   first=false;
+  if (!first)   sb.append(", ");
+  sb.append("supervisor_id:");
+  if (this.supervisor_id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.supervisor_id);
+  }
+  first=false;
   sb.append(")");
   return sb.toString();
 }

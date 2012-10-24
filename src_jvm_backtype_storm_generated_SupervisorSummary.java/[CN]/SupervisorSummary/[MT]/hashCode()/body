@@ -12,5 +12,8 @@
   boolean present_num_used_workers=true;
   builder.append(present_num_used_workers);
   if (present_num_used_workers)   builder.append(num_used_workers);
+  boolean present_supervisor_id=true && (is_set_supervisor_id());
+  builder.append(present_supervisor_id);
+  if (present_supervisor_id)   builder.append(supervisor_id);
   return builder.toHashCode();
 }

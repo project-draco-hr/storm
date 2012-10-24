@@ -8,6 +8,8 @@ case NUM_WORKERS:
 return Integer.valueOf(get_num_workers());
 case NUM_USED_WORKERS:
 return Integer.valueOf(get_num_used_workers());
+case SUPERVISOR_ID:
+return get_supervisor_id();
 }
 throw new IllegalStateException();
 }

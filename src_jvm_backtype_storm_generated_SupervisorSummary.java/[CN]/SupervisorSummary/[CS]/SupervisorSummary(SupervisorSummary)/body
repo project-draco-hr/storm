@@ -7,4 +7,7 @@
   this.uptime_secs=other.uptime_secs;
   this.num_workers=other.num_workers;
   this.num_used_workers=other.num_used_workers;
+  if (other.is_set_supervisor_id()) {
+    this.supervisor_id=other.supervisor_id;
+  }
 }

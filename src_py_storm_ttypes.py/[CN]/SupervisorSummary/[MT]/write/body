@@ -19,5 +19,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('num_used_workers', TType.I32, 4)
         oprot.writeI32(self.num_used_workers)
         oprot.writeFieldEnd()
+    if (self.supervisor_id is not None):
+        oprot.writeFieldBegin('supervisor_id', TType.STRING, 5)
+        oprot.writeString(self.supervisor_id.encode('utf-8'))
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

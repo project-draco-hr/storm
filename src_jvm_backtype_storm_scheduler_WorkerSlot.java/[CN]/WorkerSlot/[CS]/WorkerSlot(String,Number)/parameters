@@ -1,2 +1,2 @@
 String nodeId
-int port
+Number port
