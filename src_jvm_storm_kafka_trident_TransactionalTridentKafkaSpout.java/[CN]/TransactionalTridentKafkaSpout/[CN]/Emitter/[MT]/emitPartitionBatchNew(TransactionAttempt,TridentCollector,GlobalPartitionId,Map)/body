@@ -1,4 +1,4 @@
 {
   SimpleConsumer consumer=_connections.register(partition);
-  return KafkaUtils.emitPartitionBatchNew(_config,consumer,partition.partition,collector,lastMeta,_topologyInstanceId);
+  return KafkaUtils.emitPartitionBatchNew(_config,consumer,partition,collector,lastMeta,_topologyInstanceId,_topologyName);
 }

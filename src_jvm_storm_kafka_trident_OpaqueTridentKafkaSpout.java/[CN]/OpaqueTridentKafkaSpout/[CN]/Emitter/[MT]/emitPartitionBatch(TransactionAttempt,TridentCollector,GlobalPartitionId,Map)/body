@@ -1,7 +1,7 @@
 {
   try {
     SimpleConsumer consumer=_connections.register(partition);
-    return KafkaUtils.emitPartitionBatchNew(_config,consumer,partition.partition,collector,lastMeta,_topologyInstanceId);
+    return KafkaUtils.emitPartitionBatchNew(_config,consumer,partition,collector,lastMeta,_topologyInstanceId,_topologyName);
   }
  catch (  FailedFetchException e) {
     LOG.warn("Failed to fetch from partition " + partition);
@@ -12,6 +12,10 @@
       Map ret=new HashMap();
       ret.put("offset",lastMeta.get("nextOffset"));
       ret.put("nextOffset",lastMeta.get("nextOffset"));
+      ret.put("partition",partition.partition);
+      ret.put("broker",ImmutableMap.of("host",partition.host.host,"port",partition.host.port));
+      ret.put("topic",_config.topic);
+      ret.put("topology",ImmutableMap.of("name",_topologyName,"id",_topologyInstanceId));
       return ret;
     }
   }
