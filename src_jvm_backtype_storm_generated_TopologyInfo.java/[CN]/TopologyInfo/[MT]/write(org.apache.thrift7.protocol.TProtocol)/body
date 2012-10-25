@@ -18,8 +18,8 @@
     oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRUCT,this.executors.size()));
-      for (      ExecutorSummary _iter135 : this.executors) {
-        _iter135.write(oprot);
+      for (      ExecutorSummary _iter155 : this.executors) {
+        _iter155.write(oprot);
       }
       oprot.writeListEnd();
     }
@@ -34,12 +34,12 @@
     oprot.writeFieldBegin(ERRORS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift7.protocol.TMap(org.apache.thrift7.protocol.TType.STRING,org.apache.thrift7.protocol.TType.LIST,this.errors.size()));
-      for (      Map.Entry<String,List<ErrorInfo>> _iter136 : this.errors.entrySet()) {
-        oprot.writeString(_iter136.getKey());
+      for (      Map.Entry<String,List<ErrorInfo>> _iter156 : this.errors.entrySet()) {
+        oprot.writeString(_iter156.getKey());
 {
-          oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRUCT,_iter136.getValue().size()));
-          for (          ErrorInfo _iter137 : _iter136.getValue()) {
-            _iter137.write(oprot);
+          oprot.writeListBegin(new org.apache.thrift7.protocol.TList(org.apache.thrift7.protocol.TType.STRUCT,_iter156.getValue().size()));
+          for (          ErrorInfo _iter157 : _iter156.getValue()) {
+            _iter157.write(oprot);
           }
           oprot.writeListEnd();
         }

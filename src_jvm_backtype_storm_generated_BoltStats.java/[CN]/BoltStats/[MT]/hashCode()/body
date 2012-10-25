@@ -9,5 +9,11 @@
   boolean present_process_ms_avg=true && (is_set_process_ms_avg());
   builder.append(present_process_ms_avg);
   if (present_process_ms_avg)   builder.append(process_ms_avg);
+  boolean present_executed=true && (is_set_executed());
+  builder.append(present_executed);
+  if (present_executed)   builder.append(executed);
+  boolean present_execute_ms_avg=true && (is_set_execute_ms_avg());
+  builder.append(present_execute_ms_avg);
+  if (present_execute_ms_avg)   builder.append(execute_ms_avg);
   return builder.toHashCode();
 }

@@ -61,6 +61,42 @@ def read(self, iprot):
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
+        elif (fid == 4):
+            if (ftype == TType.MAP):
+                self.executed = {}
+                (_ktype123, _vtype124, _size122) = iprot.readMapBegin()
+                for _i126 in xrange(_size122):
+                    _key127 = iprot.readString().decode('utf-8')
+                    _val128 = {}
+                    (_ktype130, _vtype131, _size129) = iprot.readMapBegin()
+                    for _i133 in xrange(_size129):
+                        _key134 = GlobalStreamId()
+                        _key134.read(iprot)
+                        _val135 = iprot.readI64()
+                        _val128[_key134] = _val135
+                    iprot.readMapEnd()
+                    self.executed[_key127] = _val128
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 5):
+            if (ftype == TType.MAP):
+                self.execute_ms_avg = {}
+                (_ktype137, _vtype138, _size136) = iprot.readMapBegin()
+                for _i140 in xrange(_size136):
+                    _key141 = iprot.readString().decode('utf-8')
+                    _val142 = {}
+                    (_ktype144, _vtype145, _size143) = iprot.readMapBegin()
+                    for _i147 in xrange(_size143):
+                        _key148 = GlobalStreamId()
+                        _key148.read(iprot)
+                        _val149 = iprot.readDouble()
+                        _val142[_key148] = _val149
+                    iprot.readMapEnd()
+                    self.execute_ms_avg[_key141] = _val142
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

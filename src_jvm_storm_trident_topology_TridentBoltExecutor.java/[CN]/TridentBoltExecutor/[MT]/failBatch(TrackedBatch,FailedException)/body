@@ -1,0 +1,10 @@
+{
+  if (e != null && e instanceof ReportedFailedException) {
+    _collector.reportError(e);
+  }
+  tracked.failed=true;
+  if (tracked.delayedAck != null) {
+    _collector.fail(tracked.delayedAck);
+    tracked.delayedAck=null;
+  }
+}

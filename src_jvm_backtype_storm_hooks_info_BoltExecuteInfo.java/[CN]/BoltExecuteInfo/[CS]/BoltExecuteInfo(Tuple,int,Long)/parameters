@@ -1,0 +1,3 @@
+Tuple tuple
+int executingTaskId
+Long executeLatencyMs

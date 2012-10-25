@@ -1,0 +1,3 @@
+{
+  return this.execute_ms_avg != null;
+}

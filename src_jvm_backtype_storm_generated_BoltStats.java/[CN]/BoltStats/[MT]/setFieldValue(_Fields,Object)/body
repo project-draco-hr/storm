@@ -24,5 +24,21 @@ unset_process_ms_avg();
 set_process_ms_avg((Map<String,Map<GlobalStreamId,Double>>)value);
 }
 break;
+case EXECUTED:
+if (value == null) {
+unset_executed();
+}
+ else {
+set_executed((Map<String,Map<GlobalStreamId,Long>>)value);
+}
+break;
+case EXECUTE_MS_AVG:
+if (value == null) {
+unset_execute_ms_avg();
+}
+ else {
+set_execute_ms_avg((Map<String,Map<GlobalStreamId,Double>>)value);
+}
+break;
 }
 }

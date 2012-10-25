@@ -8,4 +8,10 @@
   if (!is_set_process_ms_avg()) {
     throw new org.apache.thrift7.protocol.TProtocolException("Required field 'process_ms_avg' is unset! Struct:" + toString());
   }
+  if (!is_set_executed()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'executed' is unset! Struct:" + toString());
+  }
+  if (!is_set_execute_ms_avg()) {
+    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'execute_ms_avg' is unset! Struct:" + toString());
+  }
 }

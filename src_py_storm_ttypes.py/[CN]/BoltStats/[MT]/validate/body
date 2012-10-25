@@ -5,4 +5,8 @@ def validate(self):
         raise TProtocol.TProtocolException(message='Required field failed is unset!')
     if (self.process_ms_avg is None):
         raise TProtocol.TProtocolException(message='Required field process_ms_avg is unset!')
+    if (self.executed is None):
+        raise TProtocol.TProtocolException(message='Required field executed is unset!')
+    if (self.execute_ms_avg is None):
+        raise TProtocol.TProtocolException(message='Required field execute_ms_avg is unset!')
     return

@@ -34,5 +34,25 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_executed()).compareTo(typedOther.is_set_executed());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_executed()) {
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.executed,typedOther.executed);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_execute_ms_avg()).compareTo(typedOther.is_set_execute_ms_avg());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_execute_ms_avg()) {
+    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.execute_ms_avg,typedOther.execute_ms_avg);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

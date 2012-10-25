@@ -18,8 +18,8 @@ def write(self, oprot):
     if (self.executors is not None):
         oprot.writeFieldBegin('executors', TType.LIST, 4)
         oprot.writeListBegin(TType.STRUCT, len(self.executors))
-        for iter243 in self.executors:
-            iter243.write(oprot)
+        for iter279 in self.executors:
+            iter279.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.status is not None):
@@ -29,11 +29,11 @@ def write(self, oprot):
     if (self.errors is not None):
         oprot.writeFieldBegin('errors', TType.MAP, 6)
         oprot.writeMapBegin(TType.STRING, TType.LIST, len(self.errors))
-        for (kiter244, viter245) in self.errors.items():
-            oprot.writeString(kiter244.encode('utf-8'))
-            oprot.writeListBegin(TType.STRUCT, len(viter245))
-            for iter246 in viter245:
-                iter246.write(oprot)
+        for (kiter280, viter281) in self.errors.items():
+            oprot.writeString(kiter280.encode('utf-8'))
+            oprot.writeListBegin(TType.STRUCT, len(viter281))
+            for iter282 in viter281:
+                iter282.write(oprot)
             oprot.writeListEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()

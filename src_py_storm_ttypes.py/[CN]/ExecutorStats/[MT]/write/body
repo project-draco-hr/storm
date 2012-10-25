@@ -6,24 +6,24 @@ def write(self, oprot):
     if (self.emitted is not None):
         oprot.writeFieldBegin('emitted', TType.MAP, 1)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.emitted))
-        for (kiter216, viter217) in self.emitted.items():
-            oprot.writeString(kiter216.encode('utf-8'))
-            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter217))
-            for (kiter218, viter219) in viter217.items():
-                oprot.writeString(kiter218.encode('utf-8'))
-                oprot.writeI64(viter219)
+        for (kiter252, viter253) in self.emitted.items():
+            oprot.writeString(kiter252.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter253))
+            for (kiter254, viter255) in viter253.items():
+                oprot.writeString(kiter254.encode('utf-8'))
+                oprot.writeI64(viter255)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.transferred is not None):
         oprot.writeFieldBegin('transferred', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.transferred))
-        for (kiter220, viter221) in self.transferred.items():
-            oprot.writeString(kiter220.encode('utf-8'))
-            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter221))
-            for (kiter222, viter223) in viter221.items():
-                oprot.writeString(kiter222.encode('utf-8'))
-                oprot.writeI64(viter223)
+        for (kiter256, viter257) in self.transferred.items():
+            oprot.writeString(kiter256.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter257))
+            for (kiter258, viter259) in viter257.items():
+                oprot.writeString(kiter258.encode('utf-8'))
+                oprot.writeI64(viter259)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
