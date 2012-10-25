@@ -9,6 +9,10 @@ case FAILED:
   return is_set_failed();
 case PROCESS_MS_AVG:
 return is_set_process_ms_avg();
+case EXECUTED:
+return is_set_executed();
+case EXECUTE_MS_AVG:
+return is_set_execute_ms_avg();
 }
 throw new IllegalStateException();
 }

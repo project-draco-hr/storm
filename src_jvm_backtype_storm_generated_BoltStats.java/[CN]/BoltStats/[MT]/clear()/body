@@ -2,4 +2,6 @@
   this.acked=null;
   this.failed=null;
   this.process_ms_avg=null;
+  this.executed=null;
+  this.execute_ms_avg=null;
 }

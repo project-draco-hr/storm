@@ -6,36 +6,60 @@ def write(self, oprot):
     if (self.acked is not None):
         oprot.writeFieldBegin('acked', TType.MAP, 1)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.acked))
-        for (kiter122, viter123) in self.acked.items():
-            oprot.writeString(kiter122.encode('utf-8'))
-            oprot.writeMapBegin(TType.STRUCT, TType.I64, len(viter123))
-            for (kiter124, viter125) in viter123.items():
-                kiter124.write(oprot)
-                oprot.writeI64(viter125)
+        for (kiter150, viter151) in self.acked.items():
+            oprot.writeString(kiter150.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRUCT, TType.I64, len(viter151))
+            for (kiter152, viter153) in viter151.items():
+                kiter152.write(oprot)
+                oprot.writeI64(viter153)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.failed is not None):
         oprot.writeFieldBegin('failed', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.failed))
-        for (kiter126, viter127) in self.failed.items():
-            oprot.writeString(kiter126.encode('utf-8'))
-            oprot.writeMapBegin(TType.STRUCT, TType.I64, len(viter127))
-            for (kiter128, viter129) in viter127.items():
-                kiter128.write(oprot)
-                oprot.writeI64(viter129)
+        for (kiter154, viter155) in self.failed.items():
+            oprot.writeString(kiter154.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRUCT, TType.I64, len(viter155))
+            for (kiter156, viter157) in viter155.items():
+                kiter156.write(oprot)
+                oprot.writeI64(viter157)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.process_ms_avg is not None):
         oprot.writeFieldBegin('process_ms_avg', TType.MAP, 3)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.process_ms_avg))
-        for (kiter130, viter131) in self.process_ms_avg.items():
-            oprot.writeString(kiter130.encode('utf-8'))
-            oprot.writeMapBegin(TType.STRUCT, TType.DOUBLE, len(viter131))
-            for (kiter132, viter133) in viter131.items():
-                kiter132.write(oprot)
-                oprot.writeDouble(viter133)
+        for (kiter158, viter159) in self.process_ms_avg.items():
+            oprot.writeString(kiter158.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRUCT, TType.DOUBLE, len(viter159))
+            for (kiter160, viter161) in viter159.items():
+                kiter160.write(oprot)
+                oprot.writeDouble(viter161)
+            oprot.writeMapEnd()
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.executed is not None):
+        oprot.writeFieldBegin('executed', TType.MAP, 4)
+        oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.executed))
+        for (kiter162, viter163) in self.executed.items():
+            oprot.writeString(kiter162.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRUCT, TType.I64, len(viter163))
+            for (kiter164, viter165) in viter163.items():
+                kiter164.write(oprot)
+                oprot.writeI64(viter165)
+            oprot.writeMapEnd()
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.execute_ms_avg is not None):
+        oprot.writeFieldBegin('execute_ms_avg', TType.MAP, 5)
+        oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.execute_ms_avg))
+        for (kiter166, viter167) in self.execute_ms_avg.items():
+            oprot.writeString(kiter166.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRUCT, TType.DOUBLE, len(viter167))
+            for (kiter168, viter169) in viter167.items():
+                kiter168.write(oprot)
+                oprot.writeDouble(viter169)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()

@@ -6,6 +6,10 @@ case 2:
   return FAILED;
 case 3:
 return PROCESS_MS_AVG;
+case 4:
+return EXECUTED;
+case 5:
+return EXECUTE_MS_AVG;
 default :
 return null;
 }

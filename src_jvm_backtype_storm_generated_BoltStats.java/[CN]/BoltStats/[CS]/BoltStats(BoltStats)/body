@@ -53,4 +53,40 @@
     }
     this.process_ms_avg=__this__process_ms_avg;
   }
+  if (other.is_set_executed()) {
+    Map<String,Map<GlobalStreamId,Long>> __this__executed=new HashMap<String,Map<GlobalStreamId,Long>>();
+    for (    Map.Entry<String,Map<GlobalStreamId,Long>> other_element : other.executed.entrySet()) {
+      String other_element_key=other_element.getKey();
+      Map<GlobalStreamId,Long> other_element_value=other_element.getValue();
+      String __this__executed_copy_key=other_element_key;
+      Map<GlobalStreamId,Long> __this__executed_copy_value=new HashMap<GlobalStreamId,Long>();
+      for (      Map.Entry<GlobalStreamId,Long> other_element_value_element : other_element_value.entrySet()) {
+        GlobalStreamId other_element_value_element_key=other_element_value_element.getKey();
+        Long other_element_value_element_value=other_element_value_element.getValue();
+        GlobalStreamId __this__executed_copy_value_copy_key=new GlobalStreamId(other_element_value_element_key);
+        Long __this__executed_copy_value_copy_value=other_element_value_element_value;
+        __this__executed_copy_value.put(__this__executed_copy_value_copy_key,__this__executed_copy_value_copy_value);
+      }
+      __this__executed.put(__this__executed_copy_key,__this__executed_copy_value);
+    }
+    this.executed=__this__executed;
+  }
+  if (other.is_set_execute_ms_avg()) {
+    Map<String,Map<GlobalStreamId,Double>> __this__execute_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>();
+    for (    Map.Entry<String,Map<GlobalStreamId,Double>> other_element : other.execute_ms_avg.entrySet()) {
+      String other_element_key=other_element.getKey();
+      Map<GlobalStreamId,Double> other_element_value=other_element.getValue();
+      String __this__execute_ms_avg_copy_key=other_element_key;
+      Map<GlobalStreamId,Double> __this__execute_ms_avg_copy_value=new HashMap<GlobalStreamId,Double>();
+      for (      Map.Entry<GlobalStreamId,Double> other_element_value_element : other_element_value.entrySet()) {
+        GlobalStreamId other_element_value_element_key=other_element_value_element.getKey();
+        Double other_element_value_element_value=other_element_value_element.getValue();
+        GlobalStreamId __this__execute_ms_avg_copy_value_copy_key=new GlobalStreamId(other_element_value_element_key);
+        Double __this__execute_ms_avg_copy_value_copy_value=other_element_value_element_value;
+        __this__execute_ms_avg_copy_value.put(__this__execute_ms_avg_copy_value_copy_key,__this__execute_ms_avg_copy_value_copy_value);
+      }
+      __this__execute_ms_avg.put(__this__execute_ms_avg_copy_key,__this__execute_ms_avg_copy_value);
+    }
+    this.execute_ms_avg=__this__execute_ms_avg;
+  }
 }

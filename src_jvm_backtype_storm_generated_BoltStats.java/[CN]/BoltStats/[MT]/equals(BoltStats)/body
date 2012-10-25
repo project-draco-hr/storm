@@ -18,5 +18,17 @@
     if (!(this_present_process_ms_avg && that_present_process_ms_avg))     return false;
     if (!this.process_ms_avg.equals(that.process_ms_avg))     return false;
   }
+  boolean this_present_executed=true && this.is_set_executed();
+  boolean that_present_executed=true && that.is_set_executed();
+  if (this_present_executed || that_present_executed) {
+    if (!(this_present_executed && that_present_executed))     return false;
+    if (!this.executed.equals(that.executed))     return false;
+  }
+  boolean this_present_execute_ms_avg=true && this.is_set_execute_ms_avg();
+  boolean that_present_execute_ms_avg=true && that.is_set_execute_ms_avg();
+  if (this_present_execute_ms_avg || that_present_execute_ms_avg) {
+    if (!(this_present_execute_ms_avg && that_present_execute_ms_avg))     return false;
+    if (!this.execute_ms_avg.equals(that.execute_ms_avg))     return false;
+  }
   return true;
 }
