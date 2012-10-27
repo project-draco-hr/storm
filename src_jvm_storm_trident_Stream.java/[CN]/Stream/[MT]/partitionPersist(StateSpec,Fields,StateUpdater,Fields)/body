@@ -1,4 +1,5 @@
 {
+  projectionValidation(inputFields);
   String id=_topology.getUniqueStateId();
   ProcessorNode n=new ProcessorNode(_topology.getUniqueStreamId(),_name,functionFields,functionFields,new PartitionPersistProcessor(id,inputFields,updater));
   n.committer=true;

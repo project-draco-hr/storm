@@ -1,0 +1,11 @@
+{
+  if (projFields == null) {
+    return;
+  }
+  Fields allFields=this.getOutputFields();
+  for (  String field : projFields) {
+    if (!allFields.contains(field)) {
+      throw new IllegalArgumentException("Trying to select non-existent field: '" + field + "' from all fields: "+ allFields+ "!");
+    }
+  }
+}
