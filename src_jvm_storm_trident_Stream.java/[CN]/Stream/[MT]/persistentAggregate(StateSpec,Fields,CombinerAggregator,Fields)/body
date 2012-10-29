@@ -1,3 +1,4 @@
 {
+  projectionValidation(inputFields);
   return new ChainedAggregatorDeclarer(this,new GlobalAggScheme()).aggregate(inputFields,agg,functionFields).chainEnd().partitionPersist(spec,functionFields,new CombinerAggStateUpdater(agg),functionFields);
 }
