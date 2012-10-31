@@ -1,3 +1,4 @@
 {
   _registeredMetrics.add(new MetricHolder(name,metric,timeBucketSizeInSecs));
+  return metric;
 }
