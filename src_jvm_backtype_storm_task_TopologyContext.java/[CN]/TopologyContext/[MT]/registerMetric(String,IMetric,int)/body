@@ -1,4 +1,7 @@
 {
+  if ((Boolean)_openOrPrepareWasCalled.deref() == true) {
+    throw new RuntimeException("TopologyContext.registerMetric can only be called from within overridden " + "IBolt::prepare() or ISpout::open() method.");
+  }
   Map m1=_registeredMetrics;
   if (!m1.containsKey(timeBucketSizeInSecs)) {
     m1.put(timeBucketSizeInSecs,new HashMap());

@@ -13,3 +13,4 @@ Map<String,Object> defaultResources
 Map<String,Object> userResources
 Map<String,Object> executorData
 Map registeredMetrics
+clojure.lang.Atom openOrPrepareWasCalled

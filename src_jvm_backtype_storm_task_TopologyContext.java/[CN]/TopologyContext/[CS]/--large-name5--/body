@@ -3,4 +3,5 @@
   _taskId=taskId;
   _executorData=executorData;
   _registeredMetrics=registeredMetrics;
+  _openOrPrepareWasCalled=openOrPrepareWasCalled;
 }
