@@ -1,5 +1,0 @@
-{
-  _name=name;
-  _timeBucketIntervalInSecs=timeBucketIntervalInSecs;
-  _metric=metric;
-}
