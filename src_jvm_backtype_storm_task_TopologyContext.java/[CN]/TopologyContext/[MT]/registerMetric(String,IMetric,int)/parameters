@@ -1,0 +1,3 @@
+String name
+IMetric metric
+int timeBucketSizeInSecs

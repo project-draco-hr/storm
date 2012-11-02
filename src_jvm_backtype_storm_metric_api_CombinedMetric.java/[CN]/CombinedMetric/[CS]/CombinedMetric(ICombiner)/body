@@ -1,0 +1,4 @@
+{
+  _combiner=combiner;
+  _value=_combiner.identity();
+}
