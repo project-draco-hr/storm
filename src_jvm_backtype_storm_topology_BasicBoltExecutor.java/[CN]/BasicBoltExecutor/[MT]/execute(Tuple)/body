@@ -5,9 +5,7 @@
     _collector.getOutputter().ack(input);
   }
  catch (  FailedException e) {
-    if (e instanceof ReportedFailedException) {
-      _collector.reportError(e);
-    }
+    LOG.warn("Failed to process tuple",e);
     _collector.getOutputter().fail(input);
   }
 }
