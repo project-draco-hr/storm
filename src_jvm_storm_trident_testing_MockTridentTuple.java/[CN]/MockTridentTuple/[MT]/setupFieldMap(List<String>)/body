@@ -1,0 +1,8 @@
+{
+  Map<String,Integer> newFieldMap=Maps.newHashMapWithExpectedSize(fieldNames.size());
+  int idx=0;
+  for (  String fieldName : fieldNames) {
+    newFieldMap.put(fieldName,idx++);
+  }
+  return newFieldMap;
+}
