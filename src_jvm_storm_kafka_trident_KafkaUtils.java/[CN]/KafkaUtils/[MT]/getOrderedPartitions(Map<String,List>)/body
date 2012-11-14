@@ -1,6 +1,6 @@
 {
   List<GlobalPartitionId> ret=new ArrayList();
-  for (  String host : partitions.keySet()) {
+  for (  String host : new TreeMap<String,List>(partitions).keySet()) {
     List info=partitions.get(host);
     long port=(Long)info.get(0);
     long numPartitions=(Long)info.get(1);
