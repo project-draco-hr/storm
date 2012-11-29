@@ -1,0 +1,4 @@
+{
+  super(Arrays.asList(values));
+  fieldMap=setupFieldMap(fieldName);
+}
