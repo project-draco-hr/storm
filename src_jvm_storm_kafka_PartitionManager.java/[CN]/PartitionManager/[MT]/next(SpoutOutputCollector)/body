@@ -5,9 +5,9 @@
     if (toEmit == null) {
       return EmitState.NO_EMITTED;
     }
-    List<Object> tup=_spoutConfig.scheme.deserialize(Utils.toByteArray(toEmit.msg.payload()));
-    if (tup != null) {
-      collector.emit(tup,new KafkaMessageId(_partition,toEmit.offset));
+    Iterator<List<Object>> tups=_spoutConfig.scheme.deserialize(Utils.toByteArray(toEmit.msg.payload()));
+    if (tups != null) {
+      for (      List<Object> tup : tups)       collector.emit(tup,new KafkaMessageId(_partition,toEmit.offset));
       break;
     }
  else {

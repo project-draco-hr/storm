@@ -1,6 +1,6 @@
 {
-  List<Object> values=config.scheme.deserialize(Utils.toByteArray(msg.payload()));
+  Iterator<List<Object>> values=config.scheme.deserialize(Utils.toByteArray(msg.payload()));
   if (values != null) {
-    collector.emit(values);
+    for (    List<Object> value : values)     collector.emit(value);
   }
 }
