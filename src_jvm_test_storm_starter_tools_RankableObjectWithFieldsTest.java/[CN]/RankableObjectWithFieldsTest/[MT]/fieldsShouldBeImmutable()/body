@@ -1,0 +1,5 @@
+{
+  RankableObjectWithFields r=new RankableObjectWithFields(ANY_OBJECT,ANY_COUNT,ANY_FIELD);
+  List<Object> fields=r.getFields();
+  fields.remove(0);
+}

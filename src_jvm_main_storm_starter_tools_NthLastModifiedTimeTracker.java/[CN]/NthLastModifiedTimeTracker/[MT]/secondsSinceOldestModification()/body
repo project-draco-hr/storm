@@ -1,0 +1,4 @@
+{
+  long modifiedTimeMillis=((Long)lastModifiedTimesMillis.get()).longValue();
+  return (int)((now() - modifiedTimeMillis) / MILLIS_IN_SEC);
+}

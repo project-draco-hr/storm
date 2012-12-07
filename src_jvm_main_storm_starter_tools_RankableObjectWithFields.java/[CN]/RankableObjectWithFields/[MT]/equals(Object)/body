@@ -1,0 +1,10 @@
+{
+  if (this == obj) {
+    return true;
+  }
+  if (!(o instanceof RankableObjectWithFields)) {
+    return false;
+  }
+  RankableObjectWithFields other=(RankableObjectWithFields)o;
+  return obj.equals(other.obj) && count == other.count;
+}

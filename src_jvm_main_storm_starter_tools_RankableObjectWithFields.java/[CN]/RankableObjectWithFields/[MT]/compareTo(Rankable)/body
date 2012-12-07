@@ -1,0 +1,12 @@
+{
+  long delta=this.getCount() - other.getCount();
+  if (delta > 0) {
+    return 1;
+  }
+ else   if (delta < 0) {
+    return -1;
+  }
+ else {
+    return 0;
+  }
+}

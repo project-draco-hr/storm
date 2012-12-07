@@ -1,0 +1,18 @@
+{
+  SlidingWindowCounter<Object> counter=new SlidingWindowCounter<Object>(windowLengthInSlots);
+  int numIterations=incrementsPerIteration.length;
+  for (int i=0; i < numIterations; i++) {
+    int numIncrements=incrementsPerIteration[i];
+    long expCounts=expCountsPerIteration[i];
+    for (int j=0; j < numIncrements; j++) {
+      counter.incrementCount(ANY_OBJECT);
+    }
+    Map<Object,Long> counts=counter.getCountsThenAdvanceWindow();
+    if (expCounts == 0) {
+      assertThat(counts).doesNotContainKey(ANY_OBJECT);
+    }
+ else {
+      assertThat(counts.get(ANY_OBJECT)).isEqualTo(expCounts);
+    }
+  }
+}

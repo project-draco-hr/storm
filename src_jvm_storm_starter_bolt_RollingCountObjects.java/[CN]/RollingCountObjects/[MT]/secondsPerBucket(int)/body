@@ -1,3 +1,0 @@
-{
-  return (_trackMinutes * 60 / buckets);
-}

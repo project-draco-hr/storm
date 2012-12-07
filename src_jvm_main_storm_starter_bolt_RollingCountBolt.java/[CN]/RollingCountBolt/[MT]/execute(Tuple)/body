@@ -1,0 +1,9 @@
+{
+  if (TupleHelpers.isTickTuple(tuple)) {
+    LOG.info("Received tick tuple, triggering emit of current window counts");
+    emitCurrentWindowCounts();
+  }
+ else {
+    countObjAndAck(tuple);
+  }
+}
