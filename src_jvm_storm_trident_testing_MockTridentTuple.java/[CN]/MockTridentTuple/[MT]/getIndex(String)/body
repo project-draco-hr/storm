@@ -1,0 +1,7 @@
+{
+  Integer index=fieldMap.get(fieldName);
+  if (index == null) {
+    throw new IllegalArgumentException("Unknown field name: " + fieldName);
+  }
+  return index;
+}
