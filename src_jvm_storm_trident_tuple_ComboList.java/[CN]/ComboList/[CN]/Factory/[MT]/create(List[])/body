@@ -1,3 +1,6 @@
 {
+  if (delegates.length != numLists) {
+    throw new RuntimeException("Expected " + numLists + " lists, but instead got "+ delegates.length+ " lists");
+  }
   return new ComboList(delegates,index);
 }
