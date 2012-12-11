@@ -1,0 +1,7 @@
+{
+  Tuple tickTuple=MockTupleHelpers.mockTickTuple();
+  BasicOutputCollector collector=mock(BasicOutputCollector.class);
+  TotalRankingsBolt bolt=new TotalRankingsBolt();
+  bolt.execute(tickTuple,collector);
+  verify(collector).emit(any(Values.class));
+}

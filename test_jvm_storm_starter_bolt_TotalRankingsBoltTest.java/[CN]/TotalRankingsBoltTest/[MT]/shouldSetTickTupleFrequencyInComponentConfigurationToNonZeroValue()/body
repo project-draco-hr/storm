@@ -1,0 +1,7 @@
+{
+  TotalRankingsBolt bolt=new TotalRankingsBolt();
+  Map<String,Object> componentConfig=bolt.getComponentConfiguration();
+  assertThat(componentConfig).containsKey(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS);
+  Integer emitFrequencyInSeconds=(Integer)componentConfig.get(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS);
+  assertThat(emitFrequencyInSeconds).isGreaterThan(0);
+}

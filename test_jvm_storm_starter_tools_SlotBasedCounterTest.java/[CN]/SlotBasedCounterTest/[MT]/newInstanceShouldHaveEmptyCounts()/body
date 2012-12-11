@@ -1,0 +1,5 @@
+{
+  SlotBasedCounter<Object> counter=new SlotBasedCounter<Object>(ANY_NUM_SLOTS);
+  Map<Object,Long> counts=counter.getCounts();
+  assertThat(counts).isEmpty();
+}

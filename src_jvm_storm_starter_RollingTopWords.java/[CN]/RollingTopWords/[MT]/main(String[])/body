@@ -1,14 +1,3 @@
 {
-  final int TOP_N=3;
-  TopologyBuilder builder=new TopologyBuilder();
-  builder.setSpout("word",new TestWordSpout(),5);
-  builder.setBolt("count",new RollingCountObjects(60,10),4).fieldsGrouping("word",new Fields("word"));
-  builder.setBolt("rank",new RankObjects(TOP_N),4).fieldsGrouping("count",new Fields("obj"));
-  builder.setBolt("merge",new MergeObjects(TOP_N)).globalGrouping("rank");
-  Config conf=new Config();
-  conf.setDebug(true);
-  LocalCluster cluster=new LocalCluster();
-  cluster.submitTopology("rolling-demo",conf,builder.createTopology());
-  Thread.sleep(10000);
-  cluster.shutdown();
+  new RollingTopWords().run();
 }
