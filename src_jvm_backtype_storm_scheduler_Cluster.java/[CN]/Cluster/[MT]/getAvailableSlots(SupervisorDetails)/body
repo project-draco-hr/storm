@@ -1,4 +1,5 @@
 {
+  if (whiteListedHosts != null && !whiteListedHosts.isEmpty() && !whiteListedHosts.contains(supervisor.host))   return new ArrayList();
   List<Integer> ports=this.getAvailablePorts(supervisor);
   List<WorkerSlot> slots=new ArrayList<WorkerSlot>(ports.size());
   for (  Integer port : ports) {
