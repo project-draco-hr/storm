@@ -52,6 +52,7 @@ catch (        Throwable t) {
           if (write != null) {
             _process.writeMessage(write);
           }
+          _process.drainErrorStream();
         }
  catch (        InterruptedException e) {
         }
