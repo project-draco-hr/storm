@@ -1,4 +1,4 @@
 {
-  System.out.println("DEBUG: " + tuple.toString());
+  System.out.println(name + tuple.toString());
   return true;
 }
