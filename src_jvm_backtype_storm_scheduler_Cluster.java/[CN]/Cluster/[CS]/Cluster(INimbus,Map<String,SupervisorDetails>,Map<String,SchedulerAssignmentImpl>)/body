@@ -1,4 +1,5 @@
 {
+  this.inimbus=nimbus;
   this.supervisors=new HashMap<String,SupervisorDetails>(supervisors.size());
   this.supervisors.putAll(supervisors);
   this.assignments=new HashMap<String,SchedulerAssignmentImpl>(assignments.size());
