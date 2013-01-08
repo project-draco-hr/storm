@@ -1,0 +1,2 @@
+def __hash__(self):
+    return ((((((0 + hash(self.executor_info)) + hash(self.component_id)) + hash(self.host)) + hash(self.port)) + hash(self.uptime_secs)) + hash(self.stats))

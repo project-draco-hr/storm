@@ -1,0 +1,2 @@
+def __hash__(self):
+    return ((0 + hash(self.full_class_name)) + hash(self.args_list))

@@ -1,0 +1,2 @@
+def __hash__(self):
+    return ((((((((0 + hash(self.fields)) + hash(self.shuffle)) + hash(self.all)) + hash(self.none)) + hash(self.direct)) + hash(self.custom_object)) + hash(self.custom_serialized)) + hash(self.local_or_shuffle))

@@ -1,0 +1,2 @@
+def __hash__(self):
+    return (((((0 + hash(self.acked)) + hash(self.failed)) + hash(self.process_ms_avg)) + hash(self.executed)) + hash(self.execute_ms_avg))
