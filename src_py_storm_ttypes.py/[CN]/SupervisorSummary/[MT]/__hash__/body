@@ -1,0 +1,2 @@
+def __hash__(self):
+    return (((((0 + hash(self.host)) + hash(self.uptime_secs)) + hash(self.num_workers)) + hash(self.num_used_workers)) + hash(self.supervisor_id))

@@ -1,0 +1,2 @@
+def __hash__(self):
+    return ((0 + hash(self.func_args)) + hash(self.request_id))

@@ -1,0 +1,2 @@
+def __hash__(self):
+    return ((((((0 + hash(self.int_arg)) + hash(self.long_arg)) + hash(self.string_arg)) + hash(self.bool_arg)) + hash(self.binary_arg)) + hash(self.double_arg))

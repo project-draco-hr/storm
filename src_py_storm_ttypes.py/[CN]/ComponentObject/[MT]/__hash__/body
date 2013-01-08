@@ -1,0 +1,2 @@
+def __hash__(self):
+    return (((0 + hash(self.serialized_java)) + hash(self.shell)) + hash(self.java_object))
