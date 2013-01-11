@@ -1,0 +1,6 @@
+{
+  _connections=new DynamicPartitionConnections(_config);
+  _topologyName=(String)conf.get(Config.TOPOLOGY_NAME);
+  _kafkaOffsetMetric=new KafkaUtils.KafkaOffsetMetric(_config.topic,_connections);
+  context.registerMetric("kafkaOffset",_kafkaOffsetMetric,60);
+}

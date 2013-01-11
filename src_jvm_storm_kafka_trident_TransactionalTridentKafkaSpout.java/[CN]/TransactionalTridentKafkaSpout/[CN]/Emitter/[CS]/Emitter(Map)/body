@@ -1,4 +1,0 @@
-{
-  _connections=new DynamicPartitionConnections(_config);
-  _topologyName=(String)conf.get(Config.TOPOLOGY_NAME);
-}

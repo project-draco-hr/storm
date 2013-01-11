@@ -1,3 +1,4 @@
 {
   _connections.clear();
+  _kafkaOffsetMetric.refreshPartitions(new HashSet<GlobalPartitionId>(list));
 }

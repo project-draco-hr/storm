@@ -1,0 +1,5 @@
+{
+  _partitionToOffset=new HashMap<GlobalPartitionId,Long>();
+  _topic=topic;
+  _connections=connections;
+}

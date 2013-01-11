@@ -1,0 +1,6 @@
+{
+  _partitions=partitions;
+  for (  GlobalPartitionId p : _partitionToOffset.keySet()) {
+    if (!partitions.contains(p))     _partitionToOffset.remove(p);
+  }
+}

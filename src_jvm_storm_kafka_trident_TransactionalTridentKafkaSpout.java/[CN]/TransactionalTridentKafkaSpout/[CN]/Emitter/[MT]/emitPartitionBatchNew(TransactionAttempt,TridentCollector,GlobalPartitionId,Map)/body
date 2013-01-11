@@ -1,4 +1,5 @@
 {
   SimpleConsumer consumer=_connections.register(partition);
+  _kafkaOffsetMetric.setLatestEmittedOffset(partition,(Long)lastMeta.get("offset"));
   return KafkaUtils.emitPartitionBatchNew(_config,consumer,partition,collector,lastMeta,_topologyInstanceId,_topologyName);
 }

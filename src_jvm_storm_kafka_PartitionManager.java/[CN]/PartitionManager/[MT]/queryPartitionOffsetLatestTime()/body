@@ -1,0 +1,3 @@
+{
+  return _consumer.getOffsetsBefore(_spoutConfig.topic,_partition.partition,OffsetRequest.LatestTime(),1)[0];
+}
