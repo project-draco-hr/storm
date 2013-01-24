@@ -1,0 +1,4 @@
+{
+  _metricsConsumer.handleDataPoints((IMetricsConsumer.TaskInfo)input.getValue(0),(Collection)input.getValue(1));
+  _collector.ack(input);
+}

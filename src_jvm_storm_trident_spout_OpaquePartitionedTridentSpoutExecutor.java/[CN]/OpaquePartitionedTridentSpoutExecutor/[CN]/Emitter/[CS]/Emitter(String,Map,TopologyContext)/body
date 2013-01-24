@@ -3,11 +3,4 @@
   _index=context.getThisTaskIndex();
   _numTasks=context.getComponentTasks(context.getThisComponentId()).size();
   _state=TransactionalState.newUserState(conf,txStateId);
-  List<String> existingPartitions=_state.list("");
-  for (  String p : existingPartitions) {
-    int partition=Integer.parseInt(p);
-    if ((partition - _index) % _numTasks == 0) {
-      _partitionStates.put(partition,new RotatingTransactionalState(_state,p));
-    }
-  }
 }

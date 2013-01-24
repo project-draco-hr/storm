@@ -5,7 +5,10 @@
     _coord.success(attempt.getTransactionId());
   }
  else {
-    Object meta=_state.getState(attempt.getTransactionId(),_initializer);
+    long txid=attempt.getTransactionId();
+    Object prevMeta=_state.getPreviousState(txid);
+    Object meta=_coord.initializeTransaction(txid,prevMeta,_state.getState(txid));
+    _state.overrideState(txid,meta);
     collector.emit(MasterBatchCoordinator.BATCH_STREAM_ID,new Values(attempt,meta));
   }
 }

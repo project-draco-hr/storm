@@ -1,0 +1,3 @@
+{
+  return _topoContext.registerMetric(name,new ReducedMetric(reducer),timeBucketSizeInSecs);
+}

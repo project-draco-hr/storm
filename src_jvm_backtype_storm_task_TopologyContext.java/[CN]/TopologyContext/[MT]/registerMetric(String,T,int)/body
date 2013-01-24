@@ -1,0 +1,21 @@
+{
+  if ((Boolean)_openOrPrepareWasCalled.deref() == true) {
+    throw new RuntimeException("TopologyContext.registerMetric can only be called from within overridden " + "IBolt::prepare() or ISpout::open() method.");
+  }
+  Map m1=_registeredMetrics;
+  if (!m1.containsKey(timeBucketSizeInSecs)) {
+    m1.put(timeBucketSizeInSecs,new HashMap());
+  }
+  Map m2=(Map)m1.get(timeBucketSizeInSecs);
+  if (!m2.containsKey(_taskId)) {
+    m2.put(_taskId,new HashMap());
+  }
+  Map m3=(Map)m2.get(_taskId);
+  if (m3.containsKey(name)) {
+    throw new RuntimeException("The same metric name `" + name + "` was registered twice.");
+  }
+ else {
+    m3.put(name,metric);
+  }
+  return metric;
+}

@@ -1,0 +1,27 @@
+{
+  if (currMetadata != null)   return currMetadata;
+  List allBatches=(List)RegisteredGlobalState.getState(_id);
+  if (allBatches.size() > _emittedIndex) {
+    Object batchInfo=allBatches.get(_emittedIndex);
+    txIndices.put(txid,_emittedIndex);
+    _emittedIndex+=1;
+    if (batchInfo instanceof Map) {
+      return (Map)batchInfo;
+    }
+ else {
+      List batchList=(List)batchInfo;
+      Map<Integer,List<List<Object>>> partitions=new HashMap();
+      for (int i=0; i < _numPartitions; i++) {
+        partitions.put(i,new ArrayList());
+      }
+      for (int i=0; i < batchList.size(); i++) {
+        int partition=i % _numPartitions;
+        partitions.get(partition).add((List)batchList.get(i));
+      }
+      return partitions;
+    }
+  }
+ else {
+    return new HashMap();
+  }
+}

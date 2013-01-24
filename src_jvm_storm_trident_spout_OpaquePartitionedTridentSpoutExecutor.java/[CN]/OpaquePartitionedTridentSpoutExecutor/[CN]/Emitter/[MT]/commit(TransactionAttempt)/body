@@ -1,8 +1,21 @@
 {
+  if (_changedMeta && _index == 0) {
+    Set<String> validIds=new HashSet<String>();
+    for (    ISpoutPartition p : (List<ISpoutPartition>)_emitter.getOrderedPartitions(_savedCoordinatorMeta)) {
+      validIds.add(p.getId());
+    }
+    for (    String existingPartition : _state.list("")) {
+      if (!validIds.contains(existingPartition)) {
+        RotatingTransactionalState s=new RotatingTransactionalState(_state,existingPartition);
+        s.removeState(attempt.getTransactionId());
+      }
+    }
+    _changedMeta=false;
+  }
   Long txid=attempt.getTransactionId();
-  Map<Integer,Object> metas=_cachedMetas.remove(txid);
-  for (  Integer partition : metas.keySet()) {
-    Object meta=metas.get(partition);
-    _partitionStates.get(partition).overrideState(txid,meta);
+  Map<String,Object> metas=_cachedMetas.remove(txid);
+  for (  String partitionId : metas.keySet()) {
+    Object meta=metas.get(partitionId);
+    _partitionStates.get(partitionId).rotatingState.overrideState(txid,meta);
   }
 }

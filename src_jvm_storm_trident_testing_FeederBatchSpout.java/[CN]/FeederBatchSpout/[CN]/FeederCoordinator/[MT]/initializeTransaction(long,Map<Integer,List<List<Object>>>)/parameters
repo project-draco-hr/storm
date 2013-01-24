@@ -1,2 +1,0 @@
-long txid
-Map<Integer,List<List<Object>>> prevMetadata
