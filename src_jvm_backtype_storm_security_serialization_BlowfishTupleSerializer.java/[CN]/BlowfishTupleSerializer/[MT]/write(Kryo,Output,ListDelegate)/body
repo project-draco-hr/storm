@@ -1,0 +1,3 @@
+{
+  _serializer.write(kryo,output,object);
+}
