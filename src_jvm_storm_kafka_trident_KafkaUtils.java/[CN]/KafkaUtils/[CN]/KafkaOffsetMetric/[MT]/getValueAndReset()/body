@@ -4,7 +4,7 @@
     long totalLatestTimeOffset=0;
     long totalLatestEmittedOffset=0;
     HashMap ret=new HashMap();
-    if (_partitions.size() == _partitionToOffset.size()) {
+    if (_partitions != null && _partitions.size() == _partitionToOffset.size()) {
       for (      Map.Entry<GlobalPartitionId,Long> e : _partitionToOffset.entrySet()) {
         GlobalPartitionId partition=e.getKey();
         SimpleConsumer consumer=_connections.getConnection(partition);
