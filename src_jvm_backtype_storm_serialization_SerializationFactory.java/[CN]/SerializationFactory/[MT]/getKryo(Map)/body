@@ -2,7 +2,16 @@
   IKryoFactory kryoFactory=(IKryoFactory)Utils.newInstance((String)conf.get(Config.TOPOLOGY_KRYO_FACTORY));
   Kryo k=kryoFactory.getKryo(conf);
   k.register(byte[].class);
-  k.register(ListDelegate.class);
+  String payloadSerializerName=(String)conf.get(Config.TOPOLOGY_TUPLE_SERIALIZER);
+  try {
+    Class serializerClass=Class.forName(payloadSerializerName);
+    Serializer serializer=resolveSerializerInstance(k,ListDelegate.class,serializerClass,conf);
+    k.register(ListDelegate.class,serializer);
+  }
+ catch (  ClassNotFoundException ex) {
+    LOG.error("Could not load class in class path: " + payloadSerializerName.length(),ex);
+    throw new RuntimeException(ex);
+  }
   k.register(ArrayList.class,new ArrayListSerializer());
   k.register(HashMap.class,new HashMapSerializer());
   k.register(HashSet.class,new HashSetSerializer());
@@ -31,7 +40,7 @@
         k.register(klass);
       }
  else {
-        k.register(klass,resolveSerializerInstance(k,klass,serializerClass));
+        k.register(klass,resolveSerializerInstance(k,klass,serializerClass,conf));
       }
     }
  catch (    ClassNotFoundException e) {

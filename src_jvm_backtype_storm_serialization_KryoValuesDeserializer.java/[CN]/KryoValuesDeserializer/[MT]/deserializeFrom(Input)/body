@@ -1,3 +1,4 @@
 {
-  return (List<Object>)_kryo.readObject(input,ArrayList.class);
+  ListDelegate delegate=(ListDelegate)_kryo.readObject(input,ListDelegate.class);
+  return delegate.getDelegate();
 }
