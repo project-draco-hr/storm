@@ -1,0 +1,3 @@
+{
+  return !isSystemPropertyTrue(SYSPROP_REMOVE_REALM) && kerberosName.getRealm() != null;
+}

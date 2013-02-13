@@ -1,0 +1,4 @@
+String host
+int port
+String default_service_name
+Integer timeout

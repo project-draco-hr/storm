@@ -1,0 +1,17 @@
+{
+  if (configuration == null)   return;
+  AppConfigurationEntry configurationEntries[]=configuration.getAppConfigurationEntry(AuthUtils.LoginContextClient);
+  if (configurationEntries == null) {
+    String errorMessage="Could not find a '" + AuthUtils.LoginContextClient + "' entry in this configuration: Client cannot start.";
+    LOG.error(errorMessage);
+    throw new IOException(errorMessage);
+  }
+  for (  AppConfigurationEntry entry : configurationEntries) {
+    if (entry.getOptions().get(USERNAME) != null) {
+      _username=(String)entry.getOptions().get(USERNAME);
+    }
+    if (entry.getOptions().get(PASSWORD) != null) {
+      _password=(String)entry.getOptions().get(PASSWORD);
+    }
+  }
+}

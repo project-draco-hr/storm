@@ -1,0 +1,4 @@
+{
+  userName=nc.getDefaultName();
+  nc.setName(nc.getDefaultName());
+}

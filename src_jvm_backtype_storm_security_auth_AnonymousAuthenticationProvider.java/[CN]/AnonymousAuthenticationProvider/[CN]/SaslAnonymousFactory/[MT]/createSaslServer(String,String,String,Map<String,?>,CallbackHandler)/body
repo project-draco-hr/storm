@@ -1,0 +1,6 @@
+{
+  if ("ANONYMOUS".equals(mechanism)) {
+    return new AnonymousServer();
+  }
+  return null;
+}

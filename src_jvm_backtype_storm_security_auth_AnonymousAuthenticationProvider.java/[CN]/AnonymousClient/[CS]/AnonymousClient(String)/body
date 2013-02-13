@@ -1,0 +1,8 @@
+{
+  if (username == null) {
+    this.username="anonymous";
+  }
+ else {
+    this.username=username;
+  }
+}

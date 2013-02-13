@@ -1,0 +1,20 @@
+{
+  String authenticationID=ac.getAuthenticationID();
+  LOG.debug("Successfully authenticated client: authenticationID=" + authenticationID);
+  ac.setAuthorized(true);
+  KerberosName kerberosName=new KerberosName(authenticationID);
+  try {
+    StringBuilder userNameBuilder=new StringBuilder(kerberosName.getShortName());
+    if (shouldAppendHost(kerberosName)) {
+      userNameBuilder.append("/").append(kerberosName.getHostName());
+    }
+    if (shouldAppendRealm(kerberosName)) {
+      userNameBuilder.append("@").append(kerberosName.getRealm());
+    }
+    LOG.debug("Setting authorizedID: " + userNameBuilder);
+    ac.setAuthorizedID(userNameBuilder.toString());
+  }
+ catch (  IOException e) {
+    LOG.error("Failed to set name based on Kerberos authentication rules.");
+  }
+}
