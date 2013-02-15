@@ -1,13 +1,4 @@
 {
-  try {
-    if (host == null) {
-      throw new IllegalArgumentException("Nimbus host is not set");
-    }
-    conn=new TFramedTransport(new TSocket(host,port));
-    client=new Nimbus.Client(new TBinaryProtocol(conn));
-    conn.open();
-  }
- catch (  TException e) {
-    throw new RuntimeException(e);
-  }
+  super(host,port,"nimbus_server");
+  _client=new Nimbus.Client(_protocol);
 }

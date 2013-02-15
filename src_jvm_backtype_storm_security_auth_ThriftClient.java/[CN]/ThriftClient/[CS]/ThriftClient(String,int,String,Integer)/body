@@ -17,7 +17,7 @@
       loginConfigurationFile=(String)conf.get("java.security.auth.login.config");
     }
     if ((loginConfigurationFile == null) || (loginConfigurationFile.length() == 0)) {
-      LOG.debug("SASL ANONYMOUS client transport is being established");
+      LOG.info("SASL ANONYMOUS client transport is being established");
       _transport=new TSaslClientTransport(AuthUtils.ANONYMOUS,null,AuthUtils.SERVICE,host,null,null,underlyingTransport);
       _transport.open();
     }
