@@ -5,3 +5,5 @@ TridentCollector collector
 Map lastMeta
 String topologyInstanceId
 String topologyName
+ReducedMetric meanMetric
+CombinedMetric maxMetric

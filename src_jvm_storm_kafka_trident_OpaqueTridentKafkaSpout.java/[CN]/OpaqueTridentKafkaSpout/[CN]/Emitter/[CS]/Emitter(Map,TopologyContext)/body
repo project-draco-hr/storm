@@ -3,4 +3,6 @@
   _topologyName=(String)conf.get(Config.TOPOLOGY_NAME);
   _kafkaOffsetMetric=new KafkaUtils.KafkaOffsetMetric(_config.topic,_connections);
   context.registerMetric("kafkaOffset",_kafkaOffsetMetric,60);
+  _kafkaMeanFetchLatencyMetric=context.registerMetric("kafkaFetchAvg",new MeanReducer(),60);
+  _kafkaMaxFetchLatencyMetric=context.registerMetric("kafkaFetchMax",new MaxMetric(),60);
 }

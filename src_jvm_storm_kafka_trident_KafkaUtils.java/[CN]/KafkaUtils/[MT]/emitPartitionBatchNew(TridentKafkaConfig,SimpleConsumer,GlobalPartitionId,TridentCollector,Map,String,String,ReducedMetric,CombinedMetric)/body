@@ -20,7 +20,12 @@
   }
   ByteBufferMessageSet msgs;
   try {
+    long start=System.nanoTime();
     msgs=consumer.fetch(new FetchRequest(config.topic,partition.partition,offset,config.fetchSizeBytes));
+    long end=System.nanoTime();
+    long millis=(end - start) / 1000000;
+    meanMetric.update(millis);
+    maxMetric.update(millis);
   }
  catch (  Exception e) {
     if (e instanceof ConnectException) {
