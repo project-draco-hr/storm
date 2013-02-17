@@ -52,7 +52,7 @@
                 _transport.open();
               }
  catch (              Exception e) {
-                LOG.error("Nimbus client failed to open SaslClientTransport to interact with a server during session initiation: " + e);
+                LOG.error("Nimbus client failed to open SaslClientTransport to interact with a server during session initiation: " + e,e);
                 e.printStackTrace();
               }
               return null;
@@ -61,7 +61,7 @@
 );
         }
  catch (        PrivilegedActionException e) {
-          LOG.error("Nimbus client experienced a PrivilegedActionException exception while creating a TSaslClientTransport using a JAAS principal context:" + e);
+          LOG.error("Nimbus client experienced a PrivilegedActionException exception while creating a TSaslClientTransport using a JAAS principal context:" + e,e);
           e.printStackTrace();
         }
       }
