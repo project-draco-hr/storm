@@ -9,7 +9,7 @@
       _server=new TThreadPoolServer(new TThreadPoolServer.Args(serverTransport).processor(new SaslProcessor(_processor)).transportFactory(factory).minWorkerThreads(64).maxWorkerThreads(64).protocolFactory(new TBinaryProtocol.Factory()));
     }
  else {
-      Configuration auth_conf=Configuration.getConfiguration();
+      Configuration auth_conf=AuthUtils.getConfiguration(_loginConfigurationFile);
       CallbackHandler auth_callback_handler=new SaslServerCallbackHandler(auth_conf);
       Login login=new Login(AuthUtils.LoginContextServer,auth_callback_handler);
       Subject subject=login.getSubject();

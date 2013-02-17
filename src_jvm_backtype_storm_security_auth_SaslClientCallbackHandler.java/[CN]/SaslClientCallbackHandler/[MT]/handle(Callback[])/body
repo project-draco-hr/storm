@@ -6,7 +6,7 @@
       nc.setName(_username);
     }
  else     if (c instanceof PasswordCallback) {
-      LOG.debug("pwd callback");
+      LOG.debug("password callback");
       PasswordCallback pc=(PasswordCallback)c;
       if (_password != null) {
         pc.setPassword(_password.toCharArray());

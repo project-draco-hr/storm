@@ -6,9 +6,6 @@
     if ((_loginConfigurationFile == null) || (_loginConfigurationFile.length() == 0)) {
       Map conf=Utils.readStormConfig();
       _loginConfigurationFile=(String)conf.get("java.security.auth.login.config");
-      if ((_loginConfigurationFile != null) && (_loginConfigurationFile.length() > 0)) {
-        System.setProperty("java.security.auth.login.config",_loginConfigurationFile);
-      }
     }
   }
  catch (  Exception x) {

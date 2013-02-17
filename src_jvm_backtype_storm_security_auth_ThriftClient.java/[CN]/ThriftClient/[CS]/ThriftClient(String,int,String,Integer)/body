@@ -22,9 +22,7 @@
       _transport.open();
     }
  else {
-      LOG.debug("Use jaas login config:" + loginConfigurationFile);
-      System.setProperty("java.security.auth.login.config",loginConfigurationFile);
-      Configuration auth_conf=Configuration.getConfiguration();
+      Configuration auth_conf=AuthUtils.getConfiguration(loginConfigurationFile);
       SaslClientCallbackHandler callback_handler=new SaslClientCallbackHandler(auth_conf);
       Login login=new Login(AuthUtils.LoginContextClient,callback_handler);
       final Subject subject=login.getSubject();
