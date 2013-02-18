@@ -1,25 +1,35 @@
 {
-  List<TransactionalValue> curr=_backing.multiGet(keys);
+  List<CachedBatchReadsMap.RetVal<TransactionalValue>> curr=_backing.multiGet(keys);
   List<TransactionalValue> newVals=new ArrayList<TransactionalValue>(curr.size());
+  List<List<Object>> newKeys=new ArrayList();
   List<T> ret=new ArrayList<T>();
   for (int i=0; i < curr.size(); i++) {
-    TransactionalValue<T> val=curr.get(i);
+    CachedBatchReadsMap.RetVal<TransactionalValue> retval=curr.get(i);
+    TransactionalValue<T> val=retval.val;
     ValueUpdater<T> updater=updaters.get(i);
     TransactionalValue<T> newVal;
+    boolean changed=false;
     if (val == null) {
       newVal=new TransactionalValue<T>(_currTx,updater.update(null));
+      changed=true;
     }
  else {
-      if (_currTx != null && _currTx.equals(val.getTxid())) {
+      if (_currTx != null && _currTx.equals(val.getTxid()) && !retval.cached) {
         newVal=val;
       }
  else {
         newVal=new TransactionalValue<T>(_currTx,updater.update(val.getVal()));
+        changed=true;
       }
     }
     ret.add(newVal.getVal());
-    newVals.add(newVal);
+    if (changed) {
+      newVals.add(newVal);
+      newKeys.add(keys.get(i));
+    }
   }
-  _backing.multiPut(keys,newVals);
+  if (!newKeys.isEmpty()) {
+    _backing.multiPut(newKeys,newVals);
+  }
   return ret;
 }
