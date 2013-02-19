@@ -8,6 +8,7 @@
   counter.incrementCount(willContinueToBeTracked,wipeSlot);
   counter.incrementCount(willContinueToBeTracked,otherSlot);
   counter.wipeSlot(wipeSlot);
+  counter.wipeZeros();
   assertThat(counter.getCounts()).doesNotContainKey(willBeRemoved);
   assertThat(counter.getCounts()).containsKey(willContinueToBeTracked);
 }
