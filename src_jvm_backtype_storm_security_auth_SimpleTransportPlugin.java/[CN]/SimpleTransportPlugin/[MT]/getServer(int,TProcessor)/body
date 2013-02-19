@@ -1,0 +1,5 @@
+{
+  TNonblockingServerSocket serverTransport=new TNonblockingServerSocket(port);
+  THsHaServer.Args server_args=new THsHaServer.Args(serverTransport).processor(new SimpleWrapProcessor(processor)).workerThreads(64).protocolFactory(new TBinaryProtocol.Factory());
+  return new THsHaServer(server_args);
+}

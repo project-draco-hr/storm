@@ -1,0 +1,7 @@
+{
+  SaslClientCallbackHandler client_callback_handler=new SaslClientCallbackHandler(login_conf);
+  TSaslClientTransport wrapper_transport=new TSaslClientTransport(DIGEST,null,AuthUtils.SERVICE,serverHost,null,client_callback_handler,transport);
+  wrapper_transport.open();
+  LOG.debug("SASL DIGEST-MD5 client transport has been established");
+  return wrapper_transport;
+}

@@ -1,0 +1,12 @@
+{
+  ITransportPlugin transportPlugin=null;
+  try {
+    String transport_klassName=(String)storm_conf.get(Config.STORM_THRIFT_TRANSPORT_PLUGIN);
+    Class klass=Class.forName(transport_klassName);
+    transportPlugin=(ITransportPlugin)klass.getConstructor(Configuration.class).newInstance(login_conf);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return transportPlugin;
+}

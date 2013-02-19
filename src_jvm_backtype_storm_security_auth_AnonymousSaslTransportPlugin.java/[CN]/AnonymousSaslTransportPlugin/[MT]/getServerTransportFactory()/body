@@ -1,0 +1,6 @@
+{
+  TSaslServerTransport.Factory factory=new TSaslServerTransport.Factory();
+  factory.addServerDefinition(ANONYMOUS,AuthUtils.SERVICE,"localhost",null,null);
+  LOG.info("SASL ANONYMOUS transport factory will be used");
+  return factory;
+}

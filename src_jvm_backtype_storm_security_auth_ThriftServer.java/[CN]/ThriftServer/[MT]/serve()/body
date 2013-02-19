@@ -1,38 +1,8 @@
 {
-  TServerTransport serverTransport=null;
   try {
-    TSaslServerTransport.Factory factory=new TSaslServerTransport.Factory();
-    serverTransport=new TServerSocket(_port);
-    if ((_loginConfigurationFile == null) || (_loginConfigurationFile.length() == 0)) {
-      factory.addServerDefinition(AuthUtils.ANONYMOUS,AuthUtils.SERVICE,"localhost",null,null);
-      LOG.info("Starting SASL ANONYMOUS server at port:" + _port);
-      _server=new TThreadPoolServer(new TThreadPoolServer.Args(serverTransport).processor(new SaslProcessor(_processor)).transportFactory(factory).minWorkerThreads(64).maxWorkerThreads(64).protocolFactory(new TBinaryProtocol.Factory()));
-    }
- else {
-      Configuration auth_conf=AuthUtils.getConfiguration(_loginConfigurationFile);
-      CallbackHandler auth_callback_handler=new SaslServerCallbackHandler(auth_conf);
-      Login login=new Login(AuthUtils.LoginContextServer,auth_callback_handler);
-      Subject subject=login.getSubject();
-      if (!subject.getPrivateCredentials(KerberosTicket.class).isEmpty()) {
-        String principal=AuthUtils.get(auth_conf,AuthUtils.LoginContextServer,"principal");
-        LOG.debug("principal:" + principal);
-        KerberosName serviceKerberosName=new KerberosName(principal);
-        String serviceName=serviceKerberosName.getServiceName();
-        String hostName=serviceKerberosName.getHostName();
-        Map<String,String> props=new TreeMap<String,String>();
-        props.put(Sasl.QOP,"auth");
-        props.put(Sasl.SERVER_AUTH,"false");
-        factory.addServerDefinition(AuthUtils.KERBEROS,serviceName,hostName,props,auth_callback_handler);
-        LOG.info("Starting KERBEROS server at port:" + _port);
-        TUGIAssumingTransportFactory wrapFactory=new TUGIAssumingTransportFactory(factory,subject);
-        _server=new TThreadPoolServer(new TThreadPoolServer.Args(serverTransport).processor(new SaslProcessor(_processor)).minWorkerThreads(64).maxWorkerThreads(64).transportFactory(wrapFactory).protocolFactory(new TBinaryProtocol.Factory()));
-      }
- else {
-        factory.addServerDefinition(AuthUtils.DIGEST,AuthUtils.SERVICE,"localhost",null,auth_callback_handler);
-        LOG.info("Starting DIGEST server at port:" + _port);
-        _server=new TThreadPoolServer(new TThreadPoolServer.Args(serverTransport).processor(new SaslProcessor(_processor)).minWorkerThreads(64).maxWorkerThreads(64).transportFactory(factory).protocolFactory(new TBinaryProtocol.Factory()));
-      }
-    }
+    Configuration login_conf=AuthUtils.GetConfiguration(_storm_conf);
+    ITransportPlugin transportPlugin=AuthUtils.GetTransportPlugin(_storm_conf,login_conf);
+    _server=transportPlugin.getServer(_port,_processor);
     _server.serve();
   }
  catch (  Exception ex) {

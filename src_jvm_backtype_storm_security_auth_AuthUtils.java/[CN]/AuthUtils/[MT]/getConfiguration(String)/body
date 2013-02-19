@@ -1,5 +1,0 @@
-{
-  Configuration.setConfiguration(null);
-  System.setProperty("java.security.auth.login.config",loginConfigurationFile);
-  return Configuration.getConfiguration();
-}

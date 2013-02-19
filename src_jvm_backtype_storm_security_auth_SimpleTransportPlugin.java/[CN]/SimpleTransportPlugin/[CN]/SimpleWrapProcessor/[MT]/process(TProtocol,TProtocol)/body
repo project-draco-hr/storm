@@ -1,0 +1,25 @@
+{
+  ReqContext req_context=ReqContext.context();
+  TTransport trans=inProt.getTransport();
+  if (trans instanceof TMemoryInputTransport) {
+    try {
+      req_context.setRemoteAddress(InetAddress.getLocalHost());
+    }
+ catch (    UnknownHostException e) {
+      throw new RuntimeException(e);
+    }
+  }
+ else   if (trans instanceof TSocket) {
+    TSocket tsocket=(TSocket)trans;
+    Socket socket=tsocket.getSocket();
+    req_context.setRemoteAddress(socket.getInetAddress());
+  }
+  req_context.setSubject(null);
+  try {
+    return wrapped.process(inProt,outProt);
+  }
+ catch (  RuntimeException ex) {
+    LOG.info(ex.getMessage());
+    return false;
+  }
+}

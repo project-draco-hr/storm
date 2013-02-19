@@ -1,0 +1,9 @@
+{
+  Configuration.setConfiguration(null);
+  String loginConfigurationFile=System.getProperty("java.security.auth.login.config");
+  if (loginConfigurationFile == null)   loginConfigurationFile=(String)storm_conf.get("java.security.auth.login.config");
+ else   if (loginConfigurationFile.length() == 0)   loginConfigurationFile=(String)storm_conf.get("java.security.auth.login.config");
+  if (loginConfigurationFile == null)   return null;
+  System.setProperty("java.security.auth.login.config",loginConfigurationFile);
+  return Configuration.getConfiguration();
+}

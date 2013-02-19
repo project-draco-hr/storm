@@ -1,0 +1,6 @@
+{
+  TSaslClientTransport wrapper_transport=new TSaslClientTransport(ANONYMOUS,null,AuthUtils.SERVICE,serverHost,null,null,transport);
+  LOG.debug("SASL ANONYMOUS client transport is being established");
+  wrapper_transport.open();
+  return wrapper_transport;
+}

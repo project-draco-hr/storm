@@ -1,4 +1,5 @@
 {
+  LOG.debug("handlePasswordCallback");
   if ("super".equals(this.userName) && System.getProperty(SYSPROP_SUPER_PASSWORD) != null) {
     pc.setPassword(System.getProperty(SYSPROP_SUPER_PASSWORD).toCharArray());
   }

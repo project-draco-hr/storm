@@ -1,0 +1,6 @@
+{
+  TTransport conn=new TFramedTransport(transport);
+  conn.open();
+  LOG.debug("Simple client transport has been established");
+  return conn;
+}
