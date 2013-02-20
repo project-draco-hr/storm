@@ -1,12 +1,13 @@
 {
-  List<T> ret=_delegate.multiGet(keys);
-  if (!_cached.isEmpty()) {
-    ret=new ArrayList<T>(ret);
-    for (int i=0; i < keys.size(); i++) {
-      List<Object> key=keys.get(i);
-      if (_cached.containsKey(key)) {
-        ret.set(i,_cached.get(key));
-      }
+  List<T> vals=_delegate.multiGet(keys);
+  List<RetVal<T>> ret=new ArrayList(vals.size());
+  for (int i=0; i < keys.size(); i++) {
+    List<Object> key=keys.get(i);
+    if (_cached.containsKey(key)) {
+      ret.add(new RetVal(_cached.get(key),true));
+    }
+ else {
+      ret.add(new RetVal(vals.get(i),false));
     }
   }
   return ret;

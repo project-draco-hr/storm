@@ -1,0 +1,7 @@
+{
+  List ret=new ArrayList();
+  for (  List key : keys) {
+    ret.add(_vals.get(key));
+  }
+  return ret;
+}

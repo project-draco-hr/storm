@@ -1,4 +1,0 @@
-{
-  _cached.clear();
-  _delegate.commit(txid);
-}
