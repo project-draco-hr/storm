@@ -1,8 +1,0 @@
-{
-  for (  String mech : mechanisms) {
-    if ("ANONYMOUS".equals(mech)) {
-      return new AnonymousClient(authorizationId);
-    }
-  }
-  return null;
-}

@@ -1,9 +1,0 @@
-{
-  try {
-    this.user=new String(response,"UTF-8");
-  }
- catch (  IOException e) {
-    throw new SaslException(e.toString());
-  }
-  return null;
-}
