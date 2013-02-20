@@ -6,6 +6,7 @@
     LOG.error(errorMessage);
     throw new IOException(errorMessage);
   }
+  _password="";
   for (  AppConfigurationEntry entry : configurationEntries) {
     if (entry.getOptions().get(USERNAME) != null) {
       _username=(String)entry.getOptions().get(USERNAME);
