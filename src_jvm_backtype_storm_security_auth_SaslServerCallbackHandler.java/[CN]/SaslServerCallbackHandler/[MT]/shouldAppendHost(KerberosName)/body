@@ -1,3 +1,0 @@
-{
-  return !isSystemPropertyTrue(SYSPROP_REMOVE_HOST) && kerberosName.getHostName() != null;
-}
