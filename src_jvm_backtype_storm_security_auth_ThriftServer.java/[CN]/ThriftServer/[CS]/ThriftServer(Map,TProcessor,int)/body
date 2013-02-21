@@ -3,11 +3,7 @@
     _storm_conf=storm_conf;
     _processor=processor;
     _port=port;
-    _loginConfigurationFile=System.getProperty("java.security.auth.login.config");
-    if ((_loginConfigurationFile == null) || (_loginConfigurationFile.length() == 0)) {
-      Map conf=Utils.readStormConfig();
-      _loginConfigurationFile=(String)conf.get("java.security.auth.login.config");
-    }
+    _login_conf=AuthUtils.GetConfiguration(_storm_conf);
   }
  catch (  Exception x) {
     x.printStackTrace();

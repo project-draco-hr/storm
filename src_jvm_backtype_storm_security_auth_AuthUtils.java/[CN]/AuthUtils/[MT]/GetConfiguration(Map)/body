@@ -1,9 +1,13 @@
 {
   Configuration.setConfiguration(null);
-  String loginConfigurationFile=System.getProperty("java.security.auth.login.config");
-  if (loginConfigurationFile == null)   loginConfigurationFile=(String)storm_conf.get("java.security.auth.login.config");
- else   if (loginConfigurationFile.length() == 0)   loginConfigurationFile=(String)storm_conf.get("java.security.auth.login.config");
-  if (loginConfigurationFile == null)   return null;
-  System.setProperty("java.security.auth.login.config",loginConfigurationFile);
-  return Configuration.getConfiguration();
+  String orig_loginConfigurationFile=System.getProperty("java.security.auth.login.config");
+  String loginConfigurationFile=(String)storm_conf.get("java.security.auth.login.config");
+  if (loginConfigurationFile == null)   loginConfigurationFile=orig_loginConfigurationFile;
+  Configuration login_conf=null;
+  if ((loginConfigurationFile != null) && (loginConfigurationFile.length() > 0)) {
+    System.setProperty("java.security.auth.login.config",loginConfigurationFile);
+    login_conf=Configuration.getConfiguration();
+    if (orig_loginConfigurationFile != null)     System.setProperty("java.security.auth.login.config",orig_loginConfigurationFile);
+  }
+  return login_conf;
 }

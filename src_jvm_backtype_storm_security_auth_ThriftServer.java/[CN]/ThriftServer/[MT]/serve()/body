@@ -1,7 +1,6 @@
 {
   try {
-    Configuration login_conf=AuthUtils.GetConfiguration(_storm_conf);
-    ITransportPlugin transportPlugin=AuthUtils.GetTransportPlugin(_storm_conf,login_conf);
+    ITransportPlugin transportPlugin=AuthUtils.GetTransportPlugin(_storm_conf,_login_conf);
     _server=transportPlugin.getServer(_port,_processor);
     _server.serve();
   }
