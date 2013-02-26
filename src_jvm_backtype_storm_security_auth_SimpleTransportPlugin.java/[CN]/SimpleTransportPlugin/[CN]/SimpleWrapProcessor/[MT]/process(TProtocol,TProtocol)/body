@@ -15,11 +15,5 @@
     req_context.setRemoteAddress(socket.getInetAddress());
   }
   req_context.setSubject(null);
-  try {
-    return wrapped.process(inProt,outProt);
-  }
- catch (  RuntimeException ex) {
-    LOG.info(ex.getMessage());
-    return false;
-  }
+  return wrapped.process(inProt,outProt);
 }

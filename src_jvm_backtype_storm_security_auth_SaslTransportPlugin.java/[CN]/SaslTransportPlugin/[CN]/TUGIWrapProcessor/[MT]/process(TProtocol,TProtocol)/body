@@ -7,7 +7,6 @@
   req_context.setRemoteAddress(socket.getInetAddress());
   SaslServer saslServer=saslTrans.getSaslServer();
   String authId=saslServer.getAuthorizationID();
-  LOG.debug("AUTH ID ======>" + authId);
   Subject remoteUser=new Subject();
   remoteUser.getPrincipals().add(new User(authId));
   req_context.setSubject(remoteUser);
