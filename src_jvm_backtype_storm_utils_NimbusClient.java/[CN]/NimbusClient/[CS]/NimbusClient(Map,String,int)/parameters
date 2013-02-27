@@ -1,0 +1,3 @@
+Map conf
+String host
+int port
