@@ -1,0 +1,3 @@
+{
+  return Math.min(maxRetryInterval,super.getSleepTimeMs(count,elapsedMs));
+}
