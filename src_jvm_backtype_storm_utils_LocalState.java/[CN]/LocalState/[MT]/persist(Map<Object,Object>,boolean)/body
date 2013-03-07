@@ -3,5 +3,5 @@
   String newPath=_vs.createVersion();
   FileUtils.writeByteArrayToFile(new File(newPath),toWrite);
   _vs.succeedVersion(newPath);
-  _vs.cleanup(4);
+  if (cleanup)   _vs.cleanup(4);
 }

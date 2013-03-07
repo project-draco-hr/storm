@@ -1,1 +1,2 @@
 Map<Object,Object> val
+boolean cleanup
