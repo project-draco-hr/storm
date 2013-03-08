@@ -1,13 +1,17 @@
 {
-  Configuration.setConfiguration(null);
   String orig_loginConfigurationFile=System.getProperty("java.security.auth.login.config");
   String loginConfigurationFile=(String)storm_conf.get("java.security.auth.login.config");
-  if (loginConfigurationFile == null)   loginConfigurationFile=orig_loginConfigurationFile;
+  if ((loginConfigurationFile == null) || (loginConfigurationFile.length() == 0))   loginConfigurationFile=orig_loginConfigurationFile;
   Configuration login_conf=null;
   if ((loginConfigurationFile != null) && (loginConfigurationFile.length() > 0)) {
+    if (orig_loginConfigurationFile != null && orig_loginConfigurationFile.length() > 0 && !loginConfigurationFile.equals(orig_loginConfigurationFile)) {
+      throw new RuntimeException("System property java.security.auth.login.config (" + orig_loginConfigurationFile + ") != storm configuration java.security.auth.login.config ("+ loginConfigurationFile+ ")");
+    }
+    Configuration.setConfiguration(null);
     System.setProperty("java.security.auth.login.config",loginConfigurationFile);
     login_conf=Configuration.getConfiguration();
     if (orig_loginConfigurationFile != null)     System.setProperty("java.security.auth.login.config",orig_loginConfigurationFile);
+ else     System.setProperty("java.security.auth.login.config","");
   }
   return login_conf;
 }
