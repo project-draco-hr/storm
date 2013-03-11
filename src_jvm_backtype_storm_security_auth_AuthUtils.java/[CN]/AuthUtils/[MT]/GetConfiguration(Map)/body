@@ -1,0 +1,18 @@
+{
+  Configuration login_conf=null;
+  String loginConfigurationFile=(String)storm_conf.get("java.security.auth.login.config");
+  if ((loginConfigurationFile != null) && (loginConfigurationFile.length() > 0)) {
+    try {
+      URI config_uri=new File(loginConfigurationFile).toURI();
+      login_conf=Configuration.getInstance("JavaLoginConfig",new URIParameter(config_uri));
+    }
+ catch (    NoSuchAlgorithmException ex1) {
+      if (ex1.getCause() instanceof FileNotFoundException)       throw new RuntimeException("configuration file " + loginConfigurationFile + " could not be found");
+ else       throw new RuntimeException(ex1);
+    }
+catch (    Exception ex2) {
+      throw new RuntimeException(ex2);
+    }
+  }
+  return login_conf;
+}

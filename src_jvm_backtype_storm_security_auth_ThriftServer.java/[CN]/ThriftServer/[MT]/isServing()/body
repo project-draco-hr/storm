@@ -1,0 +1,4 @@
+{
+  if (_server == null)   return false;
+  return _server.isServing();
+}

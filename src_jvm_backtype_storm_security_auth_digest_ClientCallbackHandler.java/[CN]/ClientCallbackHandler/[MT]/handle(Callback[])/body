@@ -1,0 +1,38 @@
+{
+  for (  Callback c : callbacks) {
+    if (c instanceof NameCallback) {
+      LOG.debug("name callback");
+      NameCallback nc=(NameCallback)c;
+      nc.setName(_username);
+    }
+ else     if (c instanceof PasswordCallback) {
+      LOG.debug("password callback");
+      PasswordCallback pc=(PasswordCallback)c;
+      if (_password != null) {
+        pc.setPassword(_password.toCharArray());
+      }
+    }
+ else     if (c instanceof AuthorizeCallback) {
+      LOG.debug("authorization callback");
+      AuthorizeCallback ac=(AuthorizeCallback)c;
+      String authid=ac.getAuthenticationID();
+      String authzid=ac.getAuthorizationID();
+      if (authid.equals(authzid)) {
+        ac.setAuthorized(true);
+      }
+ else {
+        ac.setAuthorized(false);
+      }
+      if (ac.isAuthorized()) {
+        ac.setAuthorizedID(authzid);
+      }
+    }
+ else     if (c instanceof RealmCallback) {
+      RealmCallback rc=(RealmCallback)c;
+      ((RealmCallback)c).setText(rc.getDefaultText());
+    }
+ else {
+      throw new UnsupportedCallbackException(c);
+    }
+  }
+}

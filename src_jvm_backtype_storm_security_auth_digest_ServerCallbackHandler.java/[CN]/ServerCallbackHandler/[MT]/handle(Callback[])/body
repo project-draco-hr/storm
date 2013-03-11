@@ -1,0 +1,16 @@
+{
+  for (  Callback callback : callbacks) {
+    if (callback instanceof NameCallback) {
+      handleNameCallback((NameCallback)callback);
+    }
+ else     if (callback instanceof PasswordCallback) {
+      handlePasswordCallback((PasswordCallback)callback);
+    }
+ else     if (callback instanceof RealmCallback) {
+      handleRealmCallback((RealmCallback)callback);
+    }
+ else     if (callback instanceof AuthorizeCallback) {
+      handleAuthorizeCallback((AuthorizeCallback)callback);
+    }
+  }
+}

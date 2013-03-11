@@ -1,0 +1,12 @@
+{
+  try {
+    ITransportPlugin transportPlugin=AuthUtils.GetTransportPlugin(_storm_conf,_login_conf);
+    _server=transportPlugin.getServer(_port,_processor);
+    _server.serve();
+  }
+ catch (  Exception ex) {
+    LOG.error("ThriftServer is being stopped due to: " + ex,ex);
+    if (_server != null)     _server.stop();
+    Runtime.getRuntime().halt(1);
+  }
+}
