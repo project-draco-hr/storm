@@ -1,0 +1,7 @@
+{
+  TTransportFactory serverTransportFactory=getServerTransportFactory();
+  TServerSocket serverTransport=new TServerSocket(port);
+  TThreadPoolServer.Args server_args=new TThreadPoolServer.Args(serverTransport).processor(new TUGIWrapProcessor(processor)).minWorkerThreads(64).maxWorkerThreads(64).protocolFactory(new TBinaryProtocol.Factory());
+  if (serverTransportFactory != null)   server_args.transportFactory(serverTransportFactory);
+  return new TThreadPoolServer(server_args);
+}

@@ -1,0 +1,23 @@
+{
+  try {
+    Configuration login_conf=AuthUtils.GetConfiguration(storm_conf);
+    ITransportPlugin transportPlugin=AuthUtils.GetTransportPlugin(storm_conf,login_conf);
+    if (host == null) {
+      throw new IllegalArgumentException("host is not set");
+    }
+    if (port <= 0) {
+      throw new IllegalArgumentException("invalid port: " + port);
+    }
+    TSocket socket=new TSocket(host,port);
+    if (timeout != null) {
+      socket.setTimeout(timeout);
+    }
+    final TTransport underlyingTransport=socket;
+    _transport=transportPlugin.connect(underlyingTransport,host);
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException(ex);
+  }
+  _protocol=null;
+  if (_transport != null)   _protocol=new TBinaryProtocol(_transport);
+}

@@ -1,0 +1,5 @@
+{
+  Map<Object,Object> curr=snapshot();
+  curr.remove(key);
+  persist(curr,cleanup);
+}

@@ -1,5 +1,3 @@
 {
-  Map<Object,Object> curr=snapshot();
-  curr.put(key,val);
-  persist(curr);
+  put(key,val,true);
 }

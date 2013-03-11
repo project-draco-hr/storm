@@ -1,0 +1,4 @@
+{
+  _subject=Subject.getSubject(acl_ctxt);
+  _reqID=uniqueId.incrementAndGet();
+}
