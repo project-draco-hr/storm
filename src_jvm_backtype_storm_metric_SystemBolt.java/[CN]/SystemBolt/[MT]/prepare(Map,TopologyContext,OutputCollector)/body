@@ -1,0 +1,64 @@
+{
+  if (_prepareWasCalled && stormConf.get(Config.STORM_CLUSTER_MODE) != "local") {
+    throw new RuntimeException("A single worker should have 1 SystemBolt instance.");
+  }
+  _prepareWasCalled=true;
+  int bucketSize=RT.intCast(stormConf.get(Config.TOPOLOGY_BUILTIN_METRICS_BUCKET_SIZE_SECS));
+  final RuntimeMXBean jvmRT=ManagementFactory.getRuntimeMXBean();
+  context.registerMetric("uptimeSecs",new IMetric(){
+    @Override public Object getValueAndReset(){
+      return jvmRT.getUptime() / 1000.0;
+    }
+  }
+,bucketSize);
+  context.registerMetric("topologyPartialUptimeSecs",new IMetric(){
+    private long _prevUptime=jvmRT.getUptime();
+    private final double NUM_WORKERS=RT.doubleCast(stormConf.get(Config.TOPOLOGY_WORKERS));
+    @Override public Object getValueAndReset(){
+      long _nowUptime=jvmRT.getUptime();
+      double ret=(_nowUptime - _prevUptime) / 1000.0 / NUM_WORKERS;
+      _prevUptime=_nowUptime;
+      return ret;
+    }
+  }
+,bucketSize);
+  context.registerMetric("startTimeSecs",new IMetric(){
+    @Override public Object getValueAndReset(){
+      return jvmRT.getStartTime() / 1000.0;
+    }
+  }
+,bucketSize);
+  context.registerMetric("newWorkerEvent",new IMetric(){
+    boolean doEvent=true;
+    @Override public Object getValueAndReset(){
+      if (doEvent) {
+        doEvent=false;
+        return 1;
+      }
+ else       return 0;
+    }
+  }
+,bucketSize);
+  context.registerMetric("configTopologyWorkers",new IMetric(){
+    @Override public Object getValueAndReset(){
+      return stormConf.get(Config.TOPOLOGY_WORKERS);
+    }
+  }
+,bucketSize);
+  final MemoryMXBean jvmMemRT=ManagementFactory.getMemoryMXBean();
+  context.registerMetric("memory/heap",new MemoryUsageMetric(new AFn(){
+    public Object invoke(){
+      return jvmMemRT.getHeapMemoryUsage();
+    }
+  }
+),bucketSize);
+  context.registerMetric("memory/nonHeap",new MemoryUsageMetric(new AFn(){
+    public Object invoke(){
+      return jvmMemRT.getNonHeapMemoryUsage();
+    }
+  }
+),bucketSize);
+  for (  GarbageCollectorMXBean b : ManagementFactory.getGarbageCollectorMXBeans()) {
+    context.registerMetric("GC/" + b.getName().replaceAll("\\W",""),new GarbageCollectorMetric(b),bucketSize);
+  }
+}
