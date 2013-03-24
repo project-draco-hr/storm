@@ -1,0 +1,15 @@
+{
+  IContext transport=null;
+  try {
+    String transport_plugin_klassName=(String)storm_conf.get(Config.STORM_MESSAGING_TRANSPORT);
+    LOG.debug("Storm peer transport plugin:" + transport_plugin_klassName);
+    Class klass=Class.forName(transport_plugin_klassName);
+    ITransport factory=(ITransport)klass.newInstance();
+    transport=factory.newContext();
+    transport.prepare(storm_conf);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return transport;
+}
