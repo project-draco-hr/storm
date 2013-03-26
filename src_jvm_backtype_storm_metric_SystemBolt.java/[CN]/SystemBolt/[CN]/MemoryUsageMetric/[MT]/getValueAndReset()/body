@@ -1,0 +1,4 @@
+{
+  MemoryUsage memUsage=(MemoryUsage)_getUsage.invoke();
+  return ImmutableMap.builder().put("maxBytes",memUsage.getMax()).put("committedBytes",memUsage.getCommitted()).put("initBytes",memUsage.getInit()).put("usedBytes",memUsage.getUsed()).put("virtualFreeBytes",memUsage.getMax() - memUsage.getUsed()).put("unusedBytes",memUsage.getCommitted() - memUsage.getUsed()).build();
+}
