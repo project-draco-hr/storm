@@ -11,17 +11,6 @@
     }
   }
 ,bucketSize);
-  context.registerMetric("topologyPartialUptimeSecs",new IMetric(){
-    private long _prevUptime=jvmRT.getUptime();
-    private final double NUM_WORKERS=RT.doubleCast(stormConf.get(Config.TOPOLOGY_WORKERS));
-    @Override public Object getValueAndReset(){
-      long _nowUptime=jvmRT.getUptime();
-      double ret=(_nowUptime - _prevUptime) / 1000.0 / NUM_WORKERS;
-      _prevUptime=_nowUptime;
-      return ret;
-    }
-  }
-,bucketSize);
   context.registerMetric("startTimeSecs",new IMetric(){
     @Override public Object getValueAndReset(){
       return jvmRT.getStartTime() / 1000.0;
