@@ -39,12 +39,6 @@
     }
   }
 ,bucketSize);
-  context.registerMetric("configTopologyWorkers",new IMetric(){
-    @Override public Object getValueAndReset(){
-      return stormConf.get(Config.TOPOLOGY_WORKERS);
-    }
-  }
-,bucketSize);
   final MemoryMXBean jvmMemRT=ManagementFactory.getMemoryMXBean();
   context.registerMetric("memory/heap",new MemoryUsageMetric(new AFn(){
     public Object invoke(){
