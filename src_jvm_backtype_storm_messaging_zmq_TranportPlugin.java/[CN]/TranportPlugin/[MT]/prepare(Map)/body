@@ -1,0 +1,8 @@
+{
+  LOG.debug("zmq.TranportPlugin:prepare()");
+  int num_threads=(Integer)storm_conf.get(Config.ZMQ_THREADS);
+  context=ZMQ.context(num_threads);
+  linger_ms=(Long)storm_conf.get(Config.ZMQ_LINGER_MILLIS);
+  hwm=(Integer)storm_conf.get(Config.ZMQ_HWM);
+  isLocal=new String("local").equals((String)storm_conf.get(Config.STORM_CLUSTER_MODE));
+}

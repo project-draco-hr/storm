@@ -1,0 +1,8 @@
+{
+  LOG.debug("zmq.TranportPlugin:bind()");
+  Socket socket=context.socket(ZMQ.PULL);
+  socket.setHWM(hwm);
+  socket.setLinger(linger_ms);
+  socket.bind(bindUrl(port));
+  return new Connection(socket);
+}

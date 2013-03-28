@@ -1,0 +1,4 @@
+{
+  if (isLocal)   return "ipc://" + port + ".ipc";
+  return "tcp://" + host + ":"+ port;
+}

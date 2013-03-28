@@ -1,0 +1,7 @@
+{
+  LOG.debug("zmq.TranportPlugin:term()");
+  if (context != null) {
+    context.term();
+    context=null;
+  }
+}
