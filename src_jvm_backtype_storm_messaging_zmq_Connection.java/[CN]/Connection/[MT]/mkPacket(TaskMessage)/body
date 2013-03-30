@@ -1,7 +1,0 @@
-{
-  byte[] payload=message.message();
-  ByteBuffer bb=ByteBuffer.allocate(payload.length + 2);
-  bb.putShort((short)message.task());
-  bb.put(payload);
-  return bb.array();
-}

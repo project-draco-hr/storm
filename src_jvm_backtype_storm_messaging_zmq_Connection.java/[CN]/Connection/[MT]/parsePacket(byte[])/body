@@ -1,8 +1,0 @@
-{
-  if (packet == null)   return null;
-  ByteBuffer bb=ByteBuffer.wrap(packet);
-  int task=bb.getShort();
-  byte[] payload=new byte[packet.length - 2];
-  bb.get(payload);
-  return new TaskMessage(task,payload);
-}

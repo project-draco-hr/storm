@@ -1,0 +1,6 @@
+{
+  ByteBuffer bb=ByteBuffer.allocate(_message.length + 2);
+  bb.putShort((short)_task);
+  bb.put(_message);
+  return bb.array();
+}

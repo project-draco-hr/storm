@@ -1,5 +1,5 @@
 {
   LOG.debug("zmq.Connection:send()");
-  byte[] packet=mkPacket(new TaskMessage(taskId,payload));
+  byte[] packet=new TaskMessage(taskId,payload).serialize();
   socket.send(packet,ZMQ.NOBLOCK);
 }
