@@ -1,7 +1,0 @@
-{
-  LOG.debug("zmq.Connection:close()");
-  if (socket != null) {
-    socket.close();
-    socket=null;
-  }
-}

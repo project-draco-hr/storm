@@ -1,6 +1,0 @@
-{
-  LOG.debug("zmq.Connection:recv()");
-  TaskMessage message=new TaskMessage(0,null);
-  message.deserialize(ByteBuffer.wrap(socket.recv(flags)));
-  return message;
-}
