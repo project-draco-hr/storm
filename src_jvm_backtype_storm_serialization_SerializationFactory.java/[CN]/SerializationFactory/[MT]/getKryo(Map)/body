@@ -9,7 +9,6 @@
     k.register(ListDelegate.class,serializer);
   }
  catch (  ClassNotFoundException ex) {
-    LOG.error("Could not load class in class path: " + payloadSerializerName.length(),ex);
     throw new RuntimeException(ex);
   }
   k.register(ArrayList.class,new ArrayListSerializer());
