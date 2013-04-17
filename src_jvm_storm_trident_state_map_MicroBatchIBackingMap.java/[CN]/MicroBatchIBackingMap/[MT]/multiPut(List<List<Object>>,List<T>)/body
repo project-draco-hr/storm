@@ -1,0 +1,20 @@
+{
+  int thisBatchSize;
+  if (_options.maxMultiPutBatchSize == 0) {
+    thisBatchSize=keys.size();
+  }
+ else {
+    thisBatchSize=_options.maxMultiPutBatchSize;
+  }
+  LinkedList<List<Object>> keysTodo=new LinkedList<List<Object>>(keys);
+  LinkedList<T> valuesTodo=new LinkedList<T>(values);
+  while (!keysTodo.isEmpty()) {
+    List<List<Object>> keysBatch=new ArrayList<List<Object>>(thisBatchSize);
+    List<T> valuesBatch=new ArrayList<T>(thisBatchSize);
+    for (int i=0; i < thisBatchSize && !keysTodo.isEmpty(); i++) {
+      keysBatch.add(keysTodo.removeFirst());
+      valuesBatch.add(valuesTodo.removeFirst());
+    }
+    _delegate.multiPut(keysBatch,valuesBatch);
+  }
+}
