@@ -1,0 +1,6 @@
+{
+  if (packet == null)   return;
+  _task=packet.getShort();
+  _message=new byte[packet.limit() - 2];
+  packet.get(_message);
+}

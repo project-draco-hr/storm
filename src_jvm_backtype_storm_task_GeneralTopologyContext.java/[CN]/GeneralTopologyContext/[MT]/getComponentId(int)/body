@@ -1,8 +1,0 @@
-{
-  if (taskId == -1) {
-    return Constants.SYSTEM_COMPONENT_ID;
-  }
- else {
-    return _taskToComponent.get(taskId);
-  }
-}
