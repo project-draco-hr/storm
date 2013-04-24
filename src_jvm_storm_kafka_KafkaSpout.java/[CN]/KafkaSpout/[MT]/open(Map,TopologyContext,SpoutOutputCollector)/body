@@ -33,4 +33,15 @@
     }
   }
 ,60);
+  context.registerMetric("kafkaPartition",new IMetric(){
+    @Override public Object getValueAndReset(){
+      List<PartitionManager> pms=_coordinator.getMyManagedPartitions();
+      Map concatMetricsDataMaps=new HashMap();
+      for (      PartitionManager pm : pms) {
+        concatMetricsDataMaps.putAll(pm.getMetricsDataMap());
+      }
+      return concatMetricsDataMaps;
+    }
+  }
+,60);
 }

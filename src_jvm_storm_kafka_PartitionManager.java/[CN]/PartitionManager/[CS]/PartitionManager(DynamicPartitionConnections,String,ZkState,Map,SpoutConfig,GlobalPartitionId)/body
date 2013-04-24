@@ -32,4 +32,8 @@
   }
   LOG.info("Starting Kafka " + _consumer.host() + ":"+ id.partition+ " from offset "+ _committedTo);
   _emittedToOffset=_committedTo;
+  _fetchAPILatencyMax=new CombinedMetric(new MaxMetric());
+  _fetchAPILatencyMean=new ReducedMetric(new MeanReducer());
+  _fetchAPICallCount=new CountMetric();
+  _fetchAPIMessageCount=new CountMetric();
 }
