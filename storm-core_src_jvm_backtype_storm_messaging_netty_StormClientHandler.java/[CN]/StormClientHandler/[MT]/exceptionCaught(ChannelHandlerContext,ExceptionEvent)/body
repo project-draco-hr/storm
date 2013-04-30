@@ -1,0 +1,3 @@
+{
+  if (!being_closed.get())   client.reconnect();
+}

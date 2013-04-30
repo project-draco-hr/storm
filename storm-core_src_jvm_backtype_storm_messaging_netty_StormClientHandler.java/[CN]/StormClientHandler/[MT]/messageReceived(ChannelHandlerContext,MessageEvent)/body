@@ -1,0 +1,5 @@
+{
+  TaskMessage msg=(TaskMessage)e.getMessage();
+  if (msg.task() != Util.OK)   LOG.info("failure response:" + msg);
+  if (!being_closed.get())   sendRequest(ctx.getChannel());
+}

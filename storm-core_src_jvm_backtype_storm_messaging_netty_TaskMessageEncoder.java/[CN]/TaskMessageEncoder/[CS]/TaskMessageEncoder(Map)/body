@@ -1,0 +1,3 @@
+{
+  estimated_buffer_size=Utils.getInt(conf.get(Config.STORM_MESSAGING_NETTY_BUFFER_SIZE));
+}

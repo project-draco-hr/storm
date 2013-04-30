@@ -1,0 +1,5 @@
+{
+  ChannelFuture future=channel.close();
+  future.awaitUninterruptibly();
+  factory.releaseExternalResources();
+}

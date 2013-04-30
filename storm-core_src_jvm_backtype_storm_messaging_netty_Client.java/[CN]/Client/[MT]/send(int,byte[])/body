@@ -1,0 +1,8 @@
+{
+  try {
+    message_queue.put(new TaskMessage(task,message));
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException(e);
+  }
+}

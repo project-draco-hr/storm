@@ -1,0 +1,17 @@
+{
+  if (buf.readableBytes() < 6) {
+    return null;
+  }
+  buf.markReaderIndex();
+  short task=buf.readShort();
+  int length=buf.readInt();
+  if (length == 0) {
+    return new TaskMessage(task,null);
+  }
+  if (buf.readableBytes() < length) {
+    buf.resetReaderIndex();
+    return null;
+  }
+  ChannelBuffer payload=buf.readBytes(length);
+  return new TaskMessage(task,payload.array());
+}

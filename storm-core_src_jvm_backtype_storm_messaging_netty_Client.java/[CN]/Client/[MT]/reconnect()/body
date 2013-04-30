@@ -1,0 +1,18 @@
+{
+  try {
+    retries++;
+    if (retries < max_retries) {
+      Thread.sleep(getSleepTimeMs());
+      LOG.info("Reconnect ... " + " [" + retries + "]");
+      ChannelFuture future=bootstrap.connect(remote_addr);
+      channel=future.getChannel();
+    }
+ else {
+      LOG.warn("Remote address is not reachable anymore");
+      close();
+    }
+  }
+ catch (  InterruptedException e) {
+    LOG.info("connection failed",e);
+  }
+}

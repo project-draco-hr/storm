@@ -1,0 +1,14 @@
+{
+  this.storm_conf=storm_conf;
+  this.port=port;
+  message_queue=new LinkedBlockingQueue<TaskMessage>();
+  int buffer_size=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_BUFFER_SIZE));
+  factory=new NioServerSocketChannelFactory(Executors.newCachedThreadPool(),Executors.newCachedThreadPool());
+  bootstrap=new ServerBootstrap(factory);
+  bootstrap.setOption("child.tcpNoDelay",true);
+  bootstrap.setOption("child.receiveBufferSize",buffer_size);
+  bootstrap.setOption("child.keepAlive",true);
+  bootstrap.setPipelineFactory(new StormServerPipelineFactory(this,storm_conf));
+  Channel channel=bootstrap.bind(new InetSocketAddress(port));
+  allChannels.add(channel);
+}

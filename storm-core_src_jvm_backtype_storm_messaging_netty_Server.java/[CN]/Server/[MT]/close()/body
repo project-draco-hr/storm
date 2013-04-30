@@ -1,0 +1,4 @@
+{
+  allChannels.close().awaitUninterruptibly();
+  factory.releaseExternalResources();
+}

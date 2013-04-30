@@ -1,0 +1,7 @@
+{
+  int payload_len=0;
+  if (message.message() != null)   payload_len=message.message().length;
+  bout.writeShort((short)message.task());
+  bout.writeInt(payload_len);
+  if (payload_len > 0)   bout.write(message.message());
+}

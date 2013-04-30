@@ -1,0 +1,5 @@
+{
+  Channel channel=e.getChannel();
+  client.setChannel(channel);
+  sendRequest(ctx.getChannel());
+}

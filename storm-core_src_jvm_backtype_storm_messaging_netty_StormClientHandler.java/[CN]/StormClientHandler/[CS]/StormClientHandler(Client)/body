@@ -1,0 +1,4 @@
+{
+  this.client=client;
+  being_closed=new AtomicBoolean(false);
+}

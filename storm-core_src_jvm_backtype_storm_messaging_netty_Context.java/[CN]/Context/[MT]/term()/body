@@ -1,0 +1,8 @@
+{
+  for (  IConnection client : client_connections) {
+    client.close();
+  }
+  for (  IConnection server : server_connections) {
+    server.close();
+  }
+}

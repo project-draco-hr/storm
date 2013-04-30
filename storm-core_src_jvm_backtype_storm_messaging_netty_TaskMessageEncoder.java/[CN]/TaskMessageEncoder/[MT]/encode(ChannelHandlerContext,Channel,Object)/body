@@ -1,0 +1,17 @@
+{
+  if (obj instanceof TaskMessage) {
+    TaskMessage message=(TaskMessage)obj;
+    ChannelBufferOutputStream bout=new ChannelBufferOutputStream(ChannelBuffers.dynamicBuffer(estimated_buffer_size,ctx.getChannel().getConfig().getBufferFactory()));
+    writeTaskMessage(bout,message);
+    bout.close();
+    return bout.buffer();
+  }
+  if (obj instanceof ArrayList<?>) {
+    ChannelBufferOutputStream bout=new ChannelBufferOutputStream(ChannelBuffers.dynamicBuffer(estimated_buffer_size,ctx.getChannel().getConfig().getBufferFactory()));
+    ArrayList<TaskMessage> messages=(ArrayList<TaskMessage>)obj;
+    for (    TaskMessage message : messages)     writeTaskMessage(bout,message);
+    bout.close();
+    return bout.buffer();
+  }
+  return null;
+}
