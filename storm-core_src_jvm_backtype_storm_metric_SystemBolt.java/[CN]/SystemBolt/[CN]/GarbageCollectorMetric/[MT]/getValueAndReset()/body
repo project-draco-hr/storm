@@ -1,6 +1,6 @@
 {
   Long collectionCountP=_gcBean.getCollectionCount();
-  Long collectionTimeP=_gcBean.getCollectionCount();
+  Long collectionTimeP=_gcBean.getCollectionTime();
   Map ret=null;
   if (_collectionCount != null && _collectionTime != null) {
     ret=ImmutableMap.builder().put("count",collectionCountP - _collectionCount).put("timeMs",collectionTimeP - _collectionTime).build();
