@@ -1,6 +1,10 @@
 {
-  ByteBuffer bb=ByteBuffer.allocate(_message.length + 2);
+  ByteBuffer bb=ByteBuffer.allocate(_message.length + SHORT_SIZE + INT_SIZE);
   bb.putShort((short)_task);
-  bb.put(_message);
+  if (_message == null)   bb.putInt(0);
+ else {
+    bb.putInt(_message.length);
+    bb.put(_message);
+  }
   return bb;
 }

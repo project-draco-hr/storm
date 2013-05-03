@@ -1,0 +1,9 @@
+{
+  StringBuffer buf=new StringBuffer();
+  buf.append("task:");
+  buf.append(_task);
+  buf.append(" message size:");
+  if (_message != null)   buf.append(_message.length);
+ else   buf.append(0);
+  return buf.toString();
+}
