@@ -1,5 +1,4 @@
 {
-  ChannelFuture future=channel.close();
-  future.awaitUninterruptibly();
-  factory.releaseExternalResources();
+  if (channelRef.get() != null)   channelRef.get().close().awaitUninterruptibly();
+  ready_to_release_resource.set(true);
 }

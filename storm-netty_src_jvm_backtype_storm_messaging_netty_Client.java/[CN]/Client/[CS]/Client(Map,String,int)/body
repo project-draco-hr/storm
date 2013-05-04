@@ -1,6 +1,8 @@
 {
   message_queue=new LinkedBlockingQueue<TaskMessage>();
-  retries=0;
+  retries=new AtomicInteger(0);
+  channelRef=new AtomicReference<Channel>(null);
+  ready_to_release_resource=new AtomicBoolean(false);
   int buffer_size=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_BUFFER_SIZE));
   max_retries=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_MAX_RETRIES));
   base_sleep_ms=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_MIN_SLEEP_MS));
@@ -12,6 +14,5 @@
   bootstrap.setOption("keepAlive",true);
   bootstrap.setPipelineFactory(new StormClientPipelineFactory(this,storm_conf));
   remote_addr=new InetSocketAddress(host,port);
-  ChannelFuture future=bootstrap.connect(remote_addr);
-  channel=future.getChannel();
+  bootstrap.connect(remote_addr);
 }

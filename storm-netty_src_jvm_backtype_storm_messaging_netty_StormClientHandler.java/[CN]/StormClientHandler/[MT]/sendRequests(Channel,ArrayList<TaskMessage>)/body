@@ -1,0 +1,28 @@
+{
+  if (being_closed.get())   return;
+  for (  TaskMessage message : requests) {
+    if (message.task() == Util.CLOSE) {
+      being_closed.set(true);
+      requests.remove(message);
+      break;
+    }
+  }
+  if (requests.isEmpty()) {
+    if (being_closed.get())     client.close_n_release();
+    return;
+  }
+  ChannelFuture future=channel.write(requests);
+  future.addListener(new ChannelFutureListener(){
+    public void operationComplete(    ChannelFuture future) throws Exception {
+      if (!future.isSuccess()) {
+        LOG.info("failed to send requests:",future.getCause());
+        future.getChannel().close();
+      }
+ else {
+        LOG.debug(requests.size() + " request(s) sent");
+      }
+      if (being_closed.get())       client.close_n_release();
+    }
+  }
+);
+}

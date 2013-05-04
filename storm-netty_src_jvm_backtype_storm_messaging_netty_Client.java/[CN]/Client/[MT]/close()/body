@@ -5,4 +5,15 @@
  catch (  InterruptedException e) {
     close_n_release();
   }
+  final Timer timer=new Timer(true);
+  timer.scheduleAtFixedRate(new TimerTask(){
+    @Override public void run(){
+      if (ready_to_release_resource.get()) {
+        LOG.info("client resource released");
+        factory.releaseExternalResources();
+        timer.cancel();
+      }
+    }
+  }
+,0,10);
 }
