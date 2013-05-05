@@ -1,6 +1,11 @@
 {
+  int size=0;
   ArrayList<TaskMessage> requests=new ArrayList<TaskMessage>();
   requests.add(message_queue.take());
-  for (TaskMessage msg=message_queue.poll(); msg != null; msg=message_queue.poll())   requests.add(msg);
+  for (TaskMessage msg=message_queue.poll(); msg != null; msg=message_queue.poll()) {
+    requests.add(msg);
+    size+=(msg.message() != null ? msg.message().length : 0) + 6;
+    if (size > buffer_size)     break;
+  }
   return requests;
 }

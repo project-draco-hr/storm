@@ -1,3 +1,4 @@
 {
   this.server=server;
+  failure_count=new AtomicInteger(0);
 }
