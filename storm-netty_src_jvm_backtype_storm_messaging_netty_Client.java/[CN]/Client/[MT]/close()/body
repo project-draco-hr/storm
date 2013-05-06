@@ -1,6 +1,7 @@
 {
   try {
     message_queue.put(Util.CLOSE_MESSAGE);
+    being_closed.set(true);
   }
  catch (  InterruptedException e) {
     close_n_release();

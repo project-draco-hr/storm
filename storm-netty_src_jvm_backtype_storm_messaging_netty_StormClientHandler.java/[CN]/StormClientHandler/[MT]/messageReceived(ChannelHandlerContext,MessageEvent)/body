@@ -1,4 +1,5 @@
 {
+  LOG.debug("send/recv time (ms):" + (System.currentTimeMillis() - start_time));
   TaskMessage msg=(TaskMessage)event.getMessage();
   if (msg.task() != Util.OK)   LOG.info("failure response:" + msg);
   Channel channel=event.getChannel();

@@ -4,6 +4,7 @@
   requests.add(message_queue.take());
   for (TaskMessage msg=message_queue.poll(); msg != null; msg=message_queue.poll()) {
     requests.add(msg);
+    if (msg == Util.CLOSE_MESSAGE)     break;
     size+=(msg.message() != null ? msg.message().length : 0) + 6;
     if (size > buffer_size)     break;
   }

@@ -1,11 +1,9 @@
 {
   if (being_closed.get())   return;
-  for (  TaskMessage message : requests) {
-    if (message.task() == Util.CLOSE) {
-      being_closed.set(true);
-      requests.remove(message);
-      break;
-    }
+  TaskMessage last_msg=requests.get(requests.size() - 1);
+  if (last_msg == Util.CLOSE_MESSAGE) {
+    being_closed.set(true);
+    requests.remove(last_msg);
   }
   if (requests.isEmpty()) {
     if (being_closed.get())     client.close_n_release();
