@@ -12,7 +12,7 @@
           LOG.warn("partitionToOffset contains partition not found in _connections. Stale partition data?");
           return null;
         }
-        long latestTimeOffset=consumer.getOffsetsBefore(_topic,partition.partition,OffsetRequest.LatestTime(),1)[0];
+        long latestTimeOffset=getOffset(consumer,_topic,partition.partition,kafka.api.OffsetRequest.LatestTime());
         if (latestTimeOffset == 0) {
           LOG.warn("No data found in Kafka Partition " + partition.getId());
           return null;

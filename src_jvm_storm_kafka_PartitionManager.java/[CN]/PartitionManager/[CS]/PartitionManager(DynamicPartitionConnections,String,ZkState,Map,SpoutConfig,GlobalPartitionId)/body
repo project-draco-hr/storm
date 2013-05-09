@@ -19,11 +19,11 @@
     LOG.warn("Error reading and/or parsing at ZkNode: " + committedPath(),e);
   }
   if (!topologyInstanceId.equals(jsonTopologyId) && spoutConfig.forceFromStart) {
-    _committedTo=_consumer.getOffsetsBefore(spoutConfig.topic,id.partition,spoutConfig.startOffsetTime,1)[0];
+    _committedTo=KafkaUtils.getOffset(_consumer,spoutConfig.topic,id.partition,spoutConfig.startOffsetTime);
     LOG.info("Using startOffsetTime to choose last commit offset.");
   }
  else   if (jsonTopologyId == null || jsonOffset == null) {
-    _committedTo=_consumer.getOffsetsBefore(spoutConfig.topic,id.partition,-1,1)[0];
+    _committedTo=KafkaUtils.getOffset(_consumer,spoutConfig.topic,id.partition,-1);
     LOG.info("Setting last commit offset to HEAD.");
   }
  else {

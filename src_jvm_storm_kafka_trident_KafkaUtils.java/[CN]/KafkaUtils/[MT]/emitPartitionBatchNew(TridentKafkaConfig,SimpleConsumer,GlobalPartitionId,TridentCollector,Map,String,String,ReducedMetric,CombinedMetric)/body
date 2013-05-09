@@ -7,7 +7,7 @@
       lastInstanceId=(String)lastTopoMeta.get("id");
     }
     if (config.forceFromStart && !topologyInstanceId.equals(lastInstanceId)) {
-      offset=consumer.getOffsetsBefore(config.topic,partition.partition,config.startOffsetTime,1)[0];
+      offset=getOffset(consumer,config.topic,partition.partition,config.startOffsetTime);
     }
  else {
       offset=(Long)lastMeta.get("nextOffset");
@@ -16,12 +16,14 @@
  else {
     long startTime=-1;
     if (config.forceFromStart)     startTime=config.startOffsetTime;
-    offset=consumer.getOffsetsBefore(config.topic,partition.partition,startTime,1)[0];
+    offset=getOffset(consumer,config.topic,partition.partition,startTime);
   }
   ByteBufferMessageSet msgs;
   try {
     long start=System.nanoTime();
-    msgs=consumer.fetch(new FetchRequest(config.topic,partition.partition,offset,config.fetchSizeBytes));
+    FetchRequestBuilder builder=new FetchRequestBuilder();
+    FetchRequest fetchRequest=builder.addFetch(config.topic,partition.partition,offset,config.fetchSizeBytes).build();
+    msgs=consumer.fetch(fetchRequest).messageSet(config.topic,partition.partition);
     long end=System.nanoTime();
     long millis=(end - start) / 1000000;
     meanMetric.update(millis);
@@ -38,7 +40,7 @@
   long endoffset=offset;
   for (  MessageAndOffset msg : msgs) {
     emit(config,collector,msg.message());
-    endoffset=msg.offset();
+    endoffset=msg.nextOffset();
   }
   Map newMeta=new HashMap();
   newMeta.put("offset",offset);

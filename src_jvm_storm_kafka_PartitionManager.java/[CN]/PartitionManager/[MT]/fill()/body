@@ -1,13 +1,13 @@
 {
   long start=System.nanoTime();
-  ByteBufferMessageSet msgs=_consumer.fetch(new FetchRequest(_spoutConfig.topic,_partition.partition,_emittedToOffset,_spoutConfig.fetchSizeBytes));
+  ByteBufferMessageSet msgs=_consumer.fetch(new FetchRequestBuilder().addFetch(_spoutConfig.topic,_partition.partition,_emittedToOffset,_spoutConfig.fetchSizeBytes).build()).messageSet(_spoutConfig.topic,_partition.partition);
   long end=System.nanoTime();
   long millis=(end - start) / 1000000;
   _fetchAPILatencyMax.update(millis);
   _fetchAPILatencyMean.update(millis);
   _fetchAPICallCount.incr();
-  _fetchAPIMessageCount.incrBy(msgs.underlying().size());
-  int numMessages=msgs.underlying().size();
+  int numMessages=countMessages(msgs);
+  _fetchAPIMessageCount.incrBy(numMessages);
   if (numMessages > 0) {
     LOG.info("Fetched " + numMessages + " messages from Kafka: "+ _consumer.host()+ ":"+ _partition.partition);
   }
