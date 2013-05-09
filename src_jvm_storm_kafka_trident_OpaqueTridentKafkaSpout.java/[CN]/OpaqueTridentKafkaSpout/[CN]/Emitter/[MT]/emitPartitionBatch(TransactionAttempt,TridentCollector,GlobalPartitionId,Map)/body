@@ -1,0 +1,24 @@
+{
+  try {
+    SimpleConsumer consumer=_connections.register(partition);
+    Map ret=KafkaUtils.emitPartitionBatchNew(_config,consumer,partition,collector,lastMeta,_topologyInstanceId,_topologyName,_kafkaMeanFetchLatencyMetric,_kafkaMaxFetchLatencyMetric);
+    _kafkaOffsetMetric.setLatestEmittedOffset(partition,(Long)ret.get("offset"));
+    return ret;
+  }
+ catch (  FailedFetchException e) {
+    LOG.warn("Failed to fetch from partition " + partition);
+    if (lastMeta == null) {
+      return null;
+    }
+ else {
+      Map ret=new HashMap();
+      ret.put("offset",lastMeta.get("nextOffset"));
+      ret.put("nextOffset",lastMeta.get("nextOffset"));
+      ret.put("partition",partition.partition);
+      ret.put("broker",ImmutableMap.of("host",partition.host.host,"port",partition.host.port));
+      ret.put("topic",_config.topic);
+      ret.put("topology",ImmutableMap.of("name",_topologyName,"id",_topologyInstanceId));
+      return ret;
+    }
+  }
+}

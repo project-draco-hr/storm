@@ -1,0 +1,6 @@
+{
+  reader=new DynamicBrokersReader(conf,hosts.brokerZkStr,hosts.brokerZkPath,topic);
+  cachedBrokers=reader.getBrokerInfo();
+  lastRefreshTimeMs=System.currentTimeMillis();
+  refreshMillis=hosts.refreshFreqSecs * 1000L;
+}

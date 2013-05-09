@@ -1,0 +1,7 @@
+{
+  _config=conf;
+  if (!(conf.hosts instanceof KafkaConfig.StaticHosts)) {
+    throw new RuntimeException("Must configure with static hosts");
+  }
+  this.hosts=(StaticHosts)conf.hosts;
+}

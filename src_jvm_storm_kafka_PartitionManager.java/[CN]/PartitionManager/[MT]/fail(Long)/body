@@ -1,0 +1,6 @@
+{
+  if (_emittedToOffset > offset) {
+    _emittedToOffset=offset;
+    _pending.tailSet(offset).clear();
+  }
+}

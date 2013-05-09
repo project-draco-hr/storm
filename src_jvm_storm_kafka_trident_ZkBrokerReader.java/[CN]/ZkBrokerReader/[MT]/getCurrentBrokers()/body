@@ -1,0 +1,8 @@
+{
+  long currTime=System.currentTimeMillis();
+  if (currTime > lastRefreshTimeMs + refreshMillis) {
+    cachedBrokers=reader.getBrokerInfo();
+    lastRefreshTimeMs=currTime;
+  }
+  return cachedBrokers;
+}

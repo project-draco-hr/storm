@@ -1,0 +1,22 @@
+{
+  String instanceId=(String)meta.get("instanceId");
+  if (!_config.forceFromStart || instanceId.equals(_topologyInstanceId)) {
+    SimpleConsumer consumer=_connections.register(partition);
+    long offset=(Long)meta.get("offset");
+    long nextOffset=(Long)meta.get("nextOffset");
+    long start=System.nanoTime();
+    ByteBufferMessageSet msgs=consumer.fetch(new FetchRequest(_config.topic,partition.partition,offset,_config.fetchSizeBytes));
+    long end=System.nanoTime();
+    long millis=(end - start) / 1000000;
+    _kafkaMeanFetchLatencyMetric.update(millis);
+    _kafkaMaxFetchLatencyMetric.update(millis);
+    for (    MessageAndOffset msg : msgs) {
+      if (offset == nextOffset)       break;
+      if (offset > nextOffset) {
+        throw new RuntimeException("Error when re-emitting batch. overshot the end offset");
+      }
+      KafkaUtils.emit(_config,collector,msg.message());
+      offset=msg.offset();
+    }
+  }
+}

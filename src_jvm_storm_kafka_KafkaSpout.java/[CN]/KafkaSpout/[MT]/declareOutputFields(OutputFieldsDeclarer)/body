@@ -1,0 +1,3 @@
+{
+  declarer.declare(_spoutConfig.scheme.getOutputFields());
+}

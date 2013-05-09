@@ -1,0 +1,3 @@
+{
+  unregister(id.host,id.partition);
+}
