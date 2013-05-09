@@ -1,0 +1,14 @@
+{
+switch (code) {
+case OK:
+    return "OK";
+case EOB:
+  return "END_OF_BATCH";
+case FAILURE:
+return "FAILURE";
+case CLOSE:
+return "CLOSE";
+default :
+return "control message w/ code " + code;
+}
+}

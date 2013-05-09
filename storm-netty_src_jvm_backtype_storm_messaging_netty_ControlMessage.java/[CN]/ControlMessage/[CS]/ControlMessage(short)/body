@@ -1,0 +1,4 @@
+{
+  assert(code < BASE_CODE);
+  this.code=code;
+}

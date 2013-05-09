@@ -1,5 +1,5 @@
 {
-  message_queue=new LinkedBlockingQueue<TaskMessage>();
+  message_queue=new LinkedBlockingQueue<Object>();
   retries=new AtomicInteger(0);
   channelRef=new AtomicReference<Channel>(null);
   being_closed=new AtomicBoolean(false);

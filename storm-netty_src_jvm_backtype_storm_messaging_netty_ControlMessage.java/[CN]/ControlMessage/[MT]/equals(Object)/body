@@ -1,0 +1,5 @@
+{
+  if (obj == null)   return false;
+  if (obj instanceof ControlMessage)   return ((ControlMessage)obj).code == code;
+  return false;
+}

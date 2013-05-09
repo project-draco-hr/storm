@@ -1,15 +1,15 @@
 {
-  TaskMessage message=(TaskMessage)e.getMessage();
-  if (message == null)   return;
-  if (message.task() == Util.EOB) {
+  Object msg=e.getMessage();
+  if (msg == null)   return;
+  if (ControlMessage.EOB_MESSAGE.equals(msg)) {
     Channel channel=ctx.getChannel();
-    LOG.debug("Sendback response ...");
-    if (failure_count.get() == 0)     channel.write(Util.OK_RESPONSE);
- else     channel.write(Util.FAILURE_RESPONSE);
+    LOG.debug("Send back response ...");
+    if (failure_count.get() == 0)     channel.write(ControlMessage.OK_RESPONSE);
+ else     channel.write(ControlMessage.FAILURE_RESPONSE);
     return;
   }
   try {
-    server.enqueue(message);
+    server.enqueue((TaskMessage)msg);
   }
  catch (  InterruptedException e1) {
     LOG.info("failed to enqueue a request message",e);
