@@ -6,7 +6,7 @@
       _state.delete(txPath(tx));
     }
  catch (    RuntimeException e) {
-      if (!(e.getCause() instanceof KeeperException.NoNodeException)) {
+      if (!Utils.exceptionCauseIsInstanceOf(KeeperException.NoNodeException.class,e)) {
         throw e;
       }
     }
