@@ -1,11 +1,11 @@
 {
-  if (flags == 1) {
+  if ((flags & 0x01) == 0x01) {
     return message_queue.poll();
   }
  else {
     try {
       TaskMessage request=message_queue.take();
-      LOG.debug("request to be processed:" + request);
+      LOG.debug("request to be processed: {}",request);
       return request;
     }
  catch (    InterruptedException e) {

@@ -12,7 +12,7 @@
     return null;
   }
   int length=buf.readInt();
-  if (length == 0) {
+  if (length <= 0) {
     return new TaskMessage(task,null);
   }
   if (buf.readableBytes() < length) {

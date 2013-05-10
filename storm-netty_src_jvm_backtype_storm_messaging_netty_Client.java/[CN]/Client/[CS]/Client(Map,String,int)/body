@@ -3,7 +3,6 @@
   retries=new AtomicInteger(0);
   channelRef=new AtomicReference<Channel>(null);
   being_closed=new AtomicBoolean(false);
-  ready_to_release_resource=new AtomicBoolean(false);
   buffer_size=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_BUFFER_SIZE));
   max_retries=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_MAX_RETRIES));
   base_sleep_ms=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_MIN_SLEEP_MS));

@@ -1,6 +1,0 @@
-{
-  ChannelBufferOutputStream bout=new ChannelBufferOutputStream(ChannelBuffers.dynamicBuffer());
-  write(bout);
-  bout.close();
-  return bout.buffer();
-}

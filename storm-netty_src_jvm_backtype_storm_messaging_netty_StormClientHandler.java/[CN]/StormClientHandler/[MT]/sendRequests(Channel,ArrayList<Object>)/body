@@ -1,7 +1,7 @@
 {
   if (requests == null || requests.size() == 0 || being_closed.get())   return;
   Object last_msg=requests.get(requests.size() - 1);
-  if (last_msg == ControlMessage.closeMessage()) {
+  if (last_msg == ControlMessage.CLOSE_MESSAGE) {
     being_closed.set(true);
     requests.remove(last_msg);
   }
@@ -17,7 +17,7 @@
         future.getChannel().close();
       }
  else {
-        LOG.debug(requests.size() + " request(s) sent");
+        LOG.debug("{} request(s) sent",requests.size());
       }
       if (being_closed.get())       client.close_n_release();
     }

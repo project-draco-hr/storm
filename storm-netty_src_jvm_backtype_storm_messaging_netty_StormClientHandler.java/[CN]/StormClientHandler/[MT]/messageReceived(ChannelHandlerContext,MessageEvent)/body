@@ -1,7 +1,7 @@
 {
-  LOG.debug("send/recv time (ms):" + (System.currentTimeMillis() - start_time));
+  LOG.debug("send/recv time (ms): {}",(System.currentTimeMillis() - start_time));
   ControlMessage msg=(ControlMessage)event.getMessage();
-  if (msg == ControlMessage.failureResponse())   LOG.info("failure response:" + msg);
+  if (msg == ControlMessage.FAILURE_RESPONSE)   LOG.info("failure response:{}",msg);
   Channel channel=event.getChannel();
   try {
     sendRequests(channel,client.takeMessages());

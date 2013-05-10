@@ -1,0 +1,5 @@
+{
+  int size=6;
+  if (taskMsg.message() != null)   size+=taskMsg.message().length;
+  return size;
+}

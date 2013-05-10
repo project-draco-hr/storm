@@ -1,4 +1,4 @@
 {
   message_queue.put(message);
-  LOG.debug("message received with task:" + message.task() + " payload size:"+ message.message().length);
+  LOG.debug("message received with task: {}, payload size: {}",message.task(),message.message().length);
 }

@@ -1,3 +1,4 @@
 {
   channelRef.set(channel);
+  if (channel != null)   retries.set(0);
 }

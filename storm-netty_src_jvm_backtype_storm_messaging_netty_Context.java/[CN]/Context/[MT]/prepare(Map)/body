@@ -1,5 +1,4 @@
 {
   this.storm_conf=storm_conf;
-  server_connections=new Vector<IConnection>();
-  client_connections=new Vector<IConnection>();
+  connections=new Vector<IConnection>();
 }
