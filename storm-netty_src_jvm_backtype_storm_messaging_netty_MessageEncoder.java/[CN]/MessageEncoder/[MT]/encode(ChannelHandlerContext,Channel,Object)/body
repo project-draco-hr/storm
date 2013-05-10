@@ -2,7 +2,7 @@
   if (obj instanceof ControlMessage) {
     ControlMessage message=(ControlMessage)obj;
     ChannelBufferOutputStream bout=new ChannelBufferOutputStream(ChannelBuffers.dynamicBuffer(estimated_buffer_size,ctx.getChannel().getConfig().getBufferFactory()));
-    writeControlMessage(bout,message);
+    message.write(bout);
     bout.close();
     return bout.buffer();
   }
@@ -17,7 +17,7 @@
     ChannelBufferOutputStream bout=new ChannelBufferOutputStream(ChannelBuffers.dynamicBuffer(estimated_buffer_size,ctx.getChannel().getConfig().getBufferFactory()));
     ArrayList<TaskMessage> messages=(ArrayList<TaskMessage>)obj;
     for (    TaskMessage message : messages)     writeTaskMessage(bout,message);
-    writeControlMessage(bout,ControlMessage.EOB_MESSAGE);
+    ControlMessage.eobMessage().write(bout);
     bout.close();
     return bout.buffer();
   }

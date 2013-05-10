@@ -1,14 +1,13 @@
 {
 switch (code) {
-case OK:
-    return "OK";
-case EOB:
-  return "END_OF_BATCH";
-case FAILURE:
-return "FAILURE";
-case CLOSE:
-return "CLOSE";
-default :
-return "control message w/ code " + code;
+case CODE_OK:
+    return "ControlMessage OK";
+case CODE_EOB:
+  return "ControlMessage END_OF_BATCH";
+case CODE_FAILURE:
+return "ControlMessage FAILURE";
+case CODE_CLOSE:
+return "ControlMessage CLOSE";
 }
+return null;
 }
