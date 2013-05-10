@@ -1,7 +1,7 @@
 {
   if (requests == null || requests.size() == 0 || being_closed.get())   return;
   Object last_msg=requests.get(requests.size() - 1);
-  if (last_msg.equals(ControlMessage.closeMessage())) {
+  if (last_msg == ControlMessage.closeMessage()) {
     being_closed.set(true);
     requests.remove(last_msg);
   }
