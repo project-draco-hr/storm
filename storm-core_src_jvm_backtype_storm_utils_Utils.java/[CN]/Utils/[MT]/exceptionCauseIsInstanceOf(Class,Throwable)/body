@@ -1,0 +1,10 @@
+{
+  Throwable t=throwable;
+  while (t != null) {
+    if (klass.isInstance(t)) {
+      return true;
+    }
+    t=t.getCause();
+  }
+  return false;
+}
