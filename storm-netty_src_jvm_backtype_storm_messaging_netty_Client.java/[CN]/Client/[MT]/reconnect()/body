@@ -13,6 +13,6 @@
     }
   }
  catch (  InterruptedException e) {
-    LOG.info("connection failed",e);
+    LOG.warn("connection failed",e);
   }
 }
