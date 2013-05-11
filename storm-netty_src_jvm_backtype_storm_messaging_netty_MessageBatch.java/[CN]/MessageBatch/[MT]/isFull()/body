@@ -1,0 +1,3 @@
+{
+  return encoded_length >= buffer_size;
+}

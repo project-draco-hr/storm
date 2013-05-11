@@ -2,14 +2,8 @@
   if (obj instanceof ControlMessage) {
     return ((ControlMessage)obj).buffer();
   }
-  ChannelBufferOutputStream bout;
-  if (obj instanceof ArrayList<?>) {
-    bout=new ChannelBufferOutputStream(ChannelBuffers.dynamicBuffer(estimated_buffer_size,ctx.getChannel().getConfig().getBufferFactory()));
-    ArrayList<TaskMessage> messages=(ArrayList<TaskMessage>)obj;
-    for (    TaskMessage message : messages)     writeTaskMessage(bout,message);
-    ControlMessage.EOB_MESSAGE.write(bout);
-    bout.close();
-    return bout.buffer();
+  if (obj instanceof MessageBatch) {
+    return ((MessageBatch)obj).buffer();
   }
   throw new RuntimeException("Unsupported encoding of object of class " + obj.getClass().getName());
 }

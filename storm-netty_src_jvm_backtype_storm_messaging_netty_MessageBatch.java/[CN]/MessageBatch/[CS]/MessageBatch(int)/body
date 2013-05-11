@@ -1,0 +1,5 @@
+{
+  this.buffer_size=buffer_size;
+  msgs=new ArrayList<Object>();
+  encoded_length=0;
+}

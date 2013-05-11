@@ -1,21 +1,18 @@
 {
-  ArrayList<Object> requests=new ArrayList<Object>();
+  MessageBatch batch=new MessageBatch(buffer_size);
   Object msg=message_queue.take();
-  requests.add(msg);
-  if (msg == ControlMessage.CLOSE_MESSAGE)   return requests;
-  int size=msgSize((TaskMessage)msg);
-  while (size < buffer_size) {
+  batch.add(msg);
+  if (msg == ControlMessage.CLOSE_MESSAGE)   return batch;
+  while (!batch.isFull()) {
     msg=message_queue.peek();
     if (msg == null)     break;
     if (msg == ControlMessage.CLOSE_MESSAGE) {
       message_queue.take();
-      requests.add(msg);
+      batch.add(msg);
       break;
     }
-    size+=msgSize((TaskMessage)msg);
-    if (size > buffer_size)     break;
+    if (!batch.tryAdd((TaskMessage)msg))     break;
     message_queue.take();
-    requests.add(msg);
   }
-  return requests;
+  return batch;
 }

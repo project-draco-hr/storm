@@ -12,7 +12,7 @@
   bootstrap.setOption("tcpNoDelay",true);
   bootstrap.setOption("sendBufferSize",buffer_size);
   bootstrap.setOption("keepAlive",true);
-  bootstrap.setPipelineFactory(new StormClientPipelineFactory(this,storm_conf));
+  bootstrap.setPipelineFactory(new StormClientPipelineFactory(this));
   remote_addr=new InetSocketAddress(host,port);
   bootstrap.connect(remote_addr);
 }

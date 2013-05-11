@@ -8,7 +8,7 @@
   bootstrap.setOption("child.tcpNoDelay",true);
   bootstrap.setOption("child.receiveBufferSize",buffer_size);
   bootstrap.setOption("child.keepAlive",true);
-  bootstrap.setPipelineFactory(new StormServerPipelineFactory(this,storm_conf));
+  bootstrap.setPipelineFactory(new StormServerPipelineFactory(this));
   Channel channel=bootstrap.bind(new InetSocketAddress(port));
   allChannels.add(channel);
 }

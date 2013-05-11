@@ -1,0 +1,9 @@
+{
+  ChannelBuffer buf=ChannelBuffers.buffer(encoded_length + ControlMessage.EOB_MESSAGE.encodeLength());
+  ChannelBufferOutputStream bout=new ChannelBufferOutputStream(buf);
+  for (  Object msg : msgs)   if (msg instanceof TaskMessage)   writeTaskMessage(bout,(TaskMessage)msg);
+ else   ((ControlMessage)msg).write(bout);
+  ControlMessage.EOB_MESSAGE.write(bout);
+  bout.close();
+  return bout.buffer();
+}
