@@ -1,0 +1,10 @@
+{
+  try {
+    String topicBrokersPath=_zkPath + "/topics/" + _topic+ "/partitions";
+    List<String> children=_curator.getChildren().forPath(topicBrokersPath);
+    return children.size();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

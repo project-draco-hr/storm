@@ -1,8 +1,8 @@
 {
   try {
-    String[] hostString=new String(contents,"UTF-8").split(":");
-    String host=hostString[hostString.length - 2];
-    int port=Integer.parseInt(hostString[hostString.length - 1]);
+    Map<Object,Object> value=(Map<Object,Object>)JSONValue.parse(new String(contents,"UTF-8"));
+    String host=(String)value.get("host");
+    Integer port=((Long)value.get("port")).intValue();
     return new HostPort(host,port);
   }
  catch (  UnsupportedEncodingException e) {

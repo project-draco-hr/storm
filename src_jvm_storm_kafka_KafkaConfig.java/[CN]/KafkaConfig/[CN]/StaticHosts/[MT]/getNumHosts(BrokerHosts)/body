@@ -1,6 +1,0 @@
-{
-  if (!(hosts instanceof StaticHosts)) {
-    throw new RuntimeException("Must use static hosts");
-  }
-  return ((StaticHosts)hosts).hosts.size();
-}

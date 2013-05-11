@@ -1,0 +1,5 @@
+{
+  String currentString=tuple.getString(0);
+  System.out.println(currentString);
+  collector.emit(new Values(currentString));
+}

@@ -1,8 +1,0 @@
-{
-  try {
-    return Integer.parseInt(new String(contents,"UTF-8"));
-  }
- catch (  UnsupportedEncodingException e) {
-    throw new RuntimeException(e);
-  }
-}

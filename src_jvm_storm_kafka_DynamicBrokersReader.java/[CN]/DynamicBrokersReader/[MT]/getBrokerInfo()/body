@@ -1,21 +1,20 @@
 {
   Map<String,List> ret=new HashMap();
   try {
-    String topicBrokersPath=_zkPath + "/topics/" + _topic;
     String brokerInfoPath=_zkPath + "/ids";
-    List<String> children=_curator.getChildren().forPath(topicBrokersPath);
-    for (    String c : children) {
+    List<String> brokerIds=_curator.getChildren().forPath(brokerInfoPath);
+    for (    String brokerId : brokerIds) {
       try {
-        byte[] numPartitionsData=_curator.getData().forPath(topicBrokersPath + "/" + c);
-        byte[] hostPortData=_curator.getData().forPath(brokerInfoPath + "/" + c);
+        byte[] hostPortData=_curator.getData().forPath(brokerInfoPath + "/" + brokerId);
         HostPort hp=getBrokerHost(hostPortData);
-        int numPartitions=getNumPartitions(numPartitionsData);
+        int numPartitions=getNumPartitions();
         List info=new ArrayList();
         info.add((long)hp.port);
         info.add((long)numPartitions);
         ret.put(hp.host,info);
       }
  catch (      org.apache.zookeeper.KeeperException.NoNodeException e) {
+        e.printStackTrace();
       }
     }
   }
