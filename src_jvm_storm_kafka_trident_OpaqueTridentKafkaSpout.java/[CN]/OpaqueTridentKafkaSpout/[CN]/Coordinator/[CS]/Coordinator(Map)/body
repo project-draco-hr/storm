@@ -1,3 +1,0 @@
-{
-  reader=KafkaUtils.makeBrokerReader(conf,_config);
-}

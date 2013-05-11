@@ -1,3 +1,3 @@
 {
-  return new Coordinator(conf);
+  return new storm.kafka.trident.Coordinator(conf,_config);
 }
