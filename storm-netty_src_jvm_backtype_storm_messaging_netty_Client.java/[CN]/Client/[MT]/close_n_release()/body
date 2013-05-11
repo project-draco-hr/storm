@@ -1,12 +1,9 @@
 {
   if (channelRef.get() != null)   channelRef.get().close().awaitUninterruptibly();
-  final Timer timer=new Timer();
-  timer.schedule(new TimerTask(){
+  new Thread(new Runnable(){
     @Override public void run(){
-      LOG.debug("client resource released");
       factory.releaseExternalResources();
-      timer.cancel();
     }
   }
-,0);
+).start();
 }
