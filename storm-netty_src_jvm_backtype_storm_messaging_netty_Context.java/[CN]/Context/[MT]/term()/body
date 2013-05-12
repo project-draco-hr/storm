@@ -2,4 +2,5 @@
   for (  IConnection conn : connections) {
     conn.close();
   }
+  connections=null;
 }
