@@ -1,4 +1,0 @@
-{
-  this.hosts=hosts;
-  this.partitionsPerHost=partitionsPerHost;
-}

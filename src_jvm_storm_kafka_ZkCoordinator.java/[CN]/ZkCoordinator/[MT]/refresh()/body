@@ -1,18 +1,11 @@
 {
   try {
     LOG.info("Refreshing partition manager connections");
-    Map<String,List> brokerInfo=_reader.getBrokerInfo();
+    GlobalPartitionInformation brokerInfo=_reader.getBrokerInfo();
     Set<GlobalPartitionId> mine=new HashSet();
-    for (    String host : brokerInfo.keySet()) {
-      List info=brokerInfo.get(host);
-      long port=(Long)info.get(0);
-      HostPort hp=new HostPort(host,(int)port);
-      long numPartitions=(Long)info.get(1);
-      for (int i=0; i < numPartitions; i++) {
-        GlobalPartitionId id=new GlobalPartitionId(hp,i);
-        if (myOwnership(id)) {
-          mine.add(id);
-        }
+    for (    GlobalPartitionId partitionId : brokerInfo) {
+      if (myOwnership(partitionId)) {
+        mine.add(partitionId);
       }
     }
     Set<GlobalPartitionId> curr=_managers.keySet();

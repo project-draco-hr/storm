@@ -1,25 +1,24 @@
 {
-  Map<String,List> ret=new HashMap();
+  GlobalPartitionInformation globalPartitionInformation=new GlobalPartitionInformation();
   try {
+    int numPartitionsForTopic=getNumPartitions();
     String brokerInfoPath=_zkPath + "/ids";
-    List<String> brokerIds=_curator.getChildren().forPath(brokerInfoPath);
-    for (    String brokerId : brokerIds) {
+    for (int partition=0; partition < numPartitionsForTopic; partition++) {
+      int leader=getLeaderFor(partition);
+      String path=brokerInfoPath + "/" + leader;
       try {
-        byte[] hostPortData=_curator.getData().forPath(brokerInfoPath + "/" + brokerId);
+        byte[] hostPortData=_curator.getData().forPath(path);
         HostPort hp=getBrokerHost(hostPortData);
-        int numPartitions=getNumPartitions();
-        List info=new ArrayList();
-        info.add((long)hp.port);
-        info.add((long)numPartitions);
-        ret.put(hp.host,info);
+        globalPartitionInformation.addPartition(partition,hp);
       }
  catch (      org.apache.zookeeper.KeeperException.NoNodeException e) {
-        e.printStackTrace();
+        LOG.error("Node {} does not exist ",path);
       }
     }
   }
  catch (  Exception e) {
     throw new RuntimeException(e);
   }
-  return ret;
+  LOG.info("Read partition info from zookeeper: " + globalPartitionInformation);
+  return globalPartitionInformation;
 }

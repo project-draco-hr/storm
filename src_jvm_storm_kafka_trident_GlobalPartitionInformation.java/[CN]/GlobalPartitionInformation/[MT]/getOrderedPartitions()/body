@@ -1,0 +1,7 @@
+{
+  List<GlobalPartitionId> partitionIds=new LinkedList<GlobalPartitionId>();
+  for (  Map.Entry<Integer,HostPort> partition : partitionMap.entrySet()) {
+    partitionIds.add(new GlobalPartitionId(partition.getValue(),partition.getKey()));
+  }
+  return partitionIds;
+}

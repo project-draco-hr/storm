@@ -1,3 +1,0 @@
-{
-  return KafkaUtils.getOrderedPartitions(partitions);
-}

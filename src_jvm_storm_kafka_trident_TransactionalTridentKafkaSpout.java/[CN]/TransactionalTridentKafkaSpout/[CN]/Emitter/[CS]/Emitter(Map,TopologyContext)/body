@@ -1,5 +1,6 @@
 {
-  _connections=new DynamicPartitionConnections(_config);
+  IBrokerReader brokerReader=KafkaUtils.makeBrokerReader(conf,_config);
+  _connections=new DynamicPartitionConnections(_config,brokerReader);
   _topologyName=(String)conf.get(Config.TOPOLOGY_NAME);
   _context=context;
   _kafkaOffsetMetric=new KafkaUtils.KafkaOffsetMetric(_config.topic,_connections);

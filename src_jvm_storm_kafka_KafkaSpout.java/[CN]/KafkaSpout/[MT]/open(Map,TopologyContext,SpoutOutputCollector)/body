@@ -9,7 +9,7 @@
   stateConf.put(Config.TRANSACTIONAL_ZOOKEEPER_PORT,zkPort);
   stateConf.put(Config.TRANSACTIONAL_ZOOKEEPER_ROOT,_spoutConfig.zkRoot);
   _state=new ZkState(stateConf);
-  _connections=new DynamicPartitionConnections(_spoutConfig);
+  _connections=new DynamicPartitionConnections(_spoutConfig,KafkaUtils.makeBrokerReader(conf,_spoutConfig));
   int totalTasks=context.getComponentTasks(context.getThisComponentId()).size();
   if (_spoutConfig.hosts instanceof StaticHosts) {
     _coordinator=new StaticCoordinator(_connections,conf,_spoutConfig,_state,context.getThisTaskIndex(),totalTasks,_uuid);

@@ -17,7 +17,7 @@
           LOG.warn("No data found in Kafka Partition " + partition.getId());
           return null;
         }
-        long latestEmittedOffset=(Long)e.getValue();
+        long latestEmittedOffset=e.getValue();
         long spoutLag=latestTimeOffset - latestEmittedOffset;
         ret.put(partition.getId() + "/" + "spoutLag",spoutLag);
         ret.put(partition.getId() + "/" + "latestTime",latestTimeOffset);

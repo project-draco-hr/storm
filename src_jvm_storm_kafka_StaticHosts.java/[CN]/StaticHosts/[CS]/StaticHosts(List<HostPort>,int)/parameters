@@ -1,2 +1,0 @@
-List<HostPort> hosts
-int partitionsPerHost

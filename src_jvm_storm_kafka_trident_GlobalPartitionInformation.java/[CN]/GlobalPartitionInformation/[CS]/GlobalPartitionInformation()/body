@@ -1,0 +1,3 @@
+{
+  partitionMap=new TreeMap<Integer,HostPort>();
+}

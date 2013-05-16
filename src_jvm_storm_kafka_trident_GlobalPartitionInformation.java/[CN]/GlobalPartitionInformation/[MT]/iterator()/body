@@ -1,0 +1,16 @@
+{
+  final Iterator<Map.Entry<Integer,HostPort>> iterator=partitionMap.entrySet().iterator();
+  return new Iterator<GlobalPartitionId>(){
+    @Override public boolean hasNext(){
+      return iterator.hasNext();
+    }
+    @Override public GlobalPartitionId next(){
+      Map.Entry<Integer,HostPort> next=iterator.next();
+      return new GlobalPartitionId(next.getValue(),next.getKey());
+    }
+    @Override public void remove(){
+      iterator.remove();
+    }
+  }
+;
+}
