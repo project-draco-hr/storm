@@ -1,6 +1,6 @@
 {
   try {
-    String topicBrokersPath=_zkPath + "/topics/" + _topic+ "/partitions";
+    String topicBrokersPath=partitionPath();
     byte[] hostPortData=_curator.getData().forPath(topicBrokersPath + "/" + partition+ "/state");
     Map<Object,Object> value=(Map<Object,Object>)JSONValue.parse(new String(hostPortData,"UTF-8"));
     Integer leader=((Number)value.get("leader")).intValue();

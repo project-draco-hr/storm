@@ -1,6 +1,6 @@
 {
   try {
-    String topicBrokersPath=_zkPath + "/topics/" + _topic+ "/partitions";
+    String topicBrokersPath=partitionPath();
     List<String> children=_curator.getChildren().forPath(topicBrokersPath);
     return children.size();
   }

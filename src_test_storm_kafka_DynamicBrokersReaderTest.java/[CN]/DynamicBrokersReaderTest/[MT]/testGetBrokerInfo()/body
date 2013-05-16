@@ -1,0 +1,10 @@
+{
+  String host="localhost";
+  int port=9092;
+  int partition=0;
+  addPartition(partition,host,port);
+  GlobalPartitionInformation brokerInfo=dynamicBrokersReader.getBrokerInfo();
+  assertEquals(1,brokerInfo.getOrderedPartitions().size());
+  assertEquals(port,brokerInfo.getHostFor(partition).port);
+  assertEquals(host,brokerInfo.getHostFor(partition).host);
+}

@@ -1,0 +1,5 @@
+{
+  String path=dynamicBrokersReader.partitionPath() + "/" + id+ "/state";
+  String value=" { \"controller_epoch\":4, \"isr\":[ 1, 0 ], \"leader\":" + leaderId + ", \"leader_epoch\":1, \"version\":1 }";
+  writeDataToPath(path,value);
+}
