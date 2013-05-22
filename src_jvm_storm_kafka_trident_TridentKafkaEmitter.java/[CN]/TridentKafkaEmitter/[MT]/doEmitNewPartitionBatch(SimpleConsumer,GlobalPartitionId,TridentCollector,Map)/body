@@ -14,20 +14,13 @@
     }
   }
  else {
-    long startTime=-1;
+    long startTime=kafka.api.OffsetRequest.LatestTime();
     if (_config.forceFromStart)     startTime=_config.startOffsetTime;
     offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,startTime);
   }
   ByteBufferMessageSet msgs;
   try {
-    long start=System.nanoTime();
-    FetchRequestBuilder builder=new FetchRequestBuilder();
-    FetchRequest fetchRequest=builder.addFetch(_config.topic,partition.partition,offset,_config.fetchSizeBytes).build();
-    msgs=consumer.fetch(fetchRequest).messageSet(_config.topic,partition.partition);
-    long end=System.nanoTime();
-    long millis=(end - start) / 1000000;
-    _kafkaMeanFetchLatencyMetric.update(millis);
-    _kafkaMaxFetchLatencyMetric.update(millis);
+    msgs=fetchMessages(consumer,partition,offset);
   }
  catch (  Exception e) {
     if (e instanceof ConnectException) {

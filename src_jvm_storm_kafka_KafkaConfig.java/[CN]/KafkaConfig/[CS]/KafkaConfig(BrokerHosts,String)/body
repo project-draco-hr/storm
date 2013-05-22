@@ -1,4 +1,3 @@
 {
-  this.hosts=hosts;
-  this.topic=topic;
+  this(hosts,topic,kafka.api.OffsetRequest.DefaultClientId());
 }

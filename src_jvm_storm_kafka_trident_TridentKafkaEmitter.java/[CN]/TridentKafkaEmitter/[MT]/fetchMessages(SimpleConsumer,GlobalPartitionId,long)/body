@@ -1,0 +1,12 @@
+{
+  ByteBufferMessageSet msgs;
+  long start=System.nanoTime();
+  FetchRequestBuilder builder=new FetchRequestBuilder();
+  FetchRequest fetchRequest=builder.addFetch(_config.topic,partition.partition,offset,_config.fetchSizeBytes).clientId(_config.clientId).build();
+  msgs=consumer.fetch(fetchRequest).messageSet(_config.topic,partition.partition);
+  long end=System.nanoTime();
+  long millis=(end - start) / 1000000;
+  _kafkaMeanFetchLatencyMetric.update(millis);
+  _kafkaMaxFetchLatencyMetric.update(millis);
+  return msgs;
+}
