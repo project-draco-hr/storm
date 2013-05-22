@@ -1,0 +1,20 @@
+{
+  return new IPartitionedTridentSpout.Emitter<GlobalPartitionInformation,GlobalPartitionId,Map>(){
+    @Override public Map emitPartitionBatchNew(    TransactionAttempt transactionAttempt,    TridentCollector tridentCollector,    GlobalPartitionId globalPartitionId,    Map map){
+      return failFastEmitNewPartitionBatch(transactionAttempt,tridentCollector,globalPartitionId,map);
+    }
+    @Override public void emitPartitionBatch(    TransactionAttempt transactionAttempt,    TridentCollector tridentCollector,    GlobalPartitionId globalPartitionId,    Map map){
+      reEmitPartitionBatch(transactionAttempt,tridentCollector,globalPartitionId,map);
+    }
+    @Override public void refreshPartitions(    List<GlobalPartitionId> globalPartitionIds){
+      refresh(globalPartitionIds);
+    }
+    @Override public List<GlobalPartitionId> getOrderedPartitions(    GlobalPartitionInformation partitionInformation){
+      return orderPartitions(partitionInformation);
+    }
+    @Override public void close(){
+      clear();
+    }
+  }
+;
+}

@@ -1,0 +1,54 @@
+{
+  long offset;
+  if (lastMeta != null) {
+    String lastInstanceId=null;
+    Map lastTopoMeta=(Map)lastMeta.get("topology");
+    if (lastTopoMeta != null) {
+      lastInstanceId=(String)lastTopoMeta.get("id");
+    }
+    if (_config.forceFromStart && !_topologyInstanceId.equals(lastInstanceId)) {
+      offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,_config.startOffsetTime);
+    }
+ else {
+      offset=(Long)lastMeta.get("nextOffset");
+    }
+  }
+ else {
+    long startTime=-1;
+    if (_config.forceFromStart)     startTime=_config.startOffsetTime;
+    offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,startTime);
+  }
+  ByteBufferMessageSet msgs;
+  try {
+    long start=System.nanoTime();
+    FetchRequestBuilder builder=new FetchRequestBuilder();
+    FetchRequest fetchRequest=builder.addFetch(_config.topic,partition.partition,offset,_config.fetchSizeBytes).build();
+    msgs=consumer.fetch(fetchRequest).messageSet(_config.topic,partition.partition);
+    long end=System.nanoTime();
+    long millis=(end - start) / 1000000;
+    _kafkaMeanFetchLatencyMetric.update(millis);
+    _kafkaMaxFetchLatencyMetric.update(millis);
+  }
+ catch (  Exception e) {
+    if (e instanceof ConnectException) {
+      throw new FailedFetchException(e);
+    }
+ else {
+      throw new RuntimeException(e);
+    }
+  }
+  long endoffset=offset;
+  for (  MessageAndOffset msg : msgs) {
+    emit(collector,msg.message());
+    endoffset=msg.nextOffset();
+  }
+  Map newMeta=new HashMap();
+  newMeta.put("offset",offset);
+  newMeta.put("nextOffset",endoffset);
+  newMeta.put("instanceId",_topologyInstanceId);
+  newMeta.put("partition",partition.partition);
+  newMeta.put("broker",ImmutableMap.of("host",partition.host.host,"port",partition.host.port));
+  newMeta.put("topic",_config.topic);
+  newMeta.put("topology",ImmutableMap.of("name",_topologyName,"id",_topologyInstanceId));
+  return newMeta;
+}

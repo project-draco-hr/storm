@@ -1,0 +1,4 @@
+SimpleConsumer consumer
+GlobalPartitionId partition
+TridentCollector collector
+Map lastMeta

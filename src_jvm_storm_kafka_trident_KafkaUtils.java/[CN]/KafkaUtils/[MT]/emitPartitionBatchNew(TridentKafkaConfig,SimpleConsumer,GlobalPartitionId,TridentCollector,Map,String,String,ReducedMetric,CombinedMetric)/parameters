@@ -1,9 +1,0 @@
-TridentKafkaConfig config
-SimpleConsumer consumer
-GlobalPartitionId partition
-TridentCollector collector
-Map lastMeta
-String topologyInstanceId
-String topologyName
-ReducedMetric meanMetric
-CombinedMetric maxMetric
