@@ -1,0 +1,3 @@
+{
+  server.addChannel(e.getChannel());
+}

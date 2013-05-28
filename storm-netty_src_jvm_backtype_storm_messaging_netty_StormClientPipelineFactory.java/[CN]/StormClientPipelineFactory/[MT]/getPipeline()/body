@@ -1,0 +1,7 @@
+{
+  ChannelPipeline pipeline=Channels.pipeline();
+  pipeline.addLast("decoder",new MessageDecoder());
+  pipeline.addLast("encoder",new MessageEncoder());
+  pipeline.addLast("handler",new StormClientHandler(client));
+  return pipeline;
+}

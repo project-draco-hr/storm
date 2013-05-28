@@ -1,0 +1,16 @@
+{
+  if (obj == null)   throw new RuntimeException("null object forbidded in message batch");
+  if (obj instanceof TaskMessage) {
+    TaskMessage msg=(TaskMessage)obj;
+    msgs.add(msg);
+    encoded_length+=msgEncodeLength(msg);
+    return;
+  }
+  if (obj instanceof ControlMessage) {
+    ControlMessage msg=(ControlMessage)obj;
+    msgs.add(msg);
+    encoded_length+=msg.encodeLength();
+    return;
+  }
+  throw new RuntimeException("Unsuppoted object type " + obj.getClass().getName());
+}

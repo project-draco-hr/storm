@@ -1,0 +1,5 @@
+{
+  if ((encoded_length + msgEncodeLength(taskMsg)) > buffer_size)   return false;
+  add(taskMsg);
+  return true;
+}
