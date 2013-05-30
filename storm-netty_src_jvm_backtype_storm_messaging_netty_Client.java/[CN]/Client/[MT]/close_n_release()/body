@@ -1,0 +1,9 @@
+{
+  if (channelRef.get() != null)   channelRef.get().close().awaitUninterruptibly();
+  new Thread(new Runnable(){
+    @Override public void run(){
+      factory.releaseExternalResources();
+    }
+  }
+).start();
+}

@@ -1,0 +1,11 @@
+{
+  if (!being_closed.get()) {
+    try {
+      message_queue.put(ControlMessage.CLOSE_MESSAGE);
+      being_closed.set(true);
+    }
+ catch (    InterruptedException e) {
+      close_n_release();
+    }
+  }
+}

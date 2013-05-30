@@ -1,0 +1,24 @@
+{
+  if (buf.readableBytes() < 2) {
+    return null;
+  }
+  buf.markReaderIndex();
+  short code=buf.readShort();
+  ControlMessage ctrl_msg=ControlMessage.mkMessage(code);
+  if (ctrl_msg != null)   return ctrl_msg;
+  short task=code;
+  if (buf.readableBytes() < 4) {
+    buf.resetReaderIndex();
+    return null;
+  }
+  int length=buf.readInt();
+  if (length <= 0) {
+    return new TaskMessage(task,null);
+  }
+  if (buf.readableBytes() < length) {
+    buf.resetReaderIndex();
+    return null;
+  }
+  ChannelBuffer payload=buf.readBytes(length);
+  return new TaskMessage(task,payload.array());
+}

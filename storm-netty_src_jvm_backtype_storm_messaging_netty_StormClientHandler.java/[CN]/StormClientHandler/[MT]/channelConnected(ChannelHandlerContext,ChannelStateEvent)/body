@@ -1,0 +1,11 @@
+{
+  Channel channel=event.getChannel();
+  client.setChannel(channel);
+  LOG.debug("connection established to a remote host");
+  try {
+    sendRequests(channel,client.takeMessages());
+  }
+ catch (  InterruptedException e) {
+    channel.close();
+  }
+}
