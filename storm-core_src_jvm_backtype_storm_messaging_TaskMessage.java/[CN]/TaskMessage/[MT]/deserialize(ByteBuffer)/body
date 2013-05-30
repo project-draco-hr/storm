@@ -1,10 +1,6 @@
 {
   if (packet == null)   return;
   _task=packet.getShort();
-  int len=packet.getInt();
-  if (len == 0)   _message=null;
- else {
-    _message=new byte[len];
-    packet.get(_message);
-  }
+  _message=new byte[packet.limit() - 2];
+  packet.get(_message);
 }
