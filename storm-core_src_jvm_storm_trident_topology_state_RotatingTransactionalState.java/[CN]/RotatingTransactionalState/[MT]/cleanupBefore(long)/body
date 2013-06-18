@@ -2,6 +2,13 @@
   SortedMap<Long,Object> toDelete=_curr.headMap(txid);
   for (  long tx : new HashSet<Long>(toDelete.keySet())) {
     _curr.remove(tx);
-    _state.delete(txPath(tx));
+    try {
+      _state.delete(txPath(tx));
+    }
+ catch (    RuntimeException e) {
+      if (!Utils.exceptionCauseIsInstanceOf(KeeperException.NoNodeException.class,e)) {
+        throw e;
+      }
+    }
   }
 }
