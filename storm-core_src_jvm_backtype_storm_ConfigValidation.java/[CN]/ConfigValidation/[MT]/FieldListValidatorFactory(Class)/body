@@ -1,0 +1,19 @@
+{
+  return new FieldValidator(){
+    @Override public void validateField(    Object field) throws IllegalArgumentException {
+      if (field == null) {
+        return;
+      }
+      if (field instanceof Iterable) {
+        for (        Object e : (Iterable)field) {
+          if (!cls.isInstance(e)) {
+            throw new IllegalArgumentException("Each element of this list must be a " + cls.getName() + ".");
+          }
+        }
+        return;
+      }
+      throw new IllegalArgumentException("Field must be an Iterable of " + cls.getName());
+    }
+  }
+;
+}
