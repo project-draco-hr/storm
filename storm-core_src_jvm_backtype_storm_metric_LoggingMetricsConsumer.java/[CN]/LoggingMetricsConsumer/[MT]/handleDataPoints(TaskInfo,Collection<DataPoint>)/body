@@ -1,0 +1,10 @@
+{
+  StringBuilder sb=new StringBuilder();
+  String header=String.format("%d\t%15s:%-4d\t%3d:%-11s\t",taskInfo.timestamp,taskInfo.srcWorkerHost,taskInfo.srcWorkerPort,taskInfo.srcTaskId,taskInfo.srcComponentId);
+  sb.append(header);
+  for (  DataPoint p : dataPoints) {
+    sb.delete(header.length(),sb.length());
+    sb.append(p.name).append(padding).delete(header.length() + 23,sb.length()).append("\t").append(p.value);
+    LOG.info(sb.toString());
+  }
+}
