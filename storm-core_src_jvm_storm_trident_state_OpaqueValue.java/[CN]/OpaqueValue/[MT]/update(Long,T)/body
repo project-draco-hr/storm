@@ -1,10 +1,13 @@
 {
   T prev;
-  if (batchTxid != null && batchTxid.equals(this.currTxid)) {
+  if (batchTxid == null || (this.currTxid < batchTxid)) {
+    prev=this.curr;
+  }
+ else   if (batchTxid.equals(this.currTxid)) {
     prev=this.prev;
   }
  else {
-    prev=this.curr;
+    throw new RuntimeException("Current batch (" + batchTxid + ") is behind state's batch: "+ this.toString());
   }
   return new OpaqueValue<T>(batchTxid,newVal,prev);
 }
