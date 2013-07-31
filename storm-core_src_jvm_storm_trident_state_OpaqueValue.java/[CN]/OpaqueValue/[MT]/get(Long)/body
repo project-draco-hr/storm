@@ -1,8 +1,11 @@
 {
-  if (batchTxid != null && batchTxid.equals(currTxid)) {
+  if (batchTxid == null || (this.currTxid < batchTxid)) {
+    return curr;
+  }
+ else   if (batchTxid.equals(this.currTxid)) {
     return prev;
   }
  else {
-    return curr;
+    throw new RuntimeException("Current batch (" + batchTxid + ") is behind state's batch: "+ this.toString());
   }
 }
