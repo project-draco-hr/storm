@@ -1,4 +1,3 @@
 String topologyName
 Map topologyConf
 StormTopology topology
-Map NimbusConf
