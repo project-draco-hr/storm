@@ -1,7 +1,0 @@
-{
-  _partitions=partitions;
-  Iterator<GlobalPartitionId> it=_partitionToOffset.keySet().iterator();
-  while (it.hasNext()) {
-    if (!partitions.contains(it.next()))     it.remove();
-  }
-}

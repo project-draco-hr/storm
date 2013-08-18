@@ -1,3 +1,0 @@
-{
-  return _managers.get(id);
-}

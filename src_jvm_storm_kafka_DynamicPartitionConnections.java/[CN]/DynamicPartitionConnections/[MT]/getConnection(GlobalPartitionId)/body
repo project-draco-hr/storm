@@ -1,5 +1,0 @@
-{
-  ConnectionInfo info=_connections.get(id.host);
-  if (info != null)   return info.consumer;
-  return null;
-}

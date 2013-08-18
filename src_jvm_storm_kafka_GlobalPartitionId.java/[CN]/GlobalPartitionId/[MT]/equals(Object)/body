@@ -1,4 +1,0 @@
-{
-  GlobalPartitionId other=(GlobalPartitionId)o;
-  return host.equals(other.host) && partition == other.partition;
-}

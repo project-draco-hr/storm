@@ -1,0 +1,4 @@
+{
+  HostPort hostPort=_reader.getCurrentBrokers().getHostFor(partition.partition);
+  return register(hostPort,partition.partition);
+}
