@@ -6,5 +6,5 @@
     return false;
   }
   final Partition other=(Partition)obj;
-  return Objects.equals(this.host,other.host) && Objects.equals(this.partition,other.partition);
+  return Objects.equal(this.host,other.host) && Objects.equal(this.partition,other.partition);
 }
