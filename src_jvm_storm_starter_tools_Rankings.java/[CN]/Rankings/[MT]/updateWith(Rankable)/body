@@ -1,5 +1,7 @@
 {
-  addOrReplace(r);
-  rerank();
-  shrinkRankingsIfNeeded();
+synchronized (rankedItems) {
+    addOrReplace(r);
+    rerank();
+    shrinkRankingsIfNeeded();
+  }
 }
