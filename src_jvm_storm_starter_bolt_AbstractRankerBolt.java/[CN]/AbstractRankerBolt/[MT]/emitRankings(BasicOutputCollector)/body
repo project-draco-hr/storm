@@ -1,4 +1,4 @@
 {
   collector.emit(new Values(rankings));
-  getLogger().info("Rankings: " + rankings);
+  getLogger().debug("Rankings: " + rankings);
 }
