@@ -1,0 +1,32 @@
+{
+  try {
+    _process.writeSpoutMsg(spoutMsg);
+    while (true) {
+      Emission emission=_process.readEmission();
+      String command=emission.getCommand();
+      if (command.equals("sync")) {
+        return;
+      }
+ else       if (command.equals("log")) {
+        String msg=emission.getMsg();
+        LOG.info("Shell msg: " + msg);
+      }
+ else       if (command.equals("emit")) {
+        String stream=emission.getStream();
+        Long task=emission.getTask();
+        List<Object> tuple=emission.getTuple();
+        Object messageId=emission.getId();
+        if (task == 0) {
+          List<Integer> outtasks=_collector.emit(stream,tuple,messageId);
+          _process.writeTaskIds(outtasks);
+        }
+ else {
+          _collector.emitDirect((int)task.longValue(),stream,tuple,messageId);
+        }
+      }
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

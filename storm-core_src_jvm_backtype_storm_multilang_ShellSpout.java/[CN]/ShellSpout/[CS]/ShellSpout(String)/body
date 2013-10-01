@@ -1,0 +1,4 @@
+{
+  _command=command;
+  _process=new ShellProcess(new JsonSerializer(),_command);
+}

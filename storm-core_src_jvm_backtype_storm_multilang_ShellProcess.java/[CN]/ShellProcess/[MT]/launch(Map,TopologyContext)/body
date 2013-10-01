@@ -1,0 +1,18 @@
+{
+  ProcessBuilder builder=new ProcessBuilder(command);
+  builder.directory(new File(context.getCodeDir()));
+  Number pid;
+  try {
+    _subprocess=builder.start();
+    processErrorStream=_subprocess.getErrorStream();
+    serializer.initialize(_subprocess.getOutputStream(),_subprocess.getInputStream());
+    pid=serializer.connect(conf,context);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Error when launching multilang subprocess\n" + getErrorsString(),e);
+  }
+catch (  NoOutputException e) {
+    throw new RuntimeException(e + getErrorsString() + "\n");
+  }
+  return pid;
+}

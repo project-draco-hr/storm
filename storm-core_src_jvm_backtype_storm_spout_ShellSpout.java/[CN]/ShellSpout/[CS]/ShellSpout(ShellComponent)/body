@@ -1,3 +1,0 @@
-{
-  this(component.get_execution_command(),component.get_script());
-}

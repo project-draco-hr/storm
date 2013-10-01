@@ -1,0 +1,7 @@
+{
+  Tuple failed=_inputs.remove(id);
+  if (failed == null) {
+    throw new RuntimeException("Failed a non-existent or already acked/failed id: " + id);
+  }
+  _collector.fail(failed);
+}

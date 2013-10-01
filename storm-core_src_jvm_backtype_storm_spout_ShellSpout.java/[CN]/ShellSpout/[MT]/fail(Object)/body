@@ -1,8 +1,0 @@
-{
-  if (_fail == null) {
-    _fail=new JSONObject();
-    _fail.put("command","fail");
-  }
-  _fail.put("id",msgId);
-  querySubprocess(_fail);
-}

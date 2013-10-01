@@ -1,0 +1,6 @@
+{
+  if (this.tuple == null) {
+    this.tuple=new ArrayList<Object>();
+  }
+  this.tuple.add(tuple);
+}

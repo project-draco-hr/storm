@@ -1,0 +1,9 @@
+{
+  JSONObject setupInfo=new JSONObject();
+  setupInfo.put("pidDir",context.getPIDDir());
+  setupInfo.put("conf",conf);
+  setupInfo.put("context",context);
+  writeMessage(setupInfo);
+  Number pid=(Number)((JSONObject)readMessage()).get("pid");
+  return pid;
+}

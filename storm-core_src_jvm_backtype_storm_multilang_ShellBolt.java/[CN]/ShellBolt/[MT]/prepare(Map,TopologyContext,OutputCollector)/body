@@ -1,0 +1,60 @@
+{
+  _rand=new Random();
+  _collector=collector;
+  Number subpid=_process.launch(stormConf,context);
+  LOG.info("Launched subprocess with pid " + subpid);
+  _readerThread=new Thread(new Runnable(){
+    public void run(){
+      while (_running) {
+        try {
+          Emission emission=_process.readEmission();
+          String command=emission.getCommand();
+          if (command.equals("ack")) {
+            handleAck(emission.getId());
+          }
+ else           if (command.equals("fail")) {
+            handleFail(emission.getId());
+          }
+ else           if (command.equals("error")) {
+            handleError(emission.getMsg());
+          }
+ else           if (command.equals("log")) {
+            String msg=emission.getMsg();
+            LOG.info("Shell msg: " + msg);
+          }
+ else           if (command.equals("emit")) {
+            handleEmit(emission);
+          }
+        }
+ catch (        InterruptedException e) {
+        }
+catch (        Throwable t) {
+          die(t);
+        }
+      }
+    }
+  }
+);
+  _readerThread.start();
+  _writerThread=new Thread(new Runnable(){
+    public void run(){
+      while (_running) {
+        try {
+          Object write=_pendingWrites.poll(1,SECONDS);
+          if (write instanceof Immission) {
+            _process.writeImmission((Immission)write);
+          }
+ else           if (write instanceof List<?>) {
+          }
+        }
+ catch (        InterruptedException e) {
+        }
+catch (        Throwable t) {
+          die(t);
+        }
+      }
+    }
+  }
+);
+  _writerThread.start();
+}

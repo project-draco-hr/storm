@@ -1,0 +1,8 @@
+{
+  if (spoutMsg == null) {
+    spoutMsg=new SpoutMsg();
+  }
+  spoutMsg.setCommand("ack");
+  spoutMsg.setId(msgId.toString());
+  querySubprocess();
+}

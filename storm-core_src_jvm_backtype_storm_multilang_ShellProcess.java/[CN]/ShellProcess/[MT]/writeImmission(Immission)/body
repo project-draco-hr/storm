@@ -1,0 +1,4 @@
+{
+  serializer.writeImmission(msg);
+  drainErrorStream();
+}

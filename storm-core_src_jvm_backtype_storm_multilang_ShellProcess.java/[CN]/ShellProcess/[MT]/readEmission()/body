@@ -1,0 +1,8 @@
+{
+  try {
+    return serializer.readEmission();
+  }
+ catch (  NoOutputException e) {
+    throw new RuntimeException(e + getErrorsString() + "\n");
+  }
+}
