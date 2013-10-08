@@ -1,4 +1,3 @@
 {
   this(component.get_execution_command(),component.get_script());
-  _process=new ShellProcess(new JsonSerializer(),_command);
 }

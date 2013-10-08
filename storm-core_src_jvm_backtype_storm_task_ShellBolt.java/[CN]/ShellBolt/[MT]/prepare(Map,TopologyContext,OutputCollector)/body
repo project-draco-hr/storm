@@ -1,29 +1,30 @@
 {
   _rand=new Random();
   _collector=collector;
+  _process=new ShellProcess(_command);
   Number subpid=_process.launch(stormConf,context);
   LOG.info("Launched subprocess with pid " + subpid);
   _readerThread=new Thread(new Runnable(){
     public void run(){
       while (_running) {
         try {
-          Emission emission=_process.readEmission();
-          String command=emission.getCommand();
+          ShellMsg shellMsg=_process.readShellMsg();
+          String command=shellMsg.getCommand();
           if (command.equals("ack")) {
-            handleAck(emission.getId());
+            handleAck(shellMsg.getId());
           }
  else           if (command.equals("fail")) {
-            handleFail(emission.getId());
+            handleFail(shellMsg.getId());
           }
  else           if (command.equals("error")) {
-            handleError(emission.getMsg());
+            handleError(shellMsg.getMsg());
           }
  else           if (command.equals("log")) {
-            String msg=emission.getMsg();
+            String msg=shellMsg.getMsg();
             LOG.info("Shell msg: " + msg);
           }
  else           if (command.equals("emit")) {
-            handleEmit(emission);
+            handleEmit(shellMsg);
           }
         }
  catch (        InterruptedException e) {
@@ -41,10 +42,14 @@ catch (        Throwable t) {
       while (_running) {
         try {
           Object write=_pendingWrites.poll(1,SECONDS);
-          if (write instanceof Immission) {
-            _process.writeImmission((Immission)write);
+          if (write instanceof BoltMsg) {
+            _process.writeBoltMsg((BoltMsg)write);
           }
  else           if (write instanceof List<?>) {
+            _process.writeTaskIds((List<Integer>)write);
+          }
+ else {
+            throw new RuntimeException("Cannot write object to bolt:\n" + write.toString());
           }
         }
  catch (        InterruptedException e) {

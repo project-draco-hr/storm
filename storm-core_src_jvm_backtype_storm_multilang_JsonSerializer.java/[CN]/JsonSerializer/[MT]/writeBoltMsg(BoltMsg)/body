@@ -1,0 +1,9 @@
+{
+  JSONObject obj=new JSONObject();
+  obj.put("id",boltMsg.getId());
+  obj.put("comp",boltMsg.getComp());
+  obj.put("stream",boltMsg.getStream());
+  obj.put("task",boltMsg.getTask());
+  obj.put("tuple",boltMsg.getTuple());
+  writeMessage(obj);
+}

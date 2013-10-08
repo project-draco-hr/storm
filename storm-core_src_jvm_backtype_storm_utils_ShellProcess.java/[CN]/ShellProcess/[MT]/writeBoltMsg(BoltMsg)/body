@@ -1,0 +1,4 @@
+{
+  serializer.writeBoltMsg(msg);
+  drainErrorStream();
+}
