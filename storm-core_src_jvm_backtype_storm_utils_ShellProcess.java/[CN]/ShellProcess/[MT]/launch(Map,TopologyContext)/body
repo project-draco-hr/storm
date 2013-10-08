@@ -1,6 +1,7 @@
 {
   ProcessBuilder builder=new ProcessBuilder(command);
   builder.directory(new File(context.getCodeDir()));
+  this.serializer=getSerializer(conf);
   Number pid;
   try {
     _subprocess=builder.start();

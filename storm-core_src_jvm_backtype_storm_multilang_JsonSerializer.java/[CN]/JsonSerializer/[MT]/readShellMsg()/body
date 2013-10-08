@@ -1,16 +1,16 @@
 {
   JSONObject msg=(JSONObject)readMessage();
-  Emission emission=new Emission();
+  ShellMsg shellMsg=new ShellMsg();
   String command=(String)msg.get("command");
-  emission.setCommand(command);
+  shellMsg.setCommand(command);
   String stream=(String)msg.get("stream");
   if (stream == null)   stream=Utils.DEFAULT_STREAM_ID;
-  emission.setStream(stream);
+  shellMsg.setStream(stream);
   Object taskObj=msg.get("task");
   if (taskObj != null) {
-    emission.setTask((Long)taskObj);
+    shellMsg.setTask((Long)taskObj);
   }
-  emission.setTuple((List)msg.get("tuple"));
+  shellMsg.setTuple((List)msg.get("tuple"));
   List<Tuple> anchors=new ArrayList<Tuple>();
   Object anchorObj=msg.get("anchors");
   if (anchorObj != null) {
@@ -18,8 +18,8 @@
       anchorObj=Arrays.asList(anchorObj);
     }
     for (    Object o : (List)anchorObj) {
-      emission.addAnchor((String)o);
+      shellMsg.addAnchor((String)o);
     }
   }
-  return emission;
+  return shellMsg;
 }

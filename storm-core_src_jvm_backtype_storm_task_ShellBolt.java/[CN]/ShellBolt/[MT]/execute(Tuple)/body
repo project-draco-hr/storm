@@ -5,13 +5,13 @@
   String genId=Long.toString(_rand.nextLong());
   _inputs.put(genId,input);
   try {
-    Immission immission=new Immission();
-    immission.setId(genId);
-    immission.setComp(input.getSourceComponent());
-    immission.setStream(input.getSourceStreamId());
-    immission.setTask(input.getSourceTask());
-    immission.setTuple(input.getValues());
-    _pendingWrites.put(immission);
+    BoltMsg boltMsg=new BoltMsg();
+    boltMsg.setId(genId);
+    boltMsg.setComp(input.getSourceComponent());
+    boltMsg.setStream(input.getSourceStreamId());
+    boltMsg.setTask(input.getSourceTask());
+    boltMsg.setTuple(input.getValues());
+    _pendingWrites.put(boltMsg);
   }
  catch (  InterruptedException e) {
     throw new RuntimeException("Error during multilang processing",e);

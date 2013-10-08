@@ -1,0 +1,14 @@
+{
+  String serializer_className=(String)conf.get(Config.STORM_MULTILANG_SERIALIZER);
+  LOG.info("Storm multilang serializer:" + serializer_className);
+  ISerializer serializer=null;
+  try {
+    Class klass=Class.forName(serializer_className);
+    Object obj=klass.newInstance();
+    serializer=(ISerializer)obj;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Failed to construct multilang serializer from serializer " + serializer_className,e);
+  }
+  return serializer;
+}

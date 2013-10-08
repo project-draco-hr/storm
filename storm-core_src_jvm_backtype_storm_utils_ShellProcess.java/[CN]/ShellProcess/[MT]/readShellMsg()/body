@@ -1,6 +1,6 @@
 {
   try {
-    return serializer.readEmission();
+    return serializer.readShellMsg();
   }
  catch (  NoOutputException e) {
     throw new RuntimeException(e + getErrorsString() + "\n");

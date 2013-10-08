@@ -1,9 +1,0 @@
-{
-  JSONObject obj=new JSONObject();
-  obj.put("id",immission.getId());
-  obj.put("comp",immission.getComp());
-  obj.put("stream",immission.getStream());
-  obj.put("task",immission.getTask());
-  obj.put("tuple",immission.getTuple());
-  writeMessage(obj);
-}
