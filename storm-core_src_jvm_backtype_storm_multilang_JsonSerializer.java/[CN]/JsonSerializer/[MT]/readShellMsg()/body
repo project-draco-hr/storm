@@ -3,6 +3,10 @@
   ShellMsg shellMsg=new ShellMsg();
   String command=(String)msg.get("command");
   shellMsg.setCommand(command);
+  String id=(String)msg.get("id");
+  shellMsg.setId(id);
+  String log=(String)msg.get("msg");
+  shellMsg.setMsg(log);
   String stream=(String)msg.get("stream");
   if (stream == null)   stream=Utils.DEFAULT_STREAM_ID;
   shellMsg.setStream(stream);
