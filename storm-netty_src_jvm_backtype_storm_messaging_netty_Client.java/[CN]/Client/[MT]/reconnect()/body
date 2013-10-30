@@ -1,7 +1,7 @@
 {
   try {
     int tried_count=retries.incrementAndGet();
-    if (tried_count < max_retries) {
+    if (tried_count <= max_retries) {
       Thread.sleep(getSleepTimeMs());
       LOG.info("Reconnect ... [{}]",tried_count);
       bootstrap.connect(remote_addr);
