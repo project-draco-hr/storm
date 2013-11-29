@@ -1,4 +1,4 @@
 {
   serializer.writeSpoutMsg(msg);
-  drainErrorStream();
+  logErrorStream();
 }

@@ -1,6 +1,7 @@
 {
   ProcessBuilder builder=new ProcessBuilder(command);
   builder.directory(new File(context.getCodeDir()));
+  ShellLogger=Logger.getLogger(context.getThisComponentId());
   this.serializer=getSerializer(conf);
   Number pid;
   try {
