@@ -1,3 +1,7 @@
 {
-  return defensiveCopyOf(rankedItems);
+  List<Rankable> copy=Lists.newLinkedList();
+  for (  Rankable r : rankedItems) {
+    copy.add(r.copy());
+  }
+  return ImmutableList.copyOf(copy);
 }
