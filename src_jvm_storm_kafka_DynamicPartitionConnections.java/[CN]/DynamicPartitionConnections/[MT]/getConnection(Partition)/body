@@ -1,5 +1,7 @@
 {
   ConnectionInfo info=_connections.get(partition.host);
-  if (info != null)   return info.consumer;
+  if (info != null) {
+    return info.consumer;
+  }
   return null;
 }

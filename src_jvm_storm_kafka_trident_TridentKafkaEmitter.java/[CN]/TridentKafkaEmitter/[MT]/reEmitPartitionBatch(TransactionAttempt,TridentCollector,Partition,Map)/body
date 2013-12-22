@@ -7,7 +7,9 @@
     long nextOffset=(Long)meta.get("nextOffset");
     ByteBufferMessageSet msgs=fetchMessages(consumer,partition,offset);
     for (    MessageAndOffset msg : msgs) {
-      if (offset == nextOffset)       break;
+      if (offset == nextOffset) {
+        break;
+      }
       if (offset > nextOffset) {
         throw new RuntimeException("Error when re-emitting batch. overshot the end offset");
       }

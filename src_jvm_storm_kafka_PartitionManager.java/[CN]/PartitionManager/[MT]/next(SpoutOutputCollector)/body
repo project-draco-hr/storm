@@ -1,5 +1,7 @@
 {
-  if (_waitingToEmit.isEmpty())   fill();
+  if (_waitingToEmit.isEmpty()) {
+    fill();
+  }
   while (true) {
     MessageAndRealOffset toEmit=_waitingToEmit.pollFirst();
     if (toEmit == null) {
@@ -7,7 +9,9 @@
     }
     Iterable<List<Object>> tups=_spoutConfig.scheme.deserialize(Utils.toByteArray(toEmit.msg.payload()));
     if (tups != null) {
-      for (      List<Object> tup : tups)       collector.emit(tup,new KafkaMessageId(_partition,toEmit.offset));
+      for (      List<Object> tup : tups) {
+        collector.emit(tup,new KafkaMessageId(_partition,toEmit.offset));
+      }
       break;
     }
  else {

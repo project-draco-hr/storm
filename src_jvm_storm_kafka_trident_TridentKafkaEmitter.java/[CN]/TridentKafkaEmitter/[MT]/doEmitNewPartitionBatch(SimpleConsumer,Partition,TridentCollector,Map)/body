@@ -15,7 +15,9 @@
   }
  else {
     long startTime=kafka.api.OffsetRequest.LatestTime();
-    if (_config.forceFromStart)     startTime=_config.startOffsetTime;
+    if (_config.forceFromStart) {
+      startTime=_config.startOffsetTime;
+    }
     offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,startTime);
   }
   ByteBufferMessageSet msgs;
