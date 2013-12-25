@@ -1,4 +1,4 @@
 {
-  HostPort other=(HostPort)o;
+  Broker other=(Broker)o;
   return host.equals(other.host) && port == other.port;
 }

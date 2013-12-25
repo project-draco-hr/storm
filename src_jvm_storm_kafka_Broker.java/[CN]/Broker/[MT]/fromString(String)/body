@@ -1,11 +1,11 @@
 {
-  HostPort hp;
+  Broker hp;
   String[] spec=host.split(":");
   if (spec.length == 1) {
-    hp=new HostPort(spec[0]);
+    hp=new Broker(spec[0]);
   }
  else   if (spec.length == 2) {
-    hp=new HostPort(spec[0],Integer.parseInt(spec[1]));
+    hp=new Broker(spec[0],Integer.parseInt(spec[1]));
   }
  else {
     throw new IllegalArgumentException("Invalid host specification: " + host);

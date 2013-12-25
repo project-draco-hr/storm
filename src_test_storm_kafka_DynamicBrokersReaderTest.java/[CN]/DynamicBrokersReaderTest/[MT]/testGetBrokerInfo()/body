@@ -5,6 +5,6 @@
   addPartition(partition,host,port);
   GlobalPartitionInformation brokerInfo=dynamicBrokersReader.getBrokerInfo();
   assertEquals(1,brokerInfo.getOrderedPartitions().size());
-  assertEquals(port,brokerInfo.getHostFor(partition).port);
-  assertEquals(host,brokerInfo.getHostFor(partition).host);
+  assertEquals(port,brokerInfo.getBrokerFor(partition).port);
+  assertEquals(host,brokerInfo.getBrokerFor(partition).host);
 }

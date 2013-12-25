@@ -3,7 +3,7 @@
     Map<Object,Object> value=(Map<Object,Object>)JSONValue.parse(new String(contents,"UTF-8"));
     String host=(String)value.get("host");
     Integer port=((Long)value.get("port")).intValue();
-    return new HostPort(host,port);
+    return new Broker(host,port);
   }
  catch (  UnsupportedEncodingException e) {
     throw new RuntimeException(e);

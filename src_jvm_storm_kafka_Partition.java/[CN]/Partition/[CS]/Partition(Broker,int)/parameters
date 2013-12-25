@@ -1,2 +1,2 @@
-HostPort host
+Broker host
 int partition

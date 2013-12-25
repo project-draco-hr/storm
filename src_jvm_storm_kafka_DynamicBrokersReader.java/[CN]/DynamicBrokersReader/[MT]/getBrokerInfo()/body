@@ -7,8 +7,8 @@
       int leader=getLeaderFor(partition);
       String path=brokerInfoPath + "/" + leader;
       try {
-        byte[] hostPortData=_curator.getData().forPath(path);
-        HostPort hp=getBrokerHost(hostPortData);
+        byte[] brokerData=_curator.getData().forPath(path);
+        Broker hp=getBrokerHost(brokerData);
         globalPartitionInformation.addPartition(partition,hp);
       }
  catch (      org.apache.zookeeper.KeeperException.NoNodeException e) {
