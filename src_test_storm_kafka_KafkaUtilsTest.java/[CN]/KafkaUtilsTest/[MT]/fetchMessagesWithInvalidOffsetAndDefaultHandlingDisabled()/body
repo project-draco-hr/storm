@@ -1,0 +1,4 @@
+{
+  config.useStartOffsetTimeIfOffsetOutOfRange=false;
+  sendMessageAndAssertValueForOffset(-99);
+}

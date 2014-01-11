@@ -1,0 +1,6 @@
+{
+  String value=createTopicAndSendMessage();
+  ByteBufferMessageSet messageAndOffsets=KafkaUtils.fetchMessages(config,simpleConsumer,new Partition(Broker.fromString(broker.getBrokerConnectionString()),0),offset);
+  String message=new String(Utils.toByteArray(messageAndOffsets.iterator().next().message().payload()));
+  assertThat(message,is(equalTo(value)));
+}

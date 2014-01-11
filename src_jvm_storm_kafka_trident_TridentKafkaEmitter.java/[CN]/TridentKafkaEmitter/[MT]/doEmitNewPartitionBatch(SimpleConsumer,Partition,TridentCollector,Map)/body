@@ -20,18 +20,7 @@
     }
     offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,startTime);
   }
-  ByteBufferMessageSet msgs;
-  try {
-    msgs=fetchMessages(consumer,partition,offset);
-  }
- catch (  Exception e) {
-    if (e instanceof ConnectException) {
-      throw new FailedFetchException(e);
-    }
- else {
-      throw new RuntimeException(e);
-    }
-  }
+  ByteBufferMessageSet msgs=fetchMessages(consumer,partition,offset);
   long endoffset=offset;
   for (  MessageAndOffset msg : msgs) {
     emit(collector,msg.message());

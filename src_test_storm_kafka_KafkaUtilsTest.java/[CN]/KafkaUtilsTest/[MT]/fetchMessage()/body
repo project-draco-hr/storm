@@ -1,0 +1,4 @@
+{
+  long lastOffset=KafkaUtils.getOffset(simpleConsumer,config.topic,0,OffsetRequest.EarliestTime());
+  sendMessageAndAssertValueForOffset(lastOffset);
+}
