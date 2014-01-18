@@ -20,13 +20,13 @@
  catch (  Throwable e) {
     LOG.warn("Error reading and/or parsing at ZkNode: " + path,e);
   }
-  if (!topologyInstanceId.equals(jsonTopologyId) && spoutConfig.forceFromStart) {
-    _committedTo=KafkaUtils.getOffset(_consumer,spoutConfig.topic,id.partition,spoutConfig.startOffsetTime);
-    LOG.info("Using startOffsetTime to choose last commit offset.");
+  if (jsonTopologyId == null || jsonOffset == null) {
+    _committedTo=KafkaUtils.getOffset(_consumer,spoutConfig.topic,id.partition,spoutConfig);
+    LOG.info("No partition information found, using configuration to determine offset");
   }
- else   if (jsonTopologyId == null || jsonOffset == null) {
-    _committedTo=KafkaUtils.getOffset(_consumer,spoutConfig.topic,id.partition,kafka.api.OffsetRequest.LatestTime());
-    LOG.info("Setting last commit offset to HEAD.");
+ else   if (!topologyInstanceId.equals(jsonTopologyId) && spoutConfig.forceFromStart) {
+    _committedTo=KafkaUtils.getOffset(_consumer,spoutConfig.topic,id.partition,spoutConfig.startOffsetTime);
+    LOG.info("Topology change detected and reset from start forced, using configuration to determine offset");
   }
  else {
     _committedTo=jsonOffset;
