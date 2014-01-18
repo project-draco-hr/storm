@@ -1,0 +1,8 @@
+{
+  config.forceFromStart=true;
+  config.startOffsetTime=OffsetRequest.EarliestTime();
+  createTopicAndSendMessage();
+  long earliestOffset=KafkaUtils.getOffset(simpleConsumer,config.topic,0,OffsetRequest.EarliestTime());
+  long offsetFromConfig=KafkaUtils.getOffset(simpleConsumer,config.topic,0,config);
+  assertThat(earliestOffset,is(equalTo(offsetFromConfig)));
+}
