@@ -1,0 +1,11 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  GlobalPartitionInformation other=(GlobalPartitionInformation)obj;
+  if (partitionMap == null) {
+    if (other.partitionMap != null)     return false;
+  }
+ else   if (!partitionMap.equals(other.partitionMap))   return false;
+  return true;
+}
