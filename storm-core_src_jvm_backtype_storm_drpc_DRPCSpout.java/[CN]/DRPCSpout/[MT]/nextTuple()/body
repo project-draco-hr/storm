@@ -15,7 +15,7 @@
           break;
         }
       }
- catch (      TException e) {
+ catch (      Exception e) {
         LOG.error("Failed to fetch DRPC result from DRPC server",e);
       }
     }

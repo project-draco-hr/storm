@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_wait_secs()) {
-    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.wait_secs,typedOther.wait_secs);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.wait_secs,typedOther.wait_secs);
     if (lastComparison != 0) {
       return lastComparison;
     }

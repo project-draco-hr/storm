@@ -1,0 +1,8 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("uploadChunk",org.apache.thrift.protocol.TMessageType.CALL,0));
+  uploadChunk_args args=new uploadChunk_args();
+  args.set_location(location);
+  args.set_chunk(chunk);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

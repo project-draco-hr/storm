@@ -9,7 +9,7 @@
     return lastComparison;
   }
   if (is_set_spouts()) {
-    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.spouts,typedOther.spouts);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.spouts,typedOther.spouts);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -19,7 +19,7 @@
     return lastComparison;
   }
   if (is_set_bolts()) {
-    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.bolts,typedOther.bolts);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.bolts,typedOther.bolts);
     if (lastComparison != 0) {
       return lastComparison;
     }
@@ -29,7 +29,7 @@
     return lastComparison;
   }
   if (is_set_state_spouts()) {
-    lastComparison=org.apache.thrift7.TBaseHelper.compareTo(this.state_spouts,typedOther.state_spouts);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.state_spouts,typedOther.state_spouts);
     if (lastComparison != 0) {
       return lastComparison;
     }

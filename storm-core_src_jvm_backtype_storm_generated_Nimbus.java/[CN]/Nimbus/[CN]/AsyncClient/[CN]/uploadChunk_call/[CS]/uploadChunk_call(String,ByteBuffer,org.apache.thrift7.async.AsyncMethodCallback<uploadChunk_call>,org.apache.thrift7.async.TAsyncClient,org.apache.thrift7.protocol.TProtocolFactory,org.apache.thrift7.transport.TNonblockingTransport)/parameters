@@ -1,6 +1,0 @@
-String location
-ByteBuffer chunk
-org.apache.thrift7.async.AsyncMethodCallback<uploadChunk_call> resultHandler
-org.apache.thrift7.async.TAsyncClient client
-org.apache.thrift7.protocol.TProtocolFactory protocolFactory
-org.apache.thrift7.transport.TNonblockingTransport transport

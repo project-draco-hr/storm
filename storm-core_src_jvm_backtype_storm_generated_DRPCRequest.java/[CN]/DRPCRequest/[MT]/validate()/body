@@ -1,8 +1,8 @@
 {
   if (!is_set_func_args()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'func_args' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'func_args' is unset! Struct:" + toString());
   }
   if (!is_set_request_id()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'request_id' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'request_id' is unset! Struct:" + toString());
   }
 }

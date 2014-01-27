@@ -15,7 +15,7 @@
     sb.append("null");
   }
  else {
-    org.apache.thrift7.TBaseHelper.toString(this.chunk,sb);
+    org.apache.thrift.TBaseHelper.toString(this.chunk,sb);
   }
   first=false;
   sb.append(")");

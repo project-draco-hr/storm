@@ -1,0 +1,30 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (is_set_wait_secs()) {
+    oprot.writeFieldBegin(WAIT_SECS_FIELD_DESC);
+    oprot.writeI32(this.wait_secs);
+    oprot.writeFieldEnd();
+  }
+  if (is_set_num_workers()) {
+    oprot.writeFieldBegin(NUM_WORKERS_FIELD_DESC);
+    oprot.writeI32(this.num_workers);
+    oprot.writeFieldEnd();
+  }
+  if (this.num_executors != null) {
+    if (is_set_num_executors()) {
+      oprot.writeFieldBegin(NUM_EXECUTORS_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,this.num_executors.size()));
+        for (        Map.Entry<String,Integer> _iter162 : this.num_executors.entrySet()) {
+          oprot.writeString(_iter162.getKey());
+          oprot.writeI32(_iter162.getValue());
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

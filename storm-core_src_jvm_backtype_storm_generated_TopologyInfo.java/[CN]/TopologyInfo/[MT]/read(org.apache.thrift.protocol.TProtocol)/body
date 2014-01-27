@@ -1,0 +1,97 @@
+{
+  org.apache.thrift.protocol.TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 1:
+      if (field.type == org.apache.thrift.protocol.TType.STRING) {
+        this.id=iprot.readString();
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+case 2:
+  if (field.type == org.apache.thrift.protocol.TType.STRING) {
+    this.name=iprot.readString();
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == org.apache.thrift.protocol.TType.I32) {
+this.uptime_secs=iprot.readI32();
+set_uptime_secs_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 4:
+if (field.type == org.apache.thrift.protocol.TType.LIST) {
+{
+org.apache.thrift.protocol.TList _list145=iprot.readListBegin();
+this.executors=new ArrayList<ExecutorSummary>(_list145.size);
+for (int _i146=0; _i146 < _list145.size; ++_i146) {
+ExecutorSummary _elem147;
+_elem147=new ExecutorSummary();
+_elem147.read(iprot);
+this.executors.add(_elem147);
+}
+iprot.readListEnd();
+}
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 5:
+if (field.type == org.apache.thrift.protocol.TType.STRING) {
+this.status=iprot.readString();
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 6:
+if (field.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map148=iprot.readMapBegin();
+this.errors=new HashMap<String,List<ErrorInfo>>(2 * _map148.size);
+for (int _i149=0; _i149 < _map148.size; ++_i149) {
+String _key150;
+List<ErrorInfo> _val151;
+_key150=iprot.readString();
+{
+org.apache.thrift.protocol.TList _list152=iprot.readListBegin();
+_val151=new ArrayList<ErrorInfo>(_list152.size);
+for (int _i153=0; _i153 < _list152.size; ++_i153) {
+ErrorInfo _elem154;
+_elem154=new ErrorInfo();
+_elem154.read(iprot);
+_val151.add(_elem154);
+}
+iprot.readListEnd();
+}
+this.errors.put(_key150,_val151);
+}
+iprot.readMapEnd();
+}
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}

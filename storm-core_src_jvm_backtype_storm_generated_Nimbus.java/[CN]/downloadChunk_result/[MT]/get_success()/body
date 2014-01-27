@@ -1,4 +1,4 @@
 {
-  set_success(org.apache.thrift7.TBaseHelper.rightSize(success));
+  set_success(org.apache.thrift.TBaseHelper.rightSize(success));
   return success == null ? null : success.array();
 }
