@@ -1,0 +1,10 @@
+{
+  LOG.info("Rotating output file...");
+  long start=System.currentTimeMillis();
+  this.out.hsync();
+  this.out.close();
+  this.rotation++;
+  this.out=this.fs.create(new Path(this.path,this.fileNameFormat.getName(this.rotation,System.currentTimeMillis())));
+  long time=System.currentTimeMillis() - start;
+  LOG.info("File rotation took {} ms.",time);
+}

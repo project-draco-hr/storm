@@ -1,0 +1,4 @@
+{
+  this.syncPolicy=syncPolicy;
+  return this;
+}
