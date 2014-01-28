@@ -2,13 +2,13 @@
   try {
     byte[] bytes=this.format.format(tuple);
     out.write(bytes);
+    this.offset+=bytes.length;
     this.collector.ack(tuple);
-    if (this.syncPolicy.mark(tuple,bytes)) {
-      long start=System.currentTimeMillis();
+    if (this.syncPolicy.mark(tuple,this.offset)) {
       this.out.hsync();
       this.syncPolicy.reset();
     }
-    if (this.rotationPolicy.mark(tuple,bytes)) {
+    if (this.rotationPolicy.mark(tuple,this.offset)) {
       rotateOutputFile();
       this.rotationPolicy.reset();
     }

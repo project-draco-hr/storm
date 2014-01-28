@@ -1,0 +1,10 @@
+{
+  LOG.info("Rotating output file...");
+  long start=System.currentTimeMillis();
+  this.writer.hsync();
+  this.writer.close();
+  this.rotation++;
+  createOutputFile();
+  long time=System.currentTimeMillis() - start;
+  LOG.info("File rotation took {} ms.",time);
+}

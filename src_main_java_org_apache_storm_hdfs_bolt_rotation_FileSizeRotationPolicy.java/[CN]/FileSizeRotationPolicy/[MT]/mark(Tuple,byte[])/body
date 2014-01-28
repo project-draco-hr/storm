@@ -1,4 +1,0 @@
-{
-  this.byteCount+=data.length;
-  return this.byteCount >= this.maxBytes;
-}
