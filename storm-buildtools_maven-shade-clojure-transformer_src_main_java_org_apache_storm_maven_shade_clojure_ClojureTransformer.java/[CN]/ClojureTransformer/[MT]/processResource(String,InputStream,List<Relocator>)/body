@@ -1,0 +1,12 @@
+{
+  ByteArrayOutputStream out=new ByteArrayOutputStream();
+  int b;
+  while ((b=inputStream.read()) != -1) {
+    out.write(b);
+  }
+  String data=out.toString();
+  for (  Relocator rel : relocators) {
+    data=rel.applyToSourceContent(data);
+  }
+  this.entries.put(s,data);
+}
