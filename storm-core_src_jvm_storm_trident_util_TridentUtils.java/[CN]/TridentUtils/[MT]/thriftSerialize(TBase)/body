@@ -1,5 +1,10 @@
 {
   try {
+    TSerializer ser=threadSer.get();
+    if (ser == null) {
+      ser=new TSerializer();
+      threadSer.set(ser);
+    }
     return ser.serialize(t);
   }
  catch (  TException e) {
