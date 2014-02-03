@@ -1,15 +1,8 @@
 {
-  LOG.info("Preparing HDFS Bolt...");
+  LOG.info("Preparing Sequence File Bolt...");
+  super.prepare(conf,topologyContext,collector);
   if (this.format == null)   throw new IllegalStateException("SequenceFormat must be specified.");
-  if (this.syncPolicy == null)   throw new IllegalStateException("SyncPolicy must be specified.");
-  if (this.rotationPolicy == null)   throw new IllegalStateException("RotationPolicy must be specified.");
-  if (this.fsUrl == null || this.path == null) {
-    throw new IllegalStateException("File system URL and base path must be specified.");
-  }
-  this.collector=collector;
-  this.fileNameFormat.prepare(conf,topologyContext);
   try {
-    this.hdfsConfig=new Configuration();
     this.codecFactory=new CompressionCodecFactory(hdfsConfig);
     createOutputFile();
   }

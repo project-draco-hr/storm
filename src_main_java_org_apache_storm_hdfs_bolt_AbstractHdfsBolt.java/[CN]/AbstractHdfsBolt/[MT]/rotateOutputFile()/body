@@ -1,8 +1,7 @@
 {
   LOG.info("Rotating output file...");
   long start=System.currentTimeMillis();
-  this.writer.hsync();
-  this.writer.close();
+  closeOutputFile();
   this.rotation++;
   createOutputFile();
   long time=System.currentTimeMillis() - start;

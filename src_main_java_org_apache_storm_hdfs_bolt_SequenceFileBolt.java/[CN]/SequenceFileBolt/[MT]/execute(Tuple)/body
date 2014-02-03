@@ -4,7 +4,6 @@
     long offset=this.writer.getLength();
     this.collector.ack(tuple);
     if (this.syncPolicy.mark(tuple,offset)) {
-      long start=System.currentTimeMillis();
       this.writer.hsync();
       this.syncPolicy.reset();
     }
