@@ -1,0 +1,7 @@
+{
+  if (this.value == null) {
+    this.value=new Text();
+  }
+  this.value.set(tuple.getStringByField(this.valueField));
+  return this.value;
+}

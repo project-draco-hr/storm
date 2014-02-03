@@ -1,0 +1,18 @@
+{
+  LOG.info("Preparing HDFS Bolt...");
+  if (this.options.format == null)   throw new IllegalStateException("RecordFormat must be specified.");
+  ;
+  if (this.options.rotationPolicy == null)   throw new IllegalStateException("RotationPolicy must be specified.");
+  if (this.options.fsUrl == null || this.options.path == null) {
+    throw new IllegalStateException("File system URL and base path must be specified.");
+  }
+  this.options.fileNameFormat.prepare(conf,partitionIndex,numPartitions);
+  try {
+    Configuration hdfsConfig=new Configuration();
+    this.fs=FileSystem.get(URI.create(this.options.fsUrl),hdfsConfig);
+    out=this.fs.create(new Path(this.options.path,this.options.fileNameFormat.getName(this.rotation,System.currentTimeMillis())));
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Error preparing HdfsBolt: " + e.getMessage(),e);
+  }
+}

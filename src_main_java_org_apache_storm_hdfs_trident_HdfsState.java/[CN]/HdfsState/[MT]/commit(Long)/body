@@ -1,0 +1,8 @@
+{
+  try {
+    this.out.hsync();
+  }
+ catch (  IOException e) {
+    LOG.warn("Commit failed.",e);
+  }
+}

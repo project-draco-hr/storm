@@ -1,0 +1,4 @@
+{
+  this.rotationPolicy=policy;
+  return this;
+}

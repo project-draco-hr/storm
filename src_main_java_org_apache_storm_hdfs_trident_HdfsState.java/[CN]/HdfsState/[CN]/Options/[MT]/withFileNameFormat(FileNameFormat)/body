@@ -1,0 +1,4 @@
+{
+  this.fileNameFormat=format;
+  return this;
+}
