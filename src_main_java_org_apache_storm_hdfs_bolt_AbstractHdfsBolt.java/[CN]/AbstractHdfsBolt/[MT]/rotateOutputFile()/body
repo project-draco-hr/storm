@@ -3,7 +3,12 @@
   long start=System.currentTimeMillis();
   closeOutputFile();
   this.rotation++;
-  createOutputFile();
+  Path newFile=createOutputFile();
+  LOG.info("Performing {} file rotation actions.",this.rotationActions.size());
+  for (  RotationAction action : this.rotationActions) {
+    action.execute(this.fs,this.currenFile);
+  }
+  this.currenFile=newFile;
   long time=System.currentTimeMillis() - start;
   LOG.info("File rotation took {} ms.",time);
 }

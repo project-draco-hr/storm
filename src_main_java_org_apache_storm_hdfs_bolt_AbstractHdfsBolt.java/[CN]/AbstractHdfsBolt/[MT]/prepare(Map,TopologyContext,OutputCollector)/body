@@ -7,4 +7,11 @@
   this.collector=collector;
   this.fileNameFormat.prepare(conf,topologyContext);
   this.hdfsConfig=new Configuration();
+  try {
+    doPrepare(conf,topologyContext,collector);
+    this.currenFile=createOutputFile();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Error preparing HdfsBolt: " + e.getMessage(),e);
+  }
 }
