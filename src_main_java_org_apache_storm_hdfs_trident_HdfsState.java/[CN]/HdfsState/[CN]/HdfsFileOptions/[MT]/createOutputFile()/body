@@ -1,0 +1,5 @@
+{
+  Path path=new Path(this.path,this.fileNameFormat.getName(this.rotation,System.currentTimeMillis()));
+  this.out=this.fs.create(path);
+  return path;
+}

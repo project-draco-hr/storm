@@ -1,4 +1,0 @@
-{
-  this.fsUrl=url;
-  return this;
-}

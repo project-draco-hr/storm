@@ -1,0 +1,15 @@
+{
+  if (this.rotationPolicy == null)   throw new IllegalStateException("RotationPolicy must be specified.");
+  if (this.fsUrl == null || this.path == null) {
+    throw new IllegalStateException("File system URL and base path must be specified.");
+  }
+  this.fileNameFormat.prepare(conf,partitionIndex,numPartitions);
+  this.hdfsConfig=new Configuration();
+  try {
+    doPrepare(conf,partitionIndex,numPartitions);
+    this.currentFile=createOutputFile();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Error preparing HdfsState: " + e.getMessage(),e);
+  }
+}

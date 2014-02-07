@@ -1,14 +1,7 @@
 {
   try {
     for (    TridentTuple tuple : tuples) {
-      byte[] bytes=this.options.format.format(tuple);
-      out.write(bytes);
-      this.offset+=bytes.length;
-      if (this.options.rotationPolicy.mark(tuple,this.offset)) {
-        rotateOutputFile();
-        this.options.rotationPolicy.reset();
-        this.offset=0;
-      }
+      this.options.execute(tuple);
     }
   }
  catch (  IOException e) {

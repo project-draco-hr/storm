@@ -1,0 +1,10 @@
+{
+  byte[] bytes=this.format.format(tuple);
+  out.write(bytes);
+  this.offset+=bytes.length;
+  if (this.rotationPolicy.mark(tuple,this.offset)) {
+    rotateOutputFile();
+    this.offset=0;
+    this.rotationPolicy.reset();
+  }
+}

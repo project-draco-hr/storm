@@ -1,0 +1,14 @@
+{
+  try {
+    this.writer.append(this.format.key(tuple),this.format.value(tuple));
+    long offset=this.writer.getLength();
+    if (this.rotationPolicy.mark(tuple,offset)) {
+      rotateOutputFile();
+      this.rotationPolicy.reset();
+    }
+  }
+ catch (  IOException e) {
+    LOG.warn("write/sync failed. Triggering batch replay...",e);
+    throw new FailedException(e);
+  }
+}

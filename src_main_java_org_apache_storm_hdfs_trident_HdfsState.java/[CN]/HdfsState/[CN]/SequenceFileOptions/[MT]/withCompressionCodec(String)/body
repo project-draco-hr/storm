@@ -1,0 +1,4 @@
+{
+  this.compressionCodec=codec;
+  return this;
+}
