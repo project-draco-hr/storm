@@ -4,7 +4,11 @@
   this.out.hsync();
   this.out.close();
   this.rotation++;
-  this.out=this.fs.create(new Path(this.options.path,this.options.fileNameFormat.getName(this.rotation,System.currentTimeMillis())));
+  Path path=new Path(this.options.path,this.options.fileNameFormat.getName(this.rotation,System.currentTimeMillis()));
+  this.out=this.fs.create(path);
+  for (  RotationAction action : this.options.rotationActions) {
+    action.execute(this.fs,path);
+  }
   long time=System.currentTimeMillis() - start;
   LOG.info("File rotation took {} ms.",time);
 }
