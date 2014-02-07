@@ -9,7 +9,7 @@
       throw new RuntimeException("Found multiple " + name + " resources. You're probably bundling the Storm jars with your topology jar. "+ resources);
     }
     URL resource=resources.iterator().next();
-    Yaml yaml=new Yaml();
+    Yaml yaml=new Yaml(new SafeConstructor());
     Map ret=(Map)yaml.load(new InputStreamReader(resource.openStream()));
     if (ret == null)     ret=new HashMap();
     return new HashMap(ret);
