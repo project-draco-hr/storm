@@ -9,7 +9,7 @@
   this.hdfsConfig=new Configuration();
   try {
     doPrepare(conf,topologyContext,collector);
-    this.currenFile=createOutputFile();
+    this.currentFile=createOutputFile();
   }
  catch (  Exception e) {
     throw new RuntimeException("Error preparing HdfsBolt: " + e.getMessage(),e);
