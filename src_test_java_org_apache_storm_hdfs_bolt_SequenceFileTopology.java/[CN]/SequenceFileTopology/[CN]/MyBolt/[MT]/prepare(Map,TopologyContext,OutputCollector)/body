@@ -1,0 +1,4 @@
+{
+  this.counts=new HashMap<String,Long>();
+  this.collector=collector;
+}
