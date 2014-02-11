@@ -4,10 +4,10 @@
   TridentTopology topology=new TridentTopology();
   Stream stream=topology.newStream("spout1",spout);
   Fields hdfsFields=new Fields("sentence","key");
-  FileNameFormat fileNameFormat=new DefaultFileNameFormat().withPrefix("trident").withExtension(".txt");
+  FileNameFormat fileNameFormat=new DefaultFileNameFormat().withPath("/trident").withPrefix("trident").withExtension(".txt");
   RecordFormat recordFormat=new DelimitedRecordFormat().withFields(hdfsFields);
   FileRotationPolicy rotationPolicy=new FileSizeRotationPolicy(5.0f,FileSizeRotationPolicy.Units.MB);
-  HdfsState.Options options=new HdfsState.HdfsFileOptions().withFileNameFormat(fileNameFormat).withRecordFormat(recordFormat).withRotationPolicy(rotationPolicy).withFsUrl("hdfs://localhost:54310").withPath("/trident");
+  HdfsState.Options options=new HdfsState.HdfsFileOptions().withFileNameFormat(fileNameFormat).withRecordFormat(recordFormat).withRotationPolicy(rotationPolicy).withFsUrl("hdfs://localhost:54310");
   StateFactory factory=new HdfsStateFactory().withOptions(options);
   TridentState state=stream.partitionPersist(factory,hdfsFields,new HdfsUpdater(),new Fields());
   return topology.build();
