@@ -1,0 +1,13 @@
+{
+  Configuration config=HBaseConfiguration.create();
+  HTable table=new HTable(config,"WordCount");
+  for (  String word : WordSpout.words) {
+    Get get=new Get(Bytes.toBytes(word));
+    Result result=table.get(get);
+    byte[] countBytes=result.getValue(Bytes.toBytes("cf"),Bytes.toBytes("count"));
+    byte[] wordBytes=result.getValue(Bytes.toBytes("cf"),Bytes.toBytes("word"));
+    String wordStr=Bytes.toString(wordBytes);
+    long count=Bytes.toLong(countBytes);
+    System.out.println("Word: '" + wordStr + "', Count: "+ count);
+  }
+}

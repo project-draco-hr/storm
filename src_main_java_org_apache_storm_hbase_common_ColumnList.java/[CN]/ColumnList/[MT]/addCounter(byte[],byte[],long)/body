@@ -1,0 +1,4 @@
+{
+  counters().add(new Counter(family,qualifier,incr));
+  return this;
+}

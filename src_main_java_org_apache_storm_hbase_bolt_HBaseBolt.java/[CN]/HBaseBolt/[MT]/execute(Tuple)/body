@@ -1,0 +1,41 @@
+{
+  byte[] rowKey=this.mapper.rowKey(tuple);
+  ColumnList cols=this.mapper.columns(tuple);
+  if (cols.hasColumns()) {
+    Put put=new Put(rowKey);
+    put.setWriteToWAL(this.writeToWAL);
+    for (    ColumnList.Column col : cols.getColumns()) {
+      if (col.getTs() > 0) {
+        put.add(col.getFamily(),col.getQualifier(),col.getTs(),col.getValue());
+      }
+ else {
+        put.add(col.getFamily(),col.getQualifier(),col.getValue());
+      }
+    }
+    try {
+      this.table.put(put);
+    }
+ catch (    RetriesExhaustedWithDetailsException e) {
+      LOG.warn("Failing tuple. Error writing column.",e);
+      this.collector.fail(tuple);
+    }
+catch (    InterruptedIOException e) {
+      LOG.warn("Failing tuple. Error writing column.",e);
+      this.collector.fail(tuple);
+    }
+  }
+  if (cols.hasCounters()) {
+    Increment inc=new Increment(rowKey);
+    inc.setWriteToWAL(this.writeToWAL);
+    for (    ColumnList.Counter cnt : cols.getCounters()) {
+      inc.addColumn(cnt.getFamily(),cnt.getQualifier(),cnt.getIncrement());
+    }
+    try {
+      this.table.increment(inc);
+    }
+ catch (    IOException e) {
+      LOG.warn("Failing tuple. Error incrementing counter.",e);
+      this.collector.fail(tuple);
+    }
+  }
+}

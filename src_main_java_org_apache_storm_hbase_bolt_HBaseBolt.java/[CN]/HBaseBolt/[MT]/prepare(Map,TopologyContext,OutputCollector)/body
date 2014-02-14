@@ -1,0 +1,10 @@
+{
+  this.collector=collector;
+  Configuration hbConfig=HBaseConfiguration.create();
+  try {
+    this.table=new HTable(hbConfig,this.tableName);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("HBase bolt preparation failed: " + e.getMessage(),e);
+  }
+}

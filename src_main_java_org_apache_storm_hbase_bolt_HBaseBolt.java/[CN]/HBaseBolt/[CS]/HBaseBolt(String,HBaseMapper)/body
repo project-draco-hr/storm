@@ -1,0 +1,4 @@
+{
+  this.tableName=tableName;
+  this.mapper=mapper;
+}
