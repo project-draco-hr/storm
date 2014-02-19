@@ -36,7 +36,7 @@
       return _kafkaOffsetMetric.getValueAndReset();
     }
   }
-,60);
+,_spoutConfig.metricsTimeBucketSizeInSecs);
   context.registerMetric("kafkaPartition",new IMetric(){
     @Override public Object getValueAndReset(){
       List<PartitionManager> pms=_coordinator.getMyManagedPartitions();
@@ -47,5 +47,5 @@
       return concatMetricsDataMaps;
     }
   }
-,60);
+,_spoutConfig.metricsTimeBucketSizeInSecs);
 }
