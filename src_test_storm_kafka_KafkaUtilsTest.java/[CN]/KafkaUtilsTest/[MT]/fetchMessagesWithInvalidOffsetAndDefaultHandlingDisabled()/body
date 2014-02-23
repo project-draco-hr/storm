@@ -1,4 +1,4 @@
 {
   config.useStartOffsetTimeIfOffsetOutOfRange=false;
-  sendMessageAndAssertValueForOffset(-99);
+  KafkaUtils.fetchMessages(config,simpleConsumer,new Partition(Broker.fromString(broker.getBrokerConnectionString()),0),-99);
 }
