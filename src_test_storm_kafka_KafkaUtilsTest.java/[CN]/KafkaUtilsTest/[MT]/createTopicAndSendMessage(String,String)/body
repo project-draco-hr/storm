@@ -1,0 +1,8 @@
+{
+  Properties p=new Properties();
+  p.setProperty("metadata.broker.list","localhost:49123");
+  p.setProperty("serializer.class","kafka.serializer.StringEncoder");
+  ProducerConfig producerConfig=new ProducerConfig(p);
+  Producer<String,String> producer=new Producer<String,String>(producerConfig);
+  producer.send(new KeyedMessage<String,String>(config.topic,key,value));
+}
