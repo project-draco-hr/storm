@@ -1,8 +1,0 @@
-{
-  prot.writeMessageBegin(new org.apache.thrift7.protocol.TMessage("execute",org.apache.thrift7.protocol.TMessageType.CALL,0));
-  execute_args args=new execute_args();
-  args.set_functionName(functionName);
-  args.set_funcArgs(funcArgs);
-  args.write(prot);
-  prot.writeMessageEnd();
-}

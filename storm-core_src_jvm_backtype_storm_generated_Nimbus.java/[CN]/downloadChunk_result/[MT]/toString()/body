@@ -6,7 +6,7 @@
     sb.append("null");
   }
  else {
-    org.apache.thrift7.TBaseHelper.toString(this.success,sb);
+    org.apache.thrift.TBaseHelper.toString(this.success,sb);
   }
   first=false;
   sb.append(")");

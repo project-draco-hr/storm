@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("deactivate",org.apache.thrift.protocol.TMessageType.CALL,0));
+  deactivate_args args=new deactivate_args();
+  args.set_name(name);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

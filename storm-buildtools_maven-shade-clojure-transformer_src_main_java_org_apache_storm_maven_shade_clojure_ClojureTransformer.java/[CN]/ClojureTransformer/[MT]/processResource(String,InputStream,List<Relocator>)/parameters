@@ -1,0 +1,3 @@
+String s
+InputStream inputStream
+List<Relocator> relocators

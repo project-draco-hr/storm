@@ -1,0 +1,62 @@
+{
+  org.apache.thrift.protocol.TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 1:
+      if (field.type == org.apache.thrift.protocol.TType.LIST) {
+{
+          org.apache.thrift.protocol.TList _list37=iprot.readListBegin();
+          this.supervisors=new ArrayList<SupervisorSummary>(_list37.size);
+          for (int _i38=0; _i38 < _list37.size; ++_i38) {
+            SupervisorSummary _elem39;
+            _elem39=new SupervisorSummary();
+            _elem39.read(iprot);
+            this.supervisors.add(_elem39);
+          }
+          iprot.readListEnd();
+        }
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+case 2:
+  if (field.type == org.apache.thrift.protocol.TType.I32) {
+    this.nimbus_uptime_secs=iprot.readI32();
+    set_nimbus_uptime_secs_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == org.apache.thrift.protocol.TType.LIST) {
+{
+  org.apache.thrift.protocol.TList _list40=iprot.readListBegin();
+  this.topologies=new ArrayList<TopologySummary>(_list40.size);
+  for (int _i41=0; _i41 < _list40.size; ++_i41) {
+    TopologySummary _elem42;
+    _elem42=new TopologySummary();
+    _elem42.read(iprot);
+    this.topologies.add(_elem42);
+  }
+  iprot.readListEnd();
+}
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}

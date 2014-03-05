@@ -1,0 +1,54 @@
+{
+  org.apache.thrift.protocol.TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 1:
+      if (field.type == org.apache.thrift.protocol.TType.I32) {
+        this.wait_secs=iprot.readI32();
+        set_wait_secs_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+case 2:
+  if (field.type == org.apache.thrift.protocol.TType.I32) {
+    this.num_workers=iprot.readI32();
+    set_num_workers_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == org.apache.thrift.protocol.TType.MAP) {
+{
+  org.apache.thrift.protocol.TMap _map158=iprot.readMapBegin();
+  this.num_executors=new HashMap<String,Integer>(2 * _map158.size);
+  for (int _i159=0; _i159 < _map158.size; ++_i159) {
+    String _key160;
+    int _val161;
+    _key160=iprot.readString();
+    _val161=iprot.readI32();
+    this.num_executors.put(_key160,_val161);
+  }
+  iprot.readMapEnd();
+}
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}
