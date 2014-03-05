@@ -1,0 +1,4 @@
+String name
+T metric
+int timeBucketSizeInSecs
+ShellBolt bolt

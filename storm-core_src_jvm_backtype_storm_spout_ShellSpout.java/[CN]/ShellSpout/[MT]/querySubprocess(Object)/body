@@ -28,6 +28,9 @@
           _collector.emitDirect((int)task.longValue(),stream,tuple,messageId);
         }
       }
+ else       if (command.equals("metrics")) {
+        handleMetrics(action);
+      }
     }
   }
  catch (  IOException e) {

@@ -1,0 +1,4 @@
+String name
+T metric
+int timeBucketSizeInSecs
+ShellSpout spout

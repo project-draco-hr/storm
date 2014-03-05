@@ -37,6 +37,9 @@
  else           if (command.equals("emit")) {
             handleEmit(action);
           }
+ else           if (command.equals("metrics")) {
+            handleMetrics(action);
+          }
         }
  catch (        InterruptedException e) {
         }
