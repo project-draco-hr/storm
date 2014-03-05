@@ -1,0 +1,6 @@
+def __emit(*args, **kwargs):
+    global MODE
+    if (MODE == Bolt):
+        emitBolt(*args, **kwargs)
+    elif (MODE == Spout):
+        emitSpout(*args, **kwargs)

@@ -1,0 +1,3 @@
+{
+  new RankableObjectWithFields(ANY_OBJECT,-1);
+}

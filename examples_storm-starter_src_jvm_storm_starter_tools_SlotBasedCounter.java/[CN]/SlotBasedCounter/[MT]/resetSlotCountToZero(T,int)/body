@@ -1,0 +1,4 @@
+{
+  long[] counts=objToCounts.get(obj);
+  counts[slot]=0;
+}

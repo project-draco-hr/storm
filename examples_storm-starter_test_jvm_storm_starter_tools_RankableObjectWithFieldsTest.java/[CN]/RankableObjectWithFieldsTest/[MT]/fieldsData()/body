@@ -1,0 +1,3 @@
+{
+  return new Object[][]{{ANY_OBJECT,ANY_COUNT,new Object[]{ANY_FIELD}},{"quux",42L,new Object[]{"one","two","three"}}};
+}

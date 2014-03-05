@@ -1,0 +1,5 @@
+{
+  Config conf=new Config();
+  conf.setDebug(true);
+  return conf;
+}

@@ -1,0 +1,7 @@
+{
+  int result=17;
+  int countHash=(int)(count ^ (count >>> 32));
+  result=31 * result + countHash;
+  result=31 * result + obj.hashCode();
+  return result;
+}
