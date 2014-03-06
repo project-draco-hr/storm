@@ -1,9 +1,0 @@
-{
-  if (_registeredShellMetrics.containsKey(name)) {
-    throw new RuntimeException("The same metric name `" + name + "` was registered in ShellSpout twice.");
-  }
- else {
-    _registeredShellMetrics.put(name,metric);
-  }
-  return metric;
-}

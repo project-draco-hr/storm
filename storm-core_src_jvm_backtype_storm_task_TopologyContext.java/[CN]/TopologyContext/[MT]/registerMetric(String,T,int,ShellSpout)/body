@@ -1,4 +1,0 @@
-{
-  spout.registerMetric(name,metric);
-  return registerMetric(name,metric,timeBucketSizeInSecs);
-}

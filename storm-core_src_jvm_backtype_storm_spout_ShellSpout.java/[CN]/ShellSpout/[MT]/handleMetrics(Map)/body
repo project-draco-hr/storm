@@ -1,43 +1,28 @@
 {
   Object nameObj=action.get("name");
-  if (!(nameObj instanceof String)) {
-    throw new RuntimeException("Receive Metrics name is not String");
+  if (nameObj == null || !(nameObj instanceof String)) {
+    throw new RuntimeException("Receive Metrics name is null or is not String");
   }
   String name=(String)nameObj;
-  if (name == null || name.isEmpty()) {
-    throw new RuntimeException("Receive Metrics name is NULL");
+  if (name.isEmpty()) {
+    throw new RuntimeException("Receive Metrics name is empty");
   }
-  if (!_registeredShellMetrics.containsKey(name)) {
-    throw new RuntimeException("Receive Metrics name:" + name + " does not reigster.");
+  IMetric iMetric=_context.getRegisteredMetricByName(name);
+  if (iMetric == null) {
+    throw new RuntimeException("Not find metric by name[" + name + "] ");
   }
-  IShellMetric iMetric=_registeredShellMetrics.get(name);
+  if (!(iMetric instanceof IShellMetric)) {
+    throw new RuntimeException("Metric[" + name + "] is not IShellMetric, can not call by RPC");
+  }
+  IShellMetric iShellMetric=(IShellMetric)iMetric;
   Object paramsObj=action.get("params");
-  Class<? extends IShellMetric> oriClass=iMetric.getClass();
-  Method method=null;
   try {
-    method=oriClass.getMethod(IShellMetric.SHELL_METRICS_UPDATE_METHOD_NAME,new Class[]{Object.class});
+    iShellMetric.updateMetricFromRPC(paramsObj);
   }
- catch (  SecurityException e) {
-    LOG.error("handleMetrics get method [" + name + "] SecurityException");
-    throw new RuntimeException(e);
+ catch (  RuntimeException re) {
+    throw re;
   }
-catch (  NoSuchMethodException e) {
-    LOG.error("handleMetrics get method [" + name + "] NoSuchMethodException");
-    throw new RuntimeException(e);
-  }
-  try {
-    method.invoke(iMetric,paramsObj);
-  }
- catch (  IllegalArgumentException e) {
-    LOG.error("handleMetrics invoke[" + name + "] IllegalArgumentException");
-    throw new RuntimeException(e);
-  }
-catch (  IllegalAccessException e) {
-    LOG.error("handleMetrics invoke[" + name + "] IllegalAccessException");
-    throw new RuntimeException(e);
-  }
-catch (  InvocationTargetException e) {
-    LOG.error("handleMetrics invoke[" + name + "] InvocationTargetException");
+catch (  Exception e) {
     throw new RuntimeException(e);
   }
 }
