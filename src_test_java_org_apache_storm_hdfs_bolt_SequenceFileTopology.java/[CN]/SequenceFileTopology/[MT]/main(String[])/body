@@ -6,11 +6,11 @@
   FileRotationPolicy rotationPolicy=new FileSizeRotationPolicy(5.0f,Units.MB);
   FileNameFormat fileNameFormat=new DefaultFileNameFormat().withPath("/source/").withExtension(".seq");
   DefaultSequenceFormat format=new DefaultSequenceFormat("timestamp","sentence");
-  SequenceFileBolt bolt=new SequenceFileBolt().withFsUrl("hdfs://localhost:54310").withFileNameFormat(fileNameFormat).withSequenceFormat(format).withRotationPolicy(rotationPolicy).withSyncPolicy(syncPolicy).withCompressionType(SequenceFile.CompressionType.RECORD).withCompressionCodec("deflate").addRotationAction(new MoveFileAction().toDestination("/dest/"));
+  SequenceFileBolt bolt=new SequenceFileBolt().withFsUrl(args[0]).withFileNameFormat(fileNameFormat).withSequenceFormat(format).withRotationPolicy(rotationPolicy).withSyncPolicy(syncPolicy).withCompressionType(SequenceFile.CompressionType.RECORD).withCompressionCodec("deflate").addRotationAction(new MoveFileAction().toDestination("/dest/"));
   TopologyBuilder builder=new TopologyBuilder();
   builder.setSpout(SENTENCE_SPOUT_ID,spout,1);
   builder.setBolt(BOLT_ID,bolt,4).shuffleGrouping(SENTENCE_SPOUT_ID);
-  if (args.length == 0) {
+  if (args.length == 1) {
     LocalCluster cluster=new LocalCluster();
     cluster.submitTopology(TOPOLOGY_NAME,config,builder.createTopology());
     waitForSeconds(120);
@@ -18,7 +18,7 @@
     cluster.shutdown();
     System.exit(0);
   }
- else {
-    StormSubmitter.submitTopology(args[0],config,builder.createTopology());
+ else   if (args.length == 2) {
+    StormSubmitter.submitTopology(args[1],config,builder.createTopology());
   }
 }
