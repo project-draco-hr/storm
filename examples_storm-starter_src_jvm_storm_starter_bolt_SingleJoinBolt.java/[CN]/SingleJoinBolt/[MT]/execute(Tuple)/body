@@ -1,0 +1,22 @@
+{
+  List<Object> id=tuple.select(_idFields);
+  GlobalStreamId streamId=new GlobalStreamId(tuple.getSourceComponent(),tuple.getSourceStreamId());
+  if (!_pending.containsKey(id)) {
+    _pending.put(id,new HashMap<GlobalStreamId,Tuple>());
+  }
+  Map<GlobalStreamId,Tuple> parts=_pending.get(id);
+  if (parts.containsKey(streamId))   throw new RuntimeException("Received same side of single join twice");
+  parts.put(streamId,tuple);
+  if (parts.size() == _numSources) {
+    _pending.remove(id);
+    List<Object> joinResult=new ArrayList<Object>();
+    for (    String outField : _outFields) {
+      GlobalStreamId loc=_fieldLocations.get(outField);
+      joinResult.add(parts.get(loc).getValueByField(outField));
+    }
+    _collector.emit(new ArrayList<Tuple>(parts.values()),joinResult);
+    for (    Tuple part : parts.values()) {
+      _collector.ack(part);
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  for (  Entry<Object,Long> entry : counts.entrySet()) {
+    Object obj=entry.getKey();
+    Long count=entry.getValue();
+    collector.emit(new Values(obj,count,actualWindowLengthInSeconds));
+  }
+}

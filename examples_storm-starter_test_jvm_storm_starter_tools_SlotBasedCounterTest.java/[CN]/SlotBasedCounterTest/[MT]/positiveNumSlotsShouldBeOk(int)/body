@@ -1,0 +1,3 @@
+{
+  new SlotBasedCounter<Object>(numSlots);
+}
