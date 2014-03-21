@@ -10,7 +10,9 @@ synchronized (sleepTimesLock) {
     }
   finally {
 synchronized (sleepTimesLock) {
-        threadSleepTimes.remove(Thread.currentThread());
+        if (simulating.get()) {
+          threadSleepTimes.remove(Thread.currentThread());
+        }
       }
     }
   }
