@@ -5,7 +5,12 @@
     this.offset+=bytes.length;
     this.collector.ack(tuple);
     if (this.syncPolicy.mark(tuple,this.offset)) {
-      this.out.hsync();
+      if (this.out instanceof HdfsDataOutputStream) {
+        ((HdfsDataOutputStream)this.out).hsync(EnumSet.of(SyncFlag.UPDATE_LENGTH));
+      }
+ else {
+        this.out.hsync();
+      }
       this.syncPolicy.reset();
     }
     if (this.rotationPolicy.mark(tuple,this.offset)) {

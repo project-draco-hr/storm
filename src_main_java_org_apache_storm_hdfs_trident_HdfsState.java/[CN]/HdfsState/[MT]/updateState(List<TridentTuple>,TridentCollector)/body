@@ -1,8 +1,6 @@
 {
   try {
-    for (    TridentTuple tuple : tuples) {
-      this.options.execute(tuple);
-    }
+    this.options.execute(tuples);
   }
  catch (  IOException e) {
     LOG.warn("Failing batch due to IOException.",e);
