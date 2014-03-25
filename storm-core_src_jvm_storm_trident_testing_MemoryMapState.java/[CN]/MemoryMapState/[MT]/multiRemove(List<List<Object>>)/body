@@ -1,0 +1,8 @@
+{
+  List nulls=new ArrayList();
+  for (int i=0; i < keys.size(); i++) {
+    nulls.add(null);
+  }
+  multiPut(keys,nulls);
+  _removed.addAll(keys);
+}
