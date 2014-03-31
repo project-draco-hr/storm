@@ -1,12 +1,3 @@
 {
-  _spoutConfig=spoutConfig;
-  _connections=connections;
-  _taskIndex=taskIndex;
-  _totalTasks=totalTasks;
-  _topologyInstanceId=topologyInstanceId;
-  _stormConf=stormConf;
-  _state=state;
-  ZkHosts brokerConf=(ZkHosts)spoutConfig.hosts;
-  _refreshFreqMs=brokerConf.refreshFreqSecs * 1000;
-  _reader=new DynamicBrokersReader(stormConf,brokerConf.brokerZkStr,brokerConf.brokerZkPath,spoutConfig.topic);
+  this(connections,stormConf,spoutConfig,state,taskIndex,totalTasks,topologyInstanceId,buildReader(stormConf,spoutConfig));
 }
