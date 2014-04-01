@@ -1,5 +1,5 @@
 {
-  IConnection client=new Client(storm_conf,host,port);
+  IConnection client=new Client(storm_conf,clientChannelFactory,host,port);
   connections.add(client);
   return client;
 }
