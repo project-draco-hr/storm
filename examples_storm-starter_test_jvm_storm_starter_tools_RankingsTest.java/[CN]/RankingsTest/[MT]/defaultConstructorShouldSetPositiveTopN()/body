@@ -1,0 +1,4 @@
+{
+  Rankings rankings=new Rankings();
+  assertThat(rankings.maxSize()).isGreaterThan(0);
+}

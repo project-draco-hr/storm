@@ -1,0 +1,7 @@
+{
+  Rankings rankings=new Rankings(duplicates.size());
+  for (  Rankable r : duplicates) {
+    rankings.updateWith(r);
+  }
+  assertThat(rankings.size()).isEqualTo(1);
+}

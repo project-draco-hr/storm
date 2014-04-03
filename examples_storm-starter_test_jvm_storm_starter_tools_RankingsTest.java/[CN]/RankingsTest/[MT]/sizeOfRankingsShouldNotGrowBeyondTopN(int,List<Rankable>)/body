@@ -1,0 +1,8 @@
+{
+  assertThat(rankables.size()).overridingErrorMessage("The supplied test data is not correct: the number of rankables <%d> should be greater than <%d>",rankables.size(),topN).isGreaterThan(topN);
+  Rankings rankings=new Rankings(topN);
+  for (  Rankable r : rankables) {
+    rankings.updateWith(r);
+  }
+  assertThat(rankings.size()).isLessThanOrEqualTo(rankings.maxSize());
+}

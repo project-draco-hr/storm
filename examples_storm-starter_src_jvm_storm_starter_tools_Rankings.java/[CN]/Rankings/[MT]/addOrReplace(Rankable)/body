@@ -1,0 +1,9 @@
+{
+  Integer rank=findRankOf(r);
+  if (rank != null) {
+    rankedItems.set(rank,r);
+  }
+ else {
+    rankedItems.add(r);
+  }
+}

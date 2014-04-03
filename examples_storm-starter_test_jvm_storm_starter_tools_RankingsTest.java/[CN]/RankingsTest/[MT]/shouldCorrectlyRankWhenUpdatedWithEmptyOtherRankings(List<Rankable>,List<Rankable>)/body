@@ -1,0 +1,9 @@
+{
+  Rankings rankings=new Rankings(unsorted.size());
+  for (  Rankable r : unsorted) {
+    rankings.updateWith(r);
+  }
+  Rankings emptyRankings=new Rankings(ANY_TOPN);
+  rankings.updateWith(emptyRankings);
+  assertThat(rankings.getRankings()).isEqualTo(expSorted);
+}
