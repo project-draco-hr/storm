@@ -1,6 +1,6 @@
 {
   try {
-    LOG.info(taskIdentifier() + "Refreshing partition manager connections");
+    LOG.info(taskId(_taskIndex,_totalTasks) + "Refreshing partition manager connections");
     GlobalPartitionInformation brokerInfo=_reader.getBrokerInfo();
     List<Partition> mine=KafkaUtils.calculatePartitionsForTask(brokerInfo,_totalTasks,_taskIndex);
     Set<Partition> curr=_managers.keySet();
@@ -8,12 +8,12 @@
     newPartitions.removeAll(curr);
     Set<Partition> deletedPartitions=new HashSet<Partition>(curr);
     deletedPartitions.removeAll(mine);
-    LOG.info(taskIdentifier() + "Deleted partition managers: " + deletedPartitions.toString());
+    LOG.info(taskId(_taskIndex,_totalTasks) + "Deleted partition managers: " + deletedPartitions.toString());
     for (    Partition id : deletedPartitions) {
       PartitionManager man=_managers.remove(id);
       man.close();
     }
-    LOG.info(taskIdentifier() + "New partition managers: " + newPartitions.toString());
+    LOG.info(taskId(_taskIndex,_totalTasks) + "New partition managers: " + newPartitions.toString());
     for (    Partition id : newPartitions) {
       PartitionManager man=new PartitionManager(_connections,_topologyInstanceId,_state,_stormConf,_spoutConfig,id);
       _managers.put(id,man);
@@ -23,5 +23,5 @@
     throw new RuntimeException(e);
   }
   _cachedList=new ArrayList<PartitionManager>(_managers.values());
-  LOG.info(taskIdentifier() + "Finished refreshing");
+  LOG.info(taskId(_taskIndex,_totalTasks) + "Finished refreshing");
 }

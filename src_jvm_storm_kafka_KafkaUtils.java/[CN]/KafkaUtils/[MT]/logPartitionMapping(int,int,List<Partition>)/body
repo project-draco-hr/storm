@@ -1,5 +1,5 @@
 {
-  String taskPrefix="[" + taskIndex + "/"+ totalTasks+ "] --> ";
+  String taskPrefix=taskId(taskIndex,totalTasks);
   if (taskPartitions.isEmpty()) {
     LOG.warn(taskPrefix + "no partitions assigned");
   }

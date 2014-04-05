@@ -11,7 +11,7 @@
   String path=committedPath();
   try {
     Map<Object,Object> json=_state.readJSON(path);
-    LOG.info("Read partition information from: " + path + "  --> "+ json);
+    LOG.info("Read partition information from: " + path + " --> "+ json);
     if (json != null) {
       jsonTopologyId=(String)((Map<Object,Object>)json.get("topology")).get("id");
       jsonOffset=(Long)json.get("offset");
@@ -32,7 +32,7 @@
     _committedTo=jsonOffset;
     LOG.info("Read last commit offset from zookeeper: " + _committedTo + "; old topology_id: "+ jsonTopologyId+ " - new topology_id: "+ topologyInstanceId);
   }
-  LOG.info("Starting Kafka " + _consumer.host() + ":"+ id.partition+ " from offset "+ _committedTo);
+  LOG.info("Starting " + _partition + " from offset "+ _committedTo);
   _emittedToOffset=_committedTo;
   _fetchAPILatencyMax=new CombinedMetric(new MaxMetric());
   _fetchAPILatencyMean=new ReducedMetric(new MeanReducer());
