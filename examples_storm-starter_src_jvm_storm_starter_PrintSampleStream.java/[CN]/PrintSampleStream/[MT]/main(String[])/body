@@ -1,0 +1,15 @@
+{
+  String consumerKey=args[0];
+  String consumerSecret=args[1];
+  String accessToken=args[2];
+  String accessTokenSecret=args[3];
+  String[] keyWords=Arrays.copyOfRange(arguments,4,arguments.length);
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout("spoutId",new TwitterSampleSpout(consumerKey,consumerSecret,accessToken,accessTokenSecret,keyWords));
+  builder.setBolt("print",new PrinterBolt()).shuffleGrouping("spout");
+  Config conf=new Config();
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology("test",conf,builder.createTopology());
+  Utils.sleep(10000);
+  cluster.shutdown();
+}
