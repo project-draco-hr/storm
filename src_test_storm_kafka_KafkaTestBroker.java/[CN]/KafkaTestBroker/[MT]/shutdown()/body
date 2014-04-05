@@ -1,3 +1,4 @@
 {
   kafka.shutdown();
+  server.stop();
 }
