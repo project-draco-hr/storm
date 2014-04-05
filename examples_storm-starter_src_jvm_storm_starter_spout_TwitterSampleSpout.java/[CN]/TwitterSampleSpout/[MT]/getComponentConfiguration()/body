@@ -1,0 +1,5 @@
+{
+  Config ret=new Config();
+  ret.setMaxTaskParallelism(1);
+  return ret;
+}

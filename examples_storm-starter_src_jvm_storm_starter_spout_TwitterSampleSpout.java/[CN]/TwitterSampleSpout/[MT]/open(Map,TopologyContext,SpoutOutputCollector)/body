@@ -1,0 +1,30 @@
+{
+  queue=new LinkedBlockingQueue<Status>(1000);
+  _collector=collector;
+  StatusListener listener=new StatusListener(){
+    @Override public void onStatus(    Status status){
+      queue.offer(status);
+    }
+    @Override public void onDeletionNotice(    StatusDeletionNotice sdn){
+    }
+    @Override public void onTrackLimitationNotice(    int i){
+    }
+    @Override public void onScrubGeo(    long l,    long l1){
+    }
+    @Override public void onException(    Exception e){
+    }
+  }
+;
+  TwitterStream twitterStream=new TwitterStreamFactory(new ConfigurationBuilder().setJSONStoreEnabled(true).build()).getInstance();
+  twitterStream.addListener(listener);
+  twitterStream.setOAuthConsumer(consumerKey,consumerSecret);
+  AccessToken token=new AccessToken(accessToken,accessTokenSecret);
+  twitterStream.setOAuthAccessToken(token);
+  if (keyWords.length == 0) {
+    twitterStream.sample();
+  }
+ else {
+    FilterQuery query=new FilterQuery().track(keyWords);
+    twitterStream.filter(query);
+  }
+}
