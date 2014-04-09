@@ -1,4 +1,9 @@
 {
   kafka.shutdown();
-  server.stop();
+  try {
+    server.stop();
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
 }
