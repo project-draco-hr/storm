@@ -1,0 +1,3 @@
+int totalTasks
+int taskIndex
+List<Partition> taskPartitions

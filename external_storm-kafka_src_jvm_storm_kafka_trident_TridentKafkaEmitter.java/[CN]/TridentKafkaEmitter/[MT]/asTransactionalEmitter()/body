@@ -1,0 +1,32 @@
+{
+  return new IPartitionedTridentSpout.Emitter<GlobalPartitionInformation,Partition,Map>(){
+    /** 
+ * Emit a batch of tuples for a partition/transaction that's never been emitted before.
+ * Return the metadata that can be used to reconstruct this partition/batch in the future.
+ */
+    @Override public Map emitPartitionBatchNew(    TransactionAttempt transactionAttempt,    TridentCollector tridentCollector,    Partition partition,    Map map){
+      return failFastEmitNewPartitionBatch(transactionAttempt,tridentCollector,partition,map);
+    }
+    /** 
+ * Emit a batch of tuples for a partition/transaction that has been emitted before, using
+ * the metadata created when it was first emitted.
+ */
+    @Override public void emitPartitionBatch(    TransactionAttempt transactionAttempt,    TridentCollector tridentCollector,    Partition partition,    Map map){
+      reEmitPartitionBatch(transactionAttempt,tridentCollector,partition,map);
+    }
+    /** 
+ * This method is called when this task is responsible for a new set of partitions. Should be used
+ * to manage things like connections to brokers.
+ */
+    @Override public void refreshPartitions(    List<Partition> partitions){
+      refresh(partitions);
+    }
+    @Override public List<Partition> getOrderedPartitions(    GlobalPartitionInformation partitionInformation){
+      return orderPartitions(partitionInformation);
+    }
+    @Override public void close(){
+      clear();
+    }
+  }
+;
+}

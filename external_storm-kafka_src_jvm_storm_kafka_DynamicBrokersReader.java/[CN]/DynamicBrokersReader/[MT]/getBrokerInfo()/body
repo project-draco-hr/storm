@@ -1,0 +1,24 @@
+{
+  GlobalPartitionInformation globalPartitionInformation=new GlobalPartitionInformation();
+  try {
+    int numPartitionsForTopic=getNumPartitions();
+    String brokerInfoPath=brokerPath();
+    for (int partition=0; partition < numPartitionsForTopic; partition++) {
+      int leader=getLeaderFor(partition);
+      String path=brokerInfoPath + "/" + leader;
+      try {
+        byte[] brokerData=_curator.getData().forPath(path);
+        Broker hp=getBrokerHost(brokerData);
+        globalPartitionInformation.addPartition(partition,hp);
+      }
+ catch (      org.apache.zookeeper.KeeperException.NoNodeException e) {
+        LOG.error("Node {} does not exist ",path);
+      }
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  LOG.info("Read partition info from zookeeper: " + globalPartitionInformation);
+  return globalPartitionInformation;
+}

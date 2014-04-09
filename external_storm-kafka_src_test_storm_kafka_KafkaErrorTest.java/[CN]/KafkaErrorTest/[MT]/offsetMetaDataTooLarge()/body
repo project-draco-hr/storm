@@ -1,0 +1,3 @@
+{
+  assertThat(KafkaError.getError(12),is(equalTo(KafkaError.OFFSET_METADATA_TOO_LARGE)));
+}
