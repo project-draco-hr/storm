@@ -9,7 +9,7 @@
   int numMessages=countMessages(msgs);
   _fetchAPIMessageCount.incrBy(numMessages);
   if (numMessages > 0) {
-    LOG.info("Fetched " + numMessages + " messages from Kafka: "+ _consumer.host()+ ":"+ _partition.partition);
+    LOG.info("Fetched " + numMessages + " messages from: "+ _partition);
   }
   for (  MessageAndOffset msg : msgs) {
     _pending.add(_emittedToOffset);
@@ -17,6 +17,6 @@
     _emittedToOffset=msg.nextOffset();
   }
   if (numMessages > 0) {
-    LOG.info("Added " + numMessages + " messages from Kafka: "+ _consumer.host()+ ":"+ _partition.partition+ " to internal buffers");
+    LOG.info("Added " + numMessages + " messages from: "+ _partition+ " to internal buffers");
   }
 }

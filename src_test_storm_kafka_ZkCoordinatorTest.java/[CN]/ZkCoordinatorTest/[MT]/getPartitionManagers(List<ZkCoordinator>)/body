@@ -1,0 +1,7 @@
+{
+  List<List<PartitionManager>> partitions=new ArrayList();
+  for (  ZkCoordinator coordinator : coordinatorList) {
+    partitions.add(coordinator.getMyManagedPartitions());
+  }
+  return partitions;
+}
