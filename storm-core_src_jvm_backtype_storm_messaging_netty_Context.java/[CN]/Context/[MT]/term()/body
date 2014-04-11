@@ -3,4 +3,5 @@
     conn.close();
   }
   connections=null;
+  clientChannelFactory.releaseExternalResources();
 }

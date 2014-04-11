@@ -1,19 +1,14 @@
 {
+  this.factory=factory;
   message_queue=new LinkedBlockingQueue<Object>();
   retries=new AtomicInteger(0);
   channelRef=new AtomicReference<Channel>(null);
   being_closed=new AtomicBoolean(false);
+  wait_for_requests=false;
   buffer_size=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_BUFFER_SIZE));
   max_retries=Math.min(30,Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_MAX_RETRIES)));
   base_sleep_ms=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_MIN_SLEEP_MS));
   max_sleep_ms=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_MAX_SLEEP_MS));
-  int maxWorkers=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_CLIENT_WORKER_THREADS));
-  if (maxWorkers > 0) {
-    factory=new NioClientSocketChannelFactory(Executors.newCachedThreadPool(),Executors.newCachedThreadPool(),maxWorkers);
-  }
- else {
-    factory=new NioClientSocketChannelFactory(Executors.newCachedThreadPool(),Executors.newCachedThreadPool());
-  }
   bootstrap=new ClientBootstrap(factory);
   bootstrap.setOption("tcpNoDelay",true);
   bootstrap.setOption("sendBufferSize",buffer_size);
