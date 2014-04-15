@@ -4,6 +4,7 @@
   }
   try {
     message_queue.put(new TaskMessage(task,message));
+    tryDeliverMessages(true);
   }
  catch (  InterruptedException e) {
     throw new RuntimeException(e);

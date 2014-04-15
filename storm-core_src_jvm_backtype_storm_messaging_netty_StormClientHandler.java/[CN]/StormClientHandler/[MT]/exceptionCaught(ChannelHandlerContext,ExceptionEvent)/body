@@ -1,10 +1,7 @@
 {
   Throwable cause=event.getCause();
   if (!(cause instanceof ConnectException)) {
-    LOG.info("Connection failed:",cause);
+    LOG.info("Connection to " + client.remote_addr + " failed:",cause);
   }
-  if (!being_closed.get()) {
-    client.setChannel(null);
-    client.reconnect();
-  }
+  client.reconnect();
 }
