@@ -1,8 +1,8 @@
 {
   if (!is_set_output_fields()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'output_fields' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'output_fields' is unset! Struct:" + toString());
   }
   if (!is_set_direct()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'direct' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'direct' is unset! Struct:" + toString());
   }
 }

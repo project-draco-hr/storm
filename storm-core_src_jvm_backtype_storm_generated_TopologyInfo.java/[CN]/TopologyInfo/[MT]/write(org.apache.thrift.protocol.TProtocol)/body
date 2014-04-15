@@ -1,0 +1,53 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.id != null) {
+    oprot.writeFieldBegin(ID_FIELD_DESC);
+    oprot.writeString(this.id);
+    oprot.writeFieldEnd();
+  }
+  if (this.name != null) {
+    oprot.writeFieldBegin(NAME_FIELD_DESC);
+    oprot.writeString(this.name);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(this.uptime_secs);
+  oprot.writeFieldEnd();
+  if (this.executors != null) {
+    oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
+{
+      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,this.executors.size()));
+      for (      ExecutorSummary _iter155 : this.executors) {
+        _iter155.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.status != null) {
+    oprot.writeFieldBegin(STATUS_FIELD_DESC);
+    oprot.writeString(this.status);
+    oprot.writeFieldEnd();
+  }
+  if (this.errors != null) {
+    oprot.writeFieldBegin(ERRORS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.LIST,this.errors.size()));
+      for (      Map.Entry<String,List<ErrorInfo>> _iter156 : this.errors.entrySet()) {
+        oprot.writeString(_iter156.getKey());
+{
+          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,_iter156.getValue().size()));
+          for (          ErrorInfo _iter157 : _iter156.getValue()) {
+            _iter157.write(oprot);
+          }
+          oprot.writeListEnd();
+        }
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

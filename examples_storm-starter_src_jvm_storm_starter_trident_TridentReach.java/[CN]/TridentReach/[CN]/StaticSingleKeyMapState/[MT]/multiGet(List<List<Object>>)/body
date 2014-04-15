@@ -1,0 +1,8 @@
+{
+  List<Object> ret=new ArrayList();
+  for (  List<Object> key : keys) {
+    Object singleKey=key.get(0);
+    ret.add(_map.get(singleKey));
+  }
+  return ret;
+}

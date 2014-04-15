@@ -1,8 +1,0 @@
-{
-  prot.writeMessageBegin(new org.apache.thrift7.protocol.TMessage("rebalance",org.apache.thrift7.protocol.TMessageType.CALL,0));
-  rebalance_args args=new rebalance_args();
-  args.set_name(name);
-  args.set_options(options);
-  args.write(prot);
-  prot.writeMessageEnd();
-}

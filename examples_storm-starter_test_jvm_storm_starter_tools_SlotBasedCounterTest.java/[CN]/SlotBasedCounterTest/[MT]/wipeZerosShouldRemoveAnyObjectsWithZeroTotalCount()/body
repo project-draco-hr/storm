@@ -1,0 +1,14 @@
+{
+  SlotBasedCounter<Object> counter=new SlotBasedCounter<Object>(2);
+  int wipeSlot=0;
+  int otherSlot=1;
+  Object willBeRemoved="willBeRemoved";
+  Object willContinueToBeTracked="willContinueToBeTracked";
+  counter.incrementCount(willBeRemoved,wipeSlot);
+  counter.incrementCount(willContinueToBeTracked,wipeSlot);
+  counter.incrementCount(willContinueToBeTracked,otherSlot);
+  counter.wipeSlot(wipeSlot);
+  counter.wipeZeros();
+  assertThat(counter.getCounts()).doesNotContainKey(willBeRemoved);
+  assertThat(counter.getCounts()).containsKey(willContinueToBeTracked);
+}

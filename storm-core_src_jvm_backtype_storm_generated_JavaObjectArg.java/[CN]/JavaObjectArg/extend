@@ -1,1 +1,1 @@
-org.apache.thrift7.TUnion<JavaObjectArg,JavaObjectArg._Fields>
+org.apache.thrift.TUnion<JavaObjectArg,JavaObjectArg._Fields>

@@ -1,4 +1,11 @@
 {
   this.storm_conf=storm_conf;
   connections=new Vector<IConnection>();
+  int maxWorkers=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_CLIENT_WORKER_THREADS));
+  if (maxWorkers > 0) {
+    clientChannelFactory=new NioClientSocketChannelFactory(Executors.newCachedThreadPool(),Executors.newCachedThreadPool(),maxWorkers);
+  }
+ else {
+    clientChannelFactory=new NioClientSocketChannelFactory(Executors.newCachedThreadPool(),Executors.newCachedThreadPool());
+  }
 }

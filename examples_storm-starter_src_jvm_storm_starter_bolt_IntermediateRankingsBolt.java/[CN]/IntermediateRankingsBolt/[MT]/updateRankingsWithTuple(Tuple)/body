@@ -1,0 +1,4 @@
+{
+  Rankable rankable=RankableObjectWithFields.from(tuple);
+  super.getRankings().updateWith(rankable);
+}

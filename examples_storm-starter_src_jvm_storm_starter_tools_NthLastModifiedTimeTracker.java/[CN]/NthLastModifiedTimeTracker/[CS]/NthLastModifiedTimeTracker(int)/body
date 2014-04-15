@@ -1,0 +1,7 @@
+{
+  if (numTimesToTrack < 1) {
+    throw new IllegalArgumentException("numTimesToTrack must be greater than zero (you requested " + numTimesToTrack + ")");
+  }
+  lastModifiedTimesMillis=new CircularFifoBuffer(numTimesToTrack);
+  initLastModifiedTimesMillis();
+}

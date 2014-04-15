@@ -1,1 +1,1 @@
-org.apache.thrift7.ProcessFunction<I,downloadChunk_args>
+org.apache.thrift.ProcessFunction<I,downloadChunk_args>

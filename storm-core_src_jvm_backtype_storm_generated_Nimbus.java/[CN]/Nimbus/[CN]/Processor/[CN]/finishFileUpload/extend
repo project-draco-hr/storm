@@ -1,1 +1,1 @@
-org.apache.thrift7.ProcessFunction<I,finishFileUpload_args>
+org.apache.thrift.ProcessFunction<I,finishFileUpload_args>

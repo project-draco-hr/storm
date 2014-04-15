@@ -1,0 +1,5 @@
+{
+  Rankable copy=original.copy();
+  assertThat(copy.getObject()).isEqualTo(original.getObject());
+  assertThat(copy.getCount()).isEqualTo(original.getCount());
+}

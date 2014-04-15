@@ -1,5 +1,5 @@
 {
-  set_custom_serialized(org.apache.thrift7.TBaseHelper.rightSize(buffer_for_custom_serialized()));
+  set_custom_serialized(org.apache.thrift.TBaseHelper.rightSize(buffer_for_custom_serialized()));
   ByteBuffer b=buffer_for_custom_serialized();
   return b == null ? null : b.array();
 }

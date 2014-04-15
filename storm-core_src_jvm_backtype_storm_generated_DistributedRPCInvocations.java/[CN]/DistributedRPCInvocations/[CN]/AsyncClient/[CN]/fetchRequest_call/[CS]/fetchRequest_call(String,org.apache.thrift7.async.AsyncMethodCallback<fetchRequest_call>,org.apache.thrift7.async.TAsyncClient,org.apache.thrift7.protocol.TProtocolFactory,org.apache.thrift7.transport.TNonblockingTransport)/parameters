@@ -1,5 +1,0 @@
-String functionName
-org.apache.thrift7.async.AsyncMethodCallback<fetchRequest_call> resultHandler
-org.apache.thrift7.async.TAsyncClient client
-org.apache.thrift7.protocol.TProtocolFactory protocolFactory
-org.apache.thrift7.transport.TNonblockingTransport transport

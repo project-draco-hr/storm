@@ -1,18 +1,20 @@
 {
-  try {
-    int tried_count=retries.incrementAndGet();
-    if (tried_count <= max_retries) {
-      Thread.sleep(getSleepTimeMs());
-      LOG.info("Reconnect ... [{}]",tried_count);
-      bootstrap.connect(remote_addr);
-      LOG.debug("connection started...");
+  close_n_release();
+  if (being_closed.get())   return;
+  final int tried_count=retries.incrementAndGet();
+  if (tried_count <= max_retries) {
+    long sleep=getSleepTimeMs();
+    LOG.info("Waiting {} ms before trying connection to {}",sleep,remote_addr);
+    TIMER.schedule(new TimerTask(){
+      @Override public void run(){
+        LOG.info("Reconnect ... [{}] to {}",tried_count,remote_addr);
+        bootstrap.connect(remote_addr);
+      }
     }
- else {
-      LOG.warn("Remote address is not reachable. We will close this client.");
-      close();
-    }
+,sleep);
   }
- catch (  InterruptedException e) {
-    LOG.warn("connection failed",e);
+ else {
+    LOG.warn(remote_addr + " is not reachable. We will close this client.");
+    close();
   }
 }

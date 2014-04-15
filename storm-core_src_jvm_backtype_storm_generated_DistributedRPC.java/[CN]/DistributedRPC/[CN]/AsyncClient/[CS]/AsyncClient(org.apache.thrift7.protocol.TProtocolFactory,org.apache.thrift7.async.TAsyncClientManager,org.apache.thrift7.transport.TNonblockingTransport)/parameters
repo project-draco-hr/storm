@@ -1,3 +1,0 @@
-org.apache.thrift7.protocol.TProtocolFactory protocolFactory
-org.apache.thrift7.async.TAsyncClientManager clientManager
-org.apache.thrift7.transport.TNonblockingTransport transport

@@ -1,11 +1,12 @@
 {
   Channel channel=event.getChannel();
   client.setChannel(channel);
-  LOG.debug("connection established to a remote host");
+  LOG.info("connection established from " + channel.getLocalAddress() + " to "+ channel.getRemoteAddress());
   try {
-    sendRequests(channel,client.takeMessages());
+    client.tryDeliverMessages(false);
   }
- catch (  InterruptedException e) {
-    channel.close();
+ catch (  Exception ex) {
+    LOG.info("exception when sending messages:",ex.getMessage());
+    client.reconnect();
   }
 }
