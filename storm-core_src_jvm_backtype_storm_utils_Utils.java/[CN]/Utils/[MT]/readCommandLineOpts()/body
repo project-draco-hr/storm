@@ -7,7 +7,11 @@
     for (    String config : configs) {
       String[] options=config.split("=");
       if (options.length == 2) {
-        ret.put(options[0],options[1]);
+        Object confValue=options[1];
+        if (NumberUtils.isNumber(options[1])) {
+          confValue=NumberUtils.createNumber(String.valueOf(confValue));
+        }
+        ret.put(options[0],confValue);
       }
     }
   }
