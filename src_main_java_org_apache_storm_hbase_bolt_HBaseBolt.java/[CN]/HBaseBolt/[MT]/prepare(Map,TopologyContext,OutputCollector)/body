@@ -1,10 +1,15 @@
 {
   this.collector=collector;
   Configuration hbConfig=HBaseConfiguration.create();
-  String hbRoot=(String)map.get("hbase.rootdir");
-  if (hbRoot != null) {
-    LOG.info("Using hbase.rootdir={}",hbRoot);
-    hbConfig.set("hbase.rootdir",hbRoot);
+  Map<String,Object> conf=(Map<String,Object>)map.get(this.configKey);
+  if (conf == null) {
+    throw new IllegalArgumentException("HBase configuration not found using key '" + this.configKey + "'");
+  }
+  if (conf.get("hbase.rootdir") == null) {
+    LOG.warn("No 'hbase.rootdir' value found in configuration! Using HBase defaults.");
+  }
+  for (  String key : conf.keySet()) {
+    hbConfig.set(key,String.valueOf(map.get(key)));
   }
   try {
     this.table=new HTable(hbConfig,this.tableName);
