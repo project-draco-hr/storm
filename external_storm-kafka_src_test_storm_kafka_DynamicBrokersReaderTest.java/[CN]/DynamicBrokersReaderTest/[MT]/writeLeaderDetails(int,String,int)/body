@@ -1,0 +1,5 @@
+{
+  String path=dynamicBrokersReader.brokerPath() + "/" + leaderId;
+  String value="{ \"host\":\"" + host + "\", \"jmx_port\":9999, \"port\":"+ port+ ", \"version\":1 }";
+  writeDataToPath(path,value);
+}

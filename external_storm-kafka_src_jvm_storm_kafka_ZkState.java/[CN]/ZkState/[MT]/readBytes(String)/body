@@ -1,0 +1,13 @@
+{
+  try {
+    if (_curator.checkExists().forPath(path) != null) {
+      return _curator.getData().forPath(path);
+    }
+ else {
+      return null;
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

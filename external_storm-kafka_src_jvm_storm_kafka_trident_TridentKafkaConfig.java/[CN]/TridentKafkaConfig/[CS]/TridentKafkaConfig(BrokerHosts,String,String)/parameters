@@ -1,0 +1,3 @@
+BrokerHosts hosts
+String topic
+String clientId
