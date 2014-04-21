@@ -1,6 +1,6 @@
 {
   this.collector=collector;
-  Configuration hbConfig=HBaseConfiguration.create();
+  final Configuration hbConfig=HBaseConfiguration.create();
   Map<String,Object> conf=(Map<String,Object>)map.get(this.configKey);
   if (conf == null) {
     throw new IllegalArgumentException("HBase configuration not found using key '" + this.configKey + "'");
@@ -12,9 +12,15 @@
     hbConfig.set(key,String.valueOf(map.get(key)));
   }
   try {
-    this.table=new HTable(hbConfig,this.tableName);
+    UserProvider provider=HBaseSecurityUtil.login(map,hbConfig);
+    this.table=provider.getCurrent().getUGI().doAs(new PrivilegedExceptionAction<HTable>(){
+      @Override public HTable run() throws IOException {
+        return new HTable(hbConfig,tableName);
+      }
+    }
+);
   }
- catch (  IOException e) {
+ catch (  Exception e) {
     throw new RuntimeException("HBase bolt preparation failed: " + e.getMessage(),e);
   }
 }
