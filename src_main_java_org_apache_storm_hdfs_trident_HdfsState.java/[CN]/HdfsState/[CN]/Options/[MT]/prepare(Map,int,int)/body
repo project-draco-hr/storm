@@ -12,6 +12,7 @@
     }
   }
   try {
+    HdfsSecurityUtil.login(conf,hdfsConfig);
     doPrepare(conf,partitionIndex,numPartitions);
     this.currentFile=createOutputFile();
   }
