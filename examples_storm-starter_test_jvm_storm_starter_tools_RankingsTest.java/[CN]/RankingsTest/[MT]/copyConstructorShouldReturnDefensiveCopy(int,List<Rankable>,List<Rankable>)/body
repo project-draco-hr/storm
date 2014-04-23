@@ -1,0 +1,14 @@
+{
+  Rankings original=new Rankings(topN);
+  for (  Rankable r : rankables) {
+    original.updateWith(r);
+  }
+  int expSize=original.size();
+  List<Rankable> expRankings=original.getRankings();
+  Rankings copy=new Rankings(original);
+  for (  Rankable r : changes) {
+    copy.updateWith(r);
+  }
+  assertThat(original.size()).isEqualTo(expSize);
+  assertThat(original.getRankings()).isEqualTo(expRankings);
+}

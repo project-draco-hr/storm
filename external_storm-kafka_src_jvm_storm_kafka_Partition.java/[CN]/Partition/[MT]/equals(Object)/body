@@ -1,0 +1,10 @@
+{
+  if (this == obj) {
+    return true;
+  }
+  if (obj == null || getClass() != obj.getClass()) {
+    return false;
+  }
+  final Partition other=(Partition)obj;
+  return Objects.equal(this.host,other.host) && Objects.equal(this.partition,other.partition);
+}

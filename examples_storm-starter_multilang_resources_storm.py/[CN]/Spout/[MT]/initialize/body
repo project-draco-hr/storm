@@ -1,0 +1,2 @@
+def initialize(self, conf, context):
+    pass

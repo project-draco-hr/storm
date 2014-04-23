@@ -1,0 +1,11 @@
+{
+  Set<T> objToBeRemoved=new HashSet<T>();
+  for (  T obj : objToCounts.keySet()) {
+    if (shouldBeRemovedFromCounter(obj)) {
+      objToBeRemoved.add(obj);
+    }
+  }
+  for (  T obj : objToBeRemoved) {
+    objToCounts.remove(obj);
+  }
+}

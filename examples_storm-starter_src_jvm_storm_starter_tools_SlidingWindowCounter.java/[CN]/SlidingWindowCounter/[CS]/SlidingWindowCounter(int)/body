@@ -1,0 +1,9 @@
+{
+  if (windowLengthInSlots < 2) {
+    throw new IllegalArgumentException("Window length in slots must be at least two (you requested " + windowLengthInSlots + ")");
+  }
+  this.windowLengthInSlots=windowLengthInSlots;
+  this.objCounter=new SlotBasedCounter<T>(this.windowLengthInSlots);
+  this.headSlot=0;
+  this.tailSlot=slotAfter(headSlot);
+}

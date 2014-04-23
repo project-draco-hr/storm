@@ -1,0 +1,4 @@
+def initComponent():
+    setupInfo = readMsg()
+    sendpid(setupInfo['pidDir'])
+    return [setupInfo['conf'], setupInfo['context']]

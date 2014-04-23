@@ -1,0 +1,19 @@
+{
+  try {
+    server=new TestingServer();
+    zookeeperConnectionString=server.getConnectString();
+    ExponentialBackoffRetry retryPolicy=new ExponentialBackoffRetry(1000,3);
+    CuratorFramework zookeeper=CuratorFrameworkFactory.newClient(zookeeperConnectionString,retryPolicy);
+    zookeeper.start();
+    Properties p=new Properties();
+    p.setProperty("zookeeper.connect",zookeeperConnectionString);
+    p.setProperty("broker.id","0");
+    p.setProperty("port","" + port);
+    kafka.server.KafkaConfig config=new kafka.server.KafkaConfig(p);
+    kafka=new KafkaServerStartable(config);
+    kafka.startup();
+  }
+ catch (  Exception ex) {
+    throw new RuntimeException("Could not start test broker",ex);
+  }
+}

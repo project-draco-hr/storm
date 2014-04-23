@@ -1,0 +1,5 @@
+{
+  for (  Rankable r : other.getRankings()) {
+    updateWith(r);
+  }
+}

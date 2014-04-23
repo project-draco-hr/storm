@@ -1,0 +1,7 @@
+{
+  List<Partition> partitions=new LinkedList<Partition>();
+  for (  Map.Entry<Integer,Broker> partition : partitionMap.entrySet()) {
+    partitions.add(new Partition(partition.getValue(),partition.getKey()));
+  }
+  return partitions;
+}

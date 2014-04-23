@@ -1,0 +1,8 @@
+{
+  Map ret=new HashMap();
+  ret.put(_partition + "/fetchAPILatencyMax",_fetchAPILatencyMax.getValueAndReset());
+  ret.put(_partition + "/fetchAPILatencyMean",_fetchAPILatencyMean.getValueAndReset());
+  ret.put(_partition + "/fetchAPICallCount",_fetchAPICallCount.getValueAndReset());
+  ret.put(_partition + "/fetchAPIMessageCount",_fetchAPIMessageCount.getValueAndReset());
+  return ret;
+}

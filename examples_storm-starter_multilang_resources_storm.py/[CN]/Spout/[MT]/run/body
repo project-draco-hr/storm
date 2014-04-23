@@ -1,0 +1,17 @@
+def run(self):
+    global MODE
+    MODE = Spout
+    (conf, context) = initComponent()
+    self.initialize(conf, context)
+    try:
+        while True:
+            msg = readCommand()
+            if (msg['command'] == 'next'):
+                self.nextTuple()
+            if (msg['command'] == 'ack'):
+                self.ack(msg['id'])
+            if (msg['command'] == 'fail'):
+                self.fail(msg['id'])
+            sync()
+    except Exception as e:
+        log(traceback.format_exc(e))

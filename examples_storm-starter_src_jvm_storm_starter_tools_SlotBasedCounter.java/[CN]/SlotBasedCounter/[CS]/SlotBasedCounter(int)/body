@@ -1,0 +1,6 @@
+{
+  if (numSlots <= 0) {
+    throw new IllegalArgumentException("Number of slots must be greater than zero (you requested " + numSlots + ")");
+  }
+  this.numSlots=numSlots;
+}

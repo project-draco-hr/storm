@@ -1,11 +1,11 @@
 {
-  if (!being_closed.get()) {
-    try {
-      message_queue.put(ControlMessage.CLOSE_MESSAGE);
-      being_closed.set(true);
-    }
- catch (    InterruptedException e) {
-      close_n_release();
-    }
+  try {
+    message_queue.put(ControlMessage.CLOSE_MESSAGE);
+    tryDeliverMessages(true);
+  }
+ catch (  InterruptedException e) {
+    LOG.info("Interrupted Connection to {} is being closed",remote_addr);
+    being_closed.set(true);
+    close_n_release();
   }
 }
