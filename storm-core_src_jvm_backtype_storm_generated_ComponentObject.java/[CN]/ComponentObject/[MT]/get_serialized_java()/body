@@ -1,5 +1,5 @@
 {
-  set_serialized_java(org.apache.thrift7.TBaseHelper.rightSize(buffer_for_serialized_java()));
+  set_serialized_java(org.apache.thrift.TBaseHelper.rightSize(buffer_for_serialized_java()));
   ByteBuffer b=buffer_for_serialized_java();
   return b == null ? null : b.array();
 }

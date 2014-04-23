@@ -1,17 +1,17 @@
 {
   if (!is_set_executor_info()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'executor_info' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'executor_info' is unset! Struct:" + toString());
   }
   if (!is_set_component_id()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'component_id' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'component_id' is unset! Struct:" + toString());
   }
   if (!is_set_host()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'host' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'host' is unset! Struct:" + toString());
   }
   if (!is_set_port()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'port' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'port' is unset! Struct:" + toString());
   }
   if (!is_set_uptime_secs()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'uptime_secs' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'uptime_secs' is unset! Struct:" + toString());
   }
 }

@@ -7,5 +7,5 @@
   if (result.e != null) {
     throw result.e;
   }
-  throw new org.apache.thrift7.TApplicationException(org.apache.thrift7.TApplicationException.MISSING_RESULT,"getTopology failed: unknown result");
+  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"getTopology failed: unknown result");
 }

@@ -1,2 +1,0 @@
-I iface
-Map<String,org.apache.thrift7.ProcessFunction<I,? extends org.apache.thrift7.TBase>> processMap

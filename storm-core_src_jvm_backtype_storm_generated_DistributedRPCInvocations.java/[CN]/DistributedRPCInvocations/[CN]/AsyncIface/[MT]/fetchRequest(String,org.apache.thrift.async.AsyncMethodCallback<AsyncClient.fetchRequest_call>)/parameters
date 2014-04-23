@@ -1,0 +1,2 @@
+String functionName
+org.apache.thrift.async.AsyncMethodCallback<AsyncClient.fetchRequest_call> resultHandler

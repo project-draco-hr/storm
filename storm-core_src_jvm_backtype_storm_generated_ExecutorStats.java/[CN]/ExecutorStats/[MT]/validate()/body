@@ -1,11 +1,11 @@
 {
   if (!is_set_emitted()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'emitted' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'emitted' is unset! Struct:" + toString());
   }
   if (!is_set_transferred()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'transferred' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'transferred' is unset! Struct:" + toString());
   }
   if (!is_set_specific()) {
-    throw new org.apache.thrift7.protocol.TProtocolException("Required field 'specific' is unset! Struct:" + toString());
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'specific' is unset! Struct:" + toString());
   }
 }

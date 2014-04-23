@@ -1,0 +1,3 @@
+String name
+RebalanceOptions options
+org.apache.thrift.async.AsyncMethodCallback<AsyncClient.rebalance_call> resultHandler

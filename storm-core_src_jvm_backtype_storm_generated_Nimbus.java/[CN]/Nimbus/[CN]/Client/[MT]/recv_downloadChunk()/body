@@ -4,5 +4,5 @@
   if (result.is_set_success()) {
     return result.success;
   }
-  throw new org.apache.thrift7.TApplicationException(org.apache.thrift7.TApplicationException.MISSING_RESULT,"downloadChunk failed: unknown result");
+  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"downloadChunk failed: unknown result");
 }

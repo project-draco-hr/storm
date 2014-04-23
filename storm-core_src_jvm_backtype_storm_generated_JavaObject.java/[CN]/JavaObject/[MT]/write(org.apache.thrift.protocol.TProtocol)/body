@@ -1,0 +1,22 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.full_class_name != null) {
+    oprot.writeFieldBegin(FULL_CLASS_NAME_FIELD_DESC);
+    oprot.writeString(this.full_class_name);
+    oprot.writeFieldEnd();
+  }
+  if (this.args_list != null) {
+    oprot.writeFieldBegin(ARGS_LIST_FIELD_DESC);
+{
+      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,this.args_list.size()));
+      for (      JavaObjectArg _iter3 : this.args_list) {
+        _iter3.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

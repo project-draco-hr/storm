@@ -1,3 +1,0 @@
-String name
-RebalanceOptions options
-org.apache.thrift7.async.AsyncMethodCallback<rebalance_call> resultHandler

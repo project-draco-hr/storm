@@ -1,1 +1,1 @@
-org.apache.thrift7.ProcessFunction<I,getClusterInfo_args>
+org.apache.thrift.ProcessFunction<I,getClusterInfo_args>
