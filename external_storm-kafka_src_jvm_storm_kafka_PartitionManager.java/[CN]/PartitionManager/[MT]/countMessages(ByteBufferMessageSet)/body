@@ -1,0 +1,7 @@
+{
+  int counter=0;
+  for (  MessageAndOffset messageAndOffset : messageSet) {
+    counter=counter + 1;
+  }
+  return counter;
+}
