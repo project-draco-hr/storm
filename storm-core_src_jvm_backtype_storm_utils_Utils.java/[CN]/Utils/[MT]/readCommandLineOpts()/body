@@ -2,9 +2,9 @@
   Map ret=new HashMap();
   String commandOptions=System.getProperty("storm.options");
   if (commandOptions != null) {
-    commandOptions=commandOptions.replaceAll("%%%%"," ");
     String[] configs=commandOptions.split(",");
     for (    String config : configs) {
+      config=URLDecoder.decode(config);
       String[] options=config.split("=",2);
       if (options.length == 2) {
         Object val=JSONValue.parse(options[1]);
