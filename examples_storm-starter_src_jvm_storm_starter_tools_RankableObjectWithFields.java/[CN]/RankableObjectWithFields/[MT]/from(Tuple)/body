@@ -1,0 +1,6 @@
+{
+  List<Object> otherFields=Lists.newArrayList(tuple.getValues());
+  Object obj=otherFields.remove(0);
+  Long count=(Long)otherFields.remove(0);
+  return new RankableObjectWithFields(obj,count,otherFields.toArray());
+}

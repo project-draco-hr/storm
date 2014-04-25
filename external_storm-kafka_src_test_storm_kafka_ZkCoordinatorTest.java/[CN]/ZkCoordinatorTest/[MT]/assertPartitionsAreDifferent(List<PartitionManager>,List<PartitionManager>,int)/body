@@ -1,0 +1,7 @@
+{
+  assertEquals(partitionsPerTask,partitionManagersBefore.size());
+  assertEquals(partitionManagersBefore.size(),partitionManagersAfter.size());
+  for (int i=0; i < partitionsPerTask; i++) {
+    assertNotEquals(partitionManagersBefore.get(i).getPartition(),partitionManagersAfter.get(i).getPartition());
+  }
+}

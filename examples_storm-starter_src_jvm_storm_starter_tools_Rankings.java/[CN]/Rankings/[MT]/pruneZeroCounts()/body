@@ -1,0 +1,11 @@
+{
+  int i=0;
+  while (i < rankedItems.size()) {
+    if (rankedItems.get(i).getCount() == 0) {
+      rankedItems.remove(i);
+    }
+ else {
+      i++;
+    }
+  }
+}

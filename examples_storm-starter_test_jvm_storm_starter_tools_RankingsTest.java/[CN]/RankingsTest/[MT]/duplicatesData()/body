@@ -1,0 +1,6 @@
+{
+  Rankable A1=new RankableObjectWithFields("A",1);
+  Rankable A2=new RankableObjectWithFields("A",2);
+  Rankable A3=new RankableObjectWithFields("A",3);
+  return new Object[][]{{Lists.newArrayList(ANY_RANKABLE,ANY_RANKABLE,ANY_RANKABLE)},{Lists.newArrayList(A1,A2,A3)}};
+}

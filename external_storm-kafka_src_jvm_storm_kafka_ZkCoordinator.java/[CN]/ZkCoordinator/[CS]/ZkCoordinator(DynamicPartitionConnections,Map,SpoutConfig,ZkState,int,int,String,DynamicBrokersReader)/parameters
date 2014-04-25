@@ -1,0 +1,8 @@
+DynamicPartitionConnections connections
+Map stormConf
+SpoutConfig spoutConfig
+ZkState state
+int taskIndex
+int totalTasks
+String topologyInstanceId
+DynamicBrokersReader reader

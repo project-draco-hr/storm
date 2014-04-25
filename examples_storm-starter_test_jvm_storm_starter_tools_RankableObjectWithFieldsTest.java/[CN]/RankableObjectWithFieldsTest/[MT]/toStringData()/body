@@ -1,0 +1,3 @@
+{
+  return new Object[][]{{new String("foo"),0L},{new String("BAR"),8L}};
+}

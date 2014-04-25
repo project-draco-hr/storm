@@ -1,0 +1,8 @@
+{
+  long[] curr=objToCounts.get(obj);
+  long total=0;
+  for (  long l : curr) {
+    total+=l;
+  }
+  return total;
+}

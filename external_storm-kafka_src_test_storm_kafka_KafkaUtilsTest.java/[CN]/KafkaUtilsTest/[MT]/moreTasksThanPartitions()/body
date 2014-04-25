@@ -1,0 +1,6 @@
+{
+  GlobalPartitionInformation globalPartitionInformation=TestUtils.buildPartitionInfo(1);
+  int numTasks=2;
+  assertEquals(1,KafkaUtils.calculatePartitionsForTask(globalPartitionInformation,numTasks,0).size());
+  assertEquals(0,KafkaUtils.calculatePartitionsForTask(globalPartitionInformation,numTasks,1).size());
+}
