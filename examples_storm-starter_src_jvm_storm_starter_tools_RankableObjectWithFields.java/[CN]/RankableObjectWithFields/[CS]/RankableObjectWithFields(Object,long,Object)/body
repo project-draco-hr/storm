@@ -1,0 +1,11 @@
+{
+  if (obj == null) {
+    throw new IllegalArgumentException("The object must not be null");
+  }
+  if (count < 0) {
+    throw new IllegalArgumentException("The count must be >= 0");
+  }
+  this.obj=obj;
+  this.count=count;
+  fields=ImmutableList.copyOf(otherFields);
+}

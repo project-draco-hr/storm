@@ -1,0 +1,3 @@
+{
+  assertTrue(r.equals(trueDuplicate),r + " is not equal to " + trueDuplicate+ " but it should be");
+}

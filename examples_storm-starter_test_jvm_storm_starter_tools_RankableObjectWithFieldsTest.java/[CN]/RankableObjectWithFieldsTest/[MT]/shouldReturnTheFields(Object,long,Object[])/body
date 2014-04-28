@@ -1,0 +1,5 @@
+{
+  RankableObjectWithFields r=new RankableObjectWithFields(obj,count,fields);
+  List<Object> actualFields=r.getFields();
+  assertThat(actualFields).isEqualTo(Lists.newArrayList(fields));
+}

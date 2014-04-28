@@ -1,0 +1,4 @@
+SimpleConsumer consumer
+String topic
+int partition
+long startOffsetTime

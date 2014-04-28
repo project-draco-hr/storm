@@ -1,0 +1,3 @@
+{
+  _sum+=tuple.getInteger(1);
+}

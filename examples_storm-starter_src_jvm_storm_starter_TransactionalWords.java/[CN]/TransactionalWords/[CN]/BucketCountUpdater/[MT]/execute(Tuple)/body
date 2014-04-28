@@ -1,0 +1,7 @@
+{
+  Integer bucket=tuple.getInteger(1);
+  Integer delta=tuple.getInteger(2);
+  Integer curr=_accum.get(bucket);
+  if (curr == null)   curr=0;
+  _accum.put(bucket,curr + delta);
+}

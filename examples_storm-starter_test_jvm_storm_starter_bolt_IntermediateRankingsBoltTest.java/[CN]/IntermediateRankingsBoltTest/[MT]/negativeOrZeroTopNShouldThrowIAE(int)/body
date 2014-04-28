@@ -1,0 +1,3 @@
+{
+  new IntermediateRankingsBolt(topN);
+}

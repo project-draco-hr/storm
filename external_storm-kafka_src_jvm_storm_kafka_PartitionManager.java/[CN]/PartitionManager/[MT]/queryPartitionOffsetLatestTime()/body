@@ -1,0 +1,3 @@
+{
+  return KafkaUtils.getOffset(_consumer,_spoutConfig.topic,_partition.partition,OffsetRequest.LatestTime());
+}

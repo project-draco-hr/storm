@@ -1,0 +1,25 @@
+{
+  _fieldLocations=new HashMap<String,GlobalStreamId>();
+  _collector=collector;
+  int timeout=((Number)conf.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS)).intValue();
+  _pending=new TimeCacheMap<List<Object>,Map<GlobalStreamId,Tuple>>(timeout,new ExpireCallback());
+  _numSources=context.getThisSources().size();
+  Set<String> idFields=null;
+  for (  GlobalStreamId source : context.getThisSources().keySet()) {
+    Fields fields=context.getComponentOutputFields(source.get_componentId(),source.get_streamId());
+    Set<String> setFields=new HashSet<String>(fields.toList());
+    if (idFields == null)     idFields=setFields;
+ else     idFields.retainAll(setFields);
+    for (    String outfield : _outFields) {
+      for (      String sourcefield : fields) {
+        if (outfield.equals(sourcefield)) {
+          _fieldLocations.put(outfield,source);
+        }
+      }
+    }
+  }
+  _idFields=new Fields(new ArrayList<String>(idFields));
+  if (_fieldLocations.size() != _outFields.size()) {
+    throw new RuntimeException("Cannot find all outfields among sources");
+  }
+}

@@ -1,0 +1,3 @@
+{
+  this(brokerZkStr,DEFAULT_ZK_PATH);
+}

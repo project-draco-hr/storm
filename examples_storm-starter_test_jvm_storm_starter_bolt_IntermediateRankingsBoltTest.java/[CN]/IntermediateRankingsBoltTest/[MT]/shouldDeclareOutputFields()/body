@@ -1,0 +1,6 @@
+{
+  OutputFieldsDeclarer declarer=mock(OutputFieldsDeclarer.class);
+  IntermediateRankingsBolt bolt=new IntermediateRankingsBolt();
+  bolt.declareOutputFields(declarer);
+  verify(declarer,times(1)).declare(any(Fields.class));
+}

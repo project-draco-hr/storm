@@ -1,0 +1,7 @@
+{
+  Map<T,Long> counts=objCounter.getCounts();
+  objCounter.wipeZeros();
+  objCounter.wipeSlot(tailSlot);
+  advanceHead();
+  return counts;
+}

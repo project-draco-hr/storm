@@ -1,0 +1,4 @@
+{
+  config=tridentKafkaConfig;
+  reader=KafkaUtils.makeBrokerReader(conf,config);
+}

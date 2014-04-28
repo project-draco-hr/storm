@@ -1,0 +1,6 @@
+{
+  if (topN < 1) {
+    throw new IllegalArgumentException("topN must be >= 1");
+  }
+  maxSize=topN;
+}

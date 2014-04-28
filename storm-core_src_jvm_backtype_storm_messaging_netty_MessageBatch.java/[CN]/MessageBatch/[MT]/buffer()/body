@@ -1,7 +1,6 @@
 {
   ChannelBufferOutputStream bout=new ChannelBufferOutputStream(ChannelBuffers.directBuffer(encoded_length));
-  for (  Object msg : msgs)   if (msg instanceof TaskMessage)   writeTaskMessage(bout,(TaskMessage)msg);
- else   ((ControlMessage)msg).write(bout);
+  for (  TaskMessage msg : msgs)   writeTaskMessage(bout,msg);
   ControlMessage.EOB_MESSAGE.write(bout);
   bout.close();
   return bout.buffer();
