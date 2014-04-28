@@ -4,13 +4,14 @@
   int partitionId=partition.partition;
   for (int errors=0; errors < 2 && msgs == null; errors++) {
     FetchRequestBuilder builder=new FetchRequestBuilder();
-    FetchRequest fetchRequest=builder.addFetch(topic,partitionId,offset,config.fetchSizeBytes).clientId(config.clientId).build();
+    FetchRequest fetchRequest=builder.addFetch(topic,partitionId,offset,config.fetchSizeBytes).clientId(config.clientId).maxWait(config.fetchMaxWait).build();
     FetchResponse fetchResponse;
     try {
       fetchResponse=consumer.fetch(fetchRequest);
     }
  catch (    Exception e) {
-      if (e instanceof ConnectException) {
+      if (e instanceof ConnectException || e instanceof SocketTimeoutException || e instanceof IOException|| e instanceof UnresolvedAddressException) {
+        LOG.warn("Network error when fetching messages:",e);
         throw new FailedFetchException(e);
       }
  else {

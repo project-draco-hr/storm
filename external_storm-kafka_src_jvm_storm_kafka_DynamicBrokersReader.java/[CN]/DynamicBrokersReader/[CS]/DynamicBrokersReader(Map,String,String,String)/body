@@ -6,6 +6,6 @@
     _curator.start();
   }
  catch (  Exception ex) {
-    LOG.error("can't connect to zookeeper");
+    LOG.error("Couldn't connect to zookeeper",ex);
   }
 }

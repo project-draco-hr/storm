@@ -1,22 +1,36 @@
 {
   long start=System.nanoTime();
-  ByteBufferMessageSet msgs=KafkaUtils.fetchMessages(_spoutConfig,_consumer,_partition,_emittedToOffset);
+  long offset;
+  final boolean had_failed=!failed.isEmpty();
+  if (had_failed) {
+    offset=failed.first();
+  }
+ else {
+    offset=_emittedToOffset;
+  }
+  ByteBufferMessageSet msgs=KafkaUtils.fetchMessages(_spoutConfig,_consumer,_partition,offset);
   long end=System.nanoTime();
   long millis=(end - start) / 1000000;
   _fetchAPILatencyMax.update(millis);
   _fetchAPILatencyMean.update(millis);
   _fetchAPICallCount.incr();
-  int numMessages=countMessages(msgs);
-  _fetchAPIMessageCount.incrBy(numMessages);
-  if (numMessages > 0) {
-    LOG.info("Fetched " + numMessages + " messages from: "+ _partition);
-  }
-  for (  MessageAndOffset msg : msgs) {
-    _pending.add(_emittedToOffset);
-    _waitingToEmit.add(new MessageAndRealOffset(msg.message(),_emittedToOffset));
-    _emittedToOffset=msg.nextOffset();
-  }
-  if (numMessages > 0) {
-    LOG.info("Added " + numMessages + " messages from: "+ _partition+ " to internal buffers");
+  if (msgs != null) {
+    int numMessages=0;
+    for (    MessageAndOffset msg : msgs) {
+      final Long cur_offset=msg.offset();
+      if (cur_offset < offset) {
+        continue;
+      }
+      if (!had_failed || failed.contains(cur_offset)) {
+        numMessages+=1;
+        _pending.add(cur_offset);
+        _waitingToEmit.add(new MessageAndRealOffset(msg.message(),cur_offset));
+        _emittedToOffset=Math.max(msg.nextOffset(),_emittedToOffset);
+        if (had_failed) {
+          failed.remove(cur_offset);
+        }
+      }
+    }
+    _fetchAPIMessageCount.incrBy(numMessages);
   }
 }
