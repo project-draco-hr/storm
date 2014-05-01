@@ -3,6 +3,6 @@
     spoutMsg=new SpoutMsg();
   }
   spoutMsg.setCommand("fail");
-  spoutMsg.setId(msgId.toString());
+  spoutMsg.setId(msgId);
   querySubprocess();
 }

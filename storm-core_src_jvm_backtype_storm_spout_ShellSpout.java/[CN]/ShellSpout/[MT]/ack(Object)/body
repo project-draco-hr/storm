@@ -3,6 +3,6 @@
     spoutMsg=new SpoutMsg();
   }
   spoutMsg.setCommand("ack");
-  spoutMsg.setId(msgId.toString());
+  spoutMsg.setId(msgId);
   querySubprocess();
 }
