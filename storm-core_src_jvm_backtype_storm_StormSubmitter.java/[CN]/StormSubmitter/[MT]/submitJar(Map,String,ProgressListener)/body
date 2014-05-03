@@ -1,0 +1,46 @@
+{
+  if (submittedJar == null && localJar == null) {
+    LOG.info("Jar not uploaded to master yet. Submitting jar...");
+    localJar=System.getProperty("storm.jar");
+    if (localJar == null) {
+      throw new RuntimeException("Must submit topologies using the 'storm' client script so that StormSubmitter knows which jar to upload.");
+    }
+  }
+ else   if (localJar != null) {
+    LOG.info("Jar already uploaded to master. Not submitting jar.");
+    return submittedJar;
+  }
+  NimbusClient client=NimbusClient.getConfiguredClient(conf);
+  try {
+    String uploadLocation=client.getClient().beginFileUpload();
+    LOG.info("Uploading topology jar " + localJar + " to assigned location: "+ uploadLocation);
+    BufferFileInputStream is=new BufferFileInputStream(localJar,THRIFT_CHUNK_SIZE_BYTES);
+    long totalSize=new File(localJar).length();
+    if (listener != null) {
+      listener.onStart(localJar,uploadLocation,totalSize);
+    }
+    long bytesUploaded=0;
+    while (true) {
+      byte[] toSubmit=is.read();
+      bytesUploaded+=toSubmit.length;
+      if (listener != null) {
+        listener.onProgress(bytesUploaded);
+      }
+      if (toSubmit.length == 0)       break;
+      client.getClient().uploadChunk(uploadLocation,ByteBuffer.wrap(toSubmit));
+    }
+    client.getClient().finishFileUpload(uploadLocation);
+    if (listener != null) {
+      listener.onCompleted();
+    }
+    LOG.info("Successfully uploaded topology jar to assigned location: " + uploadLocation);
+    submittedJar=uploadLocation;
+    return uploadLocation;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+ finally {
+    client.close();
+  }
+}

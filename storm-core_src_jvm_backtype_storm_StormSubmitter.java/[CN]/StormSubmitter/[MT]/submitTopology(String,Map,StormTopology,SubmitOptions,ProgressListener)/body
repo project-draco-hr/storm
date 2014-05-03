@@ -17,7 +17,7 @@
       if (topologyNameExists(conf,name)) {
         throw new RuntimeException("Topology with name `" + name + "` already exists on cluster");
       }
-      submitJar(conf);
+      submitJar(conf,null,progressListener);
       try {
         LOG.info("Submitting topology " + name + " in distributed mode with conf "+ serConf);
         if (opts != null) {

@@ -12,6 +12,6 @@
   }
  else {
     conf.setNumWorkers(3);
-    StormSubmitter.submitTopology(args[0],conf,buildTopology(null));
+    StormSubmitterWithProgressBar.submitTopology(args[0],conf,buildTopology(null));
   }
 }
