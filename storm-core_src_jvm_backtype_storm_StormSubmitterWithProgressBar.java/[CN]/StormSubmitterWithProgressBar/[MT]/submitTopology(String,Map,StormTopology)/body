@@ -1,3 +1,0 @@
-{
-  submitTopology(name,stormConf,topology,null);
-}

@@ -1,5 +1,5 @@
 {
-  StormSubmitter.submitTopology(name,stormConf,topology,opts,new StormSubmitter.ProgressListener(){
+  submitTopology(name,stormConf,topology,opts,new StormSubmitter.ProgressListener(){
     private long totalBytes;
     private String srcFile;
     private String targetFile;
