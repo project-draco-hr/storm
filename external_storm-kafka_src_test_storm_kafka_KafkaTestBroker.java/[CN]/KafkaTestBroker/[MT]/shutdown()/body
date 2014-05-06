@@ -1,9 +1,13 @@
 {
   kafka.shutdown();
+  if (zookeeper.getState().equals(CuratorFrameworkState.STARTED)) {
+    zookeeper.close();
+  }
   try {
-    server.stop();
+    server.close();
   }
  catch (  IOException e) {
     e.printStackTrace();
   }
+  FileUtils.deleteQuietly(logDir);
 }

@@ -1,5 +1,5 @@
 {
   simpleConsumer.close();
   broker.shutdown();
-  server.stop();
+  server.close();
 }
