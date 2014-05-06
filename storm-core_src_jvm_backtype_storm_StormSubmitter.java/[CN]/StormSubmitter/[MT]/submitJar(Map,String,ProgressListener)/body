@@ -24,14 +24,14 @@
       byte[] toSubmit=is.read();
       bytesUploaded+=toSubmit.length;
       if (listener != null) {
-        listener.onProgress(bytesUploaded);
+        listener.onProgress(localJar,uploadLocation,bytesUploaded,totalSize);
       }
       if (toSubmit.length == 0)       break;
       client.getClient().uploadChunk(uploadLocation,ByteBuffer.wrap(toSubmit));
     }
     client.getClient().finishFileUpload(uploadLocation);
     if (listener != null) {
-      listener.onCompleted();
+      listener.onCompleted(localJar,uploadLocation,totalSize);
     }
     LOG.info("Successfully uploaded topology jar to assigned location: " + uploadLocation);
     submittedJar=uploadLocation;
