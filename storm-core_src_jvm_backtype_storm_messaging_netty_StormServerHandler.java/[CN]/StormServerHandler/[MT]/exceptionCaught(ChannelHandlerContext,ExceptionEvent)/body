@@ -1,3 +1,4 @@
 {
+  e.getCause().printStackTrace();
   server.closeChannel(e.getChannel());
 }

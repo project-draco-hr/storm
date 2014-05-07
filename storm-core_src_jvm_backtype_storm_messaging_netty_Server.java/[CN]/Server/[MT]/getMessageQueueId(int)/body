@@ -1,0 +1,15 @@
+{
+  Integer queueId=taskToQueueId.get(task);
+  if (null == queueId) {
+synchronized (taskToQueueId) {
+      if (null == taskToQueueId.get(task)) {
+        queueId=roundRobinQueueId++;
+        taskToQueueId.put(task,queueId);
+        if (roundRobinQueueId == queueCount) {
+          roundRobinQueueId=0;
+        }
+      }
+    }
+  }
+  return queueId;
+}

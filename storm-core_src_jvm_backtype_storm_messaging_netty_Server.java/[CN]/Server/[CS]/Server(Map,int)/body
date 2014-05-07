@@ -1,15 +1,24 @@
 {
   this.storm_conf=storm_conf;
   this.port=port;
-  message_queue=new LinkedBlockingQueue<TaskMessage>();
+  queueCount=Utils.getInt(storm_conf.get("worker.receiver.thread.count"),1);
+  roundRobinQueueId=0;
+  taskToQueueId=new HashMap<Integer,Integer>();
+  message_queue=new LinkedBlockingQueue[queueCount];
+  for (int i=0; i < queueCount; i++) {
+    message_queue[i]=new LinkedBlockingQueue<ArrayList<TaskMessage>>();
+  }
   int buffer_size=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_BUFFER_SIZE));
   int maxWorkers=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_SERVER_WORKER_THREADS));
+  ThreadFactory bossFactory=new NettyRenameThreadFactory(name() + "-boss");
+  ThreadFactory workerFactory=new NettyRenameThreadFactory(name() + "-worker");
   if (maxWorkers > 0) {
-    factory=new NioServerSocketChannelFactory(Executors.newCachedThreadPool(),Executors.newCachedThreadPool(),maxWorkers);
+    factory=new NioServerSocketChannelFactory(Executors.newCachedThreadPool(bossFactory),Executors.newCachedThreadPool(workerFactory),maxWorkers);
   }
  else {
-    factory=new NioServerSocketChannelFactory(Executors.newCachedThreadPool(),Executors.newCachedThreadPool());
+    factory=new NioServerSocketChannelFactory(Executors.newCachedThreadPool(bossFactory),Executors.newCachedThreadPool(workerFactory));
   }
+  LOG.info("Create Netty Server " + name() + ", buffer_size: "+ buffer_size+ ", maxWorkers: "+ maxWorkers);
   bootstrap=new ServerBootstrap(factory);
   bootstrap.setOption("child.tcpNoDelay",true);
   bootstrap.setOption("child.receiveBufferSize",buffer_size);

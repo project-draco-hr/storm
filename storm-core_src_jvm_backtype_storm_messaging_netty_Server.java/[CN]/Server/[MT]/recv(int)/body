@@ -1,16 +1,6 @@
 {
-  if ((flags & 0x01) == 0x01) {
-    return message_queue.poll();
+  if (queueCount > 1) {
+    throw new RuntimeException("Use recv(int flags, int clientId) instead, as we have worker.receiver.thread.count=" + queueCount + " receive threads, clientId should be 0 <= clientId < "+ queueCount);
   }
- else {
-    try {
-      TaskMessage request=message_queue.take();
-      LOG.debug("request to be processed: {}",request);
-      return request;
-    }
- catch (    InterruptedException e) {
-      LOG.info("exception within msg receiving",e);
-      return null;
-    }
-  }
+  return recv(flags,0);
 }

@@ -1,0 +1,11 @@
+{
+  new Thread(new Runnable(){
+    @Override public void run(){
+      Scanner scanner=new Scanner(input);
+      while (scanner.hasNextLine()) {
+        output.println(scanner.nextLine());
+      }
+    }
+  }
+).start();
+}
