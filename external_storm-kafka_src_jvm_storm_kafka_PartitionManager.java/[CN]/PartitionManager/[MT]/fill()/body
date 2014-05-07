@@ -1,0 +1,22 @@
+{
+  long start=System.nanoTime();
+  ByteBufferMessageSet msgs=KafkaUtils.fetchMessages(_spoutConfig,_consumer,_partition,_emittedToOffset);
+  long end=System.nanoTime();
+  long millis=(end - start) / 1000000;
+  _fetchAPILatencyMax.update(millis);
+  _fetchAPILatencyMean.update(millis);
+  _fetchAPICallCount.incr();
+  int numMessages=countMessages(msgs);
+  _fetchAPIMessageCount.incrBy(numMessages);
+  if (numMessages > 0) {
+    LOG.info("Fetched " + numMessages + " messages from: "+ _partition);
+  }
+  for (  MessageAndOffset msg : msgs) {
+    _pending.add(_emittedToOffset);
+    _waitingToEmit.add(new MessageAndRealOffset(msg.message(),_emittedToOffset));
+    _emittedToOffset=msg.nextOffset();
+  }
+  if (numMessages > 0) {
+    LOG.info("Added " + numMessages + " messages from: "+ _partition+ " to internal buffers");
+  }
+}

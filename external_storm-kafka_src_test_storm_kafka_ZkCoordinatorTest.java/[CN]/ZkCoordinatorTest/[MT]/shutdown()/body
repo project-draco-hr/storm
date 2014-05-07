@@ -1,0 +1,5 @@
+{
+  simpleConsumer.close();
+  broker.shutdown();
+  server.close();
+}

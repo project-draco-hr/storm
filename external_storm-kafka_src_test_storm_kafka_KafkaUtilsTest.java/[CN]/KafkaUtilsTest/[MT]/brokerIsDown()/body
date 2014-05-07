@@ -1,0 +1,11 @@
+{
+  int port=broker.getPort();
+  broker.shutdown();
+  SimpleConsumer simpleConsumer=new SimpleConsumer("localhost",port,100,1024,"testClient");
+  try {
+    KafkaUtils.fetchMessages(config,simpleConsumer,new Partition(Broker.fromString(broker.getBrokerConnectionString()),0),OffsetRequest.LatestTime());
+  }
+  finally {
+    simpleConsumer.close();
+  }
+}

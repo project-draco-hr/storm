@@ -1,0 +1,9 @@
+{
+  long currTime=System.currentTimeMillis();
+  if (currTime > lastRefreshTimeMs + refreshMillis) {
+    LOG.info("brokers need refreshing because " + refreshMillis + "ms have expired");
+    cachedBrokers=reader.getBrokerInfo();
+    lastRefreshTimeMs=currTime;
+  }
+  return cachedBrokers;
+}

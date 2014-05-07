@@ -1,0 +1,8 @@
+{
+  if (_pending.isEmpty()) {
+    return _emittedToOffset;
+  }
+ else {
+    return _pending.first();
+  }
+}

@@ -1,0 +1,10 @@
+{
+  if (this == obj) {
+    return true;
+  }
+  if (obj == null || getClass() != obj.getClass()) {
+    return false;
+  }
+  final GlobalPartitionInformation other=(GlobalPartitionInformation)obj;
+  return Objects.equal(this.partitionMap,other.partitionMap);
+}

@@ -1,0 +1,4 @@
+{
+  ZKPaths.mkdirs(zookeeper.getZookeeperClient().getZooKeeper(),path);
+  zookeeper.setData().forPath(path,data.getBytes());
+}
