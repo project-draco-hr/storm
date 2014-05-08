@@ -11,7 +11,9 @@
     }
     @Override public void onScrubGeo(    long l,    long l1){
     }
-    @Override public void onException(    Exception e){
+    @Override public void onException(    Exception ex){
+    }
+    @Override public void onStallWarning(    StallWarning arg0){
     }
   }
 ;
