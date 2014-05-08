@@ -39,7 +39,7 @@
       }
     }
   }
-);
+,"netty-client-flush-checker");
   flushChecker.setDaemon(true);
   flushChecker.start();
 }
