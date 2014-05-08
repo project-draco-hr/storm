@@ -3,6 +3,7 @@
   String consumerSecret=args[1];
   String accessToken=args[2];
   String accessTokenSecret=args[3];
+  String[] arguments=args.clone();
   String[] keyWords=Arrays.copyOfRange(arguments,4,arguments.length);
   TopologyBuilder builder=new TopologyBuilder();
   builder.setSpout("spoutId",new TwitterSampleSpout(consumerKey,consumerSecret,accessToken,accessTokenSecret,keyWords));
