@@ -1,4 +1,0 @@
-{
-  redirectStreamAsync(process.getInputStream(),System.out);
-  redirectStreamAsync(process.getErrorStream(),System.err);
-}
