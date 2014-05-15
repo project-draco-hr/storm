@@ -1,0 +1,2 @@
+def getPull(self):
+    return self.githubPull

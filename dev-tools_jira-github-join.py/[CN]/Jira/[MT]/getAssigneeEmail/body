@@ -1,0 +1,6 @@
+def getAssigneeEmail(self):
+    ret = ''
+    mid = self.fields['assignee']
+    if (mid != None):
+        ret = mid['emailAddress']
+    return mstr(ret)
