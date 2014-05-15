@@ -1,25 +1,3 @@
 {
-  if (localJar == null) {
-    throw new RuntimeException("Must submit topologies using the 'storm' client script so that StormSubmitter knows which jar to upload.");
-  }
-  NimbusClient client=NimbusClient.getConfiguredClient(conf);
-  try {
-    String uploadLocation=client.getClient().beginFileUpload();
-    LOG.info("Uploading topology jar " + localJar + " to assigned location: "+ uploadLocation);
-    BufferFileInputStream is=new BufferFileInputStream(localJar,THRIFT_CHUNK_SIZE_BYTES);
-    while (true) {
-      byte[] toSubmit=is.read();
-      if (toSubmit.length == 0)       break;
-      client.getClient().uploadChunk(uploadLocation,ByteBuffer.wrap(toSubmit));
-    }
-    client.getClient().finishFileUpload(uploadLocation);
-    LOG.info("Successfully uploaded topology jar to assigned location: " + uploadLocation);
-    return uploadLocation;
-  }
- catch (  Exception e) {
-    throw new RuntimeException(e);
-  }
- finally {
-    client.close();
-  }
+  return submitJar(conf,localJar,null);
 }
