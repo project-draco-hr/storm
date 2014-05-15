@@ -1,8 +1,8 @@
 {
-  if (spoutMsg == null) {
-    spoutMsg=new SpoutMsg();
+  if (_spoutMsg == null) {
+    _spoutMsg=new SpoutMsg();
   }
-  spoutMsg.setCommand("next");
-  spoutMsg.setId("");
+  _spoutMsg.setCommand("next");
+  _spoutMsg.setId("");
   querySubprocess();
 }

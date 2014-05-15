@@ -1,6 +1,6 @@
 {
   try {
-    _process.writeSpoutMsg(spoutMsg);
+    _process.writeSpoutMsg(_spoutMsg);
     while (true) {
       ShellMsg shellMsg=_process.readShellMsg();
       String command=shellMsg.getCommand();
