@@ -1,0 +1,3 @@
+{
+  new Monitor().realMain(args);
+}

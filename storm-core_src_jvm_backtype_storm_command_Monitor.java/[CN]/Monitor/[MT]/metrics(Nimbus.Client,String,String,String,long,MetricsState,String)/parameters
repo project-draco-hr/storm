@@ -1,0 +1,7 @@
+Nimbus.Client client
+String name
+String component
+String stat
+long now
+MetricsState state
+String message

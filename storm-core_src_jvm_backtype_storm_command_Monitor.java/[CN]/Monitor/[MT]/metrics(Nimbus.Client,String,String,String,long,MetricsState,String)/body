@@ -1,0 +1,50 @@
+{
+  long totalStatted=0;
+  boolean topologyFound=false;
+  boolean componentFound=false;
+  int slotsUsed=0;
+  int executors=0;
+  int executorsWithMetrics=0;
+  ClusterSummary summary=client.getClusterInfo();
+  for (  TopologySummary ts : summary.get_topologies()) {
+    if (name.equals(ts.get_name())) {
+      topologyFound=true;
+      slotsUsed=ts.get_num_workers();
+      String id=ts.get_id();
+      TopologyInfo info=client.getTopologyInfo(id);
+      for (      ExecutorSummary es : info.get_executors()) {
+        if (component.equals(es.get_component_id())) {
+          componentFound=true;
+          executors++;
+          ExecutorStats stats=es.get_stats();
+          if (stats != null) {
+            Map<String,Map<String,Long>> statted="emitted".equals(stat) ? stats.get_emitted() : stats.get_transferred();
+            if (statted != null) {
+              Map<String,Long> e2=statted.get(":all-time");
+              if (e2 != null) {
+                executorsWithMetrics++;
+                Long dflt=e2.get("default");
+                if (dflt != null) {
+                  totalStatted+=dflt;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (!topologyFound) {
+    throw new IllegalArgumentException("topology: " + name + " not found");
+  }
+  if (!componentFound) {
+    throw new IllegalArgumentException("component: " + component + " not fouond");
+  }
+  long timeDelta=now - state.lastTime;
+  long stattedDelta=totalStatted - state.lastStatted;
+  state.lastTime=now;
+  state.lastStatted=totalStatted;
+  double throughput=(stattedDelta == 0 || timeDelta == 0) ? 0.0 : ((double)stattedDelta / (double)timeDelta);
+  System.out.println(message + "\t" + name+ "\t"+ slotsUsed+ "\t"+ component+ "\t"+ executors+ "\t"+ executorsWithMetrics+ "\t"+ timeDelta+ "\t"+ stattedDelta+ "\t"+ throughput);
+  return !(executors > 0 && executorsWithMetrics >= executors);
+}
