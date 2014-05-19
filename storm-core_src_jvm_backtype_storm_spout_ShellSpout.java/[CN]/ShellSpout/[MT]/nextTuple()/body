@@ -1,7 +1,8 @@
 {
-  if (_next == null) {
-    _next=new JSONObject();
-    _next.put("command","next");
+  if (_spoutMsg == null) {
+    _spoutMsg=new SpoutMsg();
   }
-  querySubprocess(_next);
+  _spoutMsg.setCommand("next");
+  _spoutMsg.setId("");
+  querySubprocess();
 }

@@ -1,8 +1,8 @@
 {
-  if (_ack == null) {
-    _ack=new JSONObject();
-    _ack.put("command","ack");
+  if (_spoutMsg == null) {
+    _spoutMsg=new SpoutMsg();
   }
-  _ack.put("id",msgId);
-  querySubprocess(_ack);
+  _spoutMsg.setCommand("ack");
+  _spoutMsg.setId(msgId);
+  querySubprocess();
 }

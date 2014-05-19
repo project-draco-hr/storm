@@ -1,0 +1,6 @@
+{
+  if (anchors == null) {
+    anchors=new ArrayList<String>();
+  }
+  this.anchors.add(anchor);
+}

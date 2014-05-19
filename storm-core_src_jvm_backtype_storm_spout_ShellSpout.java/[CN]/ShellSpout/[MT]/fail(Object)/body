@@ -1,8 +1,8 @@
 {
-  if (_fail == null) {
-    _fail=new JSONObject();
-    _fail.put("command","fail");
+  if (_spoutMsg == null) {
+    _spoutMsg=new SpoutMsg();
   }
-  _fail.put("id",msgId);
-  querySubprocess(_fail);
+  _spoutMsg.setCommand("fail");
+  _spoutMsg.setId(msgId);
+  querySubprocess();
 }
