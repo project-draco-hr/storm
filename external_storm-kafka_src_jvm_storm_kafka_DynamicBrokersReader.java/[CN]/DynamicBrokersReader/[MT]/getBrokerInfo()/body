@@ -16,7 +16,10 @@
       }
     }
   }
- catch (  Exception e) {
+ catch (  SocketTimeoutException e) {
+    throw e;
+  }
+catch (  Exception e) {
     throw new RuntimeException(e);
   }
   LOG.info("Read partition info from zookeeper: " + globalPartitionInformation);
