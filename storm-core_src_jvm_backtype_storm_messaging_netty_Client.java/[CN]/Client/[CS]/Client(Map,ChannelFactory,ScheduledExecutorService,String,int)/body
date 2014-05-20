@@ -1,5 +1,6 @@
 {
   this.factory=factory;
+  this.scheduler=scheduler;
   channelRef=new AtomicReference<Channel>(null);
   closing=false;
   pendings=new AtomicLong(0);
@@ -17,9 +18,14 @@
   bootstrap.setOption("keepAlive",true);
   bootstrap.setPipelineFactory(new StormClientPipelineFactory(this));
   remote_addr=new InetSocketAddress(host,port);
-  Thread flushChecker=new Thread(new Runnable(){
+  scheduler.execute(new Runnable(){
     @Override public void run(){
       connect();
+    }
+  }
+);
+  Runnable flusher=new Runnable(){
+    @Override public void run(){
       while (!closing) {
         long flushCheckTime=flushCheckTimer.get();
         long now=System.currentTimeMillis();
@@ -29,16 +35,10 @@
             flush(channel);
           }
         }
-        try {
-          Thread.sleep(flushCheckInterval);
-        }
- catch (        InterruptedException e) {
-          break;
-        }
       }
     }
   }
-,name() + "-flush-checker");
-  flushChecker.setDaemon(true);
-  flushChecker.start();
+;
+  long initialDelay=Math.min(30L * 1000,max_sleep_ms * max_retries);
+  scheduler.scheduleWithFixedDelay(flusher,initialDelay,flushCheckInterval,TimeUnit.MILLISECONDS);
 }
