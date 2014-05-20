@@ -1,6 +1,0 @@
-{
-  if (queueCount > 1) {
-    throw new RuntimeException("Use recv(int flags, int clientId) instead, as we have worker.receiver.thread.count=" + queueCount + " receive threads, clientId should be 0 <= clientId < "+ queueCount);
-  }
-  return recv(flags,0);
-}

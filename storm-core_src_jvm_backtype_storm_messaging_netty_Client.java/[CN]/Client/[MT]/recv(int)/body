@@ -1,3 +1,0 @@
-{
-  throw new RuntimeException("Client connection should not receive any messages");
-}
