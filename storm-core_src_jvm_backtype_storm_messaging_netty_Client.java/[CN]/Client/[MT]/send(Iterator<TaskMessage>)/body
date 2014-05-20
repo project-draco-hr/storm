@@ -18,7 +18,7 @@
     messageBatch.add(message);
     if (messageBatch.isFull()) {
       MessageBatch toBeFlushed=messageBatch;
-      flushRequest(channel,toBeFlushed,blocking);
+      flushRequest(channel,toBeFlushed);
       messageBatch=null;
     }
   }
@@ -27,7 +27,7 @@
       flushCheckTimer.set(Long.MAX_VALUE);
       MessageBatch toBeFlushed=messageBatch;
       messageBatch=null;
-      flushRequest(channel,toBeFlushed,blocking);
+      flushRequest(channel,toBeFlushed);
     }
  else {
       flushCheckTimer.set(System.currentTimeMillis() + flushCheckInterval);

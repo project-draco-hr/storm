@@ -9,7 +9,6 @@
   base_sleep_ms=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_MIN_SLEEP_MS));
   max_sleep_ms=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_MAX_SLEEP_MS));
   this.messageBatchSize=Utils.getInt(storm_conf.get(Config.STORM_NETTY_MESSAGE_BATCH_SIZE),262144);
-  blocking=Utils.getBoolean(storm_conf.get(Config.STORM_NETTY_BLOCKING),false);
   flushCheckInterval=Utils.getInt(storm_conf.get(Config.STORM_NETTY_FLUSH_CHECK_INTERVAL_MS),10);
   LOG.info("New Netty Client, connect to " + host + ", "+ port+ ", config: "+ ", buffer_size: "+ buffer_size);
   bootstrap=new ClientBootstrap(factory);

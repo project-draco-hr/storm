@@ -5,7 +5,7 @@
       Channel channel=channelRef.get();
       if (channel != null) {
         flushCheckTimer.set(Long.MAX_VALUE);
-        flushRequest(channel,toBeFlushed,true);
+        flushRequest(channel,toBeFlushed);
       }
       messageBatch=null;
     }

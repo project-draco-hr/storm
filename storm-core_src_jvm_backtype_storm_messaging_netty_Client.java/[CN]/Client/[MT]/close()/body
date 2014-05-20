@@ -5,7 +5,7 @@
       MessageBatch toBeFlushed=messageBatch;
       Channel channel=channelRef.get();
       if (channel != null) {
-        flushRequest(channel,toBeFlushed,true);
+        flushRequest(channel,toBeFlushed);
       }
       messageBatch=null;
     }
