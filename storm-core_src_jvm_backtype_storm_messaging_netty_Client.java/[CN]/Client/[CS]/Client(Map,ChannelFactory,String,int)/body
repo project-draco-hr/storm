@@ -26,7 +26,7 @@
         if (now > flushCheckTime) {
           Channel channel=channelRef.get();
           if (null != channel && channel.isWritable()) {
-            flush();
+            flush(channel);
           }
         }
         try {
