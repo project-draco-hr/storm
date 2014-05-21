@@ -1,0 +1,19 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('uploadNewCredentials_result')
+    if (self.e is not None):
+        oprot.writeFieldBegin('e', TType.STRUCT, 1)
+        self.e.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.ite is not None):
+        oprot.writeFieldBegin('ite', TType.STRUCT, 2)
+        self.ite.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.aze is not None):
+        oprot.writeFieldBegin('aze', TType.STRUCT, 3)
+        self.aze.write(oprot)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

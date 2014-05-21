@@ -3,7 +3,10 @@ def process_downloadChunk(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = downloadChunk_result()
-    result.success = self._handler.downloadChunk(args.id)
+    try:
+        result.success = self._handler.downloadChunk(args.id)
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('downloadChunk', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

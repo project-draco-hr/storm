@@ -1,0 +1,14 @@
+{
+  if (_freeSlots.contains(ws))   return;
+  for (  Entry<String,Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
+    Set<WorkerSlot> slots=entry.getValue();
+    if (slots.remove(ws)) {
+      cluster.freeSlot(ws);
+      if (_isAlive) {
+        _freeSlots.add(ws);
+      }
+      return;
+    }
+  }
+  throw new IllegalArgumentException("Tried to free a slot that was not" + " part of this node " + _nodeId);
+}

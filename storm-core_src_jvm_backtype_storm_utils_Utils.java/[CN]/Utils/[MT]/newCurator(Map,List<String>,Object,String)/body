@@ -1,3 +1,0 @@
-{
-  return newCurator(conf,servers,port,root,null);
-}

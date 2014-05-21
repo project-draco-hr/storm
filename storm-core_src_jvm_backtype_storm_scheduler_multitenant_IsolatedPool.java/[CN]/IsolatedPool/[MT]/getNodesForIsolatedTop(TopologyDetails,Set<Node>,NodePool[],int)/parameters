@@ -1,0 +1,4 @@
+TopologyDetails td
+Set<Node> allNodes
+NodePool[] lesserPools
+int nodesRequested

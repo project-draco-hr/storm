@@ -7,6 +7,8 @@ def process_killTopology(self, seqid, iprot, oprot):
         self._handler.killTopology(args.name)
     except NotAliveException as e:
         result.e = e
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('killTopology', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

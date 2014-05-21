@@ -12,4 +12,6 @@ def recv_getTopologyConf(self):
         return result.success
     if (result.e is not None):
         raise result.e
+    if (result.aze is not None):
+        raise result.aze
     raise TApplicationException(TApplicationException.MISSING_RESULT, 'getTopologyConf failed: unknown result')

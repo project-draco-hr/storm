@@ -1,5 +1,10 @@
 {
   fetchRequest_result result=new fetchRequest_result();
-  result.success=iface.fetchRequest(args.functionName);
+  try {
+    result.success=iface.fetchRequest(args.functionName);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
   return result;
 }

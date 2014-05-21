@@ -1,0 +1,4 @@
+{
+  _retryTimes=retryTimes;
+  waitGrabber=new BoundedExponentialBackoffRetry(retryInterval,retryTimes,retryIntervalCeiling);
+}

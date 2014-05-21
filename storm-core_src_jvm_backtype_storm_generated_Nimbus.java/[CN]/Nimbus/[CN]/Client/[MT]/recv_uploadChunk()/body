@@ -1,5 +1,8 @@
 {
   uploadChunk_result result=new uploadChunk_result();
   receiveBase(result,"uploadChunk");
+  if (result.aze != null) {
+    throw result.aze;
+  }
   return;
 }

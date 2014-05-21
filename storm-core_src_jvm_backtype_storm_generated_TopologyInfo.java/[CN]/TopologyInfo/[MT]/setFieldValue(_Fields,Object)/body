@@ -48,5 +48,21 @@ unset_errors();
 set_errors((Map<String,List<ErrorInfo>>)value);
 }
 break;
+case SCHED_STATUS:
+if (value == null) {
+unset_sched_status();
+}
+ else {
+set_sched_status((String)value);
+}
+break;
+case OWNER:
+if (value == null) {
+unset_owner();
+}
+ else {
+set_owner((String)value);
+}
+break;
 }
 }

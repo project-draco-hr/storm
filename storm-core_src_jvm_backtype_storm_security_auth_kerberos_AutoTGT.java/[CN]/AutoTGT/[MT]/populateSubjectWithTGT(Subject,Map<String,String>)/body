@@ -1,0 +1,15 @@
+{
+  KerberosTicket tgt=getTGT(credentials);
+  if (tgt != null) {
+    KerberosTicket oldTGT=getTGT(subject);
+    subject.getPrivateCredentials().add(tgt);
+    if (oldTGT != null && !oldTGT.equals(tgt)) {
+      subject.getPrivateCredentials().remove(oldTGT);
+    }
+    subject.getPrincipals().add(tgt.getClient());
+    kerbTicket.set(tgt);
+  }
+ else {
+    LOG.info("No TGT found in credentials");
+  }
+}

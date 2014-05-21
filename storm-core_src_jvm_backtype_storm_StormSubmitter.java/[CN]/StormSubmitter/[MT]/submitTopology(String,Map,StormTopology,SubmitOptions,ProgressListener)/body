@@ -6,25 +6,45 @@
   stormConf.putAll(Utils.readCommandLineOpts());
   Map conf=Utils.readStormConfig();
   conf.putAll(stormConf);
+  stormConf.putAll(prepareZookeeperAuthentication(conf));
+  Map<String,String> passedCreds=new HashMap<String,String>();
+  if (opts != null) {
+    Credentials tmpCreds=opts.get_creds();
+    if (tmpCreds != null) {
+      passedCreds=tmpCreds.get_creds();
+    }
+  }
+  Map<String,String> fullCreds=populateCredentials(conf,passedCreds);
+  if (!fullCreds.isEmpty()) {
+    if (opts == null) {
+      opts=new SubmitOptions(TopologyInitialStatus.ACTIVE);
+    }
+    opts.set_creds(new Credentials(fullCreds));
+  }
   try {
-    String serConf=JSONValue.toJSONString(stormConf);
     if (localNimbus != null) {
       LOG.info("Submitting topology " + name + " in local mode");
-      localNimbus.submitTopology(name,null,serConf,topology);
+      if (opts != null) {
+        localNimbus.submitTopologyWithOpts(name,stormConf,topology,opts);
+      }
+ else {
+        localNimbus.submitTopology(name,stormConf,topology);
+      }
     }
  else {
+      String serConf=JSONValue.toJSONString(stormConf);
       NimbusClient client=NimbusClient.getConfiguredClient(conf);
       if (topologyNameExists(conf,name)) {
         throw new RuntimeException("Topology with name `" + name + "` already exists on cluster");
       }
-      submitJar(conf,progressListener);
+      String jar=submitJar(conf,progressListener);
       try {
         LOG.info("Submitting topology " + name + " in distributed mode with conf "+ serConf);
         if (opts != null) {
-          client.getClient().submitTopologyWithOpts(name,submittedJar,serConf,topology,opts);
+          client.getClient().submitTopologyWithOpts(name,jar,serConf,topology,opts);
         }
  else {
-          client.getClient().submitTopology(name,submittedJar,serConf,topology);
+          client.getClient().submitTopology(name,jar,serConf,topology);
         }
       }
  catch (      InvalidTopologyException e) {

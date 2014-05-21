@@ -1,5 +1,0 @@
-{
-  conn=new TFramedTransport(new TSocket(host,port));
-  client=new DistributedRPCInvocations.Client(new TBinaryProtocol(conn));
-  conn.open();
-}

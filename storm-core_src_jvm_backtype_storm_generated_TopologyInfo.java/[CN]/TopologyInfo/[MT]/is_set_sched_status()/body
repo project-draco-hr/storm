@@ -1,0 +1,3 @@
+{
+  return this.sched_status != null;
+}

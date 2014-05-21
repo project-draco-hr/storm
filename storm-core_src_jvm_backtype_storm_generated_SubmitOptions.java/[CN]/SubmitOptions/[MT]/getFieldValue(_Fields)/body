@@ -2,6 +2,8 @@
 switch (field) {
 case INITIAL_STATUS:
     return get_initial_status();
+case CREDS:
+  return get_creds();
 }
 throw new IllegalStateException();
 }
