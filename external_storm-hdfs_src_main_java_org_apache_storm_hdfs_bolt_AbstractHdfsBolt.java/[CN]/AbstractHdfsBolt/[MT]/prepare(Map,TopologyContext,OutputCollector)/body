@@ -1,0 +1,24 @@
+{
+  if (this.syncPolicy == null)   throw new IllegalStateException("SyncPolicy must be specified.");
+  if (this.rotationPolicy == null)   throw new IllegalStateException("RotationPolicy must be specified.");
+  if (this.fsUrl == null) {
+    throw new IllegalStateException("File system URL must be specified.");
+  }
+  this.collector=collector;
+  this.fileNameFormat.prepare(conf,topologyContext);
+  this.hdfsConfig=new Configuration();
+  Map<String,Object> map=(Map<String,Object>)conf.get(this.configKey);
+  if (map != null) {
+    for (    String key : map.keySet()) {
+      this.hdfsConfig.set(key,String.valueOf(map.get(key)));
+    }
+  }
+  try {
+    HdfsSecurityUtil.login(conf,hdfsConfig);
+    doPrepare(conf,topologyContext,collector);
+    this.currentFile=createOutputFile();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Error preparing HdfsBolt: " + e.getMessage(),e);
+  }
+}

@@ -1,0 +1,4 @@
+{
+  this.out.hsync();
+  this.out.close();
+}

@@ -1,0 +1,4 @@
+{
+  this.keyField=keyField;
+  this.valueField=valueField;
+}

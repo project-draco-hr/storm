@@ -1,0 +1,22 @@
+{
+  if (this.rotationPolicy == null)   throw new IllegalStateException("RotationPolicy must be specified.");
+  if (this.fsUrl == null) {
+    throw new IllegalStateException("File system URL must be specified.");
+  }
+  this.fileNameFormat.prepare(conf,partitionIndex,numPartitions);
+  this.hdfsConfig=new Configuration();
+  Map<String,Object> map=(Map<String,Object>)conf.get(this.configKey);
+  if (map != null) {
+    for (    String key : map.keySet()) {
+      this.hdfsConfig.set(key,String.valueOf(map.get(key)));
+    }
+  }
+  try {
+    HdfsSecurityUtil.login(conf,hdfsConfig);
+    doPrepare(conf,partitionIndex,numPartitions);
+    this.currentFile=createOutputFile();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Error preparing HdfsState: " + e.getMessage(),e);
+  }
+}
