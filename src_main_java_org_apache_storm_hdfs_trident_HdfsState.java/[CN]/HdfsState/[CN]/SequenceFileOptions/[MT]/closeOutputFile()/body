@@ -1,4 +1,3 @@
 {
-  this.writer.hsync();
   this.writer.close();
 }
