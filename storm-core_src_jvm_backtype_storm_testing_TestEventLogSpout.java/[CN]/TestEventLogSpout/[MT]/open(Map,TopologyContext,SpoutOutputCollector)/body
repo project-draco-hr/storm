@@ -1,0 +1,6 @@
+{
+  _collector=collector;
+  this.source=context.getThisTaskId();
+  long taskCount=context.getComponentTasks(context.getThisComponentId()).size();
+  myCount=totalCount / taskCount;
+}

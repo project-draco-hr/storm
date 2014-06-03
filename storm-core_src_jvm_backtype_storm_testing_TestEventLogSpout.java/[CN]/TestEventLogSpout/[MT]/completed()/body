@@ -1,0 +1,7 @@
+{
+  Long totalEmitted=totalEmitCount.get(uid).get();
+  if (totalEmitted >= totalCount) {
+    return true;
+  }
+  return false;
+}

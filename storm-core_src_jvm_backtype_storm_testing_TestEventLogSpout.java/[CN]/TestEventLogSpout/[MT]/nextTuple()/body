@@ -1,0 +1,7 @@
+{
+  if (eventId < myCount) {
+    eventId++;
+    _collector.emit(new Values(source,eventId),eventId);
+    totalEmitCount.get(uid).incrementAndGet();
+  }
+}
