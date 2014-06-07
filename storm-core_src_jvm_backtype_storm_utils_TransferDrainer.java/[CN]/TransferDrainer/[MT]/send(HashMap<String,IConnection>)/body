@@ -1,0 +1,12 @@
+{
+  for (  String hostPort : bundles.keySet()) {
+    IConnection connection=connections.get(hostPort);
+    if (null != connection) {
+      ArrayList<ArrayList<TaskMessage>> bundle=bundles.get(hostPort);
+      Iterator<TaskMessage> iter=getBundleIterator(bundle);
+      if (null != iter) {
+        connection.send(iter);
+      }
+    }
+  }
+}

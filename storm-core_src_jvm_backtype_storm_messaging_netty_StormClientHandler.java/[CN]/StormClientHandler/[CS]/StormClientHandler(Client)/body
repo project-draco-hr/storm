@@ -1,4 +1,0 @@
-{
-  this.client=client;
-  start_time=System.currentTimeMillis();
-}

@@ -1,0 +1,9 @@
+{
+  this.uid=UUID.randomUUID().toString();
+  this.totalCount=totalCount;
+synchronized (totalEmitCount) {
+    if (null == totalEmitCount.get(uid)) {
+      totalEmitCount.put(uid,new AtomicLong(0));
+    }
+  }
+}
