@@ -1,5 +1,13 @@
 {
-  Long totalEmitted=totalEmitCount.get(uid).get();
+  int ackedAmt;
+  int failedAmt;
+synchronized (acked) {
+    ackedAmt=acked.get(uid);
+  }
+synchronized (failed) {
+    failedAmt=failed.get(uid);
+  }
+  int totalEmitted=ackedAmt + failedAmt;
   if (totalEmitted >= totalCount) {
     return true;
   }
