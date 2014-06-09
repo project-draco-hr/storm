@@ -1,10 +1,10 @@
-def openJiras(self, project):
+def query(self, query):
     jiras = {}
     at = 0
     end = 1
     count = 100
     while (at < end):
-        params = urllib.urlencode({'jql': (('project = ' + project) + ' AND resolution = Unresolved'), 'startAt': at, 'maxResults': count, })
+        params = urllib.urlencode({'jql': query, 'startAt': at, 'maxResults': count, })
         resp = urllib2.urlopen((self.baseUrl + ('/search?%s' % params)))
         data = json.loads(resp.read())
         if data.has_key('errorMessages'):

@@ -22,15 +22,16 @@ def main():
                 jira2Pulls[jiraNum].append(pull)
         else:
             pullWithoutJira.append(pull)
+    now = datetime.utcnow()
     print 'Pull requests that need a JIRA:'
     for pull in pullWithoutJira:
-        print ('%s\t%s' % (pull.html_url(), pull.title())).encode('UTF-8')
+        print ('%s\t%s\t%s\t%s' % (pull.html_url(), pull.title(), daydiff(now, pull.created_at()), daydiff(now, pull.updated_at()))).encode('UTF-8')
     print '\nPull with bad JIRA:'
     for pull in pullWithBadJira:
-        print ('%s\t%s' % (pull.html_url(), pull.title())).encode('UTF-8')
+        print ('%s\t%s\t%s\t%s' % (pull.html_url(), pull.title(), daydiff(now, pull.created_at()), daydiff(now, pull.updated_at()))).encode('UTF-8')
     print '\nOpen JIRA to Pull Requests and Votes:'
     for (key, value) in jira2Pulls.items():
-        print ('%s\t%s\t%s' % (key, mstr(value), openJiras[key].getSummary())).encode('UTF-8')
+        print ('%s\t%s\t%s\t%s\t%s' % (key, mstr(value), openJiras[key].getSummary(), daydiff(now, openJiras[key].getCreated()), daydiff(now, value[0].created_at()))).encode('UTF-8')
         for comment in openJiras[key].getComments():
             if comment.hasVote():
-                print ('\t%s\t%s\t%s' % (comment.getVote(), comment.getAuthor(), comment.getPull())).encode('UTF-8')
+                print ('\t%s\t%s\t%s\t%s' % (comment.getVote(), comment.getAuthor(), comment.getPull(), daydiff(now, comment.getCreated()))).encode('UTF-8')

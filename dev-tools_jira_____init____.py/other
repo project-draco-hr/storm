@@ -1,0 +1,12 @@
+import re
+import urllib
+import urllib2
+from datetime import datetime
+try:
+    import json
+except ImportError:
+    import simplejson as json
+githubUser = re.compile('Git[Hh]ub user (\\w+)')
+githubPull = re.compile('https://github.com/[^/\\s]+/[^/\\s]+/pull/[0-9]+')
+hasVote = re.compile('\\s+([-+][01])\\s*')
+isDiff = re.compile('--- End diff --')

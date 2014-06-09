@@ -1,18 +1,7 @@
-import getpass
-import base64
+from jira import JiraRepo
+from github import GitHub, mstr
 import re
-import sys
 from optparse import OptionParser
-import httplib
-import urllib
-import urllib2
-try:
-    import json
-except ImportError:
-    import simplejson as json
-githubUser = re.compile('Git[Hh]ub user (\\w+)')
-githubPull = re.compile('https://github.com/[^/\\s]+/[^/\\s]+/pull/[0-9]+')
-hasVote = re.compile('\\s+([-+][01])\\s*')
-isDiff = re.compile('--- End diff --')
+from datetime import datetime
 if (__name__ == '__main__'):
     main()

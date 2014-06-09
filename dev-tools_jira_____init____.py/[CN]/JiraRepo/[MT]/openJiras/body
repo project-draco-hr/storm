@@ -1,0 +1,2 @@
+def openJiras(self, project):
+    return self.query((('project = ' + project) + ' AND resolution = Unresolved'))
