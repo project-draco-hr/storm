@@ -1,2 +1,6 @@
 {
+synchronized (failed) {
+    int curr=get(failed,uid,0);
+    failed.put(uid,curr + 1);
+  }
 }
