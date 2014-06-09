@@ -1,2 +1,2 @@
-int task
-byte[] message
+int taskId
+byte[] payload

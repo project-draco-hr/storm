@@ -1,3 +1,0 @@
-ProducerType producerType
-int bufferSize
-WaitStrategy wait

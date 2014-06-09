@@ -1,0 +1,25 @@
+{
+  if (closing) {
+    return closeMessage.iterator();
+  }
+  ArrayList<TaskMessage> ret=null;
+  int queueId=receiverId % queueCount;
+  if ((flags & 0x01) == 0x01) {
+    ret=message_queue[queueId].poll();
+  }
+ else {
+    try {
+      ArrayList<TaskMessage> request=message_queue[queueId].take();
+      LOG.debug("request to be processed: {}",request);
+      ret=request;
+    }
+ catch (    InterruptedException e) {
+      LOG.info("exception within msg receiving",e);
+      ret=null;
+    }
+  }
+  if (null != ret) {
+    return ret.iterator();
+  }
+  return null;
+}

@@ -1,0 +1,17 @@
+{
+  ArrayList<TaskMessage> messageGroups[]=new ArrayList[queueCount];
+  for (int i=0; i < msgs.size(); i++) {
+    TaskMessage message=msgs.get(i);
+    int task=message.task();
+    if (task == -1) {
+      closing=true;
+      return null;
+    }
+    Integer queueId=getMessageQueueId(task);
+    if (null == messageGroups[queueId]) {
+      messageGroups[queueId]=new ArrayList<TaskMessage>();
+    }
+    messageGroups[queueId].add(message);
+  }
+  return messageGroups;
+}

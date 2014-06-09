@@ -1,0 +1,8 @@
+{
+  _buffer=RingBuffer.create(producerType,new ObjectEventFactory(),bufferSize,wait);
+  _queueName=PREFIX + queueName;
+  _consumer=new Sequence();
+  _barrier=_buffer.newBarrier();
+  _buffer.addGatingSequences(_consumer);
+  consumerStartedFlag=producerType == ProducerType.SINGLE;
+}

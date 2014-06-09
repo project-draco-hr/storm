@@ -1,7 +1,0 @@
-{
-  Throwable cause=event.getCause();
-  if (!(cause instanceof ConnectException)) {
-    LOG.info("Connection to " + client.remote_addr + " failed:",cause);
-  }
-  client.reconnect();
-}
