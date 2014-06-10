@@ -1,5 +1,5 @@
 {
   consumerStartedFlag=true;
-  cacheWriteLock.lock();
-  cacheWriteLock.unlock();
+  writeLock.lock();
+  writeLock.unlock();
 }

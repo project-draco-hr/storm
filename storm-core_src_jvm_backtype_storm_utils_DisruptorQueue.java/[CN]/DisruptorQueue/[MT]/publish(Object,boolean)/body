@@ -1,7 +1,7 @@
 {
   boolean publishNow=consumerStartedFlag;
   if (!publishNow) {
-    cacheReadLock.lock();
+    readLock.lock();
     try {
       publishNow=consumerStartedFlag;
       if (!publishNow) {
@@ -9,7 +9,7 @@
       }
     }
   finally {
-      cacheReadLock.unlock();
+      readLock.unlock();
     }
   }
   if (publishNow) {
