@@ -1,18 +1,18 @@
 {
-  if (consumerStartedFlag) {
-    final long id;
-    if (block) {
-      id=_buffer.next();
+  boolean publishNow=consumerStartedFlag;
+  if (!publishNow) {
+    cacheReadLock.lock();
+    try {
+      publishNow=consumerStartedFlag;
+      if (!publishNow) {
+        _cache.add(obj);
+      }
     }
- else {
-      id=_buffer.tryNext(1);
+  finally {
+      cacheReadLock.unlock();
     }
-    final MutableObject m=_buffer.get(id);
-    m.setObject(obj);
-    _buffer.publish(id);
   }
- else {
-    _cache.add(obj);
-    if (consumerStartedFlag)     flushCache();
+  if (publishNow) {
+    publishDirect(obj,block);
   }
 }

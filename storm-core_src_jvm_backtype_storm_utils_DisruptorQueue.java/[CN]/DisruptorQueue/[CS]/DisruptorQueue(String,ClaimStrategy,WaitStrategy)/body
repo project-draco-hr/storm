@@ -7,4 +7,12 @@
   if (claim instanceof SingleThreadedClaimStrategy) {
     consumerStartedFlag=true;
   }
+ else {
+    try {
+      publishDirect(FLUSH_CACHE,true);
+    }
+ catch (    InsufficientCapacityException e) {
+      throw new RuntimeException("This code should be unreachable!");
+    }
+  }
 }
