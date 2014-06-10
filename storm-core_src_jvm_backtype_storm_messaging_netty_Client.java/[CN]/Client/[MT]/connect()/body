@@ -1,0 +1,38 @@
+{
+  try {
+    if (channelRef.get() != null) {
+      return;
+    }
+    Channel channel=null;
+    int tried=0;
+    while (tried <= max_retries) {
+      LOG.info("Reconnect started for {}... [{}]",name(),tried);
+      LOG.debug("connection started...");
+      ChannelFuture future=bootstrap.connect(remote_addr);
+      future.awaitUninterruptibly();
+      Channel current=future.getChannel();
+      if (!future.isSuccess()) {
+        if (null != current) {
+          current.close();
+        }
+      }
+ else {
+        channel=current;
+        break;
+      }
+      Thread.sleep(getSleepTimeMs(tried));
+      tried++;
+    }
+    if (null != channel) {
+      LOG.info("connection established to a remote host " + name() + ", "+ channel.toString());
+      channelRef.set(channel);
+    }
+ else {
+      close();
+      throw new RuntimeException("Remote address is not reachable. We will close this client " + name());
+    }
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException("connection failed " + name(),e);
+  }
+}

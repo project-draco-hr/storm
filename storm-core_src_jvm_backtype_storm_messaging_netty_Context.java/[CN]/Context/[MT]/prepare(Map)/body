@@ -2,10 +2,15 @@
   this.storm_conf=storm_conf;
   connections=new Vector<IConnection>();
   int maxWorkers=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_CLIENT_WORKER_THREADS));
+  ThreadFactory bossFactory=new NettyRenameThreadFactory("client" + "-boss");
+  ThreadFactory workerFactory=new NettyRenameThreadFactory("client" + "-worker");
   if (maxWorkers > 0) {
-    clientChannelFactory=new NioClientSocketChannelFactory(Executors.newCachedThreadPool(),Executors.newCachedThreadPool(),maxWorkers);
+    clientChannelFactory=new NioClientSocketChannelFactory(Executors.newCachedThreadPool(bossFactory),Executors.newCachedThreadPool(workerFactory),maxWorkers);
   }
  else {
-    clientChannelFactory=new NioClientSocketChannelFactory(Executors.newCachedThreadPool(),Executors.newCachedThreadPool());
+    clientChannelFactory=new NioClientSocketChannelFactory(Executors.newCachedThreadPool(bossFactory),Executors.newCachedThreadPool(workerFactory));
   }
+  int otherWorkers=Utils.getInt(storm_conf.get(Config.TOPOLOGY_WORKERS),1) - 1;
+  int poolSize=Math.min(Math.max(1,otherWorkers),MAX_CLIENT_SCHEDULER_THREAD_POOL_SIZE);
+  clientScheduleService=Executors.newScheduledThreadPool(poolSize,new NettyRenameThreadFactory("client-schedule-service"));
 }

@@ -1,0 +1,36 @@
+{
+  if (closing) {
+    throw new RuntimeException("Client is being closed, and does not take requests any more");
+  }
+  if (null == msgs || !msgs.hasNext()) {
+    return;
+  }
+  Channel channel=channelRef.get();
+  if (null == channel) {
+    connect();
+    channel=channelRef.get();
+  }
+  while (msgs.hasNext()) {
+    TaskMessage message=msgs.next();
+    if (null == messageBatch) {
+      messageBatch=new MessageBatch(messageBatchSize);
+    }
+    messageBatch.add(message);
+    if (messageBatch.isFull()) {
+      MessageBatch toBeFlushed=messageBatch;
+      flushRequest(channel,toBeFlushed);
+      messageBatch=null;
+    }
+  }
+  if (null != messageBatch && !messageBatch.isEmpty()) {
+    if (channel.isWritable()) {
+      flushCheckTimer.set(Long.MAX_VALUE);
+      MessageBatch toBeFlushed=messageBatch;
+      messageBatch=null;
+      flushRequest(channel,toBeFlushed);
+    }
+ else {
+      flushCheckTimer.set(System.currentTimeMillis() + flushCheckInterval);
+    }
+  }
+}

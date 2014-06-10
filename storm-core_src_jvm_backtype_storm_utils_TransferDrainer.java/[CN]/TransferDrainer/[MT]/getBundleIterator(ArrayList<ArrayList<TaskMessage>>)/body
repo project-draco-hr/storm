@@ -1,0 +1,41 @@
+{
+  if (null == bundle) {
+    return null;
+  }
+  return new Iterator<TaskMessage>(){
+    private int offset=0;
+    private int size=0;
+{
+      for (      ArrayList<TaskMessage> list : bundle) {
+        size+=list.size();
+      }
+    }
+    private int bundleOffset=0;
+    private Iterator<TaskMessage> iter=bundle.get(bundleOffset).iterator();
+    @Override public boolean hasNext(){
+      if (offset < size) {
+        return true;
+      }
+      return false;
+    }
+    @Override public TaskMessage next(){
+      TaskMessage msg=null;
+      if (iter.hasNext()) {
+        msg=iter.next();
+      }
+ else {
+        bundleOffset++;
+        iter=bundle.get(bundleOffset).iterator();
+        msg=iter.next();
+      }
+      if (null != msg) {
+        offset++;
+      }
+      return msg;
+    }
+    @Override public void remove(){
+      throw new RuntimeException("not supported");
+    }
+  }
+;
+}

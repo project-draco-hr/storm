@@ -1,6 +1,13 @@
 {
+  clientScheduleService.shutdown();
   for (  IConnection conn : connections) {
     conn.close();
+  }
+  try {
+    clientScheduleService.awaitTermination(30,TimeUnit.SECONDS);
+  }
+ catch (  InterruptedException e) {
+    LOG.error("Error when shutting down client scheduler",e);
   }
   connections=null;
   clientChannelFactory.releaseExternalResources();

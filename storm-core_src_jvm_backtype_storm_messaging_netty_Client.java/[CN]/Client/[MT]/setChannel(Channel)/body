@@ -1,7 +1,0 @@
-{
-  if (channel != null && channel.isOpen()) {
-    retries.set(0);
-  }
-  channelRef.set(channel);
-  if (channel != null)   retries.set(0);
-}
