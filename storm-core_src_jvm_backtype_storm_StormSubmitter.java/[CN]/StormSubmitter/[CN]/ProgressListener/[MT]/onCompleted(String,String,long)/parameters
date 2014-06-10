@@ -1,0 +1,3 @@
+String srcFile
+String targetFile
+long totalBytes

@@ -1,0 +1,4 @@
+{
+  serializer.writeSpoutMsg(msg);
+  logErrorStream();
+}

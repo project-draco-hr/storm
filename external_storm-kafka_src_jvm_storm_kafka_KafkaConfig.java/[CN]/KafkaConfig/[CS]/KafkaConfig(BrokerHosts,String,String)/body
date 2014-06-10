@@ -1,0 +1,5 @@
+{
+  this.hosts=hosts;
+  this.topic=topic;
+  this.clientId=clientId;
+}

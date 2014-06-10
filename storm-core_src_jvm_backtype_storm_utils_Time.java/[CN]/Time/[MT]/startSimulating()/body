@@ -1,5 +1,7 @@
 {
-  simulating.set(true);
-  simulatedCurrTimeMs=new AtomicLong(0);
-  threadSleepTimes=new ConcurrentHashMap<Thread,AtomicLong>();
+synchronized (sleepTimesLock) {
+    simulating.set(true);
+    simulatedCurrTimeMs=new AtomicLong(0);
+    threadSleepTimes=new ConcurrentHashMap<Thread,AtomicLong>();
+  }
 }

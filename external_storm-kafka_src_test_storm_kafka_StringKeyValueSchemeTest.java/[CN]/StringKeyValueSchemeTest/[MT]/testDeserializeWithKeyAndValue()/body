@@ -1,0 +1,3 @@
+{
+  assertEquals(Arrays.asList(ImmutableMap.of("key","test")),scheme.deserializeKeyAndValue("key".getBytes(),"test".getBytes()));
+}

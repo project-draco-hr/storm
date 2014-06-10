@@ -1,0 +1,9 @@
+{
+  KafkaBolt bolt=new KafkaBolt();
+  Properties props=new Properties();
+  props.put("metadata.broker.list",broker.getBrokerConnectionString());
+  props.put("request.required.acks","1");
+  config.put(KafkaBolt.KAFKA_BROKER_PROPERTIES,props);
+  bolt.prepare(config,null,new OutputCollector(collector));
+  return bolt;
+}

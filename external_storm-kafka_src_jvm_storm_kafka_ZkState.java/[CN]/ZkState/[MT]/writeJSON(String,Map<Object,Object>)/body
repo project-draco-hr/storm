@@ -1,0 +1,4 @@
+{
+  LOG.debug("Writing " + path + " the data "+ data.toString());
+  writeBytes(path,JSONValue.toJSONString(data).getBytes(Charset.forName("UTF-8")));
+}

@@ -1,0 +1,4 @@
+{
+  config.scheme=new KeyValueSchemeAsMultiScheme(new StringKeyValueScheme());
+  runGetValueOnlyTuplesTest();
+}

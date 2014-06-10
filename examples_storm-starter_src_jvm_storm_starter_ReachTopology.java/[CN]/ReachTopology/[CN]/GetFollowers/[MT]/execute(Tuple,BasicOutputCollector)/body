@@ -1,0 +1,10 @@
+{
+  Object id=tuple.getValue(0);
+  String tweeter=tuple.getString(1);
+  List<String> followers=FOLLOWERS_DB.get(tweeter);
+  if (followers != null) {
+    for (    String follower : followers) {
+      collector.emit(new Values(id,follower));
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  if (null == msgs || msgs.size() == 0 || closing) {
+    return;
+  }
+  ArrayList<TaskMessage> messageGroups[]=groupMessages(msgs);
+  if (null == messageGroups || closing) {
+    return;
+  }
+  for (int receiverId=0; receiverId < messageGroups.length; receiverId++) {
+    ArrayList<TaskMessage> msgGroup=messageGroups[receiverId];
+    if (null != msgGroup) {
+      message_queue[receiverId].put(msgGroup);
+    }
+  }
+}

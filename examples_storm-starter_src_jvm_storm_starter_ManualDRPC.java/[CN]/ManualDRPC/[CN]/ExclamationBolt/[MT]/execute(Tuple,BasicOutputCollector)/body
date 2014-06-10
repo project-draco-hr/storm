@@ -1,0 +1,5 @@
+{
+  String arg=tuple.getString(0);
+  Object retInfo=tuple.getValue(1);
+  collector.emit(new Values(arg + "!!!",retInfo));
+}

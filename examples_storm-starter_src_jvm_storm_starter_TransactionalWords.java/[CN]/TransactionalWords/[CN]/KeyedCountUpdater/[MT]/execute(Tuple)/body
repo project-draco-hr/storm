@@ -1,0 +1,6 @@
+{
+  String key=tuple.getString(1);
+  Integer curr=_counts.get(key);
+  if (curr == null)   curr=0;
+  _counts.put(key,curr + 1);
+}

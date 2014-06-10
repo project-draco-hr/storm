@@ -1,12 +1,7 @@
 {
-  _process=new ShellProcess(_command);
   _collector=collector;
   _context=context;
-  try {
-    Number subpid=_process.launch(stormConf,context);
-    LOG.info("Launched subprocess with pid " + subpid);
-  }
- catch (  IOException e) {
-    throw new RuntimeException("Error when launching multilang subprocess\n" + _process.getErrorsString(),e);
-  }
+  _process=new ShellProcess(_command);
+  Number subpid=_process.launch(stormConf,context);
+  LOG.info("Launched subprocess with pid " + subpid);
 }

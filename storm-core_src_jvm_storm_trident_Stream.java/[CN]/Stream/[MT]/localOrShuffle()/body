@@ -1,0 +1,3 @@
+{
+  return partition(Grouping.local_or_shuffle(new NullStruct()));
+}

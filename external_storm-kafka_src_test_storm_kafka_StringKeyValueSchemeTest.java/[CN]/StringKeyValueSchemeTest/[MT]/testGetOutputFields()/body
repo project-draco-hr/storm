@@ -1,0 +1,5 @@
+{
+  Fields outputFields=scheme.getOutputFields();
+  assertTrue(outputFields.contains(StringScheme.STRING_SCHEME_KEY));
+  assertEquals(1,outputFields.size());
+}

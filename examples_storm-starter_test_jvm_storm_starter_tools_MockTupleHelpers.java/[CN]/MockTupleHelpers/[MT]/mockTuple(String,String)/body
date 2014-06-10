@@ -1,0 +1,6 @@
+{
+  Tuple tuple=mock(Tuple.class);
+  when(tuple.getSourceComponent()).thenReturn(componentId);
+  when(tuple.getSourceStreamId()).thenReturn(streamId);
+  return tuple;
+}
