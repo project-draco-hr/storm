@@ -1,0 +1,5 @@
+{
+synchronized (acked) {
+    return get(acked,stormId,0);
+  }
+}
