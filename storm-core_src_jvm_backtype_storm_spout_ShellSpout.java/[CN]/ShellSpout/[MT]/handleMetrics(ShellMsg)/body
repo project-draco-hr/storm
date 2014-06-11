@@ -1,9 +1,5 @@
 {
-  Object nameObj=action.get("name");
-  if (nameObj == null || !(nameObj instanceof String)) {
-    throw new RuntimeException("Receive Metrics name is null or is not String");
-  }
-  String name=(String)nameObj;
+  String name=shellMsg.getMetricName();
   if (name.isEmpty()) {
     throw new RuntimeException("Receive Metrics name is empty");
   }
@@ -15,7 +11,7 @@
     throw new RuntimeException("Metric[" + name + "] is not IShellMetric, can not call by RPC");
   }
   IShellMetric iShellMetric=(IShellMetric)iMetric;
-  Object paramsObj=action.get("params");
+  Object paramsObj=shellMsg.getMetricParams();
   try {
     iShellMetric.updateMetricFromRPC(paramsObj);
   }

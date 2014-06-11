@@ -27,7 +27,7 @@
         }
       }
  else       if (command.equals("metrics")) {
-        handleMetrics(action);
+        handleMetrics(shellMsg);
       }
  else {
         throw new RuntimeException("Unknown command received: " + command);

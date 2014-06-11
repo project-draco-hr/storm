@@ -1,2 +1,73 @@
 {
+  Object maxPending=stormConf.get(Config.TOPOLOGY_SHELLBOLT_MAX_PENDING);
+  if (maxPending != null) {
+    this._pendingWrites=new LinkedBlockingQueue(((Number)maxPending).intValue());
+  }
+  _rand=new Random();
+  _collector=collector;
+  _context=context;
+  _process=new ShellProcess(_command);
+  Number subpid=_process.launch(stormConf,context);
+  LOG.info("Launched subprocess with pid " + subpid);
+  _readerThread=new Thread(new Runnable(){
+    public void run(){
+      while (_running) {
+        try {
+          ShellMsg shellMsg=_process.readShellMsg();
+          String command=shellMsg.getCommand();
+          if (command.equals("ack")) {
+            handleAck(shellMsg.getId());
+          }
+ else           if (command.equals("fail")) {
+            handleFail(shellMsg.getId());
+          }
+ else           if (command.equals("error")) {
+            handleError(shellMsg.getMsg());
+          }
+ else           if (command.equals("log")) {
+            String msg=shellMsg.getMsg();
+            LOG.info("Shell msg: " + msg);
+          }
+ else           if (command.equals("emit")) {
+            handleEmit(shellMsg);
+          }
+ else           if (command.equals("metrics")) {
+            handleMetrics(shellMsg);
+          }
+        }
+ catch (        InterruptedException e) {
+        }
+catch (        Throwable t) {
+          die(t);
+        }
+      }
+    }
+  }
+);
+  _readerThread.start();
+  _writerThread=new Thread(new Runnable(){
+    public void run(){
+      while (_running) {
+        try {
+          Object write=_pendingWrites.poll(1,SECONDS);
+          if (write instanceof BoltMsg) {
+            _process.writeBoltMsg((BoltMsg)write);
+          }
+ else           if (write instanceof List<?>) {
+            _process.writeTaskIds((List<Integer>)write);
+          }
+ else           if (write != null) {
+            throw new RuntimeException("Unknown class type to write: " + write.getClass().getName());
+          }
+        }
+ catch (        InterruptedException e) {
+        }
+catch (        Throwable t) {
+          die(t);
+        }
+      }
+    }
+  }
+);
+  _writerThread.start();
 }
