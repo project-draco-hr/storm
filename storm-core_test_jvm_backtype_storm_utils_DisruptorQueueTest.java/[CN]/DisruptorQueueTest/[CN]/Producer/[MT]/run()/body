@@ -1,0 +1,10 @@
+{
+  try {
+    while (true) {
+      queue.publish(msg,false);
+    }
+  }
+ catch (  InsufficientCapacityException e) {
+    return;
+  }
+}
