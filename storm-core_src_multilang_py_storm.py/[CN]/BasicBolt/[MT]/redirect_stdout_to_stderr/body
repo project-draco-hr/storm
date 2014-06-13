@@ -1,3 +1,0 @@
-def redirect_stdout_to_stderr(self):
-    self.bakup_stdout = sys.stdout
-    sys.stdout = sys.stderr

@@ -1,2 +1,0 @@
-def recover_stdout(self):
-    sys.stdout = self.bakup_stdout
