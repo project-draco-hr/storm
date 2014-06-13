@@ -1,6 +1,5 @@
 {
-  if (!consumerStartedFlag) {
-    consumerStartedFlag=true;
-    flushCache();
-  }
+  consumerStartedFlag=true;
+  writeLock.lock();
+  writeLock.unlock();
 }
