@@ -25,7 +25,7 @@
           }
  else           if (command.equals("log")) {
             String msg=shellMsg.getMsg();
-            LOG.info("Shell msg: " + msg);
+            LOG.info("Shell msg: " + msg + _process.getProcessInfoString());
           }
  else           if (command.equals("emit")) {
             handleEmit(shellMsg);

@@ -14,6 +14,7 @@
     _pendingWrites.put(boltMsg);
   }
  catch (  InterruptedException e) {
-    throw new RuntimeException("Error during multilang processing",e);
+    String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();
+    throw new RuntimeException("Error during multilang processing " + processInfo,e);
   }
 }
