@@ -21,7 +21,7 @@
       }
       if (node.assignInternal(ws,topId,true)) {
         LOG.warn("Bad scheduling state, " + ws + " assigned multiple workers, unassigning everything...");
-        node.free(ws,cluster);
+        node.free(ws,cluster,true);
       }
     }
   }
