@@ -1,0 +1,4 @@
+def process(self, tup):
+    word = tup.values[0]
+    storm.rpcMetrics('my-custom-shell-metric', 1)
+    storm.ack(tup)
