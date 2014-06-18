@@ -24,5 +24,25 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_host()).compareTo(typedOther.is_set_host());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_host()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.host,typedOther.host);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_port()).compareTo(typedOther.is_set_port());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_port()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.port,typedOther.port);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

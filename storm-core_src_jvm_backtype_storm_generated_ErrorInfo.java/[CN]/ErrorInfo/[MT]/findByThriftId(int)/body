@@ -4,6 +4,10 @@ case 1:
     return ERROR;
 case 2:
   return ERROR_TIME_SECS;
+case 3:
+return HOST;
+case 4:
+return PORT;
 default :
 return null;
 }

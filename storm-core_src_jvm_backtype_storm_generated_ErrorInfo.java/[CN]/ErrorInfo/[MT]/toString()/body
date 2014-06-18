@@ -13,6 +13,23 @@
   sb.append("error_time_secs:");
   sb.append(this.error_time_secs);
   first=false;
+  if (is_set_host()) {
+    if (!first)     sb.append(", ");
+    sb.append("host:");
+    if (this.host == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.host);
+    }
+    first=false;
+  }
+  if (is_set_port()) {
+    if (!first)     sb.append(", ");
+    sb.append("port:");
+    sb.append(this.port);
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }
