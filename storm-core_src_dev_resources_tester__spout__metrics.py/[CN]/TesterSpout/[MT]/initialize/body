@@ -1,0 +1,4 @@
+def initialize(self, conf, context):
+    storm.log('spout initializing')
+    self.pending = {}
+    self.count = 0

@@ -1,0 +1,24 @@
+{
+  String name=shellMsg.getMetricName();
+  if (name.isEmpty()) {
+    throw new RuntimeException("Receive Metrics name is empty");
+  }
+  IMetric iMetric=_context.getRegisteredMetricByName(name);
+  if (iMetric == null) {
+    throw new RuntimeException("Not find metric by name[" + name + "] ");
+  }
+  if (!(iMetric instanceof IShellMetric)) {
+    throw new RuntimeException("Metric[" + name + "] is not IShellMetric, can not call by RPC");
+  }
+  IShellMetric iShellMetric=(IShellMetric)iMetric;
+  Object paramsObj=shellMsg.getMetricParams();
+  try {
+    iShellMetric.updateMetricFromRPC(paramsObj);
+  }
+ catch (  RuntimeException re) {
+    throw re;
+  }
+catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}
