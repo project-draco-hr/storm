@@ -17,6 +17,16 @@ def read(self, iprot):
                 self.error_time_secs = iprot.readI32()
             else:
                 iprot.skip(ftype)
+        elif (fid == 3):
+            if (ftype == TType.STRING):
+                self.host = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 4):
+            if (ftype == TType.I32):
+                self.port = iprot.readI32()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()
