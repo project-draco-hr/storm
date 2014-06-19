@@ -1,0 +1,12 @@
+{
+  final long id;
+  if (block) {
+    id=_buffer.next();
+  }
+ else {
+    id=_buffer.tryNext(1);
+  }
+  final MutableObject m=_buffer.get(id);
+  m.setObject(obj);
+  _buffer.publish(id);
+}
