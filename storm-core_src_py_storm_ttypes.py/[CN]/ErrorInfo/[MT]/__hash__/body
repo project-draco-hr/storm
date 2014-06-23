@@ -1,2 +1,2 @@
 def __hash__(self):
-    return ((0 + hash(self.error)) + hash(self.error_time_secs))
+    return ((((0 + hash(self.error)) + hash(self.error_time_secs)) + hash(self.host)) + hash(self.port))

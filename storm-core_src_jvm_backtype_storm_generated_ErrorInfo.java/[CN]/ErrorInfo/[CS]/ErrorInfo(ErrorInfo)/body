@@ -5,4 +5,8 @@
     this.error=other.error;
   }
   this.error_time_secs=other.error_time_secs;
+  if (other.is_set_host()) {
+    this.host=other.host;
+  }
+  this.port=other.port;
 }
