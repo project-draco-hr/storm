@@ -12,5 +12,17 @@
     if (!(this_present_error_time_secs && that_present_error_time_secs))     return false;
     if (this.error_time_secs != that.error_time_secs)     return false;
   }
+  boolean this_present_host=true && this.is_set_host();
+  boolean that_present_host=true && that.is_set_host();
+  if (this_present_host || that_present_host) {
+    if (!(this_present_host && that_present_host))     return false;
+    if (!this.host.equals(that.host))     return false;
+  }
+  boolean this_present_port=true && this.is_set_port();
+  boolean that_present_port=true && that.is_set_port();
+  if (this_present_port || that_present_port) {
+    if (!(this_present_port && that_present_port))     return false;
+    if (this.port != that.port)     return false;
+  }
   return true;
 }

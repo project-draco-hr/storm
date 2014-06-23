@@ -7,6 +7,10 @@ case ERROR:
     return is_set_error();
 case ERROR_TIME_SECS:
   return is_set_error_time_secs();
+case HOST:
+return is_set_host();
+case PORT:
+return is_set_port();
 }
 throw new IllegalStateException();
 }
