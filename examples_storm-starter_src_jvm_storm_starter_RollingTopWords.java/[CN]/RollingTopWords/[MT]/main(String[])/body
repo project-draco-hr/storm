@@ -1,3 +1,20 @@
 {
-  new RollingTopWords().run();
+  String topologyName="slidingWindowCounts";
+  if (args.length >= 1) {
+    topologyName=args[0];
+  }
+  boolean runLocally=true;
+  if (args.length >= 2 && args[1].equalsIgnoreCase("remote")) {
+    runLocally=false;
+  }
+  LOG.info("Topology name: " + topologyName);
+  RollingTopWords rtw=new RollingTopWords(topologyName);
+  if (runLocally) {
+    LOG.info("Running in local mode");
+    rtw.runLocally();
+  }
+ else {
+    LOG.info("Running in remote (cluster) mode");
+    rtw.runRemotely();
+  }
 }
