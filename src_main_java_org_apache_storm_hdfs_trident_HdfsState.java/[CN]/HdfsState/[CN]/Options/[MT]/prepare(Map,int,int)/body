@@ -1,4 +1,5 @@
 {
+  this.writeLock=new Object();
   if (this.rotationPolicy == null)   throw new IllegalStateException("RotationPolicy must be specified.");
   if (this.fsUrl == null) {
     throw new IllegalStateException("File system URL must be specified.");

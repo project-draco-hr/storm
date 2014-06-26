@@ -1,4 +1,5 @@
 {
+  this.writeLock=new Object();
   if (this.syncPolicy == null)   throw new IllegalStateException("SyncPolicy must be specified.");
   if (this.rotationPolicy == null)   throw new IllegalStateException("RotationPolicy must be specified.");
   if (this.fsUrl == null) {
