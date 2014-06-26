@@ -1,0 +1,4 @@
+String[] execString
+File dir
+Map<String,String> env
+long timeout
