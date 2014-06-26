@@ -22,4 +22,20 @@
  catch (  Exception e) {
     throw new RuntimeException("Error preparing HdfsBolt: " + e.getMessage(),e);
   }
+  if (this.rotationPolicy instanceof TimedRotationPolicy) {
+    long interval=((TimedRotationPolicy)this.rotationPolicy).getInterval();
+    this.rotationTimer=new Timer(true);
+    TimerTask task=new TimerTask(){
+      @Override public void run(){
+        try {
+          rotateOutputFile();
+        }
+ catch (        IOException e) {
+          LOG.warn("IOException during scheduled file rotation.",e);
+        }
+      }
+    }
+;
+    this.rotationTimer.scheduleAtFixedRate(task,interval,interval);
+  }
 }

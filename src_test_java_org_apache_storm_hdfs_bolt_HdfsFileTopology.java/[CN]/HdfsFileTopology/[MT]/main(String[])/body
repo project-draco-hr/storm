@@ -3,7 +3,7 @@
   config.setNumWorkers(1);
   SentenceSpout spout=new SentenceSpout();
   SyncPolicy syncPolicy=new CountSyncPolicy(1000);
-  FileRotationPolicy rotationPolicy=new FileSizeRotationPolicy(5.0f,Units.MB);
+  FileRotationPolicy rotationPolicy=new TimedRotationPolicy(1.0f,TimedRotationPolicy.TimeUnit.MINUTES);
   FileNameFormat fileNameFormat=new DefaultFileNameFormat().withPath("/foo/").withExtension(".txt");
   RecordFormat format=new DelimitedRecordFormat().withFieldDelimiter("|");
   Yaml yaml=new Yaml();
