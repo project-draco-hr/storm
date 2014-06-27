@@ -1,6 +1,6 @@
 {
   try {
-    ByteArrayInputStream bis=new ByteArrayInputStream(serialized);
+    GZIPInputStream bis=new GZIPInputStream(new ByteArrayInputStream(serialized));
     ObjectInputStream ois=new ObjectInputStream(bis);
     Object ret=ois.readObject();
     ois.close();

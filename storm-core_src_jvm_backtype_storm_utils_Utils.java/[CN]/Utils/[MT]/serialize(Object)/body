@@ -1,7 +1,7 @@
 {
   try {
     ByteArrayOutputStream bos=new ByteArrayOutputStream();
-    ObjectOutputStream oos=new ObjectOutputStream(bos);
+    ObjectOutputStream oos=new ObjectOutputStream(new GZIPOutputStream(bos));
     oos.writeObject(obj);
     oos.close();
     return bos.toByteArray();
