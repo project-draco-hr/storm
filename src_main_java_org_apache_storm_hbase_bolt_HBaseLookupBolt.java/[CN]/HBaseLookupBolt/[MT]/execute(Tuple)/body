@@ -1,0 +1,23 @@
+{
+  byte[] rowKey=this.mapper.rowKey(tuple);
+  try {
+    Get get=new Get(rowKey);
+    if (projectionCriteria != null) {
+      for (      byte[] columnFamily : projectionCriteria.getColumnFamilies()) {
+        get.addFamily(columnFamily);
+      }
+      for (      HBaseProjectionCriteria.ColumnMetaData columnMetaData : projectionCriteria.getColumns()) {
+        get.addColumn(columnMetaData.getColumnFamily(),columnMetaData.getQualifier());
+      }
+    }
+    Result result=table.get(get);
+    for (    Values values : rowToTupleMapper.toValues(result)) {
+      this.collector.emit(values);
+    }
+    this.collector.ack(tuple);
+  }
+ catch (  Exception e) {
+    LOG.warn("Could not perform Lookup for rowKey =" + rowKey + " from Hbase.",e);
+    this.collector.fail(tuple);
+  }
+}

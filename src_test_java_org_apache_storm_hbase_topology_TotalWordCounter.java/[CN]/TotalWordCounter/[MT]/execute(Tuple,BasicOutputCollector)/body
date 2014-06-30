@@ -1,0 +1,4 @@
+{
+  total.add(new BigInteger(input.getValues().get(1).toString()));
+  collector.emit(tuple(total.toString()));
+}
