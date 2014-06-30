@@ -1,5 +1,0 @@
-Nimbus.Client client
-int poll
-String name
-String component
-String stat

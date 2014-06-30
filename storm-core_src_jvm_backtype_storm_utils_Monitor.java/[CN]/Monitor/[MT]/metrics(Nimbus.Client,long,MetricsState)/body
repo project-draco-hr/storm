@@ -2,30 +2,32 @@
   long totalStatted=0;
   boolean topologyFound=false;
   boolean componentFound=false;
+  boolean streamFound=false;
   int slotsUsed=0;
   int executors=0;
   int executorsWithMetrics=0;
   ClusterSummary summary=client.getClusterInfo();
   for (  TopologySummary ts : summary.get_topologies()) {
-    if (name.equals(ts.get_name())) {
+    if (_topology.equals(ts.get_name())) {
       topologyFound=true;
       slotsUsed=ts.get_num_workers();
       String id=ts.get_id();
       TopologyInfo info=client.getTopologyInfo(id);
       for (      ExecutorSummary es : info.get_executors()) {
-        if (component.equals(es.get_component_id())) {
+        if (_component.equals(es.get_component_id())) {
           componentFound=true;
           executors++;
           ExecutorStats stats=es.get_stats();
           if (stats != null) {
-            Map<String,Map<String,Long>> statted="emitted".equals(stat) ? stats.get_emitted() : stats.get_transferred();
+            Map<String,Map<String,Long>> statted=WATCH_EMITTED.equals(_watch) ? stats.get_emitted() : stats.get_transferred();
             if (statted != null) {
               Map<String,Long> e2=statted.get(":all-time");
               if (e2 != null) {
-                executorsWithMetrics++;
-                Long dflt=e2.get("default");
-                if (dflt != null) {
-                  totalStatted+=dflt;
+                Long stream=e2.get(_stream);
+                if (stream != null) {
+                  streamFound=true;
+                  executorsWithMetrics++;
+                  totalStatted+=stream;
                 }
               }
             }
@@ -35,16 +37,18 @@
     }
   }
   if (!topologyFound) {
-    throw new IllegalArgumentException("topology: " + name + " not found");
+    throw new IllegalArgumentException("topology: " + _topology + " not found");
   }
   if (!componentFound) {
-    throw new IllegalArgumentException("component: " + component + " not fouond");
+    throw new IllegalArgumentException("component: " + _component + " not fouond");
+  }
+  if (!streamFound) {
+    throw new IllegalArgumentException("stream: " + _stream + " not fouond");
   }
   long timeDelta=now - state.lastTime;
   long stattedDelta=totalStatted - state.lastStatted;
   state.lastTime=now;
   state.lastStatted=totalStatted;
   double throughput=(stattedDelta == 0 || timeDelta == 0) ? 0.0 : ((double)stattedDelta / (double)timeDelta);
-  System.out.println(message + "\t" + name+ "\t"+ slotsUsed+ "\t"+ component+ "\t"+ executors+ "\t"+ executorsWithMetrics+ "\t"+ timeDelta+ "\t"+ stattedDelta+ "\t"+ throughput);
-  return !(executors > 0 && executorsWithMetrics >= executors);
+  System.out.println(_topology + "\t" + slotsUsed+ "\t"+ executors+ "\t"+ executorsWithMetrics+ "\t"+ _component+ "\t"+ _stream+ "\t"+ timeDelta+ "\t"+ stattedDelta+ "\t"+ throughput);
 }

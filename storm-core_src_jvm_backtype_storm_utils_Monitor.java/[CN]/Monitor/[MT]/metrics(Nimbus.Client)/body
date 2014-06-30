@@ -1,0 +1,31 @@
+{
+  if (_interval <= 0) {
+    throw new IllegalArgumentException("poll interval must be positive");
+  }
+  if (_topology == null || _topology.isEmpty()) {
+    throw new IllegalArgumentException("topology name must be something");
+  }
+  if (_component == null || _component.isEmpty()) {
+    throw new IllegalArgumentException("component name must be something");
+  }
+  if (_stream == null || _stream.isEmpty()) {
+    throw new IllegalArgumentException("stream name must be something");
+  }
+  if (!WATCH_TRANSFERRED.equals(_watch) && !WATCH_EMITTED.equals(_watch)) {
+    throw new IllegalArgumentException("watch item must either be transferred or emitted");
+  }
+  System.out.println("topology\tslots\texecutors\texecutorsWithMetrics\tcomponent\tstream\ttime-diff ms\t" + _watch + "\tthroughput (Kt/s)");
+  long pollMs=_interval * 1000;
+  MetricsState state=new MetricsState();
+  Poller poller=new Poller();
+  long now=System.currentTimeMillis();
+  state.lastTime=now;
+  state.lastStatted=0;
+  poller.startTime=now;
+  poller.pollMs=pollMs;
+  do {
+    metrics(client,now,state);
+    now=poller.nextPoll();
+  }
+ while (true);
+}

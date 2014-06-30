@@ -1,0 +1,16 @@
+{
+  long now=System.currentTimeMillis();
+  long cycle=(now - startTime) / pollMs;
+  long wakeupTime=startTime + (pollMs * (cycle + 1));
+  long sleepTime=wakeupTime - now;
+  if (sleepTime > 0) {
+    try {
+      Thread.sleep(sleepTime);
+    }
+ catch (    InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+  now=System.currentTimeMillis();
+  return now;
+}
