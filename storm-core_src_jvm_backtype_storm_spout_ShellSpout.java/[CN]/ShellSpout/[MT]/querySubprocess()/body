@@ -9,7 +9,7 @@
       }
  else       if (command.equals("log")) {
         String msg=shellMsg.getMsg();
-        LOG.info("Shell msg: " + msg);
+        LOG.info("Shell msg: " + msg + _process.getProcessInfoString());
       }
  else       if (command.equals("emit")) {
         String stream=shellMsg.getStream();
@@ -31,7 +31,8 @@
       }
     }
   }
- catch (  IOException e) {
-    throw new RuntimeException(e);
+ catch (  Exception e) {
+    String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();
+    throw new RuntimeException(processInfo,e);
   }
 }
