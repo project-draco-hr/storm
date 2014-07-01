@@ -5,6 +5,7 @@
   }
   _rand=new Random();
   _collector=collector;
+  _context=context;
   _process=new ShellProcess(_command);
   Number subpid=_process.launch(stormConf,context);
   LOG.info("Launched subprocess with pid " + subpid);
@@ -29,6 +30,9 @@
           }
  else           if (command.equals("emit")) {
             handleEmit(shellMsg);
+          }
+ else           if (command.equals("metrics")) {
+            handleMetrics(shellMsg);
           }
         }
  catch (        InterruptedException e) {
