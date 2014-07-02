@@ -6,7 +6,15 @@
     throw new IllegalArgumentException("topology name must be something");
   }
   if (_component == null || _component.isEmpty()) {
-    throw new IllegalArgumentException("component name must be something");
+    HashSet<String> components=getComponents(client,_topology);
+    System.out.println("Available components for " + _topology + " :");
+    System.out.println("------------------");
+    for (    String comp : components) {
+      System.out.println(comp);
+    }
+    System.out.println("------------------");
+    System.out.println("Please use -m to specify one component");
+    return;
   }
   if (_stream == null || _stream.isEmpty()) {
     throw new IllegalArgumentException("stream name must be something");
@@ -14,7 +22,7 @@
   if (!WATCH_TRANSFERRED.equals(_watch) && !WATCH_EMITTED.equals(_watch)) {
     throw new IllegalArgumentException("watch item must either be transferred or emitted");
   }
-  System.out.println("topology\tslots\texecutors\texecutorsWithMetrics\tcomponent\tstream\ttime-diff ms\t" + _watch + "\tthroughput (Kt/s)");
+  System.out.println("topology\tcomponent\tparallelism\tstream\ttime-diff ms\t" + _watch + "\tthroughput (Kt/s)");
   long pollMs=_interval * 1000;
   MetricsState state=new MetricsState();
   Poller poller=new Poller();
