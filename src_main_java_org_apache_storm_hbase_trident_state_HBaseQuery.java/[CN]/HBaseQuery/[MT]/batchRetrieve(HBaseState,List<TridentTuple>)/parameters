@@ -1,0 +1,2 @@
+HBaseState hBaseState
+List<TridentTuple> tridentTuples

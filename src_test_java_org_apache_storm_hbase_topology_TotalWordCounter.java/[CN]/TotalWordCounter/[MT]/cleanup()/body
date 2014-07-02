@@ -1,2 +1,3 @@
 {
+  LOG.info("Final total = " + total);
 }

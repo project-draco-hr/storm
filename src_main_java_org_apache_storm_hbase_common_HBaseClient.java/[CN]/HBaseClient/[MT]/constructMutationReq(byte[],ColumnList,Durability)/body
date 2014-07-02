@@ -1,0 +1,28 @@
+{
+  List<Mutation> mutations=Lists.newArrayList();
+  if (cols.hasColumns()) {
+    Put put=new Put(rowKey);
+    put.setDurability(durability);
+    for (    ColumnList.Column col : cols.getColumns()) {
+      if (col.getTs() > 0) {
+        put.add(col.getFamily(),col.getQualifier(),col.getTs(),col.getValue());
+      }
+ else {
+        put.add(col.getFamily(),col.getQualifier(),col.getValue());
+      }
+    }
+    mutations.add(put);
+  }
+  if (cols.hasCounters()) {
+    Increment inc=new Increment(rowKey);
+    inc.setDurability(durability);
+    for (    ColumnList.Counter cnt : cols.getCounters()) {
+      inc.addColumn(cnt.getFamily(),cnt.getQualifier(),cnt.getIncrement());
+    }
+    mutations.add(inc);
+  }
+  if (mutations.isEmpty()) {
+    mutations.add(new Put(rowKey));
+  }
+  return mutations;
+}

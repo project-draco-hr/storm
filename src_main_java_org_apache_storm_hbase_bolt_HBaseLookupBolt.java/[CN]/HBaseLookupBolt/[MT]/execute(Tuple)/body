@@ -1,16 +1,8 @@
 {
   byte[] rowKey=this.mapper.rowKey(tuple);
+  Get get=hBaseClient.constructGetRequests(rowKey,projectionCriteria);
   try {
-    Get get=new Get(rowKey);
-    if (projectionCriteria != null) {
-      for (      byte[] columnFamily : projectionCriteria.getColumnFamilies()) {
-        get.addFamily(columnFamily);
-      }
-      for (      HBaseProjectionCriteria.ColumnMetaData columnMetaData : projectionCriteria.getColumns()) {
-        get.addColumn(columnMetaData.getColumnFamily(),columnMetaData.getQualifier());
-      }
-    }
-    Result result=table.get(get);
+    Result result=hBaseClient.batchGet(Lists.newArrayList(get))[0];
     for (    Values values : rowToTupleMapper.toValues(result)) {
       this.collector.emit(values);
     }

@@ -1,0 +1,15 @@
+{
+  List<Mutation> mutations=Lists.newArrayList();
+  for (  TridentTuple tuple : tuples) {
+    byte[] rowKey=options.mapper.rowKey(tuple);
+    ColumnList cols=options.mapper.columns(tuple);
+    mutations.addAll(hBaseClient.constructMutationReq(rowKey,cols,options.durability));
+  }
+  try {
+    hBaseClient.batchMutate(mutations);
+  }
+ catch (  Exception e) {
+    LOG.warn("Batch write failed but some requests might have succeeded. Triggering replay.",e);
+    throw new FailedException(e);
+  }
+}

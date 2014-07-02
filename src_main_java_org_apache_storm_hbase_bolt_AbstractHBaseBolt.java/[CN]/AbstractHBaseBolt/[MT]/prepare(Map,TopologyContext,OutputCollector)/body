@@ -11,16 +11,5 @@
   for (  String key : conf.keySet()) {
     hbConfig.set(key,String.valueOf(map.get(key)));
   }
-  try {
-    UserProvider provider=HBaseSecurityUtil.login(map,hbConfig);
-    this.table=provider.getCurrent().getUGI().doAs(new PrivilegedExceptionAction<HTable>(){
-      @Override public HTable run() throws IOException {
-        return new HTable(hbConfig,tableName);
-      }
-    }
-);
-  }
- catch (  Exception e) {
-    throw new RuntimeException("HBase bolt preparation failed: " + e.getMessage(),e);
-  }
+  this.hBaseClient=new HBaseClient(conf,hbConfig,tableName);
 }

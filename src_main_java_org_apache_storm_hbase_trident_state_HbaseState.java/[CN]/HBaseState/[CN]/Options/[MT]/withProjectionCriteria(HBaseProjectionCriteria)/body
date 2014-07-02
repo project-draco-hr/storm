@@ -1,0 +1,4 @@
+{
+  this.projectionCriteria=projectionCriteria;
+  return this;
+}
