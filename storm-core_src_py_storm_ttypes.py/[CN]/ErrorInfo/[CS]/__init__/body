@@ -1,3 +1,5 @@
-def __init__(self, error=None, error_time_secs=None):
+def __init__(self, error=None, error_time_secs=None, host=None, port=None):
     self.error = error
     self.error_time_secs = error_time_secs
+    self.host = host
+    self.port = port

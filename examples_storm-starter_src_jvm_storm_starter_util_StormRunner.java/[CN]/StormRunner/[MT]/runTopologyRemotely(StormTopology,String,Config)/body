@@ -1,0 +1,3 @@
+{
+  StormSubmitter.submitTopology(topologyName,conf,topology);
+}

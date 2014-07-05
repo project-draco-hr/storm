@@ -16,5 +16,21 @@ if (value == null) {
   set_error_time_secs((Integer)value);
 }
 break;
+case HOST:
+if (value == null) {
+unset_host();
+}
+ else {
+set_host((String)value);
+}
+break;
+case PORT:
+if (value == null) {
+unset_port();
+}
+ else {
+set_port((Integer)value);
+}
+break;
 }
 }

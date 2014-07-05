@@ -1,0 +1,6 @@
+import storm
+from random import choice
+from time import sleep
+from uuid import uuid4
+words = [u'nathan', u'mike', u'jackson', u'golda', u'bertels\u4eba']
+TesterSpout().run()

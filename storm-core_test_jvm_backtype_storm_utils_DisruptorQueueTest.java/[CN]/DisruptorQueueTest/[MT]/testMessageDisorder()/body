@@ -1,0 +1,18 @@
+{
+  DisruptorQueue queue=createQueue("messageOrder",16);
+  queue.publish("1");
+  Runnable producer=new Producer(queue,"2");
+  final Object[] result=new Object[1];
+  Runnable consumer=new Consumer(queue,new EventHandler<Object>(){
+    private boolean head=true;
+    @Override public void onEvent(    Object obj,    long sequence,    boolean endOfBatch) throws Exception {
+      if (head) {
+        head=false;
+        result[0]=obj;
+      }
+    }
+  }
+);
+  run(producer,consumer);
+  Assert.assertEquals("We expect to receive first published message first, but received " + result[0],"1",result[0]);
+}
