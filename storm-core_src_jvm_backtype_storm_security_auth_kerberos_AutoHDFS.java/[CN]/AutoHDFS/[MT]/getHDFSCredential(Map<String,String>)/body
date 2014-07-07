@@ -1,0 +1,18 @@
+{
+  Object credential=null;
+  if (credentials != null && credentials.containsKey(HDFS_CREDENTIALS)) {
+    try {
+      byte[] credBytes=DatatypeConverter.parseBase64Binary(credentials.get(HDFS_CREDENTIALS));
+      ByteArrayInputStream bai=new ByteArrayInputStream(credBytes);
+      ObjectInputStream in=new ObjectInputStream(bai);
+      Class credentialClass=Class.forName("org.apache.hadoop.security.Credentials");
+      credential=credentialClass.newInstance();
+      Method readMethod=credentialClass.getMethod("readFields",DataInput.class);
+      readMethod.invoke(credential,in);
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+  return credential;
+}

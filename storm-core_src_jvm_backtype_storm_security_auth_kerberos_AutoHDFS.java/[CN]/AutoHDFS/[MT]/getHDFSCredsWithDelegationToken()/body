@@ -1,0 +1,30 @@
+{
+  try {
+    final URI nameNodeURI=new URI((String)conf.get(Config.HDFS_NAMENODE_URL));
+    final String topologySubmitterUser=(String)conf.get(Config.TOPOLOGY_SUBMITTER_USER);
+    final String processOwnerUser=System.getProperty("user.name");
+    Class fileSystemClass=Class.forName("org.apache.hadoop.fs.FileSystem");
+    Class configurationClass=Class.forName("org.apache.hadoop.conf.Configuration");
+    Method getMethod=fileSystemClass.getMethod("get",URI.class,configurationClass,String.class);
+    Object fileSystem=getMethod.invoke(null,nameNodeURI,configurationClass.newInstance(),topologySubmitterUser);
+    Class ugiClass=Class.forName("org.apache.hadoop.security.UserGroupInformation");
+    Method createProxyUserMethod=ugiClass.getMethod("createProxyUser",String.class,ugiClass);
+    Object proxyUser=createProxyUserMethod.invoke(processOwnerUser,topologySubmitterUser);
+    Method getCredentialsMethod=ugiClass.getMethod("getCredentials");
+    Object credentials=getCredentialsMethod.invoke(proxyUser);
+    Class credentialClass=Class.forName("org.apache.hadoop.security.Credentials");
+    Method addDelegationTokensMethod=fileSystemClass.getMethod("addDelegationToken",String.class,credentialClass);
+    addDelegationTokensMethod.invoke(fileSystem,processOwnerUser,credentials);
+    Method writeMethod=credentialClass.getMethod("write",DataOutput.class);
+    ByteArrayOutputStream bao=new ByteArrayOutputStream();
+    ObjectOutputStream out=new ObjectOutputStream(bao);
+    writeMethod.invoke(credentials,out);
+    out.flush();
+    out.close();
+    return bao.toByteArray();
+  }
+ catch (  Exception ex) {
+    LOG.warn("Failed to get delegation tokens ",ex);
+    throw ex;
+  }
+}

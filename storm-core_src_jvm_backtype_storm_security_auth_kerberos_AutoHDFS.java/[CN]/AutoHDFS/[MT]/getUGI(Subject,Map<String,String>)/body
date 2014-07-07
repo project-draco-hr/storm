@@ -1,0 +1,19 @@
+{
+  try {
+    Object credential=getHDFSCredential(credentials);
+    if (credential != null) {
+      Class ugiClass=Class.forName("org.apache.hadoop.security.UserGroupInformation");
+      Constructor constructor=ugiClass.getConstructor(Subject.class);
+      Object ugi=constructor.newInstance(subject);
+      Class credentialClass=Class.forName("org.apache.hadoop.security.Credentials");
+      Method addCredentialsMethod=ugiClass.getMethod("addCredentials",credentialClass);
+      addCredentialsMethod.invoke(credential);
+    }
+ else {
+      LOG.info("No TGT found in credentials");
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("Failed to initialize and get UserGroupInformation.",e);
+  }
+}
