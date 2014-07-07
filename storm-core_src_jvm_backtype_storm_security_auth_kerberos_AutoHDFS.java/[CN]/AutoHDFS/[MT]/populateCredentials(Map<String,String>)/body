@@ -1,8 +1,0 @@
-{
-  try {
-    credentials.put(HDFS_CREDENTIALS,DatatypeConverter.printBase64Binary(getHDFSCredsWithDelegationToken()));
-  }
- catch (  Exception e) {
-    throw new RuntimeException(e);
-  }
-}
