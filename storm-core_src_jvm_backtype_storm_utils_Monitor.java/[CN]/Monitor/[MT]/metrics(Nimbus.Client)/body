@@ -24,16 +24,18 @@
   }
   System.out.println("topology\tcomponent\tparallelism\tstream\ttime-diff ms\t" + _watch + "\tthroughput (Kt/s)");
   long pollMs=_interval * 1000;
-  MetricsState state=new MetricsState();
-  Poller poller=new Poller();
   long now=System.currentTimeMillis();
-  state.lastTime=now;
-  state.lastStatted=0;
-  poller.startTime=now;
-  poller.pollMs=pollMs;
+  MetricsState state=new MetricsState(now,0);
+  Poller poller=new Poller(now,pollMs);
   do {
     metrics(client,now,state);
-    now=poller.nextPoll();
+    try {
+      now=poller.nextPoll();
+    }
+ catch (    InterruptedException e) {
+      e.printStackTrace();
+      break;
+    }
   }
  while (true);
 }

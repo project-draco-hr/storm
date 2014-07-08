@@ -49,10 +49,10 @@
   if (!streamFound) {
     throw new IllegalArgumentException("stream: " + _stream + " not found");
   }
-  long timeDelta=now - state.lastTime;
-  long stattedDelta=totalStatted - state.lastStatted;
-  state.lastTime=now;
-  state.lastStatted=totalStatted;
+  long timeDelta=now - state.getLastTime();
+  long stattedDelta=totalStatted - state.getLastStatted();
+  state.setLastTime(now);
+  state.setLastStatted(totalStatted);
   double throughput=(stattedDelta == 0 || timeDelta == 0) ? 0.0 : ((double)stattedDelta / (double)timeDelta);
   System.out.println(_topology + "\t" + _component+ "\t"+ componentParallelism+ "\t"+ _stream+ "\t"+ timeDelta+ "\t"+ stattedDelta+ "\t"+ throughput);
 }
