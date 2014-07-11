@@ -7,11 +7,11 @@
     boolean isSecurityEnabled=(Boolean)isSecurityEnabledMethod.invoke(null);
     if (isSecurityEnabled) {
       final String topologySubmitterUser=(String)conf.get(Config.TOPOLOGY_SUBMITTER_USER);
-      final String hdfsUser=(String)conf.get(Config.HDFS_PRINCIPAL);
+      final String hdfsUser=(String)conf.get(Config.TOPOLOGY_HDFS_PRINCIPAL);
       Class fileSystemClass=Class.forName("org.apache.hadoop.fs.FileSystem");
-      Object defaultNameNodeURI=fileSystemClass.getMethod("getDefaultUri",configurationClass).invoke(null,configuration);
+      Object nameNodeURI=conf.containsKey(Config.TOPOLOGY_HDFS_URI) ? conf.get(Config.TOPOLOGY_HDFS_URI) : fileSystemClass.getMethod("getDefaultUri",configurationClass).invoke(null,configuration);
       Method getMethod=fileSystemClass.getMethod("get",URI.class,configurationClass,String.class);
-      Object fileSystem=getMethod.invoke(null,defaultNameNodeURI,configuration,topologySubmitterUser);
+      Object fileSystem=getMethod.invoke(null,nameNodeURI,configuration,topologySubmitterUser);
       Method getCurrentUserMethod=ugiClass.getMethod("getCurrentUser");
       final Object ugi=getCurrentUserMethod.invoke(null);
       Method createProxyUserMethod=ugiClass.getMethod("createProxyUser",String.class,ugiClass);

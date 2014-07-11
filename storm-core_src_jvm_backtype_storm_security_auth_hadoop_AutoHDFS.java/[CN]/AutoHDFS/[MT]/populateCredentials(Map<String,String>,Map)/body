@@ -1,0 +1,10 @@
+{
+  if (conf.containsKey(Config.TOPOLOGY_HDFS_PRINCIPAL)) {
+    try {
+      credentials.put(HDFS_CREDENTIALS,DatatypeConverter.printBase64Binary(getHDFSCredsWithDelegationToken(conf)));
+    }
+ catch (    Exception e) {
+      LOG.warn("Could not populate HDFS credentials.",e);
+    }
+  }
+}

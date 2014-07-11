@@ -1,7 +1,7 @@
 {
   Map conf=new java.util.HashMap();
   conf.put(Config.TOPOLOGY_SUBMITTER_PRINCIPAL,args[0]);
-  conf.put(Config.HDFS_PRINCIPAL,args[1]);
+  conf.put(Config.TOPOLOGY_HDFS_PRINCIPAL,args[1]);
   AutoHDFS autoHDFS=new AutoHDFS();
   autoHDFS.prepare(conf);
   Map<String,String> creds=new HashMap<String,String>();

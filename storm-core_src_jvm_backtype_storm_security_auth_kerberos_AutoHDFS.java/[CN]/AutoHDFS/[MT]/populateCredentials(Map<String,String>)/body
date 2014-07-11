@@ -1,3 +1,0 @@
-{
-  LOG.debug("populateCredentials is a noop, nimbus should populate the crdes.");
-}
