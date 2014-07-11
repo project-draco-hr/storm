@@ -1,0 +1,21 @@
+{
+  Object credential=getHDFSCredential(credentials);
+  if (credential != null) {
+    try {
+      Object configuration=getConfiguration();
+      Class configurationClass=Class.forName("org.apache.hadoop.conf.Configuration");
+      Class credentialClass=Class.forName("org.apache.hadoop.security.Credentials");
+      Class tokenClass=Class.forName("org.apache.hadoop.security.token.Token");
+      Method renewMethod=tokenClass.getMethod("renew",configurationClass);
+      Method getAllTokensMethod=credentialClass.getMethod("getAllTokens");
+      Collection<?> tokens=(Collection<?>)getAllTokensMethod.invoke(credential);
+      for (      Object token : tokens) {
+        renewMethod.invoke(token,configuration);
+      }
+    }
+ catch (    Exception e) {
+      LOG.warn("could not renew the credentials, one of the possible reason is tokens are beyond " + "renewal period so attempting to get new tokens.",e);
+      populateCredentials(credentials);
+    }
+  }
+}

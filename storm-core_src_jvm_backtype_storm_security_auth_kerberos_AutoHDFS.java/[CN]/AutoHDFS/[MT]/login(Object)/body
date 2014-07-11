@@ -1,0 +1,11 @@
+{
+  try {
+    Class configurationClass=Class.forName("org.apache.hadoop.conf.Configuration");
+    final Class securityUtilClass=Class.forName("org.apache.hadoop.security.SecurityUtil");
+    Method loginMethod=securityUtilClass.getMethod("login",configurationClass,String.class,String.class);
+    loginMethod.invoke(null,configuration,CONF_KEYTAB_KEY,CONF_USER_KEY);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Failed to login to hdfs .",e);
+  }
+}

@@ -1,0 +1,21 @@
+{
+  try {
+    final String hdfsUser=(String)conf.get(Config.HDFS_USER);
+    final String hdfsUserKeyTab=(String)conf.get(Config.HDFS_USER_KEYTAB);
+    Class configurationClass=Class.forName("org.apache.hadoop.conf.Configuration");
+    Object configuration=configurationClass.newInstance();
+    Method setMethod=configurationClass.getMethod("set",String.class,String.class);
+    setMethod.invoke(configuration,CONF_KEYTAB_KEY,hdfsUserKeyTab);
+    setMethod.invoke(configuration,CONF_USER_KEY,hdfsUser);
+    setMethod.invoke(configuration,"hadoop.security.authentication","KERBEROS");
+    setMethod.invoke(configuration,"dfs.namenode.kerberos.principal","hdfs/zookeeper.witzend.com@WITZEND.COM");
+    setMethod.invoke(configuration,"hadoop.security.kerberos.ticket.cache.path","/tmp/krb5cc_1002");
+    final Class ugiClass=Class.forName("org.apache.hadoop.security.UserGroupInformation");
+    Method setConfigurationMethod=ugiClass.getMethod("setConfiguration",configurationClass);
+    setConfigurationMethod.invoke(null,configuration);
+    return configuration;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

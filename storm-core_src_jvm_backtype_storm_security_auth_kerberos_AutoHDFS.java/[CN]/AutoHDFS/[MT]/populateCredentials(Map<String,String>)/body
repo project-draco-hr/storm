@@ -1,0 +1,8 @@
+{
+  try {
+    credentials.put(HDFS_CREDENTIALS,DatatypeConverter.printBase64Binary(getHDFSCredsWithDelegationToken()));
+  }
+ catch (  Exception e) {
+    LOG.warn("Could not populate HDFS credentials.",e);
+  }
+}
