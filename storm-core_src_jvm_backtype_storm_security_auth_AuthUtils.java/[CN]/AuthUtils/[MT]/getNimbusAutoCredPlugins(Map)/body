@@ -1,0 +1,16 @@
+{
+  try {
+    Set<INimbusCredentialPlugin> ret=new HashSet<INimbusCredentialPlugin>();
+    Collection<String> clazzes=(Collection<String>)topologyConf.get(Config.NIMBUS_AUTO_CRED_PLUGINS);
+    if (clazzes != null) {
+      for (      String clazz : clazzes) {
+        INimbusCredentialPlugin inst=(INimbusCredentialPlugin)Class.forName(clazz).newInstance();
+        ret.add(inst);
+      }
+    }
+    return ret;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

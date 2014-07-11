@@ -1,17 +1,15 @@
 {
   Map conf=new java.util.HashMap();
-  conf.put(Config.HDFS_NAMENODE_URL,args[0]);
-  conf.put(Config.TOPOLOGY_SUBMITTER_USER,args[1]);
-  conf.put(Config.HDFS_USER,args[2]);
-  conf.put(Config.HDFS_USER_KEYTAB,args[3]);
+  conf.put(Config.TOPOLOGY_SUBMITTER_PRINCIPAL,args[0]);
+  conf.put(Config.HDFS_PRINCIPAL,args[1]);
   AutoHDFS autoHDFS=new AutoHDFS();
   autoHDFS.prepare(conf);
-  Map<String,String> creds=new java.util.HashMap<String,String>();
-  autoHDFS.populateCredentials(creds);
+  Map<String,String> creds=new HashMap<String,String>();
+  autoHDFS.populateCredentials(creds,conf);
   LOG.info("Got HDFS credentials",AutoHDFS.getHDFSCredential(creds));
   Subject s=new Subject();
   autoHDFS.populateSubject(s,creds);
   LOG.info("Got a Subject " + s);
-  autoHDFS.renew(creds);
+  autoHDFS.renew(creds,conf);
   LOG.info("renewed credentials",AutoHDFS.getHDFSCredential(creds));
 }

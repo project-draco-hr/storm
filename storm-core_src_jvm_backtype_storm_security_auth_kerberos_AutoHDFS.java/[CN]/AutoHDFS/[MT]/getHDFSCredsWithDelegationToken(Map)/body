@@ -1,18 +1,17 @@
 {
   try {
-    Object configuration=getConfiguration();
+    Class configurationClass=Class.forName("org.apache.hadoop.conf.Configuration");
+    Object configuration=configurationClass.newInstance();
     final Class ugiClass=Class.forName("org.apache.hadoop.security.UserGroupInformation");
     final Method isSecurityEnabledMethod=ugiClass.getDeclaredMethod("isSecurityEnabled");
     boolean isSecurityEnabled=(Boolean)isSecurityEnabledMethod.invoke(null);
     if (isSecurityEnabled) {
-      login(configuration);
-      final URI nameNodeURI=URI.create((String)conf.get(Config.HDFS_NAMENODE_URL));
       final String topologySubmitterUser=(String)conf.get(Config.TOPOLOGY_SUBMITTER_USER);
-      final String hdfsUser=(String)conf.get(Config.HDFS_USER);
-      Class configurationClass=Class.forName("org.apache.hadoop.conf.Configuration");
+      final String hdfsUser=(String)conf.get(Config.HDFS_PRINCIPAL);
       Class fileSystemClass=Class.forName("org.apache.hadoop.fs.FileSystem");
+      Object defaultNameNodeURI=fileSystemClass.getMethod("getDefaultUri",configurationClass).invoke(null,configuration);
       Method getMethod=fileSystemClass.getMethod("get",URI.class,configurationClass,String.class);
-      Object fileSystem=getMethod.invoke(null,nameNodeURI,configuration,topologySubmitterUser);
+      Object fileSystem=getMethod.invoke(null,defaultNameNodeURI,configuration,topologySubmitterUser);
       Method getCurrentUserMethod=ugiClass.getMethod("getCurrentUser");
       final Object ugi=getCurrentUserMethod.invoke(null);
       Method createProxyUserMethod=ugiClass.getMethod("createProxyUser",String.class,ugiClass);
@@ -28,7 +27,6 @@
       writeMethod.invoke(credentials,out);
       out.flush();
       out.close();
-      LOG.info(bao.toString());
       return bao.toByteArray();
     }
  else {
