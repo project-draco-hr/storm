@@ -6,6 +6,9 @@
       if (topic != null) {
         producer.send(new KeyedMessage(topic,mapper.getKeyFromTuple(tuple),mapper.getMessageFromTuple(tuple)));
       }
+ else {
+        LOG.warn("skipping key = " + mapper.getKeyFromTuple(tuple) + ", topic selector returned null.");
+      }
     }
  catch (    Exception ex) {
       String errorMsg="Could not send message with key = " + mapper.getKeyFromTuple(tuple) + " to topic = "+ topic;
