@@ -1,0 +1,11 @@
+{
+  if (args.length < 1) {
+    System.out.println("Please provide kafka broker url ,e.g. localhost:9092");
+  }
+  Config conf=getConfig(args[0]);
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology("wordCounter",conf,buildTopology());
+  Thread.sleep(60 * 1000);
+  cluster.killTopology("wordCounter");
+  cluster.shutdown();
+}

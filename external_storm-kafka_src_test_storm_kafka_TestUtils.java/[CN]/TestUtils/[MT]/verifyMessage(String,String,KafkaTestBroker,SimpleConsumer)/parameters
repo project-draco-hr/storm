@@ -1,0 +1,4 @@
+String key
+String message
+KafkaTestBroker broker
+SimpleConsumer simpleConsumer

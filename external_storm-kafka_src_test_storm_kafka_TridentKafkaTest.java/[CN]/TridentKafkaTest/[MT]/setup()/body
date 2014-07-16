@@ -1,0 +1,9 @@
+{
+  broker=new KafkaTestBroker();
+  simpleConsumer=TestUtils.getKafkaConsumer(broker);
+  config=TestUtils.getConfig(broker.getBrokerConnectionString());
+  config.put(TridentKafkaState.KEY_FIELD,"key");
+  config.put(TridentKafkaState.MESSAGE_FIELD_NAME,"message");
+  state=new TridentKafkaState();
+  state.prepare(config);
+}

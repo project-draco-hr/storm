@@ -1,0 +1,10 @@
+{
+  Config config=new Config();
+  Properties props=new Properties();
+  props.put("metadata.broker.list",brokerConnectionString);
+  props.put("request.required.acks","1");
+  props.put("serializer.class","kafka.serializer.StringEncoder");
+  config.put(KafkaBolt.KAFKA_BROKER_PROPERTIES,props);
+  config.put(KafkaBolt.TOPIC,TOPIC);
+  return config;
+}
