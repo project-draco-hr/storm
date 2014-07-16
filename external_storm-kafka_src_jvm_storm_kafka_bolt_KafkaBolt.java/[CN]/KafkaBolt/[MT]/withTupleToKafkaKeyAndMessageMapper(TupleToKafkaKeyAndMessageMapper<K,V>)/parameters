@@ -1,1 +1,0 @@
-TupleToKafkaKeyAndMessageMapper<K,V> mapper

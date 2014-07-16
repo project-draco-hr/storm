@@ -4,7 +4,7 @@
   spout.setCycle(true);
   TridentTopology topology=new TridentTopology();
   Stream stream=topology.newStream("spout1",spout);
-  TridentKafkaStateFactory stateFactory=new TridentKafkaStateFactory().withKafkaTopicSelector(new DefaultTopicSelector("test")).withTridentTupleToKafkaKeyAndMessageMapper(new FieldNameBasedTupleToKafkaKeyAndMessageMapper("word","count"));
+  TridentKafkaStateFactory stateFactory=new TridentKafkaStateFactory().withKafkaTopicSelector(new DefaultTopicSelector("test")).withTridentTupleToKafkaMapper(new FieldNameBasedTupleToKafkaMapper("word","count"));
   stream.partitionPersist(stateFactory,fields,new TridentKafkaUpdater(),new Fields());
   return topology.build();
 }

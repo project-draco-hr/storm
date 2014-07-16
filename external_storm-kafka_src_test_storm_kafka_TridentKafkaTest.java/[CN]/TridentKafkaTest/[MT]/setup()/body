@@ -2,8 +2,8 @@
   broker=new KafkaTestBroker();
   simpleConsumer=TestUtils.getKafkaConsumer(broker);
   config=TestUtils.getConfig(broker.getBrokerConnectionString());
-  mapper=new FieldNameBasedTupleToKafkaKeyAndMessageMapper("key","message");
+  mapper=new FieldNameBasedTupleToKafkaMapper("key","message");
   topicSelector=new DefaultTopicSelector(TestUtils.TOPIC);
-  state=new TridentKafkaState().withKafkaTopicSelector(topicSelector).withTridentTupleToKafkaKeyAndMessageMapper(mapper);
+  state=new TridentKafkaState().withKafkaTopicSelector(topicSelector).withTridentTupleToKafkaMapper(mapper);
   state.prepare(config);
 }

@@ -1,6 +1,6 @@
 {
   if (mapper == null) {
-    this.mapper=new FieldNameBasedTupleToKafkaKeyAndMessageMapper<K,V>();
+    this.mapper=new FieldNameBasedTupleToKafkaMapper<K,V>();
   }
   if (topicSelector == null) {
     this.topicSelector=new DefaultTopicSelector((String)stormConf.get(TOPIC));
