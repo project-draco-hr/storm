@@ -1,0 +1,4 @@
+{
+  this.topicSelector=topicSelector;
+  return this;
+}

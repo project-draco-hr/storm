@@ -4,7 +4,9 @@
   try {
     key=mapper.getKeyFromTuple(input);
     message=mapper.getMessageFromTuple(input);
-    producer.send(new KeyedMessage<K,V>(topic,key,message));
+    for (    String topic : topicSelector.getTopics(input)) {
+      producer.send(new KeyedMessage<K,V>(topic,key,message));
+    }
   }
  catch (  Exception ex) {
     LOG.error("Could not send message with key '" + key + "' and value '"+ message+ "'",ex);

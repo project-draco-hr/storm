@@ -1,6 +1,6 @@
 {
   LOG.info("makeState(partitonIndex={}, numpartitions={}",partitionIndex,numPartitions);
-  TridentKafkaState state=new TridentKafkaState();
+  TridentKafkaState state=new TridentKafkaState().withKafkaTopicSelector(this.topicSelector).withTridentTupleToKafkaKeyAndMessageMapper(this.mapper);
   state.prepare(conf);
   return state;
 }

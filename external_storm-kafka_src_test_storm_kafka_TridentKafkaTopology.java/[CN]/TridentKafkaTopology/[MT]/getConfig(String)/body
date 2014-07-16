@@ -7,7 +7,5 @@
   props.put("serializer.class","kafka.serializer.StringEncoder");
   conf.put(TridentKafkaState.KAFKA_BROKER_PROPERTIES,props);
   conf.put(TridentKafkaState.TOPIC,"test");
-  conf.put(TridentKafkaState.KEY_FIELD,"word");
-  conf.put(TridentKafkaState.MESSAGE_FIELD_NAME,"count");
   return conf;
 }

@@ -2,11 +2,13 @@
   if (mapper == null) {
     this.mapper=new FieldNameBasedTupleToKafkaKeyAndMessageMapper<K,V>();
   }
+  if (topicSelector == null) {
+    this.topicSelector=new DefaultTopicSelector((String)stormConf.get(TOPIC));
+  }
   Map configMap=(Map)stormConf.get(KAFKA_BROKER_PROPERTIES);
   Properties properties=new Properties();
   properties.putAll(configMap);
   ProducerConfig config=new ProducerConfig(properties);
   producer=new Producer<K,V>(config);
-  this.topic=(String)stormConf.get(TOPIC);
   this.collector=collector;
 }

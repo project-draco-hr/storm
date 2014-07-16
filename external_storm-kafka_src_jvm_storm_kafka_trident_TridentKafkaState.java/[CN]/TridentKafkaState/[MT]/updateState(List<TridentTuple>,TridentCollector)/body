@@ -1,12 +1,12 @@
 {
   for (  TridentTuple tuple : tuples) {
     try {
-      if (tuple.getValueByField(keyField) != null) {
-        producer.send(new KeyedMessage(topic,tuple.getValueByField(keyField),tuple.getValueByField(msgField)));
+      for (      String topic : topicSelector.getTopics(tuple)) {
+        producer.send(new KeyedMessage(topic,mapper.getKeyFromTuple(tuple),mapper.getMessageFromTuple(tuple)));
       }
     }
  catch (    Exception ex) {
-      String errorMsg="Could not send message with key '" + tuple.getValueByField(keyField);
+      String errorMsg="Could not send message with key '" + mapper.getKeyFromTuple(tuple);
       LOG.warn(errorMsg,ex);
       throw new FailedException(errorMsg,ex);
     }
