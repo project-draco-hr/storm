@@ -1,10 +1,9 @@
 {
   K key=null;
-  if (input.contains(BOLT_KEY)) {
-    key=(K)input.getValueByField(BOLT_KEY);
-  }
-  V message=(V)input.getValueByField(BOLT_MESSAGE);
+  V message=null;
   try {
+    key=mapper.getKeyFromTuple(input);
+    message=mapper.getMessageFromTuple(input);
     producer.send(new KeyedMessage<K,V>(topic,key,message));
   }
  catch (  Exception ex) {

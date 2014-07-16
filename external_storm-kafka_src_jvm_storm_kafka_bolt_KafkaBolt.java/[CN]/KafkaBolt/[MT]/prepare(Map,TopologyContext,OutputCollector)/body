@@ -1,4 +1,7 @@
 {
+  if (mapper == null) {
+    this.mapper=new FieldNameBasedTupleToKafkaKeyAndMessageMapper<K,V>();
+  }
   Map configMap=(Map)stormConf.get(KAFKA_BROKER_PROPERTIES);
   Properties properties=new Properties();
   properties.putAll(configMap);

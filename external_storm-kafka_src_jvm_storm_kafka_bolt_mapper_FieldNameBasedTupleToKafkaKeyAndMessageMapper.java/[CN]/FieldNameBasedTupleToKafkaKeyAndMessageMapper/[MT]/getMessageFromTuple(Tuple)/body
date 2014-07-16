@@ -1,0 +1,3 @@
+{
+  return (V)tuple.getValueByField(BOLT_MESSAGE);
+}
