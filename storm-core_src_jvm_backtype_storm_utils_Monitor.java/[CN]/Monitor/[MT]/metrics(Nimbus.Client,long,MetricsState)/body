@@ -1,0 +1,58 @@
+{
+  long totalStatted=0;
+  int componentParallelism=0;
+  boolean streamFound=false;
+  ClusterSummary clusterSummary=client.getClusterInfo();
+  TopologySummary topologySummary=null;
+  for (  TopologySummary ts : clusterSummary.get_topologies()) {
+    if (_topology.equals(ts.get_name())) {
+      topologySummary=ts;
+      break;
+    }
+  }
+  if (topologySummary == null) {
+    throw new IllegalArgumentException("topology: " + _topology + " not found");
+  }
+ else {
+    String id=topologySummary.get_id();
+    TopologyInfo info=client.getTopologyInfo(id);
+    for (    ExecutorSummary es : info.get_executors()) {
+      if (_component.equals(es.get_component_id())) {
+        componentParallelism++;
+        ExecutorStats stats=es.get_stats();
+        if (stats != null) {
+          Map<String,Map<String,Long>> statted=WATCH_EMITTED.equals(_watch) ? stats.get_emitted() : stats.get_transferred();
+          if (statted != null) {
+            Map<String,Long> e2=statted.get(":all-time");
+            if (e2 != null) {
+              Long stream=e2.get(_stream);
+              if (stream != null) {
+                streamFound=true;
+                totalStatted+=stream;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (componentParallelism <= 0) {
+    HashSet<String> components=getComponents(client,_topology);
+    System.out.println("Available components for " + _topology + " :");
+    System.out.println("------------------");
+    for (    String comp : components) {
+      System.out.println(comp);
+    }
+    System.out.println("------------------");
+    throw new IllegalArgumentException("component: " + _component + " not found");
+  }
+  if (!streamFound) {
+    throw new IllegalArgumentException("stream: " + _stream + " not found");
+  }
+  long timeDelta=now - state.getLastTime();
+  long stattedDelta=totalStatted - state.getLastStatted();
+  state.setLastTime(now);
+  state.setLastStatted(totalStatted);
+  double throughput=(stattedDelta == 0 || timeDelta == 0) ? 0.0 : ((double)stattedDelta / (double)timeDelta);
+  System.out.println(_topology + "\t" + _component+ "\t"+ componentParallelism+ "\t"+ _stream+ "\t"+ timeDelta+ "\t"+ stattedDelta+ "\t"+ throughput);
+}

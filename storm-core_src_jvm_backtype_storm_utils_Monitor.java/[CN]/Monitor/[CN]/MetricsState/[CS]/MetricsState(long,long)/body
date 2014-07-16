@@ -1,0 +1,4 @@
+{
+  this.lastTime=lastTime;
+  this.lastStatted=lastStatted;
+}
