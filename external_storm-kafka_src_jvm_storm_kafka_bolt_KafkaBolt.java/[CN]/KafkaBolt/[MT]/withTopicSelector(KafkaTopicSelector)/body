@@ -1,4 +1,4 @@
 {
-  this.topicSelector=topicSelector;
+  this.topicSelector=selector;
   return this;
 }
