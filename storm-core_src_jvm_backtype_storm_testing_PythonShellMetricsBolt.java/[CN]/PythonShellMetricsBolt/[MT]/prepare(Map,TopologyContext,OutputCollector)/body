@@ -1,0 +1,5 @@
+{
+  super.prepare(stormConf,context,collector);
+  CountShellMetric cMetric=new CountShellMetric();
+  context.registerMetric("my-custom-shell-metric",cMetric,5);
+}
