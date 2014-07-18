@@ -1,0 +1,3 @@
+def fail(self, id):
+    storm.log((('emitting ' + self.pending[id]) + ' on fail'))
+    storm.emit([self.pending[id]], id=id)
