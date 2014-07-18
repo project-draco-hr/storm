@@ -1,0 +1,5 @@
+{
+  super.open(conf,context,collector);
+  CountShellMetric cMetric=new CountShellMetric();
+  context.registerMetric("my-custom-shellspout-metric",cMetric,5);
+}
