@@ -1,2 +1,4 @@
 {
+  int timeout=Utils.getInt(storm_conf.get(Config.STORM_GROUP_MAPPING_SERVICE_CACHE_DURATION_SECS));
+  cachedGroups=new TimeCacheMap<String,Set<String>>(timeout);
 }
