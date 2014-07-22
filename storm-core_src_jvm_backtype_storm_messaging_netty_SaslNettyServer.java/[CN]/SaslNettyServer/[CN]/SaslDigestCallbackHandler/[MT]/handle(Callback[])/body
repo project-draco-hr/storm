@@ -1,0 +1,48 @@
+{
+  NameCallback nc=null;
+  PasswordCallback pc=null;
+  AuthorizeCallback ac=null;
+  for (  Callback callback : callbacks) {
+    if (callback instanceof AuthorizeCallback) {
+      ac=(AuthorizeCallback)callback;
+    }
+ else     if (callback instanceof NameCallback) {
+      nc=(NameCallback)callback;
+    }
+ else     if (callback instanceof PasswordCallback) {
+      pc=(PasswordCallback)callback;
+    }
+ else     if (callback instanceof RealmCallback) {
+      continue;
+    }
+ else {
+      throw new UnsupportedCallbackException(callback,"handle: Unrecognized SASL DIGEST-MD5 Callback");
+    }
+  }
+  if (nc != null) {
+    LOG.debug("handle: SASL server DIGEST-MD5 callback: setting " + "username for client: " + topologyToken);
+    nc.setName(topologyToken);
+  }
+  if (pc != null) {
+    char[] password=SaslUtils.encodePassword(topologyToken.getBytes());
+    LOG.debug("handle: SASL server DIGEST-MD5 callback: setting " + "password for client: " + topologyToken);
+    pc.setPassword(password);
+  }
+  if (ac != null) {
+    String authid=ac.getAuthenticationID();
+    String authzid=ac.getAuthorizationID();
+    if (authid.equals(authzid)) {
+      ac.setAuthorized(true);
+    }
+ else {
+      ac.setAuthorized(false);
+    }
+    if (ac.isAuthorized()) {
+      if (LOG.isDebugEnabled()) {
+        String username=topologyToken;
+        LOG.debug("handle: SASL server DIGEST-MD5 callback: setting " + "canonicalized client ID: " + username);
+      }
+      ac.setAuthorizedID(authzid);
+    }
+  }
+}

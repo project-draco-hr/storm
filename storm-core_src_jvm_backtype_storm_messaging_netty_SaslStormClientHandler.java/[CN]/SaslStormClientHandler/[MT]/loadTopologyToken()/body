@@ -1,0 +1,5 @@
+{
+  topologyUser=(String)this.client.storm_conf.get(Config.TOPOLOGY_NAME);
+  LOG.debug("SASL credentials is the storm user name: " + topologyUser);
+  token=topologyUser.getBytes();
+}

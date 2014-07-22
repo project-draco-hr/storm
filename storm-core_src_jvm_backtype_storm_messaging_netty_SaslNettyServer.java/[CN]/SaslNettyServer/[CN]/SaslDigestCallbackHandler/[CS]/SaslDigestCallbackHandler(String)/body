@@ -1,0 +1,4 @@
+{
+  LOG.debug("SaslDigestCallback: Creating SaslDigestCallback handler " + "with topology token: " + topologyToken);
+  this.topologyToken=topologyToken;
+}

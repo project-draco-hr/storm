@@ -1,0 +1,10 @@
+{
+  LOG.debug("SaslNettyServer: Topology token is: " + topologyToken + " with authmethod "+ SaslUtils.AUTH_DIGEST_MD5);
+  try {
+    SaslDigestCallbackHandler ch=new SaslNettyServer.SaslDigestCallbackHandler(topologyToken);
+    saslServer=Sasl.createSaslServer(SaslUtils.AUTH_DIGEST_MD5,null,SaslUtils.DEFAULT_REALM,SaslUtils.getSaslProps(),ch);
+  }
+ catch (  SaslException e) {
+    LOG.error("SaslNettyServer: Could not create SaslServer: " + e);
+  }
+}
