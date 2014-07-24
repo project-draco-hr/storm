@@ -1,4 +1,4 @@
 {
   this.server=server;
-  loadTopologyToken();
+  getSASLCredentials();
 }

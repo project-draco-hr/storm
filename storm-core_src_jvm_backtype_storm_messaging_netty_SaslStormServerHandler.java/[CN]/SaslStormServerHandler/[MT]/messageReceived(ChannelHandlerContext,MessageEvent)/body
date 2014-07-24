@@ -2,13 +2,12 @@
   Object msg=e.getMessage();
   if (msg == null)   return;
   Channel channel=ctx.getChannel();
-  LOG.debug("messageReceived: Got " + msg.getClass());
   if (msg instanceof ControlMessage && ((ControlMessage)e.getMessage()) == ControlMessage.SASL_TOKEN_MESSAGE_REQUEST) {
     SaslNettyServer saslNettyServer=SaslNettyServerState.getSaslNettyServer.get(channel);
     if (saslNettyServer == null) {
       LOG.debug("No saslNettyServer for " + channel + " yet; creating now, with topology token: ");
       try {
-        saslNettyServer=new SaslNettyServer(topologyUser);
+        saslNettyServer=new SaslNettyServer(topologyName,token);
       }
  catch (      IOException ioe) {
         LOG.error("Error occurred while creating saslNettyServer on server " + channel.getLocalAddress() + " for client "+ channel.getRemoteAddress());
