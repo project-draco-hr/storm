@@ -11,6 +11,9 @@
     channel=channelRef.get();
   }
   while (msgs.hasNext()) {
+    if (!channel.isConnected()) {
+      connect();
+    }
     TaskMessage message=msgs.next();
     if (null == messageBatch) {
       messageBatch=new MessageBatch(messageBatchSize);
