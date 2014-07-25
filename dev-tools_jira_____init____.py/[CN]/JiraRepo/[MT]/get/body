@@ -1,0 +1,7 @@
+def get(self, id):
+    resp = urllib2.urlopen(((self.baseUrl + '/issue/') + id))
+    data = json.loads(resp.read())
+    if data.has_key('errorMessages'):
+        raise Exception(data['errorMessages'])
+    j = Jira(data, self)
+    return j

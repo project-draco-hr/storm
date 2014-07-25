@@ -1,0 +1,2 @@
+def logTrace(msg):
+    log(msg, 0)
