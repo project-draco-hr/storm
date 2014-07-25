@@ -1,0 +1,13 @@
+{
+  if (shouldGzip == null) {
+synchronized (Utils.class) {
+      Map conf=readStormConfig();
+      String type=(String)conf.get(Config.STORM_META_SERIALIZATION_COMPRESSION_TYPE);
+      shouldGzip="gzip".equalsIgnoreCase(type);
+    }
+    if (shouldGzip) {
+      LOG.info("Will be using GZIP for metadata compression in the cluster");
+    }
+  }
+  return shouldGzip;
+}

@@ -1,7 +1,13 @@
 {
   try {
-    GZIPInputStream bis=new GZIPInputStream(new ByteArrayInputStream(serialized));
-    ObjectInputStream ois=new ObjectInputStream(bis);
+    ByteArrayInputStream bis=new ByteArrayInputStream(serialized);
+    ObjectInputStream ois;
+    if (shouldGzip()) {
+      ois=new ObjectInputStream(new GZIPInputStream(bis));
+    }
+ else {
+      ois=new ObjectInputStream(bis);
+    }
     Object ret=ois.readObject();
     ois.close();
     return ret;
