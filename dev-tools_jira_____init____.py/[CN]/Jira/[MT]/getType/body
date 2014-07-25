@@ -1,0 +1,6 @@
+def getType(self):
+    ret = ''
+    mid = self.fields['issuetype']
+    if (mid != None):
+        ret = mid['name']
+    return mstr(ret)

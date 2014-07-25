@@ -1,0 +1,14 @@
+def __init__(self, data):
+    self.data = data
+    self.author = mstr(self.data['author']['name'])
+    self.githubAuthor = None
+    self.githubPull = None
+    self.githubComment = (self.author == 'githubbot')
+    body = self.getBody()
+    if (isDiff.search(body) != None):
+        self.vote = None
+    else:
+        self.vote = searchGroup(hasVote, body, 1)
+    if self.githubComment:
+        self.githubAuthor = searchGroup(githubUser, body, 1)
+        self.githubPull = searchGroup(githubPull, body, 0)

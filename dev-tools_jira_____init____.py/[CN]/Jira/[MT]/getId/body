@@ -1,0 +1,2 @@
+def getId(self):
+    return mstr(self.key)
