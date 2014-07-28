@@ -1,18 +1,3 @@
 {
-  try {
-    ByteArrayOutputStream bos=new ByteArrayOutputStream();
-    ObjectOutputStream oos;
-    if (shouldGzip()) {
-      oos=new ObjectOutputStream(new GZIPOutputStream(bos));
-    }
- else {
-      oos=new ObjectOutputStream(bos);
-    }
-    oos.writeObject(obj);
-    oos.close();
-    return bos.toByteArray();
-  }
- catch (  IOException ioe) {
-    throw new RuntimeException(ioe);
-  }
+  return serializationDelegate.serialize(obj);
 }
