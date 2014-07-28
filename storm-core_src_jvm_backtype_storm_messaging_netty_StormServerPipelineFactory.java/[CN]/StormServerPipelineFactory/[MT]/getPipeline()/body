@@ -1,17 +1,12 @@
 {
   ChannelPipeline pipeline=Channels.pipeline();
+  pipeline.addLast("decoder",new MessageDecoder());
+  pipeline.addLast("encoder",new MessageEncoder());
   boolean isNettyAuth=(Boolean)this.server.storm_conf.get(Config.STORM_MESSAGING_NETTY_AUTHENTICATION);
   if (isNettyAuth) {
-    pipeline.addLast("decoder",new MessageDecoder());
-    pipeline.addLast("encoder",new MessageEncoder());
     pipeline.addLast("saslServerHandler",new SaslStormServerHandler(server));
     pipeline.addLast("authorizeServerHandler",new SaslStormServerAuthorizeHandler());
-    pipeline.addLast("handler",new StormServerHandler(server));
   }
- else {
-    pipeline.addLast("decoder",new MessageDecoder());
-    pipeline.addLast("encoder",new MessageEncoder());
-    pipeline.addLast("handler",new StormServerHandler(server));
-  }
+  pipeline.addLast("handler",new StormServerHandler(server));
   return pipeline;
 }

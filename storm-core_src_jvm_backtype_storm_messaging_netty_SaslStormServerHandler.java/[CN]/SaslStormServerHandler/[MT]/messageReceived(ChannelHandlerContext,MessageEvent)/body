@@ -11,7 +11,7 @@
       }
  catch (      IOException ioe) {
         LOG.error("Error occurred while creating saslNettyServer on server " + channel.getLocalAddress() + " for client "+ channel.getRemoteAddress());
-        throw new IOException(ioe);
+        saslNettyServer=null;
       }
       SaslNettyServerState.getSaslNettyServer.set(channel,saslNettyServer);
     }
