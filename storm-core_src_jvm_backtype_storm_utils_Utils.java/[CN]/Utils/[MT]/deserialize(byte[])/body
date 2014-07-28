@@ -1,21 +1,3 @@
 {
-  try {
-    ByteArrayInputStream bis=new ByteArrayInputStream(serialized);
-    ObjectInputStream ois;
-    if (shouldGzip()) {
-      ois=new ObjectInputStream(new GZIPInputStream(bis));
-    }
- else {
-      ois=new ObjectInputStream(bis);
-    }
-    Object ret=ois.readObject();
-    ois.close();
-    return ret;
-  }
- catch (  IOException ioe) {
-    throw new RuntimeException(ioe);
-  }
-catch (  ClassNotFoundException e) {
-    throw new RuntimeException(e);
-  }
+  return serializationDelegate.deserialize(serialized);
 }

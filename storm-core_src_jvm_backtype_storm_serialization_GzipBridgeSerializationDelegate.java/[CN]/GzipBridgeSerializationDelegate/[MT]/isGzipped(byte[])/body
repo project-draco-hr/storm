@@ -1,0 +1,15 @@
+{
+  ByteArrayInputStream bis=new ByteArrayInputStream(bytes);
+  PushbackInputStream pis=new PushbackInputStream(bis,2);
+  byte[] header=new byte[2];
+  try {
+    pis.read(header);
+    pis.unread(header);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  byte magicFirst=(byte)GZIPInputStream.GZIP_MAGIC;
+  byte magicSecond=(byte)(GZIPInputStream.GZIP_MAGIC >> 8);
+  return (header[0] == magicFirst) && (header[1] == magicSecond);
+}
