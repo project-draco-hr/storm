@@ -1,0 +1,2 @@
+def raw(self):
+    return self.data
