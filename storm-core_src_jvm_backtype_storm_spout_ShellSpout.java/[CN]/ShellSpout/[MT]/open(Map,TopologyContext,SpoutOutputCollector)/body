@@ -1,5 +1,6 @@
 {
   _collector=collector;
+  _context=context;
   _process=new ShellProcess(_command);
   Number subpid=_process.launch(stormConf,context);
   LOG.info("Launched subprocess with pid " + subpid);

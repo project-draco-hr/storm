@@ -1,0 +1,4 @@
+def jiratime(obj):
+    if (obj == None):
+        return None
+    return datetime.strptime(obj[0:19], '%Y-%m-%dT%H:%M:%S')

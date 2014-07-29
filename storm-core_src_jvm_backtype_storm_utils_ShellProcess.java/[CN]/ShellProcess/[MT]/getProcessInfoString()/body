@@ -1,0 +1,3 @@
+{
+  return String.format("pid:%s, name:%s",pid,componentName);
+}

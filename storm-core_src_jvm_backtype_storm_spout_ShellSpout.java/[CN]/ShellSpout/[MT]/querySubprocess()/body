@@ -8,8 +8,7 @@
         return;
       }
  else       if (command.equals("log")) {
-        String msg=shellMsg.getMsg();
-        LOG.info("Shell msg: " + msg);
+        handleLog(shellMsg);
       }
  else       if (command.equals("emit")) {
         String stream=shellMsg.getStream();
@@ -26,12 +25,16 @@
           _collector.emitDirect((int)task.longValue(),stream,tuple,messageId);
         }
       }
+ else       if (command.equals("metrics")) {
+        handleMetrics(shellMsg);
+      }
  else {
         throw new RuntimeException("Unknown command received: " + command);
       }
     }
   }
- catch (  IOException e) {
-    throw new RuntimeException(e);
+ catch (  Exception e) {
+    String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();
+    throw new RuntimeException(processInfo,e);
   }
 }

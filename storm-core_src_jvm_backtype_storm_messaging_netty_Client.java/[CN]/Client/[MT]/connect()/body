@@ -1,9 +1,9 @@
 {
   try {
-    if (channelRef.get() != null) {
+    Channel channel=channelRef.get();
+    if (channel != null && channel.isConnected()) {
       return;
     }
-    Channel channel=null;
     int tried=0;
     while (tried <= max_retries) {
       LOG.info("Reconnect started for {}... [{}]",name(),tried);

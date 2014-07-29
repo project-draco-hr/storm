@@ -1,0 +1,2 @@
+def getCreated(self):
+    return jiratime(self.fields['created'])

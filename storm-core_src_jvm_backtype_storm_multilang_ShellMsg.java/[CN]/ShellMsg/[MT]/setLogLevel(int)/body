@@ -1,0 +1,3 @@
+{
+  this.logLevel=ShellLogLevel.fromInt(logLevel);
+}

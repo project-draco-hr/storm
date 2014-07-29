@@ -5,6 +5,7 @@
   }
   _rand=new Random();
   _collector=collector;
+  _context=context;
   _process=new ShellProcess(_command);
   Number subpid=_process.launch(stormConf,context);
   LOG.info("Launched subprocess with pid " + subpid);
@@ -24,11 +25,13 @@
             handleError(shellMsg.getMsg());
           }
  else           if (command.equals("log")) {
-            String msg=shellMsg.getMsg();
-            LOG.info("Shell msg: " + msg);
+            handleLog(shellMsg);
           }
  else           if (command.equals("emit")) {
             handleEmit(shellMsg);
+          }
+ else           if (command.equals("metrics")) {
+            handleMetrics(shellMsg);
           }
         }
  catch (        InterruptedException e) {

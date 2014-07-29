@@ -1,7 +1,0 @@
-{
-  builder=new TopologyBuilder();
-  topologyName="slidingWindowCounts";
-  topologyConfig=createTopologyConfiguration();
-  runtimeInSeconds=DEFAULT_RUNTIME_IN_SECONDS;
-  wireTopology();
-}

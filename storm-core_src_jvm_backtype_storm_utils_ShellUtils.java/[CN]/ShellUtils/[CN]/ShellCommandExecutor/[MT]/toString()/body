@@ -1,0 +1,14 @@
+{
+  StringBuilder builder=new StringBuilder();
+  String[] args=getExecString();
+  for (  String s : args) {
+    if (s.indexOf(' ') >= 0) {
+      builder.append('"').append(s).append('"');
+    }
+ else {
+      builder.append(s);
+    }
+    builder.append(' ');
+  }
+  return builder.toString();
+}
