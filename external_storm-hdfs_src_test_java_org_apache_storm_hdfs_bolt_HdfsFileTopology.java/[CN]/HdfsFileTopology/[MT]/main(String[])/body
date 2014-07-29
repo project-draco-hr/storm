@@ -3,7 +3,7 @@
   config.setNumWorkers(1);
   SentenceSpout spout=new SentenceSpout();
   SyncPolicy syncPolicy=new CountSyncPolicy(1000);
-  FileRotationPolicy rotationPolicy=new FileSizeRotationPolicy(5.0f,Units.MB);
+  FileRotationPolicy rotationPolicy=new TimedRotationPolicy(1.0f,TimedRotationPolicy.TimeUnit.MINUTES);
   FileNameFormat fileNameFormat=new DefaultFileNameFormat().withPath("/foo/").withExtension(".txt");
   RecordFormat format=new DelimitedRecordFormat().withFieldDelimiter("|");
   Yaml yaml=new Yaml();
@@ -15,7 +15,7 @@
   TopologyBuilder builder=new TopologyBuilder();
   builder.setSpout(SENTENCE_SPOUT_ID,spout,1);
   builder.setBolt(BOLT_ID,bolt,4).shuffleGrouping(SENTENCE_SPOUT_ID);
-  if (args.length == 1) {
+  if (args.length == 2) {
     LocalCluster cluster=new LocalCluster();
     cluster.submitTopology(TOPOLOGY_NAME,config,builder.createTopology());
     waitForSeconds(120);
@@ -23,7 +23,7 @@
     cluster.shutdown();
     System.exit(0);
   }
- else   if (args.length == 2) {
+ else   if (args.length == 3) {
     StormSubmitter.submitTopology(args[0],config,builder.createTopology());
   }
  else {

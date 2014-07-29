@@ -1,4 +1,5 @@
 {
+  this.writeLock=new Object();
   if (this.rotationPolicy == null)   throw new IllegalStateException("RotationPolicy must be specified.");
   if (this.fsUrl == null) {
     throw new IllegalStateException("File system URL must be specified.");
@@ -18,5 +19,21 @@
   }
  catch (  Exception e) {
     throw new RuntimeException("Error preparing HdfsState: " + e.getMessage(),e);
+  }
+  if (this.rotationPolicy instanceof TimedRotationPolicy) {
+    long interval=((TimedRotationPolicy)this.rotationPolicy).getInterval();
+    this.rotationTimer=new Timer(true);
+    TimerTask task=new TimerTask(){
+      @Override public void run(){
+        try {
+          rotateOutputFile();
+        }
+ catch (        IOException e) {
+          LOG.warn("IOException during scheduled file rotation.",e);
+        }
+      }
+    }
+;
+    this.rotationTimer.scheduleAtFixedRate(task,interval,interval);
   }
 }
