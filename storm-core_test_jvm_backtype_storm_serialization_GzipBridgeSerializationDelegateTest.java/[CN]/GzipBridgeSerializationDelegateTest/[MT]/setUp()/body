@@ -1,4 +1,3 @@
 {
-  super.setUp();
   testDelegate=new GzipBridgeSerializationDelegate();
 }
