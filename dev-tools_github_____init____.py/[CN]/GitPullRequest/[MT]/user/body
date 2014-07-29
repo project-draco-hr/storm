@@ -1,0 +1,2 @@
+def user(self):
+    return mstr(self.data['user']['login'])

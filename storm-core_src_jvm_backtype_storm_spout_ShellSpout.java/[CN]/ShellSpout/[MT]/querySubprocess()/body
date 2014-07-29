@@ -8,8 +8,7 @@
         return;
       }
  else       if (command.equals("log")) {
-        String msg=shellMsg.getMsg();
-        LOG.info("Shell msg: " + msg + _process.getProcessInfoString());
+        handleLog(shellMsg);
       }
  else       if (command.equals("emit")) {
         String stream=shellMsg.getStream();

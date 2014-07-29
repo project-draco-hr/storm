@@ -1,0 +1,6 @@
+def getAssignee(self):
+    ret = ''
+    mid = self.fields['assignee']
+    if (mid != None):
+        ret = mid['displayName']
+    return mstr(ret)

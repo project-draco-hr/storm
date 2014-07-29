@@ -1,0 +1,2 @@
+def openPulls(self, user, repo):
+    return self.pulls(user, repo, 'open')

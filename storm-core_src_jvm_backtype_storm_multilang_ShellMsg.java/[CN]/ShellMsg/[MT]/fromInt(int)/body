@@ -1,0 +1,16 @@
+{
+switch (i) {
+case 0:
+    return TRACE;
+case 1:
+  return DEBUG;
+case 2:
+return INFO;
+case 3:
+return WARN;
+case 4:
+return ERROR;
+default :
+return INFO;
+}
+}
