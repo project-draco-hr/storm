@@ -1,0 +1,2 @@
+def logError(msg):
+    log(msg, 4)
