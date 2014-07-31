@@ -1,10 +1,10 @@
 {
   this._queueName=PREFIX + queueName;
-  _buffer=new RingBuffer<MutableObject>(new ObjectEventFactory(),claim,wait);
+  _buffer=RingBuffer.create(producerType,new ObjectEventFactory(),bufferSize,wait);
   _consumer=new Sequence();
   _barrier=_buffer.newBarrier();
-  _buffer.setGatingSequences(_consumer);
-  if (claim instanceof SingleThreadedClaimStrategy) {
+  _buffer.addGatingSequences(_consumer);
+  if (producerType == ProducerType.SINGLE) {
     consumerStartedFlag=true;
   }
  else {
