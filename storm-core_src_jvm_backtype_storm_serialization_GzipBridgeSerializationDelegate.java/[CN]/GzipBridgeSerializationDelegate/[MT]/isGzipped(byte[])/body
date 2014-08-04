@@ -1,3 +1,3 @@
 {
-  return (bytes.length > 1) && (bytes[0] == magicFirst) && (bytes[1] == magicSecond);
+  return (bytes.length > 1) && (bytes[0] == GZIP_MAGIC_FIRST_BYTE) && (bytes[1] == GZIP_MAGIC_SECOND_BYTE);
 }
