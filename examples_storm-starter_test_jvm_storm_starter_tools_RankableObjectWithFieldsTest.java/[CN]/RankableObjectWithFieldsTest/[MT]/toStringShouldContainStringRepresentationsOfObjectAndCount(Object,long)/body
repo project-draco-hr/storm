@@ -1,0 +1,5 @@
+{
+  RankableObjectWithFields r=new RankableObjectWithFields(obj,count);
+  String strRepresentation=r.toString();
+  assertThat(strRepresentation).contains(obj.toString()).contains("" + count);
+}

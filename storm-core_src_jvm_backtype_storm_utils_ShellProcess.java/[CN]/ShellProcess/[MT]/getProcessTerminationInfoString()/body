@@ -1,0 +1,3 @@
+{
+  return String.format(" exitCode:%s, errorString:%s ",getExitCode(),getErrorsString());
+}

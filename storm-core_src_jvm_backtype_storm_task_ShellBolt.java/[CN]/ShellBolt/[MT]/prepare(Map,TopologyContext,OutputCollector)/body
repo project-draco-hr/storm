@@ -4,38 +4,34 @@
     this._pendingWrites=new LinkedBlockingQueue(((Number)maxPending).intValue());
   }
   _rand=new Random();
-  _process=new ShellProcess(_command);
   _collector=collector;
-  try {
-    Number subpid=_process.launch(stormConf,context);
-    LOG.info("Launched subprocess with pid " + subpid);
-  }
- catch (  IOException e) {
-    throw new RuntimeException("Error when launching multilang subprocess\n" + _process.getErrorsString(),e);
-  }
+  _context=context;
+  _process=new ShellProcess(_command);
+  Number subpid=_process.launch(stormConf,context);
+  LOG.info("Launched subprocess with pid " + subpid);
   _readerThread=new Thread(new Runnable(){
     public void run(){
       while (_running) {
         try {
-          JSONObject action=_process.readMessage();
-          if (action == null) {
-          }
-          String command=(String)action.get("command");
+          ShellMsg shellMsg=_process.readShellMsg();
+          String command=shellMsg.getCommand();
           if (command.equals("ack")) {
-            handleAck(action);
+            handleAck(shellMsg.getId());
           }
  else           if (command.equals("fail")) {
-            handleFail(action);
+            handleFail(shellMsg.getId());
           }
  else           if (command.equals("error")) {
-            handleError(action);
+            handleError(shellMsg.getMsg());
           }
  else           if (command.equals("log")) {
-            String msg=(String)action.get("msg");
-            LOG.info("Shell msg: " + msg);
+            handleLog(shellMsg);
           }
  else           if (command.equals("emit")) {
-            handleEmit(action);
+            handleEmit(shellMsg);
+          }
+ else           if (command.equals("metrics")) {
+            handleMetrics(shellMsg);
           }
         }
  catch (        InterruptedException e) {
@@ -53,10 +49,15 @@ catch (        Throwable t) {
       while (_running) {
         try {
           Object write=_pendingWrites.poll(1,SECONDS);
-          if (write != null) {
-            _process.writeMessage(write);
+          if (write instanceof BoltMsg) {
+            _process.writeBoltMsg((BoltMsg)write);
           }
-          _process.drainErrorStream();
+ else           if (write instanceof List<?>) {
+            _process.writeTaskIds((List<Integer>)write);
+          }
+ else           if (write != null) {
+            throw new RuntimeException("Unknown class type to write: " + write.getClass().getName());
+          }
         }
  catch (        InterruptedException e) {
         }

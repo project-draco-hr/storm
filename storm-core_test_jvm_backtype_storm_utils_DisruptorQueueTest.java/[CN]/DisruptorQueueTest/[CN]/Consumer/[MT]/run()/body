@@ -1,0 +1,10 @@
+{
+  queue.consumerStarted();
+  try {
+    while (true) {
+      queue.consumeBatchWhenAvailable(handler);
+    }
+  }
+ catch (  RuntimeException e) {
+  }
+}

@@ -1,3 +1,0 @@
-{
-  put(Config.TOPOLOGY_OPTIMIZE,isOn);
-}

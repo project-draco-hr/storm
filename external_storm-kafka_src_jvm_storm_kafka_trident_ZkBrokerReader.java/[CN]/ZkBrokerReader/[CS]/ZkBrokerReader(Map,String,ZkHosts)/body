@@ -1,0 +1,11 @@
+{
+  try {
+    reader=new DynamicBrokersReader(conf,hosts.brokerZkStr,hosts.brokerZkPath,topic);
+    cachedBrokers=reader.getBrokerInfo();
+    lastRefreshTimeMs=System.currentTimeMillis();
+    refreshMillis=hosts.refreshFreqSecs * 1000L;
+  }
+ catch (  java.net.SocketTimeoutException e) {
+    LOG.warn("Failed to update brokers",e);
+  }
+}

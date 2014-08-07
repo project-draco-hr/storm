@@ -1,0 +1,6 @@
+{
+  if (obj == null)   throw new RuntimeException("null object forbidded in message batch");
+  TaskMessage msg=(TaskMessage)obj;
+  msgs.add(msg);
+  encoded_length+=msgEncodeLength(msg);
+}

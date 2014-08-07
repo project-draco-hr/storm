@@ -1,0 +1,10 @@
+{
+  if (submittedJar == null) {
+    LOG.info("Jar not uploaded to master yet. Submitting jar...");
+    String localJar=System.getProperty("storm.jar");
+    submittedJar=submitJar(conf,localJar,listener);
+  }
+ else {
+    LOG.info("Jar already uploaded to master. Not submitting jar.");
+  }
+}

@@ -1,0 +1,11 @@
+{
+  config.scheme=new KeyValueSchemeAsMultiScheme(new StringKeyValueScheme());
+  String value="value";
+  String key="key";
+  createTopicAndSendMessage(key,value);
+  ByteBufferMessageSet messageAndOffsets=getLastMessage();
+  for (  MessageAndOffset msg : messageAndOffsets) {
+    Iterable<List<Object>> lists=KafkaUtils.generateTuples(config,msg.message());
+    assertEquals(ImmutableMap.of(key,value),lists.iterator().next().get(0));
+  }
+}

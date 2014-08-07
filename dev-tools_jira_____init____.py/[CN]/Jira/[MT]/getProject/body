@@ -1,0 +1,6 @@
+def getProject(self):
+    ret = ''
+    mid = self.fields['project']
+    if (mid != None):
+        ret = mid['key']
+    return mstr(ret)

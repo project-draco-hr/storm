@@ -1,0 +1,6 @@
+{
+  long nowCached=now();
+  for (int i=0; i < lastModifiedTimesMillis.maxSize(); i++) {
+    lastModifiedTimesMillis.add(Long.valueOf(nowCached));
+  }
+}

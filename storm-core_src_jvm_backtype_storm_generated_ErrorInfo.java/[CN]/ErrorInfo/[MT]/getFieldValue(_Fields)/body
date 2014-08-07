@@ -4,6 +4,10 @@ case ERROR:
     return get_error();
 case ERROR_TIME_SECS:
   return Integer.valueOf(get_error_time_secs());
+case HOST:
+return get_host();
+case PORT:
+return Integer.valueOf(get_port());
 }
 throw new IllegalStateException();
 }

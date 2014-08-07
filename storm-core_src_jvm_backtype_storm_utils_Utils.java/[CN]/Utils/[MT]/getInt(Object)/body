@@ -1,14 +1,7 @@
 {
-  if (o instanceof Long) {
-    return ((Long)o).intValue();
+  Integer result=getInt(o,null);
+  if (null == result) {
+    throw new IllegalArgumentException("Don't know how to convert null to int");
   }
- else   if (o instanceof Integer) {
-    return (Integer)o;
-  }
- else   if (o instanceof Short) {
-    return ((Short)o).intValue();
-  }
- else {
-    throw new IllegalArgumentException("Don't know how to convert " + o + " + to int");
-  }
+  return result;
 }

@@ -1,0 +1,8 @@
+{
+  StaticHosts hosts=(StaticHosts)config.hosts;
+  List<Partition> myPartitions=KafkaUtils.calculatePartitionsForTask(hosts.getPartitionInformation(),totalTasks,taskIndex);
+  for (  Partition myPartition : myPartitions) {
+    _managers.put(myPartition,new PartitionManager(connections,topologyInstanceId,state,stormConf,config,myPartition));
+  }
+  _allManagers=new ArrayList(_managers.values());
+}

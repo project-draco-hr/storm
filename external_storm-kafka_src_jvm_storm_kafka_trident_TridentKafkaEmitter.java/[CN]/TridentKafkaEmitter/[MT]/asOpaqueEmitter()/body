@@ -1,0 +1,22 @@
+{
+  return new IOpaquePartitionedTridentSpout.Emitter<GlobalPartitionInformation,Partition,Map>(){
+    /** 
+ * Emit a batch of tuples for a partition/transaction.
+ * Return the metadata describing this batch that will be used as lastPartitionMeta
+ * for defining the parameters of the next batch.
+ */
+    @Override public Map emitPartitionBatch(    TransactionAttempt transactionAttempt,    TridentCollector tridentCollector,    Partition partition,    Map map){
+      return emitNewPartitionBatch(transactionAttempt,tridentCollector,partition,map);
+    }
+    @Override public void refreshPartitions(    List<Partition> partitions){
+      refresh(partitions);
+    }
+    @Override public List<Partition> getOrderedPartitions(    GlobalPartitionInformation partitionInformation){
+      return orderPartitions(partitionInformation);
+    }
+    @Override public void close(){
+      clear();
+    }
+  }
+;
+}

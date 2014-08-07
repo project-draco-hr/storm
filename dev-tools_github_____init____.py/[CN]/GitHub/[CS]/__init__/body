@@ -1,0 +1,6 @@
+def __init__(self, options):
+    self.headers = {}
+    if options.gituser:
+        gitpassword = getpass.getpass((('github.com user ' + options.gituser) + ':'))
+        authstr = base64.encodestring(('%s:%s' % (options.gituser, gitpassword))).replace('\n', '')
+        self.headers['Authorization'] = ('Basic ' + authstr)

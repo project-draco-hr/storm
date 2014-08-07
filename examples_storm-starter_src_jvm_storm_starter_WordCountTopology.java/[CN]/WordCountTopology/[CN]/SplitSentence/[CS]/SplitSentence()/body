@@ -1,0 +1,3 @@
+{
+  super("python","splitsentence.py");
+}

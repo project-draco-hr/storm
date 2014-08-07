@@ -1,3 +1,4 @@
 {
-  _exception=exception;
+  String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();
+  _exception=new RuntimeException(processInfo,exception);
 }

@@ -1,0 +1,3 @@
+{
+  new TotalRankingsBolt(ANY_TOPN,emitFrequencyInSeconds);
+}

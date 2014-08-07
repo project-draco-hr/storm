@@ -1,0 +1,15 @@
+{
+  if (null == o) {
+    return defaultValue;
+  }
+  if (o instanceof Integer || o instanceof Short || o instanceof Byte) {
+    return ((Number)o).intValue();
+  }
+ else   if (o instanceof Long) {
+    final long l=(Long)o;
+    if (l <= Integer.MAX_VALUE && l >= Integer.MIN_VALUE) {
+      return (int)l;
+    }
+  }
+  throw new IllegalArgumentException("Don't know how to convert " + o + " to int");
+}

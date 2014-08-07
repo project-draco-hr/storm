@@ -1,0 +1,3 @@
+{
+  _followers.add(tuple.getString(1));
+}

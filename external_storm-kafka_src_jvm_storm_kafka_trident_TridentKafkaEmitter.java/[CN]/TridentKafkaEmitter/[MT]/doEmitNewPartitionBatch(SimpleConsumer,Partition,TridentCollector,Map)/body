@@ -1,0 +1,34 @@
+{
+  long offset;
+  if (lastMeta != null) {
+    String lastInstanceId=null;
+    Map lastTopoMeta=(Map)lastMeta.get("topology");
+    if (lastTopoMeta != null) {
+      lastInstanceId=(String)lastTopoMeta.get("id");
+    }
+    if (_config.forceFromStart && !_topologyInstanceId.equals(lastInstanceId)) {
+      offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,_config.startOffsetTime);
+    }
+ else {
+      offset=(Long)lastMeta.get("nextOffset");
+    }
+  }
+ else {
+    offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,_config);
+  }
+  ByteBufferMessageSet msgs=fetchMessages(consumer,partition,offset);
+  long endoffset=offset;
+  for (  MessageAndOffset msg : msgs) {
+    emit(collector,msg.message());
+    endoffset=msg.nextOffset();
+  }
+  Map newMeta=new HashMap();
+  newMeta.put("offset",offset);
+  newMeta.put("nextOffset",endoffset);
+  newMeta.put("instanceId",_topologyInstanceId);
+  newMeta.put("partition",partition.partition);
+  newMeta.put("broker",ImmutableMap.of("host",partition.host.host,"port",partition.host.port));
+  newMeta.put("topic",_config.topic);
+  newMeta.put("topology",ImmutableMap.of("name",_topologyName,"id",_topologyInstanceId));
+  return newMeta;
+}

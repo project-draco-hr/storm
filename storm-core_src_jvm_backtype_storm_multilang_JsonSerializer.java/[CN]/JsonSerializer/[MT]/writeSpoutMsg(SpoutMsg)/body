@@ -1,0 +1,6 @@
+{
+  JSONObject obj=new JSONObject();
+  obj.put("command",msg.getCommand());
+  obj.put("id",msg.getId());
+  writeMessage(obj);
+}

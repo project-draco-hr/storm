@@ -1,0 +1,9 @@
+{
+  if (!_pending.isEmpty() && _pending.first() < offset - _spoutConfig.maxOffsetBehind) {
+    _pending.headSet(offset).clear();
+  }
+ else {
+    _pending.remove(offset);
+  }
+  numberAcked++;
+}

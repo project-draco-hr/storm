@@ -1,0 +1,47 @@
+{
+  try {
+    long totalSpoutLag=0;
+    long totalEarliestTimeOffset=0;
+    long totalLatestTimeOffset=0;
+    long totalLatestEmittedOffset=0;
+    HashMap ret=new HashMap();
+    if (_partitions != null && _partitions.size() == _partitionToOffset.size()) {
+      for (      Map.Entry<Partition,Long> e : _partitionToOffset.entrySet()) {
+        Partition partition=e.getKey();
+        SimpleConsumer consumer=_connections.getConnection(partition);
+        if (consumer == null) {
+          LOG.warn("partitionToOffset contains partition not found in _connections. Stale partition data?");
+          return null;
+        }
+        long latestTimeOffset=getOffset(consumer,_topic,partition.partition,kafka.api.OffsetRequest.LatestTime());
+        long earliestTimeOffset=getOffset(consumer,_topic,partition.partition,kafka.api.OffsetRequest.EarliestTime());
+        if (latestTimeOffset == 0 || earliestTimeOffset == 0) {
+          LOG.warn("No data found in Kafka Partition " + partition.getId());
+          return null;
+        }
+        long latestEmittedOffset=e.getValue();
+        long spoutLag=latestTimeOffset - latestEmittedOffset;
+        ret.put(partition.getId() + "/" + "spoutLag",spoutLag);
+        ret.put(partition.getId() + "/" + "earliestTimeOffset",earliestTimeOffset);
+        ret.put(partition.getId() + "/" + "latestTimeOffset",latestTimeOffset);
+        ret.put(partition.getId() + "/" + "latestEmittedOffset",latestEmittedOffset);
+        totalSpoutLag+=spoutLag;
+        totalEarliestTimeOffset+=earliestTimeOffset;
+        totalLatestTimeOffset+=latestTimeOffset;
+        totalLatestEmittedOffset+=latestEmittedOffset;
+      }
+      ret.put("totalSpoutLag",totalSpoutLag);
+      ret.put("totalEarliestTimeOffset",totalEarliestTimeOffset);
+      ret.put("totalLatestTimeOffset",totalLatestTimeOffset);
+      ret.put("totalLatestEmittedOffset",totalLatestEmittedOffset);
+      return ret;
+    }
+ else {
+      LOG.info("Metrics Tick: Not enough data to calculate spout lag.");
+    }
+  }
+ catch (  Throwable t) {
+    LOG.warn("Metrics Tick: Exception when computing kafkaOffset metric.",t);
+  }
+  return null;
+}
