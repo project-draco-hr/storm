@@ -1,0 +1,4 @@
+{
+  ZkHosts hosts=(ZkHosts)spoutConfig.hosts;
+  return new DynamicBrokersReader(stormConf,hosts.brokerZkStr,hosts.brokerZkPath,spoutConfig.topic);
+}

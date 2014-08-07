@@ -1,0 +1,5 @@
+{
+  if (rankedItems.size() > maxSize) {
+    rankedItems.remove(maxSize);
+  }
+}

@@ -1,0 +1,4 @@
+{
+  this.processIn=new DataOutputStream(processIn);
+  this.processOut=new BufferedReader(new InputStreamReader(processOut));
+}

@@ -1,0 +1,5 @@
+{
+  Map<String,Object> conf=new HashMap<String,Object>();
+  conf.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS,emitFrequencyInSeconds);
+  return conf;
+}

@@ -1,0 +1,8 @@
+{
+  if (this.host.equals(o.host)) {
+    return this.port - o.port;
+  }
+ else {
+    return this.host.compareTo(o.host);
+  }
+}

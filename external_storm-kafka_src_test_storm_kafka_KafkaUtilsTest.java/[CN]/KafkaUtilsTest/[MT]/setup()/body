@@ -1,0 +1,8 @@
+{
+  broker=new KafkaTestBroker();
+  GlobalPartitionInformation globalPartitionInformation=new GlobalPartitionInformation();
+  globalPartitionInformation.addPartition(0,Broker.fromString(broker.getBrokerConnectionString()));
+  brokerHosts=new StaticHosts(globalPartitionInformation);
+  config=new KafkaConfig(brokerHosts,"testTopic");
+  simpleConsumer=new SimpleConsumer("localhost",broker.getPort(),60000,1024,"testClient");
+}

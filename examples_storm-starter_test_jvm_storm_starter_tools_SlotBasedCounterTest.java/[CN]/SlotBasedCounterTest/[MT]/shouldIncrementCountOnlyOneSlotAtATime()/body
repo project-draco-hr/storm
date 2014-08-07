@@ -1,0 +1,12 @@
+{
+  int numSlots=3;
+  Object obj=Long.valueOf(10);
+  SlotBasedCounter<Object> counter=new SlotBasedCounter<Object>(numSlots);
+  assertThat(counter.getCount(obj,0)).isEqualTo(0);
+  assertThat(counter.getCount(obj,1)).isEqualTo(0);
+  assertThat(counter.getCount(obj,2)).isEqualTo(0);
+  counter.incrementCount(obj,1);
+  assertThat(counter.getCount(obj,0)).isEqualTo(0);
+  assertThat(counter.getCount(obj,1)).isEqualTo(1);
+  assertThat(counter.getCount(obj,2)).isEqualTo(0);
+}

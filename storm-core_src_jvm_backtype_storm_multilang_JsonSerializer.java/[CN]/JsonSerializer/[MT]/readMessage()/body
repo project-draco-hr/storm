@@ -1,0 +1,10 @@
+{
+  String string=readString();
+  Object msg=JSONValue.parse(string);
+  if (msg != null) {
+    return msg;
+  }
+ else {
+    throw new IOException("unable to parse: " + string);
+  }
+}

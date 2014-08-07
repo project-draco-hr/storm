@@ -1,0 +1,8 @@
+def getReleaseNote(self):
+    if (self.notes == None):
+        field = self.parent.fieldIdMap['Release Note']
+        if self.fields.has_key(field):
+            self.notes = mstr(self.fields[field])
+        else:
+            self.notes = self.getDescription()
+    return self.notes

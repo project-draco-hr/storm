@@ -1,0 +1,8 @@
+{
+  if (conf.hosts instanceof StaticHosts) {
+    return new StaticBrokerReader(((StaticHosts)conf.hosts).getPartitionInformation());
+  }
+ else {
+    return new ZkBrokerReader(stormConf,conf.topic,(ZkHosts)conf.hosts);
+  }
+}

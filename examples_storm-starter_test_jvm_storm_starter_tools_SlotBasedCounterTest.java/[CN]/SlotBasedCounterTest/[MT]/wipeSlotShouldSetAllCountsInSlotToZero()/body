@@ -1,0 +1,12 @@
+{
+  SlotBasedCounter<Object> counter=new SlotBasedCounter<Object>(ANY_NUM_SLOTS);
+  Object countWasOne="countWasOne";
+  Object countWasThree="countWasThree";
+  counter.incrementCount(countWasOne,ANY_SLOT);
+  counter.incrementCount(countWasThree,ANY_SLOT);
+  counter.incrementCount(countWasThree,ANY_SLOT);
+  counter.incrementCount(countWasThree,ANY_SLOT);
+  counter.wipeSlot(ANY_SLOT);
+  assertThat(counter.getCount(countWasOne,ANY_SLOT)).isEqualTo(0);
+  assertThat(counter.getCount(countWasThree,ANY_SLOT)).isEqualTo(0);
+}

@@ -1,0 +1,7 @@
+def __init__(self, baseUrl):
+    self.baseUrl = baseUrl
+    resp = urllib2.urlopen((baseUrl + '/field'))
+    data = json.loads(resp.read())
+    self.fieldIdMap = {}
+    for part in data:
+        self.fieldIdMap[part['name']] = part['id']

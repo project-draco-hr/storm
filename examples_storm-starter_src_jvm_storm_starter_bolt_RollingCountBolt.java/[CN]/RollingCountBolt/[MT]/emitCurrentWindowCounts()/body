@@ -1,0 +1,9 @@
+{
+  Map<Object,Long> counts=counter.getCountsThenAdvanceWindow();
+  int actualWindowLengthInSeconds=lastModifiedTracker.secondsSinceOldestModification();
+  lastModifiedTracker.markAsModified();
+  if (actualWindowLengthInSeconds != windowLengthInSeconds) {
+    LOG.warn(String.format(WINDOW_LENGTH_WARNING_TEMPLATE,actualWindowLengthInSeconds,windowLengthInSeconds));
+  }
+  emit(counts,actualWindowLengthInSeconds);
+}

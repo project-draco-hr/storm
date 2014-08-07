@@ -1,0 +1,4 @@
+{
+  serializer.writeTaskIds(taskIds);
+  logErrorStream();
+}

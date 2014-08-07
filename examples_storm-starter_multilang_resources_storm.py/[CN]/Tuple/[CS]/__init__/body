@@ -1,0 +1,6 @@
+def __init__(self, id, component, stream, task, values):
+    self.id = id
+    self.component = component
+    self.stream = stream
+    self.task = task
+    self.values = values

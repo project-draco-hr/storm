@@ -1,0 +1,11 @@
+{
+  if (null == o) {
+    return defaultValue;
+  }
+  if (o instanceof Boolean) {
+    return (Boolean)o;
+  }
+ else {
+    throw new IllegalArgumentException("Don't know how to convert " + o + " + to boolean");
+  }
+}

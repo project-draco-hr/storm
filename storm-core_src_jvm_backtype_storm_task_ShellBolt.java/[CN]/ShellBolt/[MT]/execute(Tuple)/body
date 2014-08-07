@@ -5,15 +5,16 @@
   String genId=Long.toString(_rand.nextLong());
   _inputs.put(genId,input);
   try {
-    JSONObject obj=new JSONObject();
-    obj.put("id",genId);
-    obj.put("comp",input.getSourceComponent());
-    obj.put("stream",input.getSourceStreamId());
-    obj.put("task",input.getSourceTask());
-    obj.put("tuple",input.getValues());
-    _pendingWrites.put(obj);
+    BoltMsg boltMsg=new BoltMsg();
+    boltMsg.setId(genId);
+    boltMsg.setComp(input.getSourceComponent());
+    boltMsg.setStream(input.getSourceStreamId());
+    boltMsg.setTask(input.getSourceTask());
+    boltMsg.setTuple(input.getValues());
+    _pendingWrites.put(boltMsg);
   }
  catch (  InterruptedException e) {
-    throw new RuntimeException("Error during multilang processing",e);
+    String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();
+    throw new RuntimeException("Error during multilang processing " + processInfo,e);
   }
 }

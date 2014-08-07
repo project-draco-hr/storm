@@ -1,0 +1,22 @@
+{
+  HashSet<String> components=new HashSet<String>();
+  ClusterSummary clusterSummary=client.getClusterInfo();
+  TopologySummary topologySummary=null;
+  for (  TopologySummary ts : clusterSummary.get_topologies()) {
+    if (topology.equals(ts.get_name())) {
+      topologySummary=ts;
+      break;
+    }
+  }
+  if (topologySummary == null) {
+    throw new IllegalArgumentException("topology: " + topology + " not found");
+  }
+ else {
+    String id=topologySummary.get_id();
+    TopologyInfo info=client.getTopologyInfo(id);
+    for (    ExecutorSummary es : info.get_executors()) {
+      components.add(es.get_component_id());
+    }
+  }
+  return components;
+}

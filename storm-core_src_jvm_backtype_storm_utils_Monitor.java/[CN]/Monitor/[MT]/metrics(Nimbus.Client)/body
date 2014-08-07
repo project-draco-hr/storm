@@ -1,0 +1,41 @@
+{
+  if (_interval <= 0) {
+    throw new IllegalArgumentException("poll interval must be positive");
+  }
+  if (_topology == null || _topology.isEmpty()) {
+    throw new IllegalArgumentException("topology name must be something");
+  }
+  if (_component == null || _component.isEmpty()) {
+    HashSet<String> components=getComponents(client,_topology);
+    System.out.println("Available components for " + _topology + " :");
+    System.out.println("------------------");
+    for (    String comp : components) {
+      System.out.println(comp);
+    }
+    System.out.println("------------------");
+    System.out.println("Please use -m to specify one component");
+    return;
+  }
+  if (_stream == null || _stream.isEmpty()) {
+    throw new IllegalArgumentException("stream name must be something");
+  }
+  if (!WATCH_TRANSFERRED.equals(_watch) && !WATCH_EMITTED.equals(_watch)) {
+    throw new IllegalArgumentException("watch item must either be transferred or emitted");
+  }
+  System.out.println("topology\tcomponent\tparallelism\tstream\ttime-diff ms\t" + _watch + "\tthroughput (Kt/s)");
+  long pollMs=_interval * 1000;
+  long now=System.currentTimeMillis();
+  MetricsState state=new MetricsState(now,0);
+  Poller poller=new Poller(now,pollMs);
+  do {
+    metrics(client,now,state);
+    try {
+      now=poller.nextPoll();
+    }
+ catch (    InterruptedException e) {
+      e.printStackTrace();
+      break;
+    }
+  }
+ while (true);
+}

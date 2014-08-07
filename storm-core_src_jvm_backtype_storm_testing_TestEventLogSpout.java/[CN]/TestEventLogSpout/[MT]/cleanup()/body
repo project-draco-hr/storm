@@ -1,0 +1,8 @@
+{
+synchronized (acked) {
+    acked.remove(uid);
+  }
+synchronized (failed) {
+    failed.remove(uid);
+  }
+}

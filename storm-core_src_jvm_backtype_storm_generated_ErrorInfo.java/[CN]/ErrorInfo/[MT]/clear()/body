@@ -2,4 +2,7 @@
   this.error=null;
   set_error_time_secs_isSet(false);
   this.error_time_secs=0;
+  this.host=null;
+  set_port_isSet(false);
+  this.port=0;
 }

@@ -1,0 +1,3 @@
+{
+  objCounter.incrementCount(obj,headSlot);
+}

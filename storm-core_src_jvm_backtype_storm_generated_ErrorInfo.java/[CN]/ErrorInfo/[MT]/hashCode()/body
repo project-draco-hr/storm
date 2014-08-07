@@ -6,5 +6,11 @@
   boolean present_error_time_secs=true;
   builder.append(present_error_time_secs);
   if (present_error_time_secs)   builder.append(error_time_secs);
+  boolean present_host=true && (is_set_host());
+  builder.append(present_host);
+  if (present_host)   builder.append(host);
+  boolean present_port=true && (is_set_port());
+  builder.append(present_port);
+  if (present_port)   builder.append(port);
   return builder.toHashCode();
 }

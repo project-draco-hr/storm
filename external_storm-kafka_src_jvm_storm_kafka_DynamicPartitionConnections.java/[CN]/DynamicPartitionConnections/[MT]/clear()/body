@@ -1,0 +1,6 @@
+{
+  for (  ConnectionInfo info : _connections.values()) {
+    info.consumer.close();
+  }
+  _connections.clear();
+}

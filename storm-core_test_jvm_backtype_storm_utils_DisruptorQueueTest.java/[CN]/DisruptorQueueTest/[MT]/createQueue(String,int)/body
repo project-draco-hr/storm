@@ -1,0 +1,3 @@
+{
+  return new DisruptorQueue(name,ProducerType.MULTI,queueSize,new BlockingWaitStrategy());
+}
