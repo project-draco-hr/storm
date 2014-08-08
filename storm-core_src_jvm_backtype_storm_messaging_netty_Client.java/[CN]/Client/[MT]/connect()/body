@@ -5,6 +5,7 @@
       return;
     }
     int tried=0;
+    StormBoundedExponentialBackoffRetry retryPolicy=new StormBoundedExponentialBackoffRetry(base_sleep_ms,max_sleep_ms,max_retries);
     while (tried <= max_retries) {
       LOG.info("Reconnect started for {}... [{}]",name(),tried);
       LOG.debug("connection started...");
@@ -20,7 +21,7 @@
         channel=current;
         break;
       }
-      Thread.sleep(getSleepTimeMs(tried));
+      Thread.sleep(retryPolicy.getSleepTimeMs(tried,0));
       tried++;
     }
     if (null != channel) {
