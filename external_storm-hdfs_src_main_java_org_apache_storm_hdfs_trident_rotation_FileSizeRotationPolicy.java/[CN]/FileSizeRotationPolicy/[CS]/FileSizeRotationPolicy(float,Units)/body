@@ -1,0 +1,3 @@
+{
+  this.maxBytes=(long)(count * units.getByteCount());
+}

@@ -1,0 +1,4 @@
+{
+  this.executeCount++;
+  return this.executeCount >= this.count;
+}

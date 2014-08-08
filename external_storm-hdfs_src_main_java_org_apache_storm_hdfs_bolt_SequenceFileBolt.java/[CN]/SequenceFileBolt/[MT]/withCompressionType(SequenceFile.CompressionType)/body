@@ -1,0 +1,4 @@
+{
+  this.compressionType=compressionType;
+  return this;
+}

@@ -1,0 +1,6 @@
+{
+  LOG.info("Preparing Sequence File State...");
+  if (this.format == null)   throw new IllegalStateException("SequenceFormat must be specified.");
+  this.fs=FileSystem.get(URI.create(this.fsUrl),hdfsConfig);
+  this.codecFactory=new CompressionCodecFactory(hdfsConfig);
+}

@@ -1,0 +1,22 @@
+{
+  try {
+    long offset;
+synchronized (this.writeLock) {
+      this.writer.append(this.format.key(tuple),this.format.value(tuple));
+      offset=this.writer.getLength();
+      if (this.syncPolicy.mark(tuple,offset)) {
+        this.writer.hsync();
+        this.syncPolicy.reset();
+      }
+    }
+    this.collector.ack(tuple);
+    if (this.rotationPolicy.mark(tuple,offset)) {
+      rotateOutputFile();
+      this.rotationPolicy.reset();
+    }
+  }
+ catch (  IOException e) {
+    LOG.warn("write/sync failed.",e);
+    this.collector.fail(tuple);
+  }
+}
