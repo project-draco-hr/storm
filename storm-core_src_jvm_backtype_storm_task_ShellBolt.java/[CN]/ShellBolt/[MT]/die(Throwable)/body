@@ -1,7 +1,9 @@
 {
-  String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();
-  _exception=new RuntimeException(processInfo,exception);
-  LOG.error("Halting process: ShellBolt died.",exception);
-  _collector.reportError(exception);
-  System.exit(11);
+  if (_running) {
+    String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();
+    _exception=new RuntimeException(processInfo,exception);
+    LOG.error("Halting process: ShellBolt died.",exception);
+    _collector.reportError(exception);
+    System.exit(11);
+  }
 }
