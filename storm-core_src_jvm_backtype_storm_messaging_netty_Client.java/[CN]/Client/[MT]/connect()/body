@@ -5,7 +5,6 @@
       return;
     }
     int tried=0;
-    StormBoundedExponentialBackoffRetry retryPolicy=new StormBoundedExponentialBackoffRetry(base_sleep_ms,max_sleep_ms,max_retries);
     while (tried <= max_retries) {
       LOG.info("Reconnect started for {}... [{}]",name(),tried);
       LOG.debug("connection started...");
