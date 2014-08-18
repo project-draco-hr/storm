@@ -1,0 +1,4 @@
+{
+  this.recordDelimiter=delimiter;
+  return this;
+}

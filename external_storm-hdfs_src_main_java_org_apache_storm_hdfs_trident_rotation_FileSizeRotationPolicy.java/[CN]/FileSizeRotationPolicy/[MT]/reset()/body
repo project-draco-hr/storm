@@ -1,0 +1,4 @@
+{
+  this.currentBytesWritten=0;
+  this.lastOffset=0;
+}

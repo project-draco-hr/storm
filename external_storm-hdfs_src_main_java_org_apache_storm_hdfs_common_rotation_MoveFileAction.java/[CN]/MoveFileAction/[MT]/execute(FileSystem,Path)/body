@@ -1,0 +1,6 @@
+{
+  Path destPath=new Path(destination,filePath.getName());
+  LOG.info("Moving file {} to {}",filePath,destPath);
+  boolean success=fileSystem.rename(filePath,destPath);
+  return;
+}

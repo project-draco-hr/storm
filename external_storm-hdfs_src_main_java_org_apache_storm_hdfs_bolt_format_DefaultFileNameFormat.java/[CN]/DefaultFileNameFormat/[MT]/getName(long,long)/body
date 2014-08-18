@@ -1,0 +1,3 @@
+{
+  return this.prefix + this.componentId + "-"+ this.taskId+ "-"+ rotation+ "-"+ timeStamp+ this.extension;
+}

@@ -1,0 +1,1 @@
+TupleToKafkaMapper<K,V> mapper

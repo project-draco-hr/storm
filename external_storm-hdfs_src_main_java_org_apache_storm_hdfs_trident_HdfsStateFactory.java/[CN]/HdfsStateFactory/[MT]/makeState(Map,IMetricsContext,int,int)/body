@@ -1,0 +1,6 @@
+{
+  LOG.info("makeState(partitonIndex={}, numpartitions={}",partitionIndex,numPartitions);
+  HdfsState state=new HdfsState(this.options);
+  state.prepare(conf,metrics,partitionIndex,numPartitions);
+  return state;
+}

@@ -1,14 +1,20 @@
 {
   K key=null;
-  if (input.contains(BOLT_KEY)) {
-    key=(K)input.getValueByField(BOLT_KEY);
-  }
-  V message=(V)input.getValueByField(BOLT_MESSAGE);
+  V message=null;
+  String topic=null;
   try {
-    producer.send(new KeyedMessage<K,V>(topic,key,message));
+    key=mapper.getKeyFromTuple(input);
+    message=mapper.getMessageFromTuple(input);
+    topic=topicSelector.getTopic(input);
+    if (topic != null) {
+      producer.send(new KeyedMessage<K,V>(topic,key,message));
+    }
+ else {
+      LOG.warn("skipping key = " + key + ", topic selector returned null.");
+    }
   }
  catch (  Exception ex) {
-    LOG.error("Could not send message with key '" + key + "' and value '"+ message+ "'",ex);
+    LOG.error("Could not send message with key = " + key + " and value = "+ message+ " to topic = "+ topic,ex);
   }
  finally {
     collector.ack(input);

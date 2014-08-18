@@ -1,0 +1,5 @@
+{
+  GlobalPartitionInformation globalPartitionInformation=new GlobalPartitionInformation();
+  globalPartitionInformation.addPartition(0,Broker.fromString(broker.getBrokerConnectionString()));
+  return new StaticHosts(globalPartitionInformation);
+}

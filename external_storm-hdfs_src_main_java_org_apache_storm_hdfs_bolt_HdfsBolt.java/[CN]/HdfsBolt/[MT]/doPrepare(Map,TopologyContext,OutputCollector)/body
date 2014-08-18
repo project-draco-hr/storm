@@ -1,0 +1,4 @@
+{
+  LOG.info("Preparing HDFS Bolt...");
+  this.fs=FileSystem.get(URI.create(this.fsUrl),hdfsConfig);
+}

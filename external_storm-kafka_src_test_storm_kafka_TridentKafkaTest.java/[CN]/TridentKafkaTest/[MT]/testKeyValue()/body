@@ -1,0 +1,10 @@
+{
+  String keyString="key-123";
+  String valString="message-123";
+  int batchSize=10;
+  List<TridentTuple> tridentTuples=generateTupleBatch(keyString,valString,batchSize);
+  state.updateState(tridentTuples,null);
+  for (int i=0; i < batchSize; i++) {
+    TestUtils.verifyMessage(keyString,valString,broker,simpleConsumer);
+  }
+}
