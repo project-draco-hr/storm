@@ -6,8 +6,8 @@
   String[] arguments=args.clone();
   String[] keyWords=Arrays.copyOfRange(arguments,4,arguments.length);
   TopologyBuilder builder=new TopologyBuilder();
-  builder.setSpout("spoutId",new TwitterSampleSpout(consumerKey,consumerSecret,accessToken,accessTokenSecret,keyWords));
-  builder.setBolt("print",new PrinterBolt()).shuffleGrouping("spout");
+  builder.setSpout("twitter",new TwitterSampleSpout(consumerKey,consumerSecret,accessToken,accessTokenSecret,keyWords));
+  builder.setBolt("print",new PrinterBolt()).shuffleGrouping("twitter");
   Config conf=new Config();
   LocalCluster cluster=new LocalCluster();
   cluster.submitTopology("test",conf,builder.createTopology());
