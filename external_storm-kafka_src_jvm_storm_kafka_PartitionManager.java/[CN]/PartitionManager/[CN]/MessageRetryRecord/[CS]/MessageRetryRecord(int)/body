@@ -1,0 +1,4 @@
+{
+  this.failTimeUTC=new Date().getTime();
+  this.attemptsAlreadyPerformed=attemptsAlreadyPerformed;
+}

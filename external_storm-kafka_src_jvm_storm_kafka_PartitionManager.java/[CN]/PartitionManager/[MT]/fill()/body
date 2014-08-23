@@ -1,9 +1,10 @@
 {
   long start=System.nanoTime();
   long offset;
-  final boolean had_failed=!failed.isEmpty();
+  final SortedSet<Long> failedReady=failedMsgsReadyForRetry();
+  final boolean had_failed=!failedReady.isEmpty();
   if (had_failed) {
-    offset=failed.first();
+    offset=failedReady.first();
   }
  else {
     offset=_emittedToOffset;
@@ -21,7 +22,7 @@
       if (cur_offset < offset) {
         continue;
       }
-      if (!had_failed || failed.contains(cur_offset)) {
+      if (!had_failed || failedReady.contains(cur_offset)) {
         numMessages+=1;
         _pending.add(cur_offset);
         _waitingToEmit.add(new MessageAndRealOffset(msg.message(),cur_offset));
