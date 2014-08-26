@@ -1,0 +1,7 @@
+{
+  if (this.key == null) {
+    this.key=new LongWritable();
+  }
+  this.key.set(tuple.getLongByField(this.keyField));
+  return this.key;
+}

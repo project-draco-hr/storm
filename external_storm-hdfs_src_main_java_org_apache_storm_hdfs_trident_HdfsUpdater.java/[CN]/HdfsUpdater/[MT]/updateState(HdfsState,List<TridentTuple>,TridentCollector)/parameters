@@ -1,0 +1,3 @@
+HdfsState state
+List<TridentTuple> tuples
+TridentCollector collector

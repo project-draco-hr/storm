@@ -1,0 +1,9 @@
+{
+  List<TridentTuple> batch=new ArrayList<TridentTuple>();
+  List<String> values=Lists.newArrayList(key,message);
+  List<String> fields=Lists.newArrayList("key","message");
+  for (int i=0; i < batchsize; i++) {
+    batch.add(new MockTridentTuple(fields,values));
+  }
+  return batch;
+}

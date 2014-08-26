@@ -1,0 +1,13 @@
+{
+  FixedBatchSpout spout=new FixedBatchSpout(new Fields("sentence","key"),1000,new Values("the cow jumped over the moon",1l),new Values("the man went to the store and bought some candy",2l),new Values("four score and seven years ago",3l),new Values("how many apples can you eat",4l),new Values("to be or not to be the person",5l));
+  spout.setCycle(true);
+  TridentTopology topology=new TridentTopology();
+  Stream stream=topology.newStream("spout1",spout);
+  Fields hdfsFields=new Fields("sentence","key");
+  FileNameFormat fileNameFormat=new DefaultFileNameFormat().withPath("/trident").withPrefix("trident").withExtension(".seq");
+  FileRotationPolicy rotationPolicy=new FileSizeRotationPolicy(5.0f,FileSizeRotationPolicy.Units.MB);
+  HdfsState.Options seqOpts=new HdfsState.SequenceFileOptions().withFileNameFormat(fileNameFormat).withSequenceFormat(new DefaultSequenceFormat("key","sentence")).withRotationPolicy(rotationPolicy).withFsUrl(hdfsUrl).addRotationAction(new MoveFileAction().toDestination("/dest2/"));
+  StateFactory factory=new HdfsStateFactory().withOptions(seqOpts);
+  TridentState state=stream.partitionPersist(factory,hdfsFields,new HdfsUpdater(),new Fields());
+  return topology.build();
+}
