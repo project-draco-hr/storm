@@ -20,7 +20,7 @@
         node.addOrphanedSlot(ws);
       }
       if (node.assignInternal(ws,topId,true)) {
-        LOG.warn("Bad scheduling state, " + ws + " assigned multiple workers, unassigning everything...");
+        LOG.warn("Bad scheduling state for topology [" + topId + "], the slot "+ ws+ " assigned to multiple workers, un-assigning everything...");
         node.free(ws,cluster,true);
       }
     }
