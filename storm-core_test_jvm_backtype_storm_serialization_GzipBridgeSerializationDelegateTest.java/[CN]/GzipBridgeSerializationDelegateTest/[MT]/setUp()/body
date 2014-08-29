@@ -1,0 +1,3 @@
+{
+  testDelegate=new GzipBridgeSerializationDelegate();
+}
