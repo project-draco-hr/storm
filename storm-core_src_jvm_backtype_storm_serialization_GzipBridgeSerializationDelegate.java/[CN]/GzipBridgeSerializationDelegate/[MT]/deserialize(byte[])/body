@@ -1,0 +1,8 @@
+{
+  if (isGzipped(bytes)) {
+    return gzipDelegate.deserialize(bytes);
+  }
+ else {
+    return defaultDelegate.deserialize(bytes);
+  }
+}

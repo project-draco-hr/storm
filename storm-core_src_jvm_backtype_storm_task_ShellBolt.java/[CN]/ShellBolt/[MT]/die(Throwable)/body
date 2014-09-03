@@ -3,5 +3,7 @@
   _exception=new RuntimeException(processInfo,exception);
   LOG.error("Halting process: ShellBolt died.",exception);
   _collector.reportError(exception);
-  System.exit(11);
+  if (_running || (exception instanceof Error)) {
+    System.exit(11);
+  }
 }

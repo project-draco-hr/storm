@@ -1,0 +1,9 @@
+{
+  TestPojo pojo=new TestPojo();
+  pojo.name="baz";
+  pojo.age=300;
+  byte[] serialized=new DefaultSerializationDelegate().serialize(pojo);
+  TestPojo pojo2=(TestPojo)testDelegate.deserialize(serialized);
+  assertEquals(pojo2.name,pojo.name);
+  assertEquals(pojo2.age,pojo.age);
+}
