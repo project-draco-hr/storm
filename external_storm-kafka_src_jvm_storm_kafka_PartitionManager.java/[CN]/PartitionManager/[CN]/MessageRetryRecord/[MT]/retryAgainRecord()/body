@@ -1,3 +1,0 @@
-{
-  return new MessageRetryRecord(this.attemptsAlreadyPerformed + 1);
-}
