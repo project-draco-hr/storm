@@ -1,4 +1,4 @@
 {
-  this.failTimeUTC=new Date().getTime();
-  this.attemptsAlreadyPerformed=attemptsAlreadyPerformed;
+  this.retryNum=retryNum;
+  this.retryTimeUTC=new Date().getTime() + calculateRetryDelay(this.retryNum);
 }

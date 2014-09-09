@@ -1,0 +1,5 @@
+{
+  double delayMultiplier=Math.pow(_spoutConfig.retryDelayMultiplier,retryNum - 1);
+  long delayThisRetryMs=(long)(_spoutConfig.retryInitialDelayMs * delayMultiplier);
+  return Math.min(delayThisRetryMs,_spoutConfig.retryDelayMaxMs);
+}
