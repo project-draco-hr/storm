@@ -1,4 +1,4 @@
 {
   this.retryNum=retryNum;
-  this.retryTimeUTC=new Date().getTime() + calculateRetryDelay();
+  this.retryTimeUTC=System.currentTimeMillis() + calculateRetryDelay();
 }
