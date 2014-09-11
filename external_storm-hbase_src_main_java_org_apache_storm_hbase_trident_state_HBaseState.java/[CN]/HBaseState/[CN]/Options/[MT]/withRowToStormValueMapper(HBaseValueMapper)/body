@@ -1,0 +1,4 @@
+{
+  this.rowToStormValueMapper=rowToStormValueMapper;
+  return this;
+}

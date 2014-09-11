@@ -1,0 +1,3 @@
+{
+  hBaseState.updateState(tuples,collector);
+}

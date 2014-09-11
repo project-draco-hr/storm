@@ -1,0 +1,4 @@
+{
+  Options<OpaqueValue> options=new Options<OpaqueValue>();
+  return opaque(options);
+}

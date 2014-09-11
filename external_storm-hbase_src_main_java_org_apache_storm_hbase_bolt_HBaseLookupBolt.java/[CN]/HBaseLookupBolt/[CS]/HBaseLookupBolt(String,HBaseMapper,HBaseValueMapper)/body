@@ -1,0 +1,5 @@
+{
+  super(tableName,mapper);
+  Validate.notNull(rowToTupleMapper,"rowToTupleMapper can not be null");
+  this.rowToTupleMapper=rowToTupleMapper;
+}
