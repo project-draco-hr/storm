@@ -1,6 +1,0 @@
-{
-  this.options=options;
-  this.map=map;
-  this.partitionIndex=partitionIndex;
-  this.numPartitions=numPartitions;
-}

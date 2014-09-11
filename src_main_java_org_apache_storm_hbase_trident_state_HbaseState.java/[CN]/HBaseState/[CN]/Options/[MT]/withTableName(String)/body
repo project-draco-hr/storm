@@ -1,4 +1,0 @@
-{
-  this.tableName=tableName;
-  return this;
-}

@@ -1,3 +1,0 @@
-{
-  LOG.debug("beginCommit is noop.");
-}
