@@ -3,5 +3,6 @@
     _pending.headSet(offset - _spoutConfig.maxOffsetBehind).clear();
   }
   _pending.remove(offset);
+  retryRecords.remove(offset);
   numberAcked++;
 }

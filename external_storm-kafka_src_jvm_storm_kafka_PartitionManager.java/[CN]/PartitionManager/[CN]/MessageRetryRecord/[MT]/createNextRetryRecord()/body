@@ -1,0 +1,3 @@
+{
+  return new MessageRetryRecord(this.retryNum + 1);
+}

@@ -1,0 +1,9 @@
+{
+  SortedSet<Long> ready=new TreeSet<Long>();
+  for (  Long offset : this.failed) {
+    if (this.retryRecords.get(offset).isReadyForRetry()) {
+      ready.add(offset);
+    }
+  }
+  return ready;
+}

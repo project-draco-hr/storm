@@ -1,0 +1,4 @@
+{
+  this.retryNum=retryNum;
+  this.retryTimeUTC=System.currentTimeMillis() + calculateRetryDelay();
+}
