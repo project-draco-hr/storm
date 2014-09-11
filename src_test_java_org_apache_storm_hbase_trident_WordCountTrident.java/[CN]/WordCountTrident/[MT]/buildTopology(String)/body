@@ -3,7 +3,7 @@
   FixedBatchSpout spout=new FixedBatchSpout(fields,4,new Values("storm",1),new Values("trident",1),new Values("needs",1),new Values("javadoc",1));
   spout.setCycle(true);
   TridentHBaseMapper tridentHBaseMapper=new SimpleTridentHBaseMapper().withColumnFamily("cf").withColumnFields(new Fields("word")).withCounterFields(new Fields("count")).withRowKeyField("word");
-  HBaseRowToStormValueMapper rowToStormValueMapper=new WordCountRowToStormValueMapper();
+  HBaseValueMapper rowToStormValueMapper=new WordCountValueMapper();
   HBaseProjectionCriteria projectionCriteria=new HBaseProjectionCriteria();
   projectionCriteria.addColumn(new HBaseProjectionCriteria.ColumnMetaData("cf","count"));
   HBaseState.Options options=new HBaseState.Options().withConfigKey(hbaseRoot).withDurability(Durability.SYNC_WAL).withMapper(tridentHBaseMapper).withProjectionCriteria(projectionCriteria).withRowToStormValueMapper(rowToStormValueMapper).withTableName("WordCount");
