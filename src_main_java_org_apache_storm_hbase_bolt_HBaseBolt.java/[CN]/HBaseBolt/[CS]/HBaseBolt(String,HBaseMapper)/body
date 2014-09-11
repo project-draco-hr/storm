@@ -1,4 +1,3 @@
 {
-  this.tableName=tableName;
-  this.mapper=mapper;
+  super(tableName,mapper);
 }

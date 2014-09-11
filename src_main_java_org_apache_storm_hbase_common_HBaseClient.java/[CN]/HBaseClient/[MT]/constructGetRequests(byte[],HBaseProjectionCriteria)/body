@@ -1,0 +1,12 @@
+{
+  Get get=new Get(rowKey);
+  if (projectionCriteria != null) {
+    for (    byte[] columnFamily : projectionCriteria.getColumnFamilies()) {
+      get.addFamily(columnFamily);
+    }
+    for (    HBaseProjectionCriteria.ColumnMetaData columnMetaData : projectionCriteria.getColumns()) {
+      get.addColumn(columnMetaData.getColumnFamily(),columnMetaData.getQualifier());
+    }
+  }
+  return get;
+}
