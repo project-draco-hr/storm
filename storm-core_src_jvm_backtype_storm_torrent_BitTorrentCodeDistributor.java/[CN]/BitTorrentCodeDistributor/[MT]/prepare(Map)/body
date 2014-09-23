@@ -1,0 +1,14 @@
+{
+  this.hostName=InetAddress.getLocalHost().getCanonicalHostName();
+  this.port=(Integer)conf.get(Config.BITTORRENT_PORT);
+  this.host=InetAddress.getLocalHost();
+  this.maxDownload=(Double)conf.get(Config.BITTORRENT_MAX_DOWNLOAD_RATE);
+  this.maxUpload=(Double)conf.get(Config.BITTORRENT_MAX_UPLOAD_RATE);
+  this.seedDuration=(Integer)conf.get(Config.SUPERVISOR_BITTORRENT_SEED_DURATION);
+  LOG.info("Download rates [U/D]: {}/{} kB/sec",format(this.maxUpload),format(this.maxDownload));
+  LOG.info("Starting bt tracker bound to hostname '{}'",hostName);
+  InetSocketAddress socketAddr=new InetSocketAddress(hostName,port);
+  this.tracker=new Tracker(socketAddr);
+  LOG.info("Announce URL: {}",this.tracker.getAnnounceUrl());
+  this.tracker.start();
+}

@@ -1,0 +1,13 @@
+{
+  int clientCount=this.clients.size();
+  if (clientCount > 0) {
+    double maxDl=this.maxDownload <= 0.0 ? this.maxDownload : this.maxDownload / clientCount;
+    double maxUl=this.maxUpload <= 0.0 ? this.maxUpload : this.maxUpload / clientCount;
+    LOG.info("Rebalancing bandwidth allocation based on {} topology torrents.",clientCount);
+    LOG.info("Per-torrent allocation [D/U]: {}/{} kB/sec.",format(maxDl),format(maxUl));
+    for (    Client client : this.clients.values()) {
+      client.setMaxDownloadRate(maxDl);
+      client.setMaxUploadRate(maxUl);
+    }
+  }
+}

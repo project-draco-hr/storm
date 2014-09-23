@@ -1,0 +1,7 @@
+{
+  LOG.info("Creating supervisor bt tracker.");
+  this.maxDownload=(Double)conf.get(Config.BITTORRENT_MAX_DOWNLOAD_RATE);
+  this.maxUpload=(Double)conf.get(Config.BITTORRENT_MAX_UPLOAD_RATE);
+  this.seedDuration=(Integer)conf.get(Config.SUPERVISOR_BITTORRENT_SEED_DURATION);
+  LOG.info("Download rates [U/D]: {}/{} kB/sec",format(this.maxDownload),format(this.maxDownload));
+}
