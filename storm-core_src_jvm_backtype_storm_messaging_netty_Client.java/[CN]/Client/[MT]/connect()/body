@@ -20,7 +20,7 @@
         channel=current;
         break;
       }
-      Thread.sleep(getSleepTimeMs(tried));
+      Thread.sleep(retryPolicy.getSleepTimeMs(tried,0));
       tried++;
     }
     if (null != channel) {
