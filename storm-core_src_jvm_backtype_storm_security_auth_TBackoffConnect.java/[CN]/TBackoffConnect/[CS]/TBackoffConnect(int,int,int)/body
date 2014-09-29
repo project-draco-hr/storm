@@ -1,4 +1,4 @@
 {
   _retryTimes=retryTimes;
-  waitGrabber=new BoundedExponentialBackoffRetry(retryInterval,retryTimes,retryIntervalCeiling);
+  waitGrabber=new StormBoundedExponentialBackoffRetry(retryInterval,retryIntervalCeiling,retryTimes);
 }

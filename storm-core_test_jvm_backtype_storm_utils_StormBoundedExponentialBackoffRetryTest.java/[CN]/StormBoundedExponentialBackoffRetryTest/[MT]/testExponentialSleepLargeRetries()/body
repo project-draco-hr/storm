@@ -1,0 +1,6 @@
+{
+  int baseSleepMs=10;
+  int maxSleepMs=1000;
+  int maxRetries=900;
+  validateSleepTimes(baseSleepMs,maxSleepMs,maxRetries);
+}
