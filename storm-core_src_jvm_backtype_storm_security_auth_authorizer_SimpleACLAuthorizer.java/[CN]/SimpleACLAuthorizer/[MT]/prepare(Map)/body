@@ -8,5 +8,5 @@
     _supervisors.addAll((Collection<String>)conf.get(Config.NIMBUS_SUPERVISOR_USERS));
   }
   _ptol=AuthUtils.GetPrincipalToLocalPlugin(conf);
-  _groups=AuthUtils.GetGroupMappingServiceProviderPlugin(conf);
+  _groupMappingProvider=AuthUtils.GetGroupMappingServiceProviderPlugin(conf);
 }
