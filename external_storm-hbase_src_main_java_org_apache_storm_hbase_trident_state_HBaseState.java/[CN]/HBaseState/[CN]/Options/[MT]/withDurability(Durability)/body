@@ -1,0 +1,4 @@
+{
+  this.durability=durability;
+  return this;
+}

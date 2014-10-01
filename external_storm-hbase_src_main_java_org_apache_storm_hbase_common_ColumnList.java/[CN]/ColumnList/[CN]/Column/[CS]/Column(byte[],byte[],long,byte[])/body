@@ -1,0 +1,5 @@
+{
+  super(family,qualifier);
+  this.value=value;
+  this.ts=ts;
+}

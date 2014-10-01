@@ -1,0 +1,15 @@
+{
+  UserProvider provider=UserProvider.instantiate(hbaseConfig);
+  if (UserGroupInformation.isSecurityEnabled()) {
+    String keytab=(String)conf.get(STORM_KEYTAB_FILE_KEY);
+    if (keytab != null) {
+      hbaseConfig.set(STORM_KEYTAB_FILE_KEY,keytab);
+    }
+    String userName=(String)conf.get(STORM_USER_NAME_KEY);
+    if (userName != null) {
+      hbaseConfig.set(STORM_USER_NAME_KEY,userName);
+    }
+    provider.login(STORM_KEYTAB_FILE_KEY,STORM_USER_NAME_KEY,InetAddress.getLocalHost().getCanonicalHostName());
+  }
+  return provider;
+}

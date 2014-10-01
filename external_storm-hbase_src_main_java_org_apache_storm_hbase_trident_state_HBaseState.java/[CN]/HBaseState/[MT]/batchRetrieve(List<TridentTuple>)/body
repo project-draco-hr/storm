@@ -1,0 +1,20 @@
+{
+  List<List<Values>> batchRetrieveResult=Lists.newArrayList();
+  List<Get> gets=Lists.newArrayList();
+  for (  TridentTuple tuple : tridentTuples) {
+    byte[] rowKey=options.mapper.rowKey(tuple);
+    gets.add(hBaseClient.constructGetRequests(rowKey,options.projectionCriteria));
+  }
+  try {
+    Result[] results=hBaseClient.batchGet(gets);
+    for (    Result result : results) {
+      List<Values> values=options.rowToStormValueMapper.toValues(result);
+      batchRetrieveResult.add(values);
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("Batch get operation failed. Triggering replay.",e);
+    throw new FailedException(e);
+  }
+  return batchRetrieveResult;
+}
