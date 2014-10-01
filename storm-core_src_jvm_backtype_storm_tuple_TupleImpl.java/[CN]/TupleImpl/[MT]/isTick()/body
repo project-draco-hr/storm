@@ -1,0 +1,3 @@
+{
+  return this.getSourceComponent().equals(Constants.SYSTEM_COMPONENT_ID) && this.getSourceStreamId().equals(Constants.SYSTEM_TICK_STREAM_ID);
+}
