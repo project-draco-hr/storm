@@ -1,0 +1,12 @@
+{
+  long l=0;
+  if (obj != null) {
+    if (obj instanceof Number) {
+      l=((Number)obj).longValue();
+    }
+ else {
+      LOG.warn("Could not coerce {} to Long",obj.getClass().getName());
+    }
+  }
+  return l;
+}

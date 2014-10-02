@@ -1,0 +1,4 @@
+{
+  this.columns.add(column);
+  return this;
+}

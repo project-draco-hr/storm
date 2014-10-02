@@ -1,0 +1,4 @@
+{
+  FreshOutputFactory factory=new FreshOutputFactory(fields);
+  return factory.create(Arrays.asList(values));
+}

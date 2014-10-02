@@ -1,0 +1,5 @@
+{
+  HBaseState state=new HBaseState(map,partitionIndex,numPartitions,options);
+  state.prepare();
+  return state;
+}
