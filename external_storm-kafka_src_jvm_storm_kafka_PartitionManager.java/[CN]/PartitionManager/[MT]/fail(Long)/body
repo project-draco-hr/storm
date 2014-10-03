@@ -4,12 +4,18 @@
   }
  else {
     LOG.debug("failing at offset=" + offset + " with _pending.size()="+ _pending.size()+ " pending and _emittedToOffset="+ _emittedToOffset);
-    failed.add(offset);
-    MessageRetryRecord retryRecord=retryRecords.get(offset);
-    retryRecords.put(offset,retryRecord == null ? new MessageRetryRecord() : retryRecord.createNextRetryRecord());
     numberFailed++;
     if (numberAcked == 0 && numberFailed > _spoutConfig.maxOffsetBehind) {
       throw new RuntimeException("Too many tuple failures");
+    }
+    try {
+      MessageRetryRecord retryRecord=retryRecords.get(offset);
+      retryRecord=retryRecord == null ? new MessageRetryRecord(offset) : retryRecord.createNextRetryRecord();
+      retryRecords.put(offset,retryRecord);
+      failed.add(offset);
+    }
+ catch (    MessageRetryRecord.AvailableRetryTimeExceededException e) {
+      LOG.error("cannot retry",e);
     }
   }
 }

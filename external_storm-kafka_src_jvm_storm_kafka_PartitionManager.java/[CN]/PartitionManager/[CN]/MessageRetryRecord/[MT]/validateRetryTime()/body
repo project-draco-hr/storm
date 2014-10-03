@@ -1,0 +1,16 @@
+{
+  long stormStartTime=PartitionManager.this._pending.get(this.offset);
+  if (stormStartTime == TIMEOUT_RESET_VALUE) {
+    PartitionManager.this._pending.put(this.offset,System.currentTimeMillis());
+  }
+ else {
+    int timeoutSeconds=Utils.getInt(_stormConf.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS));
+    if (this.retryTimeUTC - stormStartTime > timeoutSeconds * 1000) {
+      _pending.put(this.offset,TIMEOUT_RESET_VALUE);
+      throw new AvailableRetryTimeExceededException(String.format(TIMES_UP_MSG,timeoutSeconds,this.retryNum,this.offset));
+    }
+ else {
+      LOG.warn(String.format("allowing another retry: start=%s, retryTime=%s, timeoutSeconds=%s",(stormStartTime / 1000) % 1000,(this.retryTimeUTC / 1000) % 1000,timeoutSeconds));
+    }
+  }
+}

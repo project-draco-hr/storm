@@ -1,4 +1,6 @@
 {
+  this.offset=offset;
   this.retryNum=retryNum;
   this.retryTimeUTC=System.currentTimeMillis() + calculateRetryDelay();
+  validateRetryTime();
 }
