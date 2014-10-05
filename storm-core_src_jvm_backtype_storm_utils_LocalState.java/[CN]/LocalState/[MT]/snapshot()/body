@@ -1,16 +1,25 @@
 {
   int attempts=0;
+  Map<Object,Object> result=new HashMap<Object,Object>();
   while (true) {
     String latestPath=_vs.mostRecentVersionPath();
-    if (latestPath == null)     return new HashMap<Object,Object>();
-    try {
-      return (Map<Object,Object>)Utils.deserialize(FileUtils.readFileToByteArray(new File(latestPath)));
-    }
- catch (    IOException e) {
-      attempts++;
-      if (attempts >= 10) {
-        throw e;
+    if (latestPath != null) {
+      try {
+        byte[] serialized=FileUtils.readFileToByteArray(new File(latestPath));
+        if (serialized.length == 0) {
+          LOG.warn("LocalState file '{}' contained no data, resetting state",latestPath);
+        }
+ else {
+          result=(Map<Object,Object>)Utils.deserialize(serialized);
+        }
+      }
+ catch (      IOException e) {
+        attempts++;
+        if (attempts >= 10) {
+          throw e;
+        }
       }
     }
+    return result;
   }
 }
