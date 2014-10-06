@@ -1,0 +1,3 @@
+{
+  return this.addCounter(counter.family(),counter.qualifier(),counter.increment());
+}

@@ -1,0 +1,10 @@
+{
+  this.stateType=stateType;
+  this.options=options;
+  if (this.options.serializer == null) {
+    this.options.serializer=DEFAULT_SERIALZERS.get(stateType);
+  }
+  if (this.options.serializer == null) {
+    throw new RuntimeException("Serializer should be specified for type: " + stateType);
+  }
+}

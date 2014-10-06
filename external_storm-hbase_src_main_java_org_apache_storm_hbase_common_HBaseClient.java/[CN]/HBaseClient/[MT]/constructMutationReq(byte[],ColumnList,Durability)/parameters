@@ -1,0 +1,3 @@
+byte[] rowKey
+ColumnList cols
+Durability durability

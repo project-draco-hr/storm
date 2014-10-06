@@ -1,0 +1,4 @@
+{
+  this.columnFamilies.add(columnFamily.getBytes());
+  return this;
+}

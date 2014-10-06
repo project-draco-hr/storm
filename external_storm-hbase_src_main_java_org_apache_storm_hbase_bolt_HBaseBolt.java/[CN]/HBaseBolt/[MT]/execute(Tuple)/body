@@ -1,0 +1,14 @@
+{
+  byte[] rowKey=this.mapper.rowKey(tuple);
+  ColumnList cols=this.mapper.columns(tuple);
+  List<Mutation> mutations=hBaseClient.constructMutationReq(rowKey,cols,writeToWAL ? Durability.SYNC_WAL : Durability.SKIP_WAL);
+  try {
+    this.hBaseClient.batchMutate(mutations);
+  }
+ catch (  Exception e) {
+    LOG.warn("Failing tuple. Error writing rowKey " + rowKey,e);
+    this.collector.fail(tuple);
+    return;
+  }
+  this.collector.ack(tuple);
+}
