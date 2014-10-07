@@ -1,0 +1,11 @@
+def run(self):
+    global MODE
+    MODE = Bolt
+    (conf, context) = initComponent()
+    try:
+        self.initialize(conf, context)
+        while True:
+            tup = readTuple()
+            self.process(tup)
+    except Exception as e:
+        reportError(traceback.format_exc(e))
