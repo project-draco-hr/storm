@@ -1,0 +1,10 @@
+{
+  Collection<TrackedTorrent> trackedTorrents=tracker.getTrackedTorrents();
+  for (  TrackedTorrent trackedTorrent : trackedTorrents) {
+    if (trackedTorrent.getName().equals(topologyId)) {
+      return Shorts.checkedCast(trackedTorrent.seeders());
+    }
+  }
+  LOG.warn("No torrent found in tracker for topologyId = " + topologyId);
+  return 0;
+}
