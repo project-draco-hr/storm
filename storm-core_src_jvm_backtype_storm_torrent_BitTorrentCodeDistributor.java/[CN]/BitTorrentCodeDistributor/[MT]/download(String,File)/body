@@ -23,5 +23,9 @@
     }
   }
   LOG.info("BitTorrent download complete.");
+  File srcDir=Paths.get(destDir.getPath(),topologyId).toFile();
+  for (  File file : srcDir.listFiles()) {
+    Files.copy(file.toPath(),destDir.toPath().resolve(file.getName()));
+  }
   return new ArrayList<File>();
 }

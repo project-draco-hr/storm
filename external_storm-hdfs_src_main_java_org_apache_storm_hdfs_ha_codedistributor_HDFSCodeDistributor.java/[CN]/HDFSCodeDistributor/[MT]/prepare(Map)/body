@@ -1,7 +1,7 @@
 {
-  Validate.notNull(conf.get("hdfs.storm.dir"),"you must specify hdfs.storm.dir");
+  Validate.notNull(conf.get(HDFS_STORM_DIR),"you must specify " + HDFS_STORM_DIR);
   this.fs=FileSystem.get(new Configuration());
-  this.stormDir=new Path(String.valueOf(conf.get("hdfs.storm.dir")));
+  this.stormDir=new Path(String.valueOf(conf.get(HDFS_STORM_DIR)));
   if (!this.fs.exists(stormDir)) {
     this.fs.mkdirs(this.stormDir);
   }

@@ -8,7 +8,7 @@
   files.add(new File(destDir,"stormconf.ser"));
   files.add(new File(destDir,"stormcode.ser"));
   Torrent torrent=Torrent.create(destDir,files,uri,"storm-nimbus");
-  File torrentFile=new File(destDir,topologyId + ".torrent");
+  File torrentFile=new File(destDir,"storm-code-distributor.meta");
   torrent.save(new FileOutputStream(torrentFile));
   LOG.info("Saved torrent: {}" + torrentFile.getAbsolutePath());
   this.tracker.announce(new TrackedTorrent(torrent));
