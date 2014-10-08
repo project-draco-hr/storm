@@ -1,3 +1,4 @@
 {
+  heartBeatTimer.cancel();
   _process.destroy();
 }

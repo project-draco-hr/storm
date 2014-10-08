@@ -1,5 +1,6 @@
 {
   _running=false;
+  heartBeatTimer.cancel();
   _writerThread.interrupt();
   _readerThread.interrupt();
   _process.destroy();

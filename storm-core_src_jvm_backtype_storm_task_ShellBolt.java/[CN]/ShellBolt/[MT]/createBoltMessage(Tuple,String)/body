@@ -1,0 +1,9 @@
+{
+  BoltMsg boltMsg=new BoltMsg();
+  boltMsg.setId(genId);
+  boltMsg.setComp(input.getSourceComponent());
+  boltMsg.setStream(input.getSourceStreamId());
+  boltMsg.setTask(input.getSourceTask());
+  boltMsg.setTuple(input.getValues());
+  return boltMsg;
+}

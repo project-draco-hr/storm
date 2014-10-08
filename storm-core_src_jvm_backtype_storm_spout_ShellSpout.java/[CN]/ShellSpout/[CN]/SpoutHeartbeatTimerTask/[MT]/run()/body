@@ -1,0 +1,8 @@
+{
+  long currentTimeMillis=System.currentTimeMillis();
+  long lastHeartbeat=getLastHeartbeat();
+  LOG.debug("current time : " + currentTimeMillis + ", last heartbeat : "+ lastHeartbeat+ ", worker timeout (ms) : "+ workerTimeoutMills);
+  if (currentTimeMillis - lastHeartbeat > workerTimeoutMills) {
+    spout.die(new RuntimeException("subprocess heartbeat timeout"));
+  }
+}

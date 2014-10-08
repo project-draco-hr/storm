@@ -1,0 +1,6 @@
+{
+  heartBeatTimer.cancel();
+  LOG.error("Halting process: ShellSpout died.",exception);
+  _collector.reportError(exception);
+  System.exit(11);
+}
