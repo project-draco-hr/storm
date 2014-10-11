@@ -14,8 +14,8 @@
   _readerThread.start();
   _writerThread=new Thread(new BoltWriterRunnable());
   _writerThread.start();
-  heartBeatTimer=new Timer(context.getThisTaskId() + "-heartbeatTimer",true);
-  heartBeatTimer.scheduleAtFixedRate(new BoltHeartbeatTimerTask(this),1000,1 * 1000);
+  heartBeatExecutor=new ScheduledThreadPoolExecutor(5);
+  heartBeatExecutor.scheduleAtFixedRate(new BoltHeartbeatTimerTask(this),1,1,TimeUnit.SECONDS);
   LOG.info("Start checking heartbeat...");
   setHeartbeat();
 }

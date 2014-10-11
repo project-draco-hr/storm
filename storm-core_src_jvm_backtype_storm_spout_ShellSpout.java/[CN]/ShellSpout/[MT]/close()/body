@@ -1,4 +1,4 @@
 {
-  heartBeatTimer.cancel();
+  heartBeatExecutor.shutdownNow();
   _process.destroy();
 }
