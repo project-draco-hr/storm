@@ -8,7 +8,11 @@ def run(self):
         while True:
             tup = readTuple()
             ANCHOR_TUPLE = tup
-            self.process(tup)
-            ack(tup)
+            try:
+                self.process(tup)
+                ack(tup)
+            except Exception as e:
+                reportError(traceback.format_exc(e))
+                fail(tup)
     except Exception as e:
         reportError(traceback.format_exc(e))
