@@ -5,5 +5,5 @@
   _process=new ShellProcess(_command);
   Number subpid=_process.launch(stormConf,context);
   LOG.info("Launched subprocess with pid " + subpid);
-  heartBeatExecutor=new ScheduledThreadPoolExecutor(5);
+  heartBeatExecutorService=MoreExecutors.getExitingScheduledExecutorService(new ScheduledThreadPoolExecutor(1));
 }

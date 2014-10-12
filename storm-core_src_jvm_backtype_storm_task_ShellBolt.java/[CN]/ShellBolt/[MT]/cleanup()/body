@@ -1,6 +1,6 @@
 {
   _running=false;
-  heartBeatExecutor.shutdownNow();
+  heartBeatExecutorService.shutdownNow();
   _writerThread.interrupt();
   _readerThread.interrupt();
   _process.destroy();

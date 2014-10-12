@@ -1,4 +1,4 @@
 {
-  heartBeatExecutor.shutdownNow();
+  heartBeatExecutorService.shutdownNow();
   _process.destroy();
 }

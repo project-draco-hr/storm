@@ -1,3 +1,3 @@
 {
-  heartBeatExecutor.shutdownNow();
+  heartBeatExecutorService.shutdownNow();
 }
