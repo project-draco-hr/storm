@@ -1,0 +1,4 @@
+{
+  this.columnFamily=columnFamily.getBytes();
+  this.qualifier=qualifier.getBytes();
+}

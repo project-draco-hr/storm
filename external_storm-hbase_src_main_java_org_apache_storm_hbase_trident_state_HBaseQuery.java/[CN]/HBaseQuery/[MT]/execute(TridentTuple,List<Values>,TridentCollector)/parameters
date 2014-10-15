@@ -1,0 +1,3 @@
+TridentTuple tuples
+List<Values> values
+TridentCollector tridentCollector

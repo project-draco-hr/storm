@@ -1,0 +1,6 @@
+{
+  if (this.columns == null) {
+    this.columns=new ArrayList<Column>();
+  }
+  return this.columns;
+}

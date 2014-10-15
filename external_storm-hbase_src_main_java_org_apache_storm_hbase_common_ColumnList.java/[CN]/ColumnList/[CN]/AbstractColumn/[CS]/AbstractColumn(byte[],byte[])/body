@@ -1,0 +1,4 @@
+{
+  this.family=family;
+  this.qualifier=qualifier;
+}

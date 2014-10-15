@@ -1,0 +1,4 @@
+{
+  Object objVal=tuple.getValueByField(this.rowKeyField);
+  return toBytes(objVal);
+}

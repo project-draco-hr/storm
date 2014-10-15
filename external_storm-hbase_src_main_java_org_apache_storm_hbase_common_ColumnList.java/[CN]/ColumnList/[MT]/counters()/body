@@ -1,0 +1,6 @@
+{
+  if (this.counters == null) {
+    this.counters=new ArrayList<Counter>();
+  }
+  return this.counters;
+}
