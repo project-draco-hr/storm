@@ -2,6 +2,7 @@
   if (null == msgs || msgs.size() == 0 || closing) {
     return;
   }
+  addReceiveCount(from,msgs.size());
   ArrayList<TaskMessage> messageGroups[]=groupMessages(msgs);
   if (null == messageGroups || closing) {
     return;
@@ -10,6 +11,7 @@
     ArrayList<TaskMessage> msgGroup=messageGroups[receiverId];
     if (null != msgGroup) {
       message_queue[receiverId].put(msgGroup);
+      pendingMessages[receiverId].addAndGet(msgGroup.size());
     }
   }
 }
