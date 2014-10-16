@@ -1,0 +1,3 @@
+{
+  return VersionInfo.getVersion() + " from " + VersionInfo.getRevision()+ " by "+ VersionInfo.getUser()+ " source checksum "+ VersionInfo.getSrcChecksum();
+}
