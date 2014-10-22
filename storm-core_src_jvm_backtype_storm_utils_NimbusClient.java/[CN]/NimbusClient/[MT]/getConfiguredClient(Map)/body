@@ -1,10 +1,22 @@
 {
+  ILeaderElector zkLeaderElector=null;
   try {
-    String nimbusHost=(String)conf.get(Config.NIMBUS_HOST);
-    int nimbusPort=Utils.getInt(conf.get(Config.NIMBUS_THRIFT_PORT));
+    IFn zkLeaderElectorFn=Utils.loadClojureFn("backtype.storm.zookeeper","zk-leader-elector");
+    zkLeaderElector=(ILeaderElector)zkLeaderElectorFn.invoke(PersistentArrayMap.create(conf));
+    NimbusInfo leaderInfo=zkLeaderElector.getLeader();
+    String nimbusHost=leaderInfo.getHost();
+    int nimbusPort=leaderInfo.getPort();
     return new NimbusClient(conf,nimbusHost,nimbusPort);
   }
  catch (  TTransportException ex) {
     throw new RuntimeException(ex);
+  }
+catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+ finally {
+    if (zkLeaderElector != null) {
+      zkLeaderElector.close();
+    }
   }
 }

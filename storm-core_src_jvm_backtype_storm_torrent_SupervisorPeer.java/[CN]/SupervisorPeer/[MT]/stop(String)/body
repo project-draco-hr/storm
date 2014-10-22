@@ -1,8 +1,0 @@
-{
-  LOG.info("Stopping bt client for topology {}",topologyId);
-  Client client=this.clients.remove(topologyId);
-  if (client != null) {
-    client.stop();
-  }
-  rebalanceRates();
-}
