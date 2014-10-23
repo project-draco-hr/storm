@@ -6,11 +6,16 @@
   FileRotationPolicy rotationPolicy=new FileSizeRotationPolicy(5.0f,Units.MB);
   FileNameFormat fileNameFormat=new DefaultFileNameFormat().withPath("/tmp/source/").withExtension(".seq");
   DefaultSequenceFormat format=new DefaultSequenceFormat("timestamp","sentence");
-  SequenceFileBolt bolt=new SequenceFileBolt().withFsUrl(args[0]).withFileNameFormat(fileNameFormat).withSequenceFormat(format).withRotationPolicy(rotationPolicy).withSyncPolicy(syncPolicy).withCompressionType(SequenceFile.CompressionType.RECORD).withCompressionCodec("deflate").addRotationAction(new MoveFileAction().toDestination("/tmp/dest/"));
+  Yaml yaml=new Yaml();
+  InputStream in=new FileInputStream(args[1]);
+  Map<String,Object> yamlConf=(Map<String,Object>)yaml.load(in);
+  in.close();
+  config.put("hdfs.config",yamlConf);
+  SequenceFileBolt bolt=new SequenceFileBolt().withFsUrl(args[0]).withConfigKey("hdfs.config").withFileNameFormat(fileNameFormat).withSequenceFormat(format).withRotationPolicy(rotationPolicy).withSyncPolicy(syncPolicy).withCompressionType(SequenceFile.CompressionType.RECORD).withCompressionCodec("deflate").addRotationAction(new MoveFileAction().toDestination("/tmp/dest/"));
   TopologyBuilder builder=new TopologyBuilder();
   builder.setSpout(SENTENCE_SPOUT_ID,spout,1);
   builder.setBolt(BOLT_ID,bolt,4).shuffleGrouping(SENTENCE_SPOUT_ID);
-  if (args.length == 1) {
+  if (args.length == 2) {
     LocalCluster cluster=new LocalCluster();
     cluster.submitTopology(TOPOLOGY_NAME,config,builder.createTopology());
     waitForSeconds(120);
@@ -18,7 +23,10 @@
     cluster.shutdown();
     System.exit(0);
   }
- else   if (args.length == 2) {
-    StormSubmitter.submitTopology(args[1],config,builder.createTopology());
+ else   if (args.length == 3) {
+    StormSubmitter.submitTopology(args[2],config,builder.createTopology());
+  }
+ else {
+    System.out.println("Usage: SequenceFileTopology [hdfs url] [hdfs yaml config file] <topology name>");
   }
 }
