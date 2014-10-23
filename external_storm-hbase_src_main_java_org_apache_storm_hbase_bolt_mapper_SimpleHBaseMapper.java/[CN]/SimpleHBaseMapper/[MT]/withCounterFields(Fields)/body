@@ -1,0 +1,4 @@
+{
+  this.counterFields=counterFields;
+  return this;
+}

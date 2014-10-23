@@ -1,0 +1,14 @@
+{
+  Object[] result=new Object[mutations.size()];
+  try {
+    table.batch(mutations,result);
+  }
+ catch (  InterruptedException e) {
+    LOG.warn("Error performing a mutation to HBase.",e);
+    throw e;
+  }
+catch (  IOException e) {
+    LOG.warn("Error performing a mutation to HBase.",e);
+    throw e;
+  }
+}

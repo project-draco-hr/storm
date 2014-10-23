@@ -1,0 +1,7 @@
+{
+  total=total.add(new BigInteger(input.getValues().get(1).toString()));
+  collector.emit(tuple(total.toString()));
+  if (RANDOM.nextInt(1000) > 995) {
+    LOG.info("Running total = " + total);
+  }
+}

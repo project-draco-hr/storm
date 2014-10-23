@@ -1,0 +1,3 @@
+{
+  rowToTupleMapper.declareOutputFields(outputFieldsDeclarer);
+}

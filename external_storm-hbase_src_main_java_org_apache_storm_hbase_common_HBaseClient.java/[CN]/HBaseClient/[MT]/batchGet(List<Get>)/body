@@ -1,0 +1,9 @@
+{
+  try {
+    return table.get(gets);
+  }
+ catch (  Exception e) {
+    LOG.warn("Could not perform HBASE lookup.",e);
+    throw e;
+  }
+}

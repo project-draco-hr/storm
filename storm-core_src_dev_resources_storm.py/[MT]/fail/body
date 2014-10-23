@@ -1,0 +1,2 @@
+def fail(tup):
+    sendMsgToParent({'command': 'fail', 'id': tup.id, })

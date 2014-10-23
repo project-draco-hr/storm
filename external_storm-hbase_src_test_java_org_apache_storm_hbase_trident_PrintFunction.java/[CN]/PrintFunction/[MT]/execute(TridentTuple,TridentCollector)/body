@@ -1,0 +1,5 @@
+{
+  if (RANDOM.nextInt(1000) > 995) {
+    LOG.info(tuple.toString());
+  }
+}

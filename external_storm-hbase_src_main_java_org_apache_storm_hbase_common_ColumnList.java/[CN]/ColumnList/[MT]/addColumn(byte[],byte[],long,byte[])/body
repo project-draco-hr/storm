@@ -1,0 +1,4 @@
+{
+  columns().add(new Column(family,qualifier,ts,value));
+  return this;
+}

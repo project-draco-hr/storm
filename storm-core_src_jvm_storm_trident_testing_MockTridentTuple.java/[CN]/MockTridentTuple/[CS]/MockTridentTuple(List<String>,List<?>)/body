@@ -1,4 +1,0 @@
-{
-  super(values);
-  fieldMap=setupFieldMap(fieldNames);
-}

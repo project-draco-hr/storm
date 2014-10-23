@@ -1,0 +1,22 @@
+{
+  LOG.info("Preparing HBase State for partition {} of {}.",partitionIndex + 1,numPartitions);
+  IBackingMap state=new HBaseMapState(options,conf,partitionIndex);
+  if (options.cacheSize > 0) {
+    state=new CachedMap(state,options.cacheSize);
+  }
+  MapState mapState;
+switch (stateType) {
+case NON_TRANSACTIONAL:
+    mapState=NonTransactionalMap.build(state);
+  break;
+case OPAQUE:
+mapState=OpaqueMap.build(state);
+break;
+case TRANSACTIONAL:
+mapState=TransactionalMap.build(state);
+break;
+default :
+throw new IllegalArgumentException("Unknown state type: " + stateType);
+}
+return new SnapshottableMap(mapState,new Values(options.globalKey));
+}

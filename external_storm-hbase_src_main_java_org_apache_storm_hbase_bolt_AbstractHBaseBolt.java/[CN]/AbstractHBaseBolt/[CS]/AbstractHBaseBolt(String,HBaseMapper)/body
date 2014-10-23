@@ -1,0 +1,6 @@
+{
+  Validate.notEmpty(tableName,"Table name can not be blank or null");
+  Validate.notNull(mapper,"mapper can not be null");
+  this.tableName=tableName;
+  this.mapper=mapper;
+}
