@@ -5,12 +5,5 @@
   if (currentTimeMillis - lastHeartbeat > workerTimeoutMills) {
     bolt.die(new RuntimeException("subprocess heartbeat timeout"));
   }
-  String genId=Long.toString(_rand.nextLong());
-  try {
-    _pendingWrites.put(createHeartbeatBoltMessage(genId));
-  }
- catch (  InterruptedException e) {
-    String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();
-    bolt.die(new RuntimeException("Error during multilang processing " + processInfo,e));
-  }
+  sendHeartbeatFlag.compareAndSet(false,true);
 }
