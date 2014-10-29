@@ -1,5 +1,5 @@
 {
-  if (TupleHelpers.isTickTuple(tuple)) {
+  if (tuple.isTick()) {
     getLogger().debug("Received tick tuple, triggering emit of current rankings");
     emitRankings(collector);
   }
