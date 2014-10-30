@@ -1,5 +1,6 @@
 {
   if (input.isTick()) {
+    collector.ack(input);
     return;
   }
   K key=null;
