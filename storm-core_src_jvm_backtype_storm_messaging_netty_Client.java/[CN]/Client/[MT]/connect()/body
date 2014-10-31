@@ -5,6 +5,7 @@
       return;
     }
     int tried=0;
+    channel=null;
     while (tried <= max_retries) {
       LOG.info("Reconnect started for {}... [{}]",name(),tried);
       LOG.debug("connection started...");
@@ -14,7 +15,6 @@
       if (!future.isSuccess()) {
         if (null != current) {
           current.close();
-          channel=null;
         }
       }
  else {
