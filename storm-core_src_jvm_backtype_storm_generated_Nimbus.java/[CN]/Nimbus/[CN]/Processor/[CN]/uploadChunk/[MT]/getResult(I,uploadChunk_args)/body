@@ -1,5 +1,10 @@
 {
   uploadChunk_result result=new uploadChunk_result();
-  iface.uploadChunk(args.location,args.chunk);
+  try {
+    iface.uploadChunk(args.location,args.chunk);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
   return result;
 }

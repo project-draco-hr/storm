@@ -1,0 +1,5 @@
+{
+  if (conf == null || conf.isEmpty())   return null;
+  String secretPayLoad=(String)conf.get(Config.STORM_ZOOKEEPER_TOPOLOGY_AUTH_PAYLOAD);
+  return secretPayLoad;
+}

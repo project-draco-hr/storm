@@ -1,0 +1,9 @@
+{
+  int total=0;
+  for (  Entry<String,Set<Node>> entry : _topologyIdToNodes.entrySet()) {
+    if (!_isolated.contains(entry.getKey())) {
+      total+=entry.getValue().size();
+    }
+  }
+  return total;
+}

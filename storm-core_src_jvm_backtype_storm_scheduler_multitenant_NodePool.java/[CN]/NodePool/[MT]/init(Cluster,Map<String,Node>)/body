@@ -1,0 +1,4 @@
+{
+  _cluster=cluster;
+  _nodeIdToNode=nodeIdToNode;
+}

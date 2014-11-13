@@ -67,6 +67,22 @@ this.status=iprot.readString();
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
 }
 break;
+case 513:
+if (field.type == org.apache.thrift.protocol.TType.STRING) {
+this.sched_status=iprot.readString();
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 514:
+if (field.type == org.apache.thrift.protocol.TType.STRING) {
+this.owner=iprot.readString();
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
 }

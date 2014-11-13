@@ -1,0 +1,13 @@
+{
+  int slotsFound=0;
+  int nodesFound=0;
+  Iterator<Node> it=_nodes.iterator();
+  while (it.hasNext() && slotsNeeded > 0) {
+    Node n=it.next();
+    nodesFound++;
+    int totalSlots=n.totalSlots();
+    slotsFound+=totalSlots;
+    slotsNeeded-=totalSlots;
+  }
+  return new NodeAndSlotCounts(nodesFound,slotsFound);
+}

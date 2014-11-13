@@ -1,5 +1,10 @@
 {
   finishFileUpload_result result=new finishFileUpload_result();
-  iface.finishFileUpload(args.location);
+  try {
+    iface.finishFileUpload(args.location);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
   return result;
 }

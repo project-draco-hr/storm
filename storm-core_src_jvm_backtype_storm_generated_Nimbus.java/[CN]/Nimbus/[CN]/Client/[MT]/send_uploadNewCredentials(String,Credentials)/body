@@ -1,0 +1,6 @@
+{
+  uploadNewCredentials_args args=new uploadNewCredentials_args();
+  args.set_name(name);
+  args.set_creds(creds);
+  sendBase("uploadNewCredentials",args);
+}

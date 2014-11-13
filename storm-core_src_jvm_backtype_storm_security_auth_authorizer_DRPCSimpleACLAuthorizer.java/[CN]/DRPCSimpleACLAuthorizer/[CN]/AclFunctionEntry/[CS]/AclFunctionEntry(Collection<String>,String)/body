@@ -1,0 +1,4 @@
+{
+  this.clientUsers=(clientUsers != null) ? new HashSet<String>(clientUsers) : new HashSet<String>();
+  this.invocationUser=invocationUser;
+}

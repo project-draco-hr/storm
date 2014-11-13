@@ -15,6 +15,10 @@ case STATUS:
 return is_set_status();
 case ERRORS:
 return is_set_errors();
+case SCHED_STATUS:
+return is_set_sched_status();
+case OWNER:
+return is_set_owner();
 }
 throw new IllegalStateException();
 }

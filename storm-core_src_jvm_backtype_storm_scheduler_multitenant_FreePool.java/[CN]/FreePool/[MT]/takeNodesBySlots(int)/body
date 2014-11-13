@@ -1,0 +1,12 @@
+{
+  HashSet<Node> ret=new HashSet<Node>();
+  Iterator<Node> it=_nodes.iterator();
+  while (it.hasNext() && slotsNeeded > 0) {
+    Node n=it.next();
+    ret.add(n);
+    _totalSlots-=n.totalSlotsFree();
+    slotsNeeded-=n.totalSlotsFree();
+    it.remove();
+  }
+  return ret;
+}

@@ -1,0 +1,6 @@
+{
+  if (other instanceof Node) {
+    return _nodeId.equals(((Node)other)._nodeId);
+  }
+  return false;
+}

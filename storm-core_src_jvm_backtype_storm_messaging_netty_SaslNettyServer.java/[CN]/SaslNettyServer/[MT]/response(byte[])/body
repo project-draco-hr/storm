@@ -1,0 +1,12 @@
+{
+  try {
+    LOG.debug("response: Responding to input token of length: " + token.length);
+    byte[] retval=saslServer.evaluateResponse(token);
+    LOG.debug("response: Response token length: " + retval.length);
+    return retval;
+  }
+ catch (  SaslException e) {
+    LOG.error("response: Failed to evaluate client token of length: " + token.length + " : "+ e);
+    return null;
+  }
+}

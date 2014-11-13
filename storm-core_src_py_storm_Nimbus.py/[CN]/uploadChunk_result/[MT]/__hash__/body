@@ -1,2 +1,2 @@
 def __hash__(self):
-    return 0
+    return (0 + hash(self.aze))

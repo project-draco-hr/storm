@@ -1,0 +1,6 @@
+{
+  users=new HashSet<String>();
+  if (conf.containsKey(WHITELIST_USERS_CONF)) {
+    users.addAll((Collection<String>)conf.get(WHITELIST_USERS_CONF));
+  }
+}
