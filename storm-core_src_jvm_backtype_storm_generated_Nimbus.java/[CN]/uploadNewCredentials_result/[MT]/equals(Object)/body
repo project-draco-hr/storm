@@ -1,0 +1,5 @@
+{
+  if (that == null)   return false;
+  if (that instanceof uploadNewCredentials_result)   return this.equals((uploadNewCredentials_result)that);
+  return false;
+}

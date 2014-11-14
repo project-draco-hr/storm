@@ -1,2 +1,2 @@
 def __hash__(self):
-    return ((0 + hash(self.success)) + hash(self.e))
+    return (((0 + hash(self.success)) + hash(self.e)) + hash(self.aze))

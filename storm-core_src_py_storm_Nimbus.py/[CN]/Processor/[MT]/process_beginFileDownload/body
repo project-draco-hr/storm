@@ -3,7 +3,10 @@ def process_beginFileDownload(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = beginFileDownload_result()
-    result.success = self._handler.beginFileDownload(args.file)
+    try:
+        result.success = self._handler.beginFileDownload(args.file)
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('beginFileDownload', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

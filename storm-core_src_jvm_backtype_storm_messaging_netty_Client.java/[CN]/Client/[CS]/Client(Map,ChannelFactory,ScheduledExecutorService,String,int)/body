@@ -1,4 +1,5 @@
 {
+  this.storm_conf=storm_conf;
   this.factory=factory;
   this.scheduler=scheduler;
   channelRef=new AtomicReference<Channel>(null);

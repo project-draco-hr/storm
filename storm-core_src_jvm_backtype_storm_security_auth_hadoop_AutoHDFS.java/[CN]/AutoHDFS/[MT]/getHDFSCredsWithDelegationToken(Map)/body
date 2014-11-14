@@ -1,0 +1,39 @@
+{
+  try {
+    Class configurationClass=Class.forName("org.apache.hadoop.conf.Configuration");
+    Object configuration=configurationClass.newInstance();
+    final Class ugiClass=Class.forName("org.apache.hadoop.security.UserGroupInformation");
+    final Method isSecurityEnabledMethod=ugiClass.getDeclaredMethod("isSecurityEnabled");
+    boolean isSecurityEnabled=(Boolean)isSecurityEnabledMethod.invoke(null);
+    if (isSecurityEnabled) {
+      final String topologySubmitterUser=(String)conf.get(Config.TOPOLOGY_SUBMITTER_USER);
+      final String hdfsUser=(String)conf.get(Config.TOPOLOGY_HDFS_PRINCIPAL);
+      Class fileSystemClass=Class.forName("org.apache.hadoop.fs.FileSystem");
+      Object nameNodeURI=conf.containsKey(Config.TOPOLOGY_HDFS_URI) ? conf.get(Config.TOPOLOGY_HDFS_URI) : fileSystemClass.getMethod("getDefaultUri",configurationClass).invoke(null,configuration);
+      Method getMethod=fileSystemClass.getMethod("get",URI.class,configurationClass,String.class);
+      Object fileSystem=getMethod.invoke(null,nameNodeURI,configuration,topologySubmitterUser);
+      Method getCurrentUserMethod=ugiClass.getMethod("getCurrentUser");
+      final Object ugi=getCurrentUserMethod.invoke(null);
+      Method createProxyUserMethod=ugiClass.getMethod("createProxyUser",String.class,ugiClass);
+      Object proxyUGI=createProxyUserMethod.invoke(null,topologySubmitterUser,ugi);
+      Method getCredentialsMethod=ugiClass.getMethod("getCredentials");
+      Object credentials=getCredentialsMethod.invoke(proxyUGI);
+      Class credentialClass=Class.forName("org.apache.hadoop.security.Credentials");
+      Method addDelegationTokensMethod=fileSystemClass.getMethod("addDelegationTokens",String.class,credentialClass);
+      addDelegationTokensMethod.invoke(fileSystem,hdfsUser,credentials);
+      ByteArrayOutputStream bao=new ByteArrayOutputStream();
+      ObjectOutputStream out=new ObjectOutputStream(bao);
+      Method writeMethod=credentialClass.getMethod("write",DataOutput.class);
+      writeMethod.invoke(credentials,out);
+      out.flush();
+      out.close();
+      return bao.toByteArray();
+    }
+ else {
+      throw new RuntimeException("Security is not enabled for HDFS");
+    }
+  }
+ catch (  Exception ex) {
+    throw new RuntimeException("Failed to get delegation tokens.",ex);
+  }
+}

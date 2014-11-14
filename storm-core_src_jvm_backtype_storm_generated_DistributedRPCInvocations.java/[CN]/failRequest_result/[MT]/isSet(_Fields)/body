@@ -3,6 +3,8 @@
     throw new IllegalArgumentException();
   }
 switch (field) {
-  }
-  throw new IllegalStateException();
+case AZE:
+    return is_set_aze();
+}
+throw new IllegalStateException();
 }

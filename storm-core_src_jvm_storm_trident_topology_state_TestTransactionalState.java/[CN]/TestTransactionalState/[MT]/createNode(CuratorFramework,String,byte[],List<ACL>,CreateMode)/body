@@ -1,0 +1,3 @@
+{
+  TransactionalState.createNode(curator,rootDir,data,acls,mode);
+}

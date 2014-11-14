@@ -7,5 +7,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('initial_status', TType.I32, 1)
         oprot.writeI32(self.initial_status)
         oprot.writeFieldEnd()
+    if (self.creds is not None):
+        oprot.writeFieldBegin('creds', TType.STRUCT, 2)
+        self.creds.write(oprot)
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

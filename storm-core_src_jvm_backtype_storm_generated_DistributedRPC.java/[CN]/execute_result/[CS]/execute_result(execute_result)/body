@@ -5,4 +5,7 @@
   if (other.is_set_e()) {
     this.e=new DRPCExecutionException(other.e);
   }
+  if (other.is_set_aze()) {
+    this.aze=new AuthorizationException(other.aze);
+  }
 }

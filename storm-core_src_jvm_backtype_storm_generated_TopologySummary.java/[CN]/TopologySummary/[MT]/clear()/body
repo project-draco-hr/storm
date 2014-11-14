@@ -10,4 +10,6 @@
   set_uptime_secs_isSet(false);
   this.uptime_secs=0;
   this.status=null;
+  this.sched_status=null;
+  this.owner=null;
 }

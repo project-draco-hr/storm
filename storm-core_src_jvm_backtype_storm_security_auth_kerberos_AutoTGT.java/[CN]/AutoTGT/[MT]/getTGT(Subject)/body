@@ -1,0 +1,12 @@
+{
+  Set<KerberosTicket> tickets=subject.getPrivateCredentials(KerberosTicket.class);
+  for (  KerberosTicket ticket : tickets) {
+    KerberosPrincipal server=ticket.getServer();
+    if (server.getName().equals("krbtgt/" + server.getRealm() + "@"+ server.getRealm())) {
+      tickets=null;
+      return ticket;
+    }
+  }
+  tickets=null;
+  return null;
+}

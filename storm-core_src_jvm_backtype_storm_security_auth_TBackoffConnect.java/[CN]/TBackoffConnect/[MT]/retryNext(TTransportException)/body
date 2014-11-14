@@ -1,0 +1,14 @@
+{
+  if (!canRetry()) {
+    throw new RuntimeException(ex);
+  }
+  try {
+    int sleeptime=waitGrabber.getSleepTimeMs(_completedRetries,0);
+    LOG.debug("Failed to connect. Retrying... (" + Integer.toString(_completedRetries) + ") in "+ Integer.toString(sleeptime)+ "ms");
+    Thread.sleep(sleeptime);
+  }
+ catch (  InterruptedException e) {
+    LOG.info("Nimbus connection retry interrupted.");
+  }
+  _completedRetries++;
+}

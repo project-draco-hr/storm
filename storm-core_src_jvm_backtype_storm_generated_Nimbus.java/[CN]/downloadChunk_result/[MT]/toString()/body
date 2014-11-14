@@ -9,6 +9,15 @@
     org.apache.thrift.TBaseHelper.toString(this.success,sb);
   }
   first=false;
+  if (!first)   sb.append(", ");
+  sb.append("aze:");
+  if (this.aze == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.aze);
+  }
+  first=false;
   sb.append(")");
   return sb.toString();
 }

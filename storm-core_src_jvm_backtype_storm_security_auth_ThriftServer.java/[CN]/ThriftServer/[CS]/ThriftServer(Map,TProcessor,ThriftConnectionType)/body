@@ -1,0 +1,11 @@
+{
+  _storm_conf=storm_conf;
+  _processor=processor;
+  _type=type;
+  try {
+    _login_conf=AuthUtils.GetConfiguration(_storm_conf);
+  }
+ catch (  Exception x) {
+    LOG.error(x.getMessage(),x);
+  }
+}
