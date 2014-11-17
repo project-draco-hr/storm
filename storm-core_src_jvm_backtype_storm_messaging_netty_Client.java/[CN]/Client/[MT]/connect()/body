@@ -9,6 +9,7 @@
     while (tried <= max_retries) {
       LOG.info("Reconnect started for {}... [{}]",name(),tried);
       LOG.debug("connection started...");
+      totalReconnects.getAndIncrement();
       ChannelFuture future=bootstrap.connect(remote_addr);
       future.awaitUninterruptibly();
       Channel current=future.getChannel();
