@@ -1,4 +1,5 @@
 {
+  Map state=new HashMap<String,Object>();
   long rp=readPos();
   long wp=writePos();
   state.put("capacity",capacity());
