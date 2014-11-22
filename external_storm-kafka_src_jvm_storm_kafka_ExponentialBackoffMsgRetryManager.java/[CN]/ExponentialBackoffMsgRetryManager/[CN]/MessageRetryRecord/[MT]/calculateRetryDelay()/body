@@ -1,0 +1,5 @@
+{
+  double delayMultiplier=Math.pow(retryDelayMultiplier,this.retryNum - 1);
+  long delayThisRetryMs=(long)(retryInitialDelayMs * delayMultiplier);
+  return Math.min(delayThisRetryMs,retryDelayMaxMs);
+}

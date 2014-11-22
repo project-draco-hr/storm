@@ -3,6 +3,6 @@
     _pending.headMap(offset - _spoutConfig.maxOffsetBehind).clear();
   }
   _pending.remove(offset);
-  retryRecords.remove(offset);
+  this._failedMsgRetryManager.acked(offset);
   numberAcked++;
 }
