@@ -1,0 +1,10 @@
+{
+  try {
+    byte[] retval=saslClient.evaluateChallenge(saslTokenMessage.getSaslToken());
+    return retval;
+  }
+ catch (  SaslException e) {
+    LOG.error("saslResponse: Failed to respond to SASL server's token:",e);
+    return null;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  String[] parts=((String)registrationArgument).split(":",2);
+  host=parts[0];
+  port=Integer.valueOf(parts[1]);
+  try {
+    socket=new Socket(host,port);
+    out=socket.getOutputStream();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

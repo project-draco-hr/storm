@@ -1,0 +1,3 @@
+Map storm_conf
+TProcessor processor
+ThriftConnectionType type

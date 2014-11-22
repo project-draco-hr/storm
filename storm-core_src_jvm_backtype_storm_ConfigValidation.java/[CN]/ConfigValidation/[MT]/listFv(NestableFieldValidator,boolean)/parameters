@@ -1,0 +1,2 @@
+NestableFieldValidator validator
+boolean nullAllowed

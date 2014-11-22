@@ -1,13 +1,16 @@
 {
   Integer queueId=taskToQueueId.get(task);
   if (null == queueId) {
-synchronized (taskToQueueId) {
-      if (null == taskToQueueId.get(task)) {
+synchronized (this) {
+      queueId=taskToQueueId.get(task);
+      if (queueId == null) {
         queueId=roundRobinQueueId++;
-        taskToQueueId.put(task,queueId);
         if (roundRobinQueueId == queueCount) {
           roundRobinQueueId=0;
         }
+        HashMap<Integer,Integer> newRef=new HashMap<Integer,Integer>(taskToQueueId);
+        newRef.put(task,queueId);
+        taskToQueueId=newRef;
       }
     }
   }

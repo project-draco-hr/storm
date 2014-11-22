@@ -7,6 +7,8 @@ def process_getTopologyInfo(self, seqid, iprot, oprot):
         result.success = self._handler.getTopologyInfo(args.id)
     except NotAliveException as e:
         result.e = e
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('getTopologyInfo', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

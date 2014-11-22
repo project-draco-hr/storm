@@ -1,0 +1,10 @@
+{
+  command=execString.clone();
+  if (dir != null) {
+    setWorkingDirectory(dir);
+  }
+  if (env != null) {
+    setEnvironment(env);
+  }
+  timeOutInterval=timeout;
+}

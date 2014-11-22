@@ -1,0 +1,17 @@
+{
+  try {
+    Set<ICredentialsRenewer> ret=new HashSet<ICredentialsRenewer>();
+    Collection<String> clazzes=(Collection<String>)conf.get(Config.NIMBUS_CREDENTIAL_RENEWERS);
+    if (clazzes != null) {
+      for (      String clazz : clazzes) {
+        ICredentialsRenewer inst=(ICredentialsRenewer)Class.forName(clazz).newInstance();
+        inst.prepare(conf);
+        ret.add(inst);
+      }
+    }
+    return ret;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

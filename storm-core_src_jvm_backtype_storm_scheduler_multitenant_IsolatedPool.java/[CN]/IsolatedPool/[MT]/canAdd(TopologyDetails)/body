@@ -1,0 +1,13 @@
+{
+  String topId=td.getId();
+  SchedulerAssignment assignment=_cluster.getAssignmentById(topId);
+  if (assignment != null) {
+    for (    WorkerSlot ws : assignment.getSlots()) {
+      Node n=_nodeIdToNode.get(ws.getNodeId());
+      if (n.getRunningTopologies().size() > 1) {
+        return false;
+      }
+    }
+  }
+  return true;
+}

@@ -5,3 +5,5 @@ uptime_secs
 executors
 status
 errors
+sched_status
+owner

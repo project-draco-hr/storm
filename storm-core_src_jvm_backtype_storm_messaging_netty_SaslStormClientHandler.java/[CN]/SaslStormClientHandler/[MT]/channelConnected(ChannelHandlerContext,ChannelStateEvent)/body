@@ -1,0 +1,17 @@
+{
+  Channel channel=ctx.getChannel();
+  LOG.info("Connection established from " + channel.getLocalAddress() + " to "+ channel.getRemoteAddress());
+  try {
+    SaslNettyClient saslNettyClient=SaslNettyClientState.getSaslNettyClient.get(channel);
+    if (saslNettyClient == null) {
+      LOG.debug("Creating saslNettyClient now " + "for channel: " + channel);
+      saslNettyClient=new SaslNettyClient(topologyName,token);
+      SaslNettyClientState.getSaslNettyClient.set(channel,saslNettyClient);
+    }
+    channel.write(ControlMessage.SASL_TOKEN_MESSAGE_REQUEST);
+  }
+ catch (  Exception e) {
+    LOG.error("Failed to authenticate with server " + "due to error: ",e);
+  }
+  return;
+}

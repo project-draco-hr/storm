@@ -1,5 +1,0 @@
-{
-  this();
-  this.success=success;
-  this.e=e;
-}

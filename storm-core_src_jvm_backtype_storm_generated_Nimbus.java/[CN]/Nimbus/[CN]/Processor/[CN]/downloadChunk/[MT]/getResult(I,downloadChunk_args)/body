@@ -1,5 +1,10 @@
 {
   downloadChunk_result result=new downloadChunk_result();
-  result.success=iface.downloadChunk(args.id);
+  try {
+    result.success=iface.downloadChunk(args.id);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
   return result;
 }

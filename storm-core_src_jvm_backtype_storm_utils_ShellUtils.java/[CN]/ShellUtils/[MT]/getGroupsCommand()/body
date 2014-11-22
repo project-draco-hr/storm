@@ -1,0 +1,3 @@
+{
+  return (WINDOWS) ? new String[]{"cmd","/c","groups"} : new String[]{"bash","-c","groups"};
+}

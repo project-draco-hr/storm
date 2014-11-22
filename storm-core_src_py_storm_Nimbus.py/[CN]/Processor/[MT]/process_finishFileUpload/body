@@ -3,7 +3,10 @@ def process_finishFileUpload(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = finishFileUpload_result()
-    self._handler.finishFileUpload(args.location)
+    try:
+        self._handler.finishFileUpload(args.location)
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('finishFileUpload', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

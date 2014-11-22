@@ -1,10 +1,8 @@
 {
   int attempts=0;
   while (true) {
-    String latestPath=_vs.mostRecentVersionPath();
-    if (latestPath == null)     return new HashMap<Object,Object>();
     try {
-      return (Map<Object,Object>)Utils.deserialize(FileUtils.readFileToByteArray(new File(latestPath)));
+      return deserializeLatestVersion();
     }
  catch (    IOException e) {
       attempts++;

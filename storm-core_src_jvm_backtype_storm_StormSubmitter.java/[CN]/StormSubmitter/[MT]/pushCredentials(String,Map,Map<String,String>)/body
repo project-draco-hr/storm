@@ -1,0 +1,31 @@
+{
+  stormConf=new HashMap(stormConf);
+  stormConf.putAll(Utils.readCommandLineOpts());
+  Map conf=Utils.readStormConfig();
+  conf.putAll(stormConf);
+  Map<String,String> fullCreds=populateCredentials(conf,credentials);
+  if (fullCreds.isEmpty()) {
+    LOG.warn("No credentials were found to push to " + name);
+    return;
+  }
+  try {
+    if (localNimbus != null) {
+      LOG.info("Pushing Credentials to topology " + name + " in local mode");
+      localNimbus.uploadNewCredentials(name,new Credentials(fullCreds));
+    }
+ else {
+      NimbusClient client=NimbusClient.getConfiguredClient(conf);
+      try {
+        LOG.info("Uploading new credentials to " + name);
+        client.getClient().uploadNewCredentials(name,new Credentials(fullCreds));
+      }
+  finally {
+        client.close();
+      }
+    }
+    LOG.info("Finished submitting topology: " + name);
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  if (isSucceeded() == false) {
+    return false;
+  }
+ else {
+    return logout();
+  }
+}

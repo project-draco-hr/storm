@@ -1,4 +1,0 @@
-String queueName
-ProducerType producerType
-int bufferSize
-WaitStrategy wait

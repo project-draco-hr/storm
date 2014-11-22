@@ -19,6 +19,8 @@
     }
   }
   if (null != ret) {
+    messagesDequeued.addAndGet(ret.size());
+    pendingMessages[queueId].addAndGet(0 - ret.size());
     return ret.iterator();
   }
   return null;
