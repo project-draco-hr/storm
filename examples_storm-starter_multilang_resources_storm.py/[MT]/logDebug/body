@@ -1,0 +1,2 @@
+def logDebug(msg):
+    log(msg, 1)

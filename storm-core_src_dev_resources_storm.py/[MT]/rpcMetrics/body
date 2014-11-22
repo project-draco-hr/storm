@@ -1,0 +1,2 @@
+def rpcMetrics(name, params):
+    sendMsgToParent({'command': 'metrics', 'name': name, 'params': params, })

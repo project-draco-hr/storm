@@ -1,0 +1,14 @@
+{
+  String userName=getUserName(req);
+  Principal p=null;
+  if (userName != null) {
+    p=new SingleUserPrincipal(userName);
+  }
+  Set<Principal> principals=new HashSet<Principal>(1);
+  if (p != null) {
+    principals.add(p);
+  }
+  Subject s=new Subject(true,principals,new HashSet(),new HashSet());
+  context.setSubject(s);
+  return context;
+}

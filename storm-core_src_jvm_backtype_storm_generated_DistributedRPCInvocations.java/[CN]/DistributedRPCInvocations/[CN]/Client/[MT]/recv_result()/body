@@ -1,5 +1,8 @@
 {
   result_result result=new result_result();
   receiveBase(result,"result");
+  if (result.aze != null) {
+    throw result.aze;
+  }
   return;
 }

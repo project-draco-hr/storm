@@ -1,3 +1,4 @@
 {
+  LOG.debug("New Local State for {}",backingDir);
   _vs=new VersionedStore(backingDir);
 }

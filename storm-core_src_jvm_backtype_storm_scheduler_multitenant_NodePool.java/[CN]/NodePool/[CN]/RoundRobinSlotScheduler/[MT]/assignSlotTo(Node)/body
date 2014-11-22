@@ -1,0 +1,32 @@
+{
+  if (_slots.isEmpty()) {
+    return false;
+  }
+  Set<ExecutorDetails> slot=_slots.pop();
+  if (slot == _lastSlot) {
+    for (    Entry<String,List<ExecutorDetails>> entry : _spreadToSchedule.entrySet()) {
+      if (entry.getValue().size() > 0) {
+        slot.addAll(entry.getValue());
+      }
+    }
+  }
+ else {
+    String nodeId=n.getId();
+    Set<String> nodeComps=_nodeToComps.get(nodeId);
+    if (nodeComps == null) {
+      nodeComps=new HashSet<String>();
+      _nodeToComps.put(nodeId,nodeComps);
+    }
+    for (    Entry<String,List<ExecutorDetails>> entry : _spreadToSchedule.entrySet()) {
+      if (entry.getValue().size() > 0) {
+        String comp=entry.getKey();
+        if (!nodeComps.contains(comp)) {
+          nodeComps.add(comp);
+          slot.add(entry.getValue().remove(0));
+        }
+      }
+    }
+  }
+  n.assign(_topId,slot,_cluster);
+  return !_slots.isEmpty();
+}

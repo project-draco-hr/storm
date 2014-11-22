@@ -1,0 +1,6 @@
+{
+  Boolean isStrict=(Boolean)conf.get(Config.DRPC_AUTHORIZER_ACL_STRICT);
+  _permitWhenMissingFunctionEntry=(isStrict != null && !isStrict) ? true : false;
+  _aclFileName=(String)conf.get(Config.DRPC_AUTHORIZER_ACL_FILENAME);
+  _ptol=AuthUtils.GetPrincipalToLocalPlugin(conf);
+}

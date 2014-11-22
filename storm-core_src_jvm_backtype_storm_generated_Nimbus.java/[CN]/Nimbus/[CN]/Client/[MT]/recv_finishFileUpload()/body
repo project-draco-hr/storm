@@ -1,5 +1,8 @@
 {
   finishFileUpload_result result=new finishFileUpload_result();
   receiveBase(result,"finishFileUpload");
+  if (result.aze != null) {
+    throw result.aze;
+  }
   return;
 }

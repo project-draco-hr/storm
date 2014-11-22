@@ -1,0 +1,49 @@
+{
+  _topId=td.getId();
+  _cluster=cluster;
+  Map<ExecutorDetails,String> execToComp=td.getExecutorToComponent();
+  SchedulerAssignment assignment=_cluster.getAssignmentById(_topId);
+  _nodeToComps=new HashMap<String,Set<String>>();
+  if (assignment != null) {
+    Map<ExecutorDetails,WorkerSlot> execToSlot=assignment.getExecutorToSlot();
+    for (    Entry<ExecutorDetails,WorkerSlot> entry : execToSlot.entrySet()) {
+      String nodeId=entry.getValue().getNodeId();
+      Set<String> comps=_nodeToComps.get(nodeId);
+      if (comps == null) {
+        comps=new HashSet<String>();
+        _nodeToComps.put(nodeId,comps);
+      }
+      comps.add(execToComp.get(entry.getKey()));
+    }
+  }
+  _spreadToSchedule=new HashMap<String,List<ExecutorDetails>>();
+  List<String> spreadComps=(List<String>)td.getConf().get(Config.TOPOLOGY_SPREAD_COMPONENTS);
+  if (spreadComps != null) {
+    for (    String comp : spreadComps) {
+      _spreadToSchedule.put(comp,new ArrayList<ExecutorDetails>());
+    }
+  }
+  _slots=new LinkedList<Set<ExecutorDetails>>();
+  for (int i=0; i < slotsToUse; i++) {
+    _slots.add(new HashSet<ExecutorDetails>());
+  }
+  int at=0;
+  for (  Entry<String,List<ExecutorDetails>> entry : _cluster.getNeedsSchedulingComponentToExecutors(td).entrySet()) {
+    LOG.debug("Scheduling for {}",entry.getKey());
+    if (_spreadToSchedule.containsKey(entry.getKey())) {
+      LOG.debug("Saving {} for spread...",entry.getKey());
+      _spreadToSchedule.get(entry.getKey()).addAll(entry.getValue());
+    }
+ else {
+      for (      ExecutorDetails ed : entry.getValue()) {
+        LOG.debug("Assigning {} {} to slot {}",new Object[]{entry.getKey(),ed,at});
+        _slots.get(at).add(ed);
+        at++;
+        if (at >= _slots.size()) {
+          at=0;
+        }
+      }
+    }
+  }
+  _lastSlot=_slots.get(_slots.size() - 1);
+}

@@ -1,5 +1,10 @@
 {
   failRequest_result result=new failRequest_result();
-  iface.failRequest(args.id);
+  try {
+    iface.failRequest(args.id);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
   return result;
 }

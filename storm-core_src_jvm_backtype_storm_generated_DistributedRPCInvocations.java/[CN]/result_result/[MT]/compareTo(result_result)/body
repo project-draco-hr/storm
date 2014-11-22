@@ -4,5 +4,15 @@
   }
   int lastComparison=0;
   result_result typedOther=(result_result)other;
+  lastComparison=Boolean.valueOf(is_set_aze()).compareTo(typedOther.is_set_aze());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_aze()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.aze,typedOther.aze);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

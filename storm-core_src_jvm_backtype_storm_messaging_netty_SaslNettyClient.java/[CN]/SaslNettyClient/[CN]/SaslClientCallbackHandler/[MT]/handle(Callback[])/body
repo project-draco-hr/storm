@@ -1,0 +1,40 @@
+{
+  NameCallback nc=null;
+  PasswordCallback pc=null;
+  RealmCallback rc=null;
+  for (  Callback callback : callbacks) {
+    if (callback instanceof RealmChoiceCallback) {
+      continue;
+    }
+ else     if (callback instanceof NameCallback) {
+      nc=(NameCallback)callback;
+    }
+ else     if (callback instanceof PasswordCallback) {
+      pc=(PasswordCallback)callback;
+    }
+ else     if (callback instanceof RealmCallback) {
+      rc=(RealmCallback)callback;
+    }
+ else {
+      throw new UnsupportedCallbackException(callback,"handle: Unrecognized SASL client callback");
+    }
+  }
+  if (nc != null) {
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("handle: SASL client callback: setting username: " + userName);
+    }
+    nc.setName(userName);
+  }
+  if (pc != null) {
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("handle: SASL client callback: setting userPassword");
+    }
+    pc.setPassword(userPassword);
+  }
+  if (rc != null) {
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("handle: SASL client callback: setting realm: " + rc.getDefaultText());
+    }
+    rc.setText(rc.getDefaultText());
+  }
+}

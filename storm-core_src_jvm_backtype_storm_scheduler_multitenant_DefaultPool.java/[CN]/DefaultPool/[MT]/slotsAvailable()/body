@@ -1,0 +1,3 @@
+{
+  return Node.countTotalSlotsAlive(_nodes);
+}

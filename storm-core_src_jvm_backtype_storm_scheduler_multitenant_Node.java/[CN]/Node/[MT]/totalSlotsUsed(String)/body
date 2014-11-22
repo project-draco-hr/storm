@@ -1,0 +1,8 @@
+{
+  int total=0;
+  Set<WorkerSlot> slots=_topIdToUsedSlots.get(topId);
+  if (slots != null) {
+    total=slots.size();
+  }
+  return total;
+}

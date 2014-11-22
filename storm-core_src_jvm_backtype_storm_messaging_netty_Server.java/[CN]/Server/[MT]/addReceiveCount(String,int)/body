@@ -1,0 +1,13 @@
+{
+  AtomicInteger i=messagesEnqueued.get(from);
+  if (i == null) {
+    i=new AtomicInteger(amount);
+    AtomicInteger prev=messagesEnqueued.putIfAbsent(from,i);
+    if (prev != null) {
+      prev.addAndGet(amount);
+    }
+  }
+ else {
+    i.addAndGet(amount);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  LOG.warn("No password found for user: " + userName);
+}
