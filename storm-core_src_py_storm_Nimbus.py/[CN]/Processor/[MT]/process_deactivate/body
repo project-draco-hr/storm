@@ -7,6 +7,8 @@ def process_deactivate(self, seqid, iprot, oprot):
         self._handler.deactivate(args.name)
     except NotAliveException as e:
         result.e = e
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('deactivate', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

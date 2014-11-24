@@ -2,6 +2,8 @@
 switch (field) {
 case E:
     return get_e();
+case AZE:
+  return get_aze();
 }
 throw new IllegalStateException();
 }

@@ -1,7 +1,9 @@
 {
   _collector=collector;
   _context=context;
+  workerTimeoutMills=1000 * RT.intCast(stormConf.get(Config.SUPERVISOR_WORKER_TIMEOUT_SECS));
   _process=new ShellProcess(_command);
   Number subpid=_process.launch(stormConf,context);
   LOG.info("Launched subprocess with pid " + subpid);
+  heartBeatExecutorService=MoreExecutors.getExitingScheduledExecutorService(new ScheduledThreadPoolExecutor(1));
 }

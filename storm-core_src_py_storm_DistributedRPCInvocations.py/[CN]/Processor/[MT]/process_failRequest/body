@@ -3,7 +3,10 @@ def process_failRequest(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = failRequest_result()
-    self._handler.failRequest(args.id)
+    try:
+        self._handler.failRequest(args.id)
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('failRequest', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

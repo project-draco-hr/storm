@@ -1,0 +1,13 @@
+{
+  if (isSucceeded() == false) {
+    return false;
+  }
+  if (subject == null || subject.isReadOnly()) {
+    kerbTicket=null;
+    throw new LoginException("Authentication failed because the Subject is invalid.");
+  }
+  subject.getPrivateCredentials().add(kerbTicket);
+  subject.getPrincipals().add(getKerbTicketClient());
+  LOG.debug("Commit Succeeded.");
+  return true;
+}

@@ -1,0 +1,6 @@
+{
+  String authenticationID=ac.getAuthenticationID();
+  LOG.debug("Successfully authenticated client: authenticationID=" + authenticationID);
+  ac.setAuthorized(true);
+  ac.setAuthorizedID(authenticationID);
+}

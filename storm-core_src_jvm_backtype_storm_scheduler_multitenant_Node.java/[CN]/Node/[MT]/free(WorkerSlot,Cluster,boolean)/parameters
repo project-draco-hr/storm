@@ -1,0 +1,3 @@
+WorkerSlot ws
+Cluster cluster
+boolean forceFree

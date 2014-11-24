@@ -7,6 +7,12 @@ def read(self, iprot):
         (fname, ftype, fid) = iprot.readFieldBegin()
         if (ftype == TType.STOP):
             break
+        if (fid == 1):
+            if (ftype == TType.STRUCT):
+                self.aze = AuthorizationException()
+                self.aze.read(iprot)
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

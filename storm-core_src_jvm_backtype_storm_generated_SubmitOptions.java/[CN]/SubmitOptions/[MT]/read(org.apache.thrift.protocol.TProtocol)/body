@@ -15,8 +15,17 @@ case 1:
         org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
       }
     break;
+case 2:
+  if (field.type == org.apache.thrift.protocol.TType.STRUCT) {
+    this.creds=new Credentials();
+    this.creds.read(iprot);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+  }
+break;
 default :
-  org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
 }
 iprot.readFieldEnd();
 }

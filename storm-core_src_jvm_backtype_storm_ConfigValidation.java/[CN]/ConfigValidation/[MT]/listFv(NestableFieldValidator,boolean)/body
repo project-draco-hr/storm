@@ -1,0 +1,17 @@
+{
+  return new NestableFieldValidator(){
+    @Override public void validateField(    String pd,    String name,    Object field) throws IllegalArgumentException {
+      if (nullAllowed && field == null) {
+        return;
+      }
+      if (field instanceof Iterable) {
+        for (        Object e : (Iterable)field) {
+          validator.validateField(pd + "Each element of the list ",name,e);
+        }
+        return;
+      }
+      throw new IllegalArgumentException("Field " + name + " must be an Iterable but was "+ ((field == null) ? "null" : ("a " + field.getClass())));
+    }
+  }
+;
+}

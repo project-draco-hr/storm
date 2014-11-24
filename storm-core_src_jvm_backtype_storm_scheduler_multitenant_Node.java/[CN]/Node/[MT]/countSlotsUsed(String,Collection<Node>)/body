@@ -1,0 +1,7 @@
+{
+  int total=0;
+  for (  Node n : nodes) {
+    total+=n.totalSlotsUsed(topId);
+  }
+  return total;
+}

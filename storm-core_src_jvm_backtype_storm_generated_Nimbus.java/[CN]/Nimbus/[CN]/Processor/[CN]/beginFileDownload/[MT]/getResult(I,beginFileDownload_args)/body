@@ -1,5 +1,10 @@
 {
   beginFileDownload_result result=new beginFileDownload_result();
-  result.success=iface.beginFileDownload(args.file);
+  try {
+    result.success=iface.beginFileDownload(args.file);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
   return result;
 }

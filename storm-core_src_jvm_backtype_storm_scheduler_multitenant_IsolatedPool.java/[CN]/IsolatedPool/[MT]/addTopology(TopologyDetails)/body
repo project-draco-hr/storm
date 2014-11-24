@@ -1,0 +1,18 @@
+{
+  String topId=td.getId();
+  LOG.debug("Adding in Topology {}",topId);
+  SchedulerAssignment assignment=_cluster.getAssignmentById(topId);
+  Set<Node> assignedNodes=new HashSet<Node>();
+  if (assignment != null) {
+    for (    WorkerSlot ws : assignment.getSlots()) {
+      Node n=_nodeIdToNode.get(ws.getNodeId());
+      assignedNodes.add(n);
+    }
+  }
+  _usedNodes+=assignedNodes.size();
+  _topologyIdToNodes.put(topId,assignedNodes);
+  _tds.put(topId,td);
+  if (td.getConf().get(Config.TOPOLOGY_ISOLATED_MACHINES) != null) {
+    _isolated.add(topId);
+  }
+}

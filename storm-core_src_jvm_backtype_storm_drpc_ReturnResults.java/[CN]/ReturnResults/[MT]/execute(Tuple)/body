@@ -19,7 +19,12 @@
       }
 ;
       if (!_clients.containsKey(server)) {
-        _clients.put(server,new DRPCInvocationsClient(host,port));
+        try {
+          _clients.put(server,new DRPCInvocationsClient(_conf,host,port));
+        }
+ catch (        TTransportException ex) {
+          throw new RuntimeException(ex);
+        }
       }
       client=_clients.get(server);
     }
@@ -30,6 +35,28 @@
  catch (    TException e) {
       LOG.error("Failed to return results to DRPC server",e);
       _collector.fail(input);
+      if (client instanceof DRPCInvocationsClient) {
+        try {
+          LOG.info("reconnecting... ");
+          ((DRPCInvocationsClient)client).reconnectClient();
+        }
+ catch (        TException e2) {
+          throw new RuntimeException(e2);
+        }
+      }
+    }
+catch (    AuthorizationException aze) {
+      LOG.error("Not authorized to return results to DRPC server",aze);
+      _collector.fail(input);
+      if (client instanceof DRPCInvocationsClient) {
+        try {
+          LOG.info("reconnecting... ");
+          ((DRPCInvocationsClient)client).reconnectClient();
+        }
+ catch (        TException e2) {
+          throw new RuntimeException(e2);
+        }
+      }
     }
   }
 }

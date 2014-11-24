@@ -1,0 +1,3 @@
+{
+  return newCurator(conf,servers,port,"",auth);
+}

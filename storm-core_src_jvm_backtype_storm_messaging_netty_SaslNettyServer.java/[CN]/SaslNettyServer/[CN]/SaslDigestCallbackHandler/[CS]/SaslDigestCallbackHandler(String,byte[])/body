@@ -1,0 +1,5 @@
+{
+  LOG.debug("SaslDigestCallback: Creating SaslDigestCallback handler " + "with topology token: " + topologyName);
+  this.userName=topologyName;
+  this.userPassword=token;
+}

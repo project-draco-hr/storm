@@ -1,0 +1,17 @@
+{
+  Object msg=e.getMessage();
+  if (msg == null)   return;
+  Channel channel=ctx.getChannel();
+  LOG.debug("messageReceived: Checking whether the client is authorized to send messages to the server ");
+  SaslNettyServer saslNettyServer=SaslNettyServerState.getSaslNettyServer.get(channel);
+  if (saslNettyServer == null) {
+    LOG.warn("messageReceived: This client is *NOT* authorized to perform " + "this action since there's no saslNettyServer to " + "authenticate the client: "+ "refusing to perform requested action: "+ msg);
+    return;
+  }
+  if (!saslNettyServer.isComplete()) {
+    LOG.warn("messageReceived: This client is *NOT* authorized to perform " + "this action because SASL authentication did not complete: " + "refusing to perform requested action: "+ msg);
+    return;
+  }
+  LOG.debug("messageReceived: authenticated client: " + saslNettyServer.getUserName() + " is authorized to do request "+ "on server.");
+  Channels.fireMessageReceived(ctx,msg);
+}

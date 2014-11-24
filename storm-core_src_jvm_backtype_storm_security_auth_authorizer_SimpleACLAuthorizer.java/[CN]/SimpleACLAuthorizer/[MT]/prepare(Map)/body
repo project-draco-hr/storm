@@ -1,0 +1,12 @@
+{
+  _admins=new HashSet<String>();
+  _supervisors=new HashSet<String>();
+  if (conf.containsKey(Config.NIMBUS_ADMINS)) {
+    _admins.addAll((Collection<String>)conf.get(Config.NIMBUS_ADMINS));
+  }
+  if (conf.containsKey(Config.NIMBUS_SUPERVISOR_USERS)) {
+    _supervisors.addAll((Collection<String>)conf.get(Config.NIMBUS_SUPERVISOR_USERS));
+  }
+  _ptol=AuthUtils.GetPrincipalToLocalPlugin(conf);
+  _groupMappingProvider=AuthUtils.GetGroupMappingServiceProviderPlugin(conf);
+}

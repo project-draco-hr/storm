@@ -8,4 +8,6 @@ def recv_uploadChunk(self):
     result = uploadChunk_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
+    if (result.aze is not None):
+        raise result.aze
     return

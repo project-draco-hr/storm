@@ -1,0 +1,20 @@
+{
+  try {
+    return Subject.doAs(subject,new PrivilegedExceptionAction<TTransport>(){
+      public TTransport run(){
+        try {
+          return wrapped.getTransport(trans);
+        }
+ catch (        Exception e) {
+          LOG.error("Storm server failed to open transport to interact with a client during session initiation: " + e,e);
+          return null;
+        }
+      }
+    }
+);
+  }
+ catch (  PrivilegedActionException e) {
+    LOG.error("Storm server experienced a PrivilegedActionException exception while creating a transport using a JAAS principal context:" + e,e);
+    return null;
+  }
+}

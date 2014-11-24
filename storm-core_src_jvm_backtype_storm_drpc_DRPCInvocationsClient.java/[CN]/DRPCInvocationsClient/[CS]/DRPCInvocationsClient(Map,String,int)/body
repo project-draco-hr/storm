@@ -1,0 +1,6 @@
+{
+  super(conf,ThriftConnectionType.DRPC_INVOCATIONS,host,port,null);
+  this.host=host;
+  this.port=port;
+  client.set(new DistributedRPCInvocations.Client(_protocol));
+}

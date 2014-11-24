@@ -1,0 +1,6 @@
+{
+  if (client.get() == null) {
+    reconnect();
+    client.set(new DistributedRPCInvocations.Client(_protocol));
+  }
+}

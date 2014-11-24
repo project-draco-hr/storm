@@ -1,0 +1,16 @@
+{
+  HashSet<Node> ret=new HashSet<Node>();
+  LinkedList<Node> sortedNodes=new LinkedList<Node>(_nodes);
+  Collections.sort(sortedNodes,Node.FREE_NODE_COMPARATOR_DEC);
+  for (  Node n : sortedNodes) {
+    if (nodesNeeded <= ret.size()) {
+      break;
+    }
+    if (n.isAlive()) {
+      n.freeAllSlots(_cluster);
+      _nodes.remove(n);
+      ret.add(n);
+    }
+  }
+  return ret;
+}
