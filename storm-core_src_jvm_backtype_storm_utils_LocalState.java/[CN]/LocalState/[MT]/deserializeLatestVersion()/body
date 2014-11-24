@@ -1,0 +1,14 @@
+{
+  String latestPath=_vs.mostRecentVersionPath();
+  Map<Object,Object> result=new HashMap<Object,Object>();
+  if (latestPath != null) {
+    byte[] serialized=FileUtils.readFileToByteArray(new File(latestPath));
+    if (serialized.length == 0) {
+      LOG.warn("LocalState file '{}' contained no data, resetting state",latestPath);
+    }
+ else {
+      result=(Map<Object,Object>)Utils.deserialize(serialized);
+    }
+  }
+  return result;
+}

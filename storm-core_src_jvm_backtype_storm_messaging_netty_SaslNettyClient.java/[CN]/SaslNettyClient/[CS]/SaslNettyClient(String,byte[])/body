@@ -1,0 +1,10 @@
+{
+  try {
+    LOG.debug("SaslNettyClient: Creating SASL " + SaslUtils.AUTH_DIGEST_MD5 + " client to authenticate to server ");
+    saslClient=Sasl.createSaslClient(new String[]{SaslUtils.AUTH_DIGEST_MD5},null,null,SaslUtils.DEFAULT_REALM,SaslUtils.getSaslProps(),new SaslClientCallbackHandler(topologyName,token));
+  }
+ catch (  IOException e) {
+    LOG.error("SaslNettyClient: Could not obtain topology token for Netty " + "Client to use to authenticate with a Netty Server.");
+    saslClient=null;
+  }
+}

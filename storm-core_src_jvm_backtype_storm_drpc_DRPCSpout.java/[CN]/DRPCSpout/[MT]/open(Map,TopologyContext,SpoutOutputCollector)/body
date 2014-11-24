@@ -1,6 +1,8 @@
 {
   _collector=collector;
   if (_local_drpc_id == null) {
+    _backround=Executors.newCachedThreadPool();
+    _futures=new LinkedList<Future<Void>>();
     int numTasks=context.getComponentTasks(context.getThisComponentId()).size();
     int index=context.getThisTaskIndex();
     int port=Utils.getInt(conf.get(Config.DRPC_INVOCATIONS_PORT));
@@ -10,12 +12,12 @@
     }
     if (numTasks < servers.size()) {
       for (      String s : servers) {
-        _clients.add(new DRPCInvocationsClient(s,port));
+        _futures.add(_backround.submit(new Adder(s,port,conf)));
       }
     }
  else {
       int i=index % servers.size();
-      _clients.add(new DRPCInvocationsClient(servers.get(i),port));
+      _futures.add(_backround.submit(new Adder(servers.get(i),port,conf)));
     }
   }
 }

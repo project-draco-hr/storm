@@ -1,0 +1,9 @@
+{
+  if (context != null) {
+    Principal princ=context.principal();
+    if (princ != null) {
+      return princ.getName();
+    }
+  }
+  return null;
+}

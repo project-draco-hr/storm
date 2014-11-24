@@ -1,0 +1,13 @@
+{
+  if (subject == null) {
+    throw new RuntimeException("The subject cannot be null when updating a subject with credentials");
+  }
+  try {
+    for (    IAutoCredentials autoCred : autos) {
+      autoCred.updateSubject(subject,credentials);
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

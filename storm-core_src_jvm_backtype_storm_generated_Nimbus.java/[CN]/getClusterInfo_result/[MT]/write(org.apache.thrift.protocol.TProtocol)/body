@@ -5,6 +5,11 @@
     this.success.write(oprot);
     oprot.writeFieldEnd();
   }
+ else   if (this.is_set_aze()) {
+    oprot.writeFieldBegin(AZE_FIELD_DESC);
+    this.aze.write(oprot);
+    oprot.writeFieldEnd();
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

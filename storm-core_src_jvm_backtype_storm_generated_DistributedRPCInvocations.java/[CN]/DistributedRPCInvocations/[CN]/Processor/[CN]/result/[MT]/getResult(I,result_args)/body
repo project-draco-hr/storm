@@ -1,5 +1,10 @@
 {
   result_result result=new result_result();
-  iface.result(args.id,args.result);
+  try {
+    iface.result(args.id,args.result);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
   return result;
 }

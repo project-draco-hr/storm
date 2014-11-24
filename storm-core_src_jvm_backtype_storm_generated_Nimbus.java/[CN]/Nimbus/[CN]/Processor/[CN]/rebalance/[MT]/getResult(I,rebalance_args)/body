@@ -9,5 +9,8 @@
 catch (  InvalidTopologyException ite) {
     result.ite=ite;
   }
+catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
   return result;
 }

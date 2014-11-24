@@ -11,5 +11,8 @@
       return (int)l;
     }
   }
+ else   if (o instanceof String) {
+    return Integer.parseInt((String)o);
+  }
   throw new IllegalArgumentException("Don't know how to convert " + o + " to int");
 }

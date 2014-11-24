@@ -1,0 +1,8 @@
+{
+  BoltMsg msg=new BoltMsg();
+  msg.setId(genId);
+  msg.setTask(Constants.SYSTEM_TASK_ID);
+  msg.setStream(HEARTBEAT_STREAM_ID);
+  msg.setTuple(new ArrayList<Object>());
+  return msg;
+}

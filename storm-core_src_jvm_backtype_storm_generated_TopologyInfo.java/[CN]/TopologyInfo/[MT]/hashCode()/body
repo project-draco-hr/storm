@@ -18,5 +18,11 @@
   boolean present_errors=true && (is_set_errors());
   builder.append(present_errors);
   if (present_errors)   builder.append(errors);
+  boolean present_sched_status=true && (is_set_sched_status());
+  builder.append(present_sched_status);
+  if (present_sched_status)   builder.append(sched_status);
+  boolean present_owner=true && (is_set_owner());
+  builder.append(present_owner);
+  if (present_owner)   builder.append(owner);
   return builder.toHashCode();
 }

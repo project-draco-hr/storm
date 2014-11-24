@@ -1,0 +1,7 @@
+{
+  DRPCInvocationsClient c=new DRPCInvocationsClient(conf,server,port);
+synchronized (_clients) {
+    _clients.add(c);
+  }
+  return null;
+}

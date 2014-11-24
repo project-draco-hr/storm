@@ -1,0 +1,3 @@
+{
+  kerbTicket=AutoTGT.kerbTicket.get();
+}

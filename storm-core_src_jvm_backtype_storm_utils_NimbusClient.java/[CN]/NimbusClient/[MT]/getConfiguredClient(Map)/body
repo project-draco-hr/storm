@@ -1,8 +1,7 @@
 {
   try {
     String nimbusHost=(String)conf.get(Config.NIMBUS_HOST);
-    int nimbusPort=Utils.getInt(conf.get(Config.NIMBUS_THRIFT_PORT));
-    return new NimbusClient(conf,nimbusHost,nimbusPort);
+    return new NimbusClient(conf,nimbusHost);
   }
  catch (  TTransportException ex) {
     throw new RuntimeException(ex);

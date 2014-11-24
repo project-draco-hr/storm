@@ -1,3 +1,4 @@
 {
   this.initial_status=null;
+  this.creds=null;
 }

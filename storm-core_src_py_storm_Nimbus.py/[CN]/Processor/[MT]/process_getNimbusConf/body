@@ -3,7 +3,10 @@ def process_getNimbusConf(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = getNimbusConf_result()
-    result.success = self._handler.getNimbusConf()
+    try:
+        result.success = self._handler.getNimbusConf()
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('getNimbusConf', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

@@ -1,0 +1,89 @@
+{
+  ProcessBuilder builder=new ProcessBuilder(getExecString());
+  Timer timeOutTimer=null;
+  ShellTimeoutTimerTask timeoutTimerTask=null;
+  timedOut=new AtomicBoolean(false);
+  completed=new AtomicBoolean(false);
+  if (environment != null) {
+    builder.environment().putAll(this.environment);
+  }
+  if (dir != null) {
+    builder.directory(this.dir);
+  }
+  builder.redirectErrorStream(redirectErrorStream);
+  process=builder.start();
+  if (timeOutInterval > 0) {
+    timeOutTimer=new Timer("Shell command timeout");
+    timeoutTimerTask=new ShellTimeoutTimerTask(this);
+    timeOutTimer.schedule(timeoutTimerTask,timeOutInterval);
+  }
+  final BufferedReader errReader=new BufferedReader(new InputStreamReader(process.getErrorStream()));
+  BufferedReader inReader=new BufferedReader(new InputStreamReader(process.getInputStream()));
+  final StringBuffer errMsg=new StringBuffer();
+  Thread errThread=new Thread(){
+    @Override public void run(){
+      try {
+        String line=errReader.readLine();
+        while ((line != null) && !isInterrupted()) {
+          errMsg.append(line);
+          errMsg.append(System.getProperty("line.separator"));
+          line=errReader.readLine();
+        }
+      }
+ catch (      IOException ioe) {
+        LOG.warn("Error reading the error stream",ioe);
+      }
+    }
+  }
+;
+  try {
+    errThread.start();
+  }
+ catch (  IllegalStateException ise) {
+  }
+  try {
+    parseExecResult(inReader);
+    String line=inReader.readLine();
+    while (line != null) {
+      line=inReader.readLine();
+    }
+    exitCode=process.waitFor();
+    joinThread(errThread);
+    completed.set(true);
+    if (exitCode != 0) {
+      throw new ExitCodeException(exitCode,errMsg.toString());
+    }
+  }
+ catch (  InterruptedException ie) {
+    throw new IOException(ie.toString());
+  }
+ finally {
+    if (timeOutTimer != null) {
+      timeOutTimer.cancel();
+    }
+    try {
+      InputStream stdout=process.getInputStream();
+synchronized (stdout) {
+        inReader.close();
+      }
+    }
+ catch (    IOException ioe) {
+      LOG.warn("Error while closing the input stream",ioe);
+    }
+    if (!completed.get()) {
+      errThread.interrupt();
+      joinThread(errThread);
+    }
+    try {
+      InputStream stderr=process.getErrorStream();
+synchronized (stderr) {
+        errReader.close();
+      }
+    }
+ catch (    IOException ioe) {
+      LOG.warn("Error while closing the error stream",ioe);
+    }
+    process.destroy();
+    lastTime=System.currentTimeMillis();
+  }
+}

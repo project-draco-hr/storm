@@ -1,0 +1,37 @@
+{
+  LOG.debug("send/recv time (ms): {}",(System.currentTimeMillis() - start_time));
+  Channel channel=ctx.getChannel();
+  SaslNettyClient saslNettyClient=SaslNettyClientState.getSaslNettyClient.get(channel);
+  if (saslNettyClient == null) {
+    throw new Exception("saslNettyClient was unexpectedly " + "null for channel: " + channel);
+  }
+  if (event.getMessage() instanceof ControlMessage) {
+    ControlMessage msg=(ControlMessage)event.getMessage();
+    if (msg == ControlMessage.SASL_COMPLETE_REQUEST) {
+      LOG.debug("Server has sent us the SaslComplete " + "message. Allowing normal work to proceed.");
+      if (!saslNettyClient.isComplete()) {
+        LOG.error("Server returned a Sasl-complete message, " + "but as far as we can tell, we are not authenticated yet.");
+        throw new Exception("Server returned a " + "Sasl-complete message, but as far as " + "we can tell, we are not authenticated yet.");
+      }
+      ctx.getPipeline().remove(this);
+      Channels.fireMessageReceived(ctx,msg);
+      return;
+    }
+  }
+  SaslMessageToken saslTokenMessage=(SaslMessageToken)event.getMessage();
+  LOG.debug("Responding to server's token of length: " + saslTokenMessage.getSaslToken().length);
+  byte[] responseToServer=saslNettyClient.saslResponse(saslTokenMessage);
+  if (responseToServer == null) {
+    LOG.debug("Response to server is null: " + "authentication should now be complete.");
+    if (!saslNettyClient.isComplete()) {
+      LOG.warn("Generated a null response, " + "but authentication is not complete.");
+      throw new Exception("Server reponse is null, but as far as " + "we can tell, we are not authenticated yet.");
+    }
+    return;
+  }
+ else {
+    LOG.debug("Response to server token has length:" + responseToServer.length);
+  }
+  SaslMessageToken saslResponse=new SaslMessageToken(responseToServer);
+  channel.write(saslResponse);
+}

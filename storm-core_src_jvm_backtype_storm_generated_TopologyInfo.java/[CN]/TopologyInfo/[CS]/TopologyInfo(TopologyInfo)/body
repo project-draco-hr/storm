@@ -32,4 +32,10 @@
     }
     this.errors=__this__errors;
   }
+  if (other.is_set_sched_status()) {
+    this.sched_status=other.sched_status;
+  }
+  if (other.is_set_owner()) {
+    this.owner=other.owner;
+  }
 }

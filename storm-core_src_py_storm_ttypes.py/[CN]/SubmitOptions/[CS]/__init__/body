@@ -1,2 +1,3 @@
-def __init__(self, initial_status=None):
+def __init__(self, initial_status=None, creds=None):
     self.initial_status = initial_status
+    self.creds = creds

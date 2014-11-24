@@ -1,0 +1,6 @@
+{
+  checkReady();
+  uploadNewCredentials_call method_call=new uploadNewCredentials_call(name,creds,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

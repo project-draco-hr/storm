@@ -6,6 +6,9 @@ def run(self):
         self.initialize(conf, context)
         while True:
             tup = readTuple()
-            self.process(tup)
+            if tup.is_heartbeat_tuple():
+                sync()
+            else:
+                self.process(tup)
     except Exception as e:
         reportError(traceback.format_exc(e))
