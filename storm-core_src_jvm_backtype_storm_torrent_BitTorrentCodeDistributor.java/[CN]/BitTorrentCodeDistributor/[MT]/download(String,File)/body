@@ -29,9 +29,5 @@
     file.delete();
   }
   srcDir.delete();
-  List<File> files=new ArrayList<File>();
-  for (  File file : destDir.listFiles()) {
-    files.add(file);
-  }
-  return files;
+  return Lists.newArrayList(destDir.listFiles());
 }
