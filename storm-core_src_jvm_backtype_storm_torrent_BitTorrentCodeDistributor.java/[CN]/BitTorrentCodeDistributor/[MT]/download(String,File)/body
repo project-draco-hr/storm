@@ -26,6 +26,12 @@
   File srcDir=Paths.get(destDir.getPath(),topologyId).toFile();
   for (  File file : srcDir.listFiles()) {
     Files.copy(file.toPath(),destDir.toPath().resolve(file.getName()));
+    file.delete();
   }
-  return new ArrayList<File>();
+  srcDir.delete();
+  List<File> files=new ArrayList<File>();
+  for (  File file : destDir.listFiles()) {
+    files.add(file);
+  }
+  return files;
 }
