@@ -1,0 +1,26 @@
+{
+  Credentials credential=getCredentials(credentials);
+  final long MAX_ALLOWED_EXPIRATION_MILLIS=24 * 60 * 60* 1000;
+  try {
+    if (credential != null) {
+      Configuration configuration=new Configuration();
+      Collection<Token<? extends TokenIdentifier>> tokens=credential.getAllTokens();
+      if (tokens != null && tokens.isEmpty() == false) {
+        for (        Token token : tokens) {
+          long expiration=(Long)token.renew(configuration);
+          if (expiration < MAX_ALLOWED_EXPIRATION_MILLIS) {
+            LOG.debug("expiration {} is less then MAX_ALLOWED_EXPIRATION_MILLIS {}, getting new tokens",expiration,MAX_ALLOWED_EXPIRATION_MILLIS);
+            populateCredentials(credentials,topologyConf);
+          }
+        }
+      }
+ else {
+        LOG.debug("No tokens found for credentials, skipping renewal.");
+      }
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("could not renew the credentials, one of the possible reason is tokens are beyond " + "renewal period so attempting to get new tokens.",e);
+    populateCredentials(credentials);
+  }
+}

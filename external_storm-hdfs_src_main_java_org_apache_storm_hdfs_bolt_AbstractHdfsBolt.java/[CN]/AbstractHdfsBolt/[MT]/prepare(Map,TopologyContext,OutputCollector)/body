@@ -15,7 +15,9 @@
     }
   }
   try {
-    HdfsSecurityUtil.login(conf,hdfsConfig);
+    if (!AutoHDFS.class.getName().equals(conf.get(Config.TOPOLOGY_AUTO_CREDENTIALS))) {
+      HdfsSecurityUtil.login(conf,hdfsConfig);
+    }
     doPrepare(conf,topologyContext,collector);
     this.currentFile=createOutputFile();
   }

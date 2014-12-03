@@ -1,11 +1,12 @@
 {
   try {
-    Object credential=getHDFSCredential(credentials);
+    Credentials credential=getCredentials(credentials);
     if (credential != null) {
       subject.getPrivateCredentials().add(credential);
+      LOG.info("HDFS Credentials added to the subject.");
     }
  else {
-      LOG.info("No HDFS credential found in credentials");
+      LOG.info("No credential found in credentials");
     }
   }
  catch (  Exception e) {
