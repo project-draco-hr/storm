@@ -1,6 +1,14 @@
 {
   long start=System.nanoTime();
-  ByteBufferMessageSet msgs=KafkaUtils.fetchMessages(_config,consumer,partition,offset);
+  ByteBufferMessageSet msgs=null;
+  try {
+    msgs=KafkaUtils.fetchMessages(_config,consumer,partition,offset);
+  }
+ catch (  UpdateOffsetException e) {
+    long newOffset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,_config);
+    LOG.warn("OffsetOutOfRange, Updating offset from offset = " + offset + " to offset = "+ newOffset);
+    msgs=KafkaUtils.fetchMessages(_config,consumer,partition,newOffset);
+  }
   long end=System.nanoTime();
   long millis=(end - start) / 1000000;
   _kafkaMeanFetchLatencyMetric.update(millis);
