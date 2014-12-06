@@ -1,4 +1,10 @@
 {
   if (that == null)   return false;
+  boolean this_present_aze=true && this.is_set_aze();
+  boolean that_present_aze=true && that.is_set_aze();
+  if (this_present_aze || that_present_aze) {
+    if (!(this_present_aze && that_present_aze))     return false;
+    if (!this.aze.equals(that.aze))     return false;
+  }
   return true;
 }

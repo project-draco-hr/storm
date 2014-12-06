@@ -1,0 +1,4 @@
+{
+  String klassName=(String)conf.get(Config.UI_HTTP_CREDS_PLUGIN);
+  return AuthUtils.GetHttpCredentialsPlugin(conf,klassName);
+}

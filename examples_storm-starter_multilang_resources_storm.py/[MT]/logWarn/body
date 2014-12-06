@@ -1,0 +1,2 @@
+def logWarn(msg):
+    log(msg, 3)

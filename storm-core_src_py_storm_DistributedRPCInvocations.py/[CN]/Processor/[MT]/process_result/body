@@ -3,7 +3,10 @@ def process_result(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = result_result()
-    self._handler.result(args.id, args.result)
+    try:
+        self._handler.result(args.id, args.result)
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('result', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

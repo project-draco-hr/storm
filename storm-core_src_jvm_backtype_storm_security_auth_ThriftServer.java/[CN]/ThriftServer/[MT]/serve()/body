@@ -1,7 +1,7 @@
 {
   try {
-    ITransportPlugin transportPlugin=AuthUtils.GetTransportPlugin(_storm_conf,_login_conf);
-    _server=transportPlugin.getServer(_port,_processor);
+    ITransportPlugin transportPlugin=AuthUtils.GetTransportPlugin(_type,_storm_conf,_login_conf);
+    _server=transportPlugin.getServer(_processor);
     _server.serve();
   }
  catch (  Exception ex) {

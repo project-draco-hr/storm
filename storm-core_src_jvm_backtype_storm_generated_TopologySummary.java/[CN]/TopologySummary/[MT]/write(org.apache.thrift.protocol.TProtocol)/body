@@ -28,6 +28,20 @@
     oprot.writeString(this.status);
     oprot.writeFieldEnd();
   }
+  if (this.sched_status != null) {
+    if (is_set_sched_status()) {
+      oprot.writeFieldBegin(SCHED_STATUS_FIELD_DESC);
+      oprot.writeString(this.sched_status);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (this.owner != null) {
+    if (is_set_owner()) {
+      oprot.writeFieldBegin(OWNER_FIELD_DESC);
+      oprot.writeString(this.owner);
+      oprot.writeFieldEnd();
+    }
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

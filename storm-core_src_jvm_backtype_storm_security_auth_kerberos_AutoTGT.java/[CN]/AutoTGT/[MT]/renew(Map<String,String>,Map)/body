@@ -1,0 +1,17 @@
+{
+  KerberosTicket tgt=getTGT(credentials);
+  if (tgt != null) {
+    long refreshTime=getRefreshTime(tgt);
+    long now=System.currentTimeMillis();
+    if (now >= refreshTime) {
+      try {
+        LOG.info("Renewing TGT for " + tgt.getClient());
+        tgt.refresh();
+        saveTGT(tgt,credentials);
+      }
+ catch (      RefreshFailedException e) {
+        LOG.warn("Failed to refresh TGT",e);
+      }
+    }
+  }
+}

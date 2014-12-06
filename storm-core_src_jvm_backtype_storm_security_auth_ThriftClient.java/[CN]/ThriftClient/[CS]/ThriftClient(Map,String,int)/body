@@ -1,3 +1,0 @@
-{
-  this(storm_conf,host,port,null);
-}

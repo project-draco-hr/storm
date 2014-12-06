@@ -1,0 +1,30 @@
+{
+  String topId=td.getId();
+  LOG.debug("Topology {} is not isolated",topId);
+  int totalTasks=td.getExecutors().size();
+  int origRequest=td.getNumWorkers();
+  int slotsRequested=Math.min(totalTasks,origRequest);
+  int slotsUsed=Node.countSlotsUsed(topId,allNodes);
+  int slotsFree=Node.countFreeSlotsAlive(allNodes);
+  int slotsAvailable=0;
+  if (slotsRequested > slotsFree) {
+    slotsAvailable=NodePool.slotsAvailable(lesserPools);
+  }
+  int slotsToUse=Math.min(slotsRequested - slotsUsed,slotsFree + slotsAvailable);
+  LOG.debug("Slots... requested {} used {} free {} available {} to be used {}",new Object[]{slotsRequested,slotsUsed,slotsFree,slotsAvailable,slotsToUse});
+  if (slotsToUse <= 0) {
+    _cluster.setStatus(topId,"Not Enough Slots Available to Schedule Topology");
+    return 0;
+  }
+  int slotsNeeded=slotsToUse - slotsFree;
+  int numNewNodes=NodePool.getNodeCountIfSlotsWereTaken(slotsNeeded,lesserPools);
+  LOG.debug("Nodes... new {} used {} max {}",new Object[]{numNewNodes,_usedNodes,_maxNodes});
+  if ((numNewNodes + _usedNodes) > _maxNodes) {
+    _cluster.setStatus(topId,"Max Nodes(" + _maxNodes + ") for this user would be exceeded. "+ (numNewNodes - (_maxNodes - _usedNodes))+ " more nodes needed to run topology.");
+    return 0;
+  }
+  Collection<Node> found=NodePool.takeNodesBySlot(slotsNeeded,lesserPools);
+  _usedNodes+=found.size();
+  allNodes.addAll(found);
+  return slotsToUse;
+}

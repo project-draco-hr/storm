@@ -1,0 +1,10 @@
+{
+  Map toRet=new HashMap();
+  if (!conf.containsKey(Config.STORM_ZOOKEEPER_TOPOLOGY_AUTH_PAYLOAD) || conf.get(Config.STORM_ZOOKEEPER_TOPOLOGY_AUTH_PAYLOAD) == null || !validateZKDigestPayload((String)conf.get(Config.STORM_ZOOKEEPER_TOPOLOGY_AUTH_PAYLOAD))) {
+    String secretPayload=generateZookeeperDigestSecretPayload();
+    toRet.put(Config.STORM_ZOOKEEPER_TOPOLOGY_AUTH_PAYLOAD,secretPayload);
+    LOG.info("Generated ZooKeeper secret payload for MD5-digest: " + secretPayload);
+  }
+  toRet.put(Config.STORM_ZOOKEEPER_TOPOLOGY_AUTH_SCHEME,"digest");
+  return toRet;
+}

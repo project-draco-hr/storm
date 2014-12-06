@@ -1,0 +1,3 @@
+String nodeId
+Set<Integer> allPorts
+boolean isAlive

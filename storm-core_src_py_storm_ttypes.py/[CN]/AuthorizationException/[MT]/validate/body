@@ -1,0 +1,4 @@
+def validate(self):
+    if (self.msg is None):
+        raise TProtocol.TProtocolException(message='Required field msg is unset!')
+    return

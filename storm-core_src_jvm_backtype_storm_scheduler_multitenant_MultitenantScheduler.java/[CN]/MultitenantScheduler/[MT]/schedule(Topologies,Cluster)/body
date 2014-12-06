@@ -1,0 +1,30 @@
+{
+  LOG.debug("Rerunning scheduling...");
+  Map<String,Node> nodeIdToNode=Node.getAllNodesFrom(cluster);
+  Map<String,Number> userConf=getUserConf();
+  Map<String,IsolatedPool> userPools=new HashMap<String,IsolatedPool>();
+  for (  Map.Entry<String,Number> entry : userConf.entrySet()) {
+    userPools.put(entry.getKey(),new IsolatedPool(entry.getValue().intValue()));
+  }
+  DefaultPool defaultPool=new DefaultPool();
+  FreePool freePool=new FreePool();
+  freePool.init(cluster,nodeIdToNode);
+  for (  IsolatedPool pool : userPools.values()) {
+    pool.init(cluster,nodeIdToNode);
+  }
+  defaultPool.init(cluster,nodeIdToNode);
+  for (  TopologyDetails td : topologies.getTopologies()) {
+    String user=(String)td.getConf().get(Config.TOPOLOGY_SUBMITTER_USER);
+    LOG.debug("Found top {} run by user {}",td.getId(),user);
+    NodePool pool=userPools.get(user);
+    if (pool == null || !pool.canAdd(td)) {
+      pool=defaultPool;
+    }
+    pool.addTopology(td);
+  }
+  for (  IsolatedPool pool : userPools.values()) {
+    pool.scheduleAsNeeded(freePool,defaultPool);
+  }
+  defaultPool.scheduleAsNeeded(freePool);
+  LOG.debug("Scheduling done...");
+}

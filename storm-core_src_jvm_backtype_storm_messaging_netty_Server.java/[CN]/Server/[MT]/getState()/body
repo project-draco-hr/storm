@@ -1,0 +1,24 @@
+{
+  LOG.info("Getting metrics for server on " + port);
+  HashMap<String,Object> ret=new HashMap<String,Object>();
+  ret.put("dequeuedMessages",messagesDequeued.getAndSet(0));
+  ArrayList<Integer> pending=new ArrayList<Integer>(pendingMessages.length);
+  for (  AtomicInteger p : pendingMessages) {
+    pending.add(p.get());
+  }
+  ret.put("pending",pending);
+  HashMap<String,Integer> enqueued=new HashMap<String,Integer>();
+  Iterator<Map.Entry<String,AtomicInteger>> it=messagesEnqueued.entrySet().iterator();
+  while (it.hasNext()) {
+    Map.Entry<String,AtomicInteger> ent=it.next();
+    AtomicInteger i=ent.getValue();
+    if (i.get() == 0) {
+      it.remove();
+    }
+ else {
+      enqueued.put(ent.getKey(),i.getAndSet(0));
+    }
+  }
+  ret.put("enqueued",enqueued);
+  return ret;
+}

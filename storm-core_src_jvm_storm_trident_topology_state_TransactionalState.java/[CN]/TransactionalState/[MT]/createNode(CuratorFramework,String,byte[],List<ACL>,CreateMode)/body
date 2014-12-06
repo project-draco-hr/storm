@@ -1,0 +1,13 @@
+{
+  ProtectACLCreateModePathAndBytesable<String> builder=curator.create().creatingParentsIfNeeded();
+  if (acls == null) {
+    if (mode == null) {
+      TransactionalState.forPath(builder,path,data);
+    }
+ else {
+      TransactionalState.forPath(builder.withMode(mode),path,data);
+    }
+    return;
+  }
+  TransactionalState.forPath(builder.withACL(acls),path,data);
+}
