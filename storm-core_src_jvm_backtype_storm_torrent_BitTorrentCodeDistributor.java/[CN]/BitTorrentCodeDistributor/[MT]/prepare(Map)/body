@@ -7,7 +7,7 @@
   this.seedDuration=(Integer)conf.get(Config.SUPERVISOR_BITTORRENT_SEED_DURATION);
   LOG.info("Download rates [U/D]: {}/{} kB/sec",format(this.maxUpload),format(this.maxDownload));
   LOG.info("Starting bt tracker bound to hostname '{}'",hostName);
-  InetSocketAddress socketAddr=new InetSocketAddress(hostName,port);
+  InetSocketAddress socketAddr=new InetSocketAddress("::",port);
   this.tracker=new Tracker(socketAddr);
   LOG.info("Announce URL: {}",this.tracker.getAnnounceUrl());
   this.tracker.start();
