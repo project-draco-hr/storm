@@ -16,7 +16,16 @@
  else {
     offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,_config);
   }
-  ByteBufferMessageSet msgs=fetchMessages(consumer,partition,offset);
+  ByteBufferMessageSet msgs=null;
+  try {
+    msgs=fetchMessages(consumer,partition,offset);
+  }
+ catch (  UpdateOffsetException e) {
+    long newOffset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,_config);
+    LOG.warn("OffsetOutOfRange: Updating offset from offset = " + offset + " to offset = "+ newOffset);
+    offset=newOffset;
+    msgs=KafkaUtils.fetchMessages(_config,consumer,partition,offset);
+  }
   long endoffset=offset;
   for (  MessageAndOffset msg : msgs) {
     emit(collector,msg.message());
