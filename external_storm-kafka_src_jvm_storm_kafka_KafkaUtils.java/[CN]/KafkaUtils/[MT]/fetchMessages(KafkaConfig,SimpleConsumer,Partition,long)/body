@@ -22,7 +22,7 @@
     if (error.equals(KafkaError.OFFSET_OUT_OF_RANGE) && config.useStartOffsetTimeIfOffsetOutOfRange) {
       String msg="Got fetch request with offset out of range: [" + offset + "]";
       LOG.warn(msg);
-      throw new UpdateOffsetException(msg);
+      throw new TopicOffsetOutOfRangeException(msg);
     }
  else {
       String message="Error fetching data from [" + partition + "] for topic ["+ topic+ "]: ["+ error+ "]";

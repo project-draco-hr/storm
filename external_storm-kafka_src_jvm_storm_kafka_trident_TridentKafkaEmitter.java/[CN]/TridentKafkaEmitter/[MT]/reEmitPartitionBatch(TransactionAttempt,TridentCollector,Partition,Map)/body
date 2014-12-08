@@ -9,7 +9,7 @@
     try {
       msgs=fetchMessages(consumer,partition,offset);
     }
- catch (    UpdateOffsetException e) {
+ catch (    TopicOffsetOutOfRangeException e) {
       LOG.warn("OffsetOutOfRange during reEmitPartitionBatch, the transaction can not be replayed." + "Returning empty messages");
     }
     if (msgs != null) {
