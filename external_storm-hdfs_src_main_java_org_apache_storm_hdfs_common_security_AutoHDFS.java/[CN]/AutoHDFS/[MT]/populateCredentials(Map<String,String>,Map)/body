@@ -1,6 +1,7 @@
 {
   try {
     credentials.put(getCredentialKey(),DatatypeConverter.printBase64Binary(getHadoopCredentials(conf)));
+    LOG.info("HDFS tokens added to credentials map.");
   }
  catch (  Exception e) {
     LOG.warn("Could not populate HDFS credentials.",e);
