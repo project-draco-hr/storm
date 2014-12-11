@@ -1,0 +1,37 @@
+{
+  try {
+    final Configuration hbaseConf=HBaseConfiguration.create();
+    if (UserGroupInformation.isSecurityEnabled()) {
+      final String topologySubmitterUser=(String)conf.get(Config.TOPOLOGY_SUBMITTER_PRINCIPAL);
+      UserProvider provider=UserProvider.instantiate(hbaseConf);
+      hbaseConf.set(HBASE_KEYTAB_FILE_KEY,conf.get(HBASE_KEYTAB_FILE_KEY).toString());
+      hbaseConf.set(HBASE_PRINCIPAL_KEY,conf.get(HBASE_PRINCIPAL_KEY).toString());
+      provider.login(HBASE_KEYTAB_FILE_KEY,HBASE_PRINCIPAL_KEY,InetAddress.getLocalHost().getCanonicalHostName());
+      LOG.info("Logged into Hbase as principal = " + conf.get(HBASE_PRINCIPAL_KEY));
+      UserGroupInformation.setConfiguration(hbaseConf);
+      UserGroupInformation ugi=UserGroupInformation.getCurrentUser();
+      final UserGroupInformation proxyUser=UserGroupInformation.createProxyUser(topologySubmitterUser,ugi);
+      User user=User.create(ugi);
+      if (user.isHBaseSecurityEnabled(hbaseConf)) {
+        TokenUtil.obtainAndCacheToken(hbaseConf,proxyUser);
+        LOG.info("Obtained HBase tokens, adding to user credentials.");
+        Credentials credential=proxyUser.getCredentials();
+        ByteArrayOutputStream bao=new ByteArrayOutputStream();
+        ObjectOutputStream out=new ObjectOutputStream(bao);
+        credential.write(out);
+        out.flush();
+        out.close();
+        return bao.toByteArray();
+      }
+ else {
+        throw new RuntimeException("Security is not enabled for HBase.");
+      }
+    }
+ else {
+      throw new RuntimeException("Security is not enabled for Hadoop");
+    }
+  }
+ catch (  Exception ex) {
+    throw new RuntimeException("Failed to get delegation tokens.",ex);
+  }
+}

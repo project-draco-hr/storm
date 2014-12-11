@@ -11,5 +11,7 @@
   for (  String key : conf.keySet()) {
     hbConfig.set(key,String.valueOf(conf.get(key)));
   }
-  this.hBaseClient=new HBaseClient(conf,hbConfig,tableName);
+  Map<String,Object> hbaseConfMap=new HashMap<String,Object>(conf);
+  hbaseConfMap.put(Config.TOPOLOGY_AUTO_CREDENTIALS,map.get(Config.TOPOLOGY_AUTO_CREDENTIALS));
+  this.hBaseClient=new HBaseClient(hbaseConfMap,hbConfig,tableName);
 }
