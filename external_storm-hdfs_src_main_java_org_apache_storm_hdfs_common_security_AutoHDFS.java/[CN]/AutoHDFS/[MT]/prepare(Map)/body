@@ -1,2 +1,6 @@
 {
+  if (conf.containsKey(STORM_KEYTAB_FILE_KEY) && conf.containsKey(STORM_USER_NAME_KEY)) {
+    this.hdfsKeyTab=(String)conf.get(STORM_KEYTAB_FILE_KEY);
+    this.hdfsPrincipal=(String)conf.get(STORM_USER_NAME_KEY);
+  }
 }

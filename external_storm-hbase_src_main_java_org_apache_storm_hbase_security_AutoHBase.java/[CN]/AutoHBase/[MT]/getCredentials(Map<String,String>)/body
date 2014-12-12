@@ -9,7 +9,7 @@
       LOG.info("Got hbase credentials from credentials Map.");
     }
  catch (    Exception e) {
-      LOG.warn("Could not obtain credentials from credentials map.",e);
+      LOG.error("Could not obtain credentials from credentials map.",e);
     }
   }
   return credential;

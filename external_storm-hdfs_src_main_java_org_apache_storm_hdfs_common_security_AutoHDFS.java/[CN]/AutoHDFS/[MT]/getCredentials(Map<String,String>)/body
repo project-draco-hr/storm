@@ -8,7 +8,7 @@
       credential.readFields(in);
     }
  catch (    Exception e) {
-      LOG.warn("Could not obtain credentials from credentials map.",e);
+      LOG.error("Could not obtain credentials from credentials map.",e);
     }
   }
   return credential;

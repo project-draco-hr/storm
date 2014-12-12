@@ -4,6 +4,6 @@
     LOG.info("HDFS tokens added to credentials map.");
   }
  catch (  Exception e) {
-    LOG.warn("Could not populate HDFS credentials.",e);
+    LOG.error("Could not populate HDFS credentials.",e);
   }
 }

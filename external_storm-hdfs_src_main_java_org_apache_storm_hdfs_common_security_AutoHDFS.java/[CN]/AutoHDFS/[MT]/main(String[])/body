@@ -1,8 +1,8 @@
 {
   Map conf=new HashMap();
   conf.put(Config.TOPOLOGY_SUBMITTER_PRINCIPAL,args[0]);
-  conf.put(HdfsSecurityUtil.STORM_USER_NAME_KEY,args[1]);
-  conf.put(HdfsSecurityUtil.STORM_KEYTAB_FILE_KEY,args[2]);
+  conf.put(STORM_USER_NAME_KEY,args[1]);
+  conf.put(STORM_KEYTAB_FILE_KEY,args[2]);
   Configuration configuration=new Configuration();
   AutoHDFS autoHDFS=new AutoHDFS();
   autoHDFS.prepare(conf);

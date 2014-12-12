@@ -1,2 +1,3 @@
 {
+  credentials.put(HDFS_CREDENTIALS,DatatypeConverter.printBase64Binary("dummy place holder".getBytes()));
 }

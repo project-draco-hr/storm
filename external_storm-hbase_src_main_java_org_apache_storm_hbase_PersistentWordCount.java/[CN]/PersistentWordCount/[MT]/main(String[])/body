@@ -1,0 +1,37 @@
+{
+  Config config=new Config();
+  Map<String,Object> hbConf=new HashMap<String,Object>();
+  if (args.length > 0) {
+    hbConf.put("hbase.rootdir",args[0]);
+  }
+  config.put("hbase.conf",hbConf);
+  WordSpout spout=new WordSpout();
+  WordCounter bolt=new WordCounter();
+  SimpleHBaseMapper mapper=new SimpleHBaseMapper().withRowKeyField("word").withColumnFields(new Fields("word")).withCounterFields(new Fields("count")).withColumnFamily("cf");
+  HBaseBolt hbase=new HBaseBolt("WordCount",mapper).withConfigKey("hbase.conf");
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(WORD_SPOUT,spout,1);
+  builder.setBolt(COUNT_BOLT,bolt,1).shuffleGrouping(WORD_SPOUT);
+  builder.setBolt(HBASE_BOLT,hbase,1).fieldsGrouping(COUNT_BOLT,new Fields("word"));
+  if (args.length == 1) {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("test",config,builder.createTopology());
+    Thread.sleep(30000);
+    cluster.killTopology("test");
+    cluster.shutdown();
+    System.exit(0);
+  }
+ else   if (args.length == 2) {
+    StormSubmitter.submitTopology(args[1],config,builder.createTopology());
+  }
+ else   if (args.length == 4) {
+    System.out.println("hdfs url: " + args[0] + ", keytab file: "+ args[2]+ ", principal name: "+ args[3]+ ", toplogy name: "+ args[1]);
+    hbConf.put(HBaseSecurityUtil.STORM_KEYTAB_FILE_KEY,args[2]);
+    hbConf.put(HBaseSecurityUtil.STORM_USER_NAME_KEY,args[3]);
+    config.setNumWorkers(3);
+    StormSubmitter.submitTopology(args[1],config,builder.createTopology());
+  }
+ else {
+    System.out.println("Usage: PersistentWordCount <hbase.rootdir> [topology name] [keytab file] [principal name]");
+  }
+}

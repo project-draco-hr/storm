@@ -2,9 +2,8 @@
   try {
     if (UserGroupInformation.isSecurityEnabled()) {
       final Configuration configuration=new Configuration();
-      HdfsSecurityUtil.login(conf,configuration);
+      login(configuration);
       final String topologySubmitterUser=(String)conf.get(Config.TOPOLOGY_SUBMITTER_PRINCIPAL);
-      final String hdfsUser=(String)conf.get(HdfsSecurityUtil.STORM_USER_NAME_KEY);
       final URI nameNodeURI=conf.containsKey(TOPOLOGY_HDFS_URI) ? new URI(conf.get(TOPOLOGY_HDFS_URI).toString()) : FileSystem.getDefaultUri(configuration);
       UserGroupInformation ugi=UserGroupInformation.getCurrentUser();
       final UserGroupInformation proxyUser=UserGroupInformation.createProxyUser(topologySubmitterUser,ugi);
@@ -13,7 +12,8 @@
           try {
             FileSystem fileSystem=FileSystem.get(nameNodeURI,configuration);
             Credentials credential=proxyUser.getCredentials();
-            fileSystem.addDelegationTokens(hdfsUser,credential);
+            fileSystem.addDelegationTokens(hdfsPrincipal,credential);
+            LOG.info("Delegation tokens acquired for user {}",topologySubmitterUser);
             return credential;
           }
  catch (          IOException e) {

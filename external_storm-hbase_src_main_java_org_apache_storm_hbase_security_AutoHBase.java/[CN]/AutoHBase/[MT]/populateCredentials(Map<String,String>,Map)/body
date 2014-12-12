@@ -3,6 +3,6 @@
     credentials.put(getCredentialKey(),DatatypeConverter.printBase64Binary(getHadoopCredentials(conf)));
   }
  catch (  Exception e) {
-    LOG.warn("Could not populate HBase credentials.",e);
+    LOG.error("Could not populate HBase credentials.",e);
   }
 }
