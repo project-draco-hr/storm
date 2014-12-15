@@ -1,0 +1,4 @@
+{
+  this.fieldDelimiter=delimiter;
+  return this;
+}

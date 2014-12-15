@@ -1,0 +1,6 @@
+{
+  this.metaStoreURI=metaStoreURI;
+  this.databaseName=databaseName;
+  this.tableName=tableName;
+  this.mapper=mapper;
+}

@@ -1,0 +1,10 @@
+{
+  Partition part=new Partition();
+  part.setDbName(tbl.getDbName());
+  part.setTableName(tbl.getTableName());
+  StorageDescriptor sd=new StorageDescriptor(tbl.getSd());
+  sd.setLocation(sd.getLocation() + Path.SEPARATOR + makePartPath(tbl.getPartitionKeys(),partValues));
+  part.setSd(sd);
+  part.setValues(partValues);
+  client.add_partition(part);
+}

@@ -1,0 +1,18 @@
+{
+  DelimitedRecordHiveMapper mapper=new DelimitedRecordHiveMapper().withColumnFields(new Fields(colNames)).withPartitionFields(new Fields(partNames));
+  HiveOptions hiveOptions=new HiveOptions(metaStoreURI,dbName,tblName,mapper).withTxnsPerBatch(10).withBatchSize(10);
+  bolt=new HiveBolt(hiveOptions);
+  bolt.prepare(config,null,new OutputCollector(collector));
+  Integer id=1;
+  String msg="test";
+  String city="San Jose";
+  String state="CA";
+  checkRecordCountInTable(tblName,dbName,0);
+  for (int i=0; i < 100; i++) {
+    Tuple tuple=generateTestTuple(id,msg,city,state);
+    bolt.execute(tuple);
+    verify(collector).ack(tuple);
+  }
+  checkRecordCountInTable(tblName,dbName,100);
+  bolt.cleanup();
+}

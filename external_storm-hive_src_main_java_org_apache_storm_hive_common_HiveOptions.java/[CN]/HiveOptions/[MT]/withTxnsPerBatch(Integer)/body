@@ -1,0 +1,4 @@
+{
+  this.txnsPerBatch=txnsPerBatch;
+  return this;
+}
