@@ -1,0 +1,3 @@
+{
+  super("Commit of Txn " + txnID + " failed on EndPoint: "+ endPoint,cause);
+}

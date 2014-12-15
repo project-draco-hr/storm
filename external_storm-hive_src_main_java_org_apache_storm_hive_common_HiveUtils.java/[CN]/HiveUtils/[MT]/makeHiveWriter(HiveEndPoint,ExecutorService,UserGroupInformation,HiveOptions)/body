@@ -1,0 +1,3 @@
+{
+  return new HiveWriter(endPoint,options.getTxnsPerBatch(),options.getAutoCreatePartitions(),options.getCallTimeOut(),callTimeoutPool,options.getMapper(),ugi);
+}

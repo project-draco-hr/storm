@@ -1,0 +1,11 @@
+{
+  port=9083;
+  dbLocation=new String();
+  metaStoreURI=null;
+  conf=HiveSetupUtil.getHiveConf();
+  TxnDbUtil.setConfValues(conf);
+  TxnDbUtil.cleanDb();
+  TxnDbUtil.prepDb();
+  SessionState.start(new CliSessionState(conf));
+  driver=new Driver(conf);
+}

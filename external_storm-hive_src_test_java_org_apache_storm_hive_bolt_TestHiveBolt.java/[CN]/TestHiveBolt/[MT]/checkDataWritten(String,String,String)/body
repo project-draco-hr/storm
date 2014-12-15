@@ -1,0 +1,8 @@
+{
+  ArrayList<String> results=listRecordsInTable(tableName,dbName);
+  for (int i=0; i < row.length && results.size() > 0; i++) {
+    String resultRow=results.get(i).replace("\t",",");
+    System.out.println(resultRow);
+    assertEquals(row[i],resultRow);
+  }
+}

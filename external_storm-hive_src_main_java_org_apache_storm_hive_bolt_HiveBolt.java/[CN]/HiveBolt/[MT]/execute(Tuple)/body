@@ -1,0 +1,22 @@
+{
+  try {
+    List<String> partitionVals=options.getMapper().mapPartitions(tuple);
+    HiveEndPoint endPoint=HiveUtils.makeEndPoint(partitionVals,options);
+    HiveWriter writer=getOrCreateWriter(endPoint);
+    if (timeToSendHeartBeat.compareAndSet(true,false)) {
+      enableHeartBeatOnAllWriters();
+    }
+    writer.write(options.getMapper().mapRecord(tuple));
+    currentBatchSize++;
+    if (currentBatchSize >= options.getBatchSize()) {
+      flushAllWriters();
+      currentBatchSize=0;
+    }
+    collector.ack(tuple);
+  }
+ catch (  Exception e) {
+    collector.fail(tuple);
+    flushAndCloseWriters();
+    LOG.warn("hive streaming failed. ",e);
+  }
+}

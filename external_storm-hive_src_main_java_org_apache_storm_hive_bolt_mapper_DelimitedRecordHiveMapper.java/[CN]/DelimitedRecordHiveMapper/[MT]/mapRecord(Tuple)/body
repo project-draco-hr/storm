@@ -1,0 +1,10 @@
+{
+  StringBuilder builder=new StringBuilder();
+  if (this.columnFields != null) {
+    for (    String field : this.columnFields) {
+      builder.append(tuple.getValueByField(field));
+      builder.append(fieldDelimiter);
+    }
+  }
+  return builder.toString().getBytes();
+}

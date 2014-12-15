@@ -1,0 +1,7 @@
+{
+  HiveEndPoint endPt=new HiveEndPoint(metaStoreURI,dbName,tblName,Arrays.asList(partitionVals.split(",")));
+  StreamingConnection connection=endPt.newConnection(false,null);
+  connection.close();
+  endPt=new HiveEndPoint(metaStoreURI,dbName,tblName,null);
+  endPt.newConnection(false,null).close();
+}
