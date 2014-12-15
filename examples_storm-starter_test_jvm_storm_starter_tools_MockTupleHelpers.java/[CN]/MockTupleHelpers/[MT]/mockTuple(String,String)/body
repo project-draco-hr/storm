@@ -2,6 +2,5 @@
   Tuple tuple=mock(Tuple.class);
   when(tuple.getSourceComponent()).thenReturn(componentId);
   when(tuple.getSourceStreamId()).thenReturn(streamId);
-  when(tuple.isTick()).thenReturn(isTick(componentId,streamId));
   return tuple;
 }

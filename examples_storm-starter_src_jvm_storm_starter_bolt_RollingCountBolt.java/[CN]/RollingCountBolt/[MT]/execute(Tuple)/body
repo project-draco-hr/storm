@@ -1,5 +1,5 @@
 {
-  if (tuple.isTick()) {
+  if (TupleUtils.isTick(tuple)) {
     LOG.debug("Received tick tuple, triggering emit of current window counts");
     emitCurrentWindowCounts();
   }

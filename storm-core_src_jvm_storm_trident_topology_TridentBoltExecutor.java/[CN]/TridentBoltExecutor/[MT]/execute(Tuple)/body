@@ -1,5 +1,5 @@
 {
-  if (tuple.isTick()) {
+  if (TupleUtils.isTick(tuple)) {
     long now=System.currentTimeMillis();
     if (now - _lastRotate > _messageTimeoutMs) {
       _batches.rotate();

@@ -1,3 +1,0 @@
-{
-  return componentId.equals(Constants.SYSTEM_COMPONENT_ID) && streamId.equals(Constants.SYSTEM_TICK_STREAM_ID);
-}
