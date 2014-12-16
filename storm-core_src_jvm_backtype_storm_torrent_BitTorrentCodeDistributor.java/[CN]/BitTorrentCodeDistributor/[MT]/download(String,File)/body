@@ -1,11 +1,10 @@
 {
   LOG.info("Initiating BitTorrent download.");
-  InetAddress netAddr=InetAddress.getLocalHost();
   File destDir=torrentFile.getParentFile();
   LOG.info("Downloading with torrent file: {}",torrentFile.getAbsolutePath());
   LOG.info("Saving files to directory: {}",destDir.getAbsolutePath());
   SharedTorrent st=SharedTorrent.fromFile(torrentFile,destDir);
-  Client client=new Client(netAddr,st);
+  Client client=new Client(getInetAddress(),st);
   this.clients.put(topologyId,client);
   rebalanceRates();
   client.share(this.seedDuration);
@@ -23,9 +22,9 @@
     }
   }
   LOG.info("BitTorrent download complete.");
-  File srcDir=Paths.get(destDir.getPath(),topologyId).toFile();
+  File srcDir=new File(destDir,topologyId);
   for (  File file : srcDir.listFiles()) {
-    Files.copy(file.toPath(),destDir.toPath().resolve(file.getName()));
+    FileUtils.copyFileToDirectory(file,destDir);
     file.delete();
   }
   srcDir.delete();

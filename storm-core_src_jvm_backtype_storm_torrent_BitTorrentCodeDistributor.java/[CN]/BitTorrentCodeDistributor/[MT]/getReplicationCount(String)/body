@@ -1,6 +1,6 @@
 {
   Collection<TrackedTorrent> trackedTorrents=tracker.getTrackedTorrents();
-  for (  TrackedTorrent trackedTorrent : trackedTorrents) {
+  for (  final TrackedTorrent trackedTorrent : trackedTorrents) {
     if (trackedTorrent.getName().equals(topologyId)) {
       return Shorts.checkedCast(trackedTorrent.seeders());
     }

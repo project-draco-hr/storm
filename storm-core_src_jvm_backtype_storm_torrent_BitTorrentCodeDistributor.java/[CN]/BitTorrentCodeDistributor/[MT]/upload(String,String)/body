@@ -10,10 +10,9 @@
   Torrent torrent=Torrent.create(destDir,files,uri,"storm-nimbus");
   File torrentFile=new File(destDir,"storm-code-distributor.meta");
   torrent.save(new FileOutputStream(torrentFile));
-  LOG.info("Saved torrent: {}" + torrentFile.getAbsolutePath());
+  LOG.info("Saved torrent: {}",torrentFile.getAbsolutePath());
   this.tracker.announce(new TrackedTorrent(torrent));
-  LOG.info("Torrent announced to tracker.");
-  Client client=new Client(host,new SharedTorrent(torrent,destDir.getParentFile(),true));
+  Client client=new Client(getInetAddress(),new SharedTorrent(torrent,destDir.getParentFile(),true));
   this.clients.put(topologyId,client);
   rebalanceRates();
   client.share();
