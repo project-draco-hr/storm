@@ -3,7 +3,10 @@ def process_getClusterInfo(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = getClusterInfo_result()
-    result.success = self._handler.getClusterInfo()
+    try:
+        result.success = self._handler.getClusterInfo()
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('getClusterInfo', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

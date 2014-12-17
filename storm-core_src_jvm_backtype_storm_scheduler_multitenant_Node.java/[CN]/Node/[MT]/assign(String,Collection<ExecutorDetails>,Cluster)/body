@@ -1,0 +1,16 @@
+{
+  if (!_isAlive) {
+    throw new IllegalStateException("Trying to adding to a dead node " + _nodeId);
+  }
+  if (_freeSlots.isEmpty()) {
+    throw new IllegalStateException("Trying to assign to a full node " + _nodeId);
+  }
+  if (executors.size() == 0) {
+    LOG.warn("Trying to assign nothing from " + topId + " to "+ _nodeId+ " (Ignored)");
+  }
+ else {
+    WorkerSlot slot=_freeSlots.iterator().next();
+    cluster.assign(slot,topId,executors);
+    assignInternal(slot,topId,false);
+  }
+}

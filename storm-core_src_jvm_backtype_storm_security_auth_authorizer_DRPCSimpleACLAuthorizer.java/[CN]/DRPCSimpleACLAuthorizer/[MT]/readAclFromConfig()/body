@@ -1,0 +1,22 @@
+{
+  long now=System.currentTimeMillis();
+  if ((now - 5000) > _lastUpdate || _acl == null) {
+    Map<String,AclFunctionEntry> acl=new HashMap<String,AclFunctionEntry>();
+    Map conf=Utils.findAndReadConfigFile(_aclFileName);
+    if (conf.containsKey(Config.DRPC_AUTHORIZER_ACL)) {
+      Map<String,Map<String,?>> confAcl=(Map<String,Map<String,?>>)conf.get(Config.DRPC_AUTHORIZER_ACL);
+      for (      String function : confAcl.keySet()) {
+        Map<String,?> val=confAcl.get(function);
+        Collection<String> clientUsers=val.containsKey(CLIENT_USERS_KEY) ? (Collection<String>)val.get(CLIENT_USERS_KEY) : null;
+        String invocationUser=val.containsKey(INVOCATION_USER_KEY) ? (String)val.get(INVOCATION_USER_KEY) : null;
+        acl.put(function,new AclFunctionEntry(clientUsers,invocationUser));
+      }
+    }
+ else     if (!_permitWhenMissingFunctionEntry) {
+      LOG.warn("Requiring explicit ACL entries, but none given. " + "Therefore, all operiations will be denied.");
+    }
+    _acl=acl;
+    _lastUpdate=System.currentTimeMillis();
+  }
+  return _acl;
+}

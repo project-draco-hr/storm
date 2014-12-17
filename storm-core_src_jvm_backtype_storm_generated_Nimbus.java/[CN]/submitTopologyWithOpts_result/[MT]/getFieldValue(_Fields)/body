@@ -4,6 +4,8 @@ case E:
     return get_e();
 case ITE:
   return get_ite();
+case AZE:
+return get_aze();
 }
 throw new IllegalStateException();
 }

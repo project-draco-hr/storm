@@ -1,0 +1,4 @@
+def uploadNewCredentials(self, name, creds):
+    '\n    Parameters:\n     - name\n     - creds\n    '
+    self.send_uploadNewCredentials(name, creds)
+    self.recv_uploadNewCredentials()

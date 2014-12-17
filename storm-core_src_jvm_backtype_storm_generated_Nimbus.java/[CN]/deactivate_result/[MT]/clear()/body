@@ -1,3 +1,4 @@
 {
   this.e=null;
+  this.aze=null;
 }

@@ -4,9 +4,7 @@
     serverPorts.add(zkServer + ":" + Utils.getInt(port));
   }
   String zkStr=StringUtils.join(serverPorts,",") + root;
-  CuratorFrameworkFactory.Builder builder=CuratorFrameworkFactory.builder().connectString(zkStr).connectionTimeoutMs(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_CONNECTION_TIMEOUT))).sessionTimeoutMs(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT))).retryPolicy(new StormBoundedExponentialBackoffRetry(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL_CEILING)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES))));
-  if (auth != null && auth.scheme != null) {
-    builder=builder.authorization(auth.scheme,auth.payload);
-  }
+  CuratorFrameworkFactory.Builder builder=CuratorFrameworkFactory.builder();
+  setupBuilder(builder,zkStr,conf,auth);
   return builder.build();
 }

@@ -1,0 +1,30 @@
+{
+  try {
+    Configuration login_conf=AuthUtils.GetConfiguration(conf);
+    ClientCallbackHandler client_callback_handler=new ClientCallbackHandler(login_conf);
+    Configuration.setConfiguration(login_conf);
+    LoginContext lc=new LoginContext(AuthUtils.LOGIN_CONTEXT_CLIENT,client_callback_handler);
+    try {
+      lc.login();
+      final Subject subject=lc.getSubject();
+      KerberosTicket tgt=getTGT(subject);
+      if (tgt == null) {
+        throw new RuntimeException("Fail to verify user principal with section \"" + AuthUtils.LOGIN_CONTEXT_CLIENT + "\" in login configuration file "+ login_conf);
+      }
+      if (!tgt.isForwardable()) {
+        throw new RuntimeException("The TGT found is not forwardable");
+      }
+      if (!tgt.isRenewable()) {
+        throw new RuntimeException("The TGT found is not renewable");
+      }
+      LOG.info("Pushing TGT for " + tgt.getClient() + " to topology.");
+      saveTGT(tgt,credentials);
+    }
+  finally {
+      lc.logout();
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

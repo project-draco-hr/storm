@@ -6,4 +6,6 @@
   this.executors=null;
   this.status=null;
   this.errors=null;
+  this.sched_status=null;
+  this.owner=null;
 }

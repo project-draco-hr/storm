@@ -37,5 +37,13 @@ def write(self, oprot):
             oprot.writeListEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
+    if (self.sched_status is not None):
+        oprot.writeFieldBegin('sched_status', TType.STRING, 513)
+        oprot.writeString(self.sched_status.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.owner is not None):
+        oprot.writeFieldBegin('owner', TType.STRING, 514)
+        oprot.writeString(self.owner.encode('utf-8'))
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

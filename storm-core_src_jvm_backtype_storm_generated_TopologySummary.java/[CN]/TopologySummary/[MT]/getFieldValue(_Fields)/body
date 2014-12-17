@@ -14,6 +14,10 @@ case UPTIME_SECS:
 return Integer.valueOf(get_uptime_secs());
 case STATUS:
 return get_status();
+case SCHED_STATUS:
+return get_sched_status();
+case OWNER:
+return get_owner();
 }
 throw new IllegalStateException();
 }

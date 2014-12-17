@@ -1,4 +1,5 @@
 {
   this.success=null;
   this.e=null;
+  this.aze=null;
 }

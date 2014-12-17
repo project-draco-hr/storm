@@ -3,5 +3,8 @@
   boolean present_e=true && (is_set_e());
   builder.append(present_e);
   if (present_e)   builder.append(e);
+  boolean present_aze=true && (is_set_aze());
+  builder.append(present_aze);
+  if (present_aze)   builder.append(aze);
   return builder.toHashCode();
 }

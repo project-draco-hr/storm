@@ -1,0 +1,10 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case MSG:
+    return is_set_msg();
+}
+throw new IllegalStateException();
+}

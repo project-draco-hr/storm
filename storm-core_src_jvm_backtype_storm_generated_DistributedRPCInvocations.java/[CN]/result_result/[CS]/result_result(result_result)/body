@@ -1,2 +1,5 @@
 {
+  if (other.is_set_aze()) {
+    this.aze=new AuthorizationException(other.aze);
+  }
 }

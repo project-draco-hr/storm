@@ -42,6 +42,16 @@ def read(self, iprot):
                 self.status = iprot.readString().decode('utf-8')
             else:
                 iprot.skip(ftype)
+        elif (fid == 513):
+            if (ftype == TType.STRING):
+                self.sched_status = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 514):
+            if (ftype == TType.STRING):
+                self.owner = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

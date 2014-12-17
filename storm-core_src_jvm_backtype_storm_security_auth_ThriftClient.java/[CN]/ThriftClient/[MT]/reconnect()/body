@@ -1,0 +1,21 @@
+{
+  close();
+  try {
+    TSocket socket=new TSocket(_host,_port);
+    if (_timeout != null) {
+      socket.setTimeout(_timeout);
+    }
+    Configuration login_conf=AuthUtils.GetConfiguration(_conf);
+    ITransportPlugin transportPlugin=AuthUtils.GetTransportPlugin(_type,_conf,login_conf);
+    final TTransport underlyingTransport=socket;
+    TBackoffConnect connectionRetry=new TBackoffConnect(Utils.getInt(_conf.get(Config.STORM_NIMBUS_RETRY_TIMES)),Utils.getInt(_conf.get(Config.STORM_NIMBUS_RETRY_INTERVAL)),Utils.getInt(_conf.get(Config.STORM_NIMBUS_RETRY_INTERVAL_CEILING)));
+    _transport=connectionRetry.doConnectWithRetry(transportPlugin,underlyingTransport,_host);
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException(ex);
+  }
+  _protocol=null;
+  if (_transport != null) {
+    _protocol=new TBinaryProtocol(_transport);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  this(execString,dir,null);
+}

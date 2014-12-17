@@ -1,0 +1,14 @@
+{
+  LOG.debug("Trying to grab {} free slots from {}",slotsNeeded,pools);
+  HashSet<Node> ret=new HashSet<Node>();
+  for (  NodePool pool : pools) {
+    Collection<Node> got=pool.takeNodesBySlots(slotsNeeded);
+    ret.addAll(got);
+    slotsNeeded-=Node.countFreeSlotsAlive(got);
+    LOG.debug("Got {} nodes so far need {} more slots",ret.size(),slotsNeeded);
+    if (slotsNeeded <= 0) {
+      break;
+    }
+  }
+  return ret;
+}

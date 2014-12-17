@@ -2,7 +2,9 @@
 switch (fieldId) {
 case 1:
     return INITIAL_STATUS;
+case 2:
+  return CREDS;
 default :
-  return null;
+return null;
 }
 }

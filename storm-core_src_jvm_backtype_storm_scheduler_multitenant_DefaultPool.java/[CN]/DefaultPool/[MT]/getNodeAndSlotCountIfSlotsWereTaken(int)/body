@@ -1,0 +1,18 @@
+{
+  int nodesFound=0;
+  int slotsFound=0;
+  LinkedList<Node> sortedNodes=new LinkedList<Node>(_nodes);
+  Collections.sort(sortedNodes,Node.FREE_NODE_COMPARATOR_DEC);
+  for (  Node n : sortedNodes) {
+    if (slotsNeeded <= 0) {
+      break;
+    }
+    if (n.isAlive()) {
+      nodesFound++;
+      int totalSlotsFree=n.totalSlots();
+      slotsFound+=totalSlotsFree;
+      slotsNeeded-=totalSlotsFree;
+    }
+  }
+  return new NodeAndSlotCounts(nodesFound,slotsFound);
+}
