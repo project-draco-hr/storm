@@ -1,0 +1,26 @@
+{
+  List<String> hostInfos=zkClient.getChildren().forPath("/code-distributor/" + topologyid);
+  File destDir=metafile.getParentFile();
+  List<File> downloadedFiles=Lists.newArrayList();
+  for (  String absoluteFilePath : FileUtils.readLines(metafile)) {
+    File localFile=new File(destDir,new File(absoluteFilePath).getName());
+    boolean isSuccess=false;
+    for (    String hostAndPort : hostInfos) {
+      String host=hostAndPort.split(":")[0];
+      int port=Integer.parseInt(hostAndPort.split(":")[1]);
+      try {
+        downloadFromHost(conf,absoluteFilePath,localFile.getAbsolutePath(),host,port);
+        downloadedFiles.add(localFile);
+        isSuccess=true;
+        break;
+      }
+ catch (      Exception e) {
+        LOG.error("download failed from {}:{}, will try another endpoint ",host,port,e);
+      }
+    }
+    if (!isSuccess) {
+      throw new RuntimeException("File " + absoluteFilePath + " could not be downloaded from any endpoint");
+    }
+  }
+  return downloadedFiles;
+}
