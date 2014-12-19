@@ -1,8 +1,0 @@
-{
-  for (  InetAddress addr : InetAddress.getAllByName(this.hostName)) {
-    if (!addr.isAnyLocalAddress() && !addr.isLoopbackAddress() && !addr.isMulticastAddress()) {
-      return addr;
-    }
-  }
-  throw new RuntimeException("No valid InetAddress could be obtained, something really wrong with network configuration.");
-}
