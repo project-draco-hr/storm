@@ -20,7 +20,7 @@
       return true;
     }
     Set<String> topoGroups=new HashSet<String>();
-    if (topology_conf.containsKey(Config.TOPOLOGY_GROUPS)) {
+    if (topology_conf.containsKey(Config.TOPOLOGY_GROUPS) && topology_conf.get(Config.TOPOLOGY_GROUPS) != null) {
       topoGroups.addAll((Collection<String>)topology_conf.get(Config.TOPOLOGY_GROUPS));
     }
     if (_groupMappingProvider != null && topoGroups.size() > 0) {
