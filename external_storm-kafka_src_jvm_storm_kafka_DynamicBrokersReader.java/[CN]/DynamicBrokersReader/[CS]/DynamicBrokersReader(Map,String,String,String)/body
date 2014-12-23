@@ -1,4 +1,17 @@
 {
+  if (conf == null) {
+    LOG.error("conf cannot be null");
+  }
+  validateConfig(conf);
+  if (zkStr == null) {
+    LOG.error("zkString cannot be null");
+  }
+  if (zkPath == null) {
+    LOG.error("zkPath cannot be null");
+  }
+  if (topic == null) {
+    LOG.error("topic cannot be null");
+  }
   _zkPath=zkPath;
   _topic=topic;
   try {
@@ -7,5 +20,6 @@
   }
  catch (  Exception ex) {
     LOG.error("Couldn't connect to zookeeper",ex);
+    throw new RuntimeException(ex);
   }
 }
