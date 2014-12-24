@@ -1,0 +1,15 @@
+{
+  Iterator<Future<Void>> i=_futures.iterator();
+  while (i.hasNext()) {
+    Future<Void> f=i.next();
+    if (f.isDone()) {
+      i.remove();
+    }
+    try {
+      f.get();
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+}

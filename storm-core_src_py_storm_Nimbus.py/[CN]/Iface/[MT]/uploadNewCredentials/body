@@ -1,0 +1,3 @@
+def uploadNewCredentials(self, name, creds):
+    '\n    Parameters:\n     - name\n     - creds\n    '
+    pass

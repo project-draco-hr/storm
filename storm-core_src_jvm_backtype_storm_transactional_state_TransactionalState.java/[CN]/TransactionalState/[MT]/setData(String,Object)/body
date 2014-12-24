@@ -6,7 +6,7 @@
       _curator.setData().forPath(path,ser);
     }
  else {
-      _curator.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path,ser);
+      TransactionalState.createNode(_curator,path,ser,_zkAcls,CreateMode.PERSISTENT);
     }
   }
  catch (  Exception e) {

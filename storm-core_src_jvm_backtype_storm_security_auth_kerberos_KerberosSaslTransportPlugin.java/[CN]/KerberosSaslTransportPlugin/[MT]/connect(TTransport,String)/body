@@ -1,0 +1,45 @@
+{
+  ClientCallbackHandler client_callback_handler=new ClientCallbackHandler(login_conf);
+  Login login=null;
+  try {
+    Configuration.setConfiguration(login_conf);
+    login=new Login(AuthUtils.LOGIN_CONTEXT_CLIENT,client_callback_handler);
+  }
+ catch (  LoginException ex) {
+    LOG.error("Server failed to login in principal:" + ex,ex);
+    throw new RuntimeException(ex);
+  }
+  final Subject subject=login.getSubject();
+  if (subject.getPrivateCredentials(KerberosTicket.class).isEmpty()) {
+    throw new RuntimeException("Fail to verify user principal with section \"" + AuthUtils.LOGIN_CONTEXT_CLIENT + "\" in login configuration file "+ login_conf);
+  }
+  final String principal=getPrincipal(subject);
+  String serviceName=AuthUtils.get(login_conf,AuthUtils.LOGIN_CONTEXT_CLIENT,"serviceName");
+  if (serviceName == null) {
+    serviceName=AuthUtils.SERVICE;
+  }
+  Map<String,String> props=new TreeMap<String,String>();
+  props.put(Sasl.QOP,"auth");
+  props.put(Sasl.SERVER_AUTH,"false");
+  LOG.debug("SASL GSSAPI client transport is being established");
+  final TTransport sasalTransport=new TSaslClientTransport(KERBEROS,principal,serviceName,serverHost,props,null,transport);
+  try {
+    Subject.doAs(subject,new PrivilegedExceptionAction<Void>(){
+      public Void run(){
+        try {
+          LOG.debug("do as:" + principal);
+          sasalTransport.open();
+        }
+ catch (        Exception e) {
+          LOG.error("Client failed to open SaslClientTransport to interact with a server during session initiation: " + e,e);
+        }
+        return null;
+      }
+    }
+);
+  }
+ catch (  PrivilegedActionException e) {
+    throw new RuntimeException(e);
+  }
+  return sasalTransport;
+}

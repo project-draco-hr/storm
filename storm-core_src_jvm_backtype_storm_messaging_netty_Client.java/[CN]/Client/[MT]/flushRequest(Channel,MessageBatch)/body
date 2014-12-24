@@ -1,10 +1,10 @@
 {
   if (requests == null)   return;
-  pendings.incrementAndGet();
+  pendings.getAndAdd(requests.size());
   ChannelFuture future=channel.write(requests);
   future.addListener(new ChannelFutureListener(){
     public void operationComplete(    ChannelFuture future) throws Exception {
-      pendings.decrementAndGet();
+      pendings.getAndAdd(0 - requests.size());
       if (!future.isSuccess()) {
         LOG.info("failed to send requests to " + remote_addr.toString() + ": ",future.getCause());
         Channel channel=future.getChannel();
@@ -12,8 +12,10 @@
           channel.close();
           channelRef.compareAndSet(channel,null);
         }
+        messagesLostReconnect.getAndAdd(requests.size());
       }
  else {
+        messagesSent.getAndAdd(requests.size());
         LOG.debug("{} request(s) sent",requests.size());
       }
     }

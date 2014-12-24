@@ -1,0 +1,33 @@
+{
+  Map<String,AclFunctionEntry> acl=readAclFromConfig();
+  String function=(String)params.get(FUNCTION_KEY);
+  if (function != null && !function.isEmpty()) {
+    AclFunctionEntry entry=acl.get(function);
+    if (entry == null && _permitWhenMissingFunctionEntry) {
+      return true;
+    }
+    if (entry != null) {
+      Object value;
+      try {
+        Field field=AclFunctionEntry.class.getDeclaredField(fieldName);
+        value=field.get(entry);
+      }
+ catch (      Exception ex) {
+        LOG.warn("Caught Exception while accessing ACL",ex);
+        return false;
+      }
+      String principal=getUserFromContext(context);
+      String user=getLocalUserFromContext(context);
+      if (value == null) {
+        LOG.warn("Configuration for function '" + function + "' is "+ "invalid: it should have both an invocation user "+ "and a list of client users defined.");
+      }
+ else       if (value instanceof Set && (((Set<String>)value).contains(principal) || ((Set<String>)value).contains(user))) {
+        return true;
+      }
+ else       if (value instanceof String && (value.equals(principal) || value.equals(user))) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

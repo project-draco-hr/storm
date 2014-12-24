@@ -1,0 +1,14 @@
+{
+  LOG.debug("How many nodes to get {} slots from {}",slots,pools);
+  int total=0;
+  for (  NodePool pool : pools) {
+    NodeAndSlotCounts ns=pool.getNodeAndSlotCountIfSlotsWereTaken(slots);
+    total+=ns._nodes;
+    slots-=ns._slots;
+    LOG.debug("Found {} nodes so far {} more slots needed",total,slots);
+    if (slots <= 0) {
+      break;
+    }
+  }
+  return total;
+}

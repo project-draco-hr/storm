@@ -3,5 +3,9 @@ def write(self, oprot):
         oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
         return
     oprot.writeStructBegin('failRequest_result')
+    if (self.aze is not None):
+        oprot.writeFieldBegin('aze', TType.STRUCT, 1)
+        self.aze.write(oprot)
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

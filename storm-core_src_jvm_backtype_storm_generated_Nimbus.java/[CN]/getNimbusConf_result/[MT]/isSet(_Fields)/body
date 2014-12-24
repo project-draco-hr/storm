@@ -5,6 +5,8 @@
 switch (field) {
 case SUCCESS:
     return is_set_success();
+case AZE:
+  return is_set_aze();
 }
 throw new IllegalStateException();
 }

@@ -1,2 +1,5 @@
 {
+  LOG.info("Start checking heartbeat...");
+  setHeartbeat();
+  heartBeatExecutorService.scheduleAtFixedRate(new SpoutHeartbeatTimerTask(this),1,1,TimeUnit.SECONDS);
 }

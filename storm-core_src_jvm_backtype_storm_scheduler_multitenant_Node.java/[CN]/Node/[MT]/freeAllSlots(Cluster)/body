@@ -1,0 +1,12 @@
+{
+  if (!_isAlive) {
+    LOG.warn("Freeing all slots on a dead node {} ",_nodeId);
+  }
+  for (  Entry<String,Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
+    cluster.freeSlots(entry.getValue());
+    if (_isAlive) {
+      _freeSlots.addAll(entry.getValue());
+    }
+  }
+  _topIdToUsedSlots=new HashMap<String,Set<WorkerSlot>>();
+}

@@ -1,5 +1,0 @@
-{
-  CuratorFramework ret=newCurator(conf,servers,port,root);
-  ret.start();
-  return ret;
-}

@@ -17,6 +17,22 @@
         return ctrl_msg;
       }
     }
+    if (code == -500) {
+      if (buf.readableBytes() < 4) {
+        buf.resetReaderIndex();
+        return null;
+      }
+      int length=buf.readInt();
+      if (length <= 0) {
+        return new SaslMessageToken(null);
+      }
+      if (buf.readableBytes() < length) {
+        buf.resetReaderIndex();
+        return null;
+      }
+      ChannelBuffer payload=buf.readBytes(length);
+      return new SaslMessageToken(payload.array());
+    }
     short task=code;
     if (available < 4) {
       buf.resetReaderIndex();

@@ -5,8 +5,10 @@
   roundRobinQueueId=0;
   taskToQueueId=new HashMap<Integer,Integer>();
   message_queue=new LinkedBlockingQueue[queueCount];
+  pendingMessages=new AtomicInteger[queueCount];
   for (int i=0; i < queueCount; i++) {
     message_queue[i]=new LinkedBlockingQueue<ArrayList<TaskMessage>>();
+    pendingMessages[i]=new AtomicInteger(0);
   }
   int buffer_size=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_BUFFER_SIZE));
   int backlog=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_BACKLOG),500);

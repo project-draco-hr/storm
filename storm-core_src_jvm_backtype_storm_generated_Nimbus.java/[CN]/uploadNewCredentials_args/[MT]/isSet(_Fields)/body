@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case NAME:
+    return is_set_name();
+case CREDS:
+  return is_set_creds();
+}
+throw new IllegalStateException();
+}

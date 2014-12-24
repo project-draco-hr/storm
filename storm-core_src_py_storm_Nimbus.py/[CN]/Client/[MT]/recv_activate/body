@@ -10,4 +10,6 @@ def recv_activate(self):
     self._iprot.readMessageEnd()
     if (result.e is not None):
         raise result.e
+    if (result.aze is not None):
+        raise result.aze
     return

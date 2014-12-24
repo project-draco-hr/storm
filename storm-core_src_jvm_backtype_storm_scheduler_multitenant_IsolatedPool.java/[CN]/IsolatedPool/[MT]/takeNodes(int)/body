@@ -1,0 +1,21 @@
+{
+  LOG.debug("Taking {} from {}",nodesNeeded,this);
+  HashSet<Node> ret=new HashSet<Node>();
+  for (  Entry<String,Set<Node>> entry : _topologyIdToNodes.entrySet()) {
+    if (!_isolated.contains(entry.getKey())) {
+      Iterator<Node> it=entry.getValue().iterator();
+      while (it.hasNext()) {
+        if (nodesNeeded <= 0) {
+          return ret;
+        }
+        Node n=it.next();
+        it.remove();
+        n.freeAllSlots(_cluster);
+        ret.add(n);
+        nodesNeeded--;
+        _usedNodes--;
+      }
+    }
+  }
+  return ret;
+}

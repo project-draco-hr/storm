@@ -1,0 +1,16 @@
+{
+  uploadNewCredentials_result result=new uploadNewCredentials_result();
+  try {
+    iface.uploadNewCredentials(args.name,args.creds);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+catch (  InvalidTopologyException ite) {
+    result.ite=ite;
+  }
+catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}
