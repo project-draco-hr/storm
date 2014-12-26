@@ -1,0 +1,4 @@
+JedisPool pool
+Options options
+Serializer<T> serializer
+KeyFactory keyFactory

@@ -1,0 +1,19 @@
+{
+  JedisPool pool=new JedisPool(new JedisPoolConfig(),server.getHostName(),server.getPort(),options.connectionTimeout,options.password,options.database);
+  RedisMapState state=new RedisMapState(pool,options,serializer,factory);
+  CachedMap c=new CachedMap(state,options.localCacheSize);
+  MapState ms;
+  if (type == StateType.NON_TRANSACTIONAL) {
+    ms=NonTransactionalMap.build(c);
+  }
+ else   if (type == StateType.OPAQUE) {
+    ms=OpaqueMap.build(c);
+  }
+ else   if (type == StateType.TRANSACTIONAL) {
+    ms=TransactionalMap.build(c);
+  }
+ else {
+    throw new RuntimeException("Unknown state type: " + type);
+  }
+  return new SnapshottableMap(ms,new Values(options.globalKey));
+}

@@ -1,0 +1,16 @@
+{
+  long expireAt=System.currentTimeMillis() + expireIntervalMs;
+  for (  TridentTuple input : inputs) {
+    String key=this.tupleMapper.getKeyFromTridentTuple(input);
+    String redisKey=key;
+    if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
+      redisKey=redisKeyPrefix + redisKey;
+    }
+    String value=this.tupleMapper.getValueFromTridentTuple(input);
+    logger.debug("RedisClusterStateSetUpdater key[" + key + "] redisKey["+ redisKey+ "] value["+ value+ "]");
+    redisClusterState.sadd(redisKey,value);
+    redisClusterState.expireAt(redisKey,expireAt);
+    Long count=redisClusterState.scard(redisKey);
+    collector.emit(new Values(key,count));
+  }
+}

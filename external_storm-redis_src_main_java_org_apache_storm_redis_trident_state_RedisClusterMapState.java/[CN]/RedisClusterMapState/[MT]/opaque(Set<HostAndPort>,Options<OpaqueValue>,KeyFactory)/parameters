@@ -1,0 +1,3 @@
+Set<HostAndPort> clusterNodes
+Options<OpaqueValue> opts
+KeyFactory factory

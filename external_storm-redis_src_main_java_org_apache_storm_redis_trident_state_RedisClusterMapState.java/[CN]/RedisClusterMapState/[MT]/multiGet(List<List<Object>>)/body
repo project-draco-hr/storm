@@ -1,0 +1,8 @@
+{
+  if (keys.size() == 0) {
+    return Collections.emptyList();
+  }
+  String[] stringKeys=buildKeys(keys);
+  List<String> values=mget(stringKeys);
+  return deserializeValues(keys,values);
+}

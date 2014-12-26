@@ -1,0 +1,9 @@
+{
+  Jedis jedis=pool.getResource();
+  try {
+    return jedis.hgetAll(bytes);
+  }
+  finally {
+    pool.returnResource(jedis);
+  }
+}

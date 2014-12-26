@@ -1,0 +1,8 @@
+{
+  Set<HostAndPort> nodes=new HashSet<HostAndPort>();
+  for (  InetSocketAddress addr : clusterNodes) {
+    nodes.add(new HostAndPort(addr.getHostName(),addr.getPort()));
+  }
+  JedisCluster jc=new JedisCluster(nodes,options.connectionTimeout,options.maxRedirections);
+  return new RedisClusterState(jc,options);
+}

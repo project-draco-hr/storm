@@ -1,0 +1,25 @@
+{
+  if (keys.size() == 0) {
+    return;
+  }
+  if (Strings.isNullOrEmpty(this.options.hkey)) {
+    String[] keyValues=buildKeyValuesList(keys,vals);
+    mset(keyValues);
+  }
+ else {
+    Jedis jedis=pool.getResource();
+    try {
+      Pipeline pl=jedis.pipelined();
+      pl.multi();
+      for (int i=0; i < keys.size(); i++) {
+        String val=new String(serializer.serialize(vals.get(i)));
+        pl.hset(this.options.hkey,keyFactory.build(keys.get(i)),val);
+      }
+      pl.exec();
+      pl.sync();
+    }
+  finally {
+      pool.returnResource(jedis);
+    }
+  }
+}

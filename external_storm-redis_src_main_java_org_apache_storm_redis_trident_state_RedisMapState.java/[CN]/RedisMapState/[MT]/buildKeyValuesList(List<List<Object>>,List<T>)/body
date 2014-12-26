@@ -1,0 +1,8 @@
+{
+  String[] keyValues=new String[keys.size() * 2];
+  for (int i=0; i < keys.size(); i++) {
+    keyValues[i * 2]=keyFactory.build(keys.get(i));
+    keyValues[i * 2 + 1]=new String(serializer.serialize(vals.get(i)));
+  }
+  return keyValues;
+}

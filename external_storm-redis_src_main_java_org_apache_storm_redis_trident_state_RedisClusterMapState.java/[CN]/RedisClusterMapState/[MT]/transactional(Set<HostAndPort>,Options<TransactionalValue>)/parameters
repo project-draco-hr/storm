@@ -1,0 +1,2 @@
+Set<HostAndPort> clusterNodes
+Options<TransactionalValue> opts

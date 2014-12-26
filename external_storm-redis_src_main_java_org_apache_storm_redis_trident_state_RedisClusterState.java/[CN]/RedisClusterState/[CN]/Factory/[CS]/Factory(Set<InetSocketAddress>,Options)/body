@@ -1,0 +1,4 @@
+{
+  this.clusterNodes=clusterNodes;
+  this.options=options;
+}

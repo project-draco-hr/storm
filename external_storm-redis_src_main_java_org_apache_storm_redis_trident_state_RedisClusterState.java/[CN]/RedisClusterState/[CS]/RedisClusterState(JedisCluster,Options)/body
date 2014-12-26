@@ -1,0 +1,4 @@
+{
+  this.jedisCluster=jedisCluster;
+  this.options=options;
+}

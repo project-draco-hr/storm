@@ -1,0 +1,15 @@
+{
+  if (keys.size() == 0) {
+    return Collections.emptyList();
+  }
+  if (Strings.isNullOrEmpty(this.options.hkey)) {
+    String[] stringKeys=buildKeys(keys);
+    List<String> values=mget(stringKeys);
+    return deserializeValues(keys,values);
+  }
+ else {
+    Map<byte[],byte[]> keyValue=hgetAll(this.options.hkey.getBytes());
+    List<String> values=buildValuesFromMap(keys,keyValue);
+    return deserializeValues(keys,values);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  List<String> rets=new ArrayList<String>();
+  for (  String key : keys) {
+    rets.add(jedisCluster.get(key));
+  }
+  return rets;
+}

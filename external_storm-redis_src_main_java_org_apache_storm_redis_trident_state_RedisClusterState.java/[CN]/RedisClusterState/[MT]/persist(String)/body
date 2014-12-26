@@ -1,0 +1,3 @@
+{
+  return jedisCluster.persist(key);
+}
