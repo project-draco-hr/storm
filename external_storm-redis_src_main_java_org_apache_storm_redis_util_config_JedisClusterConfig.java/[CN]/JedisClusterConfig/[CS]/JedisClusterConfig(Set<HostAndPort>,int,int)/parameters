@@ -1,0 +1,3 @@
+Set<HostAndPort> nodes
+int timeout
+int maxRedirections
