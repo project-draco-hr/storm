@@ -1,0 +1,31 @@
+{
+  JedisCommands jedisCommands=null;
+  try {
+    jedisCommands=getInstance();
+    String wordName=input.getStringByField("word");
+    String countStr=jedisCommands.get(wordName);
+    if (countStr != null) {
+      int count=Integer.parseInt(countStr);
+      this.collector.emit(new Values(wordName,count));
+      if (RANDOM.nextInt(1000) > 995) {
+        LOG.info("Lookup result - word : " + wordName + " / count : "+ count);
+      }
+    }
+ else {
+      LOG.warn("Word not found in Redis - word : " + wordName);
+    }
+  }
+ catch (  NumberFormatException e) {
+    LOG.error("Counter Type seems not stored to integer",e);
+  }
+catch (  JedisConnectionException e) {
+    throw new RuntimeException("Unfortunately, this test requires redis-server running",e);
+  }
+catch (  JedisException e) {
+    LOG.error("Exception occurred from Jedis/Redis",e);
+  }
+ finally {
+    returnInstance(jedisCommands);
+    this.collector.ack(input);
+  }
+}
