@@ -1,4 +1,0 @@
-Set<HostAndPort> clusterNodes
-StateType type
-Options options
-KeyFactory factory

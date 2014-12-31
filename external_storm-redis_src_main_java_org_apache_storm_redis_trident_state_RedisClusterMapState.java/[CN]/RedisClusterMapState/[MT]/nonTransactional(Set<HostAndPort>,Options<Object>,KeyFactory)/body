@@ -1,3 +1,0 @@
-{
-  return new Factory(clusterNodes,StateType.NON_TRANSACTIONAL,opts,factory);
-}

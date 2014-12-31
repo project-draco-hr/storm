@@ -1,0 +1,4 @@
+JedisCommandsInstanceContainer container
+Options options
+Serializer<T> serializer
+KeyFactory keyFactory

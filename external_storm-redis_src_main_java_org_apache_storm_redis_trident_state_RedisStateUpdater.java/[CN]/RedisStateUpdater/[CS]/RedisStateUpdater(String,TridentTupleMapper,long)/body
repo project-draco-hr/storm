@@ -1,0 +1,10 @@
+{
+  this.redisKeyPrefix=redisKeyPrefix;
+  this.tupleMapper=tupleMapper;
+  if (expireIntervalMs > 0) {
+    this.expireIntervalMs=expireIntervalMs;
+  }
+ else {
+    this.expireIntervalMs=DEFAULT_EXPIRE_INTERVAL_MS;
+  }
+}

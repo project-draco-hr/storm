@@ -1,3 +1,0 @@
-Set<HostAndPort> clusterNodes
-Options<Object> opts
-KeyFactory factory

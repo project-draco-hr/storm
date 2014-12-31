@@ -1,0 +1,20 @@
+{
+  long expireAt=System.currentTimeMillis() + expireIntervalMs;
+  JedisCommands jedisCommands=redisState.getInstance();
+  try {
+    for (    TridentTuple input : inputs) {
+      String key=this.tupleMapper.getKeyFromTridentTuple(input);
+      String redisKey=key;
+      if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
+        redisKey=redisKeyPrefix + redisKey;
+      }
+      String value=this.tupleMapper.getValueFromTridentTuple(input);
+      logger.debug("update key[" + key + "] redisKey["+ redisKey+ "] value["+ value+ "]");
+      jedisCommands.set(redisKey,value);
+      jedisCommands.expireAt(redisKey,expireAt);
+    }
+  }
+  finally {
+    redisState.returnInstance(jedisCommands);
+  }
+}

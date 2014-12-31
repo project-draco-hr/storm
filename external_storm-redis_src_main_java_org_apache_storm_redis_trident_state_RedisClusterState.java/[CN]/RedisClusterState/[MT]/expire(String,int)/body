@@ -1,3 +1,0 @@
-{
-  return jedisCluster.expire(key,seconds);
-}

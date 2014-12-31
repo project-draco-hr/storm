@@ -1,1 +1,0 @@
-BaseQueryFunction<RedisClusterState,Long>

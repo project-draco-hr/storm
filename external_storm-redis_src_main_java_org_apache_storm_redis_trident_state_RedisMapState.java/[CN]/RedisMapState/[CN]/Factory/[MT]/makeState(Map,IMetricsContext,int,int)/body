@@ -1,6 +1,15 @@
 {
-  JedisPool pool=new JedisPool(new JedisPoolConfig(),server.getHostName(),server.getPort(),options.connectionTimeout,options.password,options.database);
-  RedisMapState state=new RedisMapState(pool,options,serializer,factory);
+  JedisCommandsInstanceContainer container;
+  if (jedisPoolConfig != null) {
+    container=JedisCommandsContainerBuilder.build(jedisPoolConfig);
+  }
+ else   if (jedisClusterConfig != null) {
+    container=JedisCommandsContainerBuilder.build(jedisClusterConfig);
+  }
+ else {
+    throw new IllegalArgumentException("Jedis configuration not found");
+  }
+  RedisMapState state=new RedisMapState(container,options,serializer,keyFactory);
   CachedMap c=new CachedMap(state,options.localCacheSize);
   MapState ms;
   if (type == StateType.NON_TRANSACTIONAL) {

@@ -1,3 +1,0 @@
-{
-  return opaque(server,opts,new DefaultKeyFactory());
-}

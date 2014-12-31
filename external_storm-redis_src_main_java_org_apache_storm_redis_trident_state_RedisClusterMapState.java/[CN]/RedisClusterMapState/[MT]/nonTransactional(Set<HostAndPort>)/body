@@ -1,3 +1,0 @@
-{
-  return nonTransactional(clusterNodes,new Options());
-}

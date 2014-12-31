@@ -1,6 +1,0 @@
-{
-  String[] stringKeys=new String[keys.size()];
-  int index=0;
-  for (  List<Object> key : keys)   stringKeys[index++]=keyFactory.build(key);
-  return stringKeys;
-}

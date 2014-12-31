@@ -1,9 +1,0 @@
-{
-  Jedis jedis=pool.getResource();
-  try {
-    return jedis.mget(keys);
-  }
-  finally {
-    pool.returnResource(jedis);
-  }
-}

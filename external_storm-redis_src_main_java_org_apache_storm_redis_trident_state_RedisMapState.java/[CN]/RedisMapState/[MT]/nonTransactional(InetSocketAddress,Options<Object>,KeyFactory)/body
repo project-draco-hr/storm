@@ -1,3 +1,0 @@
-{
-  return new Factory(server,StateType.NON_TRANSACTIONAL,opts,factory);
-}

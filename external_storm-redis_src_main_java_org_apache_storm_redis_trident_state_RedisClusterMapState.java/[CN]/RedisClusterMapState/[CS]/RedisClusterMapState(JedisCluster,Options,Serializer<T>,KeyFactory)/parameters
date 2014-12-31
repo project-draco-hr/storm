@@ -1,4 +1,0 @@
-JedisCluster jedisCluster
-Options options
-Serializer<T> serializer
-KeyFactory keyFactory

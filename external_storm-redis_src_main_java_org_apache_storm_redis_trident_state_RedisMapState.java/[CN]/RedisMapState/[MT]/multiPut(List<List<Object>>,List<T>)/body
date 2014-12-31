@@ -3,23 +3,35 @@
     return;
   }
   if (Strings.isNullOrEmpty(this.options.hkey)) {
-    String[] keyValues=buildKeyValuesList(keys,vals);
-    mset(keyValues);
-  }
- else {
-    Jedis jedis=pool.getResource();
+    JedisCommands jedisCommands=container.getInstance();
     try {
-      Pipeline pl=jedis.pipelined();
-      pl.multi();
-      for (int i=0; i < keys.size(); i++) {
-        String val=new String(serializer.serialize(vals.get(i)));
-        pl.hset(this.options.hkey,keyFactory.build(keys.get(i)),val);
+      if (jedisCommands instanceof Jedis) {
+        String[] keyValue=buildKeyValuesList(keys,vals);
+        ((Jedis)jedisCommands).mset(keyValue);
       }
-      pl.exec();
-      pl.sync();
+ else {
+        for (int i=0; i < keys.size(); i++) {
+          String val=new String(serializer.serialize(vals.get(i)));
+          String redisKey=keyFactory.build(keys.get(i));
+          jedisCommands.set(redisKey,val);
+        }
+      }
     }
   finally {
-      pool.returnResource(jedis);
+      container.returnInstance(jedisCommands);
+    }
+  }
+ else {
+    JedisCommands jedisCommands=container.getInstance();
+    try {
+      for (int i=0; i < keys.size(); i++) {
+        String val=new String(serializer.serialize(vals.get(i)));
+        String redisKey=keyFactory.build(keys.get(i));
+        jedisCommands.hset(this.options.hkey,redisKey,val);
+      }
+    }
+  finally {
+      container.returnInstance(jedisCommands);
     }
   }
 }

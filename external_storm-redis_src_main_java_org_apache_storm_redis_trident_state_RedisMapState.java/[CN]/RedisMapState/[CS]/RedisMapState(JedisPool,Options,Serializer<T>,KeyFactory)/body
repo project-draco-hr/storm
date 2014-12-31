@@ -1,6 +1,0 @@
-{
-  this.pool=pool;
-  this.options=options;
-  this.serializer=serializer;
-  this.keyFactory=keyFactory;
-}

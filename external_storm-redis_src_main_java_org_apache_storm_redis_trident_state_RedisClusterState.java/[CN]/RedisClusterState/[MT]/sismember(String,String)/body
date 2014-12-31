@@ -1,3 +1,0 @@
-{
-  return jedisCluster.sismember(key,member);
-}
