@@ -1,7 +1,8 @@
 {
   List<String> ret=Lists.newArrayList();
-  JedisCommands jedisCommands=redisState.getInstance();
+  JedisCommands jedisCommands=null;
   try {
+    jedisCommands=redisState.getInstance();
     for (    TridentTuple input : inputs) {
       String key=this.tupleMapper.getKeyFromTridentTuple(input);
       if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
@@ -13,7 +14,9 @@
     }
   }
   finally {
-    redisState.returnInstance(jedisCommands);
+    if (jedisCommands != null) {
+      redisState.returnInstance(jedisCommands);
+    }
   }
   return ret;
 }

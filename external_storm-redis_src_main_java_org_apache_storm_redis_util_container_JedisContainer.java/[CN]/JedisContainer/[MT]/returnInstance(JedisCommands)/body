@@ -1,4 +1,7 @@
 {
+  if (jedisCommands == null) {
+    return;
+  }
   try {
     ((Closeable)jedisCommands).close();
   }

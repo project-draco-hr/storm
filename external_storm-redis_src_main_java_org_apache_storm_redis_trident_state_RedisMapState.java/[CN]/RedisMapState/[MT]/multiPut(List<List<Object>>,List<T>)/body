@@ -3,8 +3,9 @@
     return;
   }
   if (Strings.isNullOrEmpty(this.options.hkey)) {
-    JedisCommands jedisCommands=container.getInstance();
+    JedisCommands jedisCommands=null;
     try {
+      jedisCommands=container.getInstance();
       if (jedisCommands instanceof Jedis) {
         String[] keyValue=buildKeyValuesList(keys,vals);
         ((Jedis)jedisCommands).mset(keyValue);
@@ -18,12 +19,15 @@
       }
     }
   finally {
-      container.returnInstance(jedisCommands);
+      if (jedisCommands != null) {
+        container.returnInstance(jedisCommands);
+      }
     }
   }
  else {
-    JedisCommands jedisCommands=container.getInstance();
+    JedisCommands jedisCommands=null;
     try {
+      jedisCommands=container.getInstance();
       for (int i=0; i < keys.size(); i++) {
         String val=new String(serializer.serialize(vals.get(i)));
         String redisKey=keyFactory.build(keys.get(i));
@@ -31,7 +35,9 @@
       }
     }
   finally {
-      container.returnInstance(jedisCommands);
+      if (jedisCommands != null) {
+        container.returnInstance(jedisCommands);
+      }
     }
   }
 }

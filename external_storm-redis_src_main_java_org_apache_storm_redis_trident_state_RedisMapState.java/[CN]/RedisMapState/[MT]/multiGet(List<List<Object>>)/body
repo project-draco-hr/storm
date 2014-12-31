@@ -5,8 +5,9 @@
   if (Strings.isNullOrEmpty(this.options.hkey)) {
     String[] stringKeys=buildKeys(keys);
     List<String> values=Lists.newArrayList();
-    JedisCommands jedisCommands=container.getInstance();
+    JedisCommands jedisCommands=null;
     try {
+      jedisCommands=container.getInstance();
       if (jedisCommands instanceof Jedis) {
         values=((Jedis)jedisCommands).mget(stringKeys);
       }
@@ -18,19 +19,24 @@
       }
     }
   finally {
-      container.returnInstance(jedisCommands);
+      if (jedisCommands != null) {
+        container.returnInstance(jedisCommands);
+      }
     }
     return deserializeValues(keys,values);
   }
  else {
-    JedisCommands jedisCommands=container.getInstance();
+    JedisCommands jedisCommands=null;
     try {
+      jedisCommands=container.getInstance();
       Map<String,String> keyValue=jedisCommands.hgetAll(this.options.hkey);
       List<String> values=buildValuesFromMap(keys,keyValue);
       return deserializeValues(keys,values);
     }
   finally {
-      container.returnInstance(jedisCommands);
+      if (jedisCommands != null) {
+        container.returnInstance(jedisCommands);
+      }
     }
   }
 }
