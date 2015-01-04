@@ -1,22 +1,20 @@
 {
-  List<String> ret=Lists.newArrayList();
-  JedisCommands jedisCommands=null;
-  try {
-    jedisCommands=redisState.getInstance();
-    for (    TridentTuple input : inputs) {
-      String key=this.tupleMapper.getKeyFromTridentTuple(input);
-      if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
-        key=redisKeyPrefix + key;
-      }
-      String value=jedisCommands.get(key);
-      ret.add(value);
-      logger.debug("redis get key[" + key + "] count["+ value+ "]");
+  List<String> keys=Lists.newArrayList();
+  for (  TridentTuple input : inputs) {
+    String key=this.tupleMapper.getKeyFromTridentTuple(input);
+    if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
+      key=redisKeyPrefix + key;
     }
+    keys.add(key);
+  }
+  Jedis jedis=null;
+  try {
+    jedis=redisState.getJedis();
+    return jedis.mget(keys.toArray(new String[keys.size()]));
   }
   finally {
-    if (jedisCommands != null) {
-      redisState.returnInstance(jedisCommands);
+    if (jedis != null) {
+      redisState.returnJedis(jedis);
     }
   }
-  return ret;
 }

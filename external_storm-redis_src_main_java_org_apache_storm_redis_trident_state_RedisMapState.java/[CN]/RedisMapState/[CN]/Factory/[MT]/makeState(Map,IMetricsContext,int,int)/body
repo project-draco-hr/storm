@@ -1,15 +1,6 @@
 {
-  JedisCommandsInstanceContainer container;
-  if (jedisPoolConfig != null) {
-    container=JedisCommandsContainerBuilder.build(jedisPoolConfig);
-  }
- else   if (jedisClusterConfig != null) {
-    container=JedisCommandsContainerBuilder.build(jedisClusterConfig);
-  }
- else {
-    throw new IllegalArgumentException("Jedis configuration not found");
-  }
-  RedisMapState state=new RedisMapState(container,options,serializer,keyFactory);
+  JedisPool jedisPool=new JedisPool(DEFAULT_POOL_CONFIG,jedisPoolConfig.getHost(),jedisPoolConfig.getPort(),jedisPoolConfig.getTimeout(),jedisPoolConfig.getPassword(),jedisPoolConfig.getDatabase());
+  RedisMapState state=new RedisMapState(jedisPool,options,serializer,keyFactory);
   CachedMap c=new CachedMap(state,options.localCacheSize);
   MapState ms;
   if (type == StateType.NON_TRANSACTIONAL) {

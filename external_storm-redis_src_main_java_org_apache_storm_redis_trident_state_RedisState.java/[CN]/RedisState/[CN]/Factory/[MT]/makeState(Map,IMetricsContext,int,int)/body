@@ -1,13 +1,4 @@
 {
-  JedisCommandsInstanceContainer container;
-  if (jedisPoolConfig != null) {
-    container=JedisCommandsContainerBuilder.build(jedisPoolConfig);
-  }
- else   if (jedisClusterConfig != null) {
-    container=JedisCommandsContainerBuilder.build(jedisClusterConfig);
-  }
- else {
-    throw new IllegalArgumentException("Jedis configuration not found");
-  }
-  return new RedisState(container);
+  JedisPool jedisPool=new JedisPool(DEFAULT_POOL_CONFIG,jedisPoolConfig.getHost(),jedisPoolConfig.getPort(),jedisPoolConfig.getTimeout(),jedisPoolConfig.getPassword(),jedisPoolConfig.getDatabase());
+  return new RedisState(jedisPool);
 }

@@ -1,0 +1,3 @@
+String redisKeyPrefix
+TridentTupleMapper tupleMapper
+long expireIntervalMs

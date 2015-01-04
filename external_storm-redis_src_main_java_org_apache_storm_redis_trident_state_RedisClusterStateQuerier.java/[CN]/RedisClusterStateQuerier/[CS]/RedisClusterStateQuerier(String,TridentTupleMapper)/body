@@ -1,0 +1,4 @@
+{
+  this.redisKeyPrefix=redisKeyPrefix;
+  this.tupleMapper=tupleMapper;
+}
