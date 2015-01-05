@@ -1,5 +1,4 @@
 {
-  long expireAt=System.currentTimeMillis() + expireIntervalMs;
   JedisCluster jedisCluster=null;
   try {
     jedisCluster=redisClusterState.getJedisCluster();
@@ -11,8 +10,12 @@
       }
       String value=this.tupleMapper.getValueFromTridentTuple(input);
       logger.debug("update key[" + key + "] redisKey["+ redisKey+ "] value["+ value+ "]");
-      jedisCluster.set(redisKey,value);
-      jedisCluster.expireAt(redisKey,expireAt);
+      if (this.expireIntervalSec > 0) {
+        jedisCluster.setex(redisKey,expireIntervalSec,value);
+      }
+ else {
+        jedisCluster.set(redisKey,value);
+      }
     }
   }
   finally {

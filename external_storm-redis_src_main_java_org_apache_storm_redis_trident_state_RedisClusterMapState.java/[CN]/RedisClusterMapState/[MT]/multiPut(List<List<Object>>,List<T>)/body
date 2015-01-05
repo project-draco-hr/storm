@@ -10,10 +10,11 @@
     }
   }
  else {
+    Map<String,String> keyValues=new HashMap<String,String>();
     for (int i=0; i < keys.size(); i++) {
       String val=new String(serializer.serialize(vals.get(i)));
-      String redisKey=keyFactory.build(keys.get(i));
-      jedisCluster.hset(this.options.hkey,redisKey,val);
+      keyValues.put(keyFactory.build(keys.get(i)),val);
     }
+    jedisCluster.hmset(this.options.hkey,keyValues);
   }
 }

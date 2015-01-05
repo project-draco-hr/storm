@@ -1,5 +1,4 @@
 {
-  long expireAt=System.currentTimeMillis() + expireIntervalMs;
   Jedis jedis=null;
   try {
     jedis=redisState.getJedis();
@@ -11,8 +10,12 @@
       }
       String value=this.tupleMapper.getValueFromTridentTuple(input);
       logger.debug("update key[" + key + "] redisKey["+ redisKey+ "] value["+ value+ "]");
-      jedis.set(redisKey,value);
-      jedis.expireAt(redisKey,expireAt);
+      if (this.expireIntervalSec > 0) {
+        jedis.setex(redisKey,expireIntervalSec,value);
+      }
+ else {
+        jedis.set(redisKey,value);
+      }
     }
   }
   finally {
