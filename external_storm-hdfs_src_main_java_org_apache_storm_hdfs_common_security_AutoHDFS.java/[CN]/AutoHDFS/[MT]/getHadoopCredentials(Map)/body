@@ -1,0 +1,39 @@
+{
+  try {
+    if (UserGroupInformation.isSecurityEnabled()) {
+      final Configuration configuration=new Configuration();
+      login(configuration);
+      final String topologySubmitterUser=(String)conf.get(Config.TOPOLOGY_SUBMITTER_PRINCIPAL);
+      final URI nameNodeURI=conf.containsKey(TOPOLOGY_HDFS_URI) ? new URI(conf.get(TOPOLOGY_HDFS_URI).toString()) : FileSystem.getDefaultUri(configuration);
+      UserGroupInformation ugi=UserGroupInformation.getCurrentUser();
+      final UserGroupInformation proxyUser=UserGroupInformation.createProxyUser(topologySubmitterUser,ugi);
+      Credentials creds=(Credentials)proxyUser.doAs(new PrivilegedAction<Object>(){
+        @Override public Object run(){
+          try {
+            FileSystem fileSystem=FileSystem.get(nameNodeURI,configuration);
+            Credentials credential=proxyUser.getCredentials();
+            fileSystem.addDelegationTokens(hdfsPrincipal,credential);
+            LOG.info("Delegation tokens acquired for user {}",topologySubmitterUser);
+            return credential;
+          }
+ catch (          IOException e) {
+            throw new RuntimeException(e);
+          }
+        }
+      }
+);
+      ByteArrayOutputStream bao=new ByteArrayOutputStream();
+      ObjectOutputStream out=new ObjectOutputStream(bao);
+      creds.write(out);
+      out.flush();
+      out.close();
+      return bao.toByteArray();
+    }
+ else {
+      throw new RuntimeException("Security is not enabled for HDFS");
+    }
+  }
+ catch (  Exception ex) {
+    throw new RuntimeException("Failed to get delegation tokens.",ex);
+  }
+}
