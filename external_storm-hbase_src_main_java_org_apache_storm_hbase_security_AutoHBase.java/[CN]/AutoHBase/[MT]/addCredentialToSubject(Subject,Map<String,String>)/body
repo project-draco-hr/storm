@@ -1,0 +1,15 @@
+{
+  try {
+    Object credential=getCredentials(credentials);
+    if (credential != null) {
+      subject.getPrivateCredentials().add(credential);
+      LOG.info("Hbase credentials added to subject.");
+    }
+ else {
+      LOG.info("No credential found in credentials map.");
+    }
+  }
+ catch (  Exception e) {
+    LOG.error("Failed to initialize and get UserGroupInformation.",e);
+  }
+}
