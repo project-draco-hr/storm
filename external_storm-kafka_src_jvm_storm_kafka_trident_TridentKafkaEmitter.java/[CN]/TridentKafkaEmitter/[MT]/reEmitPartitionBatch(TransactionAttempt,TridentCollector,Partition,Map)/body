@@ -5,16 +5,19 @@
     SimpleConsumer consumer=_connections.register(partition);
     long offset=(Long)meta.get("offset");
     long nextOffset=(Long)meta.get("nextOffset");
-    ByteBufferMessageSet msgs=fetchMessages(consumer,partition,offset);
-    for (    MessageAndOffset msg : msgs) {
-      if (offset == nextOffset) {
-        break;
+    ByteBufferMessageSet msgs=null;
+    msgs=fetchMessages(consumer,partition,offset);
+    if (msgs != null) {
+      for (      MessageAndOffset msg : msgs) {
+        if (offset == nextOffset) {
+          break;
+        }
+        if (offset > nextOffset) {
+          throw new RuntimeException("Error when re-emitting batch. overshot the end offset");
+        }
+        emit(collector,msg.message());
+        offset=msg.nextOffset();
       }
-      if (offset > nextOffset) {
-        throw new RuntimeException("Error when re-emitting batch. overshot the end offset");
-      }
-      emit(collector,msg.message());
-      offset=msg.nextOffset();
     }
   }
 }
