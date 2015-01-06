@@ -1,0 +1,6 @@
+{
+  this.collector=collector;
+  Map<String,Object> conf=(Map<String,Object>)map.get(this.configKey);
+  Validate.notEmpty(conf,"Hikari configuration not found using key '" + this.configKey + "'");
+  this.jdbcClient=new JDBCClient(conf);
+}

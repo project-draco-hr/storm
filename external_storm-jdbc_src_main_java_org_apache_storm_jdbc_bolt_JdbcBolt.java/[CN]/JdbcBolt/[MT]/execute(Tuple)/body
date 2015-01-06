@@ -1,0 +1,14 @@
+{
+  try {
+    List<Column> columns=mapper.getColumns(tuple);
+    List<List<Column>> columnLists=new ArrayList<List<Column>>();
+    columnLists.add(columns);
+    this.jdbcClient.insert(this.tableName,columnLists);
+  }
+ catch (  Exception e) {
+    LOG.warn("Failing tuple.",e);
+    this.collector.fail(tuple);
+    return;
+  }
+  this.collector.ack(tuple);
+}

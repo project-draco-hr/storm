@@ -1,0 +1,46 @@
+{
+  int index=1;
+  for (  Column column : columnList) {
+    Class columnJavaType=Util.getJavaType(column.getSqlType());
+    if (column.getVal() == null) {
+      preparedStatement.setNull(index,column.getSqlType());
+    }
+ else     if (columnJavaType == String.class) {
+      preparedStatement.setString(index,(String)column.getVal());
+    }
+ else     if (columnJavaType == Integer.class) {
+      preparedStatement.setInt(index,(Integer)column.getVal());
+    }
+ else     if (columnJavaType == Double.class) {
+      preparedStatement.setDouble(index,(Double)column.getVal());
+    }
+ else     if (columnJavaType == Float.class) {
+      preparedStatement.setFloat(index,(Float)column.getVal());
+    }
+ else     if (columnJavaType == Short.class) {
+      preparedStatement.setShort(index,(Short)column.getVal());
+    }
+ else     if (columnJavaType == Boolean.class) {
+      preparedStatement.setBoolean(index,(Boolean)column.getVal());
+    }
+ else     if (columnJavaType == byte[].class) {
+      preparedStatement.setBytes(index,(byte[])column.getVal());
+    }
+ else     if (columnJavaType == Long.class) {
+      preparedStatement.setLong(index,(Long)column.getVal());
+    }
+ else     if (columnJavaType == Date.class) {
+      preparedStatement.setDate(index,(Date)column.getVal());
+    }
+ else     if (columnJavaType == Time.class) {
+      preparedStatement.setTime(index,(Time)column.getVal());
+    }
+ else     if (columnJavaType == Timestamp.class) {
+      preparedStatement.setTimestamp(index,(Timestamp)column.getVal());
+    }
+ else {
+      throw new RuntimeException("Unknown type of value " + column.getVal() + " for column "+ column.getColumnName());
+    }
+    ++index;
+  }
+}

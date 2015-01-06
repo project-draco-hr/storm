@@ -1,0 +1,4 @@
+Map map
+IMetricsContext iMetricsContext
+int partitionIndex
+int numPartitions

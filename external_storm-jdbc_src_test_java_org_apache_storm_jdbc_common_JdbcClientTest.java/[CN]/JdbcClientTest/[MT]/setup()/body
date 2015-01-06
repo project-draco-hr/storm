@@ -1,0 +1,9 @@
+{
+  Map map=Maps.newHashMap();
+  map.put("dataSourceClassName","org.hsqldb.jdbc.JDBCDataSource");
+  map.put("dataSource.url","jdbc:hsqldb:mem:test");
+  map.put("dataSource.user","SA");
+  map.put("dataSource.password","");
+  this.client=new JDBCClient(map);
+  client.executeSql("create table user_details (id integer, user_name varchar(100), create_date date)");
+}

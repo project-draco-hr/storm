@@ -1,0 +1,33 @@
+{
+  Connection connection=null;
+  try {
+    connection=this.dataSource.getConnection();
+    StringBuilder sb=new StringBuilder();
+    sb.append("Insert into ").append(tableName).append(" (");
+    Collection<String> columnNames=Collections2.transform(columnLists.get(0),new Function<Column,String>(){
+      @Override public String apply(      Column input){
+        return input.getColumnName();
+      }
+    }
+);
+    String columns=Joiner.on(",").join(columnNames);
+    sb.append(columns).append(") values ( ");
+    String placeHolders=StringUtils.chop(StringUtils.repeat("?,",columnNames.size()));
+    sb.append(placeHolders).append(")");
+    String query=sb.toString();
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("Executing query " + query);
+    }
+    PreparedStatement preparedStatement=connection.prepareStatement(query);
+    for (    List<Column> columnList : columnLists) {
+      setPreparedStatementParams(preparedStatement,columnList);
+    }
+    return preparedStatement.executeUpdate();
+  }
+ catch (  SQLException e) {
+    throw new RuntimeException("Failed to insert in table " + tableName,e);
+  }
+ finally {
+    closeConnection(connection);
+  }
+}

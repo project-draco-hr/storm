@@ -1,0 +1,66 @@
+{
+  Connection connection=null;
+  Map<String,Integer> columnSchemaMap=new HashMap<String,Integer>();
+  try {
+    connection=this.dataSource.getConnection();
+    PreparedStatement preparedStatement=connection.prepareStatement(sqlQuery);
+    setPreparedStatementParams(preparedStatement,queryParams);
+    ResultSet resultSet=preparedStatement.executeQuery();
+    List<List<Column>> rows=Lists.newArrayList();
+    while (resultSet.next()) {
+      ResultSetMetaData metaData=resultSet.getMetaData();
+      int columnCount=metaData.getColumnCount();
+      List<Column> row=Lists.newArrayList();
+      for (int i=1; i <= columnCount; i++) {
+        String columnLabel=metaData.getColumnLabel(i);
+        int columnType=metaData.getColumnType(i);
+        Object val=null;
+        Class columnJavaType=Util.getJavaType(columnType);
+        if (columnJavaType == String.class) {
+          row.add(new Column<String>(columnLabel,resultSet.getString(columnLabel),columnType));
+        }
+ else         if (columnJavaType == Integer.class) {
+          row.add(new Column<Integer>(columnLabel,resultSet.getInt(columnLabel),columnType));
+        }
+ else         if (columnJavaType == Double.class) {
+          row.add(new Column<Double>(columnLabel,resultSet.getDouble(columnLabel),columnType));
+        }
+ else         if (columnJavaType == Float.class) {
+          row.add(new Column<Float>(columnLabel,resultSet.getFloat(columnLabel),columnType));
+        }
+ else         if (columnJavaType == Short.class) {
+          row.add(new Column<Short>(columnLabel,resultSet.getShort(columnLabel),columnType));
+        }
+ else         if (columnJavaType == Boolean.class) {
+          row.add(new Column<Boolean>(columnLabel,resultSet.getBoolean(columnLabel),columnType));
+        }
+ else         if (columnJavaType == byte[].class) {
+          row.add(new Column<byte[]>(columnLabel,resultSet.getBytes(columnLabel),columnType));
+        }
+ else         if (columnJavaType == Long.class) {
+          row.add(new Column<Long>(columnLabel,resultSet.getLong(columnLabel),columnType));
+        }
+ else         if (columnJavaType == Date.class) {
+          row.add(new Column<Date>(columnLabel,resultSet.getDate(columnLabel),columnType));
+        }
+ else         if (columnJavaType == Time.class) {
+          row.add(new Column<Time>(columnLabel,resultSet.getTime(columnLabel),columnType));
+        }
+ else         if (columnJavaType == Timestamp.class) {
+          row.add(new Column<Timestamp>(columnLabel,resultSet.getTimestamp(columnLabel),columnType));
+        }
+ else {
+          throw new RuntimeException("type =  " + columnType + " for column "+ columnLabel+ " not supported.");
+        }
+      }
+      rows.add(row);
+    }
+    return rows;
+  }
+ catch (  SQLException e) {
+    throw new RuntimeException("Failed to execute select query " + sqlQuery,e);
+  }
+ finally {
+    closeConnection(connection);
+  }
+}

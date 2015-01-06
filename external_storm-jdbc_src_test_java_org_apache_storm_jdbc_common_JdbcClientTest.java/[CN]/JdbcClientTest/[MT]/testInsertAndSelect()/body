@@ -1,0 +1,26 @@
+{
+  int id=1;
+  String name="bob";
+  Date createDate=new Date(System.currentTimeMillis());
+  List<Column> columns=Lists.newArrayList(new Column("id",id,Types.INTEGER),new Column("user_name",name,Types.VARCHAR),new Column("create_date",createDate,Types.DATE));
+  List<List<Column>> columnList=new ArrayList<List<Column>>();
+  columnList.add(columns);
+  client.insert(tableName,columnList);
+  List<List<Column>> rows=client.select("select * from user_details where id = ?",Lists.newArrayList(new Column("id",id,Types.INTEGER)));
+  for (  List<Column> row : rows) {
+    for (    Column column : row) {
+      if (column.getColumnName().equalsIgnoreCase("id")) {
+        Assert.assertEquals(id,column.getVal());
+      }
+ else       if (column.getColumnName().equalsIgnoreCase("user_name")) {
+        Assert.assertEquals(name,column.getVal());
+      }
+ else       if (column.getColumnName().equalsIgnoreCase("create_date")) {
+        Assert.assertEquals(createDate.toString(),column.getVal().toString());
+      }
+ else {
+        throw new AssertionError("Unknown column" + column);
+      }
+    }
+  }
+}
