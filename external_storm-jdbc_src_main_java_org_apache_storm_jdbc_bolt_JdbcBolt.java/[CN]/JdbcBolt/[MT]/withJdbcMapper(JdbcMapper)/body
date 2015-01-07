@@ -1,0 +1,4 @@
+{
+  this.jdbcMapper=jdbcMapper;
+  return this;
+}

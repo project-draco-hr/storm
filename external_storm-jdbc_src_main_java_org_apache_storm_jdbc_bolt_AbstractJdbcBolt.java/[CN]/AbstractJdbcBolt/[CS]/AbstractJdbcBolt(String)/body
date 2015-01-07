@@ -1,0 +1,4 @@
+{
+  Validate.notEmpty(configKey,"configKey can not be null");
+  this.configKey=configKey;
+}

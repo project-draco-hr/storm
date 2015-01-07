@@ -1,30 +1,3 @@
 {
-  Map map=Maps.newHashMap();
-  map.put("dataSourceClassName",args[0]);
-  map.put("dataSource.url",args[1]);
-  map.put("dataSource.user",args[2]);
-  map.put("dataSource.password",args[3]);
-  String tableName=args[4];
-  JdbcMapper jdbcMapper=new SimpleJdbcMapper(tableName,map);
-  Config config=new Config();
-  config.put("jdbc.conf",map);
-  TridentTopology topology=new TridentTopology();
-  Stream stream=topology.newStream("userSpout",new UserSpout());
-  JdbcState.Options options=new JdbcState.Options().withConfigKey("jdbc.conf").withMapper(jdbcMapper).withTableName("user");
-  JdbcStateFactory jdbcStateFactory=new JdbcStateFactory(options);
-  stream.partitionPersist(jdbcStateFactory,new Fields("id","user_name","create_date"),new JdbcUpdater(),new Fields());
-  if (args.length == 5) {
-    LocalCluster cluster=new LocalCluster();
-    cluster.submitTopology("test",config,topology.build());
-    Thread.sleep(30000);
-    cluster.killTopology("test");
-    cluster.shutdown();
-    System.exit(0);
-  }
- else   if (args.length == 6) {
-    StormSubmitter.submitTopology(args[6],config,topology.build());
-  }
- else {
-    System.out.println("Usage: UserPersistanceTopology <dataSourceClassName> <dataSource.url> " + "<user> <password> <tableName> [topology name]");
-  }
+  new UserPersistanceTridentTopology().execute(args);
 }

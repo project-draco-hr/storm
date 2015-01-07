@@ -1,8 +1,8 @@
 {
   List<Column> columns=new ArrayList<Column>();
-  for (  Map.Entry<String,Integer> entry : columnNameToType.entrySet()) {
-    String columnName=entry.getKey();
-    Integer columnSqlType=entry.getValue();
+  for (  Column column : schemaColumns) {
+    String columnName=column.getColumnName();
+    Integer columnSqlType=column.getSqlType();
     if (Util.getJavaType(columnSqlType).equals(String.class)) {
       String value=tuple.getStringByField(columnName);
       columns.add(new Column(columnName,value,columnSqlType));

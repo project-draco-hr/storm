@@ -1,0 +1,33 @@
+{
+  if (args.length != 4 && args.length != 5) {
+    System.out.println("Usage: " + this.getClass().getSimpleName() + " <dataSourceClassName> <dataSource.url> "+ "<user> <password> [topology name]");
+    System.exit(-1);
+  }
+  Map map=Maps.newHashMap();
+  map.put("dataSourceClassName",args[0]);
+  map.put("dataSource.url",args[1]);
+  map.put("dataSource.user",args[2]);
+  map.put("dataSource.password",args[3]);
+  Config config=new Config();
+  config.put(JDBC_CONF,map);
+  JDBCClient jdbcClient=new JDBCClient(map);
+  for (  String sql : setupSqls) {
+    jdbcClient.executeSql(sql);
+  }
+  this.userSpout=new UserSpout();
+  this.jdbcMapper=new SimpleJdbcMapper(TABLE_NAME,map);
+  Fields outputFields=new Fields("user_id","user_name","dept_name","create_date");
+  List<Column> queryParamColumns=Lists.newArrayList(new Column("user_id",Types.INTEGER));
+  this.jdbcLookupMapper=new SimpleJdbcLookupMapper(outputFields,queryParamColumns);
+  if (args.length == 4) {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("test",config,getTopology());
+    Thread.sleep(30000);
+    cluster.killTopology("test");
+    cluster.shutdown();
+    System.exit(0);
+  }
+ else {
+    StormSubmitter.submitTopology(args[5],config,getTopology());
+  }
+}

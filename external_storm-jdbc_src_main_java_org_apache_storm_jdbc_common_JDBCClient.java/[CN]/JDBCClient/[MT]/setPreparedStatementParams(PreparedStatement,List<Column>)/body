@@ -5,37 +5,37 @@
     if (column.getVal() == null) {
       preparedStatement.setNull(index,column.getSqlType());
     }
- else     if (columnJavaType == String.class) {
+ else     if (columnJavaType.equals(String.class)) {
       preparedStatement.setString(index,(String)column.getVal());
     }
- else     if (columnJavaType == Integer.class) {
+ else     if (columnJavaType.equals(Integer.class)) {
       preparedStatement.setInt(index,(Integer)column.getVal());
     }
- else     if (columnJavaType == Double.class) {
+ else     if (columnJavaType.equals(Double.class)) {
       preparedStatement.setDouble(index,(Double)column.getVal());
     }
- else     if (columnJavaType == Float.class) {
+ else     if (columnJavaType.equals(Float.class)) {
       preparedStatement.setFloat(index,(Float)column.getVal());
     }
- else     if (columnJavaType == Short.class) {
+ else     if (columnJavaType.equals(Short.class)) {
       preparedStatement.setShort(index,(Short)column.getVal());
     }
- else     if (columnJavaType == Boolean.class) {
+ else     if (columnJavaType.equals(Boolean.class)) {
       preparedStatement.setBoolean(index,(Boolean)column.getVal());
     }
- else     if (columnJavaType == byte[].class) {
+ else     if (columnJavaType.equals(byte[].class)) {
       preparedStatement.setBytes(index,(byte[])column.getVal());
     }
- else     if (columnJavaType == Long.class) {
+ else     if (columnJavaType.equals(Long.class)) {
       preparedStatement.setLong(index,(Long)column.getVal());
     }
- else     if (columnJavaType == Date.class) {
+ else     if (columnJavaType.equals(Date.class)) {
       preparedStatement.setDate(index,(Date)column.getVal());
     }
- else     if (columnJavaType == Time.class) {
+ else     if (columnJavaType.equals(Time.class)) {
       preparedStatement.setTime(index,(Time)column.getVal());
     }
- else     if (columnJavaType == Timestamp.class) {
+ else     if (columnJavaType.equals(Timestamp.class)) {
       preparedStatement.setTimestamp(index,(Timestamp)column.getVal());
     }
  else {

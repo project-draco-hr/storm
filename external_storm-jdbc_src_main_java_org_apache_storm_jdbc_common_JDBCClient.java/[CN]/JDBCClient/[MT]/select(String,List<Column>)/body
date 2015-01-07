@@ -1,6 +1,5 @@
 {
   Connection connection=null;
-  Map<String,Integer> columnSchemaMap=new HashMap<String,Integer>();
   try {
     connection=this.dataSource.getConnection();
     PreparedStatement preparedStatement=connection.prepareStatement(sqlQuery);
@@ -14,39 +13,38 @@
       for (int i=1; i <= columnCount; i++) {
         String columnLabel=metaData.getColumnLabel(i);
         int columnType=metaData.getColumnType(i);
-        Object val=null;
         Class columnJavaType=Util.getJavaType(columnType);
-        if (columnJavaType == String.class) {
+        if (columnJavaType.equals(String.class)) {
           row.add(new Column<String>(columnLabel,resultSet.getString(columnLabel),columnType));
         }
- else         if (columnJavaType == Integer.class) {
+ else         if (columnJavaType.equals(Integer.class)) {
           row.add(new Column<Integer>(columnLabel,resultSet.getInt(columnLabel),columnType));
         }
- else         if (columnJavaType == Double.class) {
+ else         if (columnJavaType.equals(Double.class)) {
           row.add(new Column<Double>(columnLabel,resultSet.getDouble(columnLabel),columnType));
         }
- else         if (columnJavaType == Float.class) {
+ else         if (columnJavaType.equals(Float.class)) {
           row.add(new Column<Float>(columnLabel,resultSet.getFloat(columnLabel),columnType));
         }
- else         if (columnJavaType == Short.class) {
+ else         if (columnJavaType.equals(Short.class)) {
           row.add(new Column<Short>(columnLabel,resultSet.getShort(columnLabel),columnType));
         }
- else         if (columnJavaType == Boolean.class) {
+ else         if (columnJavaType.equals(Boolean.class)) {
           row.add(new Column<Boolean>(columnLabel,resultSet.getBoolean(columnLabel),columnType));
         }
- else         if (columnJavaType == byte[].class) {
+ else         if (columnJavaType.equals(byte[].class)) {
           row.add(new Column<byte[]>(columnLabel,resultSet.getBytes(columnLabel),columnType));
         }
- else         if (columnJavaType == Long.class) {
+ else         if (columnJavaType.equals(Long.class)) {
           row.add(new Column<Long>(columnLabel,resultSet.getLong(columnLabel),columnType));
         }
- else         if (columnJavaType == Date.class) {
+ else         if (columnJavaType.equals(Date.class)) {
           row.add(new Column<Date>(columnLabel,resultSet.getDate(columnLabel),columnType));
         }
- else         if (columnJavaType == Time.class) {
+ else         if (columnJavaType.equals(Time.class)) {
           row.add(new Column<Time>(columnLabel,resultSet.getTime(columnLabel),columnType));
         }
- else         if (columnJavaType == Timestamp.class) {
+ else         if (columnJavaType.equals(Timestamp.class)) {
           row.add(new Column<Timestamp>(columnLabel,resultSet.getTimestamp(columnLabel),columnType));
         }
  else {

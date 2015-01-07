@@ -1,6 +1,6 @@
 {
   try {
-    List<Column> columns=mapper.getColumns(tuple);
+    List<Column> columns=jdbcMapper.getColumns(tuple);
     List<List<Column>> columnLists=new ArrayList<List<Column>>();
     columnLists.add(columns);
     this.jdbcClient.insert(this.tableName,columnLists);

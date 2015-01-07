@@ -1,4 +1,4 @@
 {
   JDBCClient client=new JDBCClient(map);
-  this.columnNameToType=client.getColumnSchema(tableName);
+  this.schemaColumns=client.getColumnSchema(tableName);
 }

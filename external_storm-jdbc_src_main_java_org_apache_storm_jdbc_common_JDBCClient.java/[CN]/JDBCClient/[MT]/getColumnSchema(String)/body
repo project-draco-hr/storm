@@ -1,14 +1,14 @@
 {
   Connection connection=null;
-  Map<String,Integer> columnSchemaMap=new HashMap<String,Integer>();
+  List<Column> columns=new ArrayList<Column>();
   try {
     connection=this.dataSource.getConnection();
     DatabaseMetaData metaData=connection.getMetaData();
     ResultSet resultSet=metaData.getColumns(null,null,tableName,null);
     while (resultSet.next()) {
-      columnSchemaMap.put(resultSet.getString("COLUMN_NAME"),resultSet.getInt("DATA_TYPE"));
+      columns.add(new Column(resultSet.getString("COLUMN_NAME"),resultSet.getInt("DATA_TYPE")));
     }
-    return columnSchemaMap;
+    return columns;
   }
  catch (  SQLException e) {
     throw new RuntimeException("Failed to get schema for table " + tableName,e);
