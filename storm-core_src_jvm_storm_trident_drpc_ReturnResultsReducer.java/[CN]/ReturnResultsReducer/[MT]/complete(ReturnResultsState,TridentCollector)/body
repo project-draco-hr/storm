@@ -18,7 +18,12 @@
       }
 ;
       if (!_clients.containsKey(server)) {
-        _clients.put(server,new DRPCInvocationsClient(host,port));
+        try {
+          _clients.put(server,new DRPCInvocationsClient(conf,host,port));
+        }
+ catch (        TTransportException ex) {
+          throw new RuntimeException(ex);
+        }
       }
       client=_clients.get(server);
     }
@@ -27,6 +32,9 @@
     }
  catch (    TException e) {
       collector.reportError(e);
+    }
+catch (    AuthorizationException aze) {
+      collector.reportError(aze);
     }
   }
 }

@@ -1,0 +1,22 @@
+{
+  HashSet<Node> ret=new HashSet<Node>();
+  for (  Entry<String,Set<Node>> entry : _topologyIdToNodes.entrySet()) {
+    if (!_isolated.contains(entry.getKey())) {
+      Iterator<Node> it=entry.getValue().iterator();
+      while (it.hasNext()) {
+        Node n=it.next();
+        if (n.isAlive()) {
+          it.remove();
+          _usedNodes--;
+          n.freeAllSlots(_cluster);
+          ret.add(n);
+          slotsNeeded-=n.totalSlots();
+          if (slotsNeeded <= 0) {
+            return ret;
+          }
+        }
+      }
+    }
+  }
+  return ret;
+}

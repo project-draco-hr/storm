@@ -4,5 +4,8 @@
   if (result.is_set_success()) {
     return result.success;
   }
+  if (result.aze != null) {
+    throw result.aze;
+  }
   throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"beginFileDownload failed: unknown result");
 }

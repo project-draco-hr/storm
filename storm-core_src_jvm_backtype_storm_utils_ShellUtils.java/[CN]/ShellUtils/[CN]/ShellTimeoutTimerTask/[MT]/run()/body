@@ -1,0 +1,12 @@
+{
+  Process p=shell.getProcess();
+  try {
+    p.exitValue();
+  }
+ catch (  Exception e) {
+    if (p != null && !shell.completed.get()) {
+      shell.setTimedOut();
+      p.destroy();
+    }
+  }
+}

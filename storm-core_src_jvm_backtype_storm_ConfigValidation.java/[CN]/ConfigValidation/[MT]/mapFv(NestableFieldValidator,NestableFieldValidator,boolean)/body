@@ -1,0 +1,18 @@
+{
+  return new NestableFieldValidator(){
+    @SuppressWarnings("unchecked") @Override public void validateField(    String pd,    String name,    Object field) throws IllegalArgumentException {
+      if (nullAllowed && field == null) {
+        return;
+      }
+      if (field instanceof Map) {
+        for (        Map.Entry<Object,Object> entry : ((Map<Object,Object>)field).entrySet()) {
+          key.validateField("Each key of the map ",name,entry.getKey());
+          val.validateField("Each value in the map ",name,entry.getValue());
+        }
+        return;
+      }
+      throw new IllegalArgumentException("Field " + name + " must be a Map");
+    }
+  }
+;
+}

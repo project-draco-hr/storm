@@ -42,5 +42,17 @@
     if (!(this_present_status && that_present_status))     return false;
     if (!this.status.equals(that.status))     return false;
   }
+  boolean this_present_sched_status=true && this.is_set_sched_status();
+  boolean that_present_sched_status=true && that.is_set_sched_status();
+  if (this_present_sched_status || that_present_sched_status) {
+    if (!(this_present_sched_status && that_present_sched_status))     return false;
+    if (!this.sched_status.equals(that.sched_status))     return false;
+  }
+  boolean this_present_owner=true && this.is_set_owner();
+  boolean that_present_owner=true && that.is_set_owner();
+  if (this_present_owner || that_present_owner) {
+    if (!(this_present_owner && that_present_owner))     return false;
+    if (!this.owner.equals(that.owner))     return false;
+  }
   return true;
 }

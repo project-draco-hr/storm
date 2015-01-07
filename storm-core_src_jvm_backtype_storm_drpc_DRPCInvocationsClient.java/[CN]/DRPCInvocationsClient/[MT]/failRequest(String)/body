@@ -1,10 +1,13 @@
 {
+  DistributedRPCInvocations.Client c=client.get();
   try {
-    if (client == null)     connect();
-    client.failRequest(id);
+    if (c == null) {
+      throw new TException("Client is not connected...");
+    }
+    c.failRequest(id);
   }
  catch (  TException e) {
-    client=null;
+    client.compareAndSet(c,null);
     throw e;
   }
 }

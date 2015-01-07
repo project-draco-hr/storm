@@ -1,0 +1,13 @@
+{
+  IGroupMappingServiceProvider gmsp=null;
+  try {
+    String gmsp_klassName=(String)storm_conf.get(Config.STORM_GROUP_MAPPING_SERVICE_PROVIDER_PLUGIN);
+    Class klass=Class.forName(gmsp_klassName);
+    gmsp=(IGroupMappingServiceProvider)klass.newInstance();
+    gmsp.prepare(storm_conf);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return gmsp;
+}

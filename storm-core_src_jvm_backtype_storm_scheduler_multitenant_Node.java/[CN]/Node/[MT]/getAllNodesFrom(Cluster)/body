@@ -1,0 +1,29 @@
+{
+  Map<String,Node> nodeIdToNode=new HashMap<String,Node>();
+  for (  SupervisorDetails sup : cluster.getSupervisors().values()) {
+    String id=sup.getId();
+    boolean isAlive=!cluster.isBlackListed(id);
+    LOG.debug("Found a {} Node {} {}",new Object[]{isAlive ? "living" : "dead",id,sup.getAllPorts()});
+    nodeIdToNode.put(id,new Node(id,sup.getAllPorts(),isAlive));
+  }
+  for (  Entry<String,SchedulerAssignment> entry : cluster.getAssignments().entrySet()) {
+    String topId=entry.getValue().getTopologyId();
+    for (    WorkerSlot ws : entry.getValue().getSlots()) {
+      String id=ws.getNodeId();
+      Node node=nodeIdToNode.get(id);
+      if (node == null) {
+        LOG.debug("Found an assigned slot on a dead supervisor {}",ws);
+        node=new Node(id,null,false);
+        nodeIdToNode.put(id,node);
+      }
+      if (!node.isAlive()) {
+        node.addOrphanedSlot(ws);
+      }
+      if (node.assignInternal(ws,topId,true)) {
+        LOG.warn("Bad scheduling state for topology [" + topId + "], the slot "+ ws+ " assigned to multiple workers, un-assigning everything...");
+        node.free(ws,cluster,true);
+      }
+    }
+  }
+  return nodeIdToNode;
+}

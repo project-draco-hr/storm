@@ -3,7 +3,10 @@ def process_uploadChunk(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = uploadChunk_result()
-    self._handler.uploadChunk(args.location, args.chunk)
+    try:
+        self._handler.uploadChunk(args.location, args.chunk)
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('uploadChunk', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

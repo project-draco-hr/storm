@@ -13,6 +13,12 @@ def read(self, iprot):
                 self.success.read(iprot)
             else:
                 iprot.skip(ftype)
+        elif (fid == 1):
+            if (ftype == TType.STRUCT):
+                self.aze = AuthorizationException()
+                self.aze.read(iprot)
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

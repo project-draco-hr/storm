@@ -1,0 +1,17 @@
+def process_uploadNewCredentials(self, seqid, iprot, oprot):
+    args = uploadNewCredentials_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = uploadNewCredentials_result()
+    try:
+        self._handler.uploadNewCredentials(args.name, args.creds)
+    except NotAliveException as e:
+        result.e = e
+    except InvalidTopologyException as ite:
+        result.ite = ite
+    except AuthorizationException as aze:
+        result.aze = aze
+    oprot.writeMessageBegin('uploadNewCredentials', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

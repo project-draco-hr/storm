@@ -9,6 +9,8 @@ def process_submitTopology(self, seqid, iprot, oprot):
         result.e = e
     except InvalidTopologyException as ite:
         result.ite = ite
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('submitTopology', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

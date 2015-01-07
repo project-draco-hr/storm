@@ -1,0 +1,3 @@
+PathAndBytesable<String> builder
+String path
+byte[] data

@@ -1,0 +1,22 @@
+{
+  int nodesFound=0;
+  int slotsFound=0;
+  for (  Entry<String,Set<Node>> entry : _topologyIdToNodes.entrySet()) {
+    if (!_isolated.contains(entry.getKey())) {
+      Iterator<Node> it=entry.getValue().iterator();
+      while (it.hasNext()) {
+        Node n=it.next();
+        if (n.isAlive()) {
+          nodesFound++;
+          int totalSlotsFree=n.totalSlots();
+          slotsFound+=totalSlotsFree;
+          slotsNeeded-=totalSlotsFree;
+          if (slotsNeeded <= 0) {
+            return new NodeAndSlotCounts(nodesFound,slotsFound);
+          }
+        }
+      }
+    }
+  }
+  return new NodeAndSlotCounts(nodesFound,slotsFound);
+}
