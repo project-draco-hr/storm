@@ -1,0 +1,16 @@
+{
+  Credentials credential=null;
+  if (credentials != null && credentials.containsKey(getCredentialKey())) {
+    try {
+      byte[] credBytes=DatatypeConverter.parseBase64Binary(credentials.get(getCredentialKey()));
+      ObjectInputStream in=new ObjectInputStream(new ByteArrayInputStream(credBytes));
+      credential=new Credentials();
+      credential.readFields(in);
+      LOG.info("Got hbase credentials from credentials Map.");
+    }
+ catch (    Exception e) {
+      LOG.error("Could not obtain credentials from credentials map.",e);
+    }
+  }
+  return credential;
+}

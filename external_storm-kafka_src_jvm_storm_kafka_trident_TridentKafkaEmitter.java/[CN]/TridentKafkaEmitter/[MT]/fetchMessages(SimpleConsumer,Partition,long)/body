@@ -1,6 +1,7 @@
 {
   long start=System.nanoTime();
-  ByteBufferMessageSet msgs=KafkaUtils.fetchMessages(_config,consumer,partition,offset);
+  ByteBufferMessageSet msgs=null;
+  msgs=KafkaUtils.fetchMessages(_config,consumer,partition,offset);
   long end=System.nanoTime();
   long millis=(end - start) / 1000000;
   _kafkaMeanFetchLatencyMetric.update(millis);

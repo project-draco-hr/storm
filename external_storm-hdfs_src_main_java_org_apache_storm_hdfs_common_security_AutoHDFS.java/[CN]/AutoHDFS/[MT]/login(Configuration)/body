@@ -1,0 +1,6 @@
+{
+  configuration.set(STORM_KEYTAB_FILE_KEY,this.hdfsKeyTab);
+  configuration.set(STORM_USER_NAME_KEY,this.hdfsPrincipal);
+  SecurityUtil.login(configuration,STORM_KEYTAB_FILE_KEY,STORM_USER_NAME_KEY);
+  LOG.info("Logged into hdfs with principal {}",this.hdfsPrincipal);
+}
