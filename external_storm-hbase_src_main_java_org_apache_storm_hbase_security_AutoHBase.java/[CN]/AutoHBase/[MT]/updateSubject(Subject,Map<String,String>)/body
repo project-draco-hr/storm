@@ -1,0 +1,4 @@
+{
+  addCredentialToSubject(subject,credentials);
+  addTokensToUGI(subject);
+}
