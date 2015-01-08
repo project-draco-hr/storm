@@ -1,0 +1,17 @@
+{
+  Map conf=new HashMap();
+  conf.put(Config.TOPOLOGY_SUBMITTER_PRINCIPAL,args[0]);
+  conf.put(STORM_USER_NAME_KEY,args[1]);
+  conf.put(STORM_KEYTAB_FILE_KEY,args[2]);
+  Configuration configuration=new Configuration();
+  AutoHDFS autoHDFS=new AutoHDFS();
+  autoHDFS.prepare(conf);
+  Map<String,String> creds=new HashMap<String,String>();
+  autoHDFS.populateCredentials(creds,conf);
+  LOG.info("Got HDFS credentials",autoHDFS.getCredentials(creds));
+  Subject s=new Subject();
+  autoHDFS.populateSubject(s,creds);
+  LOG.info("Got a Subject " + s);
+  autoHDFS.renew(creds,conf);
+  LOG.info("renewed credentials",autoHDFS.getCredentials(creds));
+}

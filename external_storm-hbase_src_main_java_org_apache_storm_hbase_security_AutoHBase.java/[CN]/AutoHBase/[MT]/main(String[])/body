@@ -1,0 +1,16 @@
+{
+  Map conf=new HashMap();
+  conf.put(Config.TOPOLOGY_SUBMITTER_PRINCIPAL,args[0]);
+  conf.put(HBASE_PRINCIPAL_KEY,args[1]);
+  conf.put(HBASE_KEYTAB_FILE_KEY,args[2]);
+  AutoHBase autoHBase=new AutoHBase();
+  autoHBase.prepare(conf);
+  Map<String,String> creds=new HashMap<String,String>();
+  autoHBase.populateCredentials(creds,conf);
+  LOG.info("Got HBase credentials" + autoHBase.getCredentials(creds));
+  Subject s=new Subject();
+  autoHBase.populateSubject(s,creds);
+  LOG.info("Got a Subject " + s);
+  autoHBase.renew(creds,conf);
+  LOG.info("renewed credentials" + autoHBase.getCredentials(creds));
+}
