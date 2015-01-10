@@ -13,5 +13,7 @@
       hbConfig.set(key,String.valueOf(map.get(key)));
     }
   }
-  this.hBaseClient=new HBaseClient(conf,hbConfig,options.tableName);
+  Map<String,Object> hbaseConfMap=new HashMap<String,Object>(conf);
+  hbaseConfMap.put(Config.TOPOLOGY_AUTO_CREDENTIALS,map.get(Config.TOPOLOGY_AUTO_CREDENTIALS));
+  this.hBaseClient=new HBaseClient(hbaseConfMap,hbConfig,options.tableName);
 }
