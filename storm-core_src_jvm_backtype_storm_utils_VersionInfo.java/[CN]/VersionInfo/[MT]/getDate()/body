@@ -1,3 +1,3 @@
 {
-  return version != null ? version.date() : "Unknown";
+  return COMMON_VERSION_INFO._getDate();
 }

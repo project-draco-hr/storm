@@ -1,0 +1,9 @@
+{
+  StringBuilder buffer=new StringBuilder();
+  String separator="";
+  for (  Object e : list) {
+    buffer.append(separator).append(e);
+    separator=",";
+  }
+  return buffer.toString();
+}

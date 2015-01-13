@@ -1,0 +1,12 @@
+{
+  try {
+    String line=reader.readLine();
+    while (line != null) {
+      output.add(line);
+      line=reader.readLine();
+    }
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException("make failed with error code " + ex.toString());
+  }
+}
