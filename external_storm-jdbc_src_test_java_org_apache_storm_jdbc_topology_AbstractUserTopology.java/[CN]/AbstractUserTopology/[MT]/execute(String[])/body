@@ -10,7 +10,7 @@
   map.put("dataSource.password",args[3]);
   Config config=new Config();
   config.put(JDBC_CONF,map);
-  JDBCClient jdbcClient=new JDBCClient(map);
+  JdbcClient jdbcClient=new JdbcClient(map);
   for (  String sql : setupSqls) {
     jdbcClient.executeSql(sql);
   }
