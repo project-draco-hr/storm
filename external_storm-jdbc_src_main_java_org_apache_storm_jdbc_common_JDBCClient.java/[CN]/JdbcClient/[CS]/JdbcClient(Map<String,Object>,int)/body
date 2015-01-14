@@ -3,4 +3,5 @@
   properties.putAll(map);
   HikariConfig config=new HikariConfig(properties);
   this.dataSource=new HikariDataSource(config);
+  this.queryTimeoutSecs=queryTimeoutSecs;
 }

@@ -19,6 +19,7 @@
       LOG.debug("Executing query " + query);
     }
     PreparedStatement preparedStatement=connection.prepareStatement(query);
+    preparedStatement.setQueryTimeout(queryTimeoutSecs);
     for (    List<Column> columnList : columnLists) {
       setPreparedStatementParams(preparedStatement,columnList);
     }

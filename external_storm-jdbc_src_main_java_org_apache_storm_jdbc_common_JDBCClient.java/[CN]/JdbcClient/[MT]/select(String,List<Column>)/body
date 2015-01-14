@@ -3,6 +3,7 @@
   try {
     connection=this.dataSource.getConnection();
     PreparedStatement preparedStatement=connection.prepareStatement(sqlQuery);
+    preparedStatement.setQueryTimeout(queryTimeoutSecs);
     setPreparedStatementParams(preparedStatement,queryParams);
     ResultSet resultSet=preparedStatement.executeQuery();
     List<List<Column>> rows=Lists.newArrayList();

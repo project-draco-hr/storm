@@ -1,6 +1,6 @@
 {
-  JdbcLookupBolt departmentLookupBolt=new JdbcLookupBolt(JDBC_CONF).withJdbcLookupMapper(this.jdbcLookupMapper).withSelectSql(SELECT_QUERY);
-  JdbcBolt userPersistanceBolt=new JdbcBolt(JDBC_CONF).withTableName(TABLE_NAME).withJdbcMapper(this.jdbcMapper);
+  JdbcLookupBolt departmentLookupBolt=new JdbcLookupBolt().withConfigKey(JDBC_CONF).withJdbcLookupMapper(this.jdbcLookupMapper).withSelectSql(SELECT_QUERY);
+  JdbcBolt userPersistanceBolt=new JdbcBolt().withConfigKey(JDBC_CONF).withTableName(TABLE_NAME).withJdbcMapper(this.jdbcMapper);
   TopologyBuilder builder=new TopologyBuilder();
   builder.setSpout(USER_SPOUT,this.userSpout,1);
   builder.setBolt(LOOKUP_BOLT,departmentLookupBolt,1).shuffleGrouping(USER_SPOUT);
