@@ -1,0 +1,12 @@
+{
+  ExponentialBackoffMsgRetryManager manager=new ExponentialBackoffMsgRetryManager(0,0d,0);
+  manager.failed(TEST_OFFSET);
+  try {
+    manager.retryStarted(TEST_OFFSET);
+  }
+ catch (  IllegalStateException ise) {
+    fail("IllegalStateException unexpected here: " + ise);
+  }
+  assertFalse("message should not be ready for retry",manager.shouldRetryMsg(TEST_OFFSET));
+  manager.retryStarted(TEST_OFFSET);
+}

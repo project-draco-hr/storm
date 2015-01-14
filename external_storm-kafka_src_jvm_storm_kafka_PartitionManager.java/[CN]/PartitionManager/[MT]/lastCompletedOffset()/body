@@ -3,6 +3,6 @@
     return _emittedToOffset;
   }
  else {
-    return _pending.first();
+    return _pending.firstKey();
   }
 }
