@@ -1,0 +1,3 @@
+String id
+GetInfoOptions options
+org.apache.thrift.async.AsyncMethodCallback<AsyncClient.getTopologyInfoWithOpts_call> resultHandler
