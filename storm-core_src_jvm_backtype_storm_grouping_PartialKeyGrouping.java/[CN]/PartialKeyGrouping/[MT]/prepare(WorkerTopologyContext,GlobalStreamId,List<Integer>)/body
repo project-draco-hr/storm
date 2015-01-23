@@ -1,0 +1,4 @@
+{
+  this.targetTasks=targetTasks;
+  targetTaskStats=new long[this.targetTasks.size()];
+}
