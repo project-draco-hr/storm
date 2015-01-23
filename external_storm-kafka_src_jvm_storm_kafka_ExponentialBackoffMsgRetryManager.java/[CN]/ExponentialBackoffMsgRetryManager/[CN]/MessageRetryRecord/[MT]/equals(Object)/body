@@ -1,0 +1,3 @@
+{
+  return (other instanceof MessageRetryRecord && this.offset == ((MessageRetryRecord)other).offset);
+}

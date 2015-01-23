@@ -1,0 +1,7 @@
+{
+  RandomAccessFile raf=new RandomAccessFile(file,"r");
+  byte[] buffer=new byte[(int)raf.length()];
+  raf.readFully(buffer);
+  raf.close();
+  return buffer;
+}

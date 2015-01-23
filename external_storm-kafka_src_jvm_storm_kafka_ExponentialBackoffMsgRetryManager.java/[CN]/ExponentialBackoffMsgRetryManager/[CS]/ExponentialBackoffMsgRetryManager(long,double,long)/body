@@ -1,0 +1,5 @@
+{
+  this.retryInitialDelayMs=retryInitialDelayMs;
+  this.retryDelayMultiplier=retryDelayMultiplier;
+  this.retryDelayMaxMs=retryDelayMaxMs;
+}

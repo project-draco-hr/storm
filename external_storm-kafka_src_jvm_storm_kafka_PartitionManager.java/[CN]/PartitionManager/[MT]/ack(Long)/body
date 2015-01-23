@@ -1,7 +1,8 @@
 {
-  if (!_pending.isEmpty() && _pending.first() < offset - _spoutConfig.maxOffsetBehind) {
-    _pending.headSet(offset - _spoutConfig.maxOffsetBehind).clear();
+  if (!_pending.isEmpty() && _pending.firstKey() < offset - _spoutConfig.maxOffsetBehind) {
+    _pending.headMap(offset - _spoutConfig.maxOffsetBehind).clear();
   }
   _pending.remove(offset);
+  this._failedMsgRetryManager.acked(offset);
   numberAcked++;
 }

@@ -1,0 +1,6 @@
+{
+  MessageRetryRecord record=this.records.remove(offset);
+  if (record != null) {
+    this.waiting.remove(record);
+  }
+}
