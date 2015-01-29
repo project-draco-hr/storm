@@ -1,0 +1,5 @@
+{
+  TopologyActionOptions x=new TopologyActionOptions();
+  x.set_kill_options(value);
+  return x;
+}

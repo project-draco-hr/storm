@@ -1,0 +1,27 @@
+{
+  StringBuilder sb=new StringBuilder("ZKWorkerHeartbeat(");
+  boolean first=true;
+  sb.append("storm_id:");
+  if (this.storm_id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.storm_id);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("executor_stats:");
+  if (this.executor_stats == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.executor_stats);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("time_secs:");
+  sb.append(this.time_secs);
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

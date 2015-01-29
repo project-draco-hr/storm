@@ -1,0 +1,8 @@
+{
+  if (getSetField() == _Fields.REBALANCE_OPTIONS) {
+    return (RebalanceOptions)getFieldValue();
+  }
+ else {
+    throw new RuntimeException("Cannot get field 'rebalance_options' because union is currently set to " + getFieldDesc(getSetField()).name);
+  }
+}

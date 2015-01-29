@@ -1,0 +1,28 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_name=true && (is_set_name());
+  builder.append(present_name);
+  if (present_name)   builder.append(name);
+  boolean present_status=true && (is_set_status());
+  builder.append(present_status);
+  if (present_status)   builder.append(status.getValue());
+  boolean present_num_workers=true;
+  builder.append(present_num_workers);
+  if (present_num_workers)   builder.append(num_workers);
+  boolean present_component_executors=true && (is_set_component_executors());
+  builder.append(present_component_executors);
+  if (present_component_executors)   builder.append(component_executors);
+  boolean present_launch_time_secs=true && (is_set_launch_time_secs());
+  builder.append(present_launch_time_secs);
+  if (present_launch_time_secs)   builder.append(launch_time_secs);
+  boolean present_owner=true && (is_set_owner());
+  builder.append(present_owner);
+  if (present_owner)   builder.append(owner);
+  boolean present_topology_action_options=true && (is_set_topology_action_options());
+  builder.append(present_topology_action_options);
+  if (present_topology_action_options)   builder.append(topology_action_options);
+  boolean present_prev_status=true && (is_set_prev_status());
+  builder.append(present_prev_status);
+  if (present_prev_status)   builder.append(prev_status.getValue());
+  return builder.toHashCode();
+}

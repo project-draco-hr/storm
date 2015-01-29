@@ -1,0 +1,2 @@
+def __hash__(self):
+    return ((0 + hash(self.kill_options)) + hash(self.rebalance_options))

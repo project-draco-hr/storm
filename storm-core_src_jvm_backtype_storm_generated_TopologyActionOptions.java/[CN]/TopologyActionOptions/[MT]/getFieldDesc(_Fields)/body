@@ -1,0 +1,10 @@
+{
+switch (setField) {
+case KILL_OPTIONS:
+    return KILL_OPTIONS_FIELD_DESC;
+case REBALANCE_OPTIONS:
+  return REBALANCE_OPTIONS_FIELD_DESC;
+default :
+throw new IllegalArgumentException("Unknown field id " + setField);
+}
+}

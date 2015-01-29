@@ -1,0 +1,4 @@
+{
+  testDelegate=new ThriftSerializationDelegateBridge();
+  testDelegate.prepare(null);
+}

@@ -1,0 +1,95 @@
+{
+  org.apache.thrift.protocol.TField field;
+  iprot.readStructBegin();
+  while (true) {
+    field=iprot.readFieldBegin();
+    if (field.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (field.id) {
+case 1:
+      if (field.type == org.apache.thrift.protocol.TType.STRING) {
+        this.name=iprot.readString();
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+      }
+    break;
+case 2:
+  if (field.type == org.apache.thrift.protocol.TType.I32) {
+    this.status=TopologyStatus.findByValue(iprot.readI32());
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+  }
+break;
+case 3:
+if (field.type == org.apache.thrift.protocol.TType.I32) {
+this.num_workers=iprot.readI32();
+set_num_workers_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 4:
+if (field.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map208=iprot.readMapBegin();
+this.component_executors=new HashMap<String,Integer>(2 * _map208.size);
+for (int _i209=0; _i209 < _map208.size; ++_i209) {
+String _key210;
+int _val211;
+_key210=iprot.readString();
+_val211=iprot.readI32();
+this.component_executors.put(_key210,_val211);
+}
+iprot.readMapEnd();
+}
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 5:
+if (field.type == org.apache.thrift.protocol.TType.I32) {
+this.launch_time_secs=iprot.readI32();
+set_launch_time_secs_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 6:
+if (field.type == org.apache.thrift.protocol.TType.STRING) {
+this.owner=iprot.readString();
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 7:
+if (field.type == org.apache.thrift.protocol.TType.STRUCT) {
+this.topology_action_options=new TopologyActionOptions();
+this.topology_action_options.read(iprot);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+case 8:
+if (field.type == org.apache.thrift.protocol.TType.I32) {
+this.prev_status=TopologyStatus.findByValue(iprot.readI32());
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+validate();
+}

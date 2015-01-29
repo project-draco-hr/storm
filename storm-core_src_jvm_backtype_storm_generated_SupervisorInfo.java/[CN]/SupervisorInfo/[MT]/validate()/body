@@ -1,0 +1,8 @@
+{
+  if (!is_set_time_secs()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'time_secs' is unset! Struct:" + toString());
+  }
+  if (!is_set_hostname()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'hostname' is unset! Struct:" + toString());
+  }
+}

@@ -1,0 +1,26 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.storm_id != null) {
+    oprot.writeFieldBegin(STORM_ID_FIELD_DESC);
+    oprot.writeString(this.storm_id);
+    oprot.writeFieldEnd();
+  }
+  if (this.executor_stats != null) {
+    oprot.writeFieldBegin(EXECUTOR_STATS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.STRUCT,this.executor_stats.size()));
+      for (      Map.Entry<ExecutorInfo,ExecutorStats> _iter217 : this.executor_stats.entrySet()) {
+        _iter217.getKey().write(oprot);
+        _iter217.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(TIME_SECS_FIELD_DESC);
+  oprot.writeI32(this.time_secs);
+  oprot.writeFieldEnd();
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

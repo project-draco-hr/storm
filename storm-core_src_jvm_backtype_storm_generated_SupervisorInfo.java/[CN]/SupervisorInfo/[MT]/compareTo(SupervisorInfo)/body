@@ -1,0 +1,78 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  SupervisorInfo typedOther=(SupervisorInfo)other;
+  lastComparison=Boolean.valueOf(is_set_time_secs()).compareTo(typedOther.is_set_time_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_time_secs()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.time_secs,typedOther.time_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_hostname()).compareTo(typedOther.is_set_hostname());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_hostname()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.hostname,typedOther.hostname);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_assignment_id()).compareTo(typedOther.is_set_assignment_id());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_assignment_id()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.assignment_id,typedOther.assignment_id);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_used_ports()).compareTo(typedOther.is_set_used_ports());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_used_ports()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.used_ports,typedOther.used_ports);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_meta()).compareTo(typedOther.is_set_meta());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_meta()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.meta,typedOther.meta);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_scheduler_meta()).compareTo(typedOther.is_set_scheduler_meta());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_scheduler_meta()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.scheduler_meta,typedOther.scheduler_meta);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_uptime_secs()).compareTo(typedOther.is_set_uptime_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_uptime_secs()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uptime_secs,typedOther.uptime_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

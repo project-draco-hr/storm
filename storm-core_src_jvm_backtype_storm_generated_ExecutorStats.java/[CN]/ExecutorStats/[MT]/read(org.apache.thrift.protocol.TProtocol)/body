@@ -76,6 +76,15 @@ this.specific.read(iprot);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
 }
 break;
+case 4:
+if (field.type == org.apache.thrift.protocol.TType.DOUBLE) {
+this.rate=iprot.readDouble();
+set_rate_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
 }

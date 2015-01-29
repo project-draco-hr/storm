@@ -1,0 +1,13 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_storm_id=true && (is_set_storm_id());
+  builder.append(present_storm_id);
+  if (present_storm_id)   builder.append(storm_id);
+  boolean present_executor_stats=true && (is_set_executor_stats());
+  builder.append(present_executor_stats);
+  if (present_executor_stats)   builder.append(executor_stats);
+  boolean present_time_secs=true;
+  builder.append(present_time_secs);
+  if (present_time_secs)   builder.append(time_secs);
+  return builder.toHashCode();
+}

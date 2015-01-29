@@ -1,2 +1,2 @@
 def __hash__(self):
-    return (((0 + hash(self.emitted)) + hash(self.transferred)) + hash(self.specific))
+    return ((((0 + hash(self.emitted)) + hash(self.transferred)) + hash(self.specific)) + hash(self.rate))

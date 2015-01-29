@@ -1,0 +1,6 @@
+{
+  if (this.component_executors == null) {
+    this.component_executors=new HashMap<String,Integer>();
+  }
+  this.component_executors.put(key,val);
+}

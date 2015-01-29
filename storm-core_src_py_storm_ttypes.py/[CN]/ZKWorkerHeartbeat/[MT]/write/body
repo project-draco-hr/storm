@@ -1,0 +1,23 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('ZKWorkerHeartbeat')
+    if (self.storm_id is not None):
+        oprot.writeFieldBegin('storm_id', TType.STRING, 1)
+        oprot.writeString(self.storm_id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.executor_stats is not None):
+        oprot.writeFieldBegin('executor_stats', TType.MAP, 2)
+        oprot.writeMapBegin(TType.STRUCT, TType.STRUCT, len(self.executor_stats))
+        for (kiter388, viter389) in self.executor_stats.items():
+            kiter388.write(oprot)
+            viter389.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.time_secs is not None):
+        oprot.writeFieldBegin('time_secs', TType.I32, 3)
+        oprot.writeI32(self.time_secs)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

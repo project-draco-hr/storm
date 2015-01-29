@@ -1,0 +1,22 @@
+{
+  if (that == null)   return false;
+  boolean this_present_storm_id=true && this.is_set_storm_id();
+  boolean that_present_storm_id=true && that.is_set_storm_id();
+  if (this_present_storm_id || that_present_storm_id) {
+    if (!(this_present_storm_id && that_present_storm_id))     return false;
+    if (!this.storm_id.equals(that.storm_id))     return false;
+  }
+  boolean this_present_executor_stats=true && this.is_set_executor_stats();
+  boolean that_present_executor_stats=true && that.is_set_executor_stats();
+  if (this_present_executor_stats || that_present_executor_stats) {
+    if (!(this_present_executor_stats && that_present_executor_stats))     return false;
+    if (!this.executor_stats.equals(that.executor_stats))     return false;
+  }
+  boolean this_present_time_secs=true;
+  boolean that_present_time_secs=true;
+  if (this_present_time_secs || that_present_time_secs) {
+    if (!(this_present_time_secs && that_present_time_secs))     return false;
+    if (this.time_secs != that.time_secs)     return false;
+  }
+  return true;
+}

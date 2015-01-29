@@ -1,0 +1,19 @@
+{
+  __isset_bit_vector.clear();
+  __isset_bit_vector.or(other.__isset_bit_vector);
+  if (other.is_set_storm_id()) {
+    this.storm_id=other.storm_id;
+  }
+  if (other.is_set_executor_stats()) {
+    Map<ExecutorInfo,ExecutorStats> __this__executor_stats=new HashMap<ExecutorInfo,ExecutorStats>();
+    for (    Map.Entry<ExecutorInfo,ExecutorStats> other_element : other.executor_stats.entrySet()) {
+      ExecutorInfo other_element_key=other_element.getKey();
+      ExecutorStats other_element_value=other_element.getValue();
+      ExecutorInfo __this__executor_stats_copy_key=new ExecutorInfo(other_element_key);
+      ExecutorStats __this__executor_stats_copy_value=new ExecutorStats(other_element_value);
+      __this__executor_stats.put(__this__executor_stats_copy_key,__this__executor_stats_copy_value);
+    }
+    this.executor_stats=__this__executor_stats;
+  }
+  this.time_secs=other.time_secs;
+}

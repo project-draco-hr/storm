@@ -1,0 +1,25 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_time_secs=true;
+  builder.append(present_time_secs);
+  if (present_time_secs)   builder.append(time_secs);
+  boolean present_hostname=true && (is_set_hostname());
+  builder.append(present_hostname);
+  if (present_hostname)   builder.append(hostname);
+  boolean present_assignment_id=true && (is_set_assignment_id());
+  builder.append(present_assignment_id);
+  if (present_assignment_id)   builder.append(assignment_id);
+  boolean present_used_ports=true && (is_set_used_ports());
+  builder.append(present_used_ports);
+  if (present_used_ports)   builder.append(used_ports);
+  boolean present_meta=true && (is_set_meta());
+  builder.append(present_meta);
+  if (present_meta)   builder.append(meta);
+  boolean present_scheduler_meta=true && (is_set_scheduler_meta());
+  builder.append(present_scheduler_meta);
+  if (present_scheduler_meta)   builder.append(scheduler_meta);
+  boolean present_uptime_secs=true && (is_set_uptime_secs());
+  builder.append(present_uptime_secs);
+  if (present_uptime_secs)   builder.append(uptime_secs);
+  return builder.toHashCode();
+}

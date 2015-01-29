@@ -1,0 +1,2 @@
+def __hash__(self):
+    return ((((0 + hash(self.master_code_dir)) + hash(self.node_host)) + hash(self.executor_node_port)) + hash(self.executor_start_time_secs))

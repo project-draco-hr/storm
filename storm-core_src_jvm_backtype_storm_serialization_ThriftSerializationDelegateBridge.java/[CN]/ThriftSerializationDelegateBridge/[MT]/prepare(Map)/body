@@ -1,0 +1,4 @@
+{
+  this.thriftSerializationDelegate.prepare(stormConf);
+  this.defaultSerializationDelegate.prepare(stormConf);
+}

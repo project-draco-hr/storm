@@ -1,0 +1,10 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_node=true && (is_set_node());
+  builder.append(present_node);
+  if (present_node)   builder.append(node);
+  boolean present_port=true && (is_set_port());
+  builder.append(present_port);
+  if (present_port)   builder.append(port);
+  return builder.toHashCode();
+}

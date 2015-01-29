@@ -1,0 +1,8 @@
+self
+time_secs
+hostname
+assignment_id
+used_ports
+meta
+scheduler_meta
+uptime_secs

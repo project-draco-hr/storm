@@ -1,0 +1,12 @@
+{
+  if (other.is_set_node()) {
+    this.node=other.node;
+  }
+  if (other.is_set_port()) {
+    Set<Long> __this__port=new HashSet<Long>();
+    for (    Long other_element : other.port) {
+      __this__port.add(other_element);
+    }
+    this.port=__this__port;
+  }
+}

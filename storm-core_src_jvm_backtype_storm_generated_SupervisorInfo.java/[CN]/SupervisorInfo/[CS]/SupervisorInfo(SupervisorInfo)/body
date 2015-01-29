@@ -1,0 +1,37 @@
+{
+  __isset_bit_vector.clear();
+  __isset_bit_vector.or(other.__isset_bit_vector);
+  this.time_secs=other.time_secs;
+  if (other.is_set_hostname()) {
+    this.hostname=other.hostname;
+  }
+  if (other.is_set_assignment_id()) {
+    this.assignment_id=other.assignment_id;
+  }
+  if (other.is_set_used_ports()) {
+    List<Long> __this__used_ports=new ArrayList<Long>();
+    for (    Long other_element : other.used_ports) {
+      __this__used_ports.add(other_element);
+    }
+    this.used_ports=__this__used_ports;
+  }
+  if (other.is_set_meta()) {
+    List<Long> __this__meta=new ArrayList<Long>();
+    for (    Long other_element : other.meta) {
+      __this__meta.add(other_element);
+    }
+    this.meta=__this__meta;
+  }
+  if (other.is_set_scheduler_meta()) {
+    Map<String,String> __this__scheduler_meta=new HashMap<String,String>();
+    for (    Map.Entry<String,String> other_element : other.scheduler_meta.entrySet()) {
+      String other_element_key=other_element.getKey();
+      String other_element_value=other_element.getValue();
+      String __this__scheduler_meta_copy_key=other_element_key;
+      String __this__scheduler_meta_copy_value=other_element_value;
+      __this__scheduler_meta.put(__this__scheduler_meta_copy_key,__this__scheduler_meta_copy_value);
+    }
+    this.scheduler_meta=__this__scheduler_meta;
+  }
+  this.uptime_secs=other.uptime_secs;
+}

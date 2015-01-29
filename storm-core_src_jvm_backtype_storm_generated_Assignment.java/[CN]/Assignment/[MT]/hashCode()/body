@@ -1,0 +1,16 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_master_code_dir=true && (is_set_master_code_dir());
+  builder.append(present_master_code_dir);
+  if (present_master_code_dir)   builder.append(master_code_dir);
+  boolean present_node_host=true && (is_set_node_host());
+  builder.append(present_node_host);
+  if (present_node_host)   builder.append(node_host);
+  boolean present_executor_node_port=true && (is_set_executor_node_port());
+  builder.append(present_executor_node_port);
+  if (present_executor_node_port)   builder.append(executor_node_port);
+  boolean present_executor_start_time_secs=true && (is_set_executor_start_time_secs());
+  builder.append(present_executor_start_time_secs);
+  if (present_executor_start_time_secs)   builder.append(executor_start_time_secs);
+  return builder.toHashCode();
+}
