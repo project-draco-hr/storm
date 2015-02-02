@@ -1,0 +1,22 @@
+{
+  processMap.put("submitTopology",new submitTopology());
+  processMap.put("submitTopologyWithOpts",new submitTopologyWithOpts());
+  processMap.put("killTopology",new killTopology());
+  processMap.put("killTopologyWithOpts",new killTopologyWithOpts());
+  processMap.put("activate",new activate());
+  processMap.put("deactivate",new deactivate());
+  processMap.put("rebalance",new rebalance());
+  processMap.put("uploadNewCredentials",new uploadNewCredentials());
+  processMap.put("beginFileUpload",new beginFileUpload());
+  processMap.put("uploadChunk",new uploadChunk());
+  processMap.put("finishFileUpload",new finishFileUpload());
+  processMap.put("beginFileDownload",new beginFileDownload());
+  processMap.put("downloadChunk",new downloadChunk());
+  processMap.put("getNimbusConf",new getNimbusConf());
+  processMap.put("getClusterInfo",new getClusterInfo());
+  processMap.put("getTopologyInfo",new getTopologyInfo());
+  processMap.put("getTopologyConf",new getTopologyConf());
+  processMap.put("getTopology",new getTopology());
+  processMap.put("getUserTopology",new getUserTopology());
+  return processMap;
+}

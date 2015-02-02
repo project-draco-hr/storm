@@ -1,0 +1,17 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_execution_command()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_script()) {
+    optionals.set(1);
+  }
+  oprot.writeBitSet(optionals,2);
+  if (struct.is_set_execution_command()) {
+    oprot.writeString(struct.execution_command);
+  }
+  if (struct.is_set_script()) {
+    oprot.writeString(struct.script);
+  }
+}

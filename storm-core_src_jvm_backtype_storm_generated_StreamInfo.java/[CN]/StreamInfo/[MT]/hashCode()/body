@@ -1,10 +1,10 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_output_fields=true && (is_set_output_fields());
-  builder.append(present_output_fields);
-  if (present_output_fields)   builder.append(output_fields);
+  list.add(present_output_fields);
+  if (present_output_fields)   list.add(output_fields);
   boolean present_direct=true;
-  builder.append(present_direct);
-  if (present_direct)   builder.append(direct);
-  return builder.toHashCode();
+  list.add(present_direct);
+  if (present_direct)   list.add(direct);
+  return list.hashCode();
 }

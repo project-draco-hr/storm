@@ -1,2 +1,6 @@
 def __hash__(self):
-    return (((0 + hash(self.supervisors)) + hash(self.nimbus_uptime_secs)) + hash(self.topologies))
+    value = 17
+    value = ((value * 31) ^ hash(self.supervisors))
+    value = ((value * 31) ^ hash(self.nimbus_uptime_secs))
+    value = ((value * 31) ^ hash(self.topologies))
+    return value

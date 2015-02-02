@@ -1,13 +1,13 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_supervisors=true && (is_set_supervisors());
-  builder.append(present_supervisors);
-  if (present_supervisors)   builder.append(supervisors);
+  list.add(present_supervisors);
+  if (present_supervisors)   list.add(supervisors);
   boolean present_nimbus_uptime_secs=true;
-  builder.append(present_nimbus_uptime_secs);
-  if (present_nimbus_uptime_secs)   builder.append(nimbus_uptime_secs);
+  list.add(present_nimbus_uptime_secs);
+  if (present_nimbus_uptime_secs)   list.add(nimbus_uptime_secs);
   boolean present_topologies=true && (is_set_topologies());
-  builder.append(present_topologies);
-  if (present_topologies)   builder.append(topologies);
-  return builder.toHashCode();
+  list.add(present_topologies);
+  if (present_topologies)   list.add(topologies);
+  return list.hashCode();
 }

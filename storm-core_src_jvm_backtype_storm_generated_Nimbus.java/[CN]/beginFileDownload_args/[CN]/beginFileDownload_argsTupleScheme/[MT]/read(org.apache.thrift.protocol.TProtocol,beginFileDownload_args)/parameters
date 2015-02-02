@@ -1,0 +1,2 @@
+org.apache.thrift.protocol.TProtocol prot
+beginFileDownload_args struct

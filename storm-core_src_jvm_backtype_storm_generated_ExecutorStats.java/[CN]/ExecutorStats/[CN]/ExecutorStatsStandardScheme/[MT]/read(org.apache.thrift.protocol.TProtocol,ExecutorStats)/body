@@ -1,0 +1,89 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 1:
+      if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+          org.apache.thrift.protocol.TMap _map250=iprot.readMapBegin();
+          struct.emitted=new HashMap<String,Map<String,Long>>(2 * _map250.size);
+          String _key251;
+          Map<String,Long> _val252;
+          for (int _i253=0; _i253 < _map250.size; ++_i253) {
+            _key251=iprot.readString();
+{
+              org.apache.thrift.protocol.TMap _map254=iprot.readMapBegin();
+              _val252=new HashMap<String,Long>(2 * _map254.size);
+              String _key255;
+              long _val256;
+              for (int _i257=0; _i257 < _map254.size; ++_i257) {
+                _key255=iprot.readString();
+                _val256=iprot.readI64();
+                _val252.put(_key255,_val256);
+              }
+              iprot.readMapEnd();
+            }
+            struct.emitted.put(_key251,_val252);
+          }
+          iprot.readMapEnd();
+        }
+        struct.set_emitted_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 2:
+  if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+      org.apache.thrift.protocol.TMap _map258=iprot.readMapBegin();
+      struct.transferred=new HashMap<String,Map<String,Long>>(2 * _map258.size);
+      String _key259;
+      Map<String,Long> _val260;
+      for (int _i261=0; _i261 < _map258.size; ++_i261) {
+        _key259=iprot.readString();
+{
+          org.apache.thrift.protocol.TMap _map262=iprot.readMapBegin();
+          _val260=new HashMap<String,Long>(2 * _map262.size);
+          String _key263;
+          long _val264;
+          for (int _i265=0; _i265 < _map262.size; ++_i265) {
+            _key263=iprot.readString();
+            _val264=iprot.readI64();
+            _val260.put(_key263,_val264);
+          }
+          iprot.readMapEnd();
+        }
+        struct.transferred.put(_key259,_val260);
+      }
+      iprot.readMapEnd();
+    }
+    struct.set_transferred_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+case 3:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+struct.specific=new ExecutorSpecificStats();
+struct.specific.read(iprot);
+struct.set_specific_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}
