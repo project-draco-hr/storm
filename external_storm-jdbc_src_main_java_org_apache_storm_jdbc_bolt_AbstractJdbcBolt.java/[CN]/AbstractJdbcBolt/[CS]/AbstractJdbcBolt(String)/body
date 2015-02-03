@@ -1,4 +1,3 @@
 {
   this.configKey=configKey;
-  return this;
 }
