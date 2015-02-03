@@ -1,0 +1,13 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.num_err_choice != null) {
+    if (is_set_num_err_choice()) {
+      oprot.writeFieldBegin(NUM_ERR_CHOICE_FIELD_DESC);
+      oprot.writeI32(this.num_err_choice.getValue());
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

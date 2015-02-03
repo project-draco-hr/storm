@@ -7,6 +7,7 @@
   _state=state;
   _stormConf=stormConf;
   numberAcked=numberFailed=0;
+  _failedMsgRetryManager=new ExponentialBackoffMsgRetryManager(_spoutConfig.retryInitialDelayMs,_spoutConfig.retryDelayMultiplier,_spoutConfig.retryDelayMaxMs);
   String jsonTopologyId=null;
   Long jsonOffset=null;
   String path=committedPath();
