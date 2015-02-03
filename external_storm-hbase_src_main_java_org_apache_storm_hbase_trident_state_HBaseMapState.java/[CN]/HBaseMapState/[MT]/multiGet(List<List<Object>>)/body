@@ -1,0 +1,26 @@
+{
+  List<Get> gets=new ArrayList<Get>();
+  for (  List<Object> key : keys) {
+    LOG.info("Partition: {}, GET: {}",this.partitionNum,key);
+    Get get=new Get(toRowKey(key));
+    get.addColumn(this.options.columnFamily.getBytes(),this.options.qualifier.getBytes());
+    gets.add(get);
+  }
+  List<T> retval=new ArrayList<T>();
+  try {
+    Result[] results=this.table.get(gets);
+    for (    Result result : results) {
+      byte[] value=result.getValue(this.options.columnFamily.getBytes(),this.options.qualifier.getBytes());
+      if (value != null) {
+        retval.add(this.serializer.deserialize(value));
+      }
+ else {
+        retval.add(null);
+      }
+    }
+  }
+ catch (  IOException e) {
+    throw new FailedException("IOException while reading from HBase.",e);
+  }
+  return retval;
+}

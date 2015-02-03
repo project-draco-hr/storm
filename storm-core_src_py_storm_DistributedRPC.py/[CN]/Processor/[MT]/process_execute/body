@@ -7,6 +7,8 @@ def process_execute(self, seqid, iprot, oprot):
         result.success = self._handler.execute(args.functionName, args.funcArgs)
     except DRPCExecutionException as e:
         result.e = e
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('execute', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

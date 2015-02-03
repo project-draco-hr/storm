@@ -1,0 +1,3 @@
+{
+  return this.addColumn(column.family(),column.qualifier(),column.timestamp(),column.value());
+}

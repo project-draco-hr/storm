@@ -5,6 +5,8 @@
 switch (field) {
 case INITIAL_STATUS:
     return is_set_initial_status();
+case CREDS:
+  return is_set_creds();
 }
 throw new IllegalStateException();
 }

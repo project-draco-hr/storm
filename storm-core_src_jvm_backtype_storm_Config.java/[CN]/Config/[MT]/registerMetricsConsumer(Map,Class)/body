@@ -1,0 +1,3 @@
+{
+  registerMetricsConsumer(conf,klass,null,1L);
+}

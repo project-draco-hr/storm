@@ -1,5 +1,8 @@
 {
   _running=false;
+  heartBeatExecutorService.shutdownNow();
+  _writerThread.interrupt();
+  _readerThread.interrupt();
   _process.destroy();
   _inputs.clear();
 }

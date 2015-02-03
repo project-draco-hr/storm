@@ -1,0 +1,3 @@
+{
+  server.closeChannel(e.getChannel());
+}

@@ -1,0 +1,19 @@
+{
+  List<Put> puts=new ArrayList<Put>(keys.size());
+  for (int i=0; i < keys.size(); i++) {
+    LOG.info("Partiton: {}, Key: {}, Value: {}",new Object[]{this.partitionNum,keys.get(i),new String(this.serializer.serialize(values.get(i)))});
+    Put put=new Put(toRowKey(keys.get(i)));
+    T val=values.get(i);
+    put.add(this.options.columnFamily.getBytes(),this.options.qualifier.getBytes(),this.serializer.serialize(val));
+    puts.add(put);
+  }
+  try {
+    this.table.put(puts);
+  }
+ catch (  InterruptedIOException e) {
+    throw new FailedException("Interrupted while writing to HBase",e);
+  }
+catch (  RetriesExhaustedWithDetailsException e) {
+    throw new FailedException("Retries exhaused while writing to HBase",e);
+  }
+}

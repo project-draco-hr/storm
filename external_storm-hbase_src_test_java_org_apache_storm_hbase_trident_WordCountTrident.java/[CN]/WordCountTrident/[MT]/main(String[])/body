@@ -1,0 +1,19 @@
+{
+  Config conf=new Config();
+  conf.setMaxSpoutPending(5);
+  if (args.length == 1) {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("wordCounter",conf,buildTopology(args[0]));
+    Thread.sleep(60 * 1000);
+    cluster.killTopology("wordCounter");
+    cluster.shutdown();
+    System.exit(0);
+  }
+ else   if (args.length == 2) {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopology(args[1],conf,buildTopology(args[0]));
+  }
+ else {
+    System.out.println("Usage: TridentFileTopology <hdfs url> [topology name]");
+  }
+}

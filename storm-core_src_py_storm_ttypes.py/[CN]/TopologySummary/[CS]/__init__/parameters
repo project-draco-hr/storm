@@ -6,3 +6,5 @@ num_executors
 num_workers
 uptime_secs
 status
+sched_status
+owner

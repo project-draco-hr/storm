@@ -1,0 +1,16 @@
+{
+  String result="";
+  try {
+    result=ShellUtils.execCommand(ShellUtils.getGroupsForUserCommand(user));
+  }
+ catch (  ExitCodeException e) {
+    LOG.warn("got exception trying to get groups for user " + user,e);
+    return new HashSet<String>();
+  }
+  StringTokenizer tokenizer=new StringTokenizer(result,ShellUtils.TOKEN_SEPARATOR_REGEX);
+  Set<String> groups=new HashSet<String>();
+  while (tokenizer.hasMoreTokens()) {
+    groups.add(tokenizer.nextToken());
+  }
+  return groups;
+}

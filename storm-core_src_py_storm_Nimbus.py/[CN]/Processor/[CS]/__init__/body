@@ -8,6 +8,7 @@ def __init__(self, handler):
     self._processMap['activate'] = Processor.process_activate
     self._processMap['deactivate'] = Processor.process_deactivate
     self._processMap['rebalance'] = Processor.process_rebalance
+    self._processMap['uploadNewCredentials'] = Processor.process_uploadNewCredentials
     self._processMap['beginFileUpload'] = Processor.process_beginFileUpload
     self._processMap['uploadChunk'] = Processor.process_uploadChunk
     self._processMap['finishFileUpload'] = Processor.process_finishFileUpload
@@ -16,6 +17,7 @@ def __init__(self, handler):
     self._processMap['getNimbusConf'] = Processor.process_getNimbusConf
     self._processMap['getClusterInfo'] = Processor.process_getClusterInfo
     self._processMap['getTopologyInfo'] = Processor.process_getTopologyInfo
+    self._processMap['getTopologyInfoWithOpts'] = Processor.process_getTopologyInfoWithOpts
     self._processMap['getTopologyConf'] = Processor.process_getTopologyConf
     self._processMap['getTopology'] = Processor.process_getTopology
     self._processMap['getUserTopology'] = Processor.process_getUserTopology

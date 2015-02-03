@@ -1,0 +1,4 @@
+Map stormConf
+Object registrationArgument
+TopologyContext context
+IErrorReporter errorReporter

@@ -6,6 +6,7 @@
   processMap.put("activate",new activate());
   processMap.put("deactivate",new deactivate());
   processMap.put("rebalance",new rebalance());
+  processMap.put("uploadNewCredentials",new uploadNewCredentials());
   processMap.put("beginFileUpload",new beginFileUpload());
   processMap.put("uploadChunk",new uploadChunk());
   processMap.put("finishFileUpload",new finishFileUpload());
@@ -14,6 +15,7 @@
   processMap.put("getNimbusConf",new getNimbusConf());
   processMap.put("getClusterInfo",new getClusterInfo());
   processMap.put("getTopologyInfo",new getTopologyInfo());
+  processMap.put("getTopologyInfoWithOpts",new getTopologyInfoWithOpts());
   processMap.put("getTopologyConf",new getTopologyConf());
   processMap.put("getTopology",new getTopology());
   processMap.put("getUserTopology",new getUserTopology());

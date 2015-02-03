@@ -5,4 +5,7 @@
   if (other.is_set_ite()) {
     this.ite=new InvalidTopologyException(other.ite);
   }
+  if (other.is_set_aze()) {
+    this.aze=new AuthorizationException(other.aze);
+  }
 }

@@ -3,7 +3,10 @@ def process_fetchRequest(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = fetchRequest_result()
-    result.success = self._handler.fetchRequest(args.functionName)
+    try:
+        result.success = self._handler.fetchRequest(args.functionName)
+    except AuthorizationException as aze:
+        result.aze = aze
     oprot.writeMessageBegin('fetchRequest', TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()

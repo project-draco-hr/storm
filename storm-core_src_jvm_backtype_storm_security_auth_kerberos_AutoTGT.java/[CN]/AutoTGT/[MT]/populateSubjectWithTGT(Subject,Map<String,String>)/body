@@ -1,0 +1,28 @@
+{
+  KerberosTicket tgt=getTGT(credentials);
+  if (tgt != null) {
+    Set<Object> creds=subject.getPrivateCredentials();
+synchronized (creds) {
+      Iterator<Object> iterator=creds.iterator();
+      while (iterator.hasNext()) {
+        Object o=iterator.next();
+        if (o instanceof KerberosTicket) {
+          KerberosTicket t=(KerberosTicket)o;
+          iterator.remove();
+          try {
+            t.destroy();
+          }
+ catch (          DestroyFailedException e) {
+            LOG.warn("Failed to destory ticket ",e);
+          }
+        }
+      }
+      creds.add(tgt);
+    }
+    subject.getPrincipals().add(tgt.getClient());
+    kerbTicket.set(tgt);
+  }
+ else {
+    LOG.info("No TGT found in credentials");
+  }
+}

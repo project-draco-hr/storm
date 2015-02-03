@@ -1,0 +1,22 @@
+{
+  String delegateClassName=(String)stormConf.get(Config.STORM_META_SERIALIZATION_DELEGATE);
+  SerializationDelegate delegate;
+  try {
+    Class delegateClass=Class.forName(delegateClassName);
+    delegate=(SerializationDelegate)delegateClass.newInstance();
+  }
+ catch (  ClassNotFoundException e) {
+    LOG.error("Failed to construct serialization delegate, falling back to default",e);
+    delegate=new DefaultSerializationDelegate();
+  }
+catch (  InstantiationException e) {
+    LOG.error("Failed to construct serialization delegate, falling back to default",e);
+    delegate=new DefaultSerializationDelegate();
+  }
+catch (  IllegalAccessException e) {
+    LOG.error("Failed to construct serialization delegate, falling back to default",e);
+    delegate=new DefaultSerializationDelegate();
+  }
+  delegate.prepare(stormConf);
+  return delegate;
+}

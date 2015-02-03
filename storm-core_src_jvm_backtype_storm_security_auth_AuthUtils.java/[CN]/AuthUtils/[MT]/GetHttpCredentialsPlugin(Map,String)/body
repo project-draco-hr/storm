@@ -1,0 +1,12 @@
+{
+  IHttpCredentialsPlugin plugin=null;
+  try {
+    Class klass=Class.forName(klassName);
+    plugin=(IHttpCredentialsPlugin)klass.newInstance();
+    plugin.prepare(conf);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return plugin;
+}

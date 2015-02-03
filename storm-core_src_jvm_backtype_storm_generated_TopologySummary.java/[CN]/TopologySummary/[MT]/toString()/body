@@ -43,6 +43,28 @@
     sb.append(this.status);
   }
   first=false;
+  if (is_set_sched_status()) {
+    if (!first)     sb.append(", ");
+    sb.append("sched_status:");
+    if (this.sched_status == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.sched_status);
+    }
+    first=false;
+  }
+  if (is_set_owner()) {
+    if (!first)     sb.append(", ");
+    sb.append("owner:");
+    if (this.owner == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.owner);
+    }
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

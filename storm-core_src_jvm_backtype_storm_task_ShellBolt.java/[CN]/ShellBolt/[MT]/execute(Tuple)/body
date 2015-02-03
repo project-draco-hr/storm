@@ -5,12 +5,7 @@
   String genId=Long.toString(_rand.nextLong());
   _inputs.put(genId,input);
   try {
-    BoltMsg boltMsg=new BoltMsg();
-    boltMsg.setId(genId);
-    boltMsg.setComp(input.getSourceComponent());
-    boltMsg.setStream(input.getSourceStreamId());
-    boltMsg.setTask(input.getSourceTask());
-    boltMsg.setTuple(input.getValues());
+    BoltMsg boltMsg=createBoltMessage(input,genId);
     _pendingWrites.put(boltMsg);
   }
  catch (  InterruptedException e) {

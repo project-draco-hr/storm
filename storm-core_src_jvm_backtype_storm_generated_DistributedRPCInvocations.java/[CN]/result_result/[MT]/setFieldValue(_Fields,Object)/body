@@ -1,4 +1,12 @@
 {
 switch (field) {
-  }
+case AZE:
+    if (value == null) {
+      unset_aze();
+    }
+ else {
+      set_aze((AuthorizationException)value);
+    }
+  break;
+}
 }

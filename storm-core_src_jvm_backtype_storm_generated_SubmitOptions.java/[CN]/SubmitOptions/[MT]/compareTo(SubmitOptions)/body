@@ -14,5 +14,15 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_creds()).compareTo(typedOther.is_set_creds());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_creds()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.creds,typedOther.creds);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

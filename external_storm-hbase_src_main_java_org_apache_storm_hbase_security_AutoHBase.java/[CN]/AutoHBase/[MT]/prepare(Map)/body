@@ -1,0 +1,6 @@
+{
+  if (conf.containsKey(HBASE_KEYTAB_FILE_KEY) && conf.containsKey(HBASE_PRINCIPAL_KEY)) {
+    hbaseKeytab=(String)conf.get(HBASE_KEYTAB_FILE_KEY);
+    hbasePrincipal=(String)conf.get(HBASE_PRINCIPAL_KEY);
+  }
+}

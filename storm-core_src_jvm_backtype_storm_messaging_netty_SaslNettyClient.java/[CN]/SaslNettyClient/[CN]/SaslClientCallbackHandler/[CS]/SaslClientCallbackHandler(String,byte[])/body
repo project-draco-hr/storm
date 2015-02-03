@@ -1,0 +1,4 @@
+{
+  this.userName=SaslUtils.encodeIdentifier(topologyToken.getBytes());
+  this.userPassword=SaslUtils.encodePassword(token);
+}

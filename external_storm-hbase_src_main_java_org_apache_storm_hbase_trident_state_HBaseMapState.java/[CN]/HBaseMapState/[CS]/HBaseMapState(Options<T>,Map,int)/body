@@ -1,0 +1,31 @@
+{
+  this.options=options;
+  this.serializer=options.serializer;
+  this.partitionNum=partitionNum;
+  final Configuration hbConfig=HBaseConfiguration.create();
+  Map<String,Object> conf=(Map<String,Object>)map.get(options.configKey);
+  if (conf == null) {
+    LOG.info("HBase configuration not found using key '" + options.configKey + "'");
+    LOG.info("Using HBase config from first hbase-site.xml found on classpath.");
+  }
+ else {
+    if (conf.get("hbase.rootdir") == null) {
+      LOG.warn("No 'hbase.rootdir' value found in configuration! Using HBase defaults.");
+    }
+    for (    String key : conf.keySet()) {
+      hbConfig.set(key,String.valueOf(conf.get(key)));
+    }
+  }
+  try {
+    UserProvider provider=HBaseSecurityUtil.login(map,hbConfig);
+    this.table=provider.getCurrent().getUGI().doAs(new PrivilegedExceptionAction<HTable>(){
+      @Override public HTable run() throws IOException {
+        return new HTable(hbConfig,options.tableName);
+      }
+    }
+);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("HBase bolt preparation failed: " + e.getMessage(),e);
+  }
+}

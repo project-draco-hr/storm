@@ -1,4 +1,4 @@
-def __init__(self, id=None, name=None, num_tasks=None, num_executors=None, num_workers=None, uptime_secs=None, status=None):
+def __init__(self, id=None, name=None, num_tasks=None, num_executors=None, num_workers=None, uptime_secs=None, status=None, sched_status=None, owner=None):
     self.id = id
     self.name = name
     self.num_tasks = num_tasks
@@ -6,3 +6,5 @@ def __init__(self, id=None, name=None, num_tasks=None, num_executors=None, num_w
     self.num_workers = num_workers
     self.uptime_secs = uptime_secs
     self.status = status
+    self.sched_status = sched_status
+    self.owner = owner

@@ -6,5 +6,11 @@
     if (!(this_present_initial_status && that_present_initial_status))     return false;
     if (!this.initial_status.equals(that.initial_status))     return false;
   }
+  boolean this_present_creds=true && this.is_set_creds();
+  boolean that_present_creds=true && that.is_set_creds();
+  if (this_present_creds || that_present_creds) {
+    if (!(this_present_creds && that_present_creds))     return false;
+    if (!this.creds.equals(that.creds))     return false;
+  }
   return true;
 }

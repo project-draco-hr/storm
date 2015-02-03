@@ -1,5 +1,10 @@
 {
   getNimbusConf_result result=new getNimbusConf_result();
-  result.success=iface.getNimbusConf();
+  try {
+    result.success=iface.getNimbusConf();
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
   return result;
 }

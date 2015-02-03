@@ -5,10 +5,13 @@
   roundRobinQueueId=0;
   taskToQueueId=new HashMap<Integer,Integer>();
   message_queue=new LinkedBlockingQueue[queueCount];
+  pendingMessages=new AtomicInteger[queueCount];
   for (int i=0; i < queueCount; i++) {
     message_queue[i]=new LinkedBlockingQueue<ArrayList<TaskMessage>>();
+    pendingMessages[i]=new AtomicInteger(0);
   }
   int buffer_size=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_BUFFER_SIZE));
+  int backlog=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_SOCKET_BACKLOG),500);
   int maxWorkers=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_SERVER_WORKER_THREADS));
   ThreadFactory bossFactory=new NettyRenameThreadFactory(name() + "-boss");
   ThreadFactory workerFactory=new NettyRenameThreadFactory(name() + "-worker");
@@ -23,6 +26,7 @@
   bootstrap.setOption("child.tcpNoDelay",true);
   bootstrap.setOption("child.receiveBufferSize",buffer_size);
   bootstrap.setOption("child.keepAlive",true);
+  bootstrap.setOption("backlog",backlog);
   bootstrap.setPipelineFactory(new StormServerPipelineFactory(this));
   Channel channel=bootstrap.bind(new InetSocketAddress(port));
   allChannels.add(channel);

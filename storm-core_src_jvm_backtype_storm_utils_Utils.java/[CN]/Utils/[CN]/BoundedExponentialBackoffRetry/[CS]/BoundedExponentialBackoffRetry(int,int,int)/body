@@ -1,4 +1,0 @@
-{
-  super(baseSleepTimeMs,maxRetries);
-  this.maxRetryInterval=maxSleepTimeMs;
-}

@@ -1,0 +1,6 @@
+{
+  MessageRetryRecord oldRecord=this.records.get(offset);
+  MessageRetryRecord newRecord=oldRecord == null ? new MessageRetryRecord(offset) : oldRecord.createNextRetryRecord();
+  this.records.put(offset,newRecord);
+  this.waiting.add(newRecord);
+}

@@ -1,0 +1,15 @@
+def process_getTopologyInfoWithOpts(self, seqid, iprot, oprot):
+    args = getTopologyInfoWithOpts_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getTopologyInfoWithOpts_result()
+    try:
+        result.success = self._handler.getTopologyInfoWithOpts(args.id, args.options)
+    except NotAliveException as e:
+        result.e = e
+    except AuthorizationException as aze:
+        result.aze = aze
+    oprot.writeMessageBegin('getTopologyInfoWithOpts', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()
