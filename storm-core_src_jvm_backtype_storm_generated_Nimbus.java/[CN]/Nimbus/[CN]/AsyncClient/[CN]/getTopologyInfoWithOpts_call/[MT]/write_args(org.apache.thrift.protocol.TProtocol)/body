@@ -1,0 +1,8 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getTopologyInfoWithOpts",org.apache.thrift.protocol.TMessageType.CALL,0));
+  getTopologyInfoWithOpts_args args=new getTopologyInfoWithOpts_args();
+  args.set_id(id);
+  args.set_options(options);
+  args.write(prot);
+  prot.writeMessageEnd();
+}
