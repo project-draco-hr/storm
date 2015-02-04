@@ -24,5 +24,8 @@
   boolean present_owner=true && (is_set_owner());
   builder.append(present_owner);
   if (present_owner)   builder.append(owner);
+  boolean present_replication_count=true && (is_set_replication_count());
+  builder.append(present_replication_count);
+  if (present_replication_count)   builder.append(replication_count);
   return builder.toHashCode();
 }

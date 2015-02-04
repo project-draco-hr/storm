@@ -45,5 +45,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('owner', TType.STRING, 514)
         oprot.writeString(self.owner.encode('utf-8'))
         oprot.writeFieldEnd()
+    if (self.replication_count is not None):
+        oprot.writeFieldBegin('replication_count', TType.I32, 515)
+        oprot.writeI32(self.replication_count)
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

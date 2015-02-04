@@ -103,6 +103,15 @@ this.owner=iprot.readString();
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
 }
 break;
+case 515:
+if (field.type == org.apache.thrift.protocol.TType.I32) {
+this.replication_count=iprot.readI32();
+set_replication_count_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
 }

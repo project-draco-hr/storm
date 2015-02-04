@@ -62,6 +62,11 @@
       oprot.writeFieldEnd();
     }
   }
+  if (is_set_replication_count()) {
+    oprot.writeFieldBegin(REPLICATION_COUNT_FIELD_DESC);
+    oprot.writeI32(this.replication_count);
+    oprot.writeFieldEnd();
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

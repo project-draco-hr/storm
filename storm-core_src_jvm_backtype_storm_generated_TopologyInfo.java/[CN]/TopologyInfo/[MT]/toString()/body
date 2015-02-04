@@ -71,6 +71,12 @@
     }
     first=false;
   }
+  if (is_set_replication_count()) {
+    if (!first)     sb.append(", ");
+    sb.append("replication_count:");
+    sb.append(this.replication_count);
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

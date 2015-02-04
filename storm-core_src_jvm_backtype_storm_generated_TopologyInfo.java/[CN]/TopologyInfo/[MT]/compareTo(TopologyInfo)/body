@@ -84,5 +84,15 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_replication_count()).compareTo(typedOther.is_set_replication_count());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_replication_count()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.replication_count,typedOther.replication_count);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

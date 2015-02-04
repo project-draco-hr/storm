@@ -19,6 +19,8 @@ case SCHED_STATUS:
 return is_set_sched_status();
 case OWNER:
 return is_set_owner();
+case REPLICATION_COUNT:
+return is_set_replication_count();
 }
 throw new IllegalStateException();
 }
