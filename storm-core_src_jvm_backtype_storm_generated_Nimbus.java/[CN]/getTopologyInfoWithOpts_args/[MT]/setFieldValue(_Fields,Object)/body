@@ -1,0 +1,20 @@
+{
+switch (field) {
+case ID:
+    if (value == null) {
+      unset_id();
+    }
+ else {
+      set_id((String)value);
+    }
+  break;
+case OPTIONS:
+if (value == null) {
+  unset_options();
+}
+ else {
+  set_options((GetInfoOptions)value);
+}
+break;
+}
+}

@@ -1,0 +1,5 @@
+{
+  if (options != null) {
+    options.validate();
+  }
+}
