@@ -1,0 +1,16 @@
+{
+  Object obj=tuple.getValue(0);
+  long count=tuple.getLong(1);
+  int source=tuple.getSourceTask();
+  Map<Integer,Long> subCounts=counts.get(obj);
+  if (subCounts == null) {
+    subCounts=new HashMap<Integer,Long>();
+    counts.put(obj,subCounts);
+  }
+  subCounts.put(source,count);
+  long sum=0;
+  for (  Long val : subCounts.values()) {
+    sum+=val;
+  }
+  collector.emit(new Values(obj,sum));
+}
