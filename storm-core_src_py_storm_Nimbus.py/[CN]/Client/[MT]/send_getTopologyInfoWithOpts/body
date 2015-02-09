@@ -1,0 +1,8 @@
+def send_getTopologyInfoWithOpts(self, id, options):
+    self._oprot.writeMessageBegin('getTopologyInfoWithOpts', TMessageType.CALL, self._seqid)
+    args = getTopologyInfoWithOpts_args()
+    args.id = id
+    args.options = options
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

@@ -1,0 +1,10 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_id=true && (is_set_id());
+  builder.append(present_id);
+  if (present_id)   builder.append(id);
+  boolean present_options=true && (is_set_options());
+  builder.append(present_options);
+  if (present_options)   builder.append(options);
+  return builder.toHashCode();
+}
