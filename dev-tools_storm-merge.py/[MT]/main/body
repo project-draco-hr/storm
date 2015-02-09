@@ -1,0 +1,8 @@
+def main():
+    parser = OptionParser(usage='usage: %prog [options] [pull number]')
+    parser.add_option('-g', '--github-user', dest='gituser', type='string', help='github user, if not supplied no auth is used', metavar='USER')
+    (options, args) = parser.parse_args()
+    github = GitHub(options)
+    for pullNumber in args:
+        pull = github.pull('apache', 'storm', pullNumber)
+        print ((('git pull ' + pull.fromRepo()) + ' ') + pull.fromBranch())
