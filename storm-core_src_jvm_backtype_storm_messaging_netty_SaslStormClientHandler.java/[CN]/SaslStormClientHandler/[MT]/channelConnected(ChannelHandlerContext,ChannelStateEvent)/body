@@ -1,13 +1,14 @@
 {
   Channel channel=ctx.getChannel();
-  LOG.info("Connection established from " + channel.getLocalAddress() + " to "+ channel.getRemoteAddress());
+  client.channelConnected(channel);
   try {
     SaslNettyClient saslNettyClient=SaslNettyClientState.getSaslNettyClient.get(channel);
     if (saslNettyClient == null) {
       LOG.debug("Creating saslNettyClient now " + "for channel: " + channel);
-      saslNettyClient=new SaslNettyClient(topologyName,token);
+      saslNettyClient=new SaslNettyClient(name,token);
       SaslNettyClientState.getSaslNettyClient.set(channel,saslNettyClient);
     }
+    LOG.debug("Sending SASL_TOKEN_MESSAGE_REQUEST");
     channel.write(ControlMessage.SASL_TOKEN_MESSAGE_REQUEST);
   }
  catch (  Exception e) {

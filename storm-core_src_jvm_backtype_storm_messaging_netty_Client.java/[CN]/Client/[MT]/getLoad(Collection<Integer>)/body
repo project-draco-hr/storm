@@ -1,0 +1,14 @@
+{
+  Map<Integer,Double> loadCache=serverLoad;
+  Map<Integer,Load> ret=new HashMap<Integer,Load>();
+  if (loadCache != null) {
+    double clientLoad=Math.min(pendingMessages.get(),1024) / 1024.0;
+    for (    Integer task : tasks) {
+      Double found=loadCache.get(task);
+      if (found != null) {
+        ret.put(task,new Load(true,found,clientLoad));
+      }
+    }
+  }
+  return ret;
+}
