@@ -2,6 +2,10 @@
   Connection connection=null;
   try {
     connection=this.dataSource.getConnection();
+    boolean autoCommit=connection.getAutoCommit();
+    if (autoCommit) {
+      connection.setAutoCommit(false);
+    }
     StringBuilder sb=new StringBuilder();
     sb.append("Insert into ").append(tableName).append(" (");
     Collection<String> columnNames=Collections2.transform(columnLists.get(0),new Function<Column,String>(){
@@ -20,8 +24,21 @@
     preparedStatement.setQueryTimeout(queryTimeoutSecs);
     for (    List<Column> columnList : columnLists) {
       setPreparedStatementParams(preparedStatement,columnList);
+      preparedStatement.addBatch();
     }
-    return preparedStatement.executeUpdate();
+    int[] results=preparedStatement.executeBatch();
+    if (Arrays.asList(results).contains(Statement.EXECUTE_FAILED)) {
+      connection.rollback();
+      throw new RuntimeException("failed at least one sql statement in the batch, operation rolled back.");
+    }
+ else {
+      try {
+        connection.commit();
+      }
+ catch (      SQLException e) {
+        throw new RuntimeException("Failed to commit inserts in table " + tableName,e);
+      }
+    }
   }
  catch (  SQLException e) {
     throw new RuntimeException("Failed to insert in table " + tableName,e);

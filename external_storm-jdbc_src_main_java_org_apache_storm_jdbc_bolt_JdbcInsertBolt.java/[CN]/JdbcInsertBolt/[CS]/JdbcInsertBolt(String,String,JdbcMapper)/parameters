@@ -1,0 +1,3 @@
+String configKey
+String tableName
+JdbcMapper jdbcMapper

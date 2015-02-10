@@ -1,2 +1,2 @@
 String tableName
-Map map
+Map hikariConfigurationMap
