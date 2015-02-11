@@ -1,0 +1,4 @@
+{
+  int msgCount=iteratorSize(msgs);
+  LOG.error("dropping {} pending message(s) destined for {}",msgCount,dstAddressPrefixedName);
+}

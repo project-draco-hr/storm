@@ -1,4 +1,4 @@
-Map storm_conf
+Map stormConf
 ChannelFactory factory
 ScheduledExecutorService scheduler
 String host

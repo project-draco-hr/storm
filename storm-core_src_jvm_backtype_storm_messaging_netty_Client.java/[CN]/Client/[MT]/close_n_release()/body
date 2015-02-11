@@ -1,6 +1,0 @@
-{
-  if (channelRef.get() != null) {
-    channelRef.get().close();
-    LOG.debug("channel {} closed",remote_addr);
-  }
-}
