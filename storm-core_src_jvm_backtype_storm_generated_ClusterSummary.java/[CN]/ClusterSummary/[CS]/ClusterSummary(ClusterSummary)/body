@@ -1,6 +1,4 @@
 {
-  __isset_bit_vector.clear();
-  __isset_bit_vector.or(other.__isset_bit_vector);
   if (other.is_set_supervisors()) {
     List<SupervisorSummary> __this__supervisors=new ArrayList<SupervisorSummary>();
     for (    SupervisorSummary other_element : other.supervisors) {
@@ -8,12 +6,18 @@
     }
     this.supervisors=__this__supervisors;
   }
-  this.nimbus_uptime_secs=other.nimbus_uptime_secs;
   if (other.is_set_topologies()) {
     List<TopologySummary> __this__topologies=new ArrayList<TopologySummary>();
     for (    TopologySummary other_element : other.topologies) {
       __this__topologies.add(new TopologySummary(other_element));
     }
     this.topologies=__this__topologies;
+  }
+  if (other.is_set_nimbuses()) {
+    List<NimbusSummary> __this__nimbuses=new ArrayList<NimbusSummary>();
+    for (    NimbusSummary other_element : other.nimbuses) {
+      __this__nimbuses.add(new NimbusSummary(other_element));
+    }
+    this.nimbuses=__this__nimbuses;
   }
 }

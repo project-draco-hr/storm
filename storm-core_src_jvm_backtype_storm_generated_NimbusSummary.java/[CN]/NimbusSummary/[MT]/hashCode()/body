@@ -1,0 +1,19 @@
+{
+  HashCodeBuilder builder=new HashCodeBuilder();
+  boolean present_host=true && (is_set_host());
+  builder.append(present_host);
+  if (present_host)   builder.append(host);
+  boolean present_port=true;
+  builder.append(present_port);
+  if (present_port)   builder.append(port);
+  boolean present_uptimeSecs=true;
+  builder.append(present_uptimeSecs);
+  if (present_uptimeSecs)   builder.append(uptimeSecs);
+  boolean present_isLeader=true;
+  builder.append(present_isLeader);
+  if (present_isLeader)   builder.append(isLeader);
+  boolean present_version=true && (is_set_version());
+  builder.append(present_version);
+  if (present_version)   builder.append(version);
+  return builder.toHashCode();
+}

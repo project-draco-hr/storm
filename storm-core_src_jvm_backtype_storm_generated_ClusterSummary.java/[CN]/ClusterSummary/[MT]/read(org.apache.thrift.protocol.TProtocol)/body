@@ -25,25 +25,34 @@ case 1:
         org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
       }
     break;
-case 2:
-  if (field.type == org.apache.thrift.protocol.TType.I32) {
-    this.nimbus_uptime_secs=iprot.readI32();
-    set_nimbus_uptime_secs_isSet(true);
+case 3:
+  if (field.type == org.apache.thrift.protocol.TType.LIST) {
+{
+      org.apache.thrift.protocol.TList _list40=iprot.readListBegin();
+      this.topologies=new ArrayList<TopologySummary>(_list40.size);
+      for (int _i41=0; _i41 < _list40.size; ++_i41) {
+        TopologySummary _elem42;
+        _elem42=new TopologySummary();
+        _elem42.read(iprot);
+        this.topologies.add(_elem42);
+      }
+      iprot.readListEnd();
+    }
   }
  else {
     org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
   }
 break;
-case 3:
+case 4:
 if (field.type == org.apache.thrift.protocol.TType.LIST) {
 {
-  org.apache.thrift.protocol.TList _list40=iprot.readListBegin();
-  this.topologies=new ArrayList<TopologySummary>(_list40.size);
-  for (int _i41=0; _i41 < _list40.size; ++_i41) {
-    TopologySummary _elem42;
-    _elem42=new TopologySummary();
-    _elem42.read(iprot);
-    this.topologies.add(_elem42);
+  org.apache.thrift.protocol.TList _list43=iprot.readListBegin();
+  this.nimbuses=new ArrayList<NimbusSummary>(_list43.size);
+  for (int _i44=0; _i44 < _list43.size; ++_i44) {
+    NimbusSummary _elem45;
+    _elem45=new NimbusSummary();
+    _elem45.read(iprot);
+    this.nimbuses.add(_elem45);
   }
   iprot.readListEnd();
 }

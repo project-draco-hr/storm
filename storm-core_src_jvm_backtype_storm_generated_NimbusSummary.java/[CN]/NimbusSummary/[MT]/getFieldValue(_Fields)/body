@@ -1,0 +1,15 @@
+{
+switch (field) {
+case HOST:
+    return get_host();
+case PORT:
+  return Integer.valueOf(get_port());
+case UPTIME_SECS:
+return Integer.valueOf(get_uptimeSecs());
+case IS_LEADER:
+return Boolean.valueOf(is_isLeader());
+case VERSION:
+return get_version();
+}
+throw new IllegalStateException();
+}

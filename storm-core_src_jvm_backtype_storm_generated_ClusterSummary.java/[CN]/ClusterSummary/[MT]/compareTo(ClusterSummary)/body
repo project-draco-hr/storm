@@ -14,22 +14,22 @@
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_nimbus_uptime_secs()).compareTo(typedOther.is_set_nimbus_uptime_secs());
-  if (lastComparison != 0) {
-    return lastComparison;
-  }
-  if (is_set_nimbus_uptime_secs()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.nimbus_uptime_secs,typedOther.nimbus_uptime_secs);
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-  }
   lastComparison=Boolean.valueOf(is_set_topologies()).compareTo(typedOther.is_set_topologies());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_topologies()) {
     lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topologies,typedOther.topologies);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_nimbuses()).compareTo(typedOther.is_set_nimbuses());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_nimbuses()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.nimbuses,typedOther.nimbuses);
     if (lastComparison != 0) {
       return lastComparison;
     }

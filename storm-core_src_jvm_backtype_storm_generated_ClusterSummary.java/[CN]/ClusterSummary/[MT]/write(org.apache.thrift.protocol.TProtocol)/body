@@ -5,22 +5,30 @@
     oprot.writeFieldBegin(SUPERVISORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,this.supervisors.size()));
-      for (      SupervisorSummary _iter43 : this.supervisors) {
-        _iter43.write(oprot);
+      for (      SupervisorSummary _iter46 : this.supervisors) {
+        _iter46.write(oprot);
       }
       oprot.writeListEnd();
     }
     oprot.writeFieldEnd();
   }
-  oprot.writeFieldBegin(NIMBUS_UPTIME_SECS_FIELD_DESC);
-  oprot.writeI32(this.nimbus_uptime_secs);
-  oprot.writeFieldEnd();
   if (this.topologies != null) {
     oprot.writeFieldBegin(TOPOLOGIES_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,this.topologies.size()));
-      for (      TopologySummary _iter44 : this.topologies) {
-        _iter44.write(oprot);
+      for (      TopologySummary _iter47 : this.topologies) {
+        _iter47.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (this.nimbuses != null) {
+    oprot.writeFieldBegin(NIMBUSES_FIELD_DESC);
+{
+      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,this.nimbuses.size()));
+      for (      NimbusSummary _iter48 : this.nimbuses) {
+        _iter48.write(oprot);
       }
       oprot.writeListEnd();
     }

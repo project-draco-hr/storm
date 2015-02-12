@@ -1,0 +1,17 @@
+{
+  if (!is_set_host()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'host' is unset! Struct:" + toString());
+  }
+  if (!is_set_port()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'port' is unset! Struct:" + toString());
+  }
+  if (!is_set_uptimeSecs()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'uptimeSecs' is unset! Struct:" + toString());
+  }
+  if (!is_set_isLeader()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'isLeader' is unset! Struct:" + toString());
+  }
+  if (!is_set_version()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'version' is unset! Struct:" + toString());
+  }
+}

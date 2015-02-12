@@ -1,2 +1,2 @@
 def __hash__(self):
-    return (((0 + hash(self.supervisors)) + hash(self.nimbus_uptime_secs)) + hash(self.topologies))
+    return (((0 + hash(self.supervisors)) + hash(self.topologies)) + hash(self.nimbuses))

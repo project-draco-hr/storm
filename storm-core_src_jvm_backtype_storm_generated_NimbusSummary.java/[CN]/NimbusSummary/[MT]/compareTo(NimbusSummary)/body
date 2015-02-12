@@ -1,0 +1,58 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  NimbusSummary typedOther=(NimbusSummary)other;
+  lastComparison=Boolean.valueOf(is_set_host()).compareTo(typedOther.is_set_host());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_host()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.host,typedOther.host);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_port()).compareTo(typedOther.is_set_port());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_port()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.port,typedOther.port);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_uptimeSecs()).compareTo(typedOther.is_set_uptimeSecs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_uptimeSecs()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uptimeSecs,typedOther.uptimeSecs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_isLeader()).compareTo(typedOther.is_set_isLeader());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_isLeader()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.isLeader,typedOther.isLeader);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_version()).compareTo(typedOther.is_set_version());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_version()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.version,typedOther.version);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

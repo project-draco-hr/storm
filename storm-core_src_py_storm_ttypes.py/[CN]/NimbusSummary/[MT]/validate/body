@@ -1,0 +1,12 @@
+def validate(self):
+    if (self.host is None):
+        raise TProtocol.TProtocolException(message='Required field host is unset!')
+    if (self.port is None):
+        raise TProtocol.TProtocolException(message='Required field port is unset!')
+    if (self.uptimeSecs is None):
+        raise TProtocol.TProtocolException(message='Required field uptimeSecs is unset!')
+    if (self.isLeader is None):
+        raise TProtocol.TProtocolException(message='Required field isLeader is unset!')
+    if (self.version is None):
+        raise TProtocol.TProtocolException(message='Required field version is unset!')
+    return

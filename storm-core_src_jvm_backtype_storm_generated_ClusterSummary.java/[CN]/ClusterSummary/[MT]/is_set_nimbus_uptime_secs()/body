@@ -1,3 +1,0 @@
-{
-  return __isset_bit_vector.get(__NIMBUS_UPTIME_SECS_ISSET_ID);
-}

@@ -1,0 +1,35 @@
+{
+  StringBuilder sb=new StringBuilder("NimbusSummary(");
+  boolean first=true;
+  sb.append("host:");
+  if (this.host == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.host);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("port:");
+  sb.append(this.port);
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("uptimeSecs:");
+  sb.append(this.uptimeSecs);
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("isLeader:");
+  sb.append(this.isLeader);
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("version:");
+  if (this.version == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.version);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

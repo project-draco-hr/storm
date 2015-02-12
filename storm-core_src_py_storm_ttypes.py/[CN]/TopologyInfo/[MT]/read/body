@@ -25,11 +25,11 @@ def read(self, iprot):
         elif (fid == 4):
             if (ftype == TType.LIST):
                 self.executors = []
-                (_etype263, _size260) = iprot.readListBegin()
-                for _i264 in xrange(_size260):
-                    _elem265 = ExecutorSummary()
-                    _elem265.read(iprot)
-                    self.executors.append(_elem265)
+                (_etype270, _size267) = iprot.readListBegin()
+                for _i271 in xrange(_size267):
+                    _elem272 = ExecutorSummary()
+                    _elem272.read(iprot)
+                    self.executors.append(_elem272)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
@@ -41,17 +41,17 @@ def read(self, iprot):
         elif (fid == 6):
             if (ftype == TType.MAP):
                 self.errors = {}
-                (_ktype267, _vtype268, _size266) = iprot.readMapBegin()
-                for _i270 in xrange(_size266):
-                    _key271 = iprot.readString().decode('utf-8')
-                    _val272 = []
-                    (_etype276, _size273) = iprot.readListBegin()
-                    for _i277 in xrange(_size273):
-                        _elem278 = ErrorInfo()
-                        _elem278.read(iprot)
-                        _val272.append(_elem278)
+                (_ktype274, _vtype275, _size273) = iprot.readMapBegin()
+                for _i277 in xrange(_size273):
+                    _key278 = iprot.readString().decode('utf-8')
+                    _val279 = []
+                    (_etype283, _size280) = iprot.readListBegin()
+                    for _i284 in xrange(_size280):
+                        _elem285 = ErrorInfo()
+                        _elem285.read(iprot)
+                        _val279.append(_elem285)
                     iprot.readListEnd()
-                    self.errors[_key271] = _val272
+                    self.errors[_key278] = _val279
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

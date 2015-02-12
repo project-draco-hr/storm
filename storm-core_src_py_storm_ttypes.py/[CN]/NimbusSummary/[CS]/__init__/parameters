@@ -1,0 +1,6 @@
+self
+host
+port
+uptimeSecs
+isLeader
+version
