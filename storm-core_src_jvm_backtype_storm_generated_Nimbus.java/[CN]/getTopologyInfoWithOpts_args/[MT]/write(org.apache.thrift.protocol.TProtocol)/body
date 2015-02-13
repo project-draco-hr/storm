@@ -1,0 +1,16 @@
+{
+  validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (this.id != null) {
+    oprot.writeFieldBegin(ID_FIELD_DESC);
+    oprot.writeString(this.id);
+    oprot.writeFieldEnd();
+  }
+  if (this.options != null) {
+    oprot.writeFieldBegin(OPTIONS_FIELD_DESC);
+    this.options.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}
