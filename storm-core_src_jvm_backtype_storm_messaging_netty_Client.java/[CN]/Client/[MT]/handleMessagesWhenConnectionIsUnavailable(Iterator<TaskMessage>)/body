@@ -1,4 +1,4 @@
 {
   LOG.error("connection to {} is unavailable",dstAddressPrefixedName);
-  dropPendingMessages(msgs);
+  dropMessages(msgs);
 }
