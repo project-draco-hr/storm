@@ -1,7 +1,7 @@
 {
   if (closing) {
     int numMessages=iteratorSize(msgs);
-    LOG.warn("discarding {} messages because the Netty client to {} is being closed",numMessages,dstAddressPrefixedName);
+    LOG.error("discarding {} messages because the Netty client to {} is being closed",numMessages,dstAddressPrefixedName);
     return;
   }
   if (!hasMessages(msgs)) {

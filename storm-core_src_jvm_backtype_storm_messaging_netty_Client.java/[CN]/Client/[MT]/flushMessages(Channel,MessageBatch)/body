@@ -14,7 +14,7 @@
         messagesSent.getAndAdd(batch.size());
       }
  else {
-        LOG.warn("failed to send {} messages to {}: {}",numMessages,dstAddressPrefixedName,future.getCause());
+        LOG.error("failed to send {} messages to {}: {}",numMessages,dstAddressPrefixedName,future.getCause());
         closeChannelAndReconnect(future.getChannel());
         messagesLost.getAndAdd(numMessages);
       }
