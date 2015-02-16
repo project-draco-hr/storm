@@ -1,4 +1,5 @@
 {
   int msgCount=iteratorSize(msgs);
+  messagesLost.getAndAdd(msgCount);
   LOG.error("dropping {} pending message(s) destined for {}",msgCount,dstAddressPrefixedName);
 }
