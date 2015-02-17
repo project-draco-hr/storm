@@ -3,6 +3,5 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  getNimbusConf_args typedOther=(getNimbusConf_args)other;
   return 0;
 }

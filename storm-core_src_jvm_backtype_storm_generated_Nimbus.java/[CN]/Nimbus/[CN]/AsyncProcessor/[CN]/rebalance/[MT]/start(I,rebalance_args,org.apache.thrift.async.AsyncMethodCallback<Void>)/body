@@ -1,0 +1,3 @@
+{
+  iface.rebalance(args.name,args.options,resultHandler);
+}

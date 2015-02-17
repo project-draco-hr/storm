@@ -1,0 +1,3 @@
+{
+  iface.downloadChunk(args.id,resultHandler);
+}

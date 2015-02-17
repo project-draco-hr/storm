@@ -1,0 +1,5 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.componentId);
+  oprot.writeString(struct.streamId);
+}

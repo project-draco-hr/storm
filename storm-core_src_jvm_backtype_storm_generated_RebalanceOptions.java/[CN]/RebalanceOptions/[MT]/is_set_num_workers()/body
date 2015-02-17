@@ -1,3 +1,3 @@
 {
-  return __isset_bit_vector.get(__NUM_WORKERS_ISSET_ID);
+  return EncodingUtils.testBit(__isset_bitfield,__NUM_WORKERS_ISSET_ID);
 }

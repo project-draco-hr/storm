@@ -1,2 +1,6 @@
 def __hash__(self):
-    return (((0 + hash(self.serialized_java)) + hash(self.shell)) + hash(self.java_object))
+    value = 17
+    value = ((value * 31) ^ hash(self.serialized_java))
+    value = ((value * 31) ^ hash(self.shell))
+    value = ((value * 31) ^ hash(self.java_object))
+    return value
