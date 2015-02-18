@@ -1,0 +1,5 @@
+def logviewer():
+    'Syntax: [storm logviewer]\n\n    Launches the log viewer daemon. It provides a web interface for viewing\n    storm log files. This command should be run under supervision with a\n    tool like daemontools or monit.\n\n    See Setting up a Storm cluster for more information.\n    (http://storm.incubator.apache.org/documentation/Setting-up-a-Storm-cluster)\n    '
+    cppaths = [CLUSTER_CONF_DIR]
+    jvmopts = (parse_args(confvalue('logviewer.childopts', cppaths)) + ['-Dlogfile.name=logviewer.log', ('-Dlogback.configurationFile=' + os.path.join(get_logback_conf_dir(), 'cluster.xml'))])
+    exec_storm_class('backtype.storm.daemon.logviewer', jvmtype='-server', jvmopts=jvmopts, extrajars=[STORM_DIR, CLUSTER_CONF_DIR])
