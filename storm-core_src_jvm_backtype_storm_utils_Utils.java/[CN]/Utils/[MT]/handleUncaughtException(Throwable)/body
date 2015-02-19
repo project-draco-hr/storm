@@ -1,0 +1,10 @@
+{
+  if (t != null && t instanceof OutOfMemoryError) {
+    try {
+      System.err.println("Halting due to Out Of Memory Error..." + Thread.currentThread().getName());
+    }
+ catch (    Throwable err) {
+    }
+    Runtime.getRuntime().halt(-1);
+  }
+}
