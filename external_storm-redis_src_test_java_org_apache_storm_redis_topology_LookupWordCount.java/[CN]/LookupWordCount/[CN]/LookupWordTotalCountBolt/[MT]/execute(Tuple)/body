@@ -1,0 +1,24 @@
+{
+  JedisCommands jedisCommands=null;
+  try {
+    jedisCommands=getInstance();
+    String wordName=input.getStringByField("word");
+    String countStr=jedisCommands.get(wordName);
+    if (countStr != null) {
+      int count=Integer.parseInt(countStr);
+      this.collector.emit(new Values(wordName,count));
+      if (RANDOM.nextInt(1000) > 995) {
+        LOG.info("Lookup result - word : " + wordName + " / count : "+ count);
+      }
+    }
+ else {
+      LOG.warn("Word not found in Redis - word : " + wordName);
+    }
+  }
+  finally {
+    if (jedisCommands != null) {
+      returnInstance(jedisCommands);
+    }
+    this.collector.ack(input);
+  }
+}

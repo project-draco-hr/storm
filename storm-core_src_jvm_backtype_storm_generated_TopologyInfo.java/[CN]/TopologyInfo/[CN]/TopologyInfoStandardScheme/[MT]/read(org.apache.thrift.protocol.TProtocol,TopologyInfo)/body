@@ -1,0 +1,120 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 1:
+      if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+        struct.id=iprot.readString();
+        struct.set_id_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 2:
+  if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+    struct.name=iprot.readString();
+    struct.set_name_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+case 3:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.uptime_secs=iprot.readI32();
+struct.set_uptime_secs_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 4:
+if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+{
+org.apache.thrift.protocol.TList _list290=iprot.readListBegin();
+struct.executors=new ArrayList<ExecutorSummary>(_list290.size);
+ExecutorSummary _elem291;
+for (int _i292=0; _i292 < _list290.size; ++_i292) {
+_elem291=new ExecutorSummary();
+_elem291.read(iprot);
+struct.executors.add(_elem291);
+}
+iprot.readListEnd();
+}
+struct.set_executors_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 5:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+struct.status=iprot.readString();
+struct.set_status_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 6:
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map293=iprot.readMapBegin();
+struct.errors=new HashMap<String,List<ErrorInfo>>(2 * _map293.size);
+String _key294;
+List<ErrorInfo> _val295;
+for (int _i296=0; _i296 < _map293.size; ++_i296) {
+_key294=iprot.readString();
+{
+org.apache.thrift.protocol.TList _list297=iprot.readListBegin();
+_val295=new ArrayList<ErrorInfo>(_list297.size);
+ErrorInfo _elem298;
+for (int _i299=0; _i299 < _list297.size; ++_i299) {
+_elem298=new ErrorInfo();
+_elem298.read(iprot);
+_val295.add(_elem298);
+}
+iprot.readListEnd();
+}
+struct.errors.put(_key294,_val295);
+}
+iprot.readMapEnd();
+}
+struct.set_errors_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 513:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+struct.sched_status=iprot.readString();
+struct.set_sched_status_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 514:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+struct.owner=iprot.readString();
+struct.set_owner_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

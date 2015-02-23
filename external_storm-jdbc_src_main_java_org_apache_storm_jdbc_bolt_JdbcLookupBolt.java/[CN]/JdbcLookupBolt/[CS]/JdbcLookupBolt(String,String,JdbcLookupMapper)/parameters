@@ -1,0 +1,3 @@
+String configKey
+String selectQuery
+JdbcLookupMapper jdbcLookupMapper

@@ -1,5 +1,5 @@
 {
   ComponentObject x=new ComponentObject();
-  x.set_serialized_java(ByteBuffer.wrap(value));
+  x.set_serialized_java(ByteBuffer.wrap(Arrays.copyOf(value,value.length)));
   return x;
 }

@@ -1,0 +1,4 @@
+{
+  this.columnName=columnName;
+  this.sqlType=sqlType;
+}

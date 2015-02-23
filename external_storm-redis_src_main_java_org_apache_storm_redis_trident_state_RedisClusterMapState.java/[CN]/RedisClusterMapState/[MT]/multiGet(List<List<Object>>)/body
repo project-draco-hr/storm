@@ -1,0 +1,19 @@
+{
+  if (keys.size() == 0) {
+    return Collections.emptyList();
+  }
+  if (Strings.isNullOrEmpty(this.options.hkey)) {
+    String[] stringKeys=buildKeys(keys);
+    List<String> values=Lists.newArrayList();
+    for (    String stringKey : stringKeys) {
+      String value=jedisCluster.get(stringKey);
+      values.add(value);
+    }
+    return deserializeValues(keys,values);
+  }
+ else {
+    Map<String,String> keyValue=jedisCluster.hgetAll(this.options.hkey);
+    List<String> values=buildValuesFromMap(keys,keyValue);
+    return deserializeValues(keys,values);
+  }
+}

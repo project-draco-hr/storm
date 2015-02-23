@@ -1,0 +1,8 @@
+{
+  if (channel != null) {
+    channel.close();
+    if (channelRef.compareAndSet(channel,null)) {
+      connect(NO_DELAY_MS);
+    }
+  }
+}

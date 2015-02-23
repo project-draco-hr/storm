@@ -1,0 +1,3 @@
+{
+  iface.deactivate(args.name,resultHandler);
+}

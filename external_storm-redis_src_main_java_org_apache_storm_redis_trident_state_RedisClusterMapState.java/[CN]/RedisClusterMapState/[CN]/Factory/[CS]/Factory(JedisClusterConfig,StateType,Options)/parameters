@@ -1,0 +1,3 @@
+JedisClusterConfig jedisClusterConfig
+StateType type
+Options options

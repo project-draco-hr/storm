@@ -1,0 +1,4 @@
+{
+  JedisPool jedisPool=new JedisPool(DEFAULT_POOL_CONFIG,config.getHost(),config.getPort(),config.getTimeout(),config.getPassword(),config.getDatabase());
+  return new JedisContainer(jedisPool);
+}

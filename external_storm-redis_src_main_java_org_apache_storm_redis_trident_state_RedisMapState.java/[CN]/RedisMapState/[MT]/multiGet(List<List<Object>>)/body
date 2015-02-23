@@ -1,0 +1,33 @@
+{
+  if (keys.size() == 0) {
+    return Collections.emptyList();
+  }
+  if (Strings.isNullOrEmpty(this.options.hkey)) {
+    String[] stringKeys=buildKeys(keys);
+    Jedis jedis=null;
+    try {
+      jedis=jedisPool.getResource();
+      List<String> values=jedis.mget(stringKeys);
+      return deserializeValues(keys,values);
+    }
+  finally {
+      if (jedis != null) {
+        jedisPool.returnResource(jedis);
+      }
+    }
+  }
+ else {
+    Jedis jedis=null;
+    try {
+      jedis=jedisPool.getResource();
+      Map<String,String> keyValue=jedis.hgetAll(this.options.hkey);
+      List<String> values=buildValuesFromMap(keys,keyValue);
+      return deserializeValues(keys,values);
+    }
+  finally {
+      if (jedis != null) {
+        jedisPool.returnResource(jedis);
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{
+  jdbcState.updateState(tuples,collector);
+}

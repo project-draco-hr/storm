@@ -1,0 +1,10 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+{
+    oprot.writeI32(struct.output_fields.size());
+    for (    String _iter20 : struct.output_fields) {
+      oprot.writeString(_iter20);
+    }
+  }
+  oprot.writeBool(struct.direct);
+}
