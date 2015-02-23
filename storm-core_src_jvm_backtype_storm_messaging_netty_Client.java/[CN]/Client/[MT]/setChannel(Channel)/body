@@ -1,0 +1,3 @@
+{
+  channelRef.set(channel);
+}

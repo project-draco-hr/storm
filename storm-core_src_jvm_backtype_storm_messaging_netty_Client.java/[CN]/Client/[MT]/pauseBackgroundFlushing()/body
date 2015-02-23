@@ -1,0 +1,3 @@
+{
+  backgroundFlushingEnabled.set(false);
+}
