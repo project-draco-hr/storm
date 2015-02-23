@@ -1,0 +1,13 @@
+{
+  try {
+    for (    Field field : Types.class.getFields()) {
+      if (sqlType == field.get(null)) {
+        return field.getName();
+      }
+    }
+  }
+ catch (  IllegalAccessException e) {
+    throw new RuntimeException("Could not get sqlTypeName ",e);
+  }
+  throw new RuntimeException("Unknown sqlType " + sqlType);
+}
