@@ -1,0 +1,26 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(3);
+  if (incoming.get(0)) {
+    struct.wait_secs=iprot.readI32();
+    struct.set_wait_secs_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.num_workers=iprot.readI32();
+    struct.set_num_workers_isSet(true);
+  }
+  if (incoming.get(2)) {
+{
+      org.apache.thrift.protocol.TMap _map322=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
+      struct.num_executors=new HashMap<String,Integer>(2 * _map322.size);
+      String _key323;
+      int _val324;
+      for (int _i325=0; _i325 < _map322.size; ++_i325) {
+        _key323=iprot.readString();
+        _val324=iprot.readI32();
+        struct.num_executors.put(_key323,_val324);
+      }
+    }
+    struct.set_num_executors_isSet(true);
+  }
+}

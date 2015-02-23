@@ -3,13 +3,12 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  killTopology_args typedOther=(killTopology_args)other;
-  lastComparison=Boolean.valueOf(is_set_name()).compareTo(typedOther.is_set_name());
+  lastComparison=Boolean.valueOf(is_set_name()).compareTo(other.is_set_name());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_name()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.name,typedOther.name);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.name,other.name);
     if (lastComparison != 0) {
       return lastComparison;
     }

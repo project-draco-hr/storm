@@ -1,0 +1,16 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.full_class_name=iprot.readString();
+  struct.set_full_class_name_isSet(true);
+{
+    org.apache.thrift.protocol.TList _list5=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.args_list=new ArrayList<JavaObjectArg>(_list5.size);
+    JavaObjectArg _elem6;
+    for (int _i7=0; _i7 < _list5.size; ++_i7) {
+      _elem6=new JavaObjectArg();
+      _elem6.read(iprot);
+      struct.args_list.add(_elem6);
+    }
+  }
+  struct.set_args_list_isSet(true);
+}

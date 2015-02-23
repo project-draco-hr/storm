@@ -1,2 +1,5 @@
 def __hash__(self):
-    return ((0 + hash(self.state_spout_object)) + hash(self.common))
+    value = 17
+    value = ((value * 31) ^ hash(self.state_spout_object))
+    value = ((value * 31) ^ hash(self.common))
+    return value

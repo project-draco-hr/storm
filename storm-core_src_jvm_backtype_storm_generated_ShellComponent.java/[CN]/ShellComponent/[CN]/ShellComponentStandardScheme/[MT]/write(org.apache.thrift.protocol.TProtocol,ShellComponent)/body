@@ -1,0 +1,16 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.execution_command != null) {
+    oprot.writeFieldBegin(EXECUTION_COMMAND_FIELD_DESC);
+    oprot.writeString(struct.execution_command);
+    oprot.writeFieldEnd();
+  }
+  if (struct.script != null) {
+    oprot.writeFieldBegin(SCRIPT_FIELD_DESC);
+    oprot.writeString(struct.script);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

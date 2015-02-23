@@ -1,0 +1,3 @@
+String name
+KillOptions options
+org.apache.thrift.async.AsyncMethodCallback resultHandler

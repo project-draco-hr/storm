@@ -1,0 +1,5 @@
+{
+  Options opts=new Options();
+  opts.hkey=hkey;
+  return transactional(jedisPoolConfig,opts);
+}

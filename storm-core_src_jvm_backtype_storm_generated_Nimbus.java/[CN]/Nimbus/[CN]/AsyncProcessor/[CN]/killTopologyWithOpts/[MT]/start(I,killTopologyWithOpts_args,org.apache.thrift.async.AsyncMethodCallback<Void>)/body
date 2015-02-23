@@ -1,0 +1,3 @@
+{
+  iface.killTopologyWithOpts(args.name,args.options,resultHandler);
+}

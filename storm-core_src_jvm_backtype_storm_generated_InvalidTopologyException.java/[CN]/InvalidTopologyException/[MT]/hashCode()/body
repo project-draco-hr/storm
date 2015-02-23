@@ -1,7 +1,7 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_msg=true && (is_set_msg());
-  builder.append(present_msg);
-  if (present_msg)   builder.append(msg);
-  return builder.toHashCode();
+  list.add(present_msg);
+  if (present_msg)   list.add(msg);
+  return list.hashCode();
 }

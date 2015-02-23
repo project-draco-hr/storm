@@ -1,0 +1,17 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_success()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_aze()) {
+    optionals.set(1);
+  }
+  oprot.writeBitSet(optionals,2);
+  if (struct.is_set_success()) {
+    oprot.writeBinary(struct.success);
+  }
+  if (struct.is_set_aze()) {
+    struct.aze.write(oprot);
+  }
+}

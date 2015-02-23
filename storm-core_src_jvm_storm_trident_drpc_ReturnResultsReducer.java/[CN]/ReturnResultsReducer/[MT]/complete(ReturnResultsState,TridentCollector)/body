@@ -30,11 +30,11 @@
     try {
       client.result(id,result);
     }
- catch (    TException e) {
-      collector.reportError(e);
-    }
-catch (    AuthorizationException aze) {
+ catch (    AuthorizationException aze) {
       collector.reportError(aze);
+    }
+catch (    TException e) {
+      collector.reportError(e);
     }
   }
 }

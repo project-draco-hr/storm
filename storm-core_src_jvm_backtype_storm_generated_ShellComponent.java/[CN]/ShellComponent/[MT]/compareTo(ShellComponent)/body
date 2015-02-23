@@ -3,23 +3,22 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  ShellComponent typedOther=(ShellComponent)other;
-  lastComparison=Boolean.valueOf(is_set_execution_command()).compareTo(typedOther.is_set_execution_command());
+  lastComparison=Boolean.valueOf(is_set_execution_command()).compareTo(other.is_set_execution_command());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_execution_command()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.execution_command,typedOther.execution_command);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.execution_command,other.execution_command);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_script()).compareTo(typedOther.is_set_script());
+  lastComparison=Boolean.valueOf(is_set_script()).compareTo(other.is_set_script());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_script()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.script,typedOther.script);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.script,other.script);
     if (lastComparison != 0) {
       return lastComparison;
     }

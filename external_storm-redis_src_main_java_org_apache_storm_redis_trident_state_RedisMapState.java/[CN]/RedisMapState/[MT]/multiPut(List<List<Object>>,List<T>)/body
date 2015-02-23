@@ -1,0 +1,32 @@
+{
+  if (keys.size() == 0) {
+    return;
+  }
+  if (Strings.isNullOrEmpty(this.options.hkey)) {
+    Jedis jedis=null;
+    try {
+      jedis=jedisPool.getResource();
+      String[] keyValue=buildKeyValuesList(keys,vals);
+      jedis.mset(keyValue);
+    }
+  finally {
+      if (jedis != null) {
+        jedisPool.returnResource(jedis);
+      }
+    }
+  }
+ else {
+    Jedis jedis=jedisPool.getResource();
+    try {
+      Map<String,String> keyValues=new HashMap<String,String>();
+      for (int i=0; i < keys.size(); i++) {
+        String val=new String(serializer.serialize(vals.get(i)));
+        keyValues.put(keyFactory.build(keys.get(i)),val);
+      }
+      jedis.hmset(this.options.hkey,keyValues);
+    }
+  finally {
+      jedisPool.returnResource(jedis);
+    }
+  }
+}

@@ -3,23 +3,22 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  SubmitOptions typedOther=(SubmitOptions)other;
-  lastComparison=Boolean.valueOf(is_set_initial_status()).compareTo(typedOther.is_set_initial_status());
+  lastComparison=Boolean.valueOf(is_set_initial_status()).compareTo(other.is_set_initial_status());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_initial_status()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.initial_status,typedOther.initial_status);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.initial_status,other.initial_status);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_creds()).compareTo(typedOther.is_set_creds());
+  lastComparison=Boolean.valueOf(is_set_creds()).compareTo(other.is_set_creds());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_creds()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.creds,typedOther.creds);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.creds,other.creds);
     if (lastComparison != 0) {
       return lastComparison;
     }

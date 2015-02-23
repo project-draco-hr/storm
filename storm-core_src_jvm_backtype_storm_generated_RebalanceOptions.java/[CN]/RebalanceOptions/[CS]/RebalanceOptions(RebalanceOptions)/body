@@ -1,17 +1,9 @@
 {
-  __isset_bit_vector.clear();
-  __isset_bit_vector.or(other.__isset_bit_vector);
+  __isset_bitfield=other.__isset_bitfield;
   this.wait_secs=other.wait_secs;
   this.num_workers=other.num_workers;
   if (other.is_set_num_executors()) {
-    Map<String,Integer> __this__num_executors=new HashMap<String,Integer>();
-    for (    Map.Entry<String,Integer> other_element : other.num_executors.entrySet()) {
-      String other_element_key=other_element.getKey();
-      Integer other_element_value=other_element.getValue();
-      String __this__num_executors_copy_key=other_element_key;
-      Integer __this__num_executors_copy_value=other_element_value;
-      __this__num_executors.put(__this__num_executors_copy_key,__this__num_executors_copy_value);
-    }
+    Map<String,Integer> __this__num_executors=new HashMap<String,Integer>(other.num_executors);
     this.num_executors=__this__num_executors;
   }
 }

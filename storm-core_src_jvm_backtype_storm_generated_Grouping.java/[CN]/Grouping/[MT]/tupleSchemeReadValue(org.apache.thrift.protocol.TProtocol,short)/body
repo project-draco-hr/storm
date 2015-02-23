@@ -1,0 +1,59 @@
+{
+  _Fields setField=_Fields.findByThriftId(fieldID);
+  if (setField != null) {
+switch (setField) {
+case FIELDS:
+      List<String> fields;
+{
+      org.apache.thrift.protocol.TList _list12=iprot.readListBegin();
+      fields=new ArrayList<String>(_list12.size);
+      String _elem13;
+      for (int _i14=0; _i14 < _list12.size; ++_i14) {
+        _elem13=iprot.readString();
+        fields.add(_elem13);
+      }
+      iprot.readListEnd();
+    }
+  return fields;
+case SHUFFLE:
+NullStruct shuffle;
+shuffle=new NullStruct();
+shuffle.read(iprot);
+return shuffle;
+case ALL:
+NullStruct all;
+all=new NullStruct();
+all.read(iprot);
+return all;
+case NONE:
+NullStruct none;
+none=new NullStruct();
+none.read(iprot);
+return none;
+case DIRECT:
+NullStruct direct;
+direct=new NullStruct();
+direct.read(iprot);
+return direct;
+case CUSTOM_OBJECT:
+JavaObject custom_object;
+custom_object=new JavaObject();
+custom_object.read(iprot);
+return custom_object;
+case CUSTOM_SERIALIZED:
+ByteBuffer custom_serialized;
+custom_serialized=iprot.readBinary();
+return custom_serialized;
+case LOCAL_OR_SHUFFLE:
+NullStruct local_or_shuffle;
+local_or_shuffle=new NullStruct();
+local_or_shuffle.read(iprot);
+return local_or_shuffle;
+default :
+throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+}
+}
+ else {
+throw new TProtocolException("Couldn't find a field with field id " + fieldID);
+}
+}

@@ -1,2 +1,5 @@
 def __hash__(self):
-    return ((0 + hash(self.name)) + hash(self.creds))
+    value = 17
+    value = ((value * 31) ^ hash(self.name))
+    value = ((value * 31) ^ hash(self.creds))
+    return value

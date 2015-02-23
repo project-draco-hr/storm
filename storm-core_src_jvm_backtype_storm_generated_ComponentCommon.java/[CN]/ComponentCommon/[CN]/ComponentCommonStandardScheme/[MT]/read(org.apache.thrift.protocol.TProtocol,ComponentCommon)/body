@@ -1,0 +1,78 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 1:
+      if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+          org.apache.thrift.protocol.TMap _map24=iprot.readMapBegin();
+          struct.inputs=new HashMap<GlobalStreamId,Grouping>(2 * _map24.size);
+          GlobalStreamId _key25;
+          Grouping _val26;
+          for (int _i27=0; _i27 < _map24.size; ++_i27) {
+            _key25=new GlobalStreamId();
+            _key25.read(iprot);
+            _val26=new Grouping();
+            _val26.read(iprot);
+            struct.inputs.put(_key25,_val26);
+          }
+          iprot.readMapEnd();
+        }
+        struct.set_inputs_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 2:
+  if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+      org.apache.thrift.protocol.TMap _map28=iprot.readMapBegin();
+      struct.streams=new HashMap<String,StreamInfo>(2 * _map28.size);
+      String _key29;
+      StreamInfo _val30;
+      for (int _i31=0; _i31 < _map28.size; ++_i31) {
+        _key29=iprot.readString();
+        _val30=new StreamInfo();
+        _val30.read(iprot);
+        struct.streams.put(_key29,_val30);
+      }
+      iprot.readMapEnd();
+    }
+    struct.set_streams_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+case 3:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.parallelism_hint=iprot.readI32();
+struct.set_parallelism_hint_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 4:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+struct.json_conf=iprot.readString();
+struct.set_json_conf_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}
