@@ -1,0 +1,4 @@
+{
+  Preconditions.checkNotNull(this.nodes,"Node information should be presented");
+  return new JedisClusterConfig(nodes,timeout,maxRedirections);
+}

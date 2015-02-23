@@ -1,0 +1,22 @@
+{
+  List<Long> ret=new ArrayList<Long>();
+  Jedis jedis=null;
+  try {
+    jedis=redisState.getJedis();
+    for (    TridentTuple input : inputs) {
+      String key=this.tupleMapper.getKeyFromTridentTuple(input);
+      if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
+        key=redisKeyPrefix + key;
+      }
+      long count=jedis.scard(key);
+      ret.add(count);
+      logger.debug("redis get key[" + key + "] count["+ count+ "]");
+    }
+  }
+  finally {
+    if (jedis != null) {
+      redisState.returnJedis(jedis);
+    }
+  }
+  return ret;
+}

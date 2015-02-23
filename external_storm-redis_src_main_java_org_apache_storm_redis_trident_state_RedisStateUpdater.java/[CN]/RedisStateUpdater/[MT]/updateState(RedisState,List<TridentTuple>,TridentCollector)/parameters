@@ -1,0 +1,3 @@
+RedisState redisState
+List<TridentTuple> inputs
+TridentCollector collector

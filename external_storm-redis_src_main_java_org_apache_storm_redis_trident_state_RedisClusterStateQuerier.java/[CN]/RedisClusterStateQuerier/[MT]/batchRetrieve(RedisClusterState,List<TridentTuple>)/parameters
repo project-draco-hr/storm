@@ -1,0 +1,2 @@
+RedisClusterState redisClusterState
+List<TridentTuple> inputs
