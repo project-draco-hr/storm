@@ -1,7 +1,8 @@
 {
   try {
+    Integer val=new Integer(sqlType);
     for (    Field field : Types.class.getFields()) {
-      if (sqlType == field.get(null)) {
+      if (val.equals(field.get(null))) {
         return field.getName();
       }
     }
