@@ -1,0 +1,7 @@
+HiveEndPoint endPoint
+int txnsPerBatch
+boolean autoCreatePartitions
+long callTimeout
+ExecutorService callTimeoutPool
+HiveMapper mapper
+UserGroupInformation ugi
