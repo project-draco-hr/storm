@@ -9,7 +9,8 @@
     return _supervisorCommands.contains(operation);
   }
   if (_userCommands.contains(operation)) {
-    return true;
+    if (_nimbusUsers.size() > 0 && _nimbusUsers.contains(user))     return true;
+ else     if (_nimbusUsers.size() == 0)     return true;
   }
   if (_topoCommands.contains(operation)) {
     Set topoUsers=new HashSet<String>();
