@@ -1,4 +1,7 @@
 {
+  if (authorizedGroups.contains(WILD_CARD)) {
+    return true;
+  }
   Set<String> groups=null;
   try {
     groups=_groupMappingProvider.getGroups(userBeingImpersonated);
