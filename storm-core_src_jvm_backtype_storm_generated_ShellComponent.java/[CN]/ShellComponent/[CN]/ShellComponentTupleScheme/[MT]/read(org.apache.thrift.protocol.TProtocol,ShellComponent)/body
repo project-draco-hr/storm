@@ -1,0 +1,12 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(2);
+  if (incoming.get(0)) {
+    struct.execution_command=iprot.readString();
+    struct.set_execution_command_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.script=iprot.readString();
+    struct.set_script_isSet(true);
+  }
+}

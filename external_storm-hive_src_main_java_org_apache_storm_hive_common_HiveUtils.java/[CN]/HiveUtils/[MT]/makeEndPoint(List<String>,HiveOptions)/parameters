@@ -1,0 +1,2 @@
+List<String> partitionVals
+HiveOptions options

@@ -1,0 +1,19 @@
+{
+  Connection connection=null;
+  List<Column> columns=new ArrayList<Column>();
+  try {
+    connection=this.dataSource.getConnection();
+    DatabaseMetaData metaData=connection.getMetaData();
+    ResultSet resultSet=metaData.getColumns(null,null,tableName,null);
+    while (resultSet.next()) {
+      columns.add(new Column(resultSet.getString("COLUMN_NAME"),resultSet.getInt("DATA_TYPE")));
+    }
+    return columns;
+  }
+ catch (  SQLException e) {
+    throw new RuntimeException("Failed to get schema for table " + tableName,e);
+  }
+ finally {
+    closeConnection(connection);
+  }
+}

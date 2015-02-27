@@ -1,0 +1,3 @@
+{
+  iface.getClusterInfo(resultHandler);
+}

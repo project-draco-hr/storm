@@ -1,0 +1,4 @@
+{
+  this.maxOpenConnections=maxOpenConnections;
+  return this;
+}

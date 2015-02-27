@@ -1,10 +1,10 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_task_start=true;
-  builder.append(present_task_start);
-  if (present_task_start)   builder.append(task_start);
+  list.add(present_task_start);
+  if (present_task_start)   list.add(task_start);
   boolean present_task_end=true;
-  builder.append(present_task_end);
-  if (present_task_end)   builder.append(task_end);
-  return builder.toHashCode();
+  list.add(present_task_end);
+  if (present_task_end)   list.add(task_end);
+  return list.hashCode();
 }

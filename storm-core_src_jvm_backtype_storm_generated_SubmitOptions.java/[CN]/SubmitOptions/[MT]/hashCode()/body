@@ -1,10 +1,10 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_initial_status=true && (is_set_initial_status());
-  builder.append(present_initial_status);
-  if (present_initial_status)   builder.append(initial_status.getValue());
+  list.add(present_initial_status);
+  if (present_initial_status)   list.add(initial_status.getValue());
   boolean present_creds=true && (is_set_creds());
-  builder.append(present_creds);
-  if (present_creds)   builder.append(creds);
-  return builder.toHashCode();
+  list.add(present_creds);
+  if (present_creds)   list.add(creds);
+  return list.hashCode();
 }

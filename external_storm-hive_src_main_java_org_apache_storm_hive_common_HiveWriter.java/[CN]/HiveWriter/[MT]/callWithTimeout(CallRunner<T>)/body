@@ -1,0 +1,41 @@
+{
+  Future<T> future=callTimeoutPool.submit(new Callable<T>(){
+    @Override public T call() throws Exception {
+      return callRunner.call();
+    }
+  }
+);
+  try {
+    if (callTimeout > 0) {
+      return future.get(callTimeout,TimeUnit.MILLISECONDS);
+    }
+ else {
+      return future.get();
+    }
+  }
+ catch (  TimeoutException eT) {
+    future.cancel(true);
+    throw eT;
+  }
+catch (  ExecutionException e1) {
+    Throwable cause=e1.getCause();
+    if (cause instanceof IOException) {
+      throw new StreamingIOFailure("I/O Failure",(IOException)cause);
+    }
+ else     if (cause instanceof StreamingException) {
+      throw (StreamingException)cause;
+    }
+ else     if (cause instanceof InterruptedException) {
+      throw (InterruptedException)cause;
+    }
+ else     if (cause instanceof RuntimeException) {
+      throw (RuntimeException)cause;
+    }
+ else     if (cause instanceof TimeoutException) {
+      throw new StreamingException("Operation Timed Out.",(TimeoutException)cause);
+    }
+ else {
+      throw new RuntimeException(e1);
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  _Fields setField=_Fields.findByThriftId(fieldID);
+  if (setField != null) {
+switch (setField) {
+case SERIALIZED_JAVA:
+      ByteBuffer serialized_java;
+    serialized_java=iprot.readBinary();
+  return serialized_java;
+case SHELL:
+ShellComponent shell;
+shell=new ShellComponent();
+shell.read(iprot);
+return shell;
+case JAVA_OBJECT:
+JavaObject java_object;
+java_object=new JavaObject();
+java_object.read(iprot);
+return java_object;
+default :
+throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+}
+}
+ else {
+throw new TProtocolException("Couldn't find a field with field id " + fieldID);
+}
+}

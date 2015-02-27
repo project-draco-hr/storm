@@ -1,0 +1,8 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.host);
+  oprot.writeI32(struct.uptime_secs);
+  oprot.writeI32(struct.num_workers);
+  oprot.writeI32(struct.num_used_workers);
+  oprot.writeString(struct.supervisor_id);
+}

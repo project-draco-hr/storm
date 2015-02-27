@@ -1,0 +1,6 @@
+{
+  driver.compile("select * from " + dbName + "."+ tableName);
+  ArrayList<String> res=new ArrayList<String>();
+  driver.getResults(res);
+  return res;
+}

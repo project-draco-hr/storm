@@ -1,0 +1,28 @@
+{
+  Jedis jedis=null;
+  try {
+    jedis=redisState.getJedis();
+    for (    TridentTuple input : inputs) {
+      String key=this.tupleMapper.getKeyFromTridentTuple(input);
+      String redisKey=key;
+      if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
+        redisKey=redisKeyPrefix + redisKey;
+      }
+      String value=this.tupleMapper.getValueFromTridentTuple(input);
+      logger.debug("update key[" + key + "] redisKey["+ redisKey+ "] value["+ value+ "]");
+      if (this.expireIntervalSec > 0) {
+        jedis.setex(redisKey,expireIntervalSec,value);
+      }
+ else {
+        jedis.set(redisKey,value);
+      }
+      Long count=jedis.scard(redisKey);
+      collector.emit(new Values(key,count));
+    }
+  }
+  finally {
+    if (jedis != null) {
+      redisState.returnJedis(jedis);
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
   this();
-  this.success=success;
+  this.success=org.apache.thrift.TBaseHelper.copyBinary(success);
   this.aze=aze;
 }

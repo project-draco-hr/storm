@@ -1,0 +1,16 @@
+{
+  this.jedisClusterConfig=jedisClusterConfig;
+  this.type=type;
+  this.options=options;
+  this.keyFactory=options.keyFactory;
+  if (this.keyFactory == null) {
+    this.keyFactory=new DefaultKeyFactory();
+  }
+  this.serializer=options.serializer;
+  if (this.serializer == null) {
+    this.serializer=DEFAULT_SERIALIZERS.get(type);
+    if (this.serializer == null) {
+      throw new RuntimeException("Couldn't find serializer for state type: " + type);
+    }
+  }
+}

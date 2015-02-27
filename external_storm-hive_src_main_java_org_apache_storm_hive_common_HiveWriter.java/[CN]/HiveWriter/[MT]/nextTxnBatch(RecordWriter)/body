@@ -1,0 +1,21 @@
+{
+  LOG.debug("Fetching new Txn Batch for {}",endPoint);
+  TransactionBatch batch=null;
+  try {
+    batch=callWithTimeout(new CallRunner<TransactionBatch>(){
+      @Override public TransactionBatch call() throws Exception {
+        return connection.fetchTransactionBatch(txnsPerBatch,recordWriter);
+      }
+    }
+);
+    LOG.debug("Acquired {}. Switching to first txn",batch);
+    batch.beginNextTransaction();
+  }
+ catch (  TimeoutException e) {
+    throw new TxnBatchFailure(endPoint,e);
+  }
+catch (  StreamingException e) {
+    throw new TxnBatchFailure(endPoint,e);
+  }
+  return batch;
+}

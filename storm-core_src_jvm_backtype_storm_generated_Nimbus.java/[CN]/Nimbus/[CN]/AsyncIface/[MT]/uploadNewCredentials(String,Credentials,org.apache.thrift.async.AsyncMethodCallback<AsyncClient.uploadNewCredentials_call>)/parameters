@@ -1,3 +1,0 @@
-String name
-Credentials creds
-org.apache.thrift.async.AsyncMethodCallback<AsyncClient.uploadNewCredentials_call> resultHandler

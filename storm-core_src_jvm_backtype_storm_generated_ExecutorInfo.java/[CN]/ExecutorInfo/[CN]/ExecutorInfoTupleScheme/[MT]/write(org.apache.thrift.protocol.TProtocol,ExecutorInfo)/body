@@ -1,0 +1,5 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeI32(struct.task_start);
+  oprot.writeI32(struct.task_end);
+}

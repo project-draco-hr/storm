@@ -1,0 +1,16 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.state_spout_object != null) {
+    oprot.writeFieldBegin(STATE_SPOUT_OBJECT_FIELD_DESC);
+    struct.state_spout_object.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  if (struct.common != null) {
+    oprot.writeFieldBegin(COMMON_FIELD_DESC);
+    struct.common.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}
