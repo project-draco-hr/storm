@@ -1,0 +1,23 @@
+{
+  try {
+    callWithTimeout(new CallRunner<Void>(){
+      @Override public Void call() throws Exception {
+        try {
+          LOG.debug("Sending heartbeat on batch " + txnBatch);
+          txnBatch.heartbeat();
+        }
+ catch (        StreamingException e) {
+          LOG.warn("Heartbeat error on batch " + txnBatch,e);
+        }
+        return null;
+      }
+    }
+);
+  }
+ catch (  InterruptedException e) {
+    throw e;
+  }
+catch (  Exception e) {
+    LOG.warn("Unable to send heartbeat on Txn Batch " + txnBatch,e);
+  }
+}

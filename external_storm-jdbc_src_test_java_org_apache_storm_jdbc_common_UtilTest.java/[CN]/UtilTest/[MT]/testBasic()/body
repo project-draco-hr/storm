@@ -1,0 +1,19 @@
+{
+  assertEquals(String.class,Util.getJavaType(Types.CHAR));
+  assertEquals(String.class,Util.getJavaType(Types.VARCHAR));
+  assertEquals(String.class,Util.getJavaType(Types.LONGVARCHAR));
+  assertEquals(byte[].class,Util.getJavaType(Types.BINARY));
+  assertEquals(byte[].class,Util.getJavaType(Types.VARBINARY));
+  assertEquals(byte[].class,Util.getJavaType(Types.LONGVARBINARY));
+  assertEquals(Boolean.class,Util.getJavaType(Types.BIT));
+  assertEquals(Short.class,Util.getJavaType(Types.TINYINT));
+  assertEquals(Short.class,Util.getJavaType(Types.SMALLINT));
+  assertEquals(Integer.class,Util.getJavaType(Types.INTEGER));
+  assertEquals(Long.class,Util.getJavaType(Types.BIGINT));
+  assertEquals(Float.class,Util.getJavaType(Types.REAL));
+  assertEquals(Double.class,Util.getJavaType(Types.DOUBLE));
+  assertEquals(Double.class,Util.getJavaType(Types.FLOAT));
+  assertEquals(Date.class,Util.getJavaType(Types.DATE));
+  assertEquals(Time.class,Util.getJavaType(Types.TIME));
+  assertEquals(Timestamp.class,Util.getJavaType(Types.TIMESTAMP));
+}

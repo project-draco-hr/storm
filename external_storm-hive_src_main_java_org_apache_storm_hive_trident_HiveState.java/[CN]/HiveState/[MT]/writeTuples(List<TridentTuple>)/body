@@ -1,0 +1,16 @@
+{
+  if (timeToSendHeartBeat.compareAndSet(true,false)) {
+    enableHeartBeatOnAllWriters();
+  }
+  for (  TridentTuple tuple : tuples) {
+    List<String> partitionVals=options.getMapper().mapPartitions(tuple);
+    HiveEndPoint endPoint=HiveUtils.makeEndPoint(partitionVals,options);
+    HiveWriter writer=getOrCreateWriter(endPoint);
+    writer.write(options.getMapper().mapRecord(tuple));
+    currentBatchSize++;
+    if (currentBatchSize >= options.getBatchSize()) {
+      flushAllWriters();
+      currentBatchSize=0;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  try {
+    Util.getJavaType(Types.REF);
+    fail("didn't throw like expected");
+  }
+ catch (  Exception e) {
+    assertEquals("We do not support tables with SqlType: REF",e.getMessage());
+  }
+  try {
+    Util.getJavaType(-1000);
+    fail("didn't throw like expected");
+  }
+ catch (  Exception e) {
+    assertEquals("Unknown sqlType -1000",e.getMessage());
+  }
+}

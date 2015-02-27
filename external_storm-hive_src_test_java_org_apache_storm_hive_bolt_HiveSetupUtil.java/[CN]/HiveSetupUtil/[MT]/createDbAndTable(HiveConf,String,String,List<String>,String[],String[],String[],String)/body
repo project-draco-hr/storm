@@ -1,0 +1,42 @@
+{
+  IMetaStoreClient client=new HiveMetaStoreClient(conf);
+  try {
+    Database db=new Database();
+    db.setName(databaseName);
+    db.setLocationUri(dbLocation);
+    client.createDatabase(db);
+    Table tbl=new Table();
+    tbl.setDbName(databaseName);
+    tbl.setTableName(tableName);
+    tbl.setTableType(TableType.MANAGED_TABLE.toString());
+    StorageDescriptor sd=new StorageDescriptor();
+    sd.setCols(getTableColumns(colNames,colTypes));
+    sd.setNumBuckets(1);
+    sd.setLocation(dbLocation + Path.SEPARATOR + tableName);
+    if (partNames != null && partNames.length != 0) {
+      tbl.setPartitionKeys(getPartitionKeys(partNames));
+    }
+    tbl.setSd(sd);
+    sd.setBucketCols(new ArrayList<String>(2));
+    sd.setSerdeInfo(new SerDeInfo());
+    sd.getSerdeInfo().setName(tbl.getTableName());
+    sd.getSerdeInfo().setParameters(new HashMap<String,String>());
+    sd.getSerdeInfo().getParameters().put(serdeConstants.SERIALIZATION_FORMAT,"1");
+    sd.getSerdeInfo().setSerializationLib(OrcSerde.class.getName());
+    sd.setInputFormat(OrcInputFormat.class.getName());
+    sd.setOutputFormat(OrcOutputFormat.class.getName());
+    Map<String,String> tableParams=new HashMap<String,String>();
+    tbl.setParameters(tableParams);
+    client.createTable(tbl);
+    try {
+      if (partVals != null && partVals.size() > 0) {
+        addPartition(client,tbl,partVals);
+      }
+    }
+ catch (    AlreadyExistsException e) {
+    }
+  }
+  finally {
+    client.close();
+  }
+}

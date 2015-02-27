@@ -1,0 +1,21 @@
+{
+  long oldestTimeStamp=System.currentTimeMillis();
+  HiveEndPoint eldest=null;
+  for (  Entry<HiveEndPoint,HiveWriter> entry : allWriters.entrySet()) {
+    if (entry.getValue().getLastUsed() < oldestTimeStamp) {
+      eldest=entry.getKey();
+      oldestTimeStamp=entry.getValue().getLastUsed();
+    }
+  }
+  try {
+    LOG.info("Closing least used Writer to Hive end point : " + eldest);
+    allWriters.remove(eldest).close();
+  }
+ catch (  IOException e) {
+    LOG.warn("Failed to close writer for end point: " + eldest,e);
+  }
+catch (  InterruptedException e) {
+    LOG.warn("Interrupted when attempting to close writer for end point: " + eldest,e);
+    Thread.currentThread().interrupt();
+  }
+}
