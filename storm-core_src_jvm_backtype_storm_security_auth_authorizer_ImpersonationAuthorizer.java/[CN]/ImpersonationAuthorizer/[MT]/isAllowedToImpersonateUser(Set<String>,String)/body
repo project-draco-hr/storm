@@ -1,0 +1,18 @@
+{
+  Set<String> groups=null;
+  try {
+    groups=_groupMappingProvider.getGroups(userBeingImpersonated);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("failed to get groups for user " + userBeingImpersonated);
+  }
+  if (groups == null || groups.isEmpty()) {
+    return false;
+  }
+  for (  String group : groups) {
+    if (authorizedGroups.contains(group)) {
+      return true;
+    }
+  }
+  return false;
+}

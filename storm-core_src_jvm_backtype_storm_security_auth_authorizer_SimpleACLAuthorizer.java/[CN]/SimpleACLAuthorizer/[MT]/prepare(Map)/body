@@ -9,4 +9,6 @@
   }
   _ptol=AuthUtils.GetPrincipalToLocalPlugin(conf);
   _groupMappingProvider=AuthUtils.GetGroupMappingServiceProviderPlugin(conf);
+  _impersonationAuthorizer=new ImpersonationAuthorizer();
+  _impersonationAuthorizer.prepare(conf);
 }
