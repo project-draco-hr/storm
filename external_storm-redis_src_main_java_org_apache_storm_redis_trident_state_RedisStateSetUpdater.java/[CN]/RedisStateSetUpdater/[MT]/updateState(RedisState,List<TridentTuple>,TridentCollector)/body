@@ -3,12 +3,12 @@
   try {
     jedis=redisState.getJedis();
     for (    TridentTuple input : inputs) {
-      String key=this.tupleMapper.getKeyFromTridentTuple(input);
+      String key=this.tupleMapper.getKeyFromTuple(input);
       String redisKey=key;
       if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
         redisKey=redisKeyPrefix + redisKey;
       }
-      String value=this.tupleMapper.getValueFromTridentTuple(input);
+      String value=this.tupleMapper.getValueFromTuple(input);
       logger.debug("update key[" + key + "] redisKey["+ redisKey+ "] value["+ value+ "]");
       if (this.expireIntervalSec > 0) {
         jedis.setex(redisKey,expireIntervalSec,value);

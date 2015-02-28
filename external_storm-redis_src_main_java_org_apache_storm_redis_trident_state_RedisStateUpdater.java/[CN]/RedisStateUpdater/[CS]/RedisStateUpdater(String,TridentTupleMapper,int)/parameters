@@ -1,3 +1,0 @@
-String redisKeyPrefix
-TridentTupleMapper tupleMapper
-int expireIntervalSec
