@@ -3,53 +3,52 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  BoltStats typedOther=(BoltStats)other;
-  lastComparison=Boolean.valueOf(is_set_acked()).compareTo(typedOther.is_set_acked());
+  lastComparison=Boolean.valueOf(is_set_acked()).compareTo(other.is_set_acked());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_acked()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.acked,typedOther.acked);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.acked,other.acked);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_failed()).compareTo(typedOther.is_set_failed());
+  lastComparison=Boolean.valueOf(is_set_failed()).compareTo(other.is_set_failed());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_failed()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.failed,typedOther.failed);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.failed,other.failed);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_process_ms_avg()).compareTo(typedOther.is_set_process_ms_avg());
+  lastComparison=Boolean.valueOf(is_set_process_ms_avg()).compareTo(other.is_set_process_ms_avg());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_process_ms_avg()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.process_ms_avg,typedOther.process_ms_avg);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.process_ms_avg,other.process_ms_avg);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_executed()).compareTo(typedOther.is_set_executed());
+  lastComparison=Boolean.valueOf(is_set_executed()).compareTo(other.is_set_executed());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_executed()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.executed,typedOther.executed);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.executed,other.executed);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_execute_ms_avg()).compareTo(typedOther.is_set_execute_ms_avg());
+  lastComparison=Boolean.valueOf(is_set_execute_ms_avg()).compareTo(other.is_set_execute_ms_avg());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_execute_ms_avg()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.execute_ms_avg,typedOther.execute_ms_avg);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.execute_ms_avg,other.execute_ms_avg);
     if (lastComparison != 0) {
       return lastComparison;
     }

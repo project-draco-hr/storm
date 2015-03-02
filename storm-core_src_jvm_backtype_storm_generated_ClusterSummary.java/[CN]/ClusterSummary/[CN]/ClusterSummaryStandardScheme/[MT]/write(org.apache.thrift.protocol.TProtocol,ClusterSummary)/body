@@ -1,0 +1,39 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.supervisors != null) {
+    oprot.writeFieldBegin(SUPERVISORS_FIELD_DESC);
+{
+      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.supervisors.size()));
+      for (      SupervisorSummary _iter83 : struct.supervisors) {
+        _iter83.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (struct.topologies != null) {
+    oprot.writeFieldBegin(TOPOLOGIES_FIELD_DESC);
+{
+      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.topologies.size()));
+      for (      TopologySummary _iter84 : struct.topologies) {
+        _iter84.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (struct.nimbuses != null) {
+    oprot.writeFieldBegin(NIMBUSES_FIELD_DESC);
+{
+      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.nimbuses.size()));
+      for (      NimbusSummary _iter85 : struct.nimbuses) {
+        _iter85.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

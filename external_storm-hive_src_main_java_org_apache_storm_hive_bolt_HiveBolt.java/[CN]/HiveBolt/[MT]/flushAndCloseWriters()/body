@@ -1,0 +1,11 @@
+{
+  try {
+    flushAllWriters();
+  }
+ catch (  Exception e) {
+    LOG.warn("unable to flush hive writers. ",e);
+  }
+ finally {
+    closeAllWriters();
+  }
+}

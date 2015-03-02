@@ -1,0 +1,4 @@
+{
+  this.heartBeatInterval=heartBeatInterval;
+  return this;
+}

@@ -1,0 +1,56 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.id=iprot.readString();
+  struct.set_id_isSet(true);
+  struct.name=iprot.readString();
+  struct.set_name_isSet(true);
+  struct.uptime_secs=iprot.readI32();
+  struct.set_uptime_secs_isSet(true);
+{
+    org.apache.thrift.protocol.TList _list314=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.executors=new ArrayList<ExecutorSummary>(_list314.size);
+    ExecutorSummary _elem315;
+    for (int _i316=0; _i316 < _list314.size; ++_i316) {
+      _elem315=new ExecutorSummary();
+      _elem315.read(iprot);
+      struct.executors.add(_elem315);
+    }
+  }
+  struct.set_executors_isSet(true);
+  struct.status=iprot.readString();
+  struct.set_status_isSet(true);
+{
+    org.apache.thrift.protocol.TMap _map317=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.LIST,iprot.readI32());
+    struct.errors=new HashMap<String,List<ErrorInfo>>(2 * _map317.size);
+    String _key318;
+    List<ErrorInfo> _val319;
+    for (int _i320=0; _i320 < _map317.size; ++_i320) {
+      _key318=iprot.readString();
+{
+        org.apache.thrift.protocol.TList _list321=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+        _val319=new ArrayList<ErrorInfo>(_list321.size);
+        ErrorInfo _elem322;
+        for (int _i323=0; _i323 < _list321.size; ++_i323) {
+          _elem322=new ErrorInfo();
+          _elem322.read(iprot);
+          _val319.add(_elem322);
+        }
+      }
+      struct.errors.put(_key318,_val319);
+    }
+  }
+  struct.set_errors_isSet(true);
+  BitSet incoming=iprot.readBitSet(3);
+  if (incoming.get(0)) {
+    struct.sched_status=iprot.readString();
+    struct.set_sched_status_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.owner=iprot.readString();
+    struct.set_owner_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.replication_count=iprot.readI32();
+    struct.set_replication_count_isSet(true);
+  }
+}

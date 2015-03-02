@@ -1,0 +1,12 @@
+{
+  this.collector=collector;
+  if (jedisPoolConfig != null) {
+    this.container=JedisCommandsContainerBuilder.build(jedisPoolConfig);
+  }
+ else   if (jedisClusterConfig != null) {
+    this.container=JedisCommandsContainerBuilder.build(jedisClusterConfig);
+  }
+ else {
+    throw new IllegalArgumentException("Jedis configuration not found");
+  }
+}

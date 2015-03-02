@@ -1,0 +1,18 @@
+{
+  Values values=new Values();
+  for (  String field : outputFields) {
+    if (input.contains(field)) {
+      values.add(input.getValueByField(field));
+    }
+ else {
+      for (      Column column : columns) {
+        if (column.getColumnName().equals(field)) {
+          values.add(column.getVal());
+        }
+      }
+    }
+  }
+  List<Values> result=new ArrayList<Values>();
+  result.add(values);
+  return result;
+}

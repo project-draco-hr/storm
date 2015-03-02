@@ -1,7 +1,7 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_location=true && (is_set_location());
-  builder.append(present_location);
-  if (present_location)   builder.append(location);
-  return builder.toHashCode();
+  list.add(present_location);
+  if (present_location)   list.add(location);
+  return list.hashCode();
 }

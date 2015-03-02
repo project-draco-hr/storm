@@ -1,0 +1,29 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_wait_secs()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_num_workers()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_num_executors()) {
+    optionals.set(2);
+  }
+  oprot.writeBitSet(optionals,3);
+  if (struct.is_set_wait_secs()) {
+    oprot.writeI32(struct.wait_secs);
+  }
+  if (struct.is_set_num_workers()) {
+    oprot.writeI32(struct.num_workers);
+  }
+  if (struct.is_set_num_executors()) {
+{
+      oprot.writeI32(struct.num_executors.size());
+      for (      Map.Entry<String,Integer> _iter321 : struct.num_executors.entrySet()) {
+        oprot.writeString(_iter321.getKey());
+        oprot.writeI32(_iter321.getValue());
+      }
+    }
+  }
+}

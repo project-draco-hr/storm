@@ -1,0 +1,5 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  struct.state_spout_object.write(oprot);
+  struct.common.write(oprot);
+}

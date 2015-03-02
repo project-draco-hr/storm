@@ -1,2 +1,12 @@
 def __hash__(self):
-    return (((((((((0 + hash(self.id)) + hash(self.name)) + hash(self.uptime_secs)) + hash(self.executors)) + hash(self.status)) + hash(self.errors)) + hash(self.sched_status)) + hash(self.owner)) + hash(self.replication_count))
+    value = 17
+    value = ((value * 31) ^ hash(self.id))
+    value = ((value * 31) ^ hash(self.name))
+    value = ((value * 31) ^ hash(self.uptime_secs))
+    value = ((value * 31) ^ hash(self.executors))
+    value = ((value * 31) ^ hash(self.status))
+    value = ((value * 31) ^ hash(self.errors))
+    value = ((value * 31) ^ hash(self.sched_status))
+    value = ((value * 31) ^ hash(self.owner))
+    value = ((value * 31) ^ hash(self.replication_count))
+    return value

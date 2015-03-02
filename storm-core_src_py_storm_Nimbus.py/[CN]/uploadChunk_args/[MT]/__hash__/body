@@ -1,2 +1,5 @@
 def __hash__(self):
-    return ((0 + hash(self.location)) + hash(self.chunk))
+    value = 17
+    value = ((value * 31) ^ hash(self.location))
+    value = ((value * 31) ^ hash(self.chunk))
+    return value

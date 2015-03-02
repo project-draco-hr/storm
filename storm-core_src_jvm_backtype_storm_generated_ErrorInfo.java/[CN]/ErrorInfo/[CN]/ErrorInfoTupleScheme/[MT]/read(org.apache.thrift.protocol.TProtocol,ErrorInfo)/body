@@ -1,0 +1,16 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.error=iprot.readString();
+  struct.set_error_isSet(true);
+  struct.error_time_secs=iprot.readI32();
+  struct.set_error_time_secs_isSet(true);
+  BitSet incoming=iprot.readBitSet(2);
+  if (incoming.get(0)) {
+    struct.host=iprot.readString();
+    struct.set_host_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.port=iprot.readI32();
+    struct.set_port_isSet(true);
+  }
+}

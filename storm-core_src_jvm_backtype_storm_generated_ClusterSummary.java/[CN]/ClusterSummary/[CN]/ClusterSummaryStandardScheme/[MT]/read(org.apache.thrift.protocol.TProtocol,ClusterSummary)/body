@@ -1,0 +1,74 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 1:
+      if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+{
+          org.apache.thrift.protocol.TList _list74=iprot.readListBegin();
+          struct.supervisors=new ArrayList<SupervisorSummary>(_list74.size);
+          SupervisorSummary _elem75;
+          for (int _i76=0; _i76 < _list74.size; ++_i76) {
+            _elem75=new SupervisorSummary();
+            _elem75.read(iprot);
+            struct.supervisors.add(_elem75);
+          }
+          iprot.readListEnd();
+        }
+        struct.set_supervisors_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 3:
+  if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+{
+      org.apache.thrift.protocol.TList _list77=iprot.readListBegin();
+      struct.topologies=new ArrayList<TopologySummary>(_list77.size);
+      TopologySummary _elem78;
+      for (int _i79=0; _i79 < _list77.size; ++_i79) {
+        _elem78=new TopologySummary();
+        _elem78.read(iprot);
+        struct.topologies.add(_elem78);
+      }
+      iprot.readListEnd();
+    }
+    struct.set_topologies_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+case 4:
+if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+{
+  org.apache.thrift.protocol.TList _list80=iprot.readListBegin();
+  struct.nimbuses=new ArrayList<NimbusSummary>(_list80.size);
+  NimbusSummary _elem81;
+  for (int _i82=0; _i82 < _list80.size; ++_i82) {
+    _elem81=new NimbusSummary();
+    _elem81.read(iprot);
+    struct.nimbuses.add(_elem81);
+  }
+  iprot.readListEnd();
+}
+struct.set_nimbuses_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

@@ -1,0 +1,30 @@
+{
+  for (  Entry<HiveEndPoint,HiveWriter> entry : allWriters.entrySet()) {
+    try {
+      HiveWriter w=entry.getValue();
+      LOG.info("Flushing writer to {}",w);
+      w.flush(false);
+      LOG.info("Closing writer to {}",w);
+      w.close();
+    }
+ catch (    Exception ex) {
+      LOG.warn("Error while closing writer to " + entry.getKey() + ". Exception follows.",ex);
+      if (ex instanceof InterruptedException) {
+        Thread.currentThread().interrupt();
+      }
+    }
+  }
+  ExecutorService toShutdown[]={callTimeoutPool};
+  for (  ExecutorService execService : toShutdown) {
+    execService.shutdown();
+    try {
+      while (!execService.isTerminated()) {
+        execService.awaitTermination(options.getCallTimeOut(),TimeUnit.MILLISECONDS);
+      }
+    }
+ catch (    InterruptedException ex) {
+      LOG.warn("shutdown interrupted on " + execService,ex);
+    }
+  }
+  callTimeoutPool=null;
+}

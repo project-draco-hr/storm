@@ -1,6 +1,6 @@
 {
   if (other.is_set_spouts()) {
-    Map<String,SpoutSpec> __this__spouts=new HashMap<String,SpoutSpec>();
+    Map<String,SpoutSpec> __this__spouts=new HashMap<String,SpoutSpec>(other.spouts.size());
     for (    Map.Entry<String,SpoutSpec> other_element : other.spouts.entrySet()) {
       String other_element_key=other_element.getKey();
       SpoutSpec other_element_value=other_element.getValue();
@@ -11,7 +11,7 @@
     this.spouts=__this__spouts;
   }
   if (other.is_set_bolts()) {
-    Map<String,Bolt> __this__bolts=new HashMap<String,Bolt>();
+    Map<String,Bolt> __this__bolts=new HashMap<String,Bolt>(other.bolts.size());
     for (    Map.Entry<String,Bolt> other_element : other.bolts.entrySet()) {
       String other_element_key=other_element.getKey();
       Bolt other_element_value=other_element.getValue();
@@ -22,7 +22,7 @@
     this.bolts=__this__bolts;
   }
   if (other.is_set_state_spouts()) {
-    Map<String,StateSpoutSpec> __this__state_spouts=new HashMap<String,StateSpoutSpec>();
+    Map<String,StateSpoutSpec> __this__state_spouts=new HashMap<String,StateSpoutSpec>(other.state_spouts.size());
     for (    Map.Entry<String,StateSpoutSpec> other_element : other.state_spouts.entrySet()) {
       String other_element_key=other_element.getKey();
       StateSpoutSpec other_element_value=other_element.getValue();

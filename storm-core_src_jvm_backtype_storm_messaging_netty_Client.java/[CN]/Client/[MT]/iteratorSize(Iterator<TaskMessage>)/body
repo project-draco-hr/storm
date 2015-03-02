@@ -1,0 +1,10 @@
+{
+  int size=0;
+  if (msgs != null) {
+    while (msgs.hasNext()) {
+      size++;
+      msgs.next();
+    }
+  }
+  return size;
+}

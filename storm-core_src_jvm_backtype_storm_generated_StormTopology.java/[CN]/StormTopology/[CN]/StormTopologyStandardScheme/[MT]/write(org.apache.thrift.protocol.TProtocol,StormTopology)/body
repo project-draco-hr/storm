@@ -1,0 +1,42 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.spouts != null) {
+    oprot.writeFieldBegin(SPOUTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.spouts.size()));
+      for (      Map.Entry<String,SpoutSpec> _iter56 : struct.spouts.entrySet()) {
+        oprot.writeString(_iter56.getKey());
+        _iter56.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (struct.bolts != null) {
+    oprot.writeFieldBegin(BOLTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.bolts.size()));
+      for (      Map.Entry<String,Bolt> _iter57 : struct.bolts.entrySet()) {
+        oprot.writeString(_iter57.getKey());
+        _iter57.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (struct.state_spouts != null) {
+    oprot.writeFieldBegin(STATE_SPOUTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.state_spouts.size()));
+      for (      Map.Entry<String,StateSpoutSpec> _iter58 : struct.state_spouts.entrySet()) {
+        oprot.writeString(_iter58.getKey());
+        _iter58.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

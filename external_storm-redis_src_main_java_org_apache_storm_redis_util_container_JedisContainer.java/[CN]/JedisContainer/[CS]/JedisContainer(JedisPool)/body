@@ -1,0 +1,3 @@
+{
+  this.jedisPool=jedisPool;
+}

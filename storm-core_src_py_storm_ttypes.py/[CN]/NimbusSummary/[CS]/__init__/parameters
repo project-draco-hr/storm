@@ -1,6 +1,6 @@
 self
 host
 port
-uptimeSecs
+uptime_secs
 isLeader
 version

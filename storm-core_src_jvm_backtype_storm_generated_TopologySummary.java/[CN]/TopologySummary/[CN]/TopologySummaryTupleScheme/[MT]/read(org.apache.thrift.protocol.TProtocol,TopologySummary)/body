@@ -1,0 +1,30 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.id=iprot.readString();
+  struct.set_id_isSet(true);
+  struct.name=iprot.readString();
+  struct.set_name_isSet(true);
+  struct.num_tasks=iprot.readI32();
+  struct.set_num_tasks_isSet(true);
+  struct.num_executors=iprot.readI32();
+  struct.set_num_executors_isSet(true);
+  struct.num_workers=iprot.readI32();
+  struct.set_num_workers_isSet(true);
+  struct.uptime_secs=iprot.readI32();
+  struct.set_uptime_secs_isSet(true);
+  struct.status=iprot.readString();
+  struct.set_status_isSet(true);
+  BitSet incoming=iprot.readBitSet(3);
+  if (incoming.get(0)) {
+    struct.sched_status=iprot.readString();
+    struct.set_sched_status_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.owner=iprot.readString();
+    struct.set_owner_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.replication_count=iprot.readI32();
+    struct.set_replication_count_isSet(true);
+  }
+}

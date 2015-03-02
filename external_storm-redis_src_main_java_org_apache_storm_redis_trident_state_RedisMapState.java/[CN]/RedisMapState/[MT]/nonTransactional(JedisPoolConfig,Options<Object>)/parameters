@@ -1,0 +1,2 @@
+JedisPoolConfig jedisPoolConfig
+Options<Object> opts

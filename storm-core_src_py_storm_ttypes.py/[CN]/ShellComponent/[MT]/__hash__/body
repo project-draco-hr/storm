@@ -1,2 +1,5 @@
 def __hash__(self):
-    return ((0 + hash(self.execution_command)) + hash(self.script))
+    value = 17
+    value = ((value * 31) ^ hash(self.execution_command))
+    value = ((value * 31) ^ hash(self.script))
+    return value

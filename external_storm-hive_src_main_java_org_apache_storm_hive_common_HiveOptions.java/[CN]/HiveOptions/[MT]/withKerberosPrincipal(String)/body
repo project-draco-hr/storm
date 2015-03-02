@@ -1,0 +1,4 @@
+{
+  this.kerberosPrincipal=kerberosPrincipal;
+  return this;
+}

@@ -1,0 +1,16 @@
+{
+  port=9083;
+  metaStoreURI=null;
+  int callTimeoutPoolSize=1;
+  callTimeoutPool=Executors.newFixedThreadPool(callTimeoutPoolSize,new ThreadFactoryBuilder().setNameFormat("hiveWriterTest").build());
+  conf=HiveSetupUtil.getHiveConf();
+  TxnDbUtil.setConfValues(conf);
+  TxnDbUtil.cleanDb();
+  TxnDbUtil.prepDb();
+  if (metaStoreURI != null) {
+    conf.setVar(HiveConf.ConfVars.METASTOREURIS,metaStoreURI);
+  }
+  SessionState.start(new CliSessionState(conf));
+  driver=new Driver(conf);
+  driver.init();
+}

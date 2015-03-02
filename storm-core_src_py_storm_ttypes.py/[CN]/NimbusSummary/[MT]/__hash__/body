@@ -1,2 +1,8 @@
 def __hash__(self):
-    return (((((0 + hash(self.host)) + hash(self.port)) + hash(self.uptimeSecs)) + hash(self.isLeader)) + hash(self.version))
+    value = 17
+    value = ((value * 31) ^ hash(self.host))
+    value = ((value * 31) ^ hash(self.port))
+    value = ((value * 31) ^ hash(self.uptime_secs))
+    value = ((value * 31) ^ hash(self.isLeader))
+    value = ((value * 31) ^ hash(self.version))
+    return value

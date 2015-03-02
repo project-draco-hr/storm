@@ -1,0 +1,3 @@
+JdbcState jdbcState
+List<TridentTuple> tuples
+TridentCollector collector
