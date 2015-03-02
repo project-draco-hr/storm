@@ -14,8 +14,8 @@
   sb.append(this.port);
   first=false;
   if (!first)   sb.append(", ");
-  sb.append("uptimeSecs:");
-  sb.append(this.uptimeSecs);
+  sb.append("uptime_secs:");
+  sb.append(this.uptime_secs);
   first=false;
   if (!first)   sb.append(", ");
   sb.append("isLeader:");

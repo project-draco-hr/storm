@@ -8,7 +8,7 @@ case HOST:
 case PORT:
   return is_set_port();
 case UPTIME_SECS:
-return is_set_uptimeSecs();
+return is_set_uptime_secs();
 case IS_LEADER:
 return is_set_isLeader();
 case VERSION:

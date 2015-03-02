@@ -1,19 +1,19 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_host=true && (is_set_host());
-  builder.append(present_host);
-  if (present_host)   builder.append(host);
+  list.add(present_host);
+  if (present_host)   list.add(host);
   boolean present_port=true;
-  builder.append(present_port);
-  if (present_port)   builder.append(port);
-  boolean present_uptimeSecs=true;
-  builder.append(present_uptimeSecs);
-  if (present_uptimeSecs)   builder.append(uptimeSecs);
+  list.add(present_port);
+  if (present_port)   list.add(port);
+  boolean present_uptime_secs=true;
+  list.add(present_uptime_secs);
+  if (present_uptime_secs)   list.add(uptime_secs);
   boolean present_isLeader=true;
-  builder.append(present_isLeader);
-  if (present_isLeader)   builder.append(isLeader);
+  list.add(present_isLeader);
+  if (present_isLeader)   list.add(isLeader);
   boolean present_version=true && (is_set_version());
-  builder.append(present_version);
-  if (present_version)   builder.append(version);
-  return builder.toHashCode();
+  list.add(present_version);
+  if (present_version)   list.add(version);
+  return list.hashCode();
 }

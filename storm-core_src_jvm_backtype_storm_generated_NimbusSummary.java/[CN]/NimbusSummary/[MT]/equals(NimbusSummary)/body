@@ -12,11 +12,11 @@
     if (!(this_present_port && that_present_port))     return false;
     if (this.port != that.port)     return false;
   }
-  boolean this_present_uptimeSecs=true;
-  boolean that_present_uptimeSecs=true;
-  if (this_present_uptimeSecs || that_present_uptimeSecs) {
-    if (!(this_present_uptimeSecs && that_present_uptimeSecs))     return false;
-    if (this.uptimeSecs != that.uptimeSecs)     return false;
+  boolean this_present_uptime_secs=true;
+  boolean that_present_uptime_secs=true;
+  if (this_present_uptime_secs || that_present_uptime_secs) {
+    if (!(this_present_uptime_secs && that_present_uptime_secs))     return false;
+    if (this.uptime_secs != that.uptime_secs)     return false;
   }
   boolean this_present_isLeader=true;
   boolean that_present_isLeader=true;

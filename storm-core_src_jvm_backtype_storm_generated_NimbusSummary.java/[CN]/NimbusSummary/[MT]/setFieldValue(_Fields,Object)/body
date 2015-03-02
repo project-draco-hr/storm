@@ -18,10 +18,10 @@ if (value == null) {
 break;
 case UPTIME_SECS:
 if (value == null) {
-unset_uptimeSecs();
+unset_uptime_secs();
 }
  else {
-set_uptimeSecs((Integer)value);
+set_uptime_secs((Integer)value);
 }
 break;
 case IS_LEADER:

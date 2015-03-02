@@ -5,8 +5,8 @@
   if (!is_set_port()) {
     throw new org.apache.thrift.protocol.TProtocolException("Required field 'port' is unset! Struct:" + toString());
   }
-  if (!is_set_uptimeSecs()) {
-    throw new org.apache.thrift.protocol.TProtocolException("Required field 'uptimeSecs' is unset! Struct:" + toString());
+  if (!is_set_uptime_secs()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'uptime_secs' is unset! Struct:" + toString());
   }
   if (!is_set_isLeader()) {
     throw new org.apache.thrift.protocol.TProtocolException("Required field 'isLeader' is unset! Struct:" + toString());

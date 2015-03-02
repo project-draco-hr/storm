@@ -5,7 +5,7 @@ case HOST:
 case PORT:
   return Integer.valueOf(get_port());
 case UPTIME_SECS:
-return Integer.valueOf(get_uptimeSecs());
+return Integer.valueOf(get_uptime_secs());
 case IS_LEADER:
 return Boolean.valueOf(is_isLeader());
 case VERSION:
