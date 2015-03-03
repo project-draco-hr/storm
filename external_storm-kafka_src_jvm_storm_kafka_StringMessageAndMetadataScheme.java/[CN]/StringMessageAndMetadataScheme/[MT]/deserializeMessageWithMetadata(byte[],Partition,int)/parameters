@@ -1,0 +1,3 @@
+byte[] message
+Partition partition
+int offset
