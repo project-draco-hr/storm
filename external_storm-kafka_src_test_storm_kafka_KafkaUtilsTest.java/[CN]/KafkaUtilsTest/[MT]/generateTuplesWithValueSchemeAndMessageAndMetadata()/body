@@ -2,7 +2,7 @@
   String value="value";
   Partition mockPartition=Mockito.mock(Partition.class);
   mockPartition.partition=0;
-  int offset=0;
+  Long offset=0L;
   config.scheme=new SchemeAsMultiScheme(new StringScheme());
   config.tupleMetaData=true;
   createTopicAndSendMessage(null,value);

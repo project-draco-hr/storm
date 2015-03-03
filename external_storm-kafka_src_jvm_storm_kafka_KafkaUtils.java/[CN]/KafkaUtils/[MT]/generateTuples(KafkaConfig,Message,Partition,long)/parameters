@@ -1,4 +1,4 @@
 KafkaConfig kafkaConfig
 Message msg
 Partition partition
-int offset
+long offset
