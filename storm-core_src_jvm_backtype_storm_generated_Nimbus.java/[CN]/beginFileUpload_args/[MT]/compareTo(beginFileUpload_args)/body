@@ -3,6 +3,5 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  beginFileUpload_args typedOther=(beginFileUpload_args)other;
   return 0;
 }

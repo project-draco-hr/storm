@@ -1,19 +1,19 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_host=true && (is_set_host());
-  builder.append(present_host);
-  if (present_host)   builder.append(host);
+  list.add(present_host);
+  if (present_host)   list.add(host);
   boolean present_uptime_secs=true;
-  builder.append(present_uptime_secs);
-  if (present_uptime_secs)   builder.append(uptime_secs);
+  list.add(present_uptime_secs);
+  if (present_uptime_secs)   list.add(uptime_secs);
   boolean present_num_workers=true;
-  builder.append(present_num_workers);
-  if (present_num_workers)   builder.append(num_workers);
+  list.add(present_num_workers);
+  if (present_num_workers)   list.add(num_workers);
   boolean present_num_used_workers=true;
-  builder.append(present_num_used_workers);
-  if (present_num_used_workers)   builder.append(num_used_workers);
+  list.add(present_num_used_workers);
+  if (present_num_used_workers)   list.add(num_used_workers);
   boolean present_supervisor_id=true && (is_set_supervisor_id());
-  builder.append(present_supervisor_id);
-  if (present_supervisor_id)   builder.append(supervisor_id);
-  return builder.toHashCode();
+  list.add(present_supervisor_id);
+  if (present_supervisor_id)   list.add(supervisor_id);
+  return list.hashCode();
 }

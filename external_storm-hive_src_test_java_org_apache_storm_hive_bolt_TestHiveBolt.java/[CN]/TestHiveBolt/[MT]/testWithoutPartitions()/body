@@ -1,0 +1,20 @@
+{
+  HiveSetupUtil.dropDB(conf,dbName1);
+  HiveSetupUtil.createDbAndTable(conf,dbName1,tblName1,null,colNames,colTypes,null,dbLocation);
+  DelimitedRecordHiveMapper mapper=new DelimitedRecordHiveMapper().withColumnFields(new Fields(colNames));
+  HiveOptions hiveOptions=new HiveOptions(metaStoreURI,dbName1,tblName1,mapper).withTxnsPerBatch(2).withBatchSize(2).withAutoCreatePartitions(false);
+  bolt=new HiveBolt(hiveOptions);
+  bolt.prepare(config,null,new OutputCollector(collector));
+  Integer id=100;
+  String msg="test-123";
+  String city="sunnyvale";
+  String state="ca";
+  checkRecordCountInTable(tblName1,dbName1,0);
+  for (int i=0; i < 4; i++) {
+    Tuple tuple=generateTestTuple(id,msg,city,state);
+    bolt.execute(tuple);
+    verify(collector).ack(tuple);
+  }
+  bolt.cleanup();
+  checkRecordCountInTable(tblName1,dbName1,4);
+}

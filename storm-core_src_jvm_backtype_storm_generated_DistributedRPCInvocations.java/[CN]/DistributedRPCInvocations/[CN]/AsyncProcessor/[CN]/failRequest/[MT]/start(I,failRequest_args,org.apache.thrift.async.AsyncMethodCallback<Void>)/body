@@ -1,0 +1,3 @@
+{
+  iface.failRequest(args.id,resultHandler);
+}

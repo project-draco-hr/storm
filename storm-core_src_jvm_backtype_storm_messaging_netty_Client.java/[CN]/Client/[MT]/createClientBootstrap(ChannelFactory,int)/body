@@ -1,0 +1,8 @@
+{
+  ClientBootstrap bootstrap=new ClientBootstrap(factory);
+  bootstrap.setOption("tcpNoDelay",true);
+  bootstrap.setOption("sendBufferSize",bufferSize);
+  bootstrap.setOption("keepAlive",true);
+  bootstrap.setPipelineFactory(new StormClientPipelineFactory(this));
+  return bootstrap;
+}

@@ -1,0 +1,3 @@
+{
+  iface.getTopologyInfo(args.id,resultHandler);
+}

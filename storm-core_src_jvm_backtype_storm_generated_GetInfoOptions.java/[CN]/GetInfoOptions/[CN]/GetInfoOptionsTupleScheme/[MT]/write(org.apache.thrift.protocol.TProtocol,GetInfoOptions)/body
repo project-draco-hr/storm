@@ -1,0 +1,11 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_num_err_choice()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_num_err_choice()) {
+    oprot.writeI32(struct.num_err_choice.getValue());
+  }
+}

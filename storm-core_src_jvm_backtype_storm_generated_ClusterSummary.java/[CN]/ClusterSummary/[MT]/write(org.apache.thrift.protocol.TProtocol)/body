@@ -1,31 +1,3 @@
 {
-  validate();
-  oprot.writeStructBegin(STRUCT_DESC);
-  if (this.supervisors != null) {
-    oprot.writeFieldBegin(SUPERVISORS_FIELD_DESC);
-{
-      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,this.supervisors.size()));
-      for (      SupervisorSummary _iter43 : this.supervisors) {
-        _iter43.write(oprot);
-      }
-      oprot.writeListEnd();
-    }
-    oprot.writeFieldEnd();
-  }
-  oprot.writeFieldBegin(NIMBUS_UPTIME_SECS_FIELD_DESC);
-  oprot.writeI32(this.nimbus_uptime_secs);
-  oprot.writeFieldEnd();
-  if (this.topologies != null) {
-    oprot.writeFieldBegin(TOPOLOGIES_FIELD_DESC);
-{
-      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,this.topologies.size()));
-      for (      TopologySummary _iter44 : this.topologies) {
-        _iter44.write(oprot);
-      }
-      oprot.writeListEnd();
-    }
-    oprot.writeFieldEnd();
-  }
-  oprot.writeFieldStop();
-  oprot.writeStructEnd();
+  schemes.get(oprot.getScheme()).getScheme().write(oprot,this);
 }

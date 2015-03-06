@@ -1,0 +1,5 @@
+{
+  HiveSetupUtil.dropDB(conf,dbName);
+  String dbLocation=dbFolder.newFolder(dbName).getCanonicalPath() + ".db";
+  HiveSetupUtil.createDbAndTable(conf,dbName,tblName,Arrays.asList(partitionVals),colNames,colTypes,partNames,dbLocation);
+}

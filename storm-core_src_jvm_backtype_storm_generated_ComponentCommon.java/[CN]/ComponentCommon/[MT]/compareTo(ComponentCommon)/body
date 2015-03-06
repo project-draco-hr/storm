@@ -3,43 +3,42 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  ComponentCommon typedOther=(ComponentCommon)other;
-  lastComparison=Boolean.valueOf(is_set_inputs()).compareTo(typedOther.is_set_inputs());
+  lastComparison=Boolean.valueOf(is_set_inputs()).compareTo(other.is_set_inputs());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_inputs()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.inputs,typedOther.inputs);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.inputs,other.inputs);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_streams()).compareTo(typedOther.is_set_streams());
+  lastComparison=Boolean.valueOf(is_set_streams()).compareTo(other.is_set_streams());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_streams()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.streams,typedOther.streams);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.streams,other.streams);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_parallelism_hint()).compareTo(typedOther.is_set_parallelism_hint());
+  lastComparison=Boolean.valueOf(is_set_parallelism_hint()).compareTo(other.is_set_parallelism_hint());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_parallelism_hint()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.parallelism_hint,typedOther.parallelism_hint);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.parallelism_hint,other.parallelism_hint);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_json_conf()).compareTo(typedOther.is_set_json_conf());
+  lastComparison=Boolean.valueOf(is_set_json_conf()).compareTo(other.is_set_json_conf());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_json_conf()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.json_conf,typedOther.json_conf);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.json_conf,other.json_conf);
     if (lastComparison != 0) {
       return lastComparison;
     }

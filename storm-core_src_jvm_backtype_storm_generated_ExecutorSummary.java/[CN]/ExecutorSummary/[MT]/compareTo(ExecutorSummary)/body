@@ -3,63 +3,62 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  ExecutorSummary typedOther=(ExecutorSummary)other;
-  lastComparison=Boolean.valueOf(is_set_executor_info()).compareTo(typedOther.is_set_executor_info());
+  lastComparison=Boolean.valueOf(is_set_executor_info()).compareTo(other.is_set_executor_info());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_executor_info()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.executor_info,typedOther.executor_info);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.executor_info,other.executor_info);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_component_id()).compareTo(typedOther.is_set_component_id());
+  lastComparison=Boolean.valueOf(is_set_component_id()).compareTo(other.is_set_component_id());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_component_id()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.component_id,typedOther.component_id);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.component_id,other.component_id);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_host()).compareTo(typedOther.is_set_host());
+  lastComparison=Boolean.valueOf(is_set_host()).compareTo(other.is_set_host());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_host()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.host,typedOther.host);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.host,other.host);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_port()).compareTo(typedOther.is_set_port());
+  lastComparison=Boolean.valueOf(is_set_port()).compareTo(other.is_set_port());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_port()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.port,typedOther.port);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.port,other.port);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_uptime_secs()).compareTo(typedOther.is_set_uptime_secs());
+  lastComparison=Boolean.valueOf(is_set_uptime_secs()).compareTo(other.is_set_uptime_secs());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_uptime_secs()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uptime_secs,typedOther.uptime_secs);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uptime_secs,other.uptime_secs);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_stats()).compareTo(typedOther.is_set_stats());
+  lastComparison=Boolean.valueOf(is_set_stats()).compareTo(other.is_set_stats());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_stats()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.stats,typedOther.stats);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.stats,other.stats);
     if (lastComparison != 0) {
       return lastComparison;
     }

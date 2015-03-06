@@ -1,0 +1,31 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.name != null) {
+    oprot.writeFieldBegin(NAME_FIELD_DESC);
+    oprot.writeString(struct.name);
+    oprot.writeFieldEnd();
+  }
+  if (struct.uploadedJarLocation != null) {
+    oprot.writeFieldBegin(UPLOADED_JAR_LOCATION_FIELD_DESC);
+    oprot.writeString(struct.uploadedJarLocation);
+    oprot.writeFieldEnd();
+  }
+  if (struct.jsonConf != null) {
+    oprot.writeFieldBegin(JSON_CONF_FIELD_DESC);
+    oprot.writeString(struct.jsonConf);
+    oprot.writeFieldEnd();
+  }
+  if (struct.topology != null) {
+    oprot.writeFieldBegin(TOPOLOGY_FIELD_DESC);
+    struct.topology.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  if (struct.options != null) {
+    oprot.writeFieldBegin(OPTIONS_FIELD_DESC);
+    struct.options.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

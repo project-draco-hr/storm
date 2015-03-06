@@ -1,0 +1,4 @@
+{
+  this.partitionFields=partitionFields;
+  return this;
+}

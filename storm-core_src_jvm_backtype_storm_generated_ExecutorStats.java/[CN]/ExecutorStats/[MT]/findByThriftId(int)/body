@@ -6,8 +6,6 @@ case 2:
   return TRANSFERRED;
 case 3:
 return SPECIFIC;
-case 4:
-return RATE;
 default :
 return null;
 }

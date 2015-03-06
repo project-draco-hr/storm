@@ -3,33 +3,32 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  ClusterSummary typedOther=(ClusterSummary)other;
-  lastComparison=Boolean.valueOf(is_set_supervisors()).compareTo(typedOther.is_set_supervisors());
+  lastComparison=Boolean.valueOf(is_set_supervisors()).compareTo(other.is_set_supervisors());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_supervisors()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.supervisors,typedOther.supervisors);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.supervisors,other.supervisors);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_nimbus_uptime_secs()).compareTo(typedOther.is_set_nimbus_uptime_secs());
+  lastComparison=Boolean.valueOf(is_set_nimbus_uptime_secs()).compareTo(other.is_set_nimbus_uptime_secs());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_nimbus_uptime_secs()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.nimbus_uptime_secs,typedOther.nimbus_uptime_secs);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.nimbus_uptime_secs,other.nimbus_uptime_secs);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_topologies()).compareTo(typedOther.is_set_topologies());
+  lastComparison=Boolean.valueOf(is_set_topologies()).compareTo(other.is_set_topologies());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_topologies()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topologies,typedOther.topologies);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topologies,other.topologies);
     if (lastComparison != 0) {
       return lastComparison;
     }

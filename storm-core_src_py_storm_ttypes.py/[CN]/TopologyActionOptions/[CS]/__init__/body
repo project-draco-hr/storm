@@ -1,3 +1,0 @@
-def __init__(self, kill_options=None, rebalance_options=None):
-    self.kill_options = kill_options
-    self.rebalance_options = rebalance_options

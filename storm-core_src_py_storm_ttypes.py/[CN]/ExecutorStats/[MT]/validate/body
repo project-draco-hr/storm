@@ -5,6 +5,4 @@ def validate(self):
         raise TProtocol.TProtocolException(message='Required field transferred is unset!')
     if (self.specific is None):
         raise TProtocol.TProtocolException(message='Required field specific is unset!')
-    if (self.rate is None):
-        raise TProtocol.TProtocolException(message='Required field rate is unset!')
     return

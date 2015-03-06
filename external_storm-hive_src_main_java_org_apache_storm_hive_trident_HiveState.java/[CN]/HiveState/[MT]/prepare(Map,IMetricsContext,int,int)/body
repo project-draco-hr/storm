@@ -1,0 +1,30 @@
+{
+  try {
+    if (options.getKerberosPrincipal() == null && options.getKerberosKeytab() == null) {
+      kerberosEnabled=false;
+    }
+ else     if (options.getKerberosPrincipal() != null && options.getKerberosKeytab() != null) {
+      kerberosEnabled=true;
+    }
+ else {
+      throw new IllegalArgumentException("To enable Kerberos, need to set both KerberosPrincipal " + " & KerberosKeytab");
+    }
+    if (kerberosEnabled) {
+      try {
+        ugi=HiveUtils.authenticate(options.getKerberosKeytab(),options.getKerberosPrincipal());
+      }
+ catch (      HiveUtils.AuthenticationFailed ex) {
+        LOG.error("Hive kerberos authentication failed " + ex.getMessage(),ex);
+        throw new IllegalArgumentException(ex);
+      }
+    }
+    allWriters=new HashMap<HiveEndPoint,HiveWriter>();
+    String timeoutName="hive-bolt-%d";
+    this.callTimeoutPool=Executors.newFixedThreadPool(1,new ThreadFactoryBuilder().setNameFormat(timeoutName).build());
+    heartBeatTimer=new Timer();
+    setupHeartBeatTimer();
+  }
+ catch (  Exception e) {
+    LOG.warn("unable to make connection to hive ",e);
+  }
+}

@@ -1,13 +1,13 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_wait_secs=true && (is_set_wait_secs());
-  builder.append(present_wait_secs);
-  if (present_wait_secs)   builder.append(wait_secs);
+  list.add(present_wait_secs);
+  if (present_wait_secs)   list.add(wait_secs);
   boolean present_num_workers=true && (is_set_num_workers());
-  builder.append(present_num_workers);
-  if (present_num_workers)   builder.append(num_workers);
+  list.add(present_num_workers);
+  if (present_num_workers)   list.add(num_workers);
   boolean present_num_executors=true && (is_set_num_executors());
-  builder.append(present_num_executors);
-  if (present_num_executors)   builder.append(num_executors);
-  return builder.toHashCode();
+  list.add(present_num_executors);
+  if (present_num_executors)   list.add(num_executors);
+  return list.hashCode();
 }

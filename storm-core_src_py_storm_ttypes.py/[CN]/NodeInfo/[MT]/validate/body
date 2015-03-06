@@ -1,6 +1,0 @@
-def validate(self):
-    if (self.node is None):
-        raise TProtocol.TProtocolException(message='Required field node is unset!')
-    if (self.port is None):
-        raise TProtocol.TProtocolException(message='Required field port is unset!')
-    return

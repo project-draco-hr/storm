@@ -1,5 +1,5 @@
 {
   this();
   this.location=location;
-  this.chunk=chunk;
+  this.chunk=org.apache.thrift.TBaseHelper.copyBinary(chunk);
 }

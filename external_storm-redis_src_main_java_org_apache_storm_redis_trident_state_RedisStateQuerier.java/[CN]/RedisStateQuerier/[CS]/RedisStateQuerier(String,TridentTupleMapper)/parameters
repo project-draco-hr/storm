@@ -1,0 +1,2 @@
+String redisKeyPrefix
+TridentTupleMapper tupleMapper

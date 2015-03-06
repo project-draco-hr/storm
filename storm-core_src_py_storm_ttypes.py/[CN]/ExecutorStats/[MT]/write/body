@@ -31,9 +31,5 @@ def write(self, oprot):
         oprot.writeFieldBegin('specific', TType.STRUCT, 3)
         self.specific.write(oprot)
         oprot.writeFieldEnd()
-    if (self.rate is not None):
-        oprot.writeFieldBegin('rate', TType.DOUBLE, 4)
-        oprot.writeDouble(self.rate)
-        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

@@ -1,0 +1,6 @@
+{
+  this();
+  this.emitted=emitted;
+  this.transferred=transferred;
+  this.specific=specific;
+}

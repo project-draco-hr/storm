@@ -1,0 +1,26 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(5);
+  if (incoming.get(0)) {
+    struct.name=iprot.readString();
+    struct.set_name_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.uploadedJarLocation=iprot.readString();
+    struct.set_uploadedJarLocation_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.jsonConf=iprot.readString();
+    struct.set_jsonConf_isSet(true);
+  }
+  if (incoming.get(3)) {
+    struct.topology=new StormTopology();
+    struct.topology.read(iprot);
+    struct.set_topology_isSet(true);
+  }
+  if (incoming.get(4)) {
+    struct.options=new SubmitOptions();
+    struct.options.read(iprot);
+    struct.set_options_isSet(true);
+  }
+}

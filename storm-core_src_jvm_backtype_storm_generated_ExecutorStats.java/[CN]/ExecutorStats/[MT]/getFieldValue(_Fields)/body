@@ -6,8 +6,6 @@ case TRANSFERRED:
   return get_transferred();
 case SPECIFIC:
 return get_specific();
-case RATE:
-return Double.valueOf(get_rate());
 }
 throw new IllegalStateException();
 }

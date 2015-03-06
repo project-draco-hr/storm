@@ -1,6 +1,0 @@
-def validate(self):
-    if (self.time_secs is None):
-        raise TProtocol.TProtocolException(message='Required field time_secs is unset!')
-    if (self.hostname is None):
-        raise TProtocol.TProtocolException(message='Required field hostname is unset!')
-    return

@@ -1,0 +1,18 @@
+{
+switch (setField_) {
+case SERIALIZED_JAVA:
+    ByteBuffer serialized_java=(ByteBuffer)value_;
+  oprot.writeBinary(serialized_java);
+return;
+case SHELL:
+ShellComponent shell=(ShellComponent)value_;
+shell.write(oprot);
+return;
+case JAVA_OBJECT:
+JavaObject java_object=(JavaObject)value_;
+java_object.write(oprot);
+return;
+default :
+throw new IllegalStateException("Cannot write union with unknown field " + setField_);
+}
+}

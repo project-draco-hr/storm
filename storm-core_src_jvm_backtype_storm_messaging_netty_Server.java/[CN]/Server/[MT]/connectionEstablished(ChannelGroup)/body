@@ -1,0 +1,10 @@
+{
+  boolean allEstablished=true;
+  for (  Channel channel : allChannels) {
+    if (!(connectionEstablished(channel))) {
+      allEstablished=false;
+      break;
+    }
+  }
+  return allEstablished;
+}

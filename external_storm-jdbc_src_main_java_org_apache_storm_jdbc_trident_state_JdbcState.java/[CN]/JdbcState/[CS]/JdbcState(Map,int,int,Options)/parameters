@@ -1,0 +1,4 @@
+Map map
+int partitionIndex
+int numPartitions
+Options options

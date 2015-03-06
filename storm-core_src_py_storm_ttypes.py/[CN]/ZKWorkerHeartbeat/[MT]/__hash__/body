@@ -1,2 +1,0 @@
-def __hash__(self):
-    return (((0 + hash(self.storm_id)) + hash(self.executor_stats)) + hash(self.time_secs))

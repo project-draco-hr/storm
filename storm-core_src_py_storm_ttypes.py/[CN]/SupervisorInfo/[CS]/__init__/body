@@ -1,8 +1,0 @@
-def __init__(self, time_secs=None, hostname=None, assignment_id=None, used_ports=None, meta=None, scheduler_meta=None, uptime_secs=None):
-    self.time_secs = time_secs
-    self.hostname = hostname
-    self.assignment_id = assignment_id
-    self.used_ports = used_ports
-    self.meta = meta
-    self.scheduler_meta = scheduler_meta
-    self.uptime_secs = uptime_secs

@@ -1,4 +1,0 @@
-def validate(self):
-    if (self.master_code_dir is None):
-        raise TProtocol.TProtocolException(message='Required field master_code_dir is unset!')
-    return

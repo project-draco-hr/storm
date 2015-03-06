@@ -1,2 +1,5 @@
 def __hash__(self):
-    return ((0 + hash(self.func_args)) + hash(self.request_id))
+    value = 17
+    value = ((value * 31) ^ hash(self.func_args))
+    value = ((value * 31) ^ hash(self.request_id))
+    return value

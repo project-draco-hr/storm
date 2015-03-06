@@ -1,0 +1,18 @@
+{
+  List<List<Values>> batchRetrieveResult=Lists.newArrayList();
+  try {
+    for (    TridentTuple tuple : tridentTuples) {
+      List<Column> columns=options.jdbcLookupMapper.getColumns(tuple);
+      List<List<Column>> rows=jdbcClient.select(options.selectQuery,columns);
+      for (      List<Column> row : rows) {
+        List<Values> values=options.jdbcLookupMapper.toTuple(tuple,row);
+        batchRetrieveResult.add(values);
+      }
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("Batch get operation failed. Triggering replay.",e);
+    throw new FailedException(e);
+  }
+  return batchRetrieveResult;
+}

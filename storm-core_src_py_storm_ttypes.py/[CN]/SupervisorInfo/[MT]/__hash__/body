@@ -1,2 +1,0 @@
-def __hash__(self):
-    return (((((((0 + hash(self.time_secs)) + hash(self.hostname)) + hash(self.assignment_id)) + hash(self.used_ports)) + hash(self.meta)) + hash(self.scheduler_meta)) + hash(self.uptime_secs))

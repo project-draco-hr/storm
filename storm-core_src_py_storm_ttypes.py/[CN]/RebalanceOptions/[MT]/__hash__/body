@@ -1,2 +1,6 @@
 def __hash__(self):
-    return (((0 + hash(self.wait_secs)) + hash(self.num_workers)) + hash(self.num_executors))
+    value = 17
+    value = ((value * 31) ^ hash(self.wait_secs))
+    value = ((value * 31) ^ hash(self.num_workers))
+    value = ((value * 31) ^ hash(self.num_executors))
+    return value

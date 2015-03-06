@@ -1,0 +1,4 @@
+{
+  this.columnFields=columnFields;
+  return this;
+}

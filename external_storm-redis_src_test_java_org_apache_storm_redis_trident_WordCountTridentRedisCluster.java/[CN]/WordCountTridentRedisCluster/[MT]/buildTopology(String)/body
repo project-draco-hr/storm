@@ -1,0 +1,20 @@
+{
+  Fields fields=new Fields("word","count");
+  FixedBatchSpout spout=new FixedBatchSpout(fields,4,new Values("storm",1),new Values("trident",1),new Values("needs",1),new Values("javadoc",1));
+  spout.setCycle(true);
+  Set<InetSocketAddress> nodes=new HashSet<InetSocketAddress>();
+  for (  String hostPort : redisHostPort.split(",")) {
+    String[] host_port=hostPort.split(":");
+    nodes.add(new InetSocketAddress(host_port[0],Integer.valueOf(host_port[1])));
+  }
+  JedisClusterConfig clusterConfig=new JedisClusterConfig.Builder().setNodes(nodes).build();
+  TridentTupleMapper tupleMapper=new WordCountTupleMapper();
+  RedisClusterState.Factory factory=new RedisClusterState.Factory(clusterConfig);
+  TridentTopology topology=new TridentTopology();
+  Stream stream=topology.newStream("spout1",spout);
+  stream.partitionPersist(factory,fields,new RedisClusterStateUpdater("test_",tupleMapper,86400000),new Fields());
+  TridentState state=topology.newStaticState(factory);
+  stream=stream.stateQuery(state,new Fields("word"),new RedisClusterStateQuerier("test_",tupleMapper),new Fields("columnName","columnValue"));
+  stream.each(new Fields("word","columnValue"),new PrintFunction(),new Fields());
+  return topology.build();
+}

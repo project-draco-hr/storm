@@ -1,0 +1,4 @@
+{
+  this.queryTimeoutSecs=queryTimeoutSecs;
+  return this;
+}

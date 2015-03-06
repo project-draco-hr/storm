@@ -1,0 +1,6 @@
+{
+  if (channelRef.get() != null) {
+    channelRef.get().close();
+    LOG.debug("channel to {} closed",dstAddressPrefixedName);
+  }
+}

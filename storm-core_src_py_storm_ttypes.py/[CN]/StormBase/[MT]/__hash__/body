@@ -1,2 +1,0 @@
-def __hash__(self):
-    return ((((((((0 + hash(self.name)) + hash(self.status)) + hash(self.num_workers)) + hash(self.component_executors)) + hash(self.launch_time_secs)) + hash(self.owner)) + hash(self.topology_action_options)) + hash(self.prev_status))

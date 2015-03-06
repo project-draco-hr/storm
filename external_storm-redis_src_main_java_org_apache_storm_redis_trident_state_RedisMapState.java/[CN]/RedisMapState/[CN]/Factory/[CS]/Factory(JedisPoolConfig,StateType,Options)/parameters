@@ -1,0 +1,3 @@
+JedisPoolConfig jedisPoolConfig
+StateType type
+Options options

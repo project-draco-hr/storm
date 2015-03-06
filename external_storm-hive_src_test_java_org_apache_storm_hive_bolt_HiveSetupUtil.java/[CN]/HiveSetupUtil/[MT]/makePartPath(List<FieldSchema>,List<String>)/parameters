@@ -1,0 +1,2 @@
+List<FieldSchema> partKeys
+List<String> partVals

@@ -1,2 +1,0 @@
-String location
-org.apache.thrift.async.AsyncMethodCallback<AsyncClient.finishFileUpload_call> resultHandler

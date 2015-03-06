@@ -1,0 +1,3 @@
+{
+  new UserPersistanceTopology().execute(args);
+}
