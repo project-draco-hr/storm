@@ -3,83 +3,82 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  StormBase typedOther=(StormBase)other;
-  lastComparison=Boolean.valueOf(is_set_name()).compareTo(typedOther.is_set_name());
+  lastComparison=Boolean.valueOf(is_set_name()).compareTo(other.is_set_name());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_name()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.name,typedOther.name);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.name,other.name);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_status()).compareTo(typedOther.is_set_status());
+  lastComparison=Boolean.valueOf(is_set_status()).compareTo(other.is_set_status());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_status()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.status,typedOther.status);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.status,other.status);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_num_workers()).compareTo(typedOther.is_set_num_workers());
+  lastComparison=Boolean.valueOf(is_set_num_workers()).compareTo(other.is_set_num_workers());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_num_workers()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.num_workers,typedOther.num_workers);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.num_workers,other.num_workers);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_component_executors()).compareTo(typedOther.is_set_component_executors());
+  lastComparison=Boolean.valueOf(is_set_component_executors()).compareTo(other.is_set_component_executors());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_component_executors()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.component_executors,typedOther.component_executors);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.component_executors,other.component_executors);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_launch_time_secs()).compareTo(typedOther.is_set_launch_time_secs());
+  lastComparison=Boolean.valueOf(is_set_launch_time_secs()).compareTo(other.is_set_launch_time_secs());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_launch_time_secs()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.launch_time_secs,typedOther.launch_time_secs);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.launch_time_secs,other.launch_time_secs);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_owner()).compareTo(typedOther.is_set_owner());
+  lastComparison=Boolean.valueOf(is_set_owner()).compareTo(other.is_set_owner());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_owner()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.owner,typedOther.owner);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.owner,other.owner);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_topology_action_options()).compareTo(typedOther.is_set_topology_action_options());
+  lastComparison=Boolean.valueOf(is_set_topology_action_options()).compareTo(other.is_set_topology_action_options());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_topology_action_options()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topology_action_options,typedOther.topology_action_options);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topology_action_options,other.topology_action_options);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_prev_status()).compareTo(typedOther.is_set_prev_status());
+  lastComparison=Boolean.valueOf(is_set_prev_status()).compareTo(other.is_set_prev_status());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_prev_status()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.prev_status,typedOther.prev_status);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.prev_status,other.prev_status);
     if (lastComparison != 0) {
       return lastComparison;
     }

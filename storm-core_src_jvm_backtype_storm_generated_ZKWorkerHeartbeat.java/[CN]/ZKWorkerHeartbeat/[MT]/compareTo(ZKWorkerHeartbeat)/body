@@ -3,33 +3,32 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  ZKWorkerHeartbeat typedOther=(ZKWorkerHeartbeat)other;
-  lastComparison=Boolean.valueOf(is_set_storm_id()).compareTo(typedOther.is_set_storm_id());
+  lastComparison=Boolean.valueOf(is_set_storm_id()).compareTo(other.is_set_storm_id());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_storm_id()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.storm_id,typedOther.storm_id);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.storm_id,other.storm_id);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_executor_stats()).compareTo(typedOther.is_set_executor_stats());
+  lastComparison=Boolean.valueOf(is_set_executor_stats()).compareTo(other.is_set_executor_stats());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_executor_stats()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.executor_stats,typedOther.executor_stats);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.executor_stats,other.executor_stats);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_time_secs()).compareTo(typedOther.is_set_time_secs());
+  lastComparison=Boolean.valueOf(is_set_time_secs()).compareTo(other.is_set_time_secs());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_time_secs()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.time_secs,typedOther.time_secs);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.time_secs,other.time_secs);
     if (lastComparison != 0) {
       return lastComparison;
     }

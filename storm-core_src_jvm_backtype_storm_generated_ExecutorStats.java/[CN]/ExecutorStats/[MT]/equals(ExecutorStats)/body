@@ -18,5 +18,11 @@
     if (!(this_present_specific && that_present_specific))     return false;
     if (!this.specific.equals(that.specific))     return false;
   }
+  boolean this_present_rate=true;
+  boolean that_present_rate=true;
+  if (this_present_rate || that_present_rate) {
+    if (!(this_present_rate && that_present_rate))     return false;
+    if (this.rate != that.rate)     return false;
+  }
   return true;
 }

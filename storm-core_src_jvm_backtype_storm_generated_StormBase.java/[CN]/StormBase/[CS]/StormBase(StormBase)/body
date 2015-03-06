@@ -1,6 +1,5 @@
 {
-  __isset_bit_vector.clear();
-  __isset_bit_vector.or(other.__isset_bit_vector);
+  __isset_bitfield=other.__isset_bitfield;
   if (other.is_set_name()) {
     this.name=other.name;
   }
@@ -9,14 +8,7 @@
   }
   this.num_workers=other.num_workers;
   if (other.is_set_component_executors()) {
-    Map<String,Integer> __this__component_executors=new HashMap<String,Integer>();
-    for (    Map.Entry<String,Integer> other_element : other.component_executors.entrySet()) {
-      String other_element_key=other_element.getKey();
-      Integer other_element_value=other_element.getValue();
-      String __this__component_executors_copy_key=other_element_key;
-      Integer __this__component_executors_copy_value=other_element_value;
-      __this__component_executors.put(__this__component_executors_copy_key,__this__component_executors_copy_value);
-    }
+    Map<String,Integer> __this__component_executors=new HashMap<String,Integer>(other.component_executors);
     this.component_executors=__this__component_executors;
   }
   this.launch_time_secs=other.launch_time_secs;

@@ -1,22 +1,3 @@
 {
-  validate();
-  oprot.writeStructBegin(STRUCT_DESC);
-  if (this.node != null) {
-    oprot.writeFieldBegin(NODE_FIELD_DESC);
-    oprot.writeString(this.node);
-    oprot.writeFieldEnd();
-  }
-  if (this.port != null) {
-    oprot.writeFieldBegin(PORT_FIELD_DESC);
-{
-      oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.I64,this.port.size()));
-      for (      long _iter184 : this.port) {
-        oprot.writeI64(_iter184);
-      }
-      oprot.writeSetEnd();
-    }
-    oprot.writeFieldEnd();
-  }
-  oprot.writeFieldStop();
-  oprot.writeStructEnd();
+  schemes.get(oprot.getScheme()).getScheme().write(oprot,this);
 }

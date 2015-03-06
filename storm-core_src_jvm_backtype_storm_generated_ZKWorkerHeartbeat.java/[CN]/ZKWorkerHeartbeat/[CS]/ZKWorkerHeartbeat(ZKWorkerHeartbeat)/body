@@ -1,11 +1,10 @@
 {
-  __isset_bit_vector.clear();
-  __isset_bit_vector.or(other.__isset_bit_vector);
+  __isset_bitfield=other.__isset_bitfield;
   if (other.is_set_storm_id()) {
     this.storm_id=other.storm_id;
   }
   if (other.is_set_executor_stats()) {
-    Map<ExecutorInfo,ExecutorStats> __this__executor_stats=new HashMap<ExecutorInfo,ExecutorStats>();
+    Map<ExecutorInfo,ExecutorStats> __this__executor_stats=new HashMap<ExecutorInfo,ExecutorStats>(other.executor_stats.size());
     for (    Map.Entry<ExecutorInfo,ExecutorStats> other_element : other.executor_stats.entrySet()) {
       ExecutorInfo other_element_key=other_element.getKey();
       ExecutorStats other_element_value=other_element.getValue();

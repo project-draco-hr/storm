@@ -44,6 +44,9 @@
     struct.specific.write(oprot);
     oprot.writeFieldEnd();
   }
+  oprot.writeFieldBegin(RATE_FIELD_DESC);
+  oprot.writeDouble(struct.rate);
+  oprot.writeFieldEnd();
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

@@ -3,39 +3,26 @@
     this.master_code_dir=other.master_code_dir;
   }
   if (other.is_set_node_host()) {
-    Map<String,String> __this__node_host=new HashMap<String,String>();
-    for (    Map.Entry<String,String> other_element : other.node_host.entrySet()) {
-      String other_element_key=other_element.getKey();
-      String other_element_value=other_element.getValue();
-      String __this__node_host_copy_key=other_element_key;
-      String __this__node_host_copy_value=other_element_value;
-      __this__node_host.put(__this__node_host_copy_key,__this__node_host_copy_value);
-    }
+    Map<String,String> __this__node_host=new HashMap<String,String>(other.node_host);
     this.node_host=__this__node_host;
   }
   if (other.is_set_executor_node_port()) {
-    Map<List<Long>,NodeInfo> __this__executor_node_port=new HashMap<List<Long>,NodeInfo>();
+    Map<List<Long>,NodeInfo> __this__executor_node_port=new HashMap<List<Long>,NodeInfo>(other.executor_node_port.size());
     for (    Map.Entry<List<Long>,NodeInfo> other_element : other.executor_node_port.entrySet()) {
       List<Long> other_element_key=other_element.getKey();
       NodeInfo other_element_value=other_element.getValue();
-      List<Long> __this__executor_node_port_copy_key=new ArrayList<Long>();
-      for (      Long other_element_key_element : other_element_key) {
-        __this__executor_node_port_copy_key.add(other_element_key_element);
-      }
+      List<Long> __this__executor_node_port_copy_key=new ArrayList<Long>(other_element_key);
       NodeInfo __this__executor_node_port_copy_value=new NodeInfo(other_element_value);
       __this__executor_node_port.put(__this__executor_node_port_copy_key,__this__executor_node_port_copy_value);
     }
     this.executor_node_port=__this__executor_node_port;
   }
   if (other.is_set_executor_start_time_secs()) {
-    Map<List<Long>,Long> __this__executor_start_time_secs=new HashMap<List<Long>,Long>();
+    Map<List<Long>,Long> __this__executor_start_time_secs=new HashMap<List<Long>,Long>(other.executor_start_time_secs.size());
     for (    Map.Entry<List<Long>,Long> other_element : other.executor_start_time_secs.entrySet()) {
       List<Long> other_element_key=other_element.getKey();
       Long other_element_value=other_element.getValue();
-      List<Long> __this__executor_start_time_secs_copy_key=new ArrayList<Long>();
-      for (      Long other_element_key_element : other_element_key) {
-        __this__executor_start_time_secs_copy_key.add(other_element_key_element);
-      }
+      List<Long> __this__executor_start_time_secs_copy_key=new ArrayList<Long>(other_element_key);
       Long __this__executor_start_time_secs_copy_value=other_element_value;
       __this__executor_start_time_secs.put(__this__executor_start_time_secs_copy_key,__this__executor_start_time_secs_copy_value);
     }

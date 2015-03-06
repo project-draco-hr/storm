@@ -1,0 +1,101 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 1:
+      if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+        struct.name=iprot.readString();
+        struct.set_name_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 2:
+  if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+    struct.status=backtype.storm.generated.TopologyStatus.findByValue(iprot.readI32());
+    struct.set_status_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+case 3:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.num_workers=iprot.readI32();
+struct.set_num_workers_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 4:
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map416=iprot.readMapBegin();
+struct.component_executors=new HashMap<String,Integer>(2 * _map416.size);
+String _key417;
+int _val418;
+for (int _i419=0; _i419 < _map416.size; ++_i419) {
+_key417=iprot.readString();
+_val418=iprot.readI32();
+struct.component_executors.put(_key417,_val418);
+}
+iprot.readMapEnd();
+}
+struct.set_component_executors_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 5:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.launch_time_secs=iprot.readI32();
+struct.set_launch_time_secs_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 6:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+struct.owner=iprot.readString();
+struct.set_owner_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 7:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+struct.topology_action_options=new TopologyActionOptions();
+struct.topology_action_options.read(iprot);
+struct.set_topology_action_options_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 8:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.prev_status=backtype.storm.generated.TopologyStatus.findByValue(iprot.readI32());
+struct.set_prev_status_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

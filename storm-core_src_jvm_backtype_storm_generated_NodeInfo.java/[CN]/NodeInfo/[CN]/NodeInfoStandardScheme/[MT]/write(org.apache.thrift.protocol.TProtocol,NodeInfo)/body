@@ -1,0 +1,22 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.node != null) {
+    oprot.writeFieldBegin(NODE_FIELD_DESC);
+    oprot.writeString(struct.node);
+    oprot.writeFieldEnd();
+  }
+  if (struct.port != null) {
+    oprot.writeFieldBegin(PORT_FIELD_DESC);
+{
+      oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.I64,struct.port.size()));
+      for (      long _iter365 : struct.port) {
+        oprot.writeI64(_iter365);
+      }
+      oprot.writeSetEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

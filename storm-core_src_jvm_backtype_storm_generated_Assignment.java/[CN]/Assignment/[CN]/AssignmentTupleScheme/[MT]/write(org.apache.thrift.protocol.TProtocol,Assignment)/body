@@ -1,0 +1,52 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.master_code_dir);
+  BitSet optionals=new BitSet();
+  if (struct.is_set_node_host()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_executor_node_port()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_executor_start_time_secs()) {
+    optionals.set(2);
+  }
+  oprot.writeBitSet(optionals,3);
+  if (struct.is_set_node_host()) {
+{
+      oprot.writeI32(struct.node_host.size());
+      for (      Map.Entry<String,String> _iter393 : struct.node_host.entrySet()) {
+        oprot.writeString(_iter393.getKey());
+        oprot.writeString(_iter393.getValue());
+      }
+    }
+  }
+  if (struct.is_set_executor_node_port()) {
+{
+      oprot.writeI32(struct.executor_node_port.size());
+      for (      Map.Entry<List<Long>,NodeInfo> _iter394 : struct.executor_node_port.entrySet()) {
+{
+          oprot.writeI32(_iter394.getKey().size());
+          for (          long _iter395 : _iter394.getKey()) {
+            oprot.writeI64(_iter395);
+          }
+        }
+        _iter394.getValue().write(oprot);
+      }
+    }
+  }
+  if (struct.is_set_executor_start_time_secs()) {
+{
+      oprot.writeI32(struct.executor_start_time_secs.size());
+      for (      Map.Entry<List<Long>,Long> _iter396 : struct.executor_start_time_secs.entrySet()) {
+{
+          oprot.writeI32(_iter396.getKey().size());
+          for (          long _iter397 : _iter396.getKey()) {
+            oprot.writeI64(_iter397);
+          }
+        }
+        oprot.writeI64(_iter396.getValue());
+      }
+    }
+  }
+}
