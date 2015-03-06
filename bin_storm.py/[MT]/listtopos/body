@@ -1,0 +1,3 @@
+def listtopos(*args):
+    'Syntax: [storm list]\n\n    List the running topologies and their statuses.\n    '
+    exec_storm_class('backtype.storm.command.list', args=args, jvmtype='-client', extrajars=[USER_CONF_DIR, STORM_BIN_DIR])
