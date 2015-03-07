@@ -1,0 +1,8 @@
+{
+  for (  BoltDef bd : this.bolts) {
+    if (bd.getId().equals(boltId)) {
+      return bd.getParallelism();
+    }
+  }
+  return -1;
+}
