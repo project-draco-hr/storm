@@ -1,0 +1,8 @@
+{
+  Map<String,Object> retval=new HashMap<String,Object>();
+  for (  BoltDef bd : boltDefs) {
+    Class clazz=Class.forName(bd.getClassName());
+    retval.put(bd.getId(),clazz.newInstance());
+  }
+  return retval;
+}

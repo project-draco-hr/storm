@@ -1,0 +1,13 @@
+{
+  Constructor constructor=new Constructor(TopologyDef.class);
+  TypeDescription topologyDescription=new TypeDescription(TopologyDef.class);
+  topologyDescription.putListPropertyType("spouts",SpoutDef.class);
+  topologyDescription.putListPropertyType("bolts",BoltDef.class);
+  constructor.addTypeDescription(topologyDescription);
+  Yaml yaml=new Yaml(constructor);
+  FileInputStream in=new FileInputStream(inputFile);
+  TopologyDef topology=(TopologyDef)yaml.load(in);
+  in.close();
+  System.out.println(yaml.dump(topology));
+  return topology;
+}

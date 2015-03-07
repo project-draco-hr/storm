@@ -1,0 +1,5 @@
+{
+  Class clazz=Class.forName(def.getClassName());
+  IRichSpout spout=(IRichSpout)clazz.newInstance();
+  return spout;
+}
