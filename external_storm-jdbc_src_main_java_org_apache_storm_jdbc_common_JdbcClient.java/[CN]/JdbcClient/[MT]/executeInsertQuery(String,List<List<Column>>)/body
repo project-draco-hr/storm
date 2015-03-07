@@ -1,0 +1,38 @@
+{
+  Connection connection=null;
+  try {
+    connection=this.dataSource.getConnection();
+    boolean autoCommit=connection.getAutoCommit();
+    if (autoCommit) {
+      connection.setAutoCommit(false);
+    }
+    LOG.debug("Executing query {}",query);
+    PreparedStatement preparedStatement=connection.prepareStatement(query);
+    if (queryTimeoutSecs > 0) {
+      preparedStatement.setQueryTimeout(queryTimeoutSecs);
+    }
+    for (    List<Column> columnList : columnLists) {
+      setPreparedStatementParams(preparedStatement,columnList);
+      preparedStatement.addBatch();
+    }
+    int[] results=preparedStatement.executeBatch();
+    if (Arrays.asList(results).contains(Statement.EXECUTE_FAILED)) {
+      connection.rollback();
+      throw new RuntimeException("failed at least one sql statement in the batch, operation rolled back.");
+    }
+ else {
+      try {
+        connection.commit();
+      }
+ catch (      SQLException e) {
+        throw new RuntimeException("Failed to commit insert query " + query,e);
+      }
+    }
+  }
+ catch (  SQLException e) {
+    throw new RuntimeException("Failed to execute insert query " + query,e);
+  }
+ finally {
+    closeConnection(connection);
+  }
+}
