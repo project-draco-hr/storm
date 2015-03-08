@@ -1,0 +1,6 @@
+def cygpath(x):
+    command = ['cygpath', '-wp', x]
+    p = sub.Popen(command, stdout=sub.PIPE)
+    (output, errors) = p.communicate()
+    lines = output.split(os.linesep)
+    return lines[0]

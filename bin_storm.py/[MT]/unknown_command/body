@@ -1,0 +1,4 @@
+def unknown_command(*args):
+    print ('Unknown command: [storm %s]' % ' '.join(sys.argv[1:]))
+    print_usage()
+    sys.exit(254)

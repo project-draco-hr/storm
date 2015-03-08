@@ -1,0 +1,42 @@
+import os
+import sys
+import random
+import subprocess as sub
+import re
+import shlex
+try:
+    from urllib.parse import quote_plus
+except ImportError:
+    from urllib import quote_plus
+try:
+    import configparser
+except ImportError:
+    import ConfigParser as configparser
+normclasspath = (cygpath if (sys.platform == 'cygwin') else identity)
+STORM_DIR = os.sep.join(os.path.realpath(__file__).split(os.sep)[:(-2)])
+USER_CONF_DIR = os.path.expanduser((('~' + os.sep) + '.storm'))
+STORM_CONF_DIR = os.getenv('STORM_CONF_DIR', None)
+if (STORM_CONF_DIR == None):
+    CLUSTER_CONF_DIR = os.path.join(STORM_DIR, 'conf')
+else:
+    CLUSTER_CONF_DIR = STORM_CONF_DIR
+if (not os.path.isfile(os.path.join(USER_CONF_DIR, 'storm.yaml'))):
+    USER_CONF_DIR = CLUSTER_CONF_DIR
+STORM_LIB_DIR = os.path.join(STORM_DIR, 'lib')
+STORM_BIN_DIR = os.path.join(STORM_DIR, 'bin')
+STORM_LOGBACK_CONF_DIR = os.path.join(STORM_DIR, 'logback')
+init_storm_env()
+CONFIG_OPTS = []
+CONFFILE = ''
+JAR_JVM_OPTS = shlex.split(os.getenv('STORM_JAR_JVM_OPTS', ''))
+JAVA_HOME = os.getenv('JAVA_HOME', None)
+JAVA_CMD = ('java' if (not JAVA_HOME) else os.path.join(JAVA_HOME, 'bin', 'java'))
+if (not os.path.exists(STORM_LIB_DIR)):
+    print '******************************************'
+    print "The storm client can only be run from within a release. You appear to be trying to run the client from a checkout of Storm's source code."
+    print '\nYou can download a Storm release at http://storm-project.net/downloads.html'
+    print '******************************************'
+    sys.exit(1)
+COMMANDS = {'jar': jar, 'kill': kill, 'shell': shell, 'nimbus': nimbus, 'ui': ui, 'logviewer': logviewer, 'drpc': drpc, 'supervisor': supervisor, 'localconfvalue': print_localconfvalue, 'remoteconfvalue': print_remoteconfvalue, 'repl': repl, 'classpath': print_classpath, 'activate': activate, 'deactivate': deactivate, 'rebalance': rebalance, 'help': print_usage, 'list': listtopos, 'dev-zookeeper': dev_zookeeper, 'version': version, 'monitor': monitor, 'upload-credentials': upload_credentials, }
+if (__name__ == '__main__'):
+    main()
