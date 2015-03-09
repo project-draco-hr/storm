@@ -1,5 +1,19 @@
 {
   Class clazz=Class.forName(def.getClassName());
-  IRichSpout spout=(IRichSpout)clazz.newInstance();
+  IRichSpout spout=null;
+  if (def.hasConstructorArgs()) {
+    LOG.info("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
+    Constructor con=findCompatibleConstructor(def.getConstructorArgs(),clazz);
+    if (con != null) {
+      LOG.info("Found something seemingly compatible, attempting invocation...");
+      spout=(IRichSpout)con.newInstance(getConstructorArgsWithListCoercian(def.getConstructorArgs(),con));
+    }
+ else {
+      throw new IllegalArgumentException("Couldn't find a suitable Spout constructor.");
+    }
+  }
+ else {
+    spout=(IRichSpout)clazz.newInstance();
+  }
   return spout;
 }

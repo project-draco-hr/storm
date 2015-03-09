@@ -1,0 +1,25 @@
+{
+  Constructor retval=null;
+  int eligibleCount=0;
+  LOG.info("Target class: {}",target.getName());
+  Constructor[] cons=target.getDeclaredConstructors();
+  for (  Constructor con : cons) {
+    Class[] paramClasses=con.getParameterTypes();
+    if (paramClasses.length == args.size()) {
+      LOG.info("found constructor with same number of args..");
+      boolean invokable=canInvokeConstructorWithArgs(args,con);
+      if (invokable) {
+        retval=con;
+        eligibleCount++;
+      }
+      LOG.info("** invokable --> {}",invokable);
+    }
+ else {
+      LOG.debug("Skipping constructor with wrong number of arguments.");
+    }
+  }
+  if (eligibleCount > 1) {
+    LOG.warn("Found multiple invokable constructors for class {}, given arguments {}. Using the last one found.",target,args);
+  }
+  return retval;
+}
