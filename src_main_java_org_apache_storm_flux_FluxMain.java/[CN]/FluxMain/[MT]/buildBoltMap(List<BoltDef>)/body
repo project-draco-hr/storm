@@ -1,8 +1,24 @@
 {
   Map<String,Object> retval=new HashMap<String,Object>();
-  for (  BoltDef bd : boltDefs) {
-    Class clazz=Class.forName(bd.getClassName());
-    retval.put(bd.getId(),clazz.newInstance());
+  for (  BoltDef def : boltDefs) {
+    Class clazz=Class.forName(def.getClassName());
+    Object bolt=null;
+    LOG.info("Attempting to instantiate bolt: {}",def.getClassName());
+    if (def.hasConstructorArgs()) {
+      LOG.info("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
+      Constructor con=findCompatibleConstructor(def.getConstructorArgs(),clazz);
+      if (con != null) {
+        LOG.info("Found something seemingly compatible, attempting invocation...");
+        bolt=con.newInstance(getConstructorArgsWithListCoercian(def.getConstructorArgs(),con));
+      }
+ else {
+        throw new IllegalArgumentException("Couldn't find a suitable Spout constructor.");
+      }
+    }
+ else {
+      bolt=clazz.newInstance();
+    }
+    retval.put(def.getId(),bolt);
   }
   return retval;
 }

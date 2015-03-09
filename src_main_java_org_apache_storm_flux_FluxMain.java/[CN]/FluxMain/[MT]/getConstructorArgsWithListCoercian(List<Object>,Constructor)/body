@@ -29,7 +29,6 @@
       }
       constructorParams[i]=newArrayObj;
       LOG.debug("After conversion: {}",constructorParams[i]);
-      continue;
     }
   }
   return constructorParams;
