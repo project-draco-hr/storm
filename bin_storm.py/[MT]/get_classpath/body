@@ -1,0 +1,5 @@
+def get_classpath(extrajars):
+    ret = get_jars_full(STORM_DIR)
+    ret.extend(get_jars_full(STORM_LIB_DIR))
+    ret.extend(extrajars)
+    return normclasspath(os.pathsep.join(ret))

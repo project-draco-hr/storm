@@ -1,0 +1,4 @@
+def dev_zookeeper():
+    'Syntax: [storm dev-zookeeper]\n\n    Launches a fresh Zookeeper server using "dev.zookeeper.path" as its local dir and\n    "storm.zookeeper.port" as its port. This is only intended for development/testing, the\n    Zookeeper instance launched is not configured to be used in production.\n    '
+    cppaths = [CLUSTER_CONF_DIR]
+    exec_storm_class('backtype.storm.command.dev_zookeeper', jvmtype='-server', extrajars=[CLUSTER_CONF_DIR])

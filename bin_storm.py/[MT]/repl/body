@@ -1,0 +1,4 @@
+def repl():
+    'Syntax: [storm repl]\n\n    Opens up a Clojure REPL with the storm jars and configuration\n    on the classpath. Useful for debugging.\n    '
+    cppaths = [CLUSTER_CONF_DIR]
+    exec_storm_class('clojure.main', jvmtype='-client', extrajars=cppaths)
