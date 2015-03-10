@@ -1,5 +1,5 @@
 {
-  TopologyDef topologyDef=FluxParser.parse("src/test/resources/configs/shell_components.yaml");
+  TopologyDef topologyDef=FluxParser.parse("src/test/resources/configs/shell_test.yaml");
   Config conf=FluxMain.buildConfig(topologyDef);
   StormTopology topology=FluxMain.buildTopology(topologyDef);
   assertNotNull(topology);
