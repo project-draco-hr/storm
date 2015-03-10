@@ -1,3 +1,0 @@
-{
-  TopologyDef topology=FluxParser.parse("src/test/resources/configs/tck.yaml");
-}
