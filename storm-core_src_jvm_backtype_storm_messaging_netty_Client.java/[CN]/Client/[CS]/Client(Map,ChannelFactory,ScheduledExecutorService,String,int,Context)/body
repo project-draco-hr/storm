@@ -1,4 +1,5 @@
 {
+  this.context=context;
   closing=false;
   this.stormConf=stormConf;
   this.scheduler=MoreExecutors.listeningDecorator(scheduler);

@@ -1,6 +1,8 @@
 {
   if (!closing) {
     LOG.info("closing Netty Client {}",dstAddressPrefixedName);
+    context.removeClient(this);
+    context=null;
     closing=true;
     flushPendingMessages();
     waitForPendingMessagesToBeSent();

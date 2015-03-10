@@ -1,6 +1,6 @@
 {
   this.storm_conf=storm_conf;
-  connections=new Vector<IConnection>();
+  connections=new HashSet<IConnection>();
   int maxWorkers=Utils.getInt(storm_conf.get(Config.STORM_MESSAGING_NETTY_CLIENT_WORKER_THREADS));
   ThreadFactory bossFactory=new NettyRenameThreadFactory("client" + "-boss");
   ThreadFactory workerFactory=new NettyRenameThreadFactory("client" + "-worker");
