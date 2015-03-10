@@ -1,5 +1,5 @@
 {
-  TopologyDef topologyDef=FluxParser.parse("src/test/resources/configs/tck.yaml");
+  TopologyDef topologyDef=FluxParser.parse(args[0]);
   Config conf=buildConfig(topologyDef);
   StormTopology topology=buildTopology(topologyDef);
   LocalCluster cluster=new LocalCluster();
