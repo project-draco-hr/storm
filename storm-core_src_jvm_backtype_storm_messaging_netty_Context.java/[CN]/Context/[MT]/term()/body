@@ -1,6 +1,6 @@
 {
   clientScheduleService.shutdown();
-  for (  IConnection conn : new HashSet<IConnection>(connections)) {
+  for (  IConnection conn : connections.values()) {
     conn.close();
   }
   try {

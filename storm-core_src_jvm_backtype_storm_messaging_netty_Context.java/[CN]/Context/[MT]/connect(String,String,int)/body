@@ -1,5 +1,9 @@
 {
+  IConnection connection=connections.get(key(host,port));
+  if (connection != null) {
+    return connection;
+  }
   IConnection client=new Client(storm_conf,clientChannelFactory,clientScheduleService,host,port,this);
-  connections.add(client);
+  connections.put(key(host,port),client);
   return client;
 }
