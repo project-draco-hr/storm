@@ -1,8 +1,0 @@
-{
-  if (object instanceof TBase) {
-    return thriftSerializationDelegate.serialize(object);
-  }
- else {
-    return defaultSerializationDelegate.serialize(object);
-  }
-}

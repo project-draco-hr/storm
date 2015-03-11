@@ -1,8 +1,0 @@
-{
-  if (TBase.class.isAssignableFrom(clazz)) {
-    return thriftSerializationDelegate.deserialize(bytes,clazz);
-  }
- else {
-    return defaultSerializationDelegate.deserialize(bytes,clazz);
-  }
-}
