@@ -22,6 +22,8 @@ jedisCommand.zadd(additionalKey,Double.valueOf(value),key);
 case HYPER_LOG_LOG:
 jedisCommand.pfadd(key,value);
 break;
+default :
+throw new IllegalArgumentException("Cannot process such data type: " + dataType);
 }
 collector.ack(input);
 }
