@@ -1,4 +1,0 @@
-{
-  DefaultSerializationDelegate d=new DefaultSerializationDelegate();
-  System.out.println(d.serialize(null));
-}

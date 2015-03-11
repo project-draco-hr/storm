@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof ZKWorkerHeartbeat)   return this.equals((ZKWorkerHeartbeat)that);
-  return false;
-}
