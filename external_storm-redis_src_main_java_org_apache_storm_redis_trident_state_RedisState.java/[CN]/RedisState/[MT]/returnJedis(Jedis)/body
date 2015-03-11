@@ -1,3 +1,3 @@
 {
-  this.jedisPool.returnResource(jedis);
+  jedis.close();
 }
