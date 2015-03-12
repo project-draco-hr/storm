@@ -1,6 +1,5 @@
 {
-  Map<String,Object> retval=new HashMap<String,Object>();
-  for (  BoltDef def : boltDefs) {
+  for (  BoltDef def : context.getTopologyDef().getBolts()) {
     Class clazz=Class.forName(def.getClassName());
     Object bolt=null;
     LOG.info("Attempting to instantiate bolt: {}",def.getClassName());
@@ -12,13 +11,12 @@
         bolt=con.newInstance(getConstructorArgsWithListCoercian(def.getConstructorArgs(),con));
       }
  else {
-        throw new IllegalArgumentException("Couldn't find a suitable Spout constructor.");
+        throw new IllegalArgumentException("Couldn't find a suitable Bolt constructor.");
       }
     }
  else {
       bolt=clazz.newInstance();
     }
-    retval.put(def.getId(),bolt);
+    context.addBolt(def.getId(),bolt);
   }
-  return retval;
 }

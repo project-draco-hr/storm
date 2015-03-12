@@ -1,0 +1,7 @@
+{
+  this.components=components;
+  this.componentMap=new HashMap<String,BeanDef>();
+  for (  BeanDef component : this.components) {
+    this.componentMap.put(component.getId(),component);
+  }
+}

@@ -1,7 +1,8 @@
 {
   TopologyDef topologyDef=FluxParser.parse(args[0]);
   Config conf=buildConfig(topologyDef);
-  StormTopology topology=buildTopology(topologyDef);
+  ExecutionContext context=new ExecutionContext(topologyDef,conf);
+  StormTopology topology=buildTopology(context);
   LocalCluster cluster=new LocalCluster();
   cluster.submitTopology("test",conf,topology);
   Utils.sleep(60000);

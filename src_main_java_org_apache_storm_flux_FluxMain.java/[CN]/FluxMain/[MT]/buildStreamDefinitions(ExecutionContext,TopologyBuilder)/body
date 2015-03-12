@@ -1,11 +1,7 @@
 {
-  TopologyBuilder builder=new TopologyBuilder();
-  for (  SpoutDef sd : topologyDef.getSpouts()) {
-    builder.setSpout(sd.getId(),buildSpout(sd),sd.getParallelism());
-  }
-  Map<String,Object> boltMap=buildBoltMap(topologyDef.getBolts());
+  TopologyDef topologyDef=context.getTopologyDef();
   for (  StreamDef stream : topologyDef.getStreams()) {
-    Object boltObj=boltMap.get(stream.getTo());
+    Object boltObj=context.getBolt(stream.getTo());
     BoltDeclarer declarer=null;
     if (boltObj instanceof IRichBolt) {
       declarer=builder.setBolt(stream.getTo(),(IRichBolt)boltObj,topologyDef.parallelismForBolt(stream.getTo()));
@@ -44,5 +40,4 @@ default :
 throw new UnsupportedOperationException("unsupported grouping type: " + grouping);
 }
 }
-return builder.createTopology();
 }

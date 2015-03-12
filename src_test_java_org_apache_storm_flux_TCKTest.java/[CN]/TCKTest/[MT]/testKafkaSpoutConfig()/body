@@ -1,5 +1,5 @@
 {
-  TopologyDef topologyDef=FluxParser.parse("src/test/resources/configs/shell_test.yaml");
+  TopologyDef topologyDef=FluxParser.parse("src/test/resources/configs/kafka_test.yaml");
   Config conf=FluxMain.buildConfig(topologyDef);
   ExecutionContext context=new ExecutionContext(topologyDef,conf);
   StormTopology topology=FluxMain.buildTopology(context);
