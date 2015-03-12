@@ -12,11 +12,10 @@
  else {
       LOG.warn("skipping key = " + key + ", topic selector returned null.");
     }
+    collector.ack(input);
   }
  catch (  Exception ex) {
-    LOG.error("Could not send message with key = " + key + " and value = "+ message+ " to topic = "+ topic,ex);
-  }
- finally {
-    collector.ack(input);
+    collector.reportError(ex);
+    collector.fail(input);
   }
 }

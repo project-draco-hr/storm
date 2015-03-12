@@ -1,0 +1,5 @@
+{
+  this.impersonatingUser=impersonatingUser;
+  this.authorizedGroups=authorizedGroups;
+  this.authorizedHosts=authorizedHosts;
+}
