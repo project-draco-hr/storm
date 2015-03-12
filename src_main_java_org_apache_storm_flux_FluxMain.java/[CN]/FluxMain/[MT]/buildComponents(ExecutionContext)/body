@@ -10,7 +10,7 @@
         Constructor con=findCompatibleConstructor(cArgs,clazz);
         if (con != null) {
           LOG.info("Found something seemingly compatible, attempting invocation...");
-          obj=con.newInstance(getConstructorArgsWithListCoercian(bean.getConstructorArgs(),con));
+          obj=con.newInstance(getConstructorArgsWithListCoercian(cArgs,con));
         }
  else {
           throw new IllegalArgumentException("Couldn't find a suitable constructor.");
@@ -20,6 +20,7 @@
         obj=clazz.newInstance();
       }
       context.addComponent(bean.getId(),obj);
+      applyProperties(bean,obj,context);
     }
   }
 }
