@@ -1,6 +1,6 @@
 {
   for (  SpoutDef sd : context.getTopologyDef().getSpouts()) {
-    IRichSpout spout=buildSpout(sd);
+    IRichSpout spout=buildSpout(sd,context);
     builder.setSpout(sd.getId(),spout,sd.getParallelism());
     context.addSpout(sd.getId(),spout);
   }

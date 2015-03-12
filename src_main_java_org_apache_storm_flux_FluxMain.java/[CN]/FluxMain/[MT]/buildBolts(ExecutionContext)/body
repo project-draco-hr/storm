@@ -5,10 +5,11 @@
     LOG.info("Attempting to instantiate bolt: {}",def.getClassName());
     if (def.hasConstructorArgs()) {
       LOG.info("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
-      Constructor con=findCompatibleConstructor(def.getConstructorArgs(),clazz);
+      List<Object> cArgs=resolveReferences(def,context);
+      Constructor con=findCompatibleConstructor(cArgs,clazz);
       if (con != null) {
         LOG.info("Found something seemingly compatible, attempting invocation...");
-        bolt=con.newInstance(getConstructorArgsWithListCoercian(def.getConstructorArgs(),con));
+        bolt=con.newInstance(getConstructorArgsWithListCoercian(cArgs,con));
       }
  else {
         throw new IllegalArgumentException("Couldn't find a suitable Bolt constructor.");
