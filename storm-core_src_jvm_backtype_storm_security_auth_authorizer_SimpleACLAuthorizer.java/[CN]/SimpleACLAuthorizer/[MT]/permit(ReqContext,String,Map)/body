@@ -2,6 +2,15 @@
   LOG.info("[req " + context.requestID() + "] Access "+ " from: "+ (context.remoteAddress() == null ? "null" : context.remoteAddress().toString())+ (context.principal() == null ? "" : (" principal:" + context.principal()))+ " op:"+ operation+ (topology_conf == null ? "" : (" topoology:" + topology_conf.get(Config.TOPOLOGY_NAME))));
   String principal=context.principal().getName();
   String user=_ptol.toLocal(context.principal());
+  Set<String> userGroups=new HashSet<String>();
+  if (_groupMappingProvider != null) {
+    try {
+      userGroups=_groupMappingProvider.getGroups(user);
+    }
+ catch (    IOException e) {
+      LOG.warn("Error while trying to fetch user groups",e);
+    }
+  }
   if (_admins.contains(principal) || _admins.contains(user)) {
     return true;
   }
@@ -9,8 +18,7 @@
     return _supervisorCommands.contains(operation);
   }
   if (_userCommands.contains(operation)) {
-    if (_nimbusUsers.size() > 0 && _nimbusUsers.contains(user))     return true;
- else     if (_nimbusUsers.size() == 0)     return true;
+    return _nimbusUsers.size() == 0 || _nimbusUsers.contains(user) || checkUserGroupAllowed(userGroups,_nimbusGroups);
   }
   if (_topoCommands.contains(operation)) {
     Set topoUsers=new HashSet<String>();
@@ -24,17 +32,7 @@
     if (topology_conf.containsKey(Config.TOPOLOGY_GROUPS) && topology_conf.get(Config.TOPOLOGY_GROUPS) != null) {
       topoGroups.addAll((Collection<String>)topology_conf.get(Config.TOPOLOGY_GROUPS));
     }
-    if (_groupMappingProvider != null && topoGroups.size() > 0) {
-      try {
-        Set<String> userGroups=_groupMappingProvider.getGroups(user);
-        for (        String tgroup : topoGroups) {
-          if (userGroups.contains(tgroup))           return true;
-        }
-      }
- catch (      IOException e) {
-        LOG.warn("Error while trying to fetch user groups",e);
-      }
-    }
+    if (checkUserGroupAllowed(userGroups,topoGroups))     return true;
   }
   return false;
 }
