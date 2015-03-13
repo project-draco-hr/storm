@@ -1,0 +1,7 @@
+{
+  this.address=address;
+  if (connectionAttempt < 1) {
+    throw new IllegalArgumentException("connection attempt must be >= 1 (you provided " + connectionAttempt + ")");
+  }
+  this.connectionAttempt=connectionAttempt;
+}

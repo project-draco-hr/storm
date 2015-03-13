@@ -1,0 +1,3 @@
+{
+  return new DelimitedInputWriter(columnNames,fieldDelimiter,endPoint);
+}

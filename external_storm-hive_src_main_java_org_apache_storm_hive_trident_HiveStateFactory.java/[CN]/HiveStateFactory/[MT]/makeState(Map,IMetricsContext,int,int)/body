@@ -1,0 +1,6 @@
+{
+  LOG.info("makeState(partitonIndex={}, numpartitions={}",partitionIndex,numPartitions);
+  HiveState state=new HiveState(this.options);
+  state.prepare(conf,metrics,partitionIndex,numPartitions);
+  return state;
+}

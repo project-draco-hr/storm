@@ -1,0 +1,5 @@
+{
+  this.nodes=nodes;
+  this.timeout=timeout;
+  this.maxRedirections=maxRedirections;
+}

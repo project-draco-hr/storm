@@ -1,0 +1,26 @@
+{
+  if (args.length != 3) {
+    System.out.println("Usage: WordCountTrident 0(storm-local)|1(storm-cluster) redis-host redis-port");
+    System.exit(1);
+  }
+  Integer flag=Integer.valueOf(args[0]);
+  String redisHost=args[1];
+  Integer redisPort=Integer.valueOf(args[2]);
+  Config conf=new Config();
+  conf.setMaxSpoutPending(5);
+  if (flag == 0) {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("test_wordCounter_for_redis",conf,buildTopology(redisHost,redisPort));
+    Thread.sleep(60 * 1000);
+    cluster.killTopology("test_wordCounter_for_redis");
+    cluster.shutdown();
+    System.exit(0);
+  }
+ else   if (flag == 1) {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopology("test_wordCounter_for_redis",conf,buildTopology(redisHost,redisPort));
+  }
+ else {
+    System.out.println("Usage: WordCountTrident 0(storm-local)|1(storm-cluster) redis-host redis-port");
+  }
+}

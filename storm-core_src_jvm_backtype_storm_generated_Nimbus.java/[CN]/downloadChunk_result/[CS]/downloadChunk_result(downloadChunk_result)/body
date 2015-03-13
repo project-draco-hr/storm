@@ -1,7 +1,6 @@
 {
   if (other.is_set_success()) {
     this.success=org.apache.thrift.TBaseHelper.copyBinary(other.success);
-    ;
   }
   if (other.is_set_aze()) {
     this.aze=new AuthorizationException(other.aze);

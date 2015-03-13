@@ -1,0 +1,46 @@
+{
+  try {
+    if (closing) {
+      return;
+    }
+    if (connectionEstablished(channelRef.get())) {
+      return;
+    }
+    connectionAttempts.getAndIncrement();
+    if (reconnectingAllowed()) {
+      totalConnectionAttempts.getAndIncrement();
+      LOG.info("connection attempt {} to {} scheduled to run in {} ms",connectionAttempts.get(),dstAddressPrefixedName,delayMs);
+      ListenableFuture<Channel> channelFuture=scheduler.schedule(new Connector(dstAddress,connectionAttempts.get()),delayMs,TimeUnit.MILLISECONDS);
+      Futures.addCallback(channelFuture,new FutureCallback<Channel>(){
+        @Override public void onSuccess(        Channel result){
+          if (connectionEstablished(result)) {
+            setChannel(result);
+            LOG.info("connection established to {}",dstAddressPrefixedName);
+            connectionAttempts.set(0);
+          }
+ else {
+            reconnectAgain(new RuntimeException("Returned channel was actually not established"));
+          }
+        }
+        @Override public void onFailure(        Throwable t){
+          reconnectAgain(t);
+        }
+        private void reconnectAgain(        Throwable t){
+          String baseMsg=String.format("connection attempt %s to %s failed",connectionAttempts,dstAddressPrefixedName);
+          String failureMsg=(t == null) ? baseMsg : baseMsg + ": " + t.toString();
+          LOG.error(failureMsg);
+          long nextDelayMs=retryPolicy.getSleepTimeMs(connectionAttempts.get(),0);
+          connect(nextDelayMs);
+        }
+      }
+);
+    }
+ else {
+      close();
+      throw new RuntimeException("Giving up to connect to " + dstAddressPrefixedName + " after "+ connectionAttempts+ " failed attempts");
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Failed to connect to " + dstAddressPrefixedName,e);
+  }
+}

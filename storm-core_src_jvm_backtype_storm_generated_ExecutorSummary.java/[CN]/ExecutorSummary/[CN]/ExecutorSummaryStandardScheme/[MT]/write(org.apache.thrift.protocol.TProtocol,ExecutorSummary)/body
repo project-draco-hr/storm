@@ -1,0 +1,34 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.executor_info != null) {
+    oprot.writeFieldBegin(EXECUTOR_INFO_FIELD_DESC);
+    struct.executor_info.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  if (struct.component_id != null) {
+    oprot.writeFieldBegin(COMPONENT_ID_FIELD_DESC);
+    oprot.writeString(struct.component_id);
+    oprot.writeFieldEnd();
+  }
+  if (struct.host != null) {
+    oprot.writeFieldBegin(HOST_FIELD_DESC);
+    oprot.writeString(struct.host);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(PORT_FIELD_DESC);
+  oprot.writeI32(struct.port);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(struct.uptime_secs);
+  oprot.writeFieldEnd();
+  if (struct.stats != null) {
+    if (struct.is_set_stats()) {
+      oprot.writeFieldBegin(STATS_FIELD_DESC);
+      struct.stats.write(oprot);
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

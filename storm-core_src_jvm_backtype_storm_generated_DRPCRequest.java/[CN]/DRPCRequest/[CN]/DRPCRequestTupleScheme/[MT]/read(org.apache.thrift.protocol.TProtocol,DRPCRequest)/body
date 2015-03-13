@@ -1,0 +1,7 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.func_args=iprot.readString();
+  struct.set_func_args_isSet(true);
+  struct.request_id=iprot.readString();
+  struct.set_request_id_isSet(true);
+}

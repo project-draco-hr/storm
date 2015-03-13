@@ -1,0 +1,2 @@
+JedisClusterConfig jedisClusterConfig
+String hkey

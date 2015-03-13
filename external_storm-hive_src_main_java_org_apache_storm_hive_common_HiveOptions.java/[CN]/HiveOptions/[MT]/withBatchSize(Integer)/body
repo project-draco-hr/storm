@@ -1,0 +1,4 @@
+{
+  this.batchSize=batchSize;
+  return this;
+}

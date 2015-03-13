@@ -1,0 +1,3 @@
+def activate(*args):
+    "Syntax: [storm activate topology-name]\n\n    Activates the specified topology's spouts.\n    "
+    exec_storm_class('backtype.storm.command.activate', args=args, jvmtype='-client', extrajars=[USER_CONF_DIR, STORM_BIN_DIR])

@@ -1,2 +1,7 @@
 def __hash__(self):
-    return ((((0 + hash(self.inputs)) + hash(self.streams)) + hash(self.parallelism_hint)) + hash(self.json_conf))
+    value = 17
+    value = ((value * 31) ^ hash(self.inputs))
+    value = ((value * 31) ^ hash(self.streams))
+    value = ((value * 31) ^ hash(self.parallelism_hint))
+    value = ((value * 31) ^ hash(self.json_conf))
+    return value

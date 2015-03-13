@@ -1,0 +1,3 @@
+String name
+Credentials creds
+org.apache.thrift.async.AsyncMethodCallback resultHandler
