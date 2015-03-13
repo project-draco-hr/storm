@@ -1,0 +1,18 @@
+{
+  Options options=new Options();
+  Option localOpt=OptionBuilder.hasArgs(0).withArgName("local").withLongOpt("local").withDescription("Run the topology in local mode.").create("l");
+  options.addOption(localOpt);
+  Option remoteOpt=OptionBuilder.hasArgs(0).withArgName("remote").withLongOpt("remote").withDescription("Deploy the topology to a remote cluster.").create("r");
+  options.addOption(remoteOpt);
+  Option resourceOpt=OptionBuilder.hasArgs(0).withArgName("resource").withLongOpt("resource").withDescription("Treat the supplied path as a classpath resource instead of a file. (not implemented)").create("R");
+  options.addOption(resourceOpt);
+  Option localSleepOpt=OptionBuilder.hasArgs(1).withArgName("sleep").withLongOpt("sleep").withDescription("When running locally, the amount of time to sleep (in ms.) before killing the topology and shutting down the local cluster.").create("s");
+  options.addOption(localSleepOpt);
+  CommandLineParser parser=new BasicParser();
+  CommandLine cmd=parser.parse(options,args);
+  if (cmd.getArgs().length != 1) {
+    usage(options);
+    System.exit(1);
+  }
+  runCli(cmd);
+}

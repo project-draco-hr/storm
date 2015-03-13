@@ -1,0 +1,31 @@
+{
+  TopologyDef topologyDef=FluxParser.parse((String)cmd.getArgList().get(0));
+  String topologyName=topologyDef.getName();
+  Config conf=FluxBuilder.buildConfig(topologyDef);
+  ExecutionContext context=new ExecutionContext(topologyDef,conf);
+  StormTopology topology=FluxBuilder.buildTopology(context);
+  if (cmd.hasOption("remote")) {
+    LOG.info("Running remotely...");
+    try {
+      StormSubmitter.submitTopologyWithProgressBar(topologyName,conf,topology);
+    }
+ catch (    Exception e) {
+      LOG.warn("Unable to deploy topology tp remote cluster.",e);
+    }
+  }
+ else {
+    LOG.info("Running in local mode...");
+    LOG.debug("Sleep time: {}",cmd.getOptionValue("sleep"));
+    String sleepStr=cmd.getOptionValue("sleep");
+    Long sleepTime=Long.parseLong(sleepStr);
+    if (sleepTime == null) {
+      sleepTime=DEFAULT_LOCAL_SLEEP_TIME;
+      LOG.debug("Using default sleep time of: " + sleepTime);
+    }
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology(topologyName,conf,topology);
+    Utils.sleep(sleepTime);
+    cluster.killTopology(topologyName);
+    cluster.shutdown();
+  }
+}

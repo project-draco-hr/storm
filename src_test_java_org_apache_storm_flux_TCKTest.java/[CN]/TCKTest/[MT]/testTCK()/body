@@ -1,8 +1,8 @@
 {
   TopologyDef topologyDef=FluxParser.parse("src/test/resources/configs/tck.yaml");
-  Config conf=FluxMain.buildConfig(topologyDef);
+  Config conf=FluxBuilder.buildConfig(topologyDef);
   ExecutionContext context=new ExecutionContext(topologyDef,conf);
-  StormTopology topology=FluxMain.buildTopology(context);
+  StormTopology topology=FluxBuilder.buildTopology(context);
   assertNotNull(topology);
   topology.validate();
 }
