@@ -1,0 +1,4 @@
+Map conf
+String localJar
+ProgressListener listener
+String asUser
