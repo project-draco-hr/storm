@@ -8,21 +8,21 @@
     Object obj=args.get(i);
     Class paramType=parameterTypes[i];
     Class objectType=obj.getClass();
-    LOG.info("Comparing parameter class {} to object class {} to see if assignment is possible.",paramType,objectType);
+    LOG.debug("Comparing parameter class {} to object class {} to see if assignment is possible.",paramType,objectType);
     if (paramType.equals(objectType)) {
-      LOG.info("They are the same class.");
+      LOG.debug("They are the same class.");
       constructorParams[i]=args.get(i);
       continue;
     }
     if (paramType.isAssignableFrom(objectType)) {
-      LOG.info("Assignment is possible.");
+      LOG.debug("Assignment is possible.");
       constructorParams[i]=args.get(i);
       continue;
     }
     if (paramType.isArray() && List.class.isAssignableFrom(objectType)) {
-      LOG.info("Conversion appears possible...");
+      LOG.debug("Conversion appears possible...");
       List list=(List)obj;
-      LOG.info("Array Type: {}, List type: {}",paramType.getComponentType(),list.get(0).getClass());
+      LOG.debug("Array Type: {}, List type: {}",paramType.getComponentType(),list.get(0).getClass());
       Object newArrayObj=Array.newInstance(paramType.getComponentType(),list.size());
       for (int j=0; j < list.size(); j++) {
         Array.set(newArrayObj,j,list.get(j));

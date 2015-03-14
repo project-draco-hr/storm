@@ -1,5 +1,5 @@
 {
-  LOG.info("Checking arguments for references.");
+  LOG.debug("Checking arguments for references.");
   List<Object> cArgs;
   if (bean.hasReferences()) {
     cArgs=new ArrayList<Object>();

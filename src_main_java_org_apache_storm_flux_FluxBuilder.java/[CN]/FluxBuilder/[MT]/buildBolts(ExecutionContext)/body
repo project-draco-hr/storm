@@ -2,13 +2,13 @@
   for (  BoltDef def : context.getTopologyDef().getBolts()) {
     Class clazz=Class.forName(def.getClassName());
     Object bolt=null;
-    LOG.info("Attempting to instantiate bolt: {}",def.getClassName());
+    LOG.debug("Attempting to instantiate bolt: {}",def.getClassName());
     if (def.hasConstructorArgs()) {
-      LOG.info("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
+      LOG.debug("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
       List<Object> cArgs=resolveReferences(def,context);
       Constructor con=findCompatibleConstructor(cArgs,clazz);
       if (con != null) {
-        LOG.info("Found something seemingly compatible, attempting invocation...");
+        LOG.debug("Found something seemingly compatible, attempting invocation...");
         bolt=con.newInstance(getConstructorArgsWithListCoercian(cArgs,con));
       }
  else {

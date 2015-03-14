@@ -2,11 +2,11 @@
   Class clazz=Class.forName(def.getClassName());
   IRichSpout spout=null;
   if (def.hasConstructorArgs()) {
-    LOG.info("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
+    LOG.debug("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
     List<Object> cArgs=resolveReferences(def,context);
     Constructor con=findCompatibleConstructor(cArgs,clazz);
     if (con != null) {
-      LOG.info("Found something seemingly compatible, attempting invocation...");
+      LOG.debug("Found something seemingly compatible, attempting invocation...");
       spout=(IRichSpout)con.newInstance(getConstructorArgsWithListCoercian(cArgs,con));
     }
  else {

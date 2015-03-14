@@ -5,11 +5,11 @@
       Class clazz=Class.forName(bean.getClassName());
       Object obj=null;
       if (bean.hasConstructorArgs()) {
-        LOG.info("Found constructor arguments in bean definition: " + bean.getConstructorArgs().getClass().getName());
+        LOG.debug("Found constructor arguments in bean definition: " + bean.getConstructorArgs().getClass().getName());
         List<Object> cArgs=resolveReferences(bean,context);
         Constructor con=findCompatibleConstructor(cArgs,clazz);
         if (con != null) {
-          LOG.info("Found something seemingly compatible, attempting invocation...");
+          LOG.debug("Found something seemingly compatible, attempting invocation...");
           obj=con.newInstance(getConstructorArgsWithListCoercian(cArgs,con));
         }
  else {
