@@ -8,6 +8,6 @@
   FileInputStream in=new FileInputStream(inputFile);
   TopologyDef topology=(TopologyDef)yaml.load(in);
   in.close();
-  System.out.println(yaml.dump(topology));
+  LOG.debug("Configuration (interpreted): \n" + yaml.dump(topology));
   return topology;
 }
