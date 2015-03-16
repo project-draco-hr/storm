@@ -1,11 +1,15 @@
 {
+  printSplash();
   boolean dumpYaml=cmd.hasOption("dump-yaml");
   TopologyDef topologyDef=null;
+  String filePath=(String)cmd.getArgList().get(0);
   if (cmd.hasOption("resource")) {
-    topologyDef=FluxParser.parseResource((String)cmd.getArgList().get(0),dumpYaml);
+    printf("Parsing classpath resource: %s",filePath);
+    topologyDef=FluxParser.parseResource(filePath,dumpYaml);
   }
  else {
-    topologyDef=FluxParser.parseFile((String)cmd.getArgList().get(0),dumpYaml);
+    printf("Parsing classpath resource: %s",new File(filePath).getAbsolutePath());
+    topologyDef=FluxParser.parseFile(filePath,dumpYaml);
   }
   String topologyName=topologyDef.getName();
   Config conf=FluxBuilder.buildConfig(topologyDef);
