@@ -1,1 +1,2 @@
 String inputFile
+boolean dumpYaml

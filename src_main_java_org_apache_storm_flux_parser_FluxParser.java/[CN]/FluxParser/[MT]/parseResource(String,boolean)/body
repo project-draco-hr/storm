@@ -3,6 +3,8 @@
   InputStream in=FluxParser.class.getResourceAsStream(resource);
   TopologyDef topology=(TopologyDef)yaml.load(in);
   in.close();
-  LOG.debug("Configuration (interpreted): \n" + yaml.dump(topology));
+  if (dumpYaml) {
+    dumpYaml(topology,yaml);
+  }
   return topology;
 }
