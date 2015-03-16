@@ -1,7 +1,7 @@
 {
   Yaml yaml=yaml();
   FileInputStream in=new FileInputStream(inputFile);
-  TopologyDef topology=(TopologyDef)yaml.load(in);
+  TopologyDef topology=loadYaml(yaml,in);
   in.close();
   if (dumpYaml) {
     dumpYaml(topology,yaml);
