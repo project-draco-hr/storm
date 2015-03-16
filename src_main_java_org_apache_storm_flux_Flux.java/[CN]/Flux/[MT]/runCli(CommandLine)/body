@@ -1,31 +1,42 @@
 {
-  TopologyDef topologyDef=FluxParser.parse((String)cmd.getArgList().get(0));
+  TopologyDef topologyDef=null;
+  if (cmd.hasOption("resource")) {
+    topologyDef=FluxParser.parseResource((String)cmd.getArgList().get(0));
+  }
+ else {
+    topologyDef=FluxParser.parseFile((String)cmd.getArgList().get(0));
+  }
   String topologyName=topologyDef.getName();
   Config conf=FluxBuilder.buildConfig(topologyDef);
   ExecutionContext context=new ExecutionContext(topologyDef,conf);
   StormTopology topology=FluxBuilder.buildTopology(context);
-  if (cmd.hasOption("remote")) {
-    LOG.info("Running remotely...");
-    try {
-      StormSubmitter.submitTopologyWithProgressBar(topologyName,conf,topology);
-    }
- catch (    Exception e) {
-      LOG.warn("Unable to deploy topology tp remote cluster.",e);
-    }
+  if (!cmd.hasOption("no-detail")) {
+    printTopologyInfo(context);
   }
- else {
-    LOG.info("Running in local mode...");
-    LOG.debug("Sleep time: {}",cmd.getOptionValue("sleep"));
-    String sleepStr=cmd.getOptionValue("sleep");
-    Long sleepTime=Long.parseLong(sleepStr);
-    if (sleepTime == null) {
-      sleepTime=DEFAULT_LOCAL_SLEEP_TIME;
-      LOG.debug("Using default sleep time of: " + sleepTime);
+  if (!cmd.hasOption("dry-run")) {
+    if (cmd.hasOption("remote")) {
+      LOG.info("Running remotely...");
+      try {
+        StormSubmitter.submitTopologyWithProgressBar(topologyName,conf,topology);
+      }
+ catch (      Exception e) {
+        LOG.warn("Unable to deploy topology tp remote cluster.",e);
+      }
     }
-    LocalCluster cluster=new LocalCluster();
-    cluster.submitTopology(topologyName,conf,topology);
-    Utils.sleep(sleepTime);
-    cluster.killTopology(topologyName);
-    cluster.shutdown();
+ else {
+      LOG.info("Running in local mode...");
+      LOG.debug("Sleep time: {}",cmd.getOptionValue("sleep"));
+      String sleepStr=cmd.getOptionValue("sleep");
+      Long sleepTime=Long.parseLong(sleepStr);
+      if (sleepTime == null) {
+        sleepTime=DEFAULT_LOCAL_SLEEP_TIME;
+        LOG.debug("Using default sleep time of: " + sleepTime);
+      }
+      LocalCluster cluster=new LocalCluster();
+      cluster.submitTopology(topologyName,conf,topology);
+      Utils.sleep(sleepTime);
+      cluster.killTopology(topologyName);
+      cluster.shutdown();
+    }
   }
 }

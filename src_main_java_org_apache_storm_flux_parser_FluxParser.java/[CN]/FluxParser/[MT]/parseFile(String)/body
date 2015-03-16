@@ -1,0 +1,8 @@
+{
+  Yaml yaml=yaml();
+  FileInputStream in=new FileInputStream(inputFile);
+  TopologyDef topology=(TopologyDef)yaml.load(in);
+  in.close();
+  LOG.debug("Configuration (interpreted): \n" + yaml.dump(topology));
+  return topology;
+}

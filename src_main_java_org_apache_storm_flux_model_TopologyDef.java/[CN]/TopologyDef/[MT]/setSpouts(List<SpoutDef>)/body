@@ -1,3 +1,7 @@
 {
   this.spouts=spouts;
+  this.spoutMap=new HashMap<String,SpoutDef>();
+  for (  SpoutDef spout : this.spouts) {
+    this.spoutMap.put(spout.getId(),spout);
+  }
 }
