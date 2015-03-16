@@ -6,5 +6,5 @@
   if (dumpYaml) {
     dumpYaml(topology,yaml);
   }
-  return topology;
+  return processIncludes(yaml,topology);
 }
