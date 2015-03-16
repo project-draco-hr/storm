@@ -1,5 +1,5 @@
 {
-  List<BeanDef> cDefs=context.getTopologyDef().getComponents();
+  Collection<BeanDef> cDefs=context.getTopologyDef().getComponents();
   if (cDefs != null) {
     for (    BeanDef bean : cDefs) {
       Class clazz=Class.forName(bean.getClassName());
