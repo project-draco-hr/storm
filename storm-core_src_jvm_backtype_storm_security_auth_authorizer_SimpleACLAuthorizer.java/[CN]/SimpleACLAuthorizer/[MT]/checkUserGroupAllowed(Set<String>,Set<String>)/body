@@ -1,0 +1,8 @@
+{
+  if (userGroups.size() > 0 && configuredGroups.size() > 0) {
+    for (    String tgroup : configuredGroups) {
+      if (userGroups.contains(tgroup))       return true;
+    }
+  }
+  return false;
+}
