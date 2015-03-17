@@ -1,3 +1,0 @@
-{
-  return this.constructorArgs != null && this.constructorArgs.size() > 0;
-}

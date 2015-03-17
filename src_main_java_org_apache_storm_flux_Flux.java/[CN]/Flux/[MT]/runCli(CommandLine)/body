@@ -10,7 +10,7 @@
     topologyDef=FluxParser.parseResource(filePath,dumpYaml,true);
   }
  else {
-    printf("Parsing classpath resource: %s",new File(filePath).getAbsolutePath());
+    printf("Parsing file: %s",new File(filePath).getAbsolutePath());
     topologyDef=FluxParser.parseFile(filePath,dumpYaml,true);
   }
   String topologyName=topologyDef.getName();
@@ -32,13 +32,12 @@
     }
  else {
       LOG.info("Running in local mode...");
-      LOG.debug("Sleep time: {}",cmd.getOptionValue("sleep"));
       String sleepStr=cmd.getOptionValue("sleep");
-      Long sleepTime=Long.parseLong(sleepStr);
-      if (sleepTime == null) {
-        sleepTime=DEFAULT_LOCAL_SLEEP_TIME;
-        LOG.debug("Using default sleep time of: " + sleepTime);
+      Long sleepTime=DEFAULT_LOCAL_SLEEP_TIME;
+      if (sleepStr != null) {
+        sleepTime=Long.parseLong(sleepStr);
       }
+      LOG.debug("Sleep time: {}",sleepTime);
       LocalCluster cluster=new LocalCluster();
       cluster.submitTopology(topologyName,conf,topology);
       Utils.sleep(sleepTime);

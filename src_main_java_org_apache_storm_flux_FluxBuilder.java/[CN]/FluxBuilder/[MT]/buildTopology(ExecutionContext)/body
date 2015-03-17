@@ -1,6 +1,5 @@
 {
   TopologyBuilder builder=new TopologyBuilder();
-  TopologyDef topologyDef=context.getTopologyDef();
   buildComponents(context);
   buildSpouts(context,builder);
   buildBolts(context);

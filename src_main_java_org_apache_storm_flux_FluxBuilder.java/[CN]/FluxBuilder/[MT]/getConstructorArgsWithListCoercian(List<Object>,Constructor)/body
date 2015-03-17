@@ -19,6 +19,10 @@
       constructorParams[i]=args.get(i);
       continue;
     }
+    if (isPrimitiveNumber(paramType) && Number.class.isAssignableFrom(objectType)) {
+      constructorParams[i]=args.get(i);
+      continue;
+    }
     if (paramType.isArray() && List.class.isAssignableFrom(objectType)) {
       LOG.debug("Conversion appears possible...");
       List list=(List)obj;

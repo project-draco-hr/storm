@@ -36,6 +36,9 @@ break;
 case NONE:
 declarer.noneGrouping(stream.getFrom(),streamId);
 break;
+case CUSTOM:
+declarer.customGrouping(stream.getFrom(),streamId,buildCustomStreamGrouping(stream.getGrouping().getCustomClass(),context));
+break;
 default :
 throw new UnsupportedOperationException("unsupported grouping type: " + grouping);
 }
