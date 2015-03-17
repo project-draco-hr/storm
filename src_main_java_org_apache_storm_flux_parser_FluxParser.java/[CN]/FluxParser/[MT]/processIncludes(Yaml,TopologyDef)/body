@@ -1,33 +1,47 @@
 {
   if (topologyDef.getIncludes() != null) {
     for (    IncludeDef include : topologyDef.getIncludes()) {
-      TopologyDef td=null;
+      TopologyDef includeTopologyDef=null;
       if (include.isResource()) {
         LOG.info("Loading includes from resource: {}",include.getFile());
-        td=parseResource(include.getFile(),true,false);
+        includeTopologyDef=parseResource(include.getFile(),true,false);
       }
  else {
         LOG.info("Loading includes from file: {}",include.getFile());
-        td=parseFile(include.getFile(),true,false);
+        includeTopologyDef=parseFile(include.getFile(),true,false);
       }
       boolean override=include.isOverride();
-      if (td.getName() != null) {
-        topologyDef.setName(td.getName(),override);
+      if (includeTopologyDef.getName() != null) {
+        topologyDef.setName(includeTopologyDef.getName(),override);
       }
-      if (td.getConfig() != null) {
-        topologyDef.getConfig().putAll(td.getConfig());
+      if (includeTopologyDef.getConfig() != null) {
+        Map<String,Object> config=topologyDef.getConfig();
+        Map<String,Object> includeConfig=includeTopologyDef.getConfig();
+        if (override) {
+          config.putAll(includeTopologyDef.getConfig());
+        }
+ else {
+          for (          String key : includeConfig.keySet()) {
+            if (config.containsKey(key)) {
+              LOG.warn("Ignoring attempt to set topology config property '{}' with override == false",key);
+            }
+ else {
+              config.put(key,includeConfig.get(key));
+            }
+          }
+        }
       }
-      if (td.getComponents() != null) {
-        topologyDef.addAllComponents(td.getComponents(),override);
+      if (includeTopologyDef.getComponents() != null) {
+        topologyDef.addAllComponents(includeTopologyDef.getComponents(),override);
       }
-      if (td.getBolts() != null) {
-        topologyDef.addAllBolts(td.getBolts(),override);
+      if (includeTopologyDef.getBolts() != null) {
+        topologyDef.addAllBolts(includeTopologyDef.getBolts(),override);
       }
-      if (td.getSpouts() != null) {
-        topologyDef.addAllSpouts(td.getSpouts(),override);
+      if (includeTopologyDef.getSpouts() != null) {
+        topologyDef.addAllSpouts(includeTopologyDef.getSpouts(),override);
       }
-      if (td.getStreams() != null) {
-        topologyDef.addAllStreams(td.getStreams(),override);
+      if (includeTopologyDef.getStreams() != null) {
+        topologyDef.addAllStreams(includeTopologyDef.getStreams(),override);
       }
     }
   }

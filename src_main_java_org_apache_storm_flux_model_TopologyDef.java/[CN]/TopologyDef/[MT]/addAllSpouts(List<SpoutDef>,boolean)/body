@@ -1,5 +1,11 @@
 {
   for (  SpoutDef spout : spouts) {
-    this.spoutMap.put(spout.getId(),spout);
+    String id=spout.getId();
+    if (this.spoutMap.get(id) == null || override) {
+      this.spoutMap.put(spout.getId(),spout);
+    }
+ else {
+      LOG.warn("Ignoring attempt to create spout '{}' with override == false.",id);
+    }
   }
 }

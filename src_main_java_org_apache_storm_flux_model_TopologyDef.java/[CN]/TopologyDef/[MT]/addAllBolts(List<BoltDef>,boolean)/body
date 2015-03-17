@@ -1,5 +1,11 @@
 {
   for (  BoltDef bolt : bolts) {
-    this.boltMap.put(bolt.getId(),bolt);
+    String id=bolt.getId();
+    if (this.boltMap.get(id) == null || override) {
+      this.boltMap.put(bolt.getId(),bolt);
+    }
+ else {
+      LOG.warn("Ignoring attempt to create bolt '{}' with override == false.",id);
+    }
   }
 }
