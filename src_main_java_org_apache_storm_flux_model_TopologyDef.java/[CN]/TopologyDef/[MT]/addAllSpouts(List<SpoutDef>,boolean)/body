@@ -1,0 +1,5 @@
+{
+  for (  SpoutDef spout : spouts) {
+    this.spoutMap.put(spout.getId(),spout);
+  }
+}

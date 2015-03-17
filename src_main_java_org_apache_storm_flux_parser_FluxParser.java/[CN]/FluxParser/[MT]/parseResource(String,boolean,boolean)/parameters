@@ -1,2 +1,3 @@
 String resource
 boolean dumpYaml
+boolean processIncludes

@@ -1,0 +1,5 @@
+{
+  for (  BeanDef bean : components) {
+    this.componentMap.put(bean.getId(),bean);
+  }
+}

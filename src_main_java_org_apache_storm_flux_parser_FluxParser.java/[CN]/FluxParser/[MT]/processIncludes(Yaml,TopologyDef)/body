@@ -1,3 +1,35 @@
 {
+  if (topologyDef.getIncludes() != null) {
+    for (    IncludeDef include : topologyDef.getIncludes()) {
+      TopologyDef td=null;
+      if (include.isResource()) {
+        LOG.info("Loading includes from resource: {}",include.getFile());
+        td=parseResource(include.getFile(),true,false);
+      }
+ else {
+        LOG.info("Loading includes from file: {}",include.getFile());
+        td=parseFile(include.getFile(),true,false);
+      }
+      boolean override=include.isOverride();
+      if (td.getName() != null) {
+        topologyDef.setName(td.getName(),override);
+      }
+      if (td.getConfig() != null) {
+        topologyDef.getConfig().putAll(td.getConfig());
+      }
+      if (td.getComponents() != null) {
+        topologyDef.addAllComponents(td.getComponents(),override);
+      }
+      if (td.getBolts() != null) {
+        topologyDef.addAllBolts(td.getBolts(),override);
+      }
+      if (td.getSpouts() != null) {
+        topologyDef.addAllSpouts(td.getSpouts(),override);
+      }
+      if (td.getStreams() != null) {
+        topologyDef.addAllStreams(td.getStreams(),override);
+      }
+    }
+  }
   return topologyDef;
 }

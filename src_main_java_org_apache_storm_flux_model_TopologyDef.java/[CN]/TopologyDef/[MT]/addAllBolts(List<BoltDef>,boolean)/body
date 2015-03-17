@@ -1,0 +1,5 @@
+{
+  for (  BoltDef bolt : bolts) {
+    this.boltMap.put(bolt.getId(),bolt);
+  }
+}
