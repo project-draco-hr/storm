@@ -1,12 +1,12 @@
 {
   List<String> exhibitorServers=getStrings(conf.get(Config.STORM_EXHIBITOR_SERVERS));
   if (!exhibitorServers.isEmpty()) {
-    builder.ensembleProvider(new ExhibitorEnsembleProvider(new Exhibitors(exhibitorServers,Utils.getInt(conf.get(Config.STORM_EXHIBITOR_PORT),8080),new Exhibitors.BackupConnectionStringProvider(){
+    builder.ensembleProvider(new ExhibitorEnsembleProvider(new Exhibitors(exhibitorServers,Utils.getInt(conf.get(Config.STORM_EXHIBITOR_PORT)),new Exhibitors.BackupConnectionStringProvider(){
       @Override public String getBackupConnectionString() throws Exception {
         return zkStr;
       }
     }
-),new DefaultExhibitorRestClient(),(String)Utils.get(conf,Config.STORM_EXHIBITOR_URIPATH,"/exhibitor/v1/cluster/list"),Utils.getInt(conf.get(Config.STORM_EXHIBITOR_POLL)),new StormBoundedExponentialBackoffRetry(Utils.getInt(conf.get(Config.STORM_EXHIBITOR_RETRY_INTERVAL)),Utils.getInt(conf.get(Config.STORM_EXHIBITOR_RETRY_INTERVAL_CEILING)),Utils.getInt(conf.get(Config.STORM_EXHIBITOR_RETRY_TIMES)))));
+),new DefaultExhibitorRestClient(),Utils.getString(conf.get(Config.STORM_EXHIBITOR_URIPATH)),Utils.getInt(conf.get(Config.STORM_EXHIBITOR_POLL)),new StormBoundedExponentialBackoffRetry(Utils.getInt(conf.get(Config.STORM_EXHIBITOR_RETRY_INTERVAL)),Utils.getInt(conf.get(Config.STORM_EXHIBITOR_RETRY_INTERVAL_CEILING)),Utils.getInt(conf.get(Config.STORM_EXHIBITOR_RETRY_TIMES)))));
   }
  else {
     builder.connectString(zkStr);
