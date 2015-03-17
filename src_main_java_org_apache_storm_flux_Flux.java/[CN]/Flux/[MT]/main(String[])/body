@@ -12,6 +12,8 @@
   options.addOption(dryRunOpt);
   Option noDetailOpt=OptionBuilder.hasArgs(0).withArgName("no-detail").withLongOpt("no-detail").withDescription("Supress the printing of topology details.").create("q");
   options.addOption(noDetailOpt);
+  Option noSplashOpt=OptionBuilder.hasArgs(0).withArgName("no-splash").withLongOpt("no-splash").withDescription("Supress the printing of the splash screen.").create("n");
+  options.addOption(noSplashOpt);
   CommandLineParser parser=new BasicParser();
   CommandLine cmd=parser.parse(options,args);
   if (cmd.getArgs().length != 1) {

@@ -1,5 +1,7 @@
 {
-  printSplash();
+  if (!cmd.hasOption("no-splash")) {
+    printSplash();
+  }
   boolean dumpYaml=cmd.hasOption("dump-yaml");
   TopologyDef topologyDef=null;
   String filePath=(String)cmd.getArgList().get(0);
