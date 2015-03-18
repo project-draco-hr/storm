@@ -1,18 +1,18 @@
 {
   Options options=new Options();
-  Option localOpt=OptionBuilder.hasArgs(0).withArgName("local").withLongOpt("local").withDescription("Run the topology in local mode.").create("l");
+  Option localOpt=OptionBuilder.hasArgs(0).withArgName(OPTION_LOCAL).withLongOpt(OPTION_LOCAL).withDescription("Run the topology in local mode.").create("l");
   options.addOption(localOpt);
-  Option remoteOpt=OptionBuilder.hasArgs(0).withArgName("remote").withLongOpt("remote").withDescription("Deploy the topology to a remote cluster.").create("r");
+  Option remoteOpt=OptionBuilder.hasArgs(0).withArgName(OPTION_REMOTE).withLongOpt(OPTION_REMOTE).withDescription("Deploy the topology to a remote cluster.").create("r");
   options.addOption(remoteOpt);
-  Option resourceOpt=OptionBuilder.hasArgs(0).withArgName("resource").withLongOpt("resource").withDescription("Treat the supplied path as a classpath resource instead of a file.").create("R");
+  Option resourceOpt=OptionBuilder.hasArgs(0).withArgName(OPTION_RESOURCE).withLongOpt(OPTION_RESOURCE).withDescription("Treat the supplied path as a classpath resource instead of a file.").create("R");
   options.addOption(resourceOpt);
-  Option localSleepOpt=OptionBuilder.hasArgs(1).withArgName("sleep").withLongOpt("sleep").withDescription("When running locally, the amount of time to sleep (in ms.) before killing the " + "topology and shutting down the local cluster.").create("s");
+  Option localSleepOpt=OptionBuilder.hasArgs(1).withArgName(OPTION_SLEEP).withLongOpt(OPTION_SLEEP).withDescription("When running locally, the amount of time to sleep (in ms.) before killing the " + "topology and shutting down the local cluster.").create("s");
   options.addOption(localSleepOpt);
-  Option dryRunOpt=OptionBuilder.hasArgs(0).withArgName("dry-run").withLongOpt("dry-run").withDescription("Do not run or deploy the topology. Just build, validate, and print information about " + "the topology.").create("d");
+  Option dryRunOpt=OptionBuilder.hasArgs(0).withArgName(OPTION_DRY_RUN).withLongOpt(OPTION_DRY_RUN).withDescription("Do not run or deploy the topology. Just build, validate, and print information about " + "the topology.").create("d");
   options.addOption(dryRunOpt);
-  Option noDetailOpt=OptionBuilder.hasArgs(0).withArgName("no-detail").withLongOpt("no-detail").withDescription("Supress the printing of topology details.").create("q");
+  Option noDetailOpt=OptionBuilder.hasArgs(0).withArgName(OPTION_NO_DETAIL).withLongOpt(OPTION_NO_DETAIL).withDescription("Supress the printing of topology details.").create("q");
   options.addOption(noDetailOpt);
-  Option noSplashOpt=OptionBuilder.hasArgs(0).withArgName("no-splash").withLongOpt("no-splash").withDescription("Supress the printing of the splash screen.").create("n");
+  Option noSplashOpt=OptionBuilder.hasArgs(0).withArgName(OPTION_NO_SPLASH).withLongOpt(OPTION_NO_SPLASH).withDescription("Supress the printing of the splash screen.").create("n");
   options.addOption(noSplashOpt);
   CommandLineParser parser=new BasicParser();
   CommandLine cmd=parser.parse(options,args);

@@ -1,11 +1,11 @@
 {
-  if (!cmd.hasOption("no-splash")) {
+  if (!cmd.hasOption(OPTION_NO_SPLASH)) {
     printSplash();
   }
   boolean dumpYaml=cmd.hasOption("dump-yaml");
   TopologyDef topologyDef=null;
   String filePath=(String)cmd.getArgList().get(0);
-  if (cmd.hasOption("resource")) {
+  if (cmd.hasOption(OPTION_RESOURCE)) {
     printf("Parsing classpath resource: %s",filePath);
     topologyDef=FluxParser.parseResource(filePath,dumpYaml,true);
   }
@@ -17,11 +17,11 @@
   Config conf=FluxBuilder.buildConfig(topologyDef);
   ExecutionContext context=new ExecutionContext(topologyDef,conf);
   StormTopology topology=FluxBuilder.buildTopology(context);
-  if (!cmd.hasOption("no-detail")) {
+  if (!cmd.hasOption(OPTION_NO_DETAIL)) {
     printTopologyInfo(context);
   }
-  if (!cmd.hasOption("dry-run")) {
-    if (cmd.hasOption("remote")) {
+  if (!cmd.hasOption(OPTION_DRY_RUN)) {
+    if (cmd.hasOption(OPTION_REMOTE)) {
       LOG.info("Running remotely...");
       try {
         StormSubmitter.submitTopologyWithProgressBar(topologyName,conf,topology);
@@ -32,7 +32,7 @@
     }
  else {
       LOG.info("Running in local mode...");
-      String sleepStr=cmd.getOptionValue("sleep");
+      String sleepStr=cmd.getOptionValue(OPTION_SLEEP);
       Long sleepTime=DEFAULT_LOCAL_SLEEP_TIME;
       if (sleepStr != null) {
         sleepTime=Long.parseLong(sleepStr);
