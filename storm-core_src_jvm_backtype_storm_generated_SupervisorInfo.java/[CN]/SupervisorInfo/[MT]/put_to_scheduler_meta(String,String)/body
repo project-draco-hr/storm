@@ -1,0 +1,6 @@
+{
+  if (this.scheduler_meta == null) {
+    this.scheduler_meta=new HashMap<String,String>();
+  }
+  this.scheduler_meta.put(key,val);
+}

@@ -1,4 +1,5 @@
 {
+  __isset_bitfield=other.__isset_bitfield;
   if (other.is_set_emitted()) {
     Map<String,Map<String,Long>> __this__emitted=new HashMap<String,Map<String,Long>>(other.emitted.size());
     for (    Map.Entry<String,Map<String,Long>> other_element : other.emitted.entrySet()) {
@@ -24,4 +25,5 @@
   if (other.is_set_specific()) {
     this.specific=new ExecutorSpecificStats(other.specific);
   }
+  this.rate=other.rate;
 }

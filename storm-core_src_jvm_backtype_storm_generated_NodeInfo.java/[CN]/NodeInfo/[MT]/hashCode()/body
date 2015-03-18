@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_node=true && (is_set_node());
+  list.add(present_node);
+  if (present_node)   list.add(node);
+  boolean present_port=true && (is_set_port());
+  list.add(present_port);
+  if (present_port)   list.add(port);
+  return list.hashCode();
+}

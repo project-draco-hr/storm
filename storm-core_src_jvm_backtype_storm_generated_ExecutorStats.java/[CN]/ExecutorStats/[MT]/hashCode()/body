@@ -9,5 +9,8 @@
   boolean present_specific=true && (is_set_specific());
   list.add(present_specific);
   if (present_specific)   list.add(specific);
+  boolean present_rate=true;
+  list.add(present_rate);
+  if (present_rate)   list.add(rate);
   return list.hashCode();
 }

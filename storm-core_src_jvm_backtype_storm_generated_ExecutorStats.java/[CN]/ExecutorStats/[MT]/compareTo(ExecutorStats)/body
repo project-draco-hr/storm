@@ -33,5 +33,15 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_rate()).compareTo(other.is_set_rate());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_rate()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.rate,other.rate);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

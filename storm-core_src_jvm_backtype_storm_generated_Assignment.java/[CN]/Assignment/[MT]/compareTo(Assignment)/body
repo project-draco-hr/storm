@@ -1,0 +1,47 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  lastComparison=Boolean.valueOf(is_set_master_code_dir()).compareTo(other.is_set_master_code_dir());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_master_code_dir()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.master_code_dir,other.master_code_dir);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_node_host()).compareTo(other.is_set_node_host());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_node_host()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.node_host,other.node_host);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_executor_node_port()).compareTo(other.is_set_executor_node_port());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_executor_node_port()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.executor_node_port,other.executor_node_port);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_executor_start_time_secs()).compareTo(other.is_set_executor_start_time_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_executor_start_time_secs()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.executor_start_time_secs,other.executor_start_time_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

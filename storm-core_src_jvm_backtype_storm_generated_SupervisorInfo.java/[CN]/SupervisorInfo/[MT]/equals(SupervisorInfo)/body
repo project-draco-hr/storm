@@ -1,0 +1,46 @@
+{
+  if (that == null)   return false;
+  boolean this_present_time_secs=true;
+  boolean that_present_time_secs=true;
+  if (this_present_time_secs || that_present_time_secs) {
+    if (!(this_present_time_secs && that_present_time_secs))     return false;
+    if (this.time_secs != that.time_secs)     return false;
+  }
+  boolean this_present_hostname=true && this.is_set_hostname();
+  boolean that_present_hostname=true && that.is_set_hostname();
+  if (this_present_hostname || that_present_hostname) {
+    if (!(this_present_hostname && that_present_hostname))     return false;
+    if (!this.hostname.equals(that.hostname))     return false;
+  }
+  boolean this_present_assignment_id=true && this.is_set_assignment_id();
+  boolean that_present_assignment_id=true && that.is_set_assignment_id();
+  if (this_present_assignment_id || that_present_assignment_id) {
+    if (!(this_present_assignment_id && that_present_assignment_id))     return false;
+    if (!this.assignment_id.equals(that.assignment_id))     return false;
+  }
+  boolean this_present_used_ports=true && this.is_set_used_ports();
+  boolean that_present_used_ports=true && that.is_set_used_ports();
+  if (this_present_used_ports || that_present_used_ports) {
+    if (!(this_present_used_ports && that_present_used_ports))     return false;
+    if (!this.used_ports.equals(that.used_ports))     return false;
+  }
+  boolean this_present_meta=true && this.is_set_meta();
+  boolean that_present_meta=true && that.is_set_meta();
+  if (this_present_meta || that_present_meta) {
+    if (!(this_present_meta && that_present_meta))     return false;
+    if (!this.meta.equals(that.meta))     return false;
+  }
+  boolean this_present_scheduler_meta=true && this.is_set_scheduler_meta();
+  boolean that_present_scheduler_meta=true && that.is_set_scheduler_meta();
+  if (this_present_scheduler_meta || that_present_scheduler_meta) {
+    if (!(this_present_scheduler_meta && that_present_scheduler_meta))     return false;
+    if (!this.scheduler_meta.equals(that.scheduler_meta))     return false;
+  }
+  boolean this_present_uptime_secs=true && this.is_set_uptime_secs();
+  boolean that_present_uptime_secs=true && that.is_set_uptime_secs();
+  if (this_present_uptime_secs || that_present_uptime_secs) {
+    if (!(this_present_uptime_secs && that_present_uptime_secs))     return false;
+    if (this.uptime_secs != that.uptime_secs)     return false;
+  }
+  return true;
+}

@@ -1,0 +1,65 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.master_code_dir=iprot.readString();
+  struct.set_master_code_dir_isSet(true);
+  BitSet incoming=iprot.readBitSet(3);
+  if (incoming.get(0)) {
+{
+      org.apache.thrift.protocol.TMap _map398=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRING,iprot.readI32());
+      struct.node_host=new HashMap<String,String>(2 * _map398.size);
+      String _key399;
+      String _val400;
+      for (int _i401=0; _i401 < _map398.size; ++_i401) {
+        _key399=iprot.readString();
+        _val400=iprot.readString();
+        struct.node_host.put(_key399,_val400);
+      }
+    }
+    struct.set_node_host_isSet(true);
+  }
+  if (incoming.get(1)) {
+{
+      org.apache.thrift.protocol.TMap _map402=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.LIST,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.executor_node_port=new HashMap<List<Long>,NodeInfo>(2 * _map402.size);
+      List<Long> _key403;
+      NodeInfo _val404;
+      for (int _i405=0; _i405 < _map402.size; ++_i405) {
+{
+          org.apache.thrift.protocol.TList _list406=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64,iprot.readI32());
+          _key403=new ArrayList<Long>(_list406.size);
+          long _elem407;
+          for (int _i408=0; _i408 < _list406.size; ++_i408) {
+            _elem407=iprot.readI64();
+            _key403.add(_elem407);
+          }
+        }
+        _val404=new NodeInfo();
+        _val404.read(iprot);
+        struct.executor_node_port.put(_key403,_val404);
+      }
+    }
+    struct.set_executor_node_port_isSet(true);
+  }
+  if (incoming.get(2)) {
+{
+      org.apache.thrift.protocol.TMap _map409=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.LIST,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+      struct.executor_start_time_secs=new HashMap<List<Long>,Long>(2 * _map409.size);
+      List<Long> _key410;
+      long _val411;
+      for (int _i412=0; _i412 < _map409.size; ++_i412) {
+{
+          org.apache.thrift.protocol.TList _list413=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64,iprot.readI32());
+          _key410=new ArrayList<Long>(_list413.size);
+          long _elem414;
+          for (int _i415=0; _i415 < _list413.size; ++_i415) {
+            _elem414=iprot.readI64();
+            _key410.add(_elem414);
+          }
+        }
+        _val411=iprot.readI64();
+        struct.executor_start_time_secs.put(_key410,_val411);
+      }
+    }
+    struct.set_executor_start_time_secs_isSet(true);
+  }
+}

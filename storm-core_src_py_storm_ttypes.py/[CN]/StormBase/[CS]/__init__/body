@@ -1,0 +1,9 @@
+def __init__(self, name=None, status=None, num_workers=None, component_executors=None, launch_time_secs=None, owner=None, topology_action_options=None, prev_status=None):
+    self.name = name
+    self.status = status
+    self.num_workers = num_workers
+    self.component_executors = component_executors
+    self.launch_time_secs = launch_time_secs
+    self.owner = owner
+    self.topology_action_options = topology_action_options
+    self.prev_status = prev_status
