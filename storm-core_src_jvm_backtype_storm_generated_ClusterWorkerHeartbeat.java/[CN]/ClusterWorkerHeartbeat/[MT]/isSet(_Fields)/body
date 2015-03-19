@@ -1,0 +1,14 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case STORM_ID:
+    return is_set_storm_id();
+case EXECUTOR_STATS:
+  return is_set_executor_stats();
+case TIME_SECS:
+return is_set_time_secs();
+}
+throw new IllegalStateException();
+}

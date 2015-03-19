@@ -1,5 +1,5 @@
 {
-  byte[] toWrite=Utils.serialize(val);
+  byte[] toWrite=Utils.javaSerialize(val);
   String newPath=_vs.createVersion();
   File file=new File(newPath);
   FileUtils.writeByteArrayToFile(file,toWrite);

@@ -7,7 +7,7 @@
       LOG.warn("LocalState file '{}' contained no data, resetting state",latestPath);
     }
  else {
-      result=(Map<Object,Object>)Utils.deserialize(serialized);
+      result=Utils.javaDeserialize(serialized,Map.class);
     }
   }
   return result;

@@ -1,0 +1,10 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.time_secs))
+    value = ((value * 31) ^ hash(self.hostname))
+    value = ((value * 31) ^ hash(self.assignment_id))
+    value = ((value * 31) ^ hash(self.used_ports))
+    value = ((value * 31) ^ hash(self.meta))
+    value = ((value * 31) ^ hash(self.scheduler_meta))
+    value = ((value * 31) ^ hash(self.uptime_secs))
+    return value

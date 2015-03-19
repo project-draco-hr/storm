@@ -1,0 +1,36 @@
+{
+switch (field) {
+case MASTER_CODE_DIR:
+    if (value == null) {
+      unset_master_code_dir();
+    }
+ else {
+      set_master_code_dir((String)value);
+    }
+  break;
+case NODE_HOST:
+if (value == null) {
+  unset_node_host();
+}
+ else {
+  set_node_host((Map<String,String>)value);
+}
+break;
+case EXECUTOR_NODE_PORT:
+if (value == null) {
+unset_executor_node_port();
+}
+ else {
+set_executor_node_port((Map<List<Long>,NodeInfo>)value);
+}
+break;
+case EXECUTOR_START_TIME_SECS:
+if (value == null) {
+unset_executor_start_time_secs();
+}
+ else {
+set_executor_start_time_secs((Map<List<Long>,Long>)value);
+}
+break;
+}
+}

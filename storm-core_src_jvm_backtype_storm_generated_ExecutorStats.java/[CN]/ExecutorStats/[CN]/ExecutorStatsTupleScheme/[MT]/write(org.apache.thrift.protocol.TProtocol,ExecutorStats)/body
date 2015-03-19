@@ -27,4 +27,5 @@
     }
   }
   struct.specific.write(oprot);
+  oprot.writeDouble(struct.rate);
 }

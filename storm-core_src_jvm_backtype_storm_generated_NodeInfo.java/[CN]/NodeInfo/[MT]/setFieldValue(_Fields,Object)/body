@@ -1,0 +1,20 @@
+{
+switch (field) {
+case NODE:
+    if (value == null) {
+      unset_node();
+    }
+ else {
+      set_node((String)value);
+    }
+  break;
+case PORT:
+if (value == null) {
+  unset_port();
+}
+ else {
+  set_port((Set<Long>)value);
+}
+break;
+}
+}

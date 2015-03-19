@@ -1,0 +1,59 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.name != null) {
+    oprot.writeFieldBegin(NAME_FIELD_DESC);
+    oprot.writeString(struct.name);
+    oprot.writeFieldEnd();
+  }
+  if (struct.status != null) {
+    oprot.writeFieldBegin(STATUS_FIELD_DESC);
+    oprot.writeI32(struct.status.getValue());
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(NUM_WORKERS_FIELD_DESC);
+  oprot.writeI32(struct.num_workers);
+  oprot.writeFieldEnd();
+  if (struct.component_executors != null) {
+    if (struct.is_set_component_executors()) {
+      oprot.writeFieldBegin(COMPONENT_EXECUTORS_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,struct.component_executors.size()));
+        for (        Map.Entry<String,Integer> _iter420 : struct.component_executors.entrySet()) {
+          oprot.writeString(_iter420.getKey());
+          oprot.writeI32(_iter420.getValue());
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.is_set_launch_time_secs()) {
+    oprot.writeFieldBegin(LAUNCH_TIME_SECS_FIELD_DESC);
+    oprot.writeI32(struct.launch_time_secs);
+    oprot.writeFieldEnd();
+  }
+  if (struct.owner != null) {
+    if (struct.is_set_owner()) {
+      oprot.writeFieldBegin(OWNER_FIELD_DESC);
+      oprot.writeString(struct.owner);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.topology_action_options != null) {
+    if (struct.is_set_topology_action_options()) {
+      oprot.writeFieldBegin(TOPOLOGY_ACTION_OPTIONS_FIELD_DESC);
+      struct.topology_action_options.write(oprot);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.prev_status != null) {
+    if (struct.is_set_prev_status()) {
+      oprot.writeFieldBegin(PREV_STATUS_FIELD_DESC);
+      oprot.writeI32(struct.prev_status.getValue());
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

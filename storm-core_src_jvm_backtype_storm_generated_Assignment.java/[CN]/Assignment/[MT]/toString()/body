@@ -1,0 +1,47 @@
+{
+  StringBuilder sb=new StringBuilder("Assignment(");
+  boolean first=true;
+  sb.append("master_code_dir:");
+  if (this.master_code_dir == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.master_code_dir);
+  }
+  first=false;
+  if (is_set_node_host()) {
+    if (!first)     sb.append(", ");
+    sb.append("node_host:");
+    if (this.node_host == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.node_host);
+    }
+    first=false;
+  }
+  if (is_set_executor_node_port()) {
+    if (!first)     sb.append(", ");
+    sb.append("executor_node_port:");
+    if (this.executor_node_port == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.executor_node_port);
+    }
+    first=false;
+  }
+  if (is_set_executor_start_time_secs()) {
+    if (!first)     sb.append(", ");
+    sb.append("executor_start_time_secs:");
+    if (this.executor_start_time_secs == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.executor_start_time_secs);
+    }
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

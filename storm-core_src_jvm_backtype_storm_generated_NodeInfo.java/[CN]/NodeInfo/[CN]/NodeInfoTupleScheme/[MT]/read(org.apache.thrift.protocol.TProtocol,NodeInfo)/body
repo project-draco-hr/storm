@@ -1,0 +1,15 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.node=iprot.readString();
+  struct.set_node_isSet(true);
+{
+    org.apache.thrift.protocol.TSet _set367=new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.I64,iprot.readI32());
+    struct.port=new HashSet<Long>(2 * _set367.size);
+    long _elem368;
+    for (int _i369=0; _i369 < _set367.size; ++_i369) {
+      _elem368=iprot.readI64();
+      struct.port.add(_elem368);
+    }
+  }
+  struct.set_port_isSet(true);
+}

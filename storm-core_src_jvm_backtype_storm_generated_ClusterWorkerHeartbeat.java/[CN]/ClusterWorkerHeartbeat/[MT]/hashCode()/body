@@ -1,0 +1,13 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_storm_id=true && (is_set_storm_id());
+  list.add(present_storm_id);
+  if (present_storm_id)   list.add(storm_id);
+  boolean present_executor_stats=true && (is_set_executor_stats());
+  list.add(present_executor_stats);
+  if (present_executor_stats)   list.add(executor_stats);
+  boolean present_time_secs=true;
+  list.add(present_time_secs);
+  if (present_time_secs)   list.add(time_secs);
+  return list.hashCode();
+}

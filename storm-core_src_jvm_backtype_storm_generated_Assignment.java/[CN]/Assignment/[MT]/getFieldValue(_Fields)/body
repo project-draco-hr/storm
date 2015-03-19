@@ -1,0 +1,13 @@
+{
+switch (field) {
+case MASTER_CODE_DIR:
+    return get_master_code_dir();
+case NODE_HOST:
+  return get_node_host();
+case EXECUTOR_NODE_PORT:
+return get_executor_node_port();
+case EXECUTOR_START_TIME_SECS:
+return get_executor_start_time_secs();
+}
+throw new IllegalStateException();
+}

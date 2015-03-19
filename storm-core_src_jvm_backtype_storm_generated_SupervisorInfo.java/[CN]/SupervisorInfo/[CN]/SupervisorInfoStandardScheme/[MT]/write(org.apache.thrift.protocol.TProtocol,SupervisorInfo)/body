@@ -1,0 +1,66 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  oprot.writeFieldBegin(TIME_SECS_FIELD_DESC);
+  oprot.writeI64(struct.time_secs);
+  oprot.writeFieldEnd();
+  if (struct.hostname != null) {
+    oprot.writeFieldBegin(HOSTNAME_FIELD_DESC);
+    oprot.writeString(struct.hostname);
+    oprot.writeFieldEnd();
+  }
+  if (struct.assignment_id != null) {
+    if (struct.is_set_assignment_id()) {
+      oprot.writeFieldBegin(ASSIGNMENT_ID_FIELD_DESC);
+      oprot.writeString(struct.assignment_id);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.used_ports != null) {
+    if (struct.is_set_used_ports()) {
+      oprot.writeFieldBegin(USED_PORTS_FIELD_DESC);
+{
+        oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64,struct.used_ports.size()));
+        for (        long _iter346 : struct.used_ports) {
+          oprot.writeI64(_iter346);
+        }
+        oprot.writeListEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.meta != null) {
+    if (struct.is_set_meta()) {
+      oprot.writeFieldBegin(META_FIELD_DESC);
+{
+        oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64,struct.meta.size()));
+        for (        long _iter347 : struct.meta) {
+          oprot.writeI64(_iter347);
+        }
+        oprot.writeListEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.scheduler_meta != null) {
+    if (struct.is_set_scheduler_meta()) {
+      oprot.writeFieldBegin(SCHEDULER_META_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRING,struct.scheduler_meta.size()));
+        for (        Map.Entry<String,String> _iter348 : struct.scheduler_meta.entrySet()) {
+          oprot.writeString(_iter348.getKey());
+          oprot.writeString(_iter348.getValue());
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.is_set_uptime_secs()) {
+    oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+    oprot.writeI64(struct.uptime_secs);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

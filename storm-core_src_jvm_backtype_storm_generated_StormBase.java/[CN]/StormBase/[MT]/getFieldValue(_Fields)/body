@@ -1,0 +1,21 @@
+{
+switch (field) {
+case NAME:
+    return get_name();
+case STATUS:
+  return get_status();
+case NUM_WORKERS:
+return Integer.valueOf(get_num_workers());
+case COMPONENT_EXECUTORS:
+return get_component_executors();
+case LAUNCH_TIME_SECS:
+return Integer.valueOf(get_launch_time_secs());
+case OWNER:
+return get_owner();
+case TOPOLOGY_ACTION_OPTIONS:
+return get_topology_action_options();
+case PREV_STATUS:
+return get_prev_status();
+}
+throw new IllegalStateException();
+}
