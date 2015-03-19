@@ -1,0 +1,24 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_name()) {
+    this.name=other.name;
+  }
+  if (other.is_set_status()) {
+    this.status=other.status;
+  }
+  this.num_workers=other.num_workers;
+  if (other.is_set_component_executors()) {
+    Map<String,Integer> __this__component_executors=new HashMap<String,Integer>(other.component_executors);
+    this.component_executors=__this__component_executors;
+  }
+  this.launch_time_secs=other.launch_time_secs;
+  if (other.is_set_owner()) {
+    this.owner=other.owner;
+  }
+  if (other.is_set_topology_action_options()) {
+    this.topology_action_options=new TopologyActionOptions(other.topology_action_options);
+  }
+  if (other.is_set_prev_status()) {
+    this.prev_status=other.prev_status;
+  }
+}

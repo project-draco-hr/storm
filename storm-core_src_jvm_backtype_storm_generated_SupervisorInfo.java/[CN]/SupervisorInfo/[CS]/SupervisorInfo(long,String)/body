@@ -1,0 +1,6 @@
+{
+  this();
+  this.time_secs=time_secs;
+  set_time_secs_isSet(true);
+  this.hostname=hostname;
+}

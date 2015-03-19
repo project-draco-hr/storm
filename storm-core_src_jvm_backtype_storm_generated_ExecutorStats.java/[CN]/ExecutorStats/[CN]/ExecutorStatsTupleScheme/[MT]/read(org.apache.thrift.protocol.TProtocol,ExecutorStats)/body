@@ -47,4 +47,6 @@
   struct.specific=new ExecutorSpecificStats();
   struct.specific.read(iprot);
   struct.set_specific_isSet(true);
+  struct.rate=iprot.readDouble();
+  struct.set_rate_isSet(true);
 }

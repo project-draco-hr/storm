@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return NODE;
+case 2:
+  return PORT;
+default :
+return null;
+}
+}

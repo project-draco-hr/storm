@@ -1,0 +1,6 @@
+{
+  if (this.executor_node_port == null) {
+    this.executor_node_port=new HashMap<List<Long>,NodeInfo>();
+  }
+  this.executor_node_port.put(key,val);
+}

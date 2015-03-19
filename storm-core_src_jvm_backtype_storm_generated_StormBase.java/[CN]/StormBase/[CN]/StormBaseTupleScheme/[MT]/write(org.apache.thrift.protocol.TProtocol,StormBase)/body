@@ -1,0 +1,44 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.name);
+  oprot.writeI32(struct.status.getValue());
+  oprot.writeI32(struct.num_workers);
+  BitSet optionals=new BitSet();
+  if (struct.is_set_component_executors()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_launch_time_secs()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_owner()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_topology_action_options()) {
+    optionals.set(3);
+  }
+  if (struct.is_set_prev_status()) {
+    optionals.set(4);
+  }
+  oprot.writeBitSet(optionals,5);
+  if (struct.is_set_component_executors()) {
+{
+      oprot.writeI32(struct.component_executors.size());
+      for (      Map.Entry<String,Integer> _iter421 : struct.component_executors.entrySet()) {
+        oprot.writeString(_iter421.getKey());
+        oprot.writeI32(_iter421.getValue());
+      }
+    }
+  }
+  if (struct.is_set_launch_time_secs()) {
+    oprot.writeI32(struct.launch_time_secs);
+  }
+  if (struct.is_set_owner()) {
+    oprot.writeString(struct.owner);
+  }
+  if (struct.is_set_topology_action_options()) {
+    struct.topology_action_options.write(oprot);
+  }
+  if (struct.is_set_prev_status()) {
+    oprot.writeI32(struct.prev_status.getValue());
+  }
+}

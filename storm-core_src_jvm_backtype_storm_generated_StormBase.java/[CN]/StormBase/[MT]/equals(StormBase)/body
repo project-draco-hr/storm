@@ -1,0 +1,52 @@
+{
+  if (that == null)   return false;
+  boolean this_present_name=true && this.is_set_name();
+  boolean that_present_name=true && that.is_set_name();
+  if (this_present_name || that_present_name) {
+    if (!(this_present_name && that_present_name))     return false;
+    if (!this.name.equals(that.name))     return false;
+  }
+  boolean this_present_status=true && this.is_set_status();
+  boolean that_present_status=true && that.is_set_status();
+  if (this_present_status || that_present_status) {
+    if (!(this_present_status && that_present_status))     return false;
+    if (!this.status.equals(that.status))     return false;
+  }
+  boolean this_present_num_workers=true;
+  boolean that_present_num_workers=true;
+  if (this_present_num_workers || that_present_num_workers) {
+    if (!(this_present_num_workers && that_present_num_workers))     return false;
+    if (this.num_workers != that.num_workers)     return false;
+  }
+  boolean this_present_component_executors=true && this.is_set_component_executors();
+  boolean that_present_component_executors=true && that.is_set_component_executors();
+  if (this_present_component_executors || that_present_component_executors) {
+    if (!(this_present_component_executors && that_present_component_executors))     return false;
+    if (!this.component_executors.equals(that.component_executors))     return false;
+  }
+  boolean this_present_launch_time_secs=true && this.is_set_launch_time_secs();
+  boolean that_present_launch_time_secs=true && that.is_set_launch_time_secs();
+  if (this_present_launch_time_secs || that_present_launch_time_secs) {
+    if (!(this_present_launch_time_secs && that_present_launch_time_secs))     return false;
+    if (this.launch_time_secs != that.launch_time_secs)     return false;
+  }
+  boolean this_present_owner=true && this.is_set_owner();
+  boolean that_present_owner=true && that.is_set_owner();
+  if (this_present_owner || that_present_owner) {
+    if (!(this_present_owner && that_present_owner))     return false;
+    if (!this.owner.equals(that.owner))     return false;
+  }
+  boolean this_present_topology_action_options=true && this.is_set_topology_action_options();
+  boolean that_present_topology_action_options=true && that.is_set_topology_action_options();
+  if (this_present_topology_action_options || that_present_topology_action_options) {
+    if (!(this_present_topology_action_options && that_present_topology_action_options))     return false;
+    if (!this.topology_action_options.equals(that.topology_action_options))     return false;
+  }
+  boolean this_present_prev_status=true && this.is_set_prev_status();
+  boolean that_present_prev_status=true && that.is_set_prev_status();
+  if (this_present_prev_status || that_present_prev_status) {
+    if (!(this_present_prev_status && that_present_prev_status))     return false;
+    if (!this.prev_status.equals(that.prev_status))     return false;
+  }
+  return true;
+}

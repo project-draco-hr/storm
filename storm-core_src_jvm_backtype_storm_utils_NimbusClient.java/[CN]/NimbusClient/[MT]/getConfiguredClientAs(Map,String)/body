@@ -1,0 +1,9 @@
+{
+  try {
+    String nimbusHost=(String)conf.get(Config.NIMBUS_HOST);
+    return new NimbusClient(conf,nimbusHost,null,null,asUser);
+  }
+ catch (  TTransportException ex) {
+    throw new RuntimeException(ex);
+  }
+}

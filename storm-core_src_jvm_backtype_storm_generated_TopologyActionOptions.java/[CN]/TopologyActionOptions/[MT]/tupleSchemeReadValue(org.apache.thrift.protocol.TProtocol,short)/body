@@ -1,0 +1,22 @@
+{
+  _Fields setField=_Fields.findByThriftId(fieldID);
+  if (setField != null) {
+switch (setField) {
+case KILL_OPTIONS:
+      KillOptions kill_options;
+    kill_options=new KillOptions();
+  kill_options.read(iprot);
+return kill_options;
+case REBALANCE_OPTIONS:
+RebalanceOptions rebalance_options;
+rebalance_options=new RebalanceOptions();
+rebalance_options.read(iprot);
+return rebalance_options;
+default :
+throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+}
+}
+ else {
+throw new TProtocolException("Couldn't find a field with field id " + fieldID);
+}
+}

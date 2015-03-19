@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_node=true && this.is_set_node();
+  boolean that_present_node=true && that.is_set_node();
+  if (this_present_node || that_present_node) {
+    if (!(this_present_node && that_present_node))     return false;
+    if (!this.node.equals(that.node))     return false;
+  }
+  boolean this_present_port=true && this.is_set_port();
+  boolean that_present_port=true && that.is_set_port();
+  if (this_present_port || that_present_port) {
+    if (!(this_present_port && that_present_port))     return false;
+    if (!this.port.equals(that.port))     return false;
+  }
+  return true;
+}

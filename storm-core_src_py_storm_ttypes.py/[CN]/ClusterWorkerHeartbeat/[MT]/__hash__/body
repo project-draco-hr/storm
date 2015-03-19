@@ -1,0 +1,6 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.storm_id))
+    value = ((value * 31) ^ hash(self.executor_stats))
+    value = ((value * 31) ^ hash(self.time_secs))
+    return value

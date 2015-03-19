@@ -1,3 +1,0 @@
-ITransportPlugin transportPlugin
-TTransport underlyingTransport
-String host

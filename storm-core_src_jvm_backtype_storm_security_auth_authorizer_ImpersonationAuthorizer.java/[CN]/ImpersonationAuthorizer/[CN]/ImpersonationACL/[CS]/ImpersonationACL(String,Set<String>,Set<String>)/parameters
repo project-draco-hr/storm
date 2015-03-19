@@ -1,0 +1,3 @@
+String impersonatingUser
+Set<String> authorizedGroups
+Set<String> authorizedHosts

@@ -1,0 +1,4 @@
+def __init__(self, storm_id=None, executor_stats=None, time_secs=None):
+    self.storm_id = storm_id
+    self.executor_stats = executor_stats
+    self.time_secs = time_secs
