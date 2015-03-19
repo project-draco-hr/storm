@@ -1,10 +1,10 @@
 {
   File versionFile=new File(versionPath(version));
   File tokenFile=new File(tokenPath(version));
-  if (versionFile.exists()) {
-    FileUtils.forceDelete(versionFile);
-  }
   if (tokenFile.exists()) {
     FileUtils.forceDelete(tokenFile);
+  }
+  if (versionFile.exists()) {
+    FileUtils.forceDelete(versionFile);
   }
 }

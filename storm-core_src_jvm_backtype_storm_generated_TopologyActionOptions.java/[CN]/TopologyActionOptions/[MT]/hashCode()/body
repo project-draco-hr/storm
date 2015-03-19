@@ -1,0 +1,16 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  list.add(this.getClass().getName());
+  org.apache.thrift.TFieldIdEnum setField=getSetField();
+  if (setField != null) {
+    list.add(setField.getThriftFieldId());
+    Object value=getFieldValue();
+    if (value instanceof org.apache.thrift.TEnum) {
+      list.add(((org.apache.thrift.TEnum)getFieldValue()).getValue());
+    }
+ else {
+      list.add(value);
+    }
+  }
+  return list.hashCode();
+}

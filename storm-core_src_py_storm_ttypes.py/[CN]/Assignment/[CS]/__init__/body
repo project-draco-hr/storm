@@ -1,0 +1,11 @@
+def __init__(self, master_code_dir=None, node_host=thrift_spec[2][4], executor_node_port=thrift_spec[3][4], executor_start_time_secs=thrift_spec[4][4]):
+    self.master_code_dir = master_code_dir
+    if (node_host is self.thrift_spec[2][4]):
+        node_host = {}
+    self.node_host = node_host
+    if (executor_node_port is self.thrift_spec[3][4]):
+        executor_node_port = {}
+    self.executor_node_port = executor_node_port
+    if (executor_start_time_secs is self.thrift_spec[4][4]):
+        executor_start_time_secs = {}
+    self.executor_start_time_secs = executor_start_time_secs

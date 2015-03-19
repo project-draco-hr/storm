@@ -1,0 +1,6 @@
+{
+  if (this.node_host == null) {
+    this.node_host=new HashMap<String,String>();
+  }
+  this.node_host.put(key,val);
+}

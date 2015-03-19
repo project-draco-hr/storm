@@ -1,0 +1,11 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.name))
+    value = ((value * 31) ^ hash(self.status))
+    value = ((value * 31) ^ hash(self.num_workers))
+    value = ((value * 31) ^ hash(self.component_executors))
+    value = ((value * 31) ^ hash(self.launch_time_secs))
+    value = ((value * 31) ^ hash(self.owner))
+    value = ((value * 31) ^ hash(self.topology_action_options))
+    value = ((value * 31) ^ hash(self.prev_status))
+    return value

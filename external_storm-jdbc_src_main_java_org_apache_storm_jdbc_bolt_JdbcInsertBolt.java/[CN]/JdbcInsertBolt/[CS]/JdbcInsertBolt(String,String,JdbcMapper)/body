@@ -1,5 +1,0 @@
-{
-  super(configKey);
-  this.tableName=tableName;
-  this.jdbcMapper=jdbcMapper;
-}

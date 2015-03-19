@@ -1,0 +1,12 @@
+{
+  this.name=null;
+  this.status=null;
+  set_num_workers_isSet(false);
+  this.num_workers=0;
+  this.component_executors=null;
+  set_launch_time_secs_isSet(false);
+  this.launch_time_secs=0;
+  this.owner=null;
+  this.topology_action_options=null;
+  this.prev_status=null;
+}

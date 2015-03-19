@@ -1,0 +1,7 @@
+{
+  this();
+  this.storm_id=storm_id;
+  this.executor_stats=executor_stats;
+  this.time_secs=time_secs;
+  set_time_secs_isSet(true);
+}

@@ -1,0 +1,16 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case MASTER_CODE_DIR:
+    return is_set_master_code_dir();
+case NODE_HOST:
+  return is_set_node_host();
+case EXECUTOR_NODE_PORT:
+return is_set_executor_node_port();
+case EXECUTOR_START_TIME_SECS:
+return is_set_executor_start_time_secs();
+}
+throw new IllegalStateException();
+}

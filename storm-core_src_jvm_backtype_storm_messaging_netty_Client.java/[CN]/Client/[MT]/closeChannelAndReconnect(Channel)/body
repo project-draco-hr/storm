@@ -1,7 +1,9 @@
 {
   if (channel != null) {
+    LOG.info("closing channel {} to {}",channel.toString(),dstAddressPrefixedName);
     channel.close();
     if (channelRef.compareAndSet(channel,null)) {
+      LOG.info("triggering reconnect to {}",dstAddressPrefixedName);
       connect(NO_DELAY_MS);
     }
   }

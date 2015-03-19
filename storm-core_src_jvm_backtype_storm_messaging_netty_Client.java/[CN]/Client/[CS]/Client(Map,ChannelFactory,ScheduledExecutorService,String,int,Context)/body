@@ -1,0 +1,21 @@
+{
+  this.context=context;
+  closing=false;
+  this.stormConf=stormConf;
+  this.scheduler=MoreExecutors.listeningDecorator(scheduler);
+  int bufferSize=Utils.getInt(stormConf.get(Config.STORM_MESSAGING_NETTY_BUFFER_SIZE));
+  LOG.info("creating Netty Client, connecting to {}:{}, bufferSize: {}",host,port,bufferSize);
+  messageBatchSize=Utils.getInt(stormConf.get(Config.STORM_NETTY_MESSAGE_BATCH_SIZE),262144);
+  flushCheckIntervalMs=Utils.getInt(stormConf.get(Config.STORM_NETTY_FLUSH_CHECK_INTERVAL_MS),10);
+  maxReconnectionAttempts=Utils.getInt(stormConf.get(Config.STORM_MESSAGING_NETTY_MAX_RETRIES));
+  int minWaitMs=Utils.getInt(stormConf.get(Config.STORM_MESSAGING_NETTY_MIN_SLEEP_MS));
+  int maxWaitMs=Utils.getInt(stormConf.get(Config.STORM_MESSAGING_NETTY_MAX_SLEEP_MS));
+  retryPolicy=new StormBoundedExponentialBackoffRetry(minWaitMs,maxWaitMs,maxReconnectionAttempts);
+  bootstrap=createClientBootstrap(factory,bufferSize);
+  dstAddress=new InetSocketAddress(host,port);
+  dstAddressPrefixedName=prefixedName(dstAddress);
+  connect(NO_DELAY_MS);
+  pauseBackgroundFlushing();
+  long initialDelayMs=Math.min(MINIMUM_INITIAL_DELAY_MS,maxWaitMs * maxReconnectionAttempts);
+  scheduler.scheduleWithFixedDelay(createBackgroundFlusher(),initialDelayMs,flushCheckIntervalMs,TimeUnit.MILLISECONDS);
+}

@@ -3,4 +3,5 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.emitted))
     value = ((value * 31) ^ hash(self.transferred))
     value = ((value * 31) ^ hash(self.specific))
+    value = ((value * 31) ^ hash(self.rate))
     return value

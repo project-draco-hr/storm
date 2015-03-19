@@ -1,0 +1,6 @@
+{
+  if (this.executor_stats == null) {
+    this.executor_stats=new HashMap<ExecutorInfo,ExecutorStats>();
+  }
+  this.executor_stats.put(key,val);
+}

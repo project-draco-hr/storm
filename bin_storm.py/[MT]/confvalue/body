@@ -1,0 +1,13 @@
+def confvalue(name, extrapaths):
+    global CONFFILE
+    command = [JAVA_CMD, '-client', get_config_opts(), ('-Dstorm.conf.file=' + CONFFILE), '-cp', get_classpath(extrapaths), 'backtype.storm.command.config_value', name]
+    p = sub.Popen(command, stdout=sub.PIPE)
+    (output, errors) = p.communicate()
+    if (not isinstance(output, str)):
+        output = output.decode('utf-8')
+    lines = output.split(os.linesep)
+    for line in lines:
+        tokens = line.split(' ')
+        if (tokens[0] == 'VALUE:'):
+            return ' '.join(tokens[1:])
+    return ''

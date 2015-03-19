@@ -2,4 +2,6 @@
   this.emitted=null;
   this.transferred=null;
   this.specific=null;
+  set_rate_isSet(false);
+  this.rate=0.0;
 }

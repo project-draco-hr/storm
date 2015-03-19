@@ -4,7 +4,12 @@
     columnsLists.add(options.mapper.getColumns(tuple));
   }
   try {
-    jdbcClient.insert(options.tableName,columnsLists);
+    if (!StringUtils.isBlank(options.tableName)) {
+      jdbcClient.insert(options.tableName,columnsLists);
+    }
+ else {
+      jdbcClient.executeInsertQuery(options.insertQuery,columnsLists);
+    }
   }
  catch (  Exception e) {
     LOG.warn("Batch write failed but some requests might have succeeded. Triggering replay.",e);

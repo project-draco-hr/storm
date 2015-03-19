@@ -1,4 +1,4 @@
 {
-  super(conf,ThriftConnectionType.NIMBUS,host,null,null);
+  super(conf,ThriftConnectionType.NIMBUS,host,null,null,null);
   _client=new Nimbus.Client(_protocol);
 }

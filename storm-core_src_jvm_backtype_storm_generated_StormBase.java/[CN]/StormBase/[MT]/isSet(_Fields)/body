@@ -1,0 +1,24 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case NAME:
+    return is_set_name();
+case STATUS:
+  return is_set_status();
+case NUM_WORKERS:
+return is_set_num_workers();
+case COMPONENT_EXECUTORS:
+return is_set_component_executors();
+case LAUNCH_TIME_SECS:
+return is_set_launch_time_secs();
+case OWNER:
+return is_set_owner();
+case TOPOLOGY_ACTION_OPTIONS:
+return is_set_topology_action_options();
+case PREV_STATUS:
+return is_set_prev_status();
+}
+throw new IllegalStateException();
+}
