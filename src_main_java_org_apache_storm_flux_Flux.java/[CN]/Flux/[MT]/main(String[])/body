@@ -7,7 +7,7 @@
   options.addOption(option(0,"d",OPTION_DRY_RUN,"Do not run or deploy the topology. Just build, validate, " + "and print information about the topology."));
   options.addOption(option(0,"q",OPTION_NO_DETAIL,"Suppress the printing of topology details."));
   options.addOption(option(0,"n",OPTION_NO_SPLASH,"Suppress the printing of the splash screen."));
-  options.addOption(option(0,"i",OPTION_INACTIVE,"Deploy the topology, but do not activate it. " + "(not implemented)"));
+  options.addOption(option(0,"i",OPTION_INACTIVE,"Deploy the topology, but do not activate it."));
   CommandLineParser parser=new BasicParser();
   CommandLine cmd=parser.parse(options,args);
   if (cmd.getArgs().length != 1) {

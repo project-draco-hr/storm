@@ -24,7 +24,16 @@
     if (cmd.hasOption(OPTION_REMOTE)) {
       LOG.info("Running remotely...");
       try {
-        StormSubmitter.submitTopologyWithProgressBar(topologyName,conf,topology);
+        SubmitOptions submitOptions=null;
+        if (cmd.hasOption(OPTION_INACTIVE)) {
+          LOG.info("Deploying topology in an INACTIVE state...");
+          submitOptions=new SubmitOptions(TopologyInitialStatus.INACTIVE);
+        }
+ else {
+          LOG.info("Deploying topology in an ACTIVE state...");
+          submitOptions=new SubmitOptions(TopologyInitialStatus.ACTIVE);
+        }
+        StormSubmitter.submitTopology(topologyName,conf,topology,submitOptions);
       }
  catch (      Exception e) {
         LOG.warn("Unable to deploy topology tp remote cluster.",e);
