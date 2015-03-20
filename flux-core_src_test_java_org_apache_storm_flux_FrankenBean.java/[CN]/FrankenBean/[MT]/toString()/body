@@ -1,0 +1,3 @@
+{
+  return String.format("publicString: %s, privateString: %s, " + "publicBoolean: %s, privateBoolean: %s",this.publicString,this.privateString,this.publicBoolean,this.privateBoolean);
+}
