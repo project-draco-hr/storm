@@ -16,5 +16,6 @@
  else {
     grouping=(CustomStreamGrouping)clazz.newInstance();
   }
+  applyProperties(def,grouping,context);
   return grouping;
 }

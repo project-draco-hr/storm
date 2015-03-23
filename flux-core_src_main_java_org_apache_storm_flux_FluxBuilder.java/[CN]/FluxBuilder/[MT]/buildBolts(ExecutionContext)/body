@@ -19,5 +19,6 @@
       bolt=clazz.newInstance();
     }
     context.addBolt(def.getId(),bolt);
+    applyProperties(def,bolt,context);
   }
 }

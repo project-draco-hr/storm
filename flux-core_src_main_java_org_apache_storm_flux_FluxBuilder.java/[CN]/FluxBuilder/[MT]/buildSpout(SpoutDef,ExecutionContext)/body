@@ -16,5 +16,6 @@
  else {
     spout=(IRichSpout)clazz.newInstance();
   }
+  applyProperties(def,spout,context);
   return spout;
 }
