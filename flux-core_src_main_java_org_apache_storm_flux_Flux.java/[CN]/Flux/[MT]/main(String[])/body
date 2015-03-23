@@ -8,6 +8,7 @@
   options.addOption(option(0,"q",OPTION_NO_DETAIL,"Suppress the printing of topology details."));
   options.addOption(option(0,"n",OPTION_NO_SPLASH,"Suppress the printing of the splash screen."));
   options.addOption(option(0,"i",OPTION_INACTIVE,"Deploy the topology, but do not activate it."));
+  options.addOption(option(1,"z",OPTION_ZOOKEEPER,"When running in local mode, use the ZooKeeper at the " + "specified <host>:<port> instead of the in-process ZooKeeper."));
   CommandLineParser parser=new BasicParser();
   CommandLine cmd=parser.parse(options,args);
   if (cmd.getArgs().length != 1) {

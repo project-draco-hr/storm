@@ -47,7 +47,25 @@
         sleepTime=Long.parseLong(sleepStr);
       }
       LOG.debug("Sleep time: {}",sleepTime);
-      LocalCluster cluster=new LocalCluster();
+      LocalCluster cluster=null;
+      if (cmd.hasOption(OPTION_ZOOKEEPER)) {
+        String zkStr=cmd.getOptionValue(OPTION_ZOOKEEPER);
+        LOG.info("Using ZooKeeper at '{}' instead of in-process one.",zkStr);
+        long zkPort=DEFAULT_ZK_PORT;
+        String zkHost=null;
+        if (zkStr.contains(":")) {
+          String[] hostPort=zkStr.split(":");
+          zkHost=hostPort[0];
+          zkPort=hostPort.length > 1 ? Long.parseLong(hostPort[1]) : DEFAULT_ZK_PORT;
+        }
+ else {
+          zkHost=zkStr;
+        }
+        cluster=new LocalCluster(zkHost,zkPort);
+      }
+ else {
+        cluster=new LocalCluster();
+      }
       cluster.submitTopology(topologyName,conf,topology);
       Utils.sleep(sleepTime);
       cluster.killTopology(topologyName);
