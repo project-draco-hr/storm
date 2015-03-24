@@ -1,0 +1,28 @@
+{
+  Class clazz=topologySource.getClass();
+  Method[] methods=clazz.getMethods();
+  ArrayList<Method> candidates=new ArrayList<Method>();
+  for (  Method method : methods) {
+    if (!method.getName().equals("getTopology")) {
+      continue;
+    }
+    if (!method.getReturnType().equals(StormTopology.class)) {
+      continue;
+    }
+    Class[] paramTypes=method.getParameterTypes();
+    if (paramTypes.length != 1) {
+      continue;
+    }
+    if (paramTypes[0].isAssignableFrom(Map.class) || paramTypes[0].isAssignableFrom(Config.class)) {
+      candidates.add(method);
+    }
+  }
+  if (candidates.size() == 0) {
+    throw new IllegalArgumentException("Unable to find 'getTopology()' method in class: " + clazz.getName());
+  }
+ else   if (candidates.size() > 1) {
+    LOG.warn("Found multiple candidate methods in class '" + clazz.getName() + "'. Using the first one found");
+  }
+  Method retval=candidates.get(0);
+  return retval;
+}

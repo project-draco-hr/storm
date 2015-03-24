@@ -1,6 +1,5 @@
 {
   Class clazz=Class.forName(def.getClassName());
-  StormTopology topology=null;
   Object topologySource=null;
   if (def.hasConstructorArgs()) {
     LOG.debug("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
@@ -18,5 +17,13 @@
     topologySource=clazz.newInstance();
   }
   applyProperties(def,topologySource,context);
-  return ((TopologySource)topologySource).getTopology(context.getTopologyDef().getConfig());
+  Method getTopology=findGetTopologyMethod(topologySource);
+  if (getTopology.getParameterTypes()[0].equals(Config.class)) {
+    Config config=new Config();
+    config.putAll(context.getTopologyDef().getConfig());
+    return (StormTopology)getTopology.invoke(topologySource,config);
+  }
+ else {
+    return (StormTopology)getTopology.invoke(topologySource,context.getTopologyDef().getConfig());
+  }
 }
