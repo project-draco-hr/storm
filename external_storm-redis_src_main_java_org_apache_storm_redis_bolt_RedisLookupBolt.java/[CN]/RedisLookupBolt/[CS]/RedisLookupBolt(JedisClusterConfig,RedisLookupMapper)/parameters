@@ -1,0 +1,2 @@
+JedisClusterConfig config
+RedisLookupMapper lookupMapper

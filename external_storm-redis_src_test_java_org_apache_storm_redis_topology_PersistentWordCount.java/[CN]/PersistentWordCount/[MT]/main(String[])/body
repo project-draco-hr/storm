@@ -9,11 +9,12 @@
   JedisPoolConfig poolConfig=new JedisPoolConfig.Builder().setHost(host).setPort(port).build();
   WordSpout spout=new WordSpout();
   WordCounter bolt=new WordCounter();
-  StoreCountRedisBolt redisBolt=new StoreCountRedisBolt(poolConfig);
+  RedisStoreMapper storeMapper=setupStoreMapper();
+  RedisStoreBolt storeBolt=new RedisStoreBolt(poolConfig,storeMapper);
   TopologyBuilder builder=new TopologyBuilder();
   builder.setSpout(WORD_SPOUT,spout,1);
-  builder.setBolt(COUNT_BOLT,bolt,1).shuffleGrouping(WORD_SPOUT);
-  builder.setBolt(REDIS_BOLT,redisBolt,1).fieldsGrouping(COUNT_BOLT,new Fields("word"));
+  builder.setBolt(COUNT_BOLT,bolt,1).fieldsGrouping(WORD_SPOUT,new Fields("word"));
+  builder.setBolt(STORE_BOLT,storeBolt,1).shuffleGrouping(COUNT_BOLT);
   if (args.length == 2) {
     LocalCluster cluster=new LocalCluster();
     cluster.submitTopology("test",config,builder.createTopology());

@@ -1,0 +1,3 @@
+String redisKeyPrefix
+TupleMapper tupleMapper
+int expireIntervalSec

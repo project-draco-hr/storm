@@ -1,0 +1,9 @@
+{
+  this.dataType=dataType;
+  this.additionalKey=additionalKey;
+  if (dataType == RedisDataType.HASH || dataType == RedisDataType.SORTED_SET) {
+    if (additionalKey == null) {
+      throw new IllegalArgumentException("Hash and Sorted Set should have additional key");
+    }
+  }
+}
