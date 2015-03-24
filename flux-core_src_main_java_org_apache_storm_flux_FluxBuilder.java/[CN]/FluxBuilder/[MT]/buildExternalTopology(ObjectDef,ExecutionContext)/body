@@ -1,0 +1,22 @@
+{
+  Class clazz=Class.forName(def.getClassName());
+  StormTopology topology=null;
+  Object topologySource=null;
+  if (def.hasConstructorArgs()) {
+    LOG.debug("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
+    List<Object> cArgs=resolveReferences(def,context);
+    Constructor con=findCompatibleConstructor(cArgs,clazz);
+    if (con != null) {
+      LOG.debug("Found something seemingly compatible, attempting invocation...");
+      topologySource=con.newInstance(getConstructorArgsWithListCoercian(cArgs,con));
+    }
+ else {
+      throw new IllegalArgumentException("Couldn't find a suitable TopologySource constructor.");
+    }
+  }
+ else {
+    topologySource=clazz.newInstance();
+  }
+  applyProperties(def,topologySource,context);
+  return ((TopologySource)topologySource).getTopology(context.getTopologyDef().getConfig());
+}
