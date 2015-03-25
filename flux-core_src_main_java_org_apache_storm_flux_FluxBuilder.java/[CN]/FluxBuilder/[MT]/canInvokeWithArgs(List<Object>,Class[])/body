@@ -1,5 +1,4 @@
 {
-  Class[] parameterTypes=constructor.getParameterTypes();
   if (parameterTypes.length != args.size()) {
     LOG.warn("parameter types were the wrong size");
     return false;
@@ -21,7 +20,7 @@
       return true;
     }
     if (paramType.isArray() && List.class.isAssignableFrom(objectType)) {
-      LOG.debug("I think so. If we convert a List to an array.");
+      LOG.debug("Assignment is possible if we convert a List to an array.");
       LOG.debug("Array Type: {}, List type: {}",paramType.getComponentType(),((List)obj).get(0).getClass());
       return true;
     }

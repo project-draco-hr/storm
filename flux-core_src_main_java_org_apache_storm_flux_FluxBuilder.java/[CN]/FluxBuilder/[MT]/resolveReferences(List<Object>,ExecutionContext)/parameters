@@ -1,2 +1,2 @@
-ObjectDef bean
+List<Object> args
 ExecutionContext context

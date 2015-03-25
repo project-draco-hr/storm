@@ -23,6 +23,5 @@
  else   if (candidates.size() > 1) {
     LOG.warn("Found multiple candidate methods in class '" + clazz.getName() + "'. Using the first one found");
   }
-  Method retval=candidates.get(0);
-  return retval;
+  return candidates.get(0);
 }

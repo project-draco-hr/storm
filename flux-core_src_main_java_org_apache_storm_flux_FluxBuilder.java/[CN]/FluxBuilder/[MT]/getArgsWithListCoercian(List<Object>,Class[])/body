@@ -1,5 +1,4 @@
 {
-  Class[] parameterTypes=constructor.getParameterTypes();
   if (parameterTypes.length != args.size()) {
     throw new IllegalArgumentException("Contructor parameter count does not egual argument size.");
   }

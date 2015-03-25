@@ -3,11 +3,14 @@
   Object obj=null;
   if (def.hasConstructorArgs()) {
     LOG.debug("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
-    List<Object> cArgs=resolveReferences(def,context);
+    List<Object> cArgs=def.getConstructorArgs();
+    if (def.hasReferences()) {
+      cArgs=resolveReferences(cArgs,context);
+    }
     Constructor con=findCompatibleConstructor(cArgs,clazz);
     if (con != null) {
       LOG.debug("Found something seemingly compatible, attempting invocation...");
-      obj=con.newInstance(getConstructorArgsWithListCoercian(cArgs,con));
+      obj=con.newInstance(getArgsWithListCoercian(cArgs,con.getParameterTypes()));
     }
  else {
       throw new IllegalArgumentException("Couldn't find a suitable constructor.");
