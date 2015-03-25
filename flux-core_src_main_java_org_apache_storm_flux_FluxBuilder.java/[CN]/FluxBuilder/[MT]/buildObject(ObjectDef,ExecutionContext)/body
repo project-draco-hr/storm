@@ -20,5 +20,6 @@
     obj=clazz.newInstance();
   }
   applyProperties(def,obj,context);
+  invokeConfigMethods(def,obj,context);
   return obj;
 }

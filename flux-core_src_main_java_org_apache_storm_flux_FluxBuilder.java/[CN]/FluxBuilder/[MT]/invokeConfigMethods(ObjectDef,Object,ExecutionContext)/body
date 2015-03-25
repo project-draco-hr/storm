@@ -1,0 +1,22 @@
+{
+  List<ConfigMethodDef> methodDefs=bean.getConfigMethods();
+  if (methodDefs == null || methodDefs.size() == 0) {
+    return;
+  }
+  Class clazz=instance.getClass();
+  for (  ConfigMethodDef methodDef : methodDefs) {
+    List<Object> args=methodDef.getArgs();
+    if (methodDef.hasReferences()) {
+      args=resolveReferences(args,context);
+    }
+    String methodName=methodDef.getName();
+    Method method=findCompatibleMethod(args,clazz,methodName);
+    if (method != null) {
+      Object[] methodArgs=getArgsWithListCoercian(args,method.getParameterTypes());
+      method.invoke(instance,methodArgs);
+    }
+ else {
+      LOG.warn("Unable to find method '{}' in class '{}' with arguments {}.",methodName,clazz.getName(),args);
+    }
+  }
+}
