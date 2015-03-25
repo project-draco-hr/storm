@@ -17,7 +17,7 @@
     topologySource=clazz.newInstance();
   }
   applyProperties(def,topologySource,context);
-  String methodName="getTopology";
+  String methodName=context.getTopologyDef().getTopologySource().getMethodName();
   Method getTopology=findGetTopologyMethod(topologySource,methodName);
   if (getTopology.getParameterTypes()[0].equals(Config.class)) {
     Config config=new Config();
