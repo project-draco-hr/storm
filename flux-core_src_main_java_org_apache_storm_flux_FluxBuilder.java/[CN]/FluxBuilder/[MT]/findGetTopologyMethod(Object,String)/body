@@ -3,7 +3,7 @@
   Method[] methods=clazz.getMethods();
   ArrayList<Method> candidates=new ArrayList<Method>();
   for (  Method method : methods) {
-    if (!method.getName().equals("getTopology")) {
+    if (!method.getName().equals(methodName)) {
       continue;
     }
     if (!method.getReturnType().equals(StormTopology.class)) {
