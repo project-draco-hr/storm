@@ -1,22 +1,5 @@
 {
-  Class clazz=Class.forName(def.getClassName());
-  Object topologySource=null;
-  if (def.hasConstructorArgs()) {
-    LOG.debug("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
-    List<Object> cArgs=resolveReferences(def,context);
-    Constructor con=findCompatibleConstructor(cArgs,clazz);
-    if (con != null) {
-      LOG.debug("Found something seemingly compatible, attempting invocation...");
-      topologySource=con.newInstance(getConstructorArgsWithListCoercian(cArgs,con));
-    }
- else {
-      throw new IllegalArgumentException("Couldn't find a suitable TopologySource constructor.");
-    }
-  }
- else {
-    topologySource=clazz.newInstance();
-  }
-  applyProperties(def,topologySource,context);
+  Object topologySource=buildObject(def,context);
   String methodName=context.getTopologyDef().getTopologySource().getMethodName();
   Method getTopology=findGetTopologyMethod(topologySource,methodName);
   if (getTopology.getParameterTypes()[0].equals(Config.class)) {

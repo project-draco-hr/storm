@@ -2,25 +2,8 @@
   Collection<BeanDef> cDefs=context.getTopologyDef().getComponents();
   if (cDefs != null) {
     for (    BeanDef bean : cDefs) {
-      Class clazz=Class.forName(bean.getClassName());
-      Object obj=null;
-      if (bean.hasConstructorArgs()) {
-        LOG.debug("Found constructor arguments in bean definition: " + bean.getConstructorArgs().getClass().getName());
-        List<Object> cArgs=resolveReferences(bean,context);
-        Constructor con=findCompatibleConstructor(cArgs,clazz);
-        if (con != null) {
-          LOG.debug("Found something seemingly compatible, attempting invocation...");
-          obj=con.newInstance(getConstructorArgsWithListCoercian(cArgs,con));
-        }
- else {
-          throw new IllegalArgumentException("Couldn't find a suitable constructor.");
-        }
-      }
- else {
-        obj=clazz.newInstance();
-      }
+      Object obj=buildObject(bean,context);
       context.addComponent(bean.getId(),obj);
-      applyProperties(bean,obj,context);
     }
   }
 }

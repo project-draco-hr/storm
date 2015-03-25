@@ -1,24 +1,7 @@
 {
   for (  BoltDef def : context.getTopologyDef().getBolts()) {
     Class clazz=Class.forName(def.getClassName());
-    Object bolt=null;
-    LOG.debug("Attempting to instantiate bolt: {}",def.getClassName());
-    if (def.hasConstructorArgs()) {
-      LOG.debug("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
-      List<Object> cArgs=resolveReferences(def,context);
-      Constructor con=findCompatibleConstructor(cArgs,clazz);
-      if (con != null) {
-        LOG.debug("Found something seemingly compatible, attempting invocation...");
-        bolt=con.newInstance(getConstructorArgsWithListCoercian(cArgs,con));
-      }
- else {
-        throw new IllegalArgumentException("Couldn't find a suitable Bolt constructor.");
-      }
-    }
- else {
-      bolt=clazz.newInstance();
-    }
+    Object bolt=buildObject(def,context);
     context.addBolt(def.getId(),bolt);
-    applyProperties(def,bolt,context);
   }
 }
