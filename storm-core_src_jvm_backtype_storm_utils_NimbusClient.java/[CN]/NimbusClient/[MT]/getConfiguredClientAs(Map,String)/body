@@ -6,6 +6,10 @@
     asUser=(String)conf.get(Config.STORM_DO_AS_USER);
   }
   List<String> seeds=(List<String>)conf.get(Config.NIMBUS_SEEDS);
+  if (seeds == null || seeds.isEmpty()) {
+    LOG.warn("config {} has no value. Failing over to deprecated config {}. ",Config.NIMBUS_SEEDS,Config.NIMBUS_HOST);
+    seeds=Lists.newArrayList(conf.get(Config.NIMBUS_HOST) + ":" + conf.get(Config.NIMBUS_THRIFT_PORT));
+  }
   for (  String seed : seeds) {
     String[] split=seed.split(":");
     String host=split[0];
