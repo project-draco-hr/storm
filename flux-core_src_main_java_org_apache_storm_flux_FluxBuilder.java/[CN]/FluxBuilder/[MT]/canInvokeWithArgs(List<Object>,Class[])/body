@@ -19,6 +19,10 @@
     if (isPrimitiveNumber(paramType) && Number.class.isAssignableFrom(objectType)) {
       return true;
     }
+    if (paramType.isEnum() && objectType.equals(String.class)) {
+      LOG.debug("Yes, will convert a String to enum");
+      return true;
+    }
     if (paramType.isArray() && List.class.isAssignableFrom(objectType)) {
       LOG.debug("Assignment is possible if we convert a List to an array.");
       LOG.debug("Array Type: {}, List type: {}",paramType.getComponentType(),((List)obj).get(0).getClass());

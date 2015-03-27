@@ -17,6 +17,7 @@
     }
  else {
       LOG.warn("Unable to find method '{}' in class '{}' with arguments {}.",methodName,clazz.getName(),args);
+      throw new IllegalArgumentException("Configuration method not found.");
     }
   }
 }
