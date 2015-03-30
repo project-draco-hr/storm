@@ -1,3 +1,0 @@
-{
-  return (TopologyDef)yaml.load(in);
-}

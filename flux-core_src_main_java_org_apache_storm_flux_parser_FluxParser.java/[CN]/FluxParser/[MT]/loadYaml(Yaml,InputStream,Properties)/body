@@ -1,0 +1,19 @@
+{
+  ByteArrayOutputStream bos=new ByteArrayOutputStream();
+  LOG.info("loading YAML from input stream...");
+  int b=-1;
+  while ((b=in.read()) != -1) {
+    bos.write(b);
+  }
+  String str=bos.toString();
+  if (properties != null) {
+    LOG.info("Performing property substitution.");
+    for (    Object key : properties.keySet()) {
+      str=str.replace("${" + key + "}",(String)properties.get(key));
+    }
+  }
+ else {
+    LOG.info("Not performing property substitution.");
+  }
+  return (TopologyDef)yaml.load(str);
+}

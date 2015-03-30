@@ -1,3 +1,4 @@
-String resource
+String inputFile
 boolean dumpYaml
 boolean processIncludes
+Properties properties
