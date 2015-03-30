@@ -4,11 +4,11 @@
       TopologyDef includeTopologyDef=null;
       if (include.isResource()) {
         LOG.info("Loading includes from resource: {}",include.getFile());
-        includeTopologyDef=parseResource(include.getFile(),true,false,props);
+        includeTopologyDef=parseResource(include.getFile(),true,false,propsFile);
       }
  else {
         LOG.info("Loading includes from file: {}",include.getFile());
-        includeTopologyDef=parseFile(include.getFile(),true,false,props);
+        includeTopologyDef=parseFile(include.getFile(),true,false,propsFile);
       }
       boolean override=include.isOverride();
       if (includeTopologyDef.getName() != null) {

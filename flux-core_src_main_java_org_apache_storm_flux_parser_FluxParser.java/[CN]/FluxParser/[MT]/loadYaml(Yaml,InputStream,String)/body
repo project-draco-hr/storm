@@ -6,10 +6,13 @@
     bos.write(b);
   }
   String str=bos.toString();
-  if (properties != null) {
+  if (propsFile != null) {
     LOG.info("Performing property substitution.");
-    for (    Object key : properties.keySet()) {
-      str=str.replace("${" + key + "}",(String)properties.get(key));
+    InputStream propsIn=new FileInputStream(propsFile);
+    Properties props=new Properties();
+    props.load(propsIn);
+    for (    Object key : props.keySet()) {
+      str=str.replace("${" + key + "}",props.getProperty((String)key));
     }
   }
  else {

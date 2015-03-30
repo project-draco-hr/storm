@@ -1,3 +1,3 @@
 Yaml yaml
 InputStream in
-Properties properties
+String propsFile
