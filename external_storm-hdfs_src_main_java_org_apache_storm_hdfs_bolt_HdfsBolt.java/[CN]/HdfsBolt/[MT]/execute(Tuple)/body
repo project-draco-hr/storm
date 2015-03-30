@@ -22,7 +22,7 @@ synchronized (this.writeLock) {
     }
   }
  catch (  IOException e) {
-    LOG.warn("write/sync failed.",e);
+    this.collector.reportError(e);
     this.collector.fail(tuple);
   }
 }
