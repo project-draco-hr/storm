@@ -9,13 +9,14 @@
   if (cmd.hasOption(OPTION_FILTER)) {
     filterProps=cmd.getOptionValue(OPTION_FILTER);
   }
+  boolean envFilter=cmd.hasOption(OPTION_ENV_FILTER);
   if (cmd.hasOption(OPTION_RESOURCE)) {
     printf("Parsing classpath resource: %s",filePath);
-    topologyDef=FluxParser.parseResource(filePath,dumpYaml,true,filterProps);
+    topologyDef=FluxParser.parseResource(filePath,dumpYaml,true,filterProps,envFilter);
   }
  else {
     printf("Parsing file: %s",new File(filePath).getAbsolutePath());
-    topologyDef=FluxParser.parseFile(filePath,dumpYaml,true,filterProps);
+    topologyDef=FluxParser.parseFile(filePath,dumpYaml,true,filterProps,envFilter);
   }
   String topologyName=topologyDef.getName();
   Config conf=FluxBuilder.buildConfig(topologyDef);

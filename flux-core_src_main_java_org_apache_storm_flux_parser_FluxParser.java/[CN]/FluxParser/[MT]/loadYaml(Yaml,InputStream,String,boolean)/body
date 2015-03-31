@@ -18,5 +18,15 @@
  else {
     LOG.info("Not performing property substitution.");
   }
+  if (envSubstitution) {
+    LOG.info("Performing environment variable substitution...");
+    Map<String,String> envs=System.getenv();
+    for (    String key : envs.keySet()) {
+      str=str.replace("${ENV-" + key + "}",envs.get(key));
+    }
+  }
+ else {
+    LOG.info("Not performing environment variable substitution.");
+  }
   return (TopologyDef)yaml.load(str);
 }

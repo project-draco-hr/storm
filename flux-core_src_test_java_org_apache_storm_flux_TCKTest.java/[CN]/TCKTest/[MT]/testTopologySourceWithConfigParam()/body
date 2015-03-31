@@ -1,5 +1,5 @@
 {
-  TopologyDef topologyDef=FluxParser.parseResource("/configs/existing-topology-reflection-config.yaml",false,true,null);
+  TopologyDef topologyDef=FluxParser.parseResource("/configs/existing-topology-reflection-config.yaml",false,true,null,false);
   assertTrue(topologyDef.validate());
   Config conf=FluxBuilder.buildConfig(topologyDef);
   ExecutionContext context=new ExecutionContext(topologyDef,conf);

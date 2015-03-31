@@ -1,13 +1,13 @@
 {
   Yaml yaml=yaml();
   InputStream in=FluxParser.class.getResourceAsStream(resource);
-  TopologyDef topology=loadYaml(yaml,in,propertiesFile);
+  TopologyDef topology=loadYaml(yaml,in,propertiesFile,envSub);
   in.close();
   if (dumpYaml) {
     dumpYaml(topology,yaml);
   }
   if (processIncludes) {
-    return processIncludes(yaml,topology,propertiesFile);
+    return processIncludes(yaml,topology,propertiesFile,envSub);
   }
  else {
     return topology;
