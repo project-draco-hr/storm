@@ -1,6 +1,6 @@
 {
   InputStream in=null;
-  Boolean confFileEmpty=false;
+  boolean confFileEmpty=false;
   try {
     in=getConfigFileInputStream(name);
     if (null != in) {
