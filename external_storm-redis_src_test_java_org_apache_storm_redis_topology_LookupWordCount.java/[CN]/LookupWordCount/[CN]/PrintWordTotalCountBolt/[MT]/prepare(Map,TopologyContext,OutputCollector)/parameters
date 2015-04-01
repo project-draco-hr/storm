@@ -1,0 +1,3 @@
+Map stormConf
+TopologyContext context
+OutputCollector collector

@@ -1,0 +1,37 @@
+{
+  String key=storeMapper.getKeyFromTuple(input);
+  String value=storeMapper.getValueFromTuple(input);
+  JedisCommands jedisCommand=null;
+  try {
+    jedisCommand=getInstance();
+switch (dataType) {
+case STRING:
+      jedisCommand.set(key,value);
+    break;
+case LIST:
+  jedisCommand.rpush(key,value);
+break;
+case HASH:
+jedisCommand.hset(additionalKey,key,value);
+break;
+case SET:
+jedisCommand.sadd(key,value);
+break;
+case SORTED_SET:
+jedisCommand.zadd(additionalKey,Double.valueOf(value),key);
+case HYPER_LOG_LOG:
+jedisCommand.pfadd(key,value);
+break;
+default :
+throw new IllegalArgumentException("Cannot process such data type: " + dataType);
+}
+collector.ack(input);
+}
+ catch (Exception e) {
+this.collector.reportError(e);
+this.collector.fail(input);
+}
+ finally {
+returnInstance(jedisCommand);
+}
+}

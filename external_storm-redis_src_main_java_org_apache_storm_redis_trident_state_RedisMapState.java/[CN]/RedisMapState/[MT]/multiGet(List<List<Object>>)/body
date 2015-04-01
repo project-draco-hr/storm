@@ -2,8 +2,8 @@
   if (keys.size() == 0) {
     return Collections.emptyList();
   }
+  String[] stringKeys=buildKeys(keys);
   if (Strings.isNullOrEmpty(this.options.hkey)) {
-    String[] stringKeys=buildKeys(keys);
     Jedis jedis=null;
     try {
       jedis=jedisPool.getResource();
@@ -20,8 +20,7 @@
     Jedis jedis=null;
     try {
       jedis=jedisPool.getResource();
-      Map<String,String> keyValue=jedis.hgetAll(this.options.hkey);
-      List<String> values=buildValuesFromMap(keys,keyValue);
+      List<String> values=jedis.hmget(this.options.hkey,stringKeys);
       return deserializeValues(keys,values);
     }
   finally {

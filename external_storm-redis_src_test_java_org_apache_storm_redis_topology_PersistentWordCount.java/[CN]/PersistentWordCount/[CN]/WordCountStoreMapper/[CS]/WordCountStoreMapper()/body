@@ -1,0 +1,3 @@
+{
+  description=new RedisDataTypeDescription(RedisDataTypeDescription.RedisDataType.HASH,hashKey);
+}
