@@ -1,0 +1,42 @@
+{
+  String key=lookupMapper.getKeyFromTuple(input);
+  Object lookupValue=null;
+  JedisCommands jedisCommand=null;
+  try {
+    jedisCommand=getInstance();
+switch (dataType) {
+case STRING:
+      lookupValue=jedisCommand.get(key);
+    break;
+case LIST:
+  lookupValue=jedisCommand.lpop(key);
+break;
+case HASH:
+lookupValue=jedisCommand.hget(additionalKey,key);
+break;
+case SET:
+lookupValue=jedisCommand.scard(key);
+break;
+case SORTED_SET:
+lookupValue=jedisCommand.zscore(additionalKey,key);
+break;
+case HYPER_LOG_LOG:
+lookupValue=jedisCommand.pfcount(key);
+break;
+default :
+throw new IllegalArgumentException("Cannot process such data type: " + dataType);
+}
+List<Values> values=lookupMapper.toTuple(input,lookupValue);
+for (Values value : values) {
+collector.emit(input,value);
+}
+collector.ack(input);
+}
+ catch (Exception e) {
+this.collector.reportError(e);
+this.collector.fail(input);
+}
+ finally {
+returnInstance(jedisCommand);
+}
+}
