@@ -1,5 +1,0 @@
-{
-  for (  Values value : values) {
-    collector.emit(value);
-  }
-}

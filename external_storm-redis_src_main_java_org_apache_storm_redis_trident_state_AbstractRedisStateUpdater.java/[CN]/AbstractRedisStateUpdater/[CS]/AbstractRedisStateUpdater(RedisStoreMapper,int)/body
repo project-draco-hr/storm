@@ -1,0 +1,12 @@
+{
+  this.storeMapper=storeMapper;
+  RedisDataTypeDescription dataTypeDescription=storeMapper.getDataTypeDescription();
+  this.dataType=dataTypeDescription.getDataType();
+  this.additionalKey=dataTypeDescription.getAdditionalKey();
+  if (expireIntervalSec > 0) {
+    this.expireIntervalSec=expireIntervalSec;
+  }
+ else {
+    this.expireIntervalSec=0;
+  }
+}

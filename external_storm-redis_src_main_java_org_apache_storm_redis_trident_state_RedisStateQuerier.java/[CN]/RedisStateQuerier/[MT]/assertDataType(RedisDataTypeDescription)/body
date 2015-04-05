@@ -1,5 +1,0 @@
-{
-  if (lookupMapper.getDataType() != RedisDataTypeDescription.RedisDataType.STRING) {
-    throw new IllegalArgumentException("State should be STRING type");
-  }
-}

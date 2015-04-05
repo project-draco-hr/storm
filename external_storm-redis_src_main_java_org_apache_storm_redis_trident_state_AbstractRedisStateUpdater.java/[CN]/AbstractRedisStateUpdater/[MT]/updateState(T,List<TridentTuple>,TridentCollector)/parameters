@@ -1,0 +1,3 @@
+T state
+List<TridentTuple> inputs
+TridentCollector collector
