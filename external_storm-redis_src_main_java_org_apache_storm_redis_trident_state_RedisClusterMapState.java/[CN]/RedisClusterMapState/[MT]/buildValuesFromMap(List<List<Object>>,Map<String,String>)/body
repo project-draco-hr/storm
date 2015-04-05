@@ -1,9 +1,0 @@
-{
-  List<String> values=new ArrayList<String>(keys.size());
-  for (  List<Object> key : keys) {
-    String strKey=keyFactory.build(key);
-    String value=keyValue.get(strKey);
-    values.add(value);
-  }
-  return values;
-}

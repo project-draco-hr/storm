@@ -1,0 +1,18 @@
+{
+  Jedis jedis=null;
+  try {
+    jedis=jedisPool.getResource();
+    if (Strings.isNullOrEmpty(this.options.hkey)) {
+      String[] keyValue=buildKeyValuesList(keyValues);
+      jedis.mset(keyValue);
+    }
+ else {
+      jedis.hmset(this.options.hkey,keyValues);
+    }
+  }
+  finally {
+    if (jedis != null) {
+      jedis.close();
+    }
+  }
+}

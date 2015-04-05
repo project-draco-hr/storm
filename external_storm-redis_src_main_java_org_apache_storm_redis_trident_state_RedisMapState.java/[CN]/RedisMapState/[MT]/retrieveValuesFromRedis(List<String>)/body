@@ -1,0 +1,18 @@
+{
+  String[] stringKeys=keys.toArray(new String[keys.size()]);
+  Jedis jedis=null;
+  try {
+    jedis=jedisPool.getResource();
+    if (Strings.isNullOrEmpty(this.options.hkey)) {
+      return jedis.mget(stringKeys);
+    }
+ else {
+      return jedis.hmget(this.options.hkey,stringKeys);
+    }
+  }
+  finally {
+    if (jedis != null) {
+      jedis.close();
+    }
+  }
+}
