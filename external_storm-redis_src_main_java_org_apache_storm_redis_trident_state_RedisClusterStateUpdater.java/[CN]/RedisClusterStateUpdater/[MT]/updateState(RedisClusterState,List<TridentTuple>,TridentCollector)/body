@@ -3,18 +3,14 @@
   try {
     jedisCluster=redisClusterState.getJedisCluster();
     for (    TridentTuple input : inputs) {
-      String key=this.tupleMapper.getKeyFromTuple(input);
-      String redisKey=key;
-      if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
-        redisKey=redisKeyPrefix + redisKey;
-      }
-      String value=this.tupleMapper.getValueFromTuple(input);
-      logger.debug("update key[" + key + "] redisKey["+ redisKey+ "] value["+ value+ "]");
+      String key=storeMapper.getKeyFromTuple(input);
+      String value=storeMapper.getValueFromTuple(input);
+      logger.debug("update key[" + key + "] redisKey["+ key+ "] value["+ value+ "]");
       if (this.expireIntervalSec > 0) {
-        jedisCluster.setex(redisKey,expireIntervalSec,value);
+        jedisCluster.setex(key,expireIntervalSec,value);
       }
  else {
-        jedisCluster.set(redisKey,value);
+        jedisCluster.set(key,value);
       }
     }
   }

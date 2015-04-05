@@ -1,0 +1,4 @@
+{
+  this.lookupMapper=lookupMapper;
+  assertDataType(lookupMapper.getDataTypeDescription());
+}

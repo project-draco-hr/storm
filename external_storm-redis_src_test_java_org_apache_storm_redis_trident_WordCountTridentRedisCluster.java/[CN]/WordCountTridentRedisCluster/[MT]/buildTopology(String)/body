@@ -8,13 +8,14 @@
     nodes.add(new InetSocketAddress(host_port[0],Integer.valueOf(host_port[1])));
   }
   JedisClusterConfig clusterConfig=new JedisClusterConfig.Builder().setNodes(nodes).build();
-  TupleMapper tupleMapper=new WordCountTupleMapper();
+  RedisStoreMapper storeMapper=new WordCountStoreMapper();
+  RedisLookupMapper lookupMapper=new WordCountLookupMapper();
   RedisClusterState.Factory factory=new RedisClusterState.Factory(clusterConfig);
   TridentTopology topology=new TridentTopology();
   Stream stream=topology.newStream("spout1",spout);
-  stream.partitionPersist(factory,fields,new RedisClusterStateUpdater("test_",tupleMapper,86400000),new Fields());
+  stream.partitionPersist(factory,fields,new RedisClusterStateUpdater(storeMapper,86400000),new Fields());
   TridentState state=topology.newStaticState(factory);
-  stream=stream.stateQuery(state,new Fields("word"),new RedisClusterStateQuerier("test_",tupleMapper),new Fields("columnName","columnValue"));
+  stream=stream.stateQuery(state,new Fields("word"),new RedisClusterStateQuerier(lookupMapper),new Fields("columnName","columnValue"));
   stream.each(new Fields("word","columnValue"),new PrintFunction(),new Fields());
   return topology.build();
 }

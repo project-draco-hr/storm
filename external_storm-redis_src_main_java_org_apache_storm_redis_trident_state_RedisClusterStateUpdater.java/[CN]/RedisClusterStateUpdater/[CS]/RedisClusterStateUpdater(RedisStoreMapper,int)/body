@@ -1,0 +1,10 @@
+{
+  this.storeMapper=storeMapper;
+  assertDataType(storeMapper.getDataTypeDescription());
+  if (expireIntervalSec > 0) {
+    this.expireIntervalSec=expireIntervalSec;
+  }
+ else {
+    this.expireIntervalSec=0;
+  }
+}

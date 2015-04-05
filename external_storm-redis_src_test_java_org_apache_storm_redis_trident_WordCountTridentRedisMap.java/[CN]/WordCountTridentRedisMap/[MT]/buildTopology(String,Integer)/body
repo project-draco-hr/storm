@@ -3,7 +3,6 @@
   FixedBatchSpout spout=new FixedBatchSpout(fields,4,new Values("storm",1),new Values("trident",1),new Values("needs",1),new Values("javadoc",1));
   spout.setCycle(true);
   JedisPoolConfig poolConfig=new JedisPoolConfig.Builder().setHost(redisHost).setPort(redisPort).build();
-  TupleMapper tupleMapper=new WordCountTupleMapper();
   StateFactory factory=RedisMapState.transactional(poolConfig);
   TridentTopology topology=new TridentTopology();
   Stream stream=topology.newStream("spout1",spout);

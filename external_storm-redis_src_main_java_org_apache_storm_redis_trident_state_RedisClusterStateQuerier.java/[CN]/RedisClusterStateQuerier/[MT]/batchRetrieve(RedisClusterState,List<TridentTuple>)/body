@@ -1,17 +1,14 @@
 {
-  List<String> ret=Lists.newArrayList();
-  List<String> keys=Lists.newArrayList();
+  List<List<Values>> ret=Lists.newArrayList();
   JedisCluster jedisCluster=null;
   try {
     jedisCluster=redisClusterState.getJedisCluster();
-    for (    TridentTuple input : inputs) {
-      String key=this.tupleMapper.getKeyFromTuple(input);
-      if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
-        key=redisKeyPrefix + key;
-      }
+    for (int i=0; i < inputs.size(); i++) {
+      TridentTuple input=inputs.get(i);
+      String key=lookupMapper.getKeyFromTuple(input);
       String value=jedisCluster.get(key);
-      ret.add(value);
-      logger.debug("redis get key[" + key + "] count["+ value+ "]");
+      ret.add(lookupMapper.toTuple(input,value));
+      logger.debug("redis get key[" + key + "] value ["+ value+ "]");
     }
   }
   finally {

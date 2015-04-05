@@ -8,7 +8,6 @@
     nodes.add(new InetSocketAddress(host_port[0],Integer.valueOf(host_port[1])));
   }
   JedisClusterConfig clusterConfig=new JedisClusterConfig.Builder().setNodes(nodes).build();
-  TupleMapper tupleMapper=new WordCountTupleMapper();
   StateFactory factory=RedisClusterMapState.transactional(clusterConfig);
   TridentTopology topology=new TridentTopology();
   Stream stream=topology.newStream("spout1",spout);

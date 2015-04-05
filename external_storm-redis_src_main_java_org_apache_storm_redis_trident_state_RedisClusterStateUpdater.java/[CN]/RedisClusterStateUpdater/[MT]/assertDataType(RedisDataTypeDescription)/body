@@ -1,0 +1,5 @@
+{
+  if (storeMapper.getDataType() != RedisDataTypeDescription.RedisDataType.STRING) {
+    throw new IllegalArgumentException("State should be STRING type");
+  }
+}

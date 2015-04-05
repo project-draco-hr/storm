@@ -1,16 +1,17 @@
 {
+  List<List<Values>> values=new ArrayList<List<Values>>();
   List<String> keys=Lists.newArrayList();
   for (  TridentTuple input : inputs) {
-    String key=this.tupleMapper.getKeyFromTuple(input);
-    if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
-      key=redisKeyPrefix + key;
-    }
-    keys.add(key);
+    keys.add(lookupMapper.getKeyFromTuple(input));
   }
   Jedis jedis=null;
   try {
     jedis=redisState.getJedis();
-    return jedis.mget(keys.toArray(new String[keys.size()]));
+    List<String> redisVals=jedis.mget(keys.toArray(new String[keys.size()]));
+    for (int i=0; i < redisVals.size(); i++) {
+      values.add(lookupMapper.toTuple(inputs.get(i),redisVals.get(i)));
+    }
+    return values;
   }
   finally {
     if (jedis != null) {

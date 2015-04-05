@@ -1,4 +1,0 @@
-{
-  String key=this.tupleMapper.getKeyFromTuple(tuple);
-  collector.emit(new Values(key,s));
-}

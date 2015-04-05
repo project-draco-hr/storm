@@ -1,1 +1,1 @@
-BaseQueryFunction<RedisClusterState,String>
+BaseQueryFunction<RedisClusterState,List<Values>>
