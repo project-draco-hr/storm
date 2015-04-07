@@ -3,16 +3,19 @@
   Jedis jedis=null;
   try {
     jedis=jedisPool.getResource();
-    if (Strings.isNullOrEmpty(this.options.hkey)) {
+    RedisDataTypeDescription description=this.options.dataTypeDescription;
+switch (description.getDataType()) {
+case STRING:
       return jedis.mget(stringKeys);
-    }
- else {
-      return jedis.hmget(this.options.hkey,stringKeys);
-    }
-  }
+case HASH:
+    return jedis.hmget(description.getAdditionalKey(),stringKeys);
+default :
+  throw new IllegalArgumentException("Cannot process such data type: " + description.getDataType());
+}
+}
   finally {
-    if (jedis != null) {
-      jedis.close();
-    }
-  }
+if (jedis != null) {
+jedis.close();
+}
+}
 }

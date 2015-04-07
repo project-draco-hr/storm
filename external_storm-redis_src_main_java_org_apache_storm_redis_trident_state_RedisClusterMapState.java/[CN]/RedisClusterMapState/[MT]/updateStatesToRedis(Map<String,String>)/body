@@ -1,10 +1,15 @@
 {
-  if (Strings.isNullOrEmpty(this.options.hkey)) {
+  RedisDataTypeDescription description=this.options.dataTypeDescription;
+switch (description.getDataType()) {
+case STRING:
     for (    Map.Entry<String,String> kvEntry : keyValues.entrySet()) {
       jedisCluster.set(kvEntry.getKey(),kvEntry.getValue());
     }
-  }
- else {
-    jedisCluster.hmset(this.options.hkey,keyValues);
-  }
+  break;
+case HASH:
+jedisCluster.hmset(description.getAdditionalKey(),keyValues);
+break;
+default :
+throw new IllegalArgumentException("Cannot process such data type: " + description.getDataType());
+}
 }

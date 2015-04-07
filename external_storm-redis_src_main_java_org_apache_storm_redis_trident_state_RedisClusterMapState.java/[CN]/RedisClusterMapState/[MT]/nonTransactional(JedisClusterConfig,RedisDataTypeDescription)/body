@@ -1,5 +1,5 @@
 {
   Options opts=new Options();
-  opts.hkey=hkey;
+  opts.dataTypeDescription=dataTypeDescription;
   return nonTransactional(jedisClusterConfig,opts);
 }
