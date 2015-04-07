@@ -2,31 +2,32 @@
   if (keys.size() == 0) {
     return;
   }
-  if (Strings.isNullOrEmpty(this.options.hkey)) {
-    Jedis jedis=null;
-    try {
-      jedis=jedisPool.getResource();
+  Jedis jedis=jedisPool.getResource();
+  try {
+    if (Strings.isNullOrEmpty(this.options.hkey)) {
       String[] keyValue=buildKeyValuesList(keys,vals);
       jedis.mset(keyValue);
-    }
-  finally {
-      if (jedis != null) {
-        jedisPool.returnResource(jedis);
+      if (this.options.expireIntervalSec > 0) {
+        Pipeline pipe=jedis.pipelined();
+        for (int i=0; i < keyValue.length; i+=2) {
+          pipe.expire(keyValue[i],this.options.expireIntervalSec);
+        }
+        pipe.sync();
       }
     }
-  }
  else {
-    Jedis jedis=jedisPool.getResource();
-    try {
       Map<String,String> keyValues=new HashMap<String,String>();
       for (int i=0; i < keys.size(); i++) {
         String val=new String(serializer.serialize(vals.get(i)));
         keyValues.put(keyFactory.build(keys.get(i)),val);
       }
       jedis.hmset(this.options.hkey,keyValues);
+      if (this.options.expireIntervalSec > 0) {
+        jedis.expire(this.options.hkey,this.options.expireIntervalSec);
+      }
     }
+  }
   finally {
-      jedisPool.returnResource(jedis);
-    }
+    jedisPool.returnResource(jedis);
   }
 }
