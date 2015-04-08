@@ -33,5 +33,15 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_uptime_secs()).compareTo(other.is_set_uptime_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_uptime_secs()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uptime_secs,other.uptime_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

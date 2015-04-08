@@ -9,4 +9,5 @@
     }
   }
   oprot.writeI32(struct.time_secs);
+  oprot.writeI32(struct.uptime_secs);
 }
