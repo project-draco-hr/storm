@@ -13,7 +13,8 @@
       obj=con.newInstance(getArgsWithListCoercian(cArgs,con.getParameterTypes()));
     }
  else {
-      throw new IllegalArgumentException("Couldn't find a suitable constructor.");
+      String msg=String.format("Couldn't find a suitable constructor for class '%s' with arguments '%s'.",clazz.getName(),cArgs);
+      throw new IllegalArgumentException(msg);
     }
   }
  else {

@@ -16,8 +16,8 @@
       method.invoke(instance,methodArgs);
     }
  else {
-      LOG.warn("Unable to find method '{}' in class '{}' with arguments {}.",new Object[]{methodName,clazz.getName(),args});
-      throw new IllegalArgumentException("Configuration method not found.");
+      String msg=String.format("Unable to find configuration method '%s' in class '%s' with arguments %s.",new Object[]{methodName,clazz.getName(),args});
+      throw new IllegalArgumentException(msg);
     }
   }
 }
