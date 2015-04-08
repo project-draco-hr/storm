@@ -2,11 +2,17 @@
   if (keys.size() == 0) {
     return;
   }
+  final int expireIntervalSec=this.options.expireIntervalSec;
   if (Strings.isNullOrEmpty(this.options.hkey)) {
     for (int i=0; i < keys.size(); i++) {
       String val=new String(serializer.serialize(vals.get(i)));
       String redisKey=keyFactory.build(keys.get(i));
-      jedisCluster.set(redisKey,val);
+      if (expireIntervalSec > 0) {
+        jedisCluster.setex(redisKey,expireIntervalSec,val);
+      }
+ else {
+        jedisCluster.set(redisKey,val);
+      }
     }
   }
  else {
@@ -16,5 +22,8 @@
       keyValues.put(keyFactory.build(keys.get(i)),val);
     }
     jedisCluster.hmset(this.options.hkey,keyValues);
+    if (expireIntervalSec > 0) {
+      jedisCluster.expire(this.options.hkey,expireIntervalSec);
+    }
   }
 }
