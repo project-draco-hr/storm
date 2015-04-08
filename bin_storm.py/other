@@ -31,6 +31,10 @@ CONFFILE = ''
 JAR_JVM_OPTS = shlex.split(os.getenv('STORM_JAR_JVM_OPTS', ''))
 JAVA_HOME = os.getenv('JAVA_HOME', None)
 JAVA_CMD = ('java' if (not JAVA_HOME) else os.path.join(JAVA_HOME, 'bin', 'java'))
+NIMBUS_EXTRA_CLASSPATHS = os.getenv('NIMBUS_EXTRA_CLASSPATHS', None)
+SUPERVISOR_EXTRA_CLASSPATHS = os.getenv('SUPERVISOR_EXTRA_CLASSPATHS', None)
+STORM_EXT_CLASSPATH = os.getenv('STORM_EXT_CLASSPATH', None)
+STORM_EXT_CLASSPATH_DAEMON = os.getenv('STORM_EXT_CLASSPATH_DAEMON', None)
 if (not os.path.exists(STORM_LIB_DIR)):
     print '******************************************'
     print "The storm client can only be run from within a release. You appear to be trying to run the client from a checkout of Storm's source code."
