@@ -15,7 +15,7 @@
         if (offset > nextOffset) {
           throw new RuntimeException("Error when re-emitting batch. overshot the end offset");
         }
-        emit(collector,msg.message());
+        emit(collector,msg.message(),partition,msg.offset());
         offset=msg.nextOffset();
       }
     }

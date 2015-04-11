@@ -28,7 +28,7 @@
   }
   long endoffset=offset;
   for (  MessageAndOffset msg : msgs) {
-    emit(collector,msg.message());
+    emit(collector,msg.message(),partition,msg.offset());
     endoffset=msg.nextOffset();
   }
   Map newMeta=new HashMap();

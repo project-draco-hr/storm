@@ -1,0 +1,14 @@
+{
+  Iterable<List<Object>> values;
+  if (_config.tupleMetaData) {
+    values=KafkaUtils.generateTuples(_config,msg,partition,offset);
+  }
+ else {
+    values=KafkaUtils.generateTuples(_config,msg);
+  }
+  if (values != null) {
+    for (    List<Object> value : values) {
+      collector.emit(value);
+    }
+  }
+}
