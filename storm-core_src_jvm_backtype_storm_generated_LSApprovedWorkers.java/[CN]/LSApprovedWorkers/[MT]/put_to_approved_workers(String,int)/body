@@ -1,0 +1,6 @@
+{
+  if (this.approved_workers == null) {
+    this.approved_workers=new HashMap<String,Integer>();
+  }
+  this.approved_workers.put(key,val);
+}

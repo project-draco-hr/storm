@@ -1,0 +1,2 @@
+String topology_id
+List<ExecutorInfo> executors
