@@ -1,0 +1,15 @@
+{
+  for (  Integer task : bundles.keySet()) {
+    String hostPort=taskToNode.get(task);
+    if (hostPort != null) {
+      IConnection connection=connections.get(hostPort);
+      if (null != connection) {
+        ArrayList<ArrayList<TaskMessage>> bundle=bundles.get(task);
+        Iterator<TaskMessage> iter=getBundleIterator(bundle);
+        if (null != iter && iter.hasNext()) {
+          connection.send(iter);
+        }
+      }
+    }
+  }
+}

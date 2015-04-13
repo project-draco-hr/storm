@@ -1,11 +1,11 @@
 {
-  for (  String key : workerTupleSetMap.keySet()) {
+  for (  Integer key : taskTupleSetMap.keySet()) {
     ArrayList<ArrayList<TaskMessage>> bundle=bundles.get(key);
     if (null == bundle) {
       bundle=new ArrayList<ArrayList<TaskMessage>>();
       bundles.put(key,bundle);
     }
-    ArrayList tupleSet=workerTupleSetMap.get(key);
+    ArrayList tupleSet=taskTupleSetMap.get(key);
     if (null != tupleSet && tupleSet.size() > 0) {
       bundle.add(tupleSet);
     }
