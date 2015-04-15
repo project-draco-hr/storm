@@ -19,5 +19,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('time_secs', TType.I32, 3)
         oprot.writeI32(self.time_secs)
         oprot.writeFieldEnd()
+    if (self.uptime_secs is not None):
+        oprot.writeFieldBegin('uptime_secs', TType.I32, 4)
+        oprot.writeI32(self.uptime_secs)
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

@@ -24,5 +24,13 @@ unset_time_secs();
 set_time_secs((Integer)value);
 }
 break;
+case UPTIME_SECS:
+if (value == null) {
+unset_uptime_secs();
+}
+ else {
+set_uptime_secs((Integer)value);
+}
+break;
 }
 }

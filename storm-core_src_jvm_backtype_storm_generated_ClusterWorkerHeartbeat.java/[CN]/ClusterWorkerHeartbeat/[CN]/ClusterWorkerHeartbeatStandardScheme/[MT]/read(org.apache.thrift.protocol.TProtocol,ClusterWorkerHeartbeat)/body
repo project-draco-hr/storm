@@ -47,6 +47,15 @@ struct.set_time_secs_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 4:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.uptime_secs=iprot.readI32();
+struct.set_uptime_secs_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
