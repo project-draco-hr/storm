@@ -1,0 +1,38 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 1:
+      if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+          org.apache.thrift.protocol.TMap _map436=iprot.readMapBegin();
+          struct.serialized_parts=new HashMap<String,ThriftSerializedObject>(2 * _map436.size);
+          String _key437;
+          ThriftSerializedObject _val438;
+          for (int _i439=0; _i439 < _map436.size; ++_i439) {
+            _key437=iprot.readString();
+            _val438=new ThriftSerializedObject();
+            _val438.read(iprot);
+            struct.serialized_parts.put(_key437,_val438);
+          }
+          iprot.readMapEnd();
+        }
+        struct.set_serialized_parts_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+default :
+  org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_topology_id=true && (is_set_topology_id());
+  list.add(present_topology_id);
+  if (present_topology_id)   list.add(topology_id);
+  boolean present_executors=true && (is_set_executors());
+  list.add(present_executors);
+  if (present_executors)   list.add(executors);
+  return list.hashCode();
+}

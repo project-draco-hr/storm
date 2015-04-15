@@ -1,0 +1,5 @@
+{
+  if (!is_set_approved_workers()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'approved_workers' is unset! Struct:" + toString());
+  }
+}

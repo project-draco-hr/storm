@@ -1,0 +1,10 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.topology_id);
+{
+    oprot.writeI32(struct.executors.size());
+    for (    ExecutorInfo _iter450 : struct.executors) {
+      _iter450.write(oprot);
+    }
+  }
+}
