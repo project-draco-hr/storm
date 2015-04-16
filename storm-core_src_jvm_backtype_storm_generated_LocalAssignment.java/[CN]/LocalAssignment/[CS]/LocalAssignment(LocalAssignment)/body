@@ -1,0 +1,12 @@
+{
+  if (other.is_set_topology_id()) {
+    this.topology_id=other.topology_id;
+  }
+  if (other.is_set_executors()) {
+    List<ExecutorInfo> __this__executors=new ArrayList<ExecutorInfo>(other.executors.size());
+    for (    ExecutorInfo other_element : other.executors) {
+      __this__executors.add(new ExecutorInfo(other_element));
+    }
+    this.executors=__this__executors;
+  }
+}

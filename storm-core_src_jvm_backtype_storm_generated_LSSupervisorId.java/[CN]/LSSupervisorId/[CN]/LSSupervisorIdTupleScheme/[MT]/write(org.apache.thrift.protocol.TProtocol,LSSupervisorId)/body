@@ -1,0 +1,4 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.supervisor_id);
+}

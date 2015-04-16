@@ -1,0 +1,13 @@
+{
+  if (other.is_set_assignments()) {
+    Map<Integer,LocalAssignment> __this__assignments=new HashMap<Integer,LocalAssignment>(other.assignments.size());
+    for (    Map.Entry<Integer,LocalAssignment> other_element : other.assignments.entrySet()) {
+      Integer other_element_key=other_element.getKey();
+      LocalAssignment other_element_value=other_element.getValue();
+      Integer __this__assignments_copy_key=other_element_key;
+      LocalAssignment __this__assignments_copy_value=new LocalAssignment(other_element_value);
+      __this__assignments.put(__this__assignments_copy_key,__this__assignments_copy_value);
+    }
+    this.assignments=__this__assignments;
+  }
+}

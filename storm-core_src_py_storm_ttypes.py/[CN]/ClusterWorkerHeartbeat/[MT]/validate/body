@@ -5,4 +5,6 @@ def validate(self):
         raise TProtocol.TProtocolException(message='Required field executor_stats is unset!')
     if (self.time_secs is None):
         raise TProtocol.TProtocolException(message='Required field time_secs is unset!')
+    if (self.uptime_secs is None):
+        raise TProtocol.TProtocolException(message='Required field uptime_secs is unset!')
     return

@@ -1,0 +1,5 @@
+{
+  Map<String,ThriftSerializedObject> curr=partialSnapshot(null);
+  curr.remove(key);
+  persistInternal(curr,null,cleanup);
+}

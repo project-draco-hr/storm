@@ -1,0 +1,25 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.MAP):
+                self.serialized_parts = {}
+                (_ktype391, _vtype392, _size390) = iprot.readMapBegin()
+                for _i394 in xrange(_size390):
+                    _key395 = iprot.readString().decode('utf-8')
+                    _val396 = ThriftSerializedObject()
+                    _val396.read(iprot)
+                    self.serialized_parts[_key395] = _val396
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

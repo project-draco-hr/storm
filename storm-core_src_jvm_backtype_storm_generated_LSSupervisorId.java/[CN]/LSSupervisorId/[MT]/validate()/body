@@ -1,0 +1,5 @@
+{
+  if (!is_set_supervisor_id()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'supervisor_id' is unset! Struct:" + toString());
+  }
+}

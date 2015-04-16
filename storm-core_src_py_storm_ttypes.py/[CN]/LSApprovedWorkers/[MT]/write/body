@@ -1,0 +1,15 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('LSApprovedWorkers')
+    if (self.approved_workers is not None):
+        oprot.writeFieldBegin('approved_workers', TType.MAP, 1)
+        oprot.writeMapBegin(TType.STRING, TType.I32, len(self.approved_workers))
+        for (kiter413, viter414) in self.approved_workers.items():
+            oprot.writeString(kiter413.encode('utf-8'))
+            oprot.writeI32(viter414)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

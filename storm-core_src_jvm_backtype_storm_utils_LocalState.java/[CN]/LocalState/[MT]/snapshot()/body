@@ -4,10 +4,10 @@
     try {
       return deserializeLatestVersion();
     }
- catch (    IOException e) {
+ catch (    Exception e) {
       attempts++;
       if (attempts >= 10) {
-        throw e;
+        throw new RuntimeException(e);
       }
     }
   }

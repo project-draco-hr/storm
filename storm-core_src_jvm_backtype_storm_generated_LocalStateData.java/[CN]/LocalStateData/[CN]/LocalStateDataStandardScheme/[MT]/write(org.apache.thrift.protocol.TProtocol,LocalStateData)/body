@@ -1,0 +1,18 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.serialized_parts != null) {
+    oprot.writeFieldBegin(SERIALIZED_PARTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.serialized_parts.size()));
+      for (      Map.Entry<String,ThriftSerializedObject> _iter440 : struct.serialized_parts.entrySet()) {
+        oprot.writeString(_iter440.getKey());
+        _iter440.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

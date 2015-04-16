@@ -1,4 +1,7 @@
 {
+  if (TupleUtils.isTick(input)) {
+    return;
+  }
   K key=null;
   V message=null;
   String topic=null;
