@@ -1,0 +1,7 @@
+{
+  Tuple tuple=mock(Tuple.class);
+  when(tuple.getSourceComponent()).thenReturn(Constants.SYSTEM_COMPONENT_ID);
+  when(tuple.getSourceStreamId()).thenReturn(Constants.SYSTEM_TICK_STREAM_ID);
+  assertTrue(TupleUtils.isTick(tuple));
+  return tuple;
+}
