@@ -2,5 +2,25 @@
   Map obj=new HashMap();
   obj.put("task->component",this.getTaskToComponent());
   obj.put("taskid",this.getThisTaskId());
+  obj.put("componentid",this.getThisComponentId());
+  List<String> streamList=new ArrayList<String>();
+  streamList.addAll(this.getThisStreams());
+  obj.put("streams",streamList);
+  obj.put("stream->outputfields",this.getThisOutputFieldsForStreams());
+  Map<String,Map> stringTargets=new HashMap<String,Map>();
+  for (  Map.Entry<String,Map<String,Grouping>> entry : this.getThisTargets().entrySet()) {
+    Map stringTargetMap=new HashMap<String,Object>();
+    for (    Map.Entry<String,Grouping> innerEntry : entry.getValue().entrySet()) {
+      stringTargetMap.put(innerEntry.getKey(),groupingToJSONableObject(innerEntry.getValue()));
+    }
+    stringTargets.put(entry.getKey(),stringTargetMap);
+  }
+  obj.put("stream->target->grouping",stringTargets);
+  Map<String,String> stringSources=new HashMap<String,String>();
+  for (  Map.Entry<GlobalStreamId,Grouping> entry : this.getThisSources().entrySet()) {
+    Map stringSourceMap=new HashMap<String,Object>();
+    stringSourceMap.put(entry.getKey().toString(),groupingToJSONableObject(entry.getValue()));
+  }
+  obj.put("sources->grouping",stringSources);
   return JSONValue.toJSONString(obj);
 }

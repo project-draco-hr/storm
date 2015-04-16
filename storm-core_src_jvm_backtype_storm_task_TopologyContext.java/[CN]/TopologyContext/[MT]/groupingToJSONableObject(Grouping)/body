@@ -1,0 +1,8 @@
+{
+  if (grouping.is_set_fields()) {
+    return grouping.get_fields();
+  }
+ else {
+    return grouping.getSetField().toString();
+  }
+}
