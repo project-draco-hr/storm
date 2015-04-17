@@ -10,4 +10,6 @@
   struct.set_num_used_workers_isSet(true);
   struct.supervisor_id=iprot.readString();
   struct.set_supervisor_id_isSet(true);
+  struct.version=iprot.readString();
+  struct.set_version_isSet(true);
 }

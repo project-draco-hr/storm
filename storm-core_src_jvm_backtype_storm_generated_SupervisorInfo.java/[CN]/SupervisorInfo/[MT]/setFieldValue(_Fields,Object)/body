@@ -56,5 +56,13 @@ unset_uptime_secs();
 set_uptime_secs((Long)value);
 }
 break;
+case VERSION:
+if (value == null) {
+unset_version();
+}
+ else {
+set_version((String)value);
+}
+break;
 }
 }

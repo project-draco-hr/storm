@@ -5,4 +5,5 @@
   oprot.writeI32(struct.num_workers);
   oprot.writeI32(struct.num_used_workers);
   oprot.writeString(struct.supervisor_id);
+  oprot.writeString(struct.version);
 }
