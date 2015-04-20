@@ -14,7 +14,4 @@
   if (!is_set_supervisor_id()) {
     throw new org.apache.thrift.protocol.TProtocolException("Required field 'supervisor_id' is unset! Struct:" + toString());
   }
-  if (!is_set_version()) {
-    throw new org.apache.thrift.protocol.TProtocolException("Required field 'version' is unset! Struct:" + toString());
-  }
 }

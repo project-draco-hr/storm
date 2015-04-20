@@ -30,15 +30,17 @@
     sb.append(this.supervisor_id);
   }
   first=false;
-  if (!first)   sb.append(", ");
-  sb.append("version:");
-  if (this.version == null) {
-    sb.append("null");
-  }
+  if (is_set_version()) {
+    if (!first)     sb.append(", ");
+    sb.append("version:");
+    if (this.version == null) {
+      sb.append("null");
+    }
  else {
-    sb.append(this.version);
+      sb.append(this.version);
+    }
+    first=false;
   }
-  first=false;
   sb.append(")");
   return sb.toString();
 }

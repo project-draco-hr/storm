@@ -8,5 +8,4 @@
   this.num_used_workers=num_used_workers;
   set_num_used_workers_isSet(true);
   this.supervisor_id=supervisor_id;
-  this.version=version;
 }
