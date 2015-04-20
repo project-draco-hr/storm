@@ -11,7 +11,7 @@
   for (  Map.Entry<String,Map<String,Grouping>> entry : this.getThisTargets().entrySet()) {
     Map stringTargetMap=new HashMap<String,Object>();
     for (    Map.Entry<String,Grouping> innerEntry : entry.getValue().entrySet()) {
-      stringTargetMap.put(innerEntry.getKey(),groupingToJSONableObject(innerEntry.getValue()));
+      stringTargetMap.put(innerEntry.getKey(),groupingToJSONableMap(innerEntry.getValue()));
     }
     stringTargets.put(entry.getKey(),stringTargetMap);
   }
@@ -24,7 +24,7 @@
       stringSourceMap=new HashMap<String,Object>();
       stringSources.put(gid.get_componentId(),stringSourceMap);
     }
-    stringSourceMap.put(gid.get_streamId(),groupingToJSONableObject(entry.getValue()));
+    stringSourceMap.put(gid.get_streamId(),groupingToJSONableMap(entry.getValue()));
   }
   obj.put("source->stream->grouping",stringSources);
   return JSONValue.toJSONString(obj);
