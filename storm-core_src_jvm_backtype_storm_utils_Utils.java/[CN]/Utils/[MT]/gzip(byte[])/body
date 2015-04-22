@@ -1,0 +1,12 @@
+{
+  try {
+    ByteArrayOutputStream bos=new ByteArrayOutputStream();
+    GZIPOutputStream out=new GZIPOutputStream(bos);
+    out.write(data);
+    out.close();
+    return bos.toByteArray();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}
