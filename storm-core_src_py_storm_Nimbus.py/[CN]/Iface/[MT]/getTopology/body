@@ -1,3 +1,3 @@
 def getTopology(self, id):
-    '\n    Parameters:\n     - id\n    '
+    '\n    Returns the compiled topology that contains ackers and metrics consumsers. Compare {@link #getUserTopology(String id)}.\n\n    Parameters:\n     - id\n    '
     pass
