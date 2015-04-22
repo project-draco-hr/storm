@@ -14,5 +14,7 @@ catch (    InterruptedException ie) {
       Thread.currentThread().interrupt();
     }
   }
-  Utils.handleUncaughtException(t);
+  if (t != null) {
+    Utils.handleUncaughtException(t);
+  }
 }

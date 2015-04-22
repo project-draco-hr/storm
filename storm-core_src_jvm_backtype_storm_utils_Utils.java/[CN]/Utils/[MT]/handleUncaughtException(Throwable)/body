@@ -12,7 +12,4 @@
       throw (Error)t;
     }
   }
- else {
-    LOG.error("Thread threw an Exception.",t);
-  }
 }
