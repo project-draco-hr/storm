@@ -8,4 +8,5 @@
   this.scheduler_meta=null;
   set_uptime_secs_isSet(false);
   this.uptime_secs=0;
+  this.version=null;
 }

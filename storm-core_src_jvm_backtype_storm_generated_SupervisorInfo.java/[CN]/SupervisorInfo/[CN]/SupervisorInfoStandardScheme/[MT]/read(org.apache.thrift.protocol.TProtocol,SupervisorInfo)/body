@@ -99,6 +99,15 @@ struct.set_uptime_secs_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 8:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+struct.version=iprot.readString();
+struct.set_version_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }

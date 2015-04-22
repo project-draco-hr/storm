@@ -4,7 +4,7 @@
   struct.set_time_secs_isSet(true);
   struct.hostname=iprot.readString();
   struct.set_hostname_isSet(true);
-  BitSet incoming=iprot.readBitSet(5);
+  BitSet incoming=iprot.readBitSet(6);
   if (incoming.get(0)) {
     struct.assignment_id=iprot.readString();
     struct.set_assignment_id_isSet(true);
@@ -50,5 +50,9 @@
   if (incoming.get(4)) {
     struct.uptime_secs=iprot.readI64();
     struct.set_uptime_secs_isSet(true);
+  }
+  if (incoming.get(5)) {
+    struct.version=iprot.readString();
+    struct.set_version_isSet(true);
   }
 }

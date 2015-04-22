@@ -7,4 +7,5 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.meta))
     value = ((value * 31) ^ hash(self.scheduler_meta))
     value = ((value * 31) ^ hash(self.uptime_secs))
+    value = ((value * 31) ^ hash(self.version))
     return value

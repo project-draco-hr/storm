@@ -41,5 +41,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('uptime_secs', TType.I64, 7)
         oprot.writeI64(self.uptime_secs)
         oprot.writeFieldEnd()
+    if (self.version is not None):
+        oprot.writeFieldBegin('version', TType.STRING, 8)
+        oprot.writeString(self.version.encode('utf-8'))
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

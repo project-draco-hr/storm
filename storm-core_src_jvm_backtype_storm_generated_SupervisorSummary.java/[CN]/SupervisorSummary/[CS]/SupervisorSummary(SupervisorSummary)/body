@@ -9,4 +9,7 @@
   if (other.is_set_supervisor_id()) {
     this.supervisor_id=other.supervisor_id;
   }
+  if (other.is_set_version()) {
+    this.version=other.version;
+  }
 }

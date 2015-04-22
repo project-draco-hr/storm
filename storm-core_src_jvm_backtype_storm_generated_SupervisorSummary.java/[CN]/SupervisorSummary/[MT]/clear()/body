@@ -7,4 +7,5 @@
   set_num_used_workers_isSet(false);
   this.num_used_workers=0;
   this.supervisor_id=null;
+  this.version="VERSION_NOT_PROVIDED";
 }
