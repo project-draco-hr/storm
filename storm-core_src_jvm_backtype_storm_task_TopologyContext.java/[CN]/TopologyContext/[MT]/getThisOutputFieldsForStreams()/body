@@ -1,0 +1,7 @@
+{
+  Map<String,List<String>> streamToFields=new HashMap<String,List<String>>();
+  for (  String stream : this.getThisStreams()) {
+    streamToFields.put(stream,this.getThisOutputFields(stream).toList());
+  }
+  return streamToFields;
+}
