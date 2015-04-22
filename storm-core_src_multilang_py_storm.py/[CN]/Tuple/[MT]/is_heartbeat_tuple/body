@@ -1,2 +1,0 @@
-def is_heartbeat_tuple(self):
-    return ((self.task == (-1)) and (self.stream == '__heartbeat'))
