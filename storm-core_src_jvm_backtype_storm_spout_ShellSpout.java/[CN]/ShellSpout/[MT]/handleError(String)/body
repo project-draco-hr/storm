@@ -1,0 +1,3 @@
+{
+  _collector.reportError(new Exception("Shell Process Exception: " + msg));
+}
