@@ -1,2 +1,0 @@
-def log(msg, level=2):
-    sendMsgToParent({'command': 'log', 'msg': msg, 'level': level, })

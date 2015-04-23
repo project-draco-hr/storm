@@ -1,0 +1,4 @@
+def validate(self):
+    if (self.approved_workers is None):
+        raise TProtocol.TProtocolException(message='Required field approved_workers is unset!')
+    return

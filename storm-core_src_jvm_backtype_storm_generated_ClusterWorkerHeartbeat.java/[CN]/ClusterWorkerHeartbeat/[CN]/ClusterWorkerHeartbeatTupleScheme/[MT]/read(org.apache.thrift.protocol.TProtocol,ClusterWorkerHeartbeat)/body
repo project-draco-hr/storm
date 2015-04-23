@@ -18,4 +18,6 @@
   struct.set_executor_stats_isSet(true);
   struct.time_secs=iprot.readI32();
   struct.set_time_secs_isSet(true);
+  struct.uptime_secs=iprot.readI32();
+  struct.set_uptime_secs_isSet(true);
 }

@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_serialized_parts=true && this.is_set_serialized_parts();
+  boolean that_present_serialized_parts=true && that.is_set_serialized_parts();
+  if (this_present_serialized_parts || that_present_serialized_parts) {
+    if (!(this_present_serialized_parts && that_present_serialized_parts))     return false;
+    if (!this.serialized_parts.equals(that.serialized_parts))     return false;
+  }
+  return true;
+}

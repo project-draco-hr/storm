@@ -16,4 +16,7 @@
 catch (  RetriesExhaustedWithDetailsException e) {
     throw new FailedException("Retries exhaused while writing to HBase",e);
   }
+catch (  IOException e) {
+    throw new FailedException("IOException while writing to HBase",e);
+  }
 }

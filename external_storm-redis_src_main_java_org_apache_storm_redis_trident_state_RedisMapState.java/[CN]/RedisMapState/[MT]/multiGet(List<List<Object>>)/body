@@ -12,7 +12,7 @@
     }
   finally {
       if (jedis != null) {
-        jedisPool.returnResource(jedis);
+        jedis.close();
       }
     }
   }
@@ -25,7 +25,7 @@
     }
   finally {
       if (jedis != null) {
-        jedisPool.returnResource(jedis);
+        jedis.close();
       }
     }
   }

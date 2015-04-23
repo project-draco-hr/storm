@@ -1,0 +1,8 @@
+{
+  if (other.is_set_name()) {
+    this.name=other.name;
+  }
+  if (other.is_set_bits()) {
+    this.bits=org.apache.thrift.TBaseHelper.copyBinary(other.bits);
+  }
+}

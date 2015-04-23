@@ -14,6 +14,8 @@ case SCHEDULER_META:
 return get_scheduler_meta();
 case UPTIME_SECS:
 return Long.valueOf(get_uptime_secs());
+case VERSION:
+return get_version();
 }
 throw new IllegalStateException();
 }

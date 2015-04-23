@@ -1,0 +1,5 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.supervisor_id=iprot.readString();
+  struct.set_supervisor_id_isSet(true);
+}

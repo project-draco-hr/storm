@@ -1,4 +1,4 @@
 def getUserTopology(self, id):
-    '\n    Parameters:\n     - id\n    '
+    '\n    Returns the user specified topology as submitted originally. Compare {@link #getTopology(String id)}.\n\n    Parameters:\n     - id\n    '
     self.send_getUserTopology(id)
     return self.recv_getUserTopology()

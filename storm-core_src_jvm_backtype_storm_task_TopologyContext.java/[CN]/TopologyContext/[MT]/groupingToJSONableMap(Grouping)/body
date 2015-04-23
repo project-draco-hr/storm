@@ -1,0 +1,8 @@
+{
+  Map groupingMap=new HashMap<String,Object>();
+  groupingMap.put("type",grouping.getSetField().toString());
+  if (grouping.is_set_fields()) {
+    groupingMap.put("fields",grouping.get_fields());
+  }
+  return groupingMap;
+}
