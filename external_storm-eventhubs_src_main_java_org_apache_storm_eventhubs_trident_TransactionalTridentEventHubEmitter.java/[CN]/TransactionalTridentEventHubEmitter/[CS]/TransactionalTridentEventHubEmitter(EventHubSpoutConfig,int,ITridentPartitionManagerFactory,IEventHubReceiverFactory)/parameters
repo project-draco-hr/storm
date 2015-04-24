@@ -1,0 +1,4 @@
+EventHubSpoutConfig spoutConfig
+int batchSize
+ITridentPartitionManagerFactory pmFactory
+IEventHubReceiverFactory recvFactory

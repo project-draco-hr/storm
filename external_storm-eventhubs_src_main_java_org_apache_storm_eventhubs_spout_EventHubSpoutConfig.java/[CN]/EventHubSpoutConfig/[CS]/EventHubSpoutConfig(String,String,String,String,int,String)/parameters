@@ -1,0 +1,6 @@
+String username
+String password
+String namespace
+String entityPath
+int partitionCount
+String zkConnectionString

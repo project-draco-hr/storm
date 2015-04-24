@@ -1,0 +1,13 @@
+{
+  EventHubReceiverMock receiver=new EventHubReceiverMock(partitionId);
+  EventHubSpoutConfig conf=new EventHubSpoutConfig("username","password","namespace","entityname",16,"zookeeper",10,1024,1024,enqueueTimeFilter);
+  conf.setTopologyName("TestTopo");
+  stateStore=new StateStoreMock();
+  this.pm=new PartitionManager(conf,partitionId,stateStore,receiver);
+  stateStore.open();
+  try {
+    pm.open();
+  }
+ catch (  Exception ex) {
+  }
+}

@@ -1,0 +1,16 @@
+{
+  data=data == null ? "" : data;
+  byte[] bytes=data.getBytes();
+  try {
+    if (curatorFramework.checkExists().forPath(statePath) == null) {
+      curatorFramework.create().creatingParentsIfNeeded().forPath(statePath,bytes);
+    }
+ else {
+      curatorFramework.setData().forPath(statePath,bytes);
+    }
+    logger.info(String.format("data was saved. path: %s, data: %s.",statePath,data));
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

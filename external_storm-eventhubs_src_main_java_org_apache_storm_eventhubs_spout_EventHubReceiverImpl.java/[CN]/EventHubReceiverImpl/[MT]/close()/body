@@ -1,0 +1,7 @@
+{
+  if (receiver != null) {
+    receiver.close();
+    logger.info("closed eventhub receiver: partitionId=" + partitionId);
+    receiver=null;
+  }
+}

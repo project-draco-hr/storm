@@ -1,0 +1,12 @@
+{
+  this.checkIfClosed();
+  Message message=this.receiver.receive(waitTimeInMilliseconds);
+  if (message != null) {
+    receiver.acknowledge(message);
+    return message;
+  }
+ else {
+    this.checkError();
+  }
+  return null;
+}

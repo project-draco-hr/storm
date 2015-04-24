@@ -1,0 +1,7 @@
+{
+  EventData eventData=receiver.receive(5000);
+  if (eventData != null) {
+    lastOffset=eventData.getMessageId().getOffset();
+  }
+  return eventData;
+}

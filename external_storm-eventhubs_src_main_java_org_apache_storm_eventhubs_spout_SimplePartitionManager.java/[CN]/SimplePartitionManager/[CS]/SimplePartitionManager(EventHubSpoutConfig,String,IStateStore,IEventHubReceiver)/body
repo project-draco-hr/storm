@@ -1,0 +1,7 @@
+{
+  this.receiver=receiver;
+  this.config=spoutConfig;
+  this.partitionId=partitionId;
+  this.statePath=this.getPartitionStatePath();
+  this.stateStore=stateStore;
+}

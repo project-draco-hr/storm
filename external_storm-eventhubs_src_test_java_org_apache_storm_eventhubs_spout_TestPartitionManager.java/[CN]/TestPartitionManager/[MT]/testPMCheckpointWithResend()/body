@@ -1,0 +1,7 @@
+{
+  PartitionManagerCallerMock mock=new PartitionManagerCallerMock("1");
+  mock.execute("r,r,r,f2,f1,f0");
+  assertEquals("0",mock.checkpoint());
+  mock.execute("r,a0");
+  assertEquals("1",mock.checkpoint());
+}

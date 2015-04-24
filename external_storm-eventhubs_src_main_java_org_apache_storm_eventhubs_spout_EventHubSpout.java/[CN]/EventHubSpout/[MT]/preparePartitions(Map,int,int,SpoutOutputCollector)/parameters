@@ -1,0 +1,4 @@
+Map config
+int totalTasks
+int taskIndex
+SpoutOutputCollector collector

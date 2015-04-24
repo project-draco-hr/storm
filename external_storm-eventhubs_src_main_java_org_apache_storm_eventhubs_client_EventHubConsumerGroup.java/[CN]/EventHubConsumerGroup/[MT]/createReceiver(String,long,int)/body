@@ -1,0 +1,5 @@
+{
+  this.ensureSessionCreated();
+  String filterStr=String.format(Constants.EnqueueTimeFilterFormatString,timeAfter);
+  return new EventHubReceiver(this.session,this.entityPath,this.consumerGroupName,partitionId,filterStr,defaultCredits);
+}

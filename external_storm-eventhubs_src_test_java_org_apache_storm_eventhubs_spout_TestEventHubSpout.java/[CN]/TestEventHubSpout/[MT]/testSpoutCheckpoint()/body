@@ -1,0 +1,13 @@
+{
+  EventHubSpoutCallerMock mock=new EventHubSpoutCallerMock(8,8,6,1);
+  String result=mock.execute("r6,a6_0,a6_1,a6_2");
+  try {
+    Thread.sleep(2000);
+  }
+ catch (  InterruptedException ex) {
+  }
+  EventHubReceiverMock.setPause(true);
+  result=mock.execute("r3");
+  EventHubReceiverMock.setPause(false);
+  assertEquals("3",mock.getCheckpoint(6));
+}

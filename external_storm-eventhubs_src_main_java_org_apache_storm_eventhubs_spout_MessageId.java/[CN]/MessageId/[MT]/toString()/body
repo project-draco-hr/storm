@@ -1,0 +1,3 @@
+{
+  return String.format("PartitionId: %s, Offset: %s, SequenceNumber: %s",this.partitionId,this.offset,this.sequenceNumber);
+}

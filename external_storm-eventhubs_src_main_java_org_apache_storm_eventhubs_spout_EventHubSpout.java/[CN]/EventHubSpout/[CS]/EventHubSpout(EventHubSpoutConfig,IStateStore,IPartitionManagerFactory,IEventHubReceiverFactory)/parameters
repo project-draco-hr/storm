@@ -1,0 +1,4 @@
+EventHubSpoutConfig spoutConfig
+IStateStore store
+IPartitionManagerFactory pmFactory
+IEventHubReceiverFactory recvFactory

@@ -1,0 +1,3 @@
+String partitionId
+long timeAfter
+int defaultCredits

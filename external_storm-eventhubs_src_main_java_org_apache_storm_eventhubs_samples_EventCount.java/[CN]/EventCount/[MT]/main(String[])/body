@@ -1,0 +1,4 @@
+{
+  EventCount scenario=new EventCount();
+  scenario.runScenario(args);
+}
