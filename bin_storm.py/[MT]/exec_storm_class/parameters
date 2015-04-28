@@ -4,3 +4,4 @@ jvmopts
 extrajars
 args
 fork
+daemon

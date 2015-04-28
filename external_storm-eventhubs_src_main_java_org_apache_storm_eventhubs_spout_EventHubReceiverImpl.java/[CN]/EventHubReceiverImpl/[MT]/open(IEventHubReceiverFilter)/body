@@ -1,0 +1,17 @@
+{
+  logger.info("creating eventhub receiver: partitionId=" + partitionId + ", offset="+ filter.getOffset()+ ", enqueueTime="+ filter.getEnqueueTime());
+  long start=System.currentTimeMillis();
+  EventHubClient eventHubClient=EventHubClient.create(connectionString,entityName);
+  if (filter.getOffset() != null) {
+    receiver=eventHubClient.getDefaultConsumerGroup().createReceiver(partitionId,filter.getOffset(),defaultCredits);
+  }
+ else   if (filter.getEnqueueTime() != 0) {
+    receiver=eventHubClient.getDefaultConsumerGroup().createReceiver(partitionId,filter.getEnqueueTime(),defaultCredits);
+  }
+ else {
+    logger.error("Invalid IEventHubReceiverFilter, use default offset as filter");
+    receiver=eventHubClient.getDefaultConsumerGroup().createReceiver(partitionId,Constants.DefaultStartingOffset,defaultCredits);
+  }
+  long end=System.currentTimeMillis();
+  logger.info("created eventhub receiver, time taken(ms): " + (end - start));
+}

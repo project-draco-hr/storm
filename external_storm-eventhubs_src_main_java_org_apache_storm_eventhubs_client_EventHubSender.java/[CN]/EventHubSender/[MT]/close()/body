@@ -1,0 +1,8 @@
+{
+  try {
+    this.sender.close();
+  }
+ catch (  Sender.SenderClosingException e) {
+    logger.error("Closing a sender encountered error: " + e.getMessage());
+  }
+}

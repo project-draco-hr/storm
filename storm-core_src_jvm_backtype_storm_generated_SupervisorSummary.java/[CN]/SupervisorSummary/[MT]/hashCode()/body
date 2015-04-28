@@ -15,5 +15,8 @@
   boolean present_supervisor_id=true && (is_set_supervisor_id());
   list.add(present_supervisor_id);
   if (present_supervisor_id)   list.add(supervisor_id);
+  boolean present_version=true && (is_set_version());
+  list.add(present_version);
+  if (present_version)   list.add(version);
   return list.hashCode();
 }

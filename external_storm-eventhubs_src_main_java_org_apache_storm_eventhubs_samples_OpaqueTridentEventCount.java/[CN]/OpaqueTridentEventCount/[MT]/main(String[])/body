@@ -1,0 +1,4 @@
+{
+  OpaqueTridentEventCount scenario=new OpaqueTridentEventCount();
+  scenario.runScenario(args);
+}

@@ -1,0 +1,17 @@
+{
+  String offset=null;
+  long sequenceNumber=0;
+  for (  Section section : message.getPayload()) {
+    if (section instanceof MessageAnnotations) {
+      MessageAnnotations annotations=(MessageAnnotations)section;
+      HashMap annonationMap=(HashMap)annotations.getValue();
+      if (annonationMap.containsKey(OffsetKey)) {
+        offset=(String)annonationMap.get(OffsetKey);
+      }
+      if (annonationMap.containsKey(SequenceNumberKey)) {
+        sequenceNumber=(Long)annonationMap.get(SequenceNumberKey);
+      }
+    }
+  }
+  return MessageId.create(partitionId,offset,sequenceNumber);
+}

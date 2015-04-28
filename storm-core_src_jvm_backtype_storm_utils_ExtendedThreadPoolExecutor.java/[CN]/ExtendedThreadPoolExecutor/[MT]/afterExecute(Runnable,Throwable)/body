@@ -1,0 +1,20 @@
+{
+  super.afterExecute(r,t);
+  if (t == null && r instanceof Future<?>) {
+    try {
+      Object result=((Future<?>)r).get();
+    }
+ catch (    CancellationException ce) {
+      t=ce;
+    }
+catch (    ExecutionException ee) {
+      t=ee.getCause();
+    }
+catch (    InterruptedException ie) {
+      Thread.currentThread().interrupt();
+    }
+  }
+  if (t != null) {
+    Utils.handleUncaughtException(t);
+  }
+}

@@ -5,4 +5,12 @@
   oprot.writeI32(struct.num_workers);
   oprot.writeI32(struct.num_used_workers);
   oprot.writeString(struct.supervisor_id);
+  BitSet optionals=new BitSet();
+  if (struct.is_set_version()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_version()) {
+    oprot.writeString(struct.version);
+  }
 }

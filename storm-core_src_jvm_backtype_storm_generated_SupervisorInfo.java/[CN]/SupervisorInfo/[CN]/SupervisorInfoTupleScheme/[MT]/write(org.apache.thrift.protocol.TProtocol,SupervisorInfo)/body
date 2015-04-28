@@ -18,7 +18,10 @@
   if (struct.is_set_uptime_secs()) {
     optionals.set(4);
   }
-  oprot.writeBitSet(optionals,5);
+  if (struct.is_set_version()) {
+    optionals.set(5);
+  }
+  oprot.writeBitSet(optionals,6);
   if (struct.is_set_assignment_id()) {
     oprot.writeString(struct.assignment_id);
   }
@@ -49,5 +52,8 @@
   }
   if (struct.is_set_uptime_secs()) {
     oprot.writeI64(struct.uptime_secs);
+  }
+  if (struct.is_set_version()) {
+    oprot.writeString(struct.version);
   }
 }

@@ -14,6 +14,8 @@ case 6:
 return SCHEDULER_META;
 case 7:
 return UPTIME_SECS;
+case 8:
+return VERSION;
 default :
 return null;
 }

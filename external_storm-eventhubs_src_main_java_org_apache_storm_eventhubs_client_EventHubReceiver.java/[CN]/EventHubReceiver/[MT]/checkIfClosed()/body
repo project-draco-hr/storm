@@ -1,0 +1,5 @@
+{
+  if (this.isClosed) {
+    throw new RuntimeException("receiver was closed.");
+  }
+}

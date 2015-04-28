@@ -40,5 +40,13 @@ unset_supervisor_id();
 set_supervisor_id((String)value);
 }
 break;
+case VERSION:
+if (value == null) {
+unset_version();
+}
+ else {
+set_version((String)value);
+}
+break;
 }
 }

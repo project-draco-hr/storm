@@ -21,5 +21,8 @@
   boolean present_uptime_secs=true && (is_set_uptime_secs());
   list.add(present_uptime_secs);
   if (present_uptime_secs)   list.add(uptime_secs);
+  boolean present_version=true && (is_set_version());
+  list.add(present_version);
+  if (present_version)   list.add(version);
   return list.hashCode();
 }

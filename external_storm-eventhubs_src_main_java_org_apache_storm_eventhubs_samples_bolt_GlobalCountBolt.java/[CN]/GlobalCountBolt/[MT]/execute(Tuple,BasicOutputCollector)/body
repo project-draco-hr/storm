@@ -1,0 +1,8 @@
+{
+  int partial=(Integer)tuple.getValueByField("partial_count");
+  globalCount+=partial;
+  globalCountDiff+=partial;
+  if ((globalCountDiff == partial) && (globalCount != globalCountDiff)) {
+    logger.info("Current throughput (messages/second): " + throughput);
+  }
+}

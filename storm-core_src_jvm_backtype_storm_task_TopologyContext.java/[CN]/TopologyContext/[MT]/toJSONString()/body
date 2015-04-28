@@ -2,5 +2,30 @@
   Map obj=new HashMap();
   obj.put("task->component",this.getTaskToComponent());
   obj.put("taskid",this.getThisTaskId());
+  obj.put("componentid",this.getThisComponentId());
+  List<String> streamList=new ArrayList<String>();
+  streamList.addAll(this.getThisStreams());
+  obj.put("streams",streamList);
+  obj.put("stream->outputfields",this.getThisOutputFieldsForStreams());
+  Map<String,Map> stringTargets=new HashMap<String,Map>();
+  for (  Map.Entry<String,Map<String,Grouping>> entry : this.getThisTargets().entrySet()) {
+    Map stringTargetMap=new HashMap<String,Object>();
+    for (    Map.Entry<String,Grouping> innerEntry : entry.getValue().entrySet()) {
+      stringTargetMap.put(innerEntry.getKey(),groupingToJSONableMap(innerEntry.getValue()));
+    }
+    stringTargets.put(entry.getKey(),stringTargetMap);
+  }
+  obj.put("stream->target->grouping",stringTargets);
+  Map<String,Map<String,Object>> stringSources=new HashMap<String,Map<String,Object>>();
+  for (  Map.Entry<GlobalStreamId,Grouping> entry : this.getThisSources().entrySet()) {
+    GlobalStreamId gid=entry.getKey();
+    Map<String,Object> stringSourceMap=stringSources.get(gid.get_componentId());
+    if (stringSourceMap == null) {
+      stringSourceMap=new HashMap<String,Object>();
+      stringSources.put(gid.get_componentId(),stringSourceMap);
+    }
+    stringSourceMap.put(gid.get_streamId(),groupingToJSONableMap(entry.getValue()));
+  }
+  obj.put("source->stream->grouping",stringSources);
   return JSONValue.toJSONString(obj);
 }
