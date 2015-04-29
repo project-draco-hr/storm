@@ -1,0 +1,9 @@
+{
+  this.connectionString=config.getConnectionString();
+  this.entityName=config.getEntityPath();
+  this.defaultCredits=config.getReceiverCredits();
+  this.partitionId=partitionId;
+  receiveApiLatencyMean=new ReducedMetric(new MeanReducer());
+  receiveApiCallCount=new CountMetric();
+  receiveMessageCount=new CountMetric();
+}

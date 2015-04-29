@@ -1,0 +1,38 @@
+{
+  if (!context.isImpersonating()) {
+    LOG.debug("Not an impersonation attempt.");
+    return true;
+  }
+  String impersonatingPrincipal=context.realPrincipal().getName();
+  String impersonatingUser=_ptol.toLocal(context.realPrincipal());
+  String userBeingImpersonated=_ptol.toLocal(context.principal());
+  InetAddress remoteAddress=context.remoteAddress();
+  LOG.info("user = {}, principal = {} is attmepting to impersonate user = {} for operation = {} from host = {}",impersonatingUser,impersonatingPrincipal,userBeingImpersonated,operation,remoteAddress);
+  if (!userImpersonationACL.containsKey(impersonatingPrincipal) && !userImpersonationACL.containsKey(impersonatingUser)) {
+    LOG.info("user = {}, principal = {} is trying to impersonate user {}, but config {} does not have entry for impersonating user or principal." + "Please see SECURITY.MD to learn how to configure users for impersonation.",impersonatingUser,impersonatingPrincipal,userBeingImpersonated,Config.NIMBUS_IMPERSONATION_ACL);
+    return false;
+  }
+  ImpersonationACL principalACL=userImpersonationACL.get(impersonatingPrincipal);
+  ImpersonationACL userACL=userImpersonationACL.get(impersonatingUser);
+  Set<String> authorizedHosts=new HashSet<String>();
+  Set<String> authorizedGroups=new HashSet<String>();
+  if (principalACL != null) {
+    authorizedHosts.addAll(principalACL.authorizedHosts);
+    authorizedGroups.addAll(principalACL.authorizedGroups);
+  }
+  if (userACL != null) {
+    authorizedHosts.addAll(userACL.authorizedHosts);
+    authorizedGroups.addAll(userACL.authorizedGroups);
+  }
+  LOG.debug("user = {}, principal = {} is allowed to impersonate groups = {} from hosts = {} ",impersonatingUser,impersonatingPrincipal,authorizedGroups,authorizedHosts);
+  if (!isAllowedToImpersonateFromHost(authorizedHosts,remoteAddress)) {
+    LOG.info("user = {}, principal = {} is not allowed to impersonate from host {} ",impersonatingUser,impersonatingPrincipal,remoteAddress);
+    return false;
+  }
+  if (!isAllowedToImpersonateUser(authorizedGroups,userBeingImpersonated)) {
+    LOG.info("user = {}, principal = {} is not allowed to impersonate any group that user {} is part of.",impersonatingUser,impersonatingPrincipal,userBeingImpersonated);
+    return false;
+  }
+  LOG.info("Allowing impersonation of user {} by user {}",userBeingImpersonated,impersonatingUser);
+  return true;
+}

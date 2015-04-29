@@ -1,0 +1,7 @@
+{
+switch (field) {
+case APPROVED_WORKERS:
+    return get_approved_workers();
+}
+throw new IllegalStateException();
+}

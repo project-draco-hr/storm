@@ -4,3 +4,4 @@ uptime_secs
 num_workers
 num_used_workers
 supervisor_id
+version

@@ -1,0 +1,13 @@
+{
+switch (field) {
+case STORM_ID:
+    return get_storm_id();
+case EXECUTOR_STATS:
+  return get_executor_stats();
+case TIME_SECS:
+return Integer.valueOf(get_time_secs());
+case UPTIME_SECS:
+return Integer.valueOf(get_uptime_secs());
+}
+throw new IllegalStateException();
+}

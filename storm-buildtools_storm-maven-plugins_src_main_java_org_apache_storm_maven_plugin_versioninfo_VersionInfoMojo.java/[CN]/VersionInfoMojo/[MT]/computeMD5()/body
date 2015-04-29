@@ -1,0 +1,16 @@
+{
+  List<File> files=convertFileSetToFiles(source);
+  Collections.sort(files,new Comparator<File>(){
+    @Override public int compare(    File lhs,    File rhs){
+      return normalizePath(lhs).compareTo(normalizePath(rhs));
+    }
+    private String normalizePath(    File file){
+      return file.getPath().toUpperCase().replaceAll("\\\\","/");
+    }
+  }
+);
+  byte[] md5=computeMD5(files);
+  String md5str=byteArrayToString(md5);
+  getLog().info("Computed MD5: " + md5str);
+  return md5str;
+}

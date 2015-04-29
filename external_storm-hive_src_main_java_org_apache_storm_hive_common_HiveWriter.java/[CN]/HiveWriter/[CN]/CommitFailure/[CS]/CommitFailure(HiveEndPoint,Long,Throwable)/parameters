@@ -1,0 +1,3 @@
+HiveEndPoint endPoint
+Long txnID
+Throwable cause

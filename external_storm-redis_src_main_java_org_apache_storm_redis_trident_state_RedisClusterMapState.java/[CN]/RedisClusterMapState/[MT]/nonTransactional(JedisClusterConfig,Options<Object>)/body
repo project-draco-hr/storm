@@ -1,0 +1,3 @@
+{
+  return new Factory(jedisClusterConfig,StateType.NON_TRANSACTIONAL,opts);
+}

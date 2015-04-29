@@ -1,0 +1,13 @@
+{
+  getTopologyInfoWithOpts_result result=new getTopologyInfoWithOpts_result();
+  try {
+    result.success=iface.getTopologyInfoWithOpts(args.id,args.options);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}

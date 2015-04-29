@@ -1,0 +1,68 @@
+{
+switch (field) {
+case NAME:
+    if (value == null) {
+      unset_name();
+    }
+ else {
+      set_name((String)value);
+    }
+  break;
+case STATUS:
+if (value == null) {
+  unset_status();
+}
+ else {
+  set_status((TopologyStatus)value);
+}
+break;
+case NUM_WORKERS:
+if (value == null) {
+unset_num_workers();
+}
+ else {
+set_num_workers((Integer)value);
+}
+break;
+case COMPONENT_EXECUTORS:
+if (value == null) {
+unset_component_executors();
+}
+ else {
+set_component_executors((Map<String,Integer>)value);
+}
+break;
+case LAUNCH_TIME_SECS:
+if (value == null) {
+unset_launch_time_secs();
+}
+ else {
+set_launch_time_secs((Integer)value);
+}
+break;
+case OWNER:
+if (value == null) {
+unset_owner();
+}
+ else {
+set_owner((String)value);
+}
+break;
+case TOPOLOGY_ACTION_OPTIONS:
+if (value == null) {
+unset_topology_action_options();
+}
+ else {
+set_topology_action_options((TopologyActionOptions)value);
+}
+break;
+case PREV_STATUS:
+if (value == null) {
+unset_prev_status();
+}
+ else {
+set_prev_status((TopologyStatus)value);
+}
+break;
+}
+}

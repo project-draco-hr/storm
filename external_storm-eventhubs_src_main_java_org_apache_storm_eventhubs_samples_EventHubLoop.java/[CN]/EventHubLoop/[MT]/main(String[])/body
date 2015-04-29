@@ -1,0 +1,4 @@
+{
+  EventHubLoop scenario=new EventHubLoop();
+  scenario.runScenario(args);
+}

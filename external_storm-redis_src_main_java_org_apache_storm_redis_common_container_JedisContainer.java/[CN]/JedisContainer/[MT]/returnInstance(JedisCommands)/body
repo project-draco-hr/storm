@@ -1,0 +1,11 @@
+{
+  if (jedisCommands == null) {
+    return;
+  }
+  try {
+    ((Closeable)jedisCommands).close();
+  }
+ catch (  IOException e) {
+    LOG.error("Failed to close (return) instance to pool");
+  }
+}

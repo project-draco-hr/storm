@@ -1,0 +1,8 @@
+HiveConf conf
+String databaseName
+String tableName
+List<String> partVals
+String[] colNames
+String[] colTypes
+String[] partNames
+String dbLocation

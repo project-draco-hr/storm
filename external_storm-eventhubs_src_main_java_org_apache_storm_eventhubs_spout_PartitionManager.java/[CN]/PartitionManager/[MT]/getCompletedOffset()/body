@@ -1,0 +1,16 @@
+{
+  String offset=null;
+  if (pending.size() > 0) {
+    offset=pending.keySet().iterator().next();
+  }
+  if (toResend.size() > 0) {
+    String offset2=toResend.first().getMessageId().getOffset();
+    if (offset == null || offset2.compareTo(offset) < 0) {
+      offset=offset2;
+    }
+  }
+  if (offset == null) {
+    offset=lastOffset;
+  }
+  return offset;
+}

@@ -1,0 +1,68 @@
+{
+switch (field) {
+case TIME_SECS:
+    if (value == null) {
+      unset_time_secs();
+    }
+ else {
+      set_time_secs((Long)value);
+    }
+  break;
+case HOSTNAME:
+if (value == null) {
+  unset_hostname();
+}
+ else {
+  set_hostname((String)value);
+}
+break;
+case ASSIGNMENT_ID:
+if (value == null) {
+unset_assignment_id();
+}
+ else {
+set_assignment_id((String)value);
+}
+break;
+case USED_PORTS:
+if (value == null) {
+unset_used_ports();
+}
+ else {
+set_used_ports((List<Long>)value);
+}
+break;
+case META:
+if (value == null) {
+unset_meta();
+}
+ else {
+set_meta((List<Long>)value);
+}
+break;
+case SCHEDULER_META:
+if (value == null) {
+unset_scheduler_meta();
+}
+ else {
+set_scheduler_meta((Map<String,String>)value);
+}
+break;
+case UPTIME_SECS:
+if (value == null) {
+unset_uptime_secs();
+}
+ else {
+set_uptime_secs((Long)value);
+}
+break;
+case VERSION:
+if (value == null) {
+unset_version();
+}
+ else {
+set_version((String)value);
+}
+break;
+}
+}

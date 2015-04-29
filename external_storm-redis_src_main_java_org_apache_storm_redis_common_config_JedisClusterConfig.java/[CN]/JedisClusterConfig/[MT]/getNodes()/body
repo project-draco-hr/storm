@@ -1,0 +1,7 @@
+{
+  Set<HostAndPort> ret=new HashSet<HostAndPort>();
+  for (  InetSocketAddress node : nodes) {
+    ret.add(new HostAndPort(node.getHostName(),node.getPort()));
+  }
+  return ret;
+}

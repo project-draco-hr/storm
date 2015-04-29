@@ -1,0 +1,15 @@
+{
+  String offset=stateStore.readData(statePath);
+  logger.info("read offset from state store: " + offset);
+  if (offset == null) {
+    offset=Constants.DefaultStartingOffset;
+  }
+  EventHubReceiverFilter filter=new EventHubReceiverFilter();
+  if (offset.equals(Constants.DefaultStartingOffset) && config.getEnqueueTimeFilter() != 0) {
+    filter.setEnqueueTime(config.getEnqueueTimeFilter());
+  }
+ else {
+    filter.setOffset(offset);
+  }
+  receiver.open(filter);
+}

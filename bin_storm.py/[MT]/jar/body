@@ -1,0 +1,3 @@
+def jar(jarfile, klass, *args):
+    'Syntax: [storm jar topology-jar-path class ...]\n\n    Runs the main method of class with the specified arguments.\n    The storm jars and configs in ~/.storm are put on the classpath.\n    The process is configured so that StormSubmitter\n    (http://storm.incubator.apache.org/apidocs/backtype/storm/StormSubmitter.html)\n    will upload the jar at topology-jar-path when the topology is submitted.\n    '
+    exec_storm_class(klass, jvmtype='-client', extrajars=[jarfile, USER_CONF_DIR, STORM_BIN_DIR], args=args, daemon=False, jvmopts=(JAR_JVM_OPTS + [('-Dstorm.jar=' + jarfile)]))

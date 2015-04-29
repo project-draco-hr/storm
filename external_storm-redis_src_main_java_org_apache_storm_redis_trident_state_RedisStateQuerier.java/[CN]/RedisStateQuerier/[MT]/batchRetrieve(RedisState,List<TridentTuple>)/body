@@ -1,0 +1,20 @@
+{
+  List<String> keys=Lists.newArrayList();
+  for (  TridentTuple input : inputs) {
+    String key=this.tupleMapper.getKeyFromTuple(input);
+    if (redisKeyPrefix != null && redisKeyPrefix.length() > 0) {
+      key=redisKeyPrefix + key;
+    }
+    keys.add(key);
+  }
+  Jedis jedis=null;
+  try {
+    jedis=redisState.getJedis();
+    return jedis.mget(keys.toArray(new String[keys.size()]));
+  }
+  finally {
+    if (jedis != null) {
+      redisState.returnJedis(jedis);
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  String includes=getCommaSeparatedList(source.getIncludes());
+  String excludes=getCommaSeparatedList(source.getExcludes());
+  return FileUtils.getFiles(new File(source.getDirectory()),includes,excludes);
+}

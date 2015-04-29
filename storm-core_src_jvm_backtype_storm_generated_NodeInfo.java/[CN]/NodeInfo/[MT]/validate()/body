@@ -1,0 +1,8 @@
+{
+  if (!is_set_node()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'node' is unset! Struct:" + toString());
+  }
+  if (!is_set_port()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'port' is unset! Struct:" + toString());
+  }
+}

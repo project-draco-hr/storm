@@ -1,0 +1,80 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 1:
+      if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+          org.apache.thrift.protocol.TMap _map44=iprot.readMapBegin();
+          struct.spouts=new HashMap<String,SpoutSpec>(2 * _map44.size);
+          String _key45;
+          SpoutSpec _val46;
+          for (int _i47=0; _i47 < _map44.size; ++_i47) {
+            _key45=iprot.readString();
+            _val46=new SpoutSpec();
+            _val46.read(iprot);
+            struct.spouts.put(_key45,_val46);
+          }
+          iprot.readMapEnd();
+        }
+        struct.set_spouts_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 2:
+  if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+      org.apache.thrift.protocol.TMap _map48=iprot.readMapBegin();
+      struct.bolts=new HashMap<String,Bolt>(2 * _map48.size);
+      String _key49;
+      Bolt _val50;
+      for (int _i51=0; _i51 < _map48.size; ++_i51) {
+        _key49=iprot.readString();
+        _val50=new Bolt();
+        _val50.read(iprot);
+        struct.bolts.put(_key49,_val50);
+      }
+      iprot.readMapEnd();
+    }
+    struct.set_bolts_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+case 3:
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+  org.apache.thrift.protocol.TMap _map52=iprot.readMapBegin();
+  struct.state_spouts=new HashMap<String,StateSpoutSpec>(2 * _map52.size);
+  String _key53;
+  StateSpoutSpec _val54;
+  for (int _i55=0; _i55 < _map52.size; ++_i55) {
+    _key53=iprot.readString();
+    _val54=new StateSpoutSpec();
+    _val54.read(iprot);
+    struct.state_spouts.put(_key53,_val54);
+  }
+  iprot.readMapEnd();
+}
+struct.set_state_spouts_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

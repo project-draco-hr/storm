@@ -14,4 +14,10 @@
   if (!is_set_uptime_secs()) {
     throw new org.apache.thrift.protocol.TProtocolException("Required field 'uptime_secs' is unset! Struct:" + toString());
   }
+  if (executor_info != null) {
+    executor_info.validate();
+  }
+  if (stats != null) {
+    stats.validate();
+  }
 }

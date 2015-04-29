@@ -1,0 +1,7 @@
+{
+  this.columnFields=columnFields;
+  List<String> tempColumnNamesList=this.columnFields.toList();
+  columnNames=new String[tempColumnNamesList.size()];
+  tempColumnNamesList.toArray(columnNames);
+  return this;
+}

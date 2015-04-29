@@ -1,0 +1,10 @@
+{
+  try {
+    writeTuples(tuples);
+  }
+ catch (  Exception e) {
+    abortAndCloseWriters();
+    LOG.warn("hive streaming failed.",e);
+    throw new FailedException(e);
+  }
+}

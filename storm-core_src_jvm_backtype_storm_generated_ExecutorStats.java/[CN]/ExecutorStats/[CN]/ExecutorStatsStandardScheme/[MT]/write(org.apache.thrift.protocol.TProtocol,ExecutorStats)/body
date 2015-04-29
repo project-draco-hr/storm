@@ -1,0 +1,52 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.emitted != null) {
+    oprot.writeFieldBegin(EMITTED_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,struct.emitted.size()));
+      for (      Map.Entry<String,Map<String,Long>> _iter266 : struct.emitted.entrySet()) {
+        oprot.writeString(_iter266.getKey());
+{
+          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,_iter266.getValue().size()));
+          for (          Map.Entry<String,Long> _iter267 : _iter266.getValue().entrySet()) {
+            oprot.writeString(_iter267.getKey());
+            oprot.writeI64(_iter267.getValue());
+          }
+          oprot.writeMapEnd();
+        }
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (struct.transferred != null) {
+    oprot.writeFieldBegin(TRANSFERRED_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,struct.transferred.size()));
+      for (      Map.Entry<String,Map<String,Long>> _iter268 : struct.transferred.entrySet()) {
+        oprot.writeString(_iter268.getKey());
+{
+          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,_iter268.getValue().size()));
+          for (          Map.Entry<String,Long> _iter269 : _iter268.getValue().entrySet()) {
+            oprot.writeString(_iter269.getKey());
+            oprot.writeI64(_iter269.getValue());
+          }
+          oprot.writeMapEnd();
+        }
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (struct.specific != null) {
+    oprot.writeFieldBegin(SPECIFIC_FIELD_DESC);
+    struct.specific.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(RATE_FIELD_DESC);
+  oprot.writeDouble(struct.rate);
+  oprot.writeFieldEnd();
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

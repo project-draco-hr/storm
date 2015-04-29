@@ -1,0 +1,12 @@
+def init_storm_env():
+    global CLUSTER_CONF_DIR
+    ini_file = os.path.join(CLUSTER_CONF_DIR, 'storm_env.ini')
+    if (not os.path.isfile(ini_file)):
+        return
+    config = configparser.ConfigParser()
+    config.optionxform = str
+    config.read(ini_file)
+    options = config.options('environment')
+    for option in options:
+        value = config.get('environment', option)
+        os.environ[option] = value

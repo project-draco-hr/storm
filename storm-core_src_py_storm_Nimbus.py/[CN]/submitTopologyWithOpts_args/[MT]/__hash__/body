@@ -1,2 +1,8 @@
 def __hash__(self):
-    return (((((0 + hash(self.name)) + hash(self.uploadedJarLocation)) + hash(self.jsonConf)) + hash(self.topology)) + hash(self.options))
+    value = 17
+    value = ((value * 31) ^ hash(self.name))
+    value = ((value * 31) ^ hash(self.uploadedJarLocation))
+    value = ((value * 31) ^ hash(self.jsonConf))
+    value = ((value * 31) ^ hash(self.topology))
+    value = ((value * 31) ^ hash(self.options))
+    return value

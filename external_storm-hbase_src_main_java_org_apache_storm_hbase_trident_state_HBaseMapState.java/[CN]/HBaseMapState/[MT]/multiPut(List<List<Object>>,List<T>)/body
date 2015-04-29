@@ -1,10 +1,12 @@
 {
   List<Put> puts=new ArrayList<Put>(keys.size());
   for (int i=0; i < keys.size(); i++) {
-    LOG.info("Partiton: {}, Key: {}, Value: {}",new Object[]{this.partitionNum,keys.get(i),new String(this.serializer.serialize(values.get(i)))});
-    Put put=new Put(toRowKey(keys.get(i)));
+    byte[] hbaseKey=this.options.mapMapper.rowKey(keys.get(i));
+    String qualifier=this.options.mapMapper.qualifier(keys.get(i));
+    LOG.info("Partiton: {}, Key: {}, Value: {}",new Object[]{this.partitionNum,new String(hbaseKey),new String(this.serializer.serialize(values.get(i)))});
+    Put put=new Put(hbaseKey);
     T val=values.get(i);
-    put.add(this.options.columnFamily.getBytes(),this.options.qualifier.getBytes(),this.serializer.serialize(val));
+    put.add(this.options.columnFamily.getBytes(),qualifier.getBytes(),this.serializer.serialize(val));
     puts.add(put);
   }
   try {
@@ -15,5 +17,8 @@
   }
 catch (  RetriesExhaustedWithDetailsException e) {
     throw new FailedException("Retries exhaused while writing to HBase",e);
+  }
+catch (  IOException e) {
+    throw new FailedException("IOException while writing to HBase",e);
   }
 }

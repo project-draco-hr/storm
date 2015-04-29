@@ -1,0 +1,32 @@
+{
+  Config config=new Config();
+  String host=TEST_REDIS_HOST;
+  int port=TEST_REDIS_PORT;
+  if (args.length >= 2) {
+    host=args[0];
+    port=Integer.parseInt(args[1]);
+  }
+  JedisPoolConfig poolConfig=new JedisPoolConfig.Builder().setHost(host).setPort(port).build();
+  WordSpout spout=new WordSpout();
+  RedisLookupMapper lookupMapper=setupLookupMapper();
+  RedisLookupBolt lookupBolt=new RedisLookupBolt(poolConfig,lookupMapper);
+  PrintWordTotalCountBolt printBolt=new PrintWordTotalCountBolt();
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(WORD_SPOUT,spout,1);
+  builder.setBolt(LOOKUP_BOLT,lookupBolt,1).shuffleGrouping(WORD_SPOUT);
+  builder.setBolt(PRINT_BOLT,printBolt,1).shuffleGrouping(LOOKUP_BOLT);
+  if (args.length == 2) {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("test",config,builder.createTopology());
+    Thread.sleep(30000);
+    cluster.killTopology("test");
+    cluster.shutdown();
+    System.exit(0);
+  }
+ else   if (args.length == 3) {
+    StormSubmitter.submitTopology(args[2],config,builder.createTopology());
+  }
+ else {
+    System.out.println("Usage: LookupWordCount <redis host> <redis port> (topology name)");
+  }
+}

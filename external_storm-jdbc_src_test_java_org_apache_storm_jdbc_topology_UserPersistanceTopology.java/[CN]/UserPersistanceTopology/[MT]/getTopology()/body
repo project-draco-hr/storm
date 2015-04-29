@@ -1,0 +1,9 @@
+{
+  JdbcLookupBolt departmentLookupBolt=new JdbcLookupBolt(JDBC_CONF,SELECT_QUERY,this.jdbcLookupMapper);
+  JdbcInsertBolt userPersistanceBolt=new JdbcInsertBolt(JDBC_CONF,this.jdbcMapper).withInsertQuery("insert into user (create_date, dept_name, user_id, user_name) values (?,?,?,?)");
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(USER_SPOUT,this.userSpout,1);
+  builder.setBolt(LOOKUP_BOLT,departmentLookupBolt,1).shuffleGrouping(USER_SPOUT);
+  builder.setBolt(PERSISTANCE_BOLT,userPersistanceBolt,1).shuffleGrouping(LOOKUP_BOLT);
+  return builder.createTopology();
+}

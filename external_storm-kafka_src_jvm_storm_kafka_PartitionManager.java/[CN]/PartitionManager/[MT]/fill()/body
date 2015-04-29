@@ -1,19 +1,17 @@
 {
   long start=System.nanoTime();
-  long offset;
-  final boolean had_failed=!failed.isEmpty();
-  if (had_failed) {
-    offset=failed.first();
-  }
- else {
+  Long offset;
+  offset=this._failedMsgRetryManager.nextFailedMessageToRetry();
+  final boolean processingNewTuples=(offset == null);
+  if (processingNewTuples) {
     offset=_emittedToOffset;
   }
   ByteBufferMessageSet msgs=null;
   try {
     msgs=KafkaUtils.fetchMessages(_spoutConfig,_consumer,_partition,offset);
   }
- catch (  UpdateOffsetException e) {
-    _emittedToOffset=KafkaUtils.getOffset(_consumer,_spoutConfig.topic,_partition.partition,_spoutConfig);
+ catch (  TopicOffsetOutOfRangeException e) {
+    _emittedToOffset=KafkaUtils.getOffset(_consumer,_spoutConfig.topic,_partition.partition,kafka.api.OffsetRequest.EarliestTime());
     LOG.warn("Using new offset: {}",_emittedToOffset);
     return;
   }
@@ -29,13 +27,15 @@
       if (cur_offset < offset) {
         continue;
       }
-      if (!had_failed || failed.contains(cur_offset)) {
+      if (processingNewTuples || this._failedMsgRetryManager.shouldRetryMsg(cur_offset)) {
         numMessages+=1;
-        _pending.add(cur_offset);
+        if (!_pending.containsKey(cur_offset)) {
+          _pending.put(cur_offset,System.currentTimeMillis());
+        }
         _waitingToEmit.add(new MessageAndRealOffset(msg.message(),cur_offset));
         _emittedToOffset=Math.max(msg.nextOffset(),_emittedToOffset);
-        if (had_failed) {
-          failed.remove(cur_offset);
+        if (_failedMsgRetryManager.shouldRetryMsg(cur_offset)) {
+          this._failedMsgRetryManager.retryStarted(cur_offset);
         }
       }
     }

@@ -1,0 +1,49 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('SupervisorInfo')
+    if (self.time_secs is not None):
+        oprot.writeFieldBegin('time_secs', TType.I64, 1)
+        oprot.writeI64(self.time_secs)
+        oprot.writeFieldEnd()
+    if (self.hostname is not None):
+        oprot.writeFieldBegin('hostname', TType.STRING, 2)
+        oprot.writeString(self.hostname.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.assignment_id is not None):
+        oprot.writeFieldBegin('assignment_id', TType.STRING, 3)
+        oprot.writeString(self.assignment_id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.used_ports is not None):
+        oprot.writeFieldBegin('used_ports', TType.LIST, 4)
+        oprot.writeListBegin(TType.I64, len(self.used_ports))
+        for iter320 in self.used_ports:
+            oprot.writeI64(iter320)
+        oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    if (self.meta is not None):
+        oprot.writeFieldBegin('meta', TType.LIST, 5)
+        oprot.writeListBegin(TType.I64, len(self.meta))
+        for iter321 in self.meta:
+            oprot.writeI64(iter321)
+        oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    if (self.scheduler_meta is not None):
+        oprot.writeFieldBegin('scheduler_meta', TType.MAP, 6)
+        oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.scheduler_meta))
+        for (kiter322, viter323) in self.scheduler_meta.items():
+            oprot.writeString(kiter322.encode('utf-8'))
+            oprot.writeString(viter323.encode('utf-8'))
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.uptime_secs is not None):
+        oprot.writeFieldBegin('uptime_secs', TType.I64, 7)
+        oprot.writeI64(self.uptime_secs)
+        oprot.writeFieldEnd()
+    if (self.version is not None):
+        oprot.writeFieldBegin('version', TType.STRING, 8)
+        oprot.writeString(self.version.encode('utf-8'))
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

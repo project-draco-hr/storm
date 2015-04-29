@@ -6,7 +6,7 @@
     if (lastTopoMeta != null) {
       lastInstanceId=(String)lastTopoMeta.get("id");
     }
-    if (_config.forceFromStart && !_topologyInstanceId.equals(lastInstanceId)) {
+    if (_config.ignoreZkOffsets && !_topologyInstanceId.equals(lastInstanceId)) {
       offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,_config.startOffsetTime);
     }
  else {
@@ -16,7 +16,16 @@
  else {
     offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,_config);
   }
-  ByteBufferMessageSet msgs=fetchMessages(consumer,partition,offset);
+  ByteBufferMessageSet msgs=null;
+  try {
+    msgs=fetchMessages(consumer,partition,offset);
+  }
+ catch (  TopicOffsetOutOfRangeException e) {
+    long newOffset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,kafka.api.OffsetRequest.EarliestTime());
+    LOG.warn("OffsetOutOfRange: Updating offset from offset = " + offset + " to offset = "+ newOffset);
+    offset=newOffset;
+    msgs=KafkaUtils.fetchMessages(_config,consumer,partition,offset);
+  }
   long endoffset=offset;
   for (  MessageAndOffset msg : msgs) {
     emit(collector,msg.message());

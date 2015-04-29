@@ -1,0 +1,13 @@
+def exec_storm_class(klass, jvmtype='-server', jvmopts=[], extrajars=[], args=[], fork=False, daemon=True):
+    global CONFFILE
+    storm_log_dir = confvalue('storm.log.dir', [CLUSTER_CONF_DIR])
+    if ((storm_log_dir == None) or (storm_log_dir == 'nil')):
+        storm_log_dir = os.path.join(STORM_DIR, 'logs')
+    all_args = (((['java', jvmtype, get_config_opts(), ('-Dstorm.home=' + STORM_DIR), ('-Dstorm.log.dir=' + storm_log_dir), ('-Djava.library.path=' + confvalue('java.library.path', extrajars, daemon)), ('-Dstorm.conf.file=' + CONFFILE), '-cp', get_classpath(extrajars, daemon)] + jvmopts) + [klass]) + list(args))
+    print ('Running: ' + ' '.join(all_args))
+    if fork:
+        os.spawnvp(os.P_WAIT, JAVA_CMD, all_args)
+    elif is_windows():
+        sub.call(all_args)
+    else:
+        os.execvp(JAVA_CMD, all_args)

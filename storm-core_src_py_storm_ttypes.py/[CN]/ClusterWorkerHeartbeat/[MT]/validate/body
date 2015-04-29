@@ -1,0 +1,10 @@
+def validate(self):
+    if (self.storm_id is None):
+        raise TProtocol.TProtocolException(message='Required field storm_id is unset!')
+    if (self.executor_stats is None):
+        raise TProtocol.TProtocolException(message='Required field executor_stats is unset!')
+    if (self.time_secs is None):
+        raise TProtocol.TProtocolException(message='Required field time_secs is unset!')
+    if (self.uptime_secs is None):
+        raise TProtocol.TProtocolException(message='Required field uptime_secs is unset!')
+    return

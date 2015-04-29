@@ -1,0 +1,11 @@
+{
+  if (partitions != null) {
+    return partitions;
+  }
+  partitions=new Partitions();
+  for (int i=0; i < spoutConfig.getPartitionCount(); ++i) {
+    partitions.addPartition(new Partition(spoutConfig,Integer.toString(i)));
+  }
+  logger.info("created partitions, size=" + spoutConfig.getPartitionCount());
+  return partitions;
+}

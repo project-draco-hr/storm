@@ -1,0 +1,24 @@
+{
+  if (heartBeatNeeded) {
+    heartBeatNeeded=false;
+    heartBeat();
+  }
+  lastUsed=System.currentTimeMillis();
+  try {
+    commitTxn();
+    if (txnBatch.remainingTransactions() == 0) {
+      closeTxnBatch();
+      txnBatch=null;
+      if (rollToNext) {
+        txnBatch=nextTxnBatch(recordWriter);
+      }
+    }
+    if (rollToNext) {
+      LOG.debug("Switching to next Txn for {}",endPoint);
+      txnBatch.beginNextTransaction();
+    }
+  }
+ catch (  StreamingException e) {
+    throw new TxnFailure(txnBatch,e);
+  }
+}

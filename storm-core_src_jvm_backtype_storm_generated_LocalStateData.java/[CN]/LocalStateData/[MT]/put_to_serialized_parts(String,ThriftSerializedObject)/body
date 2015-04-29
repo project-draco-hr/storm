@@ -1,0 +1,6 @@
+{
+  if (this.serialized_parts == null) {
+    this.serialized_parts=new HashMap<String,ThriftSerializedObject>();
+  }
+  this.serialized_parts.put(key,val);
+}

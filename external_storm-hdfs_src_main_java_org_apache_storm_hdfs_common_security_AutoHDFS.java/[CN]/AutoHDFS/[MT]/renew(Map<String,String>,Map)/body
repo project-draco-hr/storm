@@ -1,0 +1,23 @@
+{
+  try {
+    Credentials credential=getCredentials(credentials);
+    if (credential != null) {
+      Configuration configuration=new Configuration();
+      Collection<Token<? extends TokenIdentifier>> tokens=credential.getAllTokens();
+      if (tokens != null && tokens.isEmpty() == false) {
+        for (        Token token : tokens) {
+          login(configuration);
+          long expiration=(Long)token.renew(configuration);
+          LOG.info("HDFS delegation token renewed, new expiration time {}",expiration);
+        }
+      }
+ else {
+        LOG.debug("No tokens found for credentials, skipping renewal.");
+      }
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("could not renew the credentials, one of the possible reason is tokens are beyond " + "renewal period so attempting to get new tokens.",e);
+    populateCredentials(credentials,topologyConf);
+  }
+}

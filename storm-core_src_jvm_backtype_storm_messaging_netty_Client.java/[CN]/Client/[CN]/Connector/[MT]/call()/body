@@ -1,0 +1,18 @@
+{
+  LOG.debug("connecting to {} [attempt {}]",address.toString(),connectionAttempt);
+  Channel channel=null;
+  ChannelFuture future=bootstrap.connect(address);
+  future.awaitUninterruptibly();
+  Channel current=future.getChannel();
+  if (future.isSuccess() && connectionEstablished(current)) {
+    channel=current;
+    LOG.debug("successfully connected to {}, {} [attempt {}]",address.toString(),channel.toString(),connectionAttempt);
+  }
+ else {
+    LOG.debug("failed to connect to {} [attempt {}]",address.toString(),connectionAttempt);
+    if (current != null) {
+      current.close();
+    }
+  }
+  return channel;
+}

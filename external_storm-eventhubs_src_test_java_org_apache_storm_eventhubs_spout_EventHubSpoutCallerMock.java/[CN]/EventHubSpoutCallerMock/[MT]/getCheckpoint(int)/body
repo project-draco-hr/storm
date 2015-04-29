@@ -1,0 +1,4 @@
+{
+  String statePath=statePathPrefix + partitionIndex;
+  return stateStore.readData(statePath);
+}

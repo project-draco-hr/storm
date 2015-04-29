@@ -1,0 +1,3 @@
+String connectionString
+int retries
+int retryInterval

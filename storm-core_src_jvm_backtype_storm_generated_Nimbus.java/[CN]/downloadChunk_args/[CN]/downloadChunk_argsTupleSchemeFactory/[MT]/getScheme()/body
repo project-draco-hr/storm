@@ -1,0 +1,3 @@
+{
+  return new downloadChunk_argsTupleScheme();
+}

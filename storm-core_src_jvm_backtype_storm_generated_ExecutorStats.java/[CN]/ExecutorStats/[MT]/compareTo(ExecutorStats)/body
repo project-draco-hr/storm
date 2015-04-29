@@ -3,33 +3,42 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  ExecutorStats typedOther=(ExecutorStats)other;
-  lastComparison=Boolean.valueOf(is_set_emitted()).compareTo(typedOther.is_set_emitted());
+  lastComparison=Boolean.valueOf(is_set_emitted()).compareTo(other.is_set_emitted());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_emitted()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.emitted,typedOther.emitted);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.emitted,other.emitted);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_transferred()).compareTo(typedOther.is_set_transferred());
+  lastComparison=Boolean.valueOf(is_set_transferred()).compareTo(other.is_set_transferred());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_transferred()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.transferred,typedOther.transferred);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.transferred,other.transferred);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_specific()).compareTo(typedOther.is_set_specific());
+  lastComparison=Boolean.valueOf(is_set_specific()).compareTo(other.is_set_specific());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_specific()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.specific,typedOther.specific);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.specific,other.specific);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_rate()).compareTo(other.is_set_rate());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_rate()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.rate,other.rate);
     if (lastComparison != 0) {
       return lastComparison;
     }

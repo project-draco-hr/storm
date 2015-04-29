@@ -1,0 +1,9 @@
+{
+  JSONObject obj=new JSONObject();
+  if (this.columnFields != null) {
+    for (    String field : this.columnFields) {
+      obj.put(field,tuple.getValueByField(field));
+    }
+  }
+  return obj.toJSONString().getBytes();
+}

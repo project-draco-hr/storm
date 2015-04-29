@@ -1,0 +1,13 @@
+{
+  String word=input.getStringByField("word");
+  int count;
+  if (wordCounter.containsKey(word)) {
+    count=wordCounter.get(word) + 1;
+    wordCounter.put(word,wordCounter.get(word) + 1);
+  }
+ else {
+    count=1;
+  }
+  wordCounter.put(word,count);
+  collector.emit(new Values(word,String.valueOf(count)));
+}

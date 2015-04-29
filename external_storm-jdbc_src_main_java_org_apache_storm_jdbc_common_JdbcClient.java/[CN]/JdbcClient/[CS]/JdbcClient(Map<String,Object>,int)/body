@@ -1,0 +1,7 @@
+{
+  Properties properties=new Properties();
+  properties.putAll(hikariConfigMap);
+  HikariConfig config=new HikariConfig(properties);
+  this.dataSource=new HikariDataSource(config);
+  this.queryTimeoutSecs=queryTimeoutSecs;
+}

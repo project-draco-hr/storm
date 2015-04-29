@@ -1,0 +1,22 @@
+{
+switch (fieldId) {
+case 1:
+    return TIME_SECS;
+case 2:
+  return HOSTNAME;
+case 3:
+return ASSIGNMENT_ID;
+case 4:
+return USED_PORTS;
+case 5:
+return META;
+case 6:
+return SCHEDULER_META;
+case 7:
+return UPTIME_SECS;
+case 8:
+return VERSION;
+default :
+return null;
+}
+}

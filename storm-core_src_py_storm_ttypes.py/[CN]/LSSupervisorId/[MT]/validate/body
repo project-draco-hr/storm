@@ -1,0 +1,4 @@
+def validate(self):
+    if (self.supervisor_id is None):
+        raise TProtocol.TProtocolException(message='Required field supervisor_id is unset!')
+    return

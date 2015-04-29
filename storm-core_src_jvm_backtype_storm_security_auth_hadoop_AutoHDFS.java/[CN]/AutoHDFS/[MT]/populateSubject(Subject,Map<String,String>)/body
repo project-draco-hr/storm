@@ -1,3 +1,0 @@
-{
-  addCredentialToSubject(subject,credentials);
-}

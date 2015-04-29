@@ -1,0 +1,5 @@
+String metaStoreURI
+String dbName
+String tblName
+Object keytab
+Object principal

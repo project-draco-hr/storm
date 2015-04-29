@@ -8,5 +8,11 @@
   if (serverTransportFactory != null) {
     server_args.transportFactory(serverTransportFactory);
   }
+  BlockingQueue workQueue=new SynchronousQueue();
+  if (queueSize != null) {
+    workQueue=new ArrayBlockingQueue(queueSize);
+  }
+  ThreadPoolExecutor executorService=new ExtendedThreadPoolExecutor(numWorkerThreads,numWorkerThreads,60,TimeUnit.SECONDS,workQueue);
+  server_args.executorService(executorService);
   return new TThreadPoolServer(server_args);
 }

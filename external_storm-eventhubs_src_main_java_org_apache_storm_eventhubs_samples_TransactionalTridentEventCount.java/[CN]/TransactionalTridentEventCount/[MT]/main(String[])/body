@@ -1,0 +1,4 @@
+{
+  TransactionalTridentEventCount scenario=new TransactionalTridentEventCount();
+  scenario.runScenario(args);
+}

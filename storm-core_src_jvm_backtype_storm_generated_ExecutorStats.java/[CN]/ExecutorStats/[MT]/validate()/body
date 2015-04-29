@@ -8,4 +8,7 @@
   if (!is_set_specific()) {
     throw new org.apache.thrift.protocol.TProtocolException("Required field 'specific' is unset! Struct:" + toString());
   }
+  if (!is_set_rate()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'rate' is unset! Struct:" + toString());
+  }
 }

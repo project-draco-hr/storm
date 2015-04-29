@@ -1,0 +1,41 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('Assignment')
+    if (self.master_code_dir is not None):
+        oprot.writeFieldBegin('master_code_dir', TType.STRING, 1)
+        oprot.writeString(self.master_code_dir.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.node_host is not None):
+        oprot.writeFieldBegin('node_host', TType.MAP, 2)
+        oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.node_host))
+        for (kiter364, viter365) in self.node_host.items():
+            oprot.writeString(kiter364.encode('utf-8'))
+            oprot.writeString(viter365.encode('utf-8'))
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.executor_node_port is not None):
+        oprot.writeFieldBegin('executor_node_port', TType.MAP, 3)
+        oprot.writeMapBegin(TType.LIST, TType.STRUCT, len(self.executor_node_port))
+        for (kiter366, viter367) in self.executor_node_port.items():
+            oprot.writeListBegin(TType.I64, len(kiter366))
+            for iter368 in kiter366:
+                oprot.writeI64(iter368)
+            oprot.writeListEnd()
+            viter367.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.executor_start_time_secs is not None):
+        oprot.writeFieldBegin('executor_start_time_secs', TType.MAP, 4)
+        oprot.writeMapBegin(TType.LIST, TType.I64, len(self.executor_start_time_secs))
+        for (kiter369, viter370) in self.executor_start_time_secs.items():
+            oprot.writeListBegin(TType.I64, len(kiter369))
+            for iter371 in kiter369:
+                oprot.writeI64(iter371)
+            oprot.writeListEnd()
+            oprot.writeI64(viter370)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

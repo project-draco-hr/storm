@@ -1,11 +1,11 @@
 {
   if (other.is_set_acked()) {
-    Map<String,Map<GlobalStreamId,Long>> __this__acked=new HashMap<String,Map<GlobalStreamId,Long>>();
+    Map<String,Map<GlobalStreamId,Long>> __this__acked=new HashMap<String,Map<GlobalStreamId,Long>>(other.acked.size());
     for (    Map.Entry<String,Map<GlobalStreamId,Long>> other_element : other.acked.entrySet()) {
       String other_element_key=other_element.getKey();
       Map<GlobalStreamId,Long> other_element_value=other_element.getValue();
       String __this__acked_copy_key=other_element_key;
-      Map<GlobalStreamId,Long> __this__acked_copy_value=new HashMap<GlobalStreamId,Long>();
+      Map<GlobalStreamId,Long> __this__acked_copy_value=new HashMap<GlobalStreamId,Long>(other_element_value.size());
       for (      Map.Entry<GlobalStreamId,Long> other_element_value_element : other_element_value.entrySet()) {
         GlobalStreamId other_element_value_element_key=other_element_value_element.getKey();
         Long other_element_value_element_value=other_element_value_element.getValue();
@@ -18,12 +18,12 @@
     this.acked=__this__acked;
   }
   if (other.is_set_failed()) {
-    Map<String,Map<GlobalStreamId,Long>> __this__failed=new HashMap<String,Map<GlobalStreamId,Long>>();
+    Map<String,Map<GlobalStreamId,Long>> __this__failed=new HashMap<String,Map<GlobalStreamId,Long>>(other.failed.size());
     for (    Map.Entry<String,Map<GlobalStreamId,Long>> other_element : other.failed.entrySet()) {
       String other_element_key=other_element.getKey();
       Map<GlobalStreamId,Long> other_element_value=other_element.getValue();
       String __this__failed_copy_key=other_element_key;
-      Map<GlobalStreamId,Long> __this__failed_copy_value=new HashMap<GlobalStreamId,Long>();
+      Map<GlobalStreamId,Long> __this__failed_copy_value=new HashMap<GlobalStreamId,Long>(other_element_value.size());
       for (      Map.Entry<GlobalStreamId,Long> other_element_value_element : other_element_value.entrySet()) {
         GlobalStreamId other_element_value_element_key=other_element_value_element.getKey();
         Long other_element_value_element_value=other_element_value_element.getValue();
@@ -36,12 +36,12 @@
     this.failed=__this__failed;
   }
   if (other.is_set_process_ms_avg()) {
-    Map<String,Map<GlobalStreamId,Double>> __this__process_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>();
+    Map<String,Map<GlobalStreamId,Double>> __this__process_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>(other.process_ms_avg.size());
     for (    Map.Entry<String,Map<GlobalStreamId,Double>> other_element : other.process_ms_avg.entrySet()) {
       String other_element_key=other_element.getKey();
       Map<GlobalStreamId,Double> other_element_value=other_element.getValue();
       String __this__process_ms_avg_copy_key=other_element_key;
-      Map<GlobalStreamId,Double> __this__process_ms_avg_copy_value=new HashMap<GlobalStreamId,Double>();
+      Map<GlobalStreamId,Double> __this__process_ms_avg_copy_value=new HashMap<GlobalStreamId,Double>(other_element_value.size());
       for (      Map.Entry<GlobalStreamId,Double> other_element_value_element : other_element_value.entrySet()) {
         GlobalStreamId other_element_value_element_key=other_element_value_element.getKey();
         Double other_element_value_element_value=other_element_value_element.getValue();
@@ -54,12 +54,12 @@
     this.process_ms_avg=__this__process_ms_avg;
   }
   if (other.is_set_executed()) {
-    Map<String,Map<GlobalStreamId,Long>> __this__executed=new HashMap<String,Map<GlobalStreamId,Long>>();
+    Map<String,Map<GlobalStreamId,Long>> __this__executed=new HashMap<String,Map<GlobalStreamId,Long>>(other.executed.size());
     for (    Map.Entry<String,Map<GlobalStreamId,Long>> other_element : other.executed.entrySet()) {
       String other_element_key=other_element.getKey();
       Map<GlobalStreamId,Long> other_element_value=other_element.getValue();
       String __this__executed_copy_key=other_element_key;
-      Map<GlobalStreamId,Long> __this__executed_copy_value=new HashMap<GlobalStreamId,Long>();
+      Map<GlobalStreamId,Long> __this__executed_copy_value=new HashMap<GlobalStreamId,Long>(other_element_value.size());
       for (      Map.Entry<GlobalStreamId,Long> other_element_value_element : other_element_value.entrySet()) {
         GlobalStreamId other_element_value_element_key=other_element_value_element.getKey();
         Long other_element_value_element_value=other_element_value_element.getValue();
@@ -72,12 +72,12 @@
     this.executed=__this__executed;
   }
   if (other.is_set_execute_ms_avg()) {
-    Map<String,Map<GlobalStreamId,Double>> __this__execute_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>();
+    Map<String,Map<GlobalStreamId,Double>> __this__execute_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>(other.execute_ms_avg.size());
     for (    Map.Entry<String,Map<GlobalStreamId,Double>> other_element : other.execute_ms_avg.entrySet()) {
       String other_element_key=other_element.getKey();
       Map<GlobalStreamId,Double> other_element_value=other_element.getValue();
       String __this__execute_ms_avg_copy_key=other_element_key;
-      Map<GlobalStreamId,Double> __this__execute_ms_avg_copy_value=new HashMap<GlobalStreamId,Double>();
+      Map<GlobalStreamId,Double> __this__execute_ms_avg_copy_value=new HashMap<GlobalStreamId,Double>(other_element_value.size());
       for (      Map.Entry<GlobalStreamId,Double> other_element_value_element : other_element_value.entrySet()) {
         GlobalStreamId other_element_value_element_key=other_element_value_element.getKey();
         Double other_element_value_element_value=other_element_value_element.getValue();

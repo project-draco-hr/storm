@@ -1,0 +1,4 @@
+{
+  this.jdbcLookupMapper=jdbcLookupMapper;
+  return this;
+}

@@ -1,0 +1,22 @@
+{
+switch (fieldId) {
+case 1:
+    return NAME;
+case 2:
+  return STATUS;
+case 3:
+return NUM_WORKERS;
+case 4:
+return COMPONENT_EXECUTORS;
+case 5:
+return LAUNCH_TIME_SECS;
+case 6:
+return OWNER;
+case 7:
+return TOPOLOGY_ACTION_OPTIONS;
+case 8:
+return PREV_STATUS;
+default :
+return null;
+}
+}

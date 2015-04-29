@@ -1,0 +1,16 @@
+{
+  try {
+    if ((offset == null || offset.equals(Constants.DefaultStartingOffset)) && spoutConfig.getEnqueueTimeFilter() != 0) {
+      receiver.open(new EventHubReceiverFilter(spoutConfig.getEnqueueTimeFilter()));
+    }
+ else {
+      receiver.open(new EventHubReceiverFilter(offset));
+    }
+    lastOffset=offset;
+    return true;
+  }
+ catch (  EventHubException ex) {
+    logger.error("failed to open eventhub receiver: " + ex.getMessage());
+    return false;
+  }
+}

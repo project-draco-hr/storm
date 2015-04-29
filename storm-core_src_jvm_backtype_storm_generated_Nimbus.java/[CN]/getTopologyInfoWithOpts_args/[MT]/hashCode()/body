@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_id=true && (is_set_id());
+  list.add(present_id);
+  if (present_id)   list.add(id);
+  boolean present_options=true && (is_set_options());
+  list.add(present_options);
+  if (present_options)   list.add(options);
+  return list.hashCode();
+}

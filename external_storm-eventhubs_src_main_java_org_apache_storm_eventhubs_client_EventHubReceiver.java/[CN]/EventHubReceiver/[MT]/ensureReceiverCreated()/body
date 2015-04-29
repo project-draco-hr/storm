@@ -1,0 +1,10 @@
+{
+  try {
+    logger.info("defaultCredits: " + defaultCredits);
+    receiver=session.createReceiver(consumerAddress,AcknowledgeMode.ALO,linkName,false,filters,null);
+    receiver.setCredit(UnsignedInteger.valueOf(defaultCredits),true);
+  }
+ catch (  ConnectionErrorException e) {
+    throw new EventHubException(e);
+  }
+}
