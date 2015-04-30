@@ -1,17 +1,9 @@
 {
-  if (conf == null) {
-    LOG.error("conf cannot be null");
-  }
+  Preconditions.checkNotNull(conf,"conf cannot be null");
   validateConfig(conf);
-  if (zkStr == null) {
-    LOG.error("zkString cannot be null");
-  }
-  if (zkPath == null) {
-    LOG.error("zkPath cannot be null");
-  }
-  if (topic == null) {
-    LOG.error("topic cannot be null");
-  }
+  Preconditions.checkNotNull(zkStr,"zkString cannot be null");
+  Preconditions.checkNotNull(zkPath,"zkPath cannot be null");
+  Preconditions.checkNotNull(topic,"topic cannot be null");
   _zkPath=zkPath;
   _topic=topic;
   try {
