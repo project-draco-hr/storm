@@ -1,7 +1,0 @@
-{
-  Integer i=new Integer(1);
-  Class clazz=Test.class;
-  Constructor ctor=clazz.getConstructor(new Class[]{int.class});
-  ctor.newInstance(i);
-  System.out.println("isNumber: " + Number.class.isAssignableFrom(i.getClass()));
-}
