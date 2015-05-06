@@ -1,0 +1,32 @@
+{
+  ByteArrayOutputStream bos=new ByteArrayOutputStream();
+  LOG.info("loading YAML from input stream...");
+  int b=-1;
+  while ((b=in.read()) != -1) {
+    bos.write(b);
+  }
+  String str=bos.toString();
+  if (propsFile != null) {
+    LOG.info("Performing property substitution.");
+    InputStream propsIn=new FileInputStream(propsFile);
+    Properties props=new Properties();
+    props.load(propsIn);
+    for (    Object key : props.keySet()) {
+      str=str.replace("${" + key + "}",props.getProperty((String)key));
+    }
+  }
+ else {
+    LOG.info("Not performing property substitution.");
+  }
+  if (envSubstitution) {
+    LOG.info("Performing environment variable substitution...");
+    Map<String,String> envs=System.getenv();
+    for (    String key : envs.keySet()) {
+      str=str.replace("${ENV-" + key + "}",envs.get(key));
+    }
+  }
+ else {
+    LOG.info("Not performing environment variable substitution.");
+  }
+  return (TopologyDef)yaml.load(str);
+}

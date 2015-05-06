@@ -1,0 +1,13 @@
+{
+  try {
+    int i=-1;
+    while ((i=this.in.read()) != -1) {
+      out.write(i);
+    }
+    this.in.close();
+    this.out.close();
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+}

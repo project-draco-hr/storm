@@ -1,0 +1,6 @@
+{
+  this.boltMap=new LinkedHashMap<String,BoltDef>();
+  for (  BoltDef bolt : bolts) {
+    this.boltMap.put(bolt.getId(),bolt);
+  }
+}

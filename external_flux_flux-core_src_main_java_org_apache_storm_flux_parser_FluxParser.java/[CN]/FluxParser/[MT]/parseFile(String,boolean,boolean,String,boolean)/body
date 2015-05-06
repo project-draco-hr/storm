@@ -1,0 +1,15 @@
+{
+  Yaml yaml=yaml();
+  FileInputStream in=new FileInputStream(inputFile);
+  TopologyDef topology=loadYaml(yaml,in,propertiesFile,envSub);
+  in.close();
+  if (dumpYaml) {
+    dumpYaml(topology,yaml);
+  }
+  if (processIncludes) {
+    return processIncludes(yaml,topology,propertiesFile,envSub);
+  }
+ else {
+    return topology;
+  }
+}

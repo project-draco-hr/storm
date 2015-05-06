@@ -1,0 +1,12 @@
+{
+  LOG.debug("Invoking command: {}",args);
+  ProcessBuilder pb=new ProcessBuilder(args);
+  pb.redirectErrorStream(true);
+  final Process proc=pb.start();
+  ByteArrayOutputStream out=new ByteArrayOutputStream();
+  Thread t=new Thread(new StreamRedirect(proc.getInputStream(),out));
+  t.start();
+  int exitVal=proc.waitFor();
+  LOG.debug("Command result: {}",out.toString());
+  return exitVal;
+}

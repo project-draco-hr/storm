@@ -1,0 +1,21 @@
+def run(self):
+    global MODE
+    MODE = Bolt
+    global ANCHOR_TUPLE
+    (conf, context) = initComponent()
+    try:
+        self.initialize(conf, context)
+        while True:
+            tup = readTuple()
+            if tup.is_heartbeat_tuple():
+                sync()
+            else:
+                ANCHOR_TUPLE = tup
+                try:
+                    self.process(tup)
+                    ack(tup)
+                except Exception as e:
+                    reportError(traceback.format_exc(e))
+                    fail(tup)
+    except Exception as e:
+        reportError(traceback.format_exc(e))

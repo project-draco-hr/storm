@@ -1,0 +1,4 @@
+{
+  Object grouping=buildObject(def,context);
+  return (CustomStreamGrouping)grouping;
+}

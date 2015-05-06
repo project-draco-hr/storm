@@ -1,0 +1,2 @@
+def ack(tup):
+    sendMsgToParent({'command': 'ack', 'id': tup.id, })
