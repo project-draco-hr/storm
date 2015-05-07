@@ -14,6 +14,9 @@
  else       if (command.equals("log")) {
         handleLog(shellMsg);
       }
+ else       if (command.equals("error")) {
+        handleError(shellMsg.getMsg());
+      }
  else       if (command.equals("emit")) {
         String stream=shellMsg.getStream();
         Long task=shellMsg.getTask();
