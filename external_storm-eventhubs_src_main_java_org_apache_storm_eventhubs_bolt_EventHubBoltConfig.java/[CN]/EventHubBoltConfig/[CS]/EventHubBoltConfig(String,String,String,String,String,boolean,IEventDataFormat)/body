@@ -1,0 +1,9 @@
+{
+  this.connectionString=EventHubSpoutConfig.buildConnectionString(userName,password,namespace,targetFqnAddress);
+  this.entityPath=entityPath;
+  this.partitionMode=partitionMode;
+  this.dataFormat=dataFormat;
+  if (this.dataFormat == null) {
+    this.dataFormat=new DefaultEventDataFormat();
+  }
+}

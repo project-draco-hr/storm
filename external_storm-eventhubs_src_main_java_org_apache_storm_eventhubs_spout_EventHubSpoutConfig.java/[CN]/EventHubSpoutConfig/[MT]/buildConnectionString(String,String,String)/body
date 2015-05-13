@@ -1,4 +1,3 @@
 {
-  String targetFqnAddress="servicebus.windows.net";
-  return buildConnectionString(username,password,namespace,targetFqnAddress);
+  return buildConnectionString(username,password,namespace,EH_SERVICE_FQDN_SUFFIX);
 }

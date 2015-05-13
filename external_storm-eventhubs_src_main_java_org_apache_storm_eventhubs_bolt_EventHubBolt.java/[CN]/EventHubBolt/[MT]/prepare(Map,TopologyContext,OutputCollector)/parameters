@@ -1,2 +1,3 @@
 Map config
 TopologyContext context
+OutputCollector collector

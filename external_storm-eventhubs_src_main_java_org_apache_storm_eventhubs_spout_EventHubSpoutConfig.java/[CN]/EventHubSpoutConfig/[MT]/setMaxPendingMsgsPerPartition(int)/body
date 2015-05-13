@@ -1,0 +1,3 @@
+{
+  maxPendingMsgsPerPartition=value;
+}

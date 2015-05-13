@@ -1,3 +1,0 @@
-{
-  return new EventHubConsumerGroup(this.connection,this.entityPath,DefaultConsumerGroupName);
-}
