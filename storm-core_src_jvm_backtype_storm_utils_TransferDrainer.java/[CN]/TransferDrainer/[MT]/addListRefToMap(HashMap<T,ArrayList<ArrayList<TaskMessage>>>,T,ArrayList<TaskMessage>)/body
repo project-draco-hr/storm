@@ -1,0 +1,10 @@
+{
+  ArrayList<ArrayList<TaskMessage>> bundle=bundles.get(key);
+  if (null == bundle) {
+    bundle=new ArrayList<ArrayList<TaskMessage>>();
+    bundles.put(key,bundle);
+  }
+  if (null != tuples && tuples.size() > 0) {
+    bundle.add(tuples);
+  }
+}
