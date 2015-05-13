@@ -1,5 +1,6 @@
 {
   if (TupleUtils.isTick(input)) {
+    collector.ack(input);
     return;
   }
   K key=null;

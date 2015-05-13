@@ -17,6 +17,8 @@ case SCHEDULER_META:
 return is_set_scheduler_meta();
 case UPTIME_SECS:
 return is_set_uptime_secs();
+case VERSION:
+return is_set_version();
 }
 throw new IllegalStateException();
 }

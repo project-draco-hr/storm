@@ -1,0 +1,6 @@
+{
+  readEHConfig(args);
+  EventHubSpout eventHubSpout=createEventHubSpout();
+  StormTopology topology=buildTopology(eventHubSpout);
+  submitTopology(args,topology);
+}

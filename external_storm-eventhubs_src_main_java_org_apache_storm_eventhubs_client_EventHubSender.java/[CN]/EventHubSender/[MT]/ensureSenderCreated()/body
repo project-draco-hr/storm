@@ -1,0 +1,5 @@
+{
+  if (this.sender == null) {
+    this.sender=this.session.createSender(this.destinationAddress);
+  }
+}

@@ -4,8 +4,9 @@ import os
 os.chdir('storm-core')
 ns = sys.argv[1]
 pipe = Popen(['mvn', 'clojure:repl'], stdin=PIPE)
-pipe.stdin.write(("(do (use 'clojure.test) (require '%s :reload-all) (run-tests '%s))\n" % (ns, ns)))
+pipe.stdin.write(("\n(do\n  (use 'clojure.test)\n  (require '%s :reload-all)\n  (let [results (run-tests '%s)]\n    (println results)\n    (if (or\n         (> (:fail results) 0)\n         (> (:error results) 0))\n      (System/exit 1)\n      (System/exit 0))))\n" % (ns, ns)))
 pipe.stdin.write('\x04\n')
 pipe.stdin.close()
 pipe.wait()
 os.chdir('..')
+sys.exit(pipe.returncode)

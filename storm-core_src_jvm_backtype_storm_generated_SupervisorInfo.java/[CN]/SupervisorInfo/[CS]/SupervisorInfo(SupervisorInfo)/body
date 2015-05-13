@@ -20,4 +20,7 @@
     this.scheduler_meta=__this__scheduler_meta;
   }
   this.uptime_secs=other.uptime_secs;
+  if (other.is_set_version()) {
+    this.version=other.version;
+  }
 }

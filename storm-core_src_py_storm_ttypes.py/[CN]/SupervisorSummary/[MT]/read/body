@@ -32,6 +32,11 @@ def read(self, iprot):
                 self.supervisor_id = iprot.readString().decode('utf-8')
             else:
                 iprot.skip(ftype)
+        elif (fid == 6):
+            if (ftype == TType.STRING):
+                self.version = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

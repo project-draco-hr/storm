@@ -1,0 +1,8 @@
+{
+  try {
+    return Utils.gzip(new TSerializer().serialize((TBase)object));
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

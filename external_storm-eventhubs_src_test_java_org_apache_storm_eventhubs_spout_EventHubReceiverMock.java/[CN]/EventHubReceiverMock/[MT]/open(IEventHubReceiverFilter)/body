@@ -1,0 +1,12 @@
+{
+  if (filter.getOffset() != null) {
+    currentOffset=Long.parseLong(filter.getOffset());
+  }
+ else   if (filter.getEnqueueTime() != 0) {
+    currentOffset=filter.getEnqueueTime();
+  }
+ else {
+    throw new EventHubException("Invalid IEventHubReceiverFilter");
+  }
+  isOpen=true;
+}

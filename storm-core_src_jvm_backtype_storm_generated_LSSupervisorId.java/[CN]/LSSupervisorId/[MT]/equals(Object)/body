@@ -1,0 +1,5 @@
+{
+  if (that == null)   return false;
+  if (that instanceof LSSupervisorId)   return this.equals((LSSupervisorId)that);
+  return false;
+}

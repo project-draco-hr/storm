@@ -6,6 +6,8 @@ case 2:
   return EXECUTOR_STATS;
 case 3:
 return TIME_SECS;
+case 4:
+return UPTIME_SECS;
 default :
 return null;
 }

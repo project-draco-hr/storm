@@ -1,0 +1,8 @@
+{
+  String namespace=config.getNamespace();
+  String entityPath=config.getEntityPath();
+  String topologyName=config.getTopologyName();
+  String partitionStatePath=statePathPrefix + "/" + topologyName+ "/"+ namespace+ "/"+ entityPath+ "/partitions/"+ this.partitionId;
+  logger.info("partition state path: " + partitionStatePath);
+  return partitionStatePath;
+}

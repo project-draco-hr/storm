@@ -1,4 +1,4 @@
-def __init__(self, time_secs=None, hostname=None, assignment_id=None, used_ports=None, meta=None, scheduler_meta=None, uptime_secs=None):
+def __init__(self, time_secs=None, hostname=None, assignment_id=None, used_ports=None, meta=None, scheduler_meta=None, uptime_secs=None, version=None):
     self.time_secs = time_secs
     self.hostname = hostname
     self.assignment_id = assignment_id
@@ -6,3 +6,4 @@ def __init__(self, time_secs=None, hostname=None, assignment_id=None, used_ports
     self.meta = meta
     self.scheduler_meta = scheduler_meta
     self.uptime_secs = uptime_secs
+    self.version = version

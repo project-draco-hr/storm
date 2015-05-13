@@ -1,0 +1,10 @@
+{
+  try {
+    if (this.session == null) {
+      this.session=this.connection.createSession();
+    }
+  }
+ catch (  ConnectionException e) {
+    throw new EventHubException(e);
+  }
+}

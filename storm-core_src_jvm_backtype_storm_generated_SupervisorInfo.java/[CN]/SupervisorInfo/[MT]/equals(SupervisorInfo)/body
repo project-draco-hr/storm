@@ -42,5 +42,11 @@
     if (!(this_present_uptime_secs && that_present_uptime_secs))     return false;
     if (this.uptime_secs != that.uptime_secs)     return false;
   }
+  boolean this_present_version=true && this.is_set_version();
+  boolean that_present_version=true && that.is_set_version();
+  if (this_present_version || that_present_version) {
+    if (!(this_present_version && that_present_version))     return false;
+    if (!this.version.equals(that.version))     return false;
+  }
   return true;
 }

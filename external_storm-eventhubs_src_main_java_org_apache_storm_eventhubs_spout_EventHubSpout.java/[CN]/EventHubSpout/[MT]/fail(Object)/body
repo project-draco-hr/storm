@@ -1,0 +1,6 @@
+{
+  MessageId messageId=(MessageId)msgId;
+  IPartitionManager partitionManager=partitionCoordinator.getPartitionManager(messageId.getPartitionId());
+  String offset=messageId.getOffset();
+  partitionManager.fail(offset);
+}

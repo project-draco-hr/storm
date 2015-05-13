@@ -1,2 +1,0 @@
-def reportError(msg):
-    sendMsgToParent({'command': 'error', 'msg': msg, })

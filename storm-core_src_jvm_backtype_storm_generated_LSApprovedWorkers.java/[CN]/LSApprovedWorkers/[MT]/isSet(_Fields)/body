@@ -1,0 +1,10 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case APPROVED_WORKERS:
+    return is_set_approved_workers();
+}
+throw new IllegalStateException();
+}

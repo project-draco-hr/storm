@@ -6,7 +6,7 @@
     if (lastTopoMeta != null) {
       lastInstanceId=(String)lastTopoMeta.get("id");
     }
-    if (_config.forceFromStart && !_topologyInstanceId.equals(lastInstanceId)) {
+    if (_config.ignoreZkOffsets && !_topologyInstanceId.equals(lastInstanceId)) {
       offset=KafkaUtils.getOffset(consumer,_config.topic,partition.partition,_config.startOffsetTime);
     }
  else {

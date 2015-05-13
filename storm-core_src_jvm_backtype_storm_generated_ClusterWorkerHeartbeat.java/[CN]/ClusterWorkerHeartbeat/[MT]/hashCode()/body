@@ -9,5 +9,8 @@
   boolean present_time_secs=true;
   list.add(present_time_secs);
   if (present_time_secs)   list.add(time_secs);
+  boolean present_uptime_secs=true;
+  list.add(present_uptime_secs);
+  if (present_uptime_secs)   list.add(uptime_secs);
   return list.hashCode();
 }

@@ -1,0 +1,10 @@
+{
+  TDeserializer td=new TDeserializer();
+  Map<String,ThriftSerializedObject> partial=partialSnapshot(td);
+  ThriftSerializedObject tso=partial.get(key);
+  TBase ret=null;
+  if (tso != null) {
+    ret=deserialize(tso,td);
+  }
+  return ret;
+}

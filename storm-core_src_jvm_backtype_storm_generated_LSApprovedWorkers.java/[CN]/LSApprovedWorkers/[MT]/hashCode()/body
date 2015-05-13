@@ -1,0 +1,7 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_approved_workers=true && (is_set_approved_workers());
+  list.add(present_approved_workers);
+  if (present_approved_workers)   list.add(approved_workers);
+  return list.hashCode();
+}

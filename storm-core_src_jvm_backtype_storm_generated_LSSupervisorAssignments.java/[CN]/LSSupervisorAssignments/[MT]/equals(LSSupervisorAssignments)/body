@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_assignments=true && this.is_set_assignments();
+  boolean that_present_assignments=true && that.is_set_assignments();
+  if (this_present_assignments || that_present_assignments) {
+    if (!(this_present_assignments && that_present_assignments))     return false;
+    if (!this.assignments.equals(that.assignments))     return false;
+  }
+  return true;
+}

@@ -1,0 +1,36 @@
+{
+switch (field) {
+case TIME_SECS:
+    if (value == null) {
+      unset_time_secs();
+    }
+ else {
+      set_time_secs((Integer)value);
+    }
+  break;
+case TOPOLOGY_ID:
+if (value == null) {
+  unset_topology_id();
+}
+ else {
+  set_topology_id((String)value);
+}
+break;
+case EXECUTORS:
+if (value == null) {
+unset_executors();
+}
+ else {
+set_executors((List<ExecutorInfo>)value);
+}
+break;
+case PORT:
+if (value == null) {
+unset_port();
+}
+ else {
+set_port((Integer)value);
+}
+break;
+}
+}
