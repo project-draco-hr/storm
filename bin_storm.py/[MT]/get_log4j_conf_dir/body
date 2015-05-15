@@ -1,0 +1,6 @@
+def get_log4j_conf_dir():
+    cppaths = [CLUSTER_CONF_DIR]
+    storm_log4j_conf_dir = confvalue('storm.logback.conf.dir', cppaths)
+    if ((storm_log4j_conf_dir == None) or (storm_log4j_conf_dir == 'nil')):
+        storm_log4j_conf_dir = STORM_LOG4J_CONF_DIR
+    return storm_log4j_conf_dir
