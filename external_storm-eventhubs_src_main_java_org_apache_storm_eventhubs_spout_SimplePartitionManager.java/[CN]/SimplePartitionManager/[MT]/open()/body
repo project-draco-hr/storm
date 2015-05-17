@@ -4,12 +4,12 @@
   if (offset == null) {
     offset=Constants.DefaultStartingOffset;
   }
-  EventHubReceiverFilter filter=new EventHubReceiverFilter();
+  IEventHubFilter filter;
   if (offset.equals(Constants.DefaultStartingOffset) && config.getEnqueueTimeFilter() != 0) {
-    filter.setEnqueueTime(config.getEnqueueTimeFilter());
+    filter=new EventHubEnqueueTimeFilter(config.getEnqueueTimeFilter());
   }
  else {
-    filter.setOffset(offset);
+    filter=new EventHubOffsetFilter(offset);
   }
   receiver.open(filter);
 }

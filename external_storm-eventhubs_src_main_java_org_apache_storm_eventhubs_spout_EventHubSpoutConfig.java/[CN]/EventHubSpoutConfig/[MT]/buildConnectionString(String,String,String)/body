@@ -1,3 +1,0 @@
-{
-  return buildConnectionString(username,password,namespace,EH_SERVICE_FQDN_SUFFIX);
-}

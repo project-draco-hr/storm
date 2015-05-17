@@ -1,6 +1,0 @@
-Session session
-String entityPath
-String consumerGroupName
-String partitionId
-String filterStr
-int defaultCredits

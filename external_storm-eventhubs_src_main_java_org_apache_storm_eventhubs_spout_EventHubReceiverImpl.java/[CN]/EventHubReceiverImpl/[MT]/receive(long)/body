@@ -6,9 +6,6 @@
   receiveApiLatencyMean.update(millis);
   receiveApiCallCount.incr();
   if (message == null) {
-    if (timeoutInMilliseconds > 100 && millis < timeoutInMilliseconds / 2) {
-      throw new RuntimeException("Restart EventHubSpout due to failure of receiving messages in " + millis + " millisecond");
-    }
     return null;
   }
   receiveMessageCount.incr();

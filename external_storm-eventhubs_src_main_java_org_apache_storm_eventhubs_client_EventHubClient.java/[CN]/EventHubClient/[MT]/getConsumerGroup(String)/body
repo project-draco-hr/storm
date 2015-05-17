@@ -1,6 +1,0 @@
-{
-  if (cgName == null || cgName.length() == 0) {
-    cgName=DefaultConsumerGroupName;
-  }
-  return new EventHubConsumerGroup(connection,entityPath,cgName);
-}
