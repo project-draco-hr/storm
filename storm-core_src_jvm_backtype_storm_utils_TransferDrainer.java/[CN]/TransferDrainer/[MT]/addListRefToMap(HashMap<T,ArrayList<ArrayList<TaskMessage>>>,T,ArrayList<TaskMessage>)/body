@@ -1,8 +1,8 @@
 {
-  ArrayList<ArrayList<TaskMessage>> bundle=bundles.get(key);
+  ArrayList<ArrayList<TaskMessage>> bundle=bundleMap.get(key);
   if (null == bundle) {
     bundle=new ArrayList<ArrayList<TaskMessage>>();
-    bundles.put(key,bundle);
+    bundleMap.put(key,bundle);
   }
   if (null != tuples && tuples.size() > 0) {
     bundle.add(tuples);
