@@ -1,0 +1,7 @@
+{
+  this();
+  this.id=id;
+  this.window=window;
+  this.is_include_sys=is_include_sys;
+  set_is_include_sys_isSet(true);
+}

@@ -1,0 +1,10 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case COMPLETE_LATENCY_MS:
+    return is_set_complete_latency_ms();
+}
+throw new IllegalStateException();
+}

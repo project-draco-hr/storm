@@ -1,0 +1,23 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_id()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_window()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_is_include_sys()) {
+    optionals.set(2);
+  }
+  oprot.writeBitSet(optionals,3);
+  if (struct.is_set_id()) {
+    oprot.writeString(struct.id);
+  }
+  if (struct.is_set_window()) {
+    oprot.writeString(struct.window);
+  }
+  if (struct.is_set_is_include_sys()) {
+    oprot.writeBool(struct.is_include_sys);
+  }
+}

@@ -1,0 +1,108 @@
+{
+switch (field) {
+case ID:
+    if (value == null) {
+      unset_id();
+    }
+ else {
+      set_id((String)value);
+    }
+  break;
+case NAME:
+if (value == null) {
+  unset_name();
+}
+ else {
+  set_name((String)value);
+}
+break;
+case UPTIME_SECS:
+if (value == null) {
+unset_uptime_secs();
+}
+ else {
+set_uptime_secs((Integer)value);
+}
+break;
+case STATUS:
+if (value == null) {
+unset_status();
+}
+ else {
+set_status((String)value);
+}
+break;
+case NUM_TASKS:
+if (value == null) {
+unset_num_tasks();
+}
+ else {
+set_num_tasks((Integer)value);
+}
+break;
+case NUM_WORKERS:
+if (value == null) {
+unset_num_workers();
+}
+ else {
+set_num_workers((Integer)value);
+}
+break;
+case NUM_EXECUTORS:
+if (value == null) {
+unset_num_executors();
+}
+ else {
+set_num_executors((Integer)value);
+}
+break;
+case TOPOLOGY_CONF:
+if (value == null) {
+unset_topology_conf();
+}
+ else {
+set_topology_conf((String)value);
+}
+break;
+case ID_TO_SPOUT_AGG_STATS:
+if (value == null) {
+unset_id_to_spout_agg_stats();
+}
+ else {
+set_id_to_spout_agg_stats((Map<String,ComponentAggregateStats>)value);
+}
+break;
+case ID_TO_BOLT_AGG_STATS:
+if (value == null) {
+unset_id_to_bolt_agg_stats();
+}
+ else {
+set_id_to_bolt_agg_stats((Map<String,ComponentAggregateStats>)value);
+}
+break;
+case SCHED_STATUS:
+if (value == null) {
+unset_sched_status();
+}
+ else {
+set_sched_status((String)value);
+}
+break;
+case TOPOLOGY_STATS:
+if (value == null) {
+unset_topology_stats();
+}
+ else {
+set_topology_stats((TopologyStats)value);
+}
+break;
+case OWNER:
+if (value == null) {
+unset_owner();
+}
+ else {
+set_owner((String)value);
+}
+break;
+}
+}

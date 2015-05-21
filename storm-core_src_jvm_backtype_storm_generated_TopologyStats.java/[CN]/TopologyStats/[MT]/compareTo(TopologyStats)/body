@@ -1,0 +1,57 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  lastComparison=Boolean.valueOf(is_set_window_to_emitted()).compareTo(other.is_set_window_to_emitted());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_window_to_emitted()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.window_to_emitted,other.window_to_emitted);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_window_to_transferred()).compareTo(other.is_set_window_to_transferred());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_window_to_transferred()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.window_to_transferred,other.window_to_transferred);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_window_to_complete_latencies_ms()).compareTo(other.is_set_window_to_complete_latencies_ms());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_window_to_complete_latencies_ms()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.window_to_complete_latencies_ms,other.window_to_complete_latencies_ms);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_window_to_acked()).compareTo(other.is_set_window_to_acked());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_window_to_acked()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.window_to_acked,other.window_to_acked);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_window_to_failed()).compareTo(other.is_set_window_to_failed());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_window_to_failed()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.window_to_failed,other.window_to_failed);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

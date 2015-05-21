@@ -1,0 +1,5 @@
+def __init__(self, topology_id=None, component_id=None, window=None, is_include_sys=None):
+    self.topology_id = topology_id
+    self.component_id = component_id
+    self.window = window
+    self.is_include_sys = is_include_sys

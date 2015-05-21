@@ -1,0 +1,14 @@
+self
+id
+name
+uptime_secs
+status
+num_tasks
+num_workers
+num_executors
+topology_conf
+id_to_spout_agg_stats
+id_to_bolt_agg_stats
+sched_status
+topology_stats
+owner

@@ -1,0 +1,36 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 513):
+            if (ftype == TType.I32):
+                self.type = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 514):
+            if (ftype == TType.STRUCT):
+                self.common_stats = CommonAggregateStats()
+                self.common_stats.read(iprot)
+            else:
+                iprot.skip(ftype)
+        elif (fid == 515):
+            if (ftype == TType.STRUCT):
+                self.specific_stats = SpecificAggregateStats()
+                self.specific_stats.read(iprot)
+            else:
+                iprot.skip(ftype)
+        elif (fid == 516):
+            if (ftype == TType.STRUCT):
+                self.last_error = ErrorInfo()
+                self.last_error.read(iprot)
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

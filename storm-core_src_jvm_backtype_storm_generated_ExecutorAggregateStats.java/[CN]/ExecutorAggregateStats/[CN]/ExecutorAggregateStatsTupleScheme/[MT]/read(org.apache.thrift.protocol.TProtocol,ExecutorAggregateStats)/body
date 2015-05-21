@@ -1,0 +1,14 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(2);
+  if (incoming.get(0)) {
+    struct.exec_summary=new ExecutorSummary();
+    struct.exec_summary.read(iprot);
+    struct.set_exec_summary_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.stats=new ComponentAggregateStats();
+    struct.stats.read(iprot);
+    struct.set_stats_isSet(true);
+  }
+}

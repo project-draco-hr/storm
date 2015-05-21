@@ -1,0 +1,10 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getComponentPageInfo",org.apache.thrift.protocol.TMessageType.CALL,0));
+  getComponentPageInfo_args args=new getComponentPageInfo_args();
+  args.set_topology_id(topology_id);
+  args.set_component_id(component_id);
+  args.set_window(window);
+  args.set_is_include_sys(is_include_sys);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

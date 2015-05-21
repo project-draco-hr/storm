@@ -1,0 +1,29 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_topology_id()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_component_id()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_window()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_is_include_sys()) {
+    optionals.set(3);
+  }
+  oprot.writeBitSet(optionals,4);
+  if (struct.is_set_topology_id()) {
+    oprot.writeString(struct.topology_id);
+  }
+  if (struct.is_set_component_id()) {
+    oprot.writeString(struct.component_id);
+  }
+  if (struct.is_set_window()) {
+    oprot.writeString(struct.window);
+  }
+  if (struct.is_set_is_include_sys()) {
+    oprot.writeBool(struct.is_include_sys);
+  }
+}

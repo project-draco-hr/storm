@@ -1,0 +1,126 @@
+{
+  StringBuilder sb=new StringBuilder("TopologyPageInfo(");
+  boolean first=true;
+  sb.append("id:");
+  if (this.id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.id);
+  }
+  first=false;
+  if (is_set_name()) {
+    if (!first)     sb.append(", ");
+    sb.append("name:");
+    if (this.name == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.name);
+    }
+    first=false;
+  }
+  if (is_set_uptime_secs()) {
+    if (!first)     sb.append(", ");
+    sb.append("uptime_secs:");
+    sb.append(this.uptime_secs);
+    first=false;
+  }
+  if (is_set_status()) {
+    if (!first)     sb.append(", ");
+    sb.append("status:");
+    if (this.status == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.status);
+    }
+    first=false;
+  }
+  if (is_set_num_tasks()) {
+    if (!first)     sb.append(", ");
+    sb.append("num_tasks:");
+    sb.append(this.num_tasks);
+    first=false;
+  }
+  if (is_set_num_workers()) {
+    if (!first)     sb.append(", ");
+    sb.append("num_workers:");
+    sb.append(this.num_workers);
+    first=false;
+  }
+  if (is_set_num_executors()) {
+    if (!first)     sb.append(", ");
+    sb.append("num_executors:");
+    sb.append(this.num_executors);
+    first=false;
+  }
+  if (is_set_topology_conf()) {
+    if (!first)     sb.append(", ");
+    sb.append("topology_conf:");
+    if (this.topology_conf == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.topology_conf);
+    }
+    first=false;
+  }
+  if (is_set_id_to_spout_agg_stats()) {
+    if (!first)     sb.append(", ");
+    sb.append("id_to_spout_agg_stats:");
+    if (this.id_to_spout_agg_stats == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.id_to_spout_agg_stats);
+    }
+    first=false;
+  }
+  if (is_set_id_to_bolt_agg_stats()) {
+    if (!first)     sb.append(", ");
+    sb.append("id_to_bolt_agg_stats:");
+    if (this.id_to_bolt_agg_stats == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.id_to_bolt_agg_stats);
+    }
+    first=false;
+  }
+  if (is_set_sched_status()) {
+    if (!first)     sb.append(", ");
+    sb.append("sched_status:");
+    if (this.sched_status == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.sched_status);
+    }
+    first=false;
+  }
+  if (is_set_topology_stats()) {
+    if (!first)     sb.append(", ");
+    sb.append("topology_stats:");
+    if (this.topology_stats == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.topology_stats);
+    }
+    first=false;
+  }
+  if (is_set_owner()) {
+    if (!first)     sb.append(", ");
+    sb.append("owner:");
+    if (this.owner == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.owner);
+    }
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

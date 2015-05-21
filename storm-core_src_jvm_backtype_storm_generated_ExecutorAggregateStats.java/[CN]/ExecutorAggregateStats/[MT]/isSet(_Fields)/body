@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case EXEC_SUMMARY:
+    return is_set_exec_summary();
+case STATS:
+  return is_set_stats();
+}
+throw new IllegalStateException();
+}

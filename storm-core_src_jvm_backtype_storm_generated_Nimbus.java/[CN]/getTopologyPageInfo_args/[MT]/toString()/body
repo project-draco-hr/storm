@@ -1,0 +1,27 @@
+{
+  StringBuilder sb=new StringBuilder("getTopologyPageInfo_args(");
+  boolean first=true;
+  sb.append("id:");
+  if (this.id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.id);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("window:");
+  if (this.window == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.window);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("is_include_sys:");
+  sb.append(this.is_include_sys);
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

@@ -1,0 +1,28 @@
+{
+  if (that == null)   return false;
+  boolean this_present_topology_id=true && this.is_set_topology_id();
+  boolean that_present_topology_id=true && that.is_set_topology_id();
+  if (this_present_topology_id || that_present_topology_id) {
+    if (!(this_present_topology_id && that_present_topology_id))     return false;
+    if (!this.topology_id.equals(that.topology_id))     return false;
+  }
+  boolean this_present_component_id=true && this.is_set_component_id();
+  boolean that_present_component_id=true && that.is_set_component_id();
+  if (this_present_component_id || that_present_component_id) {
+    if (!(this_present_component_id && that_present_component_id))     return false;
+    if (!this.component_id.equals(that.component_id))     return false;
+  }
+  boolean this_present_window=true && this.is_set_window();
+  boolean that_present_window=true && that.is_set_window();
+  if (this_present_window || that_present_window) {
+    if (!(this_present_window && that_present_window))     return false;
+    if (!this.window.equals(that.window))     return false;
+  }
+  boolean this_present_is_include_sys=true;
+  boolean that_present_is_include_sys=true;
+  if (this_present_is_include_sys || that_present_is_include_sys) {
+    if (!(this_present_is_include_sys && that_present_is_include_sys))     return false;
+    if (this.is_include_sys != that.is_include_sys)     return false;
+  }
+  return true;
+}

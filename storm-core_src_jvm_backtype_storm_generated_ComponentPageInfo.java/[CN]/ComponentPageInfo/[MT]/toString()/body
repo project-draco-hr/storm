@@ -1,0 +1,112 @@
+{
+  StringBuilder sb=new StringBuilder("ComponentPageInfo(");
+  boolean first=true;
+  sb.append("component_id:");
+  if (this.component_id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.component_id);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("component_type:");
+  if (this.component_type == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.component_type);
+  }
+  first=false;
+  if (is_set_topology_id()) {
+    if (!first)     sb.append(", ");
+    sb.append("topology_id:");
+    if (this.topology_id == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.topology_id);
+    }
+    first=false;
+  }
+  if (is_set_topology_name()) {
+    if (!first)     sb.append(", ");
+    sb.append("topology_name:");
+    if (this.topology_name == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.topology_name);
+    }
+    first=false;
+  }
+  if (is_set_num_executors()) {
+    if (!first)     sb.append(", ");
+    sb.append("num_executors:");
+    sb.append(this.num_executors);
+    first=false;
+  }
+  if (is_set_num_tasks()) {
+    if (!first)     sb.append(", ");
+    sb.append("num_tasks:");
+    sb.append(this.num_tasks);
+    first=false;
+  }
+  if (is_set_window_to_stats()) {
+    if (!first)     sb.append(", ");
+    sb.append("window_to_stats:");
+    if (this.window_to_stats == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.window_to_stats);
+    }
+    first=false;
+  }
+  if (is_set_gsid_to_input_stats()) {
+    if (!first)     sb.append(", ");
+    sb.append("gsid_to_input_stats:");
+    if (this.gsid_to_input_stats == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.gsid_to_input_stats);
+    }
+    first=false;
+  }
+  if (is_set_sid_to_output_stats()) {
+    if (!first)     sb.append(", ");
+    sb.append("sid_to_output_stats:");
+    if (this.sid_to_output_stats == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.sid_to_output_stats);
+    }
+    first=false;
+  }
+  if (is_set_exec_stats()) {
+    if (!first)     sb.append(", ");
+    sb.append("exec_stats:");
+    if (this.exec_stats == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.exec_stats);
+    }
+    first=false;
+  }
+  if (is_set_errors()) {
+    if (!first)     sb.append(", ");
+    sb.append("errors:");
+    if (this.errors == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.errors);
+    }
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

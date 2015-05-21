@@ -1,0 +1,7 @@
+{
+switch (field) {
+case COMPLETE_LATENCY_MS:
+    return Double.valueOf(get_complete_latency_ms());
+}
+throw new IllegalStateException();
+}

@@ -1,0 +1,37 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_component_id=true && (is_set_component_id());
+  list.add(present_component_id);
+  if (present_component_id)   list.add(component_id);
+  boolean present_component_type=true && (is_set_component_type());
+  list.add(present_component_type);
+  if (present_component_type)   list.add(component_type.getValue());
+  boolean present_topology_id=true && (is_set_topology_id());
+  list.add(present_topology_id);
+  if (present_topology_id)   list.add(topology_id);
+  boolean present_topology_name=true && (is_set_topology_name());
+  list.add(present_topology_name);
+  if (present_topology_name)   list.add(topology_name);
+  boolean present_num_executors=true && (is_set_num_executors());
+  list.add(present_num_executors);
+  if (present_num_executors)   list.add(num_executors);
+  boolean present_num_tasks=true && (is_set_num_tasks());
+  list.add(present_num_tasks);
+  if (present_num_tasks)   list.add(num_tasks);
+  boolean present_window_to_stats=true && (is_set_window_to_stats());
+  list.add(present_window_to_stats);
+  if (present_window_to_stats)   list.add(window_to_stats);
+  boolean present_gsid_to_input_stats=true && (is_set_gsid_to_input_stats());
+  list.add(present_gsid_to_input_stats);
+  if (present_gsid_to_input_stats)   list.add(gsid_to_input_stats);
+  boolean present_sid_to_output_stats=true && (is_set_sid_to_output_stats());
+  list.add(present_sid_to_output_stats);
+  if (present_sid_to_output_stats)   list.add(sid_to_output_stats);
+  boolean present_exec_stats=true && (is_set_exec_stats());
+  list.add(present_exec_stats);
+  if (present_exec_stats)   list.add(exec_stats);
+  boolean present_errors=true && (is_set_errors());
+  list.add(present_errors);
+  if (present_errors)   list.add(errors);
+  return list.hashCode();
+}

@@ -1,0 +1,8 @@
+{
+  this();
+  this.topology_id=topology_id;
+  this.component_id=component_id;
+  this.window=window;
+  this.is_include_sys=is_include_sys;
+  set_is_include_sys_isSet(true);
+}

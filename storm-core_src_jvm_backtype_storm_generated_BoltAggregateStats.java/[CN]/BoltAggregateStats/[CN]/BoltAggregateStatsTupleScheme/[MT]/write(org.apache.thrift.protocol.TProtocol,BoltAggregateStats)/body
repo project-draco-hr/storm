@@ -1,0 +1,29 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_execute_latency_ms()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_process_latency_ms()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_executed()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_capacity()) {
+    optionals.set(3);
+  }
+  oprot.writeBitSet(optionals,4);
+  if (struct.is_set_execute_latency_ms()) {
+    oprot.writeDouble(struct.execute_latency_ms);
+  }
+  if (struct.is_set_process_latency_ms()) {
+    oprot.writeDouble(struct.process_latency_ms);
+  }
+  if (struct.is_set_executed()) {
+    oprot.writeI64(struct.executed);
+  }
+  if (struct.is_set_capacity()) {
+    oprot.writeDouble(struct.capacity);
+  }
+}

@@ -1,0 +1,6 @@
+{
+  if (this.window_to_failed == null) {
+    this.window_to_failed=new HashMap<String,Long>();
+  }
+  this.window_to_failed.put(key,val);
+}

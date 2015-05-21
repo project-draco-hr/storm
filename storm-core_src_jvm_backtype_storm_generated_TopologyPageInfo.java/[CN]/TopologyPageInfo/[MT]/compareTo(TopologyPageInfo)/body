@@ -1,0 +1,137 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  lastComparison=Boolean.valueOf(is_set_id()).compareTo(other.is_set_id());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_id()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.id,other.id);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_name()).compareTo(other.is_set_name());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_name()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.name,other.name);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_uptime_secs()).compareTo(other.is_set_uptime_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_uptime_secs()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uptime_secs,other.uptime_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_status()).compareTo(other.is_set_status());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_status()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.status,other.status);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_num_tasks()).compareTo(other.is_set_num_tasks());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_num_tasks()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.num_tasks,other.num_tasks);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_num_workers()).compareTo(other.is_set_num_workers());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_num_workers()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.num_workers,other.num_workers);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_num_executors()).compareTo(other.is_set_num_executors());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_num_executors()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.num_executors,other.num_executors);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_topology_conf()).compareTo(other.is_set_topology_conf());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_topology_conf()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topology_conf,other.topology_conf);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_id_to_spout_agg_stats()).compareTo(other.is_set_id_to_spout_agg_stats());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_id_to_spout_agg_stats()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.id_to_spout_agg_stats,other.id_to_spout_agg_stats);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_id_to_bolt_agg_stats()).compareTo(other.is_set_id_to_bolt_agg_stats());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_id_to_bolt_agg_stats()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.id_to_bolt_agg_stats,other.id_to_bolt_agg_stats);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_sched_status()).compareTo(other.is_set_sched_status());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_sched_status()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.sched_status,other.sched_status);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_topology_stats()).compareTo(other.is_set_topology_stats());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_topology_stats()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topology_stats,other.topology_stats);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_owner()).compareTo(other.is_set_owner());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_owner()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.owner,other.owner);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

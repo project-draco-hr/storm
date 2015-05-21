@@ -1,0 +1,16 @@
+{
+switch (fieldId) {
+case 513:
+    return WINDOW_TO_EMITTED;
+case 514:
+  return WINDOW_TO_TRANSFERRED;
+case 515:
+return WINDOW_TO_COMPLETE_LATENCIES_MS;
+case 516:
+return WINDOW_TO_ACKED;
+case 517:
+return WINDOW_TO_FAILED;
+default :
+return null;
+}
+}

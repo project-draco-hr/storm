@@ -1,0 +1,65 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_window_to_emitted()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_window_to_transferred()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_window_to_complete_latencies_ms()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_window_to_acked()) {
+    optionals.set(3);
+  }
+  if (struct.is_set_window_to_failed()) {
+    optionals.set(4);
+  }
+  oprot.writeBitSet(optionals,5);
+  if (struct.is_set_window_to_emitted()) {
+{
+      oprot.writeI32(struct.window_to_emitted.size());
+      for (      Map.Entry<String,Long> _iter341 : struct.window_to_emitted.entrySet()) {
+        oprot.writeString(_iter341.getKey());
+        oprot.writeI64(_iter341.getValue());
+      }
+    }
+  }
+  if (struct.is_set_window_to_transferred()) {
+{
+      oprot.writeI32(struct.window_to_transferred.size());
+      for (      Map.Entry<String,Long> _iter342 : struct.window_to_transferred.entrySet()) {
+        oprot.writeString(_iter342.getKey());
+        oprot.writeI64(_iter342.getValue());
+      }
+    }
+  }
+  if (struct.is_set_window_to_complete_latencies_ms()) {
+{
+      oprot.writeI32(struct.window_to_complete_latencies_ms.size());
+      for (      Map.Entry<String,Double> _iter343 : struct.window_to_complete_latencies_ms.entrySet()) {
+        oprot.writeString(_iter343.getKey());
+        oprot.writeDouble(_iter343.getValue());
+      }
+    }
+  }
+  if (struct.is_set_window_to_acked()) {
+{
+      oprot.writeI32(struct.window_to_acked.size());
+      for (      Map.Entry<String,Long> _iter344 : struct.window_to_acked.entrySet()) {
+        oprot.writeString(_iter344.getKey());
+        oprot.writeI64(_iter344.getValue());
+      }
+    }
+  }
+  if (struct.is_set_window_to_failed()) {
+{
+      oprot.writeI32(struct.window_to_failed.size());
+      for (      Map.Entry<String,Long> _iter345 : struct.window_to_failed.entrySet()) {
+        oprot.writeString(_iter345.getKey());
+        oprot.writeI64(_iter345.getValue());
+      }
+    }
+  }
+}

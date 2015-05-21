@@ -1,0 +1,29 @@
+{
+  StringBuilder sb=new StringBuilder("BoltAggregateStats(");
+  boolean first=true;
+  if (is_set_execute_latency_ms()) {
+    sb.append("execute_latency_ms:");
+    sb.append(this.execute_latency_ms);
+    first=false;
+  }
+  if (is_set_process_latency_ms()) {
+    if (!first)     sb.append(", ");
+    sb.append("process_latency_ms:");
+    sb.append(this.process_latency_ms);
+    first=false;
+  }
+  if (is_set_executed()) {
+    if (!first)     sb.append(", ");
+    sb.append("executed:");
+    sb.append(this.executed);
+    first=false;
+  }
+  if (is_set_capacity()) {
+    if (!first)     sb.append(", ");
+    sb.append("capacity:");
+    sb.append(this.capacity);
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

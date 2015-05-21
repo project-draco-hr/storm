@@ -1,0 +1,12 @@
+{
+switch (field) {
+case COMPLETE_LATENCY_MS:
+    if (value == null) {
+      unset_complete_latency_ms();
+    }
+ else {
+      set_complete_latency_ms((Double)value);
+    }
+  break;
+}
+}

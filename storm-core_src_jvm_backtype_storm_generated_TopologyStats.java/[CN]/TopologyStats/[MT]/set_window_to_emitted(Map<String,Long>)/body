@@ -1,0 +1,3 @@
+{
+  this.window_to_emitted=window_to_emitted;
+}

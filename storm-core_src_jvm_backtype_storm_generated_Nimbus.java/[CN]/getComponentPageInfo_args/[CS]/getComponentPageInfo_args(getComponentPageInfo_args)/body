@@ -1,0 +1,13 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_topology_id()) {
+    this.topology_id=other.topology_id;
+  }
+  if (other.is_set_component_id()) {
+    this.component_id=other.component_id;
+  }
+  if (other.is_set_window()) {
+    this.window=other.window;
+  }
+  this.is_include_sys=other.is_include_sys;
+}

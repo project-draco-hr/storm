@@ -1,0 +1,13 @@
+{
+switch (field) {
+case TOPOLOGY_ID:
+    return get_topology_id();
+case COMPONENT_ID:
+  return get_component_id();
+case WINDOW:
+return get_window();
+case IS_INCLUDE_SYS:
+return Boolean.valueOf(is_is_include_sys());
+}
+throw new IllegalStateException();
+}

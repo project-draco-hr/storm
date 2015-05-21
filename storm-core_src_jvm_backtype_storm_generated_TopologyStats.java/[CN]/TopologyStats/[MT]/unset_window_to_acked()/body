@@ -1,0 +1,3 @@
+{
+  this.window_to_acked=null;
+}

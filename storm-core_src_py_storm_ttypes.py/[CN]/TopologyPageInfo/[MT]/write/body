@@ -1,0 +1,67 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('TopologyPageInfo')
+    if (self.id is not None):
+        oprot.writeFieldBegin('id', TType.STRING, 1)
+        oprot.writeString(self.id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.name is not None):
+        oprot.writeFieldBegin('name', TType.STRING, 513)
+        oprot.writeString(self.name.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.uptime_secs is not None):
+        oprot.writeFieldBegin('uptime_secs', TType.I32, 514)
+        oprot.writeI32(self.uptime_secs)
+        oprot.writeFieldEnd()
+    if (self.status is not None):
+        oprot.writeFieldBegin('status', TType.STRING, 515)
+        oprot.writeString(self.status.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.num_tasks is not None):
+        oprot.writeFieldBegin('num_tasks', TType.I32, 516)
+        oprot.writeI32(self.num_tasks)
+        oprot.writeFieldEnd()
+    if (self.num_workers is not None):
+        oprot.writeFieldBegin('num_workers', TType.I32, 517)
+        oprot.writeI32(self.num_workers)
+        oprot.writeFieldEnd()
+    if (self.num_executors is not None):
+        oprot.writeFieldBegin('num_executors', TType.I32, 518)
+        oprot.writeI32(self.num_executors)
+        oprot.writeFieldEnd()
+    if (self.topology_conf is not None):
+        oprot.writeFieldBegin('topology_conf', TType.STRING, 519)
+        oprot.writeString(self.topology_conf.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.id_to_spout_agg_stats is not None):
+        oprot.writeFieldBegin('id_to_spout_agg_stats', TType.MAP, 520)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.id_to_spout_agg_stats))
+        for (kiter342, viter343) in self.id_to_spout_agg_stats.items():
+            oprot.writeString(kiter342.encode('utf-8'))
+            viter343.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.id_to_bolt_agg_stats is not None):
+        oprot.writeFieldBegin('id_to_bolt_agg_stats', TType.MAP, 521)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.id_to_bolt_agg_stats))
+        for (kiter344, viter345) in self.id_to_bolt_agg_stats.items():
+            oprot.writeString(kiter344.encode('utf-8'))
+            viter345.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.sched_status is not None):
+        oprot.writeFieldBegin('sched_status', TType.STRING, 522)
+        oprot.writeString(self.sched_status.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.topology_stats is not None):
+        oprot.writeFieldBegin('topology_stats', TType.STRUCT, 523)
+        self.topology_stats.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.owner is not None):
+        oprot.writeFieldBegin('owner', TType.STRING, 524)
+        oprot.writeString(self.owner.encode('utf-8'))
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

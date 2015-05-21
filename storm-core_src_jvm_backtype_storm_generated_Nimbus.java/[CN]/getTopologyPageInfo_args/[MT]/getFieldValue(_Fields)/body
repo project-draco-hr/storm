@@ -1,0 +1,11 @@
+{
+switch (field) {
+case ID:
+    return get_id();
+case WINDOW:
+  return get_window();
+case IS_INCLUDE_SYS:
+return Boolean.valueOf(is_is_include_sys());
+}
+throw new IllegalStateException();
+}

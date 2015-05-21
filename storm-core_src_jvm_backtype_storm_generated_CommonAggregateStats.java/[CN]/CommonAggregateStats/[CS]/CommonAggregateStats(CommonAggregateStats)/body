@@ -1,0 +1,9 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  this.num_executors=other.num_executors;
+  this.num_tasks=other.num_tasks;
+  this.emitted=other.emitted;
+  this.transferred=other.transferred;
+  this.acked=other.acked;
+  this.failed=other.failed;
+}

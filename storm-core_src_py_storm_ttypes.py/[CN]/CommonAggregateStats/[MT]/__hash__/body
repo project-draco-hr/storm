@@ -1,0 +1,9 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.num_executors))
+    value = ((value * 31) ^ hash(self.num_tasks))
+    value = ((value * 31) ^ hash(self.emitted))
+    value = ((value * 31) ^ hash(self.transferred))
+    value = ((value * 31) ^ hash(self.acked))
+    value = ((value * 31) ^ hash(self.failed))
+    return value

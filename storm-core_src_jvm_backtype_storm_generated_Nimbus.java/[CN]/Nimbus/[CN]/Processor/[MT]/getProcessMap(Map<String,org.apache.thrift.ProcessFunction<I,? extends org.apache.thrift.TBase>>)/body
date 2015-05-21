@@ -16,6 +16,8 @@
   processMap.put("getClusterInfo",new getClusterInfo());
   processMap.put("getTopologyInfo",new getTopologyInfo());
   processMap.put("getTopologyInfoWithOpts",new getTopologyInfoWithOpts());
+  processMap.put("getTopologyPageInfo",new getTopologyPageInfo());
+  processMap.put("getComponentPageInfo",new getComponentPageInfo());
   processMap.put("getTopologyConf",new getTopologyConf());
   processMap.put("getTopology",new getTopology());
   processMap.put("getUserTopology",new getUserTopology());

@@ -1,0 +1,12 @@
+self
+component_id
+component_type
+topology_id
+topology_name
+num_executors
+num_tasks
+window_to_stats
+gsid_to_input_stats
+sid_to_output_stats
+exec_stats
+errors

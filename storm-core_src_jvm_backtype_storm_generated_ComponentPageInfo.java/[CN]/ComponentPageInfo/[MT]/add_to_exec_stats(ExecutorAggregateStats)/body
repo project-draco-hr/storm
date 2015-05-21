@@ -1,0 +1,6 @@
+{
+  if (this.exec_stats == null) {
+    this.exec_stats=new ArrayList<ExecutorAggregateStats>();
+  }
+  this.exec_stats.add(elem);
+}

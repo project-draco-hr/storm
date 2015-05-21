@@ -1,0 +1,34 @@
+{
+  if (that == null)   return false;
+  boolean this_present_window_to_emitted=true && this.is_set_window_to_emitted();
+  boolean that_present_window_to_emitted=true && that.is_set_window_to_emitted();
+  if (this_present_window_to_emitted || that_present_window_to_emitted) {
+    if (!(this_present_window_to_emitted && that_present_window_to_emitted))     return false;
+    if (!this.window_to_emitted.equals(that.window_to_emitted))     return false;
+  }
+  boolean this_present_window_to_transferred=true && this.is_set_window_to_transferred();
+  boolean that_present_window_to_transferred=true && that.is_set_window_to_transferred();
+  if (this_present_window_to_transferred || that_present_window_to_transferred) {
+    if (!(this_present_window_to_transferred && that_present_window_to_transferred))     return false;
+    if (!this.window_to_transferred.equals(that.window_to_transferred))     return false;
+  }
+  boolean this_present_window_to_complete_latencies_ms=true && this.is_set_window_to_complete_latencies_ms();
+  boolean that_present_window_to_complete_latencies_ms=true && that.is_set_window_to_complete_latencies_ms();
+  if (this_present_window_to_complete_latencies_ms || that_present_window_to_complete_latencies_ms) {
+    if (!(this_present_window_to_complete_latencies_ms && that_present_window_to_complete_latencies_ms))     return false;
+    if (!this.window_to_complete_latencies_ms.equals(that.window_to_complete_latencies_ms))     return false;
+  }
+  boolean this_present_window_to_acked=true && this.is_set_window_to_acked();
+  boolean that_present_window_to_acked=true && that.is_set_window_to_acked();
+  if (this_present_window_to_acked || that_present_window_to_acked) {
+    if (!(this_present_window_to_acked && that_present_window_to_acked))     return false;
+    if (!this.window_to_acked.equals(that.window_to_acked))     return false;
+  }
+  boolean this_present_window_to_failed=true && this.is_set_window_to_failed();
+  boolean that_present_window_to_failed=true && that.is_set_window_to_failed();
+  if (this_present_window_to_failed || that_present_window_to_failed) {
+    if (!(this_present_window_to_failed && that_present_window_to_failed))     return false;
+    if (!this.window_to_failed.equals(that.window_to_failed))     return false;
+  }
+  return true;
+}

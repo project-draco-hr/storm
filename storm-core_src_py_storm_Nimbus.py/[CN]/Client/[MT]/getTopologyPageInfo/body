@@ -1,0 +1,4 @@
+def getTopologyPageInfo(self, id, window, is_include_sys):
+    '\n    Parameters:\n     - id\n     - window\n     - is_include_sys\n    '
+    self.send_getTopologyPageInfo(id, window, is_include_sys)
+    return self.recv_getTopologyPageInfo()

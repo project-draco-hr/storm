@@ -19,9 +19,9 @@
       oprot.writeFieldBegin(COMPONENT_EXECUTORS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,struct.component_executors.size()));
-        for (        Map.Entry<String,Integer> _iter420 : struct.component_executors.entrySet()) {
-          oprot.writeString(_iter420.getKey());
-          oprot.writeI32(_iter420.getValue());
+        for (        Map.Entry<String,Integer> _iter536 : struct.component_executors.entrySet()) {
+          oprot.writeString(_iter536.getKey());
+          oprot.writeI32(_iter536.getValue());
         }
         oprot.writeMapEnd();
       }

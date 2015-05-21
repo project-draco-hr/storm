@@ -23,9 +23,9 @@
   if (struct.is_set_component_executors()) {
 {
       oprot.writeI32(struct.component_executors.size());
-      for (      Map.Entry<String,Integer> _iter421 : struct.component_executors.entrySet()) {
-        oprot.writeString(_iter421.getKey());
-        oprot.writeI32(_iter421.getValue());
+      for (      Map.Entry<String,Integer> _iter537 : struct.component_executors.entrySet()) {
+        oprot.writeString(_iter537.getKey());
+        oprot.writeI32(_iter537.getValue());
       }
     }
   }

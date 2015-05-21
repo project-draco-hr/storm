@@ -1,0 +1,3 @@
+I iface
+getTopologyPageInfo_args args
+org.apache.thrift.async.AsyncMethodCallback<TopologyPageInfo> resultHandler

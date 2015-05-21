@@ -1,0 +1,22 @@
+{
+  _Fields setField=_Fields.findByThriftId(fieldID);
+  if (setField != null) {
+switch (setField) {
+case BOLT:
+      BoltAggregateStats bolt;
+    bolt=new BoltAggregateStats();
+  bolt.read(iprot);
+return bolt;
+case SPOUT:
+SpoutAggregateStats spout;
+spout=new SpoutAggregateStats();
+spout.read(iprot);
+return spout;
+default :
+throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+}
+}
+ else {
+throw new TProtocolException("Couldn't find a field with field id " + fieldID);
+}
+}

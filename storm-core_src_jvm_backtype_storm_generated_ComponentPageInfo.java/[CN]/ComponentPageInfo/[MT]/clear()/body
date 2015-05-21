@@ -1,0 +1,15 @@
+{
+  this.component_id=null;
+  this.component_type=null;
+  this.topology_id=null;
+  this.topology_name=null;
+  set_num_executors_isSet(false);
+  this.num_executors=0;
+  set_num_tasks_isSet(false);
+  this.num_tasks=0;
+  this.window_to_stats=null;
+  this.gsid_to_input_stats=null;
+  this.sid_to_output_stats=null;
+  this.exec_stats=null;
+  this.errors=null;
+}

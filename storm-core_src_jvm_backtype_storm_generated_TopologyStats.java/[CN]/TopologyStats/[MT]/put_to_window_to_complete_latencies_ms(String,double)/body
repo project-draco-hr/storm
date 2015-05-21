@@ -1,0 +1,6 @@
+{
+  if (this.window_to_complete_latencies_ms == null) {
+    this.window_to_complete_latencies_ms=new HashMap<String,Double>();
+  }
+  this.window_to_complete_latencies_ms.put(key,val);
+}

@@ -1,0 +1,23 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(4);
+  if (incoming.get(0)) {
+    struct.type=backtype.storm.generated.ComponentType.findByValue(iprot.readI32());
+    struct.set_type_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.common_stats=new CommonAggregateStats();
+    struct.common_stats.read(iprot);
+    struct.set_common_stats_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.specific_stats=new SpecificAggregateStats();
+    struct.specific_stats.read(iprot);
+    struct.set_specific_stats_isSet(true);
+  }
+  if (incoming.get(3)) {
+    struct.last_error=new ErrorInfo();
+    struct.last_error.read(iprot);
+    struct.set_last_error_isSet(true);
+  }
+}

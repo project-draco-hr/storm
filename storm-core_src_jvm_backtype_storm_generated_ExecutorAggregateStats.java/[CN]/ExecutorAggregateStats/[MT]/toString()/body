@@ -1,0 +1,27 @@
+{
+  StringBuilder sb=new StringBuilder("ExecutorAggregateStats(");
+  boolean first=true;
+  if (is_set_exec_summary()) {
+    sb.append("exec_summary:");
+    if (this.exec_summary == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.exec_summary);
+    }
+    first=false;
+  }
+  if (is_set_stats()) {
+    if (!first)     sb.append(", ");
+    sb.append("stats:");
+    if (this.stats == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.stats);
+    }
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

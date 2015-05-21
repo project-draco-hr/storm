@@ -1,0 +1,14 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case ID:
+    return is_set_id();
+case WINDOW:
+  return is_set_window();
+case IS_INCLUDE_SYS:
+return is_set_is_include_sys();
+}
+throw new IllegalStateException();
+}

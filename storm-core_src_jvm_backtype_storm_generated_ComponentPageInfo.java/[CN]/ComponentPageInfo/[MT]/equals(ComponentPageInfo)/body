@@ -1,0 +1,70 @@
+{
+  if (that == null)   return false;
+  boolean this_present_component_id=true && this.is_set_component_id();
+  boolean that_present_component_id=true && that.is_set_component_id();
+  if (this_present_component_id || that_present_component_id) {
+    if (!(this_present_component_id && that_present_component_id))     return false;
+    if (!this.component_id.equals(that.component_id))     return false;
+  }
+  boolean this_present_component_type=true && this.is_set_component_type();
+  boolean that_present_component_type=true && that.is_set_component_type();
+  if (this_present_component_type || that_present_component_type) {
+    if (!(this_present_component_type && that_present_component_type))     return false;
+    if (!this.component_type.equals(that.component_type))     return false;
+  }
+  boolean this_present_topology_id=true && this.is_set_topology_id();
+  boolean that_present_topology_id=true && that.is_set_topology_id();
+  if (this_present_topology_id || that_present_topology_id) {
+    if (!(this_present_topology_id && that_present_topology_id))     return false;
+    if (!this.topology_id.equals(that.topology_id))     return false;
+  }
+  boolean this_present_topology_name=true && this.is_set_topology_name();
+  boolean that_present_topology_name=true && that.is_set_topology_name();
+  if (this_present_topology_name || that_present_topology_name) {
+    if (!(this_present_topology_name && that_present_topology_name))     return false;
+    if (!this.topology_name.equals(that.topology_name))     return false;
+  }
+  boolean this_present_num_executors=true && this.is_set_num_executors();
+  boolean that_present_num_executors=true && that.is_set_num_executors();
+  if (this_present_num_executors || that_present_num_executors) {
+    if (!(this_present_num_executors && that_present_num_executors))     return false;
+    if (this.num_executors != that.num_executors)     return false;
+  }
+  boolean this_present_num_tasks=true && this.is_set_num_tasks();
+  boolean that_present_num_tasks=true && that.is_set_num_tasks();
+  if (this_present_num_tasks || that_present_num_tasks) {
+    if (!(this_present_num_tasks && that_present_num_tasks))     return false;
+    if (this.num_tasks != that.num_tasks)     return false;
+  }
+  boolean this_present_window_to_stats=true && this.is_set_window_to_stats();
+  boolean that_present_window_to_stats=true && that.is_set_window_to_stats();
+  if (this_present_window_to_stats || that_present_window_to_stats) {
+    if (!(this_present_window_to_stats && that_present_window_to_stats))     return false;
+    if (!this.window_to_stats.equals(that.window_to_stats))     return false;
+  }
+  boolean this_present_gsid_to_input_stats=true && this.is_set_gsid_to_input_stats();
+  boolean that_present_gsid_to_input_stats=true && that.is_set_gsid_to_input_stats();
+  if (this_present_gsid_to_input_stats || that_present_gsid_to_input_stats) {
+    if (!(this_present_gsid_to_input_stats && that_present_gsid_to_input_stats))     return false;
+    if (!this.gsid_to_input_stats.equals(that.gsid_to_input_stats))     return false;
+  }
+  boolean this_present_sid_to_output_stats=true && this.is_set_sid_to_output_stats();
+  boolean that_present_sid_to_output_stats=true && that.is_set_sid_to_output_stats();
+  if (this_present_sid_to_output_stats || that_present_sid_to_output_stats) {
+    if (!(this_present_sid_to_output_stats && that_present_sid_to_output_stats))     return false;
+    if (!this.sid_to_output_stats.equals(that.sid_to_output_stats))     return false;
+  }
+  boolean this_present_exec_stats=true && this.is_set_exec_stats();
+  boolean that_present_exec_stats=true && that.is_set_exec_stats();
+  if (this_present_exec_stats || that_present_exec_stats) {
+    if (!(this_present_exec_stats && that_present_exec_stats))     return false;
+    if (!this.exec_stats.equals(that.exec_stats))     return false;
+  }
+  boolean this_present_errors=true && this.is_set_errors();
+  boolean that_present_errors=true && that.is_set_errors();
+  if (this_present_errors || that_present_errors) {
+    if (!(this_present_errors && that_present_errors))     return false;
+    if (!this.errors.equals(that.errors))     return false;
+  }
+  return true;
+}

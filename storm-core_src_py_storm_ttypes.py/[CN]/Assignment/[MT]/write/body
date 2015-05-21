@@ -10,31 +10,31 @@ def write(self, oprot):
     if (self.node_host is not None):
         oprot.writeFieldBegin('node_host', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.node_host))
-        for (kiter364, viter365) in self.node_host.items():
-            oprot.writeString(kiter364.encode('utf-8'))
-            oprot.writeString(viter365.encode('utf-8'))
+        for (kiter468, viter469) in self.node_host.items():
+            oprot.writeString(kiter468.encode('utf-8'))
+            oprot.writeString(viter469.encode('utf-8'))
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.executor_node_port is not None):
         oprot.writeFieldBegin('executor_node_port', TType.MAP, 3)
         oprot.writeMapBegin(TType.LIST, TType.STRUCT, len(self.executor_node_port))
-        for (kiter366, viter367) in self.executor_node_port.items():
-            oprot.writeListBegin(TType.I64, len(kiter366))
-            for iter368 in kiter366:
-                oprot.writeI64(iter368)
+        for (kiter470, viter471) in self.executor_node_port.items():
+            oprot.writeListBegin(TType.I64, len(kiter470))
+            for iter472 in kiter470:
+                oprot.writeI64(iter472)
             oprot.writeListEnd()
-            viter367.write(oprot)
+            viter471.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.executor_start_time_secs is not None):
         oprot.writeFieldBegin('executor_start_time_secs', TType.MAP, 4)
         oprot.writeMapBegin(TType.LIST, TType.I64, len(self.executor_start_time_secs))
-        for (kiter369, viter370) in self.executor_start_time_secs.items():
-            oprot.writeListBegin(TType.I64, len(kiter369))
-            for iter371 in kiter369:
-                oprot.writeI64(iter371)
+        for (kiter473, viter474) in self.executor_start_time_secs.items():
+            oprot.writeListBegin(TType.I64, len(kiter473))
+            for iter475 in kiter473:
+                oprot.writeI64(iter475)
             oprot.writeListEnd()
-            oprot.writeI64(viter370)
+            oprot.writeI64(viter474)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

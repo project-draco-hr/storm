@@ -1,0 +1,26 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.is_set_execute_latency_ms()) {
+    oprot.writeFieldBegin(EXECUTE_LATENCY_MS_FIELD_DESC);
+    oprot.writeDouble(struct.execute_latency_ms);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_process_latency_ms()) {
+    oprot.writeFieldBegin(PROCESS_LATENCY_MS_FIELD_DESC);
+    oprot.writeDouble(struct.process_latency_ms);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_executed()) {
+    oprot.writeFieldBegin(EXECUTED_FIELD_DESC);
+    oprot.writeI64(struct.executed);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_capacity()) {
+    oprot.writeFieldBegin(CAPACITY_FIELD_DESC);
+    oprot.writeDouble(struct.capacity);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

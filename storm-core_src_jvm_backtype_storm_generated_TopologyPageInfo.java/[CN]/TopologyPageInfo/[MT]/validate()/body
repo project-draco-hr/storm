@@ -1,0 +1,8 @@
+{
+  if (!is_set_id()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'id' is unset! Struct:" + toString());
+  }
+  if (topology_stats != null) {
+    topology_stats.validate();
+  }
+}

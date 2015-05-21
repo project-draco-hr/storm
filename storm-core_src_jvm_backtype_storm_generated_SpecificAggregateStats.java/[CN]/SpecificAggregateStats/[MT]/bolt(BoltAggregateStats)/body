@@ -1,0 +1,5 @@
+{
+  SpecificAggregateStats x=new SpecificAggregateStats();
+  x.set_bolt(value);
+  return x;
+}

@@ -1,0 +1,4 @@
+def validate(self):
+    if (self.id is None):
+        raise TProtocol.TProtocolException(message='Required field id is unset!')
+    return

@@ -1,0 +1,3 @@
+{
+  return (this.exec_stats == null) ? null : this.exec_stats.iterator();
+}

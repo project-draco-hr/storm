@@ -1,0 +1,7 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  this.execute_latency_ms=other.execute_latency_ms;
+  this.process_latency_ms=other.process_latency_ms;
+  this.executed=other.executed;
+  this.capacity=other.capacity;
+}

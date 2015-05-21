@@ -1,0 +1,31 @@
+{
+switch (field) {
+case ID:
+    return get_id();
+case NAME:
+  return get_name();
+case UPTIME_SECS:
+return Integer.valueOf(get_uptime_secs());
+case STATUS:
+return get_status();
+case NUM_TASKS:
+return Integer.valueOf(get_num_tasks());
+case NUM_WORKERS:
+return Integer.valueOf(get_num_workers());
+case NUM_EXECUTORS:
+return Integer.valueOf(get_num_executors());
+case TOPOLOGY_CONF:
+return get_topology_conf();
+case ID_TO_SPOUT_AGG_STATS:
+return get_id_to_spout_agg_stats();
+case ID_TO_BOLT_AGG_STATS:
+return get_id_to_bolt_agg_stats();
+case SCHED_STATUS:
+return get_sched_status();
+case TOPOLOGY_STATS:
+return get_topology_stats();
+case OWNER:
+return get_owner();
+}
+throw new IllegalStateException();
+}

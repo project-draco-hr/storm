@@ -1,0 +1,8 @@
+{
+  if (!is_set_component_id()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'component_id' is unset! Struct:" + toString());
+  }
+  if (!is_set_component_type()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'component_type' is unset! Struct:" + toString());
+  }
+}

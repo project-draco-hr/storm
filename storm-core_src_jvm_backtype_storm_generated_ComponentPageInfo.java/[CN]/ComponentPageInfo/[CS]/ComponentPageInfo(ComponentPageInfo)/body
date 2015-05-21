@@ -1,0 +1,64 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_component_id()) {
+    this.component_id=other.component_id;
+  }
+  if (other.is_set_component_type()) {
+    this.component_type=other.component_type;
+  }
+  if (other.is_set_topology_id()) {
+    this.topology_id=other.topology_id;
+  }
+  if (other.is_set_topology_name()) {
+    this.topology_name=other.topology_name;
+  }
+  this.num_executors=other.num_executors;
+  this.num_tasks=other.num_tasks;
+  if (other.is_set_window_to_stats()) {
+    Map<String,ComponentAggregateStats> __this__window_to_stats=new HashMap<String,ComponentAggregateStats>(other.window_to_stats.size());
+    for (    Map.Entry<String,ComponentAggregateStats> other_element : other.window_to_stats.entrySet()) {
+      String other_element_key=other_element.getKey();
+      ComponentAggregateStats other_element_value=other_element.getValue();
+      String __this__window_to_stats_copy_key=other_element_key;
+      ComponentAggregateStats __this__window_to_stats_copy_value=new ComponentAggregateStats(other_element_value);
+      __this__window_to_stats.put(__this__window_to_stats_copy_key,__this__window_to_stats_copy_value);
+    }
+    this.window_to_stats=__this__window_to_stats;
+  }
+  if (other.is_set_gsid_to_input_stats()) {
+    Map<GlobalStreamId,ComponentAggregateStats> __this__gsid_to_input_stats=new HashMap<GlobalStreamId,ComponentAggregateStats>(other.gsid_to_input_stats.size());
+    for (    Map.Entry<GlobalStreamId,ComponentAggregateStats> other_element : other.gsid_to_input_stats.entrySet()) {
+      GlobalStreamId other_element_key=other_element.getKey();
+      ComponentAggregateStats other_element_value=other_element.getValue();
+      GlobalStreamId __this__gsid_to_input_stats_copy_key=new GlobalStreamId(other_element_key);
+      ComponentAggregateStats __this__gsid_to_input_stats_copy_value=new ComponentAggregateStats(other_element_value);
+      __this__gsid_to_input_stats.put(__this__gsid_to_input_stats_copy_key,__this__gsid_to_input_stats_copy_value);
+    }
+    this.gsid_to_input_stats=__this__gsid_to_input_stats;
+  }
+  if (other.is_set_sid_to_output_stats()) {
+    Map<String,ComponentAggregateStats> __this__sid_to_output_stats=new HashMap<String,ComponentAggregateStats>(other.sid_to_output_stats.size());
+    for (    Map.Entry<String,ComponentAggregateStats> other_element : other.sid_to_output_stats.entrySet()) {
+      String other_element_key=other_element.getKey();
+      ComponentAggregateStats other_element_value=other_element.getValue();
+      String __this__sid_to_output_stats_copy_key=other_element_key;
+      ComponentAggregateStats __this__sid_to_output_stats_copy_value=new ComponentAggregateStats(other_element_value);
+      __this__sid_to_output_stats.put(__this__sid_to_output_stats_copy_key,__this__sid_to_output_stats_copy_value);
+    }
+    this.sid_to_output_stats=__this__sid_to_output_stats;
+  }
+  if (other.is_set_exec_stats()) {
+    List<ExecutorAggregateStats> __this__exec_stats=new ArrayList<ExecutorAggregateStats>(other.exec_stats.size());
+    for (    ExecutorAggregateStats other_element : other.exec_stats) {
+      __this__exec_stats.add(new ExecutorAggregateStats(other_element));
+    }
+    this.exec_stats=__this__exec_stats;
+  }
+  if (other.is_set_errors()) {
+    List<ErrorInfo> __this__errors=new ArrayList<ErrorInfo>(other.errors.size());
+    for (    ErrorInfo other_element : other.errors) {
+      __this__errors.add(new ErrorInfo(other_element));
+    }
+    this.errors=__this__errors;
+  }
+}

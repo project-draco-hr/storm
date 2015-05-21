@@ -1,0 +1,30 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case COMPONENT_ID:
+    return is_set_component_id();
+case COMPONENT_TYPE:
+  return is_set_component_type();
+case TOPOLOGY_ID:
+return is_set_topology_id();
+case TOPOLOGY_NAME:
+return is_set_topology_name();
+case NUM_EXECUTORS:
+return is_set_num_executors();
+case NUM_TASKS:
+return is_set_num_tasks();
+case WINDOW_TO_STATS:
+return is_set_window_to_stats();
+case GSID_TO_INPUT_STATS:
+return is_set_gsid_to_input_stats();
+case SID_TO_OUTPUT_STATS:
+return is_set_sid_to_output_stats();
+case EXEC_STATS:
+return is_set_exec_stats();
+case ERRORS:
+return is_set_errors();
+}
+throw new IllegalStateException();
+}

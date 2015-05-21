@@ -1,0 +1,3 @@
+def __init__(self, exec_summary=None, stats=None):
+    self.exec_summary = exec_summary
+    self.stats = stats

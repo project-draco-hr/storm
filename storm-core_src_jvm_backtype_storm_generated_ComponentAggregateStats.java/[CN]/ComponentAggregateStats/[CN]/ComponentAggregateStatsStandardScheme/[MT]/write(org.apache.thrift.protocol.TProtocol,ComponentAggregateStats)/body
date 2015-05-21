@@ -1,0 +1,34 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.type != null) {
+    if (struct.is_set_type()) {
+      oprot.writeFieldBegin(TYPE_FIELD_DESC);
+      oprot.writeI32(struct.type.getValue());
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.common_stats != null) {
+    if (struct.is_set_common_stats()) {
+      oprot.writeFieldBegin(COMMON_STATS_FIELD_DESC);
+      struct.common_stats.write(oprot);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.specific_stats != null) {
+    if (struct.is_set_specific_stats()) {
+      oprot.writeFieldBegin(SPECIFIC_STATS_FIELD_DESC);
+      struct.specific_stats.write(oprot);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.last_error != null) {
+    if (struct.is_set_last_error()) {
+      oprot.writeFieldBegin(LAST_ERROR_FIELD_DESC);
+      struct.last_error.write(oprot);
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

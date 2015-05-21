@@ -37,14 +37,14 @@ break;
 case 4:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map416=iprot.readMapBegin();
-struct.component_executors=new HashMap<String,Integer>(2 * _map416.size);
-String _key417;
-int _val418;
-for (int _i419=0; _i419 < _map416.size; ++_i419) {
-_key417=iprot.readString();
-_val418=iprot.readI32();
-struct.component_executors.put(_key417,_val418);
+org.apache.thrift.protocol.TMap _map532=iprot.readMapBegin();
+struct.component_executors=new HashMap<String,Integer>(2 * _map532.size);
+String _key533;
+int _val534;
+for (int _i535=0; _i535 < _map532.size; ++_i535) {
+_key533=iprot.readString();
+_val534=iprot.readI32();
+struct.component_executors.put(_key533,_val534);
 }
 iprot.readMapEnd();
 }

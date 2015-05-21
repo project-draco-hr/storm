@@ -1,0 +1,41 @@
+{
+  StringBuilder sb=new StringBuilder("CommonAggregateStats(");
+  boolean first=true;
+  if (is_set_num_executors()) {
+    sb.append("num_executors:");
+    sb.append(this.num_executors);
+    first=false;
+  }
+  if (is_set_num_tasks()) {
+    if (!first)     sb.append(", ");
+    sb.append("num_tasks:");
+    sb.append(this.num_tasks);
+    first=false;
+  }
+  if (is_set_emitted()) {
+    if (!first)     sb.append(", ");
+    sb.append("emitted:");
+    sb.append(this.emitted);
+    first=false;
+  }
+  if (is_set_transferred()) {
+    if (!first)     sb.append(", ");
+    sb.append("transferred:");
+    sb.append(this.transferred);
+    first=false;
+  }
+  if (is_set_acked()) {
+    if (!first)     sb.append(", ");
+    sb.append("acked:");
+    sb.append(this.acked);
+    first=false;
+  }
+  if (is_set_failed()) {
+    if (!first)     sb.append(", ");
+    sb.append("failed:");
+    sb.append(this.failed);
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

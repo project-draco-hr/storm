@@ -19,13 +19,13 @@ case 1:
 case 2:
   if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-      org.apache.thrift.protocol.TList _list446=iprot.readListBegin();
-      struct.executors=new ArrayList<ExecutorInfo>(_list446.size);
-      ExecutorInfo _elem447;
-      for (int _i448=0; _i448 < _list446.size; ++_i448) {
-        _elem447=new ExecutorInfo();
-        _elem447.read(iprot);
-        struct.executors.add(_elem447);
+      org.apache.thrift.protocol.TList _list562=iprot.readListBegin();
+      struct.executors=new ArrayList<ExecutorInfo>(_list562.size);
+      ExecutorInfo _elem563;
+      for (int _i564=0; _i564 < _list562.size; ++_i564) {
+        _elem563=new ExecutorInfo();
+        _elem563.read(iprot);
+        struct.executors.add(_elem563);
       }
       iprot.readListEnd();
     }

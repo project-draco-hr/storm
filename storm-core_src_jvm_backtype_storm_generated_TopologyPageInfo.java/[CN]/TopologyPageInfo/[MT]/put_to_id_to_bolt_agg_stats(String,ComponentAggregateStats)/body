@@ -1,0 +1,6 @@
+{
+  if (this.id_to_bolt_agg_stats == null) {
+    this.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>();
+  }
+  this.id_to_bolt_agg_stats.put(key,val);
+}

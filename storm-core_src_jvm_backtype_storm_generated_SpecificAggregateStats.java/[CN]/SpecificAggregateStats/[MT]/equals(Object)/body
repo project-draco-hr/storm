@@ -1,0 +1,8 @@
+{
+  if (other instanceof SpecificAggregateStats) {
+    return equals((SpecificAggregateStats)other);
+  }
+ else {
+    return false;
+  }
+}

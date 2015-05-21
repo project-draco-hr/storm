@@ -1,0 +1,6 @@
+{
+  checkReady();
+  getComponentPageInfo_call method_call=new getComponentPageInfo_call(topology_id,component_id,window,is_include_sys,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

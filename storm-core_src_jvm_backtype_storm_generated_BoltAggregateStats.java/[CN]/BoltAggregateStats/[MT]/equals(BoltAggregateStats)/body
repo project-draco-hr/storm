@@ -1,0 +1,28 @@
+{
+  if (that == null)   return false;
+  boolean this_present_execute_latency_ms=true && this.is_set_execute_latency_ms();
+  boolean that_present_execute_latency_ms=true && that.is_set_execute_latency_ms();
+  if (this_present_execute_latency_ms || that_present_execute_latency_ms) {
+    if (!(this_present_execute_latency_ms && that_present_execute_latency_ms))     return false;
+    if (this.execute_latency_ms != that.execute_latency_ms)     return false;
+  }
+  boolean this_present_process_latency_ms=true && this.is_set_process_latency_ms();
+  boolean that_present_process_latency_ms=true && that.is_set_process_latency_ms();
+  if (this_present_process_latency_ms || that_present_process_latency_ms) {
+    if (!(this_present_process_latency_ms && that_present_process_latency_ms))     return false;
+    if (this.process_latency_ms != that.process_latency_ms)     return false;
+  }
+  boolean this_present_executed=true && this.is_set_executed();
+  boolean that_present_executed=true && that.is_set_executed();
+  if (this_present_executed || that_present_executed) {
+    if (!(this_present_executed && that_present_executed))     return false;
+    if (this.executed != that.executed)     return false;
+  }
+  boolean this_present_capacity=true && this.is_set_capacity();
+  boolean that_present_capacity=true && that.is_set_capacity();
+  if (this_present_capacity || that_present_capacity) {
+    if (!(this_present_capacity && that_present_capacity))     return false;
+    if (this.capacity != that.capacity)     return false;
+  }
+  return true;
+}

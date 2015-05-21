@@ -1,0 +1,11 @@
+{
+  StringBuilder sb=new StringBuilder("SpoutAggregateStats(");
+  boolean first=true;
+  if (is_set_complete_latency_ms()) {
+    sb.append("complete_latency_ms:");
+    sb.append(this.complete_latency_ms);
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

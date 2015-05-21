@@ -1,0 +1,4 @@
+{
+  this.process_latency_ms=process_latency_ms;
+  set_process_latency_ms_isSet(true);
+}

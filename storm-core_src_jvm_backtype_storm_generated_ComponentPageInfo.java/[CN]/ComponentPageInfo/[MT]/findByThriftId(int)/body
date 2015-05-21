@@ -1,0 +1,28 @@
+{
+switch (fieldId) {
+case 1:
+    return COMPONENT_ID;
+case 2:
+  return COMPONENT_TYPE;
+case 513:
+return TOPOLOGY_ID;
+case 514:
+return TOPOLOGY_NAME;
+case 515:
+return NUM_EXECUTORS;
+case 516:
+return NUM_TASKS;
+case 517:
+return WINDOW_TO_STATS;
+case 518:
+return GSID_TO_INPUT_STATS;
+case 519:
+return SID_TO_OUTPUT_STATS;
+case 520:
+return EXEC_STATS;
+case 521:
+return ERRORS;
+default :
+return null;
+}
+}

@@ -5,9 +5,9 @@
     oprot.writeFieldBegin(APPROVED_WORKERS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,struct.approved_workers.size()));
-      for (      Map.Entry<String,Integer> _iter458 : struct.approved_workers.entrySet()) {
-        oprot.writeString(_iter458.getKey());
-        oprot.writeI32(_iter458.getValue());
+      for (      Map.Entry<String,Integer> _iter574 : struct.approved_workers.entrySet()) {
+        oprot.writeString(_iter574.getKey());
+        oprot.writeI32(_iter574.getValue());
       }
       oprot.writeMapEnd();
     }

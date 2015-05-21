@@ -25,31 +25,31 @@ def read(self, iprot):
         elif (fid == 4):
             if (ftype == TType.LIST):
                 self.used_ports = []
-                (_etype304, _size301) = iprot.readListBegin()
-                for _i305 in xrange(_size301):
-                    _elem306 = iprot.readI64()
-                    self.used_ports.append(_elem306)
+                (_etype408, _size405) = iprot.readListBegin()
+                for _i409 in xrange(_size405):
+                    _elem410 = iprot.readI64()
+                    self.used_ports.append(_elem410)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 5):
             if (ftype == TType.LIST):
                 self.meta = []
-                (_etype310, _size307) = iprot.readListBegin()
-                for _i311 in xrange(_size307):
-                    _elem312 = iprot.readI64()
-                    self.meta.append(_elem312)
+                (_etype414, _size411) = iprot.readListBegin()
+                for _i415 in xrange(_size411):
+                    _elem416 = iprot.readI64()
+                    self.meta.append(_elem416)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 6):
             if (ftype == TType.MAP):
                 self.scheduler_meta = {}
-                (_ktype314, _vtype315, _size313) = iprot.readMapBegin()
-                for _i317 in xrange(_size313):
-                    _key318 = iprot.readString().decode('utf-8')
-                    _val319 = iprot.readString().decode('utf-8')
-                    self.scheduler_meta[_key318] = _val319
+                (_ktype418, _vtype419, _size417) = iprot.readMapBegin()
+                for _i421 in xrange(_size417):
+                    _key422 = iprot.readString().decode('utf-8')
+                    _val423 = iprot.readString().decode('utf-8')
+                    self.scheduler_meta[_key422] = _val423
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

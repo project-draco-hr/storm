@@ -1,0 +1,16 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_execute_latency_ms=true && (is_set_execute_latency_ms());
+  list.add(present_execute_latency_ms);
+  if (present_execute_latency_ms)   list.add(execute_latency_ms);
+  boolean present_process_latency_ms=true && (is_set_process_latency_ms());
+  list.add(present_process_latency_ms);
+  if (present_process_latency_ms)   list.add(process_latency_ms);
+  boolean present_executed=true && (is_set_executed());
+  list.add(present_executed);
+  if (present_executed)   list.add(executed);
+  boolean present_capacity=true && (is_set_capacity());
+  list.add(present_capacity);
+  if (present_capacity)   list.add(capacity);
+  return list.hashCode();
+}

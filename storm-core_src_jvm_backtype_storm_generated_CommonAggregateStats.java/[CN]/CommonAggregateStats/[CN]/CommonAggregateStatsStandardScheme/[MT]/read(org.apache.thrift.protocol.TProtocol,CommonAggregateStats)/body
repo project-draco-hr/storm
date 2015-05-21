@@ -1,0 +1,71 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 513:
+      if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+        struct.num_executors=iprot.readI32();
+        struct.set_num_executors_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 514:
+  if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+    struct.num_tasks=iprot.readI32();
+    struct.set_num_tasks_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+case 515:
+if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+struct.emitted=iprot.readI64();
+struct.set_emitted_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 516:
+if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+struct.transferred=iprot.readI64();
+struct.set_transferred_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 517:
+if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+struct.acked=iprot.readI64();
+struct.set_acked_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 518:
+if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+struct.failed=iprot.readI64();
+struct.set_failed_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

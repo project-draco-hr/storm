@@ -1,0 +1,16 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case EXECUTE_LATENCY_MS:
+    return is_set_execute_latency_ms();
+case PROCESS_LATENCY_MS:
+  return is_set_process_latency_ms();
+case EXECUTED:
+return is_set_executed();
+case CAPACITY:
+return is_set_capacity();
+}
+throw new IllegalStateException();
+}

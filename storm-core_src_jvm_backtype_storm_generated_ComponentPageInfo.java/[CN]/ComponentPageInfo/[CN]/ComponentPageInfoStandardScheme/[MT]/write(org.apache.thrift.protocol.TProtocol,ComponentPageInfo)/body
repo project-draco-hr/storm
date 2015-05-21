@@ -1,0 +1,108 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.component_id != null) {
+    oprot.writeFieldBegin(COMPONENT_ID_FIELD_DESC);
+    oprot.writeString(struct.component_id);
+    oprot.writeFieldEnd();
+  }
+  if (struct.component_type != null) {
+    oprot.writeFieldBegin(COMPONENT_TYPE_FIELD_DESC);
+    oprot.writeI32(struct.component_type.getValue());
+    oprot.writeFieldEnd();
+  }
+  if (struct.topology_id != null) {
+    if (struct.is_set_topology_id()) {
+      oprot.writeFieldBegin(TOPOLOGY_ID_FIELD_DESC);
+      oprot.writeString(struct.topology_id);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.topology_name != null) {
+    if (struct.is_set_topology_name()) {
+      oprot.writeFieldBegin(TOPOLOGY_NAME_FIELD_DESC);
+      oprot.writeString(struct.topology_name);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.is_set_num_executors()) {
+    oprot.writeFieldBegin(NUM_EXECUTORS_FIELD_DESC);
+    oprot.writeI32(struct.num_executors);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_num_tasks()) {
+    oprot.writeFieldBegin(NUM_TASKS_FIELD_DESC);
+    oprot.writeI32(struct.num_tasks);
+    oprot.writeFieldEnd();
+  }
+  if (struct.window_to_stats != null) {
+    if (struct.is_set_window_to_stats()) {
+      oprot.writeFieldBegin(WINDOW_TO_STATS_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.window_to_stats.size()));
+        for (        Map.Entry<String,ComponentAggregateStats> _iter404 : struct.window_to_stats.entrySet()) {
+          oprot.writeString(_iter404.getKey());
+          _iter404.getValue().write(oprot);
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.gsid_to_input_stats != null) {
+    if (struct.is_set_gsid_to_input_stats()) {
+      oprot.writeFieldBegin(GSID_TO_INPUT_STATS_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.STRUCT,struct.gsid_to_input_stats.size()));
+        for (        Map.Entry<GlobalStreamId,ComponentAggregateStats> _iter405 : struct.gsid_to_input_stats.entrySet()) {
+          _iter405.getKey().write(oprot);
+          _iter405.getValue().write(oprot);
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.sid_to_output_stats != null) {
+    if (struct.is_set_sid_to_output_stats()) {
+      oprot.writeFieldBegin(SID_TO_OUTPUT_STATS_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.sid_to_output_stats.size()));
+        for (        Map.Entry<String,ComponentAggregateStats> _iter406 : struct.sid_to_output_stats.entrySet()) {
+          oprot.writeString(_iter406.getKey());
+          _iter406.getValue().write(oprot);
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.exec_stats != null) {
+    if (struct.is_set_exec_stats()) {
+      oprot.writeFieldBegin(EXEC_STATS_FIELD_DESC);
+{
+        oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.exec_stats.size()));
+        for (        ExecutorAggregateStats _iter407 : struct.exec_stats) {
+          _iter407.write(oprot);
+        }
+        oprot.writeListEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.errors != null) {
+    if (struct.is_set_errors()) {
+      oprot.writeFieldBegin(ERRORS_FIELD_DESC);
+{
+        oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.errors.size()));
+        for (        ErrorInfo _iter408 : struct.errors) {
+          _iter408.write(oprot);
+        }
+        oprot.writeListEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

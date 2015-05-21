@@ -1,0 +1,16 @@
+{
+switch (setField) {
+case BOLT:
+    if (value instanceof BoltAggregateStats) {
+      break;
+    }
+  throw new ClassCastException("Was expecting value of type BoltAggregateStats for field 'bolt', but got " + value.getClass().getSimpleName());
+case SPOUT:
+if (value instanceof SpoutAggregateStats) {
+  break;
+}
+throw new ClassCastException("Was expecting value of type SpoutAggregateStats for field 'spout', but got " + value.getClass().getSimpleName());
+default :
+throw new IllegalArgumentException("Unknown field id " + setField);
+}
+}

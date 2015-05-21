@@ -10,14 +10,14 @@ switch (schemeField.id) {
 case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-          org.apache.thrift.protocol.TMap _map454=iprot.readMapBegin();
-          struct.approved_workers=new HashMap<String,Integer>(2 * _map454.size);
-          String _key455;
-          int _val456;
-          for (int _i457=0; _i457 < _map454.size; ++_i457) {
-            _key455=iprot.readString();
-            _val456=iprot.readI32();
-            struct.approved_workers.put(_key455,_val456);
+          org.apache.thrift.protocol.TMap _map570=iprot.readMapBegin();
+          struct.approved_workers=new HashMap<String,Integer>(2 * _map570.size);
+          String _key571;
+          int _val572;
+          for (int _i573=0; _i573 < _map570.size; ++_i573) {
+            _key571=iprot.readString();
+            _val572=iprot.readI32();
+            struct.approved_workers.put(_key571,_val572);
           }
           iprot.readMapEnd();
         }

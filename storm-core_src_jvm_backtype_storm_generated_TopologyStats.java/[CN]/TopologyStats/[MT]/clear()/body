@@ -1,0 +1,7 @@
+{
+  this.window_to_emitted=null;
+  this.window_to_transferred=null;
+  this.window_to_complete_latencies_ms=null;
+  this.window_to_acked=null;
+  this.window_to_failed=null;
+}

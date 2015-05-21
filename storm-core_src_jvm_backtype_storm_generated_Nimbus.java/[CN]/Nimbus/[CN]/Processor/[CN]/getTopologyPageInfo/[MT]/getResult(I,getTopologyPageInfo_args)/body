@@ -1,0 +1,13 @@
+{
+  getTopologyPageInfo_result result=new getTopologyPageInfo_result();
+  try {
+    result.success=iface.getTopologyPageInfo(args.id,args.window,args.is_include_sys);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}

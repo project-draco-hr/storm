@@ -1,0 +1,50 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_id()) {
+    this.id=other.id;
+  }
+  if (other.is_set_name()) {
+    this.name=other.name;
+  }
+  this.uptime_secs=other.uptime_secs;
+  if (other.is_set_status()) {
+    this.status=other.status;
+  }
+  this.num_tasks=other.num_tasks;
+  this.num_workers=other.num_workers;
+  this.num_executors=other.num_executors;
+  if (other.is_set_topology_conf()) {
+    this.topology_conf=other.topology_conf;
+  }
+  if (other.is_set_id_to_spout_agg_stats()) {
+    Map<String,ComponentAggregateStats> __this__id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(other.id_to_spout_agg_stats.size());
+    for (    Map.Entry<String,ComponentAggregateStats> other_element : other.id_to_spout_agg_stats.entrySet()) {
+      String other_element_key=other_element.getKey();
+      ComponentAggregateStats other_element_value=other_element.getValue();
+      String __this__id_to_spout_agg_stats_copy_key=other_element_key;
+      ComponentAggregateStats __this__id_to_spout_agg_stats_copy_value=new ComponentAggregateStats(other_element_value);
+      __this__id_to_spout_agg_stats.put(__this__id_to_spout_agg_stats_copy_key,__this__id_to_spout_agg_stats_copy_value);
+    }
+    this.id_to_spout_agg_stats=__this__id_to_spout_agg_stats;
+  }
+  if (other.is_set_id_to_bolt_agg_stats()) {
+    Map<String,ComponentAggregateStats> __this__id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(other.id_to_bolt_agg_stats.size());
+    for (    Map.Entry<String,ComponentAggregateStats> other_element : other.id_to_bolt_agg_stats.entrySet()) {
+      String other_element_key=other_element.getKey();
+      ComponentAggregateStats other_element_value=other_element.getValue();
+      String __this__id_to_bolt_agg_stats_copy_key=other_element_key;
+      ComponentAggregateStats __this__id_to_bolt_agg_stats_copy_value=new ComponentAggregateStats(other_element_value);
+      __this__id_to_bolt_agg_stats.put(__this__id_to_bolt_agg_stats_copy_key,__this__id_to_bolt_agg_stats_copy_value);
+    }
+    this.id_to_bolt_agg_stats=__this__id_to_bolt_agg_stats;
+  }
+  if (other.is_set_sched_status()) {
+    this.sched_status=other.sched_status;
+  }
+  if (other.is_set_topology_stats()) {
+    this.topology_stats=new TopologyStats(other.topology_stats);
+  }
+  if (other.is_set_owner()) {
+    this.owner=other.owner;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(3);
+  if (incoming.get(0)) {
+    struct.success=new ComponentPageInfo();
+    struct.success.read(iprot);
+    struct.set_success_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.e=new NotAliveException();
+    struct.e.read(iprot);
+    struct.set_e_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.aze=new AuthorizationException();
+    struct.aze.read(iprot);
+    struct.set_aze_isSet(true);
+  }
+}

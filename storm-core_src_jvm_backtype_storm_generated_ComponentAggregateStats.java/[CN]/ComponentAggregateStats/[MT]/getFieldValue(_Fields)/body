@@ -1,0 +1,13 @@
+{
+switch (field) {
+case TYPE:
+    return get_type();
+case COMMON_STATS:
+  return get_common_stats();
+case SPECIFIC_STATS:
+return get_specific_stats();
+case LAST_ERROR:
+return get_last_error();
+}
+throw new IllegalStateException();
+}

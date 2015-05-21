@@ -1,0 +1,3 @@
+{
+  iface.getComponentPageInfo(args.topology_id,args.component_id,args.window,args.is_include_sys,resultHandler);
+}

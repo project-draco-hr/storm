@@ -1,0 +1,9 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getTopologyPageInfo",org.apache.thrift.protocol.TMessageType.CALL,0));
+  getTopologyPageInfo_args args=new getTopologyPageInfo_args();
+  args.set_id(id);
+  args.set_window(window);
+  args.set_is_include_sys(is_include_sys);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

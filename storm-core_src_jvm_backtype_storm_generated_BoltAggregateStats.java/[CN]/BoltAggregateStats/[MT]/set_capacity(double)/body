@@ -1,0 +1,4 @@
+{
+  this.capacity=capacity;
+  set_capacity_isSet(true);
+}

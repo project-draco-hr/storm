@@ -1,0 +1,4 @@
+{
+  this.failed=failed;
+  set_failed_isSet(true);
+}

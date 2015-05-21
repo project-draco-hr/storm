@@ -1,0 +1,92 @@
+{
+switch (field) {
+case COMPONENT_ID:
+    if (value == null) {
+      unset_component_id();
+    }
+ else {
+      set_component_id((String)value);
+    }
+  break;
+case COMPONENT_TYPE:
+if (value == null) {
+  unset_component_type();
+}
+ else {
+  set_component_type((ComponentType)value);
+}
+break;
+case TOPOLOGY_ID:
+if (value == null) {
+unset_topology_id();
+}
+ else {
+set_topology_id((String)value);
+}
+break;
+case TOPOLOGY_NAME:
+if (value == null) {
+unset_topology_name();
+}
+ else {
+set_topology_name((String)value);
+}
+break;
+case NUM_EXECUTORS:
+if (value == null) {
+unset_num_executors();
+}
+ else {
+set_num_executors((Integer)value);
+}
+break;
+case NUM_TASKS:
+if (value == null) {
+unset_num_tasks();
+}
+ else {
+set_num_tasks((Integer)value);
+}
+break;
+case WINDOW_TO_STATS:
+if (value == null) {
+unset_window_to_stats();
+}
+ else {
+set_window_to_stats((Map<String,ComponentAggregateStats>)value);
+}
+break;
+case GSID_TO_INPUT_STATS:
+if (value == null) {
+unset_gsid_to_input_stats();
+}
+ else {
+set_gsid_to_input_stats((Map<GlobalStreamId,ComponentAggregateStats>)value);
+}
+break;
+case SID_TO_OUTPUT_STATS:
+if (value == null) {
+unset_sid_to_output_stats();
+}
+ else {
+set_sid_to_output_stats((Map<String,ComponentAggregateStats>)value);
+}
+break;
+case EXEC_STATS:
+if (value == null) {
+unset_exec_stats();
+}
+ else {
+set_exec_stats((List<ExecutorAggregateStats>)value);
+}
+break;
+case ERRORS:
+if (value == null) {
+unset_errors();
+}
+ else {
+set_errors((List<ErrorInfo>)value);
+}
+break;
+}
+}

@@ -1,0 +1,56 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 513:
+      if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+        struct.type=backtype.storm.generated.ComponentType.findByValue(iprot.readI32());
+        struct.set_type_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 514:
+  if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+    struct.common_stats=new CommonAggregateStats();
+    struct.common_stats.read(iprot);
+    struct.set_common_stats_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+case 515:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+struct.specific_stats=new SpecificAggregateStats();
+struct.specific_stats.read(iprot);
+struct.set_specific_stats_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 516:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+struct.last_error=new ErrorInfo();
+struct.last_error.read(iprot);
+struct.set_last_error_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

@@ -1,0 +1,4 @@
+{
+  send_getComponentPageInfo(topology_id,component_id,window,is_include_sys);
+  return recv_getComponentPageInfo();
+}

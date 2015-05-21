@@ -1,0 +1,16 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case TOPOLOGY_ID:
+    return is_set_topology_id();
+case COMPONENT_ID:
+  return is_set_component_id();
+case WINDOW:
+return is_set_window();
+case IS_INCLUDE_SYS:
+return is_set_is_include_sys();
+}
+throw new IllegalStateException();
+}

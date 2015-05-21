@@ -1,0 +1,77 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.id=iprot.readString();
+  struct.set_id_isSet(true);
+  BitSet incoming=iprot.readBitSet(12);
+  if (incoming.get(0)) {
+    struct.name=iprot.readString();
+    struct.set_name_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.uptime_secs=iprot.readI32();
+    struct.set_uptime_secs_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.status=iprot.readString();
+    struct.set_status_isSet(true);
+  }
+  if (incoming.get(3)) {
+    struct.num_tasks=iprot.readI32();
+    struct.set_num_tasks_isSet(true);
+  }
+  if (incoming.get(4)) {
+    struct.num_workers=iprot.readI32();
+    struct.set_num_workers_isSet(true);
+  }
+  if (incoming.get(5)) {
+    struct.num_executors=iprot.readI32();
+    struct.set_num_executors_isSet(true);
+  }
+  if (incoming.get(6)) {
+    struct.topology_conf=iprot.readString();
+    struct.set_topology_conf_isSet(true);
+  }
+  if (incoming.get(7)) {
+{
+      org.apache.thrift.protocol.TMap _map378=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map378.size);
+      String _key379;
+      ComponentAggregateStats _val380;
+      for (int _i381=0; _i381 < _map378.size; ++_i381) {
+        _key379=iprot.readString();
+        _val380=new ComponentAggregateStats();
+        _val380.read(iprot);
+        struct.id_to_spout_agg_stats.put(_key379,_val380);
+      }
+    }
+    struct.set_id_to_spout_agg_stats_isSet(true);
+  }
+  if (incoming.get(8)) {
+{
+      org.apache.thrift.protocol.TMap _map382=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map382.size);
+      String _key383;
+      ComponentAggregateStats _val384;
+      for (int _i385=0; _i385 < _map382.size; ++_i385) {
+        _key383=iprot.readString();
+        _val384=new ComponentAggregateStats();
+        _val384.read(iprot);
+        struct.id_to_bolt_agg_stats.put(_key383,_val384);
+      }
+    }
+    struct.set_id_to_bolt_agg_stats_isSet(true);
+  }
+  if (incoming.get(9)) {
+    struct.sched_status=iprot.readString();
+    struct.set_sched_status_isSet(true);
+  }
+  if (incoming.get(10)) {
+    struct.topology_stats=new TopologyStats();
+    struct.topology_stats.read(iprot);
+    struct.set_topology_stats_isSet(true);
+  }
+  if (incoming.get(11)) {
+    struct.owner=iprot.readString();
+    struct.set_owner_isSet(true);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  this.topology_id=null;
+  this.component_id=null;
+  this.window=null;
+  set_is_include_sys_isSet(false);
+  this.is_include_sys=false;
+}

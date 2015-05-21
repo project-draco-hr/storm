@@ -1,0 +1,17 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  lastComparison=Boolean.valueOf(is_set_complete_latency_ms()).compareTo(other.is_set_complete_latency_ms());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_complete_latency_ms()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.complete_latency_ms,other.complete_latency_ms);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

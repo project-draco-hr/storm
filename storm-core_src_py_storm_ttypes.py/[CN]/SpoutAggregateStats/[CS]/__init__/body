@@ -1,0 +1,2 @@
+def __init__(self, complete_latency_ms=None):
+    self.complete_latency_ms = complete_latency_ms

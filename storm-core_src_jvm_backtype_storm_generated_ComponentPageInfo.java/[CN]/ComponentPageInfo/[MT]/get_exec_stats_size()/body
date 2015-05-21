@@ -1,0 +1,3 @@
+{
+  return (this.exec_stats == null) ? 0 : this.exec_stats.size();
+}

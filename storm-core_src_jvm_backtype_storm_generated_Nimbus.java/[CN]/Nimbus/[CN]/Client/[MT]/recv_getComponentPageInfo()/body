@@ -1,0 +1,14 @@
+{
+  getComponentPageInfo_result result=new getComponentPageInfo_result();
+  receiveBase(result,"getComponentPageInfo");
+  if (result.is_set_success()) {
+    return result.success;
+  }
+  if (result.e != null) {
+    throw result.e;
+  }
+  if (result.aze != null) {
+    throw result.aze;
+  }
+  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"getComponentPageInfo failed: unknown result");
+}

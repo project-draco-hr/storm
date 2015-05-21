@@ -1,0 +1,10 @@
+{
+  set_execute_latency_ms_isSet(false);
+  this.execute_latency_ms=0.0;
+  set_process_latency_ms_isSet(false);
+  this.process_latency_ms=0.0;
+  set_executed_isSet(false);
+  this.executed=0;
+  set_capacity_isSet(false);
+  this.capacity=0.0;
+}

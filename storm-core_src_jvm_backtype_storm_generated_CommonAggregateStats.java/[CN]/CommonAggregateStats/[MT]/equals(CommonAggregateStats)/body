@@ -1,0 +1,40 @@
+{
+  if (that == null)   return false;
+  boolean this_present_num_executors=true && this.is_set_num_executors();
+  boolean that_present_num_executors=true && that.is_set_num_executors();
+  if (this_present_num_executors || that_present_num_executors) {
+    if (!(this_present_num_executors && that_present_num_executors))     return false;
+    if (this.num_executors != that.num_executors)     return false;
+  }
+  boolean this_present_num_tasks=true && this.is_set_num_tasks();
+  boolean that_present_num_tasks=true && that.is_set_num_tasks();
+  if (this_present_num_tasks || that_present_num_tasks) {
+    if (!(this_present_num_tasks && that_present_num_tasks))     return false;
+    if (this.num_tasks != that.num_tasks)     return false;
+  }
+  boolean this_present_emitted=true && this.is_set_emitted();
+  boolean that_present_emitted=true && that.is_set_emitted();
+  if (this_present_emitted || that_present_emitted) {
+    if (!(this_present_emitted && that_present_emitted))     return false;
+    if (this.emitted != that.emitted)     return false;
+  }
+  boolean this_present_transferred=true && this.is_set_transferred();
+  boolean that_present_transferred=true && that.is_set_transferred();
+  if (this_present_transferred || that_present_transferred) {
+    if (!(this_present_transferred && that_present_transferred))     return false;
+    if (this.transferred != that.transferred)     return false;
+  }
+  boolean this_present_acked=true && this.is_set_acked();
+  boolean that_present_acked=true && that.is_set_acked();
+  if (this_present_acked || that_present_acked) {
+    if (!(this_present_acked && that_present_acked))     return false;
+    if (this.acked != that.acked)     return false;
+  }
+  boolean this_present_failed=true && this.is_set_failed();
+  boolean that_present_failed=true && that.is_set_failed();
+  if (this_present_failed || that_present_failed) {
+    if (!(this_present_failed && that_present_failed))     return false;
+    if (this.failed != that.failed)     return false;
+  }
+  return true;
+}

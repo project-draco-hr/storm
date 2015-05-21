@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_complete_latency_ms=true && this.is_set_complete_latency_ms();
+  boolean that_present_complete_latency_ms=true && that.is_set_complete_latency_ms();
+  if (this_present_complete_latency_ms || that_present_complete_latency_ms) {
+    if (!(this_present_complete_latency_ms && that_present_complete_latency_ms))     return false;
+    if (this.complete_latency_ms != that.complete_latency_ms)     return false;
+  }
+  return true;
+}

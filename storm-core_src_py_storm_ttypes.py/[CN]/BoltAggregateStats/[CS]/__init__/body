@@ -1,0 +1,5 @@
+def __init__(self, execute_latency_ms=None, process_latency_ms=None, executed=None, capacity=None):
+    self.execute_latency_ms = execute_latency_ms
+    self.process_latency_ms = process_latency_ms
+    self.executed = executed
+    self.capacity = capacity

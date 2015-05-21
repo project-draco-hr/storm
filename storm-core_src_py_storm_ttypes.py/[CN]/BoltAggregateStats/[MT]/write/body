@@ -1,0 +1,23 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('BoltAggregateStats')
+    if (self.execute_latency_ms is not None):
+        oprot.writeFieldBegin('execute_latency_ms', TType.DOUBLE, 513)
+        oprot.writeDouble(self.execute_latency_ms)
+        oprot.writeFieldEnd()
+    if (self.process_latency_ms is not None):
+        oprot.writeFieldBegin('process_latency_ms', TType.DOUBLE, 514)
+        oprot.writeDouble(self.process_latency_ms)
+        oprot.writeFieldEnd()
+    if (self.executed is not None):
+        oprot.writeFieldBegin('executed', TType.I64, 515)
+        oprot.writeI64(self.executed)
+        oprot.writeFieldEnd()
+    if (self.capacity is not None):
+        oprot.writeFieldBegin('capacity', TType.DOUBLE, 516)
+        oprot.writeDouble(self.capacity)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

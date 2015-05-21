@@ -1,0 +1,34 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case ID:
+    return is_set_id();
+case NAME:
+  return is_set_name();
+case UPTIME_SECS:
+return is_set_uptime_secs();
+case STATUS:
+return is_set_status();
+case NUM_TASKS:
+return is_set_num_tasks();
+case NUM_WORKERS:
+return is_set_num_workers();
+case NUM_EXECUTORS:
+return is_set_num_executors();
+case TOPOLOGY_CONF:
+return is_set_topology_conf();
+case ID_TO_SPOUT_AGG_STATS:
+return is_set_id_to_spout_agg_stats();
+case ID_TO_BOLT_AGG_STATS:
+return is_set_id_to_bolt_agg_stats();
+case SCHED_STATUS:
+return is_set_sched_status();
+case TOPOLOGY_STATS:
+return is_set_topology_stats();
+case OWNER:
+return is_set_owner();
+}
+throw new IllegalStateException();
+}

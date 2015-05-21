@@ -1,0 +1,12 @@
+{
+switch (fieldId) {
+case 1:
+    return ID;
+case 2:
+  return WINDOW;
+case 3:
+return IS_INCLUDE_SYS;
+default :
+return null;
+}
+}

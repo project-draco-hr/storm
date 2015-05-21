@@ -1,0 +1,36 @@
+{
+switch (field) {
+case TOPOLOGY_ID:
+    if (value == null) {
+      unset_topology_id();
+    }
+ else {
+      set_topology_id((String)value);
+    }
+  break;
+case COMPONENT_ID:
+if (value == null) {
+  unset_component_id();
+}
+ else {
+  set_component_id((String)value);
+}
+break;
+case WINDOW:
+if (value == null) {
+unset_window();
+}
+ else {
+set_window((String)value);
+}
+break;
+case IS_INCLUDE_SYS:
+if (value == null) {
+unset_is_include_sys();
+}
+ else {
+set_is_include_sys((Boolean)value);
+}
+break;
+}
+}

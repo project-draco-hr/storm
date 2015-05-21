@@ -1,0 +1,17 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_exec_summary()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_stats()) {
+    optionals.set(1);
+  }
+  oprot.writeBitSet(optionals,2);
+  if (struct.is_set_exec_summary()) {
+    struct.exec_summary.write(oprot);
+  }
+  if (struct.is_set_stats()) {
+    struct.stats.write(oprot);
+  }
+}

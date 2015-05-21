@@ -1,0 +1,4 @@
+def getComponentPageInfo(self, topology_id, component_id, window, is_include_sys):
+    '\n    Parameters:\n     - topology_id\n     - component_id\n     - window\n     - is_include_sys\n    '
+    self.send_getComponentPageInfo(topology_id, component_id, window, is_include_sys)
+    return self.recv_getComponentPageInfo()

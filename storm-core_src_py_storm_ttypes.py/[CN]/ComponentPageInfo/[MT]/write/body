@@ -1,0 +1,69 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('ComponentPageInfo')
+    if (self.component_id is not None):
+        oprot.writeFieldBegin('component_id', TType.STRING, 1)
+        oprot.writeString(self.component_id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.component_type is not None):
+        oprot.writeFieldBegin('component_type', TType.I32, 2)
+        oprot.writeI32(self.component_type)
+        oprot.writeFieldEnd()
+    if (self.topology_id is not None):
+        oprot.writeFieldBegin('topology_id', TType.STRING, 513)
+        oprot.writeString(self.topology_id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.topology_name is not None):
+        oprot.writeFieldBegin('topology_name', TType.STRING, 514)
+        oprot.writeString(self.topology_name.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.num_executors is not None):
+        oprot.writeFieldBegin('num_executors', TType.I32, 515)
+        oprot.writeI32(self.num_executors)
+        oprot.writeFieldEnd()
+    if (self.num_tasks is not None):
+        oprot.writeFieldBegin('num_tasks', TType.I32, 516)
+        oprot.writeI32(self.num_tasks)
+        oprot.writeFieldEnd()
+    if (self.window_to_stats is not None):
+        oprot.writeFieldBegin('window_to_stats', TType.MAP, 517)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.window_to_stats))
+        for (kiter379, viter380) in self.window_to_stats.items():
+            oprot.writeString(kiter379.encode('utf-8'))
+            viter380.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.gsid_to_input_stats is not None):
+        oprot.writeFieldBegin('gsid_to_input_stats', TType.MAP, 518)
+        oprot.writeMapBegin(TType.STRUCT, TType.STRUCT, len(self.gsid_to_input_stats))
+        for (kiter381, viter382) in self.gsid_to_input_stats.items():
+            kiter381.write(oprot)
+            viter382.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.sid_to_output_stats is not None):
+        oprot.writeFieldBegin('sid_to_output_stats', TType.MAP, 519)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.sid_to_output_stats))
+        for (kiter383, viter384) in self.sid_to_output_stats.items():
+            oprot.writeString(kiter383.encode('utf-8'))
+            viter384.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.exec_stats is not None):
+        oprot.writeFieldBegin('exec_stats', TType.LIST, 520)
+        oprot.writeListBegin(TType.STRUCT, len(self.exec_stats))
+        for iter385 in self.exec_stats:
+            iter385.write(oprot)
+        oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    if (self.errors is not None):
+        oprot.writeFieldBegin('errors', TType.LIST, 521)
+        oprot.writeListBegin(TType.STRUCT, len(self.errors))
+        for iter386 in self.errors:
+            iter386.write(oprot)
+        oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

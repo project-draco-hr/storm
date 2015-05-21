@@ -1,0 +1,27 @@
+{
+switch (field) {
+case COMPONENT_ID:
+    return get_component_id();
+case COMPONENT_TYPE:
+  return get_component_type();
+case TOPOLOGY_ID:
+return get_topology_id();
+case TOPOLOGY_NAME:
+return get_topology_name();
+case NUM_EXECUTORS:
+return Integer.valueOf(get_num_executors());
+case NUM_TASKS:
+return Integer.valueOf(get_num_tasks());
+case WINDOW_TO_STATS:
+return get_window_to_stats();
+case GSID_TO_INPUT_STATS:
+return get_gsid_to_input_stats();
+case SID_TO_OUTPUT_STATS:
+return get_sid_to_output_stats();
+case EXEC_STATS:
+return get_exec_stats();
+case ERRORS:
+return get_errors();
+}
+throw new IllegalStateException();
+}

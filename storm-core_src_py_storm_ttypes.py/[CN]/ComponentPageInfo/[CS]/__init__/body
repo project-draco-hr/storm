@@ -1,0 +1,12 @@
+def __init__(self, component_id=None, component_type=None, topology_id=None, topology_name=None, num_executors=None, num_tasks=None, window_to_stats=None, gsid_to_input_stats=None, sid_to_output_stats=None, exec_stats=None, errors=None):
+    self.component_id = component_id
+    self.component_type = component_type
+    self.topology_id = topology_id
+    self.topology_name = topology_name
+    self.num_executors = num_executors
+    self.num_tasks = num_tasks
+    self.window_to_stats = window_to_stats
+    self.gsid_to_input_stats = gsid_to_input_stats
+    self.sid_to_output_stats = sid_to_output_stats
+    self.exec_stats = exec_stats
+    self.errors = errors

@@ -1,0 +1,93 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.STRING):
+                self.id = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 513):
+            if (ftype == TType.STRING):
+                self.name = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 514):
+            if (ftype == TType.I32):
+                self.uptime_secs = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 515):
+            if (ftype == TType.STRING):
+                self.status = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 516):
+            if (ftype == TType.I32):
+                self.num_tasks = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 517):
+            if (ftype == TType.I32):
+                self.num_workers = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 518):
+            if (ftype == TType.I32):
+                self.num_executors = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 519):
+            if (ftype == TType.STRING):
+                self.topology_conf = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 520):
+            if (ftype == TType.MAP):
+                self.id_to_spout_agg_stats = {}
+                (_ktype329, _vtype330, _size328) = iprot.readMapBegin()
+                for _i332 in xrange(_size328):
+                    _key333 = iprot.readString().decode('utf-8')
+                    _val334 = ComponentAggregateStats()
+                    _val334.read(iprot)
+                    self.id_to_spout_agg_stats[_key333] = _val334
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 521):
+            if (ftype == TType.MAP):
+                self.id_to_bolt_agg_stats = {}
+                (_ktype336, _vtype337, _size335) = iprot.readMapBegin()
+                for _i339 in xrange(_size335):
+                    _key340 = iprot.readString().decode('utf-8')
+                    _val341 = ComponentAggregateStats()
+                    _val341.read(iprot)
+                    self.id_to_bolt_agg_stats[_key340] = _val341
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 522):
+            if (ftype == TType.STRING):
+                self.sched_status = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 523):
+            if (ftype == TType.STRUCT):
+                self.topology_stats = TopologyStats()
+                self.topology_stats.read(iprot)
+            else:
+                iprot.skip(ftype)
+        elif (fid == 524):
+            if (ftype == TType.STRING):
+                self.owner = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

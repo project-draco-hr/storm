@@ -1,0 +1,14 @@
+{
+  set_num_executors_isSet(false);
+  this.num_executors=0;
+  set_num_tasks_isSet(false);
+  this.num_tasks=0;
+  set_emitted_isSet(false);
+  this.emitted=0;
+  set_transferred_isSet(false);
+  this.transferred=0;
+  set_acked_isSet(false);
+  this.acked=0;
+  set_failed_isSet(false);
+  this.failed=0;
+}
