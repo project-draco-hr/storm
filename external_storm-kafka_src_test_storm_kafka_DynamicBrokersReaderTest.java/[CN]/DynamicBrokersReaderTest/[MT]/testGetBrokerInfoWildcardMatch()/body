@@ -1,0 +1,23 @@
+{
+  String host="localhost";
+  int port=9092;
+  int partition=0;
+  addPartition(partition,host,port,topic);
+  addPartition(partition,host,port,secondTopic);
+  List<GlobalPartitionInformation> partitions=wildCardBrokerReader.getBrokerInfo();
+  GlobalPartitionInformation brokerInfo=getByTopic(partitions,topic);
+  assertNotNull(brokerInfo);
+  assertEquals(1,brokerInfo.getOrderedPartitions().size());
+  assertEquals(port,brokerInfo.getBrokerFor(partition).port);
+  assertEquals(host,brokerInfo.getBrokerFor(partition).host);
+  brokerInfo=getByTopic(partitions,secondTopic);
+  assertNotNull(brokerInfo);
+  assertEquals(1,brokerInfo.getOrderedPartitions().size());
+  assertEquals(port,brokerInfo.getBrokerFor(partition).port);
+  assertEquals(host,brokerInfo.getBrokerFor(partition).host);
+  addPartition(partition,host,port,thirdTopic);
+  partitions=wildCardBrokerReader.getBrokerInfo();
+  assertNotNull(getByTopic(partitions,topic));
+  assertNotNull(getByTopic(partitions,secondTopic));
+  assertNotNull(getByTopic(partitions,secondTopic));
+}

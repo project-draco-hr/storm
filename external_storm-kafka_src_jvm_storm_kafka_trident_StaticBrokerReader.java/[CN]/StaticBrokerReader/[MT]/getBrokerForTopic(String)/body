@@ -1,0 +1,4 @@
+{
+  if (brokers.containsKey(topic))   return brokers.get(topic);
+  return null;
+}

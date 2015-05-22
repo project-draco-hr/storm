@@ -1,5 +1,5 @@
 {
-  return new IOpaquePartitionedTridentSpout.Emitter<GlobalPartitionInformation,Partition,Map>(){
+  return new IOpaquePartitionedTridentSpout.Emitter<List<GlobalPartitionInformation>,Partition,Map>(){
     /** 
  * Emit a batch of tuples for a partition/transaction.
  * Return the metadata describing this batch that will be used as lastPartitionMeta
@@ -11,7 +11,7 @@
     @Override public void refreshPartitions(    List<Partition> partitions){
       refresh(partitions);
     }
-    @Override public List<Partition> getOrderedPartitions(    GlobalPartitionInformation partitionInformation){
+    @Override public List<Partition> getOrderedPartitions(    List<GlobalPartitionInformation> partitionInformation){
       return orderPartitions(partitionInformation);
     }
     @Override public void close(){

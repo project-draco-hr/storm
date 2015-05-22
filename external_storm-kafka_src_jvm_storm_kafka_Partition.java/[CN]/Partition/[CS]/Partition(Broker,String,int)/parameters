@@ -1,0 +1,3 @@
+Broker host
+String topic
+int partition

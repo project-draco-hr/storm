@@ -1,0 +1,17 @@
+{
+  Preconditions.checkArgument(taskIndex < totalTasks,"task index must be less that total tasks");
+  List<Partition> taskPartitions=new ArrayList<Partition>();
+  for (  GlobalPartitionInformation partitionInformation : partitons) {
+    List<Partition> partitions=partitionInformation.getOrderedPartitions();
+    int numPartitions=partitions.size();
+    if (numPartitions < totalTasks) {
+      LOG.warn(partitionInformation.topic + "there are more tasks than partitions (tasks: " + totalTasks+ "; partitions: "+ numPartitions+ "), some tasks will be idle");
+    }
+    for (int i=taskIndex; i < numPartitions; i+=totalTasks) {
+      Partition taskPartition=partitions.get(i);
+      taskPartitions.add(taskPartition);
+    }
+    logPartitionMapping(totalTasks,taskIndex,taskPartitions);
+  }
+  return taskPartitions;
+}

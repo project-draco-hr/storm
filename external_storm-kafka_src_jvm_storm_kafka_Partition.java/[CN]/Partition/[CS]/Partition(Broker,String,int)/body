@@ -1,0 +1,6 @@
+{
+  this.topic=topic;
+  this.host=host;
+  this.partition=partition;
+  this.bUseTopicNameForPartitionPathId=false;
+}

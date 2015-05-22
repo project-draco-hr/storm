@@ -1,3 +1,3 @@
 {
-  return "GlobalPartitionInformation{" + "partitionMap=" + partitionMap + '}';
+  return "GlobalPartitionInformation{" + "topic=" + topic + ", partitionMap="+ partitionMap+ '}';
 }

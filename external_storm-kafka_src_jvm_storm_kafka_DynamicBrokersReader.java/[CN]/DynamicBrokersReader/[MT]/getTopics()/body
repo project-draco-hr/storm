@@ -1,0 +1,22 @@
+{
+  List<String> topics=new ArrayList<String>();
+  if (!_wildcardTopic) {
+    topics.add(_topic);
+    return topics;
+  }
+ else {
+    try {
+      List<String> children=_curator.getChildren().forPath(topicsPath());
+      for (      String t : children) {
+        if (t.matches(_topic)) {
+          LOG.info(String.format("Found matching topic %s",t));
+          topics.add(t);
+        }
+      }
+      return topics;
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+}

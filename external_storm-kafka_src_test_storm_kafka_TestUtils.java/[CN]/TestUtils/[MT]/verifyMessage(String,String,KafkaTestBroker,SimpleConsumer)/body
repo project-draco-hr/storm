@@ -1,6 +1,6 @@
 {
   long lastMessageOffset=KafkaUtils.getOffset(simpleConsumer,TestUtils.TOPIC,0,OffsetRequest.LatestTime()) - 1;
-  ByteBufferMessageSet messageAndOffsets=KafkaUtils.fetchMessages(TestUtils.getKafkaConfig(broker),simpleConsumer,new Partition(Broker.fromString(broker.getBrokerConnectionString()),0),lastMessageOffset);
+  ByteBufferMessageSet messageAndOffsets=KafkaUtils.fetchMessages(TestUtils.getKafkaConfig(broker),simpleConsumer,new Partition(Broker.fromString(broker.getBrokerConnectionString()),TestUtils.TOPIC,0),lastMessageOffset);
   MessageAndOffset messageAndOffset=messageAndOffsets.iterator().next();
   Message kafkaMessage=messageAndOffset.message();
   ByteBuffer messageKeyBuffer=kafkaMessage.key();

@@ -1,0 +1,3 @@
+List<GlobalPartitionInformation> partitons
+int totalTasks
+int taskIndex

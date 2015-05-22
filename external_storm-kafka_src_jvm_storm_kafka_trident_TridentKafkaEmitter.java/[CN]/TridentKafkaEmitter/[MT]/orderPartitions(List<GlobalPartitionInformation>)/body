@@ -1,0 +1,5 @@
+{
+  List<Partition> part=new ArrayList<Partition>();
+  for (  GlobalPartitionInformation globalPartitionInformation : partitions)   part.addAll(globalPartitionInformation.getOrderedPartitions());
+  return part;
+}

@@ -1,0 +1,5 @@
+{
+  List<GlobalPartitionInformation> map=new ArrayList<GlobalPartitionInformation>();
+  map.add(partitionInformation);
+  return map;
+}

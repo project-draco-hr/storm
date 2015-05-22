@@ -1,4 +1,4 @@
 {
-  Broker broker=_reader.getCurrentBrokers().getBrokerFor(partition.partition);
-  return register(broker,partition.partition);
+  Broker broker=_reader.getBrokerForTopic(partition.topic).getBrokerFor(partition.partition);
+  return register(broker,partition.topic,partition.partition);
 }

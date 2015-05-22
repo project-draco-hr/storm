@@ -1,4 +1,0 @@
-{
-  String path=dynamicBrokersReader.partitionPath();
-  writeDataToPath(path,("" + id));
-}

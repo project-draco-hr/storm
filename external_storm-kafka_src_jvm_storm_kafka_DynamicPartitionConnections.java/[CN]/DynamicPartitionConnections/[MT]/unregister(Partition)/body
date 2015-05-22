@@ -1,3 +1,3 @@
 {
-  unregister(partition.host,partition.partition);
+  unregister(partition.host,partition.topic,partition.partition);
 }

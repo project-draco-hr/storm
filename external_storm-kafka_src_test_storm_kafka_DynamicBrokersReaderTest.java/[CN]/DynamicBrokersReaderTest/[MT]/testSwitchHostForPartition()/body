@@ -2,14 +2,18 @@
   String host="localhost";
   int port=9092;
   int partition=0;
-  addPartition(partition,host,port);
-  GlobalPartitionInformation brokerInfo=dynamicBrokersReader.getBrokerInfo();
+  addPartition(partition,host,port,topic);
+  List<GlobalPartitionInformation> partitions=dynamicBrokersReader.getBrokerInfo();
+  GlobalPartitionInformation brokerInfo=getByTopic(partitions,topic);
+  assertNotNull(brokerInfo);
   assertEquals(port,brokerInfo.getBrokerFor(partition).port);
   assertEquals(host,brokerInfo.getBrokerFor(partition).host);
   String newHost=host + "switch";
   int newPort=port + 1;
-  addPartition(partition,newHost,newPort);
-  brokerInfo=dynamicBrokersReader.getBrokerInfo();
+  addPartition(partition,newHost,newPort,topic);
+  partitions=dynamicBrokersReader.getBrokerInfo();
+  brokerInfo=getByTopic(partitions,topic);
+  assertNotNull(brokerInfo);
   assertEquals(newPort,brokerInfo.getBrokerFor(partition).port);
   assertEquals(newHost,brokerInfo.getBrokerFor(partition).host);
 }

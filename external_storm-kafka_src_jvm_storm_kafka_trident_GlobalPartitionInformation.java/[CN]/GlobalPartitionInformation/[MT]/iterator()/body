@@ -1,12 +1,14 @@
 {
   final Iterator<Map.Entry<Integer,Broker>> iterator=partitionMap.entrySet().iterator();
+  final String topic=this.topic;
+  final Boolean bUseTopicNameForPartitionPathId=this.bUseTopicNameForPartitionPathId;
   return new Iterator<Partition>(){
     @Override public boolean hasNext(){
       return iterator.hasNext();
     }
     @Override public Partition next(){
       Map.Entry<Integer,Broker> next=iterator.next();
-      return new Partition(next.getValue(),next.getKey());
+      return new Partition(next.getValue(),topic,next.getKey(),bUseTopicNameForPartitionPathId);
     }
     @Override public void remove(){
       iterator.remove();

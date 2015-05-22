@@ -1,5 +1,0 @@
-{
-  writePartitionId(id);
-  writeLeader(id,0);
-  writeLeaderDetails(0,host,port);
-}

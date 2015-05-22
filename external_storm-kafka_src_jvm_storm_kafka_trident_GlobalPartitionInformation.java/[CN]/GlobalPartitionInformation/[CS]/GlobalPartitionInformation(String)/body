@@ -1,0 +1,5 @@
+{
+  this.topic=topic;
+  this.partitionMap=new TreeMap<Integer,Broker>();
+  this.bUseTopicNameForPartitionPathId=false;
+}

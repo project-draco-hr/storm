@@ -3,7 +3,7 @@
   _topologyInstanceId=topologyInstanceId;
   _connections=new DynamicPartitionConnections(_config,KafkaUtils.makeBrokerReader(conf,_config));
   _topologyName=(String)conf.get(Config.TOPOLOGY_NAME);
-  _kafkaOffsetMetric=new KafkaUtils.KafkaOffsetMetric(_config.topic,_connections);
+  _kafkaOffsetMetric=new KafkaUtils.KafkaOffsetMetric(_connections);
   context.registerMetric("kafkaOffset",_kafkaOffsetMetric,_config.metricsTimeBucketSizeInSecs);
   _kafkaMeanFetchLatencyMetric=context.registerMetric("kafkaFetchAvg",new MeanReducer(),_config.metricsTimeBucketSizeInSecs);
   _kafkaMaxFetchLatencyMetric=context.registerMetric("kafkaFetchMax",new MaxMetric(),_config.metricsTimeBucketSizeInSecs);

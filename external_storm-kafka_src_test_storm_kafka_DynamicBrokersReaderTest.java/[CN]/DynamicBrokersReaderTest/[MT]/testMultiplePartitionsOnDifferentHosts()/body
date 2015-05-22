@@ -4,9 +4,11 @@
   int secondPort=9093;
   int partition=0;
   int secondPartition=partition + 1;
-  addPartition(partition,0,host,port);
-  addPartition(secondPartition,1,host,secondPort);
-  GlobalPartitionInformation brokerInfo=dynamicBrokersReader.getBrokerInfo();
+  addPartition(partition,0,host,port,topic);
+  addPartition(secondPartition,1,host,secondPort,topic);
+  List<GlobalPartitionInformation> partitions=dynamicBrokersReader.getBrokerInfo();
+  GlobalPartitionInformation brokerInfo=getByTopic(partitions,topic);
+  assertNotNull(brokerInfo);
   assertEquals(2,brokerInfo.getOrderedPartitions().size());
   assertEquals(port,brokerInfo.getBrokerFor(partition).port);
   assertEquals(host,brokerInfo.getBrokerFor(partition).host);
