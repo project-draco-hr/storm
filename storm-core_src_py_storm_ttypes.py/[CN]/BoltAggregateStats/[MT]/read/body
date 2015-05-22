@@ -7,22 +7,22 @@ def read(self, iprot):
         (fname, ftype, fid) = iprot.readFieldBegin()
         if (ftype == TType.STOP):
             break
-        if (fid == 513):
+        if (fid == 1):
             if (ftype == TType.DOUBLE):
                 self.execute_latency_ms = iprot.readDouble()
             else:
                 iprot.skip(ftype)
-        elif (fid == 514):
+        elif (fid == 2):
             if (ftype == TType.DOUBLE):
                 self.process_latency_ms = iprot.readDouble()
             else:
                 iprot.skip(ftype)
-        elif (fid == 515):
+        elif (fid == 3):
             if (ftype == TType.I64):
                 self.executed = iprot.readI64()
             else:
                 iprot.skip(ftype)
-        elif (fid == 516):
+        elif (fid == 4):
             if (ftype == TType.DOUBLE):
                 self.capacity = iprot.readDouble()
             else:

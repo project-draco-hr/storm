@@ -4,27 +4,27 @@ def write(self, oprot):
         return
     oprot.writeStructBegin('CommonAggregateStats')
     if (self.num_executors is not None):
-        oprot.writeFieldBegin('num_executors', TType.I32, 513)
+        oprot.writeFieldBegin('num_executors', TType.I32, 1)
         oprot.writeI32(self.num_executors)
         oprot.writeFieldEnd()
     if (self.num_tasks is not None):
-        oprot.writeFieldBegin('num_tasks', TType.I32, 514)
+        oprot.writeFieldBegin('num_tasks', TType.I32, 2)
         oprot.writeI32(self.num_tasks)
         oprot.writeFieldEnd()
     if (self.emitted is not None):
-        oprot.writeFieldBegin('emitted', TType.I64, 515)
+        oprot.writeFieldBegin('emitted', TType.I64, 3)
         oprot.writeI64(self.emitted)
         oprot.writeFieldEnd()
     if (self.transferred is not None):
-        oprot.writeFieldBegin('transferred', TType.I64, 516)
+        oprot.writeFieldBegin('transferred', TType.I64, 4)
         oprot.writeI64(self.transferred)
         oprot.writeFieldEnd()
     if (self.acked is not None):
-        oprot.writeFieldBegin('acked', TType.I64, 517)
+        oprot.writeFieldBegin('acked', TType.I64, 5)
         oprot.writeI64(self.acked)
         oprot.writeFieldEnd()
     if (self.failed is not None):
-        oprot.writeFieldBegin('failed', TType.I64, 518)
+        oprot.writeFieldBegin('failed', TType.I64, 6)
         oprot.writeI64(self.failed)
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

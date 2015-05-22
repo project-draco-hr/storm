@@ -7,7 +7,7 @@
       break;
     }
 switch (schemeField.id) {
-case 513:
+case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
           org.apache.thrift.protocol.TMap _map316=iprot.readMapBegin();
@@ -27,7 +27,7 @@ case 513:
         org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
       }
     break;
-case 514:
+case 2:
   if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
       org.apache.thrift.protocol.TMap _map320=iprot.readMapBegin();
@@ -47,7 +47,7 @@ case 514:
     org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
   }
 break;
-case 515:
+case 3:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
   org.apache.thrift.protocol.TMap _map324=iprot.readMapBegin();
@@ -67,7 +67,7 @@ struct.set_window_to_complete_latencies_ms_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
-case 516:
+case 4:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
 org.apache.thrift.protocol.TMap _map328=iprot.readMapBegin();
@@ -87,7 +87,7 @@ struct.set_window_to_acked_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
-case 517:
+case 5:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
 org.apache.thrift.protocol.TMap _map332=iprot.readMapBegin();

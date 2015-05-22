@@ -4,19 +4,19 @@ def write(self, oprot):
         return
     oprot.writeStructBegin('BoltAggregateStats')
     if (self.execute_latency_ms is not None):
-        oprot.writeFieldBegin('execute_latency_ms', TType.DOUBLE, 513)
+        oprot.writeFieldBegin('execute_latency_ms', TType.DOUBLE, 1)
         oprot.writeDouble(self.execute_latency_ms)
         oprot.writeFieldEnd()
     if (self.process_latency_ms is not None):
-        oprot.writeFieldBegin('process_latency_ms', TType.DOUBLE, 514)
+        oprot.writeFieldBegin('process_latency_ms', TType.DOUBLE, 2)
         oprot.writeDouble(self.process_latency_ms)
         oprot.writeFieldEnd()
     if (self.executed is not None):
-        oprot.writeFieldBegin('executed', TType.I64, 515)
+        oprot.writeFieldBegin('executed', TType.I64, 3)
         oprot.writeI64(self.executed)
         oprot.writeFieldEnd()
     if (self.capacity is not None):
-        oprot.writeFieldBegin('capacity', TType.DOUBLE, 516)
+        oprot.writeFieldBegin('capacity', TType.DOUBLE, 4)
         oprot.writeDouble(self.capacity)
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

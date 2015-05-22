@@ -12,23 +12,23 @@ def write(self, oprot):
         oprot.writeI32(self.component_type)
         oprot.writeFieldEnd()
     if (self.topology_id is not None):
-        oprot.writeFieldBegin('topology_id', TType.STRING, 513)
+        oprot.writeFieldBegin('topology_id', TType.STRING, 3)
         oprot.writeString(self.topology_id.encode('utf-8'))
         oprot.writeFieldEnd()
     if (self.topology_name is not None):
-        oprot.writeFieldBegin('topology_name', TType.STRING, 514)
+        oprot.writeFieldBegin('topology_name', TType.STRING, 4)
         oprot.writeString(self.topology_name.encode('utf-8'))
         oprot.writeFieldEnd()
     if (self.num_executors is not None):
-        oprot.writeFieldBegin('num_executors', TType.I32, 515)
+        oprot.writeFieldBegin('num_executors', TType.I32, 5)
         oprot.writeI32(self.num_executors)
         oprot.writeFieldEnd()
     if (self.num_tasks is not None):
-        oprot.writeFieldBegin('num_tasks', TType.I32, 516)
+        oprot.writeFieldBegin('num_tasks', TType.I32, 6)
         oprot.writeI32(self.num_tasks)
         oprot.writeFieldEnd()
     if (self.window_to_stats is not None):
-        oprot.writeFieldBegin('window_to_stats', TType.MAP, 517)
+        oprot.writeFieldBegin('window_to_stats', TType.MAP, 7)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.window_to_stats))
         for (kiter379, viter380) in self.window_to_stats.items():
             oprot.writeString(kiter379.encode('utf-8'))
@@ -36,7 +36,7 @@ def write(self, oprot):
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.gsid_to_input_stats is not None):
-        oprot.writeFieldBegin('gsid_to_input_stats', TType.MAP, 518)
+        oprot.writeFieldBegin('gsid_to_input_stats', TType.MAP, 8)
         oprot.writeMapBegin(TType.STRUCT, TType.STRUCT, len(self.gsid_to_input_stats))
         for (kiter381, viter382) in self.gsid_to_input_stats.items():
             kiter381.write(oprot)
@@ -44,7 +44,7 @@ def write(self, oprot):
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.sid_to_output_stats is not None):
-        oprot.writeFieldBegin('sid_to_output_stats', TType.MAP, 519)
+        oprot.writeFieldBegin('sid_to_output_stats', TType.MAP, 9)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.sid_to_output_stats))
         for (kiter383, viter384) in self.sid_to_output_stats.items():
             oprot.writeString(kiter383.encode('utf-8'))
@@ -52,14 +52,14 @@ def write(self, oprot):
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.exec_stats is not None):
-        oprot.writeFieldBegin('exec_stats', TType.LIST, 520)
+        oprot.writeFieldBegin('exec_stats', TType.LIST, 10)
         oprot.writeListBegin(TType.STRUCT, len(self.exec_stats))
         for iter385 in self.exec_stats:
             iter385.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.errors is not None):
-        oprot.writeFieldBegin('errors', TType.LIST, 521)
+        oprot.writeFieldBegin('errors', TType.LIST, 11)
         oprot.writeListBegin(TType.STRUCT, len(self.errors))
         for iter386 in self.errors:
             iter386.write(oprot)

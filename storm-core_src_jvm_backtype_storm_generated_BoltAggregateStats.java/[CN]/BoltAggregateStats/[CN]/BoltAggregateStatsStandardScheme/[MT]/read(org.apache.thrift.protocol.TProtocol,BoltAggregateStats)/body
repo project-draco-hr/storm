@@ -7,7 +7,7 @@
       break;
     }
 switch (schemeField.id) {
-case 513:
+case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
         struct.execute_latency_ms=iprot.readDouble();
         struct.set_execute_latency_ms_isSet(true);
@@ -16,7 +16,7 @@ case 513:
         org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
       }
     break;
-case 514:
+case 2:
   if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
     struct.process_latency_ms=iprot.readDouble();
     struct.set_process_latency_ms_isSet(true);
@@ -25,7 +25,7 @@ case 514:
     org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
   }
 break;
-case 515:
+case 3:
 if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
 struct.executed=iprot.readI64();
 struct.set_executed_isSet(true);
@@ -34,7 +34,7 @@ struct.set_executed_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
-case 516:
+case 4:
 if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
 struct.capacity=iprot.readDouble();
 struct.set_capacity_isSet(true);

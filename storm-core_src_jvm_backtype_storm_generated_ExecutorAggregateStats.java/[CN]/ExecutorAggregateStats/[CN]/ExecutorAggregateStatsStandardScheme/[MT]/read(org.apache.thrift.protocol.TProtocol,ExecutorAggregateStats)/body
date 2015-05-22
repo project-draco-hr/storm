@@ -7,7 +7,7 @@
       break;
     }
 switch (schemeField.id) {
-case 513:
+case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
         struct.exec_summary=new ExecutorSummary();
         struct.exec_summary.read(iprot);
@@ -17,7 +17,7 @@ case 513:
         org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
       }
     break;
-case 514:
+case 2:
   if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
     struct.stats=new ComponentAggregateStats();
     struct.stats.read(iprot);

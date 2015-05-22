@@ -1,12 +1,12 @@
 {
 switch (fieldId) {
-case 513:
+case 1:
     return TYPE;
-case 514:
+case 2:
   return COMMON_STATS;
-case 515:
+case 3:
 return SPECIFIC_STATS;
-case 516:
+case 4:
 return LAST_ERROR;
 default :
 return null;

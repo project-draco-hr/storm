@@ -1,12 +1,12 @@
 {
 switch (fieldId) {
-case 513:
+case 1:
     return EXECUTE_LATENCY_MS;
-case 514:
+case 2:
   return PROCESS_LATENCY_MS;
-case 515:
+case 3:
 return EXECUTED;
-case 516:
+case 4:
 return CAPACITY;
 default :
 return null;

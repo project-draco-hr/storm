@@ -7,7 +7,7 @@
       break;
     }
 switch (schemeField.id) {
-case 513:
+case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
         struct.complete_latency_ms=iprot.readDouble();
         struct.set_complete_latency_ms_isSet(true);

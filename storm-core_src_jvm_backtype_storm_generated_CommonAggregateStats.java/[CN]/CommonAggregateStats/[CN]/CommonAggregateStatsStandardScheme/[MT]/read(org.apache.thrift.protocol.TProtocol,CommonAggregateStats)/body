@@ -7,7 +7,7 @@
       break;
     }
 switch (schemeField.id) {
-case 513:
+case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
         struct.num_executors=iprot.readI32();
         struct.set_num_executors_isSet(true);
@@ -16,7 +16,7 @@ case 513:
         org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
       }
     break;
-case 514:
+case 2:
   if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
     struct.num_tasks=iprot.readI32();
     struct.set_num_tasks_isSet(true);
@@ -25,7 +25,7 @@ case 514:
     org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
   }
 break;
-case 515:
+case 3:
 if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
 struct.emitted=iprot.readI64();
 struct.set_emitted_isSet(true);
@@ -34,7 +34,7 @@ struct.set_emitted_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
-case 516:
+case 4:
 if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
 struct.transferred=iprot.readI64();
 struct.set_transferred_isSet(true);
@@ -43,7 +43,7 @@ struct.set_transferred_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
-case 517:
+case 5:
 if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
 struct.acked=iprot.readI64();
 struct.set_acked_isSet(true);
@@ -52,7 +52,7 @@ struct.set_acked_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
-case 518:
+case 6:
 if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
 struct.failed=iprot.readI64();
 struct.set_failed_isSet(true);

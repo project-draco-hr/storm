@@ -17,27 +17,27 @@ def read(self, iprot):
                 self.component_type = iprot.readI32()
             else:
                 iprot.skip(ftype)
-        elif (fid == 513):
+        elif (fid == 3):
             if (ftype == TType.STRING):
                 self.topology_id = iprot.readString().decode('utf-8')
             else:
                 iprot.skip(ftype)
-        elif (fid == 514):
+        elif (fid == 4):
             if (ftype == TType.STRING):
                 self.topology_name = iprot.readString().decode('utf-8')
             else:
                 iprot.skip(ftype)
-        elif (fid == 515):
+        elif (fid == 5):
             if (ftype == TType.I32):
                 self.num_executors = iprot.readI32()
             else:
                 iprot.skip(ftype)
-        elif (fid == 516):
+        elif (fid == 6):
             if (ftype == TType.I32):
                 self.num_tasks = iprot.readI32()
             else:
                 iprot.skip(ftype)
-        elif (fid == 517):
+        elif (fid == 7):
             if (ftype == TType.MAP):
                 self.window_to_stats = {}
                 (_ktype347, _vtype348, _size346) = iprot.readMapBegin()
@@ -49,7 +49,7 @@ def read(self, iprot):
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
-        elif (fid == 518):
+        elif (fid == 8):
             if (ftype == TType.MAP):
                 self.gsid_to_input_stats = {}
                 (_ktype354, _vtype355, _size353) = iprot.readMapBegin()
@@ -62,7 +62,7 @@ def read(self, iprot):
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
-        elif (fid == 519):
+        elif (fid == 9):
             if (ftype == TType.MAP):
                 self.sid_to_output_stats = {}
                 (_ktype361, _vtype362, _size360) = iprot.readMapBegin()
@@ -74,7 +74,7 @@ def read(self, iprot):
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
-        elif (fid == 520):
+        elif (fid == 10):
             if (ftype == TType.LIST):
                 self.exec_stats = []
                 (_etype370, _size367) = iprot.readListBegin()
@@ -85,7 +85,7 @@ def read(self, iprot):
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
-        elif (fid == 521):
+        elif (fid == 11):
             if (ftype == TType.LIST):
                 self.errors = []
                 (_etype376, _size373) = iprot.readListBegin()

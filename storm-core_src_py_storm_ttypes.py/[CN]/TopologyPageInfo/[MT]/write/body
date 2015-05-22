@@ -8,35 +8,35 @@ def write(self, oprot):
         oprot.writeString(self.id.encode('utf-8'))
         oprot.writeFieldEnd()
     if (self.name is not None):
-        oprot.writeFieldBegin('name', TType.STRING, 513)
+        oprot.writeFieldBegin('name', TType.STRING, 2)
         oprot.writeString(self.name.encode('utf-8'))
         oprot.writeFieldEnd()
     if (self.uptime_secs is not None):
-        oprot.writeFieldBegin('uptime_secs', TType.I32, 514)
+        oprot.writeFieldBegin('uptime_secs', TType.I32, 3)
         oprot.writeI32(self.uptime_secs)
         oprot.writeFieldEnd()
     if (self.status is not None):
-        oprot.writeFieldBegin('status', TType.STRING, 515)
+        oprot.writeFieldBegin('status', TType.STRING, 4)
         oprot.writeString(self.status.encode('utf-8'))
         oprot.writeFieldEnd()
     if (self.num_tasks is not None):
-        oprot.writeFieldBegin('num_tasks', TType.I32, 516)
+        oprot.writeFieldBegin('num_tasks', TType.I32, 5)
         oprot.writeI32(self.num_tasks)
         oprot.writeFieldEnd()
     if (self.num_workers is not None):
-        oprot.writeFieldBegin('num_workers', TType.I32, 517)
+        oprot.writeFieldBegin('num_workers', TType.I32, 6)
         oprot.writeI32(self.num_workers)
         oprot.writeFieldEnd()
     if (self.num_executors is not None):
-        oprot.writeFieldBegin('num_executors', TType.I32, 518)
+        oprot.writeFieldBegin('num_executors', TType.I32, 7)
         oprot.writeI32(self.num_executors)
         oprot.writeFieldEnd()
     if (self.topology_conf is not None):
-        oprot.writeFieldBegin('topology_conf', TType.STRING, 519)
+        oprot.writeFieldBegin('topology_conf', TType.STRING, 8)
         oprot.writeString(self.topology_conf.encode('utf-8'))
         oprot.writeFieldEnd()
     if (self.id_to_spout_agg_stats is not None):
-        oprot.writeFieldBegin('id_to_spout_agg_stats', TType.MAP, 520)
+        oprot.writeFieldBegin('id_to_spout_agg_stats', TType.MAP, 9)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.id_to_spout_agg_stats))
         for (kiter342, viter343) in self.id_to_spout_agg_stats.items():
             oprot.writeString(kiter342.encode('utf-8'))
@@ -44,7 +44,7 @@ def write(self, oprot):
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.id_to_bolt_agg_stats is not None):
-        oprot.writeFieldBegin('id_to_bolt_agg_stats', TType.MAP, 521)
+        oprot.writeFieldBegin('id_to_bolt_agg_stats', TType.MAP, 10)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.id_to_bolt_agg_stats))
         for (kiter344, viter345) in self.id_to_bolt_agg_stats.items():
             oprot.writeString(kiter344.encode('utf-8'))
@@ -52,15 +52,15 @@ def write(self, oprot):
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.sched_status is not None):
-        oprot.writeFieldBegin('sched_status', TType.STRING, 522)
+        oprot.writeFieldBegin('sched_status', TType.STRING, 11)
         oprot.writeString(self.sched_status.encode('utf-8'))
         oprot.writeFieldEnd()
     if (self.topology_stats is not None):
-        oprot.writeFieldBegin('topology_stats', TType.STRUCT, 523)
+        oprot.writeFieldBegin('topology_stats', TType.STRUCT, 12)
         self.topology_stats.write(oprot)
         oprot.writeFieldEnd()
     if (self.owner is not None):
-        oprot.writeFieldBegin('owner', TType.STRING, 524)
+        oprot.writeFieldBegin('owner', TType.STRING, 13)
         oprot.writeString(self.owner.encode('utf-8'))
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

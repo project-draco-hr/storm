@@ -1,16 +1,16 @@
 {
 switch (fieldId) {
-case 513:
+case 1:
     return NUM_EXECUTORS;
-case 514:
+case 2:
   return NUM_TASKS;
-case 515:
+case 3:
 return EMITTED;
-case 516:
+case 4:
 return TRANSFERRED;
-case 517:
+case 5:
 return ACKED;
-case 518:
+case 6:
 return FAILED;
 default :
 return null;

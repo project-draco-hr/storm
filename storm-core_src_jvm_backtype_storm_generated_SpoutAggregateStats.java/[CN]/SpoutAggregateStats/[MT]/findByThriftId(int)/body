@@ -1,6 +1,6 @@
 {
 switch (fieldId) {
-case 513:
+case 1:
     return COMPLETE_LATENCY_MS;
 default :
   return null;

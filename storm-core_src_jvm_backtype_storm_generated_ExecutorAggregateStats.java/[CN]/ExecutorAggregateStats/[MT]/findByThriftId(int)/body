@@ -1,8 +1,8 @@
 {
 switch (fieldId) {
-case 513:
+case 1:
     return EXEC_SUMMARY;
-case 514:
+case 2:
   return STATS;
 default :
 return null;

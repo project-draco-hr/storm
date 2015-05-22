@@ -7,7 +7,7 @@ def read(self, iprot):
         (fname, ftype, fid) = iprot.readFieldBegin()
         if (ftype == TType.STOP):
             break
-        if (fid == 513):
+        if (fid == 1):
             if (ftype == TType.DOUBLE):
                 self.complete_latency_ms = iprot.readDouble()
             else:

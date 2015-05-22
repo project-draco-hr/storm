@@ -4,7 +4,7 @@ def write(self, oprot):
         return
     oprot.writeStructBegin('SpoutAggregateStats')
     if (self.complete_latency_ms is not None):
-        oprot.writeFieldBegin('complete_latency_ms', TType.DOUBLE, 513)
+        oprot.writeFieldBegin('complete_latency_ms', TType.DOUBLE, 1)
         oprot.writeDouble(self.complete_latency_ms)
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
