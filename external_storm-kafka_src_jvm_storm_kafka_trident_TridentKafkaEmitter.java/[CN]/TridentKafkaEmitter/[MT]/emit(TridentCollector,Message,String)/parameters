@@ -1,2 +1,3 @@
 TridentCollector collector
 Message msg
+String topic

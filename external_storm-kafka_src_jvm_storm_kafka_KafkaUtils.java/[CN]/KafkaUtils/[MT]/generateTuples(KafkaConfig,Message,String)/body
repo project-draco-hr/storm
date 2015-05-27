@@ -9,7 +9,12 @@
     tups=((KeyValueSchemeAsMultiScheme)kafkaConfig.scheme).deserializeKeyAndValue(Utils.toByteArray(key),Utils.toByteArray(payload));
   }
  else {
-    tups=kafkaConfig.scheme.deserialize(Utils.toByteArray(payload));
+    if (kafkaConfig.scheme instanceof StringMultiSchemeWithTopic) {
+      tups=((StringMultiSchemeWithTopic)kafkaConfig.scheme).deserializeWithTopic(topic,Utils.toByteArray(payload));
+    }
+ else {
+      tups=kafkaConfig.scheme.deserialize(Utils.toByteArray(payload));
+    }
   }
   return tups;
 }
