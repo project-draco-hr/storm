@@ -1,8 +1,7 @@
 {
   config.scheme=new StringMultiSchemeWithTopic();
   String value="value";
-  String key="key";
-  createTopicAndSendMessage(key,value);
+  createTopicAndSendMessage(value);
   ByteBufferMessageSet messageAndOffsets=getLastMessage();
   for (  MessageAndOffset msg : messageAndOffsets) {
     Iterable<List<Object>> lists=KafkaUtils.generateTuples(config,msg.message(),config.topic);

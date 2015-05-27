@@ -5,7 +5,7 @@
   createTopicAndSendMessage(key,value);
   ByteBufferMessageSet messageAndOffsets=getLastMessage();
   for (  MessageAndOffset msg : messageAndOffsets) {
-    Iterable<List<Object>> lists=KafkaUtils.generateTuples(config,msg.message(),null);
+    Iterable<List<Object>> lists=KafkaUtils.generateTuples(config,msg.message(),config.topic);
     assertEquals(value,lists.iterator().next().get(0));
   }
 }
