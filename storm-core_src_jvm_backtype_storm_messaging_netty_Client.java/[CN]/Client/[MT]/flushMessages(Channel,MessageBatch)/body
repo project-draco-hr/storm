@@ -11,7 +11,7 @@
       pendingMessages.getAndAdd(0 - numMessages);
       if (future.isSuccess()) {
         LOG.debug("sent {} messages to {}",numMessages,dstAddressPrefixedName);
-        messagesSent.getAndAdd(batch.size());
+        messagesSent.getAndAdd(numMessages);
       }
  else {
         LOG.error("failed to send {} messages to {}: {}",numMessages,dstAddressPrefixedName,future.getCause());
