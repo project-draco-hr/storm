@@ -1,0 +1,9 @@
+{
+  if (dataSource == null) {
+    Properties properties=new Properties();
+    properties.putAll(configMap);
+    HikariConfig config=new HikariConfig(properties);
+    this.dataSource=new HikariDataSource(config);
+    this.dataSource.setAutoCommit(false);
+  }
+}

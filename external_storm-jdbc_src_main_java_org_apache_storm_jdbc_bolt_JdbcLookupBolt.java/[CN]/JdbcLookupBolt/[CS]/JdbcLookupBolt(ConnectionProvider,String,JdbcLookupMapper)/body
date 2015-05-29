@@ -1,5 +1,5 @@
 {
-  super(configKey);
+  super(connectionProvider);
   this.selectQuery=selectQuery;
   this.jdbcLookupMapper=jdbcLookupMapper;
 }

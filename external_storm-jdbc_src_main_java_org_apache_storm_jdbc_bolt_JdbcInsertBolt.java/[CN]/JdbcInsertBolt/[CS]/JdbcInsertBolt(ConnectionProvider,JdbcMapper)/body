@@ -1,4 +1,4 @@
 {
-  super(configKey);
+  super(connectionProvider);
   this.jdbcMapper=jdbcMapper;
 }
