@@ -1,0 +1,12 @@
+{
+  if (isPaused) {
+    return null;
+  }
+  currentOffset++;
+  List<Section> body=new ArrayList<Section>();
+  body.add(new Data(new Binary(("message" + currentOffset).getBytes())));
+  Message m=new Message(body);
+  MessageId mid=new MessageId(partitionId,"" + currentOffset,currentOffset);
+  EventData ed=new EventData(m,mid);
+  return ed;
+}

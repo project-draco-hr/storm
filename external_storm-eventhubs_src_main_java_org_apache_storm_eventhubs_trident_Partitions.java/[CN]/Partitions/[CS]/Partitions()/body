@@ -1,0 +1,3 @@
+{
+  partitionList=new ArrayList<Partition>();
+}

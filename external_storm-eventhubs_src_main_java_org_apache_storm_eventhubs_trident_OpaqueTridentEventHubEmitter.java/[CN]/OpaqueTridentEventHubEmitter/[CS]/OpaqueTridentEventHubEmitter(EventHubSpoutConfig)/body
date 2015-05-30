@@ -1,0 +1,3 @@
+{
+  transactionalEmitter=new TransactionalTridentEventHubEmitter(spoutConfig);
+}

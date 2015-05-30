@@ -1,0 +1,14 @@
+{
+  try {
+    TSerializer ser=new TSerializer();
+    Map<String,ThriftSerializedObject> serialized=new HashMap<String,ThriftSerializedObject>();
+    for (    Map.Entry<String,TBase> ent : val.entrySet()) {
+      Object o=ent.getValue();
+      serialized.put(ent.getKey(),serialize(ent.getValue(),ser));
+    }
+    persistInternal(serialized,ser,cleanup);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

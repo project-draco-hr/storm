@@ -1,0 +1,8 @@
+{
+  PartitionManagerCallerMock mock=new PartitionManagerCallerMock("1");
+  String result=mock.execute("r1024");
+  result=mock.execute("r2");
+  assertEquals("null,null",result);
+  result=mock.execute("a0,a1,r2");
+  assertEquals("1024,1025",result);
+}

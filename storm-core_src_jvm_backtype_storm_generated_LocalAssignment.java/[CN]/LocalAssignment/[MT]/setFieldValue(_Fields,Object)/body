@@ -1,0 +1,20 @@
+{
+switch (field) {
+case TOPOLOGY_ID:
+    if (value == null) {
+      unset_topology_id();
+    }
+ else {
+      set_topology_id((String)value);
+    }
+  break;
+case EXECUTORS:
+if (value == null) {
+  unset_executors();
+}
+ else {
+  set_executors((List<ExecutorInfo>)value);
+}
+break;
+}
+}

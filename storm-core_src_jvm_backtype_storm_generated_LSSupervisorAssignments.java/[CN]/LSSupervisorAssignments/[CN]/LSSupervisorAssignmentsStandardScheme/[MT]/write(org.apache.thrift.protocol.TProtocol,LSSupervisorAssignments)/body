@@ -1,0 +1,18 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.assignments != null) {
+    oprot.writeFieldBegin(ASSIGNMENTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.I32,org.apache.thrift.protocol.TType.STRUCT,struct.assignments.size()));
+      for (      Map.Entry<Integer,LocalAssignment> _iter468 : struct.assignments.entrySet()) {
+        oprot.writeI32(_iter468.getKey());
+        _iter468.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

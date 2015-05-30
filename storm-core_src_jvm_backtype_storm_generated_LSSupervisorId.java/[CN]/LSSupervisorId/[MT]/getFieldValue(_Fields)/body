@@ -1,0 +1,7 @@
+{
+switch (field) {
+case SUPERVISOR_ID:
+    return get_supervisor_id();
+}
+throw new IllegalStateException();
+}

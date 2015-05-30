@@ -1,0 +1,17 @@
+{
+  org.apache.qpid.amqp_1_0.type.transport.Error error=this.receiver.getError();
+  if (error != null) {
+    String errorMessage=error.toString();
+    logger.error(errorMessage);
+    this.close();
+    throw new RuntimeException(errorMessage);
+  }
+ else {
+    try {
+      Thread.sleep(10);
+    }
+ catch (    InterruptedException e) {
+      logger.error(e.toString());
+    }
+  }
+}

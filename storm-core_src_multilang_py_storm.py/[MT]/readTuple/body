@@ -1,3 +1,0 @@
-def readTuple():
-    cmd = readCommand()
-    return Tuple(cmd['id'], cmd['comp'], cmd['stream'], cmd['task'], cmd['tuple'])

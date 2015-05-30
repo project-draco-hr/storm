@@ -7,4 +7,7 @@
   if (this.options.serializer == null) {
     throw new RuntimeException("Serializer should be specified for type: " + stateType);
   }
+  if (this.options.mapMapper == null) {
+    throw new RuntimeException("MapMapper should be specified for type: " + stateType);
+  }
 }

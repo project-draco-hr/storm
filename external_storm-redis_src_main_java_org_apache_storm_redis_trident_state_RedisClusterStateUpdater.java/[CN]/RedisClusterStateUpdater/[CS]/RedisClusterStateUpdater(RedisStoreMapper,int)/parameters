@@ -1,2 +1,0 @@
-RedisStoreMapper storeMapper
-int expireIntervalSec

@@ -1,0 +1,8 @@
+{
+  this.ensureSessionCreated();
+  if (startingOffset == null || startingOffset.equals("")) {
+    startingOffset=Constants.DefaultStartingOffset;
+  }
+  String filterStr=String.format(Constants.OffsetFilterFormatString,startingOffset);
+  return new EventHubReceiver(this.session,this.entityPath,this.consumerGroupName,partitionId,filterStr,defaultCredits);
+}

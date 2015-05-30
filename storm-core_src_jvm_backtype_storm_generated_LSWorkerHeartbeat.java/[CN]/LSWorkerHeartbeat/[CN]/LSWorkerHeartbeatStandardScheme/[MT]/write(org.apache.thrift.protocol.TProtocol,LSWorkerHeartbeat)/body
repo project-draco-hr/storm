@@ -1,0 +1,28 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  oprot.writeFieldBegin(TIME_SECS_FIELD_DESC);
+  oprot.writeI32(struct.time_secs);
+  oprot.writeFieldEnd();
+  if (struct.topology_id != null) {
+    oprot.writeFieldBegin(TOPOLOGY_ID_FIELD_DESC);
+    oprot.writeString(struct.topology_id);
+    oprot.writeFieldEnd();
+  }
+  if (struct.executors != null) {
+    oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
+{
+      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.executors.size()));
+      for (      ExecutorInfo _iter477 : struct.executors) {
+        _iter477.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(PORT_FIELD_DESC);
+  oprot.writeI32(struct.port);
+  oprot.writeFieldEnd();
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

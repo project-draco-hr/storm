@@ -1,0 +1,4 @@
+{
+  AtMostOnceEventCount scenario=new AtMostOnceEventCount();
+  scenario.runScenario(args);
+}

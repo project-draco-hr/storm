@@ -1,0 +1,5 @@
+{
+  EventHubSpoutCallerMock mock=new EventHubSpoutCallerMock(16,8,6,10);
+  String result=mock.execute("r6,f6_0,a6_1,a6_2,a14_0,a14_2,r4,f14_1,r2");
+  assertEquals("6_0,14_0,6_1,14_1,6_2,14_2,6_0,14_3,6_3,14_4,6_4,14_1",result);
+}

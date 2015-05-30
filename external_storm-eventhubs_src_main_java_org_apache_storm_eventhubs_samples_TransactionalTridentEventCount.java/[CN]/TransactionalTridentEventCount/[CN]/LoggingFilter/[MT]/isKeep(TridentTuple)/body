@@ -1,0 +1,8 @@
+{
+  long now=System.nanoTime();
+  if (logIntervalMs < (now - lastTime) / 1000000) {
+    logger.info(prefix + tuple.toString());
+    lastTime=now;
+  }
+  return false;
+}

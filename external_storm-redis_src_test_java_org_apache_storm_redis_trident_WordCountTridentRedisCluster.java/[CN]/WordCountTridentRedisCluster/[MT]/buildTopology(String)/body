@@ -13,7 +13,7 @@
   RedisClusterState.Factory factory=new RedisClusterState.Factory(clusterConfig);
   TridentTopology topology=new TridentTopology();
   Stream stream=topology.newStream("spout1",spout);
-  stream.partitionPersist(factory,fields,new RedisClusterStateUpdater(storeMapper,86400000),new Fields());
+  stream.partitionPersist(factory,fields,new RedisClusterStateUpdater(storeMapper).withExpire(86400000),new Fields());
   TridentState state=topology.newStaticState(factory);
   stream=stream.stateQuery(state,new Fields("word"),new RedisClusterStateQuerier(lookupMapper),new Fields("columnName","columnValue"));
   stream.each(new Fields("word","columnValue"),new PrintFunction(),new Fields());

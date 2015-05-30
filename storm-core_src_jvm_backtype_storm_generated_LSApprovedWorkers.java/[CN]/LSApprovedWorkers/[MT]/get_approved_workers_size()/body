@@ -1,0 +1,3 @@
+{
+  return (this.approved_workers == null) ? 0 : this.approved_workers.size();
+}

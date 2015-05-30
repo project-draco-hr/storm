@@ -1,0 +1,29 @@
+{
+  logger.info("begin: open()");
+  String topologyName=(String)config.get(Config.TOPOLOGY_NAME);
+  eventHubConfig.setTopologyName(topologyName);
+  int totalTasks=context.getComponentTasks(context.getThisComponentId()).size();
+  int taskIndex=context.getThisTaskIndex();
+  if (totalTasks > eventHubConfig.getPartitionCount()) {
+    throw new RuntimeException("total tasks of EventHubSpout is greater than partition count.");
+  }
+  logger.info(String.format("topologyName: %s, totalTasks: %d, taskIndex: %d",topologyName,totalTasks,taskIndex));
+  try {
+    preparePartitions(config,totalTasks,taskIndex,collector);
+  }
+ catch (  Exception e) {
+    logger.error(e.getMessage());
+    throw new RuntimeException(e);
+  }
+  context.registerMetric("EventHubReceiver",new IMetric(){
+    @Override public Object getValueAndReset(){
+      Map concatMetricsDataMaps=new HashMap();
+      for (      IPartitionManager partitionManager : partitionCoordinator.getMyPartitionManagers()) {
+        concatMetricsDataMaps.putAll(partitionManager.getMetricsData());
+      }
+      return concatMetricsDataMaps;
+    }
+  }
+,(Integer)config.get(Config.TOPOLOGY_BUILTIN_METRICS_BUCKET_SIZE_SECS));
+  logger.info("end open()");
+}

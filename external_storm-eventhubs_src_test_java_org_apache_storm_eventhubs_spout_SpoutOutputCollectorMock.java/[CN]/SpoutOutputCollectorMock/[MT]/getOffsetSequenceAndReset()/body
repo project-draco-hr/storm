@@ -1,0 +1,9 @@
+{
+  String ret=null;
+  if (emittedOffset.length() > 0) {
+    emittedOffset.setLength(emittedOffset.length() - 1);
+    ret=emittedOffset.toString();
+    emittedOffset.setLength(0);
+  }
+  return ret;
+}

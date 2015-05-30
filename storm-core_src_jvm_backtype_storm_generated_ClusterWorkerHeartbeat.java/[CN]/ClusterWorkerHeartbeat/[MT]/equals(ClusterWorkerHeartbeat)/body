@@ -18,5 +18,11 @@
     if (!(this_present_time_secs && that_present_time_secs))     return false;
     if (this.time_secs != that.time_secs)     return false;
   }
+  boolean this_present_uptime_secs=true;
+  boolean that_present_uptime_secs=true;
+  if (this_present_uptime_secs || that_present_uptime_secs) {
+    if (!(this_present_uptime_secs && that_present_uptime_secs))     return false;
+    if (this.uptime_secs != that.uptime_secs)     return false;
+  }
   return true;
 }

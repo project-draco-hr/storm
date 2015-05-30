@@ -1,0 +1,7 @@
+{
+  partialCount++;
+  if (partialCount == PartialCountBatchSize) {
+    collector.emit(new Values(PartialCountBatchSize));
+    partialCount=0;
+  }
+}

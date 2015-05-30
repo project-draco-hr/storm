@@ -1,14 +1,8 @@
 {
-  String latestPath=_vs.mostRecentVersionPath();
-  Map<Object,Object> result=new HashMap<Object,Object>();
-  if (latestPath != null) {
-    byte[] serialized=FileUtils.readFileToByteArray(new File(latestPath));
-    if (serialized.length == 0) {
-      LOG.warn("LocalState file '{}' contained no data, resetting state",latestPath);
-    }
- else {
-      result=Utils.javaDeserialize(serialized,Map.class);
-    }
+  Map<String,TBase> result=new HashMap<String,TBase>();
+  TDeserializer td=new TDeserializer();
+  for (  Map.Entry<String,ThriftSerializedObject> ent : partialDeserializeLatestVersion(td).entrySet()) {
+    result.put(ent.getKey(),deserialize(ent.getValue(),td));
   }
   return result;
 }

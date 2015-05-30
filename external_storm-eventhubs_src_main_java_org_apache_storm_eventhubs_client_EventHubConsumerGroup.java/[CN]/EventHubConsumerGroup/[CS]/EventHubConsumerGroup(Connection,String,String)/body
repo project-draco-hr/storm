@@ -1,0 +1,5 @@
+{
+  this.connection=connection;
+  this.entityPath=entityPath;
+  this.consumerGroupName=consumerGroupName;
+}

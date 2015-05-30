@@ -1,0 +1,8 @@
+{
+  String completedOffset=getCompletedOffset();
+  if (!committedOffset.equals(completedOffset)) {
+    logger.info("saving state " + completedOffset);
+    stateStore.saveData(statePath,completedOffset);
+    committedOffset=completedOffset;
+  }
+}

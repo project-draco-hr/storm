@@ -1,0 +1,16 @@
+{
+  Config config=new Config();
+  config.setDebug(false);
+  config.registerMetricsConsumer(backtype.storm.metric.LoggingMetricsConsumer.class,1);
+  if (args != null && args.length > 0) {
+    config.setNumWorkers(numWorkers);
+    StormSubmitter.submitTopology(args[0],config,topology);
+  }
+ else {
+    config.setMaxTaskParallelism(2);
+    LocalCluster localCluster=new LocalCluster();
+    localCluster.submitTopology("test",config,topology);
+    Thread.sleep(5000000);
+    localCluster.shutdown();
+  }
+}

@@ -21,6 +21,9 @@
   oprot.writeFieldBegin(TIME_SECS_FIELD_DESC);
   oprot.writeI32(struct.time_secs);
   oprot.writeFieldEnd();
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(struct.uptime_secs);
+  oprot.writeFieldEnd();
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

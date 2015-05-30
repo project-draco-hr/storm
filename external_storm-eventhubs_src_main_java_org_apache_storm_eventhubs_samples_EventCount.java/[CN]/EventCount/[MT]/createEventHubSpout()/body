@@ -1,0 +1,4 @@
+{
+  EventHubSpout eventHubSpout=new EventHubSpout(spoutConfig);
+  return eventHubSpout;
+}

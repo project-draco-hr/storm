@@ -1,0 +1,13 @@
+{
+  EventHubSpoutConfig conf=new EventHubSpoutConfig("username","password","namespace","entityname",16,"zookeeper");
+  conf.setTopologyName("TestTopo");
+  IEventHubReceiverFactory recvFactory=new IEventHubReceiverFactory(){
+    @Override public IEventHubReceiver create(    EventHubSpoutConfig config,    String partitionId){
+      return new EventHubReceiverMock(partitionId);
+    }
+  }
+;
+  partition=new Partition(conf,"0");
+  emitter=new TransactionalTridentEventHubEmitter(conf,batchSize,null,recvFactory);
+  collectorMock=new TridentCollectorMock();
+}

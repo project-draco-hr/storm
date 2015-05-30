@@ -1,0 +1,6 @@
+{
+  if (other.is_set_approved_workers()) {
+    Map<String,Integer> __this__approved_workers=new HashMap<String,Integer>(other.approved_workers);
+    this.approved_workers=__this__approved_workers;
+  }
+}

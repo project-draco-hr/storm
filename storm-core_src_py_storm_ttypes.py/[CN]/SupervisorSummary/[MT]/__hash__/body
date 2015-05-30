@@ -5,4 +5,5 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.num_workers))
     value = ((value * 31) ^ hash(self.num_used_workers))
     value = ((value * 31) ^ hash(self.supervisor_id))
+    value = ((value * 31) ^ hash(self.version))
     return value

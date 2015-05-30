@@ -1,0 +1,6 @@
+{
+  if (myDataMap != null) {
+    return myDataMap.get(path);
+  }
+  return null;
+}

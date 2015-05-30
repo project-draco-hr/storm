@@ -20,6 +20,13 @@
     oprot.writeString(struct.supervisor_id);
     oprot.writeFieldEnd();
   }
+  if (struct.version != null) {
+    if (struct.is_set_version()) {
+      oprot.writeFieldBegin(VERSION_FIELD_DESC);
+      oprot.writeString(struct.version);
+      oprot.writeFieldEnd();
+    }
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

@@ -1,4 +1,9 @@
 {
+  Preconditions.checkNotNull(conf,"conf cannot be null");
+  validateConfig(conf);
+  Preconditions.checkNotNull(zkStr,"zkString cannot be null");
+  Preconditions.checkNotNull(zkPath,"zkPath cannot be null");
+  Preconditions.checkNotNull(topic,"topic cannot be null");
   _zkPath=zkPath;
   _topic=topic;
   try {
@@ -7,5 +12,6 @@
   }
  catch (  Exception ex) {
     LOG.error("Couldn't connect to zookeeper",ex);
+    throw new RuntimeException(ex);
   }
 }

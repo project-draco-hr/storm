@@ -1,0 +1,25 @@
+{
+  String[] cmds=callSequence.split(",");
+  for (  String cmd : cmds) {
+    if (cmd.startsWith("r")) {
+      int count=1;
+      if (cmd.length() > 1) {
+        count=Integer.parseInt(cmd.substring(1));
+      }
+      for (int i=0; i < count; ++i) {
+        spout.nextTuple();
+      }
+    }
+ else     if (cmd.startsWith("a")) {
+      String[] midStrs=cmd.substring(1).split("_");
+      MessageId msgId=new MessageId(midStrs[0],midStrs[1],Long.parseLong(midStrs[1]));
+      spout.ack(msgId);
+    }
+ else     if (cmd.startsWith("f")) {
+      String[] midStrs=cmd.substring(1).split("_");
+      MessageId msgId=new MessageId(midStrs[0],midStrs[1],Long.parseLong(midStrs[1]));
+      spout.fail(msgId);
+    }
+  }
+  return collector.getOffsetSequenceAndReset();
+}
