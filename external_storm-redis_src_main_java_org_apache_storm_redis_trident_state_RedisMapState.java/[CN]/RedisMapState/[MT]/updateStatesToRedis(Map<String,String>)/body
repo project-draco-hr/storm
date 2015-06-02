@@ -7,9 +7,19 @@ switch (description.getDataType()) {
 case STRING:
       String[] keyValue=buildKeyValuesList(keyValues);
     jedis.mset(keyValue);
-  break;
+  if (this.options.expireIntervalSec > 0) {
+    Pipeline pipe=jedis.pipelined();
+    for (int i=0; i < keyValue.length; i+=2) {
+      pipe.expire(keyValue[i],this.options.expireIntervalSec);
+    }
+    pipe.sync();
+  }
+break;
 case HASH:
 jedis.hmset(description.getAdditionalKey(),keyValues);
+if (this.options.expireIntervalSec > 0) {
+jedis.expire(description.getAdditionalKey(),this.options.expireIntervalSec);
+}
 break;
 default :
 throw new IllegalArgumentException("Cannot process such data type: " + description.getDataType());
