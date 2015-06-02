@@ -1,0 +1,23 @@
+{
+  Jedis jedis=null;
+  try {
+    jedis=jedisPool.getResource();
+    RedisDataTypeDescription description=this.options.dataTypeDescription;
+switch (description.getDataType()) {
+case STRING:
+      String[] keyValue=buildKeyValuesList(keyValues);
+    jedis.mset(keyValue);
+  break;
+case HASH:
+jedis.hmset(description.getAdditionalKey(),keyValues);
+break;
+default :
+throw new IllegalArgumentException("Cannot process such data type: " + description.getDataType());
+}
+}
+  finally {
+if (jedis != null) {
+jedis.close();
+}
+}
+}
