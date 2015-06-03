@@ -1,0 +1,27 @@
+{
+  Configuration config=HBaseConfiguration.create();
+  if (args.length == 1) {
+    Properties props=new Properties();
+    props.load(new FileInputStream(args[0]));
+    System.out.println("HBase configuration:");
+    for (    Object key : props.keySet()) {
+      System.out.println(key + "=" + props.get(key));
+      config.set((String)key,props.getProperty((String)key));
+    }
+  }
+ else {
+    System.out.println("Usage: WordCountClient <hbase_config.properties>");
+    System.exit(1);
+  }
+  HTable table=new HTable(config,"WordCount");
+  String[] words=new String[]{"nathan","mike","jackson","golda","bertels"};
+  for (  String word : words) {
+    Get get=new Get(Bytes.toBytes(word));
+    Result result=table.get(get);
+    byte[] countBytes=result.getValue(Bytes.toBytes("cf"),Bytes.toBytes("count"));
+    byte[] wordBytes=result.getValue(Bytes.toBytes("cf"),Bytes.toBytes("word"));
+    String wordStr=Bytes.toString(wordBytes);
+    long count=Bytes.toLong(countBytes);
+    System.out.println("Word: '" + wordStr + "', Count: "+ count);
+  }
+}

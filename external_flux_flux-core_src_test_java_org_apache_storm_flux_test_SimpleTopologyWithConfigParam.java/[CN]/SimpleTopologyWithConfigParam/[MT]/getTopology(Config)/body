@@ -1,0 +1,7 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  FluxShellSpout spout=new FluxShellSpout(new String[]{"node","randomsentence.js"},new String[]{"word"});
+  builder.setSpout("sentence-spout",spout,1);
+  builder.setBolt("log-bolt",new LogInfoBolt(),1).shuffleGrouping("sentence-spout");
+  return builder.createTopology();
+}
