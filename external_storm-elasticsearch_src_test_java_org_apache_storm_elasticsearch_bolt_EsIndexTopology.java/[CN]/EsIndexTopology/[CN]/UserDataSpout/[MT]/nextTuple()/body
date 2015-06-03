@@ -1,0 +1,18 @@
+{
+  String source=sources[index];
+  Values values=new Values(indexName,typeName,source);
+  UUID msgId=UUID.randomUUID();
+  this.pending.put(msgId,values);
+  this.collector.emit(values,msgId);
+  index++;
+  if (index >= sources.length) {
+    index=0;
+  }
+  count++;
+  total++;
+  if (count > 1000) {
+    count=0;
+    System.out.println("Pending count: " + this.pending.size() + ", total: "+ this.total);
+  }
+  Thread.yield();
+}

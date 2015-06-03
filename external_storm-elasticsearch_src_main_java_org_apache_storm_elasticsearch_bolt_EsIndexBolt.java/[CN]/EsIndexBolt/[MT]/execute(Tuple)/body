@@ -1,0 +1,15 @@
+{
+  try {
+    String index=tuple.getStringByField("index");
+    String type=tuple.getStringByField("type");
+    String source=tuple.getStringByField("source");
+    client.prepareIndex(index,type).setSource(source).execute().actionGet();
+    collector.ack(tuple);
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    System.out.println(e);
+    collector.reportError(e);
+    collector.fail(tuple);
+  }
+}

@@ -1,0 +1,9 @@
+{
+  System.out.println("setup");
+  node=NodeBuilder.nodeBuilder().data(true).settings(ImmutableSettings.builder().put(ClusterName.SETTING,"test-cluster").put(IndexMetaData.SETTING_NUMBER_OF_SHARDS,1).put(IndexMetaData.SETTING_NUMBER_OF_REPLICAS,0).put(EsExecutors.PROCESSORS,1).put("http.enabled",false).put("index.percolator.map_unmapped_fields_as_string",true).put("index.store.type","memory")).build();
+  node.start();
+  ensureEsGreen(node);
+  ClusterHealthResponse chr=node.client().admin().cluster().health(Requests.clusterHealthRequest().timeout(TimeValue.timeValueSeconds(30)).waitForGreenStatus().waitForRelocatingShards(0)).actionGet();
+  System.out.println(chr.getStatus());
+  Thread.sleep(1000);
+}

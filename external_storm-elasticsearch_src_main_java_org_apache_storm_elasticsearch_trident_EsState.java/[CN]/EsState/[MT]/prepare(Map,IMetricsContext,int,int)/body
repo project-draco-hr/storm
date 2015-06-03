@@ -1,0 +1,12 @@
+{
+synchronized (EsState.class) {
+    if (client == null) {
+      Settings settings=ImmutableSettings.settingsBuilder().put("cluster.name",esConfig.getClusterName()).put("client.transport.sniff","true").build();
+      List<InetSocketTransportAddress> transportAddressList=new ArrayList<InetSocketTransportAddress>();
+      for (      String host : esConfig.getHost()) {
+        transportAddressList.add(new InetSocketTransportAddress(host,esConfig.getPort()));
+      }
+      client=new TransportClient(settings).addTransportAddresses(transportAddressList.toArray(new InetSocketTransportAddress[transportAddressList.size()]));
+    }
+  }
+}

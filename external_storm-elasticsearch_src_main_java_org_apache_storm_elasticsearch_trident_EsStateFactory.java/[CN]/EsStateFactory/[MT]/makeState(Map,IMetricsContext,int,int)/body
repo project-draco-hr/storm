@@ -1,0 +1,5 @@
+{
+  EsState esState=new EsState(esConfig);
+  esState.prepare(conf,metrics,partitionIndex,numPartitions);
+  return esState;
+}
