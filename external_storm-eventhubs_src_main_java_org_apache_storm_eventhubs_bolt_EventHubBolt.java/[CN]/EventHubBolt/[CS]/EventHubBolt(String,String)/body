@@ -1,4 +1,3 @@
 {
-  this.connectionString=connectionString;
-  this.entityPath=entityPath;
+  boltConfig=new EventHubBoltConfig(connectionString,entityPath);
 }

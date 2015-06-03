@@ -1,0 +1,10 @@
+{
+  StringBuilder sb=new StringBuilder();
+  for (  Object obj : tuple.getValues()) {
+    if (sb.length() != 0) {
+      sb.append(delimiter);
+    }
+    sb.append(obj.toString());
+  }
+  return sb.toString().getBytes();
+}

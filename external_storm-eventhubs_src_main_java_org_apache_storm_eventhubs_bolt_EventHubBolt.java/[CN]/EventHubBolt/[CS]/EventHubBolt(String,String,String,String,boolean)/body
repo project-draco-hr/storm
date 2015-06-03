@@ -1,0 +1,3 @@
+{
+  boltConfig=new EventHubBoltConfig(userName,password,namespace,entityPath,partitionMode);
+}

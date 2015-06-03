@@ -1,4 +1,3 @@
 {
-  this.targetFqnAddress=targetFqnAddress;
-  this.connectionString=buildConnectionString(this.userName,this.password,this.namespace,this.targetFqnAddress);
+  this.connectionString=new ConnectionStringBuilder(userName,password,namespace,targetFqnAddress).getConnectionString();
 }

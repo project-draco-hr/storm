@@ -1,4 +1,0 @@
-{
-  this.connectionString=connectionString;
-  this.initialize();
-}
