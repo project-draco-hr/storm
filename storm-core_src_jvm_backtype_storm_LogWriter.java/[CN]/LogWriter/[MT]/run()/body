@@ -1,0 +1,21 @@
+{
+  Logger logger=this.logger;
+  BufferedReader in=this.in;
+  String line=null;
+  try {
+    while ((line=in.readLine()) != null) {
+      logger.info(line);
+    }
+  }
+ catch (  IOException e) {
+    logger.error("Internal ERROR",e);
+  }
+ finally {
+    try {
+      in.close();
+    }
+ catch (    IOException e) {
+      logger.error("Internal ERROR",e);
+    }
+  }
+}

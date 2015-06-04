@@ -1,5 +1,5 @@
 def nimbus(klass='backtype.storm.daemon.nimbus'):
     'Syntax: [storm nimbus]\n\n    Launches the nimbus daemon. This command should be run under\n    supervision with a tool like daemontools or monit.\n\n    See Setting up a Storm cluster for more information.\n    (http://storm.incubator.apache.org/documentation/Setting-up-a-Storm-cluster)\n    '
     cppaths = [CLUSTER_CONF_DIR]
-    jvmopts = (parse_args(confvalue('nimbus.childopts', cppaths)) + ['-Dlogfile.name=nimbus.log', ('-Dlogback.configurationFile=' + os.path.join(get_logback_conf_dir(), 'cluster.xml'))])
-    exec_storm_class(klass, jvmtype='-server', extrajars=cppaths, jvmopts=jvmopts)
+    jvmopts = (parse_args(confvalue('nimbus.childopts', cppaths)) + ['-Dlogfile.name=nimbus.log', ('-Dlog4j.configurationFile=' + os.path.join(get_log4j_conf_dir(), 'cluster.xml'))])
+    exec_storm_class(klass, jvmtype='-server', daemonName='nimbus', extrajars=cppaths, jvmopts=jvmopts)

@@ -5,3 +5,4 @@ extrajars
 args
 fork
 daemon
+daemonName
