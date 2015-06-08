@@ -1,3 +1,3 @@
 def get_errors(*args):
     'Syntax: [storm get-errors topology-name]\n\n    Get the latest error from the running topology. The returned result contains\n    the key value pairs for component-name and component-error for the components in error.\n    The result is returned in json format.\n    '
-    exec_storm_class('backtype.storm.command.get_errors', args=args, jvmtype='-client', extrajars=[USER_CONF_DIR, (STORM_DIR + '/bin')])
+    exec_storm_class('backtype.storm.command.get_errors', args=args, jvmtype='-client', extrajars=[USER_CONF_DIR, os.path.join(STORM_DIR, 'bin')])
