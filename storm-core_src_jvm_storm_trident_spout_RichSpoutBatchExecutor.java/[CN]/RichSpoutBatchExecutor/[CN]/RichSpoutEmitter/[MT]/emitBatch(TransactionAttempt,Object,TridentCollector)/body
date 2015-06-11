@@ -23,4 +23,5 @@
     }
   }
   idsMap.put(txid,_collector.ids);
+  _collector.pendingCount=idsMap.size();
 }
