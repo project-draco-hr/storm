@@ -1,7 +1,7 @@
 {
   JedisCluster jedisCluster=null;
   try {
-    jedisCluster=redisClusterState.getJedisCluster();
+    jedisCluster=state.getJedisCluster();
     List<String> redisVals=new ArrayList<String>();
     for (    String key : keys) {
 switch (dataType) {
@@ -19,7 +19,7 @@ return redisVals;
 }
   finally {
 if (jedisCluster != null) {
-redisClusterState.returnJedisCluster(jedisCluster);
+state.returnJedisCluster(jedisCluster);
 }
 }
 }

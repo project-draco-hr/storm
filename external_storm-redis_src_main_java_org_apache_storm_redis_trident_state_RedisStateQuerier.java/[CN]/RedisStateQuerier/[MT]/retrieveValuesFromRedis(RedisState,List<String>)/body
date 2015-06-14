@@ -1,7 +1,7 @@
 {
   Jedis jedis=null;
   try {
-    jedis=redisState.getJedis();
+    jedis=state.getJedis();
     List<String> redisVals;
     String[] keysForRedis=keys.toArray(new String[keys.size()]);
 switch (dataType) {
@@ -18,7 +18,7 @@ return redisVals;
 }
   finally {
 if (jedis != null) {
-redisState.returnJedis(jedis);
+state.returnJedis(jedis);
 }
 }
 }
