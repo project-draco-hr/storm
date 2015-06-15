@@ -1,6 +1,7 @@
 import os
 import sys
 import glob
+import traceback
 from xml.etree.ElementTree import ElementTree
 if (__name__ == '__main__'):
     if (sys.argv < 2):
