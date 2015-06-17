@@ -1,0 +1,9 @@
+{
+  byte[] mapped=ESCAPE_MAP.get((byte)b);
+  if (mapped == null) {
+    out.write(b);
+  }
+ else {
+    out.write(mapped);
+  }
+}
