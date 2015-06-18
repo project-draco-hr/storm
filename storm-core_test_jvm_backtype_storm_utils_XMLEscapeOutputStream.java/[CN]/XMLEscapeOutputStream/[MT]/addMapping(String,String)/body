@@ -1,3 +1,0 @@
-{
-  ESCAPE_MAP.put(key.getBytes()[0],val.getBytes());
-}
