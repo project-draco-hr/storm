@@ -1,0 +1,5 @@
+def __init__(self, header=''):
+    Report.__init__(self, header)
+    self.jira_reports = []
+    self.github_reports = []
+    self.jira_github_combined_reports = []

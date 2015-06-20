@@ -5,4 +5,4 @@ def main():
     github = GitHub(options)
     for pullNumber in args:
         pull = github.pull('apache', 'storm', pullNumber)
-        print ((('git pull ' + pull.fromRepo()) + ' ') + pull.fromBranch())
+        print ((('git pull ' + pull.from_repo()) + ' ') + pull.from_branch())

@@ -1,0 +1,37 @@
+def build(self):
+    github_open = GitHubReport(self.github_repo.open_pulls('apache', 'storm'))
+    github_bad_jira = GitHubReport(None, '\nGITHUB PULL REQUESTS WITH BAD OR CLOSED JIRA ID')
+    github_without_jira = GitHubReport(None, '\nGITHUB PULL REQUESTS WITHOUT A JIRA ID')
+    github_unresolved_jira = GitHubReport(None, '\nGITHUB PULL REQUESTS WITH UNRESOLVED JIRA ID')
+    github_unresolved_jira_voted = GitHubReport(None, '\nGITHUB PULL REQUESTS WITH VOTES FOR UNRESOLVED JIRAS')
+    github_open_jira = GitHubReport(None, '\nGITHUB PULL REQUESTS WITH OPEN JIRA ID')
+    github_unresolved_not_open_jira = GitHubReport(None, '\nGITHUB PULL REQUESTS WITH UNRESOLVED BUT NOT OPEN JIRA ID')
+    jira_unresolved = JiraReport(self.jira_repo.unresolved_jiras('STORM'))
+    jira_open = JiraReport(dict(((x, y) for (x, y) in self.jira_repo.unresolved_jiras('STORM').items() if (y.get_status() == 'Open'))))
+    jira_in_progress = JiraReport(dict(((x, y) for (x, y) in self.jira_repo.in_progress_jiras('STORM').items() if (y.get_status() == 'In Progress'))), '\nIN PROGRESS JIRA ISSUES')
+    for pull in github_open.pull_requests:
+        if pull.has_jira_id():
+            pull_jira_id = pull.jira_id()
+            if (pull_jira_id not in jira_unresolved.issues):
+                github_bad_jira.pull_requests.append(pull)
+            else:
+                github_unresolved_jira.pull_requests.append(pull)
+                if jira_unresolved.issues[pull_jira_id].has_voted_comment():
+                    github_unresolved_jira_voted.pull_requests.append(pull)
+                if (pull_jira_id in jira_open.issues):
+                    github_open_jira.pull_requests.append(pull)
+                else:
+                    github_unresolved_not_open_jira.pull_requests.append(pull)
+        else:
+            github_without_jira.pull_requests.append(pull)
+    jira_github_open = JiraGitHubCombinedReport(jira_open, github_open_jira, '\nOPEN JIRA ISSUES THAT HAVE GITHUB PULL REQUESTS')
+    jira_github_unresolved_not_open = JiraGitHubCombinedReport(jira_unresolved, github_unresolved_not_open_jira, '\nIN PROGRESS OR REOPENED JIRA ISSUES THAT HAVE GITHUB PULL REQUESTS')
+    jira_github_unresolved_voted = JiraGitHubCombinedReport(jira_unresolved, github_unresolved_jira_voted, '\nGITHUB PULL REQUESTS WITH VOTES FOR UNRESOLVED JIRAS', True)
+    jira_open_no_pull = JiraReport(jira_open.view(github_open_jira.jira_ids()), "\nOPEN JIRA ISSUES THAT DON'T HAVE GITHUB PULL REQUESTS")
+    self.report.jira_reports.append(jira_in_progress)
+    self.report.jira_reports.append(jira_open_no_pull)
+    self.report.github_reports.append(github_bad_jira)
+    self.report.github_reports.append(github_without_jira)
+    self.report.jira_github_combined_reports.append(jira_github_open)
+    self.report.jira_github_combined_reports.append(jira_github_unresolved_voted)
+    self.report.jira_github_combined_reports.append(jira_github_unresolved_not_open)

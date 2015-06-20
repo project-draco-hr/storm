@@ -1,0 +1,2 @@
+def _jira_issue(self, jira_id):
+    return self.jira_report.issues[jira_id]

@@ -1,0 +1,4 @@
+def storm_jira_cmp(x, y):
+    xn = x.get_id().split('-')[1]
+    yn = y.get_id().split('-')[1]
+    return (int(xn) - int(yn))

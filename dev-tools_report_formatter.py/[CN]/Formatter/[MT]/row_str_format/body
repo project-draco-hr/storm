@@ -1,0 +1,5 @@
+def row_str_format(self, row_tuple):
+    format_with_values = [str(self.data_format[0].format(encode(row_tuple[0])))]
+    for i in range(1, len(row_tuple)):
+        format_with_values += [str(self.data_format[i].format(encode(row_tuple[i])))]
+    return tuple(format_with_values)

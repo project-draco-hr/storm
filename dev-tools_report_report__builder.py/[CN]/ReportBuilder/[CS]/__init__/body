@@ -1,0 +1,3 @@
+def __init__(self, jira_repo=None, github_repo=None):
+    self.jira_repo = jira_repo
+    self.github_repo = github_repo

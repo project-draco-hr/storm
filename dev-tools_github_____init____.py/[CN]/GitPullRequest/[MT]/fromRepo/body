@@ -1,2 +1,0 @@
-def fromRepo(self):
-    return mstr(self.data['head']['repo']['clone_url'])
