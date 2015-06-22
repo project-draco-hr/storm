@@ -1,5 +1,4 @@
 {
   this.clusterName=clusterName;
-  this.host=host;
-  this.port=port;
+  this.nodes=nodes;
 }
