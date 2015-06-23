@@ -7,7 +7,7 @@ synchronized (EsState.class) {
         for (        String node : esConfig.getNodes()) {
           String[] hostAndPort=node.split(":");
           if (hostAndPort.length != 2) {
-            throw new Exception("incorrect ElasticSearch node format, should follow {host}:{port} pattern");
+            throw new IllegalArgumentException("incorrect Elasticsearch node format, should follow {host}:{port} pattern");
           }
           transportAddressList.add(new InetSocketTransportAddress(hostAndPort[0],Integer.parseInt(hostAndPort[1])));
         }
