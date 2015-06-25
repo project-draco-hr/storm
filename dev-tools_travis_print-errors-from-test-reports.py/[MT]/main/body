@@ -2,6 +2,7 @@ def main(report_dir_path):
     for test_report in glob.iglob((report_dir_path + '/*.xml')):
         file_path = os.path.abspath(test_report)
         try:
+            print ('Checking %s' % test_report)
             print_error_reports_from_report_file(file_path)
         except Exception as e:
             print ('Error while reading report file, %s' % file_path)
