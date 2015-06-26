@@ -1,11 +1,19 @@
 {
-  bolt=generateDefaultSerializerBolt();
+  boolean async=true;
+  boolean fireAndForget=true;
+  bolt=generateDefaultSerializerBolt(async,fireAndForget);
   String keyString="test-key";
   String messageString="test-message";
   byte[] key=keyString.getBytes();
   byte[] message=messageString.getBytes();
   Tuple tuple=generateTestTuple(key,message);
   bolt.execute(tuple);
+  try {
+    Thread.sleep(1000);
+  }
+ catch (  InterruptedException ex) {
+    Thread.currentThread().interrupt();
+  }
   verify(collector).ack(tuple);
   verifyMessage(keyString,messageString);
 }

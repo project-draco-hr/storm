@@ -4,11 +4,13 @@
   props.put("request.required.acks","1");
   props.put("serializer.class","kafka.serializer.StringEncoder");
   props.put("bootstrap.servers",broker.getBrokerConnectionString());
-  props.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
-  props.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+  props.put("key.serializer","org.apache.kafka.common.serialization.ByteArraySerializer");
+  props.put("value.serializer","org.apache.kafka.common.serialization.ByteArraySerializer");
   props.put("metadata.fetch.timeout.ms",1000);
+  props.put("linger.ms",0);
   config.put(KafkaBolt.KAFKA_BROKER_PROPERTIES,props);
   bolt.prepare(config,null,new OutputCollector(collector));
-  bolt.setAsync(false);
+  bolt.setAsync(async);
+  bolt.setFireAndForget(fireAndForget);
   return bolt;
 }
