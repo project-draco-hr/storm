@@ -1,0 +1,5 @@
+{
+  Config conf=new Config();
+  conf.putAll(topologyDef.getConfig());
+  return conf;
+}

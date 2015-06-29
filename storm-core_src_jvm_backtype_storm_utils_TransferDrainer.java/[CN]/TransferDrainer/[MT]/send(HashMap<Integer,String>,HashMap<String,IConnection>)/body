@@ -1,0 +1,13 @@
+{
+  HashMap<String,ArrayList<ArrayList<TaskMessage>>> bundleMapByDestination=groupBundleByDestination(taskToNode);
+  for (  String hostPort : bundleMapByDestination.keySet()) {
+    IConnection connection=connections.get(hostPort);
+    if (null != connection) {
+      ArrayList<ArrayList<TaskMessage>> bundle=bundleMapByDestination.get(hostPort);
+      Iterator<TaskMessage> iter=getBundleIterator(bundle);
+      if (null != iter && iter.hasNext()) {
+        connection.send(iter);
+      }
+    }
+  }
+}

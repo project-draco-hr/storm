@@ -1,5 +1,0 @@
-{
-  this.connectionString=connectionString;
-  this.entityPath=entityPath;
-  this.connection=this.createConnection();
-}

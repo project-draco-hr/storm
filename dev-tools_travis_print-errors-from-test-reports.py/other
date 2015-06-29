@@ -1,0 +1,10 @@
+import os
+import sys
+import glob
+import traceback
+from xml.etree.ElementTree import ElementTree
+if (__name__ == '__main__'):
+    if (sys.argv < 2):
+        print ('Usage: %s [report dir path]' % sys.argv[0])
+        sys.exit(1)
+    main(sys.argv[1])

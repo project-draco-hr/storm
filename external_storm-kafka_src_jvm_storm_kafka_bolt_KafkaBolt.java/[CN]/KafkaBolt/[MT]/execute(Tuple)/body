@@ -11,12 +11,42 @@
     message=mapper.getMessageFromTuple(input);
     topic=topicSelector.getTopic(input);
     if (topic != null) {
-      producer.send(new KeyedMessage<K,V>(topic,key,message));
+      Callback callback=null;
+      if (!fireAndForget && async) {
+        callback=new Callback(){
+          @Override public void onCompletion(          RecordMetadata ignored,          Exception e){
+synchronized (collector) {
+              if (e != null) {
+                collector.reportError(e);
+                collector.fail(input);
+              }
+ else {
+                collector.ack(input);
+              }
+            }
+          }
+        }
+;
+      }
+      Future<RecordMetadata> result=producer.send(new ProducerRecord<K,V>(topic,key,message),callback);
+      if (!async) {
+        try {
+          result.get();
+          collector.ack(input);
+        }
+ catch (        ExecutionException err) {
+          collector.reportError(err);
+          collector.fail(input);
+        }
+      }
+ else       if (fireAndForget) {
+        collector.ack(input);
+      }
     }
  else {
       LOG.warn("skipping key = " + key + ", topic selector returned null.");
+      collector.ack(input);
     }
-    collector.ack(input);
   }
  catch (  Exception ex) {
     collector.reportError(ex);

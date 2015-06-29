@@ -1,0 +1,5 @@
+{
+  for (  Integer task : taskTupleSetMap.keySet()) {
+    addListRefToMap(this.bundles,task,taskTupleSetMap.get(task));
+  }
+}

@@ -1,0 +1,21 @@
+{
+  String[] stringKeys=keys.toArray(new String[keys.size()]);
+  Jedis jedis=null;
+  try {
+    jedis=jedisPool.getResource();
+    RedisDataTypeDescription description=this.options.dataTypeDescription;
+switch (description.getDataType()) {
+case STRING:
+      return jedis.mget(stringKeys);
+case HASH:
+    return jedis.hmget(description.getAdditionalKey(),stringKeys);
+default :
+  throw new IllegalArgumentException("Cannot process such data type: " + description.getDataType());
+}
+}
+  finally {
+if (jedis != null) {
+jedis.close();
+}
+}
+}

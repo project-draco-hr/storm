@@ -1,0 +1,5 @@
+{
+  String[] command=new String[]{"node","--version"};
+  int exitVal=invokeCommand(command);
+  assertEquals("Exit value for node is 0.",0,exitVal);
+}

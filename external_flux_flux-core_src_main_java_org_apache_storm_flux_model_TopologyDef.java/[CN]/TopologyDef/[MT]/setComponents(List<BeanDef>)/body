@@ -1,0 +1,6 @@
+{
+  this.componentMap=new LinkedHashMap<String,BeanDef>();
+  for (  BeanDef component : components) {
+    this.componentMap.put(component.getId(),component);
+  }
+}

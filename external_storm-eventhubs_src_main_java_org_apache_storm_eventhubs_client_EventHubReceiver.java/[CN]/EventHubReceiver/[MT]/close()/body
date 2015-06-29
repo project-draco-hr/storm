@@ -1,6 +1,0 @@
-{
-  if (!isClosed) {
-    receiver.close();
-    isClosed=true;
-  }
-}

@@ -1,0 +1,17 @@
+{
+  String[] stringKeys=keys.toArray(new String[keys.size()]);
+  RedisDataTypeDescription description=this.options.dataTypeDescription;
+switch (description.getDataType()) {
+case STRING:
+    List<String> values=Lists.newArrayList();
+  for (  String stringKey : keys) {
+    String value=jedisCluster.get(stringKey);
+    values.add(value);
+  }
+return values;
+case HASH:
+return jedisCluster.hmget(description.getAdditionalKey(),stringKeys);
+default :
+throw new IllegalArgumentException("Cannot process such data type: " + description.getDataType());
+}
+}

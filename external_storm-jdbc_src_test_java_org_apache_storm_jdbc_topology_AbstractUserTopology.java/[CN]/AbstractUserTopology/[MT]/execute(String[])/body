@@ -7,19 +7,25 @@
   map.put("dataSourceClassName",args[0]);
   map.put("dataSource.url",args[1]);
   map.put("dataSource.user",args[2]);
-  map.put("dataSource.password",args[3]);
+  if (args.length == 4) {
+    map.put("dataSource.password",args[3]);
+  }
   Config config=new Config();
   config.put(JDBC_CONF,map);
+  ConnectionProvider connectionProvider=new HikariCPConnectionProvider(map);
+  connectionProvider.prepare();
   int queryTimeoutSecs=60;
-  JdbcClient jdbcClient=new JdbcClient(map,queryTimeoutSecs);
+  JdbcClient jdbcClient=new JdbcClient(connectionProvider,queryTimeoutSecs);
   for (  String sql : setupSqls) {
     jdbcClient.executeSql(sql);
   }
   this.userSpout=new UserSpout();
-  this.jdbcMapper=new SimpleJdbcMapper(TABLE_NAME,map);
+  this.jdbcMapper=new SimpleJdbcMapper(TABLE_NAME,connectionProvider);
+  connectionProvider.cleanup();
   Fields outputFields=new Fields("user_id","user_name","dept_name","create_date");
   List<Column> queryParamColumns=Lists.newArrayList(new Column("user_id",Types.INTEGER));
   this.jdbcLookupMapper=new SimpleJdbcLookupMapper(outputFields,queryParamColumns);
+  this.connectionProvider=new HikariCPConnectionProvider(map);
   if (args.length == 4) {
     LocalCluster cluster=new LocalCluster();
     cluster.submitTopology("test",config,getTopology());

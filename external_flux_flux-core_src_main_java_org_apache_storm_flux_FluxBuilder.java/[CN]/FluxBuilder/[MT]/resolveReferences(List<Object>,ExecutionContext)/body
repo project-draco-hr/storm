@@ -1,0 +1,13 @@
+{
+  LOG.debug("Checking arguments for references.");
+  List<Object> cArgs=new ArrayList<Object>();
+  for (  Object arg : args) {
+    if (arg instanceof BeanReference) {
+      cArgs.add(context.getComponent(((BeanReference)arg).getId()));
+    }
+ else {
+      cArgs.add(arg);
+    }
+  }
+  return cArgs;
+}

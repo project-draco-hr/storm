@@ -1,2 +1,0 @@
-Map<String,Object> hikariConfigMap
-int queryTimeoutSecs

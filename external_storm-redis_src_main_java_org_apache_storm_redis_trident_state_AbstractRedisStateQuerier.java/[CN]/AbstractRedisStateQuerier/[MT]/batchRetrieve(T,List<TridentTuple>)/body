@@ -1,0 +1,12 @@
+{
+  List<List<Values>> values=Lists.newArrayList();
+  List<String> keys=Lists.newArrayList();
+  for (  TridentTuple input : inputs) {
+    keys.add(lookupMapper.getKeyFromTuple(input));
+  }
+  List<String> redisVals=retrieveValuesFromRedis(state,keys);
+  for (int i=0; i < redisVals.size(); i++) {
+    values.add(lookupMapper.toTuple(inputs.get(i),redisVals.get(i)));
+  }
+  return values;
+}

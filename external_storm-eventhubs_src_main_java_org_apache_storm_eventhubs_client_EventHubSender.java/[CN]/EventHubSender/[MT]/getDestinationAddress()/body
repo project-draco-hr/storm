@@ -1,8 +1,0 @@
-{
-  if (this.partitionId == null || this.partitionId.equals("")) {
-    return this.entityPath;
-  }
- else {
-    return String.format(Constants.DestinationAddressFormatString,this.entityPath,this.partitionId);
-  }
-}

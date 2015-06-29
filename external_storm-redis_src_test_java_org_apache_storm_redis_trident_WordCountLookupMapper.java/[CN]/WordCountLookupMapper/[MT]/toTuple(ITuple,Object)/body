@@ -1,0 +1,5 @@
+{
+  List<Values> values=new ArrayList<Values>();
+  values.add(new Values(getKeyFromTuple(input),value));
+  return values;
+}

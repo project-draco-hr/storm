@@ -1,3 +1,0 @@
-{
-  return new EventHubSender(this.connection.createSession(),this.entityPath,partitionId);
-}
