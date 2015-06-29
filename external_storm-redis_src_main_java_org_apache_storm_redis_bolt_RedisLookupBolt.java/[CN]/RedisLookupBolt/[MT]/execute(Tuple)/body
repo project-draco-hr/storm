@@ -1,6 +1,6 @@
 {
   String key=lookupMapper.getKeyFromTuple(input);
-  Object lookupValue=null;
+  Object lookupValue;
   JedisCommands jedisCommand=null;
   try {
     jedisCommand=getInstance();
