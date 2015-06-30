@@ -1,4 +1,5 @@
 {
+  Preconditions.checkNotNull(nodes,"Node information should be presented");
   this.nodes=nodes;
   this.timeout=timeout;
   this.maxRedirections=maxRedirections;
