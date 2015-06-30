@@ -1,7 +1,7 @@
 {
   for (  Map.Entry<String,String> entry : env.entrySet()) {
-    if (entry.getKey().equals("PATH")) {
-      buildEnv.put("PATH",buildEnv.get("PATH") + ":" + env.get("PATH"));
+    if ("PATH".equals(entry.getKey())) {
+      buildEnv.put("PATH",buildEnv.get("PATH") + File.pathSeparatorChar + env.get("PATH"));
     }
  else {
       buildEnv.put(entry.getKey(),entry.getValue());
