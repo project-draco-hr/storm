@@ -1,0 +1,33 @@
+{
+  if (reconnectingAllowed()) {
+    final int connectionAttempt=connectionAttempts.getAndIncrement();
+    totalConnectionAttempts.getAndIncrement();
+    LOG.debug("connecting to {} [attempt {}]",address.toString(),connectionAttempt);
+    ChannelFuture future=bootstrap.connect(address);
+    future.addListener(new ChannelFutureListener(){
+      @Override public void operationComplete(      ChannelFuture future) throws Exception {
+        Channel newChannel=future.getChannel();
+        if (future.isSuccess() && connectionEstablished(newChannel)) {
+          boolean setChannel=channelRef.compareAndSet(null,newChannel);
+          checkState(setChannel);
+          LOG.debug("successfully connected to {}, {} [attempt {}]",address.toString(),newChannel.toString(),connectionAttempt);
+          if (messagesLost.get() > 0) {
+            LOG.warn("Re-connection to {} was successful but {} messages has been lost so far",address.toString(),messagesLost.get());
+          }
+        }
+ else {
+          Throwable cause=future.getCause();
+          reschedule(cause);
+          if (newChannel != null) {
+            newChannel.close();
+          }
+        }
+      }
+    }
+);
+  }
+ else {
+    close();
+    throw new RuntimeException("Giving up to scheduleConnect to " + dstAddressPrefixedName + " after "+ connectionAttempts+ " failed attempts. "+ messagesLost.get()+ " messages were lost");
+  }
+}

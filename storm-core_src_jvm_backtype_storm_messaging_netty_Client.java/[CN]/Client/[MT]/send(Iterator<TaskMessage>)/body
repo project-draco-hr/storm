@@ -7,34 +7,24 @@
   if (!hasMessages(msgs)) {
     return;
   }
-  Channel channel=channelRef.get();
-  if (!connectionEstablished(channel)) {
-    closeChannelAndReconnect(channel);
-    handleMessagesWhenConnectionIsUnavailable(msgs);
+  Channel channel=getConnectedChannel();
+  if (channel == null) {
+    dropMessages(msgs);
     return;
   }
   while (msgs.hasNext()) {
     TaskMessage message=msgs.next();
-    if (messageBatch == null) {
-      messageBatch=new MessageBatch(messageBatchSize);
-    }
-    messageBatch.add(message);
-    if (messageBatch.isFull()) {
-      MessageBatch toBeFlushed=messageBatch;
-      flushMessages(channel,toBeFlushed);
-      messageBatch=null;
+    MessageBatch full=batcher.add(message);
+    if (full != null) {
+      flushMessages(channel,full);
     }
   }
-  if (containsMessages(messageBatch)) {
-    if (connectionEstablished(channel) && channel.isWritable()) {
-      pauseBackgroundFlushing();
-      MessageBatch toBeFlushed=messageBatch;
-      messageBatch=null;
-      flushMessages(channel,toBeFlushed);
+  if (channel.isWritable()) {
+    MessageBatch batch=batcher.drain();
+    if (batch != null) {
+      flushMessages(channel,batch);
     }
+  }
  else {
-      resumeBackgroundFlushing();
-      nextBackgroundFlushTimeMs.set(nowMillis() + flushCheckIntervalMs);
-    }
   }
 }

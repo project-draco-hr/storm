@@ -1,0 +1,11 @@
+{
+  currentBatch.add(msg);
+  if (currentBatch.isFull()) {
+    MessageBatch ret=currentBatch;
+    currentBatch=new MessageBatch(mesageBatchSize);
+    return ret;
+  }
+ else {
+    return null;
+  }
+}
