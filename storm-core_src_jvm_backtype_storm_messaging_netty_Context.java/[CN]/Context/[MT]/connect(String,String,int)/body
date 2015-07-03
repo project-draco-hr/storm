@@ -3,7 +3,7 @@
   if (connection != null) {
     return connection;
   }
-  IConnection client=new Client(storm_conf,clientChannelFactory,clientScheduleService,host,port);
+  IConnection client=new Client(storm_conf,clientChannelFactory,clientScheduleService,host,port,this);
   connections.put(key(host,port),client);
   return client;
 }

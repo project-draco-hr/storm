@@ -1,6 +1,7 @@
 {
   if (!closing) {
     LOG.info("closing Netty Client {}",dstAddressPrefixedName);
+    context.removeClient(dstAddress.getHostName(),dstAddress.getPort());
     closing=true;
     waitForPendingMessagesToBeSent();
     closeChannel();
