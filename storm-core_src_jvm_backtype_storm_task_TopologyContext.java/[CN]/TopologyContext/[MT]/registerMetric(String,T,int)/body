@@ -11,15 +11,15 @@
   if (getRegisteredMetricByName(name) != null) {
     throw new RuntimeException("The same metric name `" + name + "` was registered twice.");
   }
-  Map m1=_registeredMetrics;
+  Map<Integer,Map<Integer,Map<String,IMetric>>> m1=_registeredMetrics;
   if (!m1.containsKey(timeBucketSizeInSecs)) {
-    m1.put(timeBucketSizeInSecs,new HashMap());
+    m1.put(timeBucketSizeInSecs,new HashMap<Integer,Map<String,IMetric>>());
   }
-  Map m2=(Map)m1.get(timeBucketSizeInSecs);
+  Map<Integer,Map<String,IMetric>> m2=m1.get(timeBucketSizeInSecs);
   if (!m2.containsKey(_taskId)) {
-    m2.put(_taskId,new HashMap());
+    m2.put(_taskId,new HashMap<String,IMetric>());
   }
-  Map m3=(Map)m2.get(_taskId);
+  Map<String,IMetric> m3=m2.get(_taskId);
   if (m3.containsKey(name)) {
     throw new RuntimeException("The same metric name `" + name + "` was registered twice.");
   }
