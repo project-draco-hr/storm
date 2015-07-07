@@ -27,5 +27,6 @@
     stringSourceMap.put(gid.get_streamId(),groupingToJSONableMap(entry.getValue()));
   }
   obj.put("source->stream->grouping",stringSources);
+  obj.put("source->stream->fields",this.getThisInputFields());
   return JSONValue.toJSONString(obj);
 }
