@@ -1,7 +1,7 @@
 {
   try {
     final long nextSequence=_consumer.get() + 1;
-    final long availableSequence=_barrier.waitFor(nextSequence,1000,TimeUnit.MILLISECONDS);
+    final long availableSequence=_barrier.waitFor(nextSequence,_waitTimeout,TimeUnit.MILLISECONDS);
     if (availableSequence >= nextSequence) {
       consumeBatchToCursor(availableSequence,handler);
     }
