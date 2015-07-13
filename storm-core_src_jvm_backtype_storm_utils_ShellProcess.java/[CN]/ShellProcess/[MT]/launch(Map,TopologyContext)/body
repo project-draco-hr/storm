@@ -1,5 +1,9 @@
 {
   ProcessBuilder builder=new ProcessBuilder(command);
+  if (!env.isEmpty()) {
+    Map<String,String> buildEnv=builder.environment();
+    modifyEnvironment(buildEnv);
+  }
   builder.directory(new File(context.getCodeDir()));
   ShellLogger=LoggerFactory.getLogger(context.getThisComponentId());
   this.componentName=context.getThisComponentId();
