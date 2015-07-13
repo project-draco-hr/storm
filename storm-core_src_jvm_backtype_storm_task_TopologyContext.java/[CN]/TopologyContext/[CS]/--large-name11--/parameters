@@ -12,5 +12,5 @@ List<Integer> workerTasks
 Map<String,Object> defaultResources
 Map<String,Object> userResources
 Map<String,Object> executorData
-Map registeredMetrics
+Map<Integer,Map<Integer,Map<String,IMetric>>> registeredMetrics
 clojure.lang.Atom openOrPrepareWasCalled
