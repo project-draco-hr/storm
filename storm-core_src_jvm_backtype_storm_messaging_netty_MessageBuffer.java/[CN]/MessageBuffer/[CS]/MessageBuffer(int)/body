@@ -1,0 +1,4 @@
+{
+  this.mesageBatchSize=mesageBatchSize;
+  this.currentBatch=new MessageBatch(mesageBatchSize);
+}

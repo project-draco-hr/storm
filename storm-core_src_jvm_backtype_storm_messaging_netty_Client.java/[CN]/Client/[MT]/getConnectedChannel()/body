@@ -1,0 +1,13 @@
+{
+  Channel channel=channelRef.get();
+  if (connectionEstablished(channel)) {
+    return channel;
+  }
+ else {
+    boolean reconnectScheduled=closeChannelAndReconnect(channel);
+    if (reconnectScheduled) {
+      LOG.error("connection to {} is unavailable",dstAddressPrefixedName);
+    }
+    return null;
+  }
+}

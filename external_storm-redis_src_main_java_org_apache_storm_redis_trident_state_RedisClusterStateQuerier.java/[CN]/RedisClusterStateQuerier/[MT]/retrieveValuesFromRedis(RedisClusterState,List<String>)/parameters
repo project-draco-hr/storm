@@ -1,2 +1,2 @@
-RedisClusterState redisClusterState
+RedisClusterState state
 List<String> keys
