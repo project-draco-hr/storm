@@ -1,5 +1,0 @@
-def searchGroup(reg, txt, group):
-    m = reg.search(txt)
-    if (m == None):
-        return None
-    return m.group(group)

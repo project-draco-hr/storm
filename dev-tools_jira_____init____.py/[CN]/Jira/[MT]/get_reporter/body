@@ -1,0 +1,6 @@
+def get_reporter(self):
+    ret = ''
+    mid = self.fields['reporter']
+    if (mid is not None):
+        ret = mid['displayName']
+    return mstr(ret)

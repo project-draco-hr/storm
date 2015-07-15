@@ -1,0 +1,29 @@
+def print_report(self, print_comments=False):
+    print ('%s (Count = %s) ' % (self.header, len(self.github_report.pull_requests)))
+    fields_tuple = ('JIRA ID', 'Pull Request', 'Jira Summary', 'JIRA Age', 'Pull Age', 'JIRA Update Age', 'Pull Update Age (Days)', 'JIRA Status', 'GitHub user')
+    row_tuple = self._row_tuple(0)
+    formatter = Formatter(fields_tuple, row_tuple)
+    self.print_(formatter, fields_tuple)
+    row_tuple_1 = ()
+    formatter_1 = Formatter()
+    if (print_comments or self.print_comments):
+        fields_tuple_1 = self._build_tuple(('Comment Vote', 'Comment Author', 'Pull URL', 'Comment Age'), '-\t\t')
+        row_tuple_1 = self._build_tuple(self._row_tuple_1(*self._idx_1st_comment_with_vote()), '-\t\t')
+        formatter_1 = Formatter(fields_tuple_1, row_tuple_1)
+        self.print_(formatter_1, fields_tuple_1)
+        print ''
+    for p in range(0, len(self.github_report.pull_requests)):
+        row_tuple = self._row_tuple(p)
+        self.print_(formatter, row_tuple)
+        if (print_comments or self.print_comments):
+            has_vote = False
+            comments = self._jira_comments(self._jira_id(p))
+            for c in range(len(comments)):
+                comment = comments[c]
+                if comment.has_vote():
+                    row_tuple_1 = self._build_tuple(self._row_tuple_1(p, c), '-\t\t')
+                    if (row_tuple_1 is not None):
+                        self.print_(formatter_1, row_tuple_1)
+                        has_vote = True
+            if has_vote:
+                print ''

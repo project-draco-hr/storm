@@ -1,0 +1,8 @@
+def _row_tuple_1(self, pull_idx, comment_idx):
+    row_tuple_1 = None
+    jira_id = self._jira_id(pull_idx)
+    jira_comments = self._jira_comments(jira_id)
+    comment = jira_comments[comment_idx]
+    if comment.has_vote():
+        row_tuple_1 = (comment.get_vote(), comment.get_author(), comment.get_pull(), daydiff(Report.now, comment.get_created()))
+    return row_tuple_1

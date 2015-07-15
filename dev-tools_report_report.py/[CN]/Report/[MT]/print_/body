@@ -1,0 +1,2 @@
+def print_(self, formatter, row_tuple):
+    print (formatter.format % formatter.row_str_format(row_tuple))
