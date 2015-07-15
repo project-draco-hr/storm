@@ -1,5 +1,10 @@
 def exec_storm_class(klass, jvmtype='-server', jvmopts=[], extrajars=[], args=[], fork=False, daemon=True, daemonName=''):
     global CONFFILE
+    arg_check = ['kill', 'upload_credentials', 'activate', 'deactivate', 'rebalance', 'get_errors']
+    func = inspect.stack()[1][3]
+    if ((not args) and (func in arg_check)):
+        print eval(func).__doc__
+        sys.exit(0)
     storm_log_dir = confvalue('storm.log.dir', [CLUSTER_CONF_DIR])
     if ((storm_log_dir == None) or (storm_log_dir == 'nil')):
         storm_log_dir = os.path.join(STORM_DIR, 'logs')
