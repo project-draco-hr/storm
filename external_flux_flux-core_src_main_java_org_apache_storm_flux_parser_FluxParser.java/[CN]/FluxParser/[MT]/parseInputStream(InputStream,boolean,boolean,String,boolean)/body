@@ -5,7 +5,6 @@
     System.exit(1);
   }
   TopologyDef topology=loadYaml(yaml,inputStream,propertiesFile,envSub);
-  inputStream.close();
   if (dumpYaml) {
     dumpYaml(topology,yaml);
   }
