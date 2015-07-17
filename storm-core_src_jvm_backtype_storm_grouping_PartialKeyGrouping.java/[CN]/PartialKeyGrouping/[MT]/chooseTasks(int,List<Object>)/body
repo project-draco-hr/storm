@@ -6,7 +6,12 @@
       List<Object> selectedFields=outFields.select(fields,values);
       ByteBuffer out=ByteBuffer.allocate(selectedFields.size() * 4);
       for (      Object o : selectedFields) {
-        out.putInt(o.hashCode());
+        if (o instanceof Object[]) {
+          out.putInt(Arrays.deepHashCode((Object[])o));
+        }
+ else {
+          out.putInt(o.hashCode());
+        }
       }
       raw=out.array();
     }
