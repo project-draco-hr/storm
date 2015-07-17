@@ -1,0 +1,9 @@
+{
+  final StringBuilder jsonListBuilder=new StringBuilder("[");
+  for (  ITuple tuple : tuples) {
+    final String json=getJsonFromTuple(tuple);
+    jsonListBuilder.append(json).append(",");
+  }
+  jsonListBuilder.setCharAt(jsonListBuilder.length() - 1,']');
+  return jsonListBuilder.toString();
+}

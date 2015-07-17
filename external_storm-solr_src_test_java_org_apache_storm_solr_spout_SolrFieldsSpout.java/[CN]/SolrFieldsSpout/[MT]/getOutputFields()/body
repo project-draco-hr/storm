@@ -1,0 +1,3 @@
+{
+  return new Fields("id","date","dc_title","dynamic_field_txt","non_matching_field");
+}

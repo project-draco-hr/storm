@@ -1,0 +1,4 @@
+{
+  super.prepare(stormConf,context,collector);
+  this.toCommitTuples=new LinkedList<>();
+}

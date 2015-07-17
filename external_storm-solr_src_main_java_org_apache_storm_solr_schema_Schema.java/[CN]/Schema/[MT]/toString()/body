@@ -1,0 +1,3 @@
+{
+  return "Schema{" + "name='" + name + '\''+ ", version='"+ version+ '\''+ ", uniqueKey='"+ uniqueKey+ '\''+ ", fieldTypes="+ fieldTypes+ ", fields="+ fields+ ", dynamicFields="+ dynamicFields+ ", copyFields="+ copyFields+ '}';
+}

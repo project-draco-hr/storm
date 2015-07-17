@@ -1,0 +1,4 @@
+{
+  String suffix="_hmcl_fields_test_val_" + suf;
+  return new Values("id" + suffix,TestUtil.getDate(),"dc_title" + suffix,"dynamic_field" + suffix + "_txt","non_matching_field" + suffix);
+}

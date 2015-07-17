@@ -1,0 +1,4 @@
+{
+  SolrJsonSpout solrJsonSpout=new SolrJsonSpout();
+  System.out.println("stop");
+}

@@ -1,0 +1,19 @@
+{
+  SolrInputDocument doc=new SolrInputDocument();
+  for (  String tupleField : tuple.getFields()) {
+    FieldTypeWrapper fieldTypeWrapper=typeFinder.getFieldTypeWrapper(tupleField);
+    if (fieldTypeWrapper != null) {
+      Field field=fieldTypeWrapper.getField();
+      if (field.isMultiValued()) {
+        addMultivalueFieldToDoc(doc,tupleField,tuple);
+      }
+ else {
+        addFieldToDoc(doc,tupleField,tuple);
+      }
+    }
+ else {
+      logger.info("Field [{}] does NOT match static or dynamic field declared in schema. Not added to document",tupleField);
+    }
+  }
+  return doc;
+}

@@ -1,0 +1,3 @@
+{
+  return new SolrFieldsMapper.Builder(new RestJsonSchemaBuilder("localhost","8983",COLLECTION)).setCollection(COLLECTION).build();
+}

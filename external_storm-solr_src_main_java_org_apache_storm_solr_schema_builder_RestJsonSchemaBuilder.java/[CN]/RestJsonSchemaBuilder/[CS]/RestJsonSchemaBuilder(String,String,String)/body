@@ -1,0 +1,3 @@
+{
+  this(new URL("http://" + solrHost + ":"+ solrPort+ "/solr/"+ collection+ "/schema/"));
+}

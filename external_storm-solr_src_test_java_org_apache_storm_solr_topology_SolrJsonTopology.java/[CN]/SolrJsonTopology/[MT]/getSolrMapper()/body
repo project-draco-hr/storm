@@ -1,0 +1,4 @@
+{
+  final String jsonTupleField="JSON";
+  return new SolrJsonMapper(COLLECTION,jsonTupleField);
+}

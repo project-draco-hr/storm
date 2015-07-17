@@ -1,0 +1,8 @@
+{
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology("test",config,topology);
+  Thread.sleep(10000);
+  cluster.killTopology("test");
+  cluster.shutdown();
+  System.exit(0);
+}

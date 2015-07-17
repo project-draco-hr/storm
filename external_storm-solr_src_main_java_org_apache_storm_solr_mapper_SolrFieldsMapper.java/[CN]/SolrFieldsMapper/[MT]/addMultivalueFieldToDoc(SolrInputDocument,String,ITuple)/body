@@ -1,0 +1,7 @@
+{
+  String[] values=getValues(tupleField,tuple);
+  for (  String value : values) {
+    logger.info("Adding {} to multivalue field document {}",value,tupleField);
+    doc.addField(tupleField,value);
+  }
+}

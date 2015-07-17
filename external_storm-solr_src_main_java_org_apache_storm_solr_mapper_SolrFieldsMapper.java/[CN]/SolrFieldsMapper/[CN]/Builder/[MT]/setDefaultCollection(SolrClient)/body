@@ -1,0 +1,8 @@
+{
+  String defaultCollection=null;
+  if (solrClient instanceof CloudSolrClient) {
+    defaultCollection=((CloudSolrClient)solrClient).getDefaultCollection();
+  }
+  this.collection=defaultCollection;
+  return this;
+}

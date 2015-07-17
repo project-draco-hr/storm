@@ -1,0 +1,6 @@
+{
+  if (threshold < 1) {
+    throw new IllegalArgumentException("Threshold must be a positive integer: " + threshold);
+  }
+  this.threshHold=threshold;
+}

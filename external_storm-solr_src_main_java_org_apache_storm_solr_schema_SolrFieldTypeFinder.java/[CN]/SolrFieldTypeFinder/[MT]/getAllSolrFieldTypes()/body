@@ -1,0 +1,9 @@
+{
+  Collection<FieldTypeWrapper> typeWrappers=fieldToWrapper.values();
+  Set<String> fieldTypeClasses=new TreeSet<>();
+  for (  FieldTypeWrapper typeWrapper : typeWrappers) {
+    fieldTypeClasses.add(typeWrapper.getType().getClazz());
+  }
+  logger.debug("Field type classes present in schema: {}",fieldTypeClasses);
+  return fieldTypeClasses;
+}

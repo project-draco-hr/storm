@@ -1,0 +1,18 @@
+{
+  if (pattern == null) {
+    throw new IllegalArgumentException("pattern and fieldName arguments cannot be null");
+  }
+  if (pattern.startsWith("*")) {
+    if (fieldName.endsWith(pattern.substring(1))) {
+      logger.debug("Field [{}] MATCHES dynamic field {}",fieldName,pattern);
+      return true;
+    }
+  }
+ else   if (pattern.endsWith("*")) {
+    if (fieldName.startsWith(pattern.substring(0,pattern.length() - 1))) {
+      logger.debug("Field [{}] MATCHES dynamic field {}",fieldName,pattern);
+      return true;
+    }
+  }
+  return false;
+}

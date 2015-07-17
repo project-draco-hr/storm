@@ -1,0 +1,4 @@
+{
+  this.collector=collector;
+  solrClient=new CloudSolrClient(solrConfig.getZkHostString());
+}

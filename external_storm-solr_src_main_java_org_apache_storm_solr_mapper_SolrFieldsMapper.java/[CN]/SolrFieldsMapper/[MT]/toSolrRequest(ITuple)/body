@@ -1,0 +1,6 @@
+{
+  SolrInputDocument doc=buildDocument(tuple);
+  UpdateRequest request=new UpdateRequest();
+  request.add(doc);
+  return request;
+}
