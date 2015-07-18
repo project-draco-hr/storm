@@ -1,3 +1,0 @@
-def print_help(func):
-    print func.__doc__
-    sys.exit(0)
