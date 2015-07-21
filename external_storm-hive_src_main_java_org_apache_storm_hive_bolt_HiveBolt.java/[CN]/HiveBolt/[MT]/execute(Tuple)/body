@@ -9,7 +9,7 @@
     writer.write(options.getMapper().mapRecord(tuple));
     currentBatchSize++;
     if (currentBatchSize >= options.getBatchSize()) {
-      flushAllWriters();
+      flushAllWriters(true);
       currentBatchSize=0;
     }
     collector.ack(tuple);
