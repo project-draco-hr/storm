@@ -1,0 +1,32 @@
+{
+  FSDataOutputStream out=null;
+  LOG.debug("Starting index update.");
+  try {
+    Path tmpPath=new Path(this.indexFilePath.toString() + ".tmp");
+    out=this.options.fs.create(tmpPath,true);
+    BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(out));
+    TxnRecord txnRecord=new TxnRecord(txId,options.currentFile.toString(),this.options.getCurrentOffset());
+    bw.write(txnRecord.toString());
+    bw.newLine();
+    bw.flush();
+    options.fs.delete(this.indexFilePath,false);
+    options.fs.rename(tmpPath,this.indexFilePath);
+    lastSeenTxn=txnRecord;
+    LOG.debug("updateIndex updated lastSeenTxn to [{}]",this.lastSeenTxn);
+  }
+ catch (  IOException e) {
+    LOG.warn("Begin commit failed due to IOException. Failing batch",e);
+    throw new FailedException(e);
+  }
+ finally {
+    if (out != null) {
+      try {
+        out.close();
+      }
+ catch (      IOException e) {
+        LOG.warn("Begin commit failed due to IOException. Failing batch",e);
+        throw new FailedException(e);
+      }
+    }
+  }
+}

@@ -1,3 +1,6 @@
 {
   this.options.prepare(conf,partitionIndex,numPartitions);
+  if (options.isExactlyOnce()) {
+    initLastTxn(conf,partitionIndex);
+  }
 }

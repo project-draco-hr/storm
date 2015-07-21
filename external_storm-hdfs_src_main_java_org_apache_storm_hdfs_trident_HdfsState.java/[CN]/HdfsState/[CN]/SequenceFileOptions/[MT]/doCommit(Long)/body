@@ -1,0 +1,11 @@
+{
+synchronized (writeLock) {
+    if (this.rotationPolicy.mark(this.writer.getLength())) {
+      rotateOutputFile();
+      this.rotationPolicy.reset();
+    }
+ else {
+      this.writer.hsync();
+    }
+  }
+}

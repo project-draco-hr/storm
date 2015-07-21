@@ -1,6 +1,13 @@
 {
   this.writeLock=new Object();
-  if (this.rotationPolicy == null)   throw new IllegalStateException("RotationPolicy must be specified.");
+  if (this.rotationPolicy == null) {
+    throw new IllegalStateException("RotationPolicy must be specified.");
+  }
+ else   if (this.rotationPolicy instanceof TimedRotationPolicy) {
+    LOG.warn("*** Exactly once semantics is not supported with TimedRotationPolicy ***");
+    LOG.warn("*** Turning off exactly once.");
+    this.exactlyOnce=false;
+  }
   if (this.fsUrl == null) {
     throw new IllegalStateException("File system URL must be specified.");
   }

@@ -1,0 +1,16 @@
+{
+  try {
+    Path srcPath=new Path(srcFile);
+    if (nBytes > 0) {
+      rotateOutputFile(false);
+      this.rotationPolicy.reset();
+      doRecover(srcPath,nBytes);
+      LOG.info("Recovered {} bytes from {} to {}",nBytes,srcFile,currentFile);
+    }
+    fs.delete(srcPath,false);
+  }
+ catch (  Exception e) {
+    LOG.warn("Recovery failed.",e);
+    throw new RuntimeException(e);
+  }
+}
