@@ -1,8 +1,8 @@
 {
   try {
+    String source=tuple.getStringByField("source");
     String index=tuple.getStringByField("index");
     String type=tuple.getStringByField("type");
-    String source=tuple.getStringByField("source");
     PercolateResponse response=client.preparePercolate().setIndices(index).setDocumentType(type).setPercolateDoc(PercolateSourceBuilder.docBuilder().setDoc(source)).execute().actionGet();
     if (response.getCount() > 0) {
       for (      PercolateResponse.Match match : response) {

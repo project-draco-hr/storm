@@ -1,3 +1,2 @@
 String clusterName
 String[] nodes
-int port

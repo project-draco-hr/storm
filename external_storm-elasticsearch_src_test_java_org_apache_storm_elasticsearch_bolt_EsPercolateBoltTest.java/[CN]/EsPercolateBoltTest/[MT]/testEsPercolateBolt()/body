@@ -4,11 +4,11 @@
   esConfig.setNodes(new String[]{"localhost:9300"});
   bolt=new EsPercolateBolt(esConfig);
   bolt.prepare(config,null,collector);
+  String source="{\"user\":\"user1\"}";
   String index="index1";
   String type=".percolator";
-  String source="{\"user\":\"user1\"}";
   node.client().prepareIndex("index1",".percolator").setId("1").setSource("{\"query\":{\"match\":{\"user\":\"user1\"}}}").execute().actionGet();
-  Tuple tuple=EsTestUtil.generateTestTuple(index,type,source);
+  Tuple tuple=EsTestUtil.generateTestTuple(source,index,type,null);
   bolt.execute(tuple);
   verify(collector).ack(tuple);
   verify(collector).emit(new Values("1"));
