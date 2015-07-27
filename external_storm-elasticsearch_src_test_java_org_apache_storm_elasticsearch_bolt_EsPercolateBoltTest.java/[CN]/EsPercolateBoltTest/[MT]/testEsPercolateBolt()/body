@@ -11,6 +11,6 @@
   Tuple tuple=EsTestUtil.generateTestTuple(source,index,type,null);
   bolt.execute(tuple);
   verify(collector).ack(tuple);
-  verify(collector).emit(new Values("1"));
+  verify(collector).emit(new Values(source,any(PercolateResponse.Match.class)));
   bolt.cleanup();
 }

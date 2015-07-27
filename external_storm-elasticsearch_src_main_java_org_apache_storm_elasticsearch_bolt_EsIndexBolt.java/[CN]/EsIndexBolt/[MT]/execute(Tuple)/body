@@ -8,8 +8,6 @@
     collector.ack(tuple);
   }
  catch (  Exception e) {
-    e.printStackTrace();
-    System.out.println(e);
     collector.reportError(e);
     collector.fail(tuple);
   }
