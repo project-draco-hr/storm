@@ -7,16 +7,27 @@
       enableHeartBeatOnAllWriters();
     }
     writer.write(options.getMapper().mapRecord(tuple));
-    currentBatchSize++;
-    if (currentBatchSize >= options.getBatchSize()) {
+    tupleBatch.add(tuple);
+    if (tupleBatch.size() >= options.getBatchSize()) {
       flushAllWriters(true);
-      currentBatchSize=0;
+      LOG.info("acknowledging tuples after writers flushed ");
+      for (      Tuple t : tupleBatch)       collector.ack(t);
+      tupleBatch.clear();
     }
-    collector.ack(tuple);
   }
  catch (  Exception e) {
     this.collector.reportError(e);
     collector.fail(tuple);
-    flushAndCloseWriters();
+    try {
+      flushAndCloseWriters();
+      LOG.info("acknowledging tuples after writers flushed and closed");
+      for (      Tuple t : tupleBatch)       collector.ack(t);
+      tupleBatch.clear();
+    }
+ catch (    Exception e1) {
+      LOG.warn("Error while flushing and closing writers, tuples will NOT be acknowledged");
+      for (      Tuple t : tupleBatch)       collector.fail(t);
+      tupleBatch.clear();
+    }
   }
 }
