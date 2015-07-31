@@ -1,14 +1,22 @@
 {
   try {
-    List<String> partitionVals=options.getMapper().mapPartitions(tuple);
-    HiveEndPoint endPoint=HiveUtils.makeEndPoint(partitionVals,options);
-    HiveWriter writer=getOrCreateWriter(endPoint);
-    if (timeToSendHeartBeat.compareAndSet(true,false)) {
-      enableHeartBeatOnAllWriters();
+    boolean forceFlush=false;
+    if (TupleUtils.isTick(tuple)) {
+      LOG.debug("TICK received! current batch status [" + tupleBatch.size() + "/"+ options.getBatchSize()+ "]");
+      forceFlush=true;
     }
-    writer.write(options.getMapper().mapRecord(tuple));
-    tupleBatch.add(tuple);
-    if (tupleBatch.size() >= options.getBatchSize()) {
+ else {
+      List<String> partitionVals=options.getMapper().mapPartitions(tuple);
+      HiveEndPoint endPoint=HiveUtils.makeEndPoint(partitionVals,options);
+      HiveWriter writer=getOrCreateWriter(endPoint);
+      if (timeToSendHeartBeat.compareAndSet(true,false)) {
+        enableHeartBeatOnAllWriters();
+      }
+      writer.write(options.getMapper().mapRecord(tuple));
+      tupleBatch.add(tuple);
+      if (tupleBatch.size() >= options.getBatchSize())       forceFlush=true;
+    }
+    if (forceFlush && !tupleBatch.isEmpty()) {
       flushAllWriters(true);
       LOG.info("acknowledging tuples after writers flushed ");
       for (      Tuple t : tupleBatch)       collector.ack(t);

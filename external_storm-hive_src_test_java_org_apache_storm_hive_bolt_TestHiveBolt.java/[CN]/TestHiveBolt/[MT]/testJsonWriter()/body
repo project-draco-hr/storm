@@ -2,7 +2,7 @@
   JsonRecordHiveMapper mapper=new JsonRecordHiveMapper().withColumnFields(new Fields(colNames1)).withPartitionFields(new Fields(partNames));
   HiveOptions hiveOptions=new HiveOptions(metaStoreURI,dbName,tblName,mapper).withTxnsPerBatch(2).withBatchSize(1);
   bolt=new HiveBolt(hiveOptions);
-  bolt.prepare(config,null,new OutputCollector(collector));
+  bolt.prepare(config,null,collector);
   Tuple tuple1=generateTestTuple(1,"SJC","Sunnyvale","CA");
   bolt.execute(tuple1);
   verify(collector).ack(tuple1);
