@@ -1,0 +1,6 @@
+def jira_ids(self):
+    '\n        :return: sorted list of JIRA ids present in Git pull requests\n        '
+    jira_ids = list()
+    for pull in self.pull_requests:
+        jira_ids.append(pull.jira_id())
+    return sorted(jira_ids)

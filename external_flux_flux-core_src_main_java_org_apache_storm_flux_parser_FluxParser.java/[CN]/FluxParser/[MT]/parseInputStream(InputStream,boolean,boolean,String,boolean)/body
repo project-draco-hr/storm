@@ -1,0 +1,17 @@
+{
+  Yaml yaml=yaml();
+  if (inputStream == null) {
+    LOG.error("Unable to load input stream");
+    System.exit(1);
+  }
+  TopologyDef topology=loadYaml(yaml,inputStream,propertiesFile,envSub);
+  if (dumpYaml) {
+    dumpYaml(topology,yaml);
+  }
+  if (processIncludes) {
+    return processIncludes(yaml,topology,propertiesFile,envSub);
+  }
+ else {
+    return topology;
+  }
+}

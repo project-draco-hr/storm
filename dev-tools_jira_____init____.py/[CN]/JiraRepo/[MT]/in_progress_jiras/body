@@ -1,0 +1,3 @@
+def in_progress_jiras(self, project):
+    "\n        :param project: The JIRA project to search for In Progress issues\n        :return: All JIRA issues that have the field status = 'In Progress'\n        "
+    return self.query((('project = ' + project) + " AND status = 'In Progress'"))

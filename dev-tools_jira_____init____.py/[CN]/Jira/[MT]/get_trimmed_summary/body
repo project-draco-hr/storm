@@ -1,0 +1,4 @@
+def get_trimmed_summary(self):
+    limit = 40
+    summary = self.fields['summary']
+    return (summary if (len(summary) < limit) else (summary[0:limit] + '...'))

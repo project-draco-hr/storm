@@ -1,6 +1,0 @@
-Map stormConf
-ChannelFactory factory
-ScheduledExecutorService scheduler
-String host
-int port
-Context context

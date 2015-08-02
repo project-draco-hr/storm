@@ -13,6 +13,10 @@
  catch (  TopicOffsetOutOfRangeException e) {
     _emittedToOffset=KafkaUtils.getOffset(_consumer,_partition.topic,_partition.partition,kafka.api.OffsetRequest.EarliestTime());
     LOG.warn("{} Using new offset: {}",_partition.partition,_emittedToOffset);
+    if (!processingNewTuples) {
+      Set<Long> omitted=this._failedMsgRetryManager.clearInvalidMessages(_emittedToOffset);
+      LOG.warn("Removing the failed offsets that are out of range: {}",omitted);
+    }
     return;
   }
   long end=System.nanoTime();

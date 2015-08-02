@@ -1,2 +1,0 @@
-def getUpdated(self):
-    return jiratime(self.fields['updated'])

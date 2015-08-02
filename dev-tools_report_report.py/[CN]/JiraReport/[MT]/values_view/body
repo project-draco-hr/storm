@@ -1,0 +1,5 @@
+def values_view(self, excluded=None):
+    temp_dic = (dict(self.issues) if (excluded is None) else self.view(excluded))
+    values = temp_dic.values()
+    values.sort(Jira.storm_jira_cmp, reverse=True)
+    return values

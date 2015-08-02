@@ -1,0 +1,19 @@
+{
+  this._queueName=PREFIX + queueName;
+  _buffer=new RingBuffer<MutableObject>(new ObjectEventFactory(),claim,wait);
+  _consumer=new Sequence();
+  _barrier=_buffer.newBarrier();
+  _buffer.setGatingSequences(_consumer);
+  if (claim instanceof SingleThreadedClaimStrategy) {
+    consumerStartedFlag=true;
+  }
+ else {
+    try {
+      publishDirect(FLUSH_CACHE,true);
+    }
+ catch (    InsufficientCapacityException e) {
+      throw new RuntimeException("This code should be unreachable!",e);
+    }
+  }
+  _waitTimeout=timeout;
+}

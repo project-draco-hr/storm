@@ -1,0 +1,18 @@
+{
+  this.stormConf=stormConf;
+  closing=false;
+  this.scheduler=scheduler;
+  this.context=context;
+  int bufferSize=Utils.getInt(stormConf.get(Config.STORM_MESSAGING_NETTY_BUFFER_SIZE));
+  LOG.info("creating Netty Client, connecting to {}:{}, bufferSize: {}",host,port,bufferSize);
+  int messageBatchSize=Utils.getInt(stormConf.get(Config.STORM_NETTY_MESSAGE_BATCH_SIZE),262144);
+  maxReconnectionAttempts=Utils.getInt(stormConf.get(Config.STORM_MESSAGING_NETTY_MAX_RETRIES));
+  int minWaitMs=Utils.getInt(stormConf.get(Config.STORM_MESSAGING_NETTY_MIN_SLEEP_MS));
+  int maxWaitMs=Utils.getInt(stormConf.get(Config.STORM_MESSAGING_NETTY_MAX_SLEEP_MS));
+  retryPolicy=new StormBoundedExponentialBackoffRetry(minWaitMs,maxWaitMs,maxReconnectionAttempts);
+  bootstrap=createClientBootstrap(factory,bufferSize);
+  dstAddress=new InetSocketAddress(host,port);
+  dstAddressPrefixedName=prefixedName(dstAddress);
+  scheduleConnect(NO_DELAY_MS);
+  batcher=new MessageBuffer(messageBatchSize);
+}

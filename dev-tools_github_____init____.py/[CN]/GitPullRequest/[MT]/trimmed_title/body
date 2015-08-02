@@ -1,0 +1,4 @@
+def trimmed_title(self):
+    limit = 40
+    title = self.data['title']
+    return (title if (len(title) < limit) else (title[0:limit] + '...'))

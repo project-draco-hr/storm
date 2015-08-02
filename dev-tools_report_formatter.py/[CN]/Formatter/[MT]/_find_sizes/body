@@ -1,0 +1,10 @@
+@staticmethod
+def _find_sizes(fields_tuple, row_tuple, min_width_tuple):
+    sizes = []
+    padding = 3
+    for i in range(0, len(row_tuple)):
+        max_len = max(len(encode(fields_tuple[i])), len(str(encode(row_tuple[i]))))
+        if (min_width_tuple is not None):
+            max_len = max(max_len, min_width_tuple[i])
+        sizes += [(max_len + padding)]
+    return sizes

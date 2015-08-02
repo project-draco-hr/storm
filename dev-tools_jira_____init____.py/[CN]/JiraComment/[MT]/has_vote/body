@@ -1,0 +1,2 @@
+def has_vote(self):
+    return (self.vote is not None)

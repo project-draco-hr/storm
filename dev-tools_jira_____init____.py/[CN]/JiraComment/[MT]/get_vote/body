@@ -1,0 +1,2 @@
+def get_vote(self):
+    return self.vote

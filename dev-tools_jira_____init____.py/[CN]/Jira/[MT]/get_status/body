@@ -1,0 +1,6 @@
+def get_status(self):
+    ret = ''
+    status = self.fields['status']
+    if (status is not None):
+        ret = status['name']
+    return mstr(ret)

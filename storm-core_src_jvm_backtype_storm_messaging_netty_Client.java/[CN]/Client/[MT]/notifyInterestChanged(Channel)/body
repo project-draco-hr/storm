@@ -1,0 +1,6 @@
+{
+  if (channel.isWritable()) {
+    MessageBatch pending=batcher.drain();
+    flushMessages(channel,pending);
+  }
+}

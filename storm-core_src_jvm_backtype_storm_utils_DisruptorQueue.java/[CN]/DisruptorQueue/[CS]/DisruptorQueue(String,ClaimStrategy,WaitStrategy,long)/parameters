@@ -1,0 +1,4 @@
+String queueName
+ClaimStrategy claim
+WaitStrategy wait
+long timeout
