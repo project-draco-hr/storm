@@ -1,4 +1,4 @@
 {
-  this.bufferSize=Math.max(4096,size);
+  this.bufferSize=Math.max(4096,sizeInBytes);
   return this;
 }

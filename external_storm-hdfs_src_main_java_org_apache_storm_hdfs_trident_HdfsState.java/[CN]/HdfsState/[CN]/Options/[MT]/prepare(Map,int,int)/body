@@ -3,9 +3,17 @@
   if (this.rotationPolicy == null) {
     throw new IllegalStateException("RotationPolicy must be specified.");
   }
+ else   if (this.rotationPolicy instanceof FileSizeRotationPolicy) {
+    long limit=FileSizeRotationPolicy.Units.GB.getByteCount();
+    if (((FileSizeRotationPolicy)rotationPolicy).getMaxBytes() > limit) {
+      LOG.warn("*** Exactly once semantics is not supported for FileSizeRotationPolicy with size > 1 GB ***");
+      LOG.warn("Turning off exactly once.");
+      this.exactlyOnce=false;
+    }
+  }
  else   if (this.rotationPolicy instanceof TimedRotationPolicy) {
-    LOG.warn("*** Exactly once semantics is not supported with TimedRotationPolicy ***");
-    LOG.warn("*** Turning off exactly once.");
+    LOG.warn("*** Exactly once semantics is not supported for TimedRotationPolicy ***");
+    LOG.warn("Turning off exactly once.");
     this.exactlyOnce=false;
   }
   if (this.fsUrl == null) {
