@@ -1,5 +1,5 @@
 {
   for (  HiveWriter writer : allWriters.values()) {
-    writer.flush(true);
+    writer.flush(rollToNext);
   }
 }
