@@ -1,0 +1,9 @@
+{
+switch (field) {
+case NAME:
+    return get_name();
+case ENABLE:
+  return Boolean.valueOf(is_enable());
+}
+throw new IllegalStateException();
+}

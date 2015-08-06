@@ -1,0 +1,6 @@
+{
+  debug_args args=new debug_args();
+  args.set_name(name);
+  args.set_enable(enable);
+  sendBase("debug",args);
+}

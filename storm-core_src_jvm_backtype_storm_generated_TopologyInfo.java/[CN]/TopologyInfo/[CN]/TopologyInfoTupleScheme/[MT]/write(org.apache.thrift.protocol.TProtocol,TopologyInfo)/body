@@ -22,6 +22,7 @@
       }
     }
   }
+  oprot.writeBool(struct.debug);
   BitSet optionals=new BitSet();
   if (struct.is_set_sched_status()) {
     optionals.set(0);

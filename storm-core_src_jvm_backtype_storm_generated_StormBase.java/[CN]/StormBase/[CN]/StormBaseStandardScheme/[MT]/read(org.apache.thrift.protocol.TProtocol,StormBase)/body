@@ -91,6 +91,15 @@ struct.set_prev_status_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 9:
+if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
+struct.debug=iprot.readBool();
+struct.set_debug_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }

@@ -54,6 +54,11 @@
       oprot.writeFieldEnd();
     }
   }
+  if (struct.is_set_debug()) {
+    oprot.writeFieldBegin(DEBUG_FIELD_DESC);
+    oprot.writeBool(struct.debug);
+    oprot.writeFieldEnd();
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

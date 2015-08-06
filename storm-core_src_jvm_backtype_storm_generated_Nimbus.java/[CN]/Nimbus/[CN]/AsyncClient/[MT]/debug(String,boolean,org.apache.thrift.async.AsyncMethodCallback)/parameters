@@ -1,0 +1,3 @@
+String name
+boolean enable
+org.apache.thrift.async.AsyncMethodCallback resultHandler

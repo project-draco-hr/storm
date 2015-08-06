@@ -1,0 +1,7 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_name()) {
+    this.name=other.name;
+  }
+  this.enable=other.enable;
+}

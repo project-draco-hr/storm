@@ -21,4 +21,5 @@
   if (other.is_set_prev_status()) {
     this.prev_status=other.prev_status;
   }
+  this.debug=other.debug;
 }

@@ -1,0 +1,8 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("debug",org.apache.thrift.protocol.TMessageType.CALL,0));
+  debug_args args=new debug_args();
+  args.set_name(name);
+  args.set_enable(enable);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

@@ -9,4 +9,6 @@
   this.owner=null;
   this.topology_action_options=null;
   this.prev_status=null;
+  set_debug_isSet(false);
+  this.debug=false;
 }

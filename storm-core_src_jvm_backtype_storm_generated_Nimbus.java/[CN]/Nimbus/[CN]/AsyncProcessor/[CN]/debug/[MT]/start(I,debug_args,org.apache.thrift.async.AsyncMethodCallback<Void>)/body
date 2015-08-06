@@ -1,0 +1,3 @@
+{
+  iface.debug(args.name,args.enable,resultHandler);
+}

@@ -1,0 +1,13 @@
+{
+  debug_result result=new debug_result();
+  try {
+    iface.debug(args.name,args.enable);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}

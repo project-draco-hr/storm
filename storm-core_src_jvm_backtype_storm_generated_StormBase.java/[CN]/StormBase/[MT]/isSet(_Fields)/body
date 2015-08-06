@@ -19,6 +19,8 @@ case TOPOLOGY_ACTION_OPTIONS:
 return is_set_topology_action_options();
 case PREV_STATUS:
 return is_set_prev_status();
+case DEBUG:
+return is_set_debug();
 }
 throw new IllegalStateException();
 }

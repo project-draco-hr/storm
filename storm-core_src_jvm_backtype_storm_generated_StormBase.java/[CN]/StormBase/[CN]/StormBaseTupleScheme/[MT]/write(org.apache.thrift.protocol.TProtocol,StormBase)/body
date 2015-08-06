@@ -19,7 +19,10 @@
   if (struct.is_set_prev_status()) {
     optionals.set(4);
   }
-  oprot.writeBitSet(optionals,5);
+  if (struct.is_set_debug()) {
+    optionals.set(5);
+  }
+  oprot.writeBitSet(optionals,6);
   if (struct.is_set_component_executors()) {
 {
       oprot.writeI32(struct.component_executors.size());
@@ -40,5 +43,8 @@
   }
   if (struct.is_set_prev_status()) {
     oprot.writeI32(struct.prev_status.getValue());
+  }
+  if (struct.is_set_debug()) {
+    oprot.writeBool(struct.debug);
   }
 }

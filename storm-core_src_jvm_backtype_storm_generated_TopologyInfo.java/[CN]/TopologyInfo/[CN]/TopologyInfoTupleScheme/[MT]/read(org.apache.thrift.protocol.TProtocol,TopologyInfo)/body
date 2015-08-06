@@ -40,6 +40,8 @@
     }
   }
   struct.set_errors_isSet(true);
+  struct.debug=iprot.readBool();
+  struct.set_debug_isSet(true);
   BitSet incoming=iprot.readBitSet(2);
   if (incoming.get(0)) {
     struct.sched_status=iprot.readString();

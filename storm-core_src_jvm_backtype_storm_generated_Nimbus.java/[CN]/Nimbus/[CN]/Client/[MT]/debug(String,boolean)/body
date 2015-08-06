@@ -1,0 +1,4 @@
+{
+  send_debug(name,enable);
+  recv_debug();
+}

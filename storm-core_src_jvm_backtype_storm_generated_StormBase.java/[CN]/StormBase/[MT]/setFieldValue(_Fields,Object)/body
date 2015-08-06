@@ -64,5 +64,13 @@ unset_prev_status();
 set_prev_status((TopologyStatus)value);
 }
 break;
+case DEBUG:
+if (value == null) {
+unset_debug();
+}
+ else {
+set_debug((Boolean)value);
+}
+break;
 }
 }
