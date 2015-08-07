@@ -1,0 +1,4 @@
+def debug(self, name, enable):
+    '\n    Parameters:\n     - name\n     - enable\n    '
+    self.send_debug(name, enable)
+    self.recv_debug()

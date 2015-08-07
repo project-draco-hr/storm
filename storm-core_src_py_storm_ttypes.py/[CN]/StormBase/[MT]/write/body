@@ -39,5 +39,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('prev_status', TType.I32, 8)
         oprot.writeI32(self.prev_status)
         oprot.writeFieldEnd()
+    if (self.debug is not None):
+        oprot.writeFieldBegin('debug', TType.BOOL, 9)
+        oprot.writeBool(self.debug)
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

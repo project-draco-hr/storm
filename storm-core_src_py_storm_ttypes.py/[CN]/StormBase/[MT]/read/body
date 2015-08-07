@@ -54,6 +54,11 @@ def read(self, iprot):
                 self.prev_status = iprot.readI32()
             else:
                 iprot.skip(ftype)
+        elif (fid == 9):
+            if (ftype == TType.BOOL):
+                self.debug = iprot.readBool()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

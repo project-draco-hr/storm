@@ -37,6 +37,10 @@ def write(self, oprot):
             oprot.writeListEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
+    if (self.debug is not None):
+        oprot.writeFieldBegin('debug', TType.BOOL, 7)
+        oprot.writeBool(self.debug)
+        oprot.writeFieldEnd()
     if (self.sched_status is not None):
         oprot.writeFieldBegin('sched_status', TType.STRING, 513)
         oprot.writeString(self.sched_status.encode('utf-8'))

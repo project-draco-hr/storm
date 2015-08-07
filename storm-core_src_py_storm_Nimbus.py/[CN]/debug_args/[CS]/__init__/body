@@ -1,0 +1,3 @@
+def __init__(self, name=None, enable=None):
+    self.name = name
+    self.enable = enable
