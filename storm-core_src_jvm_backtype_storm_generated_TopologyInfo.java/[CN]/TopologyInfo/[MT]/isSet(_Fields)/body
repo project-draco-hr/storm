@@ -15,8 +15,8 @@ case STATUS:
 return is_set_status();
 case ERRORS:
 return is_set_errors();
-case DEBUG:
-return is_set_debug();
+case COMPONENT_DEBUG:
+return is_set_component_debug();
 case SCHED_STATUS:
 return is_set_sched_status();
 case OWNER:

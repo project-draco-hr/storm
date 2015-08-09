@@ -63,12 +63,12 @@
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_debug()).compareTo(other.is_set_debug());
+  lastComparison=Boolean.valueOf(is_set_component_debug()).compareTo(other.is_set_component_debug());
   if (lastComparison != 0) {
     return lastComparison;
   }
-  if (is_set_debug()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.debug,other.debug);
+  if (is_set_component_debug()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.component_debug,other.component_debug);
     if (lastComparison != 0) {
       return lastComparison;
     }

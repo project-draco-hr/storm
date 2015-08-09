@@ -3,7 +3,9 @@ switch (fieldId) {
 case 1:
     return NAME;
 case 2:
-  return ENABLE;
+  return COMPONENT;
+case 3:
+return ENABLE;
 default :
 return null;
 }

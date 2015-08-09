@@ -31,7 +31,10 @@
     }
     this.errors=__this__errors;
   }
-  this.debug=other.debug;
+  if (other.is_set_component_debug()) {
+    Map<String,Boolean> __this__component_debug=new HashMap<String,Boolean>(other.component_debug);
+    this.component_debug=__this__component_debug;
+  }
   if (other.is_set_sched_status()) {
     this.sched_status=other.sched_status;
   }

@@ -1,5 +1,6 @@
 {
   this.name=null;
+  this.component=null;
   set_enable_isSet(false);
   this.enable=false;
 }

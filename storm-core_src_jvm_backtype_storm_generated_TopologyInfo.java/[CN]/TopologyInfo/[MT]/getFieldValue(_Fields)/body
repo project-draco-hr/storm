@@ -12,8 +12,8 @@ case STATUS:
 return get_status();
 case ERRORS:
 return get_errors();
-case DEBUG:
-return Boolean.valueOf(is_debug());
+case COMPONENT_DEBUG:
+return get_component_debug();
 case SCHED_STATUS:
 return get_sched_status();
 case OWNER:

@@ -6,6 +6,11 @@
     oprot.writeString(struct.name);
     oprot.writeFieldEnd();
   }
+  if (struct.component != null) {
+    oprot.writeFieldBegin(COMPONENT_FIELD_DESC);
+    oprot.writeString(struct.component);
+    oprot.writeFieldEnd();
+  }
   oprot.writeFieldBegin(ENABLE_FIELD_DESC);
   oprot.writeBool(struct.enable);
   oprot.writeFieldEnd();

@@ -5,24 +5,30 @@
   oprot.writeI32(struct.uptime_secs);
 {
     oprot.writeI32(struct.executors.size());
-    for (    ExecutorSummary _iter303 : struct.executors) {
-      _iter303.write(oprot);
+    for (    ExecutorSummary _iter308 : struct.executors) {
+      _iter308.write(oprot);
     }
   }
   oprot.writeString(struct.status);
 {
     oprot.writeI32(struct.errors.size());
-    for (    Map.Entry<String,List<ErrorInfo>> _iter304 : struct.errors.entrySet()) {
-      oprot.writeString(_iter304.getKey());
+    for (    Map.Entry<String,List<ErrorInfo>> _iter309 : struct.errors.entrySet()) {
+      oprot.writeString(_iter309.getKey());
 {
-        oprot.writeI32(_iter304.getValue().size());
-        for (        ErrorInfo _iter305 : _iter304.getValue()) {
-          _iter305.write(oprot);
+        oprot.writeI32(_iter309.getValue().size());
+        for (        ErrorInfo _iter310 : _iter309.getValue()) {
+          _iter310.write(oprot);
         }
       }
     }
   }
-  oprot.writeBool(struct.debug);
+{
+    oprot.writeI32(struct.component_debug.size());
+    for (    Map.Entry<String,Boolean> _iter311 : struct.component_debug.entrySet()) {
+      oprot.writeString(_iter311.getKey());
+      oprot.writeBool(_iter311.getValue());
+    }
+  }
   BitSet optionals=new BitSet();
   if (struct.is_set_sched_status()) {
     optionals.set(0);

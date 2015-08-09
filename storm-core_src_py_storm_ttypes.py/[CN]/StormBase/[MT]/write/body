@@ -18,9 +18,9 @@ def write(self, oprot):
     if (self.component_executors is not None):
         oprot.writeFieldBegin('component_executors', TType.MAP, 4)
         oprot.writeMapBegin(TType.STRING, TType.I32, len(self.component_executors))
-        for (kiter379, viter380) in self.component_executors.items():
-            oprot.writeString(kiter379.encode('utf-8'))
-            oprot.writeI32(viter380)
+        for (kiter395, viter396) in self.component_executors.items():
+            oprot.writeString(kiter395.encode('utf-8'))
+            oprot.writeI32(viter396)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.launch_time_secs is not None):
@@ -39,9 +39,13 @@ def write(self, oprot):
         oprot.writeFieldBegin('prev_status', TType.I32, 8)
         oprot.writeI32(self.prev_status)
         oprot.writeFieldEnd()
-    if (self.debug is not None):
-        oprot.writeFieldBegin('debug', TType.BOOL, 9)
-        oprot.writeBool(self.debug)
+    if (self.component_debug is not None):
+        oprot.writeFieldBegin('component_debug', TType.MAP, 9)
+        oprot.writeMapBegin(TType.STRING, TType.BOOL, len(self.component_debug))
+        for (kiter397, viter398) in self.component_debug.items():
+            oprot.writeString(kiter397.encode('utf-8'))
+            oprot.writeBool(viter398)
+        oprot.writeMapEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

@@ -13,6 +13,16 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_component()).compareTo(other.is_set_component());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_component()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.component,other.component);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   lastComparison=Boolean.valueOf(is_set_enable()).compareTo(other.is_set_enable());
   if (lastComparison != 0) {
     return lastComparison;

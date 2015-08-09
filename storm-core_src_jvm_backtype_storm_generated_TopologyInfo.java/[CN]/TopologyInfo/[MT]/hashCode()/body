@@ -18,9 +18,9 @@
   boolean present_errors=true && (is_set_errors());
   list.add(present_errors);
   if (present_errors)   list.add(errors);
-  boolean present_debug=true;
-  list.add(present_debug);
-  if (present_debug)   list.add(debug);
+  boolean present_component_debug=true && (is_set_component_debug());
+  list.add(present_component_debug);
+  if (present_component_debug)   list.add(component_debug);
   boolean present_sched_status=true && (is_set_sched_status());
   list.add(present_sched_status);
   if (present_sched_status)   list.add(sched_status);

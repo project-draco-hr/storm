@@ -9,14 +9,14 @@
   BitSet incoming=iprot.readBitSet(6);
   if (incoming.get(0)) {
 {
-      org.apache.thrift.protocol.TMap _map422=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
-      struct.component_executors=new HashMap<String,Integer>(2 * _map422.size);
-      String _key423;
-      int _val424;
-      for (int _i425=0; _i425 < _map422.size; ++_i425) {
-        _key423=iprot.readString();
-        _val424=iprot.readI32();
-        struct.component_executors.put(_key423,_val424);
+      org.apache.thrift.protocol.TMap _map438=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
+      struct.component_executors=new HashMap<String,Integer>(2 * _map438.size);
+      String _key439;
+      int _val440;
+      for (int _i441=0; _i441 < _map438.size; ++_i441) {
+        _key439=iprot.readString();
+        _val440=iprot.readI32();
+        struct.component_executors.put(_key439,_val440);
       }
     }
     struct.set_component_executors_isSet(true);
@@ -39,7 +39,17 @@
     struct.set_prev_status_isSet(true);
   }
   if (incoming.get(5)) {
-    struct.debug=iprot.readBool();
-    struct.set_debug_isSet(true);
+{
+      org.apache.thrift.protocol.TMap _map442=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.BOOL,iprot.readI32());
+      struct.component_debug=new HashMap<String,Boolean>(2 * _map442.size);
+      String _key443;
+      boolean _val444;
+      for (int _i445=0; _i445 < _map442.size; ++_i445) {
+        _key443=iprot.readString();
+        _val444=iprot.readBool();
+        struct.component_debug.put(_key443,_val444);
+      }
+    }
+    struct.set_component_debug_isSet(true);
   }
 }

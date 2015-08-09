@@ -1,14 +1,14 @@
 {
   TTupleProtocol iprot=(TTupleProtocol)prot;
 {
-    org.apache.thrift.protocol.TMap _map460=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
-    struct.approved_workers=new HashMap<String,Integer>(2 * _map460.size);
-    String _key461;
-    int _val462;
-    for (int _i463=0; _i463 < _map460.size; ++_i463) {
-      _key461=iprot.readString();
-      _val462=iprot.readI32();
-      struct.approved_workers.put(_key461,_val462);
+    org.apache.thrift.protocol.TMap _map480=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
+    struct.approved_workers=new HashMap<String,Integer>(2 * _map480.size);
+    String _key481;
+    int _val482;
+    for (int _i483=0; _i483 < _map480.size; ++_i483) {
+      _key481=iprot.readString();
+      _val482=iprot.readI32();
+      struct.approved_workers.put(_key481,_val482);
     }
   }
   struct.set_approved_workers_isSet(true);

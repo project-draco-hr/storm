@@ -5,8 +5,10 @@
 switch (field) {
 case NAME:
     return is_set_name();
+case COMPONENT:
+  return is_set_component();
 case ENABLE:
-  return is_set_enable();
+return is_set_enable();
 }
 throw new IllegalStateException();
 }

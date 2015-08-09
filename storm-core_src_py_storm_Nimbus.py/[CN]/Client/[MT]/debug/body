@@ -1,4 +1,4 @@
-def debug(self, name, enable):
-    '\n    Parameters:\n     - name\n     - enable\n    '
-    self.send_debug(name, enable)
+def debug(self, name, component, enable):
+    '\n    Parameters:\n     - name\n     - component\n     - enable\n    '
+    self.send_debug(name, component, enable)
     self.recv_debug()

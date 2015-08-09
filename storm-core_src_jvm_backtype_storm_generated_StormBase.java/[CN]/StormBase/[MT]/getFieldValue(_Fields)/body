@@ -16,8 +16,8 @@ case TOPOLOGY_ACTION_OPTIONS:
 return get_topology_action_options();
 case PREV_STATUS:
 return get_prev_status();
-case DEBUG:
-return Boolean.valueOf(is_debug());
+case COMPONENT_DEBUG:
+return get_component_debug();
 }
 throw new IllegalStateException();
 }

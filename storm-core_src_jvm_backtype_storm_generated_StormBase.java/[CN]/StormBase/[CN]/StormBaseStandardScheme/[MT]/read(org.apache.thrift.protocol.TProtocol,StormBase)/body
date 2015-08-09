@@ -37,14 +37,14 @@ break;
 case 4:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map416=iprot.readMapBegin();
-struct.component_executors=new HashMap<String,Integer>(2 * _map416.size);
-String _key417;
-int _val418;
-for (int _i419=0; _i419 < _map416.size; ++_i419) {
-_key417=iprot.readString();
-_val418=iprot.readI32();
-struct.component_executors.put(_key417,_val418);
+org.apache.thrift.protocol.TMap _map426=iprot.readMapBegin();
+struct.component_executors=new HashMap<String,Integer>(2 * _map426.size);
+String _key427;
+int _val428;
+for (int _i429=0; _i429 < _map426.size; ++_i429) {
+_key427=iprot.readString();
+_val428=iprot.readI32();
+struct.component_executors.put(_key427,_val428);
 }
 iprot.readMapEnd();
 }
@@ -92,9 +92,20 @@ org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
 case 9:
-if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
-struct.debug=iprot.readBool();
-struct.set_debug_isSet(true);
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map430=iprot.readMapBegin();
+struct.component_debug=new HashMap<String,Boolean>(2 * _map430.size);
+String _key431;
+boolean _val432;
+for (int _i433=0; _i433 < _map430.size; ++_i433) {
+_key431=iprot.readString();
+_val432=iprot.readBool();
+struct.component_debug.put(_key431,_val432);
+}
+iprot.readMapEnd();
+}
+struct.set_component_debug_isSet(true);
 }
  else {
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);

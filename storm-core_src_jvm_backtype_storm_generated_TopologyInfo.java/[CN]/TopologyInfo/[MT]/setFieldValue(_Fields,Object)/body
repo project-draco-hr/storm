@@ -48,12 +48,12 @@ unset_errors();
 set_errors((Map<String,List<ErrorInfo>>)value);
 }
 break;
-case DEBUG:
+case COMPONENT_DEBUG:
 if (value == null) {
-unset_debug();
+unset_component_debug();
 }
  else {
-set_debug((Boolean)value);
+set_component_debug((Map<String,Boolean>)value);
 }
 break;
 case SCHED_STATUS:

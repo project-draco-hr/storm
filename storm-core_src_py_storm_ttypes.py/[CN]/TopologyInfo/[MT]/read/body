@@ -56,8 +56,14 @@ def read(self, iprot):
             else:
                 iprot.skip(ftype)
         elif (fid == 7):
-            if (ftype == TType.BOOL):
-                self.debug = iprot.readBool()
+            if (ftype == TType.MAP):
+                self.component_debug = {}
+                (_ktype280, _vtype281, _size279) = iprot.readMapBegin()
+                for _i283 in xrange(_size279):
+                    _key284 = iprot.readString().decode('utf-8')
+                    _val285 = iprot.readBool()
+                    self.component_debug[_key284] = _val285
+                iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 513):

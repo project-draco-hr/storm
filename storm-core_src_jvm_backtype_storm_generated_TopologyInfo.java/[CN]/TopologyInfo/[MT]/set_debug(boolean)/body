@@ -1,4 +1,0 @@
-{
-  this.debug=debug;
-  set_debug_isSet(true);
-}

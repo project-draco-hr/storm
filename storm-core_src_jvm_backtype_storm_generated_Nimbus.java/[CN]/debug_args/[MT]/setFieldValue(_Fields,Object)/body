@@ -8,12 +8,20 @@ case NAME:
       set_name((String)value);
     }
   break;
-case ENABLE:
+case COMPONENT:
 if (value == null) {
-  unset_enable();
+  unset_component();
 }
  else {
-  set_enable((Boolean)value);
+  set_component((String)value);
+}
+break;
+case ENABLE:
+if (value == null) {
+unset_enable();
+}
+ else {
+set_enable((Boolean)value);
 }
 break;
 }

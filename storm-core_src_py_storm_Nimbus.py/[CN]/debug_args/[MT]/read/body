@@ -13,6 +13,11 @@ def read(self, iprot):
             else:
                 iprot.skip(ftype)
         elif (fid == 2):
+            if (ftype == TType.STRING):
+                self.component = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 3):
             if (ftype == TType.BOOL):
                 self.enable = iprot.readBool()
             else:

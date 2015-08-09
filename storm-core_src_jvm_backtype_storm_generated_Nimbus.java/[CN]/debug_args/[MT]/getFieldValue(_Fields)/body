@@ -2,8 +2,10 @@
 switch (field) {
 case NAME:
     return get_name();
+case COMPONENT:
+  return get_component();
 case ENABLE:
-  return Boolean.valueOf(is_enable());
+return Boolean.valueOf(is_enable());
 }
 throw new IllegalStateException();
 }

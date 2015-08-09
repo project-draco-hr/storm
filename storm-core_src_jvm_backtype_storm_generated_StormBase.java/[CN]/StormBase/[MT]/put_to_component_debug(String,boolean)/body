@@ -1,0 +1,6 @@
+{
+  if (this.component_debug == null) {
+    this.component_debug=new HashMap<String,Boolean>();
+  }
+  this.component_debug.put(key,val);
+}

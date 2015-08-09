@@ -1,10 +1,10 @@
-def __init__(self, id=None, name=None, uptime_secs=None, executors=None, status=None, errors=None, debug=None, sched_status=None, owner=None):
+def __init__(self, id=None, name=None, uptime_secs=None, executors=None, status=None, errors=None, component_debug=None, sched_status=None, owner=None):
     self.id = id
     self.name = name
     self.uptime_secs = uptime_secs
     self.executors = executors
     self.status = status
     self.errors = errors
-    self.debug = debug
+    self.component_debug = component_debug
     self.sched_status = sched_status
     self.owner = owner

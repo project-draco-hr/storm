@@ -2,9 +2,9 @@
   TTupleProtocol oprot=(TTupleProtocol)prot;
 {
     oprot.writeI32(struct.approved_workers.size());
-    for (    Map.Entry<String,Integer> _iter459 : struct.approved_workers.entrySet()) {
-      oprot.writeString(_iter459.getKey());
-      oprot.writeI32(_iter459.getValue());
+    for (    Map.Entry<String,Integer> _iter479 : struct.approved_workers.entrySet()) {
+      oprot.writeString(_iter479.getKey());
+      oprot.writeI32(_iter479.getValue());
     }
   }
 }

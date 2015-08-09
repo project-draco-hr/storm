@@ -1,7 +1,8 @@
-def send_debug(self, name, enable):
+def send_debug(self, name, component, enable):
     self._oprot.writeMessageBegin('debug', TMessageType.CALL, self._seqid)
     args = debug_args()
     args.name = name
+    args.component = component
     args.enable = enable
     args.write(self._oprot)
     self._oprot.writeMessageEnd()

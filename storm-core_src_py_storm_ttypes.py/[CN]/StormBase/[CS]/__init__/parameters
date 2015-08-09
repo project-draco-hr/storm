@@ -7,4 +7,4 @@ launch_time_secs
 owner
 topology_action_options
 prev_status
-debug
+component_debug

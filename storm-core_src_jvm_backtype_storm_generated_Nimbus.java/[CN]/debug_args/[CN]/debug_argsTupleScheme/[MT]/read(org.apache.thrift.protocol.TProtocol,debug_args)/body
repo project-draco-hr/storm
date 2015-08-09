@@ -1,11 +1,15 @@
 {
   TTupleProtocol iprot=(TTupleProtocol)prot;
-  BitSet incoming=iprot.readBitSet(2);
+  BitSet incoming=iprot.readBitSet(3);
   if (incoming.get(0)) {
     struct.name=iprot.readString();
     struct.set_name_isSet(true);
   }
   if (incoming.get(1)) {
+    struct.component=iprot.readString();
+    struct.set_component_isSet(true);
+  }
+  if (incoming.get(2)) {
     struct.enable=iprot.readBool();
     struct.set_enable_isSet(true);
   }

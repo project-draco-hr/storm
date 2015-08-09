@@ -7,8 +7,12 @@ def write(self, oprot):
         oprot.writeFieldBegin('name', TType.STRING, 1)
         oprot.writeString(self.name.encode('utf-8'))
         oprot.writeFieldEnd()
+    if (self.component is not None):
+        oprot.writeFieldBegin('component', TType.STRING, 2)
+        oprot.writeString(self.component.encode('utf-8'))
+        oprot.writeFieldEnd()
     if (self.enable is not None):
-        oprot.writeFieldBegin('enable', TType.BOOL, 2)
+        oprot.writeFieldBegin('enable', TType.BOOL, 3)
         oprot.writeBool(self.enable)
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

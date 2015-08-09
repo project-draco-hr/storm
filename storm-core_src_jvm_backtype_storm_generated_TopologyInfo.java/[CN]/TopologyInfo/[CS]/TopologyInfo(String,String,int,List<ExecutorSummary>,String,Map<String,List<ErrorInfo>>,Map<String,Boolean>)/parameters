@@ -1,0 +1,7 @@
+String id
+String name
+int uptime_secs
+List<ExecutorSummary> executors
+String status
+Map<String,List<ErrorInfo>> errors
+Map<String,Boolean> component_debug

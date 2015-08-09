@@ -72,10 +72,15 @@
     }
     first=false;
   }
-  if (is_set_debug()) {
+  if (is_set_component_debug()) {
     if (!first)     sb.append(", ");
-    sb.append("debug:");
-    sb.append(this.debug);
+    sb.append("component_debug:");
+    if (this.component_debug == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.component_debug);
+    }
     first=false;
   }
   sb.append(")");

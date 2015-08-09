@@ -4,12 +4,18 @@
   if (struct.is_set_name()) {
     optionals.set(0);
   }
-  if (struct.is_set_enable()) {
+  if (struct.is_set_component()) {
     optionals.set(1);
   }
-  oprot.writeBitSet(optionals,2);
+  if (struct.is_set_enable()) {
+    optionals.set(2);
+  }
+  oprot.writeBitSet(optionals,3);
   if (struct.is_set_name()) {
     oprot.writeString(struct.name);
+  }
+  if (struct.is_set_component()) {
+    oprot.writeString(struct.component);
   }
   if (struct.is_set_enable()) {
     oprot.writeBool(struct.enable);

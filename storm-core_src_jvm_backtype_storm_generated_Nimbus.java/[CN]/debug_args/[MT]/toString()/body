@@ -10,6 +10,15 @@
   }
   first=false;
   if (!first)   sb.append(", ");
+  sb.append("component:");
+  if (this.component == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.component);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
   sb.append("enable:");
   sb.append(this.enable);
   first=false;

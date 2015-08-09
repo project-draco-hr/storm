@@ -8,5 +8,5 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.owner))
     value = ((value * 31) ^ hash(self.topology_action_options))
     value = ((value * 31) ^ hash(self.prev_status))
-    value = ((value * 31) ^ hash(self.debug))
+    value = ((value * 31) ^ hash(self.component_debug))
     return value

@@ -17,13 +17,22 @@ case 1:
       }
     break;
 case 2:
-  if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
-    struct.enable=iprot.readBool();
-    struct.set_enable_isSet(true);
+  if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+    struct.component=iprot.readString();
+    struct.set_component_isSet(true);
   }
  else {
     org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
   }
+break;
+case 3:
+if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
+struct.enable=iprot.readBool();
+struct.set_enable_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
 break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);

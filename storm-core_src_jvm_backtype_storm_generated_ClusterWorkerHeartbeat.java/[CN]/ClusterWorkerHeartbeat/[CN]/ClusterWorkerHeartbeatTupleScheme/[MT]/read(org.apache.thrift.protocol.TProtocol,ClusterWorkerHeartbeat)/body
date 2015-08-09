@@ -3,16 +3,16 @@
   struct.storm_id=iprot.readString();
   struct.set_storm_id_isSet(true);
 {
-    org.apache.thrift.protocol.TMap _map432=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-    struct.executor_stats=new HashMap<ExecutorInfo,ExecutorStats>(2 * _map432.size);
-    ExecutorInfo _key433;
-    ExecutorStats _val434;
-    for (int _i435=0; _i435 < _map432.size; ++_i435) {
-      _key433=new ExecutorInfo();
-      _key433.read(iprot);
-      _val434=new ExecutorStats();
-      _val434.read(iprot);
-      struct.executor_stats.put(_key433,_val434);
+    org.apache.thrift.protocol.TMap _map452=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.executor_stats=new HashMap<ExecutorInfo,ExecutorStats>(2 * _map452.size);
+    ExecutorInfo _key453;
+    ExecutorStats _val454;
+    for (int _i455=0; _i455 < _map452.size; ++_i455) {
+      _key453=new ExecutorInfo();
+      _key453.read(iprot);
+      _val454=new ExecutorStats();
+      _val454.read(iprot);
+      struct.executor_stats.put(_key453,_val454);
     }
   }
   struct.set_executor_stats_isSet(true);

@@ -5,6 +5,6 @@ uptime_secs
 executors
 status
 errors
-debug
+component_debug
 sched_status
 owner

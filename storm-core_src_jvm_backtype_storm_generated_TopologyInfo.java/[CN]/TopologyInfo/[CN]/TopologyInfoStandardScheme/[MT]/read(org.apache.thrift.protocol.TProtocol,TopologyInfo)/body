@@ -93,9 +93,20 @@ org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
 case 7:
-if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
-struct.debug=iprot.readBool();
-struct.set_debug_isSet(true);
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map300=iprot.readMapBegin();
+struct.component_debug=new HashMap<String,Boolean>(2 * _map300.size);
+String _key301;
+boolean _val302;
+for (int _i303=0; _i303 < _map300.size; ++_i303) {
+_key301=iprot.readString();
+_val302=iprot.readBool();
+struct.component_debug.put(_key301,_val302);
+}
+iprot.readMapEnd();
+}
+struct.set_component_debug_isSet(true);
 }
  else {
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
