@@ -1,9 +1,7 @@
 {
-synchronized (this.writeLock) {
-    for (    TridentTuple tuple : tuples) {
-      byte[] bytes=this.format.format(tuple);
-      out.write(bytes);
-      this.offset+=bytes.length;
-    }
+  for (  TridentTuple tuple : tuples) {
+    byte[] bytes=this.format.format(tuple);
+    out.write(bytes);
+    this.offset+=bytes.length;
   }
 }

@@ -1,0 +1,7 @@
+{
+  HdfsState state=createHdfsState();
+  state.beginCommit(1L);
+  Collection<File> files=FileUtils.listFiles(new File(TEST_OUT_DIR),null,false);
+  File hdfsIndexFile=Paths.get(TEST_OUT_DIR,INDEX_FILE_PREFIX + TEST_TOPOLOGY_NAME + ".0").toFile();
+  Assert.assertTrue(files.contains(hdfsIndexFile));
+}

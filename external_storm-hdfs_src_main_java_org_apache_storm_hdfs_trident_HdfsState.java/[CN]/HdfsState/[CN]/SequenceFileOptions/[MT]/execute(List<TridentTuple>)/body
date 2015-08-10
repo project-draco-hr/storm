@@ -1,7 +1,5 @@
 {
   for (  TridentTuple tuple : tuples) {
-synchronized (this.writeLock) {
-      this.writer.append(this.format.key(tuple),this.format.value(tuple));
-    }
+    this.writer.append(this.format.key(tuple),this.format.value(tuple));
   }
 }
