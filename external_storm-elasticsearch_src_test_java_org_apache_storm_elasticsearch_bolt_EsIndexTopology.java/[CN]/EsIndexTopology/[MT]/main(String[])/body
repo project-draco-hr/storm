@@ -1,0 +1,21 @@
+{
+  Config config=new Config();
+  config.setNumWorkers(1);
+  TopologyBuilder builder=new TopologyBuilder();
+  UserDataSpout spout=new UserDataSpout();
+  builder.setSpout(SPOUT_ID,spout,1);
+  EsConfig esConfig=new EsConfig();
+  esConfig.setClusterName(EsConstants.clusterName);
+  esConfig.setNodes(new String[]{"localhost:9300"});
+  builder.setBolt(BOLT_ID,new EsIndexBolt(esConfig),1).shuffleGrouping(SPOUT_ID);
+  EsTestUtil.startEsNode();
+  EsTestUtil.waitForSeconds(5);
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology(TOPOLOGY_NAME,config,builder.createTopology());
+  EsTestUtil.waitForSeconds(20);
+  cluster.killTopology(TOPOLOGY_NAME);
+  System.out.println("cluster begin to shutdown");
+  cluster.shutdown();
+  System.out.println("cluster shutdown");
+  System.exit(0);
+}

@@ -2,8 +2,17 @@
   Map<Node,String> ret=new HashMap();
   int ctr=0;
   for (  SpoutNode n : spoutNodes) {
-    ret.put(n,"spout" + ctr);
-    ctr++;
+    if (n.type == SpoutNode.SpoutType.BATCH) {
+      ret.put(n,"spout-" + n.txId);
+    }
+ else     if (n.type == SpoutNode.SpoutType.DRPC) {
+      ret.put(n,"spout-" + ((DRPCSpout)n.spout).get_function() + ctr);
+      ctr++;
+    }
+ else {
+      ret.put(n,"spout" + ctr);
+      ctr++;
+    }
   }
   return ret;
 }

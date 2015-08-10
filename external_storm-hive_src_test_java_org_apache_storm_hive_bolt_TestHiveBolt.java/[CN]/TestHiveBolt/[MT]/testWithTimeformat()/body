@@ -13,11 +13,13 @@
   SimpleDateFormat parseDate=new SimpleDateFormat(timeFormat);
   String today=parseDate.format(d.getTime());
   checkRecordCountInTable(tblName1,dbName1,0);
+  Set<Tuple> tupleSet=new HashSet<Tuple>();
   for (int i=0; i < 2; i++) {
     Tuple tuple=generateTestTuple(id,msg,null,null);
+    tupleSet.add(tuple);
     bolt.execute(tuple);
-    verify(collector).ack(tuple);
   }
+  for (  Tuple t : tupleSet)   verify(collector).ack(t);
   checkDataWritten(tblName1,dbName1,"100,test-123," + today,"100,test-123," + today);
   bolt.cleanup();
 }

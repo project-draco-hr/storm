@@ -1,0 +1,18 @@
+{
+  try {
+    String source=tuple.getStringByField("source");
+    String index=tuple.getStringByField("index");
+    String type=tuple.getStringByField("type");
+    PercolateResponse response=client.preparePercolate().setIndices(index).setDocumentType(type).setPercolateDoc(PercolateSourceBuilder.docBuilder().setDoc(source)).execute().actionGet();
+    if (response.getCount() > 0) {
+      for (      PercolateResponse.Match match : response) {
+        collector.emit(new Values(source,match));
+      }
+    }
+    collector.ack(tuple);
+  }
+ catch (  Exception e) {
+    collector.reportError(e);
+    collector.fail(tuple);
+  }
+}
