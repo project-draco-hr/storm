@@ -1,0 +1,3 @@
+{
+  return (short)zkClient.getChildren().forPath("/code-distributor/" + topologyId).size();
+}

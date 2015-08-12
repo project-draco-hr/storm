@@ -1,0 +1,5 @@
+String host
+int port
+int uptime_secs
+boolean isLeader
+String version

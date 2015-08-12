@@ -14,7 +14,7 @@
   struct.set_uptime_secs_isSet(true);
   struct.status=iprot.readString();
   struct.set_status_isSet(true);
-  BitSet incoming=iprot.readBitSet(2);
+  BitSet incoming=iprot.readBitSet(3);
   if (incoming.get(0)) {
     struct.sched_status=iprot.readString();
     struct.set_sched_status_isSet(true);
@@ -22,5 +22,9 @@
   if (incoming.get(1)) {
     struct.owner=iprot.readString();
     struct.set_owner_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.replication_count=iprot.readI32();
+    struct.set_replication_count_isSet(true);
   }
 }
