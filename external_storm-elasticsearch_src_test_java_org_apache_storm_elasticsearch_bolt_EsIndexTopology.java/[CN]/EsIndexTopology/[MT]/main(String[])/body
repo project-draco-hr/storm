@@ -7,7 +7,8 @@
   EsConfig esConfig=new EsConfig();
   esConfig.setClusterName(EsConstants.clusterName);
   esConfig.setNodes(new String[]{"localhost:9300"});
-  builder.setBolt(BOLT_ID,new EsIndexBolt(esConfig),1).shuffleGrouping(SPOUT_ID);
+  EsTupleMapper tupleMapper=EsTestUtil.generateDefaultTupleMapper();
+  builder.setBolt(BOLT_ID,new EsIndexBolt(esConfig,tupleMapper),1).shuffleGrouping(SPOUT_ID);
   EsTestUtil.startEsNode();
   EsTestUtil.waitForSeconds(5);
   LocalCluster cluster=new LocalCluster();

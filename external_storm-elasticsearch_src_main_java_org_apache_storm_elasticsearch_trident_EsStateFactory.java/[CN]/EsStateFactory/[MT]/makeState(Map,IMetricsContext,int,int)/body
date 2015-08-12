@@ -1,5 +1,5 @@
 {
-  EsState esState=new EsState(esConfig);
+  EsState esState=new EsState(esConfig,tupleMapper);
   esState.prepare(conf,metrics,partitionIndex,numPartitions);
   return esState;
 }

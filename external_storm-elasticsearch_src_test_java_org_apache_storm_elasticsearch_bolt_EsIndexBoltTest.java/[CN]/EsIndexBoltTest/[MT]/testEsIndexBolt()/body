@@ -2,7 +2,8 @@
   EsConfig esConfig=new EsConfig();
   esConfig.setClusterName("test-cluster");
   esConfig.setNodes(new String[]{"127.0.0.1:9300"});
-  bolt=new EsIndexBolt(esConfig);
+  EsTupleMapper tupleMapper=EsTestUtil.generateDefaultTupleMapper();
+  bolt=new EsIndexBolt(esConfig,tupleMapper);
   bolt.prepare(config,null,collector);
   String source="{\"user\":\"user1\"}";
   String index="index1";
