@@ -1,5 +1,5 @@
 {
 synchronized (_lock) {
-    return super.size();
+    return super.rotate();
   }
 }
