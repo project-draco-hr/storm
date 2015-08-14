@@ -1,0 +1,17 @@
+{
+  HdfsState state=createHdfsState();
+  state.beginCommit(1L);
+  state.updateState(createMockTridentTuples(25),null);
+  int replayBatchSize=50;
+  state.beginCommit(1L);
+  state.updateState(createMockTridentTuples(replayBatchSize),null);
+  state.commit(1L);
+  state.close();
+  List<String> lines=getLinesFromCurrentDataFile();
+  Assert.assertEquals(replayBatchSize,lines.size());
+  List<String> expected=new ArrayList<>();
+  for (int i=0; i < replayBatchSize; i++) {
+    expected.add("data");
+  }
+  Assert.assertEquals(expected,lines);
+}

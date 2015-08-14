@@ -1,0 +1,15 @@
+{
+  HdfsState state=createHdfsState();
+  state.beginCommit(1L);
+  int tupleCount=100;
+  state.updateState(createMockTridentTuples(tupleCount),null);
+  state.commit(1L);
+  state.close();
+  List<String> lines=getLinesFromCurrentDataFile();
+  List<String> expected=new ArrayList<>();
+  for (int i=0; i < tupleCount; i++) {
+    expected.add("data");
+  }
+  Assert.assertEquals(tupleCount,lines.size());
+  Assert.assertEquals(expected,lines);
+}
