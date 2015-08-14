@@ -1,5 +1,5 @@
 {
 synchronized (_lock) {
-    super.put(key,value);
+    _rotatingMap.put(key,value);
   }
 }

@@ -1,5 +1,5 @@
 {
 synchronized (_lock) {
-    return super.containsKey(key);
+    return _rotatingMap.containsKey(key);
   }
 }
