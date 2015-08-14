@@ -2,7 +2,7 @@
   FSDataOutputStream out=null;
   LOG.debug("Starting index update.");
   try {
-    Path tmpPath=new Path(this.indexFilePath.toString() + ".tmp");
+    Path tmpPath=tmpFilePath(indexFilePath.toString());
     out=this.options.fs.create(tmpPath,true);
     BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(out));
     TxnRecord txnRecord=new TxnRecord(txId,options.currentFile.toString(),this.options.getCurrentOffset());

@@ -32,7 +32,5 @@
  catch (  Exception e) {
     throw new RuntimeException("Error preparing HdfsState: " + e.getMessage(),e);
   }
-  if (this.rotationPolicy instanceof TimedRotationPolicy) {
-    ((TimedRotationPolicy)this.rotationPolicy).start();
-  }
+  rotationPolicy.start();
 }

@@ -1,5 +1,5 @@
 {
-  Path tmpPath=new Path(indexFilePath.toString() + ".tmp");
+  Path tmpPath=tmpFilePath(indexFilePath.toString());
   if (this.options.fs.exists(indexFilePath)) {
     return readTxnRecord(indexFilePath);
   }
