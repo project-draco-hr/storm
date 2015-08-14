@@ -1,0 +1,5 @@
+{
+  Path dataFile=Paths.get(TEST_OUT_DIR,fileNameFormat.getCurrentFileName());
+  List<String> lines=Files.readAllLines(dataFile,Charset.defaultCharset());
+  return lines;
+}
