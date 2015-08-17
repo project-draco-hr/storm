@@ -1,0 +1,8 @@
+{
+  byte[] buf=new byte[bufferSize];
+  int n;
+  while ((n=is.read(buf)) != -1 && bytesToCopy > 0) {
+    out.write(buf,0,(int)Math.min(n,bytesToCopy));
+    bytesToCopy-=n;
+  }
+}

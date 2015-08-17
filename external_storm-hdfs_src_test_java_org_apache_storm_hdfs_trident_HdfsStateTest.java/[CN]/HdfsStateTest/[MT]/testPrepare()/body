@@ -1,0 +1,6 @@
+{
+  HdfsState state=createHdfsState();
+  Collection<File> files=FileUtils.listFiles(new File(TEST_OUT_DIR),null,false);
+  File hdfsDataFile=Paths.get(TEST_OUT_DIR,FILE_NAME_PREFIX + "0").toFile();
+  Assert.assertTrue(files.contains(hdfsDataFile));
+}

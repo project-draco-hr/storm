@@ -1,24 +1,7 @@
 {
-  boolean rotated=false;
-synchronized (this.writeLock) {
-    for (    TridentTuple tuple : tuples) {
-      byte[] bytes=this.format.format(tuple);
-      out.write(bytes);
-      this.offset+=bytes.length;
-      if (this.rotationPolicy.mark(tuple,this.offset)) {
-        rotateOutputFile();
-        this.offset=0;
-        this.rotationPolicy.reset();
-        rotated=true;
-      }
-    }
-    if (!rotated) {
-      if (this.out instanceof HdfsDataOutputStream) {
-        ((HdfsDataOutputStream)this.out).hsync(EnumSet.of(HdfsDataOutputStream.SyncFlag.UPDATE_LENGTH));
-      }
- else {
-        this.out.hsync();
-      }
-    }
+  for (  TridentTuple tuple : tuples) {
+    byte[] bytes=this.format.format(tuple);
+    out.write(bytes);
+    this.offset+=bytes.length;
   }
 }

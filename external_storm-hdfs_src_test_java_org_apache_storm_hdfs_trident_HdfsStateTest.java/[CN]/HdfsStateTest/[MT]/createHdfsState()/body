@@ -1,0 +1,11 @@
+{
+  Fields hdfsFields=new Fields("f1");
+  RecordFormat recordFormat=new DelimitedRecordFormat().withFields(hdfsFields);
+  FileRotationPolicy rotationPolicy=new FileSizeRotationPolicy(5.0f,FileSizeRotationPolicy.Units.MB);
+  HdfsState.Options options=new HdfsState.HdfsFileOptions().withFileNameFormat(fileNameFormat).withRecordFormat(recordFormat).withRotationPolicy(rotationPolicy).withFsUrl("file://" + TEST_OUT_DIR);
+  Map<String,String> conf=new HashMap<>();
+  conf.put(Config.TOPOLOGY_NAME,TEST_TOPOLOGY_NAME);
+  HdfsState state=new HdfsState(options);
+  state.prepare(conf,null,0,1);
+  return state;
+}
