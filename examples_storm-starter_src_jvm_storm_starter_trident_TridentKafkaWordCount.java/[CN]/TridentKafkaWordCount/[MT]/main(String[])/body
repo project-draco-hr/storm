@@ -1,0 +1,29 @@
+{
+  String zkUrl="localhost:2181";
+  String brokerUrl="localhost:9092";
+  if (args.length > 2 || (args.length == 1 && args[0].matches("^-h|--help$"))) {
+    System.out.println("Usage: TridentKafkaWordCount [kafka zookeeper url] [kafka broker url]");
+    System.out.println("   E.g TridentKafkaWordCount [" + zkUrl + "]"+ " ["+ brokerUrl+ "]");
+    System.exit(1);
+  }
+ else   if (args.length == 1) {
+    zkUrl=args[0];
+  }
+ else   if (args.length == 2) {
+    zkUrl=args[0];
+    brokerUrl=args[1];
+  }
+  System.out.println("Using Kafka zookeeper url: " + zkUrl + " broker url: "+ brokerUrl);
+  TridentKafkaWordCount wordCount=new TridentKafkaWordCount(zkUrl,brokerUrl);
+  LocalDRPC drpc=new LocalDRPC();
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology("wordCounter",wordCount.getConsumerConfig(),wordCount.buildConsumerTopology(drpc));
+  cluster.submitTopology("kafkaBolt",wordCount.getProducerConfig(),wordCount.buildProducerTopology());
+  for (int i=0; i < 60; i++) {
+    System.out.println("DRPC RESULT: " + drpc.execute("words","the and apple snow jumped"));
+    Thread.sleep(1000);
+  }
+  cluster.killTopology("kafkaBolt");
+  cluster.killTopology("wordCounter");
+  cluster.shutdown();
+}
