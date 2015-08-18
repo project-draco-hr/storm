@@ -1,0 +1,6 @@
+{
+  if (throttleOn.get()) {
+    lowWaterMarkCalledPopulation=queue.writePos() - consumerCursor.get();
+    throttleOn.set(false);
+  }
+}
