@@ -1,0 +1,25 @@
+{
+  HdfsState state=createHdfsState();
+  int batch1Count=10;
+  state.beginCommit(1L);
+  state.updateState(createMockTridentTuples(batch1Count),null);
+  state.commit(1L);
+  int batch2Count=20;
+  state.beginCommit(2L);
+  state.updateState(createMockTridentTuples(batch2Count),null);
+  state.commit(2L);
+  int batch3Count=30;
+  state.beginCommit(3L);
+  state.updateState(createMockTridentTuples(batch3Count),null);
+  state.commit(3L);
+  int batch3ReplayCount=40;
+  state.beginCommit(3L);
+  state.updateState(createMockTridentTuples(batch3ReplayCount),null);
+  state.commit(3L);
+  state.close();
+  List<String> lines=getLinesFromCurrentDataFile();
+  int preReplayCount=batch1Count + batch2Count + batch3Count;
+  int expectedTupleCount=batch1Count + batch2Count + batch3ReplayCount;
+  Assert.assertNotEquals(preReplayCount,lines.size());
+  Assert.assertEquals(expectedTupleCount,lines.size());
+}

@@ -1,0 +1,5 @@
+{
+  Config conf=new Config();
+  conf.setMaxSpoutPending(20);
+  return conf;
+}
