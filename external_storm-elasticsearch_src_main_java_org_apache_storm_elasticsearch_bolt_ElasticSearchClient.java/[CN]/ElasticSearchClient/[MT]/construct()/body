@@ -1,0 +1,6 @@
+{
+  Settings settings=createBasicSettings();
+  TransportClient transportClient=new TransportClient(settings);
+  addTransportAddresses(transportClient);
+  return transportClient;
+}
