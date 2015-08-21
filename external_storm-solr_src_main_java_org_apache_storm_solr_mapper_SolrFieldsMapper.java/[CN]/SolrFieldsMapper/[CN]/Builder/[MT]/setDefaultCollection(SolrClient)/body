@@ -4,5 +4,4 @@
     defaultCollection=((CloudSolrClient)solrClient).getDefaultCollection();
   }
   this.collection=defaultCollection;
-  return this;
 }

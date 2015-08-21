@@ -4,15 +4,18 @@
   }
   if (pattern.startsWith("*")) {
     if (fieldName.endsWith(pattern.substring(1))) {
-      logger.debug("Field [{}] MATCHES dynamic field {}",fieldName,pattern);
+      log.debug("Field [{}] MATCHES dynamic field {}",fieldName,pattern);
       return true;
     }
   }
  else   if (pattern.endsWith("*")) {
     if (fieldName.startsWith(pattern.substring(0,pattern.length() - 1))) {
-      logger.debug("Field [{}] MATCHES dynamic field {}",fieldName,pattern);
+      log.debug("Field [{}] MATCHES dynamic field {}",fieldName,pattern);
       return true;
     }
+  }
+  if (log.isDebugEnabled()) {
+    log.debug("Field [{}] did NOT match any dynamic field present in {}",fieldName,fieldToWrapper.keySet());
   }
   return false;
 }

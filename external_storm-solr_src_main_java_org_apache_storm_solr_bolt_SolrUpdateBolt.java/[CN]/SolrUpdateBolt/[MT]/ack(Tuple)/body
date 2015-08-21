@@ -3,10 +3,8 @@
     collector.ack(tuple);
   }
  else {
-synchronized (ackFailLock) {
-      toCommitTuples.add(tuple);
-      commitStgy.update();
-    }
+    toCommitTuples.add(tuple);
+    commitStgy.update();
     if (commitStgy.commit()) {
       solrClient.commit(solrMapper.getCollection());
       ackCommittedTuples();

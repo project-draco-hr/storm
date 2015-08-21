@@ -4,8 +4,8 @@
       return true;
     }
   }
-  if (logger.isDebugEnabled()) {
-    logger.debug("Field [{}] did NOT match any dynamic field present in {}",fieldName,fieldToWrapper.keySet());
+  if (log.isDebugEnabled()) {
+    log.debug("Field [{}] did NOT match any dynamic field present in {}",fieldName,fieldToWrapper.keySet());
   }
   return false;
 }

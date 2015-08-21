@@ -2,8 +2,7 @@
   final List<FieldType> fieldTypes=schema.getFieldTypes();
   buildMapForFields(fieldTypes,schema.getFields());
   buildMapForFields(fieldTypes,schema.getDynamicFields());
-  System.out.println("Completed building Field/Type Map: " + fieldToWrapper);
-  if (logger.isDebugEnabled()) {
-    logger.debug("Completed building Field/Type Map: " + fieldToWrapper);
+  if (log.isDebugEnabled()) {
+    log.debug("Completed building FieldType Map: " + fieldToWrapper);
   }
 }

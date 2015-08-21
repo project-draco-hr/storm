@@ -4,6 +4,6 @@
   for (  FieldTypeWrapper typeWrapper : typeWrappers) {
     fieldTypeClasses.add(typeWrapper.getType().getClazz());
   }
-  logger.debug("Field type classes present in schema: {}",fieldTypeClasses);
+  log.debug("Field type classes present in schema: {}",fieldTypeClasses);
   return fieldTypeClasses;
 }

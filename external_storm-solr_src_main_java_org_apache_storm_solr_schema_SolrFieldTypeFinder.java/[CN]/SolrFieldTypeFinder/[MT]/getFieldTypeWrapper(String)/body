@@ -7,6 +7,6 @@
       }
     }
   }
-  logger.debug("Solr Field and Type info: {}, {}",fieldName,typeWrapper);
+  log.debug("Solr Field Name = {}, Solr Type = {}",fieldName,typeWrapper);
   return typeWrapper;
 }

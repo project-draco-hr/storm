@@ -5,8 +5,6 @@
   }
  else {
     List<Tuple> failedTuples=getQueuedTuples();
-    for (    Tuple failedTuple : failedTuples) {
-      collector.fail(failedTuple);
-    }
+    failQueuedTuples(failedTuples);
   }
 }

@@ -1,7 +1,9 @@
 {
-  ContentStreamUpdateRequest request=new ContentStreamUpdateRequest(JSON_UPDATE_URL);
-  ContentStream cs=new ContentStreamBase.StringStream(json,CONTENT_TYPE);
+  final ContentStreamUpdateRequest request=new ContentStreamUpdateRequest(jsonUpdateUrl);
+  final ContentStream cs=new ContentStreamBase.StringStream(json,CONTENT_TYPE);
   request.addContentStream(cs);
-  logger.info("Request generated with JSON: " + json);
+  if (logger.isDebugEnabled()) {
+    logger.debug("Request generated with JSON: " + json);
+  }
   return request;
 }

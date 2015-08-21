@@ -1,8 +1,5 @@
 {
-  List<Tuple> queuedTuples;
-synchronized (ackFailLock) {
-    queuedTuples=toCommitTuples;
-    toCommitTuples=new LinkedList<>();
-  }
+  List<Tuple> queuedTuples=toCommitTuples;
+  toCommitTuples=new ArrayList<>(capacity());
   return queuedTuples;
 }
