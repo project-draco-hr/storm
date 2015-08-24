@@ -1,27 +1,36 @@
 {
   TTupleProtocol iprot=(TTupleProtocol)prot;
 {
-    org.apache.thrift.protocol.TList _list84=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-    struct.supervisors=new ArrayList<SupervisorSummary>(_list84.size);
-    SupervisorSummary _elem85;
-    for (int _i86=0; _i86 < _list84.size; ++_i86) {
-      _elem85=new SupervisorSummary();
-      _elem85.read(iprot);
-      struct.supervisors.add(_elem85);
+    org.apache.thrift.protocol.TList _list89=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.supervisors=new ArrayList<SupervisorSummary>(_list89.size);
+    SupervisorSummary _elem90;
+    for (int _i91=0; _i91 < _list89.size; ++_i91) {
+      _elem90=new SupervisorSummary();
+      _elem90.read(iprot);
+      struct.supervisors.add(_elem90);
     }
   }
   struct.set_supervisors_isSet(true);
-  struct.nimbus_uptime_secs=iprot.readI32();
-  struct.set_nimbus_uptime_secs_isSet(true);
 {
-    org.apache.thrift.protocol.TList _list87=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-    struct.topologies=new ArrayList<TopologySummary>(_list87.size);
-    TopologySummary _elem88;
-    for (int _i89=0; _i89 < _list87.size; ++_i89) {
-      _elem88=new TopologySummary();
-      _elem88.read(iprot);
-      struct.topologies.add(_elem88);
+    org.apache.thrift.protocol.TList _list92=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.topologies=new ArrayList<TopologySummary>(_list92.size);
+    TopologySummary _elem93;
+    for (int _i94=0; _i94 < _list92.size; ++_i94) {
+      _elem93=new TopologySummary();
+      _elem93.read(iprot);
+      struct.topologies.add(_elem93);
     }
   }
   struct.set_topologies_isSet(true);
+{
+    org.apache.thrift.protocol.TList _list95=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.nimbuses=new ArrayList<NimbusSummary>(_list95.size);
+    NimbusSummary _elem96;
+    for (int _i97=0; _i97 < _list95.size; ++_i97) {
+      _elem96=new NimbusSummary();
+      _elem96.read(iprot);
+      struct.nimbuses.add(_elem96);
+    }
+  }
+  struct.set_nimbuses_isSet(true);
 }

@@ -1,0 +1,12 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_host()) {
+    this.host=other.host;
+  }
+  this.port=other.port;
+  this.uptime_secs=other.uptime_secs;
+  this.isLeader=other.isLeader;
+  if (other.is_set_version()) {
+    this.version=other.version;
+  }
+}

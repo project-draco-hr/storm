@@ -1,0 +1,3 @@
+{
+  return "NimbusInfo{" + "host='" + host + '\''+ ", port="+ port+ ", isLeader="+ isLeader+ '}';
+}

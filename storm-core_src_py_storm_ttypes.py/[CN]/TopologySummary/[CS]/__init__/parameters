@@ -8,3 +8,4 @@ uptime_secs
 status
 sched_status
 owner
+replication_count
