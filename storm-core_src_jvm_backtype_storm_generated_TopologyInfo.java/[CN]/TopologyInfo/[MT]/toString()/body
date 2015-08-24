@@ -49,15 +49,17 @@
     sb.append(this.errors);
   }
   first=false;
-  if (!first)   sb.append(", ");
-  sb.append("component_debug:");
-  if (this.component_debug == null) {
-    sb.append("null");
-  }
+  if (is_set_component_debug()) {
+    if (!first)     sb.append(", ");
+    sb.append("component_debug:");
+    if (this.component_debug == null) {
+      sb.append("null");
+    }
  else {
-    sb.append(this.component_debug);
+      sb.append(this.component_debug);
+    }
+    first=false;
   }
-  first=false;
   if (is_set_sched_status()) {
     if (!first)     sb.append(", ");
     sb.append("sched_status:");

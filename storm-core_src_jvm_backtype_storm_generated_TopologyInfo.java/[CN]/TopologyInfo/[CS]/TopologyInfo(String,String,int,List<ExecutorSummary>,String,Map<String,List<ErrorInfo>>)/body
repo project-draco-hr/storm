@@ -7,5 +7,4 @@
   this.executors=executors;
   this.status=status;
   this.errors=errors;
-  this.component_debug=component_debug;
 }

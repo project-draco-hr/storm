@@ -22,21 +22,26 @@
       }
     }
   }
-{
-    oprot.writeI32(struct.component_debug.size());
-    for (    Map.Entry<String,Boolean> _iter311 : struct.component_debug.entrySet()) {
-      oprot.writeString(_iter311.getKey());
-      oprot.writeBool(_iter311.getValue());
-    }
-  }
   BitSet optionals=new BitSet();
-  if (struct.is_set_sched_status()) {
+  if (struct.is_set_component_debug()) {
     optionals.set(0);
   }
-  if (struct.is_set_owner()) {
+  if (struct.is_set_sched_status()) {
     optionals.set(1);
   }
-  oprot.writeBitSet(optionals,2);
+  if (struct.is_set_owner()) {
+    optionals.set(2);
+  }
+  oprot.writeBitSet(optionals,3);
+  if (struct.is_set_component_debug()) {
+{
+      oprot.writeI32(struct.component_debug.size());
+      for (      Map.Entry<String,Boolean> _iter311 : struct.component_debug.entrySet()) {
+        oprot.writeString(_iter311.getKey());
+        oprot.writeBool(_iter311.getValue());
+      }
+    }
+  }
   if (struct.is_set_sched_status()) {
     oprot.writeString(struct.sched_status);
   }

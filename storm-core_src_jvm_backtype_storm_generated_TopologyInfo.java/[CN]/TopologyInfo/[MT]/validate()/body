@@ -17,7 +17,4 @@
   if (!is_set_errors()) {
     throw new org.apache.thrift.protocol.TProtocolException("Required field 'errors' is unset! Struct:" + toString());
   }
-  if (!is_set_component_debug()) {
-    throw new org.apache.thrift.protocol.TProtocolException("Required field 'component_debug' is unset! Struct:" + toString());
-  }
 }

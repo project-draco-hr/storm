@@ -40,24 +40,26 @@
     }
   }
   struct.set_errors_isSet(true);
-{
-    org.apache.thrift.protocol.TMap _map322=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.BOOL,iprot.readI32());
-    struct.component_debug=new HashMap<String,Boolean>(2 * _map322.size);
-    String _key323;
-    boolean _val324;
-    for (int _i325=0; _i325 < _map322.size; ++_i325) {
-      _key323=iprot.readString();
-      _val324=iprot.readBool();
-      struct.component_debug.put(_key323,_val324);
-    }
-  }
-  struct.set_component_debug_isSet(true);
-  BitSet incoming=iprot.readBitSet(2);
+  BitSet incoming=iprot.readBitSet(3);
   if (incoming.get(0)) {
+{
+      org.apache.thrift.protocol.TMap _map322=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.BOOL,iprot.readI32());
+      struct.component_debug=new HashMap<String,Boolean>(2 * _map322.size);
+      String _key323;
+      boolean _val324;
+      for (int _i325=0; _i325 < _map322.size; ++_i325) {
+        _key323=iprot.readString();
+        _val324=iprot.readBool();
+        struct.component_debug.put(_key323,_val324);
+      }
+    }
+    struct.set_component_debug_isSet(true);
+  }
+  if (incoming.get(1)) {
     struct.sched_status=iprot.readString();
     struct.set_sched_status_isSet(true);
   }
-  if (incoming.get(1)) {
+  if (incoming.get(2)) {
     struct.owner=iprot.readString();
     struct.set_owner_isSet(true);
   }
