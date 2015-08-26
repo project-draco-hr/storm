@@ -10,7 +10,10 @@
   if (struct.is_set_enable()) {
     optionals.set(2);
   }
-  oprot.writeBitSet(optionals,3);
+  if (struct.is_set_samplingPercentage()) {
+    optionals.set(3);
+  }
+  oprot.writeBitSet(optionals,4);
   if (struct.is_set_name()) {
     oprot.writeString(struct.name);
   }
@@ -19,5 +22,8 @@
   }
   if (struct.is_set_enable()) {
     oprot.writeBool(struct.enable);
+  }
+  if (struct.is_set_samplingPercentage()) {
+    oprot.writeDouble(struct.samplingPercentage);
   }
 }

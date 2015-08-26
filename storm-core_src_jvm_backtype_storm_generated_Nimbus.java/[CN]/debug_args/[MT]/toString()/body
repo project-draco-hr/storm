@@ -22,6 +22,10 @@
   sb.append("enable:");
   sb.append(this.enable);
   first=false;
+  if (!first)   sb.append(", ");
+  sb.append("samplingPercentage:");
+  sb.append(this.samplingPercentage);
+  first=false;
   sb.append(")");
   return sb.toString();
 }

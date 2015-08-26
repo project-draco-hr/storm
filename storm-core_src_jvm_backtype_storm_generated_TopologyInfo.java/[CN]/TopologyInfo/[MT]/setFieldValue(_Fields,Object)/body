@@ -53,7 +53,7 @@ if (value == null) {
 unset_component_debug();
 }
  else {
-set_component_debug((Map<String,Boolean>)value);
+set_component_debug((Map<String,DebugOptions>)value);
 }
 break;
 case SCHED_STATUS:

@@ -1,7 +1,7 @@
 {
   debug_result result=new debug_result();
   try {
-    iface.debug(args.name,args.component,args.enable);
+    iface.debug(args.name,args.component,args.enable,args.samplingPercentage);
   }
  catch (  NotAliveException e) {
     result.e=e;

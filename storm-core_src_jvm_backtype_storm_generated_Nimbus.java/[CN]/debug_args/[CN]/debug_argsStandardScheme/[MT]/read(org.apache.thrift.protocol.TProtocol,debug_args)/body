@@ -34,6 +34,15 @@ struct.set_enable_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 4:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.samplingPercentage=iprot.readDouble();
+struct.set_samplingPercentage_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }

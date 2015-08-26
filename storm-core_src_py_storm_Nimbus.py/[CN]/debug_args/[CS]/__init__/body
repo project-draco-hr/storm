@@ -1,4 +1,5 @@
-def __init__(self, name=None, component=None, enable=None):
+def __init__(self, name=None, component=None, enable=None, samplingPercentage=None):
     self.name = name
     self.component = component
     self.enable = enable
+    self.samplingPercentage = samplingPercentage

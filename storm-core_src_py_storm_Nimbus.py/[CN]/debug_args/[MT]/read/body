@@ -22,6 +22,11 @@ def read(self, iprot):
                 self.enable = iprot.readBool()
             else:
                 iprot.skip(ftype)
+        elif (fid == 4):
+            if (ftype == TType.DOUBLE):
+                self.samplingPercentage = iprot.readDouble()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

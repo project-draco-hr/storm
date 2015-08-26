@@ -3,4 +3,6 @@
   this.component=null;
   set_enable_isSet(false);
   this.enable=false;
+  set_samplingPercentage_isSet(false);
+  this.samplingPercentage=0.0;
 }

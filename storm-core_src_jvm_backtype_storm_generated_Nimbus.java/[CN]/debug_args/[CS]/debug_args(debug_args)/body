@@ -7,4 +7,5 @@
     this.component=other.component;
   }
   this.enable=other.enable;
+  this.samplingPercentage=other.samplingPercentage;
 }

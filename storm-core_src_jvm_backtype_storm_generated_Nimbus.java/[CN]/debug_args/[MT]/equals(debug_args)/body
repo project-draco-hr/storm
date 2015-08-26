@@ -18,5 +18,11 @@
     if (!(this_present_enable && that_present_enable))     return false;
     if (this.enable != that.enable)     return false;
   }
+  boolean this_present_samplingPercentage=true;
+  boolean that_present_samplingPercentage=true;
+  if (this_present_samplingPercentage || that_present_samplingPercentage) {
+    if (!(this_present_samplingPercentage && that_present_samplingPercentage))     return false;
+    if (this.samplingPercentage != that.samplingPercentage)     return false;
+  }
   return true;
 }

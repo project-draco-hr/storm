@@ -58,10 +58,10 @@
     if (struct.is_set_component_debug()) {
       oprot.writeFieldBegin(COMPONENT_DEBUG_FIELD_DESC);
 {
-        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.BOOL,struct.component_debug.size()));
-        for (        Map.Entry<String,Boolean> _iter435 : struct.component_debug.entrySet()) {
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.component_debug.size()));
+        for (        Map.Entry<String,DebugOptions> _iter435 : struct.component_debug.entrySet()) {
           oprot.writeString(_iter435.getKey());
-          oprot.writeBool(_iter435.getValue());
+          _iter435.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }

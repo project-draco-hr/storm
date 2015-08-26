@@ -1,9 +1,10 @@
-def send_debug(self, name, component, enable):
+def send_debug(self, name, component, enable, samplingPercentage):
     self._oprot.writeMessageBegin('debug', TMessageType.CALL, self._seqid)
     args = debug_args()
     args.name = name
     args.component = component
     args.enable = enable
+    args.samplingPercentage = samplingPercentage
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()

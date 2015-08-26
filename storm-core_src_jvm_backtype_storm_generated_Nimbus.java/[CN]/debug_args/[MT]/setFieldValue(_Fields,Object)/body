@@ -24,5 +24,13 @@ unset_enable();
 set_enable((Boolean)value);
 }
 break;
+case SAMPLING_PERCENTAGE:
+if (value == null) {
+unset_samplingPercentage();
+}
+ else {
+set_samplingPercentage((Double)value);
+}
+break;
 }
 }

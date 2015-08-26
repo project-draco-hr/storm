@@ -3,4 +3,5 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.name))
     value = ((value * 31) ^ hash(self.component))
     value = ((value * 31) ^ hash(self.enable))
+    value = ((value * 31) ^ hash(self.samplingPercentage))
     return value

@@ -33,5 +33,15 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_samplingPercentage()).compareTo(other.is_set_samplingPercentage());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_samplingPercentage()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.samplingPercentage,other.samplingPercentage);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

@@ -4,7 +4,7 @@ def process_debug(self, seqid, iprot, oprot):
     iprot.readMessageEnd()
     result = debug_result()
     try:
-        self._handler.debug(args.name, args.component, args.enable)
+        self._handler.debug(args.name, args.component, args.enable, args.samplingPercentage)
     except NotAliveException as e:
         result.e = e
     except AuthorizationException as aze:

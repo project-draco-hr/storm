@@ -47,9 +47,9 @@
   if (struct.is_set_component_debug()) {
 {
       oprot.writeI32(struct.component_debug.size());
-      for (      Map.Entry<String,Boolean> _iter437 : struct.component_debug.entrySet()) {
+      for (      Map.Entry<String,DebugOptions> _iter437 : struct.component_debug.entrySet()) {
         oprot.writeString(_iter437.getKey());
-        oprot.writeBool(_iter437.getValue());
+        _iter437.getValue().write(oprot);
       }
     }
   }

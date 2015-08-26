@@ -6,6 +6,8 @@ case 2:
   return COMPONENT;
 case 3:
 return ENABLE;
+case 4:
+return SAMPLING_PERCENTAGE;
 default :
 return null;
 }

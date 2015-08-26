@@ -1,4 +1,0 @@
-{
-  send_debug(name,component,enable);
-  recv_debug();
-}

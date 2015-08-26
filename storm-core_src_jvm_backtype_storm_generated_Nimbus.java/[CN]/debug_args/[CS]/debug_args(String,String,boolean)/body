@@ -1,7 +1,0 @@
-{
-  this();
-  this.name=name;
-  this.component=component;
-  this.enable=enable;
-  set_enable_isSet(true);
-}

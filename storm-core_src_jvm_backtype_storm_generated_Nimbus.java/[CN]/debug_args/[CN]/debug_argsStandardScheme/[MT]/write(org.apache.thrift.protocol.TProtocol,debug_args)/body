@@ -14,6 +14,9 @@
   oprot.writeFieldBegin(ENABLE_FIELD_DESC);
   oprot.writeBool(struct.enable);
   oprot.writeFieldEnd();
+  oprot.writeFieldBegin(SAMPLING_PERCENTAGE_FIELD_DESC);
+  oprot.writeDouble(struct.samplingPercentage);
+  oprot.writeFieldEnd();
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

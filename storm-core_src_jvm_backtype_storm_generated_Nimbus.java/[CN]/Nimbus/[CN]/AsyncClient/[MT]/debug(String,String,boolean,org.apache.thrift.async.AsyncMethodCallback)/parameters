@@ -1,4 +1,0 @@
-String name
-String component
-boolean enable
-org.apache.thrift.async.AsyncMethodCallback resultHandler

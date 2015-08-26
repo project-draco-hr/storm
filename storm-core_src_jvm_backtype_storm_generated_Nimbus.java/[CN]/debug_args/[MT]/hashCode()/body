@@ -9,5 +9,8 @@
   boolean present_enable=true;
   list.add(present_enable);
   if (present_enable)   list.add(enable);
+  boolean present_samplingPercentage=true;
+  list.add(present_samplingPercentage);
+  if (present_samplingPercentage)   list.add(samplingPercentage);
   return list.hashCode();
 }

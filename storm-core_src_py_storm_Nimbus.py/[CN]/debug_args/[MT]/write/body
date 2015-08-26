@@ -15,5 +15,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('enable', TType.BOOL, 3)
         oprot.writeBool(self.enable)
         oprot.writeFieldEnd()
+    if (self.samplingPercentage is not None):
+        oprot.writeFieldBegin('samplingPercentage', TType.DOUBLE, 4)
+        oprot.writeDouble(self.samplingPercentage)
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

@@ -9,6 +9,8 @@ case COMPONENT:
   return is_set_component();
 case ENABLE:
 return is_set_enable();
+case SAMPLING_PERCENTAGE:
+return is_set_samplingPercentage();
 }
 throw new IllegalStateException();
 }

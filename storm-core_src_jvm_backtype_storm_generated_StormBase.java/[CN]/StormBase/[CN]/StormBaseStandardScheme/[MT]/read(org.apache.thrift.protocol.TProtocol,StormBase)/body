@@ -95,12 +95,13 @@ case 9:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
 org.apache.thrift.protocol.TMap _map430=iprot.readMapBegin();
-struct.component_debug=new HashMap<String,Boolean>(2 * _map430.size);
+struct.component_debug=new HashMap<String,DebugOptions>(2 * _map430.size);
 String _key431;
-boolean _val432;
+DebugOptions _val432;
 for (int _i433=0; _i433 < _map430.size; ++_i433) {
 _key431=iprot.readString();
-_val432=iprot.readBool();
+_val432=new DebugOptions();
+_val432.read(iprot);
 struct.component_debug.put(_key431,_val432);
 }
 iprot.readMapEnd();

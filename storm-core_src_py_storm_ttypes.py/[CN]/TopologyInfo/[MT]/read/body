@@ -61,7 +61,8 @@ def read(self, iprot):
                 (_ktype280, _vtype281, _size279) = iprot.readMapBegin()
                 for _i283 in xrange(_size279):
                     _key284 = iprot.readString().decode('utf-8')
-                    _val285 = iprot.readBool()
+                    _val285 = DebugOptions()
+                    _val285.read(iprot)
                     self.component_debug[_key284] = _val285
                 iprot.readMapEnd()
             else:

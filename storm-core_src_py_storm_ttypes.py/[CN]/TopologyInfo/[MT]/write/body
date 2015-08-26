@@ -39,10 +39,10 @@ def write(self, oprot):
         oprot.writeFieldEnd()
     if (self.component_debug is not None):
         oprot.writeFieldBegin('component_debug', TType.MAP, 7)
-        oprot.writeMapBegin(TType.STRING, TType.BOOL, len(self.component_debug))
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.component_debug))
         for (kiter290, viter291) in self.component_debug.items():
             oprot.writeString(kiter290.encode('utf-8'))
-            oprot.writeBool(viter291)
+            viter291.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.sched_status is not None):
