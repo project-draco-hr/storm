@@ -1,0 +1,5 @@
+{
+  jsonTupleField=builder.jsonTupleField;
+  collection=builder.collection;
+  jsonUpdateUrl=builder.jsonUpdateUrl;
+}

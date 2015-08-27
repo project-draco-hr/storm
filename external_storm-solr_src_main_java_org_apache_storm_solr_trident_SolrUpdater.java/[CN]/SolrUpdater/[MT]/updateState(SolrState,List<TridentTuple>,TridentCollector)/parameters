@@ -1,0 +1,3 @@
+SolrState solrState
+List<TridentTuple> tuples
+TridentCollector collector

@@ -1,0 +1,8 @@
+{
+  this.conf=conf;
+  List<String> zkServers=(List<String>)conf.get(STORM_ZOOKEEPER_SERVERS);
+  int port=(Integer)conf.get(STORM_ZOOKEEPER_PORT);
+  ZookeeperAuthInfo zkAuthInfo=new ZookeeperAuthInfo(conf);
+  zkClient=newCurator(conf,zkServers,port,(String)conf.get(STORM_ZOOKEEPER_ROOT),zkAuthInfo);
+  zkClient.start();
+}

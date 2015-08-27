@@ -1,0 +1,8 @@
+{
+  File destDir=metaFile.getParentFile();
+  List<String> hdfsPaths=IOUtils.readLines(new FileInputStream(metaFile));
+  for (  String hdfsFilePath : hdfsPaths) {
+    fs.copyToLocalFile(new Path(hdfsFilePath),new Path(destDir.getAbsolutePath()));
+  }
+  return Lists.newArrayList(destDir.listFiles());
+}

@@ -1,0 +1,10 @@
+{
+  rotationTimer=new Timer(true);
+  TimerTask task=new TimerTask(){
+    @Override public void run(){
+      rotationTimerTriggered.set(true);
+    }
+  }
+;
+  rotationTimer.scheduleAtFixedRate(task,interval,interval);
+}

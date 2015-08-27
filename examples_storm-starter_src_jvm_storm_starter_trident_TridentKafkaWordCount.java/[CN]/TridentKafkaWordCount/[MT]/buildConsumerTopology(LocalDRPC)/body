@@ -1,0 +1,5 @@
+{
+  TridentTopology tridentTopology=new TridentTopology();
+  addDRPCStream(tridentTopology,addTridentState(tridentTopology),drpc);
+  return tridentTopology.build();
+}

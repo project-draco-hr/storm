@@ -1,0 +1,4 @@
+{
+  currentFileName=FILE_NAME_PREFIX + Long.toString(rotation);
+  return currentFileName;
+}

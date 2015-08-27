@@ -1,0 +1,3 @@
+List<SupervisorSummary> supervisors
+List<TopologySummary> topologies
+List<NimbusSummary> nimbuses

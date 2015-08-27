@@ -1,3 +1,0 @@
-List<SupervisorSummary> supervisors
-int nimbus_uptime_secs
-List<TopologySummary> topologies

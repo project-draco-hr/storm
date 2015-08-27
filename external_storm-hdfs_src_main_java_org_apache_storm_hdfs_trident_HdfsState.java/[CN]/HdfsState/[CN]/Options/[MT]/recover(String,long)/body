@@ -1,0 +1,20 @@
+{
+  try {
+    Path srcPath=new Path(srcFile);
+    rotateOutputFile(false);
+    this.rotationPolicy.reset();
+    if (nBytes > 0) {
+      doRecover(srcPath,nBytes);
+      LOG.info("Recovered {} bytes from {} to {}",nBytes,srcFile,currentFile);
+    }
+ else {
+      LOG.info("Nothing to recover from {}",srcFile);
+    }
+    fs.delete(srcPath,false);
+    LOG.info("Deleted file {} that had partial commits.",srcFile);
+  }
+ catch (  Exception e) {
+    LOG.warn("Recovery failed.",e);
+    throw new RuntimeException(e);
+  }
+}

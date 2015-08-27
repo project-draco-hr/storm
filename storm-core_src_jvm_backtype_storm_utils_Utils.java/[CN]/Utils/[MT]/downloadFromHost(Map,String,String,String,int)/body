@@ -1,0 +1,4 @@
+{
+  NimbusClient client=new NimbusClient(conf,host,port,null);
+  download(client,file,localFile);
+}

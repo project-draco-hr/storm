@@ -10,16 +10,21 @@
   }
   first=false;
   if (!first)   sb.append(", ");
-  sb.append("nimbus_uptime_secs:");
-  sb.append(this.nimbus_uptime_secs);
-  first=false;
-  if (!first)   sb.append(", ");
   sb.append("topologies:");
   if (this.topologies == null) {
     sb.append("null");
   }
  else {
     sb.append(this.topologies);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("nimbuses:");
+  if (this.nimbuses == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.nimbuses);
   }
   first=false;
   sb.append(")");

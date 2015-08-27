@@ -1,0 +1,3 @@
+{
+  return fieldToWrapper.containsKey(fieldName);
+}
