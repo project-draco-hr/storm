@@ -1,0 +1,5 @@
+{
+  originalClient=EsLookupBolt.getClient();
+  EsLookupBolt.replaceClient(this.client);
+  return new EsLookupBolt(esConfig,getRequest,output);
+}

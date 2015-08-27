@@ -1,0 +1,3 @@
+{
+  return ImmutableSettings.builder().put(ClusterName.SETTING,"test-cluster").put(IndexMetaData.SETTING_NUMBER_OF_SHARDS,1).put(IndexMetaData.SETTING_NUMBER_OF_REPLICAS,0).put(EsExecutors.PROCESSORS,1).put("http.enabled",false).put("index.percolator.map_unmapped_fields_as_string",true).put("index.store.type","memory");
+}

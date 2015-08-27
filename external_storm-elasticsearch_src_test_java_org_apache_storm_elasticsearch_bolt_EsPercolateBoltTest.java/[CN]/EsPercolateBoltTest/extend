@@ -1,1 +1,1 @@
-AbstractEsBoltTest
+AbstractEsBoltIntegrationTest<EsPercolateBolt>
