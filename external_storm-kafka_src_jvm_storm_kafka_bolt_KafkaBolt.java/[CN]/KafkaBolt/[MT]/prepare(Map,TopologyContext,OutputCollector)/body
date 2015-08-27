@@ -8,7 +8,7 @@
   Map configMap=(Map)stormConf.get(KAFKA_BROKER_PROPERTIES);
   Properties properties=new Properties();
   if (configMap != null)   properties.putAll(configMap);
-  properties.putAll(boltSpecfiedProperties);
+  if (boltSpecfiedProperties != null)   properties.putAll(boltSpecfiedProperties);
   producer=new KafkaProducer<K,V>(properties);
   this.collector=collector;
 }
