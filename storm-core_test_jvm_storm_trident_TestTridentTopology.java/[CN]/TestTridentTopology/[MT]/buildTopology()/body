@@ -1,0 +1,7 @@
+{
+  FixedBatchSpout spout=new FixedBatchSpout(new Fields("sentence"),3,new Values("the cow jumped over the moon"),new Values("the man went to the store and bought some candy"),new Values("four score and seven years ago"),new Values("how many apples can you eat"));
+  spout.setCycle(true);
+  TridentTopology topology=new TridentTopology();
+  topology.newStream("spout",spout).each(new Fields("sentence"),new Split(),new Fields("word")).partitionBy(new Fields("word")).name("abc").each(new Fields("word"),new StringLength(),new Fields("length")).partitionBy(new Fields("length")).name("def").aggregate(new Fields("length"),new Count(),new Fields("count")).partitionBy(new Fields("count")).name("ghi").aggregate(new Fields("count"),new Sum(),new Fields("sum"));
+  return topology.build();
+}
