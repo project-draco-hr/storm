@@ -1,0 +1,10 @@
+{
+  try {
+    Collection<Values> values=lookupValuesInEs(tuple);
+    tryEmitAndAck(values,tuple);
+  }
+ catch (  Exception e) {
+    collector.reportError(e);
+    collector.fail(tuple);
+  }
+}

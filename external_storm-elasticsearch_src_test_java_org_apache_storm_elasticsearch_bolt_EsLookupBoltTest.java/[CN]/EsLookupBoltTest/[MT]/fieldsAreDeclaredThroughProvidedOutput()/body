@@ -1,0 +1,9 @@
+{
+  Fields fields=new Fields(UUID.randomUUID().toString());
+  when(output.fields()).thenReturn(fields);
+  OutputFieldsDeclarer declarer=mock(OutputFieldsDeclarer.class);
+  bolt.declareOutputFields(declarer);
+  ArgumentCaptor<Fields> declaredFields=ArgumentCaptor.forClass(Fields.class);
+  verify(declarer).declare(declaredFields.capture());
+  assertThat(declaredFields.getValue(),is(fields));
+}

@@ -1,0 +1,3 @@
+{
+  node.client().delete(new DeleteRequest(indexName,typeName,documentId)).actionGet();
+}

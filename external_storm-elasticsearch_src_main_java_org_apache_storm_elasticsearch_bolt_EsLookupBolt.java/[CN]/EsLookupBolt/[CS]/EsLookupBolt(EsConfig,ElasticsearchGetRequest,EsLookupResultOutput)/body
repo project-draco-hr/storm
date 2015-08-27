@@ -1,0 +1,5 @@
+{
+  super(esConfig);
+  this.getRequest=getRequest;
+  this.output=output;
+}

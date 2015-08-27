@@ -1,0 +1,8 @@
+{
+  String[] hostAndPort=node.split(DELIMETER);
+  if (hostAndPort.length != 2) {
+    throw new IllegalArgumentException("Incorrect Elasticsearch node format, should follow {host}" + DELIMETER + "{port} pattern");
+  }
+  String hostname=hostname(hostAndPort[0]);
+  return new InetSocketTransportAddress(hostname,port(hostAndPort[1]));
+}
