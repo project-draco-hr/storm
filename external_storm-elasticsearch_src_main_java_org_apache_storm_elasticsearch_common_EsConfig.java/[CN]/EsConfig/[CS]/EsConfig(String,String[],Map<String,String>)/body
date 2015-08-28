@@ -1,0 +1,9 @@
+{
+  checkNotNull(clusterName);
+  checkNotNull(nodes);
+  checkNotNull(additionalConfiguration);
+  checkArgument(nodes.length != 0,"Nodes cannot be empty");
+  this.clusterName=clusterName;
+  this.nodes=nodes;
+  this.additionalConfiguration=ImmutableMap.copyOf(additionalConfiguration);
+}

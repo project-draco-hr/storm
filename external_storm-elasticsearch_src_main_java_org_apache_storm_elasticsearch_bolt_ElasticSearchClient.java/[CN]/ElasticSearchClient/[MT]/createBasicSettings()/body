@@ -1,3 +1,0 @@
-{
-  return ImmutableSettings.settingsBuilder().put("cluster.name",esConfig.getClusterName()).put("client.transport.sniff","true").build();
-}
