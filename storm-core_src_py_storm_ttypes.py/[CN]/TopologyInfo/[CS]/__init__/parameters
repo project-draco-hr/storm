@@ -7,3 +7,4 @@ status
 errors
 sched_status
 owner
+replication_count

@@ -1,0 +1,11 @@
+{
+  Path hdfsDestPath=new Path(stormDir,new Path(topologyId));
+  if (fs.exists(hdfsDestPath)) {
+    FileStatus fileStatus=fs.getFileStatus(hdfsDestPath);
+    return fileStatus.getReplication();
+  }
+ else {
+    LOG.warn("getReplicationCount called for {} but no such directory exists, returning 0",topologyId);
+    return 0;
+  }
+}

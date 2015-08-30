@@ -2,15 +2,20 @@
   TTupleProtocol oprot=(TTupleProtocol)prot;
 {
     oprot.writeI32(struct.supervisors.size());
-    for (    SupervisorSummary _iter82 : struct.supervisors) {
-      _iter82.write(oprot);
+    for (    SupervisorSummary _iter86 : struct.supervisors) {
+      _iter86.write(oprot);
     }
   }
-  oprot.writeI32(struct.nimbus_uptime_secs);
 {
     oprot.writeI32(struct.topologies.size());
-    for (    TopologySummary _iter83 : struct.topologies) {
-      _iter83.write(oprot);
+    for (    TopologySummary _iter87 : struct.topologies) {
+      _iter87.write(oprot);
+    }
+  }
+{
+    oprot.writeI32(struct.nimbuses.size());
+    for (    NimbusSummary _iter88 : struct.nimbuses) {
+      _iter88.write(oprot);
     }
   }
 }

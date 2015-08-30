@@ -1,0 +1,12 @@
+{
+  try {
+    SolrRequest solrRequest=solrMapper.toSolrRequest(tuples);
+    solrClient.request(solrRequest,solrMapper.getCollection());
+    solrClient.commit(solrMapper.getCollection());
+  }
+ catch (  Exception e) {
+    final String msg=String.format("%s",tuples);
+    logger.warn(msg);
+    throw new FailedException(msg,e);
+  }
+}

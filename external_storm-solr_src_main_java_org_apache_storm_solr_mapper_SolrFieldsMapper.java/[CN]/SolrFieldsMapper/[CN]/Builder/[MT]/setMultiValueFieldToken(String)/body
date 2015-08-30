@@ -1,0 +1,4 @@
+{
+  this.multiValueFieldToken=multiValueFieldToken;
+  return this;
+}

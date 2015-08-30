@@ -4,8 +4,9 @@
   TopologyBuilder builder=new TopologyBuilder();
   UserDataSpout spout=new UserDataSpout();
   builder.setSpout(SPOUT_ID,spout,1);
+  EsTupleMapper tupleMapper=EsTestUtil.generateDefaultTupleMapper();
   EsConfig esConfig=new EsConfig(EsConstants.clusterName,new String[]{"localhost:9300"});
-  builder.setBolt(BOLT_ID,new EsIndexBolt(esConfig),1).shuffleGrouping(SPOUT_ID);
+  builder.setBolt(BOLT_ID,new EsIndexBolt(esConfig,tupleMapper),1).shuffleGrouping(SPOUT_ID);
   EsTestUtil.startEsNode();
   EsTestUtil.waitForSeconds(5);
   LocalCluster cluster=new LocalCluster();

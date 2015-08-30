@@ -1,0 +1,5 @@
+{
+  String multiValueField=tuple.getStringByField(field);
+  String[] values=multiValueField.split(multiValueFieldToken);
+  return values;
+}

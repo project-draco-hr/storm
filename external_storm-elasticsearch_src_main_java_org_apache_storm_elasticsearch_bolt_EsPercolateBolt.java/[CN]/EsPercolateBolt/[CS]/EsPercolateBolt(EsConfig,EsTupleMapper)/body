@@ -1,0 +1,4 @@
+{
+  super(esConfig);
+  this.tupleMapper=tupleMapper;
+}

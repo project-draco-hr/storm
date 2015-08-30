@@ -1,3 +1,4 @@
 {
-  return new EsIndexBolt(esConfig);
+  EsTupleMapper tupleMapper=EsTestUtil.generateDefaultTupleMapper();
+  return new EsIndexBolt(esConfig,tupleMapper);
 }
