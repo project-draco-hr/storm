@@ -1,0 +1,1 @@
+IOpaquePartitionedTridentSpout<Object,ISpoutPartition,Object> spout
