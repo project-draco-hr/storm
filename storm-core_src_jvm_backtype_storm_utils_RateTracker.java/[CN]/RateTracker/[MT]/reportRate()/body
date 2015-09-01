@@ -1,0 +1,8 @@
+{
+  long sum=0;
+  long duration=_currentValidSlideNum * _slideSizeInMils;
+  for (int i=_numOfSlides - _currentValidSlideNum; i < _numOfSlides; i++) {
+    sum+=_histograms[i];
+  }
+  return sum / (float)duration * 1000;
+}
