@@ -1,5 +1,7 @@
 {
   super(esConfig);
+  checkNotNull(getRequest);
+  checkNotNull(output);
   this.getRequest=getRequest;
   this.output=output;
 }

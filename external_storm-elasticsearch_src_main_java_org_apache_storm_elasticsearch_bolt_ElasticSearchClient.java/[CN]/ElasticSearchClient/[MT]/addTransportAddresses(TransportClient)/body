@@ -1,6 +1,0 @@
-{
-  Iterable<InetSocketTransportAddress> transportAddresses=new TransportAddresses(esConfig.getNodes());
-  for (  InetSocketTransportAddress transportAddress : transportAddresses) {
-    transportClient.addTransportAddress(transportAddress);
-  }
-}
