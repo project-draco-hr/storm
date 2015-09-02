@@ -1,0 +1,6 @@
+{
+  Path p=new Path(path);
+  int nonZero=0;
+  for (  FileStatus file : fs.listStatus(p))   if (file.getLen() > 0)   nonZero++;
+  return nonZero;
+}
