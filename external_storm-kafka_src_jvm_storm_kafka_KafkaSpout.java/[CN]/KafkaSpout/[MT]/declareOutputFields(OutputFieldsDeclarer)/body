@@ -1,3 +1,8 @@
 {
-  declarer.declare(_spoutConfig.scheme.getOutputFields());
+  if (_spoutConfig.topicAsStreamId) {
+    declarer.declareStream(_spoutConfig.topic,_spoutConfig.scheme.getOutputFields());
+  }
+ else {
+    declarer.declare(_spoutConfig.scheme.getOutputFields());
+  }
 }

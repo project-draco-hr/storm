@@ -1,0 +1,4 @@
+{
+  Path hdfsDestPath=new Path(stormDir,new Path(topologyId));
+  fs.delete(hdfsDestPath,true);
+}

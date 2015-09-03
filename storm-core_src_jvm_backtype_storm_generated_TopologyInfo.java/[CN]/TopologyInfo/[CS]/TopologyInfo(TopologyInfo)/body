@@ -48,4 +48,5 @@
   if (other.is_set_owner()) {
     this.owner=other.owner;
   }
+  this.replication_count=other.replication_count;
 }

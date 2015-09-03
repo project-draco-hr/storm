@@ -1,0 +1,3 @@
+{
+  return "CopyField{" + "source='" + source + '\''+ ", dest='"+ dest+ '\''+ '}';
+}

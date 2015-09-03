@@ -1,0 +1,4 @@
+{
+  this.esConfig=checkNotNull(esConfig);
+  this.tupleMapper=checkNotNull(tupleMapper);
+}

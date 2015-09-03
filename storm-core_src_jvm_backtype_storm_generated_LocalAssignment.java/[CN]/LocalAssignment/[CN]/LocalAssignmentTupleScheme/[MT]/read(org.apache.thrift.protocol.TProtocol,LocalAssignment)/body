@@ -3,13 +3,13 @@
   struct.topology_id=iprot.readString();
   struct.set_topology_id_isSet(true);
 {
-    org.apache.thrift.protocol.TList _list471=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-    struct.executors=new ArrayList<ExecutorInfo>(_list471.size);
-    ExecutorInfo _elem472;
-    for (int _i473=0; _i473 < _list471.size; ++_i473) {
-      _elem472=new ExecutorInfo();
-      _elem472.read(iprot);
-      struct.executors.add(_elem472);
+    org.apache.thrift.protocol.TList _list479=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.executors=new ArrayList<ExecutorInfo>(_list479.size);
+    ExecutorInfo _elem480;
+    for (int _i481=0; _i481 < _list479.size; ++_i481) {
+      _elem480=new ExecutorInfo();
+      _elem480.read(iprot);
+      struct.executors.add(_elem480);
     }
   }
   struct.set_executors_isSet(true);

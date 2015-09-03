@@ -1,0 +1,5 @@
+{
+  Object val=getValue(tupleField,tuple);
+  log.debug("Adding to document (field, val) = ({}, {})",tupleField,val);
+  doc.addField(tupleField,val);
+}

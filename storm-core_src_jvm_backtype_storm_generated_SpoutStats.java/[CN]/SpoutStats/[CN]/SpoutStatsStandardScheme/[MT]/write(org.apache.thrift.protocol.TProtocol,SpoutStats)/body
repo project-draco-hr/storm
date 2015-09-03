@@ -5,13 +5,13 @@
     oprot.writeFieldBegin(ACKED_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,struct.acked.size()));
-      for (      Map.Entry<String,Map<String,Long>> _iter214 : struct.acked.entrySet()) {
-        oprot.writeString(_iter214.getKey());
+      for (      Map.Entry<String,Map<String,Long>> _iter222 : struct.acked.entrySet()) {
+        oprot.writeString(_iter222.getKey());
 {
-          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,_iter214.getValue().size()));
-          for (          Map.Entry<String,Long> _iter215 : _iter214.getValue().entrySet()) {
-            oprot.writeString(_iter215.getKey());
-            oprot.writeI64(_iter215.getValue());
+          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,_iter222.getValue().size()));
+          for (          Map.Entry<String,Long> _iter223 : _iter222.getValue().entrySet()) {
+            oprot.writeString(_iter223.getKey());
+            oprot.writeI64(_iter223.getValue());
           }
           oprot.writeMapEnd();
         }
@@ -24,13 +24,13 @@
     oprot.writeFieldBegin(FAILED_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,struct.failed.size()));
-      for (      Map.Entry<String,Map<String,Long>> _iter216 : struct.failed.entrySet()) {
-        oprot.writeString(_iter216.getKey());
+      for (      Map.Entry<String,Map<String,Long>> _iter224 : struct.failed.entrySet()) {
+        oprot.writeString(_iter224.getKey());
 {
-          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,_iter216.getValue().size()));
-          for (          Map.Entry<String,Long> _iter217 : _iter216.getValue().entrySet()) {
-            oprot.writeString(_iter217.getKey());
-            oprot.writeI64(_iter217.getValue());
+          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,_iter224.getValue().size()));
+          for (          Map.Entry<String,Long> _iter225 : _iter224.getValue().entrySet()) {
+            oprot.writeString(_iter225.getKey());
+            oprot.writeI64(_iter225.getValue());
           }
           oprot.writeMapEnd();
         }
@@ -43,13 +43,13 @@
     oprot.writeFieldBegin(COMPLETE_MS_AVG_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,struct.complete_ms_avg.size()));
-      for (      Map.Entry<String,Map<String,Double>> _iter218 : struct.complete_ms_avg.entrySet()) {
-        oprot.writeString(_iter218.getKey());
+      for (      Map.Entry<String,Map<String,Double>> _iter226 : struct.complete_ms_avg.entrySet()) {
+        oprot.writeString(_iter226.getKey());
 {
-          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.DOUBLE,_iter218.getValue().size()));
-          for (          Map.Entry<String,Double> _iter219 : _iter218.getValue().entrySet()) {
-            oprot.writeString(_iter219.getKey());
-            oprot.writeDouble(_iter219.getValue());
+          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.DOUBLE,_iter226.getValue().size()));
+          for (          Map.Entry<String,Double> _iter227 : _iter226.getValue().entrySet()) {
+            oprot.writeString(_iter227.getKey());
+            oprot.writeDouble(_iter227.getValue());
           }
           oprot.writeMapEnd();
         }

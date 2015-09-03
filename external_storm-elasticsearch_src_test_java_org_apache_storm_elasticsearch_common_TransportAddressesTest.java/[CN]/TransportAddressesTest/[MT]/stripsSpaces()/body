@@ -1,0 +1,5 @@
+{
+  String[] hosts=new String[]{"h1:1000"," h2:10003 "};
+  TransportAddresses addresses=new TransportAddresses(hosts);
+  assertThat(addresses,containsInAnyOrder(new InetSocketTransportAddress("h1",1000),new InetSocketTransportAddress("h2",10003)));
+}

@@ -1,0 +1,4 @@
+{
+  this.boltSpecfiedProperties=producerProperties;
+  return this;
+}

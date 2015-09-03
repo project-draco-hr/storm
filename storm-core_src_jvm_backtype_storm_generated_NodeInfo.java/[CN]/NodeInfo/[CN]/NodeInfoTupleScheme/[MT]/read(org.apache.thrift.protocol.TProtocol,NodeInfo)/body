@@ -3,12 +3,12 @@
   struct.node=iprot.readString();
   struct.set_node_isSet(true);
 {
-    org.apache.thrift.protocol.TSet _set377=new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.I64,iprot.readI32());
-    struct.port=new HashSet<Long>(2 * _set377.size);
-    long _elem378;
-    for (int _i379=0; _i379 < _set377.size; ++_i379) {
-      _elem378=iprot.readI64();
-      struct.port.add(_elem378);
+    org.apache.thrift.protocol.TSet _set385=new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.I64,iprot.readI32());
+    struct.port=new HashSet<Long>(2 * _set385.size);
+    long _elem386;
+    for (int _i387=0; _i387 < _set385.size; ++_i387) {
+      _elem386=iprot.readI64();
+      struct.port.add(_elem386);
     }
   }
   struct.set_port_isSet(true);

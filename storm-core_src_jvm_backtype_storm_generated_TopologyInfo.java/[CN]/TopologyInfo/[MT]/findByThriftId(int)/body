@@ -18,6 +18,8 @@ case 513:
 return SCHED_STATUS;
 case 514:
 return OWNER;
+case 515:
+return REPLICATION_COUNT;
 default :
 return null;
 }

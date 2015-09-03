@@ -18,8 +18,8 @@
     oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.executors.size()));
-      for (      ExecutorSummary _iter304 : struct.executors) {
-        _iter304.write(oprot);
+      for (      ExecutorSummary _iter312 : struct.executors) {
+        _iter312.write(oprot);
       }
       oprot.writeListEnd();
     }
@@ -34,12 +34,12 @@
     oprot.writeFieldBegin(ERRORS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.LIST,struct.errors.size()));
-      for (      Map.Entry<String,List<ErrorInfo>> _iter305 : struct.errors.entrySet()) {
-        oprot.writeString(_iter305.getKey());
+      for (      Map.Entry<String,List<ErrorInfo>> _iter313 : struct.errors.entrySet()) {
+        oprot.writeString(_iter313.getKey());
 {
-          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,_iter305.getValue().size()));
-          for (          ErrorInfo _iter306 : _iter305.getValue()) {
-            _iter306.write(oprot);
+          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,_iter313.getValue().size()));
+          for (          ErrorInfo _iter314 : _iter313.getValue()) {
+            _iter314.write(oprot);
           }
           oprot.writeListEnd();
         }
@@ -53,9 +53,9 @@
       oprot.writeFieldBegin(COMPONENT_DEBUG_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.component_debug.size()));
-        for (        Map.Entry<String,DebugOptions> _iter307 : struct.component_debug.entrySet()) {
-          oprot.writeString(_iter307.getKey());
-          _iter307.getValue().write(oprot);
+        for (        Map.Entry<String,DebugOptions> _iter315 : struct.component_debug.entrySet()) {
+          oprot.writeString(_iter315.getKey());
+          _iter315.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }
@@ -75,6 +75,11 @@
       oprot.writeString(struct.owner);
       oprot.writeFieldEnd();
     }
+  }
+  if (struct.is_set_replication_count()) {
+    oprot.writeFieldBegin(REPLICATION_COUNT_FIELD_DESC);
+    oprot.writeI32(struct.replication_count);
+    oprot.writeFieldEnd();
   }
   oprot.writeFieldStop();
   oprot.writeStructEnd();

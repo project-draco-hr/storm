@@ -27,5 +27,8 @@
   boolean present_owner=true && (is_set_owner());
   list.add(present_owner);
   if (present_owner)   list.add(owner);
+  boolean present_replication_count=true && (is_set_replication_count());
+  list.add(present_replication_count);
+  if (present_replication_count)   list.add(replication_count);
   return list.hashCode();
 }

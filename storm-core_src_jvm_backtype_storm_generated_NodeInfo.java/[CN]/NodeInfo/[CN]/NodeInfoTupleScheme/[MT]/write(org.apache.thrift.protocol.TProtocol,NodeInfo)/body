@@ -3,8 +3,8 @@
   oprot.writeString(struct.node);
 {
     oprot.writeI32(struct.port.size());
-    for (    long _iter376 : struct.port) {
-      oprot.writeI64(_iter376);
+    for (    long _iter384 : struct.port) {
+      oprot.writeI64(_iter384);
     }
   }
 }

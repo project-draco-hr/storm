@@ -1,0 +1,5 @@
+{
+  for (  String key : additionalSettings.keySet()) {
+    assertThat(settings.get(key),is(additionalSettings.get(key)));
+  }
+}

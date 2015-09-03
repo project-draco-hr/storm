@@ -1,4 +1,4 @@
-def __init__(self, id=None, name=None, uptime_secs=None, executors=None, status=None, errors=None, component_debug=None, sched_status=None, owner=None):
+def __init__(self, id=None, name=None, uptime_secs=None, executors=None, status=None, errors=None, component_debug=None, sched_status=None, owner=None, replication_count=None):
     self.id = id
     self.name = name
     self.uptime_secs = uptime_secs
@@ -8,3 +8,4 @@ def __init__(self, id=None, name=None, uptime_secs=None, executors=None, status=
     self.component_debug = component_debug
     self.sched_status = sched_status
     self.owner = owner
+    self.replication_count = replication_count

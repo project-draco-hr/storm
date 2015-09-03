@@ -1,0 +1,7 @@
+{
+  node=NodeBuilder.nodeBuilder().data(true).settings(createSettings()).build();
+  node.start();
+  ensureEsGreen(node);
+  ClusterHealthResponse clusterHealth=node.client().admin().cluster().health(Requests.clusterHealthRequest().timeout(TimeValue.timeValueSeconds(30)).waitForGreenStatus().waitForRelocatingShards(0)).actionGet();
+  Thread.sleep(1000);
+}

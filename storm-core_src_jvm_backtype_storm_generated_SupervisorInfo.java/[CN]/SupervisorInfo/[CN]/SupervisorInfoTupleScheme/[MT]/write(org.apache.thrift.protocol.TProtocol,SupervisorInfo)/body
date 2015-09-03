@@ -28,25 +28,25 @@
   if (struct.is_set_used_ports()) {
 {
       oprot.writeI32(struct.used_ports.size());
-      for (      long _iter359 : struct.used_ports) {
-        oprot.writeI64(_iter359);
+      for (      long _iter367 : struct.used_ports) {
+        oprot.writeI64(_iter367);
       }
     }
   }
   if (struct.is_set_meta()) {
 {
       oprot.writeI32(struct.meta.size());
-      for (      long _iter360 : struct.meta) {
-        oprot.writeI64(_iter360);
+      for (      long _iter368 : struct.meta) {
+        oprot.writeI64(_iter368);
       }
     }
   }
   if (struct.is_set_scheduler_meta()) {
 {
       oprot.writeI32(struct.scheduler_meta.size());
-      for (      Map.Entry<String,String> _iter361 : struct.scheduler_meta.entrySet()) {
-        oprot.writeString(_iter361.getKey());
-        oprot.writeString(_iter361.getValue());
+      for (      Map.Entry<String,String> _iter369 : struct.scheduler_meta.entrySet()) {
+        oprot.writeString(_iter369.getKey());
+        oprot.writeString(_iter369.getValue());
       }
     }
   }

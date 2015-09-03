@@ -2,7 +2,7 @@
   DelimitedRecordHiveMapper mapper=new DelimitedRecordHiveMapper().withColumnFields(new Fields(colNames)).withPartitionFields(new Fields(partNames));
   HiveOptions hiveOptions=new HiveOptions(metaStoreURI,dbName,tblName,mapper).withTxnsPerBatch(2).withBatchSize(2);
   bolt=new HiveBolt(hiveOptions);
-  bolt.prepare(config,null,new OutputCollector(collector));
+  bolt.prepare(config,null,collector);
   Integer id=100;
   String msg="test-123";
   String city="sunnyvale";
