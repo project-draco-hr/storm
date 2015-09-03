@@ -2,7 +2,7 @@
   Map state=new HashMap<String,Object>();
   long rp=readPos();
   long wp=writePos();
-  final float arrivalRateInMils=_rateTracker.reportRate();
+  final float arrivalRateInMils=_rateTracker.reportRate() / _sampleRate;
   state.put("capacity",capacity());
   state.put("population",wp - rp);
   state.put("write_pos",wp);
