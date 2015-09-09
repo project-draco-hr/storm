@@ -1,0 +1,18 @@
+{
+  FSDataInputStream inputStream=null;
+  try {
+    inputStream=this.options.fs.open(path);
+    BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
+    String line;
+    if ((line=reader.readLine()) != null) {
+      String[] fields=line.split(",");
+      return new TxnRecord(Long.valueOf(fields[0]),fields[1],Long.valueOf(fields[2]));
+    }
+  }
+  finally {
+    if (inputStream != null) {
+      inputStream.close();
+    }
+  }
+  return new TxnRecord(0,options.currentFile.toString(),0);
+}

@@ -1,0 +1,6 @@
+{
+  int result=host.hashCode();
+  result=31 * result + port;
+  result=31 * result + (isLeader ? 1 : 0);
+  return result;
+}

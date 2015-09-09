@@ -1,0 +1,8 @@
+{
+  List<InetSocketTransportAddress> result=new LinkedList<>();
+  for (  String node : nodes) {
+    InetSocketTransportAddress transportAddress=transformToInetAddress(node);
+    result.add(transportAddress);
+  }
+  return result.iterator();
+}

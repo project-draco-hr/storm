@@ -1,0 +1,10 @@
+{
+  collector.reportError(e);
+  if (commitStgy == null) {
+    collector.fail(tuple);
+  }
+ else {
+    List<Tuple> failedTuples=getQueuedTuples();
+    failQueuedTuples(failedTuples);
+  }
+}

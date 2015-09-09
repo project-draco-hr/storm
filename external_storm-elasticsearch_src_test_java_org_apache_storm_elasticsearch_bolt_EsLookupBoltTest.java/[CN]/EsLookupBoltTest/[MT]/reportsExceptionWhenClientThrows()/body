@@ -1,0 +1,6 @@
+{
+  ElasticsearchException elasticsearchException=new ElasticsearchException("dummy");
+  when(client.get(request)).thenThrow(elasticsearchException);
+  bolt.execute(tuple);
+  verify(outputCollector).reportError(elasticsearchException);
+}

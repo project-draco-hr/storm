@@ -1,0 +1,3 @@
+{
+  solrClient=new CloudSolrClient(solrConfig.getZkHostString());
+}

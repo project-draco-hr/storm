@@ -8,20 +8,20 @@ case SUPERVISORS:
       set_supervisors((List<SupervisorSummary>)value);
     }
   break;
-case NIMBUS_UPTIME_SECS:
-if (value == null) {
-  unset_nimbus_uptime_secs();
-}
- else {
-  set_nimbus_uptime_secs((Integer)value);
-}
-break;
 case TOPOLOGIES:
 if (value == null) {
-unset_topologies();
+  unset_topologies();
 }
  else {
-set_topologies((List<TopologySummary>)value);
+  set_topologies((List<TopologySummary>)value);
+}
+break;
+case NIMBUSES:
+if (value == null) {
+unset_nimbuses();
+}
+ else {
+set_nimbuses((List<NimbusSummary>)value);
 }
 break;
 }

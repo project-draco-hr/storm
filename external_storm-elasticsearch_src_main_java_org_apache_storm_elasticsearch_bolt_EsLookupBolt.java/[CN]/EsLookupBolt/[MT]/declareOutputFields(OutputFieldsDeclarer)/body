@@ -1,0 +1,3 @@
+{
+  outputFieldsDeclarer.declare(output.fields());
+}

@@ -1,4 +1,4 @@
 {
   _collector=c;
-  ids=new ArrayList<Object>();
+  ids=new ArrayList<>();
 }
