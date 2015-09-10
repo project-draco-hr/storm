@@ -1,5 +1,6 @@
 {
   LOG.debug("** EventLoggerBolt got tuple from sourceComponent {}, with values {}",input.getSourceComponent(),input.getValues());
-  EventInfo eventInfo=new EventInfo(input.getValueByField(FIELD_TS).toString(),input.getSourceComponent(),String.valueOf(input.getSourceTask()),input.getMessageId().toString(),input.getValueByField(FIELD_VALUES).toString());
+  Object msgId=input.getValueByField(FIELD_MESSAGE_ID);
+  EventInfo eventInfo=new EventInfo(input.getValueByField(FIELD_TS).toString(),input.getSourceComponent(),String.valueOf(input.getSourceTask()),msgId == null ? "" : msgId.toString(),input.getValueByField(FIELD_VALUES).toString());
   eventLogger.log(eventInfo);
 }
