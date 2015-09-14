@@ -7,6 +7,9 @@
         newVal.add(new BeanReference((String)map.get("ref")));
         this.hasReferences=true;
       }
+ else {
+        newVal.add(obj);
+      }
     }
  else {
       newVal.add(obj);
