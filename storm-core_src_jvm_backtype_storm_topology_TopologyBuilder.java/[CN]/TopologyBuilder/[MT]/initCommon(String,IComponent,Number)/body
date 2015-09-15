@@ -1,7 +1,13 @@
 {
   ComponentCommon common=new ComponentCommon();
   common.set_inputs(new HashMap<GlobalStreamId,Grouping>());
-  if (parallelism != null)   common.set_parallelism_hint(parallelism.intValue());
+  if (parallelism != null) {
+    int dop=parallelism.intValue();
+    if (dop < 1) {
+      throw new IllegalArgumentException("Parallelism must be positive.");
+    }
+    common.set_parallelism_hint(dop);
+  }
   Map conf=component.getComponentConfiguration();
   if (conf != null)   common.set_json_conf(JSONValue.toJSONString(conf));
   _commons.put(id,common);

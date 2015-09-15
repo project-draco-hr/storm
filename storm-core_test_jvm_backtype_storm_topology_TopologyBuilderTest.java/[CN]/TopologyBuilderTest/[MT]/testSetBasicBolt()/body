@@ -1,0 +1,3 @@
+{
+  builder.setBolt("bolt",mock(IBasicBolt.class),0);
+}
