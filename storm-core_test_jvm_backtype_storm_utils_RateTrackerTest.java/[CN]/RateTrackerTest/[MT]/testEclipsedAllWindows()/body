@@ -1,0 +1,6 @@
+{
+  RateTracker rt=new RateTracker(10000,10,true);
+  rt.notify(10);
+  rt.forceUpdateSlides(10);
+  assert(rt.reportRate() == 0);
+}

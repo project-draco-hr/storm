@@ -1,0 +1,4 @@
+{
+  if (_sampleRate == 1 || _random.nextFloat() < _sampleRate)   return true;
+  return false;
+}

@@ -9,4 +9,5 @@
   final MutableObject m=_buffer.get(id);
   m.setObject(obj);
   _buffer.publish(id);
+  _metrics.notifyArrivals(1);
 }
