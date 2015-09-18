@@ -10,4 +10,12 @@
   m.setObject(obj);
   _buffer.publish(id);
   _metrics.notifyArrivals(1);
+  if (_enableBackpressure && _cb != null && _metrics.population() >= _highWaterMark) {
+    try {
+      _cb.highWaterMark();
+    }
+ catch (    Exception e) {
+      throw new RuntimeException("Exception during calling highWaterMark callback!");
+    }
+  }
 }
