@@ -1,6 +1,6 @@
 {
   if (throttleOn.get()) {
-    lowWaterMarkCalledPopulation=queue.writePos() - consumerCursor.get();
+    lowWaterMarkCalledPopulation=queue.getMetrics().writePos() - consumerCursor.get();
     throttleOn.set(false);
   }
 }
