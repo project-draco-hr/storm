@@ -18,7 +18,7 @@
       }
     }
  catch (    Exception e) {
-      throw new RuntimeException("Exception during calling highWaterMark callback!");
+      throw new RuntimeException("Exception during calling highWaterMark callback!",e);
     }
   }
 }

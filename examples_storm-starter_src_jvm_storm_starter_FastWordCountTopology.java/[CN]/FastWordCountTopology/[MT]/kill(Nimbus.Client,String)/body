@@ -1,0 +1,5 @@
+{
+  KillOptions opts=new KillOptions();
+  opts.set_wait_secs(0);
+  client.killTopologyWithOpts(name,opts);
+}
