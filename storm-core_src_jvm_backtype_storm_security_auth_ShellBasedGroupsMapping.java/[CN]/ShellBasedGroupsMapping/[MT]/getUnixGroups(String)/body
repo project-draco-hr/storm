@@ -4,7 +4,7 @@
     result=ShellUtils.execCommand(ShellUtils.getGroupsForUserCommand(user));
   }
  catch (  ExitCodeException e) {
-    LOG.warn("got exception trying to get groups for user " + user,e);
+    LOG.debug("unable to get groups for user " + user);
     return new HashSet<String>();
   }
   StringTokenizer tokenizer=new StringTokenizer(result,ShellUtils.TOKEN_SEPARATOR_REGEX);
