@@ -1,0 +1,3 @@
+{
+  _histograms[_histograms.length - 1]+=count;
+}
