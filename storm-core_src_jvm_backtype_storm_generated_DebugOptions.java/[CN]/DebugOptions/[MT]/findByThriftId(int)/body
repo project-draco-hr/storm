@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return ENABLE;
+case 2:
+  return SAMPLINGPCT;
+default :
+return null;
+}
+}

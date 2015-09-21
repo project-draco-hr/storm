@@ -1,0 +1,3 @@
+def __init__(self, e=None, aze=None):
+    self.e = e
+    self.aze = aze

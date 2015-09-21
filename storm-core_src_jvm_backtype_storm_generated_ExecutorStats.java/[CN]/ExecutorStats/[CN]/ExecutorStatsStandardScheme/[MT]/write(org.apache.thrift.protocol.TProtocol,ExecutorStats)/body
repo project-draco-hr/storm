@@ -5,13 +5,13 @@
     oprot.writeFieldBegin(EMITTED_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,struct.emitted.size()));
-      for (      Map.Entry<String,Map<String,Long>> _iter266 : struct.emitted.entrySet()) {
-        oprot.writeString(_iter266.getKey());
+      for (      Map.Entry<String,Map<String,Long>> _iter274 : struct.emitted.entrySet()) {
+        oprot.writeString(_iter274.getKey());
 {
-          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,_iter266.getValue().size()));
-          for (          Map.Entry<String,Long> _iter267 : _iter266.getValue().entrySet()) {
-            oprot.writeString(_iter267.getKey());
-            oprot.writeI64(_iter267.getValue());
+          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,_iter274.getValue().size()));
+          for (          Map.Entry<String,Long> _iter275 : _iter274.getValue().entrySet()) {
+            oprot.writeString(_iter275.getKey());
+            oprot.writeI64(_iter275.getValue());
           }
           oprot.writeMapEnd();
         }
@@ -24,13 +24,13 @@
     oprot.writeFieldBegin(TRANSFERRED_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,struct.transferred.size()));
-      for (      Map.Entry<String,Map<String,Long>> _iter268 : struct.transferred.entrySet()) {
-        oprot.writeString(_iter268.getKey());
+      for (      Map.Entry<String,Map<String,Long>> _iter276 : struct.transferred.entrySet()) {
+        oprot.writeString(_iter276.getKey());
 {
-          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,_iter268.getValue().size()));
-          for (          Map.Entry<String,Long> _iter269 : _iter268.getValue().entrySet()) {
-            oprot.writeString(_iter269.getKey());
-            oprot.writeI64(_iter269.getValue());
+          oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,_iter276.getValue().size()));
+          for (          Map.Entry<String,Long> _iter277 : _iter276.getValue().entrySet()) {
+            oprot.writeString(_iter277.getKey());
+            oprot.writeI64(_iter277.getValue());
           }
           oprot.writeMapEnd();
         }

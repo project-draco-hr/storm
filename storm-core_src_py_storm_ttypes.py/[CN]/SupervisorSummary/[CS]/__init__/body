@@ -1,4 +1,4 @@
-def __init__(self, host=None, uptime_secs=None, num_workers=None, num_used_workers=None, supervisor_id=None, version=None):
+def __init__(self, host=None, uptime_secs=None, num_workers=None, num_used_workers=None, supervisor_id=None, version=thrift_spec[6][4]):
     self.host = host
     self.uptime_secs = uptime_secs
     self.num_workers = num_workers

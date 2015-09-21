@@ -1,0 +1,22 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.name != null) {
+    oprot.writeFieldBegin(NAME_FIELD_DESC);
+    oprot.writeString(struct.name);
+    oprot.writeFieldEnd();
+  }
+  if (struct.component != null) {
+    oprot.writeFieldBegin(COMPONENT_FIELD_DESC);
+    oprot.writeString(struct.component);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(ENABLE_FIELD_DESC);
+  oprot.writeBool(struct.enable);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(SAMPLING_PERCENTAGE_FIELD_DESC);
+  oprot.writeDouble(struct.samplingPercentage);
+  oprot.writeFieldEnd();
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

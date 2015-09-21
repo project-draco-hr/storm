@@ -1,0 +1,11 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_name()) {
+    this.name=other.name;
+  }
+  if (other.is_set_component()) {
+    this.component=other.component;
+  }
+  this.enable=other.enable;
+  this.samplingPercentage=other.samplingPercentage;
+}

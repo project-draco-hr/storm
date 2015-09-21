@@ -1,0 +1,11 @@
+{
+  try {
+    eventLogWriter.write(event.toString());
+    eventLogWriter.newLine();
+    dirty=true;
+  }
+ catch (  IOException ex) {
+    LOG.error("Error logging event {}",event,ex);
+    throw new RuntimeException(ex);
+  }
+}

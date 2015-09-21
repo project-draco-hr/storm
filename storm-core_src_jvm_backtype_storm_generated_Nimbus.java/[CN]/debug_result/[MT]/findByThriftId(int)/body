@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return E;
+case 2:
+  return AZE;
+default :
+return null;
+}
+}
