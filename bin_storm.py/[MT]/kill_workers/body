@@ -1,0 +1,3 @@
+def kill_workers(*args):
+    'Syntax: [storm kill_workers]\n\n    Kill the workers running on this supervisor. This command should be run\n    on a supervisor node. If the cluster is running in secure node, then user needs \n    to have admin rights on the node to be able to successfully kill all workers.\n    '
+    exec_storm_class('backtype.storm.command.kill_workers', args=args, jvmtype='-client', extrajars=[USER_CONF_DIR, os.path.join(STORM_DIR, 'bin')])
