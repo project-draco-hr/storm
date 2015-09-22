@@ -1,0 +1,4 @@
+{
+  fields.add(new FieldType(name,type,precision));
+  return this;
+}
