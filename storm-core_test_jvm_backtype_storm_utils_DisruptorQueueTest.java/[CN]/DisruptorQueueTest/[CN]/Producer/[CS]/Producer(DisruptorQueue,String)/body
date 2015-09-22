@@ -1,4 +1,0 @@
-{
-  this.msg=msg;
-  this.queue=queue;
-}

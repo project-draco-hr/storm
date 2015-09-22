@@ -1,0 +1,6 @@
+String queueName
+ProducerType type
+int size
+long readTimeout
+int inputBatchSize
+long flushInterval
