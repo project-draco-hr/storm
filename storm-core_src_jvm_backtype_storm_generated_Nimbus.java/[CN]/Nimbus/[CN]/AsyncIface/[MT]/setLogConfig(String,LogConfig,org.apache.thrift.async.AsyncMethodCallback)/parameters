@@ -1,0 +1,3 @@
+String name
+LogConfig config
+org.apache.thrift.async.AsyncMethodCallback resultHandler

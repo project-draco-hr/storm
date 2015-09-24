@@ -1,0 +1,30 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeI32(struct.action.getValue());
+  BitSet optionals=new BitSet();
+  if (struct.is_set_target_log_level()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_reset_log_level_timeout_secs()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_reset_log_level_timeout_epoch()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_reset_log_level()) {
+    optionals.set(3);
+  }
+  oprot.writeBitSet(optionals,4);
+  if (struct.is_set_target_log_level()) {
+    oprot.writeString(struct.target_log_level);
+  }
+  if (struct.is_set_reset_log_level_timeout_secs()) {
+    oprot.writeI32(struct.reset_log_level_timeout_secs);
+  }
+  if (struct.is_set_reset_log_level_timeout_epoch()) {
+    oprot.writeI64(struct.reset_log_level_timeout_epoch);
+  }
+  if (struct.is_set_reset_log_level()) {
+    oprot.writeString(struct.reset_log_level);
+  }
+}

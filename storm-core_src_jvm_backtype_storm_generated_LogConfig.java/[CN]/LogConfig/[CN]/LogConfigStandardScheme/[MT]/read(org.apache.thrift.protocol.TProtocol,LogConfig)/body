@@ -1,0 +1,38 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 2:
+      if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+          org.apache.thrift.protocol.TMap _map510=iprot.readMapBegin();
+          struct.named_logger_level=new HashMap<String,LogLevel>(2 * _map510.size);
+          String _key511;
+          LogLevel _val512;
+          for (int _i513=0; _i513 < _map510.size; ++_i513) {
+            _key511=iprot.readString();
+            _val512=new LogLevel();
+            _val512.read(iprot);
+            struct.named_logger_level.put(_key511,_val512);
+          }
+          iprot.readMapEnd();
+        }
+        struct.set_named_logger_level_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+default :
+  org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

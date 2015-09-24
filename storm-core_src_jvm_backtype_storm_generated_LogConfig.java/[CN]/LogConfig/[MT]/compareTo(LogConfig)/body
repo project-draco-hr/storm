@@ -1,0 +1,17 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  lastComparison=Boolean.valueOf(is_set_named_logger_level()).compareTo(other.is_set_named_logger_level());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_named_logger_level()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.named_logger_level,other.named_logger_level);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

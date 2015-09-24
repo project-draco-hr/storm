@@ -1,0 +1,3 @@
+def __hash__(self):
+    value = 17
+    return value

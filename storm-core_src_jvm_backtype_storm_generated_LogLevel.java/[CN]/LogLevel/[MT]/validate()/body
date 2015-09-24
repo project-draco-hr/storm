@@ -1,0 +1,5 @@
+{
+  if (!is_set_action()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'action' is unset! Struct:" + toString());
+  }
+}

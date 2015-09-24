@@ -1,0 +1,8 @@
+{
+switch (fieldId) {
+case 2:
+    return NAMED_LOGGER_LEVEL;
+default :
+  return null;
+}
+}

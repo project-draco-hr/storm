@@ -1,0 +1,10 @@
+def process_setLogConfig(self, seqid, iprot, oprot):
+    args = setLogConfig_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = setLogConfig_result()
+    self._handler.setLogConfig(args.name, args.config)
+    oprot.writeMessageBegin('setLogConfig', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

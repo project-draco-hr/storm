@@ -8,6 +8,8 @@ def __init__(self, handler):
     self._processMap['activate'] = Processor.process_activate
     self._processMap['deactivate'] = Processor.process_deactivate
     self._processMap['rebalance'] = Processor.process_rebalance
+    self._processMap['setLogConfig'] = Processor.process_setLogConfig
+    self._processMap['getLogConfig'] = Processor.process_getLogConfig
     self._processMap['debug'] = Processor.process_debug
     self._processMap['uploadNewCredentials'] = Processor.process_uploadNewCredentials
     self._processMap['beginFileUpload'] = Processor.process_beginFileUpload

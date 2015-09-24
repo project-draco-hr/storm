@@ -1,0 +1,9 @@
+{
+  this.action=null;
+  this.target_log_level=null;
+  set_reset_log_level_timeout_secs_isSet(false);
+  this.reset_log_level_timeout_secs=0;
+  set_reset_log_level_timeout_epoch_isSet(false);
+  this.reset_log_level_timeout_epoch=0;
+  this.reset_log_level=null;
+}

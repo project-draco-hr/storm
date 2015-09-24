@@ -1,0 +1,3 @@
+def setLogConfig(self, name, config):
+    '\n    Parameters:\n     - name\n     - config\n    '
+    pass

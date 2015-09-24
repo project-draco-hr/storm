@@ -1,0 +1,14 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_action()) {
+    this.action=other.action;
+  }
+  if (other.is_set_target_log_level()) {
+    this.target_log_level=other.target_log_level;
+  }
+  this.reset_log_level_timeout_secs=other.reset_log_level_timeout_secs;
+  this.reset_log_level_timeout_epoch=other.reset_log_level_timeout_epoch;
+  if (other.is_set_reset_log_level()) {
+    this.reset_log_level=other.reset_log_level;
+  }
+}

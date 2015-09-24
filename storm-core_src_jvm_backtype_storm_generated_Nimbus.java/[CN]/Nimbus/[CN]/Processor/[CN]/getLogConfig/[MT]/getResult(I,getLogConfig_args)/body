@@ -1,0 +1,5 @@
+{
+  getLogConfig_result result=new getLogConfig_result();
+  result.success=iface.getLogConfig(args.name);
+  return result;
+}

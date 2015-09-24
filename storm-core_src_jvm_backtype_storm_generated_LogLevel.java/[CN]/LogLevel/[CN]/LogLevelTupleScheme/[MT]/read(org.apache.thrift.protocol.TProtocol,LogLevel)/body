@@ -1,0 +1,22 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.action=backtype.storm.generated.LogLevelAction.findByValue(iprot.readI32());
+  struct.set_action_isSet(true);
+  BitSet incoming=iprot.readBitSet(4);
+  if (incoming.get(0)) {
+    struct.target_log_level=iprot.readString();
+    struct.set_target_log_level_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.reset_log_level_timeout_secs=iprot.readI32();
+    struct.set_reset_log_level_timeout_secs_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.reset_log_level_timeout_epoch=iprot.readI64();
+    struct.set_reset_log_level_timeout_epoch_isSet(true);
+  }
+  if (incoming.get(3)) {
+    struct.reset_log_level=iprot.readString();
+    struct.set_reset_log_level_isSet(true);
+  }
+}

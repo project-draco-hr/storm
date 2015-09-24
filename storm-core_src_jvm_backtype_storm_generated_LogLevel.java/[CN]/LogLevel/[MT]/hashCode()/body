@@ -1,0 +1,19 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_action=true && (is_set_action());
+  list.add(present_action);
+  if (present_action)   list.add(action.getValue());
+  boolean present_target_log_level=true && (is_set_target_log_level());
+  list.add(present_target_log_level);
+  if (present_target_log_level)   list.add(target_log_level);
+  boolean present_reset_log_level_timeout_secs=true && (is_set_reset_log_level_timeout_secs());
+  list.add(present_reset_log_level_timeout_secs);
+  if (present_reset_log_level_timeout_secs)   list.add(reset_log_level_timeout_secs);
+  boolean present_reset_log_level_timeout_epoch=true && (is_set_reset_log_level_timeout_epoch());
+  list.add(present_reset_log_level_timeout_epoch);
+  if (present_reset_log_level_timeout_epoch)   list.add(reset_log_level_timeout_epoch);
+  boolean present_reset_log_level=true && (is_set_reset_log_level());
+  list.add(present_reset_log_level);
+  if (present_reset_log_level)   list.add(reset_log_level);
+  return list.hashCode();
+}

@@ -1,0 +1,3 @@
+I iface
+getLogConfig_args args
+org.apache.thrift.async.AsyncMethodCallback<LogConfig> resultHandler

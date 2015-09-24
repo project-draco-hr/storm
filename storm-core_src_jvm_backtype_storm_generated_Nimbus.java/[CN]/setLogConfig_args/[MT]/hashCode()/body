@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_name=true && (is_set_name());
+  list.add(present_name);
+  if (present_name)   list.add(name);
+  boolean present_config=true && (is_set_config());
+  list.add(present_config);
+  if (present_config)   list.add(config);
+  return list.hashCode();
+}

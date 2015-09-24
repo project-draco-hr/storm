@@ -1,0 +1,6 @@
+{
+  StringBuilder sb=new StringBuilder("setLogConfig_result(");
+  boolean first=true;
+  sb.append(")");
+  return sb.toString();
+}

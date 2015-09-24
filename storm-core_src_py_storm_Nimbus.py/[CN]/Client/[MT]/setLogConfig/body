@@ -1,0 +1,4 @@
+def setLogConfig(self, name, config):
+    '\n    Parameters:\n     - name\n     - config\n    '
+    self.send_setLogConfig(name, config)
+    self.recv_setLogConfig()

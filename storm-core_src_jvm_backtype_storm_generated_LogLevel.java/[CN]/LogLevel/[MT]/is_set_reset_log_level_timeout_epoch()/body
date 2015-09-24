@@ -1,0 +1,3 @@
+{
+  return EncodingUtils.testBit(__isset_bitfield,__RESET_LOG_LEVEL_TIMEOUT_EPOCH_ISSET_ID);
+}

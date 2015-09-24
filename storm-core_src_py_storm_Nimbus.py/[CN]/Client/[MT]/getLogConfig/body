@@ -1,0 +1,4 @@
+def getLogConfig(self, name):
+    '\n    Parameters:\n     - name\n    '
+    self.send_getLogConfig(name)
+    return self.recv_getLogConfig()

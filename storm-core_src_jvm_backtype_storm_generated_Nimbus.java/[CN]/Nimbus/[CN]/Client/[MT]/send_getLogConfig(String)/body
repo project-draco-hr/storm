@@ -1,0 +1,5 @@
+{
+  getLogConfig_args args=new getLogConfig_args();
+  args.set_name(name);
+  sendBase("getLogConfig",args);
+}

@@ -1,0 +1,10 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case NAMED_LOGGER_LEVEL:
+    return is_set_named_logger_level();
+}
+throw new IllegalStateException();
+}

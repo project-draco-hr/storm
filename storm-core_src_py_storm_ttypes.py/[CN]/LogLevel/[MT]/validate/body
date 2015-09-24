@@ -1,0 +1,4 @@
+def validate(self):
+    if (self.action is None):
+        raise TProtocol.TProtocolException(message='Required field action is unset!')
+    return

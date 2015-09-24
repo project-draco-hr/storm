@@ -1,0 +1,44 @@
+{
+switch (field) {
+case ACTION:
+    if (value == null) {
+      unset_action();
+    }
+ else {
+      set_action((LogLevelAction)value);
+    }
+  break;
+case TARGET_LOG_LEVEL:
+if (value == null) {
+  unset_target_log_level();
+}
+ else {
+  set_target_log_level((String)value);
+}
+break;
+case RESET_LOG_LEVEL_TIMEOUT_SECS:
+if (value == null) {
+unset_reset_log_level_timeout_secs();
+}
+ else {
+set_reset_log_level_timeout_secs((Integer)value);
+}
+break;
+case RESET_LOG_LEVEL_TIMEOUT_EPOCH:
+if (value == null) {
+unset_reset_log_level_timeout_epoch();
+}
+ else {
+set_reset_log_level_timeout_epoch((Long)value);
+}
+break;
+case RESET_LOG_LEVEL:
+if (value == null) {
+unset_reset_log_level();
+}
+ else {
+set_reset_log_level((String)value);
+}
+break;
+}
+}

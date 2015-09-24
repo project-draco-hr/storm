@@ -1,0 +1,16 @@
+{
+switch (fieldId) {
+case 1:
+    return ACTION;
+case 2:
+  return TARGET_LOG_LEVEL;
+case 3:
+return RESET_LOG_LEVEL_TIMEOUT_SECS;
+case 4:
+return RESET_LOG_LEVEL_TIMEOUT_EPOCH;
+case 5:
+return RESET_LOG_LEVEL;
+default :
+return null;
+}
+}

@@ -1,0 +1,7 @@
+{
+switch (field) {
+case NAMED_LOGGER_LEVEL:
+    return get_named_logger_level();
+}
+throw new IllegalStateException();
+}

@@ -1,0 +1,8 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.action))
+    value = ((value * 31) ^ hash(self.target_log_level))
+    value = ((value * 31) ^ hash(self.reset_log_level_timeout_secs))
+    value = ((value * 31) ^ hash(self.reset_log_level_timeout_epoch))
+    value = ((value * 31) ^ hash(self.reset_log_level))
+    return value

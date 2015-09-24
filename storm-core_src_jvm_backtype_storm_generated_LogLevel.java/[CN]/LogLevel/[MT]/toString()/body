@@ -1,0 +1,48 @@
+{
+  StringBuilder sb=new StringBuilder("LogLevel(");
+  boolean first=true;
+  sb.append("action:");
+  if (this.action == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.action);
+  }
+  first=false;
+  if (is_set_target_log_level()) {
+    if (!first)     sb.append(", ");
+    sb.append("target_log_level:");
+    if (this.target_log_level == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.target_log_level);
+    }
+    first=false;
+  }
+  if (is_set_reset_log_level_timeout_secs()) {
+    if (!first)     sb.append(", ");
+    sb.append("reset_log_level_timeout_secs:");
+    sb.append(this.reset_log_level_timeout_secs);
+    first=false;
+  }
+  if (is_set_reset_log_level_timeout_epoch()) {
+    if (!first)     sb.append(", ");
+    sb.append("reset_log_level_timeout_epoch:");
+    sb.append(this.reset_log_level_timeout_epoch);
+    first=false;
+  }
+  if (is_set_reset_log_level()) {
+    if (!first)     sb.append(", ");
+    sb.append("reset_log_level:");
+    if (this.reset_log_level == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.reset_log_level);
+    }
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

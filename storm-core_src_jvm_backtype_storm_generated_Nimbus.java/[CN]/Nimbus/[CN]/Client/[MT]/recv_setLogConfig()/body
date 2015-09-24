@@ -1,0 +1,5 @@
+{
+  setLogConfig_result result=new setLogConfig_result();
+  receiveBase(result,"setLogConfig");
+  return;
+}

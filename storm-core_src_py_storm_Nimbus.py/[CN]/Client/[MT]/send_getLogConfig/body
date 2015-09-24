@@ -1,0 +1,7 @@
+def send_getLogConfig(self, name):
+    self._oprot.writeMessageBegin('getLogConfig', TMessageType.CALL, self._seqid)
+    args = getLogConfig_args()
+    args.name = name
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()
