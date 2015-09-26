@@ -15,37 +15,37 @@
   if (struct.is_set_node_host()) {
 {
       oprot.writeI32(struct.node_host.size());
-      for (      Map.Entry<String,String> _iter393 : struct.node_host.entrySet()) {
-        oprot.writeString(_iter393.getKey());
-        oprot.writeString(_iter393.getValue());
+      for (      Map.Entry<String,String> _iter411 : struct.node_host.entrySet()) {
+        oprot.writeString(_iter411.getKey());
+        oprot.writeString(_iter411.getValue());
       }
     }
   }
   if (struct.is_set_executor_node_port()) {
 {
       oprot.writeI32(struct.executor_node_port.size());
-      for (      Map.Entry<List<Long>,NodeInfo> _iter394 : struct.executor_node_port.entrySet()) {
+      for (      Map.Entry<List<Long>,NodeInfo> _iter412 : struct.executor_node_port.entrySet()) {
 {
-          oprot.writeI32(_iter394.getKey().size());
-          for (          long _iter395 : _iter394.getKey()) {
-            oprot.writeI64(_iter395);
+          oprot.writeI32(_iter412.getKey().size());
+          for (          long _iter413 : _iter412.getKey()) {
+            oprot.writeI64(_iter413);
           }
         }
-        _iter394.getValue().write(oprot);
+        _iter412.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_executor_start_time_secs()) {
 {
       oprot.writeI32(struct.executor_start_time_secs.size());
-      for (      Map.Entry<List<Long>,Long> _iter396 : struct.executor_start_time_secs.entrySet()) {
+      for (      Map.Entry<List<Long>,Long> _iter414 : struct.executor_start_time_secs.entrySet()) {
 {
-          oprot.writeI32(_iter396.getKey().size());
-          for (          long _iter397 : _iter396.getKey()) {
-            oprot.writeI64(_iter397);
+          oprot.writeI32(_iter414.getKey().size());
+          for (          long _iter415 : _iter414.getKey()) {
+            oprot.writeI64(_iter415);
           }
         }
-        oprot.writeI64(_iter396.getValue());
+        oprot.writeI64(_iter414.getValue());
       }
     }
   }

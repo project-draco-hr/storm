@@ -92,6 +92,27 @@ struct.set_errors_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 7:
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map308=iprot.readMapBegin();
+struct.component_debug=new HashMap<String,DebugOptions>(2 * _map308.size);
+String _key309;
+DebugOptions _val310;
+for (int _i311=0; _i311 < _map308.size; ++_i311) {
+_key309=iprot.readString();
+_val310=new DebugOptions();
+_val310.read(iprot);
+struct.component_debug.put(_key309,_val310);
+}
+iprot.readMapEnd();
+}
+struct.set_component_debug_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 case 513:
 if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
 struct.sched_status=iprot.readString();

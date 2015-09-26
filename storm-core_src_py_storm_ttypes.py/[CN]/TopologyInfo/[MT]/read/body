@@ -55,6 +55,18 @@ def read(self, iprot):
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
+        elif (fid == 7):
+            if (ftype == TType.MAP):
+                self.component_debug = {}
+                (_ktype287, _vtype288, _size286) = iprot.readMapBegin()
+                for _i290 in xrange(_size286):
+                    _key291 = iprot.readString().decode('utf-8')
+                    _val292 = DebugOptions()
+                    _val292.read(iprot)
+                    self.component_debug[_key291] = _val292
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
         elif (fid == 513):
             if (ftype == TType.STRING):
                 self.sched_status = iprot.readString().decode('utf-8')

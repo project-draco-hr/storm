@@ -1,0 +1,11 @@
+{
+  debug_result result=new debug_result();
+  receiveBase(result,"debug");
+  if (result.e != null) {
+    throw result.e;
+  }
+  if (result.aze != null) {
+    throw result.aze;
+  }
+  return;
+}

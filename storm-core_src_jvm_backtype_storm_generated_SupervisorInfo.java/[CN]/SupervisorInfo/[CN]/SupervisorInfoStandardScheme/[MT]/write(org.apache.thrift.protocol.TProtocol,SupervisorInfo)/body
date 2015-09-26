@@ -21,8 +21,8 @@
       oprot.writeFieldBegin(USED_PORTS_FIELD_DESC);
 {
         oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64,struct.used_ports.size()));
-        for (        long _iter346 : struct.used_ports) {
-          oprot.writeI64(_iter346);
+        for (        long _iter364 : struct.used_ports) {
+          oprot.writeI64(_iter364);
         }
         oprot.writeListEnd();
       }
@@ -34,8 +34,8 @@
       oprot.writeFieldBegin(META_FIELD_DESC);
 {
         oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64,struct.meta.size()));
-        for (        long _iter347 : struct.meta) {
-          oprot.writeI64(_iter347);
+        for (        long _iter365 : struct.meta) {
+          oprot.writeI64(_iter365);
         }
         oprot.writeListEnd();
       }
@@ -47,9 +47,9 @@
       oprot.writeFieldBegin(SCHEDULER_META_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRING,struct.scheduler_meta.size()));
-        for (        Map.Entry<String,String> _iter348 : struct.scheduler_meta.entrySet()) {
-          oprot.writeString(_iter348.getKey());
-          oprot.writeString(_iter348.getValue());
+        for (        Map.Entry<String,String> _iter366 : struct.scheduler_meta.entrySet()) {
+          oprot.writeString(_iter366.getKey());
+          oprot.writeString(_iter366.getValue());
         }
         oprot.writeMapEnd();
       }

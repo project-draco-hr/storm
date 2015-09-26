@@ -2,26 +2,26 @@
   TTupleProtocol oprot=(TTupleProtocol)prot;
 {
     oprot.writeI32(struct.emitted.size());
-    for (    Map.Entry<String,Map<String,Long>> _iter270 : struct.emitted.entrySet()) {
-      oprot.writeString(_iter270.getKey());
+    for (    Map.Entry<String,Map<String,Long>> _iter278 : struct.emitted.entrySet()) {
+      oprot.writeString(_iter278.getKey());
 {
-        oprot.writeI32(_iter270.getValue().size());
-        for (        Map.Entry<String,Long> _iter271 : _iter270.getValue().entrySet()) {
-          oprot.writeString(_iter271.getKey());
-          oprot.writeI64(_iter271.getValue());
+        oprot.writeI32(_iter278.getValue().size());
+        for (        Map.Entry<String,Long> _iter279 : _iter278.getValue().entrySet()) {
+          oprot.writeString(_iter279.getKey());
+          oprot.writeI64(_iter279.getValue());
         }
       }
     }
   }
 {
     oprot.writeI32(struct.transferred.size());
-    for (    Map.Entry<String,Map<String,Long>> _iter272 : struct.transferred.entrySet()) {
-      oprot.writeString(_iter272.getKey());
+    for (    Map.Entry<String,Map<String,Long>> _iter280 : struct.transferred.entrySet()) {
+      oprot.writeString(_iter280.getKey());
 {
-        oprot.writeI32(_iter272.getValue().size());
-        for (        Map.Entry<String,Long> _iter273 : _iter272.getValue().entrySet()) {
-          oprot.writeString(_iter273.getKey());
-          oprot.writeI64(_iter273.getValue());
+        oprot.writeI32(_iter280.getValue().size());
+        for (        Map.Entry<String,Long> _iter281 : _iter280.getValue().entrySet()) {
+          oprot.writeString(_iter281.getKey());
+          oprot.writeI64(_iter281.getValue());
         }
       }
     }

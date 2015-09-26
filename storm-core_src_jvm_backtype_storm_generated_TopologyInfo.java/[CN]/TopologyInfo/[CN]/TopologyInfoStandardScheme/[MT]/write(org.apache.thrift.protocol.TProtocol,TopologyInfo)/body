@@ -18,8 +18,8 @@
     oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.executors.size()));
-      for (      ExecutorSummary _iter308 : struct.executors) {
-        _iter308.write(oprot);
+      for (      ExecutorSummary _iter312 : struct.executors) {
+        _iter312.write(oprot);
       }
       oprot.writeListEnd();
     }
@@ -34,12 +34,12 @@
     oprot.writeFieldBegin(ERRORS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.LIST,struct.errors.size()));
-      for (      Map.Entry<String,List<ErrorInfo>> _iter309 : struct.errors.entrySet()) {
-        oprot.writeString(_iter309.getKey());
+      for (      Map.Entry<String,List<ErrorInfo>> _iter313 : struct.errors.entrySet()) {
+        oprot.writeString(_iter313.getKey());
 {
-          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,_iter309.getValue().size()));
-          for (          ErrorInfo _iter310 : _iter309.getValue()) {
-            _iter310.write(oprot);
+          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,_iter313.getValue().size()));
+          for (          ErrorInfo _iter314 : _iter313.getValue()) {
+            _iter314.write(oprot);
           }
           oprot.writeListEnd();
         }
@@ -47,6 +47,20 @@
       oprot.writeMapEnd();
     }
     oprot.writeFieldEnd();
+  }
+  if (struct.component_debug != null) {
+    if (struct.is_set_component_debug()) {
+      oprot.writeFieldBegin(COMPONENT_DEBUG_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.component_debug.size()));
+        for (        Map.Entry<String,DebugOptions> _iter315 : struct.component_debug.entrySet()) {
+          oprot.writeString(_iter315.getKey());
+          _iter315.getValue().write(oprot);
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
   }
   if (struct.sched_status != null) {
     if (struct.is_set_sched_status()) {

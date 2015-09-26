@@ -1,0 +1,4 @@
+{
+  send_debug(name,component,enable,samplingPercentage);
+  recv_debug();
+}

@@ -1,0 +1,14 @@
+{
+  _numOfSlides=Math.max(numOfSlides,1);
+  _slideSizeInMils=validTimeWindowInMils / _numOfSlides;
+  if (_slideSizeInMils < 1) {
+    throw new IllegalArgumentException("Illeggal argument for RateTracker");
+  }
+  assert(_slideSizeInMils > 1);
+  _histograms=new long[_numOfSlides];
+  Arrays.fill(_histograms,0L);
+  if (!simulate) {
+    _timer.scheduleAtFixedRate(new Fresher(),_slideSizeInMils,_slideSizeInMils);
+  }
+  _currentValidSlideNum=1;
+}

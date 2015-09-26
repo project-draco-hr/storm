@@ -1,5 +1,6 @@
 {
   _collector=collector;
+  String topologyInstanceId=context.getStormId();
   Map stateConf=new HashMap(conf);
   List<String> zkServers=_spoutConfig.zkServers;
   if (zkServers == null) {
@@ -16,10 +17,10 @@
   _connections=new DynamicPartitionConnections(_spoutConfig,KafkaUtils.makeBrokerReader(conf,_spoutConfig));
   int totalTasks=context.getComponentTasks(context.getThisComponentId()).size();
   if (_spoutConfig.hosts instanceof StaticHosts) {
-    _coordinator=new StaticCoordinator(_connections,conf,_spoutConfig,_state,context.getThisTaskIndex(),totalTasks,_uuid);
+    _coordinator=new StaticCoordinator(_connections,conf,_spoutConfig,_state,context.getThisTaskIndex(),totalTasks,topologyInstanceId);
   }
  else {
-    _coordinator=new ZkCoordinator(_connections,conf,_spoutConfig,_state,context.getThisTaskIndex(),totalTasks,_uuid);
+    _coordinator=new ZkCoordinator(_connections,conf,_spoutConfig,_state,context.getThisTaskIndex(),totalTasks,topologyInstanceId);
   }
   context.registerMetric("kafkaOffset",new IMetric(){
     KafkaUtils.KafkaOffsetMetric _kafkaOffsetMetric=new KafkaUtils.KafkaOffsetMetric(_connections);
