@@ -2,7 +2,7 @@
   List<String> topics=getTopics();
   List<GlobalPartitionInformation> partitions=new ArrayList<GlobalPartitionInformation>();
   for (  String topic : topics) {
-    GlobalPartitionInformation globalPartitionInformation=new GlobalPartitionInformation(topic,this._wildcardTopic);
+    GlobalPartitionInformation globalPartitionInformation=new GlobalPartitionInformation(topic,this._isWildcardTopic);
     try {
       int numPartitionsForTopic=getNumPartitions(topic);
       String brokerInfoPath=brokerPath();

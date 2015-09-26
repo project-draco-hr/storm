@@ -1,6 +1,6 @@
 {
   List<String> topics=new ArrayList<String>();
-  if (!_wildcardTopic) {
+  if (!_isWildcardTopic) {
     topics.add(_topic);
     return topics;
   }

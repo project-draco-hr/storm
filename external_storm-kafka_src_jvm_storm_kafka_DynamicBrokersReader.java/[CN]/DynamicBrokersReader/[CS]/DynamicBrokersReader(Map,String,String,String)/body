@@ -6,7 +6,7 @@
   Preconditions.checkNotNull(topic,"topic cannot be null");
   _zkPath=zkPath;
   _topic=topic;
-  _wildcardTopic=Utils.getBoolean(conf.get("kafka.topic.wildcard.match"),false);
+  _isWildcardTopic=Utils.getBoolean(conf.get("kafka.topic.wildcard.match"),false);
   try {
     _curator=CuratorFrameworkFactory.newClient(zkStr,Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_CONNECTION_TIMEOUT)),new RetryNTimes(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL))));
     _curator.start();
