@@ -1,0 +1,7 @@
+{
+  Path p=new Path(path);
+  FileStatus[] fileStatuses=fs.listStatus(p);
+  for (  FileStatus file : fileStatuses) {
+    System.out.println("@@@ " + file.getPath() + " ["+ file.getLen()+ "]");
+  }
+}

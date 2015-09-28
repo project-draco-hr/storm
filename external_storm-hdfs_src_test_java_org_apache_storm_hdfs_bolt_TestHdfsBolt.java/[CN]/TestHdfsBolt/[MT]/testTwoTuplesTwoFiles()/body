@@ -1,0 +1,9 @@
+{
+  HdfsBolt bolt=makeHdfsBolt(hdfsURI,1,.00001f);
+  bolt.prepare(new Config(),topologyContext,collector);
+  bolt.execute(tuple1);
+  bolt.execute(tuple2);
+  verify(collector).ack(tuple1);
+  verify(collector).ack(tuple2);
+  Assert.assertEquals(2,countNonZeroLengthFiles(testRoot));
+}
