@@ -1,30 +1,8 @@
 {
   TTupleProtocol iprot=(TTupleProtocol)prot;
 {
-    org.apache.thrift.protocol.TMap _map226=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
-    struct.acked=new HashMap<String,Map<String,Long>>(2 * _map226.size);
-    String _key227;
-    Map<String,Long> _val228;
-    for (int _i229=0; _i229 < _map226.size; ++_i229) {
-      _key227=iprot.readString();
-{
-        org.apache.thrift.protocol.TMap _map230=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
-        _val228=new HashMap<String,Long>(2 * _map230.size);
-        String _key231;
-        long _val232;
-        for (int _i233=0; _i233 < _map230.size; ++_i233) {
-          _key231=iprot.readString();
-          _val232=iprot.readI64();
-          _val228.put(_key231,_val232);
-        }
-      }
-      struct.acked.put(_key227,_val228);
-    }
-  }
-  struct.set_acked_isSet(true);
-{
     org.apache.thrift.protocol.TMap _map234=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
-    struct.failed=new HashMap<String,Map<String,Long>>(2 * _map234.size);
+    struct.acked=new HashMap<String,Map<String,Long>>(2 * _map234.size);
     String _key235;
     Map<String,Long> _val236;
     for (int _i237=0; _i237 < _map234.size; ++_i237) {
@@ -40,29 +18,51 @@
           _val236.put(_key239,_val240);
         }
       }
-      struct.failed.put(_key235,_val236);
+      struct.acked.put(_key235,_val236);
+    }
+  }
+  struct.set_acked_isSet(true);
+{
+    org.apache.thrift.protocol.TMap _map242=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
+    struct.failed=new HashMap<String,Map<String,Long>>(2 * _map242.size);
+    String _key243;
+    Map<String,Long> _val244;
+    for (int _i245=0; _i245 < _map242.size; ++_i245) {
+      _key243=iprot.readString();
+{
+        org.apache.thrift.protocol.TMap _map246=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+        _val244=new HashMap<String,Long>(2 * _map246.size);
+        String _key247;
+        long _val248;
+        for (int _i249=0; _i249 < _map246.size; ++_i249) {
+          _key247=iprot.readString();
+          _val248=iprot.readI64();
+          _val244.put(_key247,_val248);
+        }
+      }
+      struct.failed.put(_key243,_val244);
     }
   }
   struct.set_failed_isSet(true);
 {
-    org.apache.thrift.protocol.TMap _map242=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
-    struct.complete_ms_avg=new HashMap<String,Map<String,Double>>(2 * _map242.size);
-    String _key243;
-    Map<String,Double> _val244;
-    for (int _i245=0; _i245 < _map242.size; ++_i245) {
-      _key243=iprot.readString();
+    org.apache.thrift.protocol.TMap _map250=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
+    struct.complete_ms_avg=new HashMap<String,Map<String,Double>>(2 * _map250.size);
+    String _key251;
+    Map<String,Double> _val252;
+    for (int _i253=0; _i253 < _map250.size; ++_i253) {
+      _key251=iprot.readString();
 {
-        org.apache.thrift.protocol.TMap _map246=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.DOUBLE,iprot.readI32());
-        _val244=new HashMap<String,Double>(2 * _map246.size);
-        String _key247;
-        double _val248;
-        for (int _i249=0; _i249 < _map246.size; ++_i249) {
-          _key247=iprot.readString();
-          _val248=iprot.readDouble();
-          _val244.put(_key247,_val248);
+        org.apache.thrift.protocol.TMap _map254=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.DOUBLE,iprot.readI32());
+        _val252=new HashMap<String,Double>(2 * _map254.size);
+        String _key255;
+        double _val256;
+        for (int _i257=0; _i257 < _map254.size; ++_i257) {
+          _key255=iprot.readString();
+          _val256=iprot.readDouble();
+          _val252.put(_key255,_val256);
         }
       }
-      struct.complete_ms_avg.put(_key243,_val244);
+      struct.complete_ms_avg.put(_key251,_val252);
     }
   }
   struct.set_complete_ms_avg_isSet(true);

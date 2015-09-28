@@ -20,7 +20,7 @@
       }
       batchesToSpouts.get(batchGroup).add((ITridentSpout)c.spout);
       BoltDeclarer scd=builder.setBolt(spoutCoordinator(id),new TridentSpoutCoordinator(c.commitStateId,(ITridentSpout)c.spout)).globalGrouping(masterCoordinator(c.batchGroupId),MasterBatchCoordinator.BATCH_STREAM_ID).globalGrouping(masterCoordinator(c.batchGroupId),MasterBatchCoordinator.SUCCESS_STREAM_ID);
-      for (      Map m : c.componentConfs) {
+      for (      Map<String,Object> m : c.componentConfs) {
         scd.addConfigurations(m);
       }
       Map<String,TridentBoltExecutor.CoordSpec> specs=new HashMap();
@@ -31,7 +31,7 @@
       if (c.spout instanceof ICommitterTridentSpout) {
         bd.allGrouping(masterCoordinator(batchGroup),MasterBatchCoordinator.COMMIT_STREAM_ID);
       }
-      for (      Map m : c.componentConfs) {
+      for (      Map<String,Object> m : c.componentConfs) {
         bd.addConfigurations(m);
       }
     }
@@ -39,7 +39,7 @@
   for (  String id : _batchPerTupleSpouts.keySet()) {
     SpoutComponent c=_batchPerTupleSpouts.get(id);
     SpoutDeclarer d=builder.setSpout(id,new RichSpoutBatchTriggerer((IRichSpout)c.spout,c.streamName,c.batchGroupId),c.parallelism);
-    for (    Map conf : c.componentConfs) {
+    for (    Map<String,Object> conf : c.componentConfs) {
       d.addConfigurations(conf);
     }
   }
@@ -49,7 +49,7 @@
   }
   for (  String id : _bolts.keySet()) {
     Component c=_bolts.get(id);
-    Map<String,CoordSpec> specs=new HashMap();
+    Map<String,CoordSpec> specs=new HashMap<>();
     for (    GlobalStreamId s : getBoltSubscriptionStreams(id)) {
       String batch=batchIdsForBolts.get(s);
       if (!specs.containsKey(batch))       specs.put(batch,new CoordSpec());
@@ -67,7 +67,7 @@
       specs.get(b).commitStream=new GlobalStreamId(masterCoordinator(b),MasterBatchCoordinator.COMMIT_STREAM_ID);
     }
     BoltDeclarer d=builder.setBolt(id,new TridentBoltExecutor(c.bolt,batchIdsForBolts,specs),c.parallelism);
-    for (    Map conf : c.componentConfs) {
+    for (    Map<String,Object> conf : c.componentConfs) {
       d.addConfigurations(conf);
     }
     for (    InputDeclaration inputDecl : c.declarations) {

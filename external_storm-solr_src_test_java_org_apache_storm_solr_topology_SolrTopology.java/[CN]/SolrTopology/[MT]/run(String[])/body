@@ -1,0 +1,10 @@
+{
+  final StormTopology topology=getTopology();
+  final Config config=getConfig();
+  if (args.length == 0) {
+    submitTopologyLocalCluster(topology,config);
+  }
+ else {
+    submitTopologyRemoteCluster(args[1],topology,config);
+  }
+}

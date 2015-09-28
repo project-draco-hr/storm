@@ -1,1 +1,1 @@
-AbstractEsBoltTest
+AbstractEsBoltIntegrationTest<EsIndexBolt>

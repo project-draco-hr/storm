@@ -1,0 +1,5 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  this.enable=other.enable;
+  this.samplingpct=other.samplingpct;
+}

@@ -1,0 +1,20 @@
+{
+switch (field) {
+case E:
+    if (value == null) {
+      unset_e();
+    }
+ else {
+      set_e((NotAliveException)value);
+    }
+  break;
+case AZE:
+if (value == null) {
+  unset_aze();
+}
+ else {
+  set_aze((AuthorizationException)value);
+}
+break;
+}
+}

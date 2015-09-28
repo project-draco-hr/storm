@@ -1,0 +1,5 @@
+{
+  List<Tuple> queuedTuples=toCommitTuples;
+  toCommitTuples=new ArrayList<>(capacity());
+  return queuedTuples;
+}

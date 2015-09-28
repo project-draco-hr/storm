@@ -9,4 +9,5 @@
   this.owner=null;
   this.topology_action_options=null;
   this.prev_status=null;
+  this.component_debug=null;
 }

@@ -4,6 +4,7 @@
   _consumer=new Sequence();
   _barrier=_buffer.newBarrier();
   _buffer.setGatingSequences(_consumer);
+  _metrics=new QueueMetrics((float)0.05);
   if (claim instanceof SingleThreadedClaimStrategy) {
     consumerStartedFlag=true;
   }

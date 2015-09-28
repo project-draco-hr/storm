@@ -2,6 +2,9 @@
   ReqContext req_context=ReqContext.context();
   TTransport trans=inProt.getTransport();
   TSaslServerTransport saslTrans=(TSaslServerTransport)trans;
+  if (trans instanceof NoOpTTrasport) {
+    return false;
+  }
   TSocket tsocket=(TSocket)saslTrans.getUnderlyingTransport();
   Socket socket=tsocket.getSocket();
   req_context.setRemoteAddress(socket.getInetAddress());

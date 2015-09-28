@@ -1,0 +1,9 @@
+{
+  String[] hostAndPort=nimbusInfo.split(DELIM);
+  if (hostAndPort != null && hostAndPort.length == 2) {
+    return new NimbusInfo(hostAndPort[0],Integer.parseInt(hostAndPort[1]),false);
+  }
+ else {
+    throw new RuntimeException("nimbusInfo should have format of host:port, invalid string " + nimbusInfo);
+  }
+}

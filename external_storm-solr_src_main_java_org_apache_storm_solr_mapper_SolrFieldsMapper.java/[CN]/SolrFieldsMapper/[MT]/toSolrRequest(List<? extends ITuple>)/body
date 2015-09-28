@@ -1,0 +1,10 @@
+{
+  List<SolrInputDocument> docs=new LinkedList<>();
+  for (  ITuple tuple : tuples) {
+    docs.add(buildDocument(tuple));
+  }
+  UpdateRequest request=new UpdateRequest();
+  request.add(docs);
+  log.debug("Created SolrRequest with content: {}",docs);
+  return request;
+}

@@ -1,0 +1,6 @@
+{
+  Settings settings=esConfig.toBasicSettings();
+  TransportClient transportClient=new TransportClient(settings);
+  addTransportAddresses(transportClient);
+  return transportClient;
+}

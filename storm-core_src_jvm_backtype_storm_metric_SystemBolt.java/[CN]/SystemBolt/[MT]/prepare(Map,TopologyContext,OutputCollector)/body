@@ -44,4 +44,6 @@
   for (  GarbageCollectorMXBean b : ManagementFactory.getGarbageCollectorMXBeans()) {
     context.registerMetric("GC/" + b.getName().replaceAll("\\W",""),new GarbageCollectorMetric(b),bucketSize);
   }
+  registerMetrics(context,(Map<String,String>)stormConf.get(Config.WORKER_METRICS),bucketSize);
+  registerMetrics(context,(Map<String,String>)stormConf.get(Config.TOPOLOGY_WORKER_METRICS),bucketSize);
 }

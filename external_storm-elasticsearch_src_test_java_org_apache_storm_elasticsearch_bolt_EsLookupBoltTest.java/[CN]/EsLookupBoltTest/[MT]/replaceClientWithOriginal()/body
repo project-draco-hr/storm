@@ -1,0 +1,3 @@
+{
+  EsLookupBolt.replaceClient(originalClient);
+}

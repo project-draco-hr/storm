@@ -1,0 +1,10 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("debug",org.apache.thrift.protocol.TMessageType.CALL,0));
+  debug_args args=new debug_args();
+  args.set_name(name);
+  args.set_component(component);
+  args.set_enable(enable);
+  args.set_samplingPercentage(samplingPercentage);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

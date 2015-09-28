@@ -1,0 +1,19 @@
+{
+  ScheduledExecutorService scheduler=Executors.newSingleThreadScheduledExecutor();
+  Runnable task=new Runnable(){
+    @Override public void run(){
+      try {
+        if (dirty) {
+          eventLogWriter.flush();
+          dirty=false;
+        }
+      }
+ catch (      IOException ex) {
+        LOG.error("Error flushing " + eventLogPath,ex);
+        throw new RuntimeException(ex);
+      }
+    }
+  }
+;
+  scheduler.scheduleAtFixedRate(task,FLUSH_INTERVAL_MILLIS,FLUSH_INTERVAL_MILLIS,TimeUnit.MILLISECONDS);
+}

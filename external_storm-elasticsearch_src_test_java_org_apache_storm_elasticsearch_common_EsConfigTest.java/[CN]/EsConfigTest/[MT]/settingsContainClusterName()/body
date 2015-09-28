@@ -1,0 +1,4 @@
+{
+  EsConfig esConfig=new EsConfig(clusterName,nodes);
+  assertThat(esConfig.toBasicSettings().get("cluster.name"),is(clusterName));
+}

@@ -1,0 +1,3 @@
+{
+  AbstractEsBolt.client=client;
+}

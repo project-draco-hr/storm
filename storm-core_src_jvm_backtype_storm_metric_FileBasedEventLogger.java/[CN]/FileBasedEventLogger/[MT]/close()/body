@@ -1,0 +1,8 @@
+{
+  try {
+    eventLogWriter.close();
+  }
+ catch (  IOException ex) {
+    LOG.error("Error closing event log.",ex);
+  }
+}

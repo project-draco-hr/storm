@@ -1,0 +1,11 @@
+{
+  String json="";
+  if (value instanceof String) {
+    json=(String)value;
+  }
+ else {
+    Gson gson=new Gson();
+    json=gson.toJson(value);
+  }
+  return json;
+}

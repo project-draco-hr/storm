@@ -1,5 +1,5 @@
 {
-  Map configMap=new HashMap();
+  Map<String,Object> configMap=new HashMap<>();
   configMap.put(config,value);
   return addConfigurations(configMap);
 }

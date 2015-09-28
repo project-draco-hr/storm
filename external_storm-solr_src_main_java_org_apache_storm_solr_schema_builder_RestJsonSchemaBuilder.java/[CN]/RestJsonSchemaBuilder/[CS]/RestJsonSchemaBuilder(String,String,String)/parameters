@@ -1,0 +1,3 @@
+String solrHost
+String solrPort
+String collection

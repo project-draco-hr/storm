@@ -1,0 +1,5 @@
+{
+  this.queue=queue;
+  this.throttleOn=throttleOn;
+  this.consumerCursor=consumerCursor;
+}

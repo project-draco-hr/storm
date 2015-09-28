@@ -1,0 +1,29 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_name()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_component()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_enable()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_samplingPercentage()) {
+    optionals.set(3);
+  }
+  oprot.writeBitSet(optionals,4);
+  if (struct.is_set_name()) {
+    oprot.writeString(struct.name);
+  }
+  if (struct.is_set_component()) {
+    oprot.writeString(struct.component);
+  }
+  if (struct.is_set_enable()) {
+    oprot.writeBool(struct.enable);
+  }
+  if (struct.is_set_samplingPercentage()) {
+    oprot.writeDouble(struct.samplingPercentage);
+  }
+}

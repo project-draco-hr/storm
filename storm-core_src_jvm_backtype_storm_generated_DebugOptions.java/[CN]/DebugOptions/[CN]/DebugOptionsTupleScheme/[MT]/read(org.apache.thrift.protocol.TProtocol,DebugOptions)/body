@@ -1,0 +1,12 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(2);
+  if (incoming.get(0)) {
+    struct.enable=iprot.readBool();
+    struct.set_enable_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.samplingpct=iprot.readDouble();
+    struct.set_samplingpct_isSet(true);
+  }
+}

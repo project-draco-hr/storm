@@ -1,0 +1,4 @@
+{
+  SolrFieldsTridentTopology solrFieldsTridentTopology=new SolrFieldsTridentTopology();
+  solrFieldsTridentTopology.run(args);
+}
