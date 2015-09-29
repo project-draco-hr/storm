@@ -1,0 +1,5 @@
+def __init__(self, jira_report, github_report, header='', print_comments=False):
+    Report.__init__(self, header)
+    self.jira_report = jira_report
+    self.github_report = github_report
+    self.print_comments = print_comments

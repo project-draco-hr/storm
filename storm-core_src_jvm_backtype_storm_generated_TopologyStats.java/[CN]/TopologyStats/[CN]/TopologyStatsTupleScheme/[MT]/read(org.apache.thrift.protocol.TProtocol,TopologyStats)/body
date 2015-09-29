@@ -3,70 +3,70 @@
   BitSet incoming=iprot.readBitSet(5);
   if (incoming.get(0)) {
 {
-      org.apache.thrift.protocol.TMap _map346=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
-      struct.window_to_emitted=new HashMap<String,Long>(2 * _map346.size);
-      String _key347;
-      long _val348;
-      for (int _i349=0; _i349 < _map346.size; ++_i349) {
-        _key347=iprot.readString();
-        _val348=iprot.readI64();
-        struct.window_to_emitted.put(_key347,_val348);
+      org.apache.thrift.protocol.TMap _map364=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+      struct.window_to_emitted=new HashMap<String,Long>(2 * _map364.size);
+      String _key365;
+      long _val366;
+      for (int _i367=0; _i367 < _map364.size; ++_i367) {
+        _key365=iprot.readString();
+        _val366=iprot.readI64();
+        struct.window_to_emitted.put(_key365,_val366);
       }
     }
     struct.set_window_to_emitted_isSet(true);
   }
   if (incoming.get(1)) {
 {
-      org.apache.thrift.protocol.TMap _map350=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
-      struct.window_to_transferred=new HashMap<String,Long>(2 * _map350.size);
-      String _key351;
-      long _val352;
-      for (int _i353=0; _i353 < _map350.size; ++_i353) {
-        _key351=iprot.readString();
-        _val352=iprot.readI64();
-        struct.window_to_transferred.put(_key351,_val352);
+      org.apache.thrift.protocol.TMap _map368=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+      struct.window_to_transferred=new HashMap<String,Long>(2 * _map368.size);
+      String _key369;
+      long _val370;
+      for (int _i371=0; _i371 < _map368.size; ++_i371) {
+        _key369=iprot.readString();
+        _val370=iprot.readI64();
+        struct.window_to_transferred.put(_key369,_val370);
       }
     }
     struct.set_window_to_transferred_isSet(true);
   }
   if (incoming.get(2)) {
 {
-      org.apache.thrift.protocol.TMap _map354=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.DOUBLE,iprot.readI32());
-      struct.window_to_complete_latencies_ms=new HashMap<String,Double>(2 * _map354.size);
-      String _key355;
-      double _val356;
-      for (int _i357=0; _i357 < _map354.size; ++_i357) {
-        _key355=iprot.readString();
-        _val356=iprot.readDouble();
-        struct.window_to_complete_latencies_ms.put(_key355,_val356);
+      org.apache.thrift.protocol.TMap _map372=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.DOUBLE,iprot.readI32());
+      struct.window_to_complete_latencies_ms=new HashMap<String,Double>(2 * _map372.size);
+      String _key373;
+      double _val374;
+      for (int _i375=0; _i375 < _map372.size; ++_i375) {
+        _key373=iprot.readString();
+        _val374=iprot.readDouble();
+        struct.window_to_complete_latencies_ms.put(_key373,_val374);
       }
     }
     struct.set_window_to_complete_latencies_ms_isSet(true);
   }
   if (incoming.get(3)) {
 {
-      org.apache.thrift.protocol.TMap _map358=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
-      struct.window_to_acked=new HashMap<String,Long>(2 * _map358.size);
-      String _key359;
-      long _val360;
-      for (int _i361=0; _i361 < _map358.size; ++_i361) {
-        _key359=iprot.readString();
-        _val360=iprot.readI64();
-        struct.window_to_acked.put(_key359,_val360);
+      org.apache.thrift.protocol.TMap _map376=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+      struct.window_to_acked=new HashMap<String,Long>(2 * _map376.size);
+      String _key377;
+      long _val378;
+      for (int _i379=0; _i379 < _map376.size; ++_i379) {
+        _key377=iprot.readString();
+        _val378=iprot.readI64();
+        struct.window_to_acked.put(_key377,_val378);
       }
     }
     struct.set_window_to_acked_isSet(true);
   }
   if (incoming.get(4)) {
 {
-      org.apache.thrift.protocol.TMap _map362=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
-      struct.window_to_failed=new HashMap<String,Long>(2 * _map362.size);
-      String _key363;
-      long _val364;
-      for (int _i365=0; _i365 < _map362.size; ++_i365) {
-        _key363=iprot.readString();
-        _val364=iprot.readI64();
-        struct.window_to_failed.put(_key363,_val364);
+      org.apache.thrift.protocol.TMap _map380=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+      struct.window_to_failed=new HashMap<String,Long>(2 * _map380.size);
+      String _key381;
+      long _val382;
+      for (int _i383=0; _i383 < _map380.size; ++_i383) {
+        _key381=iprot.readString();
+        _val382=iprot.readI64();
+        struct.window_to_failed.put(_key381,_val382);
       }
     }
     struct.set_window_to_failed_isSet(true);

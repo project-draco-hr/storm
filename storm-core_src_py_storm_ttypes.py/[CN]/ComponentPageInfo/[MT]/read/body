@@ -40,60 +40,81 @@ def read(self, iprot):
         elif (fid == 7):
             if (ftype == TType.MAP):
                 self.window_to_stats = {}
-                (_ktype347, _vtype348, _size346) = iprot.readMapBegin()
-                for _i350 in xrange(_size346):
-                    _key351 = iprot.readString().decode('utf-8')
-                    _val352 = ComponentAggregateStats()
-                    _val352.read(iprot)
-                    self.window_to_stats[_key351] = _val352
+                (_ktype363, _vtype364, _size362) = iprot.readMapBegin()
+                for _i366 in xrange(_size362):
+                    _key367 = iprot.readString().decode('utf-8')
+                    _val368 = ComponentAggregateStats()
+                    _val368.read(iprot)
+                    self.window_to_stats[_key367] = _val368
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 8):
             if (ftype == TType.MAP):
                 self.gsid_to_input_stats = {}
-                (_ktype354, _vtype355, _size353) = iprot.readMapBegin()
-                for _i357 in xrange(_size353):
-                    _key358 = GlobalStreamId()
-                    _key358.read(iprot)
-                    _val359 = ComponentAggregateStats()
-                    _val359.read(iprot)
-                    self.gsid_to_input_stats[_key358] = _val359
+                (_ktype370, _vtype371, _size369) = iprot.readMapBegin()
+                for _i373 in xrange(_size369):
+                    _key374 = GlobalStreamId()
+                    _key374.read(iprot)
+                    _val375 = ComponentAggregateStats()
+                    _val375.read(iprot)
+                    self.gsid_to_input_stats[_key374] = _val375
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 9):
             if (ftype == TType.MAP):
                 self.sid_to_output_stats = {}
-                (_ktype361, _vtype362, _size360) = iprot.readMapBegin()
-                for _i364 in xrange(_size360):
-                    _key365 = iprot.readString().decode('utf-8')
-                    _val366 = ComponentAggregateStats()
-                    _val366.read(iprot)
-                    self.sid_to_output_stats[_key365] = _val366
+                (_ktype377, _vtype378, _size376) = iprot.readMapBegin()
+                for _i380 in xrange(_size376):
+                    _key381 = iprot.readString().decode('utf-8')
+                    _val382 = ComponentAggregateStats()
+                    _val382.read(iprot)
+                    self.sid_to_output_stats[_key381] = _val382
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 10):
             if (ftype == TType.LIST):
                 self.exec_stats = []
-                (_etype370, _size367) = iprot.readListBegin()
-                for _i371 in xrange(_size367):
-                    _elem372 = ExecutorAggregateStats()
-                    _elem372.read(iprot)
-                    self.exec_stats.append(_elem372)
+                (_etype386, _size383) = iprot.readListBegin()
+                for _i387 in xrange(_size383):
+                    _elem388 = ExecutorAggregateStats()
+                    _elem388.read(iprot)
+                    self.exec_stats.append(_elem388)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 11):
             if (ftype == TType.LIST):
                 self.errors = []
-                (_etype376, _size373) = iprot.readListBegin()
-                for _i377 in xrange(_size373):
-                    _elem378 = ErrorInfo()
-                    _elem378.read(iprot)
-                    self.errors.append(_elem378)
+                (_etype392, _size389) = iprot.readListBegin()
+                for _i393 in xrange(_size389):
+                    _elem394 = ErrorInfo()
+                    _elem394.read(iprot)
+                    self.errors.append(_elem394)
                 iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 12):
+            if (ftype == TType.STRING):
+                self.eventlog_host = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 13):
+            if (ftype == TType.I32):
+                self.eventlog_port = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 14):
+            if (ftype == TType.STRUCT):
+                self.debug_options = DebugOptions()
+                self.debug_options.read(iprot)
+            else:
+                iprot.skip(ftype)
+        elif (fid == 15):
+            if (ftype == TType.STRING):
+                self.topology_status = iprot.readString().decode('utf-8')
             else:
                 iprot.skip(ftype)
         else:

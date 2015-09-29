@@ -1,5 +1,5 @@
 def supervisor(klass='backtype.storm.daemon.supervisor'):
     'Syntax: [storm supervisor]\n\n    Launches the supervisor daemon. This command should be run\n    under supervision with a tool like daemontools or monit.\n\n    See Setting up a Storm cluster for more information.\n    (http://storm.incubator.apache.org/documentation/Setting-up-a-Storm-cluster)\n    '
     cppaths = [CLUSTER_CONF_DIR]
-    jvmopts = (parse_args(confvalue('supervisor.childopts', cppaths)) + ['-Dlogfile.name=supervisor.log', ('-Dlogback.configurationFile=' + os.path.join(get_logback_conf_dir(), 'cluster.xml'))])
-    exec_storm_class(klass, jvmtype='-server', extrajars=cppaths, jvmopts=jvmopts)
+    jvmopts = (parse_args(confvalue('supervisor.childopts', cppaths)) + [('-Dlogfile.name=' + STORM_SUPERVISOR_LOG_FILE), ('-Dlog4j.configurationFile=' + os.path.join(get_log4j2_conf_dir(), 'cluster.xml'))])
+    exec_storm_class(klass, jvmtype='-server', daemonName='supervisor', extrajars=cppaths, jvmopts=jvmopts)

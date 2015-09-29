@@ -1,0 +1,11 @@
+{
+  if (metrics == null)   return;
+  for (  Map.Entry<String,String> metric : metrics.entrySet()) {
+    try {
+      context.registerMetric(metric.getKey(),(IMetric)Utils.newInstance(metric.getValue()),bucketSize);
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+}

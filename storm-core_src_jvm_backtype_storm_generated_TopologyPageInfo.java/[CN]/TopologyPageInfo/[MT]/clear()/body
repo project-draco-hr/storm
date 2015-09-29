@@ -16,4 +16,7 @@
   this.sched_status=null;
   this.topology_stats=null;
   this.owner=null;
+  this.debug_options=null;
+  set_replication_count_isSet(false);
+  this.replication_count=0;
 }

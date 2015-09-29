@@ -19,13 +19,16 @@
   if (struct.is_set_prev_status()) {
     optionals.set(4);
   }
-  oprot.writeBitSet(optionals,5);
+  if (struct.is_set_component_debug()) {
+    optionals.set(5);
+  }
+  oprot.writeBitSet(optionals,6);
   if (struct.is_set_component_executors()) {
 {
       oprot.writeI32(struct.component_executors.size());
-      for (      Map.Entry<String,Integer> _iter537 : struct.component_executors.entrySet()) {
-        oprot.writeString(_iter537.getKey());
-        oprot.writeI32(_iter537.getValue());
+      for (      Map.Entry<String,Integer> _iter560 : struct.component_executors.entrySet()) {
+        oprot.writeString(_iter560.getKey());
+        oprot.writeI32(_iter560.getValue());
       }
     }
   }
@@ -40,5 +43,14 @@
   }
   if (struct.is_set_prev_status()) {
     oprot.writeI32(struct.prev_status.getValue());
+  }
+  if (struct.is_set_component_debug()) {
+{
+      oprot.writeI32(struct.component_debug.size());
+      for (      Map.Entry<String,DebugOptions> _iter561 : struct.component_debug.entrySet()) {
+        oprot.writeString(_iter561.getKey());
+        _iter561.getValue().write(oprot);
+      }
+    }
   }
 }

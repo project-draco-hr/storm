@@ -1,0 +1,5 @@
+{
+  String source="{\"user\":\"user1\"}";
+  String id="docId";
+  return EsTestUtil.generateTestTuple(source,index,type,id);
+}

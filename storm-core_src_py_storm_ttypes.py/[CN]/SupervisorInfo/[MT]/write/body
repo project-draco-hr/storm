@@ -18,23 +18,23 @@ def write(self, oprot):
     if (self.used_ports is not None):
         oprot.writeFieldBegin('used_ports', TType.LIST, 4)
         oprot.writeListBegin(TType.I64, len(self.used_ports))
-        for iter424 in self.used_ports:
-            oprot.writeI64(iter424)
+        for iter440 in self.used_ports:
+            oprot.writeI64(iter440)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.meta is not None):
         oprot.writeFieldBegin('meta', TType.LIST, 5)
         oprot.writeListBegin(TType.I64, len(self.meta))
-        for iter425 in self.meta:
-            oprot.writeI64(iter425)
+        for iter441 in self.meta:
+            oprot.writeI64(iter441)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.scheduler_meta is not None):
         oprot.writeFieldBegin('scheduler_meta', TType.MAP, 6)
         oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.scheduler_meta))
-        for (kiter426, viter427) in self.scheduler_meta.items():
-            oprot.writeString(kiter426.encode('utf-8'))
-            oprot.writeString(viter427.encode('utf-8'))
+        for (kiter442, viter443) in self.scheduler_meta.items():
+            oprot.writeString(kiter442.encode('utf-8'))
+            oprot.writeString(viter443.encode('utf-8'))
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.uptime_secs is not None):

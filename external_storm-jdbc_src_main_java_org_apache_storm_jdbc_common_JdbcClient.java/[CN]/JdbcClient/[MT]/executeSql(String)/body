@@ -1,7 +1,7 @@
 {
   Connection connection=null;
   try {
-    connection=this.dataSource.getConnection();
+    connection=connectionProvider.getConnection();
     Statement statement=connection.createStatement();
     statement.execute(sql);
   }

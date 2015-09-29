@@ -107,6 +107,45 @@
     }
     first=false;
   }
+  if (is_set_eventlog_host()) {
+    if (!first)     sb.append(", ");
+    sb.append("eventlog_host:");
+    if (this.eventlog_host == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.eventlog_host);
+    }
+    first=false;
+  }
+  if (is_set_eventlog_port()) {
+    if (!first)     sb.append(", ");
+    sb.append("eventlog_port:");
+    sb.append(this.eventlog_port);
+    first=false;
+  }
+  if (is_set_debug_options()) {
+    if (!first)     sb.append(", ");
+    sb.append("debug_options:");
+    if (this.debug_options == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.debug_options);
+    }
+    first=false;
+  }
+  if (is_set_topology_status()) {
+    if (!first)     sb.append(", ");
+    sb.append("topology_status:");
+    if (this.topology_status == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.topology_status);
+    }
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

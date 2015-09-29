@@ -1,0 +1,9 @@
+{
+switch (field) {
+case ENABLE:
+    return Boolean.valueOf(is_enable());
+case SAMPLINGPCT:
+  return Double.valueOf(get_samplingpct());
+}
+throw new IllegalStateException();
+}

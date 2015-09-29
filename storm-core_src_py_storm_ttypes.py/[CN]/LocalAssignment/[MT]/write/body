@@ -10,8 +10,8 @@ def write(self, oprot):
     if (self.executors is not None):
         oprot.writeFieldBegin('executors', TType.LIST, 2)
         oprot.writeListBegin(TType.STRUCT, len(self.executors))
-        for iter509 in self.executors:
-            iter509.write(oprot)
+        for iter534 in self.executors:
+            iter534.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

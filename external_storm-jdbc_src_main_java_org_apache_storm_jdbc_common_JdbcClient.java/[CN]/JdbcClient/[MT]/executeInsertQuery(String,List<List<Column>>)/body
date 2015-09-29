@@ -1,7 +1,7 @@
 {
   Connection connection=null;
   try {
-    connection=this.dataSource.getConnection();
+    connection=connectionProvider.getConnection();
     boolean autoCommit=connection.getAutoCommit();
     if (autoCommit) {
       connection.setAutoCommit(false);

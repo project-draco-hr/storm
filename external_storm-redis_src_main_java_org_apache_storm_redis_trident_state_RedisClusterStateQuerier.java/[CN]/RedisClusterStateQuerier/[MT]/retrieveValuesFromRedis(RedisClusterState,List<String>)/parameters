@@ -1,0 +1,2 @@
+RedisClusterState state
+List<String> keys

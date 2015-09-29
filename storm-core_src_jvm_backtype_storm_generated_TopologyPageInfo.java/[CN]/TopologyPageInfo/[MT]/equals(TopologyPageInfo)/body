@@ -78,5 +78,17 @@
     if (!(this_present_owner && that_present_owner))     return false;
     if (!this.owner.equals(that.owner))     return false;
   }
+  boolean this_present_debug_options=true && this.is_set_debug_options();
+  boolean that_present_debug_options=true && that.is_set_debug_options();
+  if (this_present_debug_options || that_present_debug_options) {
+    if (!(this_present_debug_options && that_present_debug_options))     return false;
+    if (!this.debug_options.equals(that.debug_options))     return false;
+  }
+  boolean this_present_replication_count=true && this.is_set_replication_count();
+  boolean that_present_replication_count=true && that.is_set_replication_count();
+  if (this_present_replication_count || that_present_replication_count) {
+    if (!(this_present_replication_count && that_present_replication_count))     return false;
+    if (this.replication_count != that.replication_count)     return false;
+  }
   return true;
 }

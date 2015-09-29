@@ -1,0 +1,4 @@
+String connectionString
+String entityPath
+boolean partitionMode
+IEventDataFormat dataFormat

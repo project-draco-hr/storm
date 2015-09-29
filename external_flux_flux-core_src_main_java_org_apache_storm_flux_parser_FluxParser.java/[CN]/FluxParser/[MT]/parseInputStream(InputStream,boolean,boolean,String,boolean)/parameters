@@ -1,0 +1,5 @@
+InputStream inputStream
+boolean dumpYaml
+boolean processIncludes
+String propertiesFile
+boolean envSub

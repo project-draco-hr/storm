@@ -1,0 +1,12 @@
+{
+  String setterName=toSetterName(property);
+  Method retval=null;
+  Method[] methods=clazz.getMethods();
+  for (  Method method : methods) {
+    if (setterName.equals(method.getName())) {
+      LOG.debug("Found setter method: " + method.getName());
+      retval=method;
+    }
+  }
+  return retval;
+}

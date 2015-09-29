@@ -12,4 +12,9 @@
   this.sid_to_output_stats=null;
   this.exec_stats=null;
   this.errors=null;
+  this.eventlog_host=null;
+  set_eventlog_port_isSet(false);
+  this.eventlog_port=0;
+  this.debug_options=null;
+  this.topology_status=null;
 }

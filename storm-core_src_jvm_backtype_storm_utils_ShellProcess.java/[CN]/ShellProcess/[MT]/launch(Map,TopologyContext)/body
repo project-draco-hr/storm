@@ -1,7 +1,11 @@
 {
   ProcessBuilder builder=new ProcessBuilder(command);
+  if (!env.isEmpty()) {
+    Map<String,String> buildEnv=builder.environment();
+    modifyEnvironment(buildEnv);
+  }
   builder.directory(new File(context.getCodeDir()));
-  ShellLogger=Logger.getLogger(context.getThisComponentId());
+  ShellLogger=LoggerFactory.getLogger(context.getThisComponentId());
   this.componentName=context.getThisComponentId();
   this.serializer=getSerializer(conf);
   try {

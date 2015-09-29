@@ -52,9 +52,9 @@
       oprot.writeFieldBegin(ID_TO_SPOUT_AGG_STATS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.id_to_spout_agg_stats.size()));
-        for (        Map.Entry<String,ComponentAggregateStats> _iter374 : struct.id_to_spout_agg_stats.entrySet()) {
-          oprot.writeString(_iter374.getKey());
-          _iter374.getValue().write(oprot);
+        for (        Map.Entry<String,ComponentAggregateStats> _iter392 : struct.id_to_spout_agg_stats.entrySet()) {
+          oprot.writeString(_iter392.getKey());
+          _iter392.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }
@@ -66,9 +66,9 @@
       oprot.writeFieldBegin(ID_TO_BOLT_AGG_STATS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.id_to_bolt_agg_stats.size()));
-        for (        Map.Entry<String,ComponentAggregateStats> _iter375 : struct.id_to_bolt_agg_stats.entrySet()) {
-          oprot.writeString(_iter375.getKey());
-          _iter375.getValue().write(oprot);
+        for (        Map.Entry<String,ComponentAggregateStats> _iter393 : struct.id_to_bolt_agg_stats.entrySet()) {
+          oprot.writeString(_iter393.getKey());
+          _iter393.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }
@@ -95,6 +95,18 @@
       oprot.writeString(struct.owner);
       oprot.writeFieldEnd();
     }
+  }
+  if (struct.debug_options != null) {
+    if (struct.is_set_debug_options()) {
+      oprot.writeFieldBegin(DEBUG_OPTIONS_FIELD_DESC);
+      struct.debug_options.write(oprot);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.is_set_replication_count()) {
+    oprot.writeFieldBegin(REPLICATION_COUNT_FIELD_DESC);
+    oprot.writeI32(struct.replication_count);
+    oprot.writeFieldEnd();
   }
   oprot.writeFieldStop();
   oprot.writeStructEnd();

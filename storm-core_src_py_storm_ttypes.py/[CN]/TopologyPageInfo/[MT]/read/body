@@ -50,24 +50,24 @@ def read(self, iprot):
         elif (fid == 9):
             if (ftype == TType.MAP):
                 self.id_to_spout_agg_stats = {}
-                (_ktype329, _vtype330, _size328) = iprot.readMapBegin()
-                for _i332 in xrange(_size328):
-                    _key333 = iprot.readString().decode('utf-8')
-                    _val334 = ComponentAggregateStats()
-                    _val334.read(iprot)
-                    self.id_to_spout_agg_stats[_key333] = _val334
+                (_ktype345, _vtype346, _size344) = iprot.readMapBegin()
+                for _i348 in xrange(_size344):
+                    _key349 = iprot.readString().decode('utf-8')
+                    _val350 = ComponentAggregateStats()
+                    _val350.read(iprot)
+                    self.id_to_spout_agg_stats[_key349] = _val350
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 10):
             if (ftype == TType.MAP):
                 self.id_to_bolt_agg_stats = {}
-                (_ktype336, _vtype337, _size335) = iprot.readMapBegin()
-                for _i339 in xrange(_size335):
-                    _key340 = iprot.readString().decode('utf-8')
-                    _val341 = ComponentAggregateStats()
-                    _val341.read(iprot)
-                    self.id_to_bolt_agg_stats[_key340] = _val341
+                (_ktype352, _vtype353, _size351) = iprot.readMapBegin()
+                for _i355 in xrange(_size351):
+                    _key356 = iprot.readString().decode('utf-8')
+                    _val357 = ComponentAggregateStats()
+                    _val357.read(iprot)
+                    self.id_to_bolt_agg_stats[_key356] = _val357
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
@@ -85,6 +85,17 @@ def read(self, iprot):
         elif (fid == 13):
             if (ftype == TType.STRING):
                 self.owner = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 14):
+            if (ftype == TType.STRUCT):
+                self.debug_options = DebugOptions()
+                self.debug_options.read(iprot)
+            else:
+                iprot.skip(ftype)
+        elif (fid == 15):
+            if (ftype == TType.I32):
+                self.replication_count = iprot.readI32()
             else:
                 iprot.skip(ftype)
         else:

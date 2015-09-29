@@ -1,0 +1,6 @@
+{
+  this.collection=builder.collection;
+  this.typeFinder=builder.typeFinder;
+  this.multiValueFieldToken=builder.multiValueFieldToken;
+  log.debug("Created {} with the following configuration: [{}] " + this.getClass().getSimpleName(),this.toString());
+}

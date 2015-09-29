@@ -1,0 +1,8 @@
+{
+  if (keys.size() == 0) {
+    return Collections.emptyList();
+  }
+  List<String> stringKeys=buildKeys(keys);
+  List<String> values=retrieveValuesFromRedis(stringKeys);
+  return deserializeValues(keys,values);
+}

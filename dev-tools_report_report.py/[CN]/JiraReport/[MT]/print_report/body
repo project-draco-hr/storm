@@ -1,0 +1,10 @@
+def print_report(self):
+    print ('%s (Count = %s) ' % (self.header, len(self.issues)))
+    jiras = self.values_view()
+    fields_tuple = ('Jira Id', 'Summary', 'Created', 'Last Updated (Days)')
+    row_tuple = self._row_tuple(jiras[0])
+    formatter = Formatter(fields_tuple, row_tuple, self._min_width_tuple())
+    self.print_(formatter, fields_tuple)
+    for jira in jiras:
+        row_tuple = self._row_tuple(jira)
+        self.print_(formatter, row_tuple)

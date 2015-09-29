@@ -61,4 +61,14 @@
     }
     this.errors=__this__errors;
   }
+  if (other.is_set_eventlog_host()) {
+    this.eventlog_host=other.eventlog_host;
+  }
+  this.eventlog_port=other.eventlog_port;
+  if (other.is_set_debug_options()) {
+    this.debug_options=new DebugOptions(other.debug_options);
+  }
+  if (other.is_set_topology_status()) {
+    this.topology_status=other.topology_status;
+  }
 }

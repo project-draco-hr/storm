@@ -6,6 +6,7 @@
   processMap.put("activate",new activate());
   processMap.put("deactivate",new deactivate());
   processMap.put("rebalance",new rebalance());
+  processMap.put("debug",new debug());
   processMap.put("uploadNewCredentials",new uploadNewCredentials());
   processMap.put("beginFileUpload",new beginFileUpload());
   processMap.put("uploadChunk",new uploadChunk());

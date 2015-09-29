@@ -1,0 +1,5 @@
+def search_group(reg, txt, group):
+    m = reg.search(txt)
+    if (m is None):
+        return None
+    return m.group(group)

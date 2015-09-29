@@ -1,0 +1,36 @@
+{
+switch (field) {
+case NAME:
+    if (value == null) {
+      unset_name();
+    }
+ else {
+      set_name((String)value);
+    }
+  break;
+case COMPONENT:
+if (value == null) {
+  unset_component();
+}
+ else {
+  set_component((String)value);
+}
+break;
+case ENABLE:
+if (value == null) {
+unset_enable();
+}
+ else {
+set_enable((Boolean)value);
+}
+break;
+case SAMPLING_PERCENTAGE:
+if (value == null) {
+unset_samplingPercentage();
+}
+ else {
+set_samplingPercentage((Double)value);
+}
+break;
+}
+}

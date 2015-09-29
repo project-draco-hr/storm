@@ -10,9 +10,9 @@
     oprot.writeFieldBegin(EXECUTOR_STATS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.STRUCT,struct.executor_stats.size()));
-      for (      Map.Entry<ExecutorInfo,ExecutorStats> _iter546 : struct.executor_stats.entrySet()) {
-        _iter546.getKey().write(oprot);
-        _iter546.getValue().write(oprot);
+      for (      Map.Entry<ExecutorInfo,ExecutorStats> _iter574 : struct.executor_stats.entrySet()) {
+        _iter574.getKey().write(oprot);
+        _iter574.getValue().write(oprot);
       }
       oprot.writeMapEnd();
     }

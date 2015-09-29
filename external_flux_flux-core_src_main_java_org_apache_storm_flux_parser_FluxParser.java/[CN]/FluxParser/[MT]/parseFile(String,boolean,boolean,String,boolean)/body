@@ -1,0 +1,6 @@
+{
+  FileInputStream in=new FileInputStream(inputFile);
+  TopologyDef topology=parseInputStream(in,dumpYaml,processIncludes,propertiesFile,envSub);
+  in.close();
+  return topology;
+}

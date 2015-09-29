@@ -1,8 +1,9 @@
 {
   TopologyBuilder topologyBuilder=new TopologyBuilder();
   topologyBuilder.setSpout("EventHubsSpout",eventHubSpout,spoutConfig.getPartitionCount()).setNumTasks(spoutConfig.getPartitionCount());
-  EventHubBolt eventHubBolt=new EventHubBolt(spoutConfig.getConnectionString(),spoutConfig.getEntityPath());
-  int boltTasks=spoutConfig.getPartitionCount() * 50;
+  EventHubBoltConfig boltConfig=new EventHubBoltConfig(spoutConfig.getConnectionString(),spoutConfig.getEntityPath(),true);
+  EventHubBolt eventHubBolt=new EventHubBolt(boltConfig);
+  int boltTasks=spoutConfig.getPartitionCount();
   topologyBuilder.setBolt("EventHubsBolt",eventHubBolt,boltTasks).localOrShuffleGrouping("EventHubsSpout").setNumTasks(boltTasks);
   return topologyBuilder.createTopology();
 }

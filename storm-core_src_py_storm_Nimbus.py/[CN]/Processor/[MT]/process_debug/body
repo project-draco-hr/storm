@@ -1,0 +1,15 @@
+def process_debug(self, seqid, iprot, oprot):
+    args = debug_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = debug_result()
+    try:
+        self._handler.debug(args.name, args.component, args.enable, args.samplingPercentage)
+    except NotAliveException as e:
+        result.e = e
+    except AuthorizationException as aze:
+        result.aze = aze
+    oprot.writeMessageBegin('debug', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

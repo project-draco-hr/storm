@@ -1,0 +1,13 @@
+{
+  Object topologySource=buildObject(def,context);
+  String methodName=context.getTopologyDef().getTopologySource().getMethodName();
+  Method getTopology=findGetTopologyMethod(topologySource,methodName);
+  if (getTopology.getParameterTypes()[0].equals(Config.class)) {
+    Config config=new Config();
+    config.putAll(context.getTopologyDef().getConfig());
+    return (StormTopology)getTopology.invoke(topologySource,config);
+  }
+ else {
+    return (StormTopology)getTopology.invoke(topologySource,context.getTopologyDef().getConfig());
+  }
+}

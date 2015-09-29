@@ -1,0 +1,8 @@
+{
+  final TridentTopology tridentTopology=new TridentTopology();
+  final SolrFieldsSpout spout=new SolrFieldsSpout();
+  final Stream stream=tridentTopology.newStream("SolrFieldsSpout",spout);
+  final StateFactory solrStateFactory=new SolrStateFactory(getSolrConfig(),getSolrMapper());
+  stream.partitionPersist(solrStateFactory,spout.getOutputFields(),new SolrUpdater(),new Fields());
+  return tridentTopology.build();
+}

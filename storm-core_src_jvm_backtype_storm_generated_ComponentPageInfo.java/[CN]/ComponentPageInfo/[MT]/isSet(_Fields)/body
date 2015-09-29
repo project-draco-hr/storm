@@ -25,6 +25,14 @@ case EXEC_STATS:
 return is_set_exec_stats();
 case ERRORS:
 return is_set_errors();
+case EVENTLOG_HOST:
+return is_set_eventlog_host();
+case EVENTLOG_PORT:
+return is_set_eventlog_port();
+case DEBUG_OPTIONS:
+return is_set_debug_options();
+case TOPOLOGY_STATUS:
+return is_set_topology_status();
 }
 throw new IllegalStateException();
 }

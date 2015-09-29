@@ -1,0 +1,3 @@
+{
+  new NullPointerTester().setDefault(EsConfig.class,new EsConfig("cluster",new String[]{"localhost:9300"})).testAllPublicConstructors(EsStateFactory.class);
+}

@@ -30,40 +30,56 @@ def write(self, oprot):
     if (self.window_to_stats is not None):
         oprot.writeFieldBegin('window_to_stats', TType.MAP, 7)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.window_to_stats))
-        for (kiter379, viter380) in self.window_to_stats.items():
-            oprot.writeString(kiter379.encode('utf-8'))
-            viter380.write(oprot)
+        for (kiter395, viter396) in self.window_to_stats.items():
+            oprot.writeString(kiter395.encode('utf-8'))
+            viter396.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.gsid_to_input_stats is not None):
         oprot.writeFieldBegin('gsid_to_input_stats', TType.MAP, 8)
         oprot.writeMapBegin(TType.STRUCT, TType.STRUCT, len(self.gsid_to_input_stats))
-        for (kiter381, viter382) in self.gsid_to_input_stats.items():
-            kiter381.write(oprot)
-            viter382.write(oprot)
+        for (kiter397, viter398) in self.gsid_to_input_stats.items():
+            kiter397.write(oprot)
+            viter398.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.sid_to_output_stats is not None):
         oprot.writeFieldBegin('sid_to_output_stats', TType.MAP, 9)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.sid_to_output_stats))
-        for (kiter383, viter384) in self.sid_to_output_stats.items():
-            oprot.writeString(kiter383.encode('utf-8'))
-            viter384.write(oprot)
+        for (kiter399, viter400) in self.sid_to_output_stats.items():
+            oprot.writeString(kiter399.encode('utf-8'))
+            viter400.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.exec_stats is not None):
         oprot.writeFieldBegin('exec_stats', TType.LIST, 10)
         oprot.writeListBegin(TType.STRUCT, len(self.exec_stats))
-        for iter385 in self.exec_stats:
-            iter385.write(oprot)
+        for iter401 in self.exec_stats:
+            iter401.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.errors is not None):
         oprot.writeFieldBegin('errors', TType.LIST, 11)
         oprot.writeListBegin(TType.STRUCT, len(self.errors))
-        for iter386 in self.errors:
-            iter386.write(oprot)
+        for iter402 in self.errors:
+            iter402.write(oprot)
         oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    if (self.eventlog_host is not None):
+        oprot.writeFieldBegin('eventlog_host', TType.STRING, 12)
+        oprot.writeString(self.eventlog_host.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.eventlog_port is not None):
+        oprot.writeFieldBegin('eventlog_port', TType.I32, 13)
+        oprot.writeI32(self.eventlog_port)
+        oprot.writeFieldEnd()
+    if (self.debug_options is not None):
+        oprot.writeFieldBegin('debug_options', TType.STRUCT, 14)
+        self.debug_options.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.topology_status is not None):
+        oprot.writeFieldBegin('topology_status', TType.STRING, 15)
+        oprot.writeString(self.topology_status.encode('utf-8'))
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

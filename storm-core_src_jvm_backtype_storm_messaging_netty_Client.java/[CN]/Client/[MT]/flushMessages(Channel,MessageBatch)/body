@@ -1,14 +1,14 @@
 {
-  if (!containsMessages(batch)) {
+  if (null == batch || batch.isEmpty()) {
     return;
   }
   final int numMessages=batch.size();
-  pendingMessages.getAndAdd(numMessages);
   LOG.debug("writing {} messages to channel {}",batch.size(),channel.toString());
+  pendingMessages.addAndGet(numMessages);
   ChannelFuture future=channel.write(batch);
   future.addListener(new ChannelFutureListener(){
     public void operationComplete(    ChannelFuture future) throws Exception {
-      pendingMessages.getAndAdd(0 - numMessages);
+      pendingMessages.addAndGet(0 - numMessages);
       if (future.isSuccess()) {
         LOG.debug("sent {} messages to {}",numMessages,dstAddressPrefixedName);
         messagesSent.getAndAdd(batch.size());

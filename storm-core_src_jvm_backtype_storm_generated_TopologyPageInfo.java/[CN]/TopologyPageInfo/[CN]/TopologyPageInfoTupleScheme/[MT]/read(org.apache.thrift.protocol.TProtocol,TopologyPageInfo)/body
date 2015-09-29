@@ -2,7 +2,7 @@
   TTupleProtocol iprot=(TTupleProtocol)prot;
   struct.id=iprot.readString();
   struct.set_id_isSet(true);
-  BitSet incoming=iprot.readBitSet(12);
+  BitSet incoming=iprot.readBitSet(14);
   if (incoming.get(0)) {
     struct.name=iprot.readString();
     struct.set_name_isSet(true);
@@ -33,30 +33,30 @@
   }
   if (incoming.get(7)) {
 {
-      org.apache.thrift.protocol.TMap _map378=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-      struct.id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map378.size);
-      String _key379;
-      ComponentAggregateStats _val380;
-      for (int _i381=0; _i381 < _map378.size; ++_i381) {
-        _key379=iprot.readString();
-        _val380=new ComponentAggregateStats();
-        _val380.read(iprot);
-        struct.id_to_spout_agg_stats.put(_key379,_val380);
+      org.apache.thrift.protocol.TMap _map396=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map396.size);
+      String _key397;
+      ComponentAggregateStats _val398;
+      for (int _i399=0; _i399 < _map396.size; ++_i399) {
+        _key397=iprot.readString();
+        _val398=new ComponentAggregateStats();
+        _val398.read(iprot);
+        struct.id_to_spout_agg_stats.put(_key397,_val398);
       }
     }
     struct.set_id_to_spout_agg_stats_isSet(true);
   }
   if (incoming.get(8)) {
 {
-      org.apache.thrift.protocol.TMap _map382=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-      struct.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map382.size);
-      String _key383;
-      ComponentAggregateStats _val384;
-      for (int _i385=0; _i385 < _map382.size; ++_i385) {
-        _key383=iprot.readString();
-        _val384=new ComponentAggregateStats();
-        _val384.read(iprot);
-        struct.id_to_bolt_agg_stats.put(_key383,_val384);
+      org.apache.thrift.protocol.TMap _map400=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map400.size);
+      String _key401;
+      ComponentAggregateStats _val402;
+      for (int _i403=0; _i403 < _map400.size; ++_i403) {
+        _key401=iprot.readString();
+        _val402=new ComponentAggregateStats();
+        _val402.read(iprot);
+        struct.id_to_bolt_agg_stats.put(_key401,_val402);
       }
     }
     struct.set_id_to_bolt_agg_stats_isSet(true);
@@ -73,5 +73,14 @@
   if (incoming.get(11)) {
     struct.owner=iprot.readString();
     struct.set_owner_isSet(true);
+  }
+  if (incoming.get(12)) {
+    struct.debug_options=new DebugOptions();
+    struct.debug_options.read(iprot);
+    struct.set_debug_options_isSet(true);
+  }
+  if (incoming.get(13)) {
+    struct.replication_count=iprot.readI32();
+    struct.set_replication_count_isSet(true);
   }
 }

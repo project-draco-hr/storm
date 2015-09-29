@@ -1,0 +1,10 @@
+{
+  try {
+    SolrRequest request=solrMapper.toSolrRequest(tuple);
+    solrClient.request(request,solrMapper.getCollection());
+    ack(tuple);
+  }
+ catch (  Exception e) {
+    fail(tuple,e);
+  }
+}

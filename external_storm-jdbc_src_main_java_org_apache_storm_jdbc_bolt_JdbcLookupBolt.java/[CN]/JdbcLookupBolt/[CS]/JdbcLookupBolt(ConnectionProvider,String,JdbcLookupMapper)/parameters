@@ -1,0 +1,3 @@
+ConnectionProvider connectionProvider
+String selectQuery
+JdbcLookupMapper jdbcLookupMapper

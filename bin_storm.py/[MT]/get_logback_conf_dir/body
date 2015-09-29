@@ -1,6 +1,0 @@
-def get_logback_conf_dir():
-    cppaths = [CLUSTER_CONF_DIR]
-    storm_logback_conf_dir = confvalue('storm.logback.conf.dir', cppaths)
-    if ((storm_logback_conf_dir == None) or (storm_logback_conf_dir == 'nil')):
-        storm_logback_conf_dir = STORM_LOGBACK_CONF_DIR
-    return storm_logback_conf_dir

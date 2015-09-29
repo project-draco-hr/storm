@@ -1,0 +1,20 @@
+{
+switch (field) {
+case ENABLE:
+    if (value == null) {
+      unset_enable();
+    }
+ else {
+      set_enable((Boolean)value);
+    }
+  break;
+case SAMPLINGPCT:
+if (value == null) {
+  unset_samplingpct();
+}
+ else {
+  set_samplingpct((Double)value);
+}
+break;
+}
+}

@@ -1,4 +1,4 @@
-def __init__(self, id=None, name=None, uptime_secs=None, status=None, num_tasks=None, num_workers=None, num_executors=None, topology_conf=None, id_to_spout_agg_stats=None, id_to_bolt_agg_stats=None, sched_status=None, topology_stats=None, owner=None):
+def __init__(self, id=None, name=None, uptime_secs=None, status=None, num_tasks=None, num_workers=None, num_executors=None, topology_conf=None, id_to_spout_agg_stats=None, id_to_bolt_agg_stats=None, sched_status=None, topology_stats=None, owner=None, debug_options=None, replication_count=None):
     self.id = id
     self.name = name
     self.uptime_secs = uptime_secs
@@ -12,3 +12,5 @@ def __init__(self, id=None, name=None, uptime_secs=None, status=None, num_tasks=
     self.sched_status = sched_status
     self.topology_stats = topology_stats
     self.owner = owner
+    self.debug_options = debug_options
+    self.replication_count = replication_count

@@ -121,6 +121,23 @@
     }
     first=false;
   }
+  if (is_set_debug_options()) {
+    if (!first)     sb.append(", ");
+    sb.append("debug_options:");
+    if (this.debug_options == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.debug_options);
+    }
+    first=false;
+  }
+  if (is_set_replication_count()) {
+    if (!first)     sb.append(", ");
+    sb.append("replication_count:");
+    sb.append(this.replication_count);
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

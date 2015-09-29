@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_e=true && (is_set_e());
+  list.add(present_e);
+  if (present_e)   list.add(e);
+  boolean present_aze=true && (is_set_aze());
+  list.add(present_aze);
+  if (present_aze)   list.add(aze);
+  return list.hashCode();
+}

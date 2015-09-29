@@ -6,17 +6,17 @@
   struct.set_status_isSet(true);
   struct.num_workers=iprot.readI32();
   struct.set_num_workers_isSet(true);
-  BitSet incoming=iprot.readBitSet(5);
+  BitSet incoming=iprot.readBitSet(6);
   if (incoming.get(0)) {
 {
-      org.apache.thrift.protocol.TMap _map538=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
-      struct.component_executors=new HashMap<String,Integer>(2 * _map538.size);
-      String _key539;
-      int _val540;
-      for (int _i541=0; _i541 < _map538.size; ++_i541) {
-        _key539=iprot.readString();
-        _val540=iprot.readI32();
-        struct.component_executors.put(_key539,_val540);
+      org.apache.thrift.protocol.TMap _map562=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
+      struct.component_executors=new HashMap<String,Integer>(2 * _map562.size);
+      String _key563;
+      int _val564;
+      for (int _i565=0; _i565 < _map562.size; ++_i565) {
+        _key563=iprot.readString();
+        _val564=iprot.readI32();
+        struct.component_executors.put(_key563,_val564);
       }
     }
     struct.set_component_executors_isSet(true);
@@ -37,5 +37,20 @@
   if (incoming.get(4)) {
     struct.prev_status=backtype.storm.generated.TopologyStatus.findByValue(iprot.readI32());
     struct.set_prev_status_isSet(true);
+  }
+  if (incoming.get(5)) {
+{
+      org.apache.thrift.protocol.TMap _map566=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.component_debug=new HashMap<String,DebugOptions>(2 * _map566.size);
+      String _key567;
+      DebugOptions _val568;
+      for (int _i569=0; _i569 < _map566.size; ++_i569) {
+        _key567=iprot.readString();
+        _val568=new DebugOptions();
+        _val568.read(iprot);
+        struct.component_debug.put(_key567,_val568);
+      }
+    }
+    struct.set_component_debug_isSet(true);
   }
 }

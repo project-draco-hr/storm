@@ -48,5 +48,11 @@
     if (!(this_present_prev_status && that_present_prev_status))     return false;
     if (!this.prev_status.equals(that.prev_status))     return false;
   }
+  boolean this_present_component_debug=true && this.is_set_component_debug();
+  boolean that_present_component_debug=true && that.is_set_component_debug();
+  if (this_present_component_debug || that_present_component_debug) {
+    if (!(this_present_component_debug && that_present_component_debug))     return false;
+    if (!this.component_debug.equals(that.component_debug))     return false;
+  }
   return true;
 }

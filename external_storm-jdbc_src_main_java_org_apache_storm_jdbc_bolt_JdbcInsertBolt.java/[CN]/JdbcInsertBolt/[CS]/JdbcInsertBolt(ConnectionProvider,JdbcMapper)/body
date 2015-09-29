@@ -1,0 +1,4 @@
+{
+  super(connectionProvider);
+  this.jdbcMapper=jdbcMapper;
+}

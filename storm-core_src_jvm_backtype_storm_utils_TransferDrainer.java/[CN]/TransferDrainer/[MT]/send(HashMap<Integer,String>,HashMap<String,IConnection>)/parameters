@@ -1,0 +1,2 @@
+HashMap<Integer,String> taskToNode
+HashMap<String,IConnection> connections

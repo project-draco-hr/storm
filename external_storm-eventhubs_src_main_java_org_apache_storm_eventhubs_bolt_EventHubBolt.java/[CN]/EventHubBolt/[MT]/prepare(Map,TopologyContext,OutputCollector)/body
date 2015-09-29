@@ -1,0 +1,16 @@
+{
+  this.collector=collector;
+  String myPartitionId=null;
+  if (boltConfig.getPartitionMode()) {
+    myPartitionId="" + context.getThisTaskIndex();
+  }
+  logger.info("creating sender: " + boltConfig.getConnectionString() + ", "+ boltConfig.getEntityPath()+ ", "+ myPartitionId);
+  try {
+    EventHubClient eventHubClient=EventHubClient.create(boltConfig.getConnectionString(),boltConfig.getEntityPath());
+    sender=eventHubClient.createPartitionSender(myPartitionId);
+  }
+ catch (  Exception ex) {
+    logger.error(ex.getMessage());
+    throw new RuntimeException(ex);
+  }
+}

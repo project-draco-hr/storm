@@ -1,4 +1,0 @@
-{
-  if (key.size() != 1)   throw new RuntimeException("Default KeyFactory does not support compound keys");
-  return (String)key.get(0);
-}

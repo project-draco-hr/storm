@@ -1,6 +1,6 @@
 {
   int result=columnName.hashCode();
-  result=31 * result + val.hashCode();
+  result=31 * result + (val != null ? val.hashCode() : 0);
   result=31 * result + sqlType;
   return result;
 }

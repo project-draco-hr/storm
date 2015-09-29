@@ -6,6 +6,8 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.executors))
     value = ((value * 31) ^ hash(self.status))
     value = ((value * 31) ^ hash(self.errors))
+    value = ((value * 31) ^ hash(self.component_debug))
     value = ((value * 31) ^ hash(self.sched_status))
     value = ((value * 31) ^ hash(self.owner))
+    value = ((value * 31) ^ hash(self.replication_count))
     return value

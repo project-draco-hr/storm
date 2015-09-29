@@ -1,0 +1,5 @@
+{
+  EsState esState=new EsState(esConfig,tupleMapper);
+  esState.prepare();
+  return esState;
+}

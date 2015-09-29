@@ -5,4 +5,7 @@
   if (!is_set_component_type()) {
     throw new org.apache.thrift.protocol.TProtocolException("Required field 'component_type' is unset! Struct:" + toString());
   }
+  if (debug_options != null) {
+    debug_options.validate();
+  }
 }

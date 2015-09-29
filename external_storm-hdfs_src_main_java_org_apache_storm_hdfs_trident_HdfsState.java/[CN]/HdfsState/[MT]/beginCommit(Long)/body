@@ -1,2 +1,9 @@
 {
+  if (txId <= lastSeenTxn.txnid) {
+    LOG.info("txID {} is already processed, lastSeenTxn {}. Triggering recovery.",txId,lastSeenTxn);
+    long start=System.currentTimeMillis();
+    options.recover(lastSeenTxn.dataFilePath,lastSeenTxn.offset);
+    LOG.info("Recovery took {} ms.",System.currentTimeMillis() - start);
+  }
+  updateIndex(txId);
 }

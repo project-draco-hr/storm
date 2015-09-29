@@ -1,0 +1,4 @@
+{
+  setExpireInterval(expireIntervalSec);
+  return this;
+}

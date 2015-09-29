@@ -1,0 +1,10 @@
+{
+  String source="{\"user\":\"user1\"}";
+  String index="index1";
+  String type=".percolator";
+  node.client().prepareIndex("index1",".percolator").setId("1").setSource("{\"query\":{\"match\":{\"user\":\"user1\"}}}").execute().actionGet();
+  Tuple tuple=EsTestUtil.generateTestTuple(source,index,type,null);
+  bolt.execute(tuple);
+  verify(outputCollector).ack(tuple);
+  verify(outputCollector).emit(new Values(source,any(PercolateResponse.Match.class)));
+}

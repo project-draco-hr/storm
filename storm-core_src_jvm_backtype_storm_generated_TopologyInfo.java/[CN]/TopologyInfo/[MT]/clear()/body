@@ -6,6 +6,9 @@
   this.executors=null;
   this.status=null;
   this.errors=null;
+  this.component_debug=null;
   this.sched_status=null;
   this.owner=null;
+  set_replication_count_isSet(false);
+  this.replication_count=0;
 }

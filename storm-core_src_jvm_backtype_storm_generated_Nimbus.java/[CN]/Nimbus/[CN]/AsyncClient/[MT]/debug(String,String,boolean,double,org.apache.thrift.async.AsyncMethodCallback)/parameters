@@ -1,0 +1,5 @@
+String name
+String component
+boolean enable
+double samplingPercentage
+org.apache.thrift.async.AsyncMethodCallback resultHandler

@@ -1,0 +1,2 @@
+def _min_width_tuple(self):
+    return ((-1), 43, (-1), (-1))

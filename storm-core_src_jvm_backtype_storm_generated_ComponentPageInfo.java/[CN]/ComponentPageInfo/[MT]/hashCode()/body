@@ -33,5 +33,17 @@
   boolean present_errors=true && (is_set_errors());
   list.add(present_errors);
   if (present_errors)   list.add(errors);
+  boolean present_eventlog_host=true && (is_set_eventlog_host());
+  list.add(present_eventlog_host);
+  if (present_eventlog_host)   list.add(eventlog_host);
+  boolean present_eventlog_port=true && (is_set_eventlog_port());
+  list.add(present_eventlog_port);
+  if (present_eventlog_port)   list.add(eventlog_port);
+  boolean present_debug_options=true && (is_set_debug_options());
+  list.add(present_debug_options);
+  if (present_debug_options)   list.add(debug_options);
+  boolean present_topology_status=true && (is_set_topology_status());
+  list.add(present_topology_status);
+  if (present_topology_status)   list.add(topology_status);
   return list.hashCode();
 }

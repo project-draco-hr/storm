@@ -10,3 +10,7 @@ gsid_to_input_stats
 sid_to_output_stats
 exec_stats
 errors
+eventlog_host
+eventlog_port
+debug_options
+topology_status

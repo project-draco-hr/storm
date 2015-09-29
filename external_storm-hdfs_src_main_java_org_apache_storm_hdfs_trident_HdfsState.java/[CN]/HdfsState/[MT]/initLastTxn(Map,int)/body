@@ -1,0 +1,12 @@
+{
+  String indexFileName=String.format(".index.%s.%d",conf.get(Config.TOPOLOGY_NAME),partition);
+  this.indexFilePath=new Path(options.fileNameFormat.getPath(),indexFileName);
+  try {
+    this.lastSeenTxn=getTxnRecord(indexFilePath);
+    LOG.debug("initLastTxn updated lastSeenTxn to [{}]",this.lastSeenTxn);
+  }
+ catch (  IOException e) {
+    LOG.warn("initLastTxn failed due to IOException.",e);
+    throw new RuntimeException(e);
+  }
+}

@@ -19,12 +19,12 @@ case 1:
 case 2:
   if (schemeField.type == org.apache.thrift.protocol.TType.SET) {
 {
-      org.apache.thrift.protocol.TSet _set478=iprot.readSetBegin();
-      struct.port=new HashSet<Long>(2 * _set478.size);
-      long _elem479;
-      for (int _i480=0; _i480 < _set478.size; ++_i480) {
-        _elem479=iprot.readI64();
-        struct.port.add(_elem479);
+      org.apache.thrift.protocol.TSet _set496=iprot.readSetBegin();
+      struct.port=new HashSet<Long>(2 * _set496.size);
+      long _elem497;
+      for (int _i498=0; _i498 < _set496.size; ++_i498) {
+        _elem497=iprot.readI64();
+        struct.port.add(_elem497);
       }
       iprot.readSetEnd();
     }

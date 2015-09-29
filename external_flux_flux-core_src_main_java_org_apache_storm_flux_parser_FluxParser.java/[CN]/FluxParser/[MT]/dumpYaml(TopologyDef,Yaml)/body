@@ -1,0 +1,3 @@
+{
+  System.out.println("Configuration (interpreted): \n" + yaml.dump(topology));
+}

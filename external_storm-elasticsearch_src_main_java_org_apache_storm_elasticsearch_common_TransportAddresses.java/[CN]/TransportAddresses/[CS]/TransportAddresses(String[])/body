@@ -1,0 +1,9 @@
+{
+  if (nodes == null) {
+    throw new IllegalArgumentException("Elasticsearch hosts cannot be null");
+  }
+  if (nodes.length == 0) {
+    throw new IllegalArgumentException("At least one Elasticsearch host must be specified");
+  }
+  this.nodes=nodes;
+}

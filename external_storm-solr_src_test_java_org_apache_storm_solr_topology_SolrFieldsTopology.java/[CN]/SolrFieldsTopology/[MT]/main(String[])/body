@@ -1,0 +1,4 @@
+{
+  SolrFieldsTopology solrFieldsTopology=new SolrFieldsTopology();
+  solrFieldsTopology.run(args);
+}

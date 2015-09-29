@@ -1,0 +1,22 @@
+{
+  final DisruptorQueue queue=createQueue("testBackPressure",CAPACITY);
+  queue.setEnableBackpressure(true);
+  queue.setHighWaterMark(HIGH_WATERMARK);
+  queue.setLowWaterMark(LOW_WATERMARK);
+  final AtomicBoolean throttleOn=new AtomicBoolean(false);
+  final AtomicLong consumerCursor=new AtomicLong(-1);
+  DisruptorBackpressureCallbackImpl cb=new DisruptorBackpressureCallbackImpl(queue,throttleOn,consumerCursor);
+  queue.registerBackpressureCallback(cb);
+  queue.consumerStarted();
+  for (int i=0; i < MESSAGES; i++) {
+    queue.publish(String.valueOf(i));
+  }
+  queue.consumeBatchWhenAvailable(new EventHandler<Object>(){
+    @Override public void onEvent(    Object o,    long l,    boolean b) throws Exception {
+      consumerCursor.set(l);
+    }
+  }
+);
+  Assert.assertEquals("Check the calling time of throttle on. ",cb.highWaterMarkCalledPopulation,queue.getHighWaterMark());
+  Assert.assertEquals("Checking the calling time of throttle off. ",cb.lowWaterMarkCalledPopulation,queue.getLowWaterMark());
+}

@@ -1,0 +1,3 @@
+{
+  iface.debug(args.name,args.component,args.enable,args.samplingPercentage,resultHandler);
+}

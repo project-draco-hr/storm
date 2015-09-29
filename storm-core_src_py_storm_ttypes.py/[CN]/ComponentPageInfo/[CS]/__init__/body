@@ -1,4 +1,4 @@
-def __init__(self, component_id=None, component_type=None, topology_id=None, topology_name=None, num_executors=None, num_tasks=None, window_to_stats=None, gsid_to_input_stats=None, sid_to_output_stats=None, exec_stats=None, errors=None):
+def __init__(self, component_id=None, component_type=None, topology_id=None, topology_name=None, num_executors=None, num_tasks=None, window_to_stats=None, gsid_to_input_stats=None, sid_to_output_stats=None, exec_stats=None, errors=None, eventlog_host=None, eventlog_port=None, debug_options=None, topology_status=None):
     self.component_id = component_id
     self.component_type = component_type
     self.topology_id = topology_id
@@ -10,3 +10,7 @@ def __init__(self, component_id=None, component_type=None, topology_id=None, top
     self.sid_to_output_stats = sid_to_output_stats
     self.exec_stats = exec_stats
     self.errors = errors
+    self.eventlog_host = eventlog_host
+    self.eventlog_port = eventlog_port
+    self.debug_options = debug_options
+    self.topology_status = topology_status

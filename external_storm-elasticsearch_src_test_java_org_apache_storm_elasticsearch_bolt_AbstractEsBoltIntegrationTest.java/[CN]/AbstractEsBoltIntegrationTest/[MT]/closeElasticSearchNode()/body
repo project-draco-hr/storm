@@ -1,0 +1,5 @@
+{
+  node.stop();
+  node.close();
+  FileUtils.deleteDirectory(new File("./data"));
+}

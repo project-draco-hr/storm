@@ -30,7 +30,19 @@
   if (struct.is_set_errors()) {
     optionals.set(8);
   }
-  oprot.writeBitSet(optionals,9);
+  if (struct.is_set_eventlog_host()) {
+    optionals.set(9);
+  }
+  if (struct.is_set_eventlog_port()) {
+    optionals.set(10);
+  }
+  if (struct.is_set_debug_options()) {
+    optionals.set(11);
+  }
+  if (struct.is_set_topology_status()) {
+    optionals.set(12);
+  }
+  oprot.writeBitSet(optionals,13);
   if (struct.is_set_topology_id()) {
     oprot.writeString(struct.topology_id);
   }
@@ -46,44 +58,56 @@
   if (struct.is_set_window_to_stats()) {
 {
       oprot.writeI32(struct.window_to_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter409 : struct.window_to_stats.entrySet()) {
-        oprot.writeString(_iter409.getKey());
-        _iter409.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter427 : struct.window_to_stats.entrySet()) {
+        oprot.writeString(_iter427.getKey());
+        _iter427.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_gsid_to_input_stats()) {
 {
       oprot.writeI32(struct.gsid_to_input_stats.size());
-      for (      Map.Entry<GlobalStreamId,ComponentAggregateStats> _iter410 : struct.gsid_to_input_stats.entrySet()) {
-        _iter410.getKey().write(oprot);
-        _iter410.getValue().write(oprot);
+      for (      Map.Entry<GlobalStreamId,ComponentAggregateStats> _iter428 : struct.gsid_to_input_stats.entrySet()) {
+        _iter428.getKey().write(oprot);
+        _iter428.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_sid_to_output_stats()) {
 {
       oprot.writeI32(struct.sid_to_output_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter411 : struct.sid_to_output_stats.entrySet()) {
-        oprot.writeString(_iter411.getKey());
-        _iter411.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter429 : struct.sid_to_output_stats.entrySet()) {
+        oprot.writeString(_iter429.getKey());
+        _iter429.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_exec_stats()) {
 {
       oprot.writeI32(struct.exec_stats.size());
-      for (      ExecutorAggregateStats _iter412 : struct.exec_stats) {
-        _iter412.write(oprot);
+      for (      ExecutorAggregateStats _iter430 : struct.exec_stats) {
+        _iter430.write(oprot);
       }
     }
   }
   if (struct.is_set_errors()) {
 {
       oprot.writeI32(struct.errors.size());
-      for (      ErrorInfo _iter413 : struct.errors) {
-        _iter413.write(oprot);
+      for (      ErrorInfo _iter431 : struct.errors) {
+        _iter431.write(oprot);
       }
     }
+  }
+  if (struct.is_set_eventlog_host()) {
+    oprot.writeString(struct.eventlog_host);
+  }
+  if (struct.is_set_eventlog_port()) {
+    oprot.writeI32(struct.eventlog_port);
+  }
+  if (struct.is_set_debug_options()) {
+    struct.debug_options.write(oprot);
+  }
+  if (struct.is_set_topology_status()) {
+    oprot.writeString(struct.topology_status);
   }
 }

@@ -12,10 +12,14 @@ case STATUS:
 return get_status();
 case ERRORS:
 return get_errors();
+case COMPONENT_DEBUG:
+return get_component_debug();
 case SCHED_STATUS:
 return get_sched_status();
 case OWNER:
 return get_owner();
+case REPLICATION_COUNT:
+return Integer.valueOf(get_replication_count());
 }
 throw new IllegalStateException();
 }

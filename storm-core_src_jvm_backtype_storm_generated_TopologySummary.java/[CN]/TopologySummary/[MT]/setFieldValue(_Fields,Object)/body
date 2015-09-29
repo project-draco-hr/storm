@@ -72,5 +72,13 @@ unset_owner();
 set_owner((String)value);
 }
 break;
+case REPLICATION_COUNT:
+if (value == null) {
+unset_replication_count();
+}
+ else {
+set_replication_count((Integer)value);
+}
+break;
 }
 }

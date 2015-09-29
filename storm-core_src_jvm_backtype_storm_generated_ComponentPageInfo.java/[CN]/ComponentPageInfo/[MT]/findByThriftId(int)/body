@@ -22,6 +22,14 @@ case 10:
 return EXEC_STATS;
 case 11:
 return ERRORS;
+case 12:
+return EVENTLOG_HOST;
+case 13:
+return EVENTLOG_PORT;
+case 14:
+return DEBUG_OPTIONS;
+case 15:
+return TOPOLOGY_STATUS;
 default :
 return null;
 }

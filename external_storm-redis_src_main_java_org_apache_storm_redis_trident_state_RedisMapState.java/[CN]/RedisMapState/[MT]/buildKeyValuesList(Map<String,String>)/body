@@ -1,0 +1,9 @@
+{
+  String[] keyValueLists=new String[keyValues.size() * 2];
+  int idx=0;
+  for (  Map.Entry<String,String> kvEntry : keyValues.entrySet()) {
+    keyValueLists[idx++]=kvEntry.getKey();
+    keyValueLists[idx++]=kvEntry.getValue();
+  }
+  return keyValueLists;
+}

@@ -1,0 +1,12 @@
+{
+  try {
+synchronized (EsState.class) {
+      if (client == null) {
+        client=new StormElasticSearchClient(esConfig).construct();
+      }
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("unable to initialize EsState ",e);
+  }
+}

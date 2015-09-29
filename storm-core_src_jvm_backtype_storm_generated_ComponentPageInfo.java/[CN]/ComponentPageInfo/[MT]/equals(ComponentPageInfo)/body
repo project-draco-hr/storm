@@ -66,5 +66,29 @@
     if (!(this_present_errors && that_present_errors))     return false;
     if (!this.errors.equals(that.errors))     return false;
   }
+  boolean this_present_eventlog_host=true && this.is_set_eventlog_host();
+  boolean that_present_eventlog_host=true && that.is_set_eventlog_host();
+  if (this_present_eventlog_host || that_present_eventlog_host) {
+    if (!(this_present_eventlog_host && that_present_eventlog_host))     return false;
+    if (!this.eventlog_host.equals(that.eventlog_host))     return false;
+  }
+  boolean this_present_eventlog_port=true && this.is_set_eventlog_port();
+  boolean that_present_eventlog_port=true && that.is_set_eventlog_port();
+  if (this_present_eventlog_port || that_present_eventlog_port) {
+    if (!(this_present_eventlog_port && that_present_eventlog_port))     return false;
+    if (this.eventlog_port != that.eventlog_port)     return false;
+  }
+  boolean this_present_debug_options=true && this.is_set_debug_options();
+  boolean that_present_debug_options=true && that.is_set_debug_options();
+  if (this_present_debug_options || that_present_debug_options) {
+    if (!(this_present_debug_options && that_present_debug_options))     return false;
+    if (!this.debug_options.equals(that.debug_options))     return false;
+  }
+  boolean this_present_topology_status=true && this.is_set_topology_status();
+  boolean that_present_topology_status=true && that.is_set_topology_status();
+  if (this_present_topology_status || that_present_topology_status) {
+    if (!(this_present_topology_status && that_present_topology_status))     return false;
+    if (!this.topology_status.equals(that.topology_status))     return false;
+  }
   return true;
 }

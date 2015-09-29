@@ -1,0 +1,2 @@
+def get_description(self):
+    return mstr(self.fields['description'])

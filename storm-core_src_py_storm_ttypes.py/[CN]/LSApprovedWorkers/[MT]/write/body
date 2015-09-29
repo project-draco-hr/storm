@@ -6,9 +6,9 @@ def write(self, oprot):
     if (self.approved_workers is not None):
         oprot.writeFieldBegin('approved_workers', TType.MAP, 1)
         oprot.writeMapBegin(TType.STRING, TType.I32, len(self.approved_workers))
-        for (kiter517, viter518) in self.approved_workers.items():
-            oprot.writeString(kiter517.encode('utf-8'))
-            oprot.writeI32(viter518)
+        for (kiter542, viter543) in self.approved_workers.items():
+            oprot.writeString(kiter542.encode('utf-8'))
+            oprot.writeI32(viter543)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

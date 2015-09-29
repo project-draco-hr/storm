@@ -13,4 +13,6 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.sched_status))
     value = ((value * 31) ^ hash(self.topology_stats))
     value = ((value * 31) ^ hash(self.owner))
+    value = ((value * 31) ^ hash(self.debug_options))
+    value = ((value * 31) ^ hash(self.replication_count))
     return value

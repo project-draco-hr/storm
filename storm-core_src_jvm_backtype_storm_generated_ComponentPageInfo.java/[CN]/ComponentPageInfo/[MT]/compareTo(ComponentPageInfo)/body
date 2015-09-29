@@ -113,5 +113,45 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_eventlog_host()).compareTo(other.is_set_eventlog_host());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_eventlog_host()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.eventlog_host,other.eventlog_host);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_eventlog_port()).compareTo(other.is_set_eventlog_port());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_eventlog_port()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.eventlog_port,other.eventlog_port);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_debug_options()).compareTo(other.is_set_debug_options());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_debug_options()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.debug_options,other.debug_options);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_topology_status()).compareTo(other.is_set_topology_status());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_topology_status()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topology_status,other.topology_status);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

@@ -5,4 +5,7 @@
   if (topology_stats != null) {
     topology_stats.validate();
   }
+  if (debug_options != null) {
+    debug_options.validate();
+  }
 }

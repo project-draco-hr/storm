@@ -1,0 +1,4 @@
+@staticmethod
+def _assert(o1, o2, o3):
+    if ((len(o1) != len(o2)) and ((o3 is not None) and (len(o2) != len(o3)))):
+        raise RuntimeError('Object collections must have the same length. len(o1)={0}, len(o2)={1}, len(o3)={2}'.format(len(o1), len(o2), ((-1) if (o3 is None) else len(o3))))

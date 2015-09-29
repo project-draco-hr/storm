@@ -1,14 +1,14 @@
 {
   _messageTimeoutMs=context.maxTopologyMessageTimeout() * 1000L;
   _lastRotate=System.currentTimeMillis();
-  _batches=new RotatingMap(2);
+  _batches=new RotatingMap<>(2);
   _context=context;
   _collector=collector;
   _coordCollector=new CoordinatedOutputCollector(collector);
   _coordOutputCollector=new BatchOutputCollectorImpl(new OutputCollector(_coordCollector));
   _coordConditions=(Map)context.getExecutorData("__coordConditions");
   if (_coordConditions == null) {
-    _coordConditions=new HashMap();
+    _coordConditions=new HashMap<>();
     for (    String batchGroup : _coordSpecs.keySet()) {
       CoordSpec spec=_coordSpecs.get(batchGroup);
       CoordCondition cond=new CoordCondition();
@@ -23,7 +23,7 @@
           cond.expectedTaskReports+=context.getComponentTasks(comp).size();
         }
       }
-      cond.targetTasks=new HashSet<Integer>();
+      cond.targetTasks=new HashSet<>();
       for (      String component : Utils.get(context.getThisTargets(),COORD_STREAM(batchGroup),new HashMap<String,Grouping>()).keySet()) {
         cond.targetTasks.addAll(context.getComponentTasks(component));
       }

@@ -1,0 +1,22 @@
+{
+  int batchSize=100;
+  FixedBatchSpout spout=new FixedBatchSpout(batchSize);
+  spout.setCycle(true);
+  TridentTopology topology=new TridentTopology();
+  Stream stream=topology.newStream("spout",spout);
+  EsConfig esConfig=new EsConfig(EsConstants.clusterName,new String[]{"localhost:9300"});
+  Fields esFields=new Fields("index","type","source");
+  EsTupleMapper tupleMapper=EsTestUtil.generateDefaultTupleMapper();
+  StateFactory factory=new EsStateFactory(esConfig,tupleMapper);
+  TridentState state=stream.partitionPersist(factory,esFields,new EsUpdater(),new Fields());
+  EsTestUtil.startEsNode();
+  EsTestUtil.waitForSeconds(5);
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology(TOPOLOGY_NAME,null,topology.build());
+  EsTestUtil.waitForSeconds(20);
+  cluster.killTopology(TOPOLOGY_NAME);
+  System.out.println("cluster begin to shutdown");
+  cluster.shutdown();
+  System.out.println("cluster shutdown");
+  System.exit(0);
+}

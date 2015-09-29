@@ -1,0 +1,5 @@
+{
+  Options opts=new Options();
+  opts.dataTypeDescription=dataTypeDescription;
+  return transactional(jedisPoolConfig,opts);
+}

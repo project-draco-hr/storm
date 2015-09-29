@@ -1,15 +1,15 @@
 {
   TTupleProtocol iprot=(TTupleProtocol)prot;
 {
-    org.apache.thrift.protocol.TMap _map558=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-    struct.serialized_parts=new HashMap<String,ThriftSerializedObject>(2 * _map558.size);
-    String _key559;
-    ThriftSerializedObject _val560;
-    for (int _i561=0; _i561 < _map558.size; ++_i561) {
-      _key559=iprot.readString();
-      _val560=new ThriftSerializedObject();
-      _val560.read(iprot);
-      struct.serialized_parts.put(_key559,_val560);
+    org.apache.thrift.protocol.TMap _map586=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.serialized_parts=new HashMap<String,ThriftSerializedObject>(2 * _map586.size);
+    String _key587;
+    ThriftSerializedObject _val588;
+    for (int _i589=0; _i589 < _map586.size; ++_i589) {
+      _key587=iprot.readString();
+      _val588=new ThriftSerializedObject();
+      _val588.read(iprot);
+      struct.serialized_parts.put(_key587,_val588);
     }
   }
   struct.set_serialized_parts_isSet(true);

@@ -26,6 +26,10 @@ case 12:
 return TOPOLOGY_STATS;
 case 13:
 return OWNER;
+case 14:
+return DEBUG_OPTIONS;
+case 15:
+return REPLICATION_COUNT;
 default :
 return null;
 }

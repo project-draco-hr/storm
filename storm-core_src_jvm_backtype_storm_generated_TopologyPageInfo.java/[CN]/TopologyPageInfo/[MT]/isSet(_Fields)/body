@@ -29,6 +29,10 @@ case TOPOLOGY_STATS:
 return is_set_topology_stats();
 case OWNER:
 return is_set_owner();
+case DEBUG_OPTIONS:
+return is_set_debug_options();
+case REPLICATION_COUNT:
+return is_set_replication_count();
 }
 throw new IllegalStateException();
 }

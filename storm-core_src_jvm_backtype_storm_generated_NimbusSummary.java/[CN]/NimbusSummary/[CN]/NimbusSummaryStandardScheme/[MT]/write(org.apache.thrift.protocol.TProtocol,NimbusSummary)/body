@@ -1,0 +1,25 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.host != null) {
+    oprot.writeFieldBegin(HOST_FIELD_DESC);
+    oprot.writeString(struct.host);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(PORT_FIELD_DESC);
+  oprot.writeI32(struct.port);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(struct.uptime_secs);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(IS_LEADER_FIELD_DESC);
+  oprot.writeBool(struct.isLeader);
+  oprot.writeFieldEnd();
+  if (struct.version != null) {
+    oprot.writeFieldBegin(VERSION_FIELD_DESC);
+    oprot.writeString(struct.version);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

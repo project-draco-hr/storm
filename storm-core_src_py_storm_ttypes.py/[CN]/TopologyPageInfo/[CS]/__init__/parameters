@@ -12,3 +12,5 @@ id_to_bolt_agg_stats
 sched_status
 topology_stats
 owner
+debug_options
+replication_count

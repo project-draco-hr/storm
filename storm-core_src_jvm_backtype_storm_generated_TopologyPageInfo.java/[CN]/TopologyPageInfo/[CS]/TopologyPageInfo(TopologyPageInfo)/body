@@ -47,4 +47,8 @@
   if (other.is_set_owner()) {
     this.owner=other.owner;
   }
+  if (other.is_set_debug_options()) {
+    this.debug_options=new DebugOptions(other.debug_options);
+  }
+  this.replication_count=other.replication_count;
 }

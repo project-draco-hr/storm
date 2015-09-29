@@ -1,10 +1,3 @@
 {
-  Map state=new HashMap<String,Object>();
-  long rp=readPos();
-  long wp=writePos();
-  state.put("capacity",capacity());
-  state.put("population",wp - rp);
-  state.put("write_pos",wp);
-  state.put("read_pos",rp);
-  return state;
+  return _metrics.getState();
 }

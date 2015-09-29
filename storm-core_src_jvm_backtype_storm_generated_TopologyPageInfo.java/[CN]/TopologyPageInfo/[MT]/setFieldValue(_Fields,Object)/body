@@ -104,5 +104,21 @@ unset_owner();
 set_owner((String)value);
 }
 break;
+case DEBUG_OPTIONS:
+if (value == null) {
+unset_debug_options();
+}
+ else {
+set_debug_options((DebugOptions)value);
+}
+break;
+case REPLICATION_COUNT:
+if (value == null) {
+unset_replication_count();
+}
+ else {
+set_replication_count((Integer)value);
+}
+break;
 }
 }

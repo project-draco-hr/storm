@@ -1,0 +1,2 @@
+def keys_view(self, excluded):
+    return self.view(excluded).keys().sort(Jira.storm_jira_cmp, reverse=True)

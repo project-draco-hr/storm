@@ -6,9 +6,9 @@
       oprot.writeFieldBegin(WINDOW_TO_EMITTED_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,struct.window_to_emitted.size()));
-        for (        Map.Entry<String,Long> _iter336 : struct.window_to_emitted.entrySet()) {
-          oprot.writeString(_iter336.getKey());
-          oprot.writeI64(_iter336.getValue());
+        for (        Map.Entry<String,Long> _iter354 : struct.window_to_emitted.entrySet()) {
+          oprot.writeString(_iter354.getKey());
+          oprot.writeI64(_iter354.getValue());
         }
         oprot.writeMapEnd();
       }
@@ -20,9 +20,9 @@
       oprot.writeFieldBegin(WINDOW_TO_TRANSFERRED_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,struct.window_to_transferred.size()));
-        for (        Map.Entry<String,Long> _iter337 : struct.window_to_transferred.entrySet()) {
-          oprot.writeString(_iter337.getKey());
-          oprot.writeI64(_iter337.getValue());
+        for (        Map.Entry<String,Long> _iter355 : struct.window_to_transferred.entrySet()) {
+          oprot.writeString(_iter355.getKey());
+          oprot.writeI64(_iter355.getValue());
         }
         oprot.writeMapEnd();
       }
@@ -34,9 +34,9 @@
       oprot.writeFieldBegin(WINDOW_TO_COMPLETE_LATENCIES_MS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.DOUBLE,struct.window_to_complete_latencies_ms.size()));
-        for (        Map.Entry<String,Double> _iter338 : struct.window_to_complete_latencies_ms.entrySet()) {
-          oprot.writeString(_iter338.getKey());
-          oprot.writeDouble(_iter338.getValue());
+        for (        Map.Entry<String,Double> _iter356 : struct.window_to_complete_latencies_ms.entrySet()) {
+          oprot.writeString(_iter356.getKey());
+          oprot.writeDouble(_iter356.getValue());
         }
         oprot.writeMapEnd();
       }
@@ -48,9 +48,9 @@
       oprot.writeFieldBegin(WINDOW_TO_ACKED_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,struct.window_to_acked.size()));
-        for (        Map.Entry<String,Long> _iter339 : struct.window_to_acked.entrySet()) {
-          oprot.writeString(_iter339.getKey());
-          oprot.writeI64(_iter339.getValue());
+        for (        Map.Entry<String,Long> _iter357 : struct.window_to_acked.entrySet()) {
+          oprot.writeString(_iter357.getKey());
+          oprot.writeI64(_iter357.getValue());
         }
         oprot.writeMapEnd();
       }
@@ -62,9 +62,9 @@
       oprot.writeFieldBegin(WINDOW_TO_FAILED_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,struct.window_to_failed.size()));
-        for (        Map.Entry<String,Long> _iter340 : struct.window_to_failed.entrySet()) {
-          oprot.writeString(_iter340.getKey());
-          oprot.writeI64(_iter340.getValue());
+        for (        Map.Entry<String,Long> _iter358 : struct.window_to_failed.entrySet()) {
+          oprot.writeString(_iter358.getKey());
+          oprot.writeI64(_iter358.getValue());
         }
         oprot.writeMapEnd();
       }

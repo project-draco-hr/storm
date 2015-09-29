@@ -1,0 +1,5 @@
+def _build_format_tuples(self, fields_tuple, row_tuple, min_width_tuple):
+    sizes = Formatter._find_sizes(fields_tuple, row_tuple, min_width_tuple)
+    for i in range(0, len(row_tuple)):
+        self.format += '%s'
+        self.data_format += [(('{!s:' + str(sizes[i])) + '}')]

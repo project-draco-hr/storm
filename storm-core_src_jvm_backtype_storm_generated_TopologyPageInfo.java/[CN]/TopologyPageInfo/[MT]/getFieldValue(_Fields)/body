@@ -26,6 +26,10 @@ case TOPOLOGY_STATS:
 return get_topology_stats();
 case OWNER:
 return get_owner();
+case DEBUG_OPTIONS:
+return get_debug_options();
+case REPLICATION_COUNT:
+return Integer.valueOf(get_replication_count());
 }
 throw new IllegalStateException();
 }

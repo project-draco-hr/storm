@@ -88,5 +88,37 @@ unset_errors();
 set_errors((List<ErrorInfo>)value);
 }
 break;
+case EVENTLOG_HOST:
+if (value == null) {
+unset_eventlog_host();
+}
+ else {
+set_eventlog_host((String)value);
+}
+break;
+case EVENTLOG_PORT:
+if (value == null) {
+unset_eventlog_port();
+}
+ else {
+set_eventlog_port((Integer)value);
+}
+break;
+case DEBUG_OPTIONS:
+if (value == null) {
+unset_debug_options();
+}
+ else {
+set_debug_options((DebugOptions)value);
+}
+break;
+case TOPOLOGY_STATUS:
+if (value == null) {
+unset_topology_status();
+}
+ else {
+set_topology_status((String)value);
+}
+break;
 }
 }

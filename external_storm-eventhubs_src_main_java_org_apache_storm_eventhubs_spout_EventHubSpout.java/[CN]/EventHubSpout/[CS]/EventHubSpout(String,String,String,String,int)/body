@@ -1,0 +1,3 @@
+{
+  this(new EventHubSpoutConfig(username,password,namespace,entityPath,partitionCount));
+}

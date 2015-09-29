@@ -6,9 +6,9 @@ def write(self, oprot):
     if (self.assignments is not None):
         oprot.writeFieldBegin('assignments', TType.MAP, 1)
         oprot.writeMapBegin(TType.I32, TType.STRUCT, len(self.assignments))
-        for (kiter526, viter527) in self.assignments.items():
-            oprot.writeI32(kiter526)
-            viter527.write(oprot)
+        for (kiter551, viter552) in self.assignments.items():
+            oprot.writeI32(kiter551)
+            viter552.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

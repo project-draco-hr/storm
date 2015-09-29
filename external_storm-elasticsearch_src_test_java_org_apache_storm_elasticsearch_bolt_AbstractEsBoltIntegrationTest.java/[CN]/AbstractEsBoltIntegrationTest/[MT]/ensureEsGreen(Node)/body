@@ -1,0 +1,4 @@
+{
+  ClusterHealthResponse chr=node.client().admin().cluster().health(Requests.clusterHealthRequest().timeout(TimeValue.timeValueSeconds(30)).waitForGreenStatus().waitForEvents(Priority.LANGUID).waitForRelocatingShards(0)).actionGet();
+  assertThat("cluster status is green",chr.getStatus(),equalTo(ClusterHealthStatus.GREEN));
+}
