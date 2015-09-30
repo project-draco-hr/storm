@@ -1,3 +1,5 @@
 {
   super(tableName,mapper);
+  this.batchMutations=new LinkedList<>();
+  this.tupleBatch=new LinkedList<>();
 }

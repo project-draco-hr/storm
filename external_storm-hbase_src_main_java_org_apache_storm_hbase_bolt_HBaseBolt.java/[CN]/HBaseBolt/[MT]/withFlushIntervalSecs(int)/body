@@ -1,0 +1,4 @@
+{
+  this.flushIntervalSecs=flushIntervalSecs;
+  return this;
+}

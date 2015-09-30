@@ -1,0 +1,9 @@
+{
+  Map<String,Object> conf=super.getComponentConfiguration();
+  if (conf == null)   conf=new Config();
+  if (flushIntervalSecs > 0) {
+    LOG.info("Enabling tick tuple with interval [" + flushIntervalSecs + "]");
+    conf.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS,flushIntervalSecs);
+  }
+  return conf;
+}
