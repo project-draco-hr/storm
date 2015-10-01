@@ -1,5 +1,0 @@
-{
-  if (sampleRate <= 0 || sampleRate > 1)   throw new IllegalArgumentException("sampleRate should be a value between (0,1].");
-  _sampleRate=sampleRate;
-  _random=new Random();
-}
