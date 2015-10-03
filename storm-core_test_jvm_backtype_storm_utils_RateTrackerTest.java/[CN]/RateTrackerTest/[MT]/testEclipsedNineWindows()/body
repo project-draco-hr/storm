@@ -1,9 +1,10 @@
 {
-  RateTracker rt=new RateTracker(10000,10,true);
+  long time=0;
+  RateTracker rt=new RateTracker(10000,10,time);
   rt.notify(1);
-  float r1=rt.reportRate();
-  rt.forceUpdateSlides(9);
+  double r1=rt.reportRate(1000);
+  rt.forceRotate(9,1000);
   rt.notify(9);
-  float r2=rt.reportRate();
-  assert(r1 == r2);
+  double r2=rt.reportRate(10000);
+  assertEquals(r1,r2,0.00001);
 }

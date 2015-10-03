@@ -1,0 +1,18 @@
+{
+  numBuckets=Math.max(numBuckets,1);
+  _bucketSizeMillis=validTimeWindowInMils / numBuckets;
+  if (_bucketSizeMillis < 1) {
+    throw new IllegalArgumentException("validTimeWindowInMilis and numOfSildes cause each slide to have a window that is too small");
+  }
+  _bucketTime=new long[numBuckets - 1];
+  _oldBuckets=new long[numBuckets - 1];
+  _bucketStart=new AtomicLong(startTime >= 0 ? startTime : System.currentTimeMillis());
+  _currentBucket=new AtomicLong(0);
+  if (startTime < 0) {
+    _task=new Fresher();
+    _timer.scheduleAtFixedRate(_task,_bucketSizeMillis,_bucketSizeMillis);
+  }
+ else {
+    _task=null;
+  }
+}
