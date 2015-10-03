@@ -10,18 +10,24 @@
     List<Mutation> mutations=hBaseClient.constructMutationReq(rowKey,cols,writeToWAL ? Durability.SYNC_WAL : Durability.SKIP_WAL);
     batchMutations.addAll(mutations);
     tupleBatch.add(tuple);
-    if (tupleBatch.size() >= batchSize)     flush=true;
+    if (tupleBatch.size() >= batchSize) {
+      flush=true;
+    }
   }
   try {
     if (flush && !tupleBatch.isEmpty()) {
       this.hBaseClient.batchMutate(batchMutations);
       LOG.debug("acknowledging tuples after batchMutate");
-      for (      Tuple t : tupleBatch)       collector.ack(t);
+      for (      Tuple t : tupleBatch) {
+        collector.ack(t);
+      }
     }
   }
  catch (  Exception e) {
     this.collector.reportError(e);
-    for (    Tuple t : tupleBatch)     collector.fail(t);
+    for (    Tuple t : tupleBatch) {
+      collector.fail(t);
+    }
   }
  finally {
     tupleBatch.clear();
