@@ -1,0 +1,3 @@
+{
+  super("Failed writing to : " + endPoint + ". TxnID : "+ currentTxnId,cause);
+}

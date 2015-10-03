@@ -1,2 +1,0 @@
-def getComponents(self):
-    return ' , '.join([comp['name'] for comp in self.fields['components']])

@@ -1,0 +1,3 @@
+def getTopologyInfoWithOpts(self, id, options):
+    '\n    Parameters:\n     - id\n     - options\n    '
+    pass

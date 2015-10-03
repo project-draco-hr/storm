@@ -1,40 +1,34 @@
 {
   if (closing) {
-    throw new RuntimeException("Client is being closed, and does not take requests any more");
-  }
-  if (null == msgs || !msgs.hasNext()) {
+    int numMessages=iteratorSize(msgs);
+    LOG.error("discarding {} messages because the Netty client to {} is being closed",numMessages,dstAddressPrefixedName);
     return;
   }
-  Channel channel=channelRef.get();
-  if (null == channel) {
-    connect();
-    channel=channelRef.get();
+  if (!hasMessages(msgs)) {
+    return;
   }
-  while (msgs.hasNext()) {
-    if (!channel.isConnected()) {
-      connect();
-      channel=channelRef.get();
-    }
-    TaskMessage message=msgs.next();
-    if (null == messageBatch) {
-      messageBatch=new MessageBatch(messageBatchSize);
-    }
-    messageBatch.add(message);
-    if (messageBatch.isFull()) {
-      MessageBatch toBeFlushed=messageBatch;
-      flushRequest(channel,toBeFlushed);
-      messageBatch=null;
+  Channel channel=getConnectedChannel();
+  if (channel == null) {
+    dropMessages(msgs);
+    return;
+  }
+synchronized (writeLock) {
+    while (msgs.hasNext()) {
+      TaskMessage message=msgs.next();
+      MessageBatch full=batcher.add(message);
+      if (full != null) {
+        flushMessages(channel,full);
+      }
     }
   }
-  if (null != messageBatch && !messageBatch.isEmpty()) {
-    if (channel.isWritable()) {
-      flushCheckTimer.set(Long.MAX_VALUE);
-      MessageBatch toBeFlushed=messageBatch;
-      messageBatch=null;
-      flushRequest(channel,toBeFlushed);
+  if (channel.isWritable()) {
+synchronized (writeLock) {
+      MessageBatch batch=batcher.drain();
+      if (batch != null) {
+        flushMessages(channel,batch);
+      }
     }
+  }
  else {
-      flushCheckTimer.set(System.currentTimeMillis() + flushCheckInterval);
-    }
   }
 }

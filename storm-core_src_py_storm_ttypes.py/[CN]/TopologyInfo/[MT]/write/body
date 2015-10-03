@@ -18,8 +18,8 @@ def write(self, oprot):
     if (self.executors is not None):
         oprot.writeFieldBegin('executors', TType.LIST, 4)
         oprot.writeListBegin(TType.STRUCT, len(self.executors))
-        for iter279 in self.executors:
-            iter279.write(oprot)
+        for iter293 in self.executors:
+            iter293.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.status is not None):
@@ -29,12 +29,20 @@ def write(self, oprot):
     if (self.errors is not None):
         oprot.writeFieldBegin('errors', TType.MAP, 6)
         oprot.writeMapBegin(TType.STRING, TType.LIST, len(self.errors))
-        for (kiter280, viter281) in self.errors.items():
-            oprot.writeString(kiter280.encode('utf-8'))
-            oprot.writeListBegin(TType.STRUCT, len(viter281))
-            for iter282 in viter281:
-                iter282.write(oprot)
+        for (kiter294, viter295) in self.errors.items():
+            oprot.writeString(kiter294.encode('utf-8'))
+            oprot.writeListBegin(TType.STRUCT, len(viter295))
+            for iter296 in viter295:
+                iter296.write(oprot)
             oprot.writeListEnd()
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.component_debug is not None):
+        oprot.writeFieldBegin('component_debug', TType.MAP, 7)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.component_debug))
+        for (kiter297, viter298) in self.component_debug.items():
+            oprot.writeString(kiter297.encode('utf-8'))
+            viter298.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.sched_status is not None):
@@ -44,6 +52,10 @@ def write(self, oprot):
     if (self.owner is not None):
         oprot.writeFieldBegin('owner', TType.STRING, 514)
         oprot.writeString(self.owner.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.replication_count is not None):
+        oprot.writeFieldBegin('replication_count', TType.I32, 515)
+        oprot.writeI32(self.replication_count)
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

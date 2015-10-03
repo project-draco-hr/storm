@@ -18,6 +18,8 @@ case SCHED_STATUS:
 return get_sched_status();
 case OWNER:
 return get_owner();
+case REPLICATION_COUNT:
+return Integer.valueOf(get_replication_count());
 }
 throw new IllegalStateException();
 }

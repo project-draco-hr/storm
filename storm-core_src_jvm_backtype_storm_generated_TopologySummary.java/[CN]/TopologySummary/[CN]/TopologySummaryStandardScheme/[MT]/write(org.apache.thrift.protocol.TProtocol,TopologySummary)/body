@@ -1,0 +1,52 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.id != null) {
+    oprot.writeFieldBegin(ID_FIELD_DESC);
+    oprot.writeString(struct.id);
+    oprot.writeFieldEnd();
+  }
+  if (struct.name != null) {
+    oprot.writeFieldBegin(NAME_FIELD_DESC);
+    oprot.writeString(struct.name);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(NUM_TASKS_FIELD_DESC);
+  oprot.writeI32(struct.num_tasks);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(NUM_EXECUTORS_FIELD_DESC);
+  oprot.writeI32(struct.num_executors);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(NUM_WORKERS_FIELD_DESC);
+  oprot.writeI32(struct.num_workers);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(struct.uptime_secs);
+  oprot.writeFieldEnd();
+  if (struct.status != null) {
+    oprot.writeFieldBegin(STATUS_FIELD_DESC);
+    oprot.writeString(struct.status);
+    oprot.writeFieldEnd();
+  }
+  if (struct.sched_status != null) {
+    if (struct.is_set_sched_status()) {
+      oprot.writeFieldBegin(SCHED_STATUS_FIELD_DESC);
+      oprot.writeString(struct.sched_status);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.owner != null) {
+    if (struct.is_set_owner()) {
+      oprot.writeFieldBegin(OWNER_FIELD_DESC);
+      oprot.writeString(struct.owner);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.is_set_replication_count()) {
+    oprot.writeFieldBegin(REPLICATION_COUNT_FIELD_DESC);
+    oprot.writeI32(struct.replication_count);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

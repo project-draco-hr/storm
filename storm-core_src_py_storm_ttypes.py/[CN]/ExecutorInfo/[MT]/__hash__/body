@@ -1,2 +1,5 @@
 def __hash__(self):
-    return ((0 + hash(self.task_start)) + hash(self.task_end))
+    value = 17
+    value = ((value * 31) ^ hash(self.task_start))
+    value = ((value * 31) ^ hash(self.task_end))
+    return value

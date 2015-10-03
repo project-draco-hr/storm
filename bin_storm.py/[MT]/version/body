@@ -1,0 +1,4 @@
+def version():
+    'Syntax: [storm version]\n\n  Prints the version number of this Storm release.\n  '
+    cppaths = [CLUSTER_CONF_DIR]
+    exec_storm_class('backtype.storm.utils.VersionInfo', jvmtype='-client', extrajars=[CLUSTER_CONF_DIR])

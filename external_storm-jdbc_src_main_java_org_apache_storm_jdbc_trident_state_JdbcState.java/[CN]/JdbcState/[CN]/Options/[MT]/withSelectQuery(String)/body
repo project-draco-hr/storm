@@ -1,0 +1,4 @@
+{
+  this.selectQuery=selectQuery;
+  return this;
+}

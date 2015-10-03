@@ -1,0 +1,15 @@
+{
+  String offset=(String)meta.get("offset");
+  int count=Integer.parseInt((String)meta.get("count"));
+  logger.info("re-emit for partition " + partition.getId() + ", offset="+ offset+ ", count="+ count);
+  ITridentPartitionManager pm=getOrCreatePartitionManager(partition);
+  List<EventData> listEvents=pm.receiveBatch(offset,count);
+  if (listEvents.size() != count) {
+    logger.error("failed to refetch eventhub messages, new count=" + listEvents.size());
+    return;
+  }
+  for (  EventData ed : listEvents) {
+    List<Object> tuples=spoutConfig.getEventDataScheme().deserialize(ed.getMessage());
+    collector.emit(tuples);
+  }
+}

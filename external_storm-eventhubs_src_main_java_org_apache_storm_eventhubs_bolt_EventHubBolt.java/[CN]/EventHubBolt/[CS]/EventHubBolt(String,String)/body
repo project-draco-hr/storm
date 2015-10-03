@@ -1,0 +1,3 @@
+{
+  boltConfig=new EventHubBoltConfig(connectionString,entityPath);
+}

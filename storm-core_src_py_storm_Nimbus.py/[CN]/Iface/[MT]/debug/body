@@ -1,0 +1,3 @@
+def debug(self, name, component, enable, samplingPercentage):
+    "\n    Enable/disable logging the tuples generated in topology via an internal EventLogger bolt. The component name is optional\n    and if null or empty, the debug flag will apply to the entire topology.\n\n    The 'samplingPercentage' will limit loggging to a percentage of generated tuples.\n\n\n\n    Parameters:\n     - name\n     - component\n     - enable\n     - samplingPercentage\n    "
+    pass

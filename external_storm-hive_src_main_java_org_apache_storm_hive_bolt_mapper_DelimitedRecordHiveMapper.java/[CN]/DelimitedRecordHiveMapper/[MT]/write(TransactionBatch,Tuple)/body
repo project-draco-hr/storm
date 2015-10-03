@@ -1,0 +1,3 @@
+{
+  txnBatch.write(mapRecord(tuple));
+}

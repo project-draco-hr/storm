@@ -1,0 +1,15 @@
+{
+  this.config=spoutConfig;
+  this.taskIndex=taskIndex;
+  this.totalTasks=totalTasks;
+  this.stateStore=stateStore;
+  List<String> partitionIds=calculateParititionIdsToOwn();
+  partitionManagerMap=new HashMap<String,IPartitionManager>();
+  partitionManagers=new ArrayList<IPartitionManager>();
+  for (  String partitionId : partitionIds) {
+    IEventHubReceiver receiver=recvFactory.create(config,partitionId);
+    IPartitionManager partitionManager=pmFactory.create(config,partitionId,stateStore,receiver);
+    partitionManagerMap.put(partitionId,partitionManager);
+    partitionManagers.add(partitionManager);
+  }
+}

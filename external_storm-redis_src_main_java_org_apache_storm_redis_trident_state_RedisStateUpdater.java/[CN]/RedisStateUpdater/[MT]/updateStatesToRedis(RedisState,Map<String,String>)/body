@@ -1,0 +1,35 @@
+{
+  Jedis jedis=null;
+  try {
+    jedis=redisState.getJedis();
+    Pipeline pipeline=jedis.pipelined();
+    for (    Map.Entry<String,String> kvEntry : keyToValue.entrySet()) {
+      String key=kvEntry.getKey();
+      String value=kvEntry.getValue();
+switch (dataType) {
+case STRING:
+        if (this.expireIntervalSec > 0) {
+          pipeline.setex(key,expireIntervalSec,value);
+        }
+ else {
+          pipeline.set(key,value);
+        }
+      break;
+case HASH:
+    pipeline.hset(additionalKey,key,value);
+  break;
+default :
+throw new IllegalArgumentException("Cannot process such data type: " + dataType);
+}
+}
+if (dataType == RedisDataTypeDescription.RedisDataType.HASH && this.expireIntervalSec > 0) {
+pipeline.expire(additionalKey,expireIntervalSec);
+}
+pipeline.sync();
+}
+  finally {
+if (jedis != null) {
+redisState.returnJedis(jedis);
+}
+}
+}

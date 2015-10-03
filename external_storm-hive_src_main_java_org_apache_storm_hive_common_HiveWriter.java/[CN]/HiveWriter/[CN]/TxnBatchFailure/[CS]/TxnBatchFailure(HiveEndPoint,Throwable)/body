@@ -1,0 +1,3 @@
+{
+  super("Failed acquiring Transaction Batch from EndPoint: " + ep,cause);
+}

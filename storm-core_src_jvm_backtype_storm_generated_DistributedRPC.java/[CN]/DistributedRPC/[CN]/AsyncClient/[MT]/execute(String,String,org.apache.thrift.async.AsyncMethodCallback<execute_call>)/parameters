@@ -1,3 +1,0 @@
-String functionName
-String funcArgs
-org.apache.thrift.async.AsyncMethodCallback<execute_call> resultHandler

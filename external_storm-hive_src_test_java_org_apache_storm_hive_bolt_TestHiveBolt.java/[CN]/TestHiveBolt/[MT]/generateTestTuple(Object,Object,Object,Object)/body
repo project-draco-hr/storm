@@ -1,0 +1,10 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  GeneralTopologyContext topologyContext=new GeneralTopologyContext(builder.createTopology(),new Config(),new HashMap(),new HashMap(),new HashMap(),""){
+    @Override public Fields getComponentOutputFields(    String componentId,    String streamId){
+      return new Fields("id","msg","city","state");
+    }
+  }
+;
+  return new TupleImpl(topologyContext,new Values(id,msg,city,state),1,"");
+}

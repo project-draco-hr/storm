@@ -1,0 +1,6 @@
+{
+  int queryTimeoutSecs=30;
+  connectionProvider.prepare();
+  JdbcClient client=new JdbcClient(connectionProvider,queryTimeoutSecs);
+  this.schemaColumns=client.getColumnSchema(tableName);
+}

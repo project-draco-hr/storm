@@ -1,0 +1,3 @@
+def __init__(self, enable=None, samplingpct=None):
+    self.enable = enable
+    self.samplingpct = samplingpct

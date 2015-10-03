@@ -1,0 +1,4 @@
+{
+  this.autoCreatePartitions=autoCreatePartitions;
+  return this;
+}

@@ -1,0 +1,14 @@
+{
+switch (fieldId) {
+case 1:
+    return MASTER_CODE_DIR;
+case 2:
+  return NODE_HOST;
+case 3:
+return EXECUTOR_NODE_PORT;
+case 4:
+return EXECUTOR_START_TIME_SECS;
+default :
+return null;
+}
+}

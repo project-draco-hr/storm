@@ -1,0 +1,21 @@
+{
+  List<PropertyDef> props=bean.getProperties();
+  Class clazz=instance.getClass();
+  if (props != null) {
+    for (    PropertyDef prop : props) {
+      Object value=prop.isReference() ? context.getComponent(prop.getRef()) : prop.getValue();
+      Method setter=findSetter(clazz,prop.getName(),value);
+      if (setter != null) {
+        LOG.debug("found setter, attempting to invoke");
+        setter.invoke(instance,new Object[]{value});
+      }
+ else {
+        LOG.debug("no setter found. Looking for a public instance variable...");
+        Field field=findPublicField(clazz,prop.getName(),value);
+        if (field != null) {
+          field.set(instance,value);
+        }
+      }
+    }
+  }
+}

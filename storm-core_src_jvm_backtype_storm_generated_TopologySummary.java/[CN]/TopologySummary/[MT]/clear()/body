@@ -12,4 +12,6 @@
   this.status=null;
   this.sched_status=null;
   this.owner=null;
+  set_replication_count_isSet(false);
+  this.replication_count=0;
 }

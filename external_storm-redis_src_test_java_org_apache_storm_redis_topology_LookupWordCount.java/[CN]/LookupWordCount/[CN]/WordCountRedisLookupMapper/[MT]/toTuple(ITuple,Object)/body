@@ -1,0 +1,6 @@
+{
+  String member=getKeyFromTuple(input);
+  List<Values> values=Lists.newArrayList();
+  values.add(new Values(member,value));
+  return values;
+}

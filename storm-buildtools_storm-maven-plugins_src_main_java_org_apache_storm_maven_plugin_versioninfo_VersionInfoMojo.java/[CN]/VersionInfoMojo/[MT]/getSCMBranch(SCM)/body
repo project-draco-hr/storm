@@ -1,0 +1,23 @@
+{
+  String branch="Unknown";
+switch (scm) {
+case SVN:
+    for (    String s : scmOut) {
+      if (s.startsWith("URL:")) {
+        branch=s.substring(4).trim();
+        branch=getSvnUriInfo(branch)[1];
+        break;
+      }
+    }
+  break;
+case GIT:
+for (String s : scmOut) {
+  if (s.startsWith("*")) {
+    branch=s.substring("*".length());
+    break;
+  }
+}
+break;
+}
+return branch.trim();
+}

@@ -1,0 +1,6 @@
+{
+  this.jedisPool=jedisPool;
+  this.options=options;
+  this.serializer=serializer;
+  this.keyFactory=keyFactory;
+}

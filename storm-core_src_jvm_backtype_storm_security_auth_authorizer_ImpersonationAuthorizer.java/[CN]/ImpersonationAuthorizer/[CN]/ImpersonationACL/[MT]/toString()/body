@@ -1,0 +1,3 @@
+{
+  return "ImpersonationACL{" + "impersonatingUser='" + impersonatingUser + '\''+ ", authorizedGroups="+ authorizedGroups+ ", authorizedHosts="+ authorizedHosts+ '}';
+}

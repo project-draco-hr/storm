@@ -1,0 +1,6 @@
+{
+  for (  Entry<HiveEndPoint,HiveWriter> entry : allWriters.entrySet()) {
+    entry.getValue().close();
+  }
+  allWriters.clear();
+}

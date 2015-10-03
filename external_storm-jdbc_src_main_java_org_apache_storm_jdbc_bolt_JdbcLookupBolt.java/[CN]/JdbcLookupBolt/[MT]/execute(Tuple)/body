@@ -1,0 +1,19 @@
+{
+  try {
+    List<Column> columns=jdbcLookupMapper.getColumns(tuple);
+    List<List<Column>> result=jdbcClient.select(this.selectQuery,columns);
+    if (result != null && result.size() != 0) {
+      for (      List<Column> row : result) {
+        List<Values> values=jdbcLookupMapper.toTuple(tuple,row);
+        for (        Values value : values) {
+          collector.emit(tuple,value);
+        }
+      }
+    }
+    this.collector.ack(tuple);
+  }
+ catch (  Exception e) {
+    this.collector.reportError(e);
+    this.collector.fail(tuple);
+  }
+}

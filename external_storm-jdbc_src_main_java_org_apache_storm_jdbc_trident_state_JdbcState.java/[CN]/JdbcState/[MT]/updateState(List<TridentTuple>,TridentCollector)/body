@@ -1,0 +1,18 @@
+{
+  List<List<Column>> columnsLists=new ArrayList<List<Column>>();
+  for (  TridentTuple tuple : tuples) {
+    columnsLists.add(options.mapper.getColumns(tuple));
+  }
+  try {
+    if (!StringUtils.isBlank(options.tableName)) {
+      jdbcClient.insert(options.tableName,columnsLists);
+    }
+ else {
+      jdbcClient.executeInsertQuery(options.insertQuery,columnsLists);
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("Batch write failed but some requests might have succeeded. Triggering replay.",e);
+    throw new FailedException(e);
+  }
+}

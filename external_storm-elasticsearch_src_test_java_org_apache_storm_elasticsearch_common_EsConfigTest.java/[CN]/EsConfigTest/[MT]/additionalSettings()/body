@@ -1,0 +1,3 @@
+{
+  return ImmutableMap.of("client.transport.sniff","true",UUID.randomUUID().toString(),UUID.randomUUID().toString());
+}

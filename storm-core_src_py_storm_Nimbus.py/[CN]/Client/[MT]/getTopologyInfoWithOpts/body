@@ -1,0 +1,4 @@
+def getTopologyInfoWithOpts(self, id, options):
+    '\n    Parameters:\n     - id\n     - options\n    '
+    self.send_getTopologyInfoWithOpts(id, options)
+    return self.recv_getTopologyInfoWithOpts()

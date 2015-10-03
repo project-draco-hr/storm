@@ -1,0 +1,6 @@
+EventHubSpoutConfig spoutConfig
+int taskIndex
+int totalTasks
+IStateStore stateStore
+IPartitionManagerFactory pmFactory
+IEventHubReceiverFactory recvFactory

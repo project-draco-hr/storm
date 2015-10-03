@@ -1,0 +1,8 @@
+{
+  try {
+    return new ThriftSerializedObject(o.getClass().getName(),ByteBuffer.wrap(ser.serialize((TBase)o)));
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

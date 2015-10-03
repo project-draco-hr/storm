@@ -5,4 +5,7 @@
   if (!is_set_common()) {
     throw new org.apache.thrift.protocol.TProtocolException("Required field 'common' is unset! Struct:" + toString());
   }
+  if (common != null) {
+    common.validate();
+  }
 }

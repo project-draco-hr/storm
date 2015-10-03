@@ -1,3 +1,3 @@
 {
-  set_binary_arg(ByteBuffer.wrap(value));
+  set_binary_arg(ByteBuffer.wrap(Arrays.copyOf(value,value.length)));
 }

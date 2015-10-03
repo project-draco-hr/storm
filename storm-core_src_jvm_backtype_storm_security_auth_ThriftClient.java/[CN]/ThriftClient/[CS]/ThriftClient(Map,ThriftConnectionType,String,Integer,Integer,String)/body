@@ -1,0 +1,18 @@
+{
+  if (host == null) {
+    throw new IllegalArgumentException("host is not set");
+  }
+  if (port == null) {
+    port=type.getPort(storm_conf);
+  }
+  if (port <= 0) {
+    throw new IllegalArgumentException("invalid port: " + port);
+  }
+  _host=host;
+  _port=port;
+  _timeout=timeout;
+  _conf=storm_conf;
+  _type=type;
+  _asUser=asUser;
+  reconnect();
+}

@@ -1,0 +1,7 @@
+{
+  List<FieldSchema> fields=new ArrayList<FieldSchema>();
+  for (int i=0; i < colNames.length; ++i) {
+    fields.add(new FieldSchema(colNames[i],colTypes[i],""));
+  }
+  return fields;
+}

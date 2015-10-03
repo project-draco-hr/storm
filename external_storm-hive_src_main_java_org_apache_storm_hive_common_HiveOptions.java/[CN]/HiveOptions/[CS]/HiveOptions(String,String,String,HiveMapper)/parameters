@@ -1,0 +1,4 @@
+String metaStoreURI
+String databaseName
+String tableName
+HiveMapper mapper

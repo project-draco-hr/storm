@@ -1,0 +1,17 @@
+{
+  if (partKeys.size() != partVals.size()) {
+    throw new IllegalArgumentException("Partition values:" + partVals + ", does not match the partition Keys in table :"+ partKeys);
+  }
+  StringBuffer buff=new StringBuffer(partKeys.size() * 20);
+  int i=0;
+  for (  FieldSchema schema : partKeys) {
+    buff.append(schema.getName());
+    buff.append("=");
+    buff.append(partVals.get(i));
+    if (i != partKeys.size() - 1) {
+      buff.append(Path.SEPARATOR);
+    }
+    ++i;
+  }
+  return buff.toString();
+}

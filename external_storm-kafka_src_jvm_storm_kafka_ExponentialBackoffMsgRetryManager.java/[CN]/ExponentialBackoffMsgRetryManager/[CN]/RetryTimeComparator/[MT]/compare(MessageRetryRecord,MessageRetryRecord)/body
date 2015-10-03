@@ -1,3 +1,3 @@
 {
-  return Long.compare(record1.retryTimeUTC,record2.retryTimeUTC);
+  return Long.valueOf(record1.retryTimeUTC).compareTo(Long.valueOf(record2.retryTimeUTC));
 }

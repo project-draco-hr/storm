@@ -6,7 +6,10 @@
     }
     c.result(id,result);
   }
- catch (  TException e) {
+ catch (  AuthorizationException aze) {
+    throw aze;
+  }
+catch (  TException e) {
     client.compareAndSet(c,null);
     throw e;
   }

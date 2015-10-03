@@ -1,0 +1,26 @@
+{
+  this.eventHubConfig=spoutConfig;
+  this.scheme=spoutConfig.getEventDataScheme();
+  this.instanceId=UUID.randomUUID();
+  this.checkpointIntervalInSeconds=spoutConfig.getCheckpointIntervalInSeconds();
+  this.lastCheckpointTime=System.currentTimeMillis();
+  stateStore=store;
+  this.pmFactory=pmFactory;
+  if (this.pmFactory == null) {
+    this.pmFactory=new IPartitionManagerFactory(){
+      @Override public IPartitionManager create(      EventHubSpoutConfig spoutConfig,      String partitionId,      IStateStore stateStore,      IEventHubReceiver receiver){
+        return new PartitionManager(spoutConfig,partitionId,stateStore,receiver);
+      }
+    }
+;
+  }
+  this.recvFactory=recvFactory;
+  if (this.recvFactory == null) {
+    this.recvFactory=new IEventHubReceiverFactory(){
+      @Override public IEventHubReceiver create(      EventHubSpoutConfig spoutConfig,      String partitionId){
+        return new EventHubReceiverImpl(spoutConfig,partitionId);
+      }
+    }
+;
+  }
+}

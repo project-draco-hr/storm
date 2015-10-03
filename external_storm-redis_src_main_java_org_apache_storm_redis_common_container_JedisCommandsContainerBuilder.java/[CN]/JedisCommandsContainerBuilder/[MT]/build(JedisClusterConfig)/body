@@ -1,0 +1,4 @@
+{
+  JedisCluster jedisCluster=new JedisCluster(config.getNodes(),config.getTimeout(),config.getMaxRedirections(),DEFAULT_POOL_CONFIG);
+  return new JedisClusterContainer(jedisCluster);
+}

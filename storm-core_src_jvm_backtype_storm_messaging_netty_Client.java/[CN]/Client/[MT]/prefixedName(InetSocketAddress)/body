@@ -1,0 +1,6 @@
+{
+  if (null != dstAddress) {
+    return PREFIX + dstAddress.toString();
+  }
+  return "";
+}

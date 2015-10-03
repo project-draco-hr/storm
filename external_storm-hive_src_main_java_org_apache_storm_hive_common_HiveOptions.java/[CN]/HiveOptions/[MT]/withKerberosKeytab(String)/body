@@ -1,0 +1,4 @@
+{
+  this.kerberosKeytab=kerberosKeytab;
+  return this;
+}

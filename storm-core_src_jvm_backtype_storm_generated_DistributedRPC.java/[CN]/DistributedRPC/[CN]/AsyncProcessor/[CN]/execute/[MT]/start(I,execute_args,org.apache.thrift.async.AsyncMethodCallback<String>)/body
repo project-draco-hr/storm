@@ -1,0 +1,3 @@
+{
+  iface.execute(args.functionName,args.funcArgs,resultHandler);
+}

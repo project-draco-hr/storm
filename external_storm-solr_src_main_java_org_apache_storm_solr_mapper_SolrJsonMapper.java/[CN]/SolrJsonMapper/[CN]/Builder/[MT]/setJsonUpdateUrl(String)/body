@@ -1,0 +1,4 @@
+{
+  this.jsonUpdateUrl=jsonUpdateUrl;
+  return this;
+}

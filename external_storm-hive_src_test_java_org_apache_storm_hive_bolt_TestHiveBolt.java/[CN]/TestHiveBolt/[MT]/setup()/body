@@ -1,0 +1,12 @@
+{
+  MockitoAnnotations.initMocks(this);
+  HiveSetupUtil.dropDB(conf,dbName);
+  if (WINDOWS) {
+    dbLocation=dbFolder.newFolder(dbName + ".db").getCanonicalPath();
+  }
+ else {
+    dbLocation="raw://" + dbFolder.newFolder(dbName + ".db").getCanonicalPath();
+  }
+  HiveSetupUtil.createDbAndTable(conf,dbName,tblName,Arrays.asList(partitionVals.split(",")),colNames,colTypes,partNames,dbLocation);
+  System.out.println("done");
+}

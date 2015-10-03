@@ -1,0 +1,3 @@
+SolrInputDocument doc
+String tupleField
+ITuple tuple

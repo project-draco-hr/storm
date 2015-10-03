@@ -1,2 +1,8 @@
 def __hash__(self):
-    return (((((0 + hash(self.acked)) + hash(self.failed)) + hash(self.process_ms_avg)) + hash(self.executed)) + hash(self.execute_ms_avg))
+    value = 17
+    value = ((value * 31) ^ hash(self.acked))
+    value = ((value * 31) ^ hash(self.failed))
+    value = ((value * 31) ^ hash(self.process_ms_avg))
+    value = ((value * 31) ^ hash(self.executed))
+    value = ((value * 31) ^ hash(self.execute_ms_avg))
+    return value

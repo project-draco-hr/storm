@@ -1,0 +1,8 @@
+def __init__(self, pull_requests=None, header=''):
+    Report.__init__(self, header)
+    if (pull_requests is None):
+        self.pull_requests = []
+        self.type = ''
+    else:
+        self.pull_requests = pull_requests
+        self.type = type

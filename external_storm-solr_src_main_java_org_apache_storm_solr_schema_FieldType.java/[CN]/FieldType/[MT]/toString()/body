@@ -1,0 +1,3 @@
+{
+  return "FieldType{" + "name='" + name + '\''+ ", clazz='"+ clazz+ '\''+ ", multiValued="+ multiValued+ '}';
+}

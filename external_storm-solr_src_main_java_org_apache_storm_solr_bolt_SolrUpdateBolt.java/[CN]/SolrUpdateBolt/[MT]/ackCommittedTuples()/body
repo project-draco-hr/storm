@@ -1,0 +1,6 @@
+{
+  List<Tuple> toAckTuples=getQueuedTuples();
+  for (  Tuple tuple : toAckTuples) {
+    collector.ack(tuple);
+  }
+}

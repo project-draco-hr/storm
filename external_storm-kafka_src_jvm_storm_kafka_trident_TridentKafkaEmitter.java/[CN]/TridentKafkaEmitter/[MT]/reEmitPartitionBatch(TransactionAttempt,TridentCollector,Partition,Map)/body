@@ -1,7 +1,7 @@
 {
   LOG.info("re-emitting batch, attempt " + attempt);
   String instanceId=(String)meta.get("instanceId");
-  if (!_config.forceFromStart || instanceId.equals(_topologyInstanceId)) {
+  if (!_config.ignoreZkOffsets || instanceId.equals(_topologyInstanceId)) {
     SimpleConsumer consumer=_connections.register(partition);
     long offset=(Long)meta.get("offset");
     long nextOffset=(Long)meta.get("nextOffset");

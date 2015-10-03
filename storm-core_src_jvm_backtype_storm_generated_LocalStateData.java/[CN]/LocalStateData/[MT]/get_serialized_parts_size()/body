@@ -1,0 +1,3 @@
+{
+  return (this.serialized_parts == null) ? 0 : this.serialized_parts.size();
+}

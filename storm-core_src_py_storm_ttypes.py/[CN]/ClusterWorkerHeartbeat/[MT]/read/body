@@ -1,0 +1,41 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.STRING):
+                self.storm_id = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 2):
+            if (ftype == TType.MAP):
+                self.executor_stats = {}
+                (_ktype407, _vtype408, _size406) = iprot.readMapBegin()
+                for _i410 in xrange(_size406):
+                    _key411 = ExecutorInfo()
+                    _key411.read(iprot)
+                    _val412 = ExecutorStats()
+                    _val412.read(iprot)
+                    self.executor_stats[_key411] = _val412
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 3):
+            if (ftype == TType.I32):
+                self.time_secs = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 4):
+            if (ftype == TType.I32):
+                self.uptime_secs = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

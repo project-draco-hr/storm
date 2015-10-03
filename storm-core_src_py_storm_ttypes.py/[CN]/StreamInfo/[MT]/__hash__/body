@@ -1,2 +1,5 @@
 def __hash__(self):
-    return ((0 + hash(self.output_fields)) + hash(self.direct))
+    value = 17
+    value = ((value * 31) ^ hash(self.output_fields))
+    value = ((value * 31) ^ hash(self.direct))
+    return value

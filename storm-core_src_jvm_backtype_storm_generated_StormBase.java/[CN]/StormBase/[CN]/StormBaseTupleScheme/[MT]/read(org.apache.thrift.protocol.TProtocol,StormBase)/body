@@ -1,0 +1,56 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.name=iprot.readString();
+  struct.set_name_isSet(true);
+  struct.status=backtype.storm.generated.TopologyStatus.findByValue(iprot.readI32());
+  struct.set_status_isSet(true);
+  struct.num_workers=iprot.readI32();
+  struct.set_num_workers_isSet(true);
+  BitSet incoming=iprot.readBitSet(6);
+  if (incoming.get(0)) {
+{
+      org.apache.thrift.protocol.TMap _map446=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
+      struct.component_executors=new HashMap<String,Integer>(2 * _map446.size);
+      String _key447;
+      int _val448;
+      for (int _i449=0; _i449 < _map446.size; ++_i449) {
+        _key447=iprot.readString();
+        _val448=iprot.readI32();
+        struct.component_executors.put(_key447,_val448);
+      }
+    }
+    struct.set_component_executors_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.launch_time_secs=iprot.readI32();
+    struct.set_launch_time_secs_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.owner=iprot.readString();
+    struct.set_owner_isSet(true);
+  }
+  if (incoming.get(3)) {
+    struct.topology_action_options=new TopologyActionOptions();
+    struct.topology_action_options.read(iprot);
+    struct.set_topology_action_options_isSet(true);
+  }
+  if (incoming.get(4)) {
+    struct.prev_status=backtype.storm.generated.TopologyStatus.findByValue(iprot.readI32());
+    struct.set_prev_status_isSet(true);
+  }
+  if (incoming.get(5)) {
+{
+      org.apache.thrift.protocol.TMap _map450=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.component_debug=new HashMap<String,DebugOptions>(2 * _map450.size);
+      String _key451;
+      DebugOptions _val452;
+      for (int _i453=0; _i453 < _map450.size; ++_i453) {
+        _key451=iprot.readString();
+        _val452=new DebugOptions();
+        _val452.read(iprot);
+        struct.component_debug.put(_key451,_val452);
+      }
+    }
+    struct.set_component_debug_isSet(true);
+  }
+}

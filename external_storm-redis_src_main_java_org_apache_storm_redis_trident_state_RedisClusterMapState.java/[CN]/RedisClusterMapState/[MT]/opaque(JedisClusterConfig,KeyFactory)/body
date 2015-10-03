@@ -1,0 +1,5 @@
+{
+  Options opts=new Options();
+  opts.keyFactory=factory;
+  return opaque(jedisClusterConfig,opts);
+}

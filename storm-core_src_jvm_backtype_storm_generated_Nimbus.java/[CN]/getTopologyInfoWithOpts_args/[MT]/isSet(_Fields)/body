@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case ID:
+    return is_set_id();
+case OPTIONS:
+  return is_set_options();
+}
+throw new IllegalStateException();
+}

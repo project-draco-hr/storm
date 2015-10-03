@@ -1,0 +1,11 @@
+{
+  IPartitionManagerFactory pmFactory=new IPartitionManagerFactory(){
+    private static final long serialVersionUID=1L;
+    @Override public IPartitionManager create(    EventHubSpoutConfig spoutConfig,    String partitionId,    IStateStore stateStore,    IEventHubReceiver receiver){
+      return new SimplePartitionManager(spoutConfig,partitionId,stateStore,receiver);
+    }
+  }
+;
+  EventHubSpout eventHubSpout=new EventHubSpout(spoutConfig,null,pmFactory,null);
+  return eventHubSpout;
+}

@@ -1,0 +1,5 @@
+{
+  for (  Values value : values) {
+    tridentCollector.emit(value);
+  }
+}

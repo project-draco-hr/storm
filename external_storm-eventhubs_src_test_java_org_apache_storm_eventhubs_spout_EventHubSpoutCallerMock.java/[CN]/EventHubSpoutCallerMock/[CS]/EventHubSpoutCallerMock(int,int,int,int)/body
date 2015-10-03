@@ -1,0 +1,18 @@
+{
+  stateStore=new StateStoreMock();
+  EventHubSpoutConfig conf=new EventHubSpoutConfig("username","password","namespace","entityname",totalPartitions,"zookeeper",checkpointInterval,1024);
+  conf.setTopologyName("TestTopo");
+  IEventHubReceiverFactory recvFactory=new IEventHubReceiverFactory(){
+    @Override public IEventHubReceiver create(    EventHubSpoutConfig config,    String partitionId){
+      return new EventHubReceiverMock(partitionId);
+    }
+  }
+;
+  spout=new EventHubSpout(conf,stateStore,null,recvFactory);
+  collector=new SpoutOutputCollectorMock();
+  try {
+    spout.preparePartitions(null,totalTasks,taskIndex,new SpoutOutputCollector(collector));
+  }
+ catch (  Exception ex) {
+  }
+}

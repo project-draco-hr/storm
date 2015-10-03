@@ -1,0 +1,14 @@
+{
+  int attempts=0;
+  while (true) {
+    try {
+      return partialDeserializeLatestVersion(td);
+    }
+ catch (    Exception e) {
+      attempts++;
+      if (attempts >= 10) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+}

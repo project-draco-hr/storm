@@ -1,0 +1,12 @@
+{
+  ITridentPartitionManager pm;
+  if (!pmMap.containsKey(partition.getId())) {
+    IEventHubReceiver receiver=recvFactory.create(spoutConfig,partition.getId());
+    pm=pmFactory.create(receiver);
+    pmMap.put(partition.getId(),pm);
+  }
+ else {
+    pm=pmMap.get(partition.getId());
+  }
+  return pm;
+}

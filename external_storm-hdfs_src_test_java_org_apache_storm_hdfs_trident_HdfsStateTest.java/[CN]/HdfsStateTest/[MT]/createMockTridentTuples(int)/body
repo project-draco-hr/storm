@@ -1,0 +1,9 @@
+{
+  TridentTuple tuple=mock(TridentTuple.class);
+  when(tuple.getValueByField(any(String.class))).thenReturn("data");
+  List<TridentTuple> tuples=new ArrayList<>();
+  for (int i=0; i < count; i++) {
+    tuples.add(tuple);
+  }
+  return tuples;
+}

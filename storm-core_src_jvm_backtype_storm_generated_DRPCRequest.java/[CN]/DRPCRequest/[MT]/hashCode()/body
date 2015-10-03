@@ -1,10 +1,10 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_func_args=true && (is_set_func_args());
-  builder.append(present_func_args);
-  if (present_func_args)   builder.append(func_args);
+  list.add(present_func_args);
+  if (present_func_args)   list.add(func_args);
   boolean present_request_id=true && (is_set_request_id());
-  builder.append(present_request_id);
-  if (present_request_id)   builder.append(request_id);
-  return builder.toHashCode();
+  list.add(present_request_id);
+  if (present_request_id)   list.add(request_id);
+  return list.hashCode();
 }

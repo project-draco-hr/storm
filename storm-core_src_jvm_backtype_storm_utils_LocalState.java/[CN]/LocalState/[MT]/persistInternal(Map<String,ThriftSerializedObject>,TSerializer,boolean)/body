@@ -1,0 +1,19 @@
+{
+  try {
+    if (ser == null) {
+      ser=new TSerializer();
+    }
+    byte[] toWrite=ser.serialize(new LocalStateData(serialized));
+    String newPath=_vs.createVersion();
+    File file=new File(newPath);
+    FileUtils.writeByteArrayToFile(file,toWrite);
+    if (toWrite.length != file.length()) {
+      throw new IOException("Tried to serialize " + toWrite.length + " bytes to "+ file.getCanonicalPath()+ ", but "+ file.length()+ " bytes were written.");
+    }
+    _vs.succeedVersion(newPath);
+    if (cleanup)     _vs.cleanup(4);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

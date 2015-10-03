@@ -1,0 +1,6 @@
+{
+  if (!throttleOn.get()) {
+    highWaterMarkCalledPopulation=queue.getMetrics().population();
+    throttleOn.set(true);
+  }
+}

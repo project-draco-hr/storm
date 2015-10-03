@@ -1,0 +1,25 @@
+{
+  int retCode=1;
+  ProcessBuilder pb=new ProcessBuilder(command);
+  try {
+    Process p=pb.start();
+    OutputBufferThread stdOut=new OutputBufferThread(p.getInputStream());
+    OutputBufferThread stdErr=new OutputBufferThread(p.getErrorStream());
+    stdOut.start();
+    stdErr.start();
+    retCode=p.waitFor();
+    if (retCode != 0) {
+      mojo.getLog().warn(command + " failed with error code " + retCode);
+      for (      String s : stdErr.getOutput()) {
+        mojo.getLog().debug(s);
+      }
+    }
+    stdOut.join();
+    stdErr.join();
+    output.addAll(stdOut.getOutput());
+  }
+ catch (  Exception ex) {
+    mojo.getLog().warn(command + " failed: " + ex.toString());
+  }
+  return retCode;
+}

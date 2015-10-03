@@ -1,5 +1,5 @@
 {
-  super(conf,ThriftConnectionType.DRPC,host,port,timeout);
+  super(conf,ThriftConnectionType.DRPC,host,port,timeout,null);
   this.host=host;
   this.port=port;
   this.client=new DistributedRPC.Client(_protocol);

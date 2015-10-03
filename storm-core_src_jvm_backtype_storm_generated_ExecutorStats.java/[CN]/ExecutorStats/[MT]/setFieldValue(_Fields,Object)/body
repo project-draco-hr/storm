@@ -24,5 +24,13 @@ unset_specific();
 set_specific((ExecutorSpecificStats)value);
 }
 break;
+case RATE:
+if (value == null) {
+unset_rate();
+}
+ else {
+set_rate((Double)value);
+}
+break;
 }
 }

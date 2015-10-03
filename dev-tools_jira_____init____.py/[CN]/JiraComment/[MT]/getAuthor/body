@@ -1,4 +1,0 @@
-def getAuthor(self):
-    if (self.githubAuthor != None):
-        return self.githubAuthor
-    return self.author

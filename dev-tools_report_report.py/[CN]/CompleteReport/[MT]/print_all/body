@@ -1,0 +1,6 @@
+def print_all(self):
+    if (self.header is not ''):
+        print self.header
+    self._print_github_reports()
+    self._print_jira_github_combined_reports()
+    self._print_jira_reports()

@@ -1,10 +1,10 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_execution_command=true && (is_set_execution_command());
-  builder.append(present_execution_command);
-  if (present_execution_command)   builder.append(execution_command);
+  list.add(present_execution_command);
+  if (present_execution_command)   list.add(execution_command);
   boolean present_script=true && (is_set_script());
-  builder.append(present_script);
-  if (present_script)   builder.append(script);
-  return builder.toHashCode();
+  list.add(present_script);
+  if (present_script)   list.add(script);
+  return list.hashCode();
 }

@@ -1,0 +1,3 @@
+{
+  declarer.declare(new Fields("user_id","user_name","create_date"));
+}

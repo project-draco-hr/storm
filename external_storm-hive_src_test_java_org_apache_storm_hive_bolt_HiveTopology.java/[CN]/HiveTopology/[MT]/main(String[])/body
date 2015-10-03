@@ -1,0 +1,37 @@
+{
+  String metaStoreURI=args[0];
+  String dbName=args[1];
+  String tblName=args[2];
+  String[] colNames={"id","name","phone","street","city","state"};
+  Config config=new Config();
+  config.setNumWorkers(1);
+  UserDataSpout spout=new UserDataSpout();
+  DelimitedRecordHiveMapper mapper=new DelimitedRecordHiveMapper().withColumnFields(new Fields(colNames));
+  HiveOptions hiveOptions;
+  if (args.length == 6) {
+    hiveOptions=new HiveOptions(metaStoreURI,dbName,tblName,mapper).withTxnsPerBatch(10).withBatchSize(100).withIdleTimeout(10).withKerberosKeytab(args[4]).withKerberosPrincipal(args[5]);
+  }
+ else {
+    hiveOptions=new HiveOptions(metaStoreURI,dbName,tblName,mapper).withTxnsPerBatch(10).withBatchSize(100).withIdleTimeout(10);
+  }
+  HiveBolt hiveBolt=new HiveBolt(hiveOptions);
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(USER_SPOUT_ID,spout,1);
+  builder.setBolt(BOLT_ID,hiveBolt,1).shuffleGrouping(USER_SPOUT_ID);
+  if (args.length == 3) {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology(TOPOLOGY_NAME,config,builder.createTopology());
+    waitForSeconds(20);
+    cluster.killTopology(TOPOLOGY_NAME);
+    System.out.println("cluster begin to shutdown");
+    cluster.shutdown();
+    System.out.println("cluster shutdown");
+    System.exit(0);
+  }
+ else   if (args.length >= 4) {
+    StormSubmitter.submitTopology(args[3],config,builder.createTopology());
+  }
+ else {
+    System.out.println("Usage: HiveTopology metastoreURI dbName tableName [topologyNamey] [keytab file] [principal name]");
+  }
+}

@@ -1,0 +1,4 @@
+EventHubSpoutConfig spoutConfig
+String partitionId
+IStateStore stateStore
+IEventHubReceiver receiver

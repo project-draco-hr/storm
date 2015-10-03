@@ -1,0 +1,2 @@
+Set<String> userGroups
+Set<String> configuredGroups

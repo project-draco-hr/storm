@@ -1,0 +1,7 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.master_code_dir))
+    value = ((value * 31) ^ hash(self.node_host))
+    value = ((value * 31) ^ hash(self.executor_node_port))
+    value = ((value * 31) ^ hash(self.executor_start_time_secs))
+    return value

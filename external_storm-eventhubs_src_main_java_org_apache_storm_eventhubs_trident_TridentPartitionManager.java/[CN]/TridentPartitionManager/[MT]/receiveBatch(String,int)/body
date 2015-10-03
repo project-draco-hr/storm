@@ -1,0 +1,18 @@
+{
+  List<EventData> batch=new ArrayList<EventData>(count);
+  if (!offset.equals(lastOffset) || !receiver.isOpen()) {
+    close();
+    if (!open(offset)) {
+      return batch;
+    }
+  }
+  for (int i=0; i < count; ++i) {
+    EventData ed=receiver.receive(receiveTimeoutMs);
+    if (ed == null) {
+      break;
+    }
+    batch.add(ed);
+    lastOffset=ed.getMessageId().getOffset();
+  }
+  return batch;
+}

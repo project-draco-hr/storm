@@ -1,0 +1,5 @@
+{
+  JdbcState state=new JdbcState(map,partitionIndex,numPartitions,options);
+  state.prepare();
+  return state;
+}

@@ -1,11 +1,7 @@
 {
-  __isset_bit_vector.clear();
-  __isset_bit_vector.or(other.__isset_bit_vector);
+  __isset_bitfield=other.__isset_bitfield;
   if (other.is_set_output_fields()) {
-    List<String> __this__output_fields=new ArrayList<String>();
-    for (    String other_element : other.output_fields) {
-      __this__output_fields.add(other_element);
-    }
+    List<String> __this__output_fields=new ArrayList<String>(other.output_fields);
     this.output_fields=__this__output_fields;
   }
   this.direct=other.direct;

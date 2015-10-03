@@ -1,0 +1,5 @@
+Map conf
+String host
+Integer port
+Integer timeout
+String asUser

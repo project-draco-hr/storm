@@ -1,0 +1,13 @@
+{
+  try {
+    this.collector=outputCollector;
+synchronized (AbstractEsBolt.class) {
+      if (client == null) {
+        client=new StormElasticSearchClient(esConfig).construct();
+      }
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("unable to initialize EsBolt ",e);
+  }
+}

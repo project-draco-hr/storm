@@ -1,0 +1,15 @@
+{
+  LOG.info("Closing connection to end point : {}",endPoint);
+  try {
+    callWithTimeout(new CallRunner<Void>(){
+      @Override public Void call() throws Exception {
+        connection.close();
+        return null;
+      }
+    }
+);
+  }
+ catch (  Exception e) {
+    LOG.warn("Error closing connection to EndPoint : " + endPoint,e);
+  }
+}

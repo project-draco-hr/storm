@@ -1,0 +1,9 @@
+{
+  Collection<BeanDef> cDefs=context.getTopologyDef().getComponents();
+  if (cDefs != null) {
+    for (    BeanDef bean : cDefs) {
+      Object obj=buildObject(bean,context);
+      context.addComponent(bean.getId(),obj);
+    }
+  }
+}

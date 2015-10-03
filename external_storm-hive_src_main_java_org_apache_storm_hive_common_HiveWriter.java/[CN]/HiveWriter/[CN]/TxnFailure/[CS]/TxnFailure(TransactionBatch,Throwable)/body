@@ -1,0 +1,3 @@
+{
+  super("Failed switching to next Txn in TxnBatch " + txnBatch,cause);
+}

@@ -1,0 +1,5 @@
+{
+  if (!is_set_master_code_dir()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'master_code_dir' is unset! Struct:" + toString());
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return new Fields("id","name","phone","street","city","state");
+}

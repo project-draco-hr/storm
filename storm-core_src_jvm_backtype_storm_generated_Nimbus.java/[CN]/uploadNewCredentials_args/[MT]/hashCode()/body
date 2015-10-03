@@ -1,10 +1,10 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_name=true && (is_set_name());
-  builder.append(present_name);
-  if (present_name)   builder.append(name);
+  list.add(present_name);
+  if (present_name)   list.add(name);
   boolean present_creds=true && (is_set_creds());
-  builder.append(present_creds);
-  if (present_creds)   builder.append(creds);
-  return builder.toHashCode();
+  list.add(present_creds);
+  if (present_creds)   list.add(creds);
+  return list.hashCode();
 }

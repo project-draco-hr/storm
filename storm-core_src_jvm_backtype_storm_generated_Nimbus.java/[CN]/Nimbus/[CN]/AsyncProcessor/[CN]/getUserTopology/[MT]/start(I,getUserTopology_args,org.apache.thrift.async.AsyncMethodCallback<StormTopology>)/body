@@ -1,0 +1,3 @@
+{
+  iface.getUserTopology(args.id,resultHandler);
+}

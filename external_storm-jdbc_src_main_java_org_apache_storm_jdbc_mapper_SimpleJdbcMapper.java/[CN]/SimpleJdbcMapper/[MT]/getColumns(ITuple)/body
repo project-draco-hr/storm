@@ -1,0 +1,55 @@
+{
+  List<Column> columns=new ArrayList<Column>();
+  for (  Column column : schemaColumns) {
+    String columnName=column.getColumnName();
+    Integer columnSqlType=column.getSqlType();
+    if (Util.getJavaType(columnSqlType).equals(String.class)) {
+      String value=tuple.getStringByField(columnName);
+      columns.add(new Column(columnName,value,columnSqlType));
+    }
+ else     if (Util.getJavaType(columnSqlType).equals(Short.class)) {
+      Short value=tuple.getShortByField(columnName);
+      columns.add(new Column(columnName,value,columnSqlType));
+    }
+ else     if (Util.getJavaType(columnSqlType).equals(Integer.class)) {
+      Integer value=tuple.getIntegerByField(columnName);
+      columns.add(new Column(columnName,value,columnSqlType));
+    }
+ else     if (Util.getJavaType(columnSqlType).equals(Long.class)) {
+      Long value=tuple.getLongByField(columnName);
+      columns.add(new Column(columnName,value,columnSqlType));
+    }
+ else     if (Util.getJavaType(columnSqlType).equals(Double.class)) {
+      Double value=tuple.getDoubleByField(columnName);
+      columns.add(new Column(columnName,value,columnSqlType));
+    }
+ else     if (Util.getJavaType(columnSqlType).equals(Float.class)) {
+      Float value=tuple.getFloatByField(columnName);
+      columns.add(new Column(columnName,value,columnSqlType));
+    }
+ else     if (Util.getJavaType(columnSqlType).equals(Boolean.class)) {
+      Boolean value=tuple.getBooleanByField(columnName);
+      columns.add(new Column(columnName,value,columnSqlType));
+    }
+ else     if (Util.getJavaType(columnSqlType).equals(byte[].class)) {
+      byte[] value=tuple.getBinaryByField(columnName);
+      columns.add(new Column(columnName,value,columnSqlType));
+    }
+ else     if (Util.getJavaType(columnSqlType).equals(Date.class)) {
+      Long value=tuple.getLongByField(columnName);
+      columns.add(new Column(columnName,new Date(value),columnSqlType));
+    }
+ else     if (Util.getJavaType(columnSqlType).equals(Time.class)) {
+      Long value=tuple.getLongByField(columnName);
+      columns.add(new Column(columnName,new Time(value),columnSqlType));
+    }
+ else     if (Util.getJavaType(columnSqlType).equals(Timestamp.class)) {
+      Long value=tuple.getLongByField(columnName);
+      columns.add(new Column(columnName,new Timestamp(value),columnSqlType));
+    }
+ else {
+      throw new RuntimeException("Unsupported java type in tuple " + Util.getJavaType(columnSqlType));
+    }
+  }
+  return columns;
+}

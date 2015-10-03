@@ -1,0 +1,10 @@
+{
+  Map meta=emitter.emitPartitionBatchNew(null,collectorMock,partition,null);
+  collectorMock.clear();
+  Map meta1=emitter.emitPartitionBatchNew(null,collectorMock,partition,meta);
+  String collected0=collectorMock.getBuffer();
+  collectorMock.clear();
+  emitter.emitPartitionBatch(null,collectorMock,partition,meta1);
+  String collected1=collectorMock.getBuffer();
+  assertTrue(collected0.equals(collected1));
+}

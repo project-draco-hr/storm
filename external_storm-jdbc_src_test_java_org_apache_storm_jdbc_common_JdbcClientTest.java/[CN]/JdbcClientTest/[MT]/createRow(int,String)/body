@@ -1,0 +1,3 @@
+{
+  return Lists.newArrayList(new Column("ID",id,Types.INTEGER),new Column("USER_NAME",name,Types.VARCHAR),new Column("CREATED_TIMESTAMP",new Timestamp(System.currentTimeMillis()),Types.TIMESTAMP));
+}

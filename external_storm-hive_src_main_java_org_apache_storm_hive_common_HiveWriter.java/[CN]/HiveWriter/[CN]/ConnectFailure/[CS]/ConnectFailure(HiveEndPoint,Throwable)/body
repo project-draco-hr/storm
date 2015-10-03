@@ -1,0 +1,3 @@
+{
+  super("Failed connecting to EndPoint " + ep,cause);
+}

@@ -1,2 +1,5 @@
 def __hash__(self):
-    return ((0 + hash(self.functionName)) + hash(self.funcArgs))
+    value = 17
+    value = ((value * 31) ^ hash(self.functionName))
+    value = ((value * 31) ^ hash(self.funcArgs))
+    return value

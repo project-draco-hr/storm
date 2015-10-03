@@ -1,0 +1,7 @@
+{
+  int maxBufferSize=type.getMaxBufferSize(storm_conf);
+  TTransport conn=new TFramedTransport(transport,maxBufferSize);
+  conn.open();
+  LOG.debug("Simple client transport has been established");
+  return conn;
+}

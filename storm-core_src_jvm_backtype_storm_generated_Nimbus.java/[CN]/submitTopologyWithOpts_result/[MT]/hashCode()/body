@@ -1,13 +1,13 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_e=true && (is_set_e());
-  builder.append(present_e);
-  if (present_e)   builder.append(e);
+  list.add(present_e);
+  if (present_e)   list.add(e);
   boolean present_ite=true && (is_set_ite());
-  builder.append(present_ite);
-  if (present_ite)   builder.append(ite);
+  list.add(present_ite);
+  if (present_ite)   list.add(ite);
   boolean present_aze=true && (is_set_aze());
-  builder.append(present_aze);
-  if (present_aze)   builder.append(aze);
-  return builder.toHashCode();
+  list.add(present_aze);
+  if (present_aze)   list.add(aze);
+  return list.hashCode();
 }

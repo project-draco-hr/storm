@@ -1,0 +1,6 @@
+{
+  DelimitedRecordHiveMapper mapper=new DelimitedRecordHiveMapper().withColumnFields(new Fields(colNames)).withPartitionFields(new Fields(partNames));
+  HiveEndPoint endPoint=new HiveEndPoint(metaStoreURI,dbName,tblName,Arrays.asList(partitionVals));
+  HiveWriter writer=new HiveWriter(endPoint,10,true,timeout,callTimeoutPool,mapper,ugi);
+  writer.close();
+}

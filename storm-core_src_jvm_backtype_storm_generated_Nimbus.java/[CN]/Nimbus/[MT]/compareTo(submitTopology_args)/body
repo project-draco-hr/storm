@@ -3,43 +3,42 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  submitTopology_args typedOther=(submitTopology_args)other;
-  lastComparison=Boolean.valueOf(is_set_name()).compareTo(typedOther.is_set_name());
+  lastComparison=Boolean.valueOf(is_set_name()).compareTo(other.is_set_name());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_name()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.name,typedOther.name);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.name,other.name);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_uploadedJarLocation()).compareTo(typedOther.is_set_uploadedJarLocation());
+  lastComparison=Boolean.valueOf(is_set_uploadedJarLocation()).compareTo(other.is_set_uploadedJarLocation());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_uploadedJarLocation()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uploadedJarLocation,typedOther.uploadedJarLocation);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uploadedJarLocation,other.uploadedJarLocation);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_jsonConf()).compareTo(typedOther.is_set_jsonConf());
+  lastComparison=Boolean.valueOf(is_set_jsonConf()).compareTo(other.is_set_jsonConf());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_jsonConf()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.jsonConf,typedOther.jsonConf);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.jsonConf,other.jsonConf);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_topology()).compareTo(typedOther.is_set_topology());
+  lastComparison=Boolean.valueOf(is_set_topology()).compareTo(other.is_set_topology());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_topology()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topology,typedOther.topology);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topology,other.topology);
     if (lastComparison != 0) {
       return lastComparison;
     }

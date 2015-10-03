@@ -1,0 +1,4 @@
+{
+  JedisCluster jedisCluster=new JedisCluster(jedisClusterConfig.getNodes(),jedisClusterConfig.getTimeout(),jedisClusterConfig.getMaxRedirections(),DEFAULT_POOL_CONFIG);
+  return new RedisClusterState(jedisCluster);
+}

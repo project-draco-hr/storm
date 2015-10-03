@@ -1,0 +1,3 @@
+def get_config_opts():
+    global CONFIG_OPTS
+    return ('-Dstorm.options=' + ','.join(map(quote_plus, CONFIG_OPTS)))

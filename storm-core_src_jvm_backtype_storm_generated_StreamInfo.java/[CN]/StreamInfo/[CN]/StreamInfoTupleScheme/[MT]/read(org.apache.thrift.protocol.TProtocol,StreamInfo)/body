@@ -1,0 +1,15 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+{
+    org.apache.thrift.protocol.TList _list21=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
+    struct.output_fields=new ArrayList<String>(_list21.size);
+    String _elem22;
+    for (int _i23=0; _i23 < _list21.size; ++_i23) {
+      _elem22=iprot.readString();
+      struct.output_fields.add(_elem22);
+    }
+  }
+  struct.set_output_fields_isSet(true);
+  struct.direct=iprot.readBool();
+  struct.set_direct_isSet(true);
+}

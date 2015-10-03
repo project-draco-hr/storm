@@ -1,0 +1,2 @@
+def __init__(self, serialized_parts=None):
+    self.serialized_parts = serialized_parts

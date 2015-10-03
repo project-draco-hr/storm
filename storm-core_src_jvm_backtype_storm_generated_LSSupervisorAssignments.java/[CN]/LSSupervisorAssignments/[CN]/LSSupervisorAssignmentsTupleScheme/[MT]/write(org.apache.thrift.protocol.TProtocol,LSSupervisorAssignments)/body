@@ -1,0 +1,10 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+{
+    oprot.writeI32(struct.assignments.size());
+    for (    Map.Entry<Integer,LocalAssignment> _iter497 : struct.assignments.entrySet()) {
+      oprot.writeI32(_iter497.getKey());
+      _iter497.getValue().write(oprot);
+    }
+  }
+}

@@ -3,43 +3,42 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  ErrorInfo typedOther=(ErrorInfo)other;
-  lastComparison=Boolean.valueOf(is_set_error()).compareTo(typedOther.is_set_error());
+  lastComparison=Boolean.valueOf(is_set_error()).compareTo(other.is_set_error());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_error()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.error,typedOther.error);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.error,other.error);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_error_time_secs()).compareTo(typedOther.is_set_error_time_secs());
+  lastComparison=Boolean.valueOf(is_set_error_time_secs()).compareTo(other.is_set_error_time_secs());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_error_time_secs()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.error_time_secs,typedOther.error_time_secs);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.error_time_secs,other.error_time_secs);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_host()).compareTo(typedOther.is_set_host());
+  lastComparison=Boolean.valueOf(is_set_host()).compareTo(other.is_set_host());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_host()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.host,typedOther.host);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.host,other.host);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_port()).compareTo(typedOther.is_set_port());
+  lastComparison=Boolean.valueOf(is_set_port()).compareTo(other.is_set_port());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_port()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.port,typedOther.port);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.port,other.port);
     if (lastComparison != 0) {
       return lastComparison;
     }

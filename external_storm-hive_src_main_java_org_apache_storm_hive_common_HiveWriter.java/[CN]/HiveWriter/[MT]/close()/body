@@ -1,0 +1,5 @@
+{
+  closeTxnBatch();
+  closeConnection();
+  closed=true;
+}

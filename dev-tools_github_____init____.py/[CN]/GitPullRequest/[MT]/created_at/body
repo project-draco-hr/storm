@@ -1,2 +1,2 @@
 def created_at(self):
-    return gittime(self.data['created_at'])
+    return git_time(self.data['created_at'])

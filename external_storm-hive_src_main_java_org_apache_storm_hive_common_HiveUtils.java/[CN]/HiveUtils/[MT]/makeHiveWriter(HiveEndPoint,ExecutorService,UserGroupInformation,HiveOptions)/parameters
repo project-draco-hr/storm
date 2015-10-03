@@ -1,0 +1,4 @@
+HiveEndPoint endPoint
+ExecutorService callTimeoutPool
+UserGroupInformation ugi
+HiveOptions options

@@ -12,10 +12,14 @@ case 5:
 return STATUS;
 case 6:
 return ERRORS;
+case 7:
+return COMPONENT_DEBUG;
 case 513:
 return SCHED_STATUS;
 case 514:
 return OWNER;
+case 515:
+return REPLICATION_COUNT;
 default :
 return null;
 }

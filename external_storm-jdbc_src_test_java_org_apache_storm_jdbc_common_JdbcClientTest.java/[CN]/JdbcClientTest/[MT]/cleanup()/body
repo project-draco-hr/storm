@@ -1,0 +1,3 @@
+{
+  client.executeSql("drop table " + tableName);
+}

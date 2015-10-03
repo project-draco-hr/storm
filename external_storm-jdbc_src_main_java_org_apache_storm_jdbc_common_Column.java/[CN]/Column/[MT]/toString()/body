@@ -1,0 +1,3 @@
+{
+  return "Column{" + "columnName='" + columnName + '\''+ ", val="+ val+ ", sqlType="+ sqlType+ '}';
+}

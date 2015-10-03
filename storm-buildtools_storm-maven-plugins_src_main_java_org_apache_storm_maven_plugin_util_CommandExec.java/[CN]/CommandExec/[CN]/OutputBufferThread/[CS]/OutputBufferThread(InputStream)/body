@@ -1,0 +1,5 @@
+{
+  this.setDaemon(true);
+  output=new ArrayList<String>();
+  reader=new BufferedReader(new InputStreamReader(is));
+}

@@ -1,0 +1,4 @@
+{
+  this.node=null;
+  this.port=null;
+}

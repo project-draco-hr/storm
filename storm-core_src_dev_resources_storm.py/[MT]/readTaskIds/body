@@ -1,9 +1,0 @@
-def readTaskIds():
-    if pending_taskids:
-        return pending_taskids.popleft()
-    else:
-        msg = readMsg()
-        while (type(msg) is not list):
-            pending_commands.append(msg)
-            msg = readMsg()
-        return msg

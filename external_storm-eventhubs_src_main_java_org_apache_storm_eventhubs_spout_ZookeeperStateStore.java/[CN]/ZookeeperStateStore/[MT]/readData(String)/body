@@ -1,0 +1,16 @@
+{
+  try {
+    if (curatorFramework.checkExists().forPath(statePath) == null) {
+      return null;
+    }
+ else {
+      byte[] bytes=curatorFramework.getData().forPath(statePath);
+      String data=new String(bytes);
+      logger.info(String.format("data was retrieved. path: %s, data: %s.",statePath,data));
+      return data;
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

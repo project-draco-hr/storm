@@ -2,10 +2,10 @@
 switch (field) {
 case SUPERVISORS:
     return get_supervisors();
-case NIMBUS_UPTIME_SECS:
-  return Integer.valueOf(get_nimbus_uptime_secs());
 case TOPOLOGIES:
-return get_topologies();
+  return get_topologies();
+case NIMBUSES:
+return get_nimbuses();
 }
 throw new IllegalStateException();
 }

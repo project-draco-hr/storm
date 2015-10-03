@@ -1,0 +1,24 @@
+{
+  this.collector=collector;
+  if (stateStore == null) {
+    String zkEndpointAddress=eventHubConfig.getZkConnectionString();
+    if (zkEndpointAddress == null || zkEndpointAddress.length() == 0) {
+      @SuppressWarnings("unchecked") List<String> zkServers=(List<String>)config.get(Config.STORM_ZOOKEEPER_SERVERS);
+      Integer zkPort=((Number)config.get(Config.STORM_ZOOKEEPER_PORT)).intValue();
+      StringBuilder sb=new StringBuilder();
+      for (      String zk : zkServers) {
+        if (sb.length() > 0) {
+          sb.append(',');
+        }
+        sb.append(zk + ":" + zkPort);
+      }
+      zkEndpointAddress=sb.toString();
+    }
+    stateStore=new ZookeeperStateStore(zkEndpointAddress,(Integer)config.get(Config.STORM_ZOOKEEPER_RETRY_TIMES),(Integer)config.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL));
+  }
+  stateStore.open();
+  partitionCoordinator=new StaticPartitionCoordinator(eventHubConfig,taskIndex,totalTasks,stateStore,pmFactory,recvFactory);
+  for (  IPartitionManager partitionManager : partitionCoordinator.getMyPartitionManagers()) {
+    partitionManager.open();
+  }
+}

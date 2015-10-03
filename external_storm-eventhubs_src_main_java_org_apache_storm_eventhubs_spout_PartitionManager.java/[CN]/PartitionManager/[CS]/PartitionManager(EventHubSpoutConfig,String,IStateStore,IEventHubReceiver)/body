@@ -1,0 +1,5 @@
+{
+  super(spoutConfig,partitionId,stateStore,receiver);
+  this.pending=new LinkedHashMap<String,EventData>();
+  this.toResend=new TreeSet<EventData>();
+}

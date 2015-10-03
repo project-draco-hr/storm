@@ -1,0 +1,2 @@
+org.apache.thrift.protocol.TProtocol prot
+finishFileUpload_result struct

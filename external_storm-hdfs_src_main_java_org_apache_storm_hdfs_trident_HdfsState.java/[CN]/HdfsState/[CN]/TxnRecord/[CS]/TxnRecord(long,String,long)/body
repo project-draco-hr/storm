@@ -1,0 +1,5 @@
+{
+  this.txnid=txnId;
+  this.dataFilePath=dataFilePath;
+  this.offset=offset;
+}

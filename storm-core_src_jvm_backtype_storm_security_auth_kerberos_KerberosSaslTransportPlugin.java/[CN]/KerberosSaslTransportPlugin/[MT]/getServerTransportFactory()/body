@@ -1,5 +1,5 @@
 {
-  CallbackHandler server_callback_handler=new ServerCallbackHandler(login_conf);
+  CallbackHandler server_callback_handler=new ServerCallbackHandler(login_conf,storm_conf);
   Subject subject=null;
   try {
     Configuration.setConfiguration(login_conf);

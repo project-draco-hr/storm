@@ -1,17 +1,14 @@
 {
-  LOG.info("Getting metrics for connection to " + remote_addr);
+  LOG.info("Getting metrics for client connection to {}",dstAddressPrefixedName);
   HashMap<String,Object> ret=new HashMap<String,Object>();
-  ret.put("reconnects",totalReconnects.getAndSet(0));
+  ret.put("reconnects",totalConnectionAttempts.getAndSet(0));
   ret.put("sent",messagesSent.getAndSet(0));
-  ret.put("pending",pendings.get());
-  ret.put("lostOnSend",messagesLostReconnect.getAndSet(0));
-  ret.put("dest",remote_addr.toString());
-  Channel c=channelRef.get();
-  if (c != null) {
-    SocketAddress address=c.getLocalAddress();
-    if (address != null) {
-      ret.put("src",address.toString());
-    }
+  ret.put("pending",pendingMessages.get());
+  ret.put("lostOnSend",messagesLost.getAndSet(0));
+  ret.put("dest",dstAddress.toString());
+  String src=srcAddressName();
+  if (src != null) {
+    ret.put("src",src);
   }
   return ret;
 }

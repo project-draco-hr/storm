@@ -48,6 +48,14 @@ unset_errors();
 set_errors((Map<String,List<ErrorInfo>>)value);
 }
 break;
+case COMPONENT_DEBUG:
+if (value == null) {
+unset_component_debug();
+}
+ else {
+set_component_debug((Map<String,DebugOptions>)value);
+}
+break;
 case SCHED_STATUS:
 if (value == null) {
 unset_sched_status();
@@ -62,6 +70,14 @@ unset_owner();
 }
  else {
 set_owner((String)value);
+}
+break;
+case REPLICATION_COUNT:
+if (value == null) {
+unset_replication_count();
+}
+ else {
+set_replication_count((Integer)value);
 }
 break;
 }

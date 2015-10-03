@@ -1,0 +1,5 @@
+{
+  this.partitionId=partitionId;
+  this.offset=offset;
+  this.sequenceNumber=sequenceNumber;
+}

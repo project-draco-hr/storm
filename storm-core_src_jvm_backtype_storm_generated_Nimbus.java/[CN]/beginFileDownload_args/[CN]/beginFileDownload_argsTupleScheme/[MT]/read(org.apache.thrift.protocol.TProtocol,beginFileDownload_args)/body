@@ -1,0 +1,8 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+    struct.file=iprot.readString();
+    struct.set_file_isSet(true);
+  }
+}

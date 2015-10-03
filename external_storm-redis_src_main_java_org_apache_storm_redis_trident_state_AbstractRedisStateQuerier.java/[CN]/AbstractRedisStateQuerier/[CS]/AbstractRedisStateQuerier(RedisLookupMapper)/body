@@ -1,0 +1,6 @@
+{
+  this.lookupMapper=lookupMapper;
+  RedisDataTypeDescription dataTypeDescription=lookupMapper.getDataTypeDescription();
+  this.dataType=dataTypeDescription.getDataType();
+  this.additionalKey=dataTypeDescription.getAdditionalKey();
+}

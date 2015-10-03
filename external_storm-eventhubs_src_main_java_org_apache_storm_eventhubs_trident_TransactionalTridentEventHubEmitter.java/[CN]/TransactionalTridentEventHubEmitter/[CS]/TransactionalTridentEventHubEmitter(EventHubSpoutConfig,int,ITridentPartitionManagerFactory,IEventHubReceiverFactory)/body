@@ -1,0 +1,23 @@
+{
+  this.spoutConfig=spoutConfig;
+  this.batchSize=batchSize;
+  this.pmFactory=pmFactory;
+  this.recvFactory=recvFactory;
+  pmMap=new HashMap<String,ITridentPartitionManager>();
+  if (this.pmFactory == null) {
+    this.pmFactory=new ITridentPartitionManagerFactory(){
+      @Override public ITridentPartitionManager create(      IEventHubReceiver receiver){
+        return new TridentPartitionManager(spoutConfig,receiver);
+      }
+    }
+;
+  }
+  if (this.recvFactory == null) {
+    this.recvFactory=new IEventHubReceiverFactory(){
+      @Override public IEventHubReceiver create(      EventHubSpoutConfig config,      String partitionId){
+        return new EventHubReceiverImpl(config,partitionId);
+      }
+    }
+;
+  }
+}

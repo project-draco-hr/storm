@@ -1,0 +1,5 @@
+{
+  this.timeFormat=timeFormat;
+  parseDate=new SimpleDateFormat(timeFormat);
+  return this;
+}

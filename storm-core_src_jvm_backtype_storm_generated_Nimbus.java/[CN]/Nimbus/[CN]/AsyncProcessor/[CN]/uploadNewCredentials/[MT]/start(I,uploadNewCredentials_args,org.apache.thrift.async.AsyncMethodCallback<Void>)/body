@@ -1,0 +1,3 @@
+{
+  iface.uploadNewCredentials(args.name,args.creds,resultHandler);
+}

@@ -1,0 +1,6 @@
+{
+  if (this.used_ports == null) {
+    this.used_ports=new ArrayList<Long>();
+  }
+  this.used_ports.add(elem);
+}

@@ -1,13 +1,14 @@
 def recv_submitTopology(self):
-    (fname, mtype, rseqid) = self._iprot.readMessageBegin()
+    iprot = self._iprot
+    (fname, mtype, rseqid) = iprot.readMessageBegin()
     if (mtype == TMessageType.EXCEPTION):
         x = TApplicationException()
-        x.read(self._iprot)
-        self._iprot.readMessageEnd()
+        x.read(iprot)
+        iprot.readMessageEnd()
         raise x
     result = submitTopology_result()
-    result.read(self._iprot)
-    self._iprot.readMessageEnd()
+    result.read(iprot)
+    iprot.readMessageEnd()
     if (result.e is not None):
         raise result.e
     if (result.ite is not None):

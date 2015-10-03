@@ -1,0 +1,7 @@
+{
+  super(config);
+  this.storeMapper=storeMapper;
+  RedisDataTypeDescription dataTypeDescription=storeMapper.getDataTypeDescription();
+  this.dataType=dataTypeDescription.getDataType();
+  this.additionalKey=dataTypeDescription.getAdditionalKey();
+}

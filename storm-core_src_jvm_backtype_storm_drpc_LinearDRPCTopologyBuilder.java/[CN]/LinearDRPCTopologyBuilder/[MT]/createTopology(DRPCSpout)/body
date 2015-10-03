@@ -19,7 +19,7 @@
       idSpec=IdStreamSpec.makeDetectSpec(PREPARE_ID,PrepareRequest.ID_STREAM);
     }
     BoltDeclarer declarer=builder.setBolt(boltId(i),new CoordinatedBolt(component.bolt,source,idSpec),component.parallelism);
-    for (    Map conf : component.componentConfs) {
+    for (    Map<String,Object> conf : component.componentConfs) {
       declarer.addConfigurations(conf);
     }
     if (idSpec != null) {

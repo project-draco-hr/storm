@@ -1,0 +1,42 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.inputs != null) {
+    oprot.writeFieldBegin(INPUTS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.STRUCT,struct.inputs.size()));
+      for (      Map.Entry<GlobalStreamId,Grouping> _iter32 : struct.inputs.entrySet()) {
+        _iter32.getKey().write(oprot);
+        _iter32.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (struct.streams != null) {
+    oprot.writeFieldBegin(STREAMS_FIELD_DESC);
+{
+      oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.streams.size()));
+      for (      Map.Entry<String,StreamInfo> _iter33 : struct.streams.entrySet()) {
+        oprot.writeString(_iter33.getKey());
+        _iter33.getValue().write(oprot);
+      }
+      oprot.writeMapEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_parallelism_hint()) {
+    oprot.writeFieldBegin(PARALLELISM_HINT_FIELD_DESC);
+    oprot.writeI32(struct.parallelism_hint);
+    oprot.writeFieldEnd();
+  }
+  if (struct.json_conf != null) {
+    if (struct.is_set_json_conf()) {
+      oprot.writeFieldBegin(JSON_CONF_FIELD_DESC);
+      oprot.writeString(struct.json_conf);
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

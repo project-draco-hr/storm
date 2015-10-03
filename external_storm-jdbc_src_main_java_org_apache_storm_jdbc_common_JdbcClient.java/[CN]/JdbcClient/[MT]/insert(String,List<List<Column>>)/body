@@ -1,0 +1,4 @@
+{
+  String query=constructInsertQuery(tableName,columnLists);
+  executeInsertQuery(query,columnLists);
+}

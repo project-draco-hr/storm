@@ -1,0 +1,5 @@
+int argCount
+String shortName
+String longName
+String argName
+String description

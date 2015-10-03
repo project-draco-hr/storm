@@ -27,6 +27,10 @@
     sb.append(this.specific);
   }
   first=false;
+  if (!first)   sb.append(", ");
+  sb.append("rate:");
+  sb.append(this.rate);
+  first=false;
   sb.append(")");
   return sb.toString();
 }

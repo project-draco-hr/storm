@@ -1,0 +1,3 @@
+{
+  return clazz.isPrimitive() && !clazz.equals(boolean.class);
+}

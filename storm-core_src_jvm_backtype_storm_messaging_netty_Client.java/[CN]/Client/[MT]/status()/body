@@ -1,0 +1,11 @@
+{
+  if (closing) {
+    return Status.Closed;
+  }
+ else   if (!connectionEstablished(channelRef.get())) {
+    return Status.Connecting;
+  }
+ else {
+    return Status.Ready;
+  }
+}

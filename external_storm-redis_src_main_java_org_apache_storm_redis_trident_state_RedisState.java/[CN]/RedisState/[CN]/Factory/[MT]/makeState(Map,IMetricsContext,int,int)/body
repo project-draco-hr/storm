@@ -1,0 +1,4 @@
+{
+  JedisPool jedisPool=new JedisPool(DEFAULT_POOL_CONFIG,jedisPoolConfig.getHost(),jedisPoolConfig.getPort(),jedisPoolConfig.getTimeout(),jedisPoolConfig.getPassword(),jedisPoolConfig.getDatabase());
+  return new RedisState(jedisPool);
+}

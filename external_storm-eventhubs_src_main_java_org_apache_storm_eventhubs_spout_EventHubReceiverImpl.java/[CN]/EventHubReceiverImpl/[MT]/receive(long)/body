@@ -1,0 +1,14 @@
+{
+  long start=System.currentTimeMillis();
+  Message message=receiver.receive(timeoutInMilliseconds);
+  long end=System.currentTimeMillis();
+  long millis=(end - start);
+  receiveApiLatencyMean.update(millis);
+  receiveApiCallCount.incr();
+  if (message == null) {
+    return null;
+  }
+  receiveMessageCount.incr();
+  MessageId messageId=createMessageId(message);
+  return EventData.create(message,messageId);
+}

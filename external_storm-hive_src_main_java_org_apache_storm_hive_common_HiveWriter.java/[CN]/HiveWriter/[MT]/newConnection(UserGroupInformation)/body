@@ -1,0 +1,16 @@
+{
+  try {
+    return callWithTimeout(new CallRunner<StreamingConnection>(){
+      @Override public StreamingConnection call() throws Exception {
+        return endPoint.newConnection(autoCreatePartitions,null,ugi);
+      }
+    }
+);
+  }
+ catch (  StreamingException e) {
+    throw new ConnectFailure(endPoint,e);
+  }
+catch (  TimeoutException e) {
+    throw new ConnectFailure(endPoint,e);
+  }
+}

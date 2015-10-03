@@ -1,0 +1,3 @@
+String partitionId
+String offset
+long sequenceNumber

@@ -1,2 +1,8 @@
 {
+  if (topology != null) {
+    topology.validate();
+  }
+  if (options != null) {
+    options.validate();
+  }
 }

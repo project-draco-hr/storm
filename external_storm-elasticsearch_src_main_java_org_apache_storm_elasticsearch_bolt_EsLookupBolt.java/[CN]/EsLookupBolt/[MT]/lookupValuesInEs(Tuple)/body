@@ -1,0 +1,5 @@
+{
+  GetRequest request=getRequest.extractFrom(tuple);
+  GetResponse response=client.get(request).actionGet();
+  return output.toValues(response);
+}

@@ -1,0 +1,21 @@
+{
+  if (null == configFilePath) {
+    throw new IOException("Could not find config file, name not specified");
+  }
+  HashSet<URL> resources=new HashSet<URL>(findResources(configFilePath));
+  if (resources.isEmpty()) {
+    File configFile=new File(configFilePath);
+    if (configFile.exists()) {
+      return new FileInputStream(configFile);
+    }
+  }
+ else   if (resources.size() > 1) {
+    throw new IOException("Found multiple " + configFilePath + " resources. You're probably bundling the Storm jars with your topology jar. "+ resources);
+  }
+ else {
+    LOG.info("Using " + configFilePath + " from resources");
+    URL resource=resources.iterator().next();
+    return resource.openStream();
+  }
+  return null;
+}

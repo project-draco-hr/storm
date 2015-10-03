@@ -1,19 +1,19 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_acked=true && (is_set_acked());
-  builder.append(present_acked);
-  if (present_acked)   builder.append(acked);
+  list.add(present_acked);
+  if (present_acked)   list.add(acked);
   boolean present_failed=true && (is_set_failed());
-  builder.append(present_failed);
-  if (present_failed)   builder.append(failed);
+  list.add(present_failed);
+  if (present_failed)   list.add(failed);
   boolean present_process_ms_avg=true && (is_set_process_ms_avg());
-  builder.append(present_process_ms_avg);
-  if (present_process_ms_avg)   builder.append(process_ms_avg);
+  list.add(present_process_ms_avg);
+  if (present_process_ms_avg)   list.add(process_ms_avg);
   boolean present_executed=true && (is_set_executed());
-  builder.append(present_executed);
-  if (present_executed)   builder.append(executed);
+  list.add(present_executed);
+  if (present_executed)   list.add(executed);
   boolean present_execute_ms_avg=true && (is_set_execute_ms_avg());
-  builder.append(present_execute_ms_avg);
-  if (present_execute_ms_avg)   builder.append(execute_ms_avg);
-  return builder.toHashCode();
+  list.add(present_execute_ms_avg);
+  if (present_execute_ms_avg)   list.add(execute_ms_avg);
+  return list.hashCode();
 }

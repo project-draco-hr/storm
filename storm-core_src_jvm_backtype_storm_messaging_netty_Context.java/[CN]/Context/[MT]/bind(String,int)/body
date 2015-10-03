@@ -1,5 +1,5 @@
 {
   IConnection server=new Server(storm_conf,port);
-  connections.add(server);
+  connections.put(key(storm_id,port),server);
   return server;
 }

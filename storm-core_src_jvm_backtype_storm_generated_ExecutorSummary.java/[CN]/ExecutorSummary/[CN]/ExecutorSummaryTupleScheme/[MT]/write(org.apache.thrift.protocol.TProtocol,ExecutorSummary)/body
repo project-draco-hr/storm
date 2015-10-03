@@ -1,0 +1,16 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  struct.executor_info.write(oprot);
+  oprot.writeString(struct.component_id);
+  oprot.writeString(struct.host);
+  oprot.writeI32(struct.port);
+  oprot.writeI32(struct.uptime_secs);
+  BitSet optionals=new BitSet();
+  if (struct.is_set_stats()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_stats()) {
+    struct.stats.write(oprot);
+  }
+}

@@ -1,0 +1,14 @@
+{
+  boolean connected=false;
+  TTransport transportResult=null;
+  while (!connected) {
+    try {
+      transportResult=transportPlugin.connect(underlyingTransport,host,asUser);
+      connected=true;
+    }
+ catch (    TTransportException ex) {
+      retryNext(ex);
+    }
+  }
+  return transportResult;
+}

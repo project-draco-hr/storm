@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_enable=true && (is_set_enable());
+  list.add(present_enable);
+  if (present_enable)   list.add(enable);
+  boolean present_samplingpct=true && (is_set_samplingpct());
+  list.add(present_samplingpct);
+  if (present_samplingpct)   list.add(samplingpct);
+  return list.hashCode();
+}

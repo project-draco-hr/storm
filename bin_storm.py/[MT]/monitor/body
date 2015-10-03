@@ -1,0 +1,3 @@
+def monitor(*args):
+    "Syntax: [storm monitor topology-name [-i interval-secs] [-m component-id] [-s stream-id] [-w [emitted | transferred]]]\n\n    Monitor given topology's throughput interactively.\n    One can specify poll-interval, component-id, stream-id, watch-item[emitted | transferred]\n    By default,\n        poll-interval is 4 seconds;\n        all component-ids will be list;\n        stream-id is 'default';\n        watch-item is 'emitted';\n    "
+    exec_storm_class('backtype.storm.command.monitor', args=args, jvmtype='-client', extrajars=[USER_CONF_DIR, STORM_BIN_DIR])

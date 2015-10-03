@@ -1,0 +1,5 @@
+{
+  if (Thread.currentThread().interrupted()) {
+    throw new InterruptedException("Timed out before Hive call was made. " + "Your callTimeout might be set too low or Hive calls are " + "taking too long.");
+  }
+}

@@ -1,16 +1,20 @@
 {
   List<Get> gets=new ArrayList<Get>();
   for (  List<Object> key : keys) {
-    LOG.info("Partition: {}, GET: {}",this.partitionNum,key);
-    Get get=new Get(toRowKey(key));
-    get.addColumn(this.options.columnFamily.getBytes(),this.options.qualifier.getBytes());
+    byte[] hbaseKey=this.options.mapMapper.rowKey(key);
+    String qualifier=this.options.mapMapper.qualifier(key);
+    LOG.info("Partition: {}, GET: {}",this.partitionNum,new String(hbaseKey));
+    Get get=new Get(hbaseKey);
+    get.addColumn(this.options.columnFamily.getBytes(),qualifier.getBytes());
     gets.add(get);
   }
   List<T> retval=new ArrayList<T>();
   try {
     Result[] results=this.table.get(gets);
-    for (    Result result : results) {
-      byte[] value=result.getValue(this.options.columnFamily.getBytes(),this.options.qualifier.getBytes());
+    for (int i=0; i < keys.size(); i++) {
+      String qualifier=this.options.mapMapper.qualifier(keys.get(i));
+      Result result=results[i];
+      byte[] value=result.getValue(this.options.columnFamily.getBytes(),qualifier.getBytes());
       if (value != null) {
         retval.add(this.serializer.deserialize(value));
       }

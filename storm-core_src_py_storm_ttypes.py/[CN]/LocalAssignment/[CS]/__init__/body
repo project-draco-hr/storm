@@ -1,0 +1,3 @@
+def __init__(self, topology_id=None, executors=None):
+    self.topology_id = topology_id
+    self.executors = executors

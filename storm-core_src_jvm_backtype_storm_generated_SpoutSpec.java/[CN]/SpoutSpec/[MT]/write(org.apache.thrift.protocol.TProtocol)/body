@@ -1,16 +1,3 @@
 {
-  validate();
-  oprot.writeStructBegin(STRUCT_DESC);
-  if (this.spout_object != null) {
-    oprot.writeFieldBegin(SPOUT_OBJECT_FIELD_DESC);
-    this.spout_object.write(oprot);
-    oprot.writeFieldEnd();
-  }
-  if (this.common != null) {
-    oprot.writeFieldBegin(COMMON_FIELD_DESC);
-    this.common.write(oprot);
-    oprot.writeFieldEnd();
-  }
-  oprot.writeFieldStop();
-  oprot.writeStructEnd();
+  schemes.get(oprot.getScheme()).getScheme().write(oprot,this);
 }

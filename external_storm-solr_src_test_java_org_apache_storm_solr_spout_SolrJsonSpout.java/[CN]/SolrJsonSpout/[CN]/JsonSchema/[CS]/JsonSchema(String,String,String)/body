@@ -1,0 +1,5 @@
+{
+  this.id=id;
+  this.date=date;
+  this.dc_title=dc_title;
+}

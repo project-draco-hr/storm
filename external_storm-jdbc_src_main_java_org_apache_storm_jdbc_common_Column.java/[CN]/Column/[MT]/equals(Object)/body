@@ -1,0 +1,8 @@
+{
+  if (this == o)   return true;
+  if (!(o instanceof Column))   return false;
+  Column<?> column=(Column<?>)o;
+  if (sqlType != column.sqlType)   return false;
+  if (!columnName.equals(column.columnName))   return false;
+  return val != null ? val.equals(column.val) : column.val == null;
+}

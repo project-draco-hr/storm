@@ -1,0 +1,4 @@
+{
+  int count=listRecordsInTable(dbName,tableName).size();
+  Assert.assertEquals(expectedCount,count);
+}

@@ -1,16 +1,3 @@
 {
-  validate();
-  oprot.writeStructBegin(STRUCT_DESC);
-  if (this.name != null) {
-    oprot.writeFieldBegin(NAME_FIELD_DESC);
-    oprot.writeString(this.name);
-    oprot.writeFieldEnd();
-  }
-  if (this.creds != null) {
-    oprot.writeFieldBegin(CREDS_FIELD_DESC);
-    this.creds.write(oprot);
-    oprot.writeFieldEnd();
-  }
-  oprot.writeFieldStop();
-  oprot.writeStructEnd();
+  schemes.get(oprot.getScheme()).getScheme().write(oprot,this);
 }

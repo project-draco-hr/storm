@@ -1,0 +1,32 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.host != null) {
+    oprot.writeFieldBegin(HOST_FIELD_DESC);
+    oprot.writeString(struct.host);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(struct.uptime_secs);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(NUM_WORKERS_FIELD_DESC);
+  oprot.writeI32(struct.num_workers);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(NUM_USED_WORKERS_FIELD_DESC);
+  oprot.writeI32(struct.num_used_workers);
+  oprot.writeFieldEnd();
+  if (struct.supervisor_id != null) {
+    oprot.writeFieldBegin(SUPERVISOR_ID_FIELD_DESC);
+    oprot.writeString(struct.supervisor_id);
+    oprot.writeFieldEnd();
+  }
+  if (struct.version != null) {
+    if (struct.is_set_version()) {
+      oprot.writeFieldBegin(VERSION_FIELD_DESC);
+      oprot.writeString(struct.version);
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

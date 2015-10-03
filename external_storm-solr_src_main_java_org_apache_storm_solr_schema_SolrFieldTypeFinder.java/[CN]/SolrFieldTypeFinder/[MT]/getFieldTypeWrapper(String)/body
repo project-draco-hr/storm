@@ -1,0 +1,12 @@
+{
+  FieldTypeWrapper typeWrapper=fieldToWrapper.get(fieldName);
+  if (typeWrapper == null) {
+    for (    String pattern : fieldToWrapper.keySet()) {
+      if (matchesDynamicField(fieldName,pattern)) {
+        typeWrapper=fieldToWrapper.get(pattern);
+      }
+    }
+  }
+  log.debug("Solr Field Name = {}, Solr Type = {}",fieldName,typeWrapper);
+  return typeWrapper;
+}

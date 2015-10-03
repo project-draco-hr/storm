@@ -1,0 +1,3 @@
+{
+  return tridentTopology.newStream("spout1",createKafkaSpout()).parallelismHint(1).each(new Fields("str"),new Split(),new Fields("word")).groupBy(new Fields("word")).persistentAggregate(new MemoryMapState.Factory(),new Count(),new Fields("count")).parallelismHint(1);
+}

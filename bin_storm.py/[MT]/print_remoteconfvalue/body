@@ -1,0 +1,3 @@
+def print_remoteconfvalue(name):
+    "Syntax: [storm remoteconfvalue conf-name]\n\n    Prints out the value for conf-name in the cluster's Storm configs.\n    The cluster's Storm configs are the ones in $STORM-PATH/conf/storm.yaml\n    merged in with the configs in defaults.yaml.\n\n    This command must be run on a cluster machine.\n    "
+    print ((name + ': ') + confvalue(name, [CLUSTER_CONF_DIR]))

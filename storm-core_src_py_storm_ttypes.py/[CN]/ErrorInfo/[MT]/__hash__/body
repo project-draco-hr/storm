@@ -1,2 +1,7 @@
 def __hash__(self):
-    return ((((0 + hash(self.error)) + hash(self.error_time_secs)) + hash(self.host)) + hash(self.port))
+    value = 17
+    value = ((value * 31) ^ hash(self.error))
+    value = ((value * 31) ^ hash(self.error_time_secs))
+    value = ((value * 31) ^ hash(self.host))
+    value = ((value * 31) ^ hash(self.port))
+    return value

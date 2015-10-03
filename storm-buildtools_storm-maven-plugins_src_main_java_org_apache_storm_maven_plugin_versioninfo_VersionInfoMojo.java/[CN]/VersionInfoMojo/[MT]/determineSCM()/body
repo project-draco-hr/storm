@@ -1,0 +1,34 @@
+{
+  CommandExec exec=new CommandExec(this);
+  SCM scm=SCM.NONE;
+  scmOut=new ArrayList<String>();
+  int ret=exec.run(Arrays.asList(svnCommand,"info"),scmOut);
+  if (ret == 0) {
+    scm=SCM.SVN;
+  }
+ else {
+    ret=exec.run(Arrays.asList(gitCommand,"branch"),scmOut);
+    if (ret == 0) {
+      ret=exec.run(Arrays.asList(gitCommand,"remote","-v"),scmOut);
+      if (ret != 0) {
+        scm=SCM.NONE;
+        scmOut=null;
+      }
+ else {
+        ret=exec.run(Arrays.asList(gitCommand,"log","-n","1"),scmOut);
+        if (ret != 0) {
+          scm=SCM.NONE;
+          scmOut=null;
+        }
+ else {
+          scm=SCM.GIT;
+        }
+      }
+    }
+  }
+  if (scmOut != null) {
+    getLog().debug(scmOut.toString());
+  }
+  getLog().info("SCM: " + scm);
+  return scm;
+}

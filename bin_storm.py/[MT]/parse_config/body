@@ -1,0 +1,5 @@
+def parse_config(config_list):
+    global CONFIG_OPTS
+    if (len(config_list) > 0):
+        for config in config_list:
+            CONFIG_OPTS.append(config)

@@ -1,4 +1,4 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
-  return builder.toHashCode();
+  List<Object> list=new ArrayList<Object>();
+  return list.hashCode();
 }

@@ -1,0 +1,4 @@
+{
+  send_getTopologyInfoWithOpts(id,options);
+  return recv_getTopologyInfoWithOpts();
+}

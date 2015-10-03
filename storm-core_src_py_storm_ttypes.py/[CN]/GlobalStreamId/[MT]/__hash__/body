@@ -1,2 +1,5 @@
 def __hash__(self):
-    return ((0 + hash(self.componentId)) + hash(self.streamId))
+    value = 17
+    value = ((value * 31) ^ hash(self.componentId))
+    value = ((value * 31) ^ hash(self.streamId))
+    return value

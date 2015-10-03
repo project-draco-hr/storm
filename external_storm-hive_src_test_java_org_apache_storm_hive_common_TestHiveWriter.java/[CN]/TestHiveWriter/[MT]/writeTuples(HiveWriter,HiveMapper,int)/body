@@ -1,0 +1,8 @@
+{
+  Integer id=100;
+  String msg="test-123";
+  for (int i=1; i <= count; i++) {
+    Tuple tuple=generateTestTuple(id,msg);
+    writer.write(mapper.mapRecord(tuple));
+  }
+}

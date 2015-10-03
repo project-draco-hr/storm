@@ -1,0 +1,21 @@
+{
+  if (closed) {
+    throw new IllegalStateException("This hive streaming writer was closed " + "and thus no longer able to write : " + endPoint);
+  }
+  try {
+    LOG.debug("Writing event to {}",endPoint);
+    callWithTimeout(new CallRunner<Void>(){
+      @Override public Void call() throws StreamingException, InterruptedException {
+        txnBatch.write(record);
+        return null;
+      }
+    }
+);
+  }
+ catch (  StreamingException e) {
+    throw new WriteFailure(endPoint,txnBatch.getCurrentTxnId(),e);
+  }
+catch (  TimeoutException e) {
+    throw new WriteFailure(endPoint,txnBatch.getCurrentTxnId(),e);
+  }
+}

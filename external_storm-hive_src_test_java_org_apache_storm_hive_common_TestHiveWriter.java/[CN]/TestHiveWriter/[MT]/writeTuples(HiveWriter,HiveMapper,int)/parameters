@@ -1,0 +1,3 @@
+HiveWriter writer
+HiveMapper mapper
+int count

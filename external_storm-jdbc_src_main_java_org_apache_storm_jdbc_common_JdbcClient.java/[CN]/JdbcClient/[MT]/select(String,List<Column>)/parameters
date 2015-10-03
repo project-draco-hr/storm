@@ -1,0 +1,2 @@
+String sqlQuery
+List<Column> queryParams

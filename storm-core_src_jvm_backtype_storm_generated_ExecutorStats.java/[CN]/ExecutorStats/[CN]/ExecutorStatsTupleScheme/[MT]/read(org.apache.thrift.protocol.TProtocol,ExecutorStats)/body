@@ -1,0 +1,52 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+{
+    org.apache.thrift.protocol.TMap _map282=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
+    struct.emitted=new HashMap<String,Map<String,Long>>(2 * _map282.size);
+    String _key283;
+    Map<String,Long> _val284;
+    for (int _i285=0; _i285 < _map282.size; ++_i285) {
+      _key283=iprot.readString();
+{
+        org.apache.thrift.protocol.TMap _map286=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+        _val284=new HashMap<String,Long>(2 * _map286.size);
+        String _key287;
+        long _val288;
+        for (int _i289=0; _i289 < _map286.size; ++_i289) {
+          _key287=iprot.readString();
+          _val288=iprot.readI64();
+          _val284.put(_key287,_val288);
+        }
+      }
+      struct.emitted.put(_key283,_val284);
+    }
+  }
+  struct.set_emitted_isSet(true);
+{
+    org.apache.thrift.protocol.TMap _map290=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
+    struct.transferred=new HashMap<String,Map<String,Long>>(2 * _map290.size);
+    String _key291;
+    Map<String,Long> _val292;
+    for (int _i293=0; _i293 < _map290.size; ++_i293) {
+      _key291=iprot.readString();
+{
+        org.apache.thrift.protocol.TMap _map294=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+        _val292=new HashMap<String,Long>(2 * _map294.size);
+        String _key295;
+        long _val296;
+        for (int _i297=0; _i297 < _map294.size; ++_i297) {
+          _key295=iprot.readString();
+          _val296=iprot.readI64();
+          _val292.put(_key295,_val296);
+        }
+      }
+      struct.transferred.put(_key291,_val292);
+    }
+  }
+  struct.set_transferred_isSet(true);
+  struct.specific=new ExecutorSpecificStats();
+  struct.specific.read(iprot);
+  struct.set_specific_isSet(true);
+  struct.rate=iprot.readDouble();
+  struct.set_rate_isSet(true);
+}

@@ -1,0 +1,12 @@
+{
+  IMetaStoreClient client=new HiveMetaStoreClient(conf);
+  try {
+    for (    String table : client.listTableNamesByFilter(databaseName,"",(short)-1)) {
+      client.dropTable(databaseName,table,true,true);
+    }
+    client.dropDatabase(databaseName);
+  }
+ catch (  TException e) {
+    client.close();
+  }
+}

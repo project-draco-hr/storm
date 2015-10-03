@@ -1,3 +1,0 @@
-String location
-ByteBuffer chunk
-org.apache.thrift.async.AsyncMethodCallback<AsyncClient.uploadChunk_call> resultHandler

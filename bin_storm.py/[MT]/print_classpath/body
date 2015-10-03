@@ -1,0 +1,3 @@
+def print_classpath():
+    'Syntax: [storm classpath]\n\n    Prints the classpath used by the storm client when running commands.\n    '
+    print get_classpath([])

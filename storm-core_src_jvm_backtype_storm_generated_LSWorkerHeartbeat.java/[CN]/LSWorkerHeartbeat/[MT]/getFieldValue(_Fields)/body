@@ -1,0 +1,13 @@
+{
+switch (field) {
+case TIME_SECS:
+    return Integer.valueOf(get_time_secs());
+case TOPOLOGY_ID:
+  return get_topology_id();
+case EXECUTORS:
+return get_executors();
+case PORT:
+return Integer.valueOf(get_port());
+}
+throw new IllegalStateException();
+}

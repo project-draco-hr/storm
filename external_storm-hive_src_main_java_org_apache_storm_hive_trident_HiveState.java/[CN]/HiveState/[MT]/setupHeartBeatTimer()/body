@@ -1,0 +1,11 @@
+{
+  if (options.getHeartBeatInterval() > 0) {
+    heartBeatTimer.schedule(new TimerTask(){
+      @Override public void run(){
+        timeToSendHeartBeat.set(true);
+        setupHeartBeatTimer();
+      }
+    }
+,options.getHeartBeatInterval() * 1000);
+  }
+}

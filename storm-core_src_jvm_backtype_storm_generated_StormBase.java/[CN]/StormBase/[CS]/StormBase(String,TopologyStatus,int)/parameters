@@ -1,0 +1,3 @@
+String name
+TopologyStatus status
+int num_workers

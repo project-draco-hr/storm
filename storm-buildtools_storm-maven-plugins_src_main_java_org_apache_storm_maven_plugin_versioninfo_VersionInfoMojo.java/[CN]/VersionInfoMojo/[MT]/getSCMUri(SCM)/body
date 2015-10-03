@@ -1,0 +1,24 @@
+{
+  String uri="Unknown";
+switch (scm) {
+case SVN:
+    for (    String s : scmOut) {
+      if (s.startsWith("URL:")) {
+        uri=s.substring(4).trim();
+        uri=getSvnUriInfo(uri)[0];
+        break;
+      }
+    }
+  break;
+case GIT:
+for (String s : scmOut) {
+  if (s.startsWith("origin") && s.endsWith("(fetch)")) {
+    uri=s.substring("origin".length());
+    uri=uri.substring(0,uri.length() - "(fetch)".length());
+    break;
+  }
+}
+break;
+}
+return uri.trim();
+}

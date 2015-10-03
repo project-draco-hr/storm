@@ -1,0 +1,19 @@
+{
+  JedisCluster jedisCluster=new JedisCluster(jedisClusterConfig.getNodes(),jedisClusterConfig.getTimeout(),jedisClusterConfig.getMaxRedirections(),DEFAULT_POOL_CONFIG);
+  RedisClusterMapState state=new RedisClusterMapState(jedisCluster,options,serializer,keyFactory);
+  CachedMap c=new CachedMap(state,options.localCacheSize);
+  MapState ms;
+  if (type == StateType.NON_TRANSACTIONAL) {
+    ms=NonTransactionalMap.build(c);
+  }
+ else   if (type == StateType.OPAQUE) {
+    ms=OpaqueMap.build(c);
+  }
+ else   if (type == StateType.TRANSACTIONAL) {
+    ms=TransactionalMap.build(c);
+  }
+ else {
+    throw new RuntimeException("Unknown state type: " + type);
+  }
+  return new SnapshottableMap(ms,new Values(options.globalKey));
+}

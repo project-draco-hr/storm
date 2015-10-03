@@ -1,0 +1,8 @@
+{
+  this.collector=collector;
+  connectionProvider.prepare();
+  if (queryTimeoutSecs == null) {
+    queryTimeoutSecs=Integer.parseInt(map.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS).toString());
+  }
+  this.jdbcClient=new JdbcClient(connectionProvider,queryTimeoutSecs);
+}

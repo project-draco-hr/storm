@@ -1,4 +1,5 @@
-def __init__(self, emitted=None, transferred=None, specific=None):
+def __init__(self, emitted=None, transferred=None, specific=None, rate=None):
     self.emitted = emitted
     self.transferred = transferred
     self.specific = specific
+    self.rate = rate

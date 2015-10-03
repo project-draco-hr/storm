@@ -1,0 +1,3 @@
+{
+  super("Kerberos Authentication Failed. " + reason,cause);
+}

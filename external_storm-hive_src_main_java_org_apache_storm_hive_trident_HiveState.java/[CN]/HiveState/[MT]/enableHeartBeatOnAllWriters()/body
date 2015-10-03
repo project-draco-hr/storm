@@ -1,0 +1,5 @@
+{
+  for (  HiveWriter writer : allWriters.values()) {
+    writer.setHeartBeatNeeded();
+  }
+}

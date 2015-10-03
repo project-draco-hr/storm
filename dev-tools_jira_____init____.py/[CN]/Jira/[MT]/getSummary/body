@@ -1,2 +1,0 @@
-def getSummary(self):
-    return self.fields['summary']

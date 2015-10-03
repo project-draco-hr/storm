@@ -1,0 +1,10 @@
+{
+  try {
+    String host=InetAddress.getLocalHost().getCanonicalHostName();
+    int port=Integer.parseInt(conf.get(Config.NIMBUS_THRIFT_PORT).toString());
+    return new NimbusInfo(host,port,false);
+  }
+ catch (  UnknownHostException e) {
+    throw new RuntimeException("Something wrong with network/dns config, host cant figure out its name",e);
+  }
+}

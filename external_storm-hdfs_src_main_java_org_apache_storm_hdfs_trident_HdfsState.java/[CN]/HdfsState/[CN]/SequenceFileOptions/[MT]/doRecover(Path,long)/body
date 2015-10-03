@@ -1,0 +1,8 @@
+{
+  SequenceFile.Reader reader=new SequenceFile.Reader(this.hdfsConfig,SequenceFile.Reader.file(srcPath),SequenceFile.Reader.length(nBytes));
+  Writable key=(Writable)this.format.keyClass().newInstance();
+  Writable value=(Writable)this.format.valueClass().newInstance();
+  while (reader.next(key,value)) {
+    this.writer.append(key,value);
+  }
+}

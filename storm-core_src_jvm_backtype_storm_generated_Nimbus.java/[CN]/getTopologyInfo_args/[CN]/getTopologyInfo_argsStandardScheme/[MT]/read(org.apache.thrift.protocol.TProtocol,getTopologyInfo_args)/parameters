@@ -1,0 +1,2 @@
+org.apache.thrift.protocol.TProtocol iprot
+getTopologyInfo_args struct

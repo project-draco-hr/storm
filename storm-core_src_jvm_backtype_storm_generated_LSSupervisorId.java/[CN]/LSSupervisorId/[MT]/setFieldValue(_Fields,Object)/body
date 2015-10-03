@@ -1,0 +1,12 @@
+{
+switch (field) {
+case SUPERVISOR_ID:
+    if (value == null) {
+      unset_supervisor_id();
+    }
+ else {
+      set_supervisor_id((String)value);
+    }
+  break;
+}
+}

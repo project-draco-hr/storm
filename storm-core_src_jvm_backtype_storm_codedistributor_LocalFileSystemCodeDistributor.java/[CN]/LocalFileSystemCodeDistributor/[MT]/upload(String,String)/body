@@ -1,0 +1,19 @@
+{
+  ArrayList<File> files=new ArrayList<File>();
+  File destDir=new File(dirPath);
+  File[] localFiles=destDir.listFiles();
+  List<String> filePaths=new ArrayList<String>(3);
+  for (  File file : localFiles) {
+    filePaths.add(file.getAbsolutePath());
+  }
+  File metaFile=new File(destDir,"storm-code-distributor.meta");
+  boolean isCreated=metaFile.createNewFile();
+  if (isCreated) {
+    FileUtils.writeLines(metaFile,filePaths);
+  }
+ else {
+    LOG.warn("metafile " + metaFile.getAbsolutePath() + " already exists.");
+  }
+  LOG.info("Created meta file " + metaFile.getAbsolutePath() + " upload successful.");
+  return metaFile;
+}

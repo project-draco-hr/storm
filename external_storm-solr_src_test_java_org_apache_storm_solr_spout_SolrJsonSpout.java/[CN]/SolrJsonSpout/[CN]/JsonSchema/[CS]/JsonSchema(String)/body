@@ -1,0 +1,5 @@
+{
+  this.id="id" + suffix;
+  this.date=TestUtil.getDate();
+  this.dc_title="dc_title" + suffix;
+}

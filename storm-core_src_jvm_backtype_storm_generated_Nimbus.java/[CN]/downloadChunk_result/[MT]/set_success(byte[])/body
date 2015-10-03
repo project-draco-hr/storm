@@ -1,3 +1,3 @@
 {
-  set_success(success == null ? (ByteBuffer)null : ByteBuffer.wrap(success));
+  this.success=success == null ? (ByteBuffer)null : ByteBuffer.wrap(Arrays.copyOf(success,success.length));
 }

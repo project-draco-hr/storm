@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case TOPOLOGY_ID:
+    return is_set_topology_id();
+case EXECUTORS:
+  return is_set_executors();
+}
+throw new IllegalStateException();
+}

@@ -1,25 +1,3 @@
 {
-  org.apache.thrift.protocol.TField field;
-  iprot.readStructBegin();
-  while (true) {
-    field=iprot.readFieldBegin();
-    if (field.type == org.apache.thrift.protocol.TType.STOP) {
-      break;
-    }
-switch (field.id) {
-case 1:
-      if (field.type == org.apache.thrift.protocol.TType.STRING) {
-        this.id=iprot.readString();
-      }
- else {
-        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
-      }
-    break;
-default :
-  org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
-}
-iprot.readFieldEnd();
-}
-iprot.readStructEnd();
-validate();
+  schemes.get(iprot.getScheme()).getScheme().read(iprot,this);
 }

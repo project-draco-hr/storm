@@ -1,7 +1,7 @@
 {
   if (_changedMeta && _index == 0) {
-    Set<String> validIds=new HashSet<String>();
-    for (    ISpoutPartition p : (List<ISpoutPartition>)_emitter.getOrderedPartitions(_savedCoordinatorMeta)) {
+    Set<String> validIds=new HashSet<>();
+    for (    ISpoutPartition p : _emitter.getOrderedPartitions(_savedCoordinatorMeta)) {
       validIds.add(p.getId());
     }
     for (    String existingPartition : _state.list("")) {

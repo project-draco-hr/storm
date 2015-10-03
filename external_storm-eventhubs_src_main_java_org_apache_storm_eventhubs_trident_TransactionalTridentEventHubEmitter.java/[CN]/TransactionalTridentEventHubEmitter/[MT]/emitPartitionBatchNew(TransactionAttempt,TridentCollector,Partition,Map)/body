@@ -1,0 +1,19 @@
+{
+  ITridentPartitionManager pm=getOrCreatePartitionManager(partition);
+  String offset=Constants.DefaultStartingOffset;
+  if (meta != null && meta.containsKey("nextOffset")) {
+    offset=(String)meta.get("nextOffset");
+  }
+  String nextOffset=offset;
+  List<EventData> listEvents=pm.receiveBatch(offset,batchSize);
+  for (  EventData ed : listEvents) {
+    nextOffset=ed.getMessageId().getOffset();
+    List<Object> tuples=spoutConfig.getEventDataScheme().deserialize(ed.getMessage());
+    collector.emit(tuples);
+  }
+  Map newMeta=new HashMap();
+  newMeta.put("offset",offset);
+  newMeta.put("nextOffset",nextOffset);
+  newMeta.put("count","" + listEvents.size());
+  return newMeta;
+}

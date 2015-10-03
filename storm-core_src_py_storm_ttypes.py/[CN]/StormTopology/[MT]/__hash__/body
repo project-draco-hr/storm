@@ -1,2 +1,6 @@
 def __hash__(self):
-    return (((0 + hash(self.spouts)) + hash(self.bolts)) + hash(self.state_spouts))
+    value = 17
+    value = ((value * 31) ^ hash(self.spouts))
+    value = ((value * 31) ^ hash(self.bolts))
+    value = ((value * 31) ^ hash(self.state_spouts))
+    return value

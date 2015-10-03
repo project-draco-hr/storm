@@ -1,10 +1,10 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_componentId=true && (is_set_componentId());
-  builder.append(present_componentId);
-  if (present_componentId)   builder.append(componentId);
+  list.add(present_componentId);
+  if (present_componentId)   list.add(componentId);
   boolean present_streamId=true && (is_set_streamId());
-  builder.append(present_streamId);
-  if (present_streamId)   builder.append(streamId);
-  return builder.toHashCode();
+  list.add(present_streamId);
+  if (present_streamId)   list.add(streamId);
+  return list.hashCode();
 }

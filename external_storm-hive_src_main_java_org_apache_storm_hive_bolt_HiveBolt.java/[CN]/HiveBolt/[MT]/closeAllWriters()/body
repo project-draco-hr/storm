@@ -1,0 +1,11 @@
+{
+  try {
+    for (    Entry<HiveEndPoint,HiveWriter> entry : allWriters.entrySet()) {
+      entry.getValue().close();
+    }
+    allWriters.clear();
+  }
+ catch (  Exception e) {
+    LOG.warn("unable to close writers. ",e);
+  }
+}

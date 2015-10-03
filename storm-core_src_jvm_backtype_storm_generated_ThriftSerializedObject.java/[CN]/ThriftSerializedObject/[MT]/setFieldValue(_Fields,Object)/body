@@ -1,0 +1,20 @@
+{
+switch (field) {
+case NAME:
+    if (value == null) {
+      unset_name();
+    }
+ else {
+      set_name((String)value);
+    }
+  break;
+case BITS:
+if (value == null) {
+  unset_bits();
+}
+ else {
+  set_bits((ByteBuffer)value);
+}
+break;
+}
+}

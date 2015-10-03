@@ -1,0 +1,10 @@
+self
+name
+status
+num_workers
+component_executors
+launch_time_secs
+owner
+topology_action_options
+prev_status
+component_debug

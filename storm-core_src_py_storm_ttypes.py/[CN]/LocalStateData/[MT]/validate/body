@@ -1,0 +1,4 @@
+def validate(self):
+    if (self.serialized_parts is None):
+        raise TProtocol.TProtocolException(message='Required field serialized_parts is unset!')
+    return

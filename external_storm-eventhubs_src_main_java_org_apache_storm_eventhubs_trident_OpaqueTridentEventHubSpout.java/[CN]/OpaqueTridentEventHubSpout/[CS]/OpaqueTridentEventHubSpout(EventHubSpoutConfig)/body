@@ -1,0 +1,4 @@
+{
+  spoutConfig=config;
+  scheme=spoutConfig.getEventDataScheme();
+}

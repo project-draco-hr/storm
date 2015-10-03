@@ -1,6 +1,0 @@
-String name
-String uploadedJarLocation
-String jsonConf
-StormTopology topology
-SubmitOptions options
-org.apache.thrift.async.AsyncMethodCallback<AsyncClient.submitTopologyWithOpts_call> resultHandler

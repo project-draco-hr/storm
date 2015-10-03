@@ -3,23 +3,22 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  uploadChunk_args typedOther=(uploadChunk_args)other;
-  lastComparison=Boolean.valueOf(is_set_location()).compareTo(typedOther.is_set_location());
+  lastComparison=Boolean.valueOf(is_set_location()).compareTo(other.is_set_location());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_location()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.location,typedOther.location);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.location,other.location);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_chunk()).compareTo(typedOther.is_set_chunk());
+  lastComparison=Boolean.valueOf(is_set_chunk()).compareTo(other.is_set_chunk());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_chunk()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.chunk,typedOther.chunk);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.chunk,other.chunk);
     if (lastComparison != 0) {
       return lastComparison;
     }

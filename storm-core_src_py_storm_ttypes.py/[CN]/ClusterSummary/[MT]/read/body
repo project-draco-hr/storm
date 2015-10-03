@@ -18,11 +18,6 @@ def read(self, iprot):
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
-        elif (fid == 2):
-            if (ftype == TType.I32):
-                self.nimbus_uptime_secs = iprot.readI32()
-            else:
-                iprot.skip(ftype)
         elif (fid == 3):
             if (ftype == TType.LIST):
                 self.topologies = []
@@ -31,6 +26,17 @@ def read(self, iprot):
                     _elem77 = TopologySummary()
                     _elem77.read(iprot)
                     self.topologies.append(_elem77)
+                iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 4):
+            if (ftype == TType.LIST):
+                self.nimbuses = []
+                (_etype81, _size78) = iprot.readListBegin()
+                for _i82 in xrange(_size78):
+                    _elem83 = NimbusSummary()
+                    _elem83.read(iprot)
+                    self.nimbuses.append(_elem83)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

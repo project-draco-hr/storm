@@ -1,0 +1,8 @@
+def validate(self):
+    if (self.name is None):
+        raise TProtocol.TProtocolException(message='Required field name is unset!')
+    if (self.status is None):
+        raise TProtocol.TProtocolException(message='Required field status is unset!')
+    if (self.num_workers is None):
+        raise TProtocol.TProtocolException(message='Required field num_workers is unset!')
+    return

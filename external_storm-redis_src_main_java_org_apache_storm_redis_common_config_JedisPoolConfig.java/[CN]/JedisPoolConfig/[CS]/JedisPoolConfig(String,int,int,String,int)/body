@@ -1,0 +1,7 @@
+{
+  this.host=host;
+  this.port=port;
+  this.timeout=timeout;
+  this.database=database;
+  this.password=password;
+}

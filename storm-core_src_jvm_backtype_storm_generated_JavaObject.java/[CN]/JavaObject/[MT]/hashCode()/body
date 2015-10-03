@@ -1,10 +1,10 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_full_class_name=true && (is_set_full_class_name());
-  builder.append(present_full_class_name);
-  if (present_full_class_name)   builder.append(full_class_name);
+  list.add(present_full_class_name);
+  if (present_full_class_name)   list.add(full_class_name);
   boolean present_args_list=true && (is_set_args_list());
-  builder.append(present_args_list);
-  if (present_args_list)   builder.append(args_list);
-  return builder.toHashCode();
+  list.add(present_args_list);
+  if (present_args_list)   list.add(args_list);
+  return list.hashCode();
 }

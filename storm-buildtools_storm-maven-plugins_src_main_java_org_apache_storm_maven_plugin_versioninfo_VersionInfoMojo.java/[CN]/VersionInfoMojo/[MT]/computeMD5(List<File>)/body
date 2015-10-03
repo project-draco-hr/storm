@@ -1,0 +1,8 @@
+{
+  MessageDigest md5=MessageDigest.getInstance("MD5");
+  for (  File file : files) {
+    getLog().debug("Computing MD5 for: " + file);
+    md5.update(readFile(file));
+  }
+  return md5.digest();
+}

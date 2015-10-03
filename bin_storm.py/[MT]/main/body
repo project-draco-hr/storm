@@ -1,0 +1,10 @@
+def main():
+    if (len(sys.argv) <= 1):
+        print_usage()
+        sys.exit((-1))
+    global CONFIG_OPTS
+    (config_list, args) = parse_config_opts(sys.argv[1:])
+    parse_config(config_list)
+    COMMAND = args[0]
+    ARGS = args[1:]
+    COMMANDS.get(COMMAND, unknown_command)(*ARGS)

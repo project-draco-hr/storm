@@ -1,0 +1,4 @@
+{
+  final String jsonList=getJsonFromTuples(tuples);
+  return createtSolrRequest(jsonList);
+}

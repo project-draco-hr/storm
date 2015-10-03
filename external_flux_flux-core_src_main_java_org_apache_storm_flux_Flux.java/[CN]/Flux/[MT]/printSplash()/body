@@ -1,0 +1,10 @@
+{
+  InputStream is=Flux.class.getResourceAsStream("/splash.txt");
+  if (is != null) {
+    BufferedReader br=new BufferedReader(new InputStreamReader(is));
+    String line=null;
+    while ((line=br.readLine()) != null) {
+      System.out.println(line);
+    }
+  }
+}

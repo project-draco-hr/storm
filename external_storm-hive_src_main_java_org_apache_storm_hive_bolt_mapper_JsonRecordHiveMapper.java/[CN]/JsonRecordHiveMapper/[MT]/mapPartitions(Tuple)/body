@@ -1,0 +1,12 @@
+{
+  List<String> partitionList=new ArrayList<String>();
+  if (this.partitionFields != null) {
+    for (    String field : this.partitionFields) {
+      partitionList.add(tuple.getStringByField(field));
+    }
+  }
+  if (this.timeFormat != null) {
+    partitionList.add(getPartitionsByTimeFormat());
+  }
+  return partitionList;
+}

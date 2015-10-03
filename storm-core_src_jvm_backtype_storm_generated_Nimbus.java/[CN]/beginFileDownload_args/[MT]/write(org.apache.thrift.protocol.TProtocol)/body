@@ -1,11 +1,3 @@
 {
-  validate();
-  oprot.writeStructBegin(STRUCT_DESC);
-  if (this.file != null) {
-    oprot.writeFieldBegin(FILE_FIELD_DESC);
-    oprot.writeString(this.file);
-    oprot.writeFieldEnd();
-  }
-  oprot.writeFieldStop();
-  oprot.writeStructEnd();
+  schemes.get(oprot.getScheme()).getScheme().write(oprot,this);
 }

@@ -1,0 +1,11 @@
+{
+  if (!is_set_name()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'name' is unset! Struct:" + toString());
+  }
+  if (!is_set_status()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'status' is unset! Struct:" + toString());
+  }
+  if (!is_set_num_workers()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'num_workers' is unset! Struct:" + toString());
+  }
+}

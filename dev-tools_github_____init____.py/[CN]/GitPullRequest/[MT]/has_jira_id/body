@@ -1,0 +1,2 @@
+def has_jira_id(self):
+    return GitPullRequest.storm_jira_number.search(self.title())

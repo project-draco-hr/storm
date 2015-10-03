@@ -1,0 +1,10 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.full_class_name);
+{
+    oprot.writeI32(struct.args_list.size());
+    for (    JavaObjectArg _iter4 : struct.args_list) {
+      _iter4.write(oprot);
+    }
+  }
+}

@@ -1,13 +1,13 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_spouts=true && (is_set_spouts());
-  builder.append(present_spouts);
-  if (present_spouts)   builder.append(spouts);
+  list.add(present_spouts);
+  if (present_spouts)   list.add(spouts);
   boolean present_bolts=true && (is_set_bolts());
-  builder.append(present_bolts);
-  if (present_bolts)   builder.append(bolts);
+  list.add(present_bolts);
+  if (present_bolts)   list.add(bolts);
   boolean present_state_spouts=true && (is_set_state_spouts());
-  builder.append(present_state_spouts);
-  if (present_state_spouts)   builder.append(state_spouts);
-  return builder.toHashCode();
+  list.add(present_state_spouts);
+  if (present_state_spouts)   list.add(state_spouts);
+  return list.hashCode();
 }

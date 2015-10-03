@@ -1,0 +1,3 @@
+{
+  this(solrConfig,solrMapper,null);
+}

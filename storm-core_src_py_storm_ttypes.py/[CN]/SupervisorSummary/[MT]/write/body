@@ -23,5 +23,9 @@ def write(self, oprot):
         oprot.writeFieldBegin('supervisor_id', TType.STRING, 5)
         oprot.writeString(self.supervisor_id.encode('utf-8'))
         oprot.writeFieldEnd()
+    if (self.version is not None):
+        oprot.writeFieldBegin('version', TType.STRING, 6)
+        oprot.writeString(self.version.encode('utf-8'))
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

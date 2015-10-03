@@ -13,6 +13,8 @@ case NUM_USED_WORKERS:
 return is_set_num_used_workers();
 case SUPERVISOR_ID:
 return is_set_supervisor_id();
+case VERSION:
+return is_set_version();
 }
 throw new IllegalStateException();
 }

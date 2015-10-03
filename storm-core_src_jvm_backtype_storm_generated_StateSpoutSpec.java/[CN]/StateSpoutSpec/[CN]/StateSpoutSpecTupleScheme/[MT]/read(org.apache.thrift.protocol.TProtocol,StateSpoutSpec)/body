@@ -1,0 +1,9 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.state_spout_object=new ComponentObject();
+  struct.state_spout_object.read(iprot);
+  struct.set_state_spout_object_isSet(true);
+  struct.common=new ComponentCommon();
+  struct.common.read(iprot);
+  struct.set_common_isSet(true);
+}

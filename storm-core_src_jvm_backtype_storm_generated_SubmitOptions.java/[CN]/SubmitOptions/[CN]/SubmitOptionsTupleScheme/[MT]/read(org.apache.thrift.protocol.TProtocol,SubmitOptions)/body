@@ -1,0 +1,11 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.initial_status=backtype.storm.generated.TopologyInitialStatus.findByValue(iprot.readI32());
+  struct.set_initial_status_isSet(true);
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+    struct.creds=new Credentials();
+    struct.creds.read(iprot);
+    struct.set_creds_isSet(true);
+  }
+}

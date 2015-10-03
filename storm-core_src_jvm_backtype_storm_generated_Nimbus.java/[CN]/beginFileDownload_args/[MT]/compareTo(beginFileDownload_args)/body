@@ -3,13 +3,12 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  beginFileDownload_args typedOther=(beginFileDownload_args)other;
-  lastComparison=Boolean.valueOf(is_set_file()).compareTo(typedOther.is_set_file());
+  lastComparison=Boolean.valueOf(is_set_file()).compareTo(other.is_set_file());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_file()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.file,typedOther.file);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.file,other.file);
     if (lastComparison != 0) {
       return lastComparison;
     }

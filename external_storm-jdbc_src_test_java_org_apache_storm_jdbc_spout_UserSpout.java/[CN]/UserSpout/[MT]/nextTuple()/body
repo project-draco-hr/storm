@@ -1,0 +1,6 @@
+{
+  final Random rand=new Random();
+  final Values row=rows.get(rand.nextInt(rows.size() - 1));
+  this.collector.emit(row);
+  Thread.yield();
+}

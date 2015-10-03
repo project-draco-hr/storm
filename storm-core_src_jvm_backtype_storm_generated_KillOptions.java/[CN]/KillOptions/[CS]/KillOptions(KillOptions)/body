@@ -1,5 +1,4 @@
 {
-  __isset_bit_vector.clear();
-  __isset_bit_vector.or(other.__isset_bit_vector);
+  __isset_bitfield=other.__isset_bitfield;
   this.wait_secs=other.wait_secs;
 }

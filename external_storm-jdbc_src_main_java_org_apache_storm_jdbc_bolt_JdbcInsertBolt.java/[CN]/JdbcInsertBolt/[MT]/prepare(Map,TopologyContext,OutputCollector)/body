@@ -1,0 +1,6 @@
+{
+  super.prepare(map,topologyContext,collector);
+  if (StringUtils.isBlank(tableName) && StringUtils.isBlank(insertQuery)) {
+    throw new IllegalArgumentException("You must supply either a tableName or an insert Query.");
+  }
+}

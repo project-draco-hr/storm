@@ -1,0 +1,3 @@
+{
+  return new JedisPoolConfig(host,port,timeout,password,database);
+}

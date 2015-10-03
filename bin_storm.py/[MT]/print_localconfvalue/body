@@ -1,0 +1,3 @@
+def print_localconfvalue(name):
+    'Syntax: [storm localconfvalue conf-name]\n\n    Prints out the value for conf-name in the local Storm configs.\n    The local Storm configs are the ones in ~/.storm/storm.yaml merged\n    in with the configs in defaults.yaml.\n    '
+    print ((name + ': ') + confvalue(name, [USER_CONF_DIR]))

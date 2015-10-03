@@ -1,0 +1,2 @@
+JdbcState jdbcState
+List<TridentTuple> tridentTuples

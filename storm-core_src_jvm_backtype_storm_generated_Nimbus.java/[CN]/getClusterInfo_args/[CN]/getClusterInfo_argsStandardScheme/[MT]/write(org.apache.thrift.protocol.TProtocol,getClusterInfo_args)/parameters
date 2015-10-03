@@ -1,0 +1,2 @@
+org.apache.thrift.protocol.TProtocol oprot
+getClusterInfo_args struct

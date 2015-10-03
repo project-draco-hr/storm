@@ -1,0 +1,7 @@
+{
+  List<FieldSchema> fields=new ArrayList<FieldSchema>();
+  for (int i=0; i < partNames.length; ++i) {
+    fields.add(new FieldSchema(partNames[i],serdeConstants.STRING_TYPE_NAME,""));
+  }
+  return fields;
+}

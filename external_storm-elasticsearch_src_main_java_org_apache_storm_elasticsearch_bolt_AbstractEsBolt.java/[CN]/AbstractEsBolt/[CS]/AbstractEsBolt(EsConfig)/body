@@ -1,0 +1,4 @@
+{
+  checkNotNull(esConfig);
+  this.esConfig=esConfig;
+}

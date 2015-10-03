@@ -1,0 +1,5 @@
+{
+  for (  IPartitionManager partitionManager : partitionCoordinator.getMyPartitionManagers()) {
+    partitionManager.checkpoint();
+  }
+}

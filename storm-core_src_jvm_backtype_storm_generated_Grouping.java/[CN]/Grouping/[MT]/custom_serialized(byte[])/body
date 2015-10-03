@@ -1,5 +1,5 @@
 {
   Grouping x=new Grouping();
-  x.set_custom_serialized(ByteBuffer.wrap(value));
+  x.set_custom_serialized(ByteBuffer.wrap(Arrays.copyOf(value,value.length)));
   return x;
 }

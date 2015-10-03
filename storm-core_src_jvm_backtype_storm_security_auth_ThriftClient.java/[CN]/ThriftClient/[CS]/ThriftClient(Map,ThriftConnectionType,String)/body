@@ -1,3 +1,3 @@
 {
-  this(storm_conf,type,host,null,null);
+  this(storm_conf,type,host,null,null,null);
 }

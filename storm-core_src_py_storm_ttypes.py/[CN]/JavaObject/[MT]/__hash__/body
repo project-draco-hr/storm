@@ -1,2 +1,5 @@
 def __hash__(self):
-    return ((0 + hash(self.full_class_name)) + hash(self.args_list))
+    value = 17
+    value = ((value * 31) ^ hash(self.full_class_name))
+    value = ((value * 31) ^ hash(self.args_list))
+    return value

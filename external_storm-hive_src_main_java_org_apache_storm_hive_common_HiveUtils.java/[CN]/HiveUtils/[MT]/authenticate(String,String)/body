@@ -1,0 +1,19 @@
+{
+  File kfile=new File(keytab);
+  if (!(kfile.isFile() && kfile.canRead())) {
+    throw new IllegalArgumentException("The keyTab file: " + keytab + " is nonexistent or can't read. "+ "Please specify a readable keytab file for Kerberos auth.");
+  }
+  try {
+    principal=SecurityUtil.getServerPrincipal(principal,"");
+  }
+ catch (  Exception e) {
+    throw new AuthenticationFailed("Host lookup error when resolving principal " + principal,e);
+  }
+  try {
+    UserGroupInformation.loginUserFromKeytab(principal,keytab);
+    return UserGroupInformation.getLoginUser();
+  }
+ catch (  IOException e) {
+    throw new AuthenticationFailed("Login failed for principal " + principal,e);
+  }
+}

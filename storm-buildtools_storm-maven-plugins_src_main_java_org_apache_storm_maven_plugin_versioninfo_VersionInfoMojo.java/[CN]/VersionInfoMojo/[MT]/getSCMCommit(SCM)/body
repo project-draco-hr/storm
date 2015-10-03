@@ -1,0 +1,22 @@
+{
+  String commit="Unknown";
+switch (scm) {
+case SVN:
+    for (    String s : scmOut) {
+      if (s.startsWith("Revision:")) {
+        commit=s.substring("Revision:".length());
+        break;
+      }
+    }
+  break;
+case GIT:
+for (String s : scmOut) {
+  if (s.startsWith("commit")) {
+    commit=s.substring("commit".length());
+    break;
+  }
+}
+break;
+}
+return commit.trim();
+}

@@ -3,23 +3,22 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  GlobalStreamId typedOther=(GlobalStreamId)other;
-  lastComparison=Boolean.valueOf(is_set_componentId()).compareTo(typedOther.is_set_componentId());
+  lastComparison=Boolean.valueOf(is_set_componentId()).compareTo(other.is_set_componentId());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_componentId()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.componentId,typedOther.componentId);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.componentId,other.componentId);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_streamId()).compareTo(typedOther.is_set_streamId());
+  lastComparison=Boolean.valueOf(is_set_streamId()).compareTo(other.is_set_streamId());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_streamId()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.streamId,typedOther.streamId);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.streamId,other.streamId);
     if (lastComparison != 0) {
       return lastComparison;
     }

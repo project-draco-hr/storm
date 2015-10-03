@@ -1,5 +1,5 @@
 {
   JavaObjectArg x=new JavaObjectArg();
-  x.set_binary_arg(ByteBuffer.wrap(value));
+  x.set_binary_arg(ByteBuffer.wrap(Arrays.copyOf(value,value.length)));
   return x;
 }

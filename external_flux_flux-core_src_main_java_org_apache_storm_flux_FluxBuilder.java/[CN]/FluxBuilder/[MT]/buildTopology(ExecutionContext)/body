@@ -1,0 +1,22 @@
+{
+  StormTopology topology=null;
+  TopologyDef topologyDef=context.getTopologyDef();
+  if (!topologyDef.validate()) {
+    throw new IllegalArgumentException("Invalid topology config. Spouts, bolts and streams cannot be " + "defined in the same configuration as a topologySource.");
+  }
+  buildComponents(context);
+  if (topologyDef.isDslTopology()) {
+    LOG.info("Detected DSL topology...");
+    TopologyBuilder builder=new TopologyBuilder();
+    buildSpouts(context,builder);
+    buildBolts(context);
+    buildStreamDefinitions(context,builder);
+    topology=builder.createTopology();
+  }
+ else {
+    LOG.info("A topology source has been specified...");
+    ObjectDef def=topologyDef.getTopologySource();
+    topology=buildExternalTopology(def,context);
+  }
+  return topology;
+}

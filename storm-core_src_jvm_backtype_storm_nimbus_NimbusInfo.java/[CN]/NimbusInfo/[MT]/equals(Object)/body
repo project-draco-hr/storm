@@ -1,0 +1,9 @@
+{
+  if (this == o)   return true;
+  if (!(o instanceof NimbusInfo))   return false;
+  NimbusInfo that=(NimbusInfo)o;
+  if (isLeader != that.isLeader)   return false;
+  if (port != that.port)   return false;
+  if (!host.equals(that.host))   return false;
+  return true;
+}

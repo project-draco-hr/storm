@@ -1,0 +1,24 @@
+{
+  try {
+    String latestPath=_vs.mostRecentVersionPath();
+    Map<String,ThriftSerializedObject> result=new HashMap<String,ThriftSerializedObject>();
+    if (latestPath != null) {
+      byte[] serialized=FileUtils.readFileToByteArray(new File(latestPath));
+      if (serialized.length == 0) {
+        LOG.warn("LocalState file '{}' contained no data, resetting state",latestPath);
+      }
+ else {
+        if (td == null) {
+          td=new TDeserializer();
+        }
+        LocalStateData data=new LocalStateData();
+        td.deserialize(data,serialized);
+        result=data.get_serialized_parts();
+      }
+    }
+    return result;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

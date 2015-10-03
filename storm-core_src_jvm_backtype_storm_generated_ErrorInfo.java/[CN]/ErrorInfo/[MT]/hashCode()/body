@@ -1,16 +1,16 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_error=true && (is_set_error());
-  builder.append(present_error);
-  if (present_error)   builder.append(error);
+  list.add(present_error);
+  if (present_error)   list.add(error);
   boolean present_error_time_secs=true;
-  builder.append(present_error_time_secs);
-  if (present_error_time_secs)   builder.append(error_time_secs);
+  list.add(present_error_time_secs);
+  if (present_error_time_secs)   list.add(error_time_secs);
   boolean present_host=true && (is_set_host());
-  builder.append(present_host);
-  if (present_host)   builder.append(host);
+  list.add(present_host);
+  if (present_host)   list.add(host);
   boolean present_port=true && (is_set_port());
-  builder.append(present_port);
-  if (present_port)   builder.append(port);
-  return builder.toHashCode();
+  list.add(present_port);
+  if (present_port)   list.add(port);
+  return list.hashCode();
 }

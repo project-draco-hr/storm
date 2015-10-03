@@ -10,6 +10,8 @@ case 4:
 return NUM_USED_WORKERS;
 case 5:
 return SUPERVISOR_ID;
+case 6:
+return VERSION;
 default :
 return null;
 }

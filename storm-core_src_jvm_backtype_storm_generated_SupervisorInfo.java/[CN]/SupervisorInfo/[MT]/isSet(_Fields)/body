@@ -1,0 +1,24 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case TIME_SECS:
+    return is_set_time_secs();
+case HOSTNAME:
+  return is_set_hostname();
+case ASSIGNMENT_ID:
+return is_set_assignment_id();
+case USED_PORTS:
+return is_set_used_ports();
+case META:
+return is_set_meta();
+case SCHEDULER_META:
+return is_set_scheduler_meta();
+case UPTIME_SECS:
+return is_set_uptime_secs();
+case VERSION:
+return is_set_version();
+}
+throw new IllegalStateException();
+}

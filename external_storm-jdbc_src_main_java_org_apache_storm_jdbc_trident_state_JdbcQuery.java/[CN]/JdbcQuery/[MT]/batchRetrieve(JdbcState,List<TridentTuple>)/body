@@ -1,0 +1,3 @@
+{
+  return jdbcState.batchRetrieve(tridentTuples);
+}

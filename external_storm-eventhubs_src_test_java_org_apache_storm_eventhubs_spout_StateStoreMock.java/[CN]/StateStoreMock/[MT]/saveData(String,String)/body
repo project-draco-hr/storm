@@ -1,0 +1,5 @@
+{
+  if (myDataMap != null) {
+    myDataMap.put(path,data);
+  }
+}

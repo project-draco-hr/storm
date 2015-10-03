@@ -1,0 +1,4 @@
+{
+  this.maxRedirections=maxRedirections;
+  return this;
+}

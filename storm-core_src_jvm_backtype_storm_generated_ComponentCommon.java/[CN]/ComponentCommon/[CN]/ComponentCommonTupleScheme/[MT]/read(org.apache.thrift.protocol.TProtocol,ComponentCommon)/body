@@ -1,0 +1,39 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+{
+    org.apache.thrift.protocol.TMap _map36=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.inputs=new HashMap<GlobalStreamId,Grouping>(2 * _map36.size);
+    GlobalStreamId _key37;
+    Grouping _val38;
+    for (int _i39=0; _i39 < _map36.size; ++_i39) {
+      _key37=new GlobalStreamId();
+      _key37.read(iprot);
+      _val38=new Grouping();
+      _val38.read(iprot);
+      struct.inputs.put(_key37,_val38);
+    }
+  }
+  struct.set_inputs_isSet(true);
+{
+    org.apache.thrift.protocol.TMap _map40=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.streams=new HashMap<String,StreamInfo>(2 * _map40.size);
+    String _key41;
+    StreamInfo _val42;
+    for (int _i43=0; _i43 < _map40.size; ++_i43) {
+      _key41=iprot.readString();
+      _val42=new StreamInfo();
+      _val42.read(iprot);
+      struct.streams.put(_key41,_val42);
+    }
+  }
+  struct.set_streams_isSet(true);
+  BitSet incoming=iprot.readBitSet(2);
+  if (incoming.get(0)) {
+    struct.parallelism_hint=iprot.readI32();
+    struct.set_parallelism_hint_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.json_conf=iprot.readString();
+    struct.set_json_conf_isSet(true);
+  }
+}

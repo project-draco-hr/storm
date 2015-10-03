@@ -1,6 +1,6 @@
 {
   if (getSetField() == _Fields.CUSTOM_SERIALIZED) {
-    return (ByteBuffer)getFieldValue();
+    return org.apache.thrift.TBaseHelper.copyBinary((ByteBuffer)getFieldValue());
   }
  else {
     throw new RuntimeException("Cannot get field 'custom_serialized' because union is currently set to " + getFieldDesc(getSetField()).name);

@@ -1,0 +1,3 @@
+{
+  return transactionalEmitter.emitPartitionBatchNew(attempt,collector,partition,meta);
+}

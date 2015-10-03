@@ -25,13 +25,13 @@ synchronized (_clients) {
           break;
         }
       }
- catch (      TException e) {
-        reconnect(client);
-        LOG.error("Failed to fetch DRPC result from DRPC server",e);
-      }
-catch (      AuthorizationException aze) {
+ catch (      AuthorizationException aze) {
         reconnect(client);
         LOG.error("Not authorized to fetch DRPC result from DRPC server",aze);
+      }
+catch (      TException e) {
+        reconnect(client);
+        LOG.error("Failed to fetch DRPC result from DRPC server",e);
       }
 catch (      Exception e) {
         LOG.error("Failed to fetch DRPC result from DRPC server",e);
@@ -53,11 +53,11 @@ catch (      Exception e) {
           _collector.emit(new Values(req.get_func_args(),JSONValue.toJSONString(returnInfo)),new DRPCMessageId(req.get_request_id(),0));
         }
       }
- catch (      TException e) {
-        throw new RuntimeException(e);
-      }
-catch (      AuthorizationException aze) {
+ catch (      AuthorizationException aze) {
         throw new RuntimeException(aze);
+      }
+catch (      TException e) {
+        throw new RuntimeException(e);
       }
     }
   }

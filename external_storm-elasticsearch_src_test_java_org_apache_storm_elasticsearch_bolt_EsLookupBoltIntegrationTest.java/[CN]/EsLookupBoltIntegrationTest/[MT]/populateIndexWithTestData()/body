@@ -1,0 +1,3 @@
+{
+  node.client().prepareIndex(indexName,typeName,documentId).setSource(source).execute().actionGet();
+}

@@ -1,4 +1,4 @@
 self
 supervisors
-nimbus_uptime_secs
 topologies
+nimbuses

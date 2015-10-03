@@ -1,0 +1,23 @@
+{
+  StringBuilder sb=new StringBuilder("ThriftSerializedObject(");
+  boolean first=true;
+  sb.append("name:");
+  if (this.name == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.name);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("bits:");
+  if (this.bits == null) {
+    sb.append("null");
+  }
+ else {
+    org.apache.thrift.TBaseHelper.toString(this.bits,sb);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

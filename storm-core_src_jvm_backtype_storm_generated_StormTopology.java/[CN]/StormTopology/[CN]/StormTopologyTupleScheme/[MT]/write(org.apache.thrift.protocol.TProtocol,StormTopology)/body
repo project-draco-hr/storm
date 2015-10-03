@@ -1,0 +1,24 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+{
+    oprot.writeI32(struct.spouts.size());
+    for (    Map.Entry<String,SpoutSpec> _iter59 : struct.spouts.entrySet()) {
+      oprot.writeString(_iter59.getKey());
+      _iter59.getValue().write(oprot);
+    }
+  }
+{
+    oprot.writeI32(struct.bolts.size());
+    for (    Map.Entry<String,Bolt> _iter60 : struct.bolts.entrySet()) {
+      oprot.writeString(_iter60.getKey());
+      _iter60.getValue().write(oprot);
+    }
+  }
+{
+    oprot.writeI32(struct.state_spouts.size());
+    for (    Map.Entry<String,StateSpoutSpec> _iter61 : struct.state_spouts.entrySet()) {
+      oprot.writeString(_iter61.getKey());
+      _iter61.getValue().write(oprot);
+    }
+  }
+}

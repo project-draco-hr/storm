@@ -3,33 +3,32 @@
     return getClass().getName().compareTo(other.getClass().getName());
   }
   int lastComparison=0;
-  SpoutStats typedOther=(SpoutStats)other;
-  lastComparison=Boolean.valueOf(is_set_acked()).compareTo(typedOther.is_set_acked());
+  lastComparison=Boolean.valueOf(is_set_acked()).compareTo(other.is_set_acked());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_acked()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.acked,typedOther.acked);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.acked,other.acked);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_failed()).compareTo(typedOther.is_set_failed());
+  lastComparison=Boolean.valueOf(is_set_failed()).compareTo(other.is_set_failed());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_failed()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.failed,typedOther.failed);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.failed,other.failed);
     if (lastComparison != 0) {
       return lastComparison;
     }
   }
-  lastComparison=Boolean.valueOf(is_set_complete_ms_avg()).compareTo(typedOther.is_set_complete_ms_avg());
+  lastComparison=Boolean.valueOf(is_set_complete_ms_avg()).compareTo(other.is_set_complete_ms_avg());
   if (lastComparison != 0) {
     return lastComparison;
   }
   if (is_set_complete_ms_avg()) {
-    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.complete_ms_avg,typedOther.complete_ms_avg);
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.complete_ms_avg,other.complete_ms_avg);
     if (lastComparison != 0) {
       return lastComparison;
     }

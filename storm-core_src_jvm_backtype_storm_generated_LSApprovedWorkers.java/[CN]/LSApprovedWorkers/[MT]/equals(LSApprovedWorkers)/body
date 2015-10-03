@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_approved_workers=true && this.is_set_approved_workers();
+  boolean that_present_approved_workers=true && that.is_set_approved_workers();
+  if (this_present_approved_workers || that_present_approved_workers) {
+    if (!(this_present_approved_workers && that_present_approved_workers))     return false;
+    if (!this.approved_workers.equals(that.approved_workers))     return false;
+  }
+  return true;
+}

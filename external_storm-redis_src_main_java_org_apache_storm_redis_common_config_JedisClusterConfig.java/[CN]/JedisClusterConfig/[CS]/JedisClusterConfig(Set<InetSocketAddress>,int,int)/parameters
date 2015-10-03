@@ -1,0 +1,3 @@
+Set<InetSocketAddress> nodes
+int timeout
+int maxRedirections

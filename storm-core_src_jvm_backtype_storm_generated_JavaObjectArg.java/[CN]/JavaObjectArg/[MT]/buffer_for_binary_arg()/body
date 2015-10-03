@@ -1,6 +1,6 @@
 {
   if (getSetField() == _Fields.BINARY_ARG) {
-    return (ByteBuffer)getFieldValue();
+    return org.apache.thrift.TBaseHelper.copyBinary((ByteBuffer)getFieldValue());
   }
  else {
     throw new RuntimeException("Cannot get field 'binary_arg' because union is currently set to " + getFieldDesc(getSetField()).name);

@@ -1,0 +1,6 @@
+{
+  long diff=offset - this.lastOffset;
+  this.currentBytesWritten+=diff;
+  this.lastOffset=offset;
+  return this.currentBytesWritten >= this.maxBytes;
+}

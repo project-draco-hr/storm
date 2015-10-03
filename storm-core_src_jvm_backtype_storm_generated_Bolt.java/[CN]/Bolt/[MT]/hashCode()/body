@@ -1,10 +1,10 @@
 {
-  HashCodeBuilder builder=new HashCodeBuilder();
+  List<Object> list=new ArrayList<Object>();
   boolean present_bolt_object=true && (is_set_bolt_object());
-  builder.append(present_bolt_object);
-  if (present_bolt_object)   builder.append(bolt_object);
+  list.add(present_bolt_object);
+  if (present_bolt_object)   list.add(bolt_object);
   boolean present_common=true && (is_set_common());
-  builder.append(present_common);
-  if (present_common)   builder.append(common);
-  return builder.toHashCode();
+  list.add(present_common);
+  if (present_common)   list.add(common);
+  return list.hashCode();
 }

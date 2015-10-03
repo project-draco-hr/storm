@@ -2,7 +2,7 @@
   if (_savedCoordinatorMeta == null || !_savedCoordinatorMeta.equals(coordinatorMeta)) {
     List<ISpoutPartition> partitions=_emitter.getOrderedPartitions(coordinatorMeta);
     _partitionStates.clear();
-    List<ISpoutPartition> myPartitions=new ArrayList();
+    List<ISpoutPartition> myPartitions=new ArrayList<>();
     for (int i=_index; i < partitions.size(); i+=_numTasks) {
       ISpoutPartition p=partitions.get(i);
       String id=p.getId();
@@ -13,7 +13,7 @@
     _savedCoordinatorMeta=coordinatorMeta;
     _changedMeta=true;
   }
-  Map<String,Object> metas=new HashMap<String,Object>();
+  Map<String,Object> metas=new HashMap<>();
   _cachedMetas.put(tx.getTransactionId(),metas);
   Entry<Long,Map<String,Object>> entry=_cachedMetas.lowerEntry(tx.getTransactionId());
   Map<String,Object> prevCached;
@@ -21,7 +21,7 @@
     prevCached=entry.getValue();
   }
  else {
-    prevCached=new HashMap<String,Object>();
+    prevCached=new HashMap<>();
   }
   for (  String id : _partitionStates.keySet()) {
     EmitterPartitionState s=_partitionStates.get(id);

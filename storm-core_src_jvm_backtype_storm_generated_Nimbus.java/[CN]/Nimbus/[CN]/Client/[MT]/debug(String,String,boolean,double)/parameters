@@ -1,0 +1,4 @@
+String name
+String component
+boolean enable
+double samplingPercentage

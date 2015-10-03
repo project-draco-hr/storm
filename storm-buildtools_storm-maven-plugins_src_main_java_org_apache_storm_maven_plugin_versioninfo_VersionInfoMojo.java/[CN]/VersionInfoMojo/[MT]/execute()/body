@@ -1,0 +1,13 @@
+{
+  try {
+    SCM scm=determineSCM();
+    project.getProperties().setProperty(buildTimeProperty,getBuildTime());
+    project.getProperties().setProperty(scmUriProperty,getSCMUri(scm));
+    project.getProperties().setProperty(scmBranchProperty,getSCMBranch(scm));
+    project.getProperties().setProperty(scmCommitProperty,getSCMCommit(scm));
+    project.getProperties().setProperty(md5Property,computeMD5());
+  }
+ catch (  Throwable ex) {
+    throw new MojoExecutionException(ex.toString(),ex);
+  }
+}
