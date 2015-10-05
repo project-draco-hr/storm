@@ -1,0 +1,20 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.named_logger_level != null) {
+    if (struct.is_set_named_logger_level()) {
+      oprot.writeFieldBegin(NAMED_LOGGER_LEVEL_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.named_logger_level.size()));
+        for (        Map.Entry<String,LogLevel> _iter514 : struct.named_logger_level.entrySet()) {
+          oprot.writeString(_iter514.getKey());
+          _iter514.getValue().write(oprot);
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

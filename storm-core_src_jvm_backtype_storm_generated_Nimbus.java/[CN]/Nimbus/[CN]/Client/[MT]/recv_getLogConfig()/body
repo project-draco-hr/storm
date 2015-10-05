@@ -1,0 +1,8 @@
+{
+  getLogConfig_result result=new getLogConfig_result();
+  receiveBase(result,"getLogConfig");
+  if (result.is_set_success()) {
+    return result.success;
+  }
+  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"getLogConfig failed: unknown result");
+}

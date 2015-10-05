@@ -1,0 +1,15 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('LogConfig')
+    if (self.named_logger_level is not None):
+        oprot.writeFieldBegin('named_logger_level', TType.MAP, 2)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.named_logger_level))
+        for (kiter463, viter464) in self.named_logger_level.items():
+            oprot.writeString(kiter463.encode('utf-8'))
+            viter464.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

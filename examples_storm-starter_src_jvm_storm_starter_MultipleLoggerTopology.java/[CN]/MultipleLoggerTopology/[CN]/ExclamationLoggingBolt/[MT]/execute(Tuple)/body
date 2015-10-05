@@ -1,0 +1,16 @@
+{
+  _rootLogger.debug("root: This is a DEBUG message");
+  _rootLogger.info("root: This is an INFO message");
+  _rootLogger.warn("root: This is a WARN message");
+  _rootLogger.error("root: This is an ERROR message");
+  _logger.debug("myapp: This is a DEBUG message");
+  _logger.info("myapp: This is an INFO message");
+  _logger.warn("myapp: This is a WARN message");
+  _logger.error("myapp: This is an ERROR message");
+  _subLogger.debug("myapp.sub: This is a DEBUG message");
+  _subLogger.info("myapp.sub: This is an INFO message");
+  _subLogger.warn("myapp.sub: This is a WARN message");
+  _subLogger.error("myapp.sub: This is an ERROR message");
+  _collector.emit(tuple,new Values(tuple.getString(0) + "!!!"));
+  _collector.ack(tuple);
+}

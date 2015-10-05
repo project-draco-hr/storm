@@ -1,0 +1,6 @@
+{
+  setLogConfig_args args=new setLogConfig_args();
+  args.set_name(name);
+  args.set_config(config);
+  sendBase("setLogConfig",args);
+}
