@@ -1,0 +1,3 @@
+{
+  return this.reset_log_level;
+}
