@@ -15,44 +15,44 @@ def read(self, iprot):
         elif (fid == 2):
             if (ftype == TType.MAP):
                 self.node_host = {}
-                (_ktype348, _vtype349, _size347) = iprot.readMapBegin()
-                for _i351 in xrange(_size347):
-                    _key352 = iprot.readString().decode('utf-8')
-                    _val353 = iprot.readString().decode('utf-8')
-                    self.node_host[_key352] = _val353
+                (_ktype452, _vtype453, _size451) = iprot.readMapBegin()
+                for _i455 in xrange(_size451):
+                    _key456 = iprot.readString().decode('utf-8')
+                    _val457 = iprot.readString().decode('utf-8')
+                    self.node_host[_key456] = _val457
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 3):
             if (ftype == TType.MAP):
                 self.executor_node_port = {}
-                (_ktype355, _vtype356, _size354) = iprot.readMapBegin()
-                for _i358 in xrange(_size354):
-                    _key359 = []
-                    (_etype364, _size361) = iprot.readListBegin()
-                    for _i365 in xrange(_size361):
-                        _elem366 = iprot.readI64()
-                        _key359.append(_elem366)
+                (_ktype459, _vtype460, _size458) = iprot.readMapBegin()
+                for _i462 in xrange(_size458):
+                    _key463 = []
+                    (_etype468, _size465) = iprot.readListBegin()
+                    for _i469 in xrange(_size465):
+                        _elem470 = iprot.readI64()
+                        _key463.append(_elem470)
                     iprot.readListEnd()
-                    _val360 = NodeInfo()
-                    _val360.read(iprot)
-                    self.executor_node_port[_key359] = _val360
+                    _val464 = NodeInfo()
+                    _val464.read(iprot)
+                    self.executor_node_port[_key463] = _val464
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 4):
             if (ftype == TType.MAP):
                 self.executor_start_time_secs = {}
-                (_ktype368, _vtype369, _size367) = iprot.readMapBegin()
-                for _i371 in xrange(_size367):
-                    _key372 = []
-                    (_etype377, _size374) = iprot.readListBegin()
-                    for _i378 in xrange(_size374):
-                        _elem379 = iprot.readI64()
-                        _key372.append(_elem379)
+                (_ktype472, _vtype473, _size471) = iprot.readMapBegin()
+                for _i475 in xrange(_size471):
+                    _key476 = []
+                    (_etype481, _size478) = iprot.readListBegin()
+                    for _i482 in xrange(_size478):
+                        _elem483 = iprot.readI64()
+                        _key476.append(_elem483)
                     iprot.readListEnd()
-                    _val373 = iprot.readI64()
-                    self.executor_start_time_secs[_key372] = _val373
+                    _val477 = iprot.readI64()
+                    self.executor_start_time_secs[_key476] = _val477
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

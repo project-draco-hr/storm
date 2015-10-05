@@ -1,0 +1,4 @@
+def __init__(self, id=None, window=None, is_include_sys=None):
+    self.id = id
+    self.window = window
+    self.is_include_sys = is_include_sys

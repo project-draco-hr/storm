@@ -1,15 +1,15 @@
 {
   TTupleProtocol iprot=(TTupleProtocol)prot;
 {
-    org.apache.thrift.protocol.TMap _map498=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.I32,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-    struct.assignments=new HashMap<Integer,LocalAssignment>(2 * _map498.size);
-    int _key499;
-    LocalAssignment _val500;
-    for (int _i501=0; _i501 < _map498.size; ++_i501) {
-      _key499=iprot.readI32();
-      _val500=new LocalAssignment();
-      _val500.read(iprot);
-      struct.assignments.put(_key499,_val500);
+    org.apache.thrift.protocol.TMap _map614=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.I32,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.assignments=new HashMap<Integer,LocalAssignment>(2 * _map614.size);
+    int _key615;
+    LocalAssignment _val616;
+    for (int _i617=0; _i617 < _map614.size; ++_i617) {
+      _key615=iprot.readI32();
+      _val616=new LocalAssignment();
+      _val616.read(iprot);
+      struct.assignments.put(_key615,_val616);
     }
   }
   struct.set_assignments_isSet(true);

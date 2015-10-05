@@ -1,0 +1,13 @@
+{
+switch (field) {
+case EXECUTE_LATENCY_MS:
+    return Double.valueOf(get_execute_latency_ms());
+case PROCESS_LATENCY_MS:
+  return Double.valueOf(get_process_latency_ms());
+case EXECUTED:
+return Long.valueOf(get_executed());
+case CAPACITY:
+return Double.valueOf(get_capacity());
+}
+throw new IllegalStateException();
+}

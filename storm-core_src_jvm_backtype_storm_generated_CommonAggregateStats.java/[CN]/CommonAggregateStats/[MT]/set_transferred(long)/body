@@ -1,0 +1,4 @@
+{
+  this.transferred=transferred;
+  set_transferred_isSet(true);
+}

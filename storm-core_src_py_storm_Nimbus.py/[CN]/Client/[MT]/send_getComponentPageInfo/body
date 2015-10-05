@@ -1,0 +1,10 @@
+def send_getComponentPageInfo(self, topology_id, component_id, window, is_include_sys):
+    self._oprot.writeMessageBegin('getComponentPageInfo', TMessageType.CALL, self._seqid)
+    args = getComponentPageInfo_args()
+    args.topology_id = topology_id
+    args.component_id = component_id
+    args.window = window
+    args.is_include_sys = is_include_sys
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

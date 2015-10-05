@@ -1,0 +1,36 @@
+{
+switch (field) {
+case TYPE:
+    if (value == null) {
+      unset_type();
+    }
+ else {
+      set_type((ComponentType)value);
+    }
+  break;
+case COMMON_STATS:
+if (value == null) {
+  unset_common_stats();
+}
+ else {
+  set_common_stats((CommonAggregateStats)value);
+}
+break;
+case SPECIFIC_STATS:
+if (value == null) {
+unset_specific_stats();
+}
+ else {
+set_specific_stats((SpecificAggregateStats)value);
+}
+break;
+case LAST_ERROR:
+if (value == null) {
+unset_last_error();
+}
+ else {
+set_last_error((ErrorInfo)value);
+}
+break;
+}
+}

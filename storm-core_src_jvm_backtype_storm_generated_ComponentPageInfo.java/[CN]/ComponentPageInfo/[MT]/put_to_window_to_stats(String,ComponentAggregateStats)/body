@@ -1,0 +1,6 @@
+{
+  if (this.window_to_stats == null) {
+    this.window_to_stats=new HashMap<String,ComponentAggregateStats>();
+  }
+  this.window_to_stats.put(key,val);
+}

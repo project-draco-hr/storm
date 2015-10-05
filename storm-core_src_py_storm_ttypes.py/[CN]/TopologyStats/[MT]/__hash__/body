@@ -1,0 +1,8 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.window_to_emitted))
+    value = ((value * 31) ^ hash(self.window_to_transferred))
+    value = ((value * 31) ^ hash(self.window_to_complete_latencies_ms))
+    value = ((value * 31) ^ hash(self.window_to_acked))
+    value = ((value * 31) ^ hash(self.window_to_failed))
+    return value

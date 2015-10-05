@@ -1,0 +1,15 @@
+def process_getTopologyPageInfo(self, seqid, iprot, oprot):
+    args = getTopologyPageInfo_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getTopologyPageInfo_result()
+    try:
+        result.success = self._handler.getTopologyPageInfo(args.id, args.window, args.is_include_sys)
+    except NotAliveException as e:
+        result.e = e
+    except AuthorizationException as aze:
+        result.aze = aze
+    oprot.writeMessageBegin('getTopologyPageInfo', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

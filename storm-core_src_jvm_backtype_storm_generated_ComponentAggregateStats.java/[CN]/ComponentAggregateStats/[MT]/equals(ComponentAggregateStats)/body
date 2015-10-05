@@ -1,0 +1,28 @@
+{
+  if (that == null)   return false;
+  boolean this_present_type=true && this.is_set_type();
+  boolean that_present_type=true && that.is_set_type();
+  if (this_present_type || that_present_type) {
+    if (!(this_present_type && that_present_type))     return false;
+    if (!this.type.equals(that.type))     return false;
+  }
+  boolean this_present_common_stats=true && this.is_set_common_stats();
+  boolean that_present_common_stats=true && that.is_set_common_stats();
+  if (this_present_common_stats || that_present_common_stats) {
+    if (!(this_present_common_stats && that_present_common_stats))     return false;
+    if (!this.common_stats.equals(that.common_stats))     return false;
+  }
+  boolean this_present_specific_stats=true && this.is_set_specific_stats();
+  boolean that_present_specific_stats=true && that.is_set_specific_stats();
+  if (this_present_specific_stats || that_present_specific_stats) {
+    if (!(this_present_specific_stats && that_present_specific_stats))     return false;
+    if (!this.specific_stats.equals(that.specific_stats))     return false;
+  }
+  boolean this_present_last_error=true && this.is_set_last_error();
+  boolean that_present_last_error=true && that.is_set_last_error();
+  if (this_present_last_error || that_present_last_error) {
+    if (!(this_present_last_error && that_present_last_error))     return false;
+    if (!this.last_error.equals(that.last_error))     return false;
+  }
+  return true;
+}

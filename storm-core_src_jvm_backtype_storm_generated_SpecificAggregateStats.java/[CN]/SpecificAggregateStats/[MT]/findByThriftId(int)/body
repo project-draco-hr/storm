@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return BOLT;
+case 2:
+  return SPOUT;
+default :
+return null;
+}
+}

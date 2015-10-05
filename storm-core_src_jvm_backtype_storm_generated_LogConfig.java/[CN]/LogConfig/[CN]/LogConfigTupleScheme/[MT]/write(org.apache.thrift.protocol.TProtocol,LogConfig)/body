@@ -8,9 +8,9 @@
   if (struct.is_set_named_logger_level()) {
 {
       oprot.writeI32(struct.named_logger_level.size());
-      for (      Map.Entry<String,LogLevel> _iter515 : struct.named_logger_level.entrySet()) {
-        oprot.writeString(_iter515.getKey());
-        _iter515.getValue().write(oprot);
+      for (      Map.Entry<String,LogLevel> _iter631 : struct.named_logger_level.entrySet()) {
+        oprot.writeString(_iter631.getKey());
+        _iter631.getValue().write(oprot);
       }
     }
   }

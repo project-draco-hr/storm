@@ -1,0 +1,16 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_topology_id=true && (is_set_topology_id());
+  list.add(present_topology_id);
+  if (present_topology_id)   list.add(topology_id);
+  boolean present_component_id=true && (is_set_component_id());
+  list.add(present_component_id);
+  if (present_component_id)   list.add(component_id);
+  boolean present_window=true && (is_set_window());
+  list.add(present_window);
+  if (present_window)   list.add(window);
+  boolean present_is_include_sys=true;
+  list.add(present_is_include_sys);
+  if (present_is_include_sys)   list.add(is_include_sys);
+  return list.hashCode();
+}
