@@ -2,13 +2,13 @@
   Map state=new HashMap<String,Object>();
   long rp=readPos();
   long wp=writePos();
-  final float arrivalRateInMils=_rateTracker.reportRate() / _sampleRate;
-  final float sojournTime=(wp - rp) / (float)Math.max(arrivalRateInMils,0.00001);
+  final double arrivalRateInSecs=_rateTracker.reportRate();
+  final double sojournTime=(wp - rp) / Math.max(arrivalRateInSecs,0.00001) * 1000.0;
   state.put("capacity",capacity());
   state.put("population",wp - rp);
   state.put("write_pos",wp);
   state.put("read_pos",rp);
-  state.put("arrival_rate",arrivalRateInMils);
-  state.put("sojourn_time",sojournTime);
+  state.put("arrival_rate_secs",arrivalRateInSecs);
+  state.put("sojourn_time_ms",sojournTime);
   return state;
 }

@@ -1,0 +1,7 @@
+{
+  long time=_bucketStart.get();
+  for (int i=0; i < numToEclipse; i++) {
+    time+=interval;
+    rotateBuckets(time);
+  }
+}
