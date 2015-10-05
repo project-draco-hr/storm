@@ -1,28 +1,52 @@
 {
-  try {
-    byte[] bytes=this.format.format(tuple);
 synchronized (this.writeLock) {
-      out.write(bytes);
-      this.offset+=bytes.length;
-      if (this.syncPolicy.mark(tuple,this.offset)) {
-        if (this.out instanceof HdfsDataOutputStream) {
-          ((HdfsDataOutputStream)this.out).hsync(EnumSet.of(SyncFlag.UPDATE_LENGTH));
-        }
+    boolean forceSync=false;
+    if (TupleUtils.isTick(tuple)) {
+      LOG.debug("TICK! forcing a file system flush");
+      forceSync=true;
+    }
  else {
-          this.out.hsync();
-        }
-        this.syncPolicy.reset();
+      try {
+        writeAndAddTuple(tuple);
+      }
+ catch (      IOException e) {
+        LOG.info("Tuple failed to write, forcing a flush of existing data.");
+        this.collector.reportError(e);
+        forceSync=true;
+        this.collector.fail(tuple);
       }
     }
-    this.collector.ack(tuple);
-    if (this.rotationPolicy.mark(tuple,this.offset)) {
-      rotateOutputFile();
-      this.offset=0;
-      this.rotationPolicy.reset();
+    if (this.syncPolicy.mark(tuple,this.offset) || (forceSync && tupleBatch.size() > 0)) {
+      int attempts=0;
+      boolean success=false;
+      IOException lastException=null;
+      while (success == false && attempts < fileRetryCount) {
+        attempts+=1;
+        try {
+          syncAndAckTuples();
+          success=true;
+        }
+ catch (        IOException e) {
+          LOG.warn("Data could not be synced to filesystem on attempt [" + attempts + "]");
+          this.collector.reportError(e);
+          lastException=e;
+        }
+      }
+      if (success == false) {
+        LOG.warn("Data could not be synced to filesystem, failing this batch of tuples");
+        for (        Tuple t : tupleBatch)         this.collector.fail(t);
+        tupleBatch.clear();
+        throw new RuntimeException("Sync failed [" + attempts + "] times.",lastException);
+      }
     }
   }
- catch (  IOException e) {
-    this.collector.reportError(e);
-    this.collector.fail(tuple);
+  if (this.rotationPolicy.mark(tuple,this.offset)) {
+    try {
+      rotateAndReset();
+    }
+ catch (    IOException e) {
+      this.collector.reportError(e);
+      LOG.warn("File could not be rotated");
+    }
   }
 }
