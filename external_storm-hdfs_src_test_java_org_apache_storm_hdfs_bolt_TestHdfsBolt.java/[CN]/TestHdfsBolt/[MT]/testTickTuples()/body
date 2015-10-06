@@ -1,0 +1,8 @@
+{
+  HdfsBolt bolt=makeHdfsBolt(hdfsURI,10,10000f);
+  bolt.prepare(new Config(),topologyContext,collector);
+  bolt.execute(tuple1);
+  Assert.assertEquals(0,countNonZeroLengthFiles(testRoot));
+  bolt.execute(MockTupleHelpers.mockTickTuple());
+  Assert.assertEquals(1,countNonZeroLengthFiles(testRoot));
+}
