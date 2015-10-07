@@ -1,3 +1,0 @@
-{
-  return (this.acl == null) ? 0 : this.acl.size();
-}

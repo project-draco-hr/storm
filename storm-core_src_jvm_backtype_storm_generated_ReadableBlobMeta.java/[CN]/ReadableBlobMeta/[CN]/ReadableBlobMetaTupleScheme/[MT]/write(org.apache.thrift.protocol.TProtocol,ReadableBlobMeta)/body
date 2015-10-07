@@ -1,5 +1,0 @@
-{
-  TTupleProtocol oprot=(TTupleProtocol)prot;
-  struct.settable.write(oprot);
-  oprot.writeI64(struct.version);
-}

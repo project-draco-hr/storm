@@ -1,3 +1,0 @@
-{
-  return (this.groups == null) ? null : this.groups.iterator();
-}

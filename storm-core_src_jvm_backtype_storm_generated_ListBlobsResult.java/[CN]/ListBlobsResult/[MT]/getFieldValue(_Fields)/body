@@ -1,9 +1,0 @@
-{
-switch (field) {
-case KEYS:
-    return get_keys();
-case SESSION:
-  return get_session();
-}
-throw new IllegalStateException();
-}

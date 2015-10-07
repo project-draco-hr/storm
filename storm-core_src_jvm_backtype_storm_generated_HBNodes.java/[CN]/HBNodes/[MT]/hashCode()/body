@@ -1,7 +1,0 @@
-{
-  List<Object> list=new ArrayList<Object>();
-  boolean present_pulseIds=true && (is_set_pulseIds());
-  list.add(present_pulseIds);
-  if (present_pulseIds)   list.add(pulseIds);
-  return list.hashCode();
-}

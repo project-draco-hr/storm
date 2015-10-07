@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof HBPulse)   return this.equals((HBPulse)that);
-  return false;
-}

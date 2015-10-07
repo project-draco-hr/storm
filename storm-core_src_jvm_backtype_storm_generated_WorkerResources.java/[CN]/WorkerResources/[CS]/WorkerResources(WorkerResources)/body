@@ -1,6 +1,0 @@
-{
-  __isset_bitfield=other.__isset_bitfield;
-  this.mem_on_heap=other.mem_on_heap;
-  this.mem_off_heap=other.mem_off_heap;
-  this.cpu=other.cpu;
-}

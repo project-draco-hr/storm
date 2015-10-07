@@ -1,9 +1,0 @@
-{
-  TTupleProtocol oprot=(TTupleProtocol)prot;
-{
-    oprot.writeI32(struct.acl.size());
-    for (    AccessControl _iter466 : struct.acl) {
-      _iter466.write(oprot);
-    }
-  }
-}

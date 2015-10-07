@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof SettableBlobMeta)   return this.equals((SettableBlobMeta)that);
-  return false;
-}

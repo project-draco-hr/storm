@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof HBExecutionException)   return this.equals((HBExecutionException)that);
-  return false;
-}

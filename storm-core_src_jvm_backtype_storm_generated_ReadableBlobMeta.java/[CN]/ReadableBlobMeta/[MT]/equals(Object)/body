@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof ReadableBlobMeta)   return this.equals((ReadableBlobMeta)that);
-  return false;
-}

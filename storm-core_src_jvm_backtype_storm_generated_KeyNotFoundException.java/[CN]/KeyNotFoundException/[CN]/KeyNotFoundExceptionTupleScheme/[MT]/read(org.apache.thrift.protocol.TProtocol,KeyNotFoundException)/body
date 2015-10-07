@@ -1,5 +1,0 @@
-{
-  TTupleProtocol iprot=(TTupleProtocol)prot;
-  struct.msg=iprot.readString();
-  struct.set_msg_isSet(true);
-}

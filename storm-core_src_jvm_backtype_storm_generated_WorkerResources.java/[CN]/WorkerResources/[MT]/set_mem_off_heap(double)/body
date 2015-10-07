@@ -1,4 +1,0 @@
-{
-  this.mem_off_heap=mem_off_heap;
-  set_mem_off_heap_isSet(true);
-}

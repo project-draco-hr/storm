@@ -1,7 +1,0 @@
-{
-  List<Object> list=new ArrayList<Object>();
-  boolean present_topo_history=true && (is_set_topo_history());
-  list.add(present_topo_history);
-  if (present_topo_history)   list.add(topo_history);
-  return list.hashCode();
-}

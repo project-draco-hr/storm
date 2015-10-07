@@ -1,3 +1,0 @@
-{
-  this.details=details == null ? (ByteBuffer)null : ByteBuffer.wrap(Arrays.copyOf(details,details.length));
-}

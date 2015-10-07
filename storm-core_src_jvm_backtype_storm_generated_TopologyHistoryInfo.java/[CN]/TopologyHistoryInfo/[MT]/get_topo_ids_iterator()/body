@@ -1,3 +1,0 @@
-{
-  return (this.topo_ids == null) ? null : this.topo_ids.iterator();
-}

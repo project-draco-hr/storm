@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof HBRecords)   return this.equals((HBRecords)that);
-  return false;
-}

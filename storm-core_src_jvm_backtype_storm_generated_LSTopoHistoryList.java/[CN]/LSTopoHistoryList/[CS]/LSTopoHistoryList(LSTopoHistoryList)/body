@@ -1,9 +1,0 @@
-{
-  if (other.is_set_topo_history()) {
-    List<LSTopoHistory> __this__topo_history=new ArrayList<LSTopoHistory>(other.topo_history.size());
-    for (    LSTopoHistory other_element : other.topo_history) {
-      __this__topo_history.add(new LSTopoHistory(other_element));
-    }
-    this.topo_history=__this__topo_history;
-  }
-}

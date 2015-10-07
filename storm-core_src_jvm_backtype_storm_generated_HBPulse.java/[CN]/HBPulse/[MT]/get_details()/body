@@ -1,4 +1,0 @@
-{
-  set_details(org.apache.thrift.TBaseHelper.rightSize(details));
-  return details == null ? null : details.array();
-}

@@ -1,3 +1,0 @@
-{
-  this.details=org.apache.thrift.TBaseHelper.copyBinary(details);
-}

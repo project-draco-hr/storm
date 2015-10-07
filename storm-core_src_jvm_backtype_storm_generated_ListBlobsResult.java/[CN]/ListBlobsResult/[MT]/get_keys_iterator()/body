@@ -1,3 +1,0 @@
-{
-  return (this.keys == null) ? null : this.keys.iterator();
-}

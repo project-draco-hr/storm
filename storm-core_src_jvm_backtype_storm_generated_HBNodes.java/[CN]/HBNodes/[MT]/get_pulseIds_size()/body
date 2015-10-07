@@ -1,3 +1,0 @@
-{
-  return (this.pulseIds == null) ? 0 : this.pulseIds.size();
-}

@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof HBMessage)   return this.equals((HBMessage)that);
-  return false;
-}
