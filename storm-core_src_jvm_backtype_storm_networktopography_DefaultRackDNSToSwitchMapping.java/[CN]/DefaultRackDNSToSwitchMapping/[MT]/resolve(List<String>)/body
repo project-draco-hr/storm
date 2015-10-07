@@ -1,0 +1,11 @@
+{
+  Map<String,String> m=new HashMap<String,String>();
+  if (names.isEmpty()) {
+    return m;
+  }
+  for (  String name : names) {
+    m.put(name,DEFAULT_RACK);
+    mappingCache.put(name,DEFAULT_RACK);
+  }
+  return m;
+}

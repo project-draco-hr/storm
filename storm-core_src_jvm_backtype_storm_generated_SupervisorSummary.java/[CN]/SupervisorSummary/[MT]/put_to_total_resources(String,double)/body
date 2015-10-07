@@ -1,0 +1,6 @@
+{
+  if (this.total_resources == null) {
+    this.total_resources=new HashMap<String,Double>();
+  }
+  this.total_resources.put(key,val);
+}

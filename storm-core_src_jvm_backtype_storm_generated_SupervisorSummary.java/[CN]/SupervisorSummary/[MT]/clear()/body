@@ -8,4 +8,5 @@
   this.num_used_workers=0;
   this.supervisor_id=null;
   this.version="VERSION_NOT_PROVIDED";
+  this.total_resources=null;
 }

@@ -1,0 +1,7 @@
+{
+  Double result=getDouble(o,null);
+  if (null == result) {
+    throw new IllegalArgumentException("Don't know how to convert null to double");
+  }
+  return result;
+}

@@ -1,5 +1,3 @@
 {
-  this.id=id;
-  this.meta=meta;
-  setAllPorts(allPorts);
+  this(id,null,meta,null,allPorts,null);
 }

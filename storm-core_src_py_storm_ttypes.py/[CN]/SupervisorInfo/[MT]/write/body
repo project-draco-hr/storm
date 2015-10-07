@@ -18,23 +18,23 @@ def write(self, oprot):
     if (self.used_ports is not None):
         oprot.writeFieldBegin('used_ports', TType.LIST, 4)
         oprot.writeListBegin(TType.I64, len(self.used_ports))
-        for iter440 in self.used_ports:
-            oprot.writeI64(iter440)
+        for iter456 in self.used_ports:
+            oprot.writeI64(iter456)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.meta is not None):
         oprot.writeFieldBegin('meta', TType.LIST, 5)
         oprot.writeListBegin(TType.I64, len(self.meta))
-        for iter441 in self.meta:
-            oprot.writeI64(iter441)
+        for iter457 in self.meta:
+            oprot.writeI64(iter457)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.scheduler_meta is not None):
         oprot.writeFieldBegin('scheduler_meta', TType.MAP, 6)
         oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.scheduler_meta))
-        for (kiter442, viter443) in self.scheduler_meta.items():
-            oprot.writeString(kiter442.encode('utf-8'))
-            oprot.writeString(viter443.encode('utf-8'))
+        for (kiter458, viter459) in self.scheduler_meta.items():
+            oprot.writeString(kiter458.encode('utf-8'))
+            oprot.writeString(viter459.encode('utf-8'))
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.uptime_secs is not None):
@@ -44,6 +44,14 @@ def write(self, oprot):
     if (self.version is not None):
         oprot.writeFieldBegin('version', TType.STRING, 8)
         oprot.writeString(self.version.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.resources_map is not None):
+        oprot.writeFieldBegin('resources_map', TType.MAP, 9)
+        oprot.writeMapBegin(TType.STRING, TType.DOUBLE, len(self.resources_map))
+        for (kiter460, viter461) in self.resources_map.items():
+            oprot.writeString(kiter460.encode('utf-8'))
+            oprot.writeDouble(viter461)
+        oprot.writeMapEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

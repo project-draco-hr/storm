@@ -1,0 +1,3 @@
+{
+  return "defaultRackDNSToSwitchMapping (" + mappingCache.size() + " mappings cached)";
+}

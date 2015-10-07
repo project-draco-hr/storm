@@ -1,0 +1,21 @@
+{
+  if (networkTopography == null) {
+    networkTopography=new HashMap<String,List<String>>();
+    ArrayList<String> supervisorHostNames=new ArrayList<String>();
+    for (    SupervisorDetails s : supervisors.values()) {
+      supervisorHostNames.add(s.getHost());
+    }
+    String clazz=(String)conf.get(Config.STORM_NETWORK_TOPOGRAPHY_PLUGIN);
+    DNSToSwitchMapping topographyMapper=(DNSToSwitchMapping)Utils.newInstance(clazz);
+    Map<String,String> resolvedSuperVisors=topographyMapper.resolve(supervisorHostNames);
+    for (    String hostName : resolvedSuperVisors.keySet()) {
+      String rack=resolvedSuperVisors.get(hostName);
+      if (!networkTopography.containsKey(rack)) {
+        networkTopography.put(rack,new ArrayList<String>());
+      }
+      List<String> nodesForRack=networkTopography.get(rack);
+      nodesForRack.add(hostName);
+    }
+  }
+  return networkTopography;
+}

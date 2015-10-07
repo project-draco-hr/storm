@@ -1,0 +1,11 @@
+{
+  if (src.getId().equals(dest.getId()) == true) {
+    return 1.0;
+  }
+ else   if (this.NodeToCluster(src) == this.NodeToCluster(dest)) {
+    return 2.0;
+  }
+ else {
+    return 3.0;
+  }
+}

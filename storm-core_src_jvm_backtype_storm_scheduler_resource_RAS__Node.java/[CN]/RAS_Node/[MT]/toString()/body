@@ -1,0 +1,3 @@
+{
+  return "{Node: " + _sup.getHost() + ", AvailMem: "+ _availMemory.toString()+ ", AvailCPU: "+ _availCPU.toString()+ "}";
+}
