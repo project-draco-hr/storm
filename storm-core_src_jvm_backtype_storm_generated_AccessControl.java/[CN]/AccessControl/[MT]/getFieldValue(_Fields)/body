@@ -1,0 +1,11 @@
+{
+switch (field) {
+case TYPE:
+    return get_type();
+case NAME:
+  return get_name();
+case ACCESS:
+return Integer.valueOf(get_access());
+}
+throw new IllegalStateException();
+}

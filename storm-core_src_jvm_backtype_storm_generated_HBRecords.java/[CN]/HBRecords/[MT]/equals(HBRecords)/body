@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_pulses=true && this.is_set_pulses();
+  boolean that_present_pulses=true && that.is_set_pulses();
+  if (this_present_pulses || that_present_pulses) {
+    if (!(this_present_pulses && that_present_pulses))     return false;
+    if (!this.pulses.equals(that.pulses))     return false;
+  }
+  return true;
+}

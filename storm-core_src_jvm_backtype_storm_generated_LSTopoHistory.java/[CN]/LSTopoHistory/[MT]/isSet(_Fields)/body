@@ -1,0 +1,16 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case TOPOLOGY_ID:
+    return is_set_topology_id();
+case TIME_STAMP:
+  return is_set_time_stamp();
+case USERS:
+return is_set_users();
+case GROUPS:
+return is_set_groups();
+}
+throw new IllegalStateException();
+}

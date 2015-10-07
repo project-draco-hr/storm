@@ -1,0 +1,7 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_acl=true && (is_set_acl());
+  list.add(present_acl);
+  if (present_acl)   list.add(acl);
+  return list.hashCode();
+}

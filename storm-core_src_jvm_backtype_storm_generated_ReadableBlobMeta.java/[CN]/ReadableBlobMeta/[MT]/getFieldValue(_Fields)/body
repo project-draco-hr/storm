@@ -1,0 +1,9 @@
+{
+switch (field) {
+case SETTABLE:
+    return get_settable();
+case VERSION:
+  return Long.valueOf(get_version());
+}
+throw new IllegalStateException();
+}

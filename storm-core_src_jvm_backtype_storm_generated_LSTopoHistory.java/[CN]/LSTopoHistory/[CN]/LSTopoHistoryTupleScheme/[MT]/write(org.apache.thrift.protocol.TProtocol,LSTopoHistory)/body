@@ -1,0 +1,17 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.topology_id);
+  oprot.writeI64(struct.time_stamp);
+{
+    oprot.writeI32(struct.users.size());
+    for (    String _iter670 : struct.users) {
+      oprot.writeString(_iter670);
+    }
+  }
+{
+    oprot.writeI32(struct.groups.size());
+    for (    String _iter671 : struct.groups) {
+      oprot.writeString(_iter671);
+    }
+  }
+}

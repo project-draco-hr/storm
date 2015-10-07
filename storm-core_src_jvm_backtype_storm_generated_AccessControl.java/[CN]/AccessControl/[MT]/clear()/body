@@ -1,0 +1,6 @@
+{
+  this.type=null;
+  this.name=null;
+  set_access_isSet(false);
+  this.access=0;
+}

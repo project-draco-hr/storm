@@ -1,0 +1,7 @@
+{
+switch (field) {
+case ACL:
+    return get_acl();
+}
+throw new IllegalStateException();
+}

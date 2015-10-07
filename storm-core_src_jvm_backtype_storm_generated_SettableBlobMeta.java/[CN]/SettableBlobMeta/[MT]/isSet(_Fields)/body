@@ -1,0 +1,10 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case ACL:
+    return is_set_acl();
+}
+throw new IllegalStateException();
+}

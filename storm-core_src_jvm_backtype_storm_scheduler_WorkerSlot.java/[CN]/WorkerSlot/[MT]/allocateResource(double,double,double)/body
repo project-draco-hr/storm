@@ -1,0 +1,5 @@
+{
+  this.memOnHeap+=memOnHeap;
+  this.memOffHeap+=memOffHeap;
+  this.cpu+=cpu;
+}

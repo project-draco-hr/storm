@@ -1,0 +1,14 @@
+{
+  StringBuilder sb=new StringBuilder("SettableBlobMeta(");
+  boolean first=true;
+  sb.append("acl:");
+  if (this.acl == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.acl);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

@@ -1,0 +1,4 @@
+String topology_id
+long time_stamp
+List<String> users
+List<String> groups

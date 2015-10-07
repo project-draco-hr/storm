@@ -1,0 +1,15 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+{
+    org.apache.thrift.protocol.TList _list475=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
+    struct.keys=new ArrayList<String>(_list475.size);
+    String _elem476;
+    for (int _i477=0; _i477 < _list475.size; ++_i477) {
+      _elem476=iprot.readString();
+      struct.keys.add(_elem476);
+    }
+  }
+  struct.set_keys_isSet(true);
+  struct.session=iprot.readString();
+  struct.set_session_isSet(true);
+}

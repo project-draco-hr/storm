@@ -1,0 +1,14 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+{
+    org.apache.thrift.protocol.TList _list683=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.topo_history=new ArrayList<LSTopoHistory>(_list683.size);
+    LSTopoHistory _elem684;
+    for (int _i685=0; _i685 < _list683.size; ++_i685) {
+      _elem684=new LSTopoHistory();
+      _elem684.read(iprot);
+      struct.topo_history.add(_elem684);
+    }
+  }
+  struct.set_topo_history_isSet(true);
+}
