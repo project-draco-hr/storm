@@ -95,6 +95,28 @@ struct.set_executor_start_time_secs_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 5:
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map542=iprot.readMapBegin();
+struct.worker_resources=new HashMap<NodeInfo,WorkerResources>(2 * _map542.size);
+NodeInfo _key543;
+WorkerResources _val544;
+for (int _i545=0; _i545 < _map542.size; ++_i545) {
+_key543=new NodeInfo();
+_key543.read(iprot);
+_val544=new WorkerResources();
+_val544.read(iprot);
+struct.worker_resources.put(_key543,_val544);
+}
+iprot.readMapEnd();
+}
+struct.set_worker_resources_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }

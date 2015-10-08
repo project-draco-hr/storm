@@ -10,15 +10,15 @@ switch (schemeField.id) {
 case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-          org.apache.thrift.protocol.TMap _map600=iprot.readMapBegin();
-          struct.serialized_parts=new HashMap<String,ThriftSerializedObject>(2 * _map600.size);
-          String _key601;
-          ThriftSerializedObject _val602;
-          for (int _i603=0; _i603 < _map600.size; ++_i603) {
-            _key601=iprot.readString();
-            _val602=new ThriftSerializedObject();
-            _val602.read(iprot);
-            struct.serialized_parts.put(_key601,_val602);
+          org.apache.thrift.protocol.TMap _map610=iprot.readMapBegin();
+          struct.serialized_parts=new HashMap<String,ThriftSerializedObject>(2 * _map610.size);
+          String _key611;
+          ThriftSerializedObject _val612;
+          for (int _i613=0; _i613 < _map610.size; ++_i613) {
+            _key611=iprot.readString();
+            _val612=new ThriftSerializedObject();
+            _val612.read(iprot);
+            struct.serialized_parts.put(_key611,_val612);
           }
           iprot.readMapEnd();
         }

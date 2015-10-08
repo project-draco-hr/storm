@@ -18,6 +18,17 @@
     sb.append(this.executors);
   }
   first=false;
+  if (is_set_resources()) {
+    if (!first)     sb.append(", ");
+    sb.append("resources:");
+    if (this.resources == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.resources);
+    }
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

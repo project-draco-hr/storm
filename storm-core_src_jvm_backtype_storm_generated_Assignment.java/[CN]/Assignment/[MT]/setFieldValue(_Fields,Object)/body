@@ -32,5 +32,13 @@ unset_executor_start_time_secs();
 set_executor_start_time_secs((Map<List<Long>,Long>)value);
 }
 break;
+case WORKER_RESOURCES:
+if (value == null) {
+unset_worker_resources();
+}
+ else {
+set_worker_resources((Map<NodeInfo,WorkerResources>)value);
+}
+break;
 }
 }

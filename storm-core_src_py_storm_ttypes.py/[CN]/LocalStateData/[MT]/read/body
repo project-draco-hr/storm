@@ -10,12 +10,12 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.serialized_parts = {}
-                (_ktype538, _vtype539, _size537) = iprot.readMapBegin()
-                for _i541 in xrange(_size537):
-                    _key542 = iprot.readString().decode('utf-8')
-                    _val543 = ThriftSerializedObject()
-                    _val543.read(iprot)
-                    self.serialized_parts[_key542] = _val543
+                (_ktype547, _vtype548, _size546) = iprot.readMapBegin()
+                for _i550 in xrange(_size546):
+                    _key551 = iprot.readString().decode('utf-8')
+                    _val552 = ThriftSerializedObject()
+                    _val552.read(iprot)
+                    self.serialized_parts[_key551] = _val552
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
