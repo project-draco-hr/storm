@@ -1,0 +1,6 @@
+{
+  if (_availMemory == null) {
+    return 0.0;
+  }
+  return _availMemory;
+}

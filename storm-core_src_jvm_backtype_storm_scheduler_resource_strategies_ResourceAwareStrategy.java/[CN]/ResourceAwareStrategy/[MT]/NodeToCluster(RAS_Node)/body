@@ -1,0 +1,9 @@
+{
+  for (  Entry<String,List<String>> entry : _clusterInfo.entrySet()) {
+    if (entry.getValue().contains(node.getHostname())) {
+      return entry.getKey();
+    }
+  }
+  LOG.error("Node: {} not found in any clusters",node.getHostname());
+  return null;
+}

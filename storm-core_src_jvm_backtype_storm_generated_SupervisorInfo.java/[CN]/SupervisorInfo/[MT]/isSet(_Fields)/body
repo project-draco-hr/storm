@@ -19,6 +19,8 @@ case UPTIME_SECS:
 return is_set_uptime_secs();
 case VERSION:
 return is_set_version();
+case RESOURCES_MAP:
+return is_set_resources_map();
 }
 throw new IllegalStateException();
 }

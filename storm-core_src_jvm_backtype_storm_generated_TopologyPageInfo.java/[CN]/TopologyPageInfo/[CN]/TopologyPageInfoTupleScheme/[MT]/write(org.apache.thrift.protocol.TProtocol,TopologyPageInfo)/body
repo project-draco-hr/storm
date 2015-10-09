@@ -69,18 +69,18 @@
   if (struct.is_set_id_to_spout_agg_stats()) {
 {
       oprot.writeI32(struct.id_to_spout_agg_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter394 : struct.id_to_spout_agg_stats.entrySet()) {
-        oprot.writeString(_iter394.getKey());
-        _iter394.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter404 : struct.id_to_spout_agg_stats.entrySet()) {
+        oprot.writeString(_iter404.getKey());
+        _iter404.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_id_to_bolt_agg_stats()) {
 {
       oprot.writeI32(struct.id_to_bolt_agg_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter395 : struct.id_to_bolt_agg_stats.entrySet()) {
-        oprot.writeString(_iter395.getKey());
-        _iter395.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter405 : struct.id_to_bolt_agg_stats.entrySet()) {
+        oprot.writeString(_iter405.getKey());
+        _iter405.getValue().write(oprot);
       }
     }
   }

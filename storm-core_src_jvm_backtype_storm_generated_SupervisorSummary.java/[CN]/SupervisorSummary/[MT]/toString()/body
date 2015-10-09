@@ -41,6 +41,17 @@
     }
     first=false;
   }
+  if (is_set_total_resources()) {
+    if (!first)     sb.append(", ");
+    sb.append("total_resources:");
+    if (this.total_resources == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.total_resources);
+    }
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

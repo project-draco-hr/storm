@@ -1,0 +1,6 @@
+{
+  if (_availCPU == null) {
+    return 0.0;
+  }
+  return _availCPU;
+}

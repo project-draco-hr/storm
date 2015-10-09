@@ -1,0 +1,7 @@
+{
+  if (_nodes.containsKey(id) == false) {
+    LOG.error("Cannot find Node with Id: {}",id);
+    return null;
+  }
+  return _nodes.get(id);
+}

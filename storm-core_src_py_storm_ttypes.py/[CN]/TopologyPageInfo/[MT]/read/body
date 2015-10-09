@@ -50,24 +50,24 @@ def read(self, iprot):
         elif (fid == 9):
             if (ftype == TType.MAP):
                 self.id_to_spout_agg_stats = {}
-                (_ktype345, _vtype346, _size344) = iprot.readMapBegin()
-                for _i348 in xrange(_size344):
-                    _key349 = iprot.readString().decode('utf-8')
-                    _val350 = ComponentAggregateStats()
-                    _val350.read(iprot)
-                    self.id_to_spout_agg_stats[_key349] = _val350
+                (_ktype354, _vtype355, _size353) = iprot.readMapBegin()
+                for _i357 in xrange(_size353):
+                    _key358 = iprot.readString().decode('utf-8')
+                    _val359 = ComponentAggregateStats()
+                    _val359.read(iprot)
+                    self.id_to_spout_agg_stats[_key358] = _val359
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 10):
             if (ftype == TType.MAP):
                 self.id_to_bolt_agg_stats = {}
-                (_ktype352, _vtype353, _size351) = iprot.readMapBegin()
-                for _i355 in xrange(_size351):
-                    _key356 = iprot.readString().decode('utf-8')
-                    _val357 = ComponentAggregateStats()
-                    _val357.read(iprot)
-                    self.id_to_bolt_agg_stats[_key356] = _val357
+                (_ktype361, _vtype362, _size360) = iprot.readMapBegin()
+                for _i364 in xrange(_size360):
+                    _key365 = iprot.readString().decode('utf-8')
+                    _val366 = ComponentAggregateStats()
+                    _val366.read(iprot)
+                    self.id_to_bolt_agg_stats[_key365] = _val366
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

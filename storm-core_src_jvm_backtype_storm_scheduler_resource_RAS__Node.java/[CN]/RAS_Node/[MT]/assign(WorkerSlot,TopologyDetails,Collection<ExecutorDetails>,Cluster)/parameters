@@ -1,0 +1,4 @@
+WorkerSlot target
+TopologyDetails td
+Collection<ExecutorDetails> executors
+Cluster cluster

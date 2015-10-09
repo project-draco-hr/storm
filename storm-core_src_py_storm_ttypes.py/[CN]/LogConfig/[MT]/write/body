@@ -6,9 +6,9 @@ def write(self, oprot):
     if (self.named_logger_level is not None):
         oprot.writeFieldBegin('named_logger_level', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.named_logger_level))
-        for (kiter567, viter568) in self.named_logger_level.items():
-            oprot.writeString(kiter567.encode('utf-8'))
-            viter568.write(oprot)
+        for (kiter585, viter586) in self.named_logger_level.items():
+            oprot.writeString(kiter585.encode('utf-8'))
+            viter586.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

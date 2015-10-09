@@ -1,0 +1,4 @@
+{
+  checkInitMem(topology_resources,Com,topologyConf);
+  checkInitCPU(topology_resources,Com,topologyConf);
+}
