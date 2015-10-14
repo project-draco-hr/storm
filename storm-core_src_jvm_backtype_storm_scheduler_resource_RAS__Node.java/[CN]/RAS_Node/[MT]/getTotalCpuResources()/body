@@ -1,0 +1,8 @@
+{
+  if (_sup != null && _sup.getTotalCPU() != null) {
+    return _sup.getTotalCPU();
+  }
+ else {
+    return 0.0;
+  }
+}

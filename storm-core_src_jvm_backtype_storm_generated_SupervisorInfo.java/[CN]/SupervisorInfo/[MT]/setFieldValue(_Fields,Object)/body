@@ -64,5 +64,13 @@ unset_version();
 set_version((String)value);
 }
 break;
+case RESOURCES_MAP:
+if (value == null) {
+unset_resources_map();
+}
+ else {
+set_resources_map((Map<String,Double>)value);
+}
+break;
 }
 }

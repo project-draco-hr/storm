@@ -1,0 +1,12 @@
+{
+switch (field) {
+case NAME:
+    if (value == null) {
+      unset_name();
+    }
+ else {
+      set_name((String)value);
+    }
+  break;
+}
+}

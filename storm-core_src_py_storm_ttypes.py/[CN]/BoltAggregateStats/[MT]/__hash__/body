@@ -1,0 +1,7 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.execute_latency_ms))
+    value = ((value * 31) ^ hash(self.process_latency_ms))
+    value = ((value * 31) ^ hash(self.executed))
+    value = ((value * 31) ^ hash(self.capacity))
+    return value

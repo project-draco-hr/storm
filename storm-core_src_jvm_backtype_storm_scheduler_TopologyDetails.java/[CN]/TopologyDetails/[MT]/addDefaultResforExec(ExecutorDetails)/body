@@ -1,0 +1,8 @@
+{
+  Map<String,Double> defaultResourceList=new HashMap<String,Double>();
+  defaultResourceList.put(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT,Utils.getDouble(topologyConf.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT),null));
+  defaultResourceList.put(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB,Utils.getDouble(topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB),null));
+  defaultResourceList.put(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB,Utils.getDouble(topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB),null));
+  LOG.debug("Scheduling Executor: {} with memory requirement as onHeap: {} - offHeap: {} " + "and CPU requirement: {}",exec,topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB),topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB),topologyConf.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT));
+  addResourcesForExec(exec,defaultResourceList);
+}

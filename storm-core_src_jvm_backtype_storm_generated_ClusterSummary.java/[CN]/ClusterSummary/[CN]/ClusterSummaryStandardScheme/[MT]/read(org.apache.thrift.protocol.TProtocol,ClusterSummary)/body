@@ -10,13 +10,13 @@ switch (schemeField.id) {
 case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-          org.apache.thrift.protocol.TList _list74=iprot.readListBegin();
-          struct.supervisors=new ArrayList<SupervisorSummary>(_list74.size);
-          SupervisorSummary _elem75;
-          for (int _i76=0; _i76 < _list74.size; ++_i76) {
-            _elem75=new SupervisorSummary();
-            _elem75.read(iprot);
-            struct.supervisors.add(_elem75);
+          org.apache.thrift.protocol.TList _list84=iprot.readListBegin();
+          struct.supervisors=new ArrayList<SupervisorSummary>(_list84.size);
+          SupervisorSummary _elem85;
+          for (int _i86=0; _i86 < _list84.size; ++_i86) {
+            _elem85=new SupervisorSummary();
+            _elem85.read(iprot);
+            struct.supervisors.add(_elem85);
           }
           iprot.readListEnd();
         }
@@ -29,13 +29,13 @@ case 1:
 case 3:
   if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-      org.apache.thrift.protocol.TList _list77=iprot.readListBegin();
-      struct.topologies=new ArrayList<TopologySummary>(_list77.size);
-      TopologySummary _elem78;
-      for (int _i79=0; _i79 < _list77.size; ++_i79) {
-        _elem78=new TopologySummary();
-        _elem78.read(iprot);
-        struct.topologies.add(_elem78);
+      org.apache.thrift.protocol.TList _list87=iprot.readListBegin();
+      struct.topologies=new ArrayList<TopologySummary>(_list87.size);
+      TopologySummary _elem88;
+      for (int _i89=0; _i89 < _list87.size; ++_i89) {
+        _elem88=new TopologySummary();
+        _elem88.read(iprot);
+        struct.topologies.add(_elem88);
       }
       iprot.readListEnd();
     }
@@ -48,13 +48,13 @@ break;
 case 4:
 if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-  org.apache.thrift.protocol.TList _list80=iprot.readListBegin();
-  struct.nimbuses=new ArrayList<NimbusSummary>(_list80.size);
-  NimbusSummary _elem81;
-  for (int _i82=0; _i82 < _list80.size; ++_i82) {
-    _elem81=new NimbusSummary();
-    _elem81.read(iprot);
-    struct.nimbuses.add(_elem81);
+  org.apache.thrift.protocol.TList _list90=iprot.readListBegin();
+  struct.nimbuses=new ArrayList<NimbusSummary>(_list90.size);
+  NimbusSummary _elem91;
+  for (int _i92=0; _i92 < _list90.size; ++_i92) {
+    _elem91=new NimbusSummary();
+    _elem91.read(iprot);
+    struct.nimbuses.add(_elem91);
   }
   iprot.readListEnd();
 }

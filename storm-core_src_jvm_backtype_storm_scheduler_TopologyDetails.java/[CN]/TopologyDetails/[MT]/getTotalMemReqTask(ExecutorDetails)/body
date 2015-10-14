@@ -1,0 +1,6 @@
+{
+  if (hasExecInTopo(exec)) {
+    return getOffHeapMemoryRequirement(exec) + getOnHeapMemoryRequirement(exec);
+  }
+  return null;
+}

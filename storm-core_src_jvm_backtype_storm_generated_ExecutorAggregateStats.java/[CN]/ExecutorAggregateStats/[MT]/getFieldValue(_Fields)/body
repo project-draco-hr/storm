@@ -1,0 +1,9 @@
+{
+switch (field) {
+case EXEC_SUMMARY:
+    return get_exec_summary();
+case STATS:
+  return get_stats();
+}
+throw new IllegalStateException();
+}

@@ -1,0 +1,41 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_num_executors()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_num_tasks()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_emitted()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_transferred()) {
+    optionals.set(3);
+  }
+  if (struct.is_set_acked()) {
+    optionals.set(4);
+  }
+  if (struct.is_set_failed()) {
+    optionals.set(5);
+  }
+  oprot.writeBitSet(optionals,6);
+  if (struct.is_set_num_executors()) {
+    oprot.writeI32(struct.num_executors);
+  }
+  if (struct.is_set_num_tasks()) {
+    oprot.writeI32(struct.num_tasks);
+  }
+  if (struct.is_set_emitted()) {
+    oprot.writeI64(struct.emitted);
+  }
+  if (struct.is_set_transferred()) {
+    oprot.writeI64(struct.transferred);
+  }
+  if (struct.is_set_acked()) {
+    oprot.writeI64(struct.acked);
+  }
+  if (struct.is_set_failed()) {
+    oprot.writeI64(struct.failed);
+  }
+}

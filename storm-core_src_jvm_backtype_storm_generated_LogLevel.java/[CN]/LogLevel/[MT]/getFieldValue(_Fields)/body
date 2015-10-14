@@ -1,0 +1,15 @@
+{
+switch (field) {
+case ACTION:
+    return get_action();
+case TARGET_LOG_LEVEL:
+  return get_target_log_level();
+case RESET_LOG_LEVEL_TIMEOUT_SECS:
+return Integer.valueOf(get_reset_log_level_timeout_secs());
+case RESET_LOG_LEVEL_TIMEOUT_EPOCH:
+return Long.valueOf(get_reset_log_level_timeout_epoch());
+case RESET_LOG_LEVEL:
+return get_reset_log_level();
+}
+throw new IllegalStateException();
+}

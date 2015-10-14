@@ -20,11 +20,11 @@ def read(self, iprot):
         elif (fid == 3):
             if (ftype == TType.LIST):
                 self.executors = []
-                (_etype452, _size449) = iprot.readListBegin()
-                for _i453 in xrange(_size449):
-                    _elem454 = ExecutorInfo()
-                    _elem454.read(iprot)
-                    self.executors.append(_elem454)
+                (_etype574, _size571) = iprot.readListBegin()
+                for _i575 in xrange(_size571):
+                    _elem576 = ExecutorInfo()
+                    _elem576.read(iprot)
+                    self.executors.append(_elem576)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

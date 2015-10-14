@@ -12,6 +12,8 @@ case 5:
 return SUPERVISOR_ID;
 case 6:
 return VERSION;
+case 7:
+return TOTAL_RESOURCES;
 default :
 return null;
 }

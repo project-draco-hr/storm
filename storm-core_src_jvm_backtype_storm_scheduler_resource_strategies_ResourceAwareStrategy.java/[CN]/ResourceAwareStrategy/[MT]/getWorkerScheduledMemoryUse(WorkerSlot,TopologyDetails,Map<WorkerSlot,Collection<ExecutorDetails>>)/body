@@ -1,0 +1,10 @@
+{
+  Double totalMem=0.0;
+  Collection<ExecutorDetails> execs=scheduleAssignmentMap.get(ws);
+  if (execs != null) {
+    for (    ExecutorDetails exec : execs) {
+      totalMem+=td.getTotalMemReqTask(exec);
+    }
+  }
+  return totalMem;
+}

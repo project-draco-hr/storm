@@ -1,0 +1,4 @@
+ExecutorDetails exec
+TopologyDetails td
+String clusterId
+Map<WorkerSlot,Collection<ExecutorDetails>> scheduleAssignmentMap

@@ -7,7 +7,7 @@
     }
     return;
   }
-  String batchGroup=_batchGroupIds.get(tuple.getSourceGlobalStreamid());
+  String batchGroup=_batchGroupIds.get(tuple.getSourceGlobalStreamId());
   if (batchGroup == null) {
     _coordCollector.setCurrBatch(null);
     _bolt.execute(null,tuple);

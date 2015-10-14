@@ -61,6 +61,26 @@ struct.set_version_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 7:
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map74=iprot.readMapBegin();
+struct.total_resources=new HashMap<String,Double>(2 * _map74.size);
+String _key75;
+double _val76;
+for (int _i77=0; _i77 < _map74.size; ++_i77) {
+_key75=iprot.readString();
+_val76=iprot.readDouble();
+struct.total_resources.put(_key75,_val76);
+}
+iprot.readMapEnd();
+}
+struct.set_total_resources_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }

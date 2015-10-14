@@ -1,0 +1,6 @@
+{
+  this.type=null;
+  this.common_stats=null;
+  this.specific_stats=null;
+  this.last_error=null;
+}

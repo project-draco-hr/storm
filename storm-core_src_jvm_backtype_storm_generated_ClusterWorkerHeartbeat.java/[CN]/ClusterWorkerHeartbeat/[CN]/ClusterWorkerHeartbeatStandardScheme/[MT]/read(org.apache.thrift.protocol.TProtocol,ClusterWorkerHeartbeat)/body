@@ -19,16 +19,16 @@ case 1:
 case 2:
   if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-      org.apache.thrift.protocol.TMap _map454=iprot.readMapBegin();
-      struct.executor_stats=new HashMap<ExecutorInfo,ExecutorStats>(2 * _map454.size);
-      ExecutorInfo _key455;
-      ExecutorStats _val456;
-      for (int _i457=0; _i457 < _map454.size; ++_i457) {
-        _key455=new ExecutorInfo();
-        _key455.read(iprot);
-        _val456=new ExecutorStats();
-        _val456.read(iprot);
-        struct.executor_stats.put(_key455,_val456);
+      org.apache.thrift.protocol.TMap _map590=iprot.readMapBegin();
+      struct.executor_stats=new HashMap<ExecutorInfo,ExecutorStats>(2 * _map590.size);
+      ExecutorInfo _key591;
+      ExecutorStats _val592;
+      for (int _i593=0; _i593 < _map590.size; ++_i593) {
+        _key591=new ExecutorInfo();
+        _key591.read(iprot);
+        _val592=new ExecutorStats();
+        _val592.read(iprot);
+        struct.executor_stats.put(_key591,_val592);
       }
       iprot.readMapEnd();
     }

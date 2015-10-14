@@ -12,6 +12,8 @@ case SUPERVISOR_ID:
 return get_supervisor_id();
 case VERSION:
 return get_version();
+case TOTAL_RESOURCES:
+return get_total_resources();
 }
 throw new IllegalStateException();
 }
