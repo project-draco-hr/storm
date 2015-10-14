@@ -6,8 +6,8 @@
  else {
     id=_buffer.tryNext(1);
   }
-  final MutableObject m=_buffer.get(id);
-  m.setObject(obj);
+  final AtomicReference<Object> m=_buffer.get(id);
+  Object old=m.getAndSet(obj);
   _buffer.publish(id);
   _metrics.notifyArrivals(1);
   if (_enableBackpressure && _cb != null && _metrics.population() >= _highWaterMark) {
@@ -20,5 +20,8 @@
  catch (    Exception e) {
       throw new RuntimeException("Exception during calling highWaterMark callback!",e);
     }
+  }
+  if (old != null) {
+    LOG.warn("Tuple was overwritten in {}:{}",getName(),id);
   }
 }

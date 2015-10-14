@@ -1,18 +1,14 @@
 {
   try {
     final long nextSequence=_consumer.get() + 1;
-    long availableSequence=0;
-    try {
-      availableSequence=_barrier.waitFor(nextSequence);
-    }
- catch (    TimeoutException te) {
-      availableSequence=_barrier.getCursor();
-    }
+    long availableSequence=_barrier.waitFor(nextSequence);
     if (availableSequence >= nextSequence) {
       consumeBatchToCursor(availableSequence,handler);
     }
   }
- catch (  AlertException e) {
+ catch (  TimeoutException te) {
+  }
+catch (  AlertException e) {
     throw new RuntimeException(e);
   }
 catch (  InterruptedException e) {
