@@ -1,0 +1,12 @@
+{
+  Map<String,Object> conf=new HashMap<String,Object>();
+  conf.put(Config.TOPOLOGY_WORKERS,42);
+  ConfigValidation.validateFields(conf);
+  conf.put(Config.TOPOLOGY_WORKERS,3.14159);
+  try {
+    ConfigValidation.validateFields(conf);
+    Assert.fail("Expected Exception not Thrown");
+  }
+ catch (  IllegalArgumentException ex) {
+  }
+}
