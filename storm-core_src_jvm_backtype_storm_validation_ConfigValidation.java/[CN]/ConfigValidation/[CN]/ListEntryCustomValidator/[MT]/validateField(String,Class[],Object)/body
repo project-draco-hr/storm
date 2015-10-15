@@ -1,0 +1,18 @@
+{
+  if (o == null) {
+    return;
+  }
+  SimpleTypeValidator isIterable=new SimpleTypeValidator();
+  isIterable.validateField(name,Iterable.class,o);
+  for (  Object entry : (Iterable)o) {
+    for (    Class validator : validators) {
+      Object v=validator.newInstance();
+      if (v instanceof Validator) {
+        ((Validator)v).validateField(name + " list entry",entry);
+      }
+ else {
+        LOG.warn("validator: {} cannot be used in ListEntryCustomValidator.  Individual entry validators must a instance of Validator class",validator.getName());
+      }
+    }
+  }
+}

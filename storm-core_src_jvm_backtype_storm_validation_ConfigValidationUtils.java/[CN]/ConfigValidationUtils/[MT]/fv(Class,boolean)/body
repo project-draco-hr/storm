@@ -1,0 +1,18 @@
+{
+  return new NestableFieldValidator(){
+    @Override public void validateField(    String pd,    String name,    Object field) throws IllegalArgumentException {
+      if (field == null) {
+        if (notNull) {
+          throw new IllegalArgumentException("Field " + name + " must not be null");
+        }
+ else {
+          return;
+        }
+      }
+      if (!cls.isInstance(field)) {
+        throw new IllegalArgumentException(pd + name + " must be a "+ cls.getName()+ ". ("+ field+ ")");
+      }
+    }
+  }
+;
+}

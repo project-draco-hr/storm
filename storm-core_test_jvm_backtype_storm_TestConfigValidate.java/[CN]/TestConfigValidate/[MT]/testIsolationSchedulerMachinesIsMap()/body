@@ -1,0 +1,17 @@
+{
+  Map<String,Object> conf=new HashMap<String,Object>();
+  Map<String,Integer> isolationMap=new HashMap<String,Integer>();
+  conf.put(Config.ISOLATION_SCHEDULER_MACHINES,isolationMap);
+  ConfigValidation.validateFields(conf);
+  isolationMap.put("host0",1);
+  isolationMap.put("host1",2);
+  conf.put(Config.ISOLATION_SCHEDULER_MACHINES,isolationMap);
+  ConfigValidation.validateFields(conf);
+  conf.put(Config.ISOLATION_SCHEDULER_MACHINES,42);
+  try {
+    ConfigValidation.validateFields(conf);
+    Assert.fail("Expected Exception not Thrown");
+  }
+ catch (  IllegalArgumentException ex) {
+  }
+}

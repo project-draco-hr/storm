@@ -1,0 +1,12 @@
+{
+  if (o == null) {
+    return;
+  }
+  final long i;
+  if (o instanceof Number && (i=((Number)o).longValue()) == ((Number)o).doubleValue()) {
+    if (i <= Integer.MAX_VALUE && i >= Integer.MIN_VALUE) {
+      return;
+    }
+  }
+  throw new IllegalArgumentException("Field " + name + " must be an Integer within type range.");
+}

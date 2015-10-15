@@ -1,0 +1,4 @@
+{
+  ConfigValidationUtils.NestableFieldValidator validator=ConfigValidationUtils.listFv(type,false);
+  validator.validateField(name,o);
+}
