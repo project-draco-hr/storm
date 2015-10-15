@@ -2,8 +2,7 @@
   if (field == null) {
     return;
   }
-  SimpleTypeValidator isIterable=new SimpleTypeValidator();
-  isIterable.validateField(name,Iterable.class,field);
+  SimpleTypeValidator.validateField(name,Iterable.class,field);
   HashSet<Object> objectSet=new HashSet<Object>();
   for (  Object o : (Iterable)field) {
     if (objectSet.contains(o)) {

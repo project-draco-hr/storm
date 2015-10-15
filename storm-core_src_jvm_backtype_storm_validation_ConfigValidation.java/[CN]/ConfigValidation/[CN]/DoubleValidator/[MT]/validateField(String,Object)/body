@@ -1,4 +1,3 @@
 {
-  SimpleTypeValidator validator=new SimpleTypeValidator();
-  validator.validateField(name,Double.class,o);
+  SimpleTypeValidator.validateField(name,Double.class,o);
 }

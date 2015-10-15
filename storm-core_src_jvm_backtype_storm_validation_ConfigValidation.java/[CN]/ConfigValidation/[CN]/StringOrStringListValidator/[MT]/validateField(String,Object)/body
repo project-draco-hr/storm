@@ -1,15 +1,6 @@
 {
-  if (o == null) {
+  if (o == null || o instanceof String) {
     return;
-  }
-  if (o instanceof String) {
-    return;
-  }
-  SimpleTypeValidator isIterable=new SimpleTypeValidator();
-  try {
-    isIterable.validateField(name,Iterable.class,o);
-  }
- catch (  Exception ex) {
   }
   this.fv.validateField(name,o);
 }

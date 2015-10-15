@@ -16,38 +16,16 @@
     if (validatorClass != null) {
       Object v=validatorClass.cast(annotation);
       String key=(String)field.get(null);
-      Class clazz=(Class)validatorClass.getMethod(ConfigValidationAnnotations.VALIDATOR_CLASS).invoke(v);
-      if (hasMethod(validatorClass,ConfigValidationAnnotations.TYPE)) {
-        TypeValidator o=((Class<TypeValidator>)clazz).newInstance();
-        Class objectType=(Class)validatorClass.getMethod(ConfigValidationAnnotations.TYPE).invoke(v);
-        o.validateField(field.getName(),objectType,conf.get(key));
-      }
- else       if (hasMethod(validatorClass,ConfigValidationAnnotations.ENTRY_VALIDATOR_CLASSES)) {
-        ListEntryCustomValidator o=((Class<ListEntryCustomValidator>)clazz).newInstance();
-        Class[] entryValidators=(Class[])validatorClass.getMethod(ConfigValidationAnnotations.ENTRY_VALIDATOR_CLASSES).invoke(v);
-        o.validateField(field.getName(),entryValidators,conf.get(key));
-      }
- else       if (hasMethod(validatorClass,ConfigValidationAnnotations.KEY_VALIDATOR_CLASSES) && hasMethod(validatorClass,ConfigValidationAnnotations.VALUE_VALIDATOR_CLASSES)) {
-        MapEntryCustomValidator o=((Class<MapEntryCustomValidator>)clazz).newInstance();
-        Class[] keyValidators=(Class[])validatorClass.getMethod(ConfigValidationAnnotations.KEY_VALIDATOR_CLASSES).invoke(v);
-        Class[] valueValidators=(Class[])validatorClass.getMethod(ConfigValidationAnnotations.VALUE_VALIDATOR_CLASSES).invoke(v);
-        o.validateField(field.getName(),keyValidators,valueValidators,conf.get(key));
-      }
- else       if (hasMethod(validatorClass,ConfigValidationAnnotations.KEY_TYPE) && hasMethod(validatorClass,ConfigValidationAnnotations.VALUE_TYPE)) {
-        MapEntryTypeValidator o=((Class<MapEntryTypeValidator>)clazz).newInstance();
-        Class keyType=(Class)validatorClass.getMethod(ConfigValidationAnnotations.KEY_TYPE).invoke(v);
-        Class valueType=(Class)validatorClass.getMethod(ConfigValidationAnnotations.VALUE_TYPE).invoke(v);
-        o.validateField(field.getName(),keyType,valueType,conf.get(key));
-      }
- else       if (hasMethod(validatorClass,ConfigValidationAnnotations.INCLUDE_ZERO)) {
-        PositiveNumberValidator o=((Class<PositiveNumberValidator>)clazz).newInstance();
-        Boolean includeZero=(Boolean)validatorClass.getMethod(ConfigValidationAnnotations.INCLUDE_ZERO).invoke(v);
-        o.validateField(field.getName(),includeZero,conf.get(key));
+      Class clazz=(Class)validatorClass.getMethod(ConfigValidationAnnotations.ValidatorParams.VALIDATOR_CLASS).invoke(v);
+      Validator o=null;
+      Map<String,Object> params=getParamsFromAnnotation(validatorClass,v);
+      if (hasConstructor(clazz,Map.class)) {
+        o=(Validator)clazz.getConstructor(Map.class).newInstance(params);
       }
  else {
-        ConfigValidation.Validator o=((Class<ConfigValidation.Validator>)clazz).newInstance();
-        o.validateField(field.getName(),conf.get(key));
+        o=(((Class<Validator>)clazz).newInstance());
       }
+      o.validateField(field.getName(),conf.get(key));
     }
   }
 }

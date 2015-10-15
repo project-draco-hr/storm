@@ -2,8 +2,7 @@
   if (o == null) {
     return;
   }
-  SimpleTypeValidator isMap=new SimpleTypeValidator();
-  isMap.validateField(name,Map.class,o);
+  SimpleTypeValidator.validateField(name,Map.class,o);
   for (  Map.Entry<Object,Object> entry : ((Map<Object,Object>)o).entrySet()) {
     for (    Class kv : keyValidators) {
       Object keyValidator=kv.newInstance();
