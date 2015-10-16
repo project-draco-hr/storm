@@ -1,0 +1,78 @@
+{
+  long ratePerSecond=500;
+  if (args != null && args.length > 0) {
+    ratePerSecond=Long.valueOf(args[0]);
+  }
+  int parallelism=4;
+  if (args != null && args.length > 1) {
+    parallelism=Integer.valueOf(args[1]);
+  }
+  int numMins=5;
+  if (args != null && args.length > 2) {
+    numMins=Integer.valueOf(args[2]);
+  }
+  String name="wc-test";
+  if (args != null && args.length > 3) {
+    name=args[3];
+  }
+  Config conf=new Config();
+  HttpForwardingMetricsServer metricServer=new HttpForwardingMetricsServer(conf){
+    @Override public void handle(    TaskInfo taskInfo,    Collection<DataPoint> dataPoints){
+      for (      DataPoint dp : dataPoints) {
+        if ("comp-lat-histo".equals(dp.name) && dp.value instanceof Histogram) {
+synchronized (_histo) {
+            _histo.add((Histogram)dp.value);
+          }
+        }
+ else         if ("CPU".equals(dp.name) && dp.value instanceof Map) {
+          Map<Object,Object> m=(Map<Object,Object>)dp.value;
+          Object sys=m.get("sys-ms");
+          if (sys instanceof Number) {
+            _systemCPU.getAndAdd(((Number)sys).longValue());
+          }
+          Object user=m.get("user-ms");
+          if (user instanceof Number) {
+            _userCPU.getAndAdd(((Number)user).longValue());
+          }
+        }
+ else         if (dp.name.startsWith("GC/") && dp.value instanceof Map) {
+          Map<Object,Object> m=(Map<Object,Object>)dp.value;
+          Object count=m.get("count");
+          if (count instanceof Number) {
+            _gcCount.getAndAdd(((Number)count).longValue());
+          }
+          Object time=m.get("timeMs");
+          if (time instanceof Number) {
+            _gcMs.getAndAdd(((Number)time).longValue());
+          }
+        }
+      }
+    }
+  }
+;
+  metricServer.serve();
+  String url=metricServer.getUrl();
+  conf.setNumWorkers(parallelism);
+  conf.registerMetricsConsumer(backtype.storm.metric.HttpForwardingMetricsConsumer.class,url,1);
+  Map<String,String> workerMetrics=new HashMap<String,String>();
+  workerMetrics.put("CPU","org.apache.storm.metrics.sigar.CPUMetric");
+  conf.put(Config.TOPOLOGY_WORKER_METRICS,workerMetrics);
+  conf.put(Config.TOPOLOGY_BUILTIN_METRICS_BUCKET_SIZE_SECS,10);
+  TopologyBuilder builder=new TopologyBuilder();
+  int numEach=4 * parallelism;
+  builder.setSpout("spout",new FastRandomSentenceSpout(ratePerSecond / numEach),numEach);
+  builder.setBolt("split",new SplitSentence(),numEach).shuffleGrouping("spout");
+  builder.setBolt("count",new WordCount(),numEach).fieldsGrouping("split",new Fields("word"));
+  C cluster=new C(conf);
+  try {
+    cluster.submitTopology(name,conf,builder.createTopology());
+    for (int i=0; i < numMins * 2; i++) {
+      Thread.sleep(30 * 1000);
+      printMetrics(cluster,name);
+    }
+  }
+  finally {
+    kill(cluster,name);
+  }
+  System.exit(0);
+}

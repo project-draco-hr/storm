@@ -1,0 +1,52 @@
+{
+  ClusterSummary summary=client.getClusterInfo();
+  String id=null;
+  for (  TopologySummary ts : summary.get_topologies()) {
+    if (name.equals(ts.get_name())) {
+      id=ts.get_id();
+    }
+  }
+  if (id == null) {
+    throw new Exception("Could not find a topology named " + name);
+  }
+  TopologyInfo info=client.getTopologyInfo(id);
+  int uptime=info.get_uptime_secs();
+  long acked=0;
+  long failed=0;
+  for (  ExecutorSummary exec : info.get_executors()) {
+    if ("spout".equals(exec.get_component_id())) {
+      SpoutStats stats=exec.get_stats().get_specific().get_spout();
+      Map<String,Long> failedMap=stats.get_failed().get(":all-time");
+      Map<String,Long> ackedMap=stats.get_acked().get(":all-time");
+      for (      String key : ackedMap.keySet()) {
+        if (failedMap != null) {
+          Long tmp=failedMap.get(key);
+          if (tmp != null) {
+            failed+=tmp;
+          }
+        }
+        long ackVal=ackedMap.get(key);
+        acked+=ackVal;
+      }
+    }
+  }
+  long ackedThisTime=acked - _prev_acked;
+  long thisTime=uptime - _prev_uptime;
+  long nnpct, nnnpct, min, max;
+  double mean, stddev;
+synchronized (_histo) {
+    nnpct=_histo.getValueAtPercentile(99.0);
+    nnnpct=_histo.getValueAtPercentile(99.9);
+    min=_histo.getMinValue();
+    max=_histo.getMaxValue();
+    mean=_histo.getMean();
+    stddev=_histo.getStdDeviation();
+    _histo.reset();
+  }
+  long user=_userCPU.getAndSet(0);
+  long sys=_systemCPU.getAndSet(0);
+  long gc=_gcMs.getAndSet(0);
+  System.out.printf("uptime: %,4d acked: %,8d acked/sec: %,8.2f failed: %,8d " + "99%%: %,15d 99.9%%: %,15d min: %,15d max: %,15d mean: %,15.2f stddev: %,15.2f user: %,10d sys: %,10d gc: %,10d\n",uptime,ackedThisTime,(((double)ackedThisTime) / thisTime),failed,nnpct,nnnpct,min,max,mean,stddev,user,sys,gc);
+  _prev_uptime=uptime;
+  _prev_acked=acked;
+}

@@ -1,0 +1,4 @@
+{
+  this.sentence=sentence;
+  this.time=time;
+}

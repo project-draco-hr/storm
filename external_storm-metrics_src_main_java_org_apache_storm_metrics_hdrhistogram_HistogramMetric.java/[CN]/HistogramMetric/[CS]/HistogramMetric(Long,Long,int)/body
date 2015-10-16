@@ -1,0 +1,10 @@
+{
+  boolean autoResize=false;
+  if (lowestDiscernibleValue == null)   lowestDiscernibleValue=1L;
+  if (highestTrackableValue == null) {
+    highestTrackableValue=2 * lowestDiscernibleValue;
+    autoResize=true;
+  }
+  _histo=new Histogram(lowestDiscernibleValue,highestTrackableValue,numberOfSignificantValueDigits);
+  if (autoResize)   _histo.setAutoResize(true);
+}
