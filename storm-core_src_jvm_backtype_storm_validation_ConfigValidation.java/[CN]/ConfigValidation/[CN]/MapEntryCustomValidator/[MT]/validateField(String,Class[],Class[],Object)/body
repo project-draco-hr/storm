@@ -5,7 +5,7 @@
   SimpleTypeValidator.validateField(name,Map.class,o);
   for (  Map.Entry<Object,Object> entry : ((Map<Object,Object>)o).entrySet()) {
     for (    Class kv : keyValidators) {
-      Object keyValidator=kv.newInstance();
+      Object keyValidator=kv.getConstructor().newInstance();
       if (keyValidator instanceof Validator) {
         ((Validator)keyValidator).validateField(name + " Map key",entry.getKey());
       }
@@ -14,7 +14,8 @@
       }
     }
     for (    Class vv : valueValidators) {
-      Object valueValidator=vv.newInstance();
+      Object valueValidator=vv.getConstructor().newInstance();
+      ;
       if (valueValidator instanceof Validator) {
         ((Validator)valueValidator).validateField(name + " Map value",entry.getValue());
       }
