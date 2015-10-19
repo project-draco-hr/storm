@@ -18,6 +18,7 @@
   Config conf=new Config();
   HttpForwardingMetricsServer metricServer=new HttpForwardingMetricsServer(conf){
     @Override public void handle(    TaskInfo taskInfo,    Collection<DataPoint> dataPoints){
+      String worker=taskInfo.srcWorkerHost + ":" + taskInfo.srcWorkerPort;
       for (      DataPoint dp : dataPoints) {
         if ("comp-lat-histo".equals(dp.name) && dp.value instanceof Histogram) {
 synchronized (_histo) {
@@ -44,6 +45,19 @@ synchronized (_histo) {
           Object time=m.get("timeMs");
           if (time instanceof Number) {
             _gcMs.getAndAdd(((Number)time).longValue());
+          }
+        }
+ else         if (dp.name.startsWith("memory/") && dp.value instanceof Map) {
+          Map<Object,Object> m=(Map<Object,Object>)dp.value;
+          Object val=m.get("usedBytes");
+          if (val instanceof Number) {
+            MemMeasure mm=_memoryBytes.get(worker);
+            if (mm == null) {
+              mm=new MemMeasure();
+              MemMeasure tmp=_memoryBytes.putIfAbsent(worker,mm);
+              mm=tmp == null ? mm : tmp;
+            }
+            mm.update(((Number)val).longValue());
           }
         }
       }

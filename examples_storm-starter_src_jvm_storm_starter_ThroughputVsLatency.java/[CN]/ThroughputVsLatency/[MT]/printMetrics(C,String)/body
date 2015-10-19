@@ -46,7 +46,8 @@ synchronized (_histo) {
   long user=_userCPU.getAndSet(0);
   long sys=_systemCPU.getAndSet(0);
   long gc=_gcMs.getAndSet(0);
-  System.out.printf("uptime: %,4d acked: %,8d acked/sec: %,8.2f failed: %,8d " + "99%%: %,15d 99.9%%: %,15d min: %,15d max: %,15d mean: %,15.2f stddev: %,15.2f user: %,10d sys: %,10d gc: %,10d\n",uptime,ackedThisTime,(((double)ackedThisTime) / thisTime),failed,nnpct,nnnpct,min,max,mean,stddev,user,sys,gc);
+  double memMB=readMemory() / (1024.0 * 1024.0);
+  System.out.printf("uptime: %,4d acked: %,9d acked/sec: %,10.2f failed: %,8d " + "99%%: %,15d 99.9%%: %,15d min: %,15d max: %,15d mean: %,15.2f " + "stddev: %,15.2f user: %,10d sys: %,10d gc: %,10d mem: %,10.2f\n",uptime,ackedThisTime,(((double)ackedThisTime) / thisTime),failed,nnpct,nnnpct,min,max,mean,stddev,user,sys,gc,memMB);
   _prev_uptime=uptime;
   _prev_acked=acked;
 }
