@@ -1,4 +1,5 @@
 {
   this.topology_id=null;
   this.executors=null;
+  this.resources=null;
 }

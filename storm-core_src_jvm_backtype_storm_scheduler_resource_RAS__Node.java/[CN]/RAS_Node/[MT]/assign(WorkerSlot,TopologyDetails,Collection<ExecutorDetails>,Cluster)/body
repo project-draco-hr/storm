@@ -15,6 +15,7 @@
     throw new IllegalStateException("Trying to assign already used slot" + target.getPort() + "on node "+ _nodeId);
   }
  else {
+    allocateResourceToSlot(td,executors,target);
     cluster.assign(target,td.getId(),executors);
     assignInternal(target,td.getId(),false);
   }

@@ -8,6 +8,8 @@ case 3:
 return EXECUTOR_NODE_PORT;
 case 4:
 return EXECUTOR_START_TIME_SECS;
+case 5:
+return WORKER_RESOURCES;
 default :
 return null;
 }

@@ -56,6 +56,19 @@ def read(self, iprot):
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
+        elif (fid == 5):
+            if (ftype == TType.MAP):
+                self.worker_resources = {}
+                (_ktype503, _vtype504, _size502) = iprot.readMapBegin()
+                for _i506 in xrange(_size502):
+                    _key507 = NodeInfo()
+                    _key507.read(iprot)
+                    _val508 = WorkerResources()
+                    _val508.read(iprot)
+                    self.worker_resources[_key507] = _val508
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

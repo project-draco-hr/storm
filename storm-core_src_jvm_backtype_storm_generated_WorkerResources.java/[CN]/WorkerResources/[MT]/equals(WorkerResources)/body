@@ -1,0 +1,22 @@
+{
+  if (that == null)   return false;
+  boolean this_present_mem_on_heap=true && this.is_set_mem_on_heap();
+  boolean that_present_mem_on_heap=true && that.is_set_mem_on_heap();
+  if (this_present_mem_on_heap || that_present_mem_on_heap) {
+    if (!(this_present_mem_on_heap && that_present_mem_on_heap))     return false;
+    if (this.mem_on_heap != that.mem_on_heap)     return false;
+  }
+  boolean this_present_mem_off_heap=true && this.is_set_mem_off_heap();
+  boolean that_present_mem_off_heap=true && that.is_set_mem_off_heap();
+  if (this_present_mem_off_heap || that_present_mem_off_heap) {
+    if (!(this_present_mem_off_heap && that_present_mem_off_heap))     return false;
+    if (this.mem_off_heap != that.mem_off_heap)     return false;
+  }
+  boolean this_present_cpu=true && this.is_set_cpu();
+  boolean that_present_cpu=true && that.is_set_cpu();
+  if (this_present_cpu || that_present_cpu) {
+    if (!(this_present_cpu && that_present_cpu))     return false;
+    if (this.cpu != that.cpu)     return false;
+  }
+  return true;
+}
