@@ -1,5 +1,0 @@
-{
-  rotateOutputFile();
-  this.offset=0;
-  this.rotationPolicy.reset();
-}

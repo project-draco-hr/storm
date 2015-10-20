@@ -6,8 +6,4 @@
  else {
     this.out.hsync();
   }
-  this.syncPolicy.reset();
-  LOG.debug("Data synced to filesystem. Ack'ing [" + tupleBatch.size() + "] tuples");
-  for (  Tuple t : tupleBatch)   this.collector.ack(t);
-  tupleBatch.clear();
 }
