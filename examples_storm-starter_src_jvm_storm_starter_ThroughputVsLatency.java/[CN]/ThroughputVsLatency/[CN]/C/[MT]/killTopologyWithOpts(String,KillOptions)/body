@@ -1,0 +1,8 @@
+{
+  if (_local != null) {
+    _local.killTopologyWithOpts(name,opts);
+  }
+ else {
+    _client.killTopologyWithOpts(name,opts);
+  }
+}

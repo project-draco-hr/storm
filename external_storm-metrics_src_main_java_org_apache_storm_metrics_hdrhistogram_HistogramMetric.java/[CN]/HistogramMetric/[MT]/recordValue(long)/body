@@ -1,0 +1,3 @@
+{
+  _histo.recordValue(val);
+}
