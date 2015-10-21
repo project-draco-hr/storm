@@ -1,0 +1,13 @@
+{
+  try {
+    while (true) {
+synchronized (trigger) {
+        trigger.wait(100);
+      }
+      callback.onEvent(workerData);
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

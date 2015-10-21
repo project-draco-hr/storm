@@ -1,0 +1,3 @@
+TopologyDetails td
+Collection<ExecutorDetails> executors
+Cluster cluster

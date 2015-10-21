@@ -5,6 +5,7 @@ uptime_secs
 executors
 status
 errors
+component_debug
 sched_status
 owner
 replication_count

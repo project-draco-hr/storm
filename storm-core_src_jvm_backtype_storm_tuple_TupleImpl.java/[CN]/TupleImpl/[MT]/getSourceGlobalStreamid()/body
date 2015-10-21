@@ -1,3 +1,3 @@
 {
-  return new GlobalStreamId(getSourceComponent(),streamId);
+  return getSourceGlobalStreamId();
 }

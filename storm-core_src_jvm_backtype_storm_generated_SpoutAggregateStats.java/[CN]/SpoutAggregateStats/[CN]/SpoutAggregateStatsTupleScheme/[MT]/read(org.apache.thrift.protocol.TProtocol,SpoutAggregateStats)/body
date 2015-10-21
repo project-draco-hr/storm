@@ -1,0 +1,8 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+    struct.complete_latency_ms=iprot.readDouble();
+    struct.set_complete_latency_ms_isSet(true);
+  }
+}

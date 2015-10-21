@@ -17,6 +17,17 @@
       }
  else {
         handler.onEvent(o,curr,curr == cursor);
+        if (_enableBackpressure && _cb != null && _metrics.writePos() - curr <= _lowWaterMark) {
+          try {
+            if (_throttleOn) {
+              _throttleOn=false;
+              _cb.lowWaterMark();
+            }
+          }
+ catch (          Exception e) {
+            throw new RuntimeException("Exception during calling lowWaterMark callback!");
+          }
+        }
       }
     }
  catch (    Exception e) {

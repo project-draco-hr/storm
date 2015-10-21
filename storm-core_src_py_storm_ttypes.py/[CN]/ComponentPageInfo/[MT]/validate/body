@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.component_id is None):
+        raise TProtocol.TProtocolException(message='Required field component_id is unset!')
+    if (self.component_type is None):
+        raise TProtocol.TProtocolException(message='Required field component_type is unset!')
+    return

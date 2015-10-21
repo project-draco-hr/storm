@@ -5,4 +5,7 @@
   if (!is_set_executors()) {
     throw new org.apache.thrift.protocol.TProtocolException("Required field 'executors' is unset! Struct:" + toString());
   }
+  if (resources != null) {
+    resources.validate();
+  }
 }

@@ -1,0 +1,16 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_name=true && (is_set_name());
+  list.add(present_name);
+  if (present_name)   list.add(name);
+  boolean present_component=true && (is_set_component());
+  list.add(present_component);
+  if (present_component)   list.add(component);
+  boolean present_enable=true;
+  list.add(present_enable);
+  if (present_enable)   list.add(enable);
+  boolean present_samplingPercentage=true;
+  list.add(present_samplingPercentage);
+  if (present_samplingPercentage)   list.add(samplingPercentage);
+  return list.hashCode();
+}

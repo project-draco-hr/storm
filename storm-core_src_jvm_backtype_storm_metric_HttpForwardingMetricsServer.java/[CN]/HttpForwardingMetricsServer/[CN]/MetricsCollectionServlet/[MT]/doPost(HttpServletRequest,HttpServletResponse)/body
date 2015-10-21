@@ -1,0 +1,6 @@
+{
+  Input in=new Input(request.getInputStream());
+  List<Object> metrics=_des.get().deserializeFrom(in);
+  handle((TaskInfo)metrics.get(0),(Collection<DataPoint>)metrics.get(1));
+  response.setStatus(HttpServletResponse.SC_OK);
+}

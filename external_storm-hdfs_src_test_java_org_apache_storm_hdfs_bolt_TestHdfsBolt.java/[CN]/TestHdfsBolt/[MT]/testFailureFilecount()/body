@@ -1,0 +1,23 @@
+{
+  HdfsBolt bolt=makeHdfsBolt(hdfsURI,1,.000001f);
+  bolt.prepare(new Config(),topologyContext,collector);
+  bolt.execute(tuple1);
+  fs.setSafeMode(SafeModeAction.SAFEMODE_ENTER);
+  try {
+    bolt.execute(tuple2);
+  }
+ catch (  RuntimeException e) {
+  }
+  try {
+    bolt.execute(tuple2);
+  }
+ catch (  RuntimeException e) {
+  }
+  try {
+    bolt.execute(tuple2);
+  }
+ catch (  RuntimeException e) {
+  }
+  Assert.assertEquals(1,countNonZeroLengthFiles(testRoot));
+  Assert.assertEquals(1,countZeroLengthFiles(testRoot));
+}

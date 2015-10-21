@@ -5,34 +5,46 @@
   oprot.writeI32(struct.uptime_secs);
 {
     oprot.writeI32(struct.executors.size());
-    for (    ExecutorSummary _iter311 : struct.executors) {
-      _iter311.write(oprot);
+    for (    ExecutorSummary _iter326 : struct.executors) {
+      _iter326.write(oprot);
     }
   }
   oprot.writeString(struct.status);
 {
     oprot.writeI32(struct.errors.size());
-    for (    Map.Entry<String,List<ErrorInfo>> _iter312 : struct.errors.entrySet()) {
-      oprot.writeString(_iter312.getKey());
+    for (    Map.Entry<String,List<ErrorInfo>> _iter327 : struct.errors.entrySet()) {
+      oprot.writeString(_iter327.getKey());
 {
-        oprot.writeI32(_iter312.getValue().size());
-        for (        ErrorInfo _iter313 : _iter312.getValue()) {
-          _iter313.write(oprot);
+        oprot.writeI32(_iter327.getValue().size());
+        for (        ErrorInfo _iter328 : _iter327.getValue()) {
+          _iter328.write(oprot);
         }
       }
     }
   }
   BitSet optionals=new BitSet();
-  if (struct.is_set_sched_status()) {
+  if (struct.is_set_component_debug()) {
     optionals.set(0);
   }
-  if (struct.is_set_owner()) {
+  if (struct.is_set_sched_status()) {
     optionals.set(1);
   }
-  if (struct.is_set_replication_count()) {
+  if (struct.is_set_owner()) {
     optionals.set(2);
   }
-  oprot.writeBitSet(optionals,3);
+  if (struct.is_set_replication_count()) {
+    optionals.set(3);
+  }
+  oprot.writeBitSet(optionals,4);
+  if (struct.is_set_component_debug()) {
+{
+      oprot.writeI32(struct.component_debug.size());
+      for (      Map.Entry<String,DebugOptions> _iter329 : struct.component_debug.entrySet()) {
+        oprot.writeString(_iter329.getKey());
+        _iter329.getValue().write(oprot);
+      }
+    }
+  }
   if (struct.is_set_sched_status()) {
     oprot.writeString(struct.sched_status);
   }

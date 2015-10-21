@@ -10,33 +10,33 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.LIST):
                 self.supervisors = []
-                (_etype69, _size66) = iprot.readListBegin()
-                for _i70 in xrange(_size66):
-                    _elem71 = SupervisorSummary()
-                    _elem71.read(iprot)
-                    self.supervisors.append(_elem71)
+                (_etype78, _size75) = iprot.readListBegin()
+                for _i79 in xrange(_size75):
+                    _elem80 = SupervisorSummary()
+                    _elem80.read(iprot)
+                    self.supervisors.append(_elem80)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 3):
             if (ftype == TType.LIST):
                 self.topologies = []
-                (_etype75, _size72) = iprot.readListBegin()
-                for _i76 in xrange(_size72):
-                    _elem77 = TopologySummary()
-                    _elem77.read(iprot)
-                    self.topologies.append(_elem77)
+                (_etype84, _size81) = iprot.readListBegin()
+                for _i85 in xrange(_size81):
+                    _elem86 = TopologySummary()
+                    _elem86.read(iprot)
+                    self.topologies.append(_elem86)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 4):
             if (ftype == TType.LIST):
                 self.nimbuses = []
-                (_etype81, _size78) = iprot.readListBegin()
-                for _i82 in xrange(_size78):
-                    _elem83 = NimbusSummary()
-                    _elem83.read(iprot)
-                    self.nimbuses.append(_elem83)
+                (_etype90, _size87) = iprot.readListBegin()
+                for _i91 in xrange(_size87):
+                    _elem92 = NimbusSummary()
+                    _elem92.read(iprot)
+                    self.nimbuses.append(_elem92)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

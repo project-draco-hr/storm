@@ -1,0 +1,9 @@
+{
+  List<ExecutorDetails> execs=new ArrayList<>();
+  for (  Map.Entry<ExecutorDetails,String> entry : executorToComponent.entrySet()) {
+    if (entry.getValue().equals(comp)) {
+      execs.add(entry.getKey());
+    }
+  }
+  return execs;
+}

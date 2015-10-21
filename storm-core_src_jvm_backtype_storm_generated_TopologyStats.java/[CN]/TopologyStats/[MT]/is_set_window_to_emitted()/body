@@ -1,0 +1,3 @@
+{
+  return this.window_to_emitted != null;
+}

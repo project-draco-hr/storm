@@ -1,0 +1,19 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_window_to_emitted=true && (is_set_window_to_emitted());
+  list.add(present_window_to_emitted);
+  if (present_window_to_emitted)   list.add(window_to_emitted);
+  boolean present_window_to_transferred=true && (is_set_window_to_transferred());
+  list.add(present_window_to_transferred);
+  if (present_window_to_transferred)   list.add(window_to_transferred);
+  boolean present_window_to_complete_latencies_ms=true && (is_set_window_to_complete_latencies_ms());
+  list.add(present_window_to_complete_latencies_ms);
+  if (present_window_to_complete_latencies_ms)   list.add(window_to_complete_latencies_ms);
+  boolean present_window_to_acked=true && (is_set_window_to_acked());
+  list.add(present_window_to_acked);
+  if (present_window_to_acked)   list.add(window_to_acked);
+  boolean present_window_to_failed=true && (is_set_window_to_failed());
+  list.add(present_window_to_failed);
+  if (present_window_to_failed)   list.add(window_to_failed);
+  return list.hashCode();
+}

@@ -1,0 +1,7 @@
+{
+  HdfsBolt bolt=makeHdfsBolt(hdfsURI,1,.00001f);
+  bolt.prepare(new Config(),topologyContext,collector);
+  fs.setSafeMode(SafeModeAction.SAFEMODE_ENTER);
+  thrown.expect(RuntimeException.class);
+  bolt.execute(tuple1);
+}

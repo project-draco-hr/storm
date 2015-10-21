@@ -1,0 +1,3 @@
+{
+  return reportRate(System.currentTimeMillis());
+}

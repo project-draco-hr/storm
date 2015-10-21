@@ -1,0 +1,4 @@
+{
+  this.samplingPercentage=samplingPercentage;
+  set_samplingPercentage_isSet(true);
+}

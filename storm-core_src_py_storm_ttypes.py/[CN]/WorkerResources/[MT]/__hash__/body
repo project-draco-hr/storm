@@ -1,0 +1,6 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.mem_on_heap))
+    value = ((value * 31) ^ hash(self.mem_off_heap))
+    value = ((value * 31) ^ hash(self.cpu))
+    return value

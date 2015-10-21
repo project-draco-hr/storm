@@ -1,0 +1,5 @@
+{
+  long end=System.nanoTime();
+  SentWithTime st=(SentWithTime)id;
+  _histo.recordValue(end - st.time);
+}

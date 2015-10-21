@@ -1,0 +1,29 @@
+{
+  TestConfig config=new TestConfig();
+  Collection<Object> passCases=new LinkedList<Object>();
+  Collection<Object> failCases=new LinkedList<Object>();
+  Object[] passCase1={1,5.0,-0.01,0,Integer.MAX_VALUE,Double.MIN_VALUE};
+  Object[] passCase2={1};
+  passCases.add(Arrays.asList(passCase1));
+  passCases.add(Arrays.asList(passCase2));
+  for (  Object value : passCases) {
+    config.put(TestConfig.TEST_MAP_CONFIG_3,value);
+    ConfigValidation.validateFields(config,TestConfig.class);
+  }
+  Object[] failCase1={1,5.0,-0.01,0,"aaa"};
+  Object[] failCase2={"aaa"};
+  failCases.add(failCase1);
+  failCases.add(failCase2);
+  failCases.add(1);
+  failCases.add("b");
+  failCases.add(null);
+  for (  Object value : failCases) {
+    try {
+      config.put(TestConfig.TEST_MAP_CONFIG_3,value);
+      ConfigValidation.validateFields(config,TestConfig.class);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+}

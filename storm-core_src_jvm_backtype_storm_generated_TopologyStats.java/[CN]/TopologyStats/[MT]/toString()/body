@@ -1,0 +1,60 @@
+{
+  StringBuilder sb=new StringBuilder("TopologyStats(");
+  boolean first=true;
+  if (is_set_window_to_emitted()) {
+    sb.append("window_to_emitted:");
+    if (this.window_to_emitted == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.window_to_emitted);
+    }
+    first=false;
+  }
+  if (is_set_window_to_transferred()) {
+    if (!first)     sb.append(", ");
+    sb.append("window_to_transferred:");
+    if (this.window_to_transferred == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.window_to_transferred);
+    }
+    first=false;
+  }
+  if (is_set_window_to_complete_latencies_ms()) {
+    if (!first)     sb.append(", ");
+    sb.append("window_to_complete_latencies_ms:");
+    if (this.window_to_complete_latencies_ms == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.window_to_complete_latencies_ms);
+    }
+    first=false;
+  }
+  if (is_set_window_to_acked()) {
+    if (!first)     sb.append(", ");
+    sb.append("window_to_acked:");
+    if (this.window_to_acked == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.window_to_acked);
+    }
+    first=false;
+  }
+  if (is_set_window_to_failed()) {
+    if (!first)     sb.append(", ");
+    sb.append("window_to_failed:");
+    if (this.window_to_failed == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.window_to_failed);
+    }
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

@@ -1,0 +1,3 @@
+def __init__(self, bolt=None, spout=None):
+    self.bolt = bolt
+    self.spout = spout

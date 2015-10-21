@@ -1,0 +1,14 @@
+{
+switch (fieldId) {
+case 1:
+    return EXECUTE_LATENCY_MS;
+case 2:
+  return PROCESS_LATENCY_MS;
+case 3:
+return EXECUTED;
+case 4:
+return CAPACITY;
+default :
+return null;
+}
+}

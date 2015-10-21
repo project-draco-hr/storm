@@ -1,0 +1,25 @@
+{
+  Queue<Component> ordered__Component_list=new LinkedList<Component>();
+  HashMap<String,Component> visited=new HashMap<String,Component>();
+  for (  Component spout : spouts) {
+    if (!visited.containsKey(spout.id)) {
+      Queue<Component> queue=new LinkedList<Component>();
+      queue.offer(spout);
+      while (!queue.isEmpty()) {
+        Component comp=queue.poll();
+        visited.put(comp.id,comp);
+        ordered__Component_list.add(comp);
+        List<String> neighbors=new ArrayList<String>();
+        neighbors.addAll(comp.children);
+        neighbors.addAll(comp.parents);
+        for (        String nbID : neighbors) {
+          if (!visited.containsKey(nbID)) {
+            Component child=topologies.getAllComponents().get(td.getId()).get(nbID);
+            queue.offer(child);
+          }
+        }
+      }
+    }
+  }
+  return ordered__Component_list;
+}

@@ -1,0 +1,25 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 2):
+            if (ftype == TType.MAP):
+                self.named_logger_level = {}
+                (_ktype588, _vtype589, _size587) = iprot.readMapBegin()
+                for _i591 in xrange(_size587):
+                    _key592 = iprot.readString().decode('utf-8')
+                    _val593 = LogLevel()
+                    _val593.read(iprot)
+                    self.named_logger_level[_key592] = _val593
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

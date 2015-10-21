@@ -1,0 +1,2 @@
+def __init__(self, named_logger_level=None):
+    self.named_logger_level = named_logger_level

@@ -4,4 +4,5 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.node_host))
     value = ((value * 31) ^ hash(self.executor_node_port))
     value = ((value * 31) ^ hash(self.executor_start_time_secs))
+    value = ((value * 31) ^ hash(self.worker_resources))
     return value

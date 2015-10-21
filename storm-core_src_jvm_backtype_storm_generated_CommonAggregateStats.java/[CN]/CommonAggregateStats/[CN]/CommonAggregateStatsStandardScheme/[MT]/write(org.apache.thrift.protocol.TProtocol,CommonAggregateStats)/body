@@ -1,0 +1,36 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.is_set_num_executors()) {
+    oprot.writeFieldBegin(NUM_EXECUTORS_FIELD_DESC);
+    oprot.writeI32(struct.num_executors);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_num_tasks()) {
+    oprot.writeFieldBegin(NUM_TASKS_FIELD_DESC);
+    oprot.writeI32(struct.num_tasks);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_emitted()) {
+    oprot.writeFieldBegin(EMITTED_FIELD_DESC);
+    oprot.writeI64(struct.emitted);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_transferred()) {
+    oprot.writeFieldBegin(TRANSFERRED_FIELD_DESC);
+    oprot.writeI64(struct.transferred);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_acked()) {
+    oprot.writeFieldBegin(ACKED_FIELD_DESC);
+    oprot.writeI64(struct.acked);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_failed()) {
+    oprot.writeFieldBegin(FAILED_FIELD_DESC);
+    oprot.writeI64(struct.failed);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

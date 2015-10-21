@@ -1,0 +1,15 @@
+{
+  String logDir;
+  String stormId=context.getStormId();
+  int port=context.getThisWorkerPort();
+  if ((logDir=System.getProperty("storm.log.dir")) == null && (logDir=System.getProperty("java.io.tmpdir")) == null) {
+    String msg="Could not determine the directory to log events.";
+    LOG.error(msg);
+    throw new RuntimeException(msg);
+  }
+ else {
+    LOG.info("FileBasedEventLogger log directory {}.",logDir);
+  }
+  initLogWriter(Paths.get(logDir,String.format("%s-events-%d.log",stormId,port)));
+  setUpFlushTask();
+}

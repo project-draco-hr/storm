@@ -1,0 +1,5 @@
+{
+  if (!value) {
+    this.window_to_transferred=null;
+  }
+}

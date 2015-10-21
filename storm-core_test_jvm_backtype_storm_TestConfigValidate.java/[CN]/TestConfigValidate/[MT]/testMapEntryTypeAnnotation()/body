@@ -1,0 +1,34 @@
+{
+  TestConfig config=new TestConfig();
+  Collection<Object> passCases=new LinkedList<Object>();
+  Collection<Object> failCases=new LinkedList<Object>();
+  Map<Object,Object> passCase1=new HashMap<Object,Object>();
+  passCase1.put("aaa",5);
+  passCase1.put("bbb",6);
+  passCase1.put("ccc",7);
+  passCases.add(passCase1);
+  passCases.add(null);
+  for (  Object value : passCases) {
+    config.put(TestConfig.TEST_MAP_CONFIG,value);
+    ConfigValidation.validateFields(config,TestConfig.class);
+  }
+  Map<Object,Object> failCase1=new HashMap<Object,Object>();
+  failCase1.put("aaa",5);
+  failCase1.put(5,6);
+  failCase1.put("ccc",7);
+  Map<Object,Object> failCase2=new HashMap<Object,Object>();
+  failCase2.put("aaa","str");
+  failCase2.put("bbb",6);
+  failCase2.put("ccc",7);
+  failCases.add(failCase1);
+  failCases.add(failCase2);
+  for (  Object value : failCases) {
+    try {
+      config.put(TestConfig.TEST_MAP_CONFIG,value);
+      ConfigValidation.validateFields(config,TestConfig.class);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+}

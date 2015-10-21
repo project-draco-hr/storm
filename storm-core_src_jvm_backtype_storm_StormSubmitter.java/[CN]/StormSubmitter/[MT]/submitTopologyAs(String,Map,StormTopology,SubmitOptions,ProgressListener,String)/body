@@ -7,6 +7,7 @@
   Map conf=Utils.readStormConfig();
   conf.putAll(stormConf);
   stormConf.putAll(prepareZookeeperAuthentication(conf));
+  validateConfs(conf,topology);
   Map<String,String> passedCreds=new HashMap<String,String>();
   if (opts != null) {
     Credentials tmpCreds=opts.get_creds();

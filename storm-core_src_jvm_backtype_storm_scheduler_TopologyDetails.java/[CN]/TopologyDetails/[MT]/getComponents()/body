@@ -1,0 +1,53 @@
+{
+  Map<String,Component> all_comp=new HashMap<String,Component>();
+  StormTopology storm_topo=this.topology;
+  if (storm_topo.get_spouts() != null) {
+    for (    Map.Entry<String,SpoutSpec> spoutEntry : storm_topo.get_spouts().entrySet()) {
+      if (!Utils.isSystemId(spoutEntry.getKey())) {
+        Component newComp=null;
+        if (all_comp.containsKey(spoutEntry.getKey())) {
+          newComp=all_comp.get(spoutEntry.getKey());
+          newComp.execs=componentToExecs(newComp.id);
+        }
+ else {
+          newComp=new Component(spoutEntry.getKey());
+          newComp.execs=componentToExecs(newComp.id);
+          all_comp.put(spoutEntry.getKey(),newComp);
+        }
+        newComp.type=Component.ComponentType.SPOUT;
+        for (        Map.Entry<GlobalStreamId,Grouping> spoutInput : spoutEntry.getValue().get_common().get_inputs().entrySet()) {
+          newComp.parents.add(spoutInput.getKey().get_componentId());
+          if (!all_comp.containsKey(spoutInput.getKey().get_componentId())) {
+            all_comp.put(spoutInput.getKey().get_componentId(),new Component(spoutInput.getKey().get_componentId()));
+          }
+          all_comp.get(spoutInput.getKey().get_componentId()).children.add(spoutEntry.getKey());
+        }
+      }
+    }
+  }
+  if (storm_topo.get_bolts() != null) {
+    for (    Map.Entry<String,Bolt> boltEntry : storm_topo.get_bolts().entrySet()) {
+      if (!Utils.isSystemId(boltEntry.getKey())) {
+        Component newComp=null;
+        if (all_comp.containsKey(boltEntry.getKey())) {
+          newComp=all_comp.get(boltEntry.getKey());
+          newComp.execs=componentToExecs(newComp.id);
+        }
+ else {
+          newComp=new Component(boltEntry.getKey());
+          newComp.execs=componentToExecs(newComp.id);
+          all_comp.put(boltEntry.getKey(),newComp);
+        }
+        newComp.type=Component.ComponentType.BOLT;
+        for (        Map.Entry<GlobalStreamId,Grouping> boltInput : boltEntry.getValue().get_common().get_inputs().entrySet()) {
+          newComp.parents.add(boltInput.getKey().get_componentId());
+          if (!all_comp.containsKey(boltInput.getKey().get_componentId())) {
+            all_comp.put(boltInput.getKey().get_componentId(),new Component(boltInput.getKey().get_componentId()));
+          }
+          all_comp.get(boltInput.getKey().get_componentId()).children.add(boltEntry.getKey());
+        }
+      }
+    }
+  }
+  return all_comp;
+}

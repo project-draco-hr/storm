@@ -1,0 +1,4 @@
+{
+  this.samplingpct=samplingpct;
+  set_samplingpct_isSet(true);
+}

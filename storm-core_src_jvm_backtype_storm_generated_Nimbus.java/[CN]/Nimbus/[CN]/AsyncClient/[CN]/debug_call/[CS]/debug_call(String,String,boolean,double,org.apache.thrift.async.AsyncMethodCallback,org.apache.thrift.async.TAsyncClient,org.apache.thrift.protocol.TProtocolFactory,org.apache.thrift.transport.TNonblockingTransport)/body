@@ -1,0 +1,7 @@
+{
+  super(client,protocolFactory,transport,resultHandler,false);
+  this.name=name;
+  this.component=component;
+  this.enable=enable;
+  this.samplingPercentage=samplingPercentage;
+}
