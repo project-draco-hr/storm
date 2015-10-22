@@ -1,0 +1,13 @@
+{
+  beginFunction(project);
+  pw.print("  if (_data == null) return null;\n");
+  ExprCompiler compiler=new ExprCompiler(pw,typeFactory);
+  int size=project.getChildExps().size();
+  String[] res=new String[size];
+  for (int i=0; i < size; ++i) {
+    res[i]=project.getChildExps().get(i).accept(compiler);
+  }
+  pw.print(String.format("  return new Values(%s);\n",Joiner.on(',').join(res)));
+  endFunction();
+  return null;
+}

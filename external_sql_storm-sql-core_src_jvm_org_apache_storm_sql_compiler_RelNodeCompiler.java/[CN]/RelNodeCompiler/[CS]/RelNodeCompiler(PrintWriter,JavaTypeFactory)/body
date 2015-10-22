@@ -1,0 +1,4 @@
+{
+  this.pw=pw;
+  this.typeFactory=typeFactory;
+}

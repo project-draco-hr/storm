@@ -1,0 +1,9 @@
+{
+  beginFunction(filter);
+  pw.print("  if (_data == null) return null;\n");
+  ExprCompiler compiler=new ExprCompiler(pw,typeFactory);
+  String r=filter.getCondition().accept(compiler);
+  pw.print(String.format("  return %s ? _data : null;\n",r));
+  endFunction();
+  return null;
+}
