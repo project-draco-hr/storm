@@ -68,6 +68,7 @@ synchronized (_histo) {
   String url=metricServer.getUrl();
   C cluster=new C(conf);
   conf.setNumWorkers(parallelism);
+  conf.registerMetricsConsumer(backtype.storm.metric.LoggingMetricsConsumer.class);
   conf.registerMetricsConsumer(backtype.storm.metric.HttpForwardingMetricsConsumer.class,url,1);
   Map<String,String> workerMetrics=new HashMap<String,String>();
   if (!cluster.isLocal()) {

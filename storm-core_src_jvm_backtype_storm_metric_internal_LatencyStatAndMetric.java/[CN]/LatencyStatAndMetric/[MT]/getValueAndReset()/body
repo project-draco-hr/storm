@@ -1,0 +1,3 @@
+{
+  return getValueAndReset(System.currentTimeMillis());
+}

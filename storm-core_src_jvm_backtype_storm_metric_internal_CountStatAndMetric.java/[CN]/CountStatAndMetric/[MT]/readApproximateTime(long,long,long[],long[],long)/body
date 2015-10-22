@@ -1,0 +1,15 @@
+{
+  long timeNeeded=desiredTime - timeSpent;
+  long total=value;
+  for (int i=0; i < bucketTime.length; i++) {
+    if (timeNeeded < bucketTime[i]) {
+      double pct=timeNeeded / ((double)bucketTime[i]);
+      total+=(long)(pct * buckets[i]);
+      timeNeeded=0;
+      break;
+    }
+    total+=buckets[i];
+    timeNeeded-=bucketTime[i];
+  }
+  return total;
+}

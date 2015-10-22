@@ -18,15 +18,17 @@
       SpoutStats stats=exec.get_stats().get_specific().get_spout();
       Map<String,Long> failedMap=stats.get_failed().get(":all-time");
       Map<String,Long> ackedMap=stats.get_acked().get(":all-time");
-      for (      String key : ackedMap.keySet()) {
-        if (failedMap != null) {
-          Long tmp=failedMap.get(key);
-          if (tmp != null) {
-            failed+=tmp;
+      if (ackedMap != null) {
+        for (        String key : ackedMap.keySet()) {
+          if (failedMap != null) {
+            Long tmp=failedMap.get(key);
+            if (tmp != null) {
+              failed+=tmp;
+            }
           }
+          long ackVal=ackedMap.get(key);
+          acked+=ackVal;
         }
-        long ackVal=ackedMap.get(key);
-        acked+=ackVal;
       }
     }
   }
