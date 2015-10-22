@@ -1,0 +1,32 @@
+{
+  Object v=rexLiteral.getValue();
+  RelDataType ty=rexLiteral.getType();
+switch (rexLiteral.getTypeName()) {
+case BOOLEAN:
+    return v.toString();
+case CHAR:
+  return CompilerUtil.escapeJavaString(((NlsString)v).getValue(),true);
+case NULL:
+return "null";
+case DOUBLE:
+case BIGINT:
+case DECIMAL:
+switch (ty.getSqlTypeName()) {
+case TINYINT:
+case SMALLINT:
+case INTEGER:
+return Long.toString(((BigDecimal)v).longValueExact());
+case BIGINT:
+return Long.toString(((BigDecimal)v).longValueExact()) + 'L';
+case DECIMAL:
+case FLOAT:
+case REAL:
+case DOUBLE:
+return Util.toScientificNotation((BigDecimal)v);
+}
+break;
+default :
+throw new UnsupportedOperationException();
+}
+return null;
+}

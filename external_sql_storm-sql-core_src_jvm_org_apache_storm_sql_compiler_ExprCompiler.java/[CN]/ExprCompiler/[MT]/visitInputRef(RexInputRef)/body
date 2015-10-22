@@ -1,0 +1,8 @@
+{
+  if (expr.containsKey(rexInputRef)) {
+    return expr.get(rexInputRef);
+  }
+  String name=printExpr(rexInputRef,String.format("_data.get(%d)",rexInputRef.getIndex()));
+  expr.put(rexInputRef,name);
+  return name;
+}

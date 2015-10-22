@@ -1,0 +1,7 @@
+{
+  String name="t" + expr.size();
+  Type ty=typeFactory.getJavaClass(node.getType());
+  String typeName=((Class<?>)ty).getCanonicalName();
+  pw.append(String.format("%s %s = (%s)(%s);\n",typeName,name,typeName,definition));
+  return name;
+}
