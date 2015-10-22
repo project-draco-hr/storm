@@ -1,0 +1,4 @@
+{
+  super(makeUri(className),Kind.SOURCE);
+  this.sourceCode=sourceCode;
+}

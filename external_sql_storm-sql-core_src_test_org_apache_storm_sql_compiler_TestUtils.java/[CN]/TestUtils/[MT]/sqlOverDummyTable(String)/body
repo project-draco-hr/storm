@@ -1,6 +1,7 @@
 {
   SchemaPlus schema=Frameworks.createRootSchema(true);
-  Table table=newTable().field("ID",SqlTypeName.INTEGER).build();
+  JavaTypeFactory typeFactory=new JavaTypeFactoryImpl(RelDataTypeSystem.DEFAULT);
+  Table table=new CompilerUtil.TableBuilderInfo(typeFactory).field("ID",SqlTypeName.INTEGER).build();
   schema.add("FOO",table);
   FrameworkConfig config=Frameworks.newConfigBuilder().defaultSchema(schema).build();
   Planner planner=Frameworks.getPlanner(config);

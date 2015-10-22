@@ -1,0 +1,3 @@
+{
+  pw.print(String.format(STAGE_PROLOGUE,getStageName(n)));
+}

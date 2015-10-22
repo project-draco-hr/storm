@@ -1,3 +1,0 @@
-{
-  pw.print(String.format("private Values %s(%s) {\n",getFunctionName(n),n.getInputs().isEmpty() ? "" : "Values _data"));
-}

@@ -1,8 +1,8 @@
 {
   String tableName=Joiner.on('_').join(scan.getTable().getQualifiedName());
   referredTables.add(tableName);
-  beginFunction(scan);
-  pw.print(String.format("  return _datasources[TABLE_%s].next();\n",tableName));
-  endFunction();
+  beginStage(scan);
+  pw.print("    ctx.emit(_data);\n");
+  endStage();
   return null;
 }

@@ -1,0 +1,5 @@
+{
+  RelDataType dataType=type.deriveType(typeFactory);
+  fields.add(new FieldType(name,dataType));
+  return this;
+}

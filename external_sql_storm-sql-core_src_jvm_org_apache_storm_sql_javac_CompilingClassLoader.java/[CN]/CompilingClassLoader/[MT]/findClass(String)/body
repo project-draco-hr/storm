@@ -1,0 +1,7 @@
+{
+  ByteArrayOutputStream byteCode=byteCodeForClasses.get(name);
+  if (byteCode == null) {
+    throw new ClassNotFoundException(name);
+  }
+  return defineClass(name,byteCode.toByteArray(),0,byteCode.size());
+}
