@@ -15,7 +15,6 @@
     }
     for (    Class vv : valueValidators) {
       Object valueValidator=vv.getConstructor().newInstance();
-      ;
       if (valueValidator instanceof Validator) {
         ((Validator)valueValidator).validateField(name + " Map value",entry.getValue());
       }
