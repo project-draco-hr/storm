@@ -8,8 +8,8 @@
       return EmitState.NO_EMITTED;
     }
     Iterable<List<Object>> tups;
-    if (_spoutConfig.tupleMetaData) {
-      tups=KafkaUtils.generateTuples(_spoutConfig,toEmit.msg,_partition,toEmit.offset);
+    if (_spoutConfig.scheme instanceof MessageMetadataSchemeAsMultiScheme) {
+      tups=KafkaUtils.generateTuples((MessageMetadataSchemeAsMultiScheme)_spoutConfig.scheme,toEmit.msg,_partition,toEmit.offset);
     }
  else {
       tups=KafkaUtils.generateTuples(_spoutConfig,toEmit.msg);

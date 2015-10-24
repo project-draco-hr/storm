@@ -3,12 +3,11 @@
   Partition mockPartition=Mockito.mock(Partition.class);
   mockPartition.partition=0;
   long offset=0L;
-  config.scheme=new MessageMetadataSchemeAsMultiScheme(new StringMessageAndMetadataScheme());
-  config.tupleMetaData=true;
+  MessageMetadataSchemeAsMultiScheme scheme=new MessageMetadataSchemeAsMultiScheme(new StringMessageAndMetadataScheme());
   createTopicAndSendMessage(null,value);
   ByteBufferMessageSet messageAndOffsets=getLastMessage();
   for (  MessageAndOffset msg : messageAndOffsets) {
-    Iterable<List<Object>> lists=KafkaUtils.generateTuples(config,msg.message(),mockPartition,offset);
+    Iterable<List<Object>> lists=KafkaUtils.generateTuples(scheme,msg.message(),mockPartition,offset);
     List<Object> values=lists.iterator().next();
     assertEquals("Message is incorrect",value,values.get(0));
     assertEquals("Partition is incorrect",mockPartition.partition,values.get(1));
