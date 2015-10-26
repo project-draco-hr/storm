@@ -1,0 +1,3 @@
+{
+  validateInteger(name,o);
+}

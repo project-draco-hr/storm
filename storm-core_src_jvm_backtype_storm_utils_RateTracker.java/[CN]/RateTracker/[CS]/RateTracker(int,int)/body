@@ -1,3 +1,0 @@
-{
-  this(validTimeWindowInMils,numOfSlides,false);
-}

@@ -4,6 +4,8 @@ case TOPOLOGY_ID:
     return get_topology_id();
 case EXECUTORS:
   return get_executors();
+case RESOURCES:
+return get_resources();
 }
 throw new IllegalStateException();
 }

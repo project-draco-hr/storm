@@ -1,0 +1,15 @@
+def process_getComponentPageInfo(self, seqid, iprot, oprot):
+    args = getComponentPageInfo_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getComponentPageInfo_result()
+    try:
+        result.success = self._handler.getComponentPageInfo(args.topology_id, args.component_id, args.window, args.is_include_sys)
+    except NotAliveException as e:
+        result.e = e
+    except AuthorizationException as aze:
+        result.aze = aze
+    oprot.writeMessageBegin('getComponentPageInfo', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

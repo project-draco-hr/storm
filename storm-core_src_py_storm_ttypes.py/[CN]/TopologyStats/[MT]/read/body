@@ -1,0 +1,68 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.MAP):
+                self.window_to_emitted = {}
+                (_ktype309, _vtype310, _size308) = iprot.readMapBegin()
+                for _i312 in xrange(_size308):
+                    _key313 = iprot.readString().decode('utf-8')
+                    _val314 = iprot.readI64()
+                    self.window_to_emitted[_key313] = _val314
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 2):
+            if (ftype == TType.MAP):
+                self.window_to_transferred = {}
+                (_ktype316, _vtype317, _size315) = iprot.readMapBegin()
+                for _i319 in xrange(_size315):
+                    _key320 = iprot.readString().decode('utf-8')
+                    _val321 = iprot.readI64()
+                    self.window_to_transferred[_key320] = _val321
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 3):
+            if (ftype == TType.MAP):
+                self.window_to_complete_latencies_ms = {}
+                (_ktype323, _vtype324, _size322) = iprot.readMapBegin()
+                for _i326 in xrange(_size322):
+                    _key327 = iprot.readString().decode('utf-8')
+                    _val328 = iprot.readDouble()
+                    self.window_to_complete_latencies_ms[_key327] = _val328
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 4):
+            if (ftype == TType.MAP):
+                self.window_to_acked = {}
+                (_ktype330, _vtype331, _size329) = iprot.readMapBegin()
+                for _i333 in xrange(_size329):
+                    _key334 = iprot.readString().decode('utf-8')
+                    _val335 = iprot.readI64()
+                    self.window_to_acked[_key334] = _val335
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 5):
+            if (ftype == TType.MAP):
+                self.window_to_failed = {}
+                (_ktype337, _vtype338, _size336) = iprot.readMapBegin()
+                for _i340 in xrange(_size336):
+                    _key341 = iprot.readString().decode('utf-8')
+                    _val342 = iprot.readI64()
+                    self.window_to_failed[_key341] = _val342
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

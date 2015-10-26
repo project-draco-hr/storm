@@ -1,0 +1,4 @@
+{
+  Field field=configClass.getField(fieldName);
+  validateField(field,conf);
+}

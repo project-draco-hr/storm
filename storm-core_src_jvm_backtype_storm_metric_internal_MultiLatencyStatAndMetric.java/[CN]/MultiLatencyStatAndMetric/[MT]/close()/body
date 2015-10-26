@@ -1,0 +1,5 @@
+{
+  for (  LatencyStatAndMetric l : _lat.values()) {
+    l.close();
+  }
+}

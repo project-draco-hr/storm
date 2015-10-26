@@ -1,0 +1,11 @@
+{
+  for (  Field field : configClass.getFields()) {
+    Object keyObj=field.get(null);
+    if (keyObj instanceof String) {
+      String confKey=(String)keyObj;
+      if (conf.containsKey(confKey)) {
+        validateField(field,conf);
+      }
+    }
+  }
+}

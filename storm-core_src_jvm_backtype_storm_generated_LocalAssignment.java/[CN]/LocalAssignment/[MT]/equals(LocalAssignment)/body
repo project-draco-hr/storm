@@ -12,5 +12,11 @@
     if (!(this_present_executors && that_present_executors))     return false;
     if (!this.executors.equals(that.executors))     return false;
   }
+  boolean this_present_resources=true && this.is_set_resources();
+  boolean that_present_resources=true && that.is_set_resources();
+  if (this_present_resources || that_present_resources) {
+    if (!(this_present_resources && that_present_resources))     return false;
+    if (!this.resources.equals(that.resources))     return false;
+  }
   return true;
 }

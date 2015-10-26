@@ -1,0 +1,4 @@
+def __init__(self, mem_on_heap=None, mem_off_heap=None, cpu=None):
+    self.mem_on_heap = mem_on_heap
+    self.mem_off_heap = mem_off_heap
+    self.cpu = cpu

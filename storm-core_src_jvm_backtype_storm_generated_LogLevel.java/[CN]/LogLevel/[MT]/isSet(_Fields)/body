@@ -1,0 +1,18 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case ACTION:
+    return is_set_action();
+case TARGET_LOG_LEVEL:
+  return is_set_target_log_level();
+case RESET_LOG_LEVEL_TIMEOUT_SECS:
+return is_set_reset_log_level_timeout_secs();
+case RESET_LOG_LEVEL_TIMEOUT_EPOCH:
+return is_set_reset_log_level_timeout_epoch();
+case RESET_LOG_LEVEL:
+return is_set_reset_log_level();
+}
+throw new IllegalStateException();
+}

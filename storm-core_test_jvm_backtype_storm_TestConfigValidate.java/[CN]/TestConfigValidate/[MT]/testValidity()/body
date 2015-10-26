@@ -1,0 +1,14 @@
+{
+  Map<String,Object> conf=new HashMap<String,Object>();
+  conf.put(Config.TOPOLOGY_DEBUG,true);
+  conf.put("q","asasdasd");
+  conf.put("aaa",new Integer("123"));
+  conf.put("bbb",new Long("456"));
+  List<Object> testList=new ArrayList<Object>();
+  testList.add(1);
+  testList.add(2);
+  testList.add(new Integer("3"));
+  testList.add(new Long("4"));
+  conf.put("eee",testList);
+  Utils.isValidConf(conf);
+}

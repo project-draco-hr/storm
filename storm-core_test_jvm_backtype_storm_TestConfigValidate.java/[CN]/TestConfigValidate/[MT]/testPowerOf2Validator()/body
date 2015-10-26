@@ -1,0 +1,16 @@
+{
+  PowerOf2Validator validator=new PowerOf2Validator();
+  Object[] failCases={42.42,42,-33,23423423423.0,-32,-1,-0.00001,0,-0,"Forty-two"};
+  for (  Object value : failCases) {
+    try {
+      validator.validateField("test",value);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+  Object[] passCases={64,4294967296.0,1,null};
+  for (  Object value : passCases) {
+    validator.validateField("test",value);
+  }
+}

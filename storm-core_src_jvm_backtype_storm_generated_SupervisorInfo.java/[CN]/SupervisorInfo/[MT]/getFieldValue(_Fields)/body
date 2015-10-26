@@ -16,6 +16,8 @@ case UPTIME_SECS:
 return Long.valueOf(get_uptime_secs());
 case VERSION:
 return get_version();
+case RESOURCES_MAP:
+return get_resources_map();
 }
 throw new IllegalStateException();
 }

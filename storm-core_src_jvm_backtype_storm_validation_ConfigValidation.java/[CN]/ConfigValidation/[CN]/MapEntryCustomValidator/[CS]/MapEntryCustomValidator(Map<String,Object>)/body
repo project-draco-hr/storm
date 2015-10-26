@@ -1,0 +1,4 @@
+{
+  this.keyValidators=(Class[])params.get(ConfigValidationAnnotations.ValidatorParams.KEY_VALIDATOR_CLASSES);
+  this.valueValidators=(Class[])params.get(ConfigValidationAnnotations.ValidatorParams.VALUE_VALIDATOR_CLASSES);
+}

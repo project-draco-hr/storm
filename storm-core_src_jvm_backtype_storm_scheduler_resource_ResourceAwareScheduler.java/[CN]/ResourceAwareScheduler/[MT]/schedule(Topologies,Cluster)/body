@@ -1,0 +1,42 @@
+{
+  LOG.debug("\n\n\nRerunning ResourceAwareScheduler...");
+  ResourceAwareStrategy RAStrategy=new ResourceAwareStrategy(cluster,topologies);
+  LOG.debug(printScheduling(cluster,topologies));
+  for (  TopologyDetails td : topologies.getTopologies()) {
+    String topId=td.getId();
+    Map<WorkerSlot,Collection<ExecutorDetails>> schedulerAssignmentMap;
+    if (cluster.needsScheduling(td) && cluster.getUnassignedExecutors(td).size() > 0) {
+      LOG.debug("/********Scheduling topology {} ************/",topId);
+      schedulerAssignmentMap=RAStrategy.schedule(td);
+      if (schedulerAssignmentMap != null) {
+        try {
+          Set<String> nodesUsed=new HashSet<String>();
+          for (          Map.Entry<WorkerSlot,Collection<ExecutorDetails>> taskToWorkerEntry : schedulerAssignmentMap.entrySet()) {
+            WorkerSlot targetSlot=taskToWorkerEntry.getKey();
+            Collection<ExecutorDetails> execsNeedScheduling=taskToWorkerEntry.getValue();
+            RAS_Node targetNode=RAStrategy.idToNode(targetSlot.getNodeId());
+            targetNode.assign(targetSlot,td,execsNeedScheduling,cluster);
+            LOG.debug("ASSIGNMENT    TOPOLOGY: {}  TASKS: {} To Node: {} on Slot: {}",td.getName(),execsNeedScheduling,targetNode.getHostname(),targetSlot.getPort());
+            if (!nodesUsed.contains(targetNode.getId())) {
+              nodesUsed.add(targetNode.getId());
+            }
+          }
+          LOG.debug("Topology: {} assigned to {} nodes on {} workers",td.getId(),nodesUsed.size(),schedulerAssignmentMap.keySet().size());
+          cluster.setStatus(td.getId(),td.getId() + " Fully Scheduled");
+        }
+ catch (        IllegalStateException ex) {
+          LOG.error(ex.toString());
+          LOG.error("Unsuccessfull in scheduling {}",td.getId());
+          cluster.setStatus(td.getId(),"Unsuccessfull in scheduling " + td.getId());
+        }
+      }
+ else {
+        LOG.error("Unsuccessfull in scheduling topology {}",td.getId());
+        cluster.setStatus(td.getId(),"Unsuccessfull in scheduling " + td.getId());
+      }
+    }
+ else {
+      cluster.setStatus(td.getId(),td.getId() + " Fully Scheduled");
+    }
+  }
+}

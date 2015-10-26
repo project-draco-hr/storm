@@ -8,6 +8,8 @@ case EXECUTOR_NODE_PORT:
 return get_executor_node_port();
 case EXECUTOR_START_TIME_SECS:
 return get_executor_start_time_secs();
+case WORKER_RESOURCES:
+return get_worker_resources();
 }
 throw new IllegalStateException();
 }

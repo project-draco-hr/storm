@@ -1,0 +1,11 @@
+{
+  Map<String,Map<String,Double>> boltResources=new HashMap<String,Map<String,Double>>();
+  if (topology.get_bolts() != null) {
+    for (    Map.Entry<String,Bolt> bolt : topology.get_bolts().entrySet()) {
+      Map<String,Double> topology_resources=parseResources(bolt.getValue().get_common().get_json_conf());
+      checkIntialization(topology_resources,bolt.getValue().toString(),topologyConf);
+      boltResources.put(bolt.getKey(),topology_resources);
+    }
+  }
+  return boltResources;
+}

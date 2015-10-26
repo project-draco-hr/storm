@@ -1,0 +1,3 @@
+Long lowestDiscernibleValue
+Long highestTrackableValue
+int numberOfSignificantValueDigits

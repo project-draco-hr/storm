@@ -10,15 +10,15 @@ switch (schemeField.id) {
 case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-          org.apache.thrift.protocol.TMap _map492=iprot.readMapBegin();
-          struct.assignments=new HashMap<Integer,LocalAssignment>(2 * _map492.size);
-          int _key493;
-          LocalAssignment _val494;
-          for (int _i495=0; _i495 < _map492.size; ++_i495) {
-            _key493=iprot.readI32();
-            _val494=new LocalAssignment();
-            _val494.read(iprot);
-            struct.assignments.put(_key493,_val494);
+          org.apache.thrift.protocol.TMap _map638=iprot.readMapBegin();
+          struct.assignments=new HashMap<Integer,LocalAssignment>(2 * _map638.size);
+          int _key639;
+          LocalAssignment _val640;
+          for (int _i641=0; _i641 < _map638.size; ++_i641) {
+            _key639=iprot.readI32();
+            _val640=new LocalAssignment();
+            _val640.read(iprot);
+            struct.assignments.put(_key639,_val640);
           }
           iprot.readMapEnd();
         }

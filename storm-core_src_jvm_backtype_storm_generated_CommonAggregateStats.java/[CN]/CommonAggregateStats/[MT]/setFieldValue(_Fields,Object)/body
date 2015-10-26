@@ -1,0 +1,52 @@
+{
+switch (field) {
+case NUM_EXECUTORS:
+    if (value == null) {
+      unset_num_executors();
+    }
+ else {
+      set_num_executors((Integer)value);
+    }
+  break;
+case NUM_TASKS:
+if (value == null) {
+  unset_num_tasks();
+}
+ else {
+  set_num_tasks((Integer)value);
+}
+break;
+case EMITTED:
+if (value == null) {
+unset_emitted();
+}
+ else {
+set_emitted((Long)value);
+}
+break;
+case TRANSFERRED:
+if (value == null) {
+unset_transferred();
+}
+ else {
+set_transferred((Long)value);
+}
+break;
+case ACKED:
+if (value == null) {
+unset_acked();
+}
+ else {
+set_acked((Long)value);
+}
+break;
+case FAILED:
+if (value == null) {
+unset_failed();
+}
+ else {
+set_failed((Long)value);
+}
+break;
+}
+}

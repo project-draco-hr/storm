@@ -1,0 +1,13 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_id=true && (is_set_id());
+  list.add(present_id);
+  if (present_id)   list.add(id);
+  boolean present_window=true && (is_set_window());
+  list.add(present_window);
+  if (present_window)   list.add(window);
+  boolean present_is_include_sys=true;
+  list.add(present_is_include_sys);
+  if (present_is_include_sys)   list.add(is_include_sys);
+  return list.hashCode();
+}

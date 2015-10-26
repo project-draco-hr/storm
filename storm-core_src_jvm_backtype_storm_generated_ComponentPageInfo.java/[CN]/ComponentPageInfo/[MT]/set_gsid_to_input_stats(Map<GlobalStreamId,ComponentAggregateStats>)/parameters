@@ -1,0 +1,1 @@
+Map<GlobalStreamId,ComponentAggregateStats> gsid_to_input_stats

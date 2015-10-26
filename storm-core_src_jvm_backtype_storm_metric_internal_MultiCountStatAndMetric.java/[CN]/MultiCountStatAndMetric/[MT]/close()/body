@@ -1,0 +1,5 @@
+{
+  for (  CountStatAndMetric cc : _counts.values()) {
+    cc.close();
+  }
+}

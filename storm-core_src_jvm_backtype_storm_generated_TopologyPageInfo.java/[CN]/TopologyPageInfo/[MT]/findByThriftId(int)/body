@@ -1,0 +1,36 @@
+{
+switch (fieldId) {
+case 1:
+    return ID;
+case 2:
+  return NAME;
+case 3:
+return UPTIME_SECS;
+case 4:
+return STATUS;
+case 5:
+return NUM_TASKS;
+case 6:
+return NUM_WORKERS;
+case 7:
+return NUM_EXECUTORS;
+case 8:
+return TOPOLOGY_CONF;
+case 9:
+return ID_TO_SPOUT_AGG_STATS;
+case 10:
+return ID_TO_BOLT_AGG_STATS;
+case 11:
+return SCHED_STATUS;
+case 12:
+return TOPOLOGY_STATS;
+case 13:
+return OWNER;
+case 14:
+return DEBUG_OPTIONS;
+case 15:
+return REPLICATION_COUNT;
+default :
+return null;
+}
+}

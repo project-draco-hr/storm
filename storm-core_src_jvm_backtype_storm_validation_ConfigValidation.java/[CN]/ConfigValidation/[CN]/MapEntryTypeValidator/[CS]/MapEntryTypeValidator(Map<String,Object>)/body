@@ -1,0 +1,4 @@
+{
+  this.keyType=(Class)params.get(ConfigValidationAnnotations.ValidatorParams.KEY_TYPE);
+  this.valueType=(Class)params.get(ConfigValidationAnnotations.ValidatorParams.VALUE_TYPE);
+}

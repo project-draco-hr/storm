@@ -1,0 +1,9 @@
+{
+  Map<String,Object> conf=new HashMap<String,Object>();
+  conf.put(Config.TOPOLOGY_STATS_SAMPLE_RATE,0.5);
+  ConfigValidation.validateFields(conf);
+  conf.put(Config.TOPOLOGY_STATS_SAMPLE_RATE,10);
+  ConfigValidation.validateFields(conf);
+  conf.put(Config.TOPOLOGY_STATS_SAMPLE_RATE,Double.MAX_VALUE);
+  ConfigValidation.validateFields(conf);
+}

@@ -8,6 +8,8 @@ def __init__(self, handler):
     self._processMap['activate'] = Processor.process_activate
     self._processMap['deactivate'] = Processor.process_deactivate
     self._processMap['rebalance'] = Processor.process_rebalance
+    self._processMap['setLogConfig'] = Processor.process_setLogConfig
+    self._processMap['getLogConfig'] = Processor.process_getLogConfig
     self._processMap['debug'] = Processor.process_debug
     self._processMap['uploadNewCredentials'] = Processor.process_uploadNewCredentials
     self._processMap['beginFileUpload'] = Processor.process_beginFileUpload
@@ -19,6 +21,8 @@ def __init__(self, handler):
     self._processMap['getClusterInfo'] = Processor.process_getClusterInfo
     self._processMap['getTopologyInfo'] = Processor.process_getTopologyInfo
     self._processMap['getTopologyInfoWithOpts'] = Processor.process_getTopologyInfoWithOpts
+    self._processMap['getTopologyPageInfo'] = Processor.process_getTopologyPageInfo
+    self._processMap['getComponentPageInfo'] = Processor.process_getComponentPageInfo
     self._processMap['getTopologyConf'] = Processor.process_getTopologyConf
     self._processMap['getTopology'] = Processor.process_getTopology
     self._processMap['getUserTopology'] = Processor.process_getUserTopology

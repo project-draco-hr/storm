@@ -10,12 +10,19 @@
     oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.executors.size()));
-      for (      ExecutorInfo _iter477 : struct.executors) {
-        _iter477.write(oprot);
+      for (      ExecutorInfo _iter623 : struct.executors) {
+        _iter623.write(oprot);
       }
       oprot.writeListEnd();
     }
     oprot.writeFieldEnd();
+  }
+  if (struct.resources != null) {
+    if (struct.is_set_resources()) {
+      oprot.writeFieldBegin(RESOURCES_FIELD_DESC);
+      struct.resources.write(oprot);
+      oprot.writeFieldEnd();
+    }
   }
   oprot.writeFieldStop();
   oprot.writeStructEnd();

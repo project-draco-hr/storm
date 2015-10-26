@@ -1,0 +1,6 @@
+{
+  if (this.named_logger_level == null) {
+    this.named_logger_level=new HashMap<String,LogLevel>();
+  }
+  this.named_logger_level.put(key,val);
+}

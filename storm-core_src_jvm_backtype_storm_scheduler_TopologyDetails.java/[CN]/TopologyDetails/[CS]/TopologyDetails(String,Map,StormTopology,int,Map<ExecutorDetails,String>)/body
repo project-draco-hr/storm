@@ -4,4 +4,6 @@
   if (executorToComponents != null) {
     this.executorToComponent.putAll(executorToComponents);
   }
+  this.initResourceList();
+  this.initConfigs();
 }

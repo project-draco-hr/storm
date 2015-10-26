@@ -7,3 +7,4 @@ meta
 scheduler_meta
 uptime_secs
 version
+resources_map
