@@ -1,2 +1,4 @@
 TridentCollector collector
 Message msg
+Partition partition
+long offset
