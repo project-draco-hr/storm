@@ -1,0 +1,4 @@
+{
+  Metadata metadata=getMetadata();
+  return metadata.getAllHosts();
+}

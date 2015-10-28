@@ -1,0 +1,7 @@
+{
+  if (cluster != null && !cluster.isClosed()) {
+    LOG.info(String.format("Try to close connection to cluster: %s",cluster.getClusterName()));
+    session.close();
+    cluster.close();
+  }
+}

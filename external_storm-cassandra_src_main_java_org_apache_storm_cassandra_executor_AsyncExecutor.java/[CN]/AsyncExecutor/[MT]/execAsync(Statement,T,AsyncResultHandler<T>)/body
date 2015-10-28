@@ -1,0 +1,23 @@
+{
+  final SettableFuture<T> settableFuture=SettableFuture.create();
+  pending.put(settableFuture,true);
+  ResultSetFuture future=session.executeAsync(statement);
+  Futures.addCallback(future,new FutureCallback<ResultSet>(){
+    public void release(){
+      pending.remove(settableFuture);
+    }
+    @Override public void onSuccess(    ResultSet result){
+      release();
+      settableFuture.set(inputs);
+      handler.success(inputs);
+    }
+    @Override public void onFailure(    Throwable t){
+      LOG.error(String.format("Failed to execute statement '%s' ",statement),t);
+      release();
+      settableFuture.setException(t);
+      handler.failure(t,inputs);
+    }
+  }
+,executorService);
+  return settableFuture;
+}

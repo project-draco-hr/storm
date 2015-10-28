@@ -1,0 +1,10 @@
+{
+  getAsyncHandler().flush(outputCollector);
+  if (TupleUtils.isTick(input)) {
+    tick();
+    outputCollector.ack(input);
+  }
+ else {
+    process(input);
+  }
+}

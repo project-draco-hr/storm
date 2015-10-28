@@ -1,0 +1,4 @@
+{
+  this.outputsFields.put(null,fields);
+  return this;
+}

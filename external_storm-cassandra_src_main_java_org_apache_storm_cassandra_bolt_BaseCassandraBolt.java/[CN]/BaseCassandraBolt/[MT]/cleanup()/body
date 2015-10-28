@@ -1,0 +1,5 @@
+{
+  getAsyncExecutor().shutdown();
+  getAsyncHandler().flush(outputCollector);
+  client.close();
+}

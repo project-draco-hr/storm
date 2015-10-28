@@ -1,0 +1,3 @@
+{
+  return Objects.toStringHelper(this).add("username",username).add("password",password).add("keyspace",keyspace).add("nodes",nodes).add("port",port).add("consistencyLevel",consistencyLevel).add("batchSizeRows",batchSizeRows).toString();
+}

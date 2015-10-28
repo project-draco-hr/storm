@@ -1,0 +1,9 @@
+{
+  this.username=getOrElse(conf,CASSANDRA_USERNAME,null);
+  this.password=getOrElse(conf,CASSANDRA_PASSWORD,null);
+  this.keyspace=get(conf,CASSANDRA_KEYSPACE);
+  this.consistencyLevel=ConsistencyLevel.valueOf(getOrElse(conf,CASSANDRA_CONSISTENCY_LEVEL,ConsistencyLevel.ONE.name()));
+  this.nodes=getOrElse(conf,CASSANDRA_NODES,"localhost").split(",");
+  this.batchSizeRows=getOrElse(conf,CASSANDRA_BATCH_SIZE_ROWS,100);
+  this.port=conf.get(CASSANDRA_PORT) != null ? Integer.valueOf((String)conf.get(CASSANDRA_PORT)) : 9042;
+}

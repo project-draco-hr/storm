@@ -1,0 +1,6 @@
+{
+  if (asyncResultHandler == null) {
+    asyncResultHandler=new SingleAsyncResultHandler(getResultHandler());
+  }
+  return asyncResultHandler;
+}

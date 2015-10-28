@@ -1,0 +1,2 @@
+int batchSizeRows
+List<PairStatementTuple> statements

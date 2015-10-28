@@ -1,0 +1,4 @@
+{
+  this.stationID=stationID;
+  this.maxQueries=new AtomicLong(maxQueries);
+}

@@ -1,0 +1,6 @@
+{
+  long now=now();
+  int seconds=(int)(now - lastModifiedTimesMillis) / 1000;
+  lastModifiedTimesMillis=now;
+  return seconds;
+}

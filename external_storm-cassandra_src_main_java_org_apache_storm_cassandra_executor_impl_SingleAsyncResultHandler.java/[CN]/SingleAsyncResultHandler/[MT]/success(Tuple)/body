@@ -1,0 +1,3 @@
+{
+  completed.offer(new ExecutionResultCollector.SucceedCollector(input));
+}

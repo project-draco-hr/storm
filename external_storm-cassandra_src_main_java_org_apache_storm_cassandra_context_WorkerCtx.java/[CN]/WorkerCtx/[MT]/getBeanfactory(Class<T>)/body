@@ -1,0 +1,6 @@
+{
+  BeanFactory<T> factory=(BeanFactory<T>)this.componentCtx.get(clazz);
+  if (factory == null)   throw new RuntimeException("Cannot resolve bean factory for class : " + clazz.getCanonicalName());
+  factory.setStormContext(this);
+  return factory;
+}
