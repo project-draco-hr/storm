@@ -1,0 +1,4 @@
+String nameNodeAddr
+int countSync
+float rotationSizeMB
+String schemaAsString
