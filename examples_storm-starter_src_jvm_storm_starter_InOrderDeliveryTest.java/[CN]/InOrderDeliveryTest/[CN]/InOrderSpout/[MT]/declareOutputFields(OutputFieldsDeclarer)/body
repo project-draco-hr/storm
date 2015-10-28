@@ -1,0 +1,3 @@
+{
+  declarer.declare(new Fields("c1","c2"));
+}

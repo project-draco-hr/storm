@@ -1,11 +1,18 @@
 {
   this._queueName=PREFIX + queueName;
-  _buffer=new RingBuffer<MutableObject>(new ObjectEventFactory(),claim,wait);
+  WaitStrategy wait=null;
+  if (timeout <= 0) {
+    wait=new LiteBlockingWaitStrategy();
+  }
+ else {
+    wait=new TimeoutBlockingWaitStrategy(timeout,TimeUnit.MILLISECONDS);
+  }
+  _buffer=RingBuffer.create(type,new ObjectEventFactory(),size,wait);
   _consumer=new Sequence();
   _barrier=_buffer.newBarrier();
-  _buffer.setGatingSequences(_consumer);
+  _buffer.addGatingSequences(_consumer);
   _metrics=new QueueMetrics();
-  if (claim instanceof SingleThreadedClaimStrategy) {
+  if (type == ProducerType.SINGLE) {
     consumerStartedFlag=true;
   }
  else {
@@ -16,5 +23,4 @@
       throw new RuntimeException("This code should be unreachable!",e);
     }
   }
-  _waitTimeout=timeout;
 }

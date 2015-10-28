@@ -1,10 +1,12 @@
 {
   for (long curr=_consumer.get() + 1; curr <= cursor; curr++) {
     try {
-      MutableObject mo=_buffer.get(curr);
-      Object o=mo.o;
-      mo.setObject(null);
-      if (o == FLUSH_CACHE) {
+      AtomicReference<Object> mo=_buffer.get(curr);
+      Object o=mo.getAndSet(null);
+      if (o == null) {
+        LOG.error("NULL found in {}:{}",this.getName(),cursor);
+      }
+ else       if (o == FLUSH_CACHE) {
         Object c=null;
         while (true) {
           c=_cache.poll();
