@@ -1,0 +1,12 @@
+{
+  String key=nodeId + "-" + port;
+  LocalServer ret=_registry.get(key);
+  if (ret == null) {
+    ret=new LocalServer();
+    LocalServer tmp=_registry.putIfAbsent(key,ret);
+    if (tmp != null) {
+      ret=tmp;
+    }
+  }
+  return ret;
+}
