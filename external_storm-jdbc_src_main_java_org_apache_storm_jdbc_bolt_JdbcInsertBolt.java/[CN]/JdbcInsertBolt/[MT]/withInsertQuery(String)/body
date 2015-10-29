@@ -1,4 +1,7 @@
 {
+  if (this.tableName != null) {
+    throw new IllegalArgumentException("You can not specify both insertQuery and tableName.");
+  }
   this.insertQuery=insertQuery;
   return this;
 }
