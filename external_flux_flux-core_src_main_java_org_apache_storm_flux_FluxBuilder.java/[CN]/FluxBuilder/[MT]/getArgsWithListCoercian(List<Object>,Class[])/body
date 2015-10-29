@@ -18,6 +18,12 @@
       constructorParams[i]=args.get(i);
       continue;
     }
+    if (isPrimitiveBoolean(paramType) && Boolean.class.isAssignableFrom(objectType)) {
+      LOG.debug("Its a primitive boolean.");
+      Boolean bool=(Boolean)args.get(i);
+      constructorParams[i]=bool.booleanValue();
+      continue;
+    }
     if (isPrimitiveNumber(paramType) && Number.class.isAssignableFrom(objectType)) {
       LOG.debug("Its a primitive number.");
       Number num=(Number)args.get(i);
