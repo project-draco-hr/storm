@@ -14,3 +14,9 @@ topology_stats
 owner
 debug_options
 replication_count
+requested_memonheap
+requested_memoffheap
+requested_cpu
+assigned_memonheap
+assigned_memoffheap
+assigned_cpu

@@ -108,6 +108,36 @@
     oprot.writeI32(struct.replication_count);
     oprot.writeFieldEnd();
   }
+  if (struct.is_set_requested_memonheap()) {
+    oprot.writeFieldBegin(REQUESTED_MEMONHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.requested_memonheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    oprot.writeFieldBegin(REQUESTED_MEMOFFHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.requested_memoffheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_requested_cpu()) {
+    oprot.writeFieldBegin(REQUESTED_CPU_FIELD_DESC);
+    oprot.writeDouble(struct.requested_cpu);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    oprot.writeFieldBegin(ASSIGNED_MEMONHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.assigned_memonheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    oprot.writeFieldBegin(ASSIGNED_MEMOFFHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.assigned_memoffheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_assigned_cpu()) {
+    oprot.writeFieldBegin(ASSIGNED_CPU_FIELD_DESC);
+    oprot.writeDouble(struct.assigned_cpu);
+    oprot.writeFieldEnd();
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

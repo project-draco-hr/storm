@@ -168,6 +168,60 @@ struct.set_replication_count_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 521:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.requested_memonheap=iprot.readDouble();
+struct.set_requested_memonheap_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 522:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.requested_memoffheap=iprot.readDouble();
+struct.set_requested_memoffheap_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 523:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.requested_cpu=iprot.readDouble();
+struct.set_requested_cpu_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 524:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.assigned_memonheap=iprot.readDouble();
+struct.set_assigned_memonheap_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 525:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.assigned_memoffheap=iprot.readDouble();
+struct.set_assigned_memoffheap_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 526:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.assigned_cpu=iprot.readDouble();
+struct.set_assigned_cpu_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
