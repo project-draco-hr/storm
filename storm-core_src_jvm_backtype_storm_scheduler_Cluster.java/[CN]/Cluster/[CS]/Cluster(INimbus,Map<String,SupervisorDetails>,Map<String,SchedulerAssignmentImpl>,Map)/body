@@ -6,8 +6,9 @@
   this.assignments.putAll(assignments);
   this.status=new HashMap<String,String>();
   this.hostToId=new HashMap<String,List<String>>();
-  for (  String nodeId : supervisors.keySet()) {
-    SupervisorDetails supervisor=supervisors.get(nodeId);
+  for (  Map.Entry<String,SupervisorDetails> entry : supervisors.entrySet()) {
+    String nodeId=entry.getKey();
+    SupervisorDetails supervisor=entry.getValue();
     String host=supervisor.getHost();
     if (!this.hostToId.containsKey(host)) {
       this.hostToId.put(host,new ArrayList<String>());
