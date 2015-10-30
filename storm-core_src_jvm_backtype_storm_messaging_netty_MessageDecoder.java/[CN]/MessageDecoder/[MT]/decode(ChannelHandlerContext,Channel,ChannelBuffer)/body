@@ -17,7 +17,7 @@
         return ctrl_msg;
       }
     }
-    if (code == -500) {
+    if (code == SaslMessageToken.IDENTIFIER) {
       if (buf.readableBytes() < 4) {
         buf.resetReaderIndex();
         return null;

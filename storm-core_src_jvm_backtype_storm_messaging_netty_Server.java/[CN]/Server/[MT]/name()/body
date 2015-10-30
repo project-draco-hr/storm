@@ -1,3 +1,3 @@
 {
-  return "Netty-server-localhost-" + port;
+  return (String)storm_conf.get(Config.TOPOLOGY_NAME);
 }

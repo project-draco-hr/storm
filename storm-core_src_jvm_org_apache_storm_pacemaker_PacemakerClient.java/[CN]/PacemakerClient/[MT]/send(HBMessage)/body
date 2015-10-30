@@ -1,0 +1,43 @@
+{
+  if (!ready) {
+synchronized (this) {
+      if (!ready) {
+        LOG.debug("Waiting for netty channel to be ready.");
+        try {
+          this.wait(1000);
+          if (!ready) {
+            throw new RuntimeException("Timed out waiting for channel ready.");
+          }
+        }
+ catch (        java.lang.InterruptedException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    }
+  }
+  LOG.debug("Sending message: {}",m.toString());
+  try {
+    int next=availableMessageSlots.take();
+synchronized (m) {
+      m.set_message_id(next);
+      messages[next]=m;
+      LOG.debug("Put message in slot: {}",Integer.toString(next));
+      do {
+        channelRef.get().write(m);
+        m.wait(1000);
+      }
+ while (messages[next] == m);
+    }
+    HBMessage ret=messages[next];
+    if (ret == null) {
+      send(m);
+    }
+    messages[next]=null;
+    LOG.debug("Got Response: {}",ret);
+    return ret;
+  }
+ catch (  InterruptedException e) {
+    LOG.error("PacemakerClient send interrupted: ",e);
+    throw new RuntimeException(e);
+  }
+}

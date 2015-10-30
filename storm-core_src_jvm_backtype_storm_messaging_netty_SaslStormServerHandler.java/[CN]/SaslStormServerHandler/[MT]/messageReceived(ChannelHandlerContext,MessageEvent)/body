@@ -38,6 +38,7 @@
       channel.write(ControlMessage.SASL_COMPLETE_REQUEST);
       LOG.debug("Removing SaslServerHandler from pipeline since SASL " + "authentication is complete.");
       ctx.getPipeline().remove(this);
+      server.authenticated(channel);
     }
     return;
   }

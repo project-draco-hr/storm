@@ -1,0 +1,49 @@
+{
+  Object msg=e.getMessage();
+  if (msg == null)   return;
+  Channel channel=ctx.getChannel();
+  if (msg instanceof SaslMessageToken) {
+    try {
+      LOG.debug("Got SaslMessageToken!");
+      KerberosSaslNettyServer saslNettyServer=KerberosSaslNettyServerState.getKerberosSaslNettyServer.get(channel);
+      if (saslNettyServer == null) {
+        LOG.debug("No saslNettyServer for {}  yet; creating now, with topology token: ",channel);
+        try {
+          saslNettyServer=new KerberosSaslNettyServer(storm_conf,jaas_section,authorizedUsers);
+        }
+ catch (        RuntimeException ioe) {
+          LOG.error("Error occurred while creating saslNettyServer on server {} for client {}",channel.getLocalAddress(),channel.getRemoteAddress());
+          saslNettyServer=null;
+        }
+        KerberosSaslNettyServerState.getKerberosSaslNettyServer.set(channel,saslNettyServer);
+      }
+ else {
+        LOG.debug("Found existing saslNettyServer on server: {} for client {}",channel.getLocalAddress(),channel.getRemoteAddress());
+      }
+      byte[] responseBytes=saslNettyServer.response(((SaslMessageToken)msg).getSaslToken());
+      SaslMessageToken saslTokenMessageRequest=new SaslMessageToken(responseBytes);
+      if (saslTokenMessageRequest.getSaslToken() == null) {
+        channel.write(ControlMessage.SASL_COMPLETE_REQUEST);
+      }
+ else {
+        channel.write(saslTokenMessageRequest);
+      }
+      if (saslNettyServer.isComplete()) {
+        LOG.info("SASL authentication is complete for client with username: {}",saslNettyServer.getUserName());
+        channel.write(ControlMessage.SASL_COMPLETE_REQUEST);
+        LOG.debug("Removing SaslServerHandler from pipeline since SASL authentication is complete.");
+        ctx.getPipeline().remove(this);
+        server.authenticated(channel);
+      }
+      return;
+    }
+ catch (    Exception ex) {
+      LOG.error("Failed to handle SaslMessageToken: ",ex);
+      throw ex;
+    }
+  }
+ else {
+    LOG.warn("Sending upstream an unexpected non-SASL message : {}",msg);
+    Channels.fireMessageReceived(ctx,msg);
+  }
+}

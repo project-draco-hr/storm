@@ -1,0 +1,60 @@
+{
+  this.authorizedUsers=authorizedUsers;
+  LOG.debug("Getting Configuration.");
+  Configuration login_conf;
+  try {
+    login_conf=AuthUtils.GetConfiguration(storm_conf);
+  }
+ catch (  Throwable t) {
+    LOG.error("Failed to get login_conf: ",t);
+    throw t;
+  }
+  LOG.debug("KerberosSaslNettyServer: authmethod {}",SaslUtils.KERBEROS);
+  KerberosSaslCallbackHandler ch=new KerberosSaslNettyServer.KerberosSaslCallbackHandler(storm_conf,authorizedUsers);
+  subject=null;
+  try {
+    LOG.debug("Setting Configuration to login_config: {}",login_conf);
+    Configuration.setConfiguration(login_conf);
+    LOG.debug("Trying to login.");
+    Login login=new Login(jaas_section,ch);
+    subject=login.getSubject();
+    LOG.debug("Got Subject: {}",subject.toString());
+  }
+ catch (  LoginException ex) {
+    LOG.error("Server failed to login in principal:",ex);
+    throw new RuntimeException(ex);
+  }
+  if (subject.getPrivateCredentials(KerberosTicket.class).isEmpty()) {
+    LOG.error("Failed to verifyuser principal.");
+    throw new RuntimeException("Fail to verify user principal with section \"" + jaas_section + "\" in login configuration file "+ login_conf);
+  }
+  try {
+    LOG.info("Creating Kerberos Server.");
+    final CallbackHandler fch=ch;
+    Principal p=(Principal)subject.getPrincipals().toArray()[0];
+    KerberosName kName=new KerberosName(p.getName());
+    final String fHost=kName.getHostName();
+    final String fServiceName=kName.getServiceName();
+    LOG.debug("Server with host: {}",fHost);
+    saslServer=Subject.doAs(subject,new PrivilegedExceptionAction<SaslServer>(){
+      public SaslServer run(){
+        try {
+          Map<String,String> props=new TreeMap<String,String>();
+          props.put(Sasl.QOP,"auth");
+          props.put(Sasl.SERVER_AUTH,"false");
+          return Sasl.createSaslServer(SaslUtils.KERBEROS,fServiceName,fHost,props,fch);
+        }
+ catch (        Exception e) {
+          LOG.error("Subject failed to create sasl server.",e);
+          return null;
+        }
+      }
+    }
+);
+    LOG.info("Got Server: {}",saslServer);
+  }
+ catch (  PrivilegedActionException e) {
+    LOG.error("KerberosSaslNettyServer: Could not create SaslServer: ",e);
+    throw new RuntimeException(e);
+  }
+}

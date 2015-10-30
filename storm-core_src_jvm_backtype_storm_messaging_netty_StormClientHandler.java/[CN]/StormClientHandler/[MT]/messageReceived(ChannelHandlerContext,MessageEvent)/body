@@ -1,0 +1,10 @@
+{
+  Object message=event.getMessage();
+  if (message instanceof ControlMessage) {
+    ControlMessage msg=(ControlMessage)message;
+    if (msg == ControlMessage.FAILURE_RESPONSE)     LOG.info("failure response:{}",msg);
+  }
+ else {
+    throw new RuntimeException("Don't know how to handle a message of type " + message + " ("+ client.getDstAddress()+ ")");
+  }
+}

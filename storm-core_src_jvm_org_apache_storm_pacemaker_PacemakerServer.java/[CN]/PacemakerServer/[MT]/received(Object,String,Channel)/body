@@ -1,0 +1,9 @@
+{
+  cleanPipeline(channel);
+  boolean authenticated=(authMethod == ThriftNettyServerCodec.AuthMethod.NONE) || authenticated_channels.contains(channel);
+  HBMessage m=(HBMessage)mesg;
+  LOG.debug("received message. Passing to handler. {} : {} : {}",handler.toString(),m.toString(),channel.toString());
+  HBMessage response=handler.handleMessage(m,authenticated);
+  LOG.debug("Got Response from handler: {}",response.toString());
+  channel.write(response);
+}

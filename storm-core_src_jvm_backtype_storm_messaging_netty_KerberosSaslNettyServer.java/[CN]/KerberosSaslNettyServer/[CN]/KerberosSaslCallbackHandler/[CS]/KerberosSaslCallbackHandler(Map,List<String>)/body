@@ -1,0 +1,5 @@
+{
+  LOG.debug("KerberosSaslCallback: Creating KerberosSaslCallback handler.");
+  this.config=config;
+  this.authorizedUsers=authorizedUsers;
+}
