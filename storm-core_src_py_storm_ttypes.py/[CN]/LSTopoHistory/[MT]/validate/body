@@ -1,0 +1,10 @@
+def validate(self):
+    if (self.topology_id is None):
+        raise TProtocol.TProtocolException(message='Required field topology_id is unset!')
+    if (self.time_stamp is None):
+        raise TProtocol.TProtocolException(message='Required field time_stamp is unset!')
+    if (self.users is None):
+        raise TProtocol.TProtocolException(message='Required field users is unset!')
+    if (self.groups is None):
+        raise TProtocol.TProtocolException(message='Required field groups is unset!')
+    return

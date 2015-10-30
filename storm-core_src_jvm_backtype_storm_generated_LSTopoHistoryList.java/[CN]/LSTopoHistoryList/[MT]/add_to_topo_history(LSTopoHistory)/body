@@ -1,0 +1,6 @@
+{
+  if (this.topo_history == null) {
+    this.topo_history=new ArrayList<LSTopoHistory>();
+  }
+  this.topo_history.add(elem);
+}

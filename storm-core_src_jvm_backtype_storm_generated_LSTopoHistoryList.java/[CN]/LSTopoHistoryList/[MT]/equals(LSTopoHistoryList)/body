@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_topo_history=true && this.is_set_topo_history();
+  boolean that_present_topo_history=true && that.is_set_topo_history();
+  if (this_present_topo_history || that_present_topo_history) {
+    if (!(this_present_topo_history && that_present_topo_history))     return false;
+    if (!this.topo_history.equals(that.topo_history))     return false;
+  }
+  return true;
+}

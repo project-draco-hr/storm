@@ -1,0 +1,12 @@
+{
+switch (field) {
+case TOPO_HISTORY:
+    if (value == null) {
+      unset_topo_history();
+    }
+ else {
+      set_topo_history((List<LSTopoHistory>)value);
+    }
+  break;
+}
+}
