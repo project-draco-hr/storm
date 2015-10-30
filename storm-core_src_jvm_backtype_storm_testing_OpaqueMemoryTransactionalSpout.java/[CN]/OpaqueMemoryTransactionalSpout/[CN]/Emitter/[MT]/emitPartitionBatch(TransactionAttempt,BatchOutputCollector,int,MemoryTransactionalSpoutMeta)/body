@@ -13,7 +13,7 @@
     int toTake=Math.min(left,_takeAmt);
     MemoryTransactionalSpoutMeta ret=new MemoryTransactionalSpoutMeta(index,toTake);
     for (int i=ret.index; i < ret.index + ret.amt; i++) {
-      List<Object> toEmit=new ArrayList<Object>(queue.get(i));
+      List<Object> toEmit=new ArrayList<>(queue.get(i));
       toEmit.add(0,tx);
       collector.emit(toEmit);
     }

@@ -2,7 +2,7 @@
   _collector=collector;
   if (_local_drpc_id == null) {
     _backround=new ExtendedThreadPoolExecutor(0,Integer.MAX_VALUE,60L,TimeUnit.SECONDS,new SynchronousQueue<Runnable>());
-    _futures=new LinkedList<Future<Void>>();
+    _futures=new LinkedList<>();
     int numTasks=context.getComponentTasks(context.getThisComponentId()).size();
     int index=context.getThisTaskIndex();
     int port=Utils.getInt(conf.get(Config.DRPC_INVOCATIONS_PORT));
