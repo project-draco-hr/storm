@@ -1,0 +1,10 @@
+{
+  Double total_memonheap=0.0;
+  for (  ExecutorDetails exec : this.getExecutors()) {
+    Double exec_mem=getOnHeapMemoryRequirement(exec);
+    if (exec_mem != null) {
+      total_memonheap+=exec_mem;
+    }
+  }
+  return total_memonheap;
+}

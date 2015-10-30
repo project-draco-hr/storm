@@ -1,0 +1,4 @@
+{
+  this.requested_memoffheap=requested_memoffheap;
+  set_requested_memoffheap_isSet(true);
+}
