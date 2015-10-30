@@ -1,4 +1,0 @@
-String queueName
-ProducerType type
-int size
-long timeout

@@ -10,5 +10,6 @@
   state.put("read_pos",rp);
   state.put("arrival_rate_secs",arrivalRateInSecs);
   state.put("sojourn_time_ms",sojournTime);
+  state.put("overflow",_overflowCount.get());
   return state;
 }
