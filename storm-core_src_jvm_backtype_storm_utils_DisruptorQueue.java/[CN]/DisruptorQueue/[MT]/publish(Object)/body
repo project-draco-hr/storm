@@ -1,8 +1,10 @@
 {
-  try {
-    publish(obj,true);
+  Long id=getId();
+  ThreadLocalBatcher batcher=_batchers.get(id);
+  if (batcher == null) {
+    batcher=new ThreadLocalBatcher();
+    _batchers.put(id,batcher);
   }
- catch (  InsufficientCapacityException ex) {
-    throw new RuntimeException("This code should be unreachable!");
-  }
+  batcher.add(obj);
+  batcher.flush(false);
 }

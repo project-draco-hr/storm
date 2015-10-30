@@ -1,0 +1,4 @@
+{
+  this.assigned_cpu=assigned_cpu;
+  set_assigned_cpu_isSet(true);
+}

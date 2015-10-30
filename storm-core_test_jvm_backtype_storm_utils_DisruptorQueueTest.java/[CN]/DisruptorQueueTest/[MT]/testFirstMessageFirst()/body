@@ -2,7 +2,7 @@
   for (int i=0; i < 100; i++) {
     DisruptorQueue queue=createQueue("firstMessageOrder",16);
     queue.publish("FIRST");
-    Runnable producer=new Producer(queue,String.valueOf(i));
+    Runnable producer=new IncProducer(queue,i + 100);
     final AtomicReference<Object> result=new AtomicReference<Object>();
     Runnable consumer=new Consumer(queue,new EventHandler<Object>(){
       private boolean head=true;

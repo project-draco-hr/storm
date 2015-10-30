@@ -1,0 +1,10 @@
+{
+  Double total_cpu=0.0;
+  for (  ExecutorDetails exec : this.getExecutors()) {
+    Double exec_cpu=getTotalCpuReqTask(exec);
+    if (exec_cpu != null) {
+      total_cpu+=exec_cpu;
+    }
+  }
+  return total_cpu;
+}

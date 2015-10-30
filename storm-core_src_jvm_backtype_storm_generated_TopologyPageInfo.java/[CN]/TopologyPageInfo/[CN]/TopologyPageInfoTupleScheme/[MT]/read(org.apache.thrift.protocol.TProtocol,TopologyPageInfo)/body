@@ -2,7 +2,7 @@
   TTupleProtocol iprot=(TTupleProtocol)prot;
   struct.id=iprot.readString();
   struct.set_id_isSet(true);
-  BitSet incoming=iprot.readBitSet(14);
+  BitSet incoming=iprot.readBitSet(20);
   if (incoming.get(0)) {
     struct.name=iprot.readString();
     struct.set_name_isSet(true);
@@ -82,5 +82,29 @@
   if (incoming.get(13)) {
     struct.replication_count=iprot.readI32();
     struct.set_replication_count_isSet(true);
+  }
+  if (incoming.get(14)) {
+    struct.requested_memonheap=iprot.readDouble();
+    struct.set_requested_memonheap_isSet(true);
+  }
+  if (incoming.get(15)) {
+    struct.requested_memoffheap=iprot.readDouble();
+    struct.set_requested_memoffheap_isSet(true);
+  }
+  if (incoming.get(16)) {
+    struct.requested_cpu=iprot.readDouble();
+    struct.set_requested_cpu_isSet(true);
+  }
+  if (incoming.get(17)) {
+    struct.assigned_memonheap=iprot.readDouble();
+    struct.set_assigned_memonheap_isSet(true);
+  }
+  if (incoming.get(18)) {
+    struct.assigned_memoffheap=iprot.readDouble();
+    struct.set_assigned_memoffheap_isSet(true);
+  }
+  if (incoming.get(19)) {
+    struct.assigned_cpu=iprot.readDouble();
+    struct.set_assigned_cpu_isSet(true);
   }
 }

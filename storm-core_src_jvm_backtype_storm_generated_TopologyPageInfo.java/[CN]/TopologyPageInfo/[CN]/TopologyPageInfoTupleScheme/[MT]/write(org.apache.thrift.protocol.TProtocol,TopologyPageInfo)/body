@@ -44,7 +44,25 @@
   if (struct.is_set_replication_count()) {
     optionals.set(13);
   }
-  oprot.writeBitSet(optionals,14);
+  if (struct.is_set_requested_memonheap()) {
+    optionals.set(14);
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    optionals.set(15);
+  }
+  if (struct.is_set_requested_cpu()) {
+    optionals.set(16);
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    optionals.set(17);
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    optionals.set(18);
+  }
+  if (struct.is_set_assigned_cpu()) {
+    optionals.set(19);
+  }
+  oprot.writeBitSet(optionals,20);
   if (struct.is_set_name()) {
     oprot.writeString(struct.name);
   }
@@ -98,5 +116,23 @@
   }
   if (struct.is_set_replication_count()) {
     oprot.writeI32(struct.replication_count);
+  }
+  if (struct.is_set_requested_memonheap()) {
+    oprot.writeDouble(struct.requested_memonheap);
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    oprot.writeDouble(struct.requested_memoffheap);
+  }
+  if (struct.is_set_requested_cpu()) {
+    oprot.writeDouble(struct.requested_cpu);
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    oprot.writeDouble(struct.assigned_memonheap);
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    oprot.writeDouble(struct.assigned_memoffheap);
+  }
+  if (struct.is_set_assigned_cpu()) {
+    oprot.writeDouble(struct.assigned_cpu);
   }
 }
