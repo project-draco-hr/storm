@@ -30,6 +30,18 @@ case DEBUG_OPTIONS:
 return get_debug_options();
 case REPLICATION_COUNT:
 return Integer.valueOf(get_replication_count());
+case REQUESTED_MEMONHEAP:
+return Double.valueOf(get_requested_memonheap());
+case REQUESTED_MEMOFFHEAP:
+return Double.valueOf(get_requested_memoffheap());
+case REQUESTED_CPU:
+return Double.valueOf(get_requested_cpu());
+case ASSIGNED_MEMONHEAP:
+return Double.valueOf(get_assigned_memonheap());
+case ASSIGNED_MEMOFFHEAP:
+return Double.valueOf(get_assigned_memoffheap());
+case ASSIGNED_CPU:
+return Double.valueOf(get_assigned_cpu());
 }
 throw new IllegalStateException();
 }
