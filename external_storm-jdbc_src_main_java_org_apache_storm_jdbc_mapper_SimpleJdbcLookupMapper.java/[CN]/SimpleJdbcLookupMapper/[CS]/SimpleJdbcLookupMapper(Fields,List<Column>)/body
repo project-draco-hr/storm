@@ -1,4 +1,5 @@
 {
   super(queryColumns);
+  Validate.notEmpty(outputFields.toList());
   this.outputFields=outputFields;
 }
