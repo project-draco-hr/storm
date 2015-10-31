@@ -14,8 +14,7 @@
   }
   Long txid=attempt.getTransactionId();
   Map<String,Object> metas=_cachedMetas.remove(txid);
-  for (  String partitionId : metas.keySet()) {
-    Object meta=metas.get(partitionId);
-    _partitionStates.get(partitionId).rotatingState.overrideState(txid,meta);
+  for (  Entry<String,Object> entry : metas.entrySet()) {
+    _partitionStates.get(entry.getKey()).rotatingState.overrideState(txid,entry.getValue());
   }
 }

@@ -13,13 +13,10 @@
     private int bundleOffset=0;
     private Iterator<TaskMessage> iter=bundle.get(bundleOffset).iterator();
     @Override public boolean hasNext(){
-      if (offset < size) {
-        return true;
-      }
-      return false;
+      return offset < size;
     }
     @Override public TaskMessage next(){
-      TaskMessage msg=null;
+      TaskMessage msg;
       if (iter.hasNext()) {
         msg=iter.next();
       }
