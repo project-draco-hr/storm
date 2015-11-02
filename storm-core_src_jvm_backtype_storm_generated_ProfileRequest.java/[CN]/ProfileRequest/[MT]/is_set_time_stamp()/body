@@ -1,0 +1,3 @@
+{
+  return EncodingUtils.testBit(__isset_bitfield,__TIME_STAMP_ISSET_ID);
+}

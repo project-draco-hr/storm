@@ -1,0 +1,5 @@
+{
+  setWorkerProfiler_result result=new setWorkerProfiler_result();
+  iface.setWorkerProfiler(args.id,args.profileRequest);
+  return result;
+}

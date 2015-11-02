@@ -1,0 +1,4 @@
+def __init__(self, id=None, component_id=None, action=None):
+    self.id = id
+    self.component_id = component_id
+    self.action = action
