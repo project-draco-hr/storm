@@ -1,0 +1,12 @@
+{
+  List<String> stmt=new ArrayList<>();
+  stmt.add("CREATE EXTERNAL TABLE FOO (ID INT) LOCATION 'mock:///foo'");
+  stmt.add("SELECT ID + 1 FROM FOO WHERE ID > 2");
+  StormSql sql=StormSql.construct();
+  List<Values> values=new ArrayList<>();
+  ChannelHandler h=new TestUtils.CollectDataChannelHandler(values);
+  sql.execute(stmt,h);
+  Assert.assertEquals(2,values.size());
+  Assert.assertEquals(4,values.get(0).get(0));
+  Assert.assertEquals(5,values.get(1).get(0));
+}

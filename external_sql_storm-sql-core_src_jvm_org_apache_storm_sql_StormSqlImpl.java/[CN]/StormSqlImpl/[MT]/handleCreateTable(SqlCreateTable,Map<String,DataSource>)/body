@@ -1,0 +1,20 @@
+{
+  TableBuilderInfo builder=new TableBuilderInfo(typeFactory);
+  List<Map.Entry<String,Class<?>>> fields=new ArrayList<>();
+  for (  ColumnDefinition col : n.fieldList()) {
+    builder.field(col.name(),col.type());
+    RelDataType dataType=col.type().deriveType(typeFactory);
+    Class<?> javaType=(Class<?>)typeFactory.getJavaClass(dataType);
+    fields.add(new AbstractMap.SimpleImmutableEntry<String,Class<?>>(col.name(),javaType));
+  }
+  Table table=builder.build();
+  schema.add(n.tableName(),table);
+  DataSource ds=DataSourcesRegistry.construct(n.location(),n.inputFormatClass(),n.outputFormatClass(),fields);
+  if (ds == null) {
+    throw new RuntimeException("Cannot construct data source for " + n.tableName());
+  }
+ else   if (dataSources.containsKey(n.tableName())) {
+    throw new RuntimeException("Duplicated definition for table " + n.tableName());
+  }
+  dataSources.put(n.tableName(),ds);
+}
