@@ -14,7 +14,7 @@
   struct.set_uptime_secs_isSet(true);
   struct.status=iprot.readString();
   struct.set_status_isSet(true);
-  BitSet incoming=iprot.readBitSet(3);
+  BitSet incoming=iprot.readBitSet(9);
   if (incoming.get(0)) {
     struct.sched_status=iprot.readString();
     struct.set_sched_status_isSet(true);
@@ -26,5 +26,29 @@
   if (incoming.get(2)) {
     struct.replication_count=iprot.readI32();
     struct.set_replication_count_isSet(true);
+  }
+  if (incoming.get(3)) {
+    struct.requested_memonheap=iprot.readDouble();
+    struct.set_requested_memonheap_isSet(true);
+  }
+  if (incoming.get(4)) {
+    struct.requested_memoffheap=iprot.readDouble();
+    struct.set_requested_memoffheap_isSet(true);
+  }
+  if (incoming.get(5)) {
+    struct.requested_cpu=iprot.readDouble();
+    struct.set_requested_cpu_isSet(true);
+  }
+  if (incoming.get(6)) {
+    struct.assigned_memonheap=iprot.readDouble();
+    struct.set_assigned_memonheap_isSet(true);
+  }
+  if (incoming.get(7)) {
+    struct.assigned_memoffheap=iprot.readDouble();
+    struct.set_assigned_memoffheap_isSet(true);
+  }
+  if (incoming.get(8)) {
+    struct.assigned_cpu=iprot.readDouble();
+    struct.set_assigned_cpu_isSet(true);
   }
 }

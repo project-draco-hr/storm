@@ -5,11 +5,11 @@
     Map conf=Utils.findAndReadConfigFile(_aclFileName);
     if (conf.containsKey(Config.DRPC_AUTHORIZER_ACL)) {
       Map<String,Map<String,?>> confAcl=(Map<String,Map<String,?>>)conf.get(Config.DRPC_AUTHORIZER_ACL);
-      for (      String function : confAcl.keySet()) {
-        Map<String,?> val=confAcl.get(function);
+      for (      Map.Entry<String,Map<String,?>> entry : confAcl.entrySet()) {
+        Map<String,?> val=entry.getValue();
         Collection<String> clientUsers=val.containsKey(CLIENT_USERS_KEY) ? (Collection<String>)val.get(CLIENT_USERS_KEY) : null;
         String invocationUser=val.containsKey(INVOCATION_USER_KEY) ? (String)val.get(INVOCATION_USER_KEY) : null;
-        acl.put(function,new AclFunctionEntry(clientUsers,invocationUser));
+        acl.put(entry.getKey(),new AclFunctionEntry(clientUsers,invocationUser));
       }
     }
  else     if (!_permitWhenMissingFunctionEntry) {

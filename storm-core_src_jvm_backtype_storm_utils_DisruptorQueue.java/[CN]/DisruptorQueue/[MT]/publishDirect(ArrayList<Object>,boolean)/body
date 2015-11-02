@@ -1,0 +1,21 @@
+{
+  int size=objs.size();
+  if (size > 0) {
+    long end;
+    if (block) {
+      end=_buffer.next(size);
+    }
+ else {
+      end=_buffer.tryNext(size);
+    }
+    long begin=end - (size - 1);
+    long at=begin;
+    for (    Object obj : objs) {
+      AtomicReference<Object> m=_buffer.get(at);
+      m.set(obj);
+      at++;
+    }
+    _buffer.publish(begin,end);
+    _metrics.notifyArrivals(size);
+  }
+}

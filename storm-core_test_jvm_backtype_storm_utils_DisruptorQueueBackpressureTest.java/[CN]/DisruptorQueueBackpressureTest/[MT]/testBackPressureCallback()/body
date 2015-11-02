@@ -7,7 +7,6 @@
   final AtomicLong consumerCursor=new AtomicLong(-1);
   DisruptorBackpressureCallbackImpl cb=new DisruptorBackpressureCallbackImpl(queue,throttleOn,consumerCursor);
   queue.registerBackpressureCallback(cb);
-  queue.consumerStarted();
   for (int i=0; i < MESSAGES; i++) {
     queue.publish(String.valueOf(i));
   }
@@ -17,6 +16,6 @@
     }
   }
 );
-  Assert.assertEquals("Check the calling time of throttle on. ",cb.highWaterMarkCalledPopulation,queue.getHighWaterMark());
-  Assert.assertEquals("Checking the calling time of throttle off. ",cb.lowWaterMarkCalledPopulation,queue.getLowWaterMark());
+  Assert.assertEquals("Check the calling time of throttle on. ",queue.getHighWaterMark(),cb.highWaterMarkCalledPopulation);
+  Assert.assertEquals("Checking the calling time of throttle off. ",queue.getLowWaterMark(),cb.lowWaterMarkCalledPopulation);
 }
