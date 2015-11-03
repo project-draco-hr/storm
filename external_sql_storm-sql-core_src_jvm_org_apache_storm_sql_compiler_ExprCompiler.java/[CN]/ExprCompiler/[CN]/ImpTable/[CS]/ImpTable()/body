@@ -1,5 +1,5 @@
 {
   ImmutableMap.Builder<SqlOperator,CallExprPrinter> builder=ImmutableMap.builder();
-  builder.put(infixBinary(LESS_THAN,"<")).put(infixBinary(LESS_THAN_OR_EQUAL,"<=")).put(infixBinary(GREATER_THAN,">")).put(infixBinary(GREATER_THAN_OR_EQUAL,">=")).put(infixBinary(PLUS,"+")).put(infixBinary(MINUS,"-")).put(infixBinary(MULTIPLY,"*")).put(infixBinary(DIVIDE,"/")).put(infixBinary(DIVIDE_INTEGER,"/")).put(AND,AND_EXPR).put(OR,OR_EXPR).put(NOT,NOT_EXPR);
+  builder.put(infixBinary(LESS_THAN,"<")).put(infixBinary(LESS_THAN_OR_EQUAL,"<=")).put(infixBinary(GREATER_THAN,">")).put(infixBinary(GREATER_THAN_OR_EQUAL,">=")).put(infixBinary(PLUS,"+")).put(infixBinary(MINUS,"-")).put(infixBinary(MULTIPLY,"*")).put(infixBinary(DIVIDE,"/")).put(infixBinary(DIVIDE_INTEGER,"/")).put(expect(IS_NULL,null)).put(expectNot(IS_NOT_NULL,null)).put(expect(IS_TRUE,true)).put(expectNot(IS_NOT_TRUE,true)).put(expect(IS_FALSE,false)).put(expectNot(IS_NOT_FALSE,false)).put(AND,AND_EXPR).put(OR,OR_EXPR).put(NOT,NOT_EXPR);
   this.translators=builder.build();
 }
