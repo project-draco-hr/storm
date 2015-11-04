@@ -11,6 +11,8 @@ def __init__(self, handler):
     self._processMap['setLogConfig'] = Processor.process_setLogConfig
     self._processMap['getLogConfig'] = Processor.process_getLogConfig
     self._processMap['debug'] = Processor.process_debug
+    self._processMap['setWorkerProfiler'] = Processor.process_setWorkerProfiler
+    self._processMap['getComponentPendingProfileActions'] = Processor.process_getComponentPendingProfileActions
     self._processMap['uploadNewCredentials'] = Processor.process_uploadNewCredentials
     self._processMap['beginFileUpload'] = Processor.process_beginFileUpload
     self._processMap['uploadChunk'] = Processor.process_uploadChunk

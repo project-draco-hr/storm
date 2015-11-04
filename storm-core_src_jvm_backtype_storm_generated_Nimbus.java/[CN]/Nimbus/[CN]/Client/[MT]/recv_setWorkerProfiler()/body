@@ -1,0 +1,5 @@
+{
+  setWorkerProfiler_result result=new setWorkerProfiler_result();
+  receiveBase(result,"setWorkerProfiler");
+  return;
+}

@@ -1,0 +1,11 @@
+{
+switch (field) {
+case NODE_INFO:
+    return get_nodeInfo();
+case ACTION:
+  return get_action();
+case TIME_STAMP:
+return Long.valueOf(get_time_stamp());
+}
+throw new IllegalStateException();
+}

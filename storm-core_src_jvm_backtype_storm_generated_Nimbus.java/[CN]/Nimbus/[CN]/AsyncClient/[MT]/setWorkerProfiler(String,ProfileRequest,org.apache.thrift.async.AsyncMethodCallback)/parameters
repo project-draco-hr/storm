@@ -1,0 +1,3 @@
+String id
+ProfileRequest profileRequest
+org.apache.thrift.async.AsyncMethodCallback resultHandler

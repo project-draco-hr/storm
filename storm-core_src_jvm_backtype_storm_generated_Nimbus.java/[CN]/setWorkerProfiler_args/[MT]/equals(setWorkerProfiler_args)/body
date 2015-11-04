@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_id=true && this.is_set_id();
+  boolean that_present_id=true && that.is_set_id();
+  if (this_present_id || that_present_id) {
+    if (!(this_present_id && that_present_id))     return false;
+    if (!this.id.equals(that.id))     return false;
+  }
+  boolean this_present_profileRequest=true && this.is_set_profileRequest();
+  boolean that_present_profileRequest=true && that.is_set_profileRequest();
+  if (this_present_profileRequest || that_present_profileRequest) {
+    if (!(this_present_profileRequest && that_present_profileRequest))     return false;
+    if (!this.profileRequest.equals(that.profileRequest))     return false;
+  }
+  return true;
+}

@@ -1,0 +1,9 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getComponentPendingProfileActions",org.apache.thrift.protocol.TMessageType.CALL,0));
+  getComponentPendingProfileActions_args args=new getComponentPendingProfileActions_args();
+  args.set_id(id);
+  args.set_component_id(component_id);
+  args.set_action(action);
+  args.write(prot);
+  prot.writeMessageEnd();
+}
