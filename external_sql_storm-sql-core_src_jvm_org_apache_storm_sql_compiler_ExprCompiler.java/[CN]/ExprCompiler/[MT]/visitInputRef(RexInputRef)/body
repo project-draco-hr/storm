@@ -1,10 +1,6 @@
 {
-  if (expr.containsKey(rexInputRef)) {
-    return expr.get(rexInputRef);
-  }
   String name=reserveName(rexInputRef);
   String typeName=javaTypeName(rexInputRef);
   pw.print(String.format("%s %s = (%s)(_data.get(%d));\n",typeName,name,typeName,rexInputRef.getIndex()));
-  expr.put(rexInputRef,name);
   return name;
 }

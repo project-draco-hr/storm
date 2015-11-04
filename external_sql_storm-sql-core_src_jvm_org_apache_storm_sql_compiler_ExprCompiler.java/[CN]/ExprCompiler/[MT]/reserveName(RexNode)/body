@@ -1,5 +1,4 @@
 {
-  String name="t" + expr.size();
-  expr.put(node,name);
+  String name="t" + ++nameCount;
   return name;
 }

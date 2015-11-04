@@ -1,0 +1,8 @@
+{
+  if (op.equals("null")) {
+    return nullExpr;
+  }
+ else {
+    return notNullExpr;
+  }
+}
