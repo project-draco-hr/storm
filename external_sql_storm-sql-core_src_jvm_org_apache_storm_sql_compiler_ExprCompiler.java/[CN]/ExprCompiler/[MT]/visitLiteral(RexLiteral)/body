@@ -7,7 +7,7 @@ case BOOLEAN:
 case CHAR:
   return CompilerUtil.escapeJavaString(((NlsString)v).getValue(),true);
 case NULL:
-return "null";
+return "((" + ((Class<?>)typeFactory.getJavaClass(ty)).getCanonicalName() + ")null)";
 case DOUBLE:
 case BIGINT:
 case DECIMAL:

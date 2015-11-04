@@ -1,0 +1,4 @@
+Class<?> clazz
+String method
+boolean isStatic
+List<String> args

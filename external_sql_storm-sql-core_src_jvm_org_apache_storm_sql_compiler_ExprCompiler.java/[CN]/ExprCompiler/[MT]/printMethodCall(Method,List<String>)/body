@@ -1,0 +1,3 @@
+{
+  return printMethodCall(method.getDeclaringClass(),method.getName(),Modifier.isStatic(method.getModifiers()),args);
+}
