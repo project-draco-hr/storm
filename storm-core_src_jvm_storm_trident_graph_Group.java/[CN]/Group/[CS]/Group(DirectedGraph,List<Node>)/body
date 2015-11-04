@@ -1,5 +1,4 @@
 {
-  init(graph);
-  this.nodes.addAll(nodes);
   this.graph=graph;
+  this.nodes.addAll(nodes);
 }

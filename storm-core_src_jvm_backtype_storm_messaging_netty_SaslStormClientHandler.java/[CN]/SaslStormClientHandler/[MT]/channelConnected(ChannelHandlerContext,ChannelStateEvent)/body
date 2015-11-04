@@ -14,5 +14,4 @@
  catch (  Exception e) {
     LOG.error("Failed to authenticate with server " + "due to error: ",e);
   }
-  return;
 }

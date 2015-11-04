@@ -1,4 +1,3 @@
 {
-  _graph=new DefaultDirectedGraph(new ErrorEdgeFactory());
-  _gen=new UniqueIdGen();
+  this(new DefaultDirectedGraph<Node,IndexedEdge>(new ErrorEdgeFactory()),new HashMap<String,List<Node>>(),new UniqueIdGen());
 }

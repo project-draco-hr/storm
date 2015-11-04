@@ -1,5 +1,5 @@
 {
-  List<ExecutorDetails> executors=new ArrayList<ExecutorDetails>();
+  List<ExecutorDetails> executors=new ArrayList<>();
   for (  ExecutorDetails executor : this.executorToSlot.keySet()) {
     WorkerSlot ws=this.executorToSlot.get(executor);
     if (ws.equals(slot)) {

@@ -1,7 +1,7 @@
 {
-  List<Integer> boltIds=new ArrayList<Integer>(1);
+  List<Integer> boltIds=new ArrayList<>(1);
   if (values.size() > 0) {
-    byte[] raw=null;
+    byte[] raw;
     if (fields != null) {
       List<Object> selectedFields=outFields.select(fields,values);
       ByteBuffer out=ByteBuffer.allocate(selectedFields.size() * 4);

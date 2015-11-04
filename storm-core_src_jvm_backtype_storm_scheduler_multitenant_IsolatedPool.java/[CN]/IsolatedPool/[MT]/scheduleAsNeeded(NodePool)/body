@@ -5,7 +5,7 @@
       LOG.debug("Scheduling topology {}",topId);
       Set<Node> allNodes=_topologyIdToNodes.get(topId);
       Number nodesRequested=(Number)td.getConf().get(Config.TOPOLOGY_ISOLATED_MACHINES);
-      int slotsToUse=0;
+      int slotsToUse;
       if (nodesRequested == null) {
         slotsToUse=getNodesForNotIsolatedTop(td,allNodes,lesserPools);
       }
@@ -16,7 +16,7 @@
         continue;
       }
       RoundRobinSlotScheduler slotSched=new RoundRobinSlotScheduler(td,slotsToUse,_cluster);
-      LinkedList<Node> sortedNodes=new LinkedList<Node>(allNodes);
+      LinkedList<Node> sortedNodes=new LinkedList<>(allNodes);
       Collections.sort(sortedNodes,Node.FREE_NODE_COMPARATOR_DEC);
       LOG.debug("Nodes sorted by free space {}",sortedNodes);
       while (true) {

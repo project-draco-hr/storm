@@ -1,5 +1,5 @@
 {
-  Principal princ=null;
+  Principal princ;
   if (req != null && (princ=req.getUserPrincipal()) != null) {
     String userName=princ.getName();
     if (userName != null && !userName.isEmpty()) {

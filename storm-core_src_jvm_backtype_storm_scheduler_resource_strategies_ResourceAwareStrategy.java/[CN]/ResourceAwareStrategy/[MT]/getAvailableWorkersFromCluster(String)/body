@@ -1,6 +1,6 @@
 {
   List<RAS_Node> nodes=this.getAvailableNodesFromCluster(clusterId);
-  List<WorkerSlot> workers=new LinkedList<WorkerSlot>();
+  List<WorkerSlot> workers=new LinkedList<>();
   for (  RAS_Node node : nodes) {
     workers.addAll(node.getFreeSlots());
   }

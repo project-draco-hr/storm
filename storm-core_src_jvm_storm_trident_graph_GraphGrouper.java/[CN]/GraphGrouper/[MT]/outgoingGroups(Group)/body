@@ -1,5 +1,5 @@
 {
-  Set<Group> ret=new HashSet();
+  Set<Group> ret=new HashSet<>();
   for (  Node n : g.outgoingNodes()) {
     Group other=nodeGroup(n);
     if (other == null || !other.equals(g)) {

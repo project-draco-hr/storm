@@ -2,7 +2,7 @@
   if (closing) {
     return closeMessage.iterator();
   }
-  ArrayList<TaskMessage> ret=null;
+  ArrayList<TaskMessage> ret;
   int queueId=receiverId % queueCount;
   if ((flags & 0x01) == 0x01) {
     ret=message_queue[queueId].poll();

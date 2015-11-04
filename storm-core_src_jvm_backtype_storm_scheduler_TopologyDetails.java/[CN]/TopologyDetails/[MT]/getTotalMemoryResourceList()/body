@@ -1,5 +1,5 @@
 {
-  Map<ExecutorDetails,Double> ret=new HashMap<ExecutorDetails,Double>();
+  Map<ExecutorDetails,Double> ret=new HashMap<>();
   for (  ExecutorDetails exec : _resourceList.keySet()) {
     ret.put(exec,getTotalMemReqTask(exec));
   }
