@@ -1,0 +1,2 @@
+boolean fullScan
+List<Event<T>> remaining

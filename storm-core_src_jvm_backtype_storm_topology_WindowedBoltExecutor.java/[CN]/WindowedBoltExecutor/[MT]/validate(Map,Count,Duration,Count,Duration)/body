@@ -1,0 +1,9 @@
+{
+  int topologyTimeout=getTopologyTimeoutMillis(stormConf);
+  if (windowLengthDuration != null && slidingIntervalDuration != null) {
+    ensureDurationLessThanTimeout(windowLengthDuration.value + slidingIntervalDuration.value,topologyTimeout);
+  }
+ else   if (windowLengthDuration != null) {
+    ensureDurationLessThanTimeout(windowLengthDuration.value,topologyTimeout);
+  }
+}

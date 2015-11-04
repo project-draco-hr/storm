@@ -1,0 +1,10 @@
+{
+  System.out.println("Events in current window: " + inputWindow.get().size());
+  for (  Tuple tuple : inputWindow.getNew()) {
+    sum+=(int)tuple.getValue(0);
+  }
+  for (  Tuple tuple : inputWindow.getExpired()) {
+    sum-=(int)tuple.getValue(0);
+  }
+  collector.emit(new Values(sum));
+}
