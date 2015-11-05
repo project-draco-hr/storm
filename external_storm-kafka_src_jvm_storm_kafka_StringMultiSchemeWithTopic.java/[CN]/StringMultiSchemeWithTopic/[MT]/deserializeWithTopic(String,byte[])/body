@@ -1,0 +1,4 @@
+{
+  List<Object> items=new Values(deserializeString(bytes),topic);
+  return Arrays.asList(items);
+}

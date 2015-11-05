@@ -9,5 +9,9 @@
   ExponentialBackoffRetry retryPolicy=new ExponentialBackoffRetry(1000,3);
   zookeeper=CuratorFrameworkFactory.newClient(connectionString,retryPolicy);
   dynamicBrokersReader=new DynamicBrokersReader(conf,connectionString,masterPath,topic);
+  Map conf2=new HashMap();
+  conf2.putAll(conf);
+  conf2.put("kafka.topic.wildcard.match",true);
+  wildCardBrokerReader=new DynamicBrokersReader(conf2,connectionString,masterPath,"^test.*$");
   zookeeper.start();
 }

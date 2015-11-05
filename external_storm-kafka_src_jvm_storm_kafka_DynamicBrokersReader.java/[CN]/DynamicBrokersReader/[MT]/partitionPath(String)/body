@@ -1,0 +1,3 @@
+{
+  return topicsPath() + "/" + topic+ "/partitions";
+}

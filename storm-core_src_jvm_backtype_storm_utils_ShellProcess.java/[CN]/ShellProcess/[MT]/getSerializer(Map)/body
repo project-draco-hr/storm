@@ -1,7 +1,7 @@
 {
   String serializer_className=(String)conf.get(Config.TOPOLOGY_MULTILANG_SERIALIZER);
   LOG.info("Storm multilang serializer: " + serializer_className);
-  ISerializer serializer=null;
+  ISerializer serializer;
   try {
     Class klass=Class.forName(serializer_className);
     Object obj=klass.newInstance();

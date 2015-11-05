@@ -1,0 +1,10 @@
+def process_getComponentPendingProfileActions(self, seqid, iprot, oprot):
+    args = getComponentPendingProfileActions_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getComponentPendingProfileActions_result()
+    result.success = self._handler.getComponentPendingProfileActions(args.id, args.component_id, args.action)
+    oprot.writeMessageBegin('getComponentPendingProfileActions', TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

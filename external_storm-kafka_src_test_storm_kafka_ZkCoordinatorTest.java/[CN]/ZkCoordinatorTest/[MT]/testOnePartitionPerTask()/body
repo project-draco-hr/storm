@@ -2,7 +2,7 @@
   int totalTasks=64;
   int partitionsPerTask=1;
   List<ZkCoordinator> coordinatorList=buildCoordinators(totalTasks / partitionsPerTask);
-  when(reader.getBrokerInfo()).thenReturn(TestUtils.buildPartitionInfo(totalTasks));
+  when(reader.getBrokerInfo()).thenReturn(TestUtils.buildPartitionInfoList(TestUtils.buildPartitionInfo(totalTasks)));
   for (  ZkCoordinator coordinator : coordinatorList) {
     List<PartitionManager> myManagedPartitions=coordinator.getMyManagedPartitions();
     assertEquals(partitionsPerTask,myManagedPartitions.size());

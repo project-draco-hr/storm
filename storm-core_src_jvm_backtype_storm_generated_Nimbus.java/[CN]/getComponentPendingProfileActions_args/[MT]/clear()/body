@@ -1,0 +1,5 @@
+{
+  this.id=null;
+  this.component_id=null;
+  this.action=null;
+}
