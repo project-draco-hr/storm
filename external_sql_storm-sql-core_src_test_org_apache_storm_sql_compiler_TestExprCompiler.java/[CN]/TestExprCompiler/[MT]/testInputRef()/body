@@ -8,5 +8,5 @@
     ExprCompiler compiler=new ExprCompiler(pw,typeFactory);
     project.getChildExps().get(0).accept(compiler);
   }
-   assertEquals("int t0 = (int)(_data.get(0));\n",sw.toString());
+   assertThat(sw.toString(),containsString("(int)(_data.get(0));"));
 }

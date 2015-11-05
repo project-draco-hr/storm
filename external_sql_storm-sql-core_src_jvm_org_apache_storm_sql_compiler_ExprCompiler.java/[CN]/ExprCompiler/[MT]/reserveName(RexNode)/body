@@ -1,4 +1,0 @@
-{
-  String name="t" + ++nameCount;
-  return name;
-}

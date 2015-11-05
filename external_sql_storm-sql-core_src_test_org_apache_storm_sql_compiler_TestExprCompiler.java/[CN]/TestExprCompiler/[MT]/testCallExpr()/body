@@ -14,5 +14,8 @@
       res[i]=project.getChildExps().get(i).accept(compiler);
     }
    }
-  assertArrayEquals(new String[]{"1 > 2","3 + 5","1 - 1.0E0","3 + t0"},res);
+  assertThat(sw.get(0).toString(),containsString("1 > 2"));
+  assertThat(sw.get(1).toString(),containsString("3 + 5"));
+  assertThat(sw.get(2).toString(),containsString("1 - 1.0E0"));
+  assertThat(sw.get(3).toString(),containsString("3 +"));
 }
