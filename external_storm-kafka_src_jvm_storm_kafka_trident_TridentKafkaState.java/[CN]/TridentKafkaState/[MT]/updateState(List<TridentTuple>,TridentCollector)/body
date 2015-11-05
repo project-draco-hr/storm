@@ -4,7 +4,15 @@
     try {
       topic=topicSelector.getTopic(tuple);
       if (topic != null) {
-        producer.send(new ProducerRecord(topic,mapper.getKeyFromTuple(tuple),mapper.getMessageFromTuple(tuple))).get();
+        Future<RecordMetadata> result=producer.send(new ProducerRecord(topic,mapper.getKeyFromTuple(tuple),mapper.getMessageFromTuple(tuple)));
+        try {
+          result.get();
+        }
+ catch (        ExecutionException e) {
+          String errorMsg="Could not retrieve result for message with key = " + mapper.getKeyFromTuple(tuple) + " from topic = "+ topic;
+          LOG.error(errorMsg,e);
+          throw new FailedException(errorMsg,e);
+        }
       }
  else {
         LOG.warn("skipping key = " + mapper.getKeyFromTuple(tuple) + ", topic selector returned null.");
