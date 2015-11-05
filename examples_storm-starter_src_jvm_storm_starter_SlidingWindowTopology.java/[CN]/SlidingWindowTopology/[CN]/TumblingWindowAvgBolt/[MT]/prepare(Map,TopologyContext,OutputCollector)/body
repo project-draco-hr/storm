@@ -1,4 +1,3 @@
 {
   this.collector=collector;
-  this.rand=new Random();
 }

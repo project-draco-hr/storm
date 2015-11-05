@@ -1,5 +1,6 @@
 {
   this.duration=millis;
   this.handler=handler;
+  this.executor=Executors.newSingleThreadScheduledExecutor();
   start();
 }

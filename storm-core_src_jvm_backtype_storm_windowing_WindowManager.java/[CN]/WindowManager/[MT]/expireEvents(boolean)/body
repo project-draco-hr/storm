@@ -1,6 +1,7 @@
 {
   LOG.debug("Expire events, eviction policy {}",evictionPolicy);
   List<T> eventsToExpire=new ArrayList<>();
+  List<Event<T>> remaining=new ArrayList<>();
   try {
     lock.lock();
     Iterator<Event<T>> it=window.iterator();
@@ -13,7 +14,7 @@
  else       if (!fullScan) {
         break;
       }
- else       if (remaining != null) {
+ else {
         remaining.add(windowEvent);
       }
     }
@@ -25,4 +26,5 @@
   eventsSinceLastExpiry.set(0);
   LOG.debug("[{}] events expired from window.",eventsToExpire.size());
   windowLifecycleListener.onExpiry(eventsToExpire);
+  return remaining;
 }

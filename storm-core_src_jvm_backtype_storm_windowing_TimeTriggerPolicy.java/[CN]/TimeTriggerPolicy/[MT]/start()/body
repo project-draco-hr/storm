@@ -5,6 +5,5 @@
     }
   }
 ;
-  ex=Executors.newSingleThreadScheduledExecutor();
-  ex.scheduleAtFixedRate(task,duration,duration,TimeUnit.MILLISECONDS);
+  executor.scheduleAtFixedRate(task,duration,duration,TimeUnit.MILLISECONDS);
 }

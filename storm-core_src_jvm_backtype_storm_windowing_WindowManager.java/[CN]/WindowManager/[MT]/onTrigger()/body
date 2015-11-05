@@ -1,9 +1,9 @@
 {
-  List<Event<T>> windowEvents=new ArrayList<>();
+  List<Event<T>> windowEvents=null;
   List<T> expired=null;
   try {
     lock.lock();
-    expireEvents(true,windowEvents);
+    windowEvents=expireEvents(true);
     expired=new ArrayList<>(expiredEvents);
     expiredEvents.clear();
   }

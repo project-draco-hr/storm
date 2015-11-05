@@ -3,5 +3,5 @@
   bolt.prepare(stormConf,context,windowedOutputCollector);
   this.listener=newWindowLifecycleListener();
   this.windowManager=initWindowManager(listener,stormConf);
-  LOG.info("Initialized window manager {} ",this.windowManager);
+  LOG.debug("Initialized window manager {} ",this.windowManager);
 }

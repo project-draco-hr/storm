@@ -1,6 +1,4 @@
 {
   Utils.sleep(100);
-  Random rand=new Random();
-  Integer value=rand.nextInt(1000);
-  collector.emit(new Values(value));
+  collector.emit(new Values(rand.nextInt(1000)));
 }

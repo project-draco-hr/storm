@@ -1,9 +1,12 @@
 {
-  System.out.println("Events in current window: " + inputWindow.get().size());
-  for (  Tuple tuple : inputWindow.getNew()) {
+  List<Tuple> tuplesInWindow=inputWindow.get();
+  List<Tuple> newTuples=inputWindow.getNew();
+  List<Tuple> expiredTuples=inputWindow.getExpired();
+  LOG.debug("Events in current window: " + tuplesInWindow.size());
+  for (  Tuple tuple : newTuples) {
     sum+=(int)tuple.getValue(0);
   }
-  for (  Tuple tuple : inputWindow.getExpired()) {
+  for (  Tuple tuple : expiredTuples) {
     sum-=(int)tuple.getValue(0);
   }
   collector.emit(new Values(sum));
