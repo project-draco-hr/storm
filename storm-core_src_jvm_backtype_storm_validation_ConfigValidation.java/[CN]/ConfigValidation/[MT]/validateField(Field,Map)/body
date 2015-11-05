@@ -3,29 +3,34 @@
   if (annotations.length == 0) {
     LOG.warn("Field {} does not have validator annotation",field);
   }
-  for (  Annotation annotation : annotations) {
-    String type=annotation.annotationType().getName();
-    Class validatorClass=null;
-    Class<?>[] classes=ConfigValidationAnnotations.class.getDeclaredClasses();
-    for (    Class clazz : classes) {
-      if (clazz.getName().equals(type)) {
-        validatorClass=clazz;
-        break;
+  try {
+    for (    Annotation annotation : annotations) {
+      String type=annotation.annotationType().getName();
+      Class validatorClass=null;
+      Class<?>[] classes=ConfigValidationAnnotations.class.getDeclaredClasses();
+      for (      Class clazz : classes) {
+        if (clazz.getName().equals(type)) {
+          validatorClass=clazz;
+          break;
+        }
       }
-    }
-    if (validatorClass != null) {
-      Object v=validatorClass.cast(annotation);
-      String key=(String)field.get(null);
-      Class clazz=(Class)validatorClass.getMethod(ConfigValidationAnnotations.ValidatorParams.VALIDATOR_CLASS).invoke(v);
-      Validator o=null;
-      Map<String,Object> params=getParamsFromAnnotation(validatorClass,v);
-      if (hasConstructor(clazz,Map.class)) {
-        o=(Validator)clazz.getConstructor(Map.class).newInstance(params);
-      }
+      if (validatorClass != null) {
+        Object v=validatorClass.cast(annotation);
+        String key=(String)field.get(null);
+        Class clazz=(Class)validatorClass.getMethod(ConfigValidationAnnotations.ValidatorParams.VALIDATOR_CLASS).invoke(v);
+        Validator o=null;
+        Map<String,Object> params=getParamsFromAnnotation(validatorClass,v);
+        if (hasConstructor(clazz,Map.class)) {
+          o=(Validator)clazz.getConstructor(Map.class).newInstance(params);
+        }
  else {
-        o=(((Class<Validator>)clazz).newInstance());
+          o=(((Class<Validator>)clazz).newInstance());
+        }
+        o.validateField(field.getName(),conf.get(key));
       }
-      o.validateField(field.getName(),conf.get(key));
     }
+  }
+ catch (  NoSuchMethodException|IllegalAccessException|InstantiationException|InvocationTargetException e) {
+    throw new RuntimeException(e);
   }
 }
