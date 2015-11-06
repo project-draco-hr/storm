@@ -1,0 +1,10 @@
+{
+  try {
+    MessageBatch mb=new MessageBatch(1);
+    mb.add(new TaskMessage(-1,_ser.serialize(Arrays.asList((Object)taskToLoad))));
+    allChannels.write(mb);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}
