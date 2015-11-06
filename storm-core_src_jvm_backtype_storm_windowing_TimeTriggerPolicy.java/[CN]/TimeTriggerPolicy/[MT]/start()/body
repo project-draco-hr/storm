@@ -1,9 +1,0 @@
-{
-  Runnable task=new Runnable(){
-    @Override public void run(){
-      handler.onTrigger();
-    }
-  }
-;
-  executor.scheduleAtFixedRate(task,duration,duration,TimeUnit.MILLISECONDS);
-}
