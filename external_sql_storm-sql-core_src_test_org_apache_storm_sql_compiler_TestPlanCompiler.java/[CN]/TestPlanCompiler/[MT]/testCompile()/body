@@ -1,6 +1,6 @@
 {
   String sql="SELECT ID + 1 FROM FOO WHERE ID > 2";
-  TestUtils.CalciteState state=TestUtils.sqlOverDummyTable(sql);
+  TestCompilerUtils.CalciteState state=TestCompilerUtils.sqlOverDummyTable(sql);
   PlanCompiler compiler=new PlanCompiler(typeFactory);
   AbstractValuesProcessor proc=compiler.compile(state.tree);
   Map<String,DataSource> data=new HashMap<>();

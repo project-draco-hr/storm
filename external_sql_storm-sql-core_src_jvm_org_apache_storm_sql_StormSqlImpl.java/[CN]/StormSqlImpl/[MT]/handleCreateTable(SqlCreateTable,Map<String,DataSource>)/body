@@ -1,11 +1,13 @@
 {
   TableBuilderInfo builder=new TableBuilderInfo(typeFactory);
-  List<Map.Entry<String,Class<?>>> fields=new ArrayList<>();
+  List<FieldInfo> fields=new ArrayList<>();
   for (  ColumnDefinition col : n.fieldList()) {
     builder.field(col.name(),col.type());
     RelDataType dataType=col.type().deriveType(typeFactory);
     Class<?> javaType=(Class<?>)typeFactory.getJavaClass(dataType);
-    fields.add(new AbstractMap.SimpleImmutableEntry<String,Class<?>>(col.name(),javaType));
+    ColumnConstraint constraint=col.constraint();
+    boolean isPrimary=constraint != null && constraint instanceof ColumnConstraint.PrimaryKey;
+    fields.add(new FieldInfo(col.name(),javaType,isPrimary));
   }
   Table table=builder.build();
   schema.add(n.tableName(),table);

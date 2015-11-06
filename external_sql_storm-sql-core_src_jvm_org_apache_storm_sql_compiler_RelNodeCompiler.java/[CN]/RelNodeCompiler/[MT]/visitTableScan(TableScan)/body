@@ -1,6 +1,4 @@
 {
-  String tableName=Joiner.on('_').join(scan.getTable().getQualifiedName());
-  referredTables.add(tableName);
   beginStage(scan);
   pw.print("    ctx.emit(_data);\n");
   endStage();

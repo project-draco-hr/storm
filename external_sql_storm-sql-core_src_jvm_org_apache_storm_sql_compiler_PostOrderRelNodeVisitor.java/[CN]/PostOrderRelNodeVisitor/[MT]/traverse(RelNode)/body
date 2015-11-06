@@ -32,6 +32,9 @@
  else   if (n instanceof Sort) {
     return visitSort((Sort)n);
   }
+ else   if (n instanceof TableModify) {
+    return visitTableModify((TableModify)n);
+  }
  else   if (n instanceof TableScan) {
     return visitTableScan((TableScan)n);
   }
