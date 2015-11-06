@@ -3,23 +3,15 @@
     try {
       AtomicReference<Object> mo=_buffer.get(curr);
       Object o=mo.getAndSet(null);
-      if (o == null) {
-        LOG.error("NULL found in {}:{}",this.getName(),cursor);
-      }
- else       if (o == FLUSH_CACHE) {
-        Object c=null;
-        while (true) {
-          c=_cache.poll();
-          if (c == null)           break;
- else           handler.onEvent(c,curr,true);
-        }
-      }
- else       if (o == INTERRUPT) {
+      if (o == INTERRUPT) {
         throw new InterruptedException("Disruptor processing interrupted");
+      }
+ else       if (o == null) {
+        LOG.error("NULL found in {}:{}",this.getName(),cursor);
       }
  else {
         handler.onEvent(o,curr,curr == cursor);
-        if (_enableBackpressure && _cb != null && _metrics.writePos() - curr <= _lowWaterMark) {
+        if (_enableBackpressure && _cb != null && (_metrics.writePos() - curr + _overflowCount.get()) <= _lowWaterMark) {
           try {
             if (_throttleOn) {
               _throttleOn=false;

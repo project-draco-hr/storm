@@ -1,5 +1,0 @@
-{
-  consumerStartedFlag=true;
-  writeLock.lock();
-  writeLock.unlock();
-}

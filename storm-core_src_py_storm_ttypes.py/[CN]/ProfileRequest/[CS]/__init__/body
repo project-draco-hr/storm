@@ -1,0 +1,4 @@
+def __init__(self, nodeInfo=None, action=None, time_stamp=None):
+    self.nodeInfo = nodeInfo
+    self.action = action
+    self.time_stamp = time_stamp

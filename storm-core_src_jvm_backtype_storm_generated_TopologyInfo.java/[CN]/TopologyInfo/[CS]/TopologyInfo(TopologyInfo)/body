@@ -49,4 +49,10 @@
     this.owner=other.owner;
   }
   this.replication_count=other.replication_count;
+  this.requested_memonheap=other.requested_memonheap;
+  this.requested_memoffheap=other.requested_memoffheap;
+  this.requested_cpu=other.requested_cpu;
+  this.assigned_memonheap=other.assigned_memonheap;
+  this.assigned_memoffheap=other.assigned_memoffheap;
+  this.assigned_cpu=other.assigned_cpu;
 }

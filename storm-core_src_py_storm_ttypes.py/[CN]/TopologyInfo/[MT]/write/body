@@ -57,5 +57,29 @@ def write(self, oprot):
         oprot.writeFieldBegin('replication_count', TType.I32, 515)
         oprot.writeI32(self.replication_count)
         oprot.writeFieldEnd()
+    if (self.requested_memonheap is not None):
+        oprot.writeFieldBegin('requested_memonheap', TType.DOUBLE, 521)
+        oprot.writeDouble(self.requested_memonheap)
+        oprot.writeFieldEnd()
+    if (self.requested_memoffheap is not None):
+        oprot.writeFieldBegin('requested_memoffheap', TType.DOUBLE, 522)
+        oprot.writeDouble(self.requested_memoffheap)
+        oprot.writeFieldEnd()
+    if (self.requested_cpu is not None):
+        oprot.writeFieldBegin('requested_cpu', TType.DOUBLE, 523)
+        oprot.writeDouble(self.requested_cpu)
+        oprot.writeFieldEnd()
+    if (self.assigned_memonheap is not None):
+        oprot.writeFieldBegin('assigned_memonheap', TType.DOUBLE, 524)
+        oprot.writeDouble(self.assigned_memonheap)
+        oprot.writeFieldEnd()
+    if (self.assigned_memoffheap is not None):
+        oprot.writeFieldBegin('assigned_memoffheap', TType.DOUBLE, 525)
+        oprot.writeDouble(self.assigned_memoffheap)
+        oprot.writeFieldEnd()
+    if (self.assigned_cpu is not None):
+        oprot.writeFieldBegin('assigned_cpu', TType.DOUBLE, 526)
+        oprot.writeDouble(self.assigned_cpu)
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

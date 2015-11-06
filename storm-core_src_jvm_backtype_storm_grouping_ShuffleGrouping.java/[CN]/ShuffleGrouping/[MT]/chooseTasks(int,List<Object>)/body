@@ -1,0 +1,15 @@
+{
+  int rightNow;
+  int size=choices.size();
+  while (true) {
+    rightNow=current.incrementAndGet();
+    if (rightNow < size) {
+      return choices.get(rightNow);
+    }
+ else     if (rightNow == size) {
+      current.set(0);
+      Collections.shuffle(choices,random);
+      return choices.get(0);
+    }
+  }
+}

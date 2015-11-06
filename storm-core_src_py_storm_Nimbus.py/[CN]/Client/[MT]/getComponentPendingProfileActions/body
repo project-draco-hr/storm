@@ -1,0 +1,4 @@
+def getComponentPendingProfileActions(self, id, component_id, action):
+    '\n    Parameters:\n     - id\n     - component_id\n     - action\n    '
+    self.send_getComponentPendingProfileActions(id, component_id, action)
+    return self.recv_getComponentPendingProfileActions()

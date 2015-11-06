@@ -1,5 +1,5 @@
 {
-  Map<String,List<FixedTuple>> ret=new HashMap<String,List<FixedTuple>>(emitted_tuples.get(_name));
+  Map<String,List<FixedTuple>> ret=new HashMap<>(emitted_tuples.get(_name));
   emitted_tuples.get(_name).clear();
   return ret;
 }

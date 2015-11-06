@@ -1,4 +1,6 @@
 {
+  Validate.notEmpty(tableName);
+  Validate.notNull(connectionProvider);
   int queryTimeoutSecs=30;
   connectionProvider.prepare();
   JdbcClient client=new JdbcClient(connectionProvider,queryTimeoutSecs);

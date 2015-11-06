@@ -1,0 +1,6 @@
+{
+  if (this.success == null) {
+    this.success=new ArrayList<ProfileRequest>();
+  }
+  this.success.add(elem);
+}

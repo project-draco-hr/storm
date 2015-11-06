@@ -9,6 +9,8 @@
   processMap.put("setLogConfig",new setLogConfig());
   processMap.put("getLogConfig",new getLogConfig());
   processMap.put("debug",new debug());
+  processMap.put("setWorkerProfiler",new setWorkerProfiler());
+  processMap.put("getComponentPendingProfileActions",new getComponentPendingProfileActions());
   processMap.put("uploadNewCredentials",new uploadNewCredentials());
   processMap.put("beginFileUpload",new beginFileUpload());
   processMap.put("uploadChunk",new uploadChunk());

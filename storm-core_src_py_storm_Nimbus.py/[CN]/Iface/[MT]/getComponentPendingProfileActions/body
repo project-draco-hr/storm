@@ -1,0 +1,3 @@
+def getComponentPendingProfileActions(self, id, component_id, action):
+    '\n    Parameters:\n     - id\n     - component_id\n     - action\n    '
+    pass

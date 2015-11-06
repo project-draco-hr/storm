@@ -7,29 +7,31 @@
         throw new IllegalArgumentException("Command not found in bolt message: " + shellMsg);
       }
       setHeartbeat();
-      if (command.equals("ack")) {
+switch (command) {
+case "ack":
         handleAck(shellMsg.getId());
-      }
- else       if (command.equals("fail")) {
-        handleFail(shellMsg.getId());
-      }
- else       if (command.equals("error")) {
-        handleError(shellMsg.getMsg());
-      }
- else       if (command.equals("log")) {
-        handleLog(shellMsg);
-      }
- else       if (command.equals("emit")) {
-        handleEmit(shellMsg);
-      }
- else       if (command.equals("metrics")) {
-        handleMetrics(shellMsg);
-      }
-    }
- catch (    InterruptedException e) {
-    }
-catch (    Throwable t) {
-      die(t);
-    }
-  }
+      break;
+case "fail":
+    handleFail(shellMsg.getId());
+  break;
+case "error":
+handleError(shellMsg.getMsg());
+break;
+case "log":
+handleLog(shellMsg);
+break;
+case "emit":
+handleEmit(shellMsg);
+break;
+case "metrics":
+handleMetrics(shellMsg);
+break;
+}
+}
+ catch (InterruptedException e) {
+}
+catch (Throwable t) {
+die(t);
+}
+}
 }

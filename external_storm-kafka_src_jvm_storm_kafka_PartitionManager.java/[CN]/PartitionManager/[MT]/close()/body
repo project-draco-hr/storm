@@ -1,4 +1,4 @@
 {
   commit();
-  _connections.unregister(_partition.host,_partition.partition);
+  _connections.unregister(_partition.host,_partition.topic,_partition.partition);
 }

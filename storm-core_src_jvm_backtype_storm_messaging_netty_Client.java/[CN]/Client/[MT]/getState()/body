@@ -1,5 +1,5 @@
 {
-  LOG.info("Getting metrics for client connection to {}",dstAddressPrefixedName);
+  LOG.debug("Getting metrics for client connection to {}",dstAddressPrefixedName);
   HashMap<String,Object> ret=new HashMap<String,Object>();
   ret.put("reconnects",totalConnectionAttempts.getAndSet(0));
   ret.put("sent",messagesSent.getAndSet(0));

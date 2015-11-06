@@ -1,5 +1,5 @@
 {
-  List<Tuple> anchors=new ArrayList<Tuple>();
+  List<Tuple> anchors=new ArrayList<>();
   List<String> recvAnchors=shellMsg.getAnchors();
   if (recvAnchors != null) {
     for (    String anchor : recvAnchors) {

@@ -1,0 +1,22 @@
+{
+  if (that == null)   return false;
+  boolean this_present_id=true && this.is_set_id();
+  boolean that_present_id=true && that.is_set_id();
+  if (this_present_id || that_present_id) {
+    if (!(this_present_id && that_present_id))     return false;
+    if (!this.id.equals(that.id))     return false;
+  }
+  boolean this_present_component_id=true && this.is_set_component_id();
+  boolean that_present_component_id=true && that.is_set_component_id();
+  if (this_present_component_id || that_present_component_id) {
+    if (!(this_present_component_id && that_present_component_id))     return false;
+    if (!this.component_id.equals(that.component_id))     return false;
+  }
+  boolean this_present_action=true && this.is_set_action();
+  boolean that_present_action=true && that.is_set_action();
+  if (this_present_action || that_present_action) {
+    if (!(this_present_action && that_present_action))     return false;
+    if (!this.action.equals(that.action))     return false;
+  }
+  return true;
+}

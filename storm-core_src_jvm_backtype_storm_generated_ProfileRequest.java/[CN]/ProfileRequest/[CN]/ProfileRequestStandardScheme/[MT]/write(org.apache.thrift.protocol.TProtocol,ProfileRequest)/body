@@ -1,0 +1,21 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.nodeInfo != null) {
+    oprot.writeFieldBegin(NODE_INFO_FIELD_DESC);
+    struct.nodeInfo.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  if (struct.action != null) {
+    oprot.writeFieldBegin(ACTION_FIELD_DESC);
+    oprot.writeI32(struct.action.getValue());
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_time_stamp()) {
+    oprot.writeFieldBegin(TIME_STAMP_FIELD_DESC);
+    oprot.writeI64(struct.time_stamp);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

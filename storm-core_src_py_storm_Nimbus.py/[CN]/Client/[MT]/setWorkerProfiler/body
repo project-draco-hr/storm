@@ -1,0 +1,4 @@
+def setWorkerProfiler(self, id, profileRequest):
+    '\n    Parameters:\n     - id\n     - profileRequest\n    '
+    self.send_setWorkerProfiler(id, profileRequest)
+    self.recv_setWorkerProfiler()

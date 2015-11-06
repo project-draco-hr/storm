@@ -1,10 +1,5 @@
 {
-  try {
-    for (long i=0; i < _max; i++) {
-      queue.publish(i,false);
-    }
-  }
- catch (  InsufficientCapacityException e) {
-    return;
+  for (long i=0; i < _max && !(Thread.currentThread().isInterrupted()); i++) {
+    queue.publish(i);
   }
 }

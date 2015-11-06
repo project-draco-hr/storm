@@ -1,0 +1,3 @@
+def setWorkerProfiler(self, id, profileRequest):
+    '\n    Parameters:\n     - id\n     - profileRequest\n    '
+    pass

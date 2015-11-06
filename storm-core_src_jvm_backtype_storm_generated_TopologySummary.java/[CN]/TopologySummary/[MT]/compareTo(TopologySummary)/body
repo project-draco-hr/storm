@@ -103,5 +103,65 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_requested_memonheap()).compareTo(other.is_set_requested_memonheap());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_requested_memonheap()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.requested_memonheap,other.requested_memonheap);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_requested_memoffheap()).compareTo(other.is_set_requested_memoffheap());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_requested_memoffheap()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.requested_memoffheap,other.requested_memoffheap);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_requested_cpu()).compareTo(other.is_set_requested_cpu());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_requested_cpu()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.requested_cpu,other.requested_cpu);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_assigned_memonheap()).compareTo(other.is_set_assigned_memonheap());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_assigned_memonheap()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.assigned_memonheap,other.assigned_memonheap);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_assigned_memoffheap()).compareTo(other.is_set_assigned_memoffheap());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_assigned_memoffheap()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.assigned_memoffheap,other.assigned_memoffheap);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_assigned_cpu()).compareTo(other.is_set_assigned_cpu());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_assigned_cpu()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.assigned_cpu,other.assigned_cpu);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

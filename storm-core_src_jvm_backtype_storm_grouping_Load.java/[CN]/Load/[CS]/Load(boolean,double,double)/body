@@ -1,0 +1,5 @@
+{
+  this.hasMetrics=hasMetrics;
+  this.boltLoad=boltLoad;
+  this.connectionLoad=connectionLoad;
+}
