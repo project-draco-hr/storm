@@ -1,0 +1,9 @@
+{
+  if (_future != null) {
+    _future.cancel(true);
+    _future=null;
+synchronized (TIMER) {
+      TIMER.setCorePoolSize(TIMER.getCorePoolSize() - 1);
+    }
+  }
+}

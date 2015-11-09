@@ -13,6 +13,6 @@
   _buffer.addGatingSequences(_consumer);
   _metrics=new QueueMetrics();
   _inputBatchSize=Math.max(1,Math.min(inputBatchSize,size / 2));
-  _flusher=new FlusherThread(Math.max(flushInterval,1),_queueName);
+  _flusher=new Flusher(Math.max(flushInterval,1),_queueName);
   _flusher.start();
 }
