@@ -9,6 +9,12 @@
     sb.append(this.supervisors);
   }
   first=false;
+  if (is_set_nimbus_uptime_secs()) {
+    if (!first)     sb.append(", ");
+    sb.append("nimbus_uptime_secs:");
+    sb.append(this.nimbus_uptime_secs);
+    first=false;
+  }
   if (!first)   sb.append(", ");
   sb.append("topologies:");
   if (this.topologies == null) {

@@ -3,6 +3,9 @@
   boolean present_supervisors=true && (is_set_supervisors());
   list.add(present_supervisors);
   if (present_supervisors)   list.add(supervisors);
+  boolean present_nimbus_uptime_secs=true && (is_set_nimbus_uptime_secs());
+  list.add(present_nimbus_uptime_secs);
+  if (present_nimbus_uptime_secs)   list.add(nimbus_uptime_secs);
   boolean present_topologies=true && (is_set_topologies());
   list.add(present_topologies);
   if (present_topologies)   list.add(topologies);
