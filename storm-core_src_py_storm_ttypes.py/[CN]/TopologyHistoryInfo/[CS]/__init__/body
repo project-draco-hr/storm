@@ -1,0 +1,2 @@
+def __init__(self, topo_ids=None):
+    self.topo_ids = topo_ids

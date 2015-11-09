@@ -1,0 +1,7 @@
+{
+switch (field) {
+case TOPO_HISTORY:
+    return get_topo_history();
+}
+throw new IllegalStateException();
+}

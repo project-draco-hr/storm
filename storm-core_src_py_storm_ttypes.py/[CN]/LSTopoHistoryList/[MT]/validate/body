@@ -1,0 +1,4 @@
+def validate(self):
+    if (self.topo_history is None):
+        raise TProtocol.TProtocolException(message='Required field topo_history is unset!')
+    return

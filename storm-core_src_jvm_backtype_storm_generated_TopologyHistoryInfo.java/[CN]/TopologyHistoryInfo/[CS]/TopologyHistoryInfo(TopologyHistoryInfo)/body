@@ -1,0 +1,6 @@
+{
+  if (other.is_set_topo_ids()) {
+    List<String> __this__topo_ids=new ArrayList<String>(other.topo_ids);
+    this.topo_ids=__this__topo_ids;
+  }
+}

@@ -1,0 +1,4 @@
+def getTopologyHistory(self, user):
+    '\n    Parameters:\n     - user\n    '
+    self.send_getTopologyHistory(user)
+    return self.recv_getTopologyHistory()
