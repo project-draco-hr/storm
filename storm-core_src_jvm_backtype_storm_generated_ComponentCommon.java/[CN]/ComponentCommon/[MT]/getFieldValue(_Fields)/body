@@ -5,7 +5,7 @@ case INPUTS:
 case STREAMS:
   return get_streams();
 case PARALLELISM_HINT:
-return Integer.valueOf(get_parallelism_hint());
+return get_parallelism_hint();
 case JSON_CONF:
 return get_json_conf();
 }
