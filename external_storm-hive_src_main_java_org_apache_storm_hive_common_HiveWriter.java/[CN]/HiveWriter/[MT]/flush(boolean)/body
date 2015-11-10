@@ -1,21 +1,11 @@
 {
-  if (heartBeatNeeded) {
-    heartBeatNeeded=false;
-    heartBeat();
-  }
-  lastUsed=System.currentTimeMillis();
+  if (totalRecords <= 0)   return;
   try {
-    commitTxn();
-    if (txnBatch.remainingTransactions() == 0) {
-      closeTxnBatch();
-      txnBatch=null;
-      if (rollToNext) {
-        txnBatch=nextTxnBatch(recordWriter);
-      }
-    }
- else     if (rollToNext) {
-      LOG.debug("Switching to next Txn for {}",endPoint);
-      txnBatch.beginNextTransaction();
+synchronized (txnBatchLock) {
+      commitTxn();
+      nextTxn(rollToNext);
+      totalRecords=0;
+      lastUsed=System.currentTimeMillis();
     }
   }
  catch (  StreamingException e) {

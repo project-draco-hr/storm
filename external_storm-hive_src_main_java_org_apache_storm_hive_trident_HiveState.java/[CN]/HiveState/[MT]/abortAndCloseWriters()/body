@@ -1,12 +1,10 @@
 {
   try {
+    sendHeartBeat=false;
     abortAllWriters();
     closeAllWriters();
   }
- catch (  InterruptedException e) {
-    LOG.warn("unable to close hive connections. ",e);
-  }
-catch (  IOException ie) {
+ catch (  Exception ie) {
     LOG.warn("unable to close hive connections. ",ie);
   }
 }

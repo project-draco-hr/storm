@@ -5,6 +5,6 @@
   bolt.prepare(config,null,new OutputCollector(collector));
   Tuple mockTick=MockTupleHelpers.mockTickTuple();
   bolt.execute(mockTick);
-  verify(collector).ack(mockTick);
+  verifyZeroInteractions(collector);
   bolt.cleanup();
 }

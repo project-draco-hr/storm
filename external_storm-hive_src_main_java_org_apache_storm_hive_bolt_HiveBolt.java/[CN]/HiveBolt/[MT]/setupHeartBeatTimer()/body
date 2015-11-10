@@ -2,8 +2,16 @@
   if (options.getHeartBeatInterval() > 0) {
     heartBeatTimer.schedule(new TimerTask(){
       @Override public void run(){
-        timeToSendHeartBeat.set(true);
-        setupHeartBeatTimer();
+        try {
+          if (sendHeartBeat.get()) {
+            LOG.debug("Start sending heartbeat on all writers");
+            sendHeartBeatOnAllWriters();
+            setupHeartBeatTimer();
+          }
+        }
+ catch (        Exception e) {
+          LOG.warn("Failed to heartbeat on HiveWriter ",e);
+        }
       }
     }
 ,options.getHeartBeatInterval() * 1000);

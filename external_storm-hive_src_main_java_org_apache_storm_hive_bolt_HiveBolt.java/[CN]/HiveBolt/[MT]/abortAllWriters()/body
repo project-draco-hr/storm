@@ -1,0 +1,10 @@
+{
+  for (  Entry<HiveEndPoint,HiveWriter> entry : allWriters.entrySet()) {
+    try {
+      entry.getValue().abort();
+    }
+ catch (    Exception e) {
+      LOG.error("Failed to abort hive transaction batch, HiveEndPoint " + entry.getValue() + " due to exception ",e);
+    }
+  }
+}

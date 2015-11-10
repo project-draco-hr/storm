@@ -1,10 +1,10 @@
 {
-  String[] partNames1={"date"};
+  String[] partNames1={"dt"};
   String timeFormat="yyyy/MM/dd";
   HiveSetupUtil.dropDB(conf,dbName1);
   HiveSetupUtil.createDbAndTable(conf,dbName1,tblName1,null,colNames,colTypes,partNames1,dbLocation);
   DelimitedRecordHiveMapper mapper=new DelimitedRecordHiveMapper().withColumnFields(new Fields(colNames)).withTimeAsPartitionField(timeFormat);
-  HiveOptions hiveOptions=new HiveOptions(metaStoreURI,dbName1,tblName1,mapper).withTxnsPerBatch(2).withBatchSize(1);
+  HiveOptions hiveOptions=new HiveOptions(metaStoreURI,dbName1,tblName1,mapper).withTxnsPerBatch(2).withBatchSize(1).withMaxOpenConnections(1);
   bolt=new HiveBolt(hiveOptions);
   bolt.prepare(config,null,collector);
   Integer id=100;

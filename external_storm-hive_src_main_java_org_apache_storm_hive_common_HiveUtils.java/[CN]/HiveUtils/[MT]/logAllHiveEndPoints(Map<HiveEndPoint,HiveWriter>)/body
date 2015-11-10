@@ -1,0 +1,5 @@
+{
+  for (  Map.Entry<HiveEndPoint,HiveWriter> entry : allWriters.entrySet()) {
+    LOG.info("cached writers {} ",entry.getValue());
+  }
+}
