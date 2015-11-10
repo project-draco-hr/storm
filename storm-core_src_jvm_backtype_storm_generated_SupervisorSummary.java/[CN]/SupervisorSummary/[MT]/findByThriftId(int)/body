@@ -14,6 +14,10 @@ case 6:
 return VERSION;
 case 7:
 return TOTAL_RESOURCES;
+case 8:
+return USED_MEM;
+case 9:
+return USED_CPU;
 default :
 return null;
 }
