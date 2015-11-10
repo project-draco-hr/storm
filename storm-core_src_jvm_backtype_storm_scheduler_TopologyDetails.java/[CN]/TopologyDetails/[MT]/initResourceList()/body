@@ -1,5 +1,5 @@
 {
-  _resourceList=new HashMap<ExecutorDetails,Map<String,Double>>();
+  _resourceList=new HashMap<>();
   if (this.topology.get_bolts() != null) {
     for (    Map.Entry<String,Bolt> bolt : this.topology.get_bolts().entrySet()) {
       Map<String,Double> topology_resources=ResourceUtils.parseResources(bolt.getValue().get_common().get_json_conf());
@@ -26,7 +26,7 @@
     LOG.warn("Topology " + topologyId + " does not seem to have any spouts!");
   }
   for (  ExecutorDetails exec : this.getExecutors()) {
-    if (_resourceList.containsKey(exec) == false) {
+    if (!_resourceList.containsKey(exec)) {
       LOG.debug("Scheduling {} {} with memory requirement as 'on heap' - {} and 'off heap' - {} and CPU requirement as {}",this.getExecutorToComponent().get(exec),exec,this.topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB),this.topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB),this.topologyConf.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT));
       this.addDefaultResforExec(exec);
     }

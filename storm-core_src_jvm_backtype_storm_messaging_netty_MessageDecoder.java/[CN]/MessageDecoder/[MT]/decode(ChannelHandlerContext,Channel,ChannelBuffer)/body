@@ -3,7 +3,7 @@
   if (available < 2) {
     return null;
   }
-  List<Object> ret=new ArrayList<Object>();
+  List<Object> ret=new ArrayList<>();
   while (available >= 2) {
     buf.markReaderIndex();
     short code=buf.readShort();
@@ -33,7 +33,6 @@
       ChannelBuffer payload=buf.readBytes(length);
       return new SaslMessageToken(payload.array());
     }
-    short task=code;
     if (available < 4) {
       buf.resetReaderIndex();
       break;
@@ -41,7 +40,7 @@
     int length=buf.readInt();
     available-=4;
     if (length <= 0) {
-      ret.add(new TaskMessage(task,null));
+      ret.add(new TaskMessage(code,null));
       break;
     }
     if (available < length) {
@@ -50,7 +49,7 @@
     }
     available-=length;
     ChannelBuffer payload=buf.readBytes(length);
-    ret.add(new TaskMessage(task,payload.array()));
+    ret.add(new TaskMessage(code,payload.array()));
   }
   if (ret.size() == 0) {
     return null;

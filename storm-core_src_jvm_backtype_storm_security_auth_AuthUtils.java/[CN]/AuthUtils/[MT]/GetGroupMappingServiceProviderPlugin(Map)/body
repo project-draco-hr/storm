@@ -1,5 +1,5 @@
 {
-  IGroupMappingServiceProvider gmsp=null;
+  IGroupMappingServiceProvider gmsp;
   try {
     String gmsp_klassName=(String)storm_conf.get(Config.STORM_GROUP_MAPPING_SERVICE_PROVIDER_PLUGIN);
     Class klass=Class.forName(gmsp_klassName);

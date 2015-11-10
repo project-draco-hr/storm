@@ -1,5 +1,5 @@
 {
-  userImpersonationACL=new HashMap<String,ImpersonationACL>();
+  userImpersonationACL=new HashMap<>();
   Map<String,Map<String,List<String>>> userToHostAndGroup=(Map<String,Map<String,List<String>>>)conf.get(Config.NIMBUS_IMPERSONATION_ACL);
   if (userToHostAndGroup != null) {
     for (    Map.Entry<String,Map<String,List<String>>> entry : userToHostAndGroup.entrySet()) {

@@ -1,4 +1,3 @@
 {
-  if (_server == null)   return false;
-  return _server.isServing();
+  return _server != null && _server.isServing();
 }

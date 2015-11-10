@@ -1,5 +1,5 @@
 {
-  ITransportPlugin transportPlugin=null;
+  ITransportPlugin transportPlugin;
   try {
     String transport_plugin_klassName=type.getTransportPlugin(storm_conf);
     Class klass=Class.forName(transport_plugin_klassName);

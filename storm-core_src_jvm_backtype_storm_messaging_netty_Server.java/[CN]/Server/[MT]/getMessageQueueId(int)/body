@@ -8,7 +8,7 @@ synchronized (this) {
         if (roundRobinQueueId == queueCount) {
           roundRobinQueueId=0;
         }
-        HashMap<Integer,Integer> newRef=new HashMap<Integer,Integer>(taskToQueueId);
+        HashMap<Integer,Integer> newRef=new HashMap<>(taskToQueueId);
         newRef.put(task,queueId);
         taskToQueueId=newRef;
       }

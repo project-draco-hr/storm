@@ -4,9 +4,9 @@
     return null;
   }
   Collection<ExecutorDetails> unassignedExecutors=_cluster.getUnassignedExecutors(td);
-  Map<WorkerSlot,Collection<ExecutorDetails>> schedulerAssignmentMap=new HashMap<WorkerSlot,Collection<ExecutorDetails>>();
+  Map<WorkerSlot,Collection<ExecutorDetails>> schedulerAssignmentMap=new HashMap<>();
   LOG.debug("ExecutorsNeedScheduling: {}",unassignedExecutors);
-  Collection<ExecutorDetails> scheduledTasks=new ArrayList<ExecutorDetails>();
+  Collection<ExecutorDetails> scheduledTasks=new ArrayList<>();
   List<Component> spouts=this.getSpouts(_topologies,td);
   if (spouts.size() == 0) {
     LOG.error("Cannot find a Spout!");
@@ -14,7 +14,7 @@
   }
   Queue<Component> ordered__Component_list=bfs(_topologies,td,spouts);
   Map<Integer,List<ExecutorDetails>> priorityToExecutorMap=getPriorityToExecutorDetailsListMap(ordered__Component_list,unassignedExecutors);
-  Collection<ExecutorDetails> executorsNotScheduled=new HashSet<ExecutorDetails>(unassignedExecutors);
+  Collection<ExecutorDetails> executorsNotScheduled=new HashSet<>(unassignedExecutors);
   Integer longestPriorityListSize=this.getLongestPriorityListSize(priorityToExecutorMap);
   for (int i=0; i < longestPriorityListSize; i++) {
     for (    Entry<Integer,List<ExecutorDetails>> entry : priorityToExecutorMap.entrySet()) {
@@ -46,7 +46,7 @@
     WorkerSlot targetSlot=this.findWorkerForExec(exec,td,schedulerAssignmentMap);
     if (targetSlot != null) {
       RAS_Node targetNode=this.idToNode(targetSlot.getNodeId());
-      if (schedulerAssignmentMap.containsKey(targetSlot) == false) {
+      if (!schedulerAssignmentMap.containsKey(targetSlot)) {
         schedulerAssignmentMap.put(targetSlot,new LinkedList<ExecutorDetails>());
       }
       schedulerAssignmentMap.get(targetSlot).add(exec);

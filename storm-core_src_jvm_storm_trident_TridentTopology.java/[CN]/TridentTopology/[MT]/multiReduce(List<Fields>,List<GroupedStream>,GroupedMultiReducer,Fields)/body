@@ -1,7 +1,7 @@
 {
-  List<Fields> fullInputFields=new ArrayList<Fields>();
-  List<Stream> streams=new ArrayList<Stream>();
-  List<Fields> fullGroupFields=new ArrayList<Fields>();
+  List<Fields> fullInputFields=new ArrayList<>();
+  List<Stream> streams=new ArrayList<>();
+  List<Fields> fullGroupFields=new ArrayList<>();
   for (int i=0; i < groupedStreams.size(); i++) {
     GroupedStream gs=groupedStreams.get(i);
     Fields groupFields=gs.getGroupFields();

@@ -1,5 +1,5 @@
 {
-  Map<Node,String> ret=new HashMap();
+  Map<Node,String> ret=new HashMap<>();
   int ctr=0;
   for (  SpoutNode n : spoutNodes) {
     if (n.type == SpoutNode.SpoutType.BATCH) {

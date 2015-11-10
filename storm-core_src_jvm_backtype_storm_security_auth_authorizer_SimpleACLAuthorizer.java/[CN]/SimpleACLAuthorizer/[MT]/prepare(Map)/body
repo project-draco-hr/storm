@@ -1,8 +1,8 @@
 {
-  _admins=new HashSet<String>();
-  _supervisors=new HashSet<String>();
-  _nimbusUsers=new HashSet<String>();
-  _nimbusGroups=new HashSet<String>();
+  _admins=new HashSet<>();
+  _supervisors=new HashSet<>();
+  _nimbusUsers=new HashSet<>();
+  _nimbusGroups=new HashSet<>();
   if (conf.containsKey(Config.NIMBUS_ADMINS)) {
     _admins.addAll((Collection<String>)conf.get(Config.NIMBUS_ADMINS));
   }
