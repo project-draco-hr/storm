@@ -1,6 +1,0 @@
-{
-  for (  ThreadLocalBatcher batcher : _batchers.values()) {
-    batcher.forceBatch();
-    batcher.flush(true);
-  }
-}

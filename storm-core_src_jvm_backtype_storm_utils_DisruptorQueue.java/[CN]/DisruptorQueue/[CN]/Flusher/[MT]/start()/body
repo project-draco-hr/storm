@@ -1,6 +1,3 @@
 {
-  _future=TIMER.scheduleWithFixedDelay(this,_flushInterval,_flushInterval,TimeUnit.MILLISECONDS);
-synchronized (TIMER) {
-    TIMER.setCorePoolSize(TIMER.getCorePoolSize() + 1);
-  }
+  FLUSHER.start(this,_flushInterval);
 }

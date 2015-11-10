@@ -1,0 +1,13 @@
+{
+  long at;
+  if (block) {
+    at=_buffer.next();
+  }
+ else {
+    at=_buffer.tryNext();
+  }
+  AtomicReference<Object> m=_buffer.get(at);
+  m.set(obj);
+  _buffer.publish(at);
+  _metrics.notifyArrivals(1);
+}

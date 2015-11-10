@@ -1,0 +1,11 @@
+{
+  try {
+    ArrayList<Flusher> tasks=_pendingFlush.get(flushInterval);
+    if (tasks != null) {
+      _exec.invokeAll(tasks);
+    }
+  }
+ catch (  Exception e) {
+    LOG.error("Could not invoke all ",e);
+  }
+}
