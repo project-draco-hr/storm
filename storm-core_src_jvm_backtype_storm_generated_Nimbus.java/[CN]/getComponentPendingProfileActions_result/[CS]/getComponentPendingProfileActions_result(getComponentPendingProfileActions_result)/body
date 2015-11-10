@@ -1,0 +1,9 @@
+{
+  if (other.is_set_success()) {
+    List<ProfileRequest> __this__success=new ArrayList<ProfileRequest>(other.success.size());
+    for (    ProfileRequest other_element : other.success) {
+      __this__success.add(new ProfileRequest(other_element));
+    }
+    this.success=__this__success;
+  }
+}

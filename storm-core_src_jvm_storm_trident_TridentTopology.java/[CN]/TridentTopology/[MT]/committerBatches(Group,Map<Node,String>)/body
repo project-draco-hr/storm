@@ -1,5 +1,5 @@
 {
-  Set<String> ret=new HashSet();
+  Set<String> ret=new HashSet<>();
   for (  Node n : g.nodes) {
     if (n instanceof ProcessorNode) {
       if (((ProcessorNode)n).committer) {

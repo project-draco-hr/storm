@@ -1,6 +1,6 @@
 {
   LOG.debug("Trying to grab {} free slots from {}",slotsNeeded,pools);
-  HashSet<Node> ret=new HashSet<Node>();
+  HashSet<Node> ret=new HashSet<>();
   for (  NodePool pool : pools) {
     Collection<Node> got=pool.takeNodesBySlots(slotsNeeded);
     ret.addAll(got);

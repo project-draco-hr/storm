@@ -1,10 +1,10 @@
 {
-  Map<String,Component> all_comp=new HashMap<String,Component>();
+  Map<String,Component> all_comp=new HashMap<>();
   StormTopology storm_topo=this.topology;
   if (storm_topo.get_spouts() != null) {
     for (    Map.Entry<String,SpoutSpec> spoutEntry : storm_topo.get_spouts().entrySet()) {
       if (!Utils.isSystemId(spoutEntry.getKey())) {
-        Component newComp=null;
+        Component newComp;
         if (all_comp.containsKey(spoutEntry.getKey())) {
           newComp=all_comp.get(spoutEntry.getKey());
           newComp.execs=componentToExecs(newComp.id);
@@ -28,7 +28,7 @@
   if (storm_topo.get_bolts() != null) {
     for (    Map.Entry<String,Bolt> boltEntry : storm_topo.get_bolts().entrySet()) {
       if (!Utils.isSystemId(boltEntry.getKey())) {
-        Component newComp=null;
+        Component newComp;
         if (all_comp.containsKey(boltEntry.getKey())) {
           newComp=all_comp.get(boltEntry.getKey());
           newComp.execs=componentToExecs(newComp.id);

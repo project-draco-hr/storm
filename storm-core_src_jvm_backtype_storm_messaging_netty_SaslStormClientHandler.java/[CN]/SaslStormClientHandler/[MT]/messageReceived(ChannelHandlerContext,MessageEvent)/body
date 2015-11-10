@@ -26,7 +26,7 @@
     LOG.debug("Response to server is null: " + "authentication should now be complete.");
     if (!saslNettyClient.isComplete()) {
       LOG.warn("Generated a null response, " + "but authentication is not complete.");
-      throw new Exception("Server reponse is null, but as far as " + "we can tell, we are not authenticated yet.");
+      throw new Exception("Server response is null, but as far as " + "we can tell, we are not authenticated yet.");
     }
     this.client.channelReady();
     return;

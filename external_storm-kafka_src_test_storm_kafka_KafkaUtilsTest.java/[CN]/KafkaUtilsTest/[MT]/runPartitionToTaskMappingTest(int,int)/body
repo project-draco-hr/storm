@@ -1,7 +1,9 @@
 {
   GlobalPartitionInformation globalPartitionInformation=TestUtils.buildPartitionInfo(numPartitions);
+  List<GlobalPartitionInformation> partitions=new ArrayList<GlobalPartitionInformation>();
+  partitions.add(globalPartitionInformation);
   int numTasks=numPartitions / partitionsPerTask;
   for (int i=0; i < numTasks; i++) {
-    assertEquals(partitionsPerTask,KafkaUtils.calculatePartitionsForTask(globalPartitionInformation,numTasks,i).size());
+    assertEquals(partitionsPerTask,KafkaUtils.calculatePartitionsForTask(partitions,numTasks,i).size());
   }
 }

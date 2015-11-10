@@ -1,6 +1,6 @@
 {
   this._queueName=PREFIX + queueName;
-  WaitStrategy wait=null;
+  WaitStrategy wait;
   if (readTimeout <= 0) {
     wait=new LiteBlockingWaitStrategy();
   }

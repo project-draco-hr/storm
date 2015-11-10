@@ -1,0 +1,4 @@
+{
+  send_getTopologyHistory(user);
+  return recv_getTopologyHistory();
+}

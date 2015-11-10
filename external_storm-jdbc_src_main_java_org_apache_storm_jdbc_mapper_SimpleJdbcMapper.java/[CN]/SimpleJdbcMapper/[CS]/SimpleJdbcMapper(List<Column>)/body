@@ -1,3 +1,4 @@
 {
+  Validate.notEmpty(schemaColumns);
   this.schemaColumns=schemaColumns;
 }

@@ -1,0 +1,3 @@
+boolean hasMetrics
+double boltLoad
+double connectionLoad

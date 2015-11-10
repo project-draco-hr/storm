@@ -1,0 +1,4 @@
+int id
+String host
+int port
+String topic

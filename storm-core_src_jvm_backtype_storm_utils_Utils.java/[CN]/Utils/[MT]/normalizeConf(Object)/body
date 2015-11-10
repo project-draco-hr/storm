@@ -1,10 +1,9 @@
 {
   if (conf == null)   return new HashMap();
   if (conf instanceof Map) {
-    Map confMap=new HashMap((Map)conf);
-    for (    Object key : confMap.keySet()) {
-      Object val=confMap.get(key);
-      confMap.put(key,normalizeConf(val));
+    Map<Object,Object> confMap=new HashMap((Map)conf);
+    for (    Map.Entry<Object,Object> entry : confMap.entrySet()) {
+      confMap.put(entry.getKey(),normalizeConf(entry.getValue()));
     }
     return confMap;
   }

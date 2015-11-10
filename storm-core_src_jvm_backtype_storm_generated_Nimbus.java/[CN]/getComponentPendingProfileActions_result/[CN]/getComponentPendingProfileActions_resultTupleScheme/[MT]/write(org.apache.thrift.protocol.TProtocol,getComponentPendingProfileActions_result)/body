@@ -1,0 +1,16 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_success()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_success()) {
+{
+      oprot.writeI32(struct.success.size());
+      for (      ProfileRequest _iter702 : struct.success) {
+        _iter702.write(oprot);
+      }
+    }
+  }
+}

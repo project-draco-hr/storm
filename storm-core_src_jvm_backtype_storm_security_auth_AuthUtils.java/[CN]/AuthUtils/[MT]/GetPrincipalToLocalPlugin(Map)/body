@@ -1,5 +1,5 @@
 {
-  IPrincipalToLocal ptol=null;
+  IPrincipalToLocal ptol;
   try {
     String ptol_klassName=(String)storm_conf.get(Config.STORM_PRINCIPAL_TO_LOCAL_PLUGIN);
     Class klass=Class.forName(ptol_klassName);

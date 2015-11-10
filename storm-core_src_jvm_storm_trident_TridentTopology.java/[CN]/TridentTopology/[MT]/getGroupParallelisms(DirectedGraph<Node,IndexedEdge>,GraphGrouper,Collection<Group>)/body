@@ -1,5 +1,5 @@
 {
-  UndirectedGraph<Group,Object> equivs=new Pseudograph<Group,Object>(Object.class);
+  UndirectedGraph<Group,Object> equivs=new Pseudograph<>(Object.class);
   for (  Group g : groups) {
     equivs.addVertex(g);
   }
@@ -14,8 +14,8 @@
       }
     }
   }
-  Map<Group,Integer> ret=new HashMap();
-  List<Set<Group>> equivGroups=new ConnectivityInspector<Group,Object>(equivs).connectedSets();
+  Map<Group,Integer> ret=new HashMap<>();
+  List<Set<Group>> equivGroups=new ConnectivityInspector<>(equivs).connectedSets();
   for (  Set<Group> equivGroup : equivGroups) {
     Integer fixedP=getFixedParallelism(equivGroup);
     Integer maxP=getMaxParallelism(equivGroup);

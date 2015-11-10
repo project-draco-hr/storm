@@ -1,0 +1,12 @@
+{
+switch (field) {
+case TOPO_IDS:
+    if (value == null) {
+      unset_topo_ids();
+    }
+ else {
+      set_topo_ids((List<String>)value);
+    }
+  break;
+}
+}

@@ -1,5 +1,5 @@
 {
-  List<Integer> sorted=new ArrayList<Integer>(targets);
+  List<Integer> sorted=new ArrayList<>(targets);
   Collections.sort(sorted);
   target=Arrays.asList(sorted.get(0));
 }

@@ -1,0 +1,6 @@
+{
+  this();
+  this.id=id;
+  this.component_id=component_id;
+  this.action=action;
+}

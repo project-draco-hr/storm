@@ -1,5 +1,5 @@
 {
-  Set<Node> ret=new HashSet<Node>();
+  Set<Node> ret=new HashSet<>();
   for (  Node n : nodes) {
     ret.addAll(TridentUtils.getParents(graph,n));
   }

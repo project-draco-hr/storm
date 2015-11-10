@@ -1,0 +1,19 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('getComponentPendingProfileActions_args')
+    if (self.id is not None):
+        oprot.writeFieldBegin('id', TType.STRING, 1)
+        oprot.writeString(self.id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.component_id is not None):
+        oprot.writeFieldBegin('component_id', TType.STRING, 2)
+        oprot.writeString(self.component_id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.action is not None):
+        oprot.writeFieldBegin('action', TType.I32, 3)
+        oprot.writeI32(self.action)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

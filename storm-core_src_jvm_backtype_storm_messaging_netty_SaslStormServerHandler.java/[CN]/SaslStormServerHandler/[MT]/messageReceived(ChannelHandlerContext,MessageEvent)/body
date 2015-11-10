@@ -2,7 +2,7 @@
   Object msg=e.getMessage();
   if (msg == null)   return;
   Channel channel=ctx.getChannel();
-  if (msg instanceof ControlMessage && ((ControlMessage)e.getMessage()) == ControlMessage.SASL_TOKEN_MESSAGE_REQUEST) {
+  if (msg instanceof ControlMessage && e.getMessage() == ControlMessage.SASL_TOKEN_MESSAGE_REQUEST) {
     SaslNettyServer saslNettyServer=SaslNettyServerState.getSaslNettyServer.get(channel);
     if (saslNettyServer == null) {
       LOG.debug("No saslNettyServer for " + channel + " yet; creating now, with topology token: ");
@@ -19,7 +19,7 @@
       LOG.debug("Found existing saslNettyServer on server:" + channel.getLocalAddress() + " for client "+ channel.getRemoteAddress());
     }
     LOG.debug("processToken:  With nettyServer: " + saslNettyServer + " and token length: "+ token.length);
-    SaslMessageToken saslTokenMessageRequest=null;
+    SaslMessageToken saslTokenMessageRequest;
     saslTokenMessageRequest=new SaslMessageToken(saslNettyServer.response(new byte[0]));
     channel.write(saslTokenMessageRequest);
     return;
@@ -27,9 +27,7 @@
   if (msg instanceof SaslMessageToken) {
     SaslNettyServer saslNettyServer=SaslNettyServerState.getSaslNettyServer.get(channel);
     if (saslNettyServer == null) {
-      if (saslNettyServer == null) {
-        throw new Exception("saslNettyServer was unexpectedly " + "null for channel: " + channel);
-      }
+      throw new Exception("saslNettyServer was unexpectedly " + "null for channel: " + channel);
     }
     SaslMessageToken saslTokenMessageRequest=new SaslMessageToken(saslNettyServer.response(((SaslMessageToken)msg).getSaslToken()));
     channel.write(saslTokenMessageRequest);
@@ -40,7 +38,6 @@
       ctx.getPipeline().remove(this);
       server.authenticated(channel);
     }
-    return;
   }
  else {
     LOG.warn("Sending upstream an unexpected non-SASL message :  " + msg);

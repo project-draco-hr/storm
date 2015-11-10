@@ -1,0 +1,23 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_id()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_component_id()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_action()) {
+    optionals.set(2);
+  }
+  oprot.writeBitSet(optionals,3);
+  if (struct.is_set_id()) {
+    oprot.writeString(struct.id);
+  }
+  if (struct.is_set_component_id()) {
+    oprot.writeString(struct.component_id);
+  }
+  if (struct.is_set_action()) {
+    oprot.writeI32(struct.action.getValue());
+  }
+}

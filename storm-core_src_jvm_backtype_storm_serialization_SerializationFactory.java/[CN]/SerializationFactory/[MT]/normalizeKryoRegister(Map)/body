@@ -1,7 +1,7 @@
 {
   Object res=conf.get(Config.TOPOLOGY_KRYO_REGISTER);
-  if (res == null)   return new TreeMap<String,String>();
-  Map<String,String> ret=new HashMap<String,String>();
+  if (res == null)   return new TreeMap<>();
+  Map<String,String> ret=new HashMap<>();
   if (res instanceof Map) {
     ret=(Map<String,String>)res;
   }
@@ -15,5 +15,5 @@
       }
     }
   }
-  return new TreeMap<String,String>(ret);
+  return new TreeMap<>(ret);
 }

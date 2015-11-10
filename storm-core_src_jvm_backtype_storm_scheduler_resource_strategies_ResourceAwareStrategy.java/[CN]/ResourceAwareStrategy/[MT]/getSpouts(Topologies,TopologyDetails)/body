@@ -1,5 +1,5 @@
 {
-  List<Component> spouts=new ArrayList<Component>();
+  List<Component> spouts=new ArrayList<>();
   for (  Component c : topologies.getAllComponents().get(td.getId()).values()) {
     if (c.type == Component.ComponentType.SPOUT) {
       spouts.add(c);

@@ -1,0 +1,4 @@
+{
+  this.time_stamp=time_stamp;
+  set_time_stamp_isSet(true);
+}

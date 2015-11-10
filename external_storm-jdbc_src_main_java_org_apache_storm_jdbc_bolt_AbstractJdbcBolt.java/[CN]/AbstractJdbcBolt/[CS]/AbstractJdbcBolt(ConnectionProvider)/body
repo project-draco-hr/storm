@@ -1,3 +1,4 @@
 {
+  Validate.notNull(connectionProvider);
   this.connectionProvider=connectionProvider;
 }
