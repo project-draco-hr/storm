@@ -18,4 +18,12 @@
       _iter98.write(oprot);
     }
   }
+  BitSet optionals=new BitSet();
+  if (struct.is_set_nimbus_uptime_secs()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_nimbus_uptime_secs()) {
+    oprot.writeI32(struct.nimbus_uptime_secs);
+  }
 }

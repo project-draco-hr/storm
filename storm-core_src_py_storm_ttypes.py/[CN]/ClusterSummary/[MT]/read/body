@@ -18,6 +18,11 @@ def read(self, iprot):
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
+        elif (fid == 2):
+            if (ftype == TType.I32):
+                self.nimbus_uptime_secs = iprot.readI32()
+            else:
+                iprot.skip(ftype)
         elif (fid == 3):
             if (ftype == TType.LIST):
                 self.topologies = []
