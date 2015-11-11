@@ -1,3 +1,0 @@
-{
-  run(producer,consumer,10,PRODUCER_NUM);
-}
