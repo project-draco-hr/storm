@@ -2,7 +2,7 @@
   TableBuilderInfo builder=new TableBuilderInfo(typeFactory);
   List<FieldInfo> fields=new ArrayList<>();
   for (  ColumnDefinition col : n.fieldList()) {
-    builder.field(col.name(),col.type());
+    builder.field(col.name(),col.type(),col.constraint());
     RelDataType dataType=col.type().deriveType(typeFactory);
     Class<?> javaType=(Class<?>)typeFactory.getJavaClass(dataType);
     ColumnConstraint constraint=col.constraint();

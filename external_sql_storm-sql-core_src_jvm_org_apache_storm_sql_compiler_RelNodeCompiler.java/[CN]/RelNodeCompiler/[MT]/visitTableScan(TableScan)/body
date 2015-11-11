@@ -1,6 +1,0 @@
-{
-  beginStage(scan);
-  pw.print("    ctx.emit(_data);\n");
-  endStage();
-  return null;
-}
