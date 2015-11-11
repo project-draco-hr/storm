@@ -14,5 +14,6 @@
   }
 );
   run(producer,consumer,1000,1);
+  queue.haltWithInterrupt();
   Assert.assertTrue("Messages delivered out of order",allInOrder.get());
 }

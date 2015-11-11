@@ -15,6 +15,7 @@
     }
 );
     run(producer,consumer);
+    queue.haltWithInterrupt();
     Assert.assertEquals("We expect to receive first published message first, but received " + result.get(),"FIRST",result.get());
   }
 }

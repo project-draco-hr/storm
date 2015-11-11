@@ -1,10 +1,8 @@
 {
-  try {
-    ArrayList<Flusher> tasks=_pendingFlush.get(flushInterval);
-    if (tasks != null) {
-      _exec.invokeAll(tasks);
+  ArrayList<Flusher> tasks=_pendingFlush.get(flushInterval);
+  if (tasks != null) {
+    for (    Flusher f : tasks) {
+      _exec.submit(f);
     }
-  }
- catch (  InterruptedException e) {
   }
 }

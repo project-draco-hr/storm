@@ -6,5 +6,4 @@
     }
     _isFlushing.set(false);
   }
-  return null;
 }
