@@ -5,7 +5,6 @@
       _exec.invokeAll(tasks);
     }
   }
- catch (  Exception e) {
-    LOG.error("Could not invoke all ",e);
+ catch (  InterruptedException e) {
   }
 }
