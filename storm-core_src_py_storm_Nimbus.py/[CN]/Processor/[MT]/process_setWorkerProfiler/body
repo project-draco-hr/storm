@@ -3,8 +3,16 @@ def process_setWorkerProfiler(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = setWorkerProfiler_result()
-    self._handler.setWorkerProfiler(args.id, args.profileRequest)
-    oprot.writeMessageBegin('setWorkerProfiler', TMessageType.REPLY, seqid)
+    try:
+        self._handler.setWorkerProfiler(args.id, args.profileRequest)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('setWorkerProfiler', msg_type, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()

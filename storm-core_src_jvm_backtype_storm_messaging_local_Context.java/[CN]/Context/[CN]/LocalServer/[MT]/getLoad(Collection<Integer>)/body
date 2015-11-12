@@ -1,0 +1,10 @@
+{
+  Map<Integer,Load> ret=new HashMap<>();
+  for (  Integer task : tasks) {
+    Double found=_load.get(task);
+    if (found != null) {
+      ret.put(task,new Load(true,found,0));
+    }
+  }
+  return ret;
+}

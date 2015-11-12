@@ -2,12 +2,7 @@
   LOG.debug("Getting metrics for server on port {}",port);
   HashMap<String,Object> ret=new HashMap<>();
   ret.put("dequeuedMessages",messagesDequeued.getAndSet(0));
-  ArrayList<Integer> pending=new ArrayList<>(pendingMessages.length);
-  for (  AtomicInteger p : pendingMessages) {
-    pending.add(p.get());
-  }
-  ret.put("pending",pending);
-  HashMap<String,Integer> enqueued=new HashMap<>();
+  HashMap<String,Integer> enqueued=new HashMap<String,Integer>();
   Iterator<Map.Entry<String,AtomicInteger>> it=messagesEnqueued.entrySet().iterator();
   while (it.hasNext()) {
     Map.Entry<String,AtomicInteger> ent=it.next();

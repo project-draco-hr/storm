@@ -6,8 +6,8 @@ def write(self, oprot):
     if (self.pulses is not None):
         oprot.writeFieldBegin('pulses', TType.LIST, 1)
         oprot.writeListBegin(TType.STRUCT, len(self.pulses))
-        for iter602 in self.pulses:
-            iter602.write(oprot)
+        for iter630 in self.pulses:
+            iter630.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

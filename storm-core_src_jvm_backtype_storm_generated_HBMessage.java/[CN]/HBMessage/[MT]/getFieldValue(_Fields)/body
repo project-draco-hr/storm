@@ -5,7 +5,7 @@ case TYPE:
 case DATA:
   return get_data();
 case MESSAGE_ID:
-return Integer.valueOf(get_message_id());
+return get_message_id();
 }
 throw new IllegalStateException();
 }
