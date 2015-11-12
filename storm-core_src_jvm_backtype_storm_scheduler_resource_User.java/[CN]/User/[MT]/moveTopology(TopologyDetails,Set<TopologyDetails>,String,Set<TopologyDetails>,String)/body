@@ -1,9 +1,15 @@
 {
+  LOG.info("{} queue: {}",srcName,src);
+  LOG.info("{} queue: {}",destName,dest);
   if (topo == null) {
     return;
   }
   if (!src.contains(topo)) {
     LOG.warn("Topo {} not in User: {} {} queue!",topo.getName(),this.userId,srcName);
+    LOG.info("topo {}-{}-{}",topo.getName(),topo.getId(),topo.hashCode());
+    for (    TopologyDetails t : src) {
+      LOG.info("queue entry: {}-{}-{}",t.getName(),t.getId(),t.hashCode());
+    }
     return;
   }
   if (dest.contains(topo)) {

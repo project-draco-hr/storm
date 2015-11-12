@@ -1,10 +1,14 @@
 {
   LOG.info("\n\n\nRerunning ResourceAwareScheduler...");
   LOG.debug(ResourceUtils.printScheduling(cluster,topologies));
+  LOG.info("topologies: {}",topologies);
   this.initialize(topologies,cluster);
   LOG.info("UserMap:\n{}",this.userMap);
   for (  User user : this.getUserMap().values()) {
     LOG.info(user.getDetailedInfo());
+  }
+  for (  TopologyDetails topo : topologies.getTopologies()) {
+    LOG.info("topo {} status: {}",topo,cluster.getStatusMap().get(topo.getId()));
   }
   LOG.info("getNextUser: {}",this.getNextUser());
   while (true) {

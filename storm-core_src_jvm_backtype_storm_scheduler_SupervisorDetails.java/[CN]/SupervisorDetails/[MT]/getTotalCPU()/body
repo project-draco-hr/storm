@@ -1,3 +1,7 @@
 {
-  return getTotalResource(Config.SUPERVISOR_CPU_CAPACITY);
+  Double totalCPU=getTotalResource(Config.SUPERVISOR_CPU_CAPACITY);
+  if (totalCPU == null) {
+    throw new IllegalStateException("default value for supervisor.cpu.capacity is not set!");
+  }
+  return totalCPU;
 }

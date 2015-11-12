@@ -1,0 +1,8 @@
+{
+  Collection<WorkerSlot> workersToEvict=this.cluster.getUsedSlotsByTopologyId(topologyEvict.getId());
+  User submitter=this.userMap.get(topologyEvict.getTopologySubmitter());
+  LOG.info("Evicting Topology {} with workers: {}",topologyEvict.getName(),workersToEvict);
+  this.nodes.freeSlots(workersToEvict);
+  submitter.moveTopoFromRunningToPending(topologyEvict,this.cluster);
+  LOG.info("check if topology unassigned: {}",this.cluster.getUsedSlotsByTopologyId(topologyEvict.getId()));
+}

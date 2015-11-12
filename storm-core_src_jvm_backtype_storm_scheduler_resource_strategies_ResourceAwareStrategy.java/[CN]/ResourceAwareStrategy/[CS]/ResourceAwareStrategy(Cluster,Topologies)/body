@@ -1,7 +1,7 @@
 {
   _topologies=topologies;
   _cluster=cluster;
-  _nodes=RAS_Node.getAllNodesFrom(cluster,_topologies);
+  _nodes=RAS_Nodes.getAllNodesFrom(cluster,_topologies);
   _availNodes=this.getAvailNodes();
   _clusterInfo=cluster.getNetworkTopography();
   LOG.debug(this.getClusterInfo());

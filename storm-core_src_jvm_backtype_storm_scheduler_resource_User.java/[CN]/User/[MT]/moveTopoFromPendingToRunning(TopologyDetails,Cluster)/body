@@ -1,0 +1,6 @@
+{
+  moveTopology(topo,this.pendingQueue,"pending",this.runningQueue,"running");
+  if (cluster != null) {
+    cluster.setStatus(topo.getId(),"Fully Scheduled");
+  }
+}

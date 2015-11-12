@@ -1,0 +1,6 @@
+{
+  this.assignments=new HashMap<String,SchedulerAssignmentImpl>();
+  for (  Map.Entry<String,SchedulerAssignmentImpl> entry : this.assignments.entrySet()) {
+    this.assignments.put(entry.getKey(),new SchedulerAssignmentImpl(entry.getValue().getTopologyId(),entry.getValue().getExecutorToSlot()));
+  }
+}

@@ -1,16 +1,23 @@
 {
+  this.userMap=new HashMap<String,User>();
   Map<String,Map<String,Double>> userResourcePools=this.getUserResourcePools();
   LOG.info("userResourcePools: {}",userResourcePools);
-  for (  TopologyDetails topo : topologies.getTopologies()) {
-    String topologySubmitter=topo.getTopologySubmitter();
+  for (  TopologyDetails td : topologies.getTopologies()) {
+    LOG.info("topology: {} from {}",td.getName(),td.getTopologySubmitter());
+    String topologySubmitter=td.getTopologySubmitter();
+    if (topologySubmitter == null) {
+      LOG.warn("Topology {} submitted by anonymous user",td.getName());
+      topologySubmitter="anonymous";
+    }
     if (!this.userMap.containsKey(topologySubmitter)) {
       this.userMap.put(topologySubmitter,new User(topologySubmitter,userResourcePools.get(topologySubmitter)));
     }
-    if (cluster.getUnassignedExecutors(topo).size() >= topo.getExecutors().size()) {
-      this.userMap.get(topologySubmitter).addTopologyToPendingQueue(topo);
+    if (cluster.getUnassignedExecutors(td).size() >= td.getExecutors().size()) {
+      this.userMap.get(topologySubmitter).addTopologyToPendingQueue(td,cluster);
+      LOG.info(this.userMap.get(topologySubmitter).getDetailedInfo());
     }
  else {
-      this.userMap.get(topologySubmitter).addTopologyToRunningQueue(topo);
+      this.userMap.get(topologySubmitter).addTopologyToRunningQueue(td,cluster);
     }
   }
 }

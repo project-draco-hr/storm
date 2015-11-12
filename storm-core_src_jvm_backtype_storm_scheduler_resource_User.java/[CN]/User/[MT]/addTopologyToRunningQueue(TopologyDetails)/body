@@ -1,3 +1,3 @@
 {
-  this.runningQueue.add(topo);
+  this.addTopologyToRunningQueue(topo,null);
 }

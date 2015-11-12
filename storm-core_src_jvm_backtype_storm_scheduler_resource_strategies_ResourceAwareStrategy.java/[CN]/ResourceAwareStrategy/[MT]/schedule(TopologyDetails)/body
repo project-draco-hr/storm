@@ -1,7 +1,7 @@
 {
   if (_availNodes.size() <= 0) {
     LOG.warn("No available nodes to schedule tasks on!");
-    return null;
+    return SchedulingResult.failure(SchedulingStatus.FAIL_NOT_ENOUGH_RESOURCES,"No available nodes to schedule tasks on!");
   }
   Collection<ExecutorDetails> unassignedExecutors=_cluster.getUnassignedExecutors(td);
   Map<WorkerSlot,Collection<ExecutorDetails>> schedulerAssignmentMap=new HashMap<>();
@@ -10,7 +10,7 @@
   List<Component> spouts=this.getSpouts(_topologies,td);
   if (spouts.size() == 0) {
     LOG.error("Cannot find a Spout!");
-    return null;
+    return SchedulingResult.failure(SchedulingStatus.FAIL_INVALID_TOPOLOGY,"Cannot find a Spout!");
   }
   Queue<Component> ordered__Component_list=bfs(_topologies,td,spouts);
   Map<Integer,List<ExecutorDetails>> priorityToExecutorMap=getPriorityToExecutorDetailsListMap(ordered__Component_list,unassignedExecutors);
@@ -58,16 +58,19 @@
       LOG.error("Not Enough Resources to schedule Task {}",exec);
     }
   }
+  SchedulingResult result;
   executorsNotScheduled.removeAll(scheduledTasks);
   if (executorsNotScheduled.size() > 0) {
     LOG.error("Not all executors successfully scheduled: {}",executorsNotScheduled);
     schedulerAssignmentMap=null;
+    result=SchedulingResult.failure(SchedulingStatus.FAIL_NOT_ENOUGH_RESOURCES,"Not all executors successfully scheduled: " + executorsNotScheduled);
   }
  else {
     LOG.debug("All resources successfully scheduled!");
+    result=SchedulingResult.success(schedulerAssignmentMap);
   }
   if (schedulerAssignmentMap == null) {
     LOG.error("Topology {} not successfully scheduled!",td.getId());
   }
-  return schedulerAssignmentMap;
+  return result;
 }

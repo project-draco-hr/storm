@@ -1,0 +1,4 @@
+int numSpout
+int numBolt
+int spoutParallelism
+int boltParallelism

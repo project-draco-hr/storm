@@ -1,11 +1,11 @@
 {
-  Map<String,Map<String,Number>> raw=(Map<String,Map<String,Number>>)this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_USER_POOLS);
+  Object raw=this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_USER_POOLS);
   Map<String,Map<String,Double>> ret=(Map<String,Map<String,Double>>)this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_USER_POOLS);
   if (raw == null) {
     ret=new HashMap<String,Map<String,Double>>();
   }
  else {
-    for (    Map.Entry<String,Map<String,Number>> UserPoolEntry : raw.entrySet()) {
+    for (    Map.Entry<String,Map<String,Number>> UserPoolEntry : ((Map<String,Map<String,Number>>)raw).entrySet()) {
       String user=UserPoolEntry.getKey();
       ret.put(user,new HashMap<String,Double>());
       for (      Map.Entry<String,Number> resourceEntry : UserPoolEntry.getValue().entrySet()) {

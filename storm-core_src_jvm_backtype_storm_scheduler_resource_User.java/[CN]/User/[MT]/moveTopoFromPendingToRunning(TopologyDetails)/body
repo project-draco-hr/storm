@@ -1,3 +1,3 @@
 {
-  moveTopology(topo,this.pendingQueue,"pending",this.runningQueue,"running");
+  this.moveTopoFromPendingToRunning(topo,null);
 }

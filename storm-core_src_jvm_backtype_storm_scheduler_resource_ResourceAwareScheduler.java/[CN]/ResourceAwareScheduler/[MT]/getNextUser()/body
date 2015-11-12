@@ -1,7 +1,9 @@
 {
-  Double least=Double.MAX_VALUE;
+  Double least=Double.POSITIVE_INFINITY;
   User ret=null;
   for (  User user : this.userMap.values()) {
+    LOG.info("{}",user.getDetailedInfo());
+    LOG.info("hasTopologyNeedSchedule: {}",user.hasTopologyNeedSchedule());
     if (user.hasTopologyNeedSchedule()) {
       Double userResourcePoolAverageUtilization=user.getResourcePoolAverageUtilization();
       if (least > userResourcePoolAverageUtilization) {

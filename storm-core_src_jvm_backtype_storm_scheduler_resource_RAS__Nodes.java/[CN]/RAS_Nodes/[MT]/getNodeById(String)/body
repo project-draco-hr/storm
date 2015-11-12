@@ -1,0 +1,3 @@
+{
+  return this.nodeMap.get(nodeId);
+}

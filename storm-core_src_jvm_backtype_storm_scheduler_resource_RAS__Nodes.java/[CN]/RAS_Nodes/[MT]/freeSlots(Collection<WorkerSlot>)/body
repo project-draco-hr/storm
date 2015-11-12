@@ -1,0 +1,9 @@
+{
+  for (  RAS_Node node : nodeMap.values()) {
+    for (    WorkerSlot ws : node.getUsedSlots()) {
+      if (workerSlots.contains(ws)) {
+        node.free(ws);
+      }
+    }
+  }
+}

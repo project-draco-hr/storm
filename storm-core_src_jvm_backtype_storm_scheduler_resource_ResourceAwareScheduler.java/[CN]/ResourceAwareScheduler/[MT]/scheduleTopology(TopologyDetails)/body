@@ -1,57 +1,67 @@
 {
   ResourceAwareStrategy RAStrategy=new ResourceAwareStrategy(this.cluster,this.topologies);
-  if (cluster.needsScheduling(td) && cluster.getUnassignedExecutors(td).size() > 0) {
-    LOG.info("/********Scheduling topology {} from User {}************/",td.getName(),td.getTopologySubmitter());
+  User topologySubmitter=this.userMap.get(td.getTopologySubmitter());
+  if (cluster.getUnassignedExecutors(td).size() > 0) {
+    LOG.info("/********Scheduling topology {} from User {}************/",td.getName(),topologySubmitter);
     LOG.info("{}",this.userMap.get(td.getTopologySubmitter()).getDetailedInfo());
     LOG.info("{}",User.getResourcePoolAverageUtilizationForUsers(this.userMap.values()));
-    Map<WorkerSlot,Collection<ExecutorDetails>> schedulerAssignmentMap=RAStrategy.schedule(td);
-    double requestedMemOnHeap=td.getTotalRequestedMemOnHeap();
-    double requestedMemOffHeap=td.getTotalRequestedMemOffHeap();
-    double requestedCpu=td.getTotalRequestedCpu();
-    double assignedMemOnHeap=0.0;
-    double assignedMemOffHeap=0.0;
-    double assignedCpu=0.0;
-    if (schedulerAssignmentMap != null) {
-      try {
-        Set<String> nodesUsed=new HashSet<String>();
-        int assignedWorkers=schedulerAssignmentMap.keySet().size();
-        for (        Map.Entry<WorkerSlot,Collection<ExecutorDetails>> workerToTasksEntry : schedulerAssignmentMap.entrySet()) {
-          WorkerSlot targetSlot=workerToTasksEntry.getKey();
-          Collection<ExecutorDetails> execsNeedScheduling=workerToTasksEntry.getValue();
-          RAS_Node targetNode=RAStrategy.idToNode(targetSlot.getNodeId());
-          targetNode.assign(targetSlot,td,execsNeedScheduling,this.cluster);
-          LOG.debug("ASSIGNMENT    TOPOLOGY: {}  TASKS: {} To Node: {} on Slot: {}",td.getName(),execsNeedScheduling,targetNode.getHostname(),targetSlot.getPort());
-          if (!nodesUsed.contains(targetNode.getId())) {
-            nodesUsed.add(targetNode.getId());
+    Map<String,SchedulerAssignment> assignmentCheckpoint=this.cluster.getAssignments();
+    while (true) {
+      SchedulingResult result=RAStrategy.schedule(td);
+      LOG.info("scheduling result: {}",result);
+      if (result.isValid()) {
+        if (result.isSuccess()) {
+          try {
+            if (mkAssignment(td,result.getSchedulingResultMap())) {
+              topologySubmitter.moveTopoFromPendingToRunning(td,this.cluster);
+            }
+ else {
+              resetAssignments(assignmentCheckpoint);
+              topologySubmitter.moveTopoFromPendingToAttempted(td,this.cluster);
+            }
           }
-          assignedMemOnHeap+=targetSlot.getAllocatedMemOnHeap();
-          assignedMemOffHeap+=targetSlot.getAllocatedMemOffHeap();
-          assignedCpu+=targetSlot.getAllocatedCpu();
+ catch (          IllegalStateException ex) {
+            LOG.error(ex.toString());
+            LOG.error("Unsuccessful in scheduling",td.getId());
+            this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling");
+            resetAssignments(assignmentCheckpoint);
+            topologySubmitter.moveTopoFromPendingToAttempted(td,this.cluster);
+          }
+          break;
         }
-        LOG.debug("Topology: {} assigned to {} nodes on {} workers",td.getId(),nodesUsed.size(),assignedWorkers);
-        this.cluster.setStatus(td.getId(),"Fully Scheduled");
-        this.getUser(td.getTopologySubmitter()).moveTopoFromPendingToRunning(td);
-        LOG.info("getNextUser: {}",this.getNextUser());
+ else {
+          if (result.getStatus() == SchedulingStatus.FAIL_NOT_ENOUGH_RESOURCES) {
+            if (!this.makeSpaceForTopo(td)) {
+              topologySubmitter.moveTopoFromPendingToAttempted(td);
+              this.cluster.setStatus(td.getId(),result.getErrorMessage());
+              resetAssignments(assignmentCheckpoint);
+              break;
+            }
+            continue;
+          }
+ else           if (result.getStatus() == SchedulingStatus.FAIL_INVALID_TOPOLOGY) {
+            topologySubmitter.moveTopoFromPendingToInvalid(td,this.cluster);
+            resetAssignments(assignmentCheckpoint);
+            break;
+          }
+ else {
+            topologySubmitter.moveTopoFromPendingToAttempted(td,this.cluster);
+            resetAssignments(assignmentCheckpoint);
+            break;
+          }
+        }
       }
- catch (      IllegalStateException ex) {
-        LOG.error(ex.toString());
-        LOG.error("Unsuccessful in scheduling",td.getId());
-        this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling");
-        this.getUser(td.getTopologySubmitter()).moveTopoFromPendingToAttempted(td);
+ else {
+        LOG.warn("Scheduling results returned from topology {} is not vaild! Topology with be ignored.",td.getName());
+        topologySubmitter.moveTopoFromPendingToInvalid(td,this.cluster);
+        resetAssignments(assignmentCheckpoint);
+        break;
       }
     }
- else {
-      LOG.error("Unsuccessful in scheduling {}",td.getId());
-      this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling");
-      this.getUser(td.getTopologySubmitter()).moveTopoFromPendingToAttempted(td);
-    }
-    Double[] resources={requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu};
-    LOG.debug("setResources for {}: requested on-heap mem, off-heap mem, cpu: {} {} {} " + "assigned on-heap mem, off-heap mem, cpu: {} {} {}",td.getId(),requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu);
-    this.cluster.setResources(td.getId(),resources);
   }
  else {
-    LOG.warn("Topology {} already scheduled!",td.getName());
-    this.cluster.setStatus(td.getId(),"Fully Scheduled");
+    LOG.warn("Topology {} is already fully scheduled!",td.getName());
+    topologySubmitter.moveTopoFromPendingToRunning(td,this.cluster);
+    throw new IllegalStateException("illegal");
   }
-  updateSupervisorsResources(cluster,topologies);
 }
