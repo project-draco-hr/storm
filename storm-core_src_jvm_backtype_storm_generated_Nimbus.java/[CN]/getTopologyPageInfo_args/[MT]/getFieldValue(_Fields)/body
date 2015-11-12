@@ -5,7 +5,7 @@ case ID:
 case WINDOW:
   return get_window();
 case IS_INCLUDE_SYS:
-return Boolean.valueOf(is_is_include_sys());
+return is_is_include_sys();
 }
 throw new IllegalStateException();
 }

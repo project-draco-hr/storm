@@ -3,8 +3,16 @@ def process_getLogConfig(self, seqid, iprot, oprot):
     args.read(iprot)
     iprot.readMessageEnd()
     result = getLogConfig_result()
-    result.success = self._handler.getLogConfig(args.name)
-    oprot.writeMessageBegin('getLogConfig', TMessageType.REPLY, seqid)
+    try:
+        result.success = self._handler.getLogConfig(args.name)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('getLogConfig', msg_type, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()

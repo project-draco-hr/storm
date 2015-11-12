@@ -1,17 +1,17 @@
 {
 switch (field) {
 case NUM_EXECUTORS:
-    return Integer.valueOf(get_num_executors());
+    return get_num_executors();
 case NUM_TASKS:
-  return Integer.valueOf(get_num_tasks());
+  return get_num_tasks();
 case EMITTED:
-return Long.valueOf(get_emitted());
+return get_emitted();
 case TRANSFERRED:
-return Long.valueOf(get_transferred());
+return get_transferred();
 case ACKED:
-return Long.valueOf(get_acked());
+return get_acked();
 case FAILED:
-return Long.valueOf(get_failed());
+return get_failed();
 }
 throw new IllegalStateException();
 }

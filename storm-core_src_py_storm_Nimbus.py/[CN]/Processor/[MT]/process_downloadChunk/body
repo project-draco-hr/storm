@@ -5,9 +5,17 @@ def process_downloadChunk(self, seqid, iprot, oprot):
     result = downloadChunk_result()
     try:
         result.success = self._handler.downloadChunk(args.id)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
     except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
         result.aze = aze
-    oprot.writeMessageBegin('downloadChunk', TMessageType.REPLY, seqid)
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('downloadChunk', msg_type, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()

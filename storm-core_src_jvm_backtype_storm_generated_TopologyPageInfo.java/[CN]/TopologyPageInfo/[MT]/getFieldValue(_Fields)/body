@@ -5,15 +5,15 @@ case ID:
 case NAME:
   return get_name();
 case UPTIME_SECS:
-return Integer.valueOf(get_uptime_secs());
+return get_uptime_secs();
 case STATUS:
 return get_status();
 case NUM_TASKS:
-return Integer.valueOf(get_num_tasks());
+return get_num_tasks();
 case NUM_WORKERS:
-return Integer.valueOf(get_num_workers());
+return get_num_workers();
 case NUM_EXECUTORS:
-return Integer.valueOf(get_num_executors());
+return get_num_executors();
 case TOPOLOGY_CONF:
 return get_topology_conf();
 case ID_TO_SPOUT_AGG_STATS:
@@ -29,19 +29,19 @@ return get_owner();
 case DEBUG_OPTIONS:
 return get_debug_options();
 case REPLICATION_COUNT:
-return Integer.valueOf(get_replication_count());
+return get_replication_count();
 case REQUESTED_MEMONHEAP:
-return Double.valueOf(get_requested_memonheap());
+return get_requested_memonheap();
 case REQUESTED_MEMOFFHEAP:
-return Double.valueOf(get_requested_memoffheap());
+return get_requested_memoffheap();
 case REQUESTED_CPU:
-return Double.valueOf(get_requested_cpu());
+return get_requested_cpu();
 case ASSIGNED_MEMONHEAP:
-return Double.valueOf(get_assigned_memonheap());
+return get_assigned_memonheap();
 case ASSIGNED_MEMOFFHEAP:
-return Double.valueOf(get_assigned_memoffheap());
+return get_assigned_memoffheap();
 case ASSIGNED_CPU:
-return Double.valueOf(get_assigned_cpu());
+return get_assigned_cpu();
 }
 throw new IllegalStateException();
 }

@@ -5,13 +5,23 @@ def process_submitTopologyWithOpts(self, seqid, iprot, oprot):
     result = submitTopologyWithOpts_result()
     try:
         self._handler.submitTopologyWithOpts(args.name, args.uploadedJarLocation, args.jsonConf, args.topology, args.options)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
     except AlreadyAliveException as e:
+        msg_type = TMessageType.REPLY
         result.e = e
     except InvalidTopologyException as ite:
+        msg_type = TMessageType.REPLY
         result.ite = ite
     except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
         result.aze = aze
-    oprot.writeMessageBegin('submitTopologyWithOpts', TMessageType.REPLY, seqid)
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('submitTopologyWithOpts', msg_type, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()

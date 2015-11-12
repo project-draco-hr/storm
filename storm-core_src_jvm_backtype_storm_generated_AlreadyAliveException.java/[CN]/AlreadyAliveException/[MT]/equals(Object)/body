@@ -1,6 +1,5 @@
 {
-  if (that == null) {
-    return false;
-  }
-  return (that instanceof AlreadyAliveException) ? this.equals((AlreadyAliveException)that) : false;
+  if (that == null)   return false;
+  if (that instanceof AlreadyAliveException)   return this.equals((AlreadyAliveException)that);
+  return false;
 }
