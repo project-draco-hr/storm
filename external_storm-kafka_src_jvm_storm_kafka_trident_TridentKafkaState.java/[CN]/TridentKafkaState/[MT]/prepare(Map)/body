@@ -4,6 +4,5 @@
   Map configMap=(Map)stormConf.get(KAFKA_BROKER_PROPERTIES);
   Properties properties=new Properties();
   properties.putAll(configMap);
-  ProducerConfig config=new ProducerConfig(properties);
-  producer=new Producer(config);
+  producer=new KafkaProducer(properties);
 }

@@ -1,0 +1,7 @@
+{
+  SolrInputDocument doc=buildDocument(tuple);
+  UpdateRequest request=new UpdateRequest();
+  request.add(doc);
+  log.debug("Created SolrRequest with content: {}",doc);
+  return request;
+}

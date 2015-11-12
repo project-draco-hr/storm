@@ -1,0 +1,9 @@
+def _idx_1st_comment_with_vote(self):
+    g = 0
+    for pull in self.github_report.pull_requests:
+        c = 0
+        for comment in self._jira_comments(pull.jira_id()):
+            if comment.has_vote():
+                return ((g,) + (c,))
+            c += 1
+        g += 1

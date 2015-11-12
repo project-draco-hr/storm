@@ -1,9 +1,8 @@
 {
   this.collector=collector;
-  Map<String,Object> conf=(Map<String,Object>)map.get(this.configKey);
-  Validate.notEmpty(conf,"Hikari configuration not found using key '" + this.configKey + "'");
+  connectionProvider.prepare();
   if (queryTimeoutSecs == null) {
     queryTimeoutSecs=Integer.parseInt(map.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS).toString());
   }
-  this.jdbcClient=new JdbcClient(conf,queryTimeoutSecs);
+  this.jdbcClient=new JdbcClient(connectionProvider,queryTimeoutSecs);
 }

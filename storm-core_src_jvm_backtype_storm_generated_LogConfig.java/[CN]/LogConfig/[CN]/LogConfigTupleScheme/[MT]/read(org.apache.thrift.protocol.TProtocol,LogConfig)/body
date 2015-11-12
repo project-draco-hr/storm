@@ -1,0 +1,19 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+{
+      org.apache.thrift.protocol.TMap _map686=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.named_logger_level=new HashMap<String,LogLevel>(2 * _map686.size);
+      String _key687;
+      LogLevel _val688;
+      for (int _i689=0; _i689 < _map686.size; ++_i689) {
+        _key687=iprot.readString();
+        _val688=new LogLevel();
+        _val688.read(iprot);
+        struct.named_logger_level.put(_key687,_val688);
+      }
+    }
+    struct.set_named_logger_level_isSet(true);
+  }
+}

@@ -1,0 +1,4 @@
+{
+  this.assigned_memoffheap=assigned_memoffheap;
+  set_assigned_memoffheap_isSet(true);
+}

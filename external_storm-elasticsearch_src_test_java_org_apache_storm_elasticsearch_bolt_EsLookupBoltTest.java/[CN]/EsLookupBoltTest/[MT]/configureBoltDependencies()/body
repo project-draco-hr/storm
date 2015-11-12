@@ -1,0 +1,4 @@
+{
+  when(getRequest.extractFrom(tuple)).thenReturn(request);
+  when(output.toValues(any(GetResponse.class))).thenReturn(Collections.singleton(new Values("")));
+}

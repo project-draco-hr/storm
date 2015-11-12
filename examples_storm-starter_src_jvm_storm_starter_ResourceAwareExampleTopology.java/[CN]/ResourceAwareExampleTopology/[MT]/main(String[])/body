@@ -1,0 +1,24 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  SpoutDeclarer spout=builder.setSpout("word",new TestWordSpout(),10);
+  spout.setCPULoad(20);
+  spout.setMemoryLoad(64,16);
+  BoltDeclarer bolt1=builder.setBolt("exclaim1",new ExclamationBolt(),3).shuffleGrouping("word");
+  bolt1.setCPULoad(15);
+  BoltDeclarer bolt2=builder.setBolt("exclaim2",new ExclamationBolt(),2).shuffleGrouping("exclaim1");
+  bolt2.setMemoryLoad(100);
+  Config conf=new Config();
+  conf.setDebug(true);
+  conf.setTopologyWorkerMaxHeapSize(512.0);
+  if (args != null && args.length > 0) {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopologyWithProgressBar(args[0],conf,builder.createTopology());
+  }
+ else {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("test",conf,builder.createTopology());
+    Utils.sleep(10000);
+    cluster.killTopology("test");
+    cluster.shutdown();
+  }
+}

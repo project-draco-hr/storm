@@ -1,0 +1,15 @@
+{
+  if (this.rotationPolicy.mark(this.offset)) {
+    rotateOutputFile();
+    this.offset=0;
+    this.rotationPolicy.reset();
+  }
+ else {
+    if (this.out instanceof HdfsDataOutputStream) {
+      ((HdfsDataOutputStream)this.out).hsync(EnumSet.of(HdfsDataOutputStream.SyncFlag.UPDATE_LENGTH));
+    }
+ else {
+      this.out.hsync();
+    }
+  }
+}

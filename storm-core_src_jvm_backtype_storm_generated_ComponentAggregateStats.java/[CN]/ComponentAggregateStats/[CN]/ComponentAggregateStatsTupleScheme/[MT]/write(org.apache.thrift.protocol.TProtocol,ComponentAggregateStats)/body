@@ -1,0 +1,29 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_type()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_common_stats()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_specific_stats()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_last_error()) {
+    optionals.set(3);
+  }
+  oprot.writeBitSet(optionals,4);
+  if (struct.is_set_type()) {
+    oprot.writeI32(struct.type.getValue());
+  }
+  if (struct.is_set_common_stats()) {
+    struct.common_stats.write(oprot);
+  }
+  if (struct.is_set_specific_stats()) {
+    struct.specific_stats.write(oprot);
+  }
+  if (struct.is_set_last_error()) {
+    struct.last_error.write(oprot);
+  }
+}

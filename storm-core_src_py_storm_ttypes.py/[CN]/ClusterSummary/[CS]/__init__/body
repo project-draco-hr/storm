@@ -1,4 +1,5 @@
-def __init__(self, supervisors=None, nimbus_uptime_secs=None, topologies=None):
+def __init__(self, supervisors=None, nimbus_uptime_secs=thrift_spec[2][4], topologies=None, nimbuses=None):
     self.supervisors = supervisors
     self.nimbus_uptime_secs = nimbus_uptime_secs
     self.topologies = topologies
+    self.nimbuses = nimbuses

@@ -1,10 +1,10 @@
 {
   LOG.info("waiting up to {} ms to send {} pending messages to {}",PENDING_MESSAGES_FLUSH_TIMEOUT_MS,pendingMessages.get(),dstAddressPrefixedName);
   long totalPendingMsgs=pendingMessages.get();
-  long startMs=nowMillis();
+  long startMs=System.currentTimeMillis();
   while (pendingMessages.get() != 0) {
     try {
-      long deltaMs=nowMillis() - startMs;
+      long deltaMs=System.currentTimeMillis() - startMs;
       if (deltaMs > PENDING_MESSAGES_FLUSH_TIMEOUT_MS) {
         LOG.error("failed to send all pending messages to {} within timeout, {} of {} messages were not " + "sent",dstAddressPrefixedName,pendingMessages.get(),totalPendingMsgs);
         break;

@@ -1,0 +1,4 @@
+{
+  Option option=OptionBuilder.hasArgs(argCount).withArgName(argName).withLongOpt(longName).withDescription(description).create(shortName);
+  return option;
+}

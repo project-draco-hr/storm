@@ -1,0 +1,3 @@
+{
+  this(connectionString,entityPath,partitionMode,null);
+}

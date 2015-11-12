@@ -3,6 +3,7 @@
   this.entityName=config.getEntityPath();
   this.defaultCredits=config.getReceiverCredits();
   this.partitionId=partitionId;
+  this.consumerGroupName=config.getConsumerGroupName();
   receiveApiLatencyMean=new ReducedMetric(new MeanReducer());
   receiveApiCallCount=new CountMetric();
   receiveMessageCount=new CountMetric();

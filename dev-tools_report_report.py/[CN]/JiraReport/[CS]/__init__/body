@@ -1,0 +1,3 @@
+def __init__(self, issues, header=''):
+    Report.__init__(self, header)
+    self.issues = issues

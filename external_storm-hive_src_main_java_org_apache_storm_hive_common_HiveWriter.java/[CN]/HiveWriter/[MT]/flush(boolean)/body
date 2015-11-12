@@ -13,7 +13,7 @@
         txnBatch=nextTxnBatch(recordWriter);
       }
     }
-    if (rollToNext) {
+ else     if (rollToNext) {
       LOG.debug("Switching to next Txn for {}",endPoint);
       txnBatch.beginNextTransaction();
     }

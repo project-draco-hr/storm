@@ -1,0 +1,5 @@
+{
+  if (that == null)   return false;
+  if (that instanceof ComponentAggregateStats)   return this.equals((ComponentAggregateStats)that);
+  return false;
+}

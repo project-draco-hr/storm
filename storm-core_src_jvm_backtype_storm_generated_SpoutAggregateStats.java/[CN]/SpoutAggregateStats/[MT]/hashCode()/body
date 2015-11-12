@@ -1,0 +1,7 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_complete_latency_ms=true && (is_set_complete_latency_ms());
+  list.add(present_complete_latency_ms);
+  if (present_complete_latency_ms)   list.add(complete_latency_ms);
+  return list.hashCode();
+}

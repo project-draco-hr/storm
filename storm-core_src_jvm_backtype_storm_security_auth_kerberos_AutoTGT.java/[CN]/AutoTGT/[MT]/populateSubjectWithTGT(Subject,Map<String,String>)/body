@@ -13,7 +13,7 @@ synchronized (creds) {
             t.destroy();
           }
  catch (          DestroyFailedException e) {
-            LOG.warn("Failed to destory ticket ",e);
+            LOG.warn("Failed to destroy ticket ",e);
           }
         }
       }

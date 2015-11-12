@@ -28,13 +28,13 @@ break;
 case 3:
 if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-  org.apache.thrift.protocol.TList _list474=iprot.readListBegin();
-  struct.executors=new ArrayList<ExecutorInfo>(_list474.size);
-  ExecutorInfo _elem475;
-  for (int _i476=0; _i476 < _list474.size; ++_i476) {
-    _elem475=new ExecutorInfo();
-    _elem475.read(iprot);
-    struct.executors.add(_elem475);
+  org.apache.thrift.protocol.TList _list648=iprot.readListBegin();
+  struct.executors=new ArrayList<ExecutorInfo>(_list648.size);
+  ExecutorInfo _elem649;
+  for (int _i650=0; _i650 < _list648.size; ++_i650) {
+    _elem649=new ExecutorInfo();
+    _elem649.read(iprot);
+    struct.executors.add(_elem649);
   }
   iprot.readListEnd();
 }

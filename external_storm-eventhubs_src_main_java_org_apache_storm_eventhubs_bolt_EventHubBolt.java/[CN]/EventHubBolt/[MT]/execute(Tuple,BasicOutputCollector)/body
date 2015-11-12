@@ -1,8 +1,0 @@
-{
-  try {
-    sender.send((String)tuple.getValue(0));
-  }
- catch (  EventHubException ex) {
-    logger.error(ex.getMessage());
-  }
-}

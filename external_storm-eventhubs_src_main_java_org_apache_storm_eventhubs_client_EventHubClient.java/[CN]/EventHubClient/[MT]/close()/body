@@ -1,8 +1,0 @@
-{
-  try {
-    this.connection.close();
-  }
- catch (  ConnectionErrorException e) {
-    logger.error(e.toString());
-  }
-}

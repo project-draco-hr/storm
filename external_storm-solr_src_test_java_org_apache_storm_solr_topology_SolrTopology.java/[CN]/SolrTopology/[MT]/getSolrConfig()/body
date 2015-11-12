@@ -1,0 +1,4 @@
+{
+  String zkHostString="127.0.0.1:9983";
+  return new SolrConfig(zkHostString);
+}

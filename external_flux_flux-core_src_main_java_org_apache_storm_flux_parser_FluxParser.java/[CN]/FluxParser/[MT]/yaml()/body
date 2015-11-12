@@ -1,0 +1,10 @@
+{
+  Constructor constructor=new Constructor(TopologyDef.class);
+  TypeDescription topologyDescription=new TypeDescription(TopologyDef.class);
+  topologyDescription.putListPropertyType("spouts",SpoutDef.class);
+  topologyDescription.putListPropertyType("bolts",BoltDef.class);
+  topologyDescription.putListPropertyType("includes",IncludeDef.class);
+  constructor.addTypeDescription(topologyDescription);
+  Yaml yaml=new Yaml(constructor);
+  return yaml;
+}

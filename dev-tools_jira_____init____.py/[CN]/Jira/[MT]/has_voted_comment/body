@@ -1,0 +1,5 @@
+def has_voted_comment(self):
+    for comment in self.get_comments():
+        if comment.has_vote():
+            return True
+    return False

@@ -1,0 +1,5 @@
+{
+  when(client.get(request)).thenThrow(ElasticsearchException.class);
+  bolt.execute(tuple);
+  verify(outputCollector).fail(tuple);
+}

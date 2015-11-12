@@ -1,7 +1,7 @@
 {
 synchronized (_lock) {
     if (!_queues.containsKey(port)) {
-      _queues.put(port,new LinkedBlockingQueue<Object>());
+      _queues.put(port,new LinkedBlockingQueue<>());
     }
     return _queues.get(port);
   }

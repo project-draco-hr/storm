@@ -1,0 +1,14 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case MEM_ON_HEAP:
+    return is_set_mem_on_heap();
+case MEM_OFF_HEAP:
+  return is_set_mem_off_heap();
+case CPU:
+return is_set_cpu();
+}
+throw new IllegalStateException();
+}

@@ -1,0 +1,14 @@
+{
+  getTopologyPageInfo_result result=new getTopologyPageInfo_result();
+  receiveBase(result,"getTopologyPageInfo");
+  if (result.is_set_success()) {
+    return result.success;
+  }
+  if (result.e != null) {
+    throw result.e;
+  }
+  if (result.aze != null) {
+    throw result.aze;
+  }
+  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"getTopologyPageInfo failed: unknown result");
+}

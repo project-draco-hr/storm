@@ -18,7 +18,7 @@
   if (s == null) {
     final String user=(String)storm_conf.get("debug.simple.transport.user");
     if (user != null) {
-      HashSet<Principal> principals=new HashSet<Principal>();
+      HashSet<Principal> principals=new HashSet<>();
       principals.add(new Principal(){
         public String getName(){
           return user;
@@ -28,7 +28,7 @@
         }
       }
 );
-      s=new Subject(true,principals,new HashSet<Object>(),new HashSet<Object>());
+      s=new Subject(true,principals,new HashSet<>(),new HashSet<>());
     }
   }
   req_context.setSubject(s);

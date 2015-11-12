@@ -1,0 +1,4 @@
+{
+  this.esConfig=esConfig;
+  this.tupleMapper=tupleMapper;
+}

@@ -1,2 +1,0 @@
-def fromBranch(self):
-    return mstr(self.data['head']['ref'])

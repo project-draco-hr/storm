@@ -1,1 +1,1 @@
-BaseStateUpdater<RedisClusterState>
+AbstractRedisStateUpdater<RedisClusterState>

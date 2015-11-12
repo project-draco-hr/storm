@@ -1,3 +1,5 @@
 {
-  consumeBatchToCursor(_barrier.getCursor(),handler);
+  if (_metrics.population() > 0) {
+    consumeBatchWhenAvailable(handler);
+  }
 }

@@ -1,0 +1,5 @@
+{
+  Histogram copy=_histo.copy();
+  _histo.reset();
+  return copy;
+}

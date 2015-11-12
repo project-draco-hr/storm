@@ -1,0 +1,5 @@
+{
+  ArrayList<SpoutDef> retval=new ArrayList<SpoutDef>();
+  retval.addAll(this.spoutMap.values());
+  return retval;
+}

@@ -1,0 +1,10 @@
+{
+  try {
+synchronized (trigger) {
+      trigger.notifyAll();
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

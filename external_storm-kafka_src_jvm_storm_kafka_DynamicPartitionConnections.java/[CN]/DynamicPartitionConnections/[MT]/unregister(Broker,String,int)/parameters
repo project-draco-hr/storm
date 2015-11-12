@@ -1,0 +1,3 @@
+Broker port
+String topic
+int partition

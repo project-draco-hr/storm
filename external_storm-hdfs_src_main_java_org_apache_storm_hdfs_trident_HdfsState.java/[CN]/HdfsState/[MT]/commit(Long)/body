@@ -1,2 +1,9 @@
 {
+  try {
+    options.doCommit(txId);
+  }
+ catch (  IOException e) {
+    LOG.warn("Commit failed due to IOException. Failing the batch.",e);
+    throw new FailedException(e);
+  }
 }

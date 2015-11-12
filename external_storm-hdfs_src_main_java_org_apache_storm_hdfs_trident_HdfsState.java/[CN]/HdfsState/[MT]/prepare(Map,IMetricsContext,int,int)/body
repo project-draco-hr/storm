@@ -1,3 +1,4 @@
 {
   this.options.prepare(conf,partitionIndex,numPartitions);
+  initLastTxn(conf,partitionIndex);
 }

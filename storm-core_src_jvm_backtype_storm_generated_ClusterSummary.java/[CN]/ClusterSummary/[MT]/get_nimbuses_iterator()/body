@@ -1,0 +1,3 @@
+{
+  return (this.nimbuses == null) ? null : this.nimbuses.iterator();
+}

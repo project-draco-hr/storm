@@ -1,0 +1,3 @@
+{
+  new TransportAddresses(new String[]{"h1:-1000"}).iterator();
+}

@@ -1,0 +1,11 @@
+{
+  for (  BeanDef bean : components) {
+    String id=bean.getId();
+    if (this.componentMap.get(id) == null || override) {
+      this.componentMap.put(bean.getId(),bean);
+    }
+ else {
+      LOG.warn("Ignoring attempt to create component '{}' with override == false.",id);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  long value=_currentBucket.getAndSet(0);
+  long timeSpent=now - _bucketStart;
+  long ret=value + _exactExtra;
+  _bucketStart=now;
+  _exactExtra=0;
+  rotateBuckets(value,timeSpent);
+  return ret;
+}

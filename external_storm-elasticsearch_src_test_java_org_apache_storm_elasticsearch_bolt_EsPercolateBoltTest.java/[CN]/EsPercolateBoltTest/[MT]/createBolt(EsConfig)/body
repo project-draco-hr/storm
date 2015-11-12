@@ -1,0 +1,4 @@
+{
+  EsTupleMapper tupleMapper=EsTestUtil.generateDefaultTupleMapper();
+  return new EsPercolateBolt(esConfig,tupleMapper);
+}

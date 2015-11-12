@@ -1,0 +1,2 @@
+def _row_tuple(self, pull):
+    return self._build_tuple((pull.html_url(), pull.trimmed_title(), daydiff(Report.now, pull.created_at()), daydiff(Report.now, pull.updated_at()), pull.user()), '')

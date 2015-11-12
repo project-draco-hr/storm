@@ -24,5 +24,8 @@
   boolean present_prev_status=true && (is_set_prev_status());
   list.add(present_prev_status);
   if (present_prev_status)   list.add(prev_status.getValue());
+  boolean present_component_debug=true && (is_set_component_debug());
+  list.add(present_component_debug);
+  if (present_component_debug)   list.add(component_debug);
   return list.hashCode();
 }

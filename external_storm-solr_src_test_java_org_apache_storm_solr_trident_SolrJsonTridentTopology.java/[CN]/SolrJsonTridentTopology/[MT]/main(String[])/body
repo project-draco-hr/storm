@@ -1,0 +1,4 @@
+{
+  SolrJsonTridentTopology solrJsonTridentTopology=new SolrJsonTridentTopology();
+  solrJsonTridentTopology.run(args);
+}

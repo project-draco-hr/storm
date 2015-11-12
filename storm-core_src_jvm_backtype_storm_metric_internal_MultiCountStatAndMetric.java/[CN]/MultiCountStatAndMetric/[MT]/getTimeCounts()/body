@@ -1,0 +1,17 @@
+{
+  Map<String,Map<T,Long>> ret=new HashMap<>();
+  for (  Map.Entry<T,CountStatAndMetric> entry : _counts.entrySet()) {
+    T key=entry.getKey();
+    Map<String,Long> toFlip=entry.getValue().getTimeCounts();
+    for (    Map.Entry<String,Long> subEntry : toFlip.entrySet()) {
+      String time=subEntry.getKey();
+      Map<T,Long> tmp=ret.get(time);
+      if (tmp == null) {
+        tmp=new HashMap<>();
+        ret.put(time,tmp);
+      }
+      tmp.put(key,subEntry.getValue());
+    }
+  }
+  return ret;
+}

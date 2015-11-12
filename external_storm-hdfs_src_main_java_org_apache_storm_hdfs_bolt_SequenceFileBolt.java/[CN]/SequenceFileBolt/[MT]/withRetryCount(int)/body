@@ -1,0 +1,4 @@
+{
+  this.fileRetryCount=fileRetryCount;
+  return this;
+}

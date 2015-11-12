@@ -9,6 +9,8 @@ case NIMBUS_UPTIME_SECS:
   return is_set_nimbus_uptime_secs();
 case TOPOLOGIES:
 return is_set_topologies();
+case NIMBUSES:
+return is_set_nimbuses();
 }
 throw new IllegalStateException();
 }

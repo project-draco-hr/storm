@@ -1,0 +1,14 @@
+{
+  JsonRecordHiveMapper mapper=new JsonRecordHiveMapper().withColumnFields(new Fields(colNames1)).withPartitionFields(new Fields(partNames));
+  HiveOptions hiveOptions=new HiveOptions(metaStoreURI,dbName,tblName,mapper).withTxnsPerBatch(2).withBatchSize(2);
+  bolt=new HiveBolt(hiveOptions);
+  bolt.prepare(config,null,new OutputCollector(collector));
+  Tuple tuple1=generateTestTuple(1,"SJC","Sunnyvale","CA");
+  Tuple tuple2=generateTestTuple(2,"SFO","San Jose","CA");
+  bolt.execute(tuple1);
+  verifyZeroInteractions(collector);
+  bolt.execute(tuple2);
+  verify(collector).ack(tuple1);
+  verify(collector).ack(tuple2);
+  bolt.cleanup();
+}

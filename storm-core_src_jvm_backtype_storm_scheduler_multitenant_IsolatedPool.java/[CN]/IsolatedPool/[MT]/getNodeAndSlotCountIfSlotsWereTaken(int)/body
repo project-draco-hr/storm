@@ -3,9 +3,7 @@
   int slotsFound=0;
   for (  Entry<String,Set<Node>> entry : _topologyIdToNodes.entrySet()) {
     if (!_isolated.contains(entry.getKey())) {
-      Iterator<Node> it=entry.getValue().iterator();
-      while (it.hasNext()) {
-        Node n=it.next();
+      for (      Node n : entry.getValue()) {
         if (n.isAlive()) {
           nodesFound++;
           int totalSlotsFree=n.totalSlots();

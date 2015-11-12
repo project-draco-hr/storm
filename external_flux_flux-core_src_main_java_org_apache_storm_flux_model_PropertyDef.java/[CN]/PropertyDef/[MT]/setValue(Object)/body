@@ -1,0 +1,6 @@
+{
+  if (this.ref != null) {
+    throw new IllegalStateException("A property can only have a value OR a reference, not both.");
+  }
+  this.value=value;
+}

@@ -14,6 +14,7 @@
         throw new Exception("Server returned a " + "Sasl-complete message, but as far as " + "we can tell, we are not authenticated yet.");
       }
       ctx.getPipeline().remove(this);
+      this.client.channelReady();
       Channels.fireMessageReceived(ctx,msg);
       return;
     }
@@ -25,8 +26,9 @@
     LOG.debug("Response to server is null: " + "authentication should now be complete.");
     if (!saslNettyClient.isComplete()) {
       LOG.warn("Generated a null response, " + "but authentication is not complete.");
-      throw new Exception("Server reponse is null, but as far as " + "we can tell, we are not authenticated yet.");
+      throw new Exception("Server response is null, but as far as " + "we can tell, we are not authenticated yet.");
     }
+    this.client.channelReady();
     return;
   }
  else {

@@ -1,0 +1,22 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_num_executors=true && (is_set_num_executors());
+  list.add(present_num_executors);
+  if (present_num_executors)   list.add(num_executors);
+  boolean present_num_tasks=true && (is_set_num_tasks());
+  list.add(present_num_tasks);
+  if (present_num_tasks)   list.add(num_tasks);
+  boolean present_emitted=true && (is_set_emitted());
+  list.add(present_emitted);
+  if (present_emitted)   list.add(emitted);
+  boolean present_transferred=true && (is_set_transferred());
+  list.add(present_transferred);
+  if (present_transferred)   list.add(transferred);
+  boolean present_acked=true && (is_set_acked());
+  list.add(present_acked);
+  if (present_acked)   list.add(acked);
+  boolean present_failed=true && (is_set_failed());
+  list.add(present_failed);
+  if (present_failed)   list.add(failed);
+  return list.hashCode();
+}

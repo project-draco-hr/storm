@@ -27,5 +27,26 @@
   boolean present_owner=true && (is_set_owner());
   list.add(present_owner);
   if (present_owner)   list.add(owner);
+  boolean present_replication_count=true && (is_set_replication_count());
+  list.add(present_replication_count);
+  if (present_replication_count)   list.add(replication_count);
+  boolean present_requested_memonheap=true && (is_set_requested_memonheap());
+  list.add(present_requested_memonheap);
+  if (present_requested_memonheap)   list.add(requested_memonheap);
+  boolean present_requested_memoffheap=true && (is_set_requested_memoffheap());
+  list.add(present_requested_memoffheap);
+  if (present_requested_memoffheap)   list.add(requested_memoffheap);
+  boolean present_requested_cpu=true && (is_set_requested_cpu());
+  list.add(present_requested_cpu);
+  if (present_requested_cpu)   list.add(requested_cpu);
+  boolean present_assigned_memonheap=true && (is_set_assigned_memonheap());
+  list.add(present_assigned_memonheap);
+  if (present_assigned_memonheap)   list.add(assigned_memonheap);
+  boolean present_assigned_memoffheap=true && (is_set_assigned_memoffheap());
+  list.add(present_assigned_memoffheap);
+  if (present_assigned_memoffheap)   list.add(assigned_memoffheap);
+  boolean present_assigned_cpu=true && (is_set_assigned_cpu());
+  list.add(present_assigned_cpu);
+  if (present_assigned_cpu)   list.add(assigned_cpu);
   return list.hashCode();
 }

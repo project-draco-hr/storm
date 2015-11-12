@@ -16,6 +16,8 @@ case 7:
 return TOPOLOGY_ACTION_OPTIONS;
 case 8:
 return PREV_STATUS;
+case 9:
+return COMPONENT_DEBUG;
 default :
 return null;
 }

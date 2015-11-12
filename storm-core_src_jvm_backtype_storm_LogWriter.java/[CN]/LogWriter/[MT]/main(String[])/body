@@ -1,0 +1,20 @@
+{
+  ProcessBuilder pb=new ProcessBuilder(args);
+  Process p=pb.start();
+  LogWriter err=null;
+  LogWriter in=null;
+  int ret=-1;
+  try {
+    Logger logger=LoggerFactory.getLogger("STDERR");
+    err=new LogWriter(p.getErrorStream(),logger);
+    err.start();
+    in=new LogWriter(p.getInputStream(),logger);
+    in.start();
+    ret=p.waitFor();
+  }
+  finally {
+    if (err != null)     err.close();
+    if (in != null)     in.close();
+  }
+  System.exit(ret);
+}

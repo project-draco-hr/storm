@@ -1,0 +1,5 @@
+{
+  super(connectionProvider);
+  Validate.notNull(jdbcMapper);
+  this.jdbcMapper=jdbcMapper;
+}

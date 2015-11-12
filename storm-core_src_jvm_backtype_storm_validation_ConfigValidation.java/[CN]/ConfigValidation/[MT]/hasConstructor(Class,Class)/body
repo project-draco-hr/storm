@@ -1,0 +1,10 @@
+{
+  Class[] classes={paramClass};
+  try {
+    clazz.getConstructor(classes);
+  }
+ catch (  NoSuchMethodException e) {
+    return false;
+  }
+  return true;
+}

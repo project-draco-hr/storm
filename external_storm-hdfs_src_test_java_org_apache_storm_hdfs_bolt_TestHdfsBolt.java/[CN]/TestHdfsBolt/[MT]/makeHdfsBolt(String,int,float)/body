@@ -1,0 +1,7 @@
+{
+  RecordFormat fieldsFormat=new DelimitedRecordFormat().withFieldDelimiter("|");
+  SyncPolicy fieldsSyncPolicy=new CountSyncPolicy(countSync);
+  FileRotationPolicy fieldsRotationPolicy=new FileSizeRotationPolicy(rotationSizeMB,FileSizeRotationPolicy.Units.MB);
+  FileNameFormat fieldsFileNameFormat=new DefaultFileNameFormat().withPath(testRoot);
+  return new HdfsBolt().withFsUrl(nameNodeAddr).withFileNameFormat(fieldsFileNameFormat).withRecordFormat(fieldsFormat).withRotationPolicy(fieldsRotationPolicy).withSyncPolicy(fieldsSyncPolicy);
+}

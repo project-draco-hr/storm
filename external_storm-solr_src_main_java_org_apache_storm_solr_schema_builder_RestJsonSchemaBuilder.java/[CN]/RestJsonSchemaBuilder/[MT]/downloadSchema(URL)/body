@@ -1,0 +1,10 @@
+{
+  String result;
+  logger.debug("Downloading Solr schema info from: " + url);
+  Scanner scanner=new Scanner(url.openStream());
+  result=scanner.useDelimiter("\\Z").next();
+  logger.debug("JSON Schema: " + result);
+  Gson gson=new Gson();
+  Schema.SchemaWrapper schemaWrapper=gson.fromJson(result,Schema.SchemaWrapper.class);
+  this.schema=schemaWrapper.getSchema();
+}

@@ -52,6 +52,41 @@ def read(self, iprot):
                 self.owner = iprot.readString().decode('utf-8')
             else:
                 iprot.skip(ftype)
+        elif (fid == 515):
+            if (ftype == TType.I32):
+                self.replication_count = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 521):
+            if (ftype == TType.DOUBLE):
+                self.requested_memonheap = iprot.readDouble()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 522):
+            if (ftype == TType.DOUBLE):
+                self.requested_memoffheap = iprot.readDouble()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 523):
+            if (ftype == TType.DOUBLE):
+                self.requested_cpu = iprot.readDouble()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 524):
+            if (ftype == TType.DOUBLE):
+                self.assigned_memonheap = iprot.readDouble()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 525):
+            if (ftype == TType.DOUBLE):
+                self.assigned_memoffheap = iprot.readDouble()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 526):
+            if (ftype == TType.DOUBLE):
+                self.assigned_cpu = iprot.readDouble()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

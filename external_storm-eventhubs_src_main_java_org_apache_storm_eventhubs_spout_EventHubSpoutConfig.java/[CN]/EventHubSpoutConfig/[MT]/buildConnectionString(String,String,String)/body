@@ -1,4 +1,0 @@
-{
-  String targetFqnAddress="servicebus.windows.net";
-  return buildConnectionString(username,password,namespace,targetFqnAddress);
-}

@@ -1,8 +1,8 @@
 {
   DefaultDirectedGraph<Node,IndexedEdge> graph=(DefaultDirectedGraph)_graph.clone();
   completeDRPC(graph,_colocate,_gen);
-  List<SpoutNode> spoutNodes=new ArrayList<SpoutNode>();
-  Set<Node> boltNodes=new HashSet<Node>();
+  List<SpoutNode> spoutNodes=new ArrayList<>();
+  Set<Node> boltNodes=new HashSet<>();
   for (  Node n : graph.vertexSet()) {
     if (n instanceof SpoutNode) {
       spoutNodes.add((SpoutNode)n);
@@ -11,7 +11,7 @@
       boltNodes.add(n);
     }
   }
-  Set<Group> initialGroups=new HashSet<Group>();
+  Set<Group> initialGroups=new HashSet<>();
   for (  List<Node> colocate : _colocate.values()) {
     Group g=new Group(graph,colocate);
     boltNodes.removeAll(colocate);
@@ -23,7 +23,7 @@
   GraphGrouper grouper=new GraphGrouper(graph,initialGroups);
   grouper.mergeFully();
   Collection<Group> mergedGroups=grouper.getAllGroups();
-  for (  IndexedEdge<Node> e : new HashSet<IndexedEdge>(graph.edgeSet())) {
+  for (  IndexedEdge<Node> e : new HashSet<>(graph.edgeSet())) {
     if (!(e.source instanceof PartitionNode) && !(e.target instanceof PartitionNode)) {
       Group g1=grouper.nodeGroup(e.source);
       Group g2=grouper.nodeGroup(e.target);
@@ -37,7 +37,7 @@
       }
     }
   }
-  List<Node> forNewGroups=new ArrayList<Node>();
+  List<Node> forNewGroups=new ArrayList<>();
   for (  Group g : mergedGroups) {
     for (    PartitionNode n : extraPartitionInputs(g)) {
       Node idNode=makeIdentityNode(n.allOutputFields);
@@ -69,8 +69,8 @@
   }
   grouper.reindex();
   mergedGroups=grouper.getAllGroups();
-  Map<Node,String> batchGroupMap=new HashMap();
-  List<Set<Node>> connectedComponents=new ConnectivityInspector<Node,IndexedEdge>(graph).connectedSets();
+  Map<Node,String> batchGroupMap=new HashMap<>();
+  List<Set<Node>> connectedComponents=new ConnectivityInspector<>(graph).connectedSets();
   for (int i=0; i < connectedComponents.size(); i++) {
     String groupId="bg" + i;
     for (    Node n : connectedComponents.get(i)) {
@@ -108,13 +108,7 @@
       Collection<PartitionNode> inputs=uniquedSubscriptions(externalGroupInputs(g));
       for (      PartitionNode n : inputs) {
         Node parent=TridentUtils.getParent(graph,n);
-        String componentId;
-        if (parent instanceof SpoutNode) {
-          componentId=spoutIds.get(parent);
-        }
- else {
-          componentId=boltIds.get(grouper.nodeGroup(parent));
-        }
+        String componentId=parent instanceof SpoutNode ? spoutIds.get(parent) : boltIds.get(grouper.nodeGroup(parent));
         d.grouping(new GlobalStreamId(componentId,n.streamId),n.thriftGrouping);
       }
     }

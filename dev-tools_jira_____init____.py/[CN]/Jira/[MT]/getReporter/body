@@ -1,6 +1,0 @@
-def getReporter(self):
-    ret = ''
-    mid = self.fields['reporter']
-    if (mid != None):
-        ret = mid['displayName']
-    return mstr(ret)

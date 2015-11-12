@@ -1,0 +1,6 @@
+{
+  if (this.gsid_to_input_stats == null) {
+    this.gsid_to_input_stats=new HashMap<GlobalStreamId,ComponentAggregateStats>();
+  }
+  this.gsid_to_input_stats.put(key,val);
+}

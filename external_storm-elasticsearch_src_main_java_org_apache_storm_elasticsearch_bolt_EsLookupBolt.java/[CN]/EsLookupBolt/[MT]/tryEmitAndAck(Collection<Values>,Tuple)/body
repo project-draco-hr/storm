@@ -1,0 +1,6 @@
+{
+  for (  Values value : values) {
+    collector.emit(tuple,value);
+  }
+  collector.ack(tuple);
+}

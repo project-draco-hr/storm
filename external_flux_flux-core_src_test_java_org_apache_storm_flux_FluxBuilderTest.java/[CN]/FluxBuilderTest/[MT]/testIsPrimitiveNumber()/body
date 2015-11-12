@@ -1,0 +1,5 @@
+{
+  assertTrue(FluxBuilder.isPrimitiveNumber(int.class));
+  assertFalse(FluxBuilder.isPrimitiveNumber(boolean.class));
+  assertFalse(FluxBuilder.isPrimitiveNumber(String.class));
+}

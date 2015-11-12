@@ -1,0 +1,86 @@
+{
+  if (!cmd.hasOption(OPTION_NO_SPLASH)) {
+    printSplash();
+  }
+  boolean dumpYaml=cmd.hasOption("dump-yaml");
+  TopologyDef topologyDef=null;
+  String filePath=(String)cmd.getArgList().get(0);
+  String filterProps=null;
+  if (cmd.hasOption(OPTION_FILTER)) {
+    filterProps=cmd.getOptionValue(OPTION_FILTER);
+  }
+  boolean envFilter=cmd.hasOption(OPTION_ENV_FILTER);
+  if (cmd.hasOption(OPTION_RESOURCE)) {
+    printf("Parsing classpath resource: %s",filePath);
+    topologyDef=FluxParser.parseResource(filePath,dumpYaml,true,filterProps,envFilter);
+  }
+ else {
+    printf("Parsing file: %s",new File(filePath).getAbsolutePath());
+    topologyDef=FluxParser.parseFile(filePath,dumpYaml,true,filterProps,envFilter);
+  }
+  String topologyName=topologyDef.getName();
+  Config conf=FluxBuilder.buildConfig(topologyDef);
+  ExecutionContext context=new ExecutionContext(topologyDef,conf);
+  StormTopology topology=FluxBuilder.buildTopology(context);
+  if (!cmd.hasOption(OPTION_NO_DETAIL)) {
+    printTopologyInfo(context);
+  }
+  if (!cmd.hasOption(OPTION_DRY_RUN)) {
+    if (cmd.hasOption(OPTION_REMOTE)) {
+      LOG.info("Running remotely...");
+      try {
+        SubmitOptions submitOptions=null;
+        if (cmd.hasOption(OPTION_INACTIVE)) {
+          LOG.info("Deploying topology in an INACTIVE state...");
+          submitOptions=new SubmitOptions(TopologyInitialStatus.INACTIVE);
+        }
+ else {
+          LOG.info("Deploying topology in an ACTIVE state...");
+          submitOptions=new SubmitOptions(TopologyInitialStatus.ACTIVE);
+        }
+        StormSubmitter.submitTopology(topologyName,conf,topology,submitOptions,null);
+      }
+ catch (      Exception e) {
+        LOG.warn("Unable to deploy topology to remote cluster.",e);
+      }
+    }
+ else {
+      LOG.info("Running in local mode...");
+      String sleepStr=cmd.getOptionValue(OPTION_SLEEP);
+      Long sleepTime=DEFAULT_LOCAL_SLEEP_TIME;
+      if (sleepStr != null) {
+        sleepTime=Long.parseLong(sleepStr);
+      }
+      LOG.debug("Sleep time: {}",sleepTime);
+      LocalCluster cluster=null;
+      if (cmd.hasOption(OPTION_ZOOKEEPER)) {
+        String zkStr=cmd.getOptionValue(OPTION_ZOOKEEPER);
+        LOG.info("Using ZooKeeper at '{}' instead of in-process one.",zkStr);
+        long zkPort=DEFAULT_ZK_PORT;
+        String zkHost=null;
+        if (zkStr.contains(":")) {
+          String[] hostPort=zkStr.split(":");
+          zkHost=hostPort[0];
+          zkPort=hostPort.length > 1 ? Long.parseLong(hostPort[1]) : DEFAULT_ZK_PORT;
+        }
+ else {
+          zkHost=zkStr;
+        }
+        try {
+          cluster=new LocalCluster(zkHost,zkPort);
+        }
+ catch (        NoSuchMethodError e) {
+          LOG.error("The --zookeeper option can only be used with Apache Storm 0.9.3 and later.");
+          System.exit(1);
+        }
+      }
+ else {
+        cluster=new LocalCluster();
+      }
+      cluster.submitTopology(topologyName,conf,topology);
+      Utils.sleep(sleepTime);
+      cluster.killTopology(topologyName);
+      cluster.shutdown();
+    }
+  }
+}

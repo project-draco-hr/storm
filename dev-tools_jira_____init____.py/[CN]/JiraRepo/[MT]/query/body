@@ -13,5 +13,5 @@ def query(self, query):
         end = data['total']
         for item in data['issues']:
             j = Jira(item, self)
-            jiras[j.getId()] = j
+            jiras[j.get_id()] = j
     return jiras

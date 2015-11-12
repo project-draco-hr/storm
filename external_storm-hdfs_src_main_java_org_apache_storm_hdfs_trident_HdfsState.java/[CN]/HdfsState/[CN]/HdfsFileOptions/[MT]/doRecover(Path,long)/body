@@ -1,0 +1,6 @@
+{
+  this.offset=0;
+  FSDataInputStream is=this.fs.open(srcPath);
+  copyBytes(is,out,nBytes);
+  this.offset=nBytes;
+}

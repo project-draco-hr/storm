@@ -1,0 +1,7 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.type))
+    value = ((value * 31) ^ hash(self.common_stats))
+    value = ((value * 31) ^ hash(self.specific_stats))
+    value = ((value * 31) ^ hash(self.last_error))
+    return value

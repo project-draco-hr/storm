@@ -64,5 +64,13 @@ unset_prev_status();
 set_prev_status((TopologyStatus)value);
 }
 break;
+case COMPONENT_DEBUG:
+if (value == null) {
+unset_component_debug();
+}
+ else {
+set_component_debug((Map<String,DebugOptions>)value);
+}
+break;
 }
 }

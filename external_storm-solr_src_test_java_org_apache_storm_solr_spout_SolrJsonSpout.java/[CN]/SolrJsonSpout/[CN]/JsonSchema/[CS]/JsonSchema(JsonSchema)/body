@@ -1,0 +1,5 @@
+{
+  this.id=jsonSchema.id;
+  this.date=jsonSchema.date;
+  this.dc_title=jsonSchema.dc_title;
+}

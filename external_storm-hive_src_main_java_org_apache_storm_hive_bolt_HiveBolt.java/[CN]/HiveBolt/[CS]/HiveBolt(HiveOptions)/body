@@ -1,4 +1,4 @@
 {
   this.options=options;
-  this.currentBatchSize=0;
+  tupleBatch=new LinkedList<>();
 }

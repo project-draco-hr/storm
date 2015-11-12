@@ -1,0 +1,58 @@
+{
+  Collection<Object> testCases1=new LinkedList<Object>();
+  Collection<Object> testCases2=new LinkedList<Object>();
+  Collection<Object> testCases3=new LinkedList<Object>();
+  Object[] testCase1={"one","two","three"};
+  ;
+  Object[] testCase2={"three"};
+  testCases1.add(Arrays.asList(testCase1));
+  testCases1.add(Arrays.asList(testCase2));
+  for (  Object value : testCases1) {
+    ListEntryTypeValidator.validateField("test",String.class,value);
+  }
+  for (  Object value : testCases1) {
+    try {
+      ListEntryTypeValidator.validateField("test",Number.class,value);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+  Object[] testCase3={1000,0,1000};
+  Object[] testCase4={5};
+  Object[] testCase5={5.0,5.0,6};
+  testCases2.add(Arrays.asList(testCase3));
+  testCases2.add(Arrays.asList(testCase4));
+  testCases2.add(Arrays.asList(testCase5));
+  for (  Object value : testCases2) {
+    try {
+      ListEntryTypeValidator.validateField("test",String.class,value);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+  for (  Object value : testCases2) {
+    ListEntryTypeValidator.validateField("test",Number.class,value);
+  }
+  Object[] testCase6={1000,0,1000,"5"};
+  Object[] testCase7={"4","5",5};
+  testCases3.add(Arrays.asList(testCase6));
+  testCases3.add(Arrays.asList(testCase7));
+  for (  Object value : testCases3) {
+    try {
+      ListEntryTypeValidator.validateField("test",String.class,value);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+  for (  Object value : testCases1) {
+    try {
+      ListEntryTypeValidator.validateField("test",Number.class,value);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+}

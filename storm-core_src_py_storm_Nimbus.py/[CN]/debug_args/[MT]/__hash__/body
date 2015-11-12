@@ -1,0 +1,7 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.name))
+    value = ((value * 31) ^ hash(self.component))
+    value = ((value * 31) ^ hash(self.enable))
+    value = ((value * 31) ^ hash(self.samplingPercentage))
+    return value

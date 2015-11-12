@@ -1,6 +1,0 @@
-{
-  this.session=session;
-  this.entityPath=entityPath;
-  this.partitionId=partitionId;
-  this.destinationAddress=this.getDestinationAddress();
-}

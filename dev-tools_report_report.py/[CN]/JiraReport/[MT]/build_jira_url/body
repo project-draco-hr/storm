@@ -1,0 +1,4 @@
+@staticmethod
+def build_jira_url(jira_id):
+    BASE_URL = 'https://issues.apache.org/jira/browse/'
+    return (BASE_URL + jira_id)

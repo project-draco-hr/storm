@@ -29,6 +29,7 @@
   if (enqueueTimeDiff != 0) {
     enqueueTimeFilter=System.currentTimeMillis() - enqueueTimeDiff * 1000;
   }
+  String consumerGroupName=properties.getProperty("eventhubspout.consumer.group.name");
   System.out.println("Eventhub spout config: ");
   System.out.println("  partition count: " + partitionCount);
   System.out.println("  checkpoint interval: " + checkpointIntervalInSeconds);
@@ -37,6 +38,7 @@
   if (targetFqnAddress != null) {
     spoutConfig.setTargetAddress(targetFqnAddress);
   }
+  spoutConfig.setConsumerGroupName(consumerGroupName);
   numWorkers=spoutConfig.getPartitionCount();
   if (args.length > 0) {
     spoutConfig.setTopologyName(args[0]);

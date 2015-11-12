@@ -1,0 +1,7 @@
+{
+  ZkHosts hosts=new ZkHosts(zkUrl);
+  TridentKafkaConfig config=new TridentKafkaConfig(hosts,"test");
+  config.scheme=new SchemeAsMultiScheme(new StringScheme());
+  config.startOffsetTime=kafka.api.OffsetRequest.LatestTime();
+  return new TransactionalTridentKafkaSpout(config);
+}

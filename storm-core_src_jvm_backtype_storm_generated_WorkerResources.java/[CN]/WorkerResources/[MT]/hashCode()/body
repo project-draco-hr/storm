@@ -1,0 +1,13 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_mem_on_heap=true && (is_set_mem_on_heap());
+  list.add(present_mem_on_heap);
+  if (present_mem_on_heap)   list.add(mem_on_heap);
+  boolean present_mem_off_heap=true && (is_set_mem_off_heap());
+  list.add(present_mem_off_heap);
+  if (present_mem_off_heap)   list.add(mem_off_heap);
+  boolean present_cpu=true && (is_set_cpu());
+  list.add(present_cpu);
+  if (present_cpu)   list.add(cpu);
+  return list.hashCode();
+}

@@ -1,0 +1,3 @@
+{
+  return isExpired() ? 0l : _mem;
+}

@@ -1,0 +1,12 @@
+{
+  TopologyDef topologyDef=FluxParser.parseResource("/configs/substitution-test.yaml",false,true,"src/test/resources/configs/test.properties",true);
+  assertTrue(topologyDef.validate());
+  Config conf=FluxBuilder.buildConfig(topologyDef);
+  ExecutionContext context=new ExecutionContext(topologyDef,conf);
+  StormTopology topology=FluxBuilder.buildTopology(context);
+  assertNotNull(topology);
+  topology.validate();
+  assertEquals("Property not replaced.","substitution-topology",context.getTopologyDef().getName());
+  String envPath=System.getenv().get("PATH");
+  assertEquals("ENV variable not replaced.",envPath,context.getTopologyDef().getConfig().get("test.env.value"));
+}

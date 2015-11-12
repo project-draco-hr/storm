@@ -1,0 +1,21 @@
+{
+  Options options=new Options();
+  options.addOption(option(0,"l",OPTION_LOCAL,"Run the topology in local mode."));
+  options.addOption(option(0,"r",OPTION_REMOTE,"Deploy the topology to a remote cluster."));
+  options.addOption(option(0,"R",OPTION_RESOURCE,"Treat the supplied path as a classpath resource instead of a file."));
+  options.addOption(option(1,"s",OPTION_SLEEP,"ms","When running locally, the amount of time to sleep (in ms.) " + "before killing the topology and shutting down the local cluster."));
+  options.addOption(option(0,"d",OPTION_DRY_RUN,"Do not run or deploy the topology. Just build, validate, " + "and print information about the topology."));
+  options.addOption(option(0,"q",OPTION_NO_DETAIL,"Suppress the printing of topology details."));
+  options.addOption(option(0,"n",OPTION_NO_SPLASH,"Suppress the printing of the splash screen."));
+  options.addOption(option(0,"i",OPTION_INACTIVE,"Deploy the topology, but do not activate it."));
+  options.addOption(option(1,"z",OPTION_ZOOKEEPER,"host:port","When running in local mode, use the ZooKeeper at the " + "specified <host>:<port> instead of the in-process ZooKeeper. (requires Storm 0.9.3 or later)"));
+  options.addOption(option(1,"f",OPTION_FILTER,"file","Perform property substitution. Use the specified file " + "as a source of properties, and replace keys identified with {$[property name]} with the value defined " + "in the properties file."));
+  options.addOption(option(0,"e",OPTION_ENV_FILTER,"Perform environment variable substitution. Replace keys" + "identified with `${ENV-[NAME]}` will be replaced with the corresponding `NAME` environment value"));
+  CommandLineParser parser=new BasicParser();
+  CommandLine cmd=parser.parse(options,args);
+  if (cmd.getArgs().length != 1) {
+    usage(options);
+    System.exit(1);
+  }
+  runCli(cmd);
+}

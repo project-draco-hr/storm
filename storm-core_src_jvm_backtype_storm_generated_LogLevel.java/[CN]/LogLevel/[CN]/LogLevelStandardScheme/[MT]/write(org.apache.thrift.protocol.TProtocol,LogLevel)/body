@@ -1,0 +1,35 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.action != null) {
+    oprot.writeFieldBegin(ACTION_FIELD_DESC);
+    oprot.writeI32(struct.action.getValue());
+    oprot.writeFieldEnd();
+  }
+  if (struct.target_log_level != null) {
+    if (struct.is_set_target_log_level()) {
+      oprot.writeFieldBegin(TARGET_LOG_LEVEL_FIELD_DESC);
+      oprot.writeString(struct.target_log_level);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.is_set_reset_log_level_timeout_secs()) {
+    oprot.writeFieldBegin(RESET_LOG_LEVEL_TIMEOUT_SECS_FIELD_DESC);
+    oprot.writeI32(struct.reset_log_level_timeout_secs);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_reset_log_level_timeout_epoch()) {
+    oprot.writeFieldBegin(RESET_LOG_LEVEL_TIMEOUT_EPOCH_FIELD_DESC);
+    oprot.writeI64(struct.reset_log_level_timeout_epoch);
+    oprot.writeFieldEnd();
+  }
+  if (struct.reset_log_level != null) {
+    if (struct.is_set_reset_log_level()) {
+      oprot.writeFieldBegin(RESET_LOG_LEVEL_FIELD_DESC);
+      oprot.writeString(struct.reset_log_level);
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

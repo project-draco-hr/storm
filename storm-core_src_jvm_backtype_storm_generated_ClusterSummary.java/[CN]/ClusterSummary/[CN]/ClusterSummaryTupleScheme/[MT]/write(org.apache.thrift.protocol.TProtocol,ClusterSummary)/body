@@ -2,15 +2,28 @@
   TTupleProtocol oprot=(TTupleProtocol)prot;
 {
     oprot.writeI32(struct.supervisors.size());
-    for (    SupervisorSummary _iter82 : struct.supervisors) {
-      _iter82.write(oprot);
+    for (    SupervisorSummary _iter96 : struct.supervisors) {
+      _iter96.write(oprot);
     }
   }
-  oprot.writeI32(struct.nimbus_uptime_secs);
 {
     oprot.writeI32(struct.topologies.size());
-    for (    TopologySummary _iter83 : struct.topologies) {
-      _iter83.write(oprot);
+    for (    TopologySummary _iter97 : struct.topologies) {
+      _iter97.write(oprot);
     }
+  }
+{
+    oprot.writeI32(struct.nimbuses.size());
+    for (    NimbusSummary _iter98 : struct.nimbuses) {
+      _iter98.write(oprot);
+    }
+  }
+  BitSet optionals=new BitSet();
+  if (struct.is_set_nimbus_uptime_secs()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_nimbus_uptime_secs()) {
+    oprot.writeI32(struct.nimbus_uptime_secs);
   }
 }

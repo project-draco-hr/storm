@@ -1,0 +1,7 @@
+long lat
+long count
+long timeSpent
+long[] bucketTime
+long[] latBuckets
+long[] countBuckets
+long desiredTime

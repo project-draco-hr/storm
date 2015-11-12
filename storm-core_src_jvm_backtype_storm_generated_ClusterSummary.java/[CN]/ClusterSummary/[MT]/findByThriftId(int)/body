@@ -6,6 +6,8 @@ case 2:
   return NIMBUS_UPTIME_SECS;
 case 3:
 return TOPOLOGIES;
+case 4:
+return NIMBUSES;
 default :
 return null;
 }

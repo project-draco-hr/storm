@@ -1,0 +1,2 @@
+def get_body(self):
+    return mstr(self.data['body'])

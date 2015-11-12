@@ -1,0 +1,3 @@
+@staticmethod
+def _row_tuple(jira):
+    return (jira.get_id(), jira.get_trimmed_summary(), daydiff(Report.now, jira.get_created()), daydiff(Report.now, jira.get_updated()))

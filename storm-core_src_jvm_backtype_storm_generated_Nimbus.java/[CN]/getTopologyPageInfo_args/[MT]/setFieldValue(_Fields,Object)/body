@@ -1,0 +1,28 @@
+{
+switch (field) {
+case ID:
+    if (value == null) {
+      unset_id();
+    }
+ else {
+      set_id((String)value);
+    }
+  break;
+case WINDOW:
+if (value == null) {
+  unset_window();
+}
+ else {
+  set_window((String)value);
+}
+break;
+case IS_INCLUDE_SYS:
+if (value == null) {
+unset_is_include_sys();
+}
+ else {
+set_is_include_sys((Boolean)value);
+}
+break;
+}
+}

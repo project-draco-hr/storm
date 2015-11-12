@@ -1,0 +1,6 @@
+{
+  Values expectedValues=expectedValues();
+  bolt.execute(tuple);
+  verify(outputCollector).emit(anchor.capture(),emmitedValues.capture());
+  assertThat(emmitedValues.getValue(),is(expectedValues));
+}

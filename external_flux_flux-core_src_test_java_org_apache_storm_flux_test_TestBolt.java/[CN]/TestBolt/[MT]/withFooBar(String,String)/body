@@ -1,0 +1,3 @@
+{
+  this.fooBar=foo + bar;
+}

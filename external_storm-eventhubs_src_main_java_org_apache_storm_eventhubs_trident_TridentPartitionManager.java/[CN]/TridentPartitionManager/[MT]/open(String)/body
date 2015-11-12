@@ -1,10 +1,10 @@
 {
   try {
     if ((offset == null || offset.equals(Constants.DefaultStartingOffset)) && spoutConfig.getEnqueueTimeFilter() != 0) {
-      receiver.open(new EventHubReceiverFilter(spoutConfig.getEnqueueTimeFilter()));
+      receiver.open(new EventHubEnqueueTimeFilter(spoutConfig.getEnqueueTimeFilter()));
     }
  else {
-      receiver.open(new EventHubReceiverFilter(offset));
+      receiver.open(new EventHubOffsetFilter(offset));
     }
     lastOffset=offset;
     return true;

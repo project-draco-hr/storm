@@ -1,3 +1,0 @@
-{
-  return getRegistry().getValueWriter(value.getValue());
-}

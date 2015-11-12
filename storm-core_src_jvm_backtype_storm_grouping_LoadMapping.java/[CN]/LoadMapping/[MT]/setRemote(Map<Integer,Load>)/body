@@ -1,0 +1,8 @@
+{
+  if (remote != null) {
+    _remote.set(new HashMap<Integer,Load>(remote));
+  }
+ else {
+    _remote.set(new HashMap<Integer,Load>());
+  }
+}

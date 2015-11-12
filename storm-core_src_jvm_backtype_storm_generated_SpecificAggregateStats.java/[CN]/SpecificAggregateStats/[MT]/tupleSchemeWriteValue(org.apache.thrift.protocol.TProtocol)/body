@@ -1,0 +1,14 @@
+{
+switch (setField_) {
+case BOLT:
+    BoltAggregateStats bolt=(BoltAggregateStats)value_;
+  bolt.write(oprot);
+return;
+case SPOUT:
+SpoutAggregateStats spout=(SpoutAggregateStats)value_;
+spout.write(oprot);
+return;
+default :
+throw new IllegalStateException("Cannot write union with unknown field " + setField_);
+}
+}

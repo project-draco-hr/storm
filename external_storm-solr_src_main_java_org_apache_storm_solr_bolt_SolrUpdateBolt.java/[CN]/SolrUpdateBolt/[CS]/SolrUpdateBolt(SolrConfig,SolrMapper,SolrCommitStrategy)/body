@@ -1,0 +1,6 @@
+{
+  this.solrConfig=solrConfig;
+  this.solrMapper=solrMapper;
+  this.commitStgy=commitStgy;
+  logger.debug("Created {} with the following configuration: " + "[SolrConfig = {}], [SolrMapper = {}], [CommitStgy = {}]",this.getClass().getSimpleName(),solrConfig,solrMapper,commitStgy);
+}

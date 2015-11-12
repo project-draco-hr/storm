@@ -6,5 +6,8 @@
   boolean present_executors=true && (is_set_executors());
   list.add(present_executors);
   if (present_executors)   list.add(executors);
+  boolean present_resources=true && (is_set_resources());
+  list.add(present_resources);
+  if (present_resources)   list.add(resources);
   return list.hashCode();
 }

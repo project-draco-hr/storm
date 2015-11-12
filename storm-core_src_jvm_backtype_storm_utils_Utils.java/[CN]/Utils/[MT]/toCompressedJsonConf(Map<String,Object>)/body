@@ -1,0 +1,12 @@
+{
+  try {
+    ByteArrayOutputStream bos=new ByteArrayOutputStream();
+    OutputStreamWriter out=new OutputStreamWriter(new GZIPOutputStream(bos));
+    JSONValue.writeJSONString(stormConf,out);
+    out.close();
+    return bos.toByteArray();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

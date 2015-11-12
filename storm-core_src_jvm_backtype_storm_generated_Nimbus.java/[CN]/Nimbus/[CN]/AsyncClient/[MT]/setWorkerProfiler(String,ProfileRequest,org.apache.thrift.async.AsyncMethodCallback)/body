@@ -1,0 +1,6 @@
+{
+  checkReady();
+  setWorkerProfiler_call method_call=new setWorkerProfiler_call(id,profileRequest,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

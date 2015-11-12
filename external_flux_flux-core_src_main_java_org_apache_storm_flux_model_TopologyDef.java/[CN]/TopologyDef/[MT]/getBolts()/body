@@ -1,0 +1,5 @@
+{
+  ArrayList<BoltDef> retval=new ArrayList<BoltDef>();
+  retval.addAll(this.boltMap.values());
+  return retval;
+}

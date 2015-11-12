@@ -1,0 +1,5 @@
+{
+  String[] command=new String[]{"python","--version"};
+  int exitVal=invokeCommand(command);
+  assertEquals("Exit value for python is 0.",0,exitVal);
+}

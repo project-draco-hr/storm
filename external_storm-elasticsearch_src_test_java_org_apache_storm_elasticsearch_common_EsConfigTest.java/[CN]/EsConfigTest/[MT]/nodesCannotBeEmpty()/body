@@ -1,0 +1,3 @@
+{
+  new EsConfig(clusterName,new String[]{});
+}

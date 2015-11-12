@@ -1,0 +1,9 @@
+{
+  for (  Field field : fields) {
+    String type=field.getType();
+    int idx=indexOf(fieldTypes,type);
+    if (idx != -1) {
+      fieldToWrapper.put(field.getName(),new FieldTypeWrapper(field,fieldTypes.get(idx)));
+    }
+  }
+}

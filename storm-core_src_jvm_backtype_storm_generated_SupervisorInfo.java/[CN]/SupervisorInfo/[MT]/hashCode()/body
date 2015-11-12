@@ -24,5 +24,8 @@
   boolean present_version=true && (is_set_version());
   list.add(present_version);
   if (present_version)   list.add(version);
+  boolean present_resources_map=true && (is_set_resources_map());
+  list.add(present_resources_map);
+  if (present_resources_map)   list.add(resources_map);
   return list.hashCode();
 }

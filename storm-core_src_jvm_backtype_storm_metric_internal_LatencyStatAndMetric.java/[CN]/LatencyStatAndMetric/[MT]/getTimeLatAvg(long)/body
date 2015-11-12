@@ -1,0 +1,15 @@
+{
+  Map<String,Double> ret=new HashMap<>();
+  long lat;
+  long count;
+synchronized (_currentLock) {
+    lat=_currentLatBucket;
+    count=_currentCountBucket;
+  }
+  long timeSpent=now - _bucketStart;
+  ret.put("600",readApproximateLatAvg(lat,count,timeSpent,_tmTime,_tmLatBuckets,_tmCountBuckets,600 * 1000));
+  ret.put("10800",readApproximateLatAvg(lat,count,timeSpent,_thTime,_thLatBuckets,_thCountBuckets,10800 * 1000));
+  ret.put("86400",readApproximateLatAvg(lat,count,timeSpent,_odTime,_odLatBuckets,_odCountBuckets,86400 * 1000));
+  ret.put(":all-time",((double)lat + _allTimeLat) / (count + _allTimeCount));
+  return ret;
+}

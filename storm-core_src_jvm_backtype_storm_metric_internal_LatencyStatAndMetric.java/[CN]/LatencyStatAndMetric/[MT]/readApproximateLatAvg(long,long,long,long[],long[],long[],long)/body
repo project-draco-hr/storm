@@ -1,0 +1,11 @@
+{
+  long timeNeeded=desiredTime - timeSpent;
+  long totalLat=lat;
+  long totalCount=count;
+  for (int i=0; i < bucketTime.length && timeNeeded > 0; i++) {
+    totalLat+=latBuckets[i];
+    totalCount+=countBuckets[i];
+    timeNeeded-=bucketTime[i];
+  }
+  return ((double)totalLat) / totalCount;
+}

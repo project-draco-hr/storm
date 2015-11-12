@@ -1,0 +1,2 @@
+RedisState state
+List<String> keys

@@ -1,0 +1,6 @@
+{
+synchronized (_currentLock) {
+    _currentLatBucket+=latency;
+    _currentCountBucket++;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  Jedis jedis=null;
+  try {
+    jedis=state.getJedis();
+    List<String> redisVals;
+    String[] keysForRedis=keys.toArray(new String[keys.size()]);
+switch (dataType) {
+case STRING:
+      redisVals=jedis.mget(keysForRedis);
+    break;
+case HASH:
+  redisVals=jedis.hmget(additionalKey,keysForRedis);
+break;
+default :
+throw new IllegalArgumentException("Cannot process such data type: " + dataType);
+}
+return redisVals;
+}
+  finally {
+if (jedis != null) {
+state.returnJedis(jedis);
+}
+}
+}

@@ -1,0 +1,3 @@
+def get_trimmed_comments(self, limit=40):
+    comments = self.get_comments()
+    return (comments if (len(comments) < limit) else (comments[0:limit] + '...'))

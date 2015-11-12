@@ -1,0 +1,4 @@
+{
+  _sigar=new Sigar();
+  _pid=_sigar.getPid();
+}

@@ -1,0 +1,4 @@
+{
+  Schema schema=schemaBuilder.getSchema();
+  typeFinder=new SolrFieldTypeFinder(schema);
+}

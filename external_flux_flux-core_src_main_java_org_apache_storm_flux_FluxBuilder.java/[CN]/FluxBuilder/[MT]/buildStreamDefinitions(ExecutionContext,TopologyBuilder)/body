@@ -1,0 +1,53 @@
+{
+  TopologyDef topologyDef=context.getTopologyDef();
+  HashMap<String,BoltDeclarer> declarers=new HashMap<String,BoltDeclarer>();
+  for (  StreamDef stream : topologyDef.getStreams()) {
+    Object boltObj=context.getBolt(stream.getTo());
+    BoltDeclarer declarer=declarers.get(stream.getTo());
+    if (boltObj instanceof IRichBolt) {
+      if (declarer == null) {
+        declarer=builder.setBolt(stream.getTo(),(IRichBolt)boltObj,topologyDef.parallelismForBolt(stream.getTo()));
+        declarers.put(stream.getTo(),declarer);
+      }
+    }
+ else     if (boltObj instanceof IBasicBolt) {
+      if (declarer == null) {
+        declarer=builder.setBolt(stream.getTo(),(IBasicBolt)boltObj,topologyDef.parallelismForBolt(stream.getTo()));
+        declarers.put(stream.getTo(),declarer);
+      }
+    }
+ else {
+      throw new IllegalArgumentException("Class does not appear to be a bolt: " + boltObj.getClass().getName());
+    }
+    GroupingDef grouping=stream.getGrouping();
+    String streamId=(grouping.getStreamId() == null ? Utils.DEFAULT_STREAM_ID : grouping.getStreamId());
+switch (grouping.getType()) {
+case SHUFFLE:
+      declarer.shuffleGrouping(stream.getFrom(),streamId);
+    break;
+case FIELDS:
+  declarer.fieldsGrouping(stream.getFrom(),streamId,new Fields(grouping.getArgs()));
+break;
+case ALL:
+declarer.allGrouping(stream.getFrom(),streamId);
+break;
+case DIRECT:
+declarer.directGrouping(stream.getFrom(),streamId);
+break;
+case GLOBAL:
+declarer.globalGrouping(stream.getFrom(),streamId);
+break;
+case LOCAL_OR_SHUFFLE:
+declarer.localOrShuffleGrouping(stream.getFrom(),streamId);
+break;
+case NONE:
+declarer.noneGrouping(stream.getFrom(),streamId);
+break;
+case CUSTOM:
+declarer.customGrouping(stream.getFrom(),streamId,buildCustomStreamGrouping(stream.getGrouping().getCustomClass(),context));
+break;
+default :
+throw new UnsupportedOperationException("unsupported grouping type: " + grouping);
+}
+}
+}

@@ -1,0 +1,4 @@
+def git_time(obj):
+    if (obj is None):
+        return None
+    return datetime.strptime(obj[0:19], '%Y-%m-%dT%H:%M:%S')

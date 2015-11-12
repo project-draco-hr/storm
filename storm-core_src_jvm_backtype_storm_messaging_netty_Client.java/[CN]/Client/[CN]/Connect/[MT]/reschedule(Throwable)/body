@@ -1,0 +1,7 @@
+{
+  String baseMsg=String.format("connection attempt %s to %s failed",connectionAttempts,dstAddressPrefixedName);
+  String failureMsg=(t == null) ? baseMsg : baseMsg + ": " + t.toString();
+  LOG.error(failureMsg);
+  long nextDelayMs=retryPolicy.getSleepTimeMs(connectionAttempts.get(),0);
+  scheduleConnect(nextDelayMs);
+}

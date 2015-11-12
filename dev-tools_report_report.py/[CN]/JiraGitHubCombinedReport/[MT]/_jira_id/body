@@ -1,0 +1,3 @@
+def _jira_id(self, pull_idx):
+    pull = self._pull_request(pull_idx)
+    return encode(pull.jira_id())

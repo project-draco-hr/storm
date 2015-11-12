@@ -1,0 +1,9 @@
+{
+  Map<String,String> keyToValue=new HashMap<String,String>();
+  for (  TridentTuple input : inputs) {
+    String key=storeMapper.getKeyFromTuple(input);
+    String value=storeMapper.getValueFromTuple(input);
+    keyToValue.put(key,value);
+  }
+  updateStatesToRedis(state,keyToValue);
+}

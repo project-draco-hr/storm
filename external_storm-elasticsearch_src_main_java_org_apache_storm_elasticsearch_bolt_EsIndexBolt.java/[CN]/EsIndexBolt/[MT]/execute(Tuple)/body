@@ -1,0 +1,14 @@
+{
+  try {
+    String source=tupleMapper.getSource(tuple);
+    String index=tupleMapper.getIndex(tuple);
+    String type=tupleMapper.getType(tuple);
+    String id=tupleMapper.getId(tuple);
+    client.prepareIndex(index,type,id).setSource(source).execute().actionGet();
+    collector.ack(tuple);
+  }
+ catch (  Exception e) {
+    collector.reportError(e);
+    collector.fail(tuple);
+  }
+}

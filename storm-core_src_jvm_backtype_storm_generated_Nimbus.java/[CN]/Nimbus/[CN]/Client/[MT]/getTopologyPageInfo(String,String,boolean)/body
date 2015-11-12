@@ -1,0 +1,4 @@
+{
+  send_getTopologyPageInfo(id,window,is_include_sys);
+  return recv_getTopologyPageInfo();
+}

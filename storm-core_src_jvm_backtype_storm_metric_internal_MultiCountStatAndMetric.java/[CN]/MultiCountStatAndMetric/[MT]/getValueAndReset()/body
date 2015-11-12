@@ -1,0 +1,11 @@
+{
+  Map<String,Long> ret=new HashMap<String,Long>();
+  for (  Map.Entry<T,CountStatAndMetric> entry : _counts.entrySet()) {
+    String key=keyToString(entry.getKey());
+    Long val=(Long)entry.getValue().getValueAndReset();
+    Long other=ret.get(key);
+    val+=other == null ? 0l : other;
+    ret.put(key,val);
+  }
+  return ret;
+}

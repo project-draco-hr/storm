@@ -1,0 +1,4 @@
+{
+  LOG.debug("Attempting to sync all data to filesystem");
+  this.writer.hsync();
+}

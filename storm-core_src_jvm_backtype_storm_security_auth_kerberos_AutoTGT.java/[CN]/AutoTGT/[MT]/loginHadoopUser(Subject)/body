@@ -1,5 +1,5 @@
 {
-  Class<?> ugi=null;
+  Class<?> ugi;
   try {
     ugi=Class.forName("org.apache.hadoop.security.UserGroupInformation");
   }

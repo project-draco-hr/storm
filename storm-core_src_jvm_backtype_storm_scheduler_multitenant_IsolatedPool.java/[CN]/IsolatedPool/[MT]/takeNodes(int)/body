@@ -1,6 +1,6 @@
 {
   LOG.debug("Taking {} from {}",nodesNeeded,this);
-  HashSet<Node> ret=new HashSet<Node>();
+  HashSet<Node> ret=new HashSet<>();
   for (  Entry<String,Set<Node>> entry : _topologyIdToNodes.entrySet()) {
     if (!_isolated.contains(entry.getKey())) {
       Iterator<Node> it=entry.getValue().iterator();

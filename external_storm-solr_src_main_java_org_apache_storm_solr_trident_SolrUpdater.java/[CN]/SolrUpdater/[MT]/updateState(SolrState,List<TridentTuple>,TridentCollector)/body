@@ -1,0 +1,3 @@
+{
+  solrState.updateState(tuples);
+}

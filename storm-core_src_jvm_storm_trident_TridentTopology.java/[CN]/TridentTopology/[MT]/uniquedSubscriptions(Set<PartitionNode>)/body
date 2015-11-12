@@ -1,5 +1,5 @@
 {
-  Map<String,PartitionNode> ret=new HashMap();
+  Map<String,PartitionNode> ret=new HashMap<>();
   for (  PartitionNode n : subscriptions) {
     PartitionNode curr=ret.get(n.streamId);
     if (curr != null && !curr.thriftGrouping.equals(n.thriftGrouping)) {

@@ -48,5 +48,13 @@ unset_version();
 set_version((String)value);
 }
 break;
+case TOTAL_RESOURCES:
+if (value == null) {
+unset_total_resources();
+}
+ else {
+set_total_resources((Map<String,Double>)value);
+}
+break;
 }
 }

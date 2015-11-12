@@ -1,0 +1,11 @@
+{
+  Map<String,Map<String,Double>> spoutResources=new HashMap<String,Map<String,Double>>();
+  if (topology.get_spouts() != null) {
+    for (    Map.Entry<String,SpoutSpec> spout : topology.get_spouts().entrySet()) {
+      Map<String,Double> topology_resources=parseResources(spout.getValue().get_common().get_json_conf());
+      checkIntialization(topology_resources,spout.getValue().toString(),topologyConf);
+      spoutResources.put(spout.getKey(),topology_resources);
+    }
+  }
+  return spoutResources;
+}

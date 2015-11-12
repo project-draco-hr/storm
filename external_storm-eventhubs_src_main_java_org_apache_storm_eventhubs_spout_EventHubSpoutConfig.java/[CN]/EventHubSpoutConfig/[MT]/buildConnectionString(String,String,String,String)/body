@@ -1,3 +1,0 @@
-{
-  return "amqps://" + username + ":"+ encodeString(password)+ "@"+ namespace+ "."+ targetFqnAddress;
-}

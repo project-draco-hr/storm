@@ -1,0 +1,8 @@
+{
+  if (expireIntervalSec > 0) {
+    this.expireIntervalSec=expireIntervalSec;
+  }
+ else {
+    this.expireIntervalSec=0;
+  }
+}

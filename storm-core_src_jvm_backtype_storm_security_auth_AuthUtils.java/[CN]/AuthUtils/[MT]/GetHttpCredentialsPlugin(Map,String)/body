@@ -1,5 +1,5 @@
 {
-  IHttpCredentialsPlugin plugin=null;
+  IHttpCredentialsPlugin plugin;
   try {
     Class klass=Class.forName(klassName);
     plugin=(IHttpCredentialsPlugin)klass.newInstance();

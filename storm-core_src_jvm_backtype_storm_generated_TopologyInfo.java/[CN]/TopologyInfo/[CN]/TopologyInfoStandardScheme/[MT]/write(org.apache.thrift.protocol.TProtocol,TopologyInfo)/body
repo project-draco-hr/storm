@@ -18,8 +18,8 @@
     oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.executors.size()));
-      for (      ExecutorSummary _iter300 : struct.executors) {
-        _iter300.write(oprot);
+      for (      ExecutorSummary _iter322 : struct.executors) {
+        _iter322.write(oprot);
       }
       oprot.writeListEnd();
     }
@@ -34,12 +34,12 @@
     oprot.writeFieldBegin(ERRORS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.LIST,struct.errors.size()));
-      for (      Map.Entry<String,List<ErrorInfo>> _iter301 : struct.errors.entrySet()) {
-        oprot.writeString(_iter301.getKey());
+      for (      Map.Entry<String,List<ErrorInfo>> _iter323 : struct.errors.entrySet()) {
+        oprot.writeString(_iter323.getKey());
 {
-          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,_iter301.getValue().size()));
-          for (          ErrorInfo _iter302 : _iter301.getValue()) {
-            _iter302.write(oprot);
+          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,_iter323.getValue().size()));
+          for (          ErrorInfo _iter324 : _iter323.getValue()) {
+            _iter324.write(oprot);
           }
           oprot.writeListEnd();
         }
@@ -47,6 +47,20 @@
       oprot.writeMapEnd();
     }
     oprot.writeFieldEnd();
+  }
+  if (struct.component_debug != null) {
+    if (struct.is_set_component_debug()) {
+      oprot.writeFieldBegin(COMPONENT_DEBUG_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.component_debug.size()));
+        for (        Map.Entry<String,DebugOptions> _iter325 : struct.component_debug.entrySet()) {
+          oprot.writeString(_iter325.getKey());
+          _iter325.getValue().write(oprot);
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
   }
   if (struct.sched_status != null) {
     if (struct.is_set_sched_status()) {
@@ -61,6 +75,41 @@
       oprot.writeString(struct.owner);
       oprot.writeFieldEnd();
     }
+  }
+  if (struct.is_set_replication_count()) {
+    oprot.writeFieldBegin(REPLICATION_COUNT_FIELD_DESC);
+    oprot.writeI32(struct.replication_count);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_requested_memonheap()) {
+    oprot.writeFieldBegin(REQUESTED_MEMONHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.requested_memonheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    oprot.writeFieldBegin(REQUESTED_MEMOFFHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.requested_memoffheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_requested_cpu()) {
+    oprot.writeFieldBegin(REQUESTED_CPU_FIELD_DESC);
+    oprot.writeDouble(struct.requested_cpu);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    oprot.writeFieldBegin(ASSIGNED_MEMONHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.assigned_memonheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    oprot.writeFieldBegin(ASSIGNED_MEMOFFHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.assigned_memoffheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_assigned_cpu()) {
+    oprot.writeFieldBegin(ASSIGNED_CPU_FIELD_DESC);
+    oprot.writeDouble(struct.assigned_cpu);
+    oprot.writeFieldEnd();
   }
   oprot.writeFieldStop();
   oprot.writeStructEnd();

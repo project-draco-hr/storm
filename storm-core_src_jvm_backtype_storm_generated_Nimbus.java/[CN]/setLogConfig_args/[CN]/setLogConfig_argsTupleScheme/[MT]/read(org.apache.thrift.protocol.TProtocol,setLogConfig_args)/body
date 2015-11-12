@@ -1,0 +1,13 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(2);
+  if (incoming.get(0)) {
+    struct.name=iprot.readString();
+    struct.set_name_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.config=new LogConfig();
+    struct.config.read(iprot);
+    struct.set_config_isSet(true);
+  }
+}

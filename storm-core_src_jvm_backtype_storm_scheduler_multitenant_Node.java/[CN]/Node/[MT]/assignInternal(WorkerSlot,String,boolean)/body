@@ -14,7 +14,7 @@
   }
   Set<WorkerSlot> usedSlots=_topIdToUsedSlots.get(topId);
   if (usedSlots == null) {
-    usedSlots=new HashSet<WorkerSlot>();
+    usedSlots=new HashSet<>();
     _topIdToUsedSlots.put(topId,usedSlots);
   }
   usedSlots.add(ws);

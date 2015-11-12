@@ -42,6 +42,17 @@
     }
     first=false;
   }
+  if (is_set_worker_resources()) {
+    if (!first)     sb.append(", ");
+    sb.append("worker_resources:");
+    if (this.worker_resources == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.worker_resources);
+    }
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

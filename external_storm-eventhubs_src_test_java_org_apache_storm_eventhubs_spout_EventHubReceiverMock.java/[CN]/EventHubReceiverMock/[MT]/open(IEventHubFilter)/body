@@ -1,0 +1,4 @@
+{
+  currentOffset=Long.parseLong(filter.getFilterValue());
+  isOpen=true;
+}

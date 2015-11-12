@@ -1,6 +1,6 @@
 {
   int numAnchors=in.readInt(true);
-  Map<Long,Long> anchorsToIds=new HashMap<Long,Long>();
+  Map<Long,Long> anchorsToIds=new HashMap<>();
   for (int i=0; i < numAnchors; i++) {
     anchorsToIds.put(in.readLong(),in.readLong());
   }

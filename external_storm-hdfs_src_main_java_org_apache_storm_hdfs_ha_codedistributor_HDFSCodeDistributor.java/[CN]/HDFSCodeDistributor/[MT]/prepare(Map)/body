@@ -1,0 +1,10 @@
+{
+  Validate.notNull(conf.get(HDFS_STORM_DIR),"you must specify " + HDFS_STORM_DIR);
+  Configuration configuration=new Configuration();
+  HdfsSecurityUtil.login(conf,configuration);
+  this.fs=FileSystem.get(configuration);
+  this.stormDir=new Path(String.valueOf(conf.get(HDFS_STORM_DIR)));
+  if (!this.fs.exists(stormDir)) {
+    this.fs.mkdirs(this.stormDir);
+  }
+}

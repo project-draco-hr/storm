@@ -1,0 +1,8 @@
+{
+  SimpleTypeValidator.validateField(name,String.class,o);
+  if (this.acceptedValues != null) {
+    if (!this.acceptedValues.contains((String)o)) {
+      throw new IllegalArgumentException("Field " + name + " is not an accepted value. Value: "+ o+ " Accepted values: "+ this.acceptedValues);
+    }
+  }
+}

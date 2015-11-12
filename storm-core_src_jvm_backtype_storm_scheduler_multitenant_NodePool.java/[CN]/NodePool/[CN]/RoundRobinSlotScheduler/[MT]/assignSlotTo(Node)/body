@@ -14,7 +14,7 @@
     String nodeId=n.getId();
     Set<String> nodeComps=_nodeToComps.get(nodeId);
     if (nodeComps == null) {
-      nodeComps=new HashSet<String>();
+      nodeComps=new HashSet<>();
       _nodeToComps.put(nodeId,nodeComps);
     }
     for (    Entry<String,List<ExecutorDetails>> entry : _spreadToSchedule.entrySet()) {

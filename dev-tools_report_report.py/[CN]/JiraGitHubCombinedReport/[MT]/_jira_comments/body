@@ -1,0 +1,2 @@
+def _jira_comments(self, jira_id):
+    return (None if (jira_id is None) else self.jira_report.issues[jira_id].get_comments())

@@ -1,0 +1,10 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case TOPO_HISTORY:
+    return is_set_topo_history();
+}
+throw new IllegalStateException();
+}

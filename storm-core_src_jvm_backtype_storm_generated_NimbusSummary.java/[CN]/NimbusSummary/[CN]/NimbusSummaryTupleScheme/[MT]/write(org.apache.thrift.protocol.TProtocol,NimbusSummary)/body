@@ -1,0 +1,8 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.host);
+  oprot.writeI32(struct.port);
+  oprot.writeI32(struct.uptime_secs);
+  oprot.writeBool(struct.isLeader);
+  oprot.writeString(struct.version);
+}
