@@ -1,6 +1,6 @@
 {
   windowLifecycleListener=lifecycleListener;
-  window=new ConcurrentLinkedQueue<>();
+  queue=new ConcurrentLinkedQueue<>();
   expiredEvents=new ArrayList<>();
   prevWindowEvents=new HashSet<>();
   eventsSinceLastExpiry=new AtomicInteger();

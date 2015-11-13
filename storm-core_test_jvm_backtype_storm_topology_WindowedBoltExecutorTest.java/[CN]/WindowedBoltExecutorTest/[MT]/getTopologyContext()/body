@@ -1,0 +1,6 @@
+{
+  TopologyContext context=Mockito.mock(TopologyContext.class);
+  Map<GlobalStreamId,Grouping> sources=Collections.singletonMap(new GlobalStreamId("s1","default"),null);
+  Mockito.when(context.getThisSources()).thenReturn(sources);
+  return context;
+}

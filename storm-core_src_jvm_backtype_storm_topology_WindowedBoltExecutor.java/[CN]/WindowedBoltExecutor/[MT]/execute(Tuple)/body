@@ -1,3 +1,10 @@
 {
-  windowManager.add(input);
+  if (isTupleTs()) {
+    long ts=input.getLongByField(tupleTsFieldName);
+    windowManager.add(input,ts);
+    waterMarkEventGenerator.track(input.getSourceGlobalStreamId(),ts);
+  }
+ else {
+    windowManager.add(input);
+  }
 }

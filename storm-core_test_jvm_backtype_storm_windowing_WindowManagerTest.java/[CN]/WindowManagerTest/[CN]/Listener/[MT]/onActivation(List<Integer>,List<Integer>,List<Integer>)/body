@@ -1,5 +1,8 @@
 {
   onActivationEvents=events;
+  allOnActivationEvents.add(events);
   onActivationNewEvents=newEvents;
+  allOnActivationNewEvents.add(newEvents);
   onActivationExpiredEvents=expired;
+  allOnActivationExpiredEvents.add(expired);
 }

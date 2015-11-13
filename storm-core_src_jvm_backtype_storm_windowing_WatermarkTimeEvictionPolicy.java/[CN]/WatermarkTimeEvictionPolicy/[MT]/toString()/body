@@ -1,0 +1,3 @@
+{
+  return "WatermarkTimeEvictionPolicy{" + "lag=" + lag + "} "+ super.toString();
+}
