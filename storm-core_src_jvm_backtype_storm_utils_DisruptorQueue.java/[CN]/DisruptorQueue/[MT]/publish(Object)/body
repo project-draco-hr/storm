@@ -1,8 +1,13 @@
 {
   Long id=getId();
-  ThreadLocalBatcher batcher=_batchers.get(id);
+  ThreadLocalInserter batcher=_batchers.get(id);
   if (batcher == null) {
-    batcher=new ThreadLocalBatcher();
+    if (_inputBatchSize > 1) {
+      batcher=new ThreadLocalBatcher();
+    }
+ else {
+      batcher=new ThreadLocalJustInserter();
+    }
     _batchers.put(id,batcher);
   }
   batcher.add(obj);

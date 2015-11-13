@@ -1,6 +1,0 @@
-{
-  super(name + "-flusher");
-  _flushInterval=flushInterval;
-  _done=false;
-  setDaemon(true);
-}
