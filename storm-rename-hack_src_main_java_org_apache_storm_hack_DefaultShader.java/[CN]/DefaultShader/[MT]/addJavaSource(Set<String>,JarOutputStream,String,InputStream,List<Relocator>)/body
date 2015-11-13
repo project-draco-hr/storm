@@ -1,0 +1,11 @@
+{
+  jos.putNextEntry(new JarEntry(name));
+  String sourceContent=IOUtil.toString(new InputStreamReader(is,"UTF-8"));
+  for (  Relocator relocator : relocators) {
+    sourceContent=relocator.applyToSourceContent(sourceContent);
+  }
+  OutputStreamWriter writer=new OutputStreamWriter(jos,"UTF-8");
+  writer.append(sourceContent);
+  writer.flush();
+  resources.add(name);
+}

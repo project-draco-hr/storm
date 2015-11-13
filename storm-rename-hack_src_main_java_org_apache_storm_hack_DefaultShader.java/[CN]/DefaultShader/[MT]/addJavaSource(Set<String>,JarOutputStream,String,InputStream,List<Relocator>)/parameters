@@ -1,0 +1,5 @@
+Set<String> resources
+JarOutputStream jos
+String name
+InputStream is
+List<Relocator> relocators

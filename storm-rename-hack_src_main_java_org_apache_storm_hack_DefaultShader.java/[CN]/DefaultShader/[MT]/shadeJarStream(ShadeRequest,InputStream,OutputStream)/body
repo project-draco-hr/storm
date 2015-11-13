@@ -1,0 +1,49 @@
+{
+  Set<String> resources=new HashSet<>();
+  List<ResourceTransformer> transformers=new ArrayList<>(shadeRequest.getResourceTransformers());
+  LOG.debug("Transformers {}",transformers);
+  RelocatorRemapper remapper=new RelocatorRemapper(shadeRequest.getRelocators());
+  LOG.debug("Remapper {}",remapper);
+  JarOutputStream jos=new JarOutputStream(new BufferedOutputStream(fileOutputStream));
+  JarInputStream jarFile=new JarInputStream(in);
+  for (JarEntry entry=jarFile.getNextJarEntry(); entry != null; entry=jarFile.getNextJarEntry()) {
+    String name=entry.getName();
+    LOG.debug("Processing " + name);
+    remapper.setClassName(name);
+    if ("META-INF/INDEX.LIST".equals(name)) {
+      LOG.debug("Skipping INDEX.LIST...");
+      continue;
+    }
+    if (!entry.isDirectory()) {
+      InputStream is=jarFile;
+      String mappedName=remapper.map(name);
+      LOG.debug(name + " -> " + mappedName);
+      int idx=mappedName.lastIndexOf('/');
+      if (idx != -1) {
+        String dir=mappedName.substring(0,idx);
+        if (!resources.contains(dir)) {
+          addDirectory(resources,jos,dir);
+        }
+      }
+      if (name.endsWith(".class")) {
+        addRemappedClass(remapper,jos,name,is);
+      }
+ else       if (name.endsWith(".java")) {
+        if (resources.contains(mappedName)) {
+          continue;
+        }
+        addJavaSource(resources,jos,mappedName,is,shadeRequest.getRelocators());
+      }
+ else {
+        if (!resourceTransformed(transformers,mappedName,is,shadeRequest.getRelocators())) {
+          if (resources.contains(mappedName)) {
+            continue;
+          }
+          addResource(resources,jos,mappedName,is);
+        }
+      }
+    }
+  }
+  jarFile.close();
+  jos.close();
+}
