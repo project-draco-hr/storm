@@ -1,0 +1,6 @@
+{
+  long start=TestUtils.monotonicNow();
+  while (TestUtils.monotonicNow() - start < timeout && cond.call()) {
+    Thread.sleep(100);
+  }
+}
