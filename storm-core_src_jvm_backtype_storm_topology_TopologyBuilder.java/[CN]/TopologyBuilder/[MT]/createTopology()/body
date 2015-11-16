@@ -11,5 +11,7 @@
     ComponentCommon common=getComponentCommon(spoutId,spout);
     spoutSpecs.put(spoutId,new SpoutSpec(ComponentObject.serialized_java(Utils.javaSerialize(spout)),common));
   }
-  return new StormTopology(spoutSpecs,boltSpecs,new HashMap<String,StateSpoutSpec>());
+  StormTopology stormTopology=new StormTopology(spoutSpecs,boltSpecs,new HashMap<String,StateSpoutSpec>());
+  stormTopology.set_worker_hooks(_workerHooks);
+  return stormTopology;
 }

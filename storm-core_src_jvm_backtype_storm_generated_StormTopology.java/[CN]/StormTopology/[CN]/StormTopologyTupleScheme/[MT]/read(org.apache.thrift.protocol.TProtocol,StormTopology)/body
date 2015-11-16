@@ -1,42 +1,55 @@
 {
   TTupleProtocol iprot=(TTupleProtocol)prot;
 {
-    org.apache.thrift.protocol.TMap _map62=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-    struct.spouts=new HashMap<String,SpoutSpec>(2 * _map62.size);
-    String _key63;
-    SpoutSpec _val64;
-    for (int _i65=0; _i65 < _map62.size; ++_i65) {
-      _key63=iprot.readString();
-      _val64=new SpoutSpec();
-      _val64.read(iprot);
-      struct.spouts.put(_key63,_val64);
+    org.apache.thrift.protocol.TMap _map67=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.spouts=new HashMap<String,SpoutSpec>(2 * _map67.size);
+    String _key68;
+    SpoutSpec _val69;
+    for (int _i70=0; _i70 < _map67.size; ++_i70) {
+      _key68=iprot.readString();
+      _val69=new SpoutSpec();
+      _val69.read(iprot);
+      struct.spouts.put(_key68,_val69);
     }
   }
   struct.set_spouts_isSet(true);
 {
-    org.apache.thrift.protocol.TMap _map66=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-    struct.bolts=new HashMap<String,Bolt>(2 * _map66.size);
-    String _key67;
-    Bolt _val68;
-    for (int _i69=0; _i69 < _map66.size; ++_i69) {
-      _key67=iprot.readString();
-      _val68=new Bolt();
-      _val68.read(iprot);
-      struct.bolts.put(_key67,_val68);
+    org.apache.thrift.protocol.TMap _map71=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.bolts=new HashMap<String,Bolt>(2 * _map71.size);
+    String _key72;
+    Bolt _val73;
+    for (int _i74=0; _i74 < _map71.size; ++_i74) {
+      _key72=iprot.readString();
+      _val73=new Bolt();
+      _val73.read(iprot);
+      struct.bolts.put(_key72,_val73);
     }
   }
   struct.set_bolts_isSet(true);
 {
-    org.apache.thrift.protocol.TMap _map70=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-    struct.state_spouts=new HashMap<String,StateSpoutSpec>(2 * _map70.size);
-    String _key71;
-    StateSpoutSpec _val72;
-    for (int _i73=0; _i73 < _map70.size; ++_i73) {
-      _key71=iprot.readString();
-      _val72=new StateSpoutSpec();
-      _val72.read(iprot);
-      struct.state_spouts.put(_key71,_val72);
+    org.apache.thrift.protocol.TMap _map75=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.state_spouts=new HashMap<String,StateSpoutSpec>(2 * _map75.size);
+    String _key76;
+    StateSpoutSpec _val77;
+    for (int _i78=0; _i78 < _map75.size; ++_i78) {
+      _key76=iprot.readString();
+      _val77=new StateSpoutSpec();
+      _val77.read(iprot);
+      struct.state_spouts.put(_key76,_val77);
     }
   }
   struct.set_state_spouts_isSet(true);
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+{
+      org.apache.thrift.protocol.TList _list79=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
+      struct.worker_hooks=new ArrayList<ByteBuffer>(_list79.size);
+      ByteBuffer _elem80;
+      for (int _i81=0; _i81 < _list79.size; ++_i81) {
+        _elem80=iprot.readBinary();
+        struct.worker_hooks.add(_elem80);
+      }
+    }
+    struct.set_worker_hooks_isSet(true);
+  }
 }

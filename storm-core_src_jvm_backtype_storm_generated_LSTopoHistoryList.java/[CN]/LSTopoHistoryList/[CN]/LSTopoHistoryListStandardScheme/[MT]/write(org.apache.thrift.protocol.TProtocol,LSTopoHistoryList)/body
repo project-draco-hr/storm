@@ -5,8 +5,8 @@
     oprot.writeFieldBegin(TOPO_HISTORY_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.topo_history.size()));
-      for (      LSTopoHistory _iter675 : struct.topo_history) {
-        _iter675.write(oprot);
+      for (      LSTopoHistory _iter683 : struct.topo_history) {
+        _iter683.write(oprot);
       }
       oprot.writeListEnd();
     }

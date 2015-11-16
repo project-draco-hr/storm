@@ -1,0 +1,3 @@
+{
+  _workerHooks.add(ByteBuffer.wrap(Utils.javaSerialize(workerHook)));
+}

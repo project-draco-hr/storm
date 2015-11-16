@@ -2,4 +2,5 @@
   this.spouts=null;
   this.bolts=null;
   this.state_spouts=null;
+  this.worker_hooks=null;
 }

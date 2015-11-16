@@ -7,51 +7,51 @@
   struct.uptime_secs=iprot.readI32();
   struct.set_uptime_secs_isSet(true);
 {
-    org.apache.thrift.protocol.TList _list330=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-    struct.executors=new ArrayList<ExecutorSummary>(_list330.size);
-    ExecutorSummary _elem331;
-    for (int _i332=0; _i332 < _list330.size; ++_i332) {
-      _elem331=new ExecutorSummary();
-      _elem331.read(iprot);
-      struct.executors.add(_elem331);
+    org.apache.thrift.protocol.TList _list338=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.executors=new ArrayList<ExecutorSummary>(_list338.size);
+    ExecutorSummary _elem339;
+    for (int _i340=0; _i340 < _list338.size; ++_i340) {
+      _elem339=new ExecutorSummary();
+      _elem339.read(iprot);
+      struct.executors.add(_elem339);
     }
   }
   struct.set_executors_isSet(true);
   struct.status=iprot.readString();
   struct.set_status_isSet(true);
 {
-    org.apache.thrift.protocol.TMap _map333=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.LIST,iprot.readI32());
-    struct.errors=new HashMap<String,List<ErrorInfo>>(2 * _map333.size);
-    String _key334;
-    List<ErrorInfo> _val335;
-    for (int _i336=0; _i336 < _map333.size; ++_i336) {
-      _key334=iprot.readString();
+    org.apache.thrift.protocol.TMap _map341=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.LIST,iprot.readI32());
+    struct.errors=new HashMap<String,List<ErrorInfo>>(2 * _map341.size);
+    String _key342;
+    List<ErrorInfo> _val343;
+    for (int _i344=0; _i344 < _map341.size; ++_i344) {
+      _key342=iprot.readString();
 {
-        org.apache.thrift.protocol.TList _list337=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-        _val335=new ArrayList<ErrorInfo>(_list337.size);
-        ErrorInfo _elem338;
-        for (int _i339=0; _i339 < _list337.size; ++_i339) {
-          _elem338=new ErrorInfo();
-          _elem338.read(iprot);
-          _val335.add(_elem338);
+        org.apache.thrift.protocol.TList _list345=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+        _val343=new ArrayList<ErrorInfo>(_list345.size);
+        ErrorInfo _elem346;
+        for (int _i347=0; _i347 < _list345.size; ++_i347) {
+          _elem346=new ErrorInfo();
+          _elem346.read(iprot);
+          _val343.add(_elem346);
         }
       }
-      struct.errors.put(_key334,_val335);
+      struct.errors.put(_key342,_val343);
     }
   }
   struct.set_errors_isSet(true);
   BitSet incoming=iprot.readBitSet(10);
   if (incoming.get(0)) {
 {
-      org.apache.thrift.protocol.TMap _map340=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-      struct.component_debug=new HashMap<String,DebugOptions>(2 * _map340.size);
-      String _key341;
-      DebugOptions _val342;
-      for (int _i343=0; _i343 < _map340.size; ++_i343) {
-        _key341=iprot.readString();
-        _val342=new DebugOptions();
-        _val342.read(iprot);
-        struct.component_debug.put(_key341,_val342);
+      org.apache.thrift.protocol.TMap _map348=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.component_debug=new HashMap<String,DebugOptions>(2 * _map348.size);
+      String _key349;
+      DebugOptions _val350;
+      for (int _i351=0; _i351 < _map348.size; ++_i351) {
+        _key349=iprot.readString();
+        _val350=new DebugOptions();
+        _val350.read(iprot);
+        struct.component_debug.put(_key349,_val350);
       }
     }
     struct.set_component_debug_isSet(true);
