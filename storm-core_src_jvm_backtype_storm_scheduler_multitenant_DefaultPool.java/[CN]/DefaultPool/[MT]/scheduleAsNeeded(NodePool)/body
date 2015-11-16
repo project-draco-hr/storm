@@ -14,7 +14,7 @@
       }
       int slotsToUse=Math.min(slotsRequested - slotsUsed,slotsFree + slotsAvailable);
       int executorsNotRunning=_cluster.getUnassignedExecutors(td).size();
-      LOG.debug("Slots... requested {} used {} free {} available {} to be used {}, executors not running {}",new Object[]{slotsRequested,slotsUsed,slotsFree,slotsAvailable,slotsToUse,executorsNotRunning});
+      LOG.debug("Slots... requested {} used {} free {} available {} to be used {}, executors not running {}",slotsRequested,slotsUsed,slotsFree,slotsAvailable,slotsToUse,executorsNotRunning);
       if (slotsToUse <= 0) {
         if (executorsNotRunning > 0) {
           _cluster.setStatus(topId,"Not fully scheduled (No free slots in default pool) " + executorsNotRunning + " executors not scheduled");
@@ -41,9 +41,9 @@
         slotsToUse=Math.min(slotsRequested,slotsFree);
       }
       RoundRobinSlotScheduler slotSched=new RoundRobinSlotScheduler(td,slotsToUse,_cluster);
-      LinkedList<Node> nodes=new LinkedList<Node>(_nodes);
+      LinkedList<Node> nodes=new LinkedList<>(_nodes);
       while (true) {
-        Node n=null;
+        Node n;
         do {
           if (nodes.isEmpty()) {
             throw new IllegalStateException("This should not happen, we" + " messed up and did not get enough slots");

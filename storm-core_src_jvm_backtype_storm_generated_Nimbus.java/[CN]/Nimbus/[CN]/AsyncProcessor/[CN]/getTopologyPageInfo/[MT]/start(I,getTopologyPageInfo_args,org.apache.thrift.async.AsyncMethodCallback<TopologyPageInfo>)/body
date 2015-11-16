@@ -1,0 +1,3 @@
+{
+  iface.getTopologyPageInfo(args.id,args.window,args.is_include_sys,resultHandler);
+}

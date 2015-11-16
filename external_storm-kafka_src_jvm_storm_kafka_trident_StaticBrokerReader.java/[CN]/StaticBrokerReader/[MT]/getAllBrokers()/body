@@ -1,0 +1,5 @@
+{
+  List<GlobalPartitionInformation> list=new ArrayList<GlobalPartitionInformation>();
+  list.addAll(brokers.values());
+  return list;
+}

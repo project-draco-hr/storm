@@ -28,4 +28,15 @@
     }
     this.executor_start_time_secs=__this__executor_start_time_secs;
   }
+  if (other.is_set_worker_resources()) {
+    Map<NodeInfo,WorkerResources> __this__worker_resources=new HashMap<NodeInfo,WorkerResources>(other.worker_resources.size());
+    for (    Map.Entry<NodeInfo,WorkerResources> other_element : other.worker_resources.entrySet()) {
+      NodeInfo other_element_key=other_element.getKey();
+      WorkerResources other_element_value=other_element.getValue();
+      NodeInfo __this__worker_resources_copy_key=new NodeInfo(other_element_key);
+      WorkerResources __this__worker_resources_copy_value=new WorkerResources(other_element_value);
+      __this__worker_resources.put(__this__worker_resources_copy_key,__this__worker_resources_copy_value);
+    }
+    this.worker_resources=__this__worker_resources;
+  }
 }

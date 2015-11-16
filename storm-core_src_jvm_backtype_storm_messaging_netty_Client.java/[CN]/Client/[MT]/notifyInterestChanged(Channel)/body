@@ -1,6 +1,8 @@
 {
   if (channel.isWritable()) {
-    MessageBatch pending=batcher.drain();
-    flushMessages(channel,pending);
+synchronized (writeLock) {
+      MessageBatch pending=batcher.drain();
+      flushMessages(channel,pending);
+    }
   }
 }

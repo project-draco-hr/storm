@@ -1,0 +1,3 @@
+{
+  return EncodingUtils.testBit(__isset_bitfield,__MEM_ON_HEAP_ISSET_ID);
+}

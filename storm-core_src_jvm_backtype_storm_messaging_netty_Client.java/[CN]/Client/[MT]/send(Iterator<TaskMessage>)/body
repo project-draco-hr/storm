@@ -12,17 +12,21 @@
     dropMessages(msgs);
     return;
   }
-  while (msgs.hasNext()) {
-    TaskMessage message=msgs.next();
-    MessageBatch full=batcher.add(message);
-    if (full != null) {
-      flushMessages(channel,full);
+synchronized (writeLock) {
+    while (msgs.hasNext()) {
+      TaskMessage message=msgs.next();
+      MessageBatch full=batcher.add(message);
+      if (full != null) {
+        flushMessages(channel,full);
+      }
     }
   }
   if (channel.isWritable()) {
-    MessageBatch batch=batcher.drain();
-    if (batch != null) {
-      flushMessages(channel,batch);
+synchronized (writeLock) {
+      MessageBatch batch=batcher.drain();
+      if (batch != null) {
+        flushMessages(channel,batch);
+      }
     }
   }
  else {

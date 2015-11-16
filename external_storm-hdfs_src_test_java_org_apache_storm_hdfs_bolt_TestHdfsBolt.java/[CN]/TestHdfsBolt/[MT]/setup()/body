@@ -1,0 +1,13 @@
+{
+  MockitoAnnotations.initMocks(this);
+  Configuration conf=new Configuration();
+  conf.set("fs.trash.interval","10");
+  conf.setBoolean("dfs.permissions",true);
+  File baseDir=new File("./target/hdfs/").getAbsoluteFile();
+  FileUtil.fullyDelete(baseDir);
+  conf.set(MiniDFSCluster.HDFS_MINIDFS_BASEDIR,baseDir.getAbsolutePath());
+  MiniDFSCluster.Builder builder=new MiniDFSCluster.Builder(conf);
+  hdfsCluster=builder.build();
+  fs=hdfsCluster.getFileSystem();
+  hdfsURI="hdfs://localhost:" + hdfsCluster.getNameNodePort() + "/";
+}

@@ -9,4 +9,7 @@
     }
     this.executors=__this__executors;
   }
+  if (other.is_set_resources()) {
+    this.resources=new WorkerResources(other.resources);
+  }
 }

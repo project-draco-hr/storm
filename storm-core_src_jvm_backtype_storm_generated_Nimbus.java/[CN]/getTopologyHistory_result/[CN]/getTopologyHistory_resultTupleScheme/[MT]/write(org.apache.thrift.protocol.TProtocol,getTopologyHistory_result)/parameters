@@ -1,0 +1,2 @@
+org.apache.thrift.protocol.TProtocol prot
+getTopologyHistory_result struct

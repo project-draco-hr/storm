@@ -1,0 +1,3 @@
+{
+  return (String)stormConf.get(Config.TOPOLOGY_NAME);
+}

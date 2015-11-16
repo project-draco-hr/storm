@@ -3,7 +3,7 @@
     this.collector=outputCollector;
 synchronized (AbstractEsBolt.class) {
       if (client == null) {
-        client=new ElasticSearchClient(esConfig).construct();
+        client=new StormElasticSearchClient(esConfig).construct();
       }
     }
   }

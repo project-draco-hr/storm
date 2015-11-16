@@ -1,0 +1,3 @@
+{
+  run(producer,consumer,queue,10,PRODUCER_NUM);
+}

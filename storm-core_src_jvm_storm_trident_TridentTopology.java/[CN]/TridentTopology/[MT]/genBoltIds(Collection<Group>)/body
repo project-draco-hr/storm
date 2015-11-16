@@ -1,9 +1,9 @@
 {
-  Map<Group,String> ret=new HashMap();
+  Map<Group,String> ret=new HashMap<>();
   int ctr=0;
   for (  Group g : groups) {
     if (!isSpoutGroup(g)) {
-      List<String> name=new ArrayList();
+      List<String> name=new ArrayList<>();
       name.add("b");
       name.add("" + ctr);
       String groupName=getGroupName(g);

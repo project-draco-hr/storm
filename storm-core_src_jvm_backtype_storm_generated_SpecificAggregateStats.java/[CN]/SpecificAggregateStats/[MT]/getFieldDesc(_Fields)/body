@@ -1,0 +1,10 @@
+{
+switch (setField) {
+case BOLT:
+    return BOLT_FIELD_DESC;
+case SPOUT:
+  return SPOUT_FIELD_DESC;
+default :
+throw new IllegalArgumentException("Unknown field id " + setField);
+}
+}

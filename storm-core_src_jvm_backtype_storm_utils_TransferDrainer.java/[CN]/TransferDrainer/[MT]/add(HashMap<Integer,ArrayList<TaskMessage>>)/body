@@ -1,5 +1,5 @@
 {
-  for (  Integer task : taskTupleSetMap.keySet()) {
-    addListRefToMap(this.bundles,task,taskTupleSetMap.get(task));
+  for (  Map.Entry<Integer,ArrayList<TaskMessage>> entry : taskTupleSetMap.entrySet()) {
+    addListRefToMap(this.bundles,entry.getKey(),entry.getValue());
   }
 }

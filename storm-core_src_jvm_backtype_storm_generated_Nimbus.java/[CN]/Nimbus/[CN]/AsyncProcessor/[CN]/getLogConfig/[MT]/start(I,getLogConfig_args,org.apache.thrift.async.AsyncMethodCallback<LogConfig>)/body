@@ -1,0 +1,3 @@
+{
+  iface.getLogConfig(args.name,resultHandler);
+}

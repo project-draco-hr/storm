@@ -1,8 +1,9 @@
 {
-  topologyName=(String)this.client.getStormConf().get(Config.TOPOLOGY_NAME);
-  String secretKey=SaslUtils.getSecretKey(this.client.getStormConf());
+  String secretKey;
+  name=client.name();
+  secretKey=client.secretKey();
   if (secretKey != null) {
     token=secretKey.getBytes();
   }
-  LOG.debug("SASL credentials for storm topology " + topologyName + " is "+ secretKey);
+  LOG.debug("SASL credentials for storm topology " + name + " is "+ secretKey);
 }

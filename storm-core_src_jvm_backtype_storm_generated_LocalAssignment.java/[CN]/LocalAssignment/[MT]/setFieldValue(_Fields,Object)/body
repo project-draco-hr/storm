@@ -16,5 +16,13 @@ if (value == null) {
   set_executors((List<ExecutorInfo>)value);
 }
 break;
+case RESOURCES:
+if (value == null) {
+unset_resources();
+}
+ else {
+set_resources((WorkerResources)value);
+}
+break;
 }
 }

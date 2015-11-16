@@ -1,0 +1,99 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('TopologyPageInfo')
+    if (self.id is not None):
+        oprot.writeFieldBegin('id', TType.STRING, 1)
+        oprot.writeString(self.id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.name is not None):
+        oprot.writeFieldBegin('name', TType.STRING, 2)
+        oprot.writeString(self.name.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.uptime_secs is not None):
+        oprot.writeFieldBegin('uptime_secs', TType.I32, 3)
+        oprot.writeI32(self.uptime_secs)
+        oprot.writeFieldEnd()
+    if (self.status is not None):
+        oprot.writeFieldBegin('status', TType.STRING, 4)
+        oprot.writeString(self.status.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.num_tasks is not None):
+        oprot.writeFieldBegin('num_tasks', TType.I32, 5)
+        oprot.writeI32(self.num_tasks)
+        oprot.writeFieldEnd()
+    if (self.num_workers is not None):
+        oprot.writeFieldBegin('num_workers', TType.I32, 6)
+        oprot.writeI32(self.num_workers)
+        oprot.writeFieldEnd()
+    if (self.num_executors is not None):
+        oprot.writeFieldBegin('num_executors', TType.I32, 7)
+        oprot.writeI32(self.num_executors)
+        oprot.writeFieldEnd()
+    if (self.topology_conf is not None):
+        oprot.writeFieldBegin('topology_conf', TType.STRING, 8)
+        oprot.writeString(self.topology_conf.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.id_to_spout_agg_stats is not None):
+        oprot.writeFieldBegin('id_to_spout_agg_stats', TType.MAP, 9)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.id_to_spout_agg_stats))
+        for (kiter367, viter368) in self.id_to_spout_agg_stats.items():
+            oprot.writeString(kiter367.encode('utf-8'))
+            viter368.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.id_to_bolt_agg_stats is not None):
+        oprot.writeFieldBegin('id_to_bolt_agg_stats', TType.MAP, 10)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.id_to_bolt_agg_stats))
+        for (kiter369, viter370) in self.id_to_bolt_agg_stats.items():
+            oprot.writeString(kiter369.encode('utf-8'))
+            viter370.write(oprot)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.sched_status is not None):
+        oprot.writeFieldBegin('sched_status', TType.STRING, 11)
+        oprot.writeString(self.sched_status.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.topology_stats is not None):
+        oprot.writeFieldBegin('topology_stats', TType.STRUCT, 12)
+        self.topology_stats.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.owner is not None):
+        oprot.writeFieldBegin('owner', TType.STRING, 13)
+        oprot.writeString(self.owner.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.debug_options is not None):
+        oprot.writeFieldBegin('debug_options', TType.STRUCT, 14)
+        self.debug_options.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.replication_count is not None):
+        oprot.writeFieldBegin('replication_count', TType.I32, 15)
+        oprot.writeI32(self.replication_count)
+        oprot.writeFieldEnd()
+    if (self.requested_memonheap is not None):
+        oprot.writeFieldBegin('requested_memonheap', TType.DOUBLE, 521)
+        oprot.writeDouble(self.requested_memonheap)
+        oprot.writeFieldEnd()
+    if (self.requested_memoffheap is not None):
+        oprot.writeFieldBegin('requested_memoffheap', TType.DOUBLE, 522)
+        oprot.writeDouble(self.requested_memoffheap)
+        oprot.writeFieldEnd()
+    if (self.requested_cpu is not None):
+        oprot.writeFieldBegin('requested_cpu', TType.DOUBLE, 523)
+        oprot.writeDouble(self.requested_cpu)
+        oprot.writeFieldEnd()
+    if (self.assigned_memonheap is not None):
+        oprot.writeFieldBegin('assigned_memonheap', TType.DOUBLE, 524)
+        oprot.writeDouble(self.assigned_memonheap)
+        oprot.writeFieldEnd()
+    if (self.assigned_memoffheap is not None):
+        oprot.writeFieldBegin('assigned_memoffheap', TType.DOUBLE, 525)
+        oprot.writeDouble(self.assigned_memoffheap)
+        oprot.writeFieldEnd()
+    if (self.assigned_cpu is not None):
+        oprot.writeFieldBegin('assigned_cpu', TType.DOUBLE, 526)
+        oprot.writeDouble(self.assigned_cpu)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

@@ -8,5 +8,5 @@
       _freeSlots.addAll(entry.getValue());
     }
   }
-  _topIdToUsedSlots=new HashMap<String,Set<WorkerSlot>>();
+  _topIdToUsedSlots=new HashMap<>();
 }

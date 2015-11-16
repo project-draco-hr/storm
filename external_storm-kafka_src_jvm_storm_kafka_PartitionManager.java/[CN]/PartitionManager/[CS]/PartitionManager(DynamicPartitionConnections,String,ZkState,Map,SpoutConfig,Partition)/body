@@ -3,7 +3,7 @@
   _connections=connections;
   _spoutConfig=spoutConfig;
   _topologyInstanceId=topologyInstanceId;
-  _consumer=connections.register(id.host,id.partition);
+  _consumer=connections.register(id.host,id.topic,id.partition);
   _state=state;
   _stormConf=stormConf;
   numberAcked=numberFailed=0;
@@ -22,13 +22,14 @@
  catch (  Throwable e) {
     LOG.warn("Error reading and/or parsing at ZkNode: " + path,e);
   }
-  Long currentOffset=KafkaUtils.getOffset(_consumer,spoutConfig.topic,id.partition,spoutConfig);
+  String topic=_partition.topic;
+  Long currentOffset=KafkaUtils.getOffset(_consumer,topic,id.partition,spoutConfig);
   if (jsonTopologyId == null || jsonOffset == null) {
     _committedTo=currentOffset;
     LOG.info("No partition information found, using configuration to determine offset");
   }
  else   if (!topologyInstanceId.equals(jsonTopologyId) && spoutConfig.ignoreZkOffsets) {
-    _committedTo=KafkaUtils.getOffset(_consumer,spoutConfig.topic,id.partition,spoutConfig.startOffsetTime);
+    _committedTo=KafkaUtils.getOffset(_consumer,topic,id.partition,spoutConfig.startOffsetTime);
     LOG.info("Topology change detected and ignore zookeeper offsets set to true, using configuration to determine offset");
   }
  else {

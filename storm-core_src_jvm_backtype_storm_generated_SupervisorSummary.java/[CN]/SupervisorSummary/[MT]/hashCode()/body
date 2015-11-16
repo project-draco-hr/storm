@@ -18,5 +18,8 @@
   boolean present_version=true && (is_set_version());
   list.add(present_version);
   if (present_version)   list.add(version);
+  boolean present_total_resources=true && (is_set_total_resources());
+  list.add(present_total_resources);
+  if (present_total_resources)   list.add(total_resources);
   return list.hashCode();
 }

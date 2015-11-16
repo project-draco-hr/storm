@@ -1,0 +1,63 @@
+{
+synchronized (this.writeLock) {
+    boolean forceSync=false;
+    if (TupleUtils.isTick(tuple)) {
+      LOG.debug("TICK! forcing a file system flush");
+      forceSync=true;
+    }
+ else {
+      try {
+        writeTuple(tuple);
+        tupleBatch.add(tuple);
+      }
+ catch (      IOException e) {
+        LOG.info("Tuple failed to write, forcing a flush of existing data.");
+        this.collector.reportError(e);
+        forceSync=true;
+        this.collector.fail(tuple);
+      }
+    }
+    if (this.syncPolicy.mark(tuple,this.offset) || (forceSync && tupleBatch.size() > 0)) {
+      int attempts=0;
+      boolean success=false;
+      IOException lastException=null;
+      while (success == false && attempts < fileRetryCount) {
+        attempts+=1;
+        try {
+          syncTuples();
+          LOG.debug("Data synced to filesystem. Ack'ing [{}] tuples",tupleBatch.size());
+          for (          Tuple t : tupleBatch) {
+            this.collector.ack(t);
+          }
+          tupleBatch.clear();
+          syncPolicy.reset();
+          success=true;
+        }
+ catch (        IOException e) {
+          LOG.warn("Data could not be synced to filesystem on attempt [{}]",attempts);
+          this.collector.reportError(e);
+          lastException=e;
+        }
+      }
+      if (success == false) {
+        LOG.warn("Data could not be synced to filesystem, failing this batch of tuples");
+        for (        Tuple t : tupleBatch) {
+          this.collector.fail(t);
+        }
+        tupleBatch.clear();
+        throw new RuntimeException("Sync failed [" + attempts + "] times.",lastException);
+      }
+    }
+    if (this.rotationPolicy.mark(tuple,this.offset)) {
+      try {
+        rotateOutputFile();
+        this.rotationPolicy.reset();
+        this.offset=0;
+      }
+ catch (      IOException e) {
+        this.collector.reportError(e);
+        LOG.warn("File could not be rotated");
+      }
+    }
+  }
+}

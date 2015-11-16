@@ -1,8 +1,7 @@
 {
-  LOG.info("[req " + context.requestID() + "] Access "+ " from: "+ (context.remoteAddress() == null ? "null" : context.remoteAddress().toString())+ (context.principal() == null ? "" : (" principal:" + context.principal()))+ " op:"+ operation+ (topology_conf == null ? "" : (" topoology:" + topology_conf.get(Config.TOPOLOGY_NAME))));
   String principal=context.principal().getName();
   String user=_ptol.toLocal(context.principal());
-  Set<String> userGroups=new HashSet<String>();
+  Set<String> userGroups=new HashSet<>();
   if (_groupMappingProvider != null) {
     try {
       userGroups=_groupMappingProvider.getGroups(user);
@@ -28,7 +27,7 @@
     if (topoUsers.contains(principal) || topoUsers.contains(user)) {
       return true;
     }
-    Set<String> topoGroups=new HashSet<String>();
+    Set<String> topoGroups=new HashSet<>();
     if (topology_conf.containsKey(Config.TOPOLOGY_GROUPS) && topology_conf.get(Config.TOPOLOGY_GROUPS) != null) {
       topoGroups.addAll((Collection<String>)topology_conf.get(Config.TOPOLOGY_GROUPS));
     }

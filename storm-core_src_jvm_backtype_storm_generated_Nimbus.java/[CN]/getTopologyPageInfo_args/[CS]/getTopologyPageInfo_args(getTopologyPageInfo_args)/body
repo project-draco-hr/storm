@@ -1,0 +1,10 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_id()) {
+    this.id=other.id;
+  }
+  if (other.is_set_window()) {
+    this.window=other.window;
+  }
+  this.is_include_sys=other.is_include_sys;
+}

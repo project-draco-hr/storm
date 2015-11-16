@@ -1,7 +1,7 @@
 {
-  List<PartitionNode> ret=new ArrayList();
+  List<PartitionNode> ret=new ArrayList<>();
   Set<PartitionNode> inputs=externalGroupInputs(g);
-  Map<String,List<PartitionNode>> grouped=new HashMap();
+  Map<String,List<PartitionNode>> grouped=new HashMap<>();
   for (  PartitionNode n : inputs) {
     if (!grouped.containsKey(n.streamId)) {
       grouped.put(n.streamId,new ArrayList());

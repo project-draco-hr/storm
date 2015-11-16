@@ -37,6 +37,17 @@ def read(self, iprot):
                 self.version = iprot.readString().decode('utf-8')
             else:
                 iprot.skip(ftype)
+        elif (fid == 7):
+            if (ftype == TType.MAP):
+                self.total_resources = {}
+                (_ktype67, _vtype68, _size66) = iprot.readMapBegin()
+                for _i70 in xrange(_size66):
+                    _key71 = iprot.readString().decode('utf-8')
+                    _val72 = iprot.readDouble()
+                    self.total_resources[_key71] = _val72
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

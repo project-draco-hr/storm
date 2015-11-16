@@ -1,0 +1,22 @@
+{
+  ConnectionProvider provider=new HikariCPConnectionProvider(new HashMap<String,Object>());
+  JdbcMapper mapper=new SimpleJdbcMapper(Lists.newArrayList(new Column("test",0)));
+  expectIllegaArgs(null,mapper);
+  expectIllegaArgs(provider,null);
+  try {
+    JdbcInsertBolt bolt=new JdbcInsertBolt(provider,mapper);
+    bolt.withInsertQuery("test");
+    bolt.withTableName("test");
+    Assert.fail("Should have thrown IllegalArgumentException.");
+  }
+ catch (  IllegalArgumentException ne) {
+  }
+  try {
+    JdbcInsertBolt bolt=new JdbcInsertBolt(provider,mapper);
+    bolt.withTableName("test");
+    bolt.withInsertQuery("test");
+    Assert.fail("Should have thrown IllegalArgumentException.");
+  }
+ catch (  IllegalArgumentException ne) {
+  }
+}

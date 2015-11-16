@@ -1,0 +1,15 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_topology_id()) {
+    this.topology_id=other.topology_id;
+  }
+  this.time_stamp=other.time_stamp;
+  if (other.is_set_users()) {
+    List<String> __this__users=new ArrayList<String>(other.users);
+    this.users=__this__users;
+  }
+  if (other.is_set_groups()) {
+    List<String> __this__groups=new ArrayList<String>(other.groups);
+    this.groups=__this__groups;
+  }
+}

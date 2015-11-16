@@ -1,0 +1,9 @@
+{
+switch (field) {
+case NAME:
+    return get_name();
+case CONFIG:
+  return get_config();
+}
+throw new IllegalStateException();
+}

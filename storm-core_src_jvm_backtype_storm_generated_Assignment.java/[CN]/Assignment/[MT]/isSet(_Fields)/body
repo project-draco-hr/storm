@@ -11,6 +11,8 @@ case EXECUTOR_NODE_PORT:
 return is_set_executor_node_port();
 case EXECUTOR_START_TIME_SECS:
 return is_set_executor_start_time_secs();
+case WORKER_RESOURCES:
+return is_set_worker_resources();
 }
 throw new IllegalStateException();
 }

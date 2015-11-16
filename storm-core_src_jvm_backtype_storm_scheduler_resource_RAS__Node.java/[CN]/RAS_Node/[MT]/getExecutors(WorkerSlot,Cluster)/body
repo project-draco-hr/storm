@@ -1,0 +1,14 @@
+{
+  Collection<ExecutorDetails> retList=new ArrayList<ExecutorDetails>();
+  for (  Entry<String,SchedulerAssignment> entry : cluster.getAssignments().entrySet()) {
+    Map<ExecutorDetails,WorkerSlot> executorToSlot=entry.getValue().getExecutorToSlot();
+    for (    Map.Entry<ExecutorDetails,WorkerSlot> execToSlot : executorToSlot.entrySet()) {
+      WorkerSlot slot=execToSlot.getValue();
+      if (ws.getPort() == slot.getPort() && ws.getNodeId().equals(slot.getNodeId())) {
+        ExecutorDetails exec=execToSlot.getKey();
+        retList.add(exec);
+      }
+    }
+  }
+  return retList;
+}

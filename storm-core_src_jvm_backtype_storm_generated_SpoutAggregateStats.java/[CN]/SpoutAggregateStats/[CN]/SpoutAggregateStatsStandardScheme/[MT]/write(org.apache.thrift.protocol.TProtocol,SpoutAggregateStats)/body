@@ -1,0 +1,11 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.is_set_complete_latency_ms()) {
+    oprot.writeFieldBegin(COMPLETE_LATENCY_MS_FIELD_DESC);
+    oprot.writeDouble(struct.complete_latency_ms);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

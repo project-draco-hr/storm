@@ -1,0 +1,13 @@
+{
+  getComponentPageInfo_result result=new getComponentPageInfo_result();
+  try {
+    result.success=iface.getComponentPageInfo(args.topology_id,args.component_id,args.window,args.is_include_sys);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}

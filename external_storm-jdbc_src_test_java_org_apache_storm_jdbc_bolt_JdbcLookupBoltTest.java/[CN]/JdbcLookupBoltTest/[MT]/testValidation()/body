@@ -1,0 +1,8 @@
+{
+  ConnectionProvider provider=new HikariCPConnectionProvider(new HashMap<String,Object>());
+  JdbcLookupMapper mapper=new SimpleJdbcLookupMapper(new Fields("test"),Lists.newArrayList(new Column("test",0)));
+  String selectQuery="select * from dual";
+  expectIllegaArgs(null,selectQuery,mapper);
+  expectIllegaArgs(provider,null,mapper);
+  expectIllegaArgs(provider,selectQuery,null);
+}

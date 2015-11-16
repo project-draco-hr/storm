@@ -1,0 +1,17 @@
+{
+  StringBuilder sb=new StringBuilder("DebugOptions(");
+  boolean first=true;
+  if (is_set_enable()) {
+    sb.append("enable:");
+    sb.append(this.enable);
+    first=false;
+  }
+  if (is_set_samplingpct()) {
+    if (!first)     sb.append(", ");
+    sb.append("samplingpct:");
+    sb.append(this.samplingpct);
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

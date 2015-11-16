@@ -1,5 +1,5 @@
 {
-  Map<Integer,Object> metas=new HashMap<Integer,Object>();
+  Map<Integer,Object> metas=new HashMap<>();
   _cachedMetas.put(tx.getTransactionId(),metas);
   int partitions=_emitter.numPartitions();
   Entry<BigInteger,Map<Integer,Object>> entry=_cachedMetas.lowerEntry(tx.getTransactionId());
@@ -8,7 +8,7 @@
     prevCached=entry.getValue();
   }
  else {
-    prevCached=new HashMap<Integer,Object>();
+    prevCached=new HashMap<>();
   }
   for (int i=_index; i < partitions; i+=_numTasks) {
     RotatingTransactionalState state=_partitionStates.get(i);

@@ -1,5 +1,5 @@
 {
-  List<Set<Node>> connectedComponents=new ConnectivityInspector<Node,IndexedEdge>(graph).connectedSets();
+  List<Set<Node>> connectedComponents=new ConnectivityInspector<>(graph).connectedSets();
   for (  Set<Node> g : connectedComponents) {
     checkValidJoins(g);
   }

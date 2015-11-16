@@ -13,7 +13,7 @@
       ret.put("nextOffset",lastMeta.get("nextOffset"));
       ret.put("partition",partition.partition);
       ret.put("broker",ImmutableMap.of("host",partition.host.host,"port",partition.host.port));
-      ret.put("topic",_config.topic);
+      ret.put("topic",partition.topic);
       ret.put("topology",ImmutableMap.of("name",_topologyName,"id",_topologyInstanceId));
       return ret;
     }

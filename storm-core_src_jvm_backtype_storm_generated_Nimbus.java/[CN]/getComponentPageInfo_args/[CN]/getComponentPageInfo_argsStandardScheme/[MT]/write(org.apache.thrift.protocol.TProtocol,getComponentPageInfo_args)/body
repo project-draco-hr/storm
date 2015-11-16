@@ -1,0 +1,24 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.topology_id != null) {
+    oprot.writeFieldBegin(TOPOLOGY_ID_FIELD_DESC);
+    oprot.writeString(struct.topology_id);
+    oprot.writeFieldEnd();
+  }
+  if (struct.component_id != null) {
+    oprot.writeFieldBegin(COMPONENT_ID_FIELD_DESC);
+    oprot.writeString(struct.component_id);
+    oprot.writeFieldEnd();
+  }
+  if (struct.window != null) {
+    oprot.writeFieldBegin(WINDOW_FIELD_DESC);
+    oprot.writeString(struct.window);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(IS_INCLUDE_SYS_FIELD_DESC);
+  oprot.writeBool(struct.is_include_sys);
+  oprot.writeFieldEnd();
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

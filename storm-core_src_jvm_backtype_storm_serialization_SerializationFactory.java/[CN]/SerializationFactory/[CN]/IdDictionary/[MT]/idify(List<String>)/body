@@ -1,6 +1,6 @@
 {
   Collections.sort(names);
-  Map<String,Integer> ret=new HashMap<String,Integer>();
+  Map<String,Integer> ret=new HashMap<>();
   int i=1;
   for (  String name : names) {
     ret.put(name,i);

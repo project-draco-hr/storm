@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_enable=true && this.is_set_enable();
+  boolean that_present_enable=true && that.is_set_enable();
+  if (this_present_enable || that_present_enable) {
+    if (!(this_present_enable && that_present_enable))     return false;
+    if (this.enable != that.enable)     return false;
+  }
+  boolean this_present_samplingpct=true && this.is_set_samplingpct();
+  boolean that_present_samplingpct=true && that.is_set_samplingpct();
+  if (this_present_samplingpct || that_present_samplingpct) {
+    if (!(this_present_samplingpct && that_present_samplingpct))     return false;
+    if (this.samplingpct != that.samplingpct)     return false;
+  }
+  return true;
+}

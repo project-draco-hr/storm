@@ -1,3 +1,0 @@
-INimbus nimbus
-Map<String,SupervisorDetails> supervisors
-Map<String,SchedulerAssignmentImpl> assignments

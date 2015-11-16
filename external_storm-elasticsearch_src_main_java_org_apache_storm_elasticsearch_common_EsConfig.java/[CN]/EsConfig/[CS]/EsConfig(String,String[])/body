@@ -1,4 +1,3 @@
 {
-  this.clusterName=clusterName;
-  this.nodes=nodes;
+  this(clusterName,nodes,Collections.<String,String>emptyMap());
 }

@@ -1,0 +1,4 @@
+{
+  this._highWaterMark=(int)(_metrics.capacity() * highWaterMark);
+  return this;
+}

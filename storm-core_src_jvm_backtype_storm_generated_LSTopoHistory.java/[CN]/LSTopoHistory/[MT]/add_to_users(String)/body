@@ -1,0 +1,6 @@
+{
+  if (this.users == null) {
+    this.users=new ArrayList<String>();
+  }
+  this.users.add(elem);
+}

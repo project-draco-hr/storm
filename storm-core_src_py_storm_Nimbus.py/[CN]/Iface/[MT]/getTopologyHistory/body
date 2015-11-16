@@ -1,0 +1,3 @@
+def getTopologyHistory(self, user):
+    '\n    Parameters:\n     - user\n    '
+    pass

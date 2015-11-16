@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.nodeInfo is None):
+        raise TProtocol.TProtocolException(message='Required field nodeInfo is unset!')
+    if (self.action is None):
+        raise TProtocol.TProtocolException(message='Required field action is unset!')
+    return

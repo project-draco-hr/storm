@@ -1,3 +1,6 @@
 {
+  if (this == o) {
+    return true;
+  }
   return id.equals(((Group)o).id);
 }

@@ -1,6 +1,3 @@
 {
-  EsConfig esConfig=new EsConfig();
-  esConfig.setClusterName("test-cluster");
-  esConfig.setNodes(new String[]{"127.0.0.1:9300"});
-  return esConfig;
+  return new EsConfig("test-cluster",new String[]{"127.0.0.1:9300"});
 }

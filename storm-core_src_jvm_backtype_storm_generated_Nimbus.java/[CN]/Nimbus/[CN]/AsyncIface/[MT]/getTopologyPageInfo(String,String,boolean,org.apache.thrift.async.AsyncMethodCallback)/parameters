@@ -1,0 +1,4 @@
+String id
+String window
+boolean is_include_sys
+org.apache.thrift.async.AsyncMethodCallback resultHandler

@@ -1,0 +1,27 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.topology_id=iprot.readString();
+  struct.set_topology_id_isSet(true);
+  struct.time_stamp=iprot.readI64();
+  struct.set_time_stamp_isSet(true);
+{
+    org.apache.thrift.protocol.TList _list666=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
+    struct.users=new ArrayList<String>(_list666.size);
+    String _elem667;
+    for (int _i668=0; _i668 < _list666.size; ++_i668) {
+      _elem667=iprot.readString();
+      struct.users.add(_elem667);
+    }
+  }
+  struct.set_users_isSet(true);
+{
+    org.apache.thrift.protocol.TList _list669=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
+    struct.groups=new ArrayList<String>(_list669.size);
+    String _elem670;
+    for (int _i671=0; _i671 < _list669.size; ++_i671) {
+      _elem670=iprot.readString();
+      struct.groups.add(_elem670);
+    }
+  }
+  struct.set_groups_isSet(true);
+}

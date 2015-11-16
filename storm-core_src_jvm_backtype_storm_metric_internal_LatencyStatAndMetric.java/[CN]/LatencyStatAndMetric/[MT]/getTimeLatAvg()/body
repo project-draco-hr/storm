@@ -1,0 +1,3 @@
+{
+  return getTimeLatAvg(System.currentTimeMillis());
+}

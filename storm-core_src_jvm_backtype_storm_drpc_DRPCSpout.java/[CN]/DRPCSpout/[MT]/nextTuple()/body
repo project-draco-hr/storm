@@ -1,7 +1,7 @@
 {
   boolean gotRequest=false;
   if (_local_drpc_id == null) {
-    int size=0;
+    int size;
 synchronized (_clients) {
       size=_clients.size();
     }

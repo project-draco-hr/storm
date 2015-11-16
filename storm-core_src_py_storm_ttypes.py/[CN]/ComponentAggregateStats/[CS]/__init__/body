@@ -1,0 +1,5 @@
+def __init__(self, type=None, common_stats=None, specific_stats=None, last_error=None):
+    self.type = type
+    self.common_stats = common_stats
+    self.specific_stats = specific_stats
+    self.last_error = last_error

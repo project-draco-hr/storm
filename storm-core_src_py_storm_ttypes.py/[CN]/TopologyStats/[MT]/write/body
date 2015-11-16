@@ -1,0 +1,47 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('TopologyStats')
+    if (self.window_to_emitted is not None):
+        oprot.writeFieldBegin('window_to_emitted', TType.MAP, 1)
+        oprot.writeMapBegin(TType.STRING, TType.I64, len(self.window_to_emitted))
+        for (kiter343, viter344) in self.window_to_emitted.items():
+            oprot.writeString(kiter343.encode('utf-8'))
+            oprot.writeI64(viter344)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.window_to_transferred is not None):
+        oprot.writeFieldBegin('window_to_transferred', TType.MAP, 2)
+        oprot.writeMapBegin(TType.STRING, TType.I64, len(self.window_to_transferred))
+        for (kiter345, viter346) in self.window_to_transferred.items():
+            oprot.writeString(kiter345.encode('utf-8'))
+            oprot.writeI64(viter346)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.window_to_complete_latencies_ms is not None):
+        oprot.writeFieldBegin('window_to_complete_latencies_ms', TType.MAP, 3)
+        oprot.writeMapBegin(TType.STRING, TType.DOUBLE, len(self.window_to_complete_latencies_ms))
+        for (kiter347, viter348) in self.window_to_complete_latencies_ms.items():
+            oprot.writeString(kiter347.encode('utf-8'))
+            oprot.writeDouble(viter348)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.window_to_acked is not None):
+        oprot.writeFieldBegin('window_to_acked', TType.MAP, 4)
+        oprot.writeMapBegin(TType.STRING, TType.I64, len(self.window_to_acked))
+        for (kiter349, viter350) in self.window_to_acked.items():
+            oprot.writeString(kiter349.encode('utf-8'))
+            oprot.writeI64(viter350)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.window_to_failed is not None):
+        oprot.writeFieldBegin('window_to_failed', TType.MAP, 5)
+        oprot.writeMapBegin(TType.STRING, TType.I64, len(self.window_to_failed))
+        for (kiter351, viter352) in self.window_to_failed.items():
+            oprot.writeString(kiter351.encode('utf-8'))
+            oprot.writeI64(viter352)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

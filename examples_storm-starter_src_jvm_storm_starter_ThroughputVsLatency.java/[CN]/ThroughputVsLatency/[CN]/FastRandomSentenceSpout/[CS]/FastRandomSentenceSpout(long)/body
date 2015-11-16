@@ -1,0 +1,10 @@
+{
+  if (ratePerSecond > 0) {
+    _periodNano=Math.max(1,1000000000 / ratePerSecond);
+    _emitAmount=Math.max(1,(long)((ratePerSecond / 1000000000.0) * _periodNano));
+  }
+ else {
+    _periodNano=Long.MAX_VALUE - 1;
+    _emitAmount=1;
+  }
+}

@@ -27,5 +27,13 @@ def write(self, oprot):
         oprot.writeFieldBegin('version', TType.STRING, 6)
         oprot.writeString(self.version.encode('utf-8'))
         oprot.writeFieldEnd()
+    if (self.total_resources is not None):
+        oprot.writeFieldBegin('total_resources', TType.MAP, 7)
+        oprot.writeMapBegin(TType.STRING, TType.DOUBLE, len(self.total_resources))
+        for (kiter73, viter74) in self.total_resources.items():
+            oprot.writeString(kiter73.encode('utf-8'))
+            oprot.writeDouble(viter74)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

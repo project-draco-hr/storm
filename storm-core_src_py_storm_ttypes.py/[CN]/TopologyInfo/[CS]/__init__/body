@@ -1,10 +1,17 @@
-def __init__(self, id=None, name=None, uptime_secs=None, executors=None, status=None, errors=None, sched_status=None, owner=None, replication_count=None):
+def __init__(self, id=None, name=None, uptime_secs=None, executors=None, status=None, errors=None, component_debug=None, sched_status=None, owner=None, replication_count=None, requested_memonheap=None, requested_memoffheap=None, requested_cpu=None, assigned_memonheap=None, assigned_memoffheap=None, assigned_cpu=None):
     self.id = id
     self.name = name
     self.uptime_secs = uptime_secs
     self.executors = executors
     self.status = status
     self.errors = errors
+    self.component_debug = component_debug
     self.sched_status = sched_status
     self.owner = owner
     self.replication_count = replication_count
+    self.requested_memonheap = requested_memonheap
+    self.requested_memoffheap = requested_memoffheap
+    self.requested_cpu = requested_cpu
+    self.assigned_memonheap = assigned_memonheap
+    self.assigned_memoffheap = assigned_memoffheap
+    self.assigned_cpu = assigned_cpu

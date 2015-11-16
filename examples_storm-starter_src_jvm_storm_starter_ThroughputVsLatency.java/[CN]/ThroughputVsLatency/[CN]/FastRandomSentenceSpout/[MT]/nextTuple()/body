@@ -1,0 +1,11 @@
+{
+  if (_emitsLeft <= 0 && _nextEmitTime <= System.nanoTime()) {
+    _emitsLeft=_emitAmount;
+    _nextEmitTime=_nextEmitTime + _periodNano;
+  }
+  if (_emitsLeft > 0) {
+    String sentence=SENTENCES[_rand.nextInt(SENTENCES.length)];
+    _collector.emit(new Values(sentence),new SentWithTime(sentence,_nextEmitTime - _periodNano));
+    _emitsLeft--;
+  }
+}

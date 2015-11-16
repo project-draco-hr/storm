@@ -1,0 +1,3 @@
+String clusterName
+String[] nodes
+Map<String,String> additionalConfiguration

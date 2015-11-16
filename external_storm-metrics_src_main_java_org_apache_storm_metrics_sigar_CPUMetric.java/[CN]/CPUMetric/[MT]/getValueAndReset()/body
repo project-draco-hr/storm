@@ -1,0 +1,18 @@
+{
+  try {
+    ProcCpu cpu=_sigar.getProcCpu(_pid);
+    long userTotal=cpu.getUser();
+    long sysTotal=cpu.getSys();
+    long user=userTotal - _prevUser;
+    long sys=sysTotal - _prevSys;
+    _prevUser=userTotal;
+    _prevSys=sysTotal;
+    HashMap<String,Long> ret=new HashMap<String,Long>();
+    ret.put("user-ms",user);
+    ret.put("sys-ms",sys);
+    return ret;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

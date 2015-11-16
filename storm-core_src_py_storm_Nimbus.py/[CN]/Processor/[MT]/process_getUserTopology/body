@@ -5,11 +5,20 @@ def process_getUserTopology(self, seqid, iprot, oprot):
     result = getUserTopology_result()
     try:
         result.success = self._handler.getUserTopology(args.id)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
     except NotAliveException as e:
+        msg_type = TMessageType.REPLY
         result.e = e
     except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
         result.aze = aze
-    oprot.writeMessageBegin('getUserTopology', TMessageType.REPLY, seqid)
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('getUserTopology', msg_type, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()

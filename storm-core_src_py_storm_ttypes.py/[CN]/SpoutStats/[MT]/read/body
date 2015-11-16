@@ -10,51 +10,51 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.acked = {}
-                (_ktype178, _vtype179, _size177) = iprot.readMapBegin()
-                for _i181 in xrange(_size177):
-                    _key182 = iprot.readString().decode('utf-8')
-                    _val183 = {}
-                    (_ktype185, _vtype186, _size184) = iprot.readMapBegin()
-                    for _i188 in xrange(_size184):
-                        _key189 = iprot.readString().decode('utf-8')
-                        _val190 = iprot.readI64()
-                        _val183[_key189] = _val190
+                (_ktype187, _vtype188, _size186) = iprot.readMapBegin()
+                for _i190 in xrange(_size186):
+                    _key191 = iprot.readString().decode('utf-8')
+                    _val192 = {}
+                    (_ktype194, _vtype195, _size193) = iprot.readMapBegin()
+                    for _i197 in xrange(_size193):
+                        _key198 = iprot.readString().decode('utf-8')
+                        _val199 = iprot.readI64()
+                        _val192[_key198] = _val199
                     iprot.readMapEnd()
-                    self.acked[_key182] = _val183
+                    self.acked[_key191] = _val192
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 2):
             if (ftype == TType.MAP):
                 self.failed = {}
-                (_ktype192, _vtype193, _size191) = iprot.readMapBegin()
-                for _i195 in xrange(_size191):
-                    _key196 = iprot.readString().decode('utf-8')
-                    _val197 = {}
-                    (_ktype199, _vtype200, _size198) = iprot.readMapBegin()
-                    for _i202 in xrange(_size198):
-                        _key203 = iprot.readString().decode('utf-8')
-                        _val204 = iprot.readI64()
-                        _val197[_key203] = _val204
+                (_ktype201, _vtype202, _size200) = iprot.readMapBegin()
+                for _i204 in xrange(_size200):
+                    _key205 = iprot.readString().decode('utf-8')
+                    _val206 = {}
+                    (_ktype208, _vtype209, _size207) = iprot.readMapBegin()
+                    for _i211 in xrange(_size207):
+                        _key212 = iprot.readString().decode('utf-8')
+                        _val213 = iprot.readI64()
+                        _val206[_key212] = _val213
                     iprot.readMapEnd()
-                    self.failed[_key196] = _val197
+                    self.failed[_key205] = _val206
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 3):
             if (ftype == TType.MAP):
                 self.complete_ms_avg = {}
-                (_ktype206, _vtype207, _size205) = iprot.readMapBegin()
-                for _i209 in xrange(_size205):
-                    _key210 = iprot.readString().decode('utf-8')
-                    _val211 = {}
-                    (_ktype213, _vtype214, _size212) = iprot.readMapBegin()
-                    for _i216 in xrange(_size212):
-                        _key217 = iprot.readString().decode('utf-8')
-                        _val218 = iprot.readDouble()
-                        _val211[_key217] = _val218
+                (_ktype215, _vtype216, _size214) = iprot.readMapBegin()
+                for _i218 in xrange(_size214):
+                    _key219 = iprot.readString().decode('utf-8')
+                    _val220 = {}
+                    (_ktype222, _vtype223, _size221) = iprot.readMapBegin()
+                    for _i225 in xrange(_size221):
+                        _key226 = iprot.readString().decode('utf-8')
+                        _val227 = iprot.readDouble()
+                        _val220[_key226] = _val227
                     iprot.readMapEnd()
-                    self.complete_ms_avg[_key210] = _val211
+                    self.complete_ms_avg[_key219] = _val220
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

@@ -1,0 +1,5 @@
+def __init__(self, topology_id=None, time_stamp=None, users=None, groups=None):
+    self.topology_id = topology_id
+    self.time_stamp = time_stamp
+    self.users = users
+    self.groups = groups

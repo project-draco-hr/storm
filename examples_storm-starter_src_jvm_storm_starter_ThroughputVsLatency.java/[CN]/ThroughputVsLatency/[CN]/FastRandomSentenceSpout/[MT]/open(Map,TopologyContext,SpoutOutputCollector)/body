@@ -1,0 +1,8 @@
+{
+  _collector=collector;
+  _rand=ThreadLocalRandom.current();
+  _nextEmitTime=System.nanoTime();
+  _emitsLeft=_emitAmount;
+  _histo=new HistogramMetric(3600000000000L,3);
+  context.registerMetric("comp-lat-histo",_histo,10);
+}

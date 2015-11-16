@@ -1,0 +1,138 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.id);
+  BitSet optionals=new BitSet();
+  if (struct.is_set_name()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_uptime_secs()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_status()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_num_tasks()) {
+    optionals.set(3);
+  }
+  if (struct.is_set_num_workers()) {
+    optionals.set(4);
+  }
+  if (struct.is_set_num_executors()) {
+    optionals.set(5);
+  }
+  if (struct.is_set_topology_conf()) {
+    optionals.set(6);
+  }
+  if (struct.is_set_id_to_spout_agg_stats()) {
+    optionals.set(7);
+  }
+  if (struct.is_set_id_to_bolt_agg_stats()) {
+    optionals.set(8);
+  }
+  if (struct.is_set_sched_status()) {
+    optionals.set(9);
+  }
+  if (struct.is_set_topology_stats()) {
+    optionals.set(10);
+  }
+  if (struct.is_set_owner()) {
+    optionals.set(11);
+  }
+  if (struct.is_set_debug_options()) {
+    optionals.set(12);
+  }
+  if (struct.is_set_replication_count()) {
+    optionals.set(13);
+  }
+  if (struct.is_set_requested_memonheap()) {
+    optionals.set(14);
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    optionals.set(15);
+  }
+  if (struct.is_set_requested_cpu()) {
+    optionals.set(16);
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    optionals.set(17);
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    optionals.set(18);
+  }
+  if (struct.is_set_assigned_cpu()) {
+    optionals.set(19);
+  }
+  oprot.writeBitSet(optionals,20);
+  if (struct.is_set_name()) {
+    oprot.writeString(struct.name);
+  }
+  if (struct.is_set_uptime_secs()) {
+    oprot.writeI32(struct.uptime_secs);
+  }
+  if (struct.is_set_status()) {
+    oprot.writeString(struct.status);
+  }
+  if (struct.is_set_num_tasks()) {
+    oprot.writeI32(struct.num_tasks);
+  }
+  if (struct.is_set_num_workers()) {
+    oprot.writeI32(struct.num_workers);
+  }
+  if (struct.is_set_num_executors()) {
+    oprot.writeI32(struct.num_executors);
+  }
+  if (struct.is_set_topology_conf()) {
+    oprot.writeString(struct.topology_conf);
+  }
+  if (struct.is_set_id_to_spout_agg_stats()) {
+{
+      oprot.writeI32(struct.id_to_spout_agg_stats.size());
+      for (      Map.Entry<String,ComponentAggregateStats> _iter404 : struct.id_to_spout_agg_stats.entrySet()) {
+        oprot.writeString(_iter404.getKey());
+        _iter404.getValue().write(oprot);
+      }
+    }
+  }
+  if (struct.is_set_id_to_bolt_agg_stats()) {
+{
+      oprot.writeI32(struct.id_to_bolt_agg_stats.size());
+      for (      Map.Entry<String,ComponentAggregateStats> _iter405 : struct.id_to_bolt_agg_stats.entrySet()) {
+        oprot.writeString(_iter405.getKey());
+        _iter405.getValue().write(oprot);
+      }
+    }
+  }
+  if (struct.is_set_sched_status()) {
+    oprot.writeString(struct.sched_status);
+  }
+  if (struct.is_set_topology_stats()) {
+    struct.topology_stats.write(oprot);
+  }
+  if (struct.is_set_owner()) {
+    oprot.writeString(struct.owner);
+  }
+  if (struct.is_set_debug_options()) {
+    struct.debug_options.write(oprot);
+  }
+  if (struct.is_set_replication_count()) {
+    oprot.writeI32(struct.replication_count);
+  }
+  if (struct.is_set_requested_memonheap()) {
+    oprot.writeDouble(struct.requested_memonheap);
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    oprot.writeDouble(struct.requested_memoffheap);
+  }
+  if (struct.is_set_requested_cpu()) {
+    oprot.writeDouble(struct.requested_cpu);
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    oprot.writeDouble(struct.assigned_memonheap);
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    oprot.writeDouble(struct.assigned_memoffheap);
+  }
+  if (struct.is_set_assigned_cpu()) {
+    oprot.writeDouble(struct.assigned_cpu);
+  }
+}

@@ -36,6 +36,12 @@
     if (!(this_present_errors && that_present_errors))     return false;
     if (!this.errors.equals(that.errors))     return false;
   }
+  boolean this_present_component_debug=true && this.is_set_component_debug();
+  boolean that_present_component_debug=true && that.is_set_component_debug();
+  if (this_present_component_debug || that_present_component_debug) {
+    if (!(this_present_component_debug && that_present_component_debug))     return false;
+    if (!this.component_debug.equals(that.component_debug))     return false;
+  }
   boolean this_present_sched_status=true && this.is_set_sched_status();
   boolean that_present_sched_status=true && that.is_set_sched_status();
   if (this_present_sched_status || that_present_sched_status) {
@@ -53,6 +59,42 @@
   if (this_present_replication_count || that_present_replication_count) {
     if (!(this_present_replication_count && that_present_replication_count))     return false;
     if (this.replication_count != that.replication_count)     return false;
+  }
+  boolean this_present_requested_memonheap=true && this.is_set_requested_memonheap();
+  boolean that_present_requested_memonheap=true && that.is_set_requested_memonheap();
+  if (this_present_requested_memonheap || that_present_requested_memonheap) {
+    if (!(this_present_requested_memonheap && that_present_requested_memonheap))     return false;
+    if (this.requested_memonheap != that.requested_memonheap)     return false;
+  }
+  boolean this_present_requested_memoffheap=true && this.is_set_requested_memoffheap();
+  boolean that_present_requested_memoffheap=true && that.is_set_requested_memoffheap();
+  if (this_present_requested_memoffheap || that_present_requested_memoffheap) {
+    if (!(this_present_requested_memoffheap && that_present_requested_memoffheap))     return false;
+    if (this.requested_memoffheap != that.requested_memoffheap)     return false;
+  }
+  boolean this_present_requested_cpu=true && this.is_set_requested_cpu();
+  boolean that_present_requested_cpu=true && that.is_set_requested_cpu();
+  if (this_present_requested_cpu || that_present_requested_cpu) {
+    if (!(this_present_requested_cpu && that_present_requested_cpu))     return false;
+    if (this.requested_cpu != that.requested_cpu)     return false;
+  }
+  boolean this_present_assigned_memonheap=true && this.is_set_assigned_memonheap();
+  boolean that_present_assigned_memonheap=true && that.is_set_assigned_memonheap();
+  if (this_present_assigned_memonheap || that_present_assigned_memonheap) {
+    if (!(this_present_assigned_memonheap && that_present_assigned_memonheap))     return false;
+    if (this.assigned_memonheap != that.assigned_memonheap)     return false;
+  }
+  boolean this_present_assigned_memoffheap=true && this.is_set_assigned_memoffheap();
+  boolean that_present_assigned_memoffheap=true && that.is_set_assigned_memoffheap();
+  if (this_present_assigned_memoffheap || that_present_assigned_memoffheap) {
+    if (!(this_present_assigned_memoffheap && that_present_assigned_memoffheap))     return false;
+    if (this.assigned_memoffheap != that.assigned_memoffheap)     return false;
+  }
+  boolean this_present_assigned_cpu=true && this.is_set_assigned_cpu();
+  boolean that_present_assigned_cpu=true && that.is_set_assigned_cpu();
+  if (this_present_assigned_cpu || that_present_assigned_cpu) {
+    if (!(this_present_assigned_cpu && that_present_assigned_cpu))     return false;
+    if (this.assigned_cpu != that.assigned_cpu)     return false;
   }
   return true;
 }

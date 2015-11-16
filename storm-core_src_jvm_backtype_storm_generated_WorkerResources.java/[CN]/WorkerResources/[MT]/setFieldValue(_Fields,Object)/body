@@ -1,0 +1,28 @@
+{
+switch (field) {
+case MEM_ON_HEAP:
+    if (value == null) {
+      unset_mem_on_heap();
+    }
+ else {
+      set_mem_on_heap((Double)value);
+    }
+  break;
+case MEM_OFF_HEAP:
+if (value == null) {
+  unset_mem_off_heap();
+}
+ else {
+  set_mem_off_heap((Double)value);
+}
+break;
+case CPU:
+if (value == null) {
+unset_cpu();
+}
+ else {
+set_cpu((Double)value);
+}
+break;
+}
+}

@@ -49,6 +49,17 @@
     sb.append(this.errors);
   }
   first=false;
+  if (is_set_component_debug()) {
+    if (!first)     sb.append(", ");
+    sb.append("component_debug:");
+    if (this.component_debug == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.component_debug);
+    }
+    first=false;
+  }
   if (is_set_sched_status()) {
     if (!first)     sb.append(", ");
     sb.append("sched_status:");
@@ -75,6 +86,42 @@
     if (!first)     sb.append(", ");
     sb.append("replication_count:");
     sb.append(this.replication_count);
+    first=false;
+  }
+  if (is_set_requested_memonheap()) {
+    if (!first)     sb.append(", ");
+    sb.append("requested_memonheap:");
+    sb.append(this.requested_memonheap);
+    first=false;
+  }
+  if (is_set_requested_memoffheap()) {
+    if (!first)     sb.append(", ");
+    sb.append("requested_memoffheap:");
+    sb.append(this.requested_memoffheap);
+    first=false;
+  }
+  if (is_set_requested_cpu()) {
+    if (!first)     sb.append(", ");
+    sb.append("requested_cpu:");
+    sb.append(this.requested_cpu);
+    first=false;
+  }
+  if (is_set_assigned_memonheap()) {
+    if (!first)     sb.append(", ");
+    sb.append("assigned_memonheap:");
+    sb.append(this.assigned_memonheap);
+    first=false;
+  }
+  if (is_set_assigned_memoffheap()) {
+    if (!first)     sb.append(", ");
+    sb.append("assigned_memoffheap:");
+    sb.append(this.assigned_memoffheap);
+    first=false;
+  }
+  if (is_set_assigned_cpu()) {
+    if (!first)     sb.append(", ");
+    sb.append("assigned_cpu:");
+    sb.append(this.assigned_cpu);
     first=false;
   }
   sb.append(")");

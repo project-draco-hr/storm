@@ -1,0 +1,14 @@
+{
+  TreeMap<Integer,List<ExecutorDetails>> retMap=new TreeMap<>();
+  Integer rank=0;
+  for (  Component ras_comp : ordered__Component_list) {
+    retMap.put(rank,new ArrayList<ExecutorDetails>());
+    for (    ExecutorDetails exec : ras_comp.execs) {
+      if (unassignedExecutors.contains(exec)) {
+        retMap.get(rank).add(exec);
+      }
+    }
+    rank++;
+  }
+  return retMap;
+}

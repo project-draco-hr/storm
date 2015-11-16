@@ -1,0 +1,8 @@
+def send_setLogConfig(self, name, config):
+    self._oprot.writeMessageBegin('setLogConfig', TMessageType.CALL, self._seqid)
+    args = setLogConfig_args()
+    args.name = name
+    args.config = config
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

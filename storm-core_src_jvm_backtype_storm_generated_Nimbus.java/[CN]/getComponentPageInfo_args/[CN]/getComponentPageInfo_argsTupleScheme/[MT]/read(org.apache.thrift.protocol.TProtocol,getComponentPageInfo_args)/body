@@ -1,0 +1,20 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(4);
+  if (incoming.get(0)) {
+    struct.topology_id=iprot.readString();
+    struct.set_topology_id_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.component_id=iprot.readString();
+    struct.set_component_id_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.window=iprot.readString();
+    struct.set_window_isSet(true);
+  }
+  if (incoming.get(3)) {
+    struct.is_include_sys=iprot.readBool();
+    struct.set_is_include_sys_isSet(true);
+  }
+}

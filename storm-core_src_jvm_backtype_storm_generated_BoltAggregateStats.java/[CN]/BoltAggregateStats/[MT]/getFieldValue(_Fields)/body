@@ -1,0 +1,13 @@
+{
+switch (field) {
+case EXECUTE_LATENCY_MS:
+    return get_execute_latency_ms();
+case PROCESS_LATENCY_MS:
+  return get_process_latency_ms();
+case EXECUTED:
+return get_executed();
+case CAPACITY:
+return get_capacity();
+}
+throw new IllegalStateException();
+}

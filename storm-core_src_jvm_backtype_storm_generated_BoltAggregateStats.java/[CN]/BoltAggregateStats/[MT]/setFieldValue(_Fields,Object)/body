@@ -1,0 +1,36 @@
+{
+switch (field) {
+case EXECUTE_LATENCY_MS:
+    if (value == null) {
+      unset_execute_latency_ms();
+    }
+ else {
+      set_execute_latency_ms((Double)value);
+    }
+  break;
+case PROCESS_LATENCY_MS:
+if (value == null) {
+  unset_process_latency_ms();
+}
+ else {
+  set_process_latency_ms((Double)value);
+}
+break;
+case EXECUTED:
+if (value == null) {
+unset_executed();
+}
+ else {
+set_executed((Long)value);
+}
+break;
+case CAPACITY:
+if (value == null) {
+unset_capacity();
+}
+ else {
+set_capacity((Double)value);
+}
+break;
+}
+}

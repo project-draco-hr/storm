@@ -1,0 +1,6 @@
+{
+  Map<String,String> additionalSettings=additionalSettings();
+  EsConfig esConfig=new EsConfig(clusterName,nodes,additionalSettings);
+  Settings settings=esConfig.toBasicSettings();
+  assertSettingsContainAllAdditionalValues(settings,additionalSettings);
+}

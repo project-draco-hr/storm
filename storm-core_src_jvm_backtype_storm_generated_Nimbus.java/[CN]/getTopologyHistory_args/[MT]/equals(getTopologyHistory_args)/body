@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_user=true && this.is_set_user();
+  boolean that_present_user=true && that.is_set_user();
+  if (this_present_user || that_present_user) {
+    if (!(this_present_user && that_present_user))     return false;
+    if (!this.user.equals(that.user))     return false;
+  }
+  return true;
+}

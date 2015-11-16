@@ -1,0 +1,2 @@
+org.apache.thrift.protocol.TProtocol prot
+setLogConfig_result struct
