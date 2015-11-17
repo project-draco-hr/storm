@@ -1,3 +1,6 @@
 {
+  if (null == workerHook) {
+    throw new IllegalArgumentException("WorkerHook must not be null.");
+  }
   _workerHooks.add(ByteBuffer.wrap(Utils.javaSerialize(workerHook)));
 }
