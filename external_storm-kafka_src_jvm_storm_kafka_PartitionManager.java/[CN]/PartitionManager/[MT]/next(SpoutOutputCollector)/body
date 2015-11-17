@@ -20,6 +20,11 @@
           collector.emit(_spoutConfig.topic,tup,new KafkaMessageId(_partition,toEmit.offset));
         }
       }
+ else       if (!Strings.isNullOrEmpty(_spoutConfig.outputStreamId)) {
+        for (        List<Object> tup : tups) {
+          collector.emit(_spoutConfig.outputStreamId,tup,new KafkaMessageId(_partition,toEmit.offset));
+        }
+      }
  else {
         for (        List<Object> tup : tups) {
           collector.emit(tup,new KafkaMessageId(_partition,toEmit.offset));
