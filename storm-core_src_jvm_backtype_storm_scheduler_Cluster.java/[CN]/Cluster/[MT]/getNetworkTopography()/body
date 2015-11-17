@@ -8,12 +8,14 @@
     String clazz=(String)conf.get(Config.STORM_NETWORK_TOPOGRAPHY_PLUGIN);
     DNSToSwitchMapping topographyMapper=(DNSToSwitchMapping)Utils.newInstance(clazz);
     Map<String,String> resolvedSuperVisors=topographyMapper.resolve(supervisorHostNames);
-    for (    String hostName : resolvedSuperVisors.keySet()) {
-      String rack=resolvedSuperVisors.get(hostName);
-      if (!networkTopography.containsKey(rack)) {
-        networkTopography.put(rack,new ArrayList<String>());
-      }
+    for (    Map.Entry<String,String> entry : resolvedSuperVisors.entrySet()) {
+      String hostName=entry.getKey();
+      String rack=entry.getValue();
       List<String> nodesForRack=networkTopography.get(rack);
+      if (nodesForRack == null) {
+        nodesForRack=new ArrayList<String>();
+        networkTopography.put(rack,nodesForRack);
+      }
       nodesForRack.add(hostName);
     }
   }

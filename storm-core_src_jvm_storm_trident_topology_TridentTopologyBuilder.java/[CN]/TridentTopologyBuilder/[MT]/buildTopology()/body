@@ -2,8 +2,8 @@
   TopologyBuilder builder=new TopologyBuilder();
   Map<GlobalStreamId,String> batchIdsForSpouts=fleshOutStreamBatchIds(false);
   Map<GlobalStreamId,String> batchIdsForBolts=fleshOutStreamBatchIds(true);
-  Map<String,List<String>> batchesToCommitIds=new HashMap<String,List<String>>();
-  Map<String,List<ITridentSpout>> batchesToSpouts=new HashMap<String,List<ITridentSpout>>();
+  Map<String,List<String>> batchesToCommitIds=new HashMap<>();
+  Map<String,List<ITridentSpout>> batchesToSpouts=new HashMap<>();
   for (  String id : _spouts.keySet()) {
     TransactionalSpoutComponent c=_spouts.get(id);
     if (c.spout instanceof IRichSpout) {
@@ -43,8 +43,9 @@
       d.addConfigurations(conf);
     }
   }
-  for (  String batch : batchesToCommitIds.keySet()) {
-    List<String> commitIds=batchesToCommitIds.get(batch);
+  for (  Map.Entry<String,List<String>> entry : batchesToCommitIds.entrySet()) {
+    String batch=entry.getKey();
+    List<String> commitIds=entry.getValue();
     builder.setSpout(masterCoordinator(batch),new MasterBatchCoordinator(commitIds,batchesToSpouts.get(batch)));
   }
   for (  String id : _bolts.keySet()) {
@@ -74,9 +75,9 @@
       inputDecl.declare(d);
     }
     Map<String,Set<String>> batchToComponents=getBoltBatchToComponentSubscriptions(id);
-    for (    String b : batchToComponents.keySet()) {
-      for (      String comp : batchToComponents.get(b)) {
-        d.directGrouping(comp,TridentBoltExecutor.COORD_STREAM(b));
+    for (    Map.Entry<String,Set<String>> entry : batchToComponents.entrySet()) {
+      for (      String comp : entry.getValue()) {
+        d.directGrouping(comp,TridentBoltExecutor.COORD_STREAM(entry.getKey()));
       }
     }
     for (    String b : c.committerBatches) {

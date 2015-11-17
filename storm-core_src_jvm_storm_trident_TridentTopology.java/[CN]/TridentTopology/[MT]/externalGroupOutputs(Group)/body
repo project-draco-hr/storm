@@ -1,5 +1,5 @@
 {
-  Set<PartitionNode> ret=new HashSet();
+  Set<PartitionNode> ret=new HashSet<>();
   for (  Node n : g.outgoingNodes()) {
     if (n instanceof PartitionNode) {
       ret.add((PartitionNode)n);

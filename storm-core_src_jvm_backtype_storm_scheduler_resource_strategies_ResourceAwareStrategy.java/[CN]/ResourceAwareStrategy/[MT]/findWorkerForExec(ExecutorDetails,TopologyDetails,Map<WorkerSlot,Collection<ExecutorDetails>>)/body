@@ -1,5 +1,5 @@
 {
-  WorkerSlot ws=null;
+  WorkerSlot ws;
   if (this.refNode == null) {
     String clus=this.getBestClustering();
     ws=this.getBestWorker(exec,td,clus,scheduleAssignmentMap);

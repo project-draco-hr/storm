@@ -33,4 +33,9 @@
     }
   }
   struct.set_nimbuses_isSet(true);
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+    struct.nimbus_uptime_secs=iprot.readI32();
+    struct.set_nimbus_uptime_secs_isSet(true);
+  }
 }

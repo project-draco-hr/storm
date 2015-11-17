@@ -1,5 +1,5 @@
 {
-  List<GroupedStream> ret=new ArrayList<GroupedStream>();
+  List<GroupedStream> ret=new ArrayList<>();
   for (int i=0; i < streams.size(); i++) {
     ret.add(streams.get(i).groupBy(joinFields.get(i)));
   }

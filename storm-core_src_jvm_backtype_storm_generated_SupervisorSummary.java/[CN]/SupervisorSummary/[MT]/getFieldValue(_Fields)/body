@@ -3,11 +3,11 @@ switch (field) {
 case HOST:
     return get_host();
 case UPTIME_SECS:
-  return Integer.valueOf(get_uptime_secs());
+  return get_uptime_secs();
 case NUM_WORKERS:
-return Integer.valueOf(get_num_workers());
+return get_num_workers();
 case NUM_USED_WORKERS:
-return Integer.valueOf(get_num_used_workers());
+return get_num_used_workers();
 case SUPERVISOR_ID:
 return get_supervisor_id();
 case VERSION:

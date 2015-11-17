@@ -1,6 +1,6 @@
 {
   try {
-    Set<IAutoCredentials> autos=new HashSet<IAutoCredentials>();
+    Set<IAutoCredentials> autos=new HashSet<>();
     Collection<String> clazzes=(Collection<String>)storm_conf.get(Config.TOPOLOGY_AUTO_CREDENTIALS);
     if (clazzes != null) {
       for (      String clazz : clazzes) {

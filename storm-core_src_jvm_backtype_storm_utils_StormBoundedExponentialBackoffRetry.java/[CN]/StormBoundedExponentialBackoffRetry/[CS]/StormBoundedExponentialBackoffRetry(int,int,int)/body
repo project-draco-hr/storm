@@ -1,7 +1,9 @@
 {
   super(baseSleepTimeMs,maxSleepTimeMs,maxRetries);
   expRetriesThreshold=1;
-  while ((1 << (expRetriesThreshold + 1)) < ((maxSleepTimeMs - baseSleepTimeMs) / 2))   expRetriesThreshold++;
+  while ((1 << (expRetriesThreshold + 1)) < ((maxSleepTimeMs - baseSleepTimeMs) / 2)) {
+    expRetriesThreshold++;
+  }
   LOG.debug("The baseSleepTimeMs [{}] the maxSleepTimeMs [{}] the maxRetries [{}]",baseSleepTimeMs,maxSleepTimeMs,maxRetries);
   if (baseSleepTimeMs > maxSleepTimeMs) {
     LOG.warn("Misconfiguration: the baseSleepTimeMs [" + baseSleepTimeMs + "] can't be greater than "+ "the maxSleepTimeMs ["+ maxSleepTimeMs+ "].");

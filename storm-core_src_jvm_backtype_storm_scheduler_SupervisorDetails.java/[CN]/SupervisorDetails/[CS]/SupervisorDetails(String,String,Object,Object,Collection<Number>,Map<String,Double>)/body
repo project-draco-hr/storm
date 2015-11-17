@@ -7,7 +7,7 @@
     setAllPorts(allPorts);
   }
  else {
-    this.allPorts=new HashSet();
+    this.allPorts=new HashSet<>();
   }
   this._total_resources=total_resources;
   LOG.debug("Creating a new supervisor ({}-{}) with resources: {}",this.host,this.id,total_resources);

@@ -1,0 +1,10 @@
+{
+  random=new Random();
+  rets=(List<Integer>[])new List<?>[targetTasks.size()];
+  targets=new int[targetTasks.size()];
+  for (int i=0; i < targets.length; i++) {
+    rets[i]=Arrays.asList(targetTasks.get(i));
+    targets[i]=targetTasks.get(i);
+  }
+  loads=new int[targets.length];
+}

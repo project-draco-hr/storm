@@ -1,0 +1,3 @@
+def __init__(self, id=None, profileRequest=None):
+    self.id = id
+    self.profileRequest = profileRequest

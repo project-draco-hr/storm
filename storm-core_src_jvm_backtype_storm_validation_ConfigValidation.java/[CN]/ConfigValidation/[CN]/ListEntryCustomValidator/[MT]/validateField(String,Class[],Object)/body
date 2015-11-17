@@ -5,7 +5,7 @@
   SimpleTypeValidator.validateField(name,Iterable.class,o);
   for (  Object entry : (Iterable)o) {
     for (    Class validator : validators) {
-      Object v=validator.newInstance();
+      Object v=validator.getConstructor().newInstance();
       if (v instanceof Validator) {
         ((Validator)v).validateField(name + " list entry",entry);
       }

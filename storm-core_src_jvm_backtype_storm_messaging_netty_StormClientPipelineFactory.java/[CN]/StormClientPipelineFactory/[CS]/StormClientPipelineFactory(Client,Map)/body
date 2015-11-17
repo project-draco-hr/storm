@@ -1,0 +1,4 @@
+{
+  this.client=client;
+  this.conf=conf;
+}

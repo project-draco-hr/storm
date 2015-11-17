@@ -1,7 +1,7 @@
 {
   try {
     String latestPath=_vs.mostRecentVersionPath();
-    Map<String,ThriftSerializedObject> result=new HashMap<String,ThriftSerializedObject>();
+    Map<String,ThriftSerializedObject> result=new HashMap<>();
     if (latestPath != null) {
       byte[] serialized=FileUtils.readFileToByteArray(new File(latestPath));
       if (serialized.length == 0) {

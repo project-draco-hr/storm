@@ -5,11 +5,11 @@ case NAME:
 case STATUS:
   return get_status();
 case NUM_WORKERS:
-return Integer.valueOf(get_num_workers());
+return get_num_workers();
 case COMPONENT_EXECUTORS:
 return get_component_executors();
 case LAUNCH_TIME_SECS:
-return Integer.valueOf(get_launch_time_secs());
+return get_launch_time_secs();
 case OWNER:
 return get_owner();
 case TOPOLOGY_ACTION_OPTIONS:

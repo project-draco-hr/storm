@@ -1,0 +1,28 @@
+{
+switch (field) {
+case NODE_INFO:
+    if (value == null) {
+      unset_nodeInfo();
+    }
+ else {
+      set_nodeInfo((NodeInfo)value);
+    }
+  break;
+case ACTION:
+if (value == null) {
+  unset_action();
+}
+ else {
+  set_action((ProfileAction)value);
+}
+break;
+case TIME_STAMP:
+if (value == null) {
+unset_time_stamp();
+}
+ else {
+set_time_stamp((Long)value);
+}
+break;
+}
+}

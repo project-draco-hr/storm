@@ -1,0 +1,26 @@
+{
+  numBuckets=Math.max(numBuckets,2);
+  _tmSize=10 * 60 * 1000 / (numBuckets - 1);
+  _thSize=3 * 60 * 60* 1000 / (numBuckets - 1);
+  _odSize=24 * 60 * 60* 1000 / (numBuckets - 1);
+  if (_tmSize < 1 || _thSize < 1 || _odSize < 1) {
+    throw new IllegalArgumentException("number of buckets is too large to be supported");
+  }
+  _tmBuckets=new long[numBuckets];
+  _tmTime=new long[numBuckets];
+  _thBuckets=new long[numBuckets];
+  _thTime=new long[numBuckets];
+  _odBuckets=new long[numBuckets];
+  _odTime=new long[numBuckets];
+  _allTime=0;
+  _exactExtra=0;
+  _bucketStart=startTime >= 0 ? startTime : System.currentTimeMillis();
+  _currentBucket=new AtomicLong(0);
+  if (startTime < 0) {
+    _task=new Fresher();
+    MetricStatTimer._timer.scheduleAtFixedRate(_task,_tmSize,_tmSize);
+  }
+ else {
+    _task=null;
+  }
+}

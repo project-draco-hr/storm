@@ -1,5 +1,5 @@
 {
-  List<String> names=new ArrayList<String>();
+  List<String> names=new ArrayList<>();
   for (  Stream s : streams) {
     if (s._name != null) {
       names.add(s._name);

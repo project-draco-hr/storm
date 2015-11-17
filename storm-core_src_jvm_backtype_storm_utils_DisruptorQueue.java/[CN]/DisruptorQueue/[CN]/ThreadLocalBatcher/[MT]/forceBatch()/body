@@ -1,0 +1,6 @@
+{
+  if (!_currentBatch.isEmpty()) {
+    _overflow.add(_currentBatch);
+    _currentBatch=new ArrayList<Object>(_inputBatchSize);
+  }
+}

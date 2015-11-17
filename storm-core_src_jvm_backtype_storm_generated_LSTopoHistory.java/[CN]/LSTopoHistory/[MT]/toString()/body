@@ -1,0 +1,36 @@
+{
+  StringBuilder sb=new StringBuilder("LSTopoHistory(");
+  boolean first=true;
+  sb.append("topology_id:");
+  if (this.topology_id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.topology_id);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("time_stamp:");
+  sb.append(this.time_stamp);
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("users:");
+  if (this.users == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.users);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("groups:");
+  if (this.groups == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.groups);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

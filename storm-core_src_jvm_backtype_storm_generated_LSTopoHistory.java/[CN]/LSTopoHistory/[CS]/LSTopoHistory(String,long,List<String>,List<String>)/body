@@ -1,0 +1,8 @@
+{
+  this();
+  this.topology_id=topology_id;
+  this.time_stamp=time_stamp;
+  set_time_stamp_isSet(true);
+  this.users=users;
+  this.groups=groups;
+}

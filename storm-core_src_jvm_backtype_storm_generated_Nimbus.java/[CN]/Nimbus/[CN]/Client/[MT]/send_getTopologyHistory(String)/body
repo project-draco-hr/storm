@@ -1,0 +1,5 @@
+{
+  getTopologyHistory_args args=new getTopologyHistory_args();
+  args.set_user(user);
+  sendBase("getTopologyHistory",args);
+}

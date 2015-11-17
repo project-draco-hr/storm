@@ -1,0 +1,3 @@
+I iface
+getComponentPendingProfileActions_args args
+org.apache.thrift.async.AsyncMethodCallback<List<ProfileRequest>> resultHandler

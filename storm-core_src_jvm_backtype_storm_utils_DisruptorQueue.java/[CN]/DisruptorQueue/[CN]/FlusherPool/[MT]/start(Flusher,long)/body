@@ -1,0 +1,16 @@
+{
+  ArrayList<Flusher> pending=_pendingFlush.get(flushInterval);
+  if (pending == null) {
+    pending=new ArrayList<>();
+    TimerTask t=new TimerTask(){
+      @Override public void run(){
+        invokeAll(flushInterval);
+      }
+    }
+;
+    _pendingFlush.put(flushInterval,pending);
+    _timer.schedule(t,flushInterval,flushInterval);
+    _tt.put(flushInterval,t);
+  }
+  pending.add(flusher);
+}

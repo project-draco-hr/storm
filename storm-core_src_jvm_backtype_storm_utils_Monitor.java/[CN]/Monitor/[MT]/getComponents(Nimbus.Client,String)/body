@@ -1,5 +1,5 @@
 {
-  HashSet<String> components=new HashSet<String>();
+  HashSet<String> components=new HashSet<>();
   ClusterSummary clusterSummary=client.getClusterInfo();
   TopologySummary topologySummary=null;
   for (  TopologySummary ts : clusterSummary.get_topologies()) {

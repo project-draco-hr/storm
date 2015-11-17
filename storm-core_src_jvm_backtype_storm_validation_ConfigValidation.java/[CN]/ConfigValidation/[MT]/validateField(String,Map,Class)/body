@@ -1,4 +1,10 @@
 {
-  Field field=configClass.getField(fieldName);
+  Field field=null;
+  try {
+    field=configClass.getField(fieldName);
+  }
+ catch (  NoSuchFieldException e) {
+    throw new RuntimeException(e);
+  }
   validateField(field,conf);
 }

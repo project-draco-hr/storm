@@ -2,10 +2,5 @@
   if (this == o) {
     return true;
   }
- else   if (o == null || getClass() != o.getClass()) {
-    return false;
-  }
- else {
-    return (name.equals(((User)o).name));
-  }
+  return !(o == null || getClass() != o.getClass()) && (name.equals(((User)o).name));
 }

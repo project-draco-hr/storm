@@ -5,7 +5,7 @@
     }
     asUser=(String)conf.get(Config.STORM_DO_AS_USER);
   }
-  List<String> seeds=null;
+  List<String> seeds;
   if (conf.containsKey(Config.NIMBUS_HOST)) {
     LOG.warn("Using deprecated config {} for backward compatibility. Please update your storm.yaml so it only has config {}",Config.NIMBUS_HOST,Config.NIMBUS_SEEDS);
     seeds=Lists.newArrayList(conf.get(Config.NIMBUS_HOST).toString());
@@ -15,7 +15,7 @@
   }
   for (  String host : seeds) {
     int port=Integer.parseInt(conf.get(Config.NIMBUS_THRIFT_PORT).toString());
-    ClusterSummary clusterInfo=null;
+    ClusterSummary clusterInfo;
     try {
       NimbusClient client=new NimbusClient(conf,host,port);
       clusterInfo=client.getClient().getClusterInfo();

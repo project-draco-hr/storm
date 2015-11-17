@@ -1,0 +1,32 @@
+{
+  StringBuilder sb=new StringBuilder("getComponentPendingProfileActions_args(");
+  boolean first=true;
+  sb.append("id:");
+  if (this.id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.id);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("component_id:");
+  if (this.component_id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.component_id);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("action:");
+  if (this.action == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.action);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

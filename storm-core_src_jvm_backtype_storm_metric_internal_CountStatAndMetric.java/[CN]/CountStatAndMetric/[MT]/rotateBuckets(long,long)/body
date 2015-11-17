@@ -1,0 +1,6 @@
+{
+  rotate(value,timeSpent,_tmSize,_tmTime,_tmBuckets);
+  rotate(value,timeSpent,_thSize,_thTime,_thBuckets);
+  rotate(value,timeSpent,_odSize,_odTime,_odBuckets);
+  _allTime+=value;
+}

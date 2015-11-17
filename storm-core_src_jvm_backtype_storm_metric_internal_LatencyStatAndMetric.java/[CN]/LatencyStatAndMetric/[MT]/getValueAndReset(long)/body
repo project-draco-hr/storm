@@ -1,0 +1,17 @@
+{
+  long lat;
+  long count;
+synchronized (_currentLock) {
+    lat=_currentLatBucket;
+    count=_currentCountBucket;
+    _currentLatBucket=0;
+    _currentCountBucket=0;
+  }
+  long timeSpent=now - _bucketStart;
+  double ret=((double)(lat + _exactExtraLat)) / (count + _exactExtraCount);
+  _bucketStart=now;
+  _exactExtraLat=0;
+  _exactExtraCount=0;
+  rotateBuckets(lat,count,timeSpent);
+  return ret;
+}

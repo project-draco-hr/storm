@@ -1,0 +1,9 @@
+{
+  Map<String,Double> ret=new HashMap<String,Double>();
+  for (  Map.Entry<T,LatencyStatAndMetric> entry : _lat.entrySet()) {
+    String key=keyToString(entry.getKey());
+    Double val=(Double)entry.getValue().getValueAndReset();
+    ret.put(key,val);
+  }
+  return ret;
+}

@@ -1,0 +1,11 @@
+{
+switch (field) {
+case ID:
+    return get_id();
+case COMPONENT_ID:
+  return get_component_id();
+case ACTION:
+return get_action();
+}
+throw new IllegalStateException();
+}

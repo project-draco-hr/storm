@@ -1,0 +1,5 @@
+{
+  _flushLock=new ReentrantLock();
+  _overflow=new ConcurrentLinkedQueue<ArrayList<Object>>();
+  _currentBatch=new ArrayList<Object>(_inputBatchSize);
+}

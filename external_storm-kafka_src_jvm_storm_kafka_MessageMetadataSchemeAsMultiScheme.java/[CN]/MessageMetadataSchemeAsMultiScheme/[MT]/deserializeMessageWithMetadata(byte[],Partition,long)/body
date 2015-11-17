@@ -1,0 +1,9 @@
+{
+  List<Object> o=((MessageMetadataScheme)scheme).deserializeMessageWithMetadata(message,partition,offset);
+  if (o == null) {
+    return null;
+  }
+ else {
+    return Arrays.asList(o);
+  }
+}

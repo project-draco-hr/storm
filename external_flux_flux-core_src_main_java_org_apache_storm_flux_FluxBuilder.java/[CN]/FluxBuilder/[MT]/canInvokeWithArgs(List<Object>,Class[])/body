@@ -16,6 +16,9 @@
       LOG.debug("Yes, assignment is possible.");
       return true;
     }
+    if (isPrimitiveBoolean(paramType) && Boolean.class.isAssignableFrom(objectType)) {
+      return true;
+    }
     if (isPrimitiveNumber(paramType) && Number.class.isAssignableFrom(objectType)) {
       return true;
     }

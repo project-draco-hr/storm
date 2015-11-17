@@ -5,11 +5,20 @@ def process_getTopologyPageInfo(self, seqid, iprot, oprot):
     result = getTopologyPageInfo_result()
     try:
         result.success = self._handler.getTopologyPageInfo(args.id, args.window, args.is_include_sys)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
     except NotAliveException as e:
+        msg_type = TMessageType.REPLY
         result.e = e
     except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
         result.aze = aze
-    oprot.writeMessageBegin('getTopologyPageInfo', TMessageType.REPLY, seqid)
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('getTopologyPageInfo', msg_type, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()

@@ -10,6 +10,10 @@ def write(self, oprot):
             iter93.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
+    if (self.nimbus_uptime_secs is not None):
+        oprot.writeFieldBegin('nimbus_uptime_secs', TType.I32, 2)
+        oprot.writeI32(self.nimbus_uptime_secs)
+        oprot.writeFieldEnd()
     if (self.topologies is not None):
         oprot.writeFieldBegin('topologies', TType.LIST, 3)
         oprot.writeListBegin(TType.STRUCT, len(self.topologies))

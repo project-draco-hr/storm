@@ -3,11 +3,11 @@ switch (field) {
 case HOST:
     return get_host();
 case PORT:
-  return Integer.valueOf(get_port());
+  return get_port();
 case UPTIME_SECS:
-return Integer.valueOf(get_uptime_secs());
+return get_uptime_secs();
 case IS_LEADER:
-return Boolean.valueOf(is_isLeader());
+return is_isLeader();
 case VERSION:
 return get_version();
 }

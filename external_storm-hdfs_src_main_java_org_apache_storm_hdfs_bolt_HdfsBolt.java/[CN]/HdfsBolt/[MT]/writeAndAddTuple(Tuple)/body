@@ -1,6 +1,0 @@
-{
-  byte[] bytes=this.format.format(tuple);
-  out.write(bytes);
-  this.offset+=bytes.length;
-  tupleBatch.add(tuple);
-}

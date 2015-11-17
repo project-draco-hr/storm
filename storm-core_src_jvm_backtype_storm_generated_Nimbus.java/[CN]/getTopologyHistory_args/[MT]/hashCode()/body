@@ -1,0 +1,7 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_user=true && (is_set_user());
+  list.add(present_user);
+  if (present_user)   list.add(user);
+  return list.hashCode();
+}

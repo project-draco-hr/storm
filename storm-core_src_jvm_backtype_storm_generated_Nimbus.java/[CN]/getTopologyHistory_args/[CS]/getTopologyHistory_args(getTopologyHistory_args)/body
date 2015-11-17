@@ -1,0 +1,5 @@
+{
+  if (other.is_set_user()) {
+    this.user=other.user;
+  }
+}

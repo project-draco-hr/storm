@@ -1,0 +1,12 @@
+{
+switch (fieldId) {
+case 1:
+    return NODE_INFO;
+case 2:
+  return ACTION;
+case 3:
+return TIME_STAMP;
+default :
+return null;
+}
+}

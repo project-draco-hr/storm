@@ -80,5 +80,53 @@ unset_replication_count();
 set_replication_count((Integer)value);
 }
 break;
+case REQUESTED_MEMONHEAP:
+if (value == null) {
+unset_requested_memonheap();
+}
+ else {
+set_requested_memonheap((Double)value);
+}
+break;
+case REQUESTED_MEMOFFHEAP:
+if (value == null) {
+unset_requested_memoffheap();
+}
+ else {
+set_requested_memoffheap((Double)value);
+}
+break;
+case REQUESTED_CPU:
+if (value == null) {
+unset_requested_cpu();
+}
+ else {
+set_requested_cpu((Double)value);
+}
+break;
+case ASSIGNED_MEMONHEAP:
+if (value == null) {
+unset_assigned_memonheap();
+}
+ else {
+set_assigned_memonheap((Double)value);
+}
+break;
+case ASSIGNED_MEMOFFHEAP:
+if (value == null) {
+unset_assigned_memoffheap();
+}
+ else {
+set_assigned_memoffheap((Double)value);
+}
+break;
+case ASSIGNED_CPU:
+if (value == null) {
+unset_assigned_cpu();
+}
+ else {
+set_assigned_cpu((Double)value);
+}
+break;
 }
 }

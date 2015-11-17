@@ -1,6 +1,6 @@
 {
   Throwable cause=event.getCause();
   if (!(cause instanceof ConnectException)) {
-    LOG.info("Connection failed " + client.dstAddressPrefixedName,cause);
+    LOG.info("Connection to " + client.getDstAddress() + " failed:",cause);
   }
 }

@@ -1,0 +1,9 @@
+def send_getComponentPendingProfileActions(self, id, component_id, action):
+    self._oprot.writeMessageBegin('getComponentPendingProfileActions', TMessageType.CALL, self._seqid)
+    args = getComponentPendingProfileActions_args()
+    args.id = id
+    args.component_id = component_id
+    args.action = action
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

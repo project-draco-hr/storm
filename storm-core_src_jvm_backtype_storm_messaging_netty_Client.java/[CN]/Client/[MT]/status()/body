@@ -6,6 +6,11 @@
     return Status.Connecting;
   }
  else {
-    return Status.Ready;
+    if (saslChannelReady.get()) {
+      return Status.Ready;
+    }
+ else {
+      return Status.Connecting;
+    }
   }
 }

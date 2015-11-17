@@ -1,0 +1,18 @@
+{
+  final AtomicBoolean allInOrder=new AtomicBoolean(true);
+  DisruptorQueue queue=createQueue("consumerHang",1024);
+  Runnable producer=new IncProducer(queue,1024 * 1024);
+  Runnable consumer=new Consumer(queue,new EventHandler<Object>(){
+    long _expected=0;
+    @Override public void onEvent(    Object obj,    long sequence,    boolean endOfBatch) throws Exception {
+      if (_expected != ((Number)obj).longValue()) {
+        allInOrder.set(false);
+        System.out.println("Expected " + _expected + " but got "+ obj);
+      }
+      _expected++;
+    }
+  }
+);
+  run(producer,consumer,queue,1000,1);
+  Assert.assertTrue("Messages delivered out of order",allInOrder.get());
+}

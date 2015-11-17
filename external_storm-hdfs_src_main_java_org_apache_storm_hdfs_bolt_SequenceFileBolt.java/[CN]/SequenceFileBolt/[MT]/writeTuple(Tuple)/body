@@ -1,0 +1,4 @@
+{
+  this.writer.append(this.format.key(tuple),this.format.value(tuple));
+  this.offset=this.writer.getLength();
+}
