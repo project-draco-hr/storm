@@ -9,7 +9,7 @@ synchronized (_currentLock) {
   }
   long timeSpent=now - _bucketStart;
   long exactExtraCountSum=count + _exactExtraCount;
-  double ret=exactExtraCountSum > 0 ? ((double)(lat + _exactExtraLat)) / exactExtraCountSum : 0.0;
+  double ret=Utils.zeroIfNaNOrInf(((double)(lat + _exactExtraLat)) / exactExtraCountSum);
   _bucketStart=now;
   _exactExtraLat=0;
   _exactExtraCount=0;
