@@ -1,0 +1,5 @@
+{
+  StormTopology stormTopology=genereateStormTopology(true);
+  ComponentCommon componentCommon=ThriftTopologyUtils.getComponentCommon(stormTopology,"bolt-1");
+  Assert.assertEquals("We expect to get bolt-1's common",new Bolt().get_common(),componentCommon);
+}
