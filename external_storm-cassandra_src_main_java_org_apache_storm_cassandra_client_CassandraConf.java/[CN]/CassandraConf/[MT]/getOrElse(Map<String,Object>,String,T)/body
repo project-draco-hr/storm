@@ -1,4 +1,0 @@
-{
-  T o=(T)conf.get(key);
-  return (o == null) ? def : o;
-}

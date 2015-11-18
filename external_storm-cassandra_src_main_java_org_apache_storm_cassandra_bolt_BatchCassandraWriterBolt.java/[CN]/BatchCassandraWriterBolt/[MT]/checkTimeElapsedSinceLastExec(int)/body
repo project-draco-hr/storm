@@ -1,3 +1,3 @@
 {
-  if (sinceLastModified > tickFrequencyInSeconds)   LOG.warn(logPrefix() + String.format("The time elapsed since last execution exceeded tick tuple frequency - %d > %d seconds",sinceLastModified,tickFrequencyInSeconds));
+  if (sinceLastModified > tickFrequencyInSeconds)   LOG.warn(logPrefix() + "The time elapsed since last execution exceeded tick tuple frequency - {} > {} seconds",sinceLastModified,tickFrequencyInSeconds);
 }

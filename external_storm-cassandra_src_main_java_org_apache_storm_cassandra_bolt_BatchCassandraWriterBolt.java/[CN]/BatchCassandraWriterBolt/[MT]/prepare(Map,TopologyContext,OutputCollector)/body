@@ -1,6 +1,6 @@
 {
   super.prepare(stormConfig,topologyContext,outputCollector);
   this.componentID=topologyContext.getThisComponentId();
-  this.queue=new LinkedBlockingQueue<>(QUEUE_MAX_SIZE);
+  this.queue=new LinkedBlockingQueue<>(batchMaxSize);
   this.lastModifiedTimesMillis=now();
 }

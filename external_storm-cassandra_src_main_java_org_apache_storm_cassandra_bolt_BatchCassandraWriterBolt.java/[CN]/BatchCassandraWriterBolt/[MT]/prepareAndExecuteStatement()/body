@@ -6,18 +6,18 @@
     try {
       List<PairStatementTuple> psl=buildStatement(inputs);
       int sinceLastModified=updateAndGetSecondsSinceLastModified();
-      LOG.debug(logPrefix() + String.format("Execute cql batches with %s statements after %s seconds",size,sinceLastModified));
+      LOG.debug(logPrefix() + "Execute cql batches with {} statements after {} seconds",size,sinceLastModified);
       checkTimeElapsedSinceLastExec(sinceLastModified);
       GroupingBatchBuilder batchBuilder=new GroupingBatchBuilder(cassandraConfConfig.getBatchSizeRows(),psl);
       int batchSize=0;
       for (      PairBatchStatementTuples batch : batchBuilder) {
-        LOG.debug(logPrefix() + String.format("Writing data to %s in batches of %s rows.",cassandraConfConfig.getKeyspace(),batch.getInputs().size()));
+        LOG.debug(logPrefix() + "Writing data to {} in batches of {} rows.",cassandraConfConfig.getKeyspace(),batch.getInputs().size());
         getAsyncExecutor().execAsync(batch.getStatement(),batch.getInputs());
         batchSize++;
       }
-      int pending=getAsyncExecutor().getPendingExec();
+      int pending=getAsyncExecutor().getPendingTasksSize();
       if (pending > batchSize) {
-        LOG.warn(logPrefix() + String.format("Currently pending tasks is superior to the number of submit batches(%s) : %s",batchSize,pending));
+        LOG.warn(logPrefix() + "Currently pending tasks is superior to the number of submit batches({}) : {}",batchSize,pending);
       }
     }
  catch (    Throwable r) {

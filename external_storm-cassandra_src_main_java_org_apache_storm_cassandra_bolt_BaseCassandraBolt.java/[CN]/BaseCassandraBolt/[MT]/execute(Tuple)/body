@@ -1,7 +1,7 @@
 {
   getAsyncHandler().flush(outputCollector);
   if (TupleUtils.isTick(input)) {
-    tick();
+    onTickTuple();
     outputCollector.ack(input);
   }
  else {
