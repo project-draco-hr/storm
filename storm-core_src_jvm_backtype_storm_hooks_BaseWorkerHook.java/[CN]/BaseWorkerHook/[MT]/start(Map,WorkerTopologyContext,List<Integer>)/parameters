@@ -1,3 +1,3 @@
 Map stormConf
 WorkerTopologyContext context
-List taskIds
+List<Integer> taskIds
