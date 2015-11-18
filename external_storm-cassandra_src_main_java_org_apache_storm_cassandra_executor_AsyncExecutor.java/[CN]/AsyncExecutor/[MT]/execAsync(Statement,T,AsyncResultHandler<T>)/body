@@ -1,10 +1,10 @@
 {
   final SettableFuture<T> settableFuture=SettableFuture.create();
-  pending.put(settableFuture,true);
+  pending.incrementAndGet();
   ResultSetFuture future=session.executeAsync(statement);
   Futures.addCallback(future,new FutureCallback<ResultSet>(){
     public void release(){
-      pending.remove(settableFuture);
+      pending.decrementAndGet();
     }
     @Override public void onSuccess(    ResultSet result){
       release();
