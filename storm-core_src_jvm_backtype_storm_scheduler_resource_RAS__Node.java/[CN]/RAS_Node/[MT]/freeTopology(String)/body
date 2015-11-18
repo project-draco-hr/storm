@@ -5,6 +5,8 @@
   }
   for (  WorkerSlot ws : slots) {
     _cluster.freeSlot(ws);
+    this.freeMemory(this.getMemoryUsedByWorker(ws));
+    this.freeCPU(this.getCpuUsedByWorker(ws));
     if (_isAlive) {
       _freeSlots.add(ws);
     }

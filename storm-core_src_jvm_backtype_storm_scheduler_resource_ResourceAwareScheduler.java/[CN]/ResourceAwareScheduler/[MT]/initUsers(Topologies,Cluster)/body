@@ -3,7 +3,6 @@
   Map<String,Map<String,Double>> userResourcePools=this.getUserResourcePools();
   LOG.info("userResourcePools: {}",userResourcePools);
   for (  TopologyDetails td : topologies.getTopologies()) {
-    LOG.info("topology: {} from {}",td.getName(),td.getTopologySubmitter());
     String topologySubmitter=td.getTopologySubmitter();
     if (topologySubmitter == null) {
       LOG.warn("Topology {} submitted by anonymous user",td.getName());
@@ -14,7 +13,6 @@
     }
     if (cluster.getUnassignedExecutors(td).size() >= td.getExecutors().size()) {
       this.userMap.get(topologySubmitter).addTopologyToPendingQueue(td,cluster);
-      LOG.info(this.userMap.get(topologySubmitter).getDetailedInfo());
     }
  else {
       this.userMap.get(topologySubmitter).addTopologyToRunningQueue(td,cluster);

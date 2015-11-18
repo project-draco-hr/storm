@@ -10,8 +10,10 @@
   for (  TopologyDetails topo : topologies.getTopologies()) {
     LOG.info("topo {} status: {}",topo,cluster.getStatusMap().get(topo.getId()));
   }
+  LOG.info("Nodes:\n{}",this.nodes);
   LOG.info("getNextUser: {}",this.getNextUser());
   while (true) {
+    LOG.info("/*********** next scheduling iteration **************/");
     User nextUser=this.getNextUser();
     if (nextUser == null) {
       break;
@@ -19,4 +21,6 @@
     TopologyDetails td=nextUser.getNextTopologyToSchedule();
     scheduleTopology(td);
   }
+  cluster=this.cluster;
+  topologies=this.topologies;
 }

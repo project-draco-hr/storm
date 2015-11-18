@@ -1,0 +1,7 @@
+{
+  Cluster copy=new Cluster(this.inimbus,this.supervisors,this.assignments,this.conf);
+  for (  Map.Entry<String,String> entry : this.status.entrySet()) {
+    copy.setStatus(entry.getKey(),entry.getValue());
+  }
+  return copy;
+}

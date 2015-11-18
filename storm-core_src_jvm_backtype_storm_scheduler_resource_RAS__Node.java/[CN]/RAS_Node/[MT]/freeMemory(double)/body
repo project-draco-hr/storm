@@ -1,0 +1,7 @@
+{
+  _availMemory+=amount;
+  LOG.info("freeing {} memory...avail mem: {}",amount,_availMemory);
+  if (_availMemory > this.getTotalMemoryResources()) {
+    LOG.warn("Freeing more memory than there exists!");
+  }
+}

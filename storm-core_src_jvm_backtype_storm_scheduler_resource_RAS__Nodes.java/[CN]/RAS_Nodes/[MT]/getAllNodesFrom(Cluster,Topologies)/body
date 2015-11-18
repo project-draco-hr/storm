@@ -5,7 +5,7 @@
     boolean isAlive=!cluster.isBlackListed(id);
     LOG.debug("Found a {} Node {} {}",isAlive ? "living" : "dead",id,sup.getAllPorts());
     LOG.debug("resources_mem: {}, resources_CPU: {}",sup.getTotalMemory(),sup.getTotalCPU());
-    nodeIdToNode.put(sup.getId(),new RAS_Node(id,sup.getAllPorts(),isAlive,sup,cluster));
+    nodeIdToNode.put(sup.getId(),new RAS_Node(id,sup.getAllPorts(),isAlive,sup,cluster,topologies));
   }
   for (  Map.Entry<String,SchedulerAssignment> entry : cluster.getAssignments().entrySet()) {
     String topId=entry.getValue().getTopologyId();
@@ -14,7 +14,7 @@
       RAS_Node node=nodeIdToNode.get(id);
       if (node == null) {
         LOG.info("Found an assigned slot on a dead supervisor {} with executors {}",workerSlot,RAS_Node.getExecutors(workerSlot,cluster));
-        node=new RAS_Node(id,null,false,null,cluster);
+        node=new RAS_Node(id,null,false,null,cluster,topologies);
         nodeIdToNode.put(id,node);
       }
       if (!node.isAlive()) {

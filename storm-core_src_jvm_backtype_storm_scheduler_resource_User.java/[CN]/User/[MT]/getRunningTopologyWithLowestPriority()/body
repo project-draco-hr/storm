@@ -2,5 +2,5 @@
   if (this.runningQueue.isEmpty()) {
     return null;
   }
-  return this.runningQueue.iterator().next();
+  return this.runningQueue.last();
 }

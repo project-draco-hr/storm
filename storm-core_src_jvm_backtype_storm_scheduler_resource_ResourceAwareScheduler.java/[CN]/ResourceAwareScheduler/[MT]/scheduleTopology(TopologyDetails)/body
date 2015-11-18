@@ -1,12 +1,15 @@
 {
-  ResourceAwareStrategy RAStrategy=new ResourceAwareStrategy(this.cluster,this.topologies);
   User topologySubmitter=this.userMap.get(td.getTopologySubmitter());
   if (cluster.getUnassignedExecutors(td).size() > 0) {
     LOG.info("/********Scheduling topology {} from User {}************/",td.getName(),topologySubmitter);
     LOG.info("{}",this.userMap.get(td.getTopologySubmitter()).getDetailedInfo());
     LOG.info("{}",User.getResourcePoolAverageUtilizationForUsers(this.userMap.values()));
-    Map<String,SchedulerAssignment> assignmentCheckpoint=this.cluster.getAssignments();
+    LOG.info("Nodes:\n{}",this.nodes);
+    LOG.debug("From cluster:\n{}",ResourceUtils.printScheduling(this.cluster,this.topologies));
+    LOG.debug("From Nodes:\n{}",ResourceUtils.printScheduling(this.nodes));
+    SchedulingState schedulingState=this.checkpointSchedulingState();
     while (true) {
+      ResourceAwareStrategy RAStrategy=new ResourceAwareStrategy(this.cluster,this.topologies);
       SchedulingResult result=RAStrategy.schedule(td);
       LOG.info("scheduling result: {}",result);
       if (result.isValid()) {
@@ -16,15 +19,17 @@
               topologySubmitter.moveTopoFromPendingToRunning(td,this.cluster);
             }
  else {
-              resetAssignments(assignmentCheckpoint);
+              this.restoreCheckpointSchedulingState(schedulingState);
+              topologySubmitter=this.userMap.get(td.getTopologySubmitter());
               topologySubmitter.moveTopoFromPendingToAttempted(td,this.cluster);
             }
           }
  catch (          IllegalStateException ex) {
             LOG.error(ex.toString());
-            LOG.error("Unsuccessful in scheduling",td.getId());
+            LOG.error("Unsuccessful in scheduling: IllegalStateException thrown!",td.getId());
             this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling");
-            resetAssignments(assignmentCheckpoint);
+            this.restoreCheckpointSchedulingState(schedulingState);
+            topologySubmitter=this.userMap.get(td.getTopologySubmitter());
             topologySubmitter.moveTopoFromPendingToAttempted(td,this.cluster);
           }
           break;
@@ -32,29 +37,33 @@
  else {
           if (result.getStatus() == SchedulingStatus.FAIL_NOT_ENOUGH_RESOURCES) {
             if (!this.makeSpaceForTopo(td)) {
-              topologySubmitter.moveTopoFromPendingToAttempted(td);
               this.cluster.setStatus(td.getId(),result.getErrorMessage());
-              resetAssignments(assignmentCheckpoint);
+              this.restoreCheckpointSchedulingState(schedulingState);
+              topologySubmitter=this.userMap.get(td.getTopologySubmitter());
+              topologySubmitter.moveTopoFromPendingToAttempted(td);
               break;
             }
             continue;
           }
  else           if (result.getStatus() == SchedulingStatus.FAIL_INVALID_TOPOLOGY) {
+            this.restoreCheckpointSchedulingState(schedulingState);
+            topologySubmitter=this.userMap.get(td.getTopologySubmitter());
             topologySubmitter.moveTopoFromPendingToInvalid(td,this.cluster);
-            resetAssignments(assignmentCheckpoint);
             break;
           }
  else {
+            this.restoreCheckpointSchedulingState(schedulingState);
+            topologySubmitter=this.userMap.get(td.getTopologySubmitter());
             topologySubmitter.moveTopoFromPendingToAttempted(td,this.cluster);
-            resetAssignments(assignmentCheckpoint);
             break;
           }
         }
       }
  else {
         LOG.warn("Scheduling results returned from topology {} is not vaild! Topology with be ignored.",td.getName());
+        this.restoreCheckpointSchedulingState(schedulingState);
+        topologySubmitter=this.userMap.get(td.getTopologySubmitter());
         topologySubmitter.moveTopoFromPendingToInvalid(td,this.cluster);
-        resetAssignments(assignmentCheckpoint);
         break;
       }
     }

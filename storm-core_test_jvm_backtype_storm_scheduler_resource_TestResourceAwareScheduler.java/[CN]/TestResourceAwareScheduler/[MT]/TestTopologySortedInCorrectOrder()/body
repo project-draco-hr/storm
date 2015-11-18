@@ -56,7 +56,6 @@
   TopologyDetails topo6=TestUtilsForResourceAwareScheduler.getTopology("topo-6",config,5,15,1,1,Time.currentTimeSecs() - 30,10);
   topoMap.put(topo6.getId(),topo6);
   topologies=new Topologies(topoMap);
-  rs=new ResourceAwareScheduler();
   rs.prepare(config);
   rs.schedule(topologies,cluster);
   queue=rs.getUser("jerry").getTopologiesRunning();

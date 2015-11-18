@@ -1,0 +1,7 @@
+{
+  _availCPU+=amount;
+  LOG.info("freeing {} CPU...avail CPU: {}",amount,_availCPU);
+  if (_availCPU > this.getAvailableCpuResources()) {
+    LOG.warn("Freeing more memory than there exists!");
+  }
+}

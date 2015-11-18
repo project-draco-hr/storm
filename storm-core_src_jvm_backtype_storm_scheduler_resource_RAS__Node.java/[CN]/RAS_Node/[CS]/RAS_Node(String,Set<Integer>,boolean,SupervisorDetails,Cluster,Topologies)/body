@@ -13,4 +13,5 @@
     _slots.addAll(_freeSlots);
   }
   this._cluster=cluster;
+  this._topologies=topologies;
 }

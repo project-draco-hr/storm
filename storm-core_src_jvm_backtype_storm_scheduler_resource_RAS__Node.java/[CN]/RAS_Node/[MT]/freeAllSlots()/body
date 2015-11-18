@@ -4,6 +4,8 @@
   }
   for (  Entry<String,Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
     _cluster.freeSlots(entry.getValue());
+    _availCPU=this.getTotalCpuResources();
+    _availMemory=this.getAvailableMemoryResources();
     if (_isAlive) {
       _freeSlots.addAll(entry.getValue());
     }

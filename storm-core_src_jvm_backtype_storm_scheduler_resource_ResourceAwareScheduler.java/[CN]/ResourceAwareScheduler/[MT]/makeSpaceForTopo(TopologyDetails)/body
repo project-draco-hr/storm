@@ -1,11 +1,12 @@
 {
+  LOG.info("attempting to make space for topo {} from user {}",td.getName(),td.getTopologySubmitter());
   User submitter=this.userMap.get(td.getTopologySubmitter());
   if (submitter.getCPUResourceGuaranteed() == null || submitter.getMemoryResourceGuaranteed() == null) {
     return false;
   }
   double cpuNeeded=td.getTotalRequestedCpu() / submitter.getCPUResourceGuaranteed();
   double memoryNeeded=(td.getTotalRequestedMemOffHeap() + td.getTotalRequestedMemOnHeap()) / submitter.getMemoryResourceGuaranteed();
-  if ((1.0 - submitter.getCPUResourcePoolUtilization()) > cpuNeeded && (1.0 - submitter.getMemoryResourcePoolUtilization()) > memoryNeeded) {
+  if ((1.0 - submitter.getCPUResourcePoolUtilization()) >= cpuNeeded && (1.0 - submitter.getMemoryResourcePoolUtilization()) >= memoryNeeded) {
     User evictUser=this.findUserWithMostResourcesAboveGuarantee();
     if (evictUser == null) {
       LOG.info("Cannot make space for topology {} from user {}",td.getName(),submitter.getId());
@@ -15,6 +16,7 @@
     TopologyDetails topologyEvict=evictUser.getRunningTopologyWithLowestPriority();
     LOG.info("topology to evict: {}",topologyEvict);
     evictTopology(topologyEvict);
+    LOG.info("Resources After eviction:\n{}",this.nodes);
     return true;
   }
  else {

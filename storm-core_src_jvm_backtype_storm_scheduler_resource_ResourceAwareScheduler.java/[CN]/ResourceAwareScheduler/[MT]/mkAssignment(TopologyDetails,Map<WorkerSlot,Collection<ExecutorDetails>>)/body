@@ -1,4 +1,5 @@
 {
+  LOG.info("making assignments for topology {}",td);
   if (schedulerAssignmentMap != null) {
     double requestedMemOnHeap=td.getTotalRequestedMemOnHeap();
     double requestedMemOffHeap=td.getTotalRequestedMemOffHeap();

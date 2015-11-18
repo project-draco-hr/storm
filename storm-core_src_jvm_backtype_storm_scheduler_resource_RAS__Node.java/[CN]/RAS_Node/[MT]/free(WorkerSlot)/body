@@ -1,12 +1,17 @@
 {
+  LOG.info("freeing ws {} on node {}",ws,_hostname);
   if (_freeSlots.contains(ws))   return;
   for (  Entry<String,Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
     Set<WorkerSlot> slots=entry.getValue();
+    double memUsed=this.getMemoryUsedByWorker(ws);
+    double cpuUsed=this.getCpuUsedByWorker(ws);
     if (slots.remove(ws)) {
       _cluster.freeSlot(ws);
       if (_isAlive) {
         _freeSlots.add(ws);
       }
+      this.freeMemory(memUsed);
+      this.freeCPU(cpuUsed);
       return;
     }
   }

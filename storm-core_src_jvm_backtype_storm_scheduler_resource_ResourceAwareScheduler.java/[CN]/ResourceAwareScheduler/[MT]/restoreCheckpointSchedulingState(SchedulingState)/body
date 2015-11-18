@@ -1,0 +1,17 @@
+{
+  LOG.info("restoring scheduling state...");
+  LOG.info("/*********Before************/");
+  for (  User user : this.getUserMap().values()) {
+    LOG.info(user.getDetailedInfo());
+  }
+  this.cluster=schedulingState.cluster;
+  this.topologies=schedulingState.topologies;
+  this.conf=schedulingState.conf;
+  this.userMap=schedulingState.userMap;
+  this.nodes=schedulingState.nodes;
+  LOG.info("/*********After************/");
+  for (  User user : this.getUserMap().values()) {
+    LOG.info(user.getDetailedInfo());
+  }
+  LOG.info("/*********End************/");
+}

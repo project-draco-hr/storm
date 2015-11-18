@@ -30,7 +30,7 @@
   rs.schedule(topologies,cluster);
   int fullyScheduled=0;
   for (  TopologyDetails topo : topoMap.values()) {
-    if (cluster.getStatusMap().get(topo.getId()).equals("Fully Scheduled")) {
+    if (TestUtilsForResourceAwareScheduler.assertStatusSuccess(cluster.getStatusMap().get(topo.getId()))) {
       fullyScheduled++;
     }
   }
