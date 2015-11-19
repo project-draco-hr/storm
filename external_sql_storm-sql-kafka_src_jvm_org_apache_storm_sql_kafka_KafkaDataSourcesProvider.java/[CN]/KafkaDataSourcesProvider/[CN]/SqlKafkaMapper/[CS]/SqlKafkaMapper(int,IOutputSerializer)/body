@@ -1,0 +1,4 @@
+{
+  this.primaryKeyIndex=primaryKeyIndex;
+  this.serializer=serializer;
+}

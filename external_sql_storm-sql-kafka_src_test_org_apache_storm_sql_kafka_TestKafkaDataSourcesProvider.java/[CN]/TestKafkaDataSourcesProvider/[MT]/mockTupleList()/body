@@ -1,0 +1,12 @@
+{
+  List<TridentTuple> tupleList=new ArrayList<>();
+  TridentTuple t0=mock(TridentTuple.class);
+  TridentTuple t1=mock(TridentTuple.class);
+  doReturn(1).when(t0).get(0);
+  doReturn(2).when(t1).get(0);
+  doReturn(Lists.<Object>newArrayList(1,"2")).when(t0).getValues();
+  doReturn(Lists.<Object>newArrayList(2,"3")).when(t1).getValues();
+  tupleList.add(t0);
+  tupleList.add(t1);
+  return tupleList;
+}

@@ -1,0 +1,6 @@
+{
+  this.conf=conf;
+  this.topic=topic;
+  this.primaryKeyIndex=primaryKeyIndex;
+  this.fields=fields;
+}

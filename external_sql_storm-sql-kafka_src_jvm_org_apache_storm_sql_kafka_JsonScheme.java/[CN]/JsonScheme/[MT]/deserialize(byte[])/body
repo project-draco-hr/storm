@@ -1,0 +1,14 @@
+{
+  ObjectMapper mapper=new ObjectMapper();
+  try {
+    @SuppressWarnings("unchecked") HashMap<String,Object> map=mapper.readValue(ser,HashMap.class);
+    ArrayList<Object> list=new ArrayList<>();
+    for (    String f : fields) {
+      list.add(map.get(f));
+    }
+    return list;
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

@@ -1,0 +1,5 @@
+{
+  this.topic=topic;
+  this.primaryKeyIndex=primaryKeyIndex;
+  this.fieldNames=fieldNames;
+}

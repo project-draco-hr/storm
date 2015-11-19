@@ -1,0 +1,16 @@
+{
+  Preconditions.checkArgument(data != null && data.size() == fieldNames.size(),"Invalid schema");
+  StringWriter sw=new StringWriter();
+  try (JsonGenerator jg=jsonFactory.createGenerator(sw)){
+    jg.writeStartObject();
+    for (int i=0; i < fieldNames.size(); ++i) {
+      jg.writeFieldName(fieldNames.get(i));
+      jg.writeObject(data.get(i));
+    }
+    jg.writeEndObject();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  return ByteBuffer.wrap(sw.toString().getBytes(Charsets.UTF_8));
+}

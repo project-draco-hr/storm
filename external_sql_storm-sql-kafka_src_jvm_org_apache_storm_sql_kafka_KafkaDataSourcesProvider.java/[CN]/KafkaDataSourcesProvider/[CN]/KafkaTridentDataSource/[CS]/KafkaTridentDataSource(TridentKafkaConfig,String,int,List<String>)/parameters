@@ -1,0 +1,4 @@
+TridentKafkaConfig conf
+String topic
+int primaryKeyIndex
+List<String> fields
