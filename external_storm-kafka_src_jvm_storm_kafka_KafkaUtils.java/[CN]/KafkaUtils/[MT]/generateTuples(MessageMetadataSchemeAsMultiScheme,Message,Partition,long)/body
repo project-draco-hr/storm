@@ -3,5 +3,5 @@
   if (payload == null) {
     return null;
   }
-  return scheme.deserializeMessageWithMetadata(Utils.toByteArray(payload),partition,offset);
+  return scheme.deserializeMessageWithMetadata(payload,partition,offset);
 }
