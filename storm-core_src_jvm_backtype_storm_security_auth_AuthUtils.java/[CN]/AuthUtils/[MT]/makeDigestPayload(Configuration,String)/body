@@ -12,5 +12,17 @@
   if (username == null || password == null) {
     return null;
   }
-  return username + ":" + password;
+  try {
+    MessageDigest digest=MessageDigest.getInstance("SHA-512");
+    byte[] output=digest.digest((username + ":" + password).getBytes());
+    StringBuilder builder=new StringBuilder();
+    for (    byte b : output) {
+      builder.append(String.format("%02x",b));
+    }
+    return builder.toString();
+  }
+ catch (  java.security.NoSuchAlgorithmException e) {
+    LOG.error("Cant run SHA-512 digest. Algorithm not available.",e);
+    throw new RuntimeException(e);
+  }
 }

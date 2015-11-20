@@ -3,7 +3,7 @@
   int payload_len=0;
   if (token != null)   payload_len=token.length;
   bout.writeShort(IDENTIFIER);
-  bout.writeInt((int)payload_len);
+  bout.writeInt(payload_len);
   if (payload_len > 0) {
     bout.write(token);
   }

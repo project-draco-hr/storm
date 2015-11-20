@@ -2,7 +2,7 @@
   ChannelBuffer sm_buffer=ChannelBuffers.copiedBuffer(serial);
   short identifier=sm_buffer.readShort();
   int payload_len=sm_buffer.readInt();
-  if (identifier != -500) {
+  if (identifier != IDENTIFIER) {
     return null;
   }
   byte token[]=new byte[payload_len];

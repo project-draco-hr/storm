@@ -10,7 +10,7 @@
     throw t;
   }
   LOG.debug("KerberosSaslNettyServer: authmethod {}",SaslUtils.KERBEROS);
-  KerberosSaslCallbackHandler ch=new KerberosSaslNettyServer.KerberosSaslCallbackHandler(storm_conf,authorizedUsers);
+  KerberosSaslCallbackHandler ch=new KerberosSaslNettyServer.KerberosSaslCallbackHandler(authorizedUsers);
   subject=null;
   try {
     LOG.debug("Setting Configuration to login_config: {}",login_conf);
