@@ -1,0 +1,5 @@
+{
+  if (count > maxPending) {
+    throw new IllegalArgumentException("Window count (length + sliding interval) value " + count + " is more than "+ Config.TOPOLOGY_MAX_SPOUT_PENDING+ " value "+ maxPending);
+  }
+}

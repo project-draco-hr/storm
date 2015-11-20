@@ -1,0 +1,4 @@
+{
+  windowConfiguration.put(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_COUNT,count.value);
+  return this;
+}

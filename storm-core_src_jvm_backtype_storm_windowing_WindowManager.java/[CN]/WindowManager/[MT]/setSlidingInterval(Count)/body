@@ -1,0 +1,3 @@
+{
+  this.triggerPolicy=new CountTriggerPolicy<>(count.value,this);
+}

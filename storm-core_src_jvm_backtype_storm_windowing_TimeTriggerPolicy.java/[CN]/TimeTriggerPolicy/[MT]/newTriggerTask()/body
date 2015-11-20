@@ -1,0 +1,14 @@
+{
+  return new Runnable(){
+    @Override public void run(){
+      try {
+        handler.onTrigger();
+      }
+ catch (      Throwable th) {
+        LOG.error("handler.onTrigger failed ",th);
+        throw th;
+      }
+    }
+  }
+;
+}

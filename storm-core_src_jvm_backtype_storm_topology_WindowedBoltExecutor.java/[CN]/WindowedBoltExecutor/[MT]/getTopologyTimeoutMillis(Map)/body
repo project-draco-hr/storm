@@ -1,0 +1,13 @@
+{
+  if (stormConf.get(Config.TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS) != null) {
+    boolean timeOutsEnabled=(boolean)stormConf.get(Config.TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS);
+    if (!timeOutsEnabled) {
+      return Integer.MAX_VALUE;
+    }
+  }
+  int timeout=0;
+  if (stormConf.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS) != null) {
+    timeout=((Number)stormConf.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS)).intValue();
+  }
+  return timeout * 1000;
+}
