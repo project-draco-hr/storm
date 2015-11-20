@@ -41,6 +41,16 @@
       oprot.writeFieldEnd();
     }
   }
+  if (struct.is_set_used_mem()) {
+    oprot.writeFieldBegin(USED_MEM_FIELD_DESC);
+    oprot.writeDouble(struct.used_mem);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_used_cpu()) {
+    oprot.writeFieldBegin(USED_CPU_FIELD_DESC);
+    oprot.writeDouble(struct.used_cpu);
+    oprot.writeFieldEnd();
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

@@ -52,4 +52,5 @@
       cluster.setStatus(td.getId(),"Fully Scheduled");
     }
   }
+  updateSupervisorsResources(cluster,topologies);
 }

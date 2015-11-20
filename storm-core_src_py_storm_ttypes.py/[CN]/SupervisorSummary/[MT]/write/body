@@ -35,5 +35,13 @@ def write(self, oprot):
             oprot.writeDouble(viter74)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
+    if (self.used_mem is not None):
+        oprot.writeFieldBegin('used_mem', TType.DOUBLE, 8)
+        oprot.writeDouble(self.used_mem)
+        oprot.writeFieldEnd()
+    if (self.used_cpu is not None):
+        oprot.writeFieldBegin('used_cpu', TType.DOUBLE, 9)
+        oprot.writeDouble(self.used_cpu)
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

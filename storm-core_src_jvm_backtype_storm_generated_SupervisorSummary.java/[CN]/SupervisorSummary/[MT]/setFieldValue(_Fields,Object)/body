@@ -56,5 +56,21 @@ unset_total_resources();
 set_total_resources((Map<String,Double>)value);
 }
 break;
+case USED_MEM:
+if (value == null) {
+unset_used_mem();
+}
+ else {
+set_used_mem((Double)value);
+}
+break;
+case USED_CPU:
+if (value == null) {
+unset_used_cpu();
+}
+ else {
+set_used_cpu((Double)value);
+}
+break;
 }
 }

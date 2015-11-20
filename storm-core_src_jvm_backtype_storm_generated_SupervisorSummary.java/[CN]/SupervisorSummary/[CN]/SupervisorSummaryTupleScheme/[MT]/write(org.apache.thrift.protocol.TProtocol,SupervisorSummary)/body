@@ -12,7 +12,13 @@
   if (struct.is_set_total_resources()) {
     optionals.set(1);
   }
-  oprot.writeBitSet(optionals,2);
+  if (struct.is_set_used_mem()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_used_cpu()) {
+    optionals.set(3);
+  }
+  oprot.writeBitSet(optionals,4);
   if (struct.is_set_version()) {
     oprot.writeString(struct.version);
   }
@@ -24,5 +30,11 @@
         oprot.writeDouble(_iter79.getValue());
       }
     }
+  }
+  if (struct.is_set_used_mem()) {
+    oprot.writeDouble(struct.used_mem);
+  }
+  if (struct.is_set_used_cpu()) {
+    oprot.writeDouble(struct.used_cpu);
   }
 }
