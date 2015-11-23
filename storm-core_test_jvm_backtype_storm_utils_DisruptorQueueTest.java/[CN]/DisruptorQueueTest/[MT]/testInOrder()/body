@@ -13,6 +13,6 @@
     }
   }
 );
-  run(producer,consumer,1000,1);
+  run(producer,consumer,queue,1000,1);
   Assert.assertTrue("Messages delivered out of order",allInOrder.get());
 }

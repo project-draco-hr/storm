@@ -5,7 +5,7 @@ case NODE_INFO:
 case ACTION:
   return get_action();
 case TIME_STAMP:
-return Long.valueOf(get_time_stamp());
+return get_time_stamp();
 }
 throw new IllegalStateException();
 }

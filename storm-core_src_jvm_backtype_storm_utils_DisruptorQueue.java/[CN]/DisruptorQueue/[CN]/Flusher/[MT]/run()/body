@@ -1,0 +1,9 @@
+{
+  if (_isFlushing.compareAndSet(false,true)) {
+    for (    ThreadLocalInserter batcher : _batchers.values()) {
+      batcher.forceBatch();
+      batcher.flush(true);
+    }
+    _isFlushing.set(false);
+  }
+}

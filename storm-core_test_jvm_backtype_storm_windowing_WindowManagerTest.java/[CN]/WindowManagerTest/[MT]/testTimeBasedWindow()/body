@@ -1,0 +1,34 @@
+{
+  windowManager.setWindowLength(new Duration(1,TimeUnit.SECONDS));
+  windowManager.setSlidingInterval(new Duration(100,TimeUnit.MILLISECONDS));
+  long now=System.currentTimeMillis();
+  for (  int i : seq(1,50)) {
+    windowManager.add(i,now - 1000);
+  }
+  for (  int i : seq(51,WindowManager.EXPIRE_EVENTS_THRESHOLD)) {
+    windowManager.add(i,now);
+  }
+  assertEquals(50,listener.onExpiryEvents.size());
+  for (  int i : seq(WindowManager.EXPIRE_EVENTS_THRESHOLD + 1,WindowManager.EXPIRE_EVENTS_THRESHOLD + 100)) {
+    windowManager.add(i,now - 1000);
+  }
+  Thread.sleep(120);
+  assertEquals(100,listener.onExpiryEvents.size());
+  assertEquals(seq(WindowManager.EXPIRE_EVENTS_THRESHOLD + 1,WindowManager.EXPIRE_EVENTS_THRESHOLD + 100),listener.onExpiryEvents);
+  List<Integer> activationsEvents=seq(51,WindowManager.EXPIRE_EVENTS_THRESHOLD);
+  assertEquals(seq(51,WindowManager.EXPIRE_EVENTS_THRESHOLD),listener.onActivationEvents);
+  assertEquals(seq(51,WindowManager.EXPIRE_EVENTS_THRESHOLD),listener.onActivationNewEvents);
+  List<Integer> expiredList=seq(1,50);
+  expiredList.addAll(seq(WindowManager.EXPIRE_EVENTS_THRESHOLD + 1,WindowManager.EXPIRE_EVENTS_THRESHOLD + 100));
+  assertEquals(expiredList,listener.onActivationExpiredEvents);
+  listener.clear();
+  List<Integer> newEvents=seq(WindowManager.EXPIRE_EVENTS_THRESHOLD + 101,WindowManager.EXPIRE_EVENTS_THRESHOLD + 200);
+  for (  int i : newEvents) {
+    windowManager.add(i,now);
+  }
+  activationsEvents.addAll(newEvents);
+  Thread.sleep(120);
+  assertTrue(listener.onExpiryEvents.isEmpty());
+  assertEquals(activationsEvents,listener.onActivationEvents);
+  assertEquals(newEvents,listener.onActivationNewEvents);
+}

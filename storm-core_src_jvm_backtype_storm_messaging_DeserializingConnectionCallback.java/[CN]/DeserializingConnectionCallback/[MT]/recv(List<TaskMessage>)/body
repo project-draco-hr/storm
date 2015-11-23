@@ -1,0 +1,8 @@
+{
+  KryoTupleDeserializer des=_des.get();
+  ArrayList<AddressedTuple> ret=new ArrayList<>(batch.size());
+  for (  TaskMessage message : batch) {
+    ret.add(new AddressedTuple(message.task(),des.deserialize(message.message())));
+  }
+  _cb.invoke(ret);
+}

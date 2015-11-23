@@ -1,0 +1,9 @@
+{
+  LOG.debug("Channel is connected: {}",channel.toString());
+  channelRef.set(channel);
+  if (authMethod == ThriftNettyClientCodec.AuthMethod.NONE) {
+    ready=true;
+    this.notifyAll();
+  }
+  retryTimes=0;
+}

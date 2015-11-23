@@ -5,11 +5,20 @@ def process_execute(self, seqid, iprot, oprot):
     result = execute_result()
     try:
         result.success = self._handler.execute(args.functionName, args.funcArgs)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
     except DRPCExecutionException as e:
+        msg_type = TMessageType.REPLY
         result.e = e
     except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
         result.aze = aze
-    oprot.writeMessageBegin('execute', TMessageType.REPLY, seqid)
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('execute', msg_type, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()

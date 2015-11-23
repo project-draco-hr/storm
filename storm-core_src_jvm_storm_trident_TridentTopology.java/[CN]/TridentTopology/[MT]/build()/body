@@ -2,7 +2,7 @@
   DefaultDirectedGraph<Node,IndexedEdge> graph=(DefaultDirectedGraph)_graph.clone();
   completeDRPC(graph,_colocate,_gen);
   List<SpoutNode> spoutNodes=new ArrayList<>();
-  Set<Node> boltNodes=new HashSet<>();
+  Set<Node> boltNodes=new LinkedHashSet<>();
   for (  Node n : graph.vertexSet()) {
     if (n instanceof SpoutNode) {
       spoutNodes.add((SpoutNode)n);
@@ -11,7 +11,7 @@
       boltNodes.add(n);
     }
   }
-  Set<Group> initialGroups=new HashSet<>();
+  Set<Group> initialGroups=new LinkedHashSet<>();
   for (  List<Node> colocate : _colocate.values()) {
     Group g=new Group(graph,colocate);
     boltNodes.removeAll(colocate);

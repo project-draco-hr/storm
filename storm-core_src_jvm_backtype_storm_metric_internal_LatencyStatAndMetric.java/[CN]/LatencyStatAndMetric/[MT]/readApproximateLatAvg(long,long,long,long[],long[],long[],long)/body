@@ -7,5 +7,5 @@
     totalCount+=countBuckets[i];
     timeNeeded-=bucketTime[i];
   }
-  return ((double)totalLat) / totalCount;
+  return Utils.zeroIfNaNOrInf(((double)totalLat) / totalCount);
 }

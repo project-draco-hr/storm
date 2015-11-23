@@ -1,4 +1,4 @@
-def __init__(self, host=None, uptime_secs=None, num_workers=None, num_used_workers=None, supervisor_id=None, version=thrift_spec[6][4], total_resources=None):
+def __init__(self, host=None, uptime_secs=None, num_workers=None, num_used_workers=None, supervisor_id=None, version=thrift_spec[6][4], total_resources=None, used_mem=None, used_cpu=None):
     self.host = host
     self.uptime_secs = uptime_secs
     self.num_workers = num_workers
@@ -6,3 +6,5 @@ def __init__(self, host=None, uptime_secs=None, num_workers=None, num_used_worke
     self.supervisor_id = supervisor_id
     self.version = version
     self.total_resources = total_resources
+    self.used_mem = used_mem
+    self.used_cpu = used_cpu

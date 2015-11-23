@@ -1,0 +1,3 @@
+{
+  set_message_blob(ByteBuffer.wrap(Arrays.copyOf(value,value.length)));
+}

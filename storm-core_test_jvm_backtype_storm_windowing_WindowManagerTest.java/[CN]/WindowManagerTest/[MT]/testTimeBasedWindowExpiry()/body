@@ -1,0 +1,18 @@
+{
+  windowManager.setWindowLength(new Duration(100,TimeUnit.MILLISECONDS));
+  windowManager.setSlidingInterval(new Duration(60,TimeUnit.MILLISECONDS));
+  for (  int i : seq(1,10)) {
+    windowManager.add(i);
+  }
+  Thread.sleep(70);
+  assertEquals(seq(1,10),listener.onActivationEvents);
+  assertTrue(listener.onActivationExpiredEvents.isEmpty());
+  listener.clear();
+  Thread.sleep(70);
+  assertEquals(seq(1,10),listener.onActivationExpiredEvents);
+  assertTrue(listener.onActivationEvents.isEmpty());
+  listener.clear();
+  Thread.sleep(70);
+  assertTrue(listener.onActivationExpiredEvents.isEmpty());
+  assertTrue(listener.onActivationEvents.isEmpty());
+}

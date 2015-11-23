@@ -1,0 +1,3 @@
+{
+  return setBolt(id,new WindowedBoltExecutor(bolt),parallelism_hint);
+}

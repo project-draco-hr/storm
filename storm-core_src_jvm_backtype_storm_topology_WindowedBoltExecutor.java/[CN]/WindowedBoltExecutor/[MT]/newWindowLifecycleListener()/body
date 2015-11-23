@@ -1,0 +1,14 @@
+{
+  return new WindowLifecycleListener<Tuple>(){
+    @Override public void onExpiry(    List<Tuple> tuples){
+      for (      Tuple tuple : tuples) {
+        windowedOutputCollector.ack(tuple);
+      }
+    }
+    @Override public void onActivation(    List<Tuple> tuples,    List<Tuple> newTuples,    List<Tuple> expiredTuples){
+      windowedOutputCollector.setContext(tuples);
+      bolt.execute(new TupleWindowImpl(tuples,newTuples,expiredTuples));
+    }
+  }
+;
+}

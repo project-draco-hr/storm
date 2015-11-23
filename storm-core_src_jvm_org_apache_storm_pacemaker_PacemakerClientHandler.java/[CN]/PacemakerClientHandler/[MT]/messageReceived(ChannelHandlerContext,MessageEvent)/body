@@ -1,0 +1,14 @@
+{
+  LOG.debug("Got Message: {}",event.getMessage().toString());
+  Object evm=event.getMessage();
+  if (evm instanceof ControlMessage) {
+    LOG.debug("Got control message: {}",evm.toString());
+    return;
+  }
+ else   if (evm instanceof HBMessage) {
+    client.gotMessage((HBMessage)evm);
+  }
+ else {
+    LOG.warn("Got unexpected message: {} from server.",evm);
+  }
+}

@@ -1,0 +1,6 @@
+{
+  if (this.pulses == null) {
+    this.pulses=new ArrayList<HBPulse>();
+  }
+  this.pulses.add(elem);
+}

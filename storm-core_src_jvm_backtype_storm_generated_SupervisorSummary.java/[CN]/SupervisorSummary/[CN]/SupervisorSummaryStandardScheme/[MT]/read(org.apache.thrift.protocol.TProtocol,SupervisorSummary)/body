@@ -81,6 +81,24 @@ struct.set_total_resources_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 8:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.used_mem=iprot.readDouble();
+struct.set_used_mem_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 9:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.used_cpu=iprot.readDouble();
+struct.set_used_cpu_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }

@@ -5,9 +5,17 @@ def process_getNimbusConf(self, seqid, iprot, oprot):
     result = getNimbusConf_result()
     try:
         result.success = self._handler.getNimbusConf()
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
     except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
         result.aze = aze
-    oprot.writeMessageBegin('getNimbusConf', TMessageType.REPLY, seqid)
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('getNimbusConf', msg_type, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()

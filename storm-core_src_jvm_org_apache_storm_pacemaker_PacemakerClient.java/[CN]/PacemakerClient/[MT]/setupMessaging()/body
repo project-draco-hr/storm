@@ -1,0 +1,7 @@
+{
+  messages=new HBMessage[maxPending];
+  availableMessageSlots=new LinkedBlockingQueue<Integer>();
+  for (int i=0; i < maxPending; i++) {
+    availableMessageSlots.add(i);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  if (getSetField() == _Fields.PULSE) {
+    return (HBPulse)getFieldValue();
+  }
+ else {
+    throw new RuntimeException("Cannot get field 'pulse' because union is currently set to " + getFieldDesc(getSetField()).name);
+  }
+}

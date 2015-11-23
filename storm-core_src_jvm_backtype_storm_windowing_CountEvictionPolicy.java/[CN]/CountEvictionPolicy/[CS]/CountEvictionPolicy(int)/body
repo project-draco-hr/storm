@@ -1,0 +1,4 @@
+{
+  this.threshold=count;
+  this.currentCount=new AtomicInteger();
+}

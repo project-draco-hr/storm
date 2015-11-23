@@ -1,0 +1,7 @@
+{
+  int maxPending=Integer.MAX_VALUE;
+  if (stormConf.get(Config.TOPOLOGY_MAX_SPOUT_PENDING) != null) {
+    maxPending=((Number)stormConf.get(Config.TOPOLOGY_MAX_SPOUT_PENDING)).intValue();
+  }
+  return maxPending;
+}
