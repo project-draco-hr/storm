@@ -1,0 +1,5 @@
+def pacemaker(klass='org.apache.storm.pacemaker.pacemaker'):
+    'Syntax: [storm pacemaker]\n\n    Launches the Pacemaker daemon. This command should be run under\n    supervision with a tool like daemontools or monit.\n\n    See Setting up a Storm cluster for more information.\n    (http://storm.apache.org/documentation/Setting-up-a-Storm-cluster)\n    '
+    cppaths = [CLUSTER_CONF_DIR]
+    jvmopts = (parse_args(confvalue('pacemaker.childopts', cppaths)) + ['-Dlogfile.name=pacemaker.log', ('-Dlog4j.configurationFile=' + os.path.join(get_log4j2_conf_dir(), 'cluster.xml'))])
+    exec_storm_class(klass, jvmtype='-server', daemonName='pacemaker', extrajars=cppaths, jvmopts=jvmopts)

@@ -1,0 +1,11 @@
+{
+switch (field) {
+case TYPE:
+    return get_type();
+case DATA:
+  return get_data();
+case MESSAGE_ID:
+return get_message_id();
+}
+throw new IllegalStateException();
+}

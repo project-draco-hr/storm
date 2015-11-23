@@ -1,0 +1,10 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.id=iprot.readString();
+  struct.set_id_isSet(true);
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+    struct.details=iprot.readBinary();
+    struct.set_details_isSet(true);
+  }
+}

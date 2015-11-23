@@ -1,0 +1,9 @@
+{
+  Map<String,Object> conf=new HashMap<String,Object>();
+  conf.put(Config.PACEMAKER_AUTH_METHOD,"NONE");
+  ConfigValidation.validateFields(conf);
+  conf.put(Config.PACEMAKER_AUTH_METHOD,"DIGEST");
+  ConfigValidation.validateFields(conf);
+  conf.put(Config.PACEMAKER_AUTH_METHOD,"KERBEROS");
+  ConfigValidation.validateFields(conf);
+}

@@ -1,0 +1,4 @@
+def __init__(self, type=None, data=None, message_id=thrift_spec[3][4]):
+    self.type = type
+    self.data = data
+    self.message_id = message_id

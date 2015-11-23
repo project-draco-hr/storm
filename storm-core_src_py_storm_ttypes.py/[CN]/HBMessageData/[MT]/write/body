@@ -1,0 +1,31 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('HBMessageData')
+    if (self.path is not None):
+        oprot.writeFieldBegin('path', TType.STRING, 1)
+        oprot.writeString(self.path.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.pulse is not None):
+        oprot.writeFieldBegin('pulse', TType.STRUCT, 2)
+        self.pulse.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.boolval is not None):
+        oprot.writeFieldBegin('boolval', TType.BOOL, 3)
+        oprot.writeBool(self.boolval)
+        oprot.writeFieldEnd()
+    if (self.records is not None):
+        oprot.writeFieldBegin('records', TType.STRUCT, 4)
+        self.records.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.nodes is not None):
+        oprot.writeFieldBegin('nodes', TType.STRUCT, 5)
+        self.nodes.write(oprot)
+        oprot.writeFieldEnd()
+    if (self.message_blob is not None):
+        oprot.writeFieldBegin('message_blob', TType.STRING, 7)
+        oprot.writeString(self.message_blob)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

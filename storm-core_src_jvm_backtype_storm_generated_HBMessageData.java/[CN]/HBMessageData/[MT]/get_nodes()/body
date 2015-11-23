@@ -1,0 +1,8 @@
+{
+  if (getSetField() == _Fields.NODES) {
+    return (HBNodes)getFieldValue();
+  }
+ else {
+    throw new RuntimeException("Cannot get field 'nodes' because union is currently set to " + getFieldDesc(getSetField()).name);
+  }
+}

@@ -1,0 +1,6 @@
+{
+  this.server=server;
+  this.storm_conf=storm_conf;
+  this.jaas_section=jaas_section;
+  this.authorizedUsers=authorizedUsers;
+}

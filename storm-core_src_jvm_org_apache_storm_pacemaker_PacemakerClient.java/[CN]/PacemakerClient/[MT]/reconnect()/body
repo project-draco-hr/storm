@@ -1,0 +1,12 @@
+{
+  final PacemakerClient client=this;
+  Timer t=new Timer(true);
+  t.schedule(new TimerTask(){
+    public void run(){
+      client.doReconnect();
+    }
+  }
+,backoff.getSleepTimeMs(retryTimes++,0));
+  ready=false;
+  setupMessaging();
+}
