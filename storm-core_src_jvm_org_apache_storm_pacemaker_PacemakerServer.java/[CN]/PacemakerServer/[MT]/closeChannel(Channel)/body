@@ -1,0 +1,5 @@
+{
+  c.close().awaitUninterruptibly();
+  allChannels.remove(c);
+  authenticated_channels.remove(c);
+}

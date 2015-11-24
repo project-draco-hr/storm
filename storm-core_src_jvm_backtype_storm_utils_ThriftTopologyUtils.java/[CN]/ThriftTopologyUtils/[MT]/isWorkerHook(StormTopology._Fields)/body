@@ -1,0 +1,3 @@
+{
+  return f.equals(StormTopology._Fields.WORKER_HOOKS);
+}

@@ -52,6 +52,18 @@
     }
     first=false;
   }
+  if (is_set_used_mem()) {
+    if (!first)     sb.append(", ");
+    sb.append("used_mem:");
+    sb.append(this.used_mem);
+    first=false;
+  }
+  if (is_set_used_cpu()) {
+    if (!first)     sb.append(", ");
+    sb.append("used_cpu:");
+    sb.append(this.used_cpu);
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

@@ -5,8 +5,8 @@
     oprot.writeFieldBegin(SUPERVISORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.supervisors.size()));
-      for (      SupervisorSummary _iter93 : struct.supervisors) {
-        _iter93.write(oprot);
+      for (      SupervisorSummary _iter101 : struct.supervisors) {
+        _iter101.write(oprot);
       }
       oprot.writeListEnd();
     }
@@ -21,8 +21,8 @@
     oprot.writeFieldBegin(TOPOLOGIES_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.topologies.size()));
-      for (      TopologySummary _iter94 : struct.topologies) {
-        _iter94.write(oprot);
+      for (      TopologySummary _iter102 : struct.topologies) {
+        _iter102.write(oprot);
       }
       oprot.writeListEnd();
     }
@@ -32,8 +32,8 @@
     oprot.writeFieldBegin(NIMBUSES_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.nimbuses.size()));
-      for (      NimbusSummary _iter95 : struct.nimbuses) {
-        _iter95.write(oprot);
+      for (      NimbusSummary _iter103 : struct.nimbuses) {
+        _iter103.write(oprot);
       }
       oprot.writeListEnd();
     }

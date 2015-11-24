@@ -6,36 +6,36 @@ def write(self, oprot):
     if (self.acked is not None):
         oprot.writeFieldBegin('acked', TType.MAP, 1)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.acked))
-        for (kiter228, viter229) in self.acked.items():
-            oprot.writeString(kiter228.encode('utf-8'))
-            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter229))
-            for (kiter230, viter231) in viter229.items():
-                oprot.writeString(kiter230.encode('utf-8'))
-                oprot.writeI64(viter231)
+        for (kiter235, viter236) in self.acked.items():
+            oprot.writeString(kiter235.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter236))
+            for (kiter237, viter238) in viter236.items():
+                oprot.writeString(kiter237.encode('utf-8'))
+                oprot.writeI64(viter238)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.failed is not None):
         oprot.writeFieldBegin('failed', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.failed))
-        for (kiter232, viter233) in self.failed.items():
-            oprot.writeString(kiter232.encode('utf-8'))
-            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter233))
-            for (kiter234, viter235) in viter233.items():
-                oprot.writeString(kiter234.encode('utf-8'))
-                oprot.writeI64(viter235)
+        for (kiter239, viter240) in self.failed.items():
+            oprot.writeString(kiter239.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRING, TType.I64, len(viter240))
+            for (kiter241, viter242) in viter240.items():
+                oprot.writeString(kiter241.encode('utf-8'))
+                oprot.writeI64(viter242)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.complete_ms_avg is not None):
         oprot.writeFieldBegin('complete_ms_avg', TType.MAP, 3)
         oprot.writeMapBegin(TType.STRING, TType.MAP, len(self.complete_ms_avg))
-        for (kiter236, viter237) in self.complete_ms_avg.items():
-            oprot.writeString(kiter236.encode('utf-8'))
-            oprot.writeMapBegin(TType.STRING, TType.DOUBLE, len(viter237))
-            for (kiter238, viter239) in viter237.items():
-                oprot.writeString(kiter238.encode('utf-8'))
-                oprot.writeDouble(viter239)
+        for (kiter243, viter244) in self.complete_ms_avg.items():
+            oprot.writeString(kiter243.encode('utf-8'))
+            oprot.writeMapBegin(TType.STRING, TType.DOUBLE, len(viter244))
+            for (kiter245, viter246) in viter244.items():
+                oprot.writeString(kiter245.encode('utf-8'))
+                oprot.writeDouble(viter246)
             oprot.writeMapEnd()
         oprot.writeMapEnd()
         oprot.writeFieldEnd()

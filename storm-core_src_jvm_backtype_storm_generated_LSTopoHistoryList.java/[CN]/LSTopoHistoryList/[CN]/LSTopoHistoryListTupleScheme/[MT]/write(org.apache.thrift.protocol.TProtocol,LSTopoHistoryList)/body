@@ -2,8 +2,8 @@
   TTupleProtocol oprot=(TTupleProtocol)prot;
 {
     oprot.writeI32(struct.topo_history.size());
-    for (    LSTopoHistory _iter676 : struct.topo_history) {
-      _iter676.write(oprot);
+    for (    LSTopoHistory _iter684 : struct.topo_history) {
+      _iter684.write(oprot);
     }
   }
 }

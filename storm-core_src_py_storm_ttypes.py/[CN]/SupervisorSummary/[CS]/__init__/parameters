@@ -6,3 +6,5 @@ num_used_workers
 supervisor_id
 version
 total_resources
+used_mem
+used_cpu

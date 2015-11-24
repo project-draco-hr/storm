@@ -1,0 +1,5 @@
+{
+  HBMessageData x=new HBMessageData();
+  x.set_message_blob(value);
+  return x;
+}

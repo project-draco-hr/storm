@@ -1,0 +1,6 @@
+{
+  if (this.pulseIds == null) {
+    this.pulseIds=new ArrayList<String>();
+  }
+  this.pulseIds.add(elem);
+}

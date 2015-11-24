@@ -1,0 +1,3 @@
+PacemakerClient pacemaker_client
+Map storm_conf
+AuthMethod authMethod

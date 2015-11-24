@@ -43,6 +43,16 @@ def read(self, iprot):
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
+        elif (fid == 4):
+            if (ftype == TType.LIST):
+                self.worker_hooks = []
+                (_etype63, _size60) = iprot.readListBegin()
+                for _i64 in xrange(_size60):
+                    _elem65 = iprot.readString()
+                    self.worker_hooks.append(_elem65)
+                iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

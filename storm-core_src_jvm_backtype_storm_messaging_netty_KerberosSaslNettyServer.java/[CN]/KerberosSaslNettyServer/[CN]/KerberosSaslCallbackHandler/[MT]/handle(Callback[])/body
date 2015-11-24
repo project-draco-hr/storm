@@ -1,0 +1,23 @@
+{
+  for (  Callback callback : callbacks) {
+    LOG.info("Kerberos Callback Handler got callback: {}",callback.getClass());
+    if (callback instanceof AuthorizeCallback) {
+      AuthorizeCallback ac=(AuthorizeCallback)callback;
+      if (!ac.getAuthenticationID().equals(ac.getAuthorizationID())) {
+        LOG.debug("{} != {}",ac.getAuthenticationID(),ac.getAuthorizationID());
+        continue;
+      }
+      LOG.debug("Authorized Users: {}",authorizedUsers);
+      LOG.debug("Checking authorization for: {}",ac.getAuthorizationID());
+      for (      String user : authorizedUsers) {
+        String requester=ac.getAuthorizationID();
+        KerberosPrincipal principal=new KerberosPrincipal(requester);
+        requester=new KerberosPrincipalToLocal().toLocal(principal);
+        if (requester.equals(user)) {
+          ac.setAuthorized(true);
+          break;
+        }
+      }
+    }
+  }
+}

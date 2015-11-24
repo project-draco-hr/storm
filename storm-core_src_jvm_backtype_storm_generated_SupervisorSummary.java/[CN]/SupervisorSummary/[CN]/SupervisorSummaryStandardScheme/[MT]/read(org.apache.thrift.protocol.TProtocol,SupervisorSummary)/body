@@ -64,18 +64,36 @@ break;
 case 7:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map74=iprot.readMapBegin();
-struct.total_resources=new HashMap<String,Double>(2 * _map74.size);
-String _key75;
-double _val76;
-for (int _i77=0; _i77 < _map74.size; ++_i77) {
-_key75=iprot.readString();
-_val76=iprot.readDouble();
-struct.total_resources.put(_key75,_val76);
+org.apache.thrift.protocol.TMap _map82=iprot.readMapBegin();
+struct.total_resources=new HashMap<String,Double>(2 * _map82.size);
+String _key83;
+double _val84;
+for (int _i85=0; _i85 < _map82.size; ++_i85) {
+_key83=iprot.readString();
+_val84=iprot.readDouble();
+struct.total_resources.put(_key83,_val84);
 }
 iprot.readMapEnd();
 }
 struct.set_total_resources_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 8:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.used_mem=iprot.readDouble();
+struct.set_used_mem_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 9:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.used_cpu=iprot.readDouble();
+struct.set_used_cpu_isSet(true);
 }
  else {
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);

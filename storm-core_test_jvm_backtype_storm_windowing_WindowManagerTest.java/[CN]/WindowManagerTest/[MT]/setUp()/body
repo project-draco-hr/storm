@@ -1,0 +1,4 @@
+{
+  listener=new Listener();
+  windowManager=new WindowManager<>(listener);
+}

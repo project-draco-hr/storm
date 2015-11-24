@@ -1,10 +1,10 @@
 {
-  List<TaskMessage> msgs=(List<TaskMessage>)e.getMessage();
+  Object msgs=e.getMessage();
   if (msgs == null) {
     return;
   }
   try {
-    server.enqueue(msgs,e.getRemoteAddress().toString());
+    server.received(msgs,e.getRemoteAddress().toString(),channel);
   }
  catch (  InterruptedException e1) {
     LOG.info("failed to enqueue a request message",e);

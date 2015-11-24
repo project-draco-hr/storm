@@ -1,0 +1,17 @@
+{
+  int threshold=WindowManager.EXPIRE_EVENTS_THRESHOLD;
+  int windowLength=5;
+  windowManager.setWindowLength(new Count(5));
+  windowManager.setSlidingInterval(new Duration(1,TimeUnit.HOURS));
+  for (  int i : seq(1,5)) {
+    windowManager.add(i);
+  }
+  assertTrue(listener.onExpiryEvents.isEmpty());
+  for (  int i : seq(6,10)) {
+    windowManager.add(i);
+  }
+  for (  int i : seq(11,threshold)) {
+    windowManager.add(i);
+  }
+  assertEquals(seq(1,threshold - windowLength),listener.onExpiryEvents);
+}

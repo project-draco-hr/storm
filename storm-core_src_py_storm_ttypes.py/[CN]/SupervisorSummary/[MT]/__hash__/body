@@ -7,4 +7,6 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.supervisor_id))
     value = ((value * 31) ^ hash(self.version))
     value = ((value * 31) ^ hash(self.total_resources))
+    value = ((value * 31) ^ hash(self.used_mem))
+    value = ((value * 31) ^ hash(self.used_cpu))
     return value

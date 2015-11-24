@@ -37,7 +37,7 @@
       String other_element_key=other_element.getKey();
       DebugOptions other_element_value=other_element.getValue();
       String __this__component_debug_copy_key=other_element_key;
-      DebugOptions __this__component_debug_copy_value=other_element_value;
+      DebugOptions __this__component_debug_copy_value=new DebugOptions(other_element_value);
       __this__component_debug.put(__this__component_debug_copy_key,__this__component_debug_copy_value);
     }
     this.component_debug=__this__component_debug;

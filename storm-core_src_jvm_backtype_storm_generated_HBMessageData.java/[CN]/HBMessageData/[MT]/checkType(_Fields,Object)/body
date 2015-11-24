@@ -1,0 +1,36 @@
+{
+switch (setField) {
+case PATH:
+    if (value instanceof String) {
+      break;
+    }
+  throw new ClassCastException("Was expecting value of type String for field 'path', but got " + value.getClass().getSimpleName());
+case PULSE:
+if (value instanceof HBPulse) {
+  break;
+}
+throw new ClassCastException("Was expecting value of type HBPulse for field 'pulse', but got " + value.getClass().getSimpleName());
+case BOOLVAL:
+if (value instanceof Boolean) {
+break;
+}
+throw new ClassCastException("Was expecting value of type Boolean for field 'boolval', but got " + value.getClass().getSimpleName());
+case RECORDS:
+if (value instanceof HBRecords) {
+break;
+}
+throw new ClassCastException("Was expecting value of type HBRecords for field 'records', but got " + value.getClass().getSimpleName());
+case NODES:
+if (value instanceof HBNodes) {
+break;
+}
+throw new ClassCastException("Was expecting value of type HBNodes for field 'nodes', but got " + value.getClass().getSimpleName());
+case MESSAGE_BLOB:
+if (value instanceof ByteBuffer) {
+break;
+}
+throw new ClassCastException("Was expecting value of type ByteBuffer for field 'message_blob', but got " + value.getClass().getSimpleName());
+default :
+throw new IllegalArgumentException("Unknown field id " + setField);
+}
+}

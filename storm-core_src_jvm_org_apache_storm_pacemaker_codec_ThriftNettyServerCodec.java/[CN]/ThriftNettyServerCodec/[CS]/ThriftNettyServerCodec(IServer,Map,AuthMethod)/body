@@ -1,0 +1,5 @@
+{
+  this.server=server;
+  this.authMethod=authMethod;
+  this.storm_conf=storm_conf;
+}
