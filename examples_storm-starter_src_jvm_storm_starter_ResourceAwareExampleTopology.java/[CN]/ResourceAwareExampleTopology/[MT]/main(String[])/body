@@ -9,7 +9,7 @@
   bolt2.setMemoryLoad(100);
   Config conf=new Config();
   conf.setDebug(true);
-  conf.setTopologyWorkerMaxHeapSize(512.0);
+  conf.setTopologyWorkerMaxHeapSize(1024.0);
   if (args != null && args.length > 0) {
     conf.setNumWorkers(3);
     StormSubmitter.submitTopologyWithProgressBar(args[0],conf,builder.createTopology());
