@@ -13,7 +13,7 @@
   if (shellMsg.getTask() == 0) {
     List<Integer> outtasks=_collector.emit(shellMsg.getStream(),anchors,shellMsg.getTuple());
     if (shellMsg.areTaskIdsNeeded()) {
-      _pendingTaskIds.put(outtasks);
+      _pendingWrites.putTaskIds(outtasks);
     }
   }
  else {
