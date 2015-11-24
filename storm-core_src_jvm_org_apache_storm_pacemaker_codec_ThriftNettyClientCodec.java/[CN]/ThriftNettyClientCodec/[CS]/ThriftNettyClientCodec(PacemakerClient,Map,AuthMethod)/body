@@ -1,0 +1,5 @@
+{
+  client=pacemaker_client;
+  this.authMethod=authMethod;
+  this.storm_conf=storm_conf;
+}

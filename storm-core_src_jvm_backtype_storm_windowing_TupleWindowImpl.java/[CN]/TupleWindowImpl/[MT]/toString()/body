@@ -1,0 +1,3 @@
+{
+  return "TupleWindowImpl{" + "tuples=" + tuples + ", newTuples="+ newTuples+ ", expiredTuples="+ expiredTuples+ '}';
+}

@@ -1,0 +1,4 @@
+{
+  windowConfiguration.put(Config.TOPOLOGY_BOLTS_WINDOW_LENGTH_DURATION_MS,duration.value);
+  return this;
+}

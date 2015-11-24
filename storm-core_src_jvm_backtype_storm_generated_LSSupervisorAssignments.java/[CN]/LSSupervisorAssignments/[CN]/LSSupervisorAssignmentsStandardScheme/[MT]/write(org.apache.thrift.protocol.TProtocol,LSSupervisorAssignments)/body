@@ -5,9 +5,9 @@
     oprot.writeFieldBegin(ASSIGNMENTS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.I32,org.apache.thrift.protocol.TType.STRUCT,struct.assignments.size()));
-      for (      Map.Entry<Integer,LocalAssignment> _iter642 : struct.assignments.entrySet()) {
-        oprot.writeI32(_iter642.getKey());
-        _iter642.getValue().write(oprot);
+      for (      Map.Entry<Integer,LocalAssignment> _iter650 : struct.assignments.entrySet()) {
+        oprot.writeI32(_iter650.getKey());
+        _iter650.getValue().write(oprot);
       }
       oprot.writeMapEnd();
     }

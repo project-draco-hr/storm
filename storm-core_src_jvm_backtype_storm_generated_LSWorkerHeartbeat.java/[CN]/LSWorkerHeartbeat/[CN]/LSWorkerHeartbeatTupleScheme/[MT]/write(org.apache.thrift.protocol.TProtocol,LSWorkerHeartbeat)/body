@@ -4,8 +4,8 @@
   oprot.writeString(struct.topology_id);
 {
     oprot.writeI32(struct.executors.size());
-    for (    ExecutorInfo _iter652 : struct.executors) {
-      _iter652.write(oprot);
+    for (    ExecutorInfo _iter660 : struct.executors) {
+      _iter660.write(oprot);
     }
   }
   oprot.writeI32(struct.port);

@@ -1,0 +1,12 @@
+{
+switch (field) {
+case PULSES:
+    if (value == null) {
+      unset_pulses();
+    }
+ else {
+      set_pulses((List<HBPulse>)value);
+    }
+  break;
+}
+}

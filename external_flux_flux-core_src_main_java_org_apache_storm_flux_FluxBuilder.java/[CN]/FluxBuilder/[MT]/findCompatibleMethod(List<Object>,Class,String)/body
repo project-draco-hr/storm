@@ -7,7 +7,13 @@
     Class[] paramClasses=method.getParameterTypes();
     if (paramClasses.length == args.size() && method.getName().equals(methodName)) {
       LOG.debug("found constructor with same number of args..");
-      boolean invokable=canInvokeWithArgs(args,method.getParameterTypes());
+      boolean invokable=false;
+      if (args.size() == 0) {
+        invokable=true;
+      }
+ else {
+        invokable=canInvokeWithArgs(args,method.getParameterTypes());
+      }
       if (invokable) {
         retval=method;
         eligibleCount++;

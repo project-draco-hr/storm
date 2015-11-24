@@ -1,0 +1,26 @@
+{
+  List<Event<T>> windowEvents=null;
+  List<T> expired=null;
+  try {
+    lock.lock();
+    windowEvents=expireEvents(true);
+    expired=new ArrayList<>(expiredEvents);
+    expiredEvents.clear();
+  }
+  finally {
+    lock.unlock();
+  }
+  List<T> events=new ArrayList<>();
+  List<T> newEvents=new ArrayList<>();
+  for (  Event<T> event : windowEvents) {
+    events.add(event.get());
+    if (!prevWindowEvents.contains(event)) {
+      newEvents.add(event.get());
+    }
+  }
+  prevWindowEvents.clear();
+  prevWindowEvents.addAll(windowEvents);
+  LOG.debug("invoking windowLifecycleListener onActivation, [{}] events in window.",windowEvents.size());
+  windowLifecycleListener.onActivation(events,newEvents,expired);
+  triggerPolicy.reset();
+}

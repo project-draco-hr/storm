@@ -1,0 +1,11 @@
+{
+  ImmutableMap<String,SpoutSpec> spouts=ImmutableMap.of("spout-1",new SpoutSpec());
+  ImmutableMap<String,Bolt> bolts=ImmutableMap.of("bolt-1",new Bolt());
+  ImmutableMap<String,StateSpoutSpec> state_spouts=ImmutableMap.of();
+  StormTopology stormTopology=new StormTopology(spouts,bolts,state_spouts);
+  if (withWorkerHook) {
+    BaseWorkerHook workerHook=new BaseWorkerHook();
+    stormTopology.add_to_worker_hooks(ByteBuffer.wrap(Utils.javaSerialize(workerHook)));
+  }
+  return stormTopology;
+}

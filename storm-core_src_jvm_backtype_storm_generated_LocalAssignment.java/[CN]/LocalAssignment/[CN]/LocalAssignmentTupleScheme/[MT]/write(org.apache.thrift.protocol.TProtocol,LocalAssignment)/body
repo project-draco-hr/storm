@@ -3,8 +3,8 @@
   oprot.writeString(struct.topology_id);
 {
     oprot.writeI32(struct.executors.size());
-    for (    ExecutorInfo _iter624 : struct.executors) {
-      _iter624.write(oprot);
+    for (    ExecutorInfo _iter632 : struct.executors) {
+      _iter632.write(oprot);
     }
   }
   BitSet optionals=new BitSet();

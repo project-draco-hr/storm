@@ -1,0 +1,3 @@
+{
+  this.triggerPolicy=new TimeTriggerPolicy<>(duration.value,this);
+}

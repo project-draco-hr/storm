@@ -42,5 +42,17 @@
     if (!(this_present_total_resources && that_present_total_resources))     return false;
     if (!this.total_resources.equals(that.total_resources))     return false;
   }
+  boolean this_present_used_mem=true && this.is_set_used_mem();
+  boolean that_present_used_mem=true && that.is_set_used_mem();
+  if (this_present_used_mem || that_present_used_mem) {
+    if (!(this_present_used_mem && that_present_used_mem))     return false;
+    if (this.used_mem != that.used_mem)     return false;
+  }
+  boolean this_present_used_cpu=true && this.is_set_used_cpu();
+  boolean that_present_used_cpu=true && that.is_set_used_cpu();
+  if (this_present_used_cpu || that_present_used_cpu) {
+    if (!(this_present_used_cpu && that_present_used_cpu))     return false;
+    if (this.used_cpu != that.used_cpu)     return false;
+  }
   return true;
 }

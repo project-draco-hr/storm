@@ -1,0 +1,3 @@
+{
+  currentCount.set(0);
+}

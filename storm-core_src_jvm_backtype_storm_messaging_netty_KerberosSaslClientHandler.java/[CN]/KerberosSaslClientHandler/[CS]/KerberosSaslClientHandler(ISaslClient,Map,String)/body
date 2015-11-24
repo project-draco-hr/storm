@@ -1,0 +1,6 @@
+{
+  this.client=client;
+  this.storm_conf=storm_conf;
+  this.jaas_section=jaas_section;
+  start_time=System.currentTimeMillis();
+}

@@ -6,6 +6,9 @@
   Class clazz=instance.getClass();
   for (  ConfigMethodDef methodDef : methodDefs) {
     List<Object> args=methodDef.getArgs();
+    if (args == null) {
+      args=new ArrayList();
+    }
     if (methodDef.hasReferences()) {
       args=resolveReferences(args,context);
     }

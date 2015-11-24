@@ -1,0 +1,2 @@
+INettySerializable netty_message
+HBServerMessageType mType
