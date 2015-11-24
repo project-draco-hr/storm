@@ -1,0 +1,21 @@
+{
+  TestConfig config=new TestConfig();
+  Collection<Object> passCases=new LinkedList<Object>();
+  Collection<Object> failCases=new LinkedList<Object>();
+  passCases.add("backtype.storm.networktopography.DefaultRackDNSToSwitchMapping");
+  for (  Object value : passCases) {
+    config.put(TestConfig.TEST_MAP_CONFIG_8,value);
+    ConfigValidation.validateFields(config,TestConfig.class);
+  }
+  failCases.add("backtype.storm.nimbus.NimbusInfo");
+  failCases.add(null);
+  for (  Object value : failCases) {
+    try {
+      config.put(TestConfig.TEST_MAP_CONFIG_8,value);
+      ConfigValidation.validateFields(config,TestConfig.class);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+}

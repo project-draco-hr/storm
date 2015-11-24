@@ -8,8 +8,18 @@
     LOG.debug("From cluster:\n{}",ResourceUtils.printScheduling(this.cluster,this.topologies));
     LOG.debug("From Nodes:\n{}",ResourceUtils.printScheduling(this.nodes));
     SchedulingState schedulingState=this.checkpointSchedulingState();
+    IStrategy RAStrategy=null;
+    try {
+      RAStrategy=(IStrategy)Utils.newInstance((String)td.getConf().get(Config.TOPOLOGY_SCHEDULER_STRATEGY));
+    }
+ catch (    RuntimeException e) {
+      LOG.error("failed to create instance of IStrategy: {} with error: {}! Topology {} will not be scheduled.",td.getName(),td.getConf().get(Config.TOPOLOGY_SCHEDULER_STRATEGY),e.getMessage());
+      topologySubmitter.moveTopoFromPendingToInvalid(td,this.cluster);
+      return;
+    }
+    IEvictionStrategy evictionStrategy=null;
     while (true) {
-      ResourceAwareStrategy RAStrategy=new ResourceAwareStrategy(this.cluster,this.topologies);
+      RAStrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
       SchedulingResult result=RAStrategy.schedule(td);
       LOG.info("scheduling result: {}",result);
       if (result.isValid()) {
@@ -36,7 +46,18 @@
         }
  else {
           if (result.getStatus() == SchedulingStatus.FAIL_NOT_ENOUGH_RESOURCES) {
-            if (!this.makeSpaceForTopo(td)) {
+            if (evictionStrategy == null) {
+              try {
+                evictionStrategy=(IEvictionStrategy)Utils.newInstance((String)this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_EVICTION_STRATEGY));
+              }
+ catch (              RuntimeException e) {
+                LOG.error("failed to create instance of eviction strategy: {} with error: {}! No topology eviction will be done.",this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_EVICTION_STRATEGY),e.getMessage());
+                topologySubmitter.moveTopoFromPendingToAttempted(td);
+                break;
+              }
+            }
+            evictionStrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
+            if (!evictionStrategy.makeSpaceForTopo(td)) {
               this.cluster.setStatus(td.getId(),result.getErrorMessage());
               this.restoreCheckpointSchedulingState(schedulingState);
               topologySubmitter=this.userMap.get(td.getTopologySubmitter());

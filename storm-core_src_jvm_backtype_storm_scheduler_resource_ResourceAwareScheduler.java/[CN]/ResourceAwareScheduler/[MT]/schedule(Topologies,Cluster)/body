@@ -11,14 +11,23 @@
     LOG.info("topo {} status: {}",topo,cluster.getStatusMap().get(topo.getId()));
   }
   LOG.info("Nodes:\n{}",this.nodes);
-  LOG.info("getNextUser: {}",this.getNextUser());
+  ISchedulingPriorityStrategy schedulingPrioritystrategy=null;
   while (true) {
     LOG.info("/*********** next scheduling iteration **************/");
-    User nextUser=this.getNextUser();
-    if (nextUser == null) {
+    if (schedulingPrioritystrategy == null) {
+      try {
+        schedulingPrioritystrategy=(ISchedulingPriorityStrategy)Utils.newInstance((String)this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_PRIORITY_STRATEGY));
+      }
+ catch (      RuntimeException e) {
+        LOG.error("failed to create instance of priority strategy: {} with error: {}! No topology eviction will be done.",this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_PRIORITY_STRATEGY),e.getMessage());
+        break;
+      }
+    }
+    schedulingPrioritystrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
+    TopologyDetails td=schedulingPrioritystrategy.getNextTopologyToSchedule();
+    if (td == null) {
       break;
     }
-    TopologyDetails td=nextUser.getNextTopologyToSchedule();
     scheduleTopology(td);
   }
   cluster=this.cluster;
