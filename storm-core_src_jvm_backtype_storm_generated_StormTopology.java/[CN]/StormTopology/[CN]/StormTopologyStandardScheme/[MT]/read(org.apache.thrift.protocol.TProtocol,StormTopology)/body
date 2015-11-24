@@ -70,6 +70,24 @@ struct.set_state_spouts_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 4:
+if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+{
+org.apache.thrift.protocol.TList _list56=iprot.readListBegin();
+struct.worker_hooks=new ArrayList<ByteBuffer>(_list56.size);
+ByteBuffer _elem57;
+for (int _i58=0; _i58 < _list56.size; ++_i58) {
+_elem57=iprot.readBinary();
+struct.worker_hooks.add(_elem57);
+}
+iprot.readListEnd();
+}
+struct.set_worker_hooks_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }

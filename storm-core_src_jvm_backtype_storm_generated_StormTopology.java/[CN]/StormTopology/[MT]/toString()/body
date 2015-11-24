@@ -27,6 +27,17 @@
     sb.append(this.state_spouts);
   }
   first=false;
+  if (is_set_worker_hooks()) {
+    if (!first)     sb.append(", ");
+    sb.append("worker_hooks:");
+    if (this.worker_hooks == null) {
+      sb.append("null");
+    }
+ else {
+      org.apache.thrift.TBaseHelper.toString(this.worker_hooks,sb);
+    }
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

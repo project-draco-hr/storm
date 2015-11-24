@@ -10,13 +10,13 @@ switch (schemeField.id) {
 case 0:
       if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-          org.apache.thrift.protocol.TList _list714=iprot.readListBegin();
-          struct.success=new ArrayList<ProfileRequest>(_list714.size);
-          ProfileRequest _elem715;
-          for (int _i716=0; _i716 < _list714.size; ++_i716) {
-            _elem715=new ProfileRequest();
-            _elem715.read(iprot);
-            struct.success.add(_elem715);
+          org.apache.thrift.protocol.TList _list722=iprot.readListBegin();
+          struct.success=new ArrayList<ProfileRequest>(_list722.size);
+          ProfileRequest _elem723;
+          for (int _i724=0; _i724 < _list722.size; ++_i724) {
+            _elem723=new ProfileRequest();
+            _elem723.read(iprot);
+            struct.success.add(_elem723);
           }
           iprot.readListEnd();
         }

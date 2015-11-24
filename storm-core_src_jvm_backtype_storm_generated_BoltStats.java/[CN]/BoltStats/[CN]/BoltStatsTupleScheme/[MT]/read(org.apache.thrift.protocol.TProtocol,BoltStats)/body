@@ -1,31 +1,8 @@
 {
   TTupleProtocol iprot=(TTupleProtocol)prot;
 {
-    org.apache.thrift.protocol.TMap _map168=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
-    struct.acked=new HashMap<String,Map<GlobalStreamId,Long>>(2 * _map168.size);
-    String _key169;
-    Map<GlobalStreamId,Long> _val170;
-    for (int _i171=0; _i171 < _map168.size; ++_i171) {
-      _key169=iprot.readString();
-{
-        org.apache.thrift.protocol.TMap _map172=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.I64,iprot.readI32());
-        _val170=new HashMap<GlobalStreamId,Long>(2 * _map172.size);
-        GlobalStreamId _key173;
-        long _val174;
-        for (int _i175=0; _i175 < _map172.size; ++_i175) {
-          _key173=new GlobalStreamId();
-          _key173.read(iprot);
-          _val174=iprot.readI64();
-          _val170.put(_key173,_val174);
-        }
-      }
-      struct.acked.put(_key169,_val170);
-    }
-  }
-  struct.set_acked_isSet(true);
-{
     org.apache.thrift.protocol.TMap _map176=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
-    struct.failed=new HashMap<String,Map<GlobalStreamId,Long>>(2 * _map176.size);
+    struct.acked=new HashMap<String,Map<GlobalStreamId,Long>>(2 * _map176.size);
     String _key177;
     Map<GlobalStreamId,Long> _val178;
     for (int _i179=0; _i179 < _map176.size; ++_i179) {
@@ -42,76 +19,99 @@
           _val178.put(_key181,_val182);
         }
       }
-      struct.failed.put(_key177,_val178);
+      struct.acked.put(_key177,_val178);
+    }
+  }
+  struct.set_acked_isSet(true);
+{
+    org.apache.thrift.protocol.TMap _map184=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
+    struct.failed=new HashMap<String,Map<GlobalStreamId,Long>>(2 * _map184.size);
+    String _key185;
+    Map<GlobalStreamId,Long> _val186;
+    for (int _i187=0; _i187 < _map184.size; ++_i187) {
+      _key185=iprot.readString();
+{
+        org.apache.thrift.protocol.TMap _map188=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+        _val186=new HashMap<GlobalStreamId,Long>(2 * _map188.size);
+        GlobalStreamId _key189;
+        long _val190;
+        for (int _i191=0; _i191 < _map188.size; ++_i191) {
+          _key189=new GlobalStreamId();
+          _key189.read(iprot);
+          _val190=iprot.readI64();
+          _val186.put(_key189,_val190);
+        }
+      }
+      struct.failed.put(_key185,_val186);
     }
   }
   struct.set_failed_isSet(true);
 {
-    org.apache.thrift.protocol.TMap _map184=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
-    struct.process_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>(2 * _map184.size);
-    String _key185;
-    Map<GlobalStreamId,Double> _val186;
-    for (int _i187=0; _i187 < _map184.size; ++_i187) {
-      _key185=iprot.readString();
+    org.apache.thrift.protocol.TMap _map192=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
+    struct.process_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>(2 * _map192.size);
+    String _key193;
+    Map<GlobalStreamId,Double> _val194;
+    for (int _i195=0; _i195 < _map192.size; ++_i195) {
+      _key193=iprot.readString();
 {
-        org.apache.thrift.protocol.TMap _map188=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.DOUBLE,iprot.readI32());
-        _val186=new HashMap<GlobalStreamId,Double>(2 * _map188.size);
-        GlobalStreamId _key189;
-        double _val190;
-        for (int _i191=0; _i191 < _map188.size; ++_i191) {
-          _key189=new GlobalStreamId();
-          _key189.read(iprot);
-          _val190=iprot.readDouble();
-          _val186.put(_key189,_val190);
+        org.apache.thrift.protocol.TMap _map196=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.DOUBLE,iprot.readI32());
+        _val194=new HashMap<GlobalStreamId,Double>(2 * _map196.size);
+        GlobalStreamId _key197;
+        double _val198;
+        for (int _i199=0; _i199 < _map196.size; ++_i199) {
+          _key197=new GlobalStreamId();
+          _key197.read(iprot);
+          _val198=iprot.readDouble();
+          _val194.put(_key197,_val198);
         }
       }
-      struct.process_ms_avg.put(_key185,_val186);
+      struct.process_ms_avg.put(_key193,_val194);
     }
   }
   struct.set_process_ms_avg_isSet(true);
 {
-    org.apache.thrift.protocol.TMap _map192=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
-    struct.executed=new HashMap<String,Map<GlobalStreamId,Long>>(2 * _map192.size);
-    String _key193;
-    Map<GlobalStreamId,Long> _val194;
-    for (int _i195=0; _i195 < _map192.size; ++_i195) {
-      _key193=iprot.readString();
+    org.apache.thrift.protocol.TMap _map200=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
+    struct.executed=new HashMap<String,Map<GlobalStreamId,Long>>(2 * _map200.size);
+    String _key201;
+    Map<GlobalStreamId,Long> _val202;
+    for (int _i203=0; _i203 < _map200.size; ++_i203) {
+      _key201=iprot.readString();
 {
-        org.apache.thrift.protocol.TMap _map196=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.I64,iprot.readI32());
-        _val194=new HashMap<GlobalStreamId,Long>(2 * _map196.size);
-        GlobalStreamId _key197;
-        long _val198;
-        for (int _i199=0; _i199 < _map196.size; ++_i199) {
-          _key197=new GlobalStreamId();
-          _key197.read(iprot);
-          _val198=iprot.readI64();
-          _val194.put(_key197,_val198);
+        org.apache.thrift.protocol.TMap _map204=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+        _val202=new HashMap<GlobalStreamId,Long>(2 * _map204.size);
+        GlobalStreamId _key205;
+        long _val206;
+        for (int _i207=0; _i207 < _map204.size; ++_i207) {
+          _key205=new GlobalStreamId();
+          _key205.read(iprot);
+          _val206=iprot.readI64();
+          _val202.put(_key205,_val206);
         }
       }
-      struct.executed.put(_key193,_val194);
+      struct.executed.put(_key201,_val202);
     }
   }
   struct.set_executed_isSet(true);
 {
-    org.apache.thrift.protocol.TMap _map200=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
-    struct.execute_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>(2 * _map200.size);
-    String _key201;
-    Map<GlobalStreamId,Double> _val202;
-    for (int _i203=0; _i203 < _map200.size; ++_i203) {
-      _key201=iprot.readString();
+    org.apache.thrift.protocol.TMap _map208=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
+    struct.execute_ms_avg=new HashMap<String,Map<GlobalStreamId,Double>>(2 * _map208.size);
+    String _key209;
+    Map<GlobalStreamId,Double> _val210;
+    for (int _i211=0; _i211 < _map208.size; ++_i211) {
+      _key209=iprot.readString();
 {
-        org.apache.thrift.protocol.TMap _map204=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.DOUBLE,iprot.readI32());
-        _val202=new HashMap<GlobalStreamId,Double>(2 * _map204.size);
-        GlobalStreamId _key205;
-        double _val206;
-        for (int _i207=0; _i207 < _map204.size; ++_i207) {
-          _key205=new GlobalStreamId();
-          _key205.read(iprot);
-          _val206=iprot.readDouble();
-          _val202.put(_key205,_val206);
+        org.apache.thrift.protocol.TMap _map212=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.DOUBLE,iprot.readI32());
+        _val210=new HashMap<GlobalStreamId,Double>(2 * _map212.size);
+        GlobalStreamId _key213;
+        double _val214;
+        for (int _i215=0; _i215 < _map212.size; ++_i215) {
+          _key213=new GlobalStreamId();
+          _key213.read(iprot);
+          _val214=iprot.readDouble();
+          _val210.put(_key213,_val214);
         }
       }
-      struct.execute_ms_avg.put(_key201,_val202);
+      struct.execute_ms_avg.put(_key209,_val210);
     }
   }
   struct.set_execute_ms_avg_isSet(true);
