@@ -1,5 +1,4 @@
 {
-  LOG.info("making assignments for topology {}",td);
   if (schedulerAssignmentMap != null) {
     double requestedMemOnHeap=td.getTotalRequestedMemOnHeap();
     double requestedMemOffHeap=td.getTotalRequestedMemOffHeap();
@@ -8,7 +7,6 @@
     double assignedMemOffHeap=0.0;
     double assignedCpu=0.0;
     Set<String> nodesUsed=new HashSet<String>();
-    int assignedWorkers=schedulerAssignmentMap.keySet().size();
     for (    Map.Entry<WorkerSlot,Collection<ExecutorDetails>> workerToTasksEntry : schedulerAssignmentMap.entrySet()) {
       WorkerSlot targetSlot=workerToTasksEntry.getKey();
       Collection<ExecutorDetails> execsNeedScheduling=workerToTasksEntry.getValue();
@@ -22,16 +20,14 @@
       assignedMemOffHeap+=targetSlot.getAllocatedMemOffHeap();
       assignedCpu+=targetSlot.getAllocatedCpu();
     }
-    LOG.debug("Topology: {} assigned to {} nodes on {} workers",td.getId(),nodesUsed.size(),assignedWorkers);
-    this.cluster.setStatus(td.getId(),"Fully Scheduled");
     Double[] resources={requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu};
     LOG.debug("setResources for {}: requested on-heap mem, off-heap mem, cpu: {} {} {} " + "assigned on-heap mem, off-heap mem, cpu: {} {} {}",td.getId(),requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu);
     this.cluster.setResources(td.getId(),resources);
+    updateSupervisorsResources(this.cluster,this.topologies);
     return true;
   }
  else {
     LOG.warn("schedulerAssignmentMap for topo {} is null. This shouldn't happen!",td.getName());
     return false;
   }
-  updateSupervisorsResources(cluster,topologies);
 }

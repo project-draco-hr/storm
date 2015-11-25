@@ -1,6 +1,5 @@
 {
   for (  Entry<String,Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
-    LOG.info("topoId: {} workers: {}",entry.getKey(),entry.getValue());
     String topoId=entry.getKey();
     Set<WorkerSlot> workers=entry.getValue();
     for (    WorkerSlot worker : workers) {

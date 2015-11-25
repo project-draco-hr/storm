@@ -1,12 +1,7 @@
 {
   User topologySubmitter=this.userMap.get(td.getTopologySubmitter());
   if (cluster.getUnassignedExecutors(td).size() > 0) {
-    LOG.info("/********Scheduling topology {} from User {}************/",td.getName(),topologySubmitter);
-    LOG.info("{}",this.userMap.get(td.getTopologySubmitter()).getDetailedInfo());
-    LOG.info("{}",User.getResourcePoolAverageUtilizationForUsers(this.userMap.values()));
-    LOG.info("Nodes:\n{}",this.nodes);
-    LOG.debug("From cluster:\n{}",ResourceUtils.printScheduling(this.cluster,this.topologies));
-    LOG.debug("From Nodes:\n{}",ResourceUtils.printScheduling(this.nodes));
+    LOG.debug("/********Scheduling topology {} from User {}************/",td.getName(),topologySubmitter);
     SchedulingState schedulingState=this.checkpointSchedulingState();
     IStrategy RAStrategy=null;
     try {
@@ -14,33 +9,48 @@
     }
  catch (    RuntimeException e) {
       LOG.error("failed to create instance of IStrategy: {} with error: {}! Topology {} will not be scheduled.",td.getName(),td.getConf().get(Config.TOPOLOGY_SCHEDULER_STRATEGY),e.getMessage());
-      topologySubmitter.moveTopoFromPendingToInvalid(td,this.cluster);
+      this.restoreCheckpointSchedulingState(schedulingState);
+      topologySubmitter=this.userMap.get(td.getTopologySubmitter());
+      topologySubmitter.moveTopoFromPendingToInvalid(td);
+      this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling - failed to create instance of topology strategy " + td.getConf().get(Config.TOPOLOGY_SCHEDULER_STRATEGY) + ". Please check logs for details");
       return;
     }
     IEvictionStrategy evictionStrategy=null;
     while (true) {
-      RAStrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
-      SchedulingResult result=RAStrategy.schedule(td);
-      LOG.info("scheduling result: {}",result);
-      if (result.isValid()) {
+      SchedulingResult result=null;
+      try {
+        RAStrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
+        result=RAStrategy.schedule(td);
+      }
+ catch (      Exception e) {
+        LOG.error("Exception thrown when running strategy {} to schedule topology {}. Topology will not be scheduled! Error: {} StackTrack: {}",RAStrategy.getClass().getName(),td.getName(),e.getMessage(),Arrays.toString(e.getStackTrace()));
+        this.restoreCheckpointSchedulingState(schedulingState);
+        topologySubmitter=this.userMap.get(td.getTopologySubmitter());
+        topologySubmitter.moveTopoFromPendingToInvalid(td);
+        this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling - Exception thrown when running strategy {}" + RAStrategy.getClass().getName() + ". Please check logs for details");
+      }
+      LOG.debug("scheduling result: {}",result);
+      if (result != null && result.isValid()) {
         if (result.isSuccess()) {
           try {
             if (mkAssignment(td,result.getSchedulingResultMap())) {
-              topologySubmitter.moveTopoFromPendingToRunning(td,this.cluster);
+              topologySubmitter.moveTopoFromPendingToRunning(td);
+              this.cluster.setStatus(td.getId(),"Running - " + result.getMessage());
             }
  else {
               this.restoreCheckpointSchedulingState(schedulingState);
               topologySubmitter=this.userMap.get(td.getTopologySubmitter());
-              topologySubmitter.moveTopoFromPendingToAttempted(td,this.cluster);
+              topologySubmitter.moveTopoFromPendingToAttempted(td);
+              this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling - Unable to assign executors to nodes. Please check logs for details");
             }
           }
  catch (          IllegalStateException ex) {
             LOG.error(ex.toString());
-            LOG.error("Unsuccessful in scheduling: IllegalStateException thrown!",td.getId());
-            this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling");
+            LOG.error("Unsuccessful in scheduling - IllegalStateException thrown when attempting to assign executors to nodes. Error: {} StackTrace: {}",ex.getClass().getName(),Arrays.toString(ex.getStackTrace()));
             this.restoreCheckpointSchedulingState(schedulingState);
             topologySubmitter=this.userMap.get(td.getTopologySubmitter());
-            topologySubmitter.moveTopoFromPendingToAttempted(td,this.cluster);
+            topologySubmitter.moveTopoFromPendingToAttempted(td);
+            this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling - IllegalStateException thrown when attempting to assign executors to nodes. Please check log for details.");
           }
           break;
         }
@@ -56,12 +66,24 @@
                 break;
               }
             }
-            evictionStrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
-            if (!evictionStrategy.makeSpaceForTopo(td)) {
-              this.cluster.setStatus(td.getId(),result.getErrorMessage());
+            boolean madeSpace=false;
+            try {
+              evictionStrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
+              madeSpace=evictionStrategy.makeSpaceForTopo(td);
+            }
+ catch (            Exception e) {
+              LOG.error("Exception thrown when running eviction strategy {} to schedule topology {}. No evictions will be done! Error: {} StackTrack: {}",evictionStrategy.getClass().getName(),td.getName(),e.getClass().getName(),Arrays.toString(e.getStackTrace()));
               this.restoreCheckpointSchedulingState(schedulingState);
               topologySubmitter=this.userMap.get(td.getTopologySubmitter());
               topologySubmitter.moveTopoFromPendingToAttempted(td);
+              break;
+            }
+            if (!madeSpace) {
+              LOG.debug("Could not make space for topo {} will move to attempted",td);
+              this.restoreCheckpointSchedulingState(schedulingState);
+              topologySubmitter=this.userMap.get(td.getTopologySubmitter());
+              topologySubmitter.moveTopoFromPendingToAttempted(td);
+              this.cluster.setStatus(td.getId(),"Not enough resources to schedule - " + result.getErrorMessage());
               break;
             }
             continue;
@@ -91,7 +113,9 @@
   }
  else {
     LOG.warn("Topology {} is already fully scheduled!",td.getName());
-    topologySubmitter.moveTopoFromPendingToRunning(td,this.cluster);
-    throw new IllegalStateException("illegal");
+    topologySubmitter.moveTopoFromPendingToRunning(td);
+    if (this.cluster.getStatusMap().get(td.getId()) == null || this.cluster.getStatusMap().get(td.getId()).equals("")) {
+      this.cluster.setStatus(td.getId(),"Fully Scheduled");
+    }
   }
 }

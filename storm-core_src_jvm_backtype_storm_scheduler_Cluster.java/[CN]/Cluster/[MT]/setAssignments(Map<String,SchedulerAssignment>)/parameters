@@ -1,1 +1,1 @@
-Map<String,SchedulerAssignment> assignments
+Map<String,SchedulerAssignment> newAssignments

@@ -1,17 +1,17 @@
 {
-  LOG.info("restoring scheduling state...");
-  LOG.info("/*********Before************/");
-  for (  User user : this.getUserMap().values()) {
-    LOG.info(user.getDetailedInfo());
-  }
-  this.cluster=schedulingState.cluster;
+  LOG.debug("/*********restoring scheduling state************/");
+  this.cluster.setAssignments(schedulingState.cluster.getAssignments());
+  this.cluster.setSupervisorsResourcesMap(schedulingState.cluster.getSupervisorsResourcesMap());
+  this.cluster.setStatusMap(schedulingState.cluster.getStatusMap());
+  this.cluster.setResourcesMap(schedulingState.cluster.getResourcesMap());
   this.topologies=schedulingState.topologies;
   this.conf=schedulingState.conf;
   this.userMap=schedulingState.userMap;
   this.nodes=schedulingState.nodes;
-  LOG.info("/*********After************/");
   for (  User user : this.getUserMap().values()) {
-    LOG.info(user.getDetailedInfo());
+    LOG.debug(user.getDetailedInfo());
   }
-  LOG.info("/*********End************/");
+  LOG.debug(ResourceUtils.printScheduling(cluster,topologies));
+  LOG.debug("nodes:\n{}",this.nodes);
+  LOG.debug("/*********End************/");
 }

@@ -6,6 +6,9 @@
   Map<String,SupervisorDetails> supMap=TestUtilsForResourceAwareScheduler.genSupervisors(4,4,resourceMap);
   Config config=new Config();
   config.putAll(Utils.readDefaultConfig());
+  config.put(Config.RESOURCE_AWARE_SCHEDULER_EVICTION_STRATEGY,backtype.storm.scheduler.resource.strategies.eviction.DefaultEvictionStrategy.class.getName());
+  config.put(Config.RESOURCE_AWARE_SCHEDULER_PRIORITY_STRATEGY,backtype.storm.scheduler.resource.strategies.priority.DefaultSchedulingPriorityStrategy.class.getName());
+  config.put(Config.TOPOLOGY_SCHEDULER_STRATEGY,backtype.storm.scheduler.resource.strategies.scheduling.DefaultResourceAwareStrategy.class.getName());
   config.put(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT,100.0);
   config.put(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB,500);
   config.put(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB,500);

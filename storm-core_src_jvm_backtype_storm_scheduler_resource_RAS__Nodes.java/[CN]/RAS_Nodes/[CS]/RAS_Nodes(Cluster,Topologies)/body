@@ -1,5 +1,3 @@
 {
   this.nodeMap=getAllNodesFrom(cluster,topologies);
-  this.cluster=cluster;
-  this.topologies=topologies;
 }

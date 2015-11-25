@@ -1,5 +1,5 @@
 {
-  Double sum=0.0;
+  double sum=0.0;
   for (  TopologyDetails topo : this.runningQueue) {
     sum+=topo.getTotalRequestedMemOnHeap() + topo.getTotalRequestedMemOffHeap();
   }

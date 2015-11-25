@@ -3,4 +3,10 @@
   if (resourcePool != null) {
     this.resourcePool.putAll(resourcePool);
   }
+  if (this.resourcePool.get("cpu") == null) {
+    this.resourcePool.put("cpu",0.0);
+  }
+  if (this.resourcePool.get("memory") == null) {
+    this.resourcePool.put("memory",0.0);
+  }
 }

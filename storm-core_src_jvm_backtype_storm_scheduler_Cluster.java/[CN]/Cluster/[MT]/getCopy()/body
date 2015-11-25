@@ -1,5 +1,11 @@
 {
-  Cluster copy=new Cluster(this.inimbus,this.supervisors,this.assignments,this.conf);
+  HashMap<String,SchedulerAssignmentImpl> newAssignments=new HashMap<String,SchedulerAssignmentImpl>();
+  for (  Map.Entry<String,SchedulerAssignmentImpl> entry : this.assignments.entrySet()) {
+    newAssignments.put(entry.getKey(),new SchedulerAssignmentImpl(entry.getValue().getTopologyId(),entry.getValue().getExecutorToSlot()));
+  }
+  Map newConf=new HashMap<String,Object>();
+  newConf.putAll(this.conf);
+  Cluster copy=new Cluster(this.inimbus,this.supervisors,newAssignments,newConf);
   for (  Map.Entry<String,String> entry : this.status.entrySet()) {
     copy.setStatus(entry.getKey(),entry.getValue());
   }

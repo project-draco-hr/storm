@@ -1,35 +1,34 @@
 {
   LOG.info("\n\n\nRerunning ResourceAwareScheduler...");
-  LOG.debug(ResourceUtils.printScheduling(cluster,topologies));
-  LOG.info("topologies: {}",topologies);
   this.initialize(topologies,cluster);
-  LOG.info("UserMap:\n{}",this.userMap);
+  LOG.info("Cluster scheduling:\n{}",ResourceUtils.printScheduling(cluster,topologies));
+  LOG.info("Nodes:\n{}",this.nodes);
   for (  User user : this.getUserMap().values()) {
     LOG.info(user.getDetailedInfo());
   }
-  for (  TopologyDetails topo : topologies.getTopologies()) {
-    LOG.info("topo {} status: {}",topo,cluster.getStatusMap().get(topo.getId()));
-  }
-  LOG.info("Nodes:\n{}",this.nodes);
   ISchedulingPriorityStrategy schedulingPrioritystrategy=null;
   while (true) {
-    LOG.info("/*********** next scheduling iteration **************/");
     if (schedulingPrioritystrategy == null) {
       try {
         schedulingPrioritystrategy=(ISchedulingPriorityStrategy)Utils.newInstance((String)this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_PRIORITY_STRATEGY));
       }
  catch (      RuntimeException e) {
-        LOG.error("failed to create instance of priority strategy: {} with error: {}! No topology eviction will be done.",this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_PRIORITY_STRATEGY),e.getMessage());
+        LOG.error("failed to create instance of priority strategy: {} with error: {}! No topologies will be scheduled.",this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_PRIORITY_STRATEGY),e.getMessage());
         break;
       }
     }
-    schedulingPrioritystrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
-    TopologyDetails td=schedulingPrioritystrategy.getNextTopologyToSchedule();
+    TopologyDetails td=null;
+    try {
+      schedulingPrioritystrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
+      td=schedulingPrioritystrategy.getNextTopologyToSchedule();
+    }
+ catch (    Exception e) {
+      LOG.error("Exception thrown when running priority strategy {}. No topologies will be scheduled! Error: {} StackTrack: {}",schedulingPrioritystrategy.getClass().getName(),e.getMessage(),Arrays.toString(e.getStackTrace()));
+      break;
+    }
     if (td == null) {
       break;
     }
     scheduleTopology(td);
   }
-  cluster=this.cluster;
-  topologies=this.topologies;
 }

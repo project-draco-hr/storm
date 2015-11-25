@@ -1,9 +1,8 @@
 {
-  List<Double> resourceUilitzationList=new LinkedList<Double>();
   Double cpuResourcePoolUtilization=this.getCPUResourcePoolUtilization();
   Double memoryResourcePoolUtilization=this.getMemoryResourcePoolUtilization();
   if (cpuResourcePoolUtilization != null && memoryResourcePoolUtilization != null) {
-    return (cpuResourcePoolUtilization + memoryResourcePoolUtilization) / 2.0;
+    return ((cpuResourcePoolUtilization) / 2.0) + ((memoryResourcePoolUtilization) / 2.0);
   }
   return Double.MAX_VALUE;
 }

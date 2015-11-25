@@ -1,11 +1,9 @@
 {
   TopologyDetails topo=this.findTopologyUsingWorker(ws);
-  LOG.info("Topology {} using worker {}",topo,ws);
   if (topo == null) {
     return 0.0;
   }
   Collection<ExecutorDetails> execs=this.getExecutors(ws,this._cluster);
-  LOG.info("Worker {} has execs: {}",ws,execs);
   double totalCpuUsed=0.0;
   for (  ExecutorDetails exec : execs) {
     totalCpuUsed+=topo.getTotalCpuReqTask(exec);

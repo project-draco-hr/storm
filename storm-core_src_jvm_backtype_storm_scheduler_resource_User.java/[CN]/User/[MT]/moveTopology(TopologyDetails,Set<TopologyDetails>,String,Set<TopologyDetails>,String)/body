@@ -1,5 +1,5 @@
 {
-  LOG.info("For User {} Moving topo {} from {} to {}",this.userId,topo.getName(),srcName,destName);
+  LOG.debug("For User {} Moving topo {} from {} to {}",this.userId,topo.getName(),srcName,destName);
   if (topo == null) {
     return;
   }
@@ -13,6 +13,4 @@
   }
   src.remove(topo);
   dest.add(topo);
-  LOG.info("SRC: {}",src);
-  LOG.info("DEST: {}",dest);
 }
