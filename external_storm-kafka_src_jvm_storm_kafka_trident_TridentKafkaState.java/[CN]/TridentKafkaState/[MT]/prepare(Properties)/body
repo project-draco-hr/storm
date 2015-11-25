@@ -1,0 +1,5 @@
+{
+  Validate.notNull(mapper,"mapper can not be null");
+  Validate.notNull(topicSelector,"topicSelector can not be null");
+  producer=new KafkaProducer(options);
+}

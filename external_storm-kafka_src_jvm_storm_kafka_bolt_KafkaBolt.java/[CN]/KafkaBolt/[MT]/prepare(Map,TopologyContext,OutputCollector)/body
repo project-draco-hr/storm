@@ -5,10 +5,6 @@
   if (topicSelector == null) {
     this.topicSelector=new DefaultTopicSelector((String)stormConf.get(TOPIC));
   }
-  Map configMap=(Map)stormConf.get(KAFKA_BROKER_PROPERTIES);
-  Properties properties=new Properties();
-  if (configMap != null)   properties.putAll(configMap);
-  if (boltSpecfiedProperties != null)   properties.putAll(boltSpecfiedProperties);
-  producer=new KafkaProducer<K,V>(properties);
+  producer=new KafkaProducer<>(boltSpecfiedProperties);
   this.collector=collector;
 }

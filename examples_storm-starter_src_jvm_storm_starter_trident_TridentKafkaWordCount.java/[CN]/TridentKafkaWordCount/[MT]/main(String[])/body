@@ -18,7 +18,9 @@
   LocalDRPC drpc=new LocalDRPC();
   LocalCluster cluster=new LocalCluster();
   cluster.submitTopology("wordCounter",wordCount.getConsumerConfig(),wordCount.buildConsumerTopology(drpc));
-  cluster.submitTopology("kafkaBolt",wordCount.getProducerConfig(),wordCount.buildProducerTopology());
+  Config conf=new Config();
+  conf.setMaxSpoutPending(20);
+  cluster.submitTopology("kafkaBolt",conf,wordCount.buildProducerTopology(wordCount.getProducerConfig()));
   for (int i=0; i < 60; i++) {
     System.out.println("DRPC RESULT: " + drpc.execute("words","the and apple snow jumped"));
     Thread.sleep(1000);
