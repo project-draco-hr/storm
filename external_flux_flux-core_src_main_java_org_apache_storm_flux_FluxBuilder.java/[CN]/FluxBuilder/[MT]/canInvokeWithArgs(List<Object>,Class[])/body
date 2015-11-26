@@ -10,28 +10,26 @@
     LOG.debug("Comparing parameter class {} to object class {} to see if assignment is possible.",paramType,objectType);
     if (paramType.equals(objectType)) {
       LOG.debug("Yes, they are the same class.");
-      return true;
     }
-    if (paramType.isAssignableFrom(objectType)) {
+ else     if (paramType.isAssignableFrom(objectType)) {
       LOG.debug("Yes, assignment is possible.");
-      return true;
     }
-    if (isPrimitiveBoolean(paramType) && Boolean.class.isAssignableFrom(objectType)) {
-      return true;
+ else     if (isPrimitiveBoolean(paramType) && Boolean.class.isAssignableFrom(objectType)) {
+      LOG.debug("Yes, assignment is possible.");
     }
-    if (isPrimitiveNumber(paramType) && Number.class.isAssignableFrom(objectType)) {
-      return true;
+ else     if (isPrimitiveNumber(paramType) && Number.class.isAssignableFrom(objectType)) {
+      LOG.debug("Yes, assignment is possible.");
     }
-    if (paramType.isEnum() && objectType.equals(String.class)) {
+ else     if (paramType.isEnum() && objectType.equals(String.class)) {
       LOG.debug("Yes, will convert a String to enum");
-      return true;
     }
-    if (paramType.isArray() && List.class.isAssignableFrom(objectType)) {
+ else     if (paramType.isArray() && List.class.isAssignableFrom(objectType)) {
       LOG.debug("Assignment is possible if we convert a List to an array.");
       LOG.debug("Array Type: {}, List type: {}",paramType.getComponentType(),((List)obj).get(0).getClass());
-      return true;
     }
-    return false;
+ else {
+      return false;
+    }
   }
-  return false;
+  return true;
 }
