@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("cancelBlobUpload",org.apache.thrift.protocol.TMessageType.CALL,0));
+  cancelBlobUpload_args args=new cancelBlobUpload_args();
+  args.set_session(session);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

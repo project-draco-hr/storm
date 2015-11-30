@@ -1,0 +1,3 @@
+{
+  _blobStore.deleteBlob(key,null);
+}

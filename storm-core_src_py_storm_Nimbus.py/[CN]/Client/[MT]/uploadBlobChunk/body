@@ -1,0 +1,4 @@
+def uploadBlobChunk(self, session, chunk):
+    '\n    Parameters:\n     - session\n     - chunk\n    '
+    self.send_uploadBlobChunk(session, chunk)
+    self.recv_uploadBlobChunk()

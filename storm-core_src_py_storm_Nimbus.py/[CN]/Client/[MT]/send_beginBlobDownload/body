@@ -1,0 +1,7 @@
+def send_beginBlobDownload(self, key):
+    self._oprot.writeMessageBegin('beginBlobDownload', TMessageType.CALL, self._seqid)
+    args = beginBlobDownload_args()
+    args.key = key
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

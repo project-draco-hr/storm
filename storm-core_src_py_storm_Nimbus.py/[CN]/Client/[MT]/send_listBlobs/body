@@ -1,0 +1,7 @@
+def send_listBlobs(self, session):
+    self._oprot.writeMessageBegin('listBlobs', TMessageType.CALL, self._seqid)
+    args = listBlobs_args()
+    args.session = session
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

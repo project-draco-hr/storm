@@ -1,0 +1,9 @@
+{
+  Set<String> user=constructUserFromPrincipals(who);
+  for (  String u : user) {
+    if (_admins.contains(u)) {
+      return true;
+    }
+  }
+  return false;
+}

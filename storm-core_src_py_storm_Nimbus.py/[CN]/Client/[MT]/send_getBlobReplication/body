@@ -1,0 +1,7 @@
+def send_getBlobReplication(self, key):
+    self._oprot.writeMessageBegin('getBlobReplication', TMessageType.CALL, self._seqid)
+    args = getBlobReplication_args()
+    args.key = key
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

@@ -1,0 +1,9 @@
+{
+  if ("other".equalsIgnoreCase(type) || "o".equalsIgnoreCase(type)) {
+    return AccessControlType.OTHER;
+  }
+ else   if ("user".equalsIgnoreCase(type) || "u".equalsIgnoreCase(type)) {
+    return AccessControlType.USER;
+  }
+  throw new IllegalArgumentException(type + " is not a valid access control type");
+}

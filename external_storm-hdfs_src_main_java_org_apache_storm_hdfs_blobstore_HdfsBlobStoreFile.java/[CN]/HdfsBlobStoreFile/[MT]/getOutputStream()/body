@@ -1,0 +1,23 @@
+{
+  checkIsNotTmp();
+  OutputStream out=null;
+  FsPermission fileperms=new FsPermission(BLOBSTORE_FILE_PERMISSION);
+  try {
+    out=_fs.create(_path,(short)this.getMetadata().get_replication_factor());
+    _fs.setPermission(_path,fileperms);
+    _fs.setReplication(_path,(short)this.getMetadata().get_replication_factor());
+  }
+ catch (  IOException e) {
+    FsPermission dirperms=new FsPermission(HdfsBlobStoreImpl.BLOBSTORE_DIR_PERMISSION);
+    if (!_fs.mkdirs(_path.getParent(),dirperms)) {
+      LOG.warn("error creating parent dir: " + _path.getParent());
+    }
+    out=_fs.create(_path,(short)this.getMetadata().get_replication_factor());
+    _fs.setPermission(_path,dirperms);
+    _fs.setReplication(_path,(short)this.getMetadata().get_replication_factor());
+  }
+  if (out == null) {
+    throw new IOException("Error in creating: " + _path);
+  }
+  return out;
+}

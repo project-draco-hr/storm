@@ -1,0 +1,13 @@
+{
+  try {
+synchronized (client) {
+      return new NimbusUploadAtomicOutputStream(client.getClient().beginUpdateBlob(key),this.bufferSize,key);
+    }
+  }
+ catch (  AuthorizationException|KeyNotFoundException exp) {
+    throw exp;
+  }
+catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

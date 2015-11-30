@@ -1,0 +1,6 @@
+{
+  File rsrcFileCurrent=new File(lrsrc.getCurrentSymlinkPath());
+  File rsrcFileWithVersion=new File(lrsrc.getFilePathWithVersion());
+  File versionFile=new File(lrsrc.getVersionFilePath());
+  return (rsrcFileWithVersion.exists() && rsrcFileCurrent.exists() && versionFile.exists());
+}

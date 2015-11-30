@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("beginUpdateBlob",org.apache.thrift.protocol.TMessageType.CALL,0));
+  beginUpdateBlob_args args=new beginUpdateBlob_args();
+  args.set_key(key);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

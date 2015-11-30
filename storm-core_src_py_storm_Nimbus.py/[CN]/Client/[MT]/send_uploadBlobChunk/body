@@ -1,0 +1,8 @@
+def send_uploadBlobChunk(self, session, chunk):
+    self._oprot.writeMessageBegin('uploadBlobChunk', TMessageType.CALL, self._seqid)
+    args = uploadBlobChunk_args()
+    args.session = session
+    args.chunk = chunk
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

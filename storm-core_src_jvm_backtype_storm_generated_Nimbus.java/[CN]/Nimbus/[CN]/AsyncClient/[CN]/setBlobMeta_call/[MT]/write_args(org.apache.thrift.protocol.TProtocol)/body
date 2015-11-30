@@ -1,0 +1,8 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("setBlobMeta",org.apache.thrift.protocol.TMessageType.CALL,0));
+  setBlobMeta_args args=new setBlobMeta_args();
+  args.set_key(key);
+  args.set_meta(meta);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

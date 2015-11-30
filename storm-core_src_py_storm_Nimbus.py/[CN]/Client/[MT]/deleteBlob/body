@@ -1,0 +1,4 @@
+def deleteBlob(self, key):
+    '\n    Parameters:\n     - key\n    '
+    self.send_deleteBlob(key)
+    self.recv_deleteBlob()

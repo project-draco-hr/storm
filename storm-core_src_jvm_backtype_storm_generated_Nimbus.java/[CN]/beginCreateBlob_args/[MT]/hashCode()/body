@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_key=true && (is_set_key());
+  list.add(present_key);
+  if (present_key)   list.add(key);
+  boolean present_meta=true && (is_set_meta());
+  list.add(present_meta);
+  if (present_meta)   list.add(meta);
+  return list.hashCode();
+}

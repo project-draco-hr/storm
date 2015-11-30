@@ -1,0 +1,3 @@
+{
+  testArchives("test/jvm/backtype/storm/localizer/localtestwithsymlink.tar.gz",true,21344);
+}

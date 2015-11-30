@@ -28,12 +28,12 @@ break;
 case 3:
 if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-  org.apache.thrift.protocol.TList _list664=iprot.readListBegin();
-  struct.users=new ArrayList<String>(_list664.size);
-  String _elem665;
-  for (int _i666=0; _i666 < _list664.size; ++_i666) {
-    _elem665=iprot.readString();
-    struct.users.add(_elem665);
+  org.apache.thrift.protocol.TList _list680=iprot.readListBegin();
+  struct.users=new ArrayList<String>(_list680.size);
+  String _elem681;
+  for (int _i682=0; _i682 < _list680.size; ++_i682) {
+    _elem681=iprot.readString();
+    struct.users.add(_elem681);
   }
   iprot.readListEnd();
 }
@@ -46,12 +46,12 @@ break;
 case 4:
 if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-org.apache.thrift.protocol.TList _list667=iprot.readListBegin();
-struct.groups=new ArrayList<String>(_list667.size);
-String _elem668;
-for (int _i669=0; _i669 < _list667.size; ++_i669) {
-_elem668=iprot.readString();
-struct.groups.add(_elem668);
+org.apache.thrift.protocol.TList _list683=iprot.readListBegin();
+struct.groups=new ArrayList<String>(_list683.size);
+String _elem684;
+for (int _i685=0; _i685 < _list683.size; ++_i685) {
+_elem684=iprot.readString();
+struct.groups.add(_elem684);
 }
 iprot.readListEnd();
 }

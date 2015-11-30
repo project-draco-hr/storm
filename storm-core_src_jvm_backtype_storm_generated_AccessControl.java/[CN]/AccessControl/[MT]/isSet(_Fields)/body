@@ -1,0 +1,14 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case TYPE:
+    return is_set_type();
+case NAME:
+  return is_set_name();
+case ACCESS:
+return is_set_access();
+}
+throw new IllegalStateException();
+}

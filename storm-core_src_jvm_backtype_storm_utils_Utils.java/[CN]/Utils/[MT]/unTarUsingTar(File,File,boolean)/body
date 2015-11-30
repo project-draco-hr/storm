@@ -1,0 +1,25 @@
+{
+  StringBuffer untarCommand=new StringBuffer();
+  if (gzipped) {
+    untarCommand.append(" gzip -dc '");
+    untarCommand.append(inFile.toString());
+    untarCommand.append("' | (");
+  }
+  untarCommand.append("cd '");
+  untarCommand.append(untarDir.toString());
+  untarCommand.append("' ; ");
+  untarCommand.append("tar -xf ");
+  if (gzipped) {
+    untarCommand.append(" -)");
+  }
+ else {
+    untarCommand.append(inFile.toString());
+  }
+  String[] shellCmd={"bash","-c",untarCommand.toString()};
+  ShellUtils.ShellCommandExecutor shexec=new ShellUtils.ShellCommandExecutor(shellCmd);
+  shexec.execute();
+  int exitcode=shexec.getExitCode();
+  if (exitcode != 0) {
+    throw new IOException("Error untarring file " + inFile + ". Tar process exited with exit code "+ exitcode);
+  }
+}

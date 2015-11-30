@@ -1,0 +1,14 @@
+{
+  beginCreateBlob_result result=new beginCreateBlob_result();
+  receiveBase(result,"beginCreateBlob");
+  if (result.is_set_success()) {
+    return result.success;
+  }
+  if (result.aze != null) {
+    throw result.aze;
+  }
+  if (result.kae != null) {
+    throw result.kae;
+  }
+  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"beginCreateBlob failed: unknown result");
+}

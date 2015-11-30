@@ -1,0 +1,12 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.version=iprot.readI64();
+  struct.set_version_isSet(true);
+  struct.session=iprot.readString();
+  struct.set_session_isSet(true);
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+    struct.data_size=iprot.readI64();
+    struct.set_data_size_isSet(true);
+  }
+}

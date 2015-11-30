@@ -1,0 +1,15 @@
+{
+  ArrayList<String> ret=new ArrayList<String>();
+  FileStatus[] files=_fs.listStatus(new Path[]{path});
+  if (files != null) {
+    for (    FileStatus sub : files) {
+      try {
+        ret.add(sub.getPath().getName().toString());
+      }
+ catch (      IllegalArgumentException e) {
+        LOG.debug("Found an unexpected file in {} {}",path,sub.getPath().getName());
+      }
+    }
+  }
+  return ret.iterator();
+}

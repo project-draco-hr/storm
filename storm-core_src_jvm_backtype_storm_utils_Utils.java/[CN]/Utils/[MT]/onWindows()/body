@@ -1,0 +1,6 @@
+{
+  if (System.getenv("OS") != null) {
+    return System.getenv("OS").equals("Windows_NT");
+  }
+  return false;
+}

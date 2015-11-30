@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_session=true && this.is_set_session();
+  boolean that_present_session=true && that.is_set_session();
+  if (this_present_session || that_present_session) {
+    if (!(this_present_session && that_present_session))     return false;
+    if (!this.session.equals(that.session))     return false;
+  }
+  boolean this_present_chunk=true && this.is_set_chunk();
+  boolean that_present_chunk=true && that.is_set_chunk();
+  if (this_present_chunk || that_present_chunk) {
+    if (!(this_present_chunk && that_present_chunk))     return false;
+    if (!this.chunk.equals(that.chunk))     return false;
+  }
+  return true;
+}

@@ -1,0 +1,3 @@
+{
+  return _blobStore.getBlobMeta(key,null);
+}

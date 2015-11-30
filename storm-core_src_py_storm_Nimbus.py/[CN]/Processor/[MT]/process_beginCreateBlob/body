@@ -1,0 +1,24 @@
+def process_beginCreateBlob(self, seqid, iprot, oprot):
+    args = beginCreateBlob_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = beginCreateBlob_result()
+    try:
+        result.success = self._handler.beginCreateBlob(args.key, args.meta)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
+    except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
+        result.aze = aze
+    except KeyAlreadyExistsException as kae:
+        msg_type = TMessageType.REPLY
+        result.kae = kae
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('beginCreateBlob', msg_type, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

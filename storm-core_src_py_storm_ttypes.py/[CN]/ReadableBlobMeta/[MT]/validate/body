@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.settable is None):
+        raise TProtocol.TProtocolException(message='Required field settable is unset!')
+    if (self.version is None):
+        raise TProtocol.TProtocolException(message='Required field version is unset!')
+    return

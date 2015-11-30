@@ -14,15 +14,15 @@ def write(self, oprot):
     if (self.users is not None):
         oprot.writeFieldBegin('users', TType.LIST, 3)
         oprot.writeListBegin(TType.STRING, len(self.users))
-        for iter606 in self.users:
-            oprot.writeString(iter606.encode('utf-8'))
+        for iter620 in self.users:
+            oprot.writeString(iter620.encode('utf-8'))
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.groups is not None):
         oprot.writeFieldBegin('groups', TType.LIST, 4)
         oprot.writeListBegin(TType.STRING, len(self.groups))
-        for iter607 in self.groups:
-            oprot.writeString(iter607.encode('utf-8'))
+        for iter621 in self.groups:
+            oprot.writeString(iter621.encode('utf-8'))
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

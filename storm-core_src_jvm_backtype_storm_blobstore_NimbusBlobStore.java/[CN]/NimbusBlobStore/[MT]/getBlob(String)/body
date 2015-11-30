@@ -1,0 +1,13 @@
+{
+  try {
+synchronized (client) {
+      return new NimbusDownloadInputStream(client.getClient().beginBlobDownload(key));
+    }
+  }
+ catch (  AuthorizationException|KeyNotFoundException exp) {
+    throw exp;
+  }
+catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

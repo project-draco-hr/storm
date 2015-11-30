@@ -1,0 +1,5 @@
+{
+  if (dfscluster != null) {
+    dfscluster.shutdown();
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return _localizer.downloadBlob(_conf,_key,_localFile,_user,_uncompress,_isUpdate);
+}

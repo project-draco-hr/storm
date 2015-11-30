@@ -1,0 +1,13 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(2);
+  if (incoming.get(0)) {
+    struct.success=iprot.readBinary();
+    struct.set_success_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.aze=new AuthorizationException();
+    struct.aze.read(iprot);
+    struct.set_aze_isSet(true);
+  }
+}

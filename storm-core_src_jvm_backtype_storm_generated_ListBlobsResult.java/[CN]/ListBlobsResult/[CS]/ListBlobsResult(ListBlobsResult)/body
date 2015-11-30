@@ -1,0 +1,9 @@
+{
+  if (other.is_set_keys()) {
+    List<String> __this__keys=new ArrayList<String>(other.keys);
+    this.keys=__this__keys;
+  }
+  if (other.is_set_session()) {
+    this.session=other.session;
+  }
+}

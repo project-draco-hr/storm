@@ -1,0 +1,3 @@
+{
+  iface.setBlobMeta(args.key,args.meta,resultHandler);
+}

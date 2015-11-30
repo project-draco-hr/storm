@@ -1,0 +1,8 @@
+def send_setBlobMeta(self, key, meta):
+    self._oprot.writeMessageBegin('setBlobMeta', TMessageType.CALL, self._seqid)
+    args = setBlobMeta_args()
+    args.key = key
+    args.meta = meta
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

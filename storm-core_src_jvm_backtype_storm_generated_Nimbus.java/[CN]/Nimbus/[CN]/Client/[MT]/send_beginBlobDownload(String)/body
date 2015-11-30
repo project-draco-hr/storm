@@ -1,0 +1,5 @@
+{
+  beginBlobDownload_args args=new beginBlobDownload_args();
+  args.set_key(key);
+  sendBase("beginBlobDownload",args);
+}

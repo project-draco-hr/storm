@@ -3,9 +3,9 @@
   oprot.writeString(struct.storm_id);
 {
     oprot.writeI32(struct.executor_stats.size());
-    for (    Map.Entry<ExecutorInfo,ExecutorStats> _iter613 : struct.executor_stats.entrySet()) {
-      _iter613.getKey().write(oprot);
-      _iter613.getValue().write(oprot);
+    for (    Map.Entry<ExecutorInfo,ExecutorStats> _iter629 : struct.executor_stats.entrySet()) {
+      _iter629.getKey().write(oprot);
+      _iter629.getValue().write(oprot);
     }
   }
   oprot.writeI32(struct.time_secs);

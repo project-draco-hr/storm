@@ -1,0 +1,9 @@
+{
+  _cacheCleanupService=new ScheduledThreadPoolExecutor(1,new ThreadFactoryBuilder().setNameFormat("Localizer Cache Cleanup").build());
+  _cacheCleanupService.scheduleWithFixedDelay(new Runnable(){
+    @Override public void run(){
+      handleCacheCleanup();
+    }
+  }
+,_cacheCleanupPeriod,_cacheCleanupPeriod,TimeUnit.MILLISECONDS);
+}

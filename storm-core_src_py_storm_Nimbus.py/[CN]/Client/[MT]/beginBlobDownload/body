@@ -1,0 +1,4 @@
+def beginBlobDownload(self, key):
+    '\n    Parameters:\n     - key\n    '
+    self.send_beginBlobDownload(key)
+    return self.recv_beginBlobDownload()

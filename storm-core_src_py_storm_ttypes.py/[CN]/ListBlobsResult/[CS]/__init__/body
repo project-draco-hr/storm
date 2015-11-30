@@ -1,0 +1,3 @@
+def __init__(self, keys=None, session=None):
+    self.keys = keys
+    self.session = session

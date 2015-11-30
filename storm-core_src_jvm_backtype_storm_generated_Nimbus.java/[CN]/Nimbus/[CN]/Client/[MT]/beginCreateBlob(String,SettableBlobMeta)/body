@@ -1,0 +1,4 @@
+{
+  send_beginCreateBlob(key,meta);
+  return recv_beginCreateBlob();
+}

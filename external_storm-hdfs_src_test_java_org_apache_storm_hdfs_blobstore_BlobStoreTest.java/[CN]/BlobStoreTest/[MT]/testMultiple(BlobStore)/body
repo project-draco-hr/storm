@@ -1,0 +1,64 @@
+{
+  assertStoreHasExactly(store);
+  LOG.info("Creating test");
+  AtomicOutputStream out=store.createBlob("test",new SettableBlobMeta(BlobStoreAclHandler.WORLD_EVERYTHING),null);
+  out.write(1);
+  out.close();
+  assertStoreHasExactly(store,"test");
+  readAssertEquals(store,"test",1);
+  LOG.info("Creating other");
+  out=store.createBlob("other",new SettableBlobMeta(BlobStoreAclHandler.WORLD_EVERYTHING),null);
+  out.write(2);
+  out.close();
+  assertStoreHasExactly(store,"test","other");
+  readAssertEquals(store,"test",1);
+  readAssertEquals(store,"other",2);
+  LOG.info("Updating other");
+  out=store.updateBlob("other",null);
+  out.write(5);
+  out.close();
+  assertStoreHasExactly(store,"test","other");
+  readAssertEquals(store,"test",1);
+  readAssertEquals(store,"other",5);
+  LOG.info("Deleting test");
+  store.deleteBlob("test",null);
+  assertStoreHasExactly(store,"other");
+  readAssertEquals(store,"other",5);
+  LOG.info("Creating test again");
+  out=store.createBlob("test",new SettableBlobMeta(BlobStoreAclHandler.WORLD_EVERYTHING),null);
+  out.write(2);
+  out.close();
+  assertStoreHasExactly(store,"test","other");
+  readAssertEquals(store,"test",2);
+  readAssertEquals(store,"other",5);
+  LOG.info("Updating test");
+  out=store.updateBlob("test",null);
+  out.write(3);
+  out.close();
+  assertStoreHasExactly(store,"test","other");
+  readAssertEquals(store,"test",3);
+  readAssertEquals(store,"other",5);
+  LOG.info("Deleting other");
+  store.deleteBlob("other",null);
+  assertStoreHasExactly(store,"test");
+  readAssertEquals(store,"test",3);
+  LOG.info("Updating test again");
+  out=store.updateBlob("test",null);
+  out.write(4);
+  out.flush();
+  LOG.info("SLEEPING");
+  Thread.sleep(2);
+  if (store instanceof HdfsBlobStore) {
+    ((HdfsBlobStore)store).fullCleanup(1);
+  }
+ else {
+    fail("Error the blobstore is of unknowntype");
+  }
+  assertStoreHasExactly(store,"test");
+  readAssertEquals(store,"test",3);
+  try {
+    out.close();
+  }
+ catch (  IOException e) {
+  }
+}

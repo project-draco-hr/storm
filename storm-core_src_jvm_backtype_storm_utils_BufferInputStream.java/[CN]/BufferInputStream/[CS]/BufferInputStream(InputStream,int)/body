@@ -1,0 +1,4 @@
+{
+  this.stream=stream;
+  buffer=new byte[bufferSize];
+}

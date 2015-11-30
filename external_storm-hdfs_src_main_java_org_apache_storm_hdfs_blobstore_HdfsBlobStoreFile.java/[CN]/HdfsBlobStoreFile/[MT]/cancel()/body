@@ -1,0 +1,4 @@
+{
+  checkIsNotTmp();
+  delete();
+}

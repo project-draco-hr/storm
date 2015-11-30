@@ -1,0 +1,13 @@
+{
+  validateKey(key);
+  checkForBlobOrDownload(key);
+  SettableBlobMeta meta=getStoredBlobMeta(key);
+  _aclHandler.hasPermissions(meta.get_acl(),WRITE,who,key);
+  try {
+    fbs.deleteKey(DATA_PREFIX + key);
+    fbs.deleteKey(META_PREFIX + key);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

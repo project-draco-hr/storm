@@ -1,0 +1,20 @@
+{
+  try {
+    if (isEmpty()) {
+      readMore();
+      if (eof) {
+        return -1;
+      }
+    }
+    int length=Math.min(1,available());
+    if (length == 0) {
+      return -1;
+    }
+    int ret=buffer[offset];
+    offset+=length;
+    return ret;
+  }
+ catch (  TException exp) {
+    throw new IOException(exp);
+  }
+}

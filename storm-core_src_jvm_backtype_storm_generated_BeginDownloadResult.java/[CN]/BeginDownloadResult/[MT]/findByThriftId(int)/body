@@ -1,0 +1,12 @@
+{
+switch (fieldId) {
+case 1:
+    return VERSION;
+case 2:
+  return SESSION;
+case 3:
+return DATA_SIZE;
+default :
+return null;
+}
+}

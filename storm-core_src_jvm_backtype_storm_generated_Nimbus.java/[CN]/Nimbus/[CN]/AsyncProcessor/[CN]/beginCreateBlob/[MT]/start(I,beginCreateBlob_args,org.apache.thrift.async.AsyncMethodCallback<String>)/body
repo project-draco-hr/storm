@@ -1,0 +1,3 @@
+{
+  iface.beginCreateBlob(args.key,args.meta,resultHandler);
+}

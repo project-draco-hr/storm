@@ -15,57 +15,57 @@ def read(self, iprot):
         elif (fid == 2):
             if (ftype == TType.MAP):
                 self.node_host = {}
-                (_ktype477, _vtype478, _size476) = iprot.readMapBegin()
-                for _i480 in xrange(_size476):
-                    _key481 = iprot.readString().decode('utf-8')
-                    _val482 = iprot.readString().decode('utf-8')
-                    self.node_host[_key481] = _val482
+                (_ktype491, _vtype492, _size490) = iprot.readMapBegin()
+                for _i494 in xrange(_size490):
+                    _key495 = iprot.readString().decode('utf-8')
+                    _val496 = iprot.readString().decode('utf-8')
+                    self.node_host[_key495] = _val496
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 3):
             if (ftype == TType.MAP):
                 self.executor_node_port = {}
-                (_ktype484, _vtype485, _size483) = iprot.readMapBegin()
-                for _i487 in xrange(_size483):
-                    _key488 = []
-                    (_etype493, _size490) = iprot.readListBegin()
-                    for _i494 in xrange(_size490):
-                        _elem495 = iprot.readI64()
-                        _key488.append(_elem495)
+                (_ktype498, _vtype499, _size497) = iprot.readMapBegin()
+                for _i501 in xrange(_size497):
+                    _key502 = []
+                    (_etype507, _size504) = iprot.readListBegin()
+                    for _i508 in xrange(_size504):
+                        _elem509 = iprot.readI64()
+                        _key502.append(_elem509)
                     iprot.readListEnd()
-                    _val489 = NodeInfo()
-                    _val489.read(iprot)
-                    self.executor_node_port[_key488] = _val489
+                    _val503 = NodeInfo()
+                    _val503.read(iprot)
+                    self.executor_node_port[_key502] = _val503
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 4):
             if (ftype == TType.MAP):
                 self.executor_start_time_secs = {}
-                (_ktype497, _vtype498, _size496) = iprot.readMapBegin()
-                for _i500 in xrange(_size496):
-                    _key501 = []
-                    (_etype506, _size503) = iprot.readListBegin()
-                    for _i507 in xrange(_size503):
-                        _elem508 = iprot.readI64()
-                        _key501.append(_elem508)
+                (_ktype511, _vtype512, _size510) = iprot.readMapBegin()
+                for _i514 in xrange(_size510):
+                    _key515 = []
+                    (_etype520, _size517) = iprot.readListBegin()
+                    for _i521 in xrange(_size517):
+                        _elem522 = iprot.readI64()
+                        _key515.append(_elem522)
                     iprot.readListEnd()
-                    _val502 = iprot.readI64()
-                    self.executor_start_time_secs[_key501] = _val502
+                    _val516 = iprot.readI64()
+                    self.executor_start_time_secs[_key515] = _val516
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 5):
             if (ftype == TType.MAP):
                 self.worker_resources = {}
-                (_ktype510, _vtype511, _size509) = iprot.readMapBegin()
-                for _i513 in xrange(_size509):
-                    _key514 = NodeInfo()
-                    _key514.read(iprot)
-                    _val515 = WorkerResources()
-                    _val515.read(iprot)
-                    self.worker_resources[_key514] = _val515
+                (_ktype524, _vtype525, _size523) = iprot.readMapBegin()
+                for _i527 in xrange(_size523):
+                    _key528 = NodeInfo()
+                    _key528.read(iprot)
+                    _val529 = WorkerResources()
+                    _val529.read(iprot)
+                    self.worker_resources[_key528] = _val529
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

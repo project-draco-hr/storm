@@ -1,0 +1,5 @@
+{
+  this.key=null;
+  set_replication_isSet(false);
+  this.replication=0;
+}

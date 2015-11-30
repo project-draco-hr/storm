@@ -1,0 +1,5 @@
+{
+  this.acl=null;
+  set_replication_factor_isSet(false);
+  this.replication_factor=0;
+}

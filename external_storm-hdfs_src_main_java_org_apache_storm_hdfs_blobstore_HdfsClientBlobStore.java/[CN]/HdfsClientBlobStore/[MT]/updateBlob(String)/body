@@ -1,0 +1,3 @@
+{
+  return _blobStore.updateBlob(key,null);
+}

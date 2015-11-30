@@ -1,0 +1,6 @@
+{
+  checkReady();
+  getBlobReplication_call method_call=new getBlobReplication_call(key,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

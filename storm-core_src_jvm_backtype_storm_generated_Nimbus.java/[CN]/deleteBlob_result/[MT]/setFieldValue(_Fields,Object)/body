@@ -1,0 +1,20 @@
+{
+switch (field) {
+case AZE:
+    if (value == null) {
+      unset_aze();
+    }
+ else {
+      set_aze((AuthorizationException)value);
+    }
+  break;
+case KNF:
+if (value == null) {
+  unset_knf();
+}
+ else {
+  set_knf((KeyNotFoundException)value);
+}
+break;
+}
+}

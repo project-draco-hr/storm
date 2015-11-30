@@ -1,0 +1,6 @@
+{
+  checkReady();
+  beginCreateBlob_call method_call=new beginCreateBlob_call(key,meta,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

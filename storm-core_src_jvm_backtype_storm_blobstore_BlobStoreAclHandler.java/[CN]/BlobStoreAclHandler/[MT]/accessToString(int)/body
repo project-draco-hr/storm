@@ -1,0 +1,7 @@
+{
+  StringBuilder ret=new StringBuilder();
+  ret.append(((access & READ) > 0) ? "r" : "-");
+  ret.append(((access & WRITE) > 0) ? "w" : "-");
+  ret.append(((access & ADMIN) > 0) ? "a" : "-");
+  return ret.toString();
+}

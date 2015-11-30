@@ -1,0 +1,6 @@
+{
+  String localFile=lrsrc.getFilePath();
+  long nimbusBlobVersion=Utils.nimbusVersionOfBlob(lrsrc.getKey(),blobstore);
+  long currentBlobVersion=Utils.localVersionOfBlob(localFile);
+  return (nimbusBlobVersion == currentBlobVersion);
+}

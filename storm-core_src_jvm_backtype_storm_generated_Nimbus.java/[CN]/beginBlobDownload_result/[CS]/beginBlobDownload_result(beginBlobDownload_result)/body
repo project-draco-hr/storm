@@ -1,0 +1,11 @@
+{
+  if (other.is_set_success()) {
+    this.success=new BeginDownloadResult(other.success);
+  }
+  if (other.is_set_aze()) {
+    this.aze=new AuthorizationException(other.aze);
+  }
+  if (other.is_set_knf()) {
+    this.knf=new KeyNotFoundException(other.knf);
+  }
+}

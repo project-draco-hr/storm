@@ -1,0 +1,19 @@
+{
+  while (it == null && currentBucket < BUCKETS) {
+    String name=String.valueOf(currentBucket);
+    Path dir=new Path(_fullPath,name);
+    try {
+      it=listKeys(dir);
+    }
+ catch (    FileNotFoundException e) {
+      it=null;
+    }
+    if (it == null || !it.hasNext()) {
+      it=null;
+      currentBucket++;
+    }
+ else {
+      next=it.next();
+    }
+  }
+}

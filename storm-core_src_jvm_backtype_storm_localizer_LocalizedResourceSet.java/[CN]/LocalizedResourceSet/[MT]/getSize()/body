@@ -1,0 +1,3 @@
+{
+  return _localrsrcFiles.size() + _localrsrcArchives.size();
+}

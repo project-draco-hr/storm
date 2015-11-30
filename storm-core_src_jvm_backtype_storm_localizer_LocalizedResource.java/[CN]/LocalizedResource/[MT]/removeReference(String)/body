@@ -1,0 +1,6 @@
+{
+  if (!_ref.remove(topo)) {
+    LOG.warn("Tried to remove a reference to a topology that doesn't use this resource");
+  }
+  setTimestamp();
+}

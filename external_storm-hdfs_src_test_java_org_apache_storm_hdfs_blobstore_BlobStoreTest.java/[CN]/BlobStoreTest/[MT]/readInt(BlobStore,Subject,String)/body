@@ -1,0 +1,9 @@
+{
+  InputStream in=store.getBlob(key,who);
+  try {
+    return in.read();
+  }
+  finally {
+    in.close();
+  }
+}

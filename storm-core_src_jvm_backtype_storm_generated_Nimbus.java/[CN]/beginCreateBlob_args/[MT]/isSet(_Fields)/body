@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case KEY:
+    return is_set_key();
+case META:
+  return is_set_meta();
+}
+throw new IllegalStateException();
+}

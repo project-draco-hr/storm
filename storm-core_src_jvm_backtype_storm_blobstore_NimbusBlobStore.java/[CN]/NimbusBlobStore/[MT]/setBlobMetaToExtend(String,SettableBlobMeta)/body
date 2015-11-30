@@ -1,0 +1,13 @@
+{
+  try {
+synchronized (client) {
+      client.getClient().setBlobMeta(key,meta);
+    }
+  }
+ catch (  AuthorizationException|KeyNotFoundException exp) {
+    throw exp;
+  }
+catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

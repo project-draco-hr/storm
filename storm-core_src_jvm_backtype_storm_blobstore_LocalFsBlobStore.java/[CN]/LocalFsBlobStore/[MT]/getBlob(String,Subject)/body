@@ -1,0 +1,14 @@
+{
+  validateKey(key);
+  if (!checkForBlobOrDownload(key)) {
+    checkForBlobUpdate(key);
+  }
+  SettableBlobMeta meta=getStoredBlobMeta(key);
+  _aclHandler.hasPermissions(meta.get_acl(),READ,who,key);
+  try {
+    return new BlobStoreFileInputStream(fbs.read(DATA_PREFIX + key));
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

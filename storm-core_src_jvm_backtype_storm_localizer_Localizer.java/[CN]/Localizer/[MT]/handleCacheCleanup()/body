@@ -1,0 +1,23 @@
+{
+  LocalizedResourceRetentionSet toClean=new LocalizedResourceRetentionSet(_cacheTargetSize);
+  for (  LocalizedResourceSet t : _userRsrc.values()) {
+    toClean.addResources(t);
+    LOG.debug("Resources to be cleaned after adding {} : {}",t.getUser(),toClean);
+  }
+  toClean.cleanup();
+  LOG.debug("Resource cleanup: {}",toClean);
+  for (  LocalizedResourceSet t : _userRsrc.values()) {
+    if (t.getSize() == 0) {
+      String user=t.getUser();
+      LOG.debug("removing empty set: {}",user);
+      File userFileCacheDir=getLocalUserFileCacheDir(user);
+      getCacheDirForFiles(userFileCacheDir).delete();
+      getCacheDirForArchives(userFileCacheDir).delete();
+      getLocalUserFileCacheDir(user).delete();
+      boolean dirsRemoved=getLocalUserDir(user).delete();
+      if (dirsRemoved) {
+        _userRsrc.remove(user);
+      }
+    }
+  }
+}

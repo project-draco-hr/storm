@@ -1,0 +1,3 @@
+{
+  testArchives("test/jvm/backtype/storm/localizer/localtest.zip",false,21348);
+}

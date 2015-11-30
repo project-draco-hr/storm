@@ -1,0 +1,13 @@
+{
+  who=checkAndGetSubject(who);
+  validateKey(key);
+  SettableBlobMeta meta=getStoredBlobMeta(key);
+  _aclHandler.hasPermissions(meta.get_acl(),WRITE,who,key);
+  try {
+    _hbs.deleteKey(DATA_PREFIX + key);
+    _hbs.deleteKey(META_PREFIX + key);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

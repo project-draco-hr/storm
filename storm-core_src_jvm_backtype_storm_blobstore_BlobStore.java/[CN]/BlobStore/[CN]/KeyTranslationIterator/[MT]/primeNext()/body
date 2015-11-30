@@ -1,0 +1,10 @@
+{
+  next=null;
+  while (it.hasNext()) {
+    String tmp=it.next();
+    if (tmp.startsWith(prefix)) {
+      next=tmp.substring(prefix.length());
+      return;
+    }
+  }
+}
