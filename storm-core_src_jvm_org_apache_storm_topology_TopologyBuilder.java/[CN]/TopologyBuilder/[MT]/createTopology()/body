@@ -1,10 +1,13 @@
 {
   Map<String,Bolt> boltSpecs=new HashMap<>();
   Map<String,SpoutSpec> spoutSpecs=new HashMap<>();
+  maybeAddCheckpointSpout();
   for (  String boltId : _bolts.keySet()) {
     IRichBolt bolt=_bolts.get(boltId);
+    bolt=maybeAddCheckpointTupleForwarder(bolt);
     ComponentCommon common=getComponentCommon(boltId,bolt);
     try {
+      maybeAddCheckpointInputs(common);
       boltSpecs.put(boltId,new Bolt(ComponentObject.serialized_java(Utils.javaSerialize(bolt)),common));
     }
  catch (    RuntimeException wrapperCause) {

@@ -1,0 +1,4 @@
+{
+  checkpointState.put(TX_STATE_KEY,txState);
+  checkpointState.commit();
+}

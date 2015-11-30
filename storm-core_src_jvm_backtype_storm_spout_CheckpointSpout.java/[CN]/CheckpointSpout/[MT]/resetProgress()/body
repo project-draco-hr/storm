@@ -1,0 +1,8 @@
+{
+  if (recovering) {
+    recoveryStepInProgress=false;
+  }
+ else {
+    checkpointStepInProgress=false;
+  }
+}

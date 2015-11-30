@@ -1,0 +1,3 @@
+{
+  open(context,collector,loadCheckpointInterval(conf),loadCheckpointState(conf,context));
+}

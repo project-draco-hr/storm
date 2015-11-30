@@ -1,0 +1,10 @@
+{
+  this.context=context;
+  this.collector=collector;
+  this.checkpointInterval=checkpointInterval;
+  this.checkpointState=checkpointState;
+  lastCheckpointTs=0;
+  recoveryStepInProgress=false;
+  checkpointStepInProgress=false;
+  recovering=true;
+}

@@ -1,0 +1,10 @@
+{
+  int interval;
+  if (stormConf.containsKey(Config.TOPOLOGY_STATE_CHECKPOINT_INTERVAL)) {
+    interval=((Number)stormConf.get(Config.TOPOLOGY_STATE_CHECKPOINT_INTERVAL)).intValue();
+  }
+ else {
+    interval=DEFAULT_CHECKPOINT_INTERVAL;
+  }
+  return interval;
+}

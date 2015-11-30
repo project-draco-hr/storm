@@ -1,0 +1,4 @@
+{
+  LOG.debug("Got fail with msgid {}",msgId);
+  resetProgress();
+}

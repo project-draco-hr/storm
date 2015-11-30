@@ -1,0 +1,13 @@
+{
+  for (  GlobalStreamId inputStream : component.get_inputs().keySet()) {
+    String sourceId=inputStream.get_componentId();
+    if (_spouts.containsKey(sourceId)) {
+      GlobalStreamId checkPointStream=new GlobalStreamId(CHECKPOINT_COMPONENT_ID,CHECKPOINT_STREAM_ID);
+      component.put_to_inputs(checkPointStream,Grouping.all(new NullStruct()));
+    }
+ else {
+      GlobalStreamId checkPointStream=new GlobalStreamId(sourceId,CHECKPOINT_STREAM_ID);
+      component.put_to_inputs(checkPointStream,Grouping.all(new NullStruct()));
+    }
+  }
+}

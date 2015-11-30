@@ -1,0 +1,3 @@
+{
+  return !recovering && !checkpointStepInProgress && (System.currentTimeMillis() - lastCheckpointTs) > checkpointInterval;
+}

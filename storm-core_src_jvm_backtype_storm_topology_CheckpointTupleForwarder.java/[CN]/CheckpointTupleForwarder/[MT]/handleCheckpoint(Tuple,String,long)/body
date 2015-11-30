@@ -1,0 +1,3 @@
+{
+  collector.emit(CHECKPOINT_STREAM_ID,input,new Values(txid,action));
+}

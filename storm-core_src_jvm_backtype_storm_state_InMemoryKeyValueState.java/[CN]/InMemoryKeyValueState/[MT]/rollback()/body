@@ -1,0 +1,9 @@
+{
+  preparedState=null;
+  if (commitedState != null) {
+    state=commitedState.state;
+  }
+ else {
+    state=new HashMap<>();
+  }
+}

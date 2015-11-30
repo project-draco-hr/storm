@@ -1,0 +1,4 @@
+String namespace
+JedisCommandsInstanceContainer jedisContainer
+Serializer<K> keySerializer
+Serializer<V> valueSerializer

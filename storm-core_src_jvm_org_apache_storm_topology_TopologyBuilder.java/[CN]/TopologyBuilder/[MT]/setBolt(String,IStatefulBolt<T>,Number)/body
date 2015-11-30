@@ -1,0 +1,4 @@
+{
+  hasStatefulBolt=true;
+  return setBolt(id,new StatefulBoltExecutor<T>(bolt),parallelism_hint);
+}

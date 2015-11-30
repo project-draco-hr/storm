@@ -1,0 +1,12 @@
+{
+  if (shouldRecover()) {
+    LOG.debug("In recovery");
+    handleRecovery();
+    startProgress();
+  }
+ else   if (shouldCheckpoint()) {
+    LOG.debug("In checkpoint");
+    doCheckpoint();
+    startProgress();
+  }
+}

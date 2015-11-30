@@ -1,0 +1,27 @@
+{
+  LOG.debug("get key '{}'",key);
+  String redisKey=encode(keySerializer.serialize(key));
+  String redisValue=null;
+  if (pendingPrepare.containsKey(redisKey)) {
+    redisValue=pendingPrepare.get(redisKey);
+  }
+ else   if (pendingCommit.containsKey(redisKey)) {
+    redisValue=pendingCommit.get(redisKey);
+  }
+ else {
+    JedisCommands commands=null;
+    try {
+      commands=jedisContainer.getInstance();
+      redisValue=commands.hget(namespace,redisKey);
+    }
+  finally {
+      jedisContainer.returnInstance(commands);
+    }
+  }
+  V value=null;
+  if (redisValue != null) {
+    value=valueSerializer.deserialize(decode(redisValue));
+  }
+  LOG.debug("Value for key '{}' is '{}'",key,value);
+  return value;
+}

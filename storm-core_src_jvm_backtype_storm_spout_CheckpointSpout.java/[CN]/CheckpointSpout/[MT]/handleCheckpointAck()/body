@@ -1,0 +1,12 @@
+{
+  CheckPointState txState=getTxState();
+  if (txState.state == PREPARING) {
+    txState.state=COMMITTING;
+    LOG.debug("Prepare txid {} complete",txState.txid);
+  }
+ else   if (txState.state == COMMITTING) {
+    txState.state=COMMITTED;
+    LOG.debug("Commit txid {} complete",txState.txid);
+  }
+  saveTxState(txState);
+}

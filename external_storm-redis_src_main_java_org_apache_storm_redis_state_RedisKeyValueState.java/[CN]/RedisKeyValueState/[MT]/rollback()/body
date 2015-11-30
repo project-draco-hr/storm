@@ -1,0 +1,26 @@
+{
+  LOG.debug("rollback");
+  JedisCommands commands=null;
+  try {
+    commands=jedisContainer.getInstance();
+    if (commands.exists(prepareNamespace)) {
+      commands.del(prepareNamespace);
+    }
+ else {
+      LOG.debug("Nothing to rollback, prepared data is empty");
+    }
+    Long lastCommittedId=lastCommittedTxid();
+    if (lastCommittedId != null) {
+      txIds.put(PREPARE_TXID_KEY,String.valueOf(lastCommittedId));
+    }
+ else {
+      txIds.remove(PREPARE_TXID_KEY);
+    }
+    commands.hmset(txidNamespace,txIds);
+    pendingCommit=Collections.emptyMap();
+    pendingPrepare=new HashMap<>();
+  }
+  finally {
+    jedisContainer.returnInstance(commands);
+  }
+}

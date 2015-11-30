@@ -1,0 +1,5 @@
+{
+  bolt.prepare(stormConf,context,collector);
+  this.collector=collector;
+  checkPointInputTaskCount=getCheckpointInputTaskCount(context);
+}

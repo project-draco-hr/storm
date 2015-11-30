@@ -1,0 +1,20 @@
+{
+  mockBolt=Mockito.mock(IStatefulBolt.class);
+  executor=new StatefulBoltExecutor<>(mockBolt);
+  GlobalStreamId mockGlobalStreamId=Mockito.mock(GlobalStreamId.class);
+  Mockito.when(mockGlobalStreamId.get_streamId()).thenReturn(CheckpointSpout.CHECKPOINT_STREAM_ID);
+  mockStreamIds=new HashSet<>();
+  mockStreamIds.add(mockGlobalStreamId);
+  mockTopologyContext=Mockito.mock(TopologyContext.class);
+  mockOutputCollector=Mockito.mock(OutputCollector.class);
+  mockGlobalStream=Mockito.mock(Map.class);
+  mockState=Mockito.mock(State.class);
+  Mockito.when(mockTopologyContext.getThisComponentId()).thenReturn("test");
+  Mockito.when(mockTopologyContext.getThisTaskId()).thenReturn(1);
+  Mockito.when(mockTopologyContext.getThisSources()).thenReturn(mockGlobalStream);
+  Mockito.when(mockTopologyContext.getComponentTasks(Mockito.anyString())).thenReturn(Collections.singletonList(1));
+  Mockito.when(mockGlobalStream.keySet()).thenReturn(mockStreamIds);
+  mockTuple=Mockito.mock(Tuple.class);
+  mockCheckpointTuple=Mockito.mock(Tuple.class);
+  executor.prepare(mockStormConf,mockTopologyContext,mockOutputCollector,mockState);
+}

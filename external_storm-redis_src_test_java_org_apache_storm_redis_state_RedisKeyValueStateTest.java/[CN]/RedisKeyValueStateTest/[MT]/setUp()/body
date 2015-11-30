@@ -1,0 +1,38 @@
+{
+  final Map<String,Map<String,String>> mockMap=new HashMap<>();
+  mockContainer=Mockito.mock(JedisCommandsInstanceContainer.class);
+  mockCommands=Mockito.mock(JedisCommands.class);
+  Mockito.when(mockContainer.getInstance()).thenReturn(mockCommands);
+  ArgumentCaptor<String> stringArgumentCaptor=ArgumentCaptor.forClass(String.class);
+  ArgumentCaptor<String> stringArgumentCaptor2=ArgumentCaptor.forClass(String.class);
+  ArgumentCaptor<Map> mapArgumentCaptor=ArgumentCaptor.forClass(Map.class);
+  Mockito.when(mockCommands.exists(Mockito.anyString())).thenAnswer(new Answer<Boolean>(){
+    @Override public Boolean answer(    InvocationOnMock invocation) throws Throwable {
+      Object[] args=invocation.getArguments();
+      return mockMap.containsKey((String)args[0]);
+    }
+  }
+);
+  Mockito.when(mockCommands.hmset(Mockito.anyString(),Mockito.anyMap())).thenAnswer(new Answer<String>(){
+    @Override public String answer(    InvocationOnMock invocation) throws Throwable {
+      Object[] args=invocation.getArguments();
+      return hmset(mockMap,(String)args[0],(Map)args[1]);
+    }
+  }
+);
+  Mockito.when(mockCommands.del(Mockito.anyString())).thenAnswer(new Answer<Long>(){
+    @Override public Long answer(    InvocationOnMock invocation) throws Throwable {
+      Object[] args=invocation.getArguments();
+      return del(mockMap,(String)args[0]);
+    }
+  }
+);
+  Mockito.when(mockCommands.hget(Mockito.anyString(),Mockito.anyString())).thenAnswer(new Answer<String>(){
+    @Override public String answer(    InvocationOnMock invocation) throws Throwable {
+      Object[] args=invocation.getArguments();
+      return hget(mockMap,(String)args[0],(String)args[1]);
+    }
+  }
+);
+  keyValueState=new RedisKeyValueState<String,String>("test",mockContainer,new DefaultStateSerializer<String>(),new DefaultStateSerializer<String>());
+}

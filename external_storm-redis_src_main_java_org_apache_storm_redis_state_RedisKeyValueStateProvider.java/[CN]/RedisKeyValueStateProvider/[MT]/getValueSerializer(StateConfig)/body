@@ -1,0 +1,14 @@
+{
+  Serializer serializer=null;
+  if (config.valueSerializerClass != null) {
+    Class<?> klass=(Class<?>)Class.forName(config.valueSerializerClass);
+    serializer=(Serializer)klass.newInstance();
+  }
+ else   if (config.valueClass != null) {
+    serializer=new DefaultStateSerializer(Collections.singletonList(Class.forName(config.valueClass)));
+  }
+ else {
+    serializer=new DefaultStateSerializer();
+  }
+  return serializer;
+}

@@ -1,0 +1,4 @@
+{
+  bolt.declareOutputFields(declarer);
+  declarer.declareStream(CHECKPOINT_STREAM_ID,new Fields(CHECKPOINT_FIELD_TXID,CHECKPOINT_FIELD_ACTION));
+}

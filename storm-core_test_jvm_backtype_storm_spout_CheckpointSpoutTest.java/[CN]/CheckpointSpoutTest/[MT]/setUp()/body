@@ -1,0 +1,6 @@
+{
+  mockTopologyContext=Mockito.mock(TopologyContext.class);
+  Mockito.when(mockTopologyContext.getThisComponentId()).thenReturn("test");
+  Mockito.when(mockTopologyContext.getThisTaskId()).thenReturn(1);
+  mockOutputCollector=Mockito.mock(SpoutOutputCollector.class);
+}

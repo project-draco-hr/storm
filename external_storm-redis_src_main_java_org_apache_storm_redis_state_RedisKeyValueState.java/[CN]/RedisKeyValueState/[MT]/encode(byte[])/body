@@ -1,0 +1,3 @@
+{
+  return base64Encoder.encode(bytes);
+}

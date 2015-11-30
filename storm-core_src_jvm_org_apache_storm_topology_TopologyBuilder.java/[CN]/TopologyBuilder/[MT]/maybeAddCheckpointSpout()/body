@@ -1,0 +1,5 @@
+{
+  if (hasStatefulBolt) {
+    setSpout(CHECKPOINT_COMPONENT_ID,new CheckpointSpout(),1);
+  }
+}

@@ -1,0 +1,5 @@
+{
+  System.out.println(tuple);
+  LOG.debug("Got tuple {}",tuple);
+  collector.emit(tuple.getValues());
+}

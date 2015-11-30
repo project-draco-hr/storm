@@ -1,0 +1,16 @@
+{
+  TransactionRequest request=new TransactionRequest(action,txid);
+  Integer count;
+  if ((count=transactionRequestCount.get(request)) == null) {
+    transactionRequestCount.put(request,1);
+    count=1;
+  }
+ else {
+    transactionRequestCount.put(request,++count);
+  }
+  if (count == checkPointInputTaskCount) {
+    transactionRequestCount.remove(request);
+    return true;
+  }
+  return false;
+}

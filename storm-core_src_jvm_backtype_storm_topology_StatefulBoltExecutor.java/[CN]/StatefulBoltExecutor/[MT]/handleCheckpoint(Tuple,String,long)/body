@@ -1,0 +1,23 @@
+{
+  LOG.debug("handleCheckPoint with tuple {}, action {}, txid {}",input,action,txid);
+  if (action.equals(CHECKPOINT_ACTION_PREPARE)) {
+    state.prepareCommit(txid);
+  }
+ else   if (action.equals(CHECKPOINT_ACTION_COMMIT)) {
+    bolt.preCommit();
+    state.commit(txid);
+    bolt.postCommit();
+  }
+ else   if (action.equals(CHECKPOINT_ACTION_ROLLBACK)) {
+    state.rollback();
+  }
+ else   if (action.equals(CHECKPOINT_ACTION_INITSTATE)) {
+    bolt.initState((T)state);
+    boltInitialized=true;
+    LOG.debug("{} pending tuples to process",pendingTuples.size());
+    for (    Tuple tuple : pendingTuples) {
+      bolt.execute(tuple);
+    }
+  }
+  collector.emit(CheckpointSpout.CHECKPOINT_STREAM_ID,input,new Values(txid,action));
+}

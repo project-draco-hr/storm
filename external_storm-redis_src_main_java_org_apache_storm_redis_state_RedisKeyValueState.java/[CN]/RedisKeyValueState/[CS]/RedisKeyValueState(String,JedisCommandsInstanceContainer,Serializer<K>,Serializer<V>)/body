@@ -1,0 +1,13 @@
+{
+  base64Encoder=new BASE64Encoder();
+  base64Decoder=new BASE64Decoder();
+  this.namespace=namespace;
+  this.prepareNamespace=namespace + "$prepare";
+  this.txidNamespace=namespace + "$txid";
+  this.keySerializer=keySerializer;
+  this.valueSerializer=valueSerializer;
+  this.jedisContainer=jedisContainer;
+  this.pendingPrepare=new HashMap<>();
+  initTxids();
+  initPendingCommit();
+}

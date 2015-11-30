@@ -1,0 +1,16 @@
+{
+  CheckPointState txState=getTxState();
+  LOG.debug("Got ack with txid {}, current txState {}",msgId,txState);
+  if (txState.txid == ((Number)msgId).longValue()) {
+    if (recovering) {
+      handleRecoveryAck();
+    }
+ else {
+      handleCheckpointAck();
+    }
+  }
+ else {
+    LOG.warn("Ack msgid {}, txState.txid {} mismatch",msgId,txState.txid);
+  }
+  resetProgress();
+}

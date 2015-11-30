@@ -1,0 +1,30 @@
+{
+  String action=input.getStringByField(CHECKPOINT_FIELD_ACTION);
+  long txid=input.getLongByField(CHECKPOINT_FIELD_TXID);
+  if (shouldProcessTransaction(action,txid)) {
+    LOG.debug("Processing action {}, txid {}",action,txid);
+    try {
+      if (txid >= lastTxid) {
+        handleCheckpoint(input,action,txid);
+        if (CHECKPOINT_ACTION_ROLLBACK.equals(action)) {
+          lastTxid=txid - 1;
+        }
+ else {
+          lastTxid=txid;
+        }
+      }
+ else {
+        LOG.debug("Ignoring old transaction. Action {}, txid {}",action,txid);
+      }
+    }
+ catch (    Throwable th) {
+      LOG.error("Got error while processing checkpoint tuple",th);
+      collector.fail(input);
+      collector.reportError(th);
+    }
+  }
+ else {
+    LOG.debug("Waiting for action {}, txid {} from all input tasks. checkPointInputTaskCount {}, " + "transactionRequestCount {}",action,txid,checkPointInputTaskCount,transactionRequestCount);
+  }
+  collector.ack(input);
+}
