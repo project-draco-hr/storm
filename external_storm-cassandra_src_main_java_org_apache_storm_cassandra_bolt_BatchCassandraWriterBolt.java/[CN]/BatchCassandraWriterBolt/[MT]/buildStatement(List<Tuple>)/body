@@ -1,0 +1,8 @@
+{
+  List<PairStatementTuple> stmts=new ArrayList<>(inputs.size());
+  for (  Tuple t : inputs) {
+    List<Statement> sl=getMapper().map(stormConfig,session,t);
+    for (    Statement s : sl)     stmts.add(new PairStatementTuple(t,s));
+  }
+  return stmts;
+}

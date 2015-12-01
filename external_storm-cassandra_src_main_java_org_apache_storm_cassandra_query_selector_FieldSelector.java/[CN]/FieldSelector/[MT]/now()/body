@@ -1,0 +1,4 @@
+{
+  this.isNow=true;
+  return this;
+}

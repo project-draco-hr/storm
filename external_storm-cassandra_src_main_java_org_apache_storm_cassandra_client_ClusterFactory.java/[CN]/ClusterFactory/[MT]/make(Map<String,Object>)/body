@@ -1,0 +1,12 @@
+{
+  CassandraConf cassandraConf=new CassandraConf(stormConf);
+  Cluster.Builder cluster=Cluster.builder().withoutJMXReporting().withoutMetrics().addContactPoints(cassandraConf.getNodes()).withPort(cassandraConf.getPort()).withRetryPolicy(cassandraConf.getRetryPolicy()).withReconnectionPolicy(new ExponentialReconnectionPolicy(cassandraConf.getReconnectionPolicyBaseMs(),cassandraConf.getReconnectionPolicyMaxMs())).withLoadBalancingPolicy(new TokenAwarePolicy(new RoundRobinPolicy()));
+  final String username=cassandraConf.getUsername();
+  final String password=cassandraConf.getPassword();
+  if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)) {
+    cluster.withAuthProvider(new PlainTextAuthProvider(username,password));
+  }
+  QueryOptions options=new QueryOptions().setConsistencyLevel(cassandraConf.getConsistencyLevel());
+  cluster.withQueryOptions(options);
+  return cluster.build();
+}

@@ -1,0 +1,18 @@
+{
+  if (t instanceof QueryValidationException) {
+    this.onQueryValidationException((QueryValidationException)t,collector,i);
+  }
+ else   if (t instanceof ReadTimeoutException) {
+    this.onReadTimeoutException((ReadTimeoutException)t,collector,i);
+  }
+ else   if (t instanceof WriteTimeoutException) {
+    this.onWriteTimeoutException((WriteTimeoutException)t,collector,i);
+  }
+ else   if (t instanceof UnavailableException) {
+    this.onUnavailableException((UnavailableException)t,collector,i);
+  }
+ else {
+    collector.reportError(t);
+    collector.fail(i);
+  }
+}

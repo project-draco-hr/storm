@@ -1,0 +1,2 @@
+BatchStatement.Type type
+CQLStatementBuilder[] builders

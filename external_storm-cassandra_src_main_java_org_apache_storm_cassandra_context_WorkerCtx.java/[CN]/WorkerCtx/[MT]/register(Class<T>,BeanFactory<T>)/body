@@ -1,0 +1,3 @@
+{
+  componentCtx.put(clazz,provider);
+}

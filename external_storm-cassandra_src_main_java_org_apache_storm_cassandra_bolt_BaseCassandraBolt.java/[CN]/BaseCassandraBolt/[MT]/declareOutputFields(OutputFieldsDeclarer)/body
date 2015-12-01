@@ -1,0 +1,7 @@
+{
+  Fields fields=this.outputsFields.remove(Utils.DEFAULT_STREAM_ID);
+  if (fields != null)   declarer.declare(fields);
+  for (  Map.Entry<String,Fields> entry : this.outputsFields.entrySet()) {
+    declarer.declareStream(entry.getKey(),entry.getValue());
+  }
+}

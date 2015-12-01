@@ -1,0 +1,3 @@
+{
+  return newBatchStatementBuilder(BatchStatement.Type.COUNTER,builders);
+}

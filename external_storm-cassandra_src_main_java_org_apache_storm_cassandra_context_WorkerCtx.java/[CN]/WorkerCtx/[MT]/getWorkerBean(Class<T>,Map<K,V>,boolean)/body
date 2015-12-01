@@ -1,0 +1,10 @@
+{
+  if (force)   workerCtx.remove(clazz);
+  BeanFactory<T> factory=(BeanFactory<T>)this.workerCtx.get(clazz);
+  if (factory == null) {
+    BeanFactory<T> instance=getBeanfactory(clazz).newInstance();
+    workerCtx.putIfAbsent(clazz,instance);
+    factory=(BeanFactory<T>)this.workerCtx.get(clazz);
+  }
+  return factory.get((Map<String,Object>)stormConf);
+}

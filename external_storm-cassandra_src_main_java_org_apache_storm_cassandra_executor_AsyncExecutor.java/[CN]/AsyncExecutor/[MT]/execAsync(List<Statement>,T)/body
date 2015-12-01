@@ -1,0 +1,15 @@
+{
+  List<SettableFuture<T>> settableFutures=new ArrayList<>(statements.size());
+  for (  Statement s : statements)   settableFutures.add(execAsync(s,input,AsyncResultHandler.NO_OP_HANDLER));
+  ListenableFuture<List<T>> allAsList=Futures.allAsList(settableFutures);
+  Futures.addCallback(allAsList,new FutureCallback<List<T>>(){
+    @Override public void onSuccess(    List<T> inputs){
+      handler.success(input);
+    }
+    @Override public void onFailure(    Throwable t){
+      handler.failure(t,input);
+    }
+  }
+,executorService);
+  return settableFutures;
+}

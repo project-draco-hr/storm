@@ -1,0 +1,3 @@
+{
+  return Executors.newSingleThreadExecutor(new ThreadFactoryBuilder().setNameFormat("cassandra-async-handler-%d").build());
+}

@@ -1,0 +1,6 @@
+{
+  int size=fields.length;
+  List<FieldSelector> fl=new ArrayList<>(size);
+  for (int i=0; i < size; i++)   fl.add(new FieldSelector(fields[i]));
+  return fl.toArray(new FieldSelector[size]);
+}

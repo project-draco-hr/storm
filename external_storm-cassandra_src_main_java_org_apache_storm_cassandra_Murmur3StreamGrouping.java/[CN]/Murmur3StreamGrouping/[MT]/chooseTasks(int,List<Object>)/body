@@ -1,0 +1,9 @@
+{
+  try {
+    int n=Math.abs((int)hashes(getKeyValues(values)) % targetTasks.size());
+    return Lists.newArrayList(targetTasks.get(n));
+  }
+ catch (  IOException e) {
+    throw new FailedException(e);
+  }
+}

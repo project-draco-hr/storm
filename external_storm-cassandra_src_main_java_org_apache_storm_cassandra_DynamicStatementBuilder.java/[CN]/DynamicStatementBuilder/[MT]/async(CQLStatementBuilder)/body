@@ -1,0 +1,3 @@
+{
+  return new CQLStatementTupleMapper.DynamicCQLStatementTupleMapper(Arrays.asList(builders));
+}

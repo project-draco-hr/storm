@@ -1,0 +1,3 @@
+{
+  executeAndAssertWith(100000,new CassandraWriterBolt((getInsertInto())));
+}

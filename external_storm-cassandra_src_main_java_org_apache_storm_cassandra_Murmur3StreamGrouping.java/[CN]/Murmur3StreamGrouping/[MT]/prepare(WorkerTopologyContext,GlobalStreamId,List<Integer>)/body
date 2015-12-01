@@ -1,0 +1,8 @@
+{
+  this.targetTasks=targetTasks;
+  this.partitionKeyIndexes=new ArrayList<>();
+  Fields componentOutputFields=context.getComponentOutputFields(stream);
+  for (  String partitionKeyName : partitionKeyNames) {
+    partitionKeyIndexes.add(componentOutputFields.fieldIndex(partitionKeyName));
+  }
+}

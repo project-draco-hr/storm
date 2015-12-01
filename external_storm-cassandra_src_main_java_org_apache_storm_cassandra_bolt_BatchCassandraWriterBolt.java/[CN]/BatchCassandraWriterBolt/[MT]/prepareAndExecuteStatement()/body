@@ -1,0 +1,28 @@
+{
+  int size=queue.size();
+  if (size > 0) {
+    List<Tuple> inputs=new ArrayList<>(size);
+    queue.drainTo(inputs);
+    try {
+      List<PairStatementTuple> psl=buildStatement(inputs);
+      int sinceLastModified=updateAndGetSecondsSinceLastModified();
+      LOG.debug(logPrefix() + "Execute cql batches with {} statements after {} seconds",size,sinceLastModified);
+      checkTimeElapsedSinceLastExec(sinceLastModified);
+      GroupingBatchBuilder batchBuilder=new GroupingBatchBuilder(cassandraConfConfig.getBatchSizeRows(),psl);
+      int batchSize=0;
+      for (      PairBatchStatementTuples batch : batchBuilder) {
+        LOG.debug(logPrefix() + "Writing data to {} in batches of {} rows.",cassandraConfConfig.getKeyspace(),batch.getInputs().size());
+        getAsyncExecutor().execAsync(batch.getStatement(),batch.getInputs());
+        batchSize++;
+      }
+      int pending=getAsyncExecutor().getPendingTasksSize();
+      if (pending > batchSize) {
+        LOG.warn(logPrefix() + "Currently pending tasks is superior to the number of submit batches({}) : {}",batchSize,pending);
+      }
+    }
+ catch (    Throwable r) {
+      LOG.error(logPrefix() + "Error(s) occurred while preparing batch statements");
+      getAsyncHandler().failure(r,inputs);
+    }
+  }
+}

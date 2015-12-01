@@ -1,0 +1,3 @@
+{
+  return execAsync(statement,inputs,handler);
+}

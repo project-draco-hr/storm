@@ -1,0 +1,12 @@
+{
+  this.outputCollector=outputCollector;
+  this.stormConfig=stormConfig;
+  this.cassandraConfConfig=new CassandraConf(stormConfig);
+  this.client=clientProvider.getClient(this.stormConfig);
+  try {
+    session=client.connect();
+  }
+ catch (  NoHostAvailableException e) {
+    outputCollector.reportError(e);
+  }
+}
