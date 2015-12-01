@@ -3,5 +3,5 @@
   if (provider == null) {
     return null;
   }
-  return provider.constructTrident(uri,inputFormatClass,outputFormatClass,fields);
+  return provider.constructTrident(uri,inputFormatClass,outputFormatClass,properties,fields);
 }

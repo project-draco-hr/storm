@@ -1,5 +1,6 @@
 {
   this.topic=topic;
   this.primaryKeyIndex=primaryKeyIndex;
+  this.producerProperties=producerProperties;
   this.fieldNames=fieldNames;
 }

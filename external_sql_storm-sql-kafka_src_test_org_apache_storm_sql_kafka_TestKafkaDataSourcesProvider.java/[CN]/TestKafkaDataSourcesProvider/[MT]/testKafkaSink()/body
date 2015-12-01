@@ -1,5 +1,5 @@
 {
-  ISqlTridentDataSource ds=DataSourcesRegistry.constructTridentDataSource(URI.create("kafka://mock?topic=foo"),null,null,FIELDS);
+  ISqlTridentDataSource ds=DataSourcesRegistry.constructTridentDataSource(URI.create("kafka://mock?topic=foo"),null,null,TBL_PROPERTIES,FIELDS);
   Assert.assertNotNull(ds);
   KafkaTridentSink sink=(KafkaTridentSink)ds.getConsumer();
   sink.prepare(null,null);

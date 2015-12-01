@@ -1,3 +1,3 @@
 {
-  return new KafkaTridentSink(topic,primaryKeyIndex,fields);
+  return new KafkaTridentSink(topic,primaryKeyIndex,producerProperties,fields);
 }

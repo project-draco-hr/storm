@@ -2,4 +2,5 @@
   JsonSerializer serializer=new JsonSerializer(fieldNames);
   SqlKafkaMapper m=new SqlKafkaMapper(primaryKeyIndex,serializer);
   state=new TridentKafkaState().withKafkaTopicSelector(new StaticTopicSelector(topic)).withTridentTupleToKafkaMapper(m);
+  state.prepare(producerProperties);
 }

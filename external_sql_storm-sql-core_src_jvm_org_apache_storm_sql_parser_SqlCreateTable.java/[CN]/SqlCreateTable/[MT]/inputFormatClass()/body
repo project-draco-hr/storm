@@ -1,3 +1,3 @@
 {
-  return inputFormatClass == null ? null : SqlLiteral.stringValue(inputFormatClass);
+  return getString(inputFormatClass);
 }
