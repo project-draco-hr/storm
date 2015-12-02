@@ -18,9 +18,7 @@
         throw new RuntimeException("Unknown class type to write: " + write.getClass().getName());
       }
     }
- catch (    InterruptedException e) {
-    }
-catch (    Throwable t) {
+ catch (    Throwable t) {
       die(t);
     }
   }

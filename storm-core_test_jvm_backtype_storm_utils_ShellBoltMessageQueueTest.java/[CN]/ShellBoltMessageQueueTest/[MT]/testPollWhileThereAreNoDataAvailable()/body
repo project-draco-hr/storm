@@ -1,0 +1,8 @@
+{
+  ShellBoltMessageQueue queue=new ShellBoltMessageQueue();
+  long start=System.currentTimeMillis();
+  Object msg=queue.poll(1,TimeUnit.SECONDS);
+  long finish=System.currentTimeMillis();
+  assertNull(msg);
+  assertTrue(finish - start > 1000);
+}

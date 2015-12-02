@@ -1,0 +1,10 @@
+{
+  boltMsgQueue.put(boltMsg);
+  takeLock.lock();
+  try {
+    notEmpty.signal();
+  }
+  finally {
+    takeLock.unlock();
+  }
+}
