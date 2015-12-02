@@ -4,7 +4,8 @@
   KafkaTridentSink sink=(KafkaTridentSink)ds.getConsumer();
   sink.prepare(null,null);
   TridentKafkaState state=(TridentKafkaState)Whitebox.getInternalState(sink,"state");
-  Producer producer=mock(Producer.class);
+  KafkaProducer producer=mock(KafkaProducer.class);
+  doReturn(mock(Future.class)).when(producer).send(any(ProducerRecord.class));
   Whitebox.setInternalState(state,"producer",producer);
   List<TridentTuple> tupleList=mockTupleList();
   for (  TridentTuple t : tupleList) {

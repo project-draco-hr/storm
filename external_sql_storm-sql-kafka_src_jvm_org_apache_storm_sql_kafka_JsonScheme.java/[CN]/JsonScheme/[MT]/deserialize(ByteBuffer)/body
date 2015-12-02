@@ -1,7 +1,7 @@
 {
   ObjectMapper mapper=new ObjectMapper();
   try {
-    @SuppressWarnings("unchecked") HashMap<String,Object> map=mapper.readValue(ser,HashMap.class);
+    @SuppressWarnings("unchecked") HashMap<String,Object> map=mapper.readValue(Utils.toByteArray(ser),HashMap.class);
     ArrayList<Object> list=new ArrayList<>();
     for (    String f : fields) {
       list.add(map.get(f));

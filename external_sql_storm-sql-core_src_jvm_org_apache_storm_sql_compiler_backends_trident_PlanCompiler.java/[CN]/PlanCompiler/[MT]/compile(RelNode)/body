@@ -1,5 +1,5 @@
 {
   String javaCode=generateJavaSource(plan);
-  ClassLoader cl=new CompilingClassLoader(getClass().getClassLoader(),PACKAGE_NAME + ".TridentProcessor",javaCode,null);
-  return (AbstractTridentProcessor)cl.loadClass(PACKAGE_NAME + ".TridentProcessor").newInstance();
+  compilingClassLoader=new CompilingClassLoader(getClass().getClassLoader(),PACKAGE_NAME + ".TridentProcessor",javaCode,null);
+  return (AbstractTridentProcessor)compilingClassLoader.loadClass(PACKAGE_NAME + ".TridentProcessor").newInstance();
 }

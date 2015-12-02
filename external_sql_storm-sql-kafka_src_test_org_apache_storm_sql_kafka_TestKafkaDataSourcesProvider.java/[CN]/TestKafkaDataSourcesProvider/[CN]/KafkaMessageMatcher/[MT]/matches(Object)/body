@@ -1,9 +1,9 @@
 {
-  KeyedMessage<Object,ByteBuffer> m=(KeyedMessage<Object,ByteBuffer>)o;
+  ProducerRecord<Object,ByteBuffer> m=(ProducerRecord<Object,ByteBuffer>)o;
   if (m.key() != tuple.get(PRIMARY_INDEX)) {
     return false;
   }
-  ByteBuffer buf=m.message();
+  ByteBuffer buf=m.value();
   ByteBuffer b=SERIALIZER.write(tuple.getValues(),null);
   return b.equals(buf);
 }

@@ -1,1 +1,1 @@
-ArgumentMatcher<KeyedMessage>
+ArgumentMatcher<ProducerRecord>
