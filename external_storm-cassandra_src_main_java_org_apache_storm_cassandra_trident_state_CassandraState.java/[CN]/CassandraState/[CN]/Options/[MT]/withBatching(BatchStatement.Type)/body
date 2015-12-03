@@ -1,0 +1,4 @@
+{
+  this.batchingType=batchingType;
+  return this;
+}

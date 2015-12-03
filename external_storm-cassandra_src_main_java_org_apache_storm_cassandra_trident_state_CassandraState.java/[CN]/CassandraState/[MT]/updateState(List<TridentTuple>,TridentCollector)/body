@@ -1,0 +1,17 @@
+{
+  Preconditions.checkNotNull(options.cqlStatementTupleMapper,"CassandraState.Options should have cqlStatementTupleMapper");
+  List<Statement> statements=new ArrayList<>();
+  for (  TridentTuple tuple : tuples) {
+    statements.addAll(options.cqlStatementTupleMapper.map(conf,session,tuple));
+  }
+  BatchStatement batchStatement=new BatchStatement(options.batchingType);
+  batchStatement.addAll(statements);
+  try {
+    session.execute(batchStatement);
+  }
+ catch (  Exception e) {
+    LOG.warn("Batch write operation is failed.");
+    collector.reportError(e);
+    throw new FailedException(e);
+  }
+}

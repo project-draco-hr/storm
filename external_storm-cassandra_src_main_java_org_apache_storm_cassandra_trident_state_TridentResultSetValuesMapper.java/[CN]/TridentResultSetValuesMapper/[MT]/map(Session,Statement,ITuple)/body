@@ -1,0 +1,22 @@
+{
+  List<List<Values>> list=new ArrayList<>();
+  ResultSet resultSet=session.execute(statement);
+  for (  Row row : resultSet) {
+    final Values values=new Values();
+    for (    String field : outputDeclaredFields) {
+      if (tuple.contains(field)) {
+        values.add(tuple.getValueByField(field));
+      }
+ else {
+        values.add(row.getObject(field));
+      }
+    }
+    list.add(new LinkedList<Values>(){
+{
+        add(values);
+      }
+    }
+);
+  }
+  return list;
+}

@@ -1,0 +1,19 @@
+{
+  Preconditions.checkNotNull(options.cqlStatementTupleMapper,"CassandraState.Options should have cqlStatementTupleMapper");
+  Preconditions.checkNotNull(options.cqlResultSetValuesMapper,"CassandraState.Options should have cqlResultSetValuesMapper");
+  List<List<Values>> batchRetrieveResult=new ArrayList<>();
+  try {
+    for (    TridentTuple tridentTuple : tridentTuples) {
+      List<Statement> statements=options.cqlStatementTupleMapper.map(conf,session,tridentTuple);
+      for (      Statement statement : statements) {
+        List<List<Values>> values=options.cqlResultSetValuesMapper.map(session,statement,tridentTuple);
+        batchRetrieveResult.addAll(values);
+      }
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("Batch retrieve operation is failed.");
+    throw new FailedException(e);
+  }
+  return batchRetrieveResult;
+}

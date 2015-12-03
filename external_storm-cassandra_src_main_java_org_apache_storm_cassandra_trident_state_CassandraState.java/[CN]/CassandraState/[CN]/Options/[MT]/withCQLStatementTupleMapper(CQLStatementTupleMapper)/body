@@ -1,0 +1,4 @@
+{
+  this.cqlStatementTupleMapper=cqlStatementTupleMapper;
+  return this;
+}

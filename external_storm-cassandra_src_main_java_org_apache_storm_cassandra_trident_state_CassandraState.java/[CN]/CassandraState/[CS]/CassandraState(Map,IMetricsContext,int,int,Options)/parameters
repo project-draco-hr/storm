@@ -1,0 +1,5 @@
+Map conf
+IMetricsContext metrics
+int partitionIndex
+int numPartitions
+Options options

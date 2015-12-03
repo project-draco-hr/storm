@@ -1,0 +1,5 @@
+{
+  CassandraState cassandraState=new CassandraState(conf,metrics,partitionIndex,numPartitions,options);
+  cassandraState.prepare();
+  return cassandraState;
+}

@@ -1,0 +1,4 @@
+{
+  client=options.clientProvider.getClient(conf);
+  session=client.connect();
+}

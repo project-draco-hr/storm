@@ -3,6 +3,6 @@
   builder.setSpout(SPOUT_MOCK,new WeatherSpout("test",maxQueries),1).setMaxTaskParallelism(1);
   builder.setBolt(BOLT_WRITER,bolt,4).shuffleGrouping(SPOUT_MOCK);
   runLocalTopologyAndWait(builder);
-  ResultSet rows=cassandraCQLUnit.session.execute("SELECT * FROM weather.temperature WHERE weatherstation_id='test'");
+  ResultSet rows=cassandraCQLUnit.session.execute("SELECT * FROM weather.temperature WHERE weather_station_id='test'");
   Assert.assertEquals(maxQueries,rows.all().size());
 }

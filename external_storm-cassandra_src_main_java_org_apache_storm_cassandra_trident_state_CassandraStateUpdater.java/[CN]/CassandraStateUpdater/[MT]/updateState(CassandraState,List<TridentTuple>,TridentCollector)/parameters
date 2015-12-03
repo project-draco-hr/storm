@@ -1,0 +1,3 @@
+CassandraState state
+List<TridentTuple> list
+TridentCollector collector
