@@ -1,4 +1,11 @@
 {
-  session.close();
-  client.close();
+  try {
+    session.close();
+  }
+ catch (  Exception e) {
+    LOG.warn("Error occurred while closing Session",e);
+  }
+ finally {
+    client.close();
+  }
 }

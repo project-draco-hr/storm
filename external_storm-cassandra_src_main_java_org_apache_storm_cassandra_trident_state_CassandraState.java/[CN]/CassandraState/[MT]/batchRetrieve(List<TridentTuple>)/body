@@ -1,5 +1,4 @@
 {
-  Preconditions.checkNotNull(options.cqlStatementTupleMapper,"CassandraState.Options should have cqlStatementTupleMapper");
   Preconditions.checkNotNull(options.cqlResultSetValuesMapper,"CassandraState.Options should have cqlResultSetValuesMapper");
   List<List<Values>> batchRetrieveResult=new ArrayList<>();
   try {
