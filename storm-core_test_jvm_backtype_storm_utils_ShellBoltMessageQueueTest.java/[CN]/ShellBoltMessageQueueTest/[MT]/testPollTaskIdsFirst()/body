@@ -1,9 +1,0 @@
-{
-  ShellBoltMessageQueue queue=new ShellBoltMessageQueue();
-  queue.putBoltMsg(new BoltMsg());
-  ArrayList<Integer> taskIds=Lists.newArrayList(1,2,3);
-  queue.putTaskIds(taskIds);
-  Object msg=queue.poll(10,TimeUnit.SECONDS);
-  assertTrue(msg instanceof List<?>);
-  assertEquals(msg,taskIds);
-}
