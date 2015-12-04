@@ -1,0 +1,3 @@
+{
+  return "Name: " + this.getName() + " Priority: "+ this.getTopologyPriority()+ " Uptime: "+ this.getUpTime()+ " CPU: "+ this.getTotalRequestedCpu()+ " Memory: "+ (this.getTotalRequestedMemOffHeap() + this.getTotalRequestedMemOnHeap());
+}

@@ -1,0 +1,11 @@
+{
+  String ret="\nUser: " + this.userId;
+  ret+="\n - " + " Resource Pool: " + this.resourcePool;
+  ret+="\n - " + " Running Queue: " + this.runningQueue;
+  ret+="\n - " + " Pending Queue: " + this.pendingQueue;
+  ret+="\n - " + " Attempted Queue: " + this.attemptedQueue;
+  ret+="\n - " + " CPU Used: " + this.getCPUResourceUsedByUser() + " CPU guaranteed: "+ this.getCPUResourceGuaranteed();
+  ret+="\n - " + " Memory Used: " + this.getMemoryResourceUsedByUser() + " Memory guaranteed: "+ this.getMemoryResourceGuaranteed();
+  ret+="\n - " + " % Resource Guarantee Used: \n -- CPU: " + this.getCPUResourcePoolUtilization() + " Memory: "+ this.getMemoryResourcePoolUtilization()+ " Average: "+ this.getResourcePoolAverageUtilization();
+  return ret;
+}

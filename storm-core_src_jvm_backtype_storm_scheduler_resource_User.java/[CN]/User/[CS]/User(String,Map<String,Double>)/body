@@ -1,0 +1,6 @@
+{
+  this(userId);
+  if (resourcePool != null) {
+    this.resourcePool.putAll(resourcePool);
+  }
+}

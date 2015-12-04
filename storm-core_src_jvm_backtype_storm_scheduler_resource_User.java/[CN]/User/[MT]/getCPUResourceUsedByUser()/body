@@ -1,0 +1,7 @@
+{
+  Double sum=0.0;
+  for (  TopologyDetails topo : this.runningQueue) {
+    sum+=topo.getTotalRequestedCpu();
+  }
+  return sum;
+}

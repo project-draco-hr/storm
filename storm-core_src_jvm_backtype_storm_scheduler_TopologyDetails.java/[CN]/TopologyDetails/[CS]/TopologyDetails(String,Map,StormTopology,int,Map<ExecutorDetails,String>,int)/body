@@ -4,6 +4,7 @@
   if (executorToComponents != null) {
     this.executorToComponent.putAll(executorToComponents);
   }
+  this.launchTime=launchTime;
   this.initResourceList();
   this.initConfigs();
 }

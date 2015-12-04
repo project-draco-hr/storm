@@ -1,0 +1,16 @@
+{
+  Map<String,Map<String,Double>> userResourcePools=this.getUserResourcePools();
+  LOG.info("userResourcePools: {}",userResourcePools);
+  for (  TopologyDetails topo : topologies.getTopologies()) {
+    String topologySubmitter=topo.getTopologySubmitter();
+    if (!this.userMap.containsKey(topologySubmitter)) {
+      this.userMap.put(topologySubmitter,new User(topologySubmitter,userResourcePools.get(topologySubmitter)));
+    }
+    if (cluster.getUnassignedExecutors(topo).size() >= topo.getExecutors().size()) {
+      this.userMap.get(topologySubmitter).addTopologyToPendingQueue(topo);
+    }
+ else {
+      this.userMap.get(topologySubmitter).addTopologyToRunningQueue(topo);
+    }
+  }
+}

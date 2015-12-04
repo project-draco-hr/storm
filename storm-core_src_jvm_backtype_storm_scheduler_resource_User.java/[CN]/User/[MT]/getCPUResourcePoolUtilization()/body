@@ -1,0 +1,7 @@
+{
+  Double cpuGuarantee=this.resourcePool.get("cpu");
+  if (cpuGuarantee != null) {
+    return this.getCPUResourceUsedByUser() / cpuGuarantee;
+  }
+  return null;
+}

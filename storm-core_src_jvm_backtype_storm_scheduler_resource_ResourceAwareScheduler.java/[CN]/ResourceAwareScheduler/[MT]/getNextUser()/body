@@ -1,0 +1,26 @@
+{
+  Double least=Double.MAX_VALUE;
+  User ret=null;
+  for (  User user : this.userMap.values()) {
+    if (user.hasTopologyNeedSchedule()) {
+      Double userResourcePoolAverageUtilization=user.getResourcePoolAverageUtilization();
+      if (least > userResourcePoolAverageUtilization) {
+        ret=user;
+        least=userResourcePoolAverageUtilization;
+      }
+ else       if (least == userResourcePoolAverageUtilization) {
+        double currentCpuPercentage=ret.getCPUResourceGuaranteed() / this.cluster.getClusterTotalCPUResource();
+        double currentMemoryPercentage=ret.getMemoryResourceGuaranteed() / this.cluster.getClusterTotalMemoryResource();
+        double currentAvgPercentage=(currentCpuPercentage + currentMemoryPercentage) / 2.0;
+        double userCpuPercentage=user.getCPUResourceGuaranteed() / this.cluster.getClusterTotalCPUResource();
+        double userMemoryPercentage=user.getMemoryResourceGuaranteed() / this.cluster.getClusterTotalMemoryResource();
+        double userAvgPercentage=(userCpuPercentage + userMemoryPercentage) / 2.0;
+        if (userAvgPercentage > currentAvgPercentage) {
+          ret=user;
+          least=userResourcePoolAverageUtilization;
+        }
+      }
+    }
+  }
+  return ret;
+}
