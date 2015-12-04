@@ -3,9 +3,9 @@
   if (cluster.getUnassignedExecutors(td).size() > 0) {
     LOG.debug("/********Scheduling topology {} from User {}************/",td.getName(),topologySubmitter);
     SchedulingState schedulingState=this.checkpointSchedulingState();
-    IStrategy RAStrategy=null;
+    IStrategy rasStrategy=null;
     try {
-      RAStrategy=(IStrategy)Utils.newInstance((String)td.getConf().get(Config.TOPOLOGY_SCHEDULER_STRATEGY));
+      rasStrategy=(IStrategy)Utils.newInstance((String)td.getConf().get(Config.TOPOLOGY_SCHEDULER_STRATEGY));
     }
  catch (    RuntimeException e) {
       LOG.error("failed to create instance of IStrategy: {} with error: {}! Topology {} will not be scheduled.",td.getName(),td.getConf().get(Config.TOPOLOGY_SCHEDULER_STRATEGY),e.getMessage());
@@ -19,15 +19,15 @@
     while (true) {
       SchedulingResult result=null;
       try {
-        RAStrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
-        result=RAStrategy.schedule(td);
+        rasStrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
+        result=rasStrategy.schedule(td);
       }
  catch (      Exception e) {
-        LOG.error("Exception thrown when running strategy {} to schedule topology {}. Topology will not be scheduled! Error: {} StackTrack: {}",RAStrategy.getClass().getName(),td.getName(),e.getMessage(),Arrays.toString(e.getStackTrace()));
+        LOG.error("Exception thrown when running strategy {} to schedule topology {}. Topology will not be scheduled! Error: {} StackTrack: {}",rasStrategy.getClass().getName(),td.getName(),e.getMessage(),Arrays.toString(e.getStackTrace()));
         this.restoreCheckpointSchedulingState(schedulingState);
         topologySubmitter=this.userMap.get(td.getTopologySubmitter());
         topologySubmitter.moveTopoFromPendingToInvalid(td);
-        this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling - Exception thrown when running strategy {}" + RAStrategy.getClass().getName() + ". Please check logs for details");
+        this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling - Exception thrown when running strategy {}" + rasStrategy.getClass().getName() + ". Please check logs for details");
       }
       LOG.debug("scheduling result: {}",result);
       if (result != null && result.isValid()) {

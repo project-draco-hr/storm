@@ -2,7 +2,7 @@
   String user=(String)this.topologyConf.get(Config.TOPOLOGY_SUBMITTER_USER);
   if (user == null || user.equals("")) {
     LOG.debug("Topology {} submitted by anonymous user",this.getName());
-    user="anonymous";
+    user=System.getProperty("user.name");
   }
   return user;
 }

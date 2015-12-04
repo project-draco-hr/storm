@@ -6,7 +6,7 @@
   }
   double cpuNeeded=td.getTotalRequestedCpu() / submitter.getCPUResourceGuaranteed();
   double memoryNeeded=(td.getTotalRequestedMemOffHeap() + td.getTotalRequestedMemOnHeap()) / submitter.getMemoryResourceGuaranteed();
-  User evictUser=this.findUserWithMostResourcesAboveGuarantee();
+  User evictUser=this.findUserWithHighestAverageResourceUtilAboveGuarantee();
   if ((1.0 - submitter.getCPUResourcePoolUtilization()) >= cpuNeeded && (1.0 - submitter.getMemoryResourcePoolUtilization()) >= memoryNeeded) {
     if (evictUser != null) {
       TopologyDetails topologyEvict=evictUser.getRunningTopologyWithLowestPriority();
