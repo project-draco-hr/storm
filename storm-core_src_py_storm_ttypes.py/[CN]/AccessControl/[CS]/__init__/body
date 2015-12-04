@@ -1,0 +1,4 @@
+def __init__(self, type=None, name=None, access=None):
+    self.type = type
+    self.name = name
+    self.access = access

@@ -1,0 +1,11 @@
+{
+  checkIsNotTmp();
+  FileContext fc=FileContext.getFileContext(_hadoopConf);
+  Path dest=new Path(_path.getParent(),BLOBSTORE_DATA_FILE);
+  if (_mustBeNew) {
+    fc.rename(_path,dest);
+  }
+ else {
+    fc.rename(_path,dest,Options.Rename.OVERWRITE);
+  }
+}

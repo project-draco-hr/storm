@@ -1,0 +1,3 @@
+def beginUpdateBlob(self, key):
+    '\n    Parameters:\n     - key\n    '
+    pass

@@ -1,0 +1,7 @@
+{
+  set_version_isSet(false);
+  this.version=0;
+  this.session=null;
+  set_data_size_isSet(false);
+  this.data_size=0;
+}

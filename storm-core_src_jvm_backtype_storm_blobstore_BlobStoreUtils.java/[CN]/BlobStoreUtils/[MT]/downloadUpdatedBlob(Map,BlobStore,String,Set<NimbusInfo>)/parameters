@@ -1,0 +1,4 @@
+Map conf
+BlobStore blobStore
+String key
+Set<NimbusInfo> nimbusInfos

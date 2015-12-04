@@ -1,0 +1,5 @@
+{
+  if (other.is_set_key()) {
+    this.key=other.key;
+  }
+}

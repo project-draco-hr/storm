@@ -1,0 +1,18 @@
+def process_listBlobs(self, seqid, iprot, oprot):
+    args = listBlobs_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = listBlobs_result()
+    try:
+        result.success = self._handler.listBlobs(args.session)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('listBlobs', msg_type, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

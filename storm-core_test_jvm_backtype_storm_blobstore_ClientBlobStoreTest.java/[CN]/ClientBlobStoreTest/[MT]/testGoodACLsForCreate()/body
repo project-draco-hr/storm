@@ -1,0 +1,8 @@
+{
+  SettableBlobMeta meta=new SettableBlobMeta();
+  AccessControl submitterAcl=BlobStoreAclHandler.parseAccessControl("u:tester:rwa");
+  meta.add_to_acl(submitterAcl);
+  String testKey="testBlobKey";
+  client.createBlob(testKey,meta);
+  validatedBlobAcls(testKey);
+}

@@ -1,0 +1,3 @@
+{
+  this.chunk=chunk == null ? (ByteBuffer)null : ByteBuffer.wrap(Arrays.copyOf(chunk,chunk.length));
+}

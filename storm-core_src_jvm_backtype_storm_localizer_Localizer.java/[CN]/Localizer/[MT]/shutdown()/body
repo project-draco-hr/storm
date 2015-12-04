@@ -1,0 +1,11 @@
+{
+  if (_cacheCleanupService != null) {
+    _cacheCleanupService.shutdown();
+  }
+  if (_execService != null) {
+    _execService.shutdown();
+  }
+  if (_updateExecService != null) {
+    _updateExecService.shutdown();
+  }
+}

@@ -1,0 +1,5 @@
+{
+  Subject nimbus=new Subject();
+  nimbus.getPrincipals().add(new NimbusPrincipal());
+  return nimbus;
+}

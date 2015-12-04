@@ -1,0 +1,6 @@
+{
+  if (_cleanup != null) {
+    _cleanup.cancel();
+    _cleanup=null;
+  }
+}

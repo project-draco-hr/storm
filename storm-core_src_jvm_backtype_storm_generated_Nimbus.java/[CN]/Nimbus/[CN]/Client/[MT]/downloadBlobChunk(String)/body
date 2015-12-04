@@ -1,0 +1,4 @@
+{
+  send_downloadBlobChunk(session);
+  return recv_downloadBlobChunk();
+}

@@ -1,0 +1,4 @@
+{
+  this.keys=null;
+  this.session=null;
+}

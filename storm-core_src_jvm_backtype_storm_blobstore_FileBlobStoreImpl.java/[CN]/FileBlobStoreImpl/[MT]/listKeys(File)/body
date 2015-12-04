@@ -1,0 +1,7 @@
+{
+  String[] files=path.list();
+  if (files != null) {
+    return Arrays.asList(files).iterator();
+  }
+  return new LinkedList<String>().iterator();
+}

@@ -1,0 +1,4 @@
+def __init__(self, version=None, session=None, data_size=None):
+    self.version = version
+    self.session = session
+    self.data_size = data_size

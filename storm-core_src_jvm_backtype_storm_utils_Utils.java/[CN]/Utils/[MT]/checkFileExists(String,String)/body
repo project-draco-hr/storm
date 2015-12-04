@@ -1,0 +1,3 @@
+{
+  return Files.exists(new File(dir,file).toPath());
+}

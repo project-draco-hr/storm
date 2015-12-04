@@ -3,15 +3,15 @@
   BitSet incoming=iprot.readBitSet(1);
   if (incoming.get(0)) {
 {
-      org.apache.thrift.protocol.TMap _map694=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-      struct.named_logger_level=new HashMap<String,LogLevel>(2 * _map694.size);
-      String _key695;
-      LogLevel _val696;
-      for (int _i697=0; _i697 < _map694.size; ++_i697) {
-        _key695=iprot.readString();
-        _val696=new LogLevel();
-        _val696.read(iprot);
-        struct.named_logger_level.put(_key695,_val696);
+      org.apache.thrift.protocol.TMap _map710=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.named_logger_level=new HashMap<String,LogLevel>(2 * _map710.size);
+      String _key711;
+      LogLevel _val712;
+      for (int _i713=0; _i713 < _map710.size; ++_i713) {
+        _key711=iprot.readString();
+        _val712=new LogLevel();
+        _val712.read(iprot);
+        struct.named_logger_level.put(_key711,_val712);
       }
     }
     struct.set_named_logger_level_isSet(true);

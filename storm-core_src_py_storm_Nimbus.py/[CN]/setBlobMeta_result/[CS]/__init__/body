@@ -1,0 +1,3 @@
+def __init__(self, aze=None, knf=None):
+    self.aze = aze
+    self.knf = knf

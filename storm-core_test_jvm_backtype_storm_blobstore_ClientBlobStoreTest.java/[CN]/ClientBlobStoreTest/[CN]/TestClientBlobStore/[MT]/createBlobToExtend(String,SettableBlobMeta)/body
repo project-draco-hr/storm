@@ -1,0 +1,4 @@
+{
+  allBlobs.put(key,meta);
+  return null;
+}

@@ -1,0 +1,5 @@
+{
+  if (that == null)   return false;
+  if (that instanceof listBlobs_args)   return this.equals((listBlobs_args)that);
+  return false;
+}

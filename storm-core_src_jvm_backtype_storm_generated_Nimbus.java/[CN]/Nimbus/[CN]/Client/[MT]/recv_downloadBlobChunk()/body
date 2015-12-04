@@ -1,0 +1,11 @@
+{
+  downloadBlobChunk_result result=new downloadBlobChunk_result();
+  receiveBase(result,"downloadBlobChunk");
+  if (result.is_set_success()) {
+    return result.success;
+  }
+  if (result.aze != null) {
+    throw result.aze;
+  }
+  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"downloadBlobChunk failed: unknown result");
+}

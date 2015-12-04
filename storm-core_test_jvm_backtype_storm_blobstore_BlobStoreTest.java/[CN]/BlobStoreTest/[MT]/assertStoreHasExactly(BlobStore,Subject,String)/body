@@ -1,0 +1,15 @@
+{
+  Set<String> expected=new HashSet<String>(Arrays.asList(keys));
+  Set<String> found=new HashSet<String>();
+  Iterator<String> c=store.listKeys();
+  while (c.hasNext()) {
+    String keyName=c.next();
+    found.add(keyName);
+  }
+  Set<String> extra=new HashSet<String>(found);
+  extra.removeAll(expected);
+  assertTrue("Found extra keys in the blob store " + extra,extra.isEmpty());
+  Set<String> missing=new HashSet<String>(expected);
+  missing.removeAll(found);
+  assertTrue("Found keys missing from the blob store " + missing,missing.isEmpty());
+}

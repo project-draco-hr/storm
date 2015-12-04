@@ -1,0 +1,3 @@
+{
+  testMultiple(initHdfs("/storm/blobstore2"));
+}

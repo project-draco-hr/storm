@@ -6,9 +6,9 @@
       oprot.writeFieldBegin(NAMED_LOGGER_LEVEL_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.named_logger_level.size()));
-        for (        Map.Entry<String,LogLevel> _iter692 : struct.named_logger_level.entrySet()) {
-          oprot.writeString(_iter692.getKey());
-          _iter692.getValue().write(oprot);
+        for (        Map.Entry<String,LogLevel> _iter708 : struct.named_logger_level.entrySet()) {
+          oprot.writeString(_iter708.getKey());
+          _iter708.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }

@@ -1,0 +1,3 @@
+{
+  return new HdfsBlobStoreFile(getKeyDir(key),BLOBSTORE_DATA,_hadoopConf);
+}

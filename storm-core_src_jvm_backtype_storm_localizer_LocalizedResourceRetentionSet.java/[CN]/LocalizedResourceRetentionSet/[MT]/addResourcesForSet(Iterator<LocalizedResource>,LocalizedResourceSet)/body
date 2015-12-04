@@ -1,0 +1,11 @@
+{
+  for (Iterator<LocalizedResource> iter=setIter; setIter.hasNext(); ) {
+    LocalizedResource lrsrc=iter.next();
+    _currentSize+=lrsrc.getSize();
+    if (lrsrc.getRefCount() > 0) {
+      continue;
+    }
+    LOG.debug("adding {} to be checked for cleaning",lrsrc.getKey());
+    _noReferences.put(lrsrc,set);
+  }
+}

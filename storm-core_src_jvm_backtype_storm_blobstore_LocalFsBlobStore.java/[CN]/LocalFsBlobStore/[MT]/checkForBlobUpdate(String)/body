@@ -1,0 +1,5 @@
+{
+  CuratorFramework zkClient=BlobStoreUtils.createZKClient(conf);
+  BlobStoreUtils.updateKeyForBlobStore(conf,this,zkClient,key,nimbusInfo);
+  zkClient.close();
+}

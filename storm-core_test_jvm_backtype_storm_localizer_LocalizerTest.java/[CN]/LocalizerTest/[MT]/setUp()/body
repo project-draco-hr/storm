@@ -1,0 +1,7 @@
+{
+  baseDir=new File("/tmp/blob-store-localizer-test-" + UUID.randomUUID());
+  if (!baseDir.mkdir()) {
+    throw new IOException("failed to create base directory");
+  }
+  ClientBlobStore mockblobstore=mock(ClientBlobStore.class);
+}

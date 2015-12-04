@@ -1,0 +1,8 @@
+{
+  if (!is_set_keys()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'keys' is unset! Struct:" + toString());
+  }
+  if (!is_set_session()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'session' is unset! Struct:" + toString());
+  }
+}

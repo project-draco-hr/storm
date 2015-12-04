@@ -1,0 +1,2 @@
+org.apache.thrift.protocol.TProtocol prot
+uploadBlobChunk_result struct

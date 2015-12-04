@@ -1,0 +1,19 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('AccessControl')
+    if (self.type is not None):
+        oprot.writeFieldBegin('type', TType.I32, 1)
+        oprot.writeI32(self.type)
+        oprot.writeFieldEnd()
+    if (self.name is not None):
+        oprot.writeFieldBegin('name', TType.STRING, 2)
+        oprot.writeString(self.name.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.access is not None):
+        oprot.writeFieldBegin('access', TType.I32, 3)
+        oprot.writeI32(self.access)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

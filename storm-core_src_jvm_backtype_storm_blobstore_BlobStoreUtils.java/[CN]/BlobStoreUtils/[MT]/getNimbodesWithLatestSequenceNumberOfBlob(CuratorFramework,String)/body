@@ -1,0 +1,14 @@
+{
+  List<String> stateInfoList=zkClient.getChildren().forPath("/blobstore/" + key);
+  Set<NimbusInfo> nimbusInfoSet=new HashSet<NimbusInfo>();
+  int latestSeqNumber=getLatestSequenceNumber(stateInfoList);
+  LOG.debug("getNimbodesWithLatestSequenceNumberOfBlob stateInfo {} version {}",stateInfoList,latestSeqNumber);
+  for (  String state : stateInfoList) {
+    BlobKeySequenceInfo sequenceInfo=normalizeNimbusHostPortSequenceNumberInfo(state);
+    if (latestSeqNumber == Integer.parseInt(sequenceInfo.getSequenceNumber())) {
+      nimbusInfoSet.add(NimbusInfo.parse(sequenceInfo.getNimbusHostPort()));
+    }
+  }
+  LOG.debug("nimbusInfoList {}",nimbusInfoSet);
+  return nimbusInfoSet;
+}

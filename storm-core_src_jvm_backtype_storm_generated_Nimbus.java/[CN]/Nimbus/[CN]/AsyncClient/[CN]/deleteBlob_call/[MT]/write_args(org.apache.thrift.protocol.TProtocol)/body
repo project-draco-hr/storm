@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("deleteBlob",org.apache.thrift.protocol.TMessageType.CALL,0));
+  deleteBlob_args args=new deleteBlob_args();
+  args.set_key(key);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

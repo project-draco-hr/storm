@@ -1,0 +1,25 @@
+{
+  long cleanUpIfBefore=System.currentTimeMillis() - age;
+  Iterator<String> keys=new KeyInHashDirIterator();
+  while (keys.hasNext()) {
+    String key=keys.next();
+    Path keyDir=getKeyDir(key);
+    Iterator<BlobStoreFile> i=listBlobStoreFiles(keyDir);
+    if (!i.hasNext()) {
+      try {
+        _fs.delete(keyDir,true);
+      }
+ catch (      Exception e) {
+        LOG.warn("Could not delete " + keyDir + " will try again later");
+      }
+    }
+    while (i.hasNext()) {
+      BlobStoreFile f=i.next();
+      if (f.isTmp()) {
+        if (f.getModTime() <= cleanUpIfBefore) {
+          f.delete();
+        }
+      }
+    }
+  }
+}

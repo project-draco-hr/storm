@@ -1,0 +1,3 @@
+String session
+int bufferSize
+String key

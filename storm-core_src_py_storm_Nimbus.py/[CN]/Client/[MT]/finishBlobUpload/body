@@ -1,0 +1,4 @@
+def finishBlobUpload(self, session):
+    '\n    Parameters:\n     - session\n    '
+    self.send_finishBlobUpload(session)
+    self.recv_finishBlobUpload()

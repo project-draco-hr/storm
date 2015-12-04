@@ -1,0 +1,6 @@
+{
+  uploadBlobChunk_args args=new uploadBlobChunk_args();
+  args.set_session(session);
+  args.set_chunk(chunk);
+  sendBase("uploadBlobChunk",args);
+}

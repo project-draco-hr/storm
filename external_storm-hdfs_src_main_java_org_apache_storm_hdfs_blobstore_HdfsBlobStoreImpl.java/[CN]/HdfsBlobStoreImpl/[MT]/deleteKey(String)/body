@@ -1,0 +1,6 @@
+{
+  Path keyDir=getKeyDir(key);
+  HdfsBlobStoreFile pf=new HdfsBlobStoreFile(keyDir,BLOBSTORE_DATA,_hadoopConf);
+  pf.delete();
+  delete(keyDir);
+}

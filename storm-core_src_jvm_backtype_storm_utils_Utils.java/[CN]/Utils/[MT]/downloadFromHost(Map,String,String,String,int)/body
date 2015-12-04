@@ -1,9 +1,0 @@
-{
-  NimbusClient client=new NimbusClient(conf,host,port,null);
-  try {
-    download(client,file,localFile);
-  }
-  finally {
-    client.close();
-  }
-}

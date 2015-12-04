@@ -1,0 +1,3 @@
+{
+  testArchives("test/jvm/backtype/storm/localizer/localtestwithsymlink.tgz",true,21344);
+}

@@ -1,0 +1,14 @@
+{
+  AtomicOutputStream out=null;
+  try {
+    out=createBlob(key,meta,who);
+    out.write(data);
+    out.close();
+    out=null;
+  }
+  finally {
+    if (out != null) {
+      out.cancel();
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_success=true && (is_set_success());
+  list.add(present_success);
+  if (present_success)   list.add(success);
+  boolean present_aze=true && (is_set_aze());
+  list.add(present_aze);
+  if (present_aze)   list.add(aze);
+  boolean present_knf=true && (is_set_knf());
+  list.add(present_knf);
+  if (present_knf)   list.add(knf);
+  return list.hashCode();
+}

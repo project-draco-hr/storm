@@ -1,0 +1,4 @@
+def beginCreateBlob(self, key, meta):
+    '\n    Parameters:\n     - key\n     - meta\n    '
+    self.send_beginCreateBlob(key, meta)
+    return self.recv_beginCreateBlob()

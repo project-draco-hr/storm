@@ -1,0 +1,12 @@
+{
+  who=checkAndGetSubject(who);
+  validateKey(key);
+  SettableBlobMeta meta=getStoredBlobMeta(key);
+  _aclHandler.hasPermissions(meta.get_acl(),READ,who,key);
+  try {
+    return new BlobStoreFileInputStream(_hbs.read(DATA_PREFIX + key));
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

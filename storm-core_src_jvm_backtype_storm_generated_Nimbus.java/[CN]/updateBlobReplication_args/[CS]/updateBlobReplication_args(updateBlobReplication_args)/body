@@ -1,0 +1,7 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_key()) {
+    this.key=other.key;
+  }
+  this.replication=other.replication;
+}

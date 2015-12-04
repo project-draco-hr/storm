@@ -1,0 +1,6 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.version))
+    value = ((value * 31) ^ hash(self.session))
+    value = ((value * 31) ^ hash(self.data_size))
+    return value

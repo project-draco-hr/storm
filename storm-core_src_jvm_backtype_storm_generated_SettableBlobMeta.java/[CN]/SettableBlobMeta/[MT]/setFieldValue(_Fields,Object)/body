@@ -1,0 +1,20 @@
+{
+switch (field) {
+case ACL:
+    if (value == null) {
+      unset_acl();
+    }
+ else {
+      set_acl((List<AccessControl>)value);
+    }
+  break;
+case REPLICATION_FACTOR:
+if (value == null) {
+  unset_replication_factor();
+}
+ else {
+  set_replication_factor((Integer)value);
+}
+break;
+}
+}

@@ -1,0 +1,29 @@
+{
+  LOG.info("Blob store based in {}",path);
+  _fullPath=path;
+  _hadoopConf=hconf;
+  _fs=path.getFileSystem(_hadoopConf);
+  if (!_fs.exists(_fullPath)) {
+    FsPermission perms=new FsPermission(BLOBSTORE_DIR_PERMISSION);
+    boolean success=_fs.mkdirs(_fullPath,perms);
+    if (!success) {
+      throw new IOException("Error creating blobstore directory: " + _fullPath);
+    }
+  }
+  Object shouldCleanup=conf.get(Config.BLOBSTORE_CLEANUP_ENABLE);
+  if (Utils.getBoolean(shouldCleanup,false)) {
+    LOG.debug("Starting hdfs blobstore cleaner");
+    _cleanup=new TimerTask(){
+      @Override public void run(){
+        try {
+          fullCleanup(FULL_CLEANUP_FREQ);
+        }
+ catch (        IOException e) {
+          LOG.error("Error trying to cleanup",e);
+        }
+      }
+    }
+;
+    timer.scheduleAtFixedRate(_cleanup,0,FULL_CLEANUP_FREQ);
+  }
+}

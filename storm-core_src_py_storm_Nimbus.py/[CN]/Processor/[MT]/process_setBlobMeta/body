@@ -1,0 +1,24 @@
+def process_setBlobMeta(self, seqid, iprot, oprot):
+    args = setBlobMeta_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = setBlobMeta_result()
+    try:
+        self._handler.setBlobMeta(args.key, args.meta)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
+    except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
+        result.aze = aze
+    except KeyNotFoundException as knf:
+        msg_type = TMessageType.REPLY
+        result.knf = knf
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('setBlobMeta', msg_type, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

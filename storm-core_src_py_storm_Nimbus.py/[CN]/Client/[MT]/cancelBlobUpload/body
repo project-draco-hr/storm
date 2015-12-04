@@ -1,0 +1,4 @@
+def cancelBlobUpload(self, session):
+    '\n    Parameters:\n     - session\n    '
+    self.send_cancelBlobUpload(session)
+    self.recv_cancelBlobUpload()

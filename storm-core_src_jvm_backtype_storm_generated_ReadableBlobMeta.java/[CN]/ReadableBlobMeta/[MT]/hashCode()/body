@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_settable=true && (is_set_settable());
+  list.add(present_settable);
+  if (present_settable)   list.add(settable);
+  boolean present_version=true;
+  list.add(present_version);
+  if (present_version)   list.add(version);
+  return list.hashCode();
+}

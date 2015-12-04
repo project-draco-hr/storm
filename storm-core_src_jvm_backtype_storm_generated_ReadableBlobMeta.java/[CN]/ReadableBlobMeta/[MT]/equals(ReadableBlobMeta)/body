@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_settable=true && this.is_set_settable();
+  boolean that_present_settable=true && that.is_set_settable();
+  if (this_present_settable || that_present_settable) {
+    if (!(this_present_settable && that_present_settable))     return false;
+    if (!this.settable.equals(that.settable))     return false;
+  }
+  boolean this_present_version=true;
+  boolean that_present_version=true;
+  if (this_present_version || that_present_version) {
+    if (!(this_present_version && that_present_version))     return false;
+    if (this.version != that.version)     return false;
+  }
+  return true;
+}

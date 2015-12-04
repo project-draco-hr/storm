@@ -1,0 +1,8 @@
+{
+  String testKey="testDuplicateACLsBlobKey";
+  SettableBlobMeta meta=new SettableBlobMeta();
+  createTestBlob(testKey,meta);
+  AccessControl duplicateAcl=BlobStoreAclHandler.parseAccessControl("u:tester:r--");
+  meta.add_to_acl(duplicateAcl);
+  client.setBlobMeta(testKey,meta);
+}

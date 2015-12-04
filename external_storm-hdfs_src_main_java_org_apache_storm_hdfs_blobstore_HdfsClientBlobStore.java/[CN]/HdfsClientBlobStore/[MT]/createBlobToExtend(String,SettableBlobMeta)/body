@@ -1,0 +1,3 @@
+{
+  return _blobStore.createBlob(key,meta,null);
+}

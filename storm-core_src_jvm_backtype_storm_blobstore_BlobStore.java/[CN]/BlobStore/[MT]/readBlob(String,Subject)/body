@@ -1,0 +1,5 @@
+{
+  ByteArrayOutputStream out=new ByteArrayOutputStream();
+  readBlobTo(key,out,who);
+  return out.toByteArray();
+}

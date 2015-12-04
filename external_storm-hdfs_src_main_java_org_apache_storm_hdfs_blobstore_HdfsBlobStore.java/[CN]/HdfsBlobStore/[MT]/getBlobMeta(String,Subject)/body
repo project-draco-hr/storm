@@ -1,0 +1,16 @@
+{
+  who=checkAndGetSubject(who);
+  validateKey(key);
+  SettableBlobMeta meta=getStoredBlobMeta(key);
+  _aclHandler.validateUserCanReadMeta(meta.get_acl(),who,key);
+  ReadableBlobMeta rbm=new ReadableBlobMeta();
+  rbm.set_settable(meta);
+  try {
+    BlobStoreFile pf=_hbs.read(DATA_PREFIX + key);
+    rbm.set_version(pf.getModTime());
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  return rbm;
+}

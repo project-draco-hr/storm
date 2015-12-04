@@ -1,0 +1,5 @@
+{
+  getBlobMeta_args args=new getBlobMeta_args();
+  args.set_key(key);
+  sendBase("getBlobMeta",args);
+}

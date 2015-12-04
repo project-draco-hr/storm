@@ -8,8 +8,8 @@
   if (struct.is_set_pulses()) {
 {
       oprot.writeI32(struct.pulses.size());
-      for (      HBPulse _iter702 : struct.pulses) {
-        _iter702.write(oprot);
+      for (      HBPulse _iter726 : struct.pulses) {
+        _iter726.write(oprot);
       }
     }
   }
