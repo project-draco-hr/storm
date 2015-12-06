@@ -1,4 +1,0 @@
-{
-  this.contextQuery=contextQuery;
-  this.mapper=mapper;
-}

@@ -1,0 +1,3 @@
+{
+  return new SimpleCQLStatementMapper(queryString,mapper,(routingKeys != null) ? new RoutingKeyGenerator(routingKeys) : null);
+}

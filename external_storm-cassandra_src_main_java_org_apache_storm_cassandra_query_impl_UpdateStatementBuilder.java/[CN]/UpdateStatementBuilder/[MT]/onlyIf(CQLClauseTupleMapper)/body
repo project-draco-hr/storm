@@ -1,4 +1,0 @@
-{
-  this.onlyIfClausesMapper=clauses;
-  return this;
-}

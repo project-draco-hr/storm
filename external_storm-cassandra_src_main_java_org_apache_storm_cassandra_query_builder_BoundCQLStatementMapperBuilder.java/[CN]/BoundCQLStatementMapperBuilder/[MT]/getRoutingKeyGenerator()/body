@@ -1,0 +1,3 @@
+{
+  return (routingKeys != null) ? new RoutingKeyGenerator(routingKeys) : null;
+}

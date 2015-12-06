@@ -1,0 +1,8 @@
+{
+  Preconditions.checkNotNull(contextQuery,"ContextQuery must not be null");
+  Preconditions.checkNotNull(mapper,"Mapper should not be null");
+  this.contextQuery=contextQuery;
+  this.mapper=mapper;
+  this.rkGenerator=rkGenerator;
+  this.binder=binder;
+}

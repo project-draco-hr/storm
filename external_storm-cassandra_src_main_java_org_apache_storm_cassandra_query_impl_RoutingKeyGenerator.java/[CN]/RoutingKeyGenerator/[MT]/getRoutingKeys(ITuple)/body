@@ -1,0 +1,8 @@
+{
+  List<ByteBuffer> keys=new ArrayList<>(routingKeys.size());
+  for (  String s : routingKeys) {
+    Object value=tuple.getValueByField(s);
+    keys.add(DataType.serializeValue(value,ProtocolVersion.NEWEST_SUPPORTED));
+  }
+  return keys;
+}

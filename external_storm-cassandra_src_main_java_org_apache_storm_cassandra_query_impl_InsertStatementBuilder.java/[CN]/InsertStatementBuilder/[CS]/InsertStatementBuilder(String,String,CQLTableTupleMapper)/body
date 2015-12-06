@@ -1,5 +1,0 @@
-{
-  this.keyspace=keyspace;
-  this.table=table;
-  this.mapper2TableName=mapper2TableName;
-}

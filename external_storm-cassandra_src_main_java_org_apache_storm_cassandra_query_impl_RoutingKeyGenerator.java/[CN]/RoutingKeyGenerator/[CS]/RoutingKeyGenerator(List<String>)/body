@@ -1,0 +1,4 @@
+{
+  Preconditions.checkNotNull(routingKeys);
+  this.routingKeys=routingKeys;
+}

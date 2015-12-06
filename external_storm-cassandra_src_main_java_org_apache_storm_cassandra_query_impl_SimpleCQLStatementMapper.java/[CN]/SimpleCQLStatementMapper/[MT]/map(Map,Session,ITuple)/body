@@ -1,0 +1,10 @@
+{
+  List<Column> columns=mapper.map(tuple);
+  SimpleStatement statement=new SimpleStatement(queryString,Column.getVals(columns));
+  if (hasRoutingKeys()) {
+    List<ByteBuffer> keys=rkGenerator.getRoutingKeys(tuple);
+    if (keys.size() == 1)     statement.setRoutingKey(keys.get(0));
+ else     statement.setRoutingKey(keys.toArray(new ByteBuffer[keys.size()]));
+  }
+  return Arrays.asList((Statement)statement);
+}

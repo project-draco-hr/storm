@@ -1,7 +1,0 @@
-{
-  List<Statement> map=mapper.map(Maps.newHashMap(),cassandraCQLUnit.session,mockTuple);
-  List<String> listExpected=Arrays.asList(expected);
-  for (int i=0; i < map.size(); i++) {
-    Assert.assertEquals(listExpected.get(i),map.get(i).toString());
-  }
-}

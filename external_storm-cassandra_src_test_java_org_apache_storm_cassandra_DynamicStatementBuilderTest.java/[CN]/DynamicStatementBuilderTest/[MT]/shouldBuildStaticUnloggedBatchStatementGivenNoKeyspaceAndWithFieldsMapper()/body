@@ -1,3 +1,6 @@
 {
-  executeBatchStatementAndAssert(unLoggedBatch(insertInto("temperature").values(with(fields("weather_station_id","event_time","temperature")))),"INSERT INTO temperature(weather_station_id,event_time,temperature) VALUES ('1'," + NOW.getTime() + ",'0??C');");
+  BatchCQLStatementTupleMapper mapper=unLoggedBatch(simpleQuery(QUERY_STRING).with(fields("weather_station_id","event_time","temperature")));
+  List<Statement> stmts=mapper.map(Maps.newHashMap(),cassandraCQLUnit.session,mockTuple);
+  Assert.assertEquals(1,stmts.size());
+  makeAssertBatchStatement(QUERY_STRING,stmts.get(0));
 }
