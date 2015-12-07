@@ -5,11 +5,11 @@
   waterMarkEventGenerator=new WaterMarkEventGenerator<>(windowManager,50,5,streams);
   waterMarkEventGenerator.track(streamId("s1"),100);
   waterMarkEventGenerator.track(streamId("s1"),110);
-  Thread.sleep(60);
+  waterMarkEventGenerator.run();
   assertTrue(eventList.isEmpty());
   waterMarkEventGenerator.track(streamId("s2"),95);
   waterMarkEventGenerator.track(streamId("s2"),98);
-  Thread.sleep(60);
+  waterMarkEventGenerator.run();
   assertTrue(eventList.get(0).isWatermark());
   assertEquals(93,eventList.get(0).getTimestamp());
 }

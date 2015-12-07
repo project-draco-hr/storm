@@ -7,6 +7,6 @@
   conf.put(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_DURATION_MS,10);
   conf.put(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_FIELD_NAME,"ts");
   conf.put(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_MAX_LAG_MS,5);
-  conf.put(Config.TOPOLOGY_BOLTS_WATERMARK_EVENT_INTERVAL_MS,100);
+  conf.put(Config.TOPOLOGY_BOLTS_WATERMARK_EVENT_INTERVAL_MS,100000);
   executor.prepare(conf,getTopologyContext(),getOutputCollector());
 }

@@ -3,7 +3,7 @@
   for (  long ts : timstamps) {
     executor.execute(getTuple("s1",new Fields("ts"),new Values(ts)));
   }
-  Thread.sleep(120);
+  executor.waterMarkEventGenerator.run();
   assertEquals(3,testWindowedBolt.tupleWindows.size());
   TupleWindow first=testWindowedBolt.tupleWindows.get(0);
   assertArrayEquals(new long[]{603,605,607},new long[]{(long)first.get().get(0).getValue(0),(long)first.get().get(1).getValue(0),(long)first.get().get(2).getValue(0)});

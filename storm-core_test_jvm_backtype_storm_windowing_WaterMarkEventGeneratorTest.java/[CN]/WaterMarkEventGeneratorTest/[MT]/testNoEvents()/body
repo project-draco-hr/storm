@@ -1,4 +1,4 @@
 {
-  Thread.sleep(60);
+  waterMarkEventGenerator.run();
   assertTrue(eventList.isEmpty());
 }
