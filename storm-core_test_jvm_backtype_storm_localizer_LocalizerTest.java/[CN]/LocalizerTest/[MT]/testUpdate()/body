@@ -13,8 +13,8 @@
   File user1Dir=localizer.getLocalUserFileCacheDir(user1);
   assertTrue("failed to create user dir",user1Dir.mkdirs());
   LocalizedResource lrsrc=localizer.getBlob(new LocalResource(key1,false),user1,topo1,user1Dir);
-  String expectedUserDir=baseDir + "/" + Localizer.USERCACHE+ "/"+ user1;
-  String expectedFileDir=expectedUserDir + "/" + Localizer.FILECACHE+ "/"+ Localizer.FILESDIR;
+  String expectedUserDir=baseDir + File.separator + Localizer.USERCACHE+ File.separator+ user1;
+  String expectedFileDir=expectedUserDir + File.separator + Localizer.FILECACHE+ File.separator+ Localizer.FILESDIR;
   assertTrue("user filecache dir not created",new File(expectedFileDir).exists());
   File keyFile=new File(expectedFileDir,key1);
   File keyFileCurrentSymlink=new File(expectedFileDir,key1 + Utils.DEFAULT_CURRENT_BLOB_SUFFIX);
