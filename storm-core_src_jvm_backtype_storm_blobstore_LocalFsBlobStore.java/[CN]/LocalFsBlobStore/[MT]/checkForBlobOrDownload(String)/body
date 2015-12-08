@@ -1,10 +1,8 @@
 {
   boolean checkBlobDownload=false;
-  CuratorFramework zkClient=null;
   try {
     List<String> keyList=BlobStoreUtils.getKeyListFromBlobStore(this);
     if (!keyList.contains(key)) {
-      zkClient=BlobStoreUtils.createZKClient(conf);
       if (zkClient.checkExists().forPath(BLOBSTORE_SUBTREE + key) != null) {
         Set<NimbusInfo> nimbusSet=BlobStoreUtils.getNimbodesWithLatestSequenceNumberOfBlob(zkClient,key);
         if (BlobStoreUtils.downloadMissingBlob(conf,this,key,nimbusSet)) {
@@ -17,11 +15,6 @@
   }
  catch (  Exception e) {
     throw new RuntimeException(e);
-  }
- finally {
-    if (zkClient != null) {
-      zkClient.close();
-    }
   }
   return checkBlobDownload;
 }
