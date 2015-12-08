@@ -1,0 +1,11 @@
+{
+  RelDataType dataType=type.deriveType(typeFactory);
+  if (constraint instanceof ColumnConstraint.PrimaryKey) {
+    ColumnConstraint.PrimaryKey pk=(ColumnConstraint.PrimaryKey)constraint;
+    Preconditions.checkState(primaryKey == -1,"There are more than one primary key in the table");
+    primaryKey=fields.size();
+    primaryKeyMonotonicity=pk.monotonicity();
+  }
+  fields.add(new FieldType(name,dataType));
+  return this;
+}

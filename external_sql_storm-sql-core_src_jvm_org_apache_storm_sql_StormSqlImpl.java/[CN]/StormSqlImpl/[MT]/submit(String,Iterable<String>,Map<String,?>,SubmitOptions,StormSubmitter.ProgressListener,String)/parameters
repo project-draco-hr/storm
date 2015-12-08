@@ -1,0 +1,6 @@
+String name
+Iterable<String> statements
+Map<String,?> stormConf
+SubmitOptions opts
+StormSubmitter.ProgressListener progressListener
+String asUser

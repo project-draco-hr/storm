@@ -1,0 +1,6 @@
+{
+  byte[] r=new byte[4];
+  IntBuffer b=ByteBuffer.wrap(r).asIntBuffer();
+  b.put(val);
+  return r;
+}

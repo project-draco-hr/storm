@@ -1,0 +1,32 @@
+{
+  Map<String,ISqlTridentDataSource> dataSources=new HashMap<>();
+  for (  String sql : statements) {
+    StormParser parser=new StormParser(sql);
+    SqlNode node=parser.impl().parseSqlStmtEof();
+    if (node instanceof SqlCreateTable) {
+      handleCreateTableForTrident((SqlCreateTable)node,dataSources);
+    }
+ else {
+      FrameworkConfig config=Frameworks.newConfigBuilder().defaultSchema(schema).build();
+      Planner planner=Frameworks.getPlanner(config);
+      SqlNode parse=planner.parse(sql);
+      SqlNode validate=planner.validate(parse);
+      RelNode tree=planner.convert(validate);
+      org.apache.storm.sql.compiler.backends.trident.PlanCompiler compiler=new org.apache.storm.sql.compiler.backends.trident.PlanCompiler(typeFactory);
+      AbstractTridentProcessor proc=compiler.compile(tree);
+      TridentTopology topo=proc.build(dataSources);
+      Path jarPath=null;
+      try {
+        jarPath=Files.createTempFile("storm-sql",".jar");
+        System.setProperty("storm.jar",jarPath.toString());
+        packageTopology(jarPath,compiler.getCompilingClassLoader(),proc);
+        StormSubmitter.submitTopologyAs(name,stormConf,topo.build(),opts,progressListener,asUser);
+      }
+  finally {
+        if (jarPath != null) {
+          Files.delete(jarPath);
+        }
+      }
+    }
+  }
+}

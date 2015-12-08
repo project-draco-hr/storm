@@ -1,0 +1,5 @@
+{
+  String javaCode=generateJavaSource(plan);
+  ClassLoader cl=new CompilingClassLoader(getClass().getClassLoader(),PACKAGE_NAME + ".Processor",javaCode,null);
+  return (AbstractValuesProcessor)cl.loadClass(PACKAGE_NAME + ".Processor").newInstance();
+}

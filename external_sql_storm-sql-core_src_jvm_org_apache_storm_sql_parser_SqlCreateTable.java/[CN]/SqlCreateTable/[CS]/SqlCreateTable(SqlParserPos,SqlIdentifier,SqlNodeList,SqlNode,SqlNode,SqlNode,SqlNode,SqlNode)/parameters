@@ -1,0 +1,8 @@
+SqlParserPos pos
+SqlIdentifier tblName
+SqlNodeList fieldList
+SqlNode inputFormatClass
+SqlNode outputFormatClass
+SqlNode location
+SqlNode properties
+SqlNode query
