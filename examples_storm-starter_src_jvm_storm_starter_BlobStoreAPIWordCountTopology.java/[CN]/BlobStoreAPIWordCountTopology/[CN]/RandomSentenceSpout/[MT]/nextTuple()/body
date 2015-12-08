@@ -1,0 +1,9 @@
+{
+  Utils.sleep(100);
+  try {
+    _collector.emit(new Values(wc.getBlobContent(key,store)));
+  }
+ catch (  AuthorizationException|KeyNotFoundException|IOException exp) {
+    throw new RuntimeException(exp);
+  }
+}

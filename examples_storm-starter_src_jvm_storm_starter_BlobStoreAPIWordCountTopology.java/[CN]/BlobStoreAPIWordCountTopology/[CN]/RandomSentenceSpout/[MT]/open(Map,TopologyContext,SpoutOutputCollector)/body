@@ -1,0 +1,7 @@
+{
+  _collector=collector;
+  wc=new BlobStoreAPIWordCountTopology();
+  key="key1";
+  store=new NimbusBlobStore();
+  store.prepare(Utils.readStormConfig());
+}

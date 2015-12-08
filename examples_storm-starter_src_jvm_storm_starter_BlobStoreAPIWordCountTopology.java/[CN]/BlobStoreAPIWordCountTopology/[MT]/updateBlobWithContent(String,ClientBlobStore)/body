@@ -1,0 +1,5 @@
+{
+  AtomicOutputStream blobOutputStream=clientBlobStore.updateBlob(blobKey);
+  blobOutputStream.write(getRandomSentence().getBytes());
+  blobOutputStream.close();
+}

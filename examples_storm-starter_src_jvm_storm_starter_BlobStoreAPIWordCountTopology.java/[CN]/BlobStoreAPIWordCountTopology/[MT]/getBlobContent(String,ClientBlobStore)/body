@@ -1,0 +1,5 @@
+{
+  InputStreamWithMeta blobInputStream=clientBlobStore.getBlob(blobKey);
+  BufferedReader r=new BufferedReader(new InputStreamReader(blobInputStream));
+  return r.readLine();
+}
