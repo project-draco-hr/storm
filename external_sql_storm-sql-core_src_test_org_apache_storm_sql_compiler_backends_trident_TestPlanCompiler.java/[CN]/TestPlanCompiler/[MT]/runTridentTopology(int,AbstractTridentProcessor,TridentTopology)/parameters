@@ -1,0 +1,3 @@
+int expectedValueSize
+AbstractTridentProcessor proc
+TridentTopology topo

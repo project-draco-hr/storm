@@ -1,0 +1,9 @@
+{
+  if (emitted) {
+    return;
+  }
+  for (  Values r : RECORDS) {
+    collector.emit(r);
+  }
+  emitted=true;
+}

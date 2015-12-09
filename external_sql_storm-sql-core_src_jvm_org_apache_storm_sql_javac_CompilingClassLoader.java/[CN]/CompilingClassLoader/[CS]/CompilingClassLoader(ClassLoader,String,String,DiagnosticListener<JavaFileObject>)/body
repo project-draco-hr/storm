@@ -1,0 +1,6 @@
+{
+  super(parent);
+  if (!compileSourceCodeToByteCode(className,sourceCode,diagnosticListener)) {
+    throw new CompilerException("Could not compile " + className);
+  }
+}

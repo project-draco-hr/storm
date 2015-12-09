@@ -1,0 +1,3 @@
+{
+  return (SqlDataTypeSpec)get(1);
+}

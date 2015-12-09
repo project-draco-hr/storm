@@ -1,0 +1,4 @@
+SqlIdentifier name
+SqlDataTypeSpec type
+ColumnConstraint constraint
+SqlParserPos pos

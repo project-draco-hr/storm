@@ -1,0 +1,8 @@
+{
+  if (isStatic) {
+    return String.format("%s.%s(%s)",clazz.getCanonicalName(),method,Joiner.on(',').join(args));
+  }
+ else {
+    return String.format("%s.%s(%s)",args.get(0),method,Joiner.on(',').join(args.subList(1,args.size())));
+  }
+}

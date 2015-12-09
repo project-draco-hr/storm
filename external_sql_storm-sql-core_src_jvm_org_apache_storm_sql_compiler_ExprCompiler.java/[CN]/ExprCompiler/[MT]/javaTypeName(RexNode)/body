@@ -1,0 +1,4 @@
+{
+  Type ty=typeFactory.getJavaClass(node.getType());
+  return ((Class<?>)ty).getCanonicalName();
+}

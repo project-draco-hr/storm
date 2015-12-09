@@ -1,0 +1,11 @@
+{
+  Set<TableScan> tables=new HashSet<>();
+  pw.print(INITIALIZER_PROLOGUE);
+  chainOperators(pw,root,tables);
+  for (  TableScan n : tables) {
+    String escaped=CompilerUtil.escapeJavaString(Joiner.on('.').join(n.getTable().getQualifiedName()),true);
+    String r=NEW_LINE_JOINER.join("    if (!data.containsKey(%1$s))","      throw new RuntimeException(\"Cannot find table \" + %1$s);","  data.get(%1$s).open(CTX_%2$d);","");
+    pw.print(String.format(r,escaped,n.getId()));
+  }
+  pw.print("  }\n");
+}

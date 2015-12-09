@@ -1,0 +1,3 @@
+SqlWriter writer
+int leftPrec
+int rightPrec
