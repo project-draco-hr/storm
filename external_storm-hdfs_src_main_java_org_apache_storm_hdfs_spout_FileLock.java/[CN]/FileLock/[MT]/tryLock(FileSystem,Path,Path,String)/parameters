@@ -1,0 +1,4 @@
+FileSystem hdfs
+Path fileToLock
+Path lockDirPath
+String spoutId

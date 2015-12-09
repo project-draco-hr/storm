@@ -1,0 +1,19 @@
+{
+  Path file1=new Path(source.toString() + "/file1.txt");
+  createTextFile(file1,5);
+  listDir(source);
+  Map conf=getDefaultConfig();
+  conf.put(Configs.COMMIT_FREQ_COUNT,"1");
+  conf.put(Configs.COMMIT_FREQ_SEC,"1");
+  HdfsSpout spout=makeSpout(0,conf,Configs.TEXT);
+  List<String> res=runSpout(spout,"r4");
+  for (  String re : res) {
+    System.err.println(re);
+  }
+  List<String> lockFiles=listDir(spout.getLockDirPath());
+  Assert.assertEquals(1,lockFiles.size());
+  runSpout(spout,"r3");
+  List<String> lines=readTextFile(fs,lockFiles.get(0));
+  System.err.println(lines);
+  Assert.assertEquals(6,lines.size());
+}

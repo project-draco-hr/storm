@@ -1,0 +1,10 @@
+{
+  if (fs.getFileStatus(lockFile).getModificationTime() >= olderThan) {
+    LogEntry lastEntry=getLastEntry(fs,lockFile);
+    if (lastEntry == null) {
+      throw new RuntimeException(lockFile.getName() + " is empty. this file is invalid.");
+    }
+    if (lastEntry.eventTime <= olderThan)     return lastEntry;
+  }
+  return null;
+}

@@ -1,0 +1,12 @@
+{
+  MessageId id=(MessageId)msgId;
+  inflight.remove(id);
+  ++acksSinceLastCommit;
+  tracker.recordAckedOffset(id.offset);
+  commitProgress(tracker.getCommitPosition());
+  if (fileReadCompletely) {
+    markFileAsDone(reader.getFilePath());
+    reader=null;
+  }
+  super.ack(msgId);
+}

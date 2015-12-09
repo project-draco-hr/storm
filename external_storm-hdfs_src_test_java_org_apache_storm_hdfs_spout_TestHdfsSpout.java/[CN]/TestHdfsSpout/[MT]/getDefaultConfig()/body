@@ -1,0 +1,8 @@
+{
+  Map conf=new HashMap();
+  conf.put(Configs.SOURCE_DIR,source.toString());
+  conf.put(Configs.ARCHIVE_DIR,archive.toString());
+  conf.put(Configs.BAD_DIR,badfiles.toString());
+  conf.put("filesystem",fs);
+  return conf;
+}

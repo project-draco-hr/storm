@@ -1,0 +1,10 @@
+{
+  fileReadCompletely=false;
+  try {
+    renameCompletedFile(reader.getFilePath());
+  }
+ catch (  IOException e) {
+    LOG.error("Unable to archive completed file" + filePath,e);
+  }
+  unlockAndCloseReader();
+}

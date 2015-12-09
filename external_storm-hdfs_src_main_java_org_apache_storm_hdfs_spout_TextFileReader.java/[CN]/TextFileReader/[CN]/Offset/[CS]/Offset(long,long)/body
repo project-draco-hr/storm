@@ -1,0 +1,4 @@
+{
+  this.byteOffset=byteOffset;
+  this.lineNumber=lineNumber;
+}

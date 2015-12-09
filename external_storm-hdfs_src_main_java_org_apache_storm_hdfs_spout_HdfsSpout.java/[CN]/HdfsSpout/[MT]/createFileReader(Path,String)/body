@@ -1,0 +1,13 @@
+{
+  if (readerType.equalsIgnoreCase(Configs.SEQ))   return new SequenceFileReader(this.hdfs,file,conf,offset);
+  if (readerType.equalsIgnoreCase(Configs.TEXT))   return new TextFileReader(this.hdfs,file,conf,offset);
+  try {
+    Class<?> clsType=Class.forName(readerType);
+    Constructor<?> constructor=clsType.getConstructor(FileSystem.class,Path.class,Map.class,String.class);
+    return (FileReader)constructor.newInstance(this.hdfs,file,conf,offset);
+  }
+ catch (  Exception e) {
+    LOG.error(e.getMessage(),e);
+    throw new RuntimeException("Unable to instantiate " + readerType,e);
+  }
+}

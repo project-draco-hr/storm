@@ -1,0 +1,4 @@
+{
+  Fields fields=reader.getOutputFields();
+  declarer.declare(fields);
+}

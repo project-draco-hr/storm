@@ -1,0 +1,16 @@
+{
+  String fileName=file.toString();
+  String fileNameMinusSuffix=fileName.substring(0,fileName.indexOf(inprogress_suffix));
+  String originalName=new Path(fileNameMinusSuffix).getName();
+  Path newFile=new Path(badFilesDirPath + Path.SEPARATOR + originalName);
+  LOG.info("Moving bad file to " + newFile);
+  try {
+    if (!hdfs.rename(file,newFile)) {
+      throw new IOException("Move failed for bad file: " + file);
+    }
+  }
+ catch (  IOException e) {
+    LOG.warn("Error moving bad file: " + file + ". to destination :  "+ newFile);
+  }
+  unlockAndCloseReader();
+}

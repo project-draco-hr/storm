@@ -1,0 +1,8 @@
+{
+  this.fs=fs;
+  String lockFileName=lockDirPath.toString() + Path.SEPARATOR_CHAR + fileToLock.getName();
+  this.lockFile=new Path(lockFileName);
+  this.stream=fs.create(lockFile);
+  this.componentID=spoutId;
+  logProgress("0",false);
+}

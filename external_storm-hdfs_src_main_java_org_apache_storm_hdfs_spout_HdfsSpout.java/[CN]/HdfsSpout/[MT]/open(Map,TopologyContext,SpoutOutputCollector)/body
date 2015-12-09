@@ -1,0 +1,110 @@
+{
+  this.conf=conf;
+  final String FILE_SYSTEM="filesystem";
+  LOG.info("Opening");
+  this.collector=collector;
+  this.hdfsConfig=new Configuration();
+  this.tupleCounter=0;
+  for (  Object k : conf.keySet()) {
+    String key=k.toString();
+    if (!FILE_SYSTEM.equalsIgnoreCase(key)) {
+      String val=conf.get(key).toString();
+      LOG.info("Config setting : " + key + " = "+ val);
+      this.hdfsConfig.set(key,val);
+    }
+ else     this.hdfs=(FileSystem)conf.get(key);
+    if (key.equalsIgnoreCase(Configs.READER_TYPE)) {
+      readerType=conf.get(key).toString();
+      checkValidReader(readerType);
+    }
+  }
+  this.hdfsConfig=new Configuration();
+  Map<String,Object> map=(Map<String,Object>)conf.get(this.configKey);
+  if (map != null) {
+    for (    String key : map.keySet()) {
+      this.hdfsConfig.set(key,String.valueOf(map.get(key)));
+    }
+  }
+  try {
+    HdfsSecurityUtil.login(conf,hdfsConfig);
+  }
+ catch (  IOException e) {
+    LOG.error("Failed to open " + sourceDirPath);
+    throw new RuntimeException(e);
+  }
+  if (!conf.containsKey(Configs.SOURCE_DIR)) {
+    LOG.error(Configs.SOURCE_DIR + " setting is required");
+    throw new RuntimeException(Configs.SOURCE_DIR + " setting is required");
+  }
+  this.sourceDirPath=new Path(conf.get(Configs.SOURCE_DIR).toString());
+  if (!conf.containsKey(Configs.ARCHIVE_DIR)) {
+    LOG.error(Configs.ARCHIVE_DIR + " setting is required");
+    throw new RuntimeException(Configs.ARCHIVE_DIR + " setting is required");
+  }
+  this.archiveDirPath=new Path(conf.get(Configs.ARCHIVE_DIR).toString());
+  try {
+    if (hdfs.exists(archiveDirPath)) {
+      if (!hdfs.isDirectory(archiveDirPath)) {
+        LOG.error("Archive directory is a file. " + archiveDirPath);
+        throw new RuntimeException("Archive directory is a file. " + archiveDirPath);
+      }
+    }
+ else     if (!hdfs.mkdirs(archiveDirPath)) {
+      LOG.error("Unable to create archive directory. " + archiveDirPath);
+      throw new RuntimeException("Unable to create archive directory " + archiveDirPath);
+    }
+  }
+ catch (  IOException e) {
+    LOG.error("Unable to create archive dir ",e);
+    throw new RuntimeException("Unable to create archive directory ",e);
+  }
+  if (!conf.containsKey(Configs.BAD_DIR)) {
+    LOG.error(Configs.BAD_DIR + " setting is required");
+    throw new RuntimeException(Configs.BAD_DIR + " setting is required");
+  }
+  this.badFilesDirPath=new Path(conf.get(Configs.BAD_DIR).toString());
+  try {
+    if (hdfs.exists(badFilesDirPath)) {
+      if (!hdfs.isDirectory(badFilesDirPath)) {
+        LOG.error("Bad files directory is a file: " + badFilesDirPath);
+        throw new RuntimeException("Bad files directory is a file: " + badFilesDirPath);
+      }
+    }
+ else     if (!hdfs.mkdirs(badFilesDirPath)) {
+      LOG.error("Unable to create directory for bad files: " + badFilesDirPath);
+      throw new RuntimeException("Unable to create a directory for bad files: " + badFilesDirPath);
+    }
+  }
+ catch (  IOException e) {
+    LOG.error("Unable to create archive dir ",e);
+    throw new RuntimeException(e.getMessage(),e);
+  }
+  String lockDir=!conf.containsKey(Configs.LOCK_DIR) ? getDefaultLockDir(sourceDirPath) : conf.get(Configs.LOCK_DIR).toString();
+  this.lockDirPath=new Path(lockDir);
+  try {
+    if (hdfs.exists(lockDirPath)) {
+      if (!hdfs.isDirectory(lockDirPath)) {
+        LOG.error("Lock directory is a file: " + lockDirPath);
+        throw new RuntimeException("Lock directory is a file: " + lockDirPath);
+      }
+    }
+ else     if (!hdfs.mkdirs(lockDirPath)) {
+      LOG.error("Unable to create lock directory: " + lockDirPath);
+      throw new RuntimeException("Unable to create lock directory: " + lockDirPath);
+    }
+  }
+ catch (  IOException e) {
+    LOG.error("Unable to create lock dir: " + lockDirPath,e);
+    throw new RuntimeException(e.getMessage(),e);
+  }
+  if (conf.get(Configs.LOCK_TIMEOUT) != null)   this.lockTimeoutSec=Integer.parseInt(conf.get(Configs.LOCK_TIMEOUT).toString());
+  Object ackers=conf.get(Config.TOPOLOGY_ACKER_EXECUTORS);
+  if (ackers != null)   this.ackEnabled=(Integer.parseInt(ackers.toString()) > 0);
+ else   this.ackEnabled=false;
+  if (conf.get(Configs.COMMIT_FREQ_COUNT) != null)   commitFrequencyCount=Integer.parseInt(conf.get(Configs.COMMIT_FREQ_COUNT).toString());
+  if (conf.get(Configs.COMMIT_FREQ_SEC) != null)   commitFrequencySec=Integer.parseInt(conf.get(Configs.COMMIT_FREQ_SEC).toString());
+  if (conf.get(Configs.MAX_DUPLICATE) != null)   maxDuplicates=Integer.parseInt(conf.get(Configs.MAX_DUPLICATE).toString());
+  if (conf.get(Configs.CLOCKS_INSYNC) != null)   clocksInSync=Boolean.parseBoolean(conf.get(Configs.CLOCKS_INSYNC).toString());
+  spoutId=context.getThisComponentId();
+  setupCommitElapseTimer();
+}

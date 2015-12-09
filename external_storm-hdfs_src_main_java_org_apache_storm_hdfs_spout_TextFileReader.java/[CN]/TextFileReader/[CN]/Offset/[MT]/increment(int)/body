@@ -1,0 +1,4 @@
+{
+  ++lineNumber;
+  byteOffset+=delta;
+}

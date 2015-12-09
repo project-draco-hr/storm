@@ -1,0 +1,10 @@
+{
+  super(fs,file,new Fields(DEFAULT_KEYNAME,DEFAULT_VALNAME));
+  this.keyName=DEFAULT_KEYNAME;
+  this.valueName=DEFAULT_VALNAME;
+  int bufferSize=!conf.containsKey(BUFFER_SIZE) ? DEFAULT_BUFF_SIZE : Integer.parseInt(conf.get(BUFFER_SIZE).toString());
+  this.reader=new SequenceFile.Reader(fs.getConf(),SequenceFile.Reader.file(file),SequenceFile.Reader.bufferSize(bufferSize));
+  this.key=(Key)ReflectionUtils.newInstance(reader.getKeyClass(),fs.getConf());
+  this.value=(Value)ReflectionUtils.newInstance(reader.getValueClass(),fs.getConf());
+  this.offset=new SequenceFileReader.Offset(0,0,0);
+}

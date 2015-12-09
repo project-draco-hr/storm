@@ -1,0 +1,5 @@
+{
+  this.eventTime=eventtime;
+  this.componentID=componentID;
+  this.fileOffset=fileOffset;
+}

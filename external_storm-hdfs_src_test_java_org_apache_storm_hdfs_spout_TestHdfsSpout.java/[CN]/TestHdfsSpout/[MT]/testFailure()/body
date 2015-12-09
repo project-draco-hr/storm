@@ -1,0 +1,15 @@
+{
+  Path file1=new Path(source.toString() + "/file1.txt");
+  createTextFile(file1,5);
+  listDir(source);
+  Map conf=getDefaultConfig();
+  HdfsSpout spout=makeSpout(0,conf,MockTextFailingReader.class.getName());
+  List<String> res=runSpout(spout,"r3");
+  for (  String re : res) {
+    System.err.println(re);
+  }
+  listCompletedDir();
+  List<String> badFiles=listBadDir();
+  Assert.assertEquals(badFiles.size(),1);
+  Assert.assertEquals(((MockCollector)spout.getCollector()).lines.size(),1);
+}

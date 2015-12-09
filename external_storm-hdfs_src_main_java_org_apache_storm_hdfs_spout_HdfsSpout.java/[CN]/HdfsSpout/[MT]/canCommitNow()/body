@@ -1,0 +1,4 @@
+{
+  if (acksSinceLastCommit >= commitFrequencyCount)   return true;
+  return commitTimeElapsed.get();
+}

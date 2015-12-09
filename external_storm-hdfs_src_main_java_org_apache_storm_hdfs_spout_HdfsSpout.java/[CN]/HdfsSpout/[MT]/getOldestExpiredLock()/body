@@ -1,0 +1,26 @@
+{
+  DirLock dirlock=DirLock.tryLock(hdfs,lockDirPath);
+  if (dirlock == null)   return null;
+  try {
+    if (clocksInSync)     return FileLock.acquireOldestExpiredLock(hdfs,lockDirPath,lockTimeoutSec,spoutId);
+    if (lastExpiredLock == null) {
+      lastExpiredLock=FileLock.locateOldestExpiredLock(hdfs,lockDirPath,lockTimeoutSec,spoutId);
+      lastExpiredLockTime=System.currentTimeMillis();
+      return null;
+    }
+    if (hasExpired(lastExpiredLockTime))     return null;
+    FileLock.LogEntry lastEntry=FileLock.getLastEntry(hdfs,lastExpiredLock.getKey());
+    if (lastEntry.equals(lastExpiredLock.getValue())) {
+      FileLock result=FileLock.takeOwnership(hdfs,lastExpiredLock.getKey(),lastEntry,spoutId);
+      lastExpiredLock=null;
+      return result;
+    }
+ else {
+      lastExpiredLock=null;
+      return null;
+    }
+  }
+  finally {
+    dirlock.release();
+  }
+}

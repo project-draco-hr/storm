@@ -1,0 +1,4 @@
+FileSystem fs
+Path lockFilesDir
+int locktimeoutSec
+String spoutId

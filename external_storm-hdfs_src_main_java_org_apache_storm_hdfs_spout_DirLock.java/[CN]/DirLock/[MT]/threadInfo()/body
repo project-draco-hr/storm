@@ -1,0 +1,3 @@
+{
+  return "ThdId=" + Thread.currentThread().getId() + ", ThdName="+ Thread.currentThread().getName();
+}

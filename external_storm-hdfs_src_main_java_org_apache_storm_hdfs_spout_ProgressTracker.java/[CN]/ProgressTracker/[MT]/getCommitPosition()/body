@@ -1,0 +1,4 @@
+{
+  if (!offsets.isEmpty())   return offsets.first().clone();
+  return null;
+}

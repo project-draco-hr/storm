@@ -1,0 +1,5 @@
+{
+  if (msgNumber < rhs.msgNumber)   return -1;
+  if (msgNumber > rhs.msgNumber)   return 1;
+  return 0;
+}

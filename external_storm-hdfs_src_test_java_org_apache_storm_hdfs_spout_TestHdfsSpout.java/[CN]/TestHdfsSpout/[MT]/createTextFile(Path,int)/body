@@ -1,0 +1,7 @@
+{
+  FSDataOutputStream os=fs.create(file);
+  for (int i=0; i < lineCount; i++) {
+    os.writeBytes("line " + i + System.lineSeparator());
+  }
+  os.close();
+}

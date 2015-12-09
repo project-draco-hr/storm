@@ -1,0 +1,14 @@
+{
+  Path lockFile=new Path(dir.toString() + Path.SEPARATOR_CHAR + DIR_LOCK_FILE);
+  try {
+    FSDataOutputStream os=fs.create(lockFile,false);
+    if (log.isInfoEnabled()) {
+      log.info("Thread acquired dir lock  " + threadInfo() + " - lockfile "+ lockFile);
+    }
+    os.close();
+    return new DirLock(fs,lockFile);
+  }
+ catch (  FileAlreadyExistsException e) {
+    return null;
+  }
+}

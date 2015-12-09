@@ -1,0 +1,11 @@
+{
+  reader.close();
+  reader=null;
+  try {
+    lock.release();
+  }
+ catch (  IOException e) {
+    LOG.error("Unable to delete lock file : " + this.lock.getLockFile(),e);
+  }
+  lock=null;
+}

@@ -1,0 +1,5 @@
+{
+  this.fs=fs;
+  this.dir=dir;
+  Thread.currentThread().setName("DirLockingThread-" + thdNum);
+}

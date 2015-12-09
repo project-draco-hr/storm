@@ -1,0 +1,3 @@
+long msgNumber
+Path fullPath
+FileOffset offset

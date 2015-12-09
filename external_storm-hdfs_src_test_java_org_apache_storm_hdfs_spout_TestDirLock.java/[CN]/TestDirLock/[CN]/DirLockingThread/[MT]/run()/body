@@ -1,0 +1,17 @@
+{
+  try {
+    DirLock lock;
+    do {
+      lock=DirLock.tryLock(fs,dir);
+      if (lock == null) {
+        System.out.println("Retrying lock - " + Thread.currentThread().getId());
+      }
+    }
+ while (lock == null);
+    lock.release();
+    cleanExit=true;
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

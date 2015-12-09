@@ -1,0 +1,4 @@
+{
+  fs.delete(lockFile,false);
+  log.info("Thread {} released dir lock {} ",threadInfo(),lockFile);
+}

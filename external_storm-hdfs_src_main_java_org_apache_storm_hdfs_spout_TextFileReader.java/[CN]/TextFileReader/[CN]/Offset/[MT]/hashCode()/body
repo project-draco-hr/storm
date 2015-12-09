@@ -1,0 +1,5 @@
+{
+  int result=(int)(byteOffset ^ (byteOffset >>> 32));
+  result=31 * result + (int)(lineNumber ^ (lineNumber >>> 32));
+  return result;
+}

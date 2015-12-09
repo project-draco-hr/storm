@@ -1,0 +1,7 @@
+{
+  if (this == o)   return true;
+  if (!(o instanceof Offset))   return false;
+  Offset that=(Offset)o;
+  if (byteOffset != that.byteOffset)   return false;
+  return lineNumber == that.lineNumber;
+}

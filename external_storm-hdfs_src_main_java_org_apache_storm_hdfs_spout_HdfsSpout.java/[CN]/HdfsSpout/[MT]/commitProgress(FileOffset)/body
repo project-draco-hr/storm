@@ -1,0 +1,13 @@
+{
+  if (lock != null && canCommitNow()) {
+    try {
+      lock.heartbeat(position.toString());
+      acksSinceLastCommit=0;
+      commitTimeElapsed.set(false);
+      setupCommitElapseTimer();
+    }
+ catch (    IOException e) {
+      LOG.error("Unable to commit progress Will retry later.",e);
+    }
+  }
+}

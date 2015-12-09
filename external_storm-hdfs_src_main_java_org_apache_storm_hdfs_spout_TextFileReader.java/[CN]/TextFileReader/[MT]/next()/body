@@ -1,0 +1,9 @@
+{
+  String line=reader.readLine();
+  if (line != null) {
+    int strByteSize=line.getBytes().length;
+    offset.increment(strByteSize);
+    return Collections.singletonList((Object)line);
+  }
+  return null;
+}
