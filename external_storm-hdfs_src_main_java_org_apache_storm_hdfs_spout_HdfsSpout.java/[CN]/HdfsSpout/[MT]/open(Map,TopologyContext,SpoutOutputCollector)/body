@@ -79,6 +79,9 @@
     LOG.error("Unable to create archive dir ",e);
     throw new RuntimeException(e.getMessage(),e);
   }
+  if (conf.containsKey(Configs.IGNORE_SUFFIX)) {
+    this.ignoreSuffix=conf.get(Configs.IGNORE_SUFFIX).toString();
+  }
   String lockDir=!conf.containsKey(Configs.LOCK_DIR) ? getDefaultLockDir(sourceDirPath) : conf.get(Configs.LOCK_DIR).toString();
   this.lockDirPath=new Path(lockDir);
   try {
