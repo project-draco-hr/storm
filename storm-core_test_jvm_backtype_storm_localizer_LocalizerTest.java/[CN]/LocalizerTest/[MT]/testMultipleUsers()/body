@@ -25,10 +25,10 @@
   LocalizedResource lrsrc2=localizer.getBlob(new LocalResource(key2,false),user2,topo2,user2Dir);
   LocalizedResource lrsrc3=localizer.getBlob(new LocalResource(key3,false),user3,topo3,user3Dir);
   LocalizedResource lrsrc1_user3=localizer.getBlob(new LocalResource(key1,false),user3,topo3,user3Dir);
-  String expectedUserDir1=baseDir + File.separator + Localizer.USERCACHE+ File.separator+ user1;
-  String expectedFileDirUser1=expectedUserDir1 + File.separator + Localizer.FILECACHE+ File.separator+ Localizer.FILESDIR;
-  String expectedFileDirUser2=baseDir + File.separator + Localizer.USERCACHE+ File.separator+ user2+ File.separator+ Localizer.FILECACHE+ File.separator+ Localizer.FILESDIR;
-  String expectedFileDirUser3=baseDir + File.separator + Localizer.USERCACHE+ File.separator+ user3+ File.separator+ Localizer.FILECACHE+ File.separator+ Localizer.FILESDIR;
+  String expectedUserDir1=joinPath(baseDir.toString(),Localizer.USERCACHE,user1);
+  String expectedFileDirUser1=joinPath(expectedUserDir1,Localizer.FILECACHE,Localizer.FILESDIR);
+  String expectedFileDirUser2=joinPath(baseDir.toString(),Localizer.USERCACHE,user2,Localizer.FILECACHE,Localizer.FILESDIR);
+  String expectedFileDirUser3=joinPath(baseDir.toString(),Localizer.USERCACHE,user3,Localizer.FILECACHE,Localizer.FILESDIR);
   assertTrue("user filecache dir user1 not created",new File(expectedFileDirUser1).exists());
   assertTrue("user filecache dir user2 not created",new File(expectedFileDirUser2).exists());
   assertTrue("user filecache dir user3 not created",new File(expectedFileDirUser3).exists());

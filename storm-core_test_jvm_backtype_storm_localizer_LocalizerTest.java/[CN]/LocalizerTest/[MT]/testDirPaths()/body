@@ -3,6 +3,6 @@
   Localizer localizer=new TestLocalizer(conf,baseDir.toString());
   String expectedDir=constructUserCacheDir(baseDir.toString(),user1);
   assertEquals("get local user dir doesn't return right value",expectedDir,localizer.getLocalUserDir(user1).toString());
-  String expectedFileDir=expectedDir + File.separator + Localizer.FILECACHE;
+  String expectedFileDir=joinPath(expectedDir,Localizer.FILECACHE);
   assertEquals("get local user file dir doesn't return right value",expectedFileDir,localizer.getLocalUserFileCacheDir(user1).toString());
 }
