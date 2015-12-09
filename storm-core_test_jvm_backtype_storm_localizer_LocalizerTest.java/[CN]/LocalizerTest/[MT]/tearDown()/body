@@ -1,3 +1,7 @@
 {
-  FileUtils.deleteDirectory(baseDir);
+  try {
+    FileUtils.deleteDirectory(baseDir);
+  }
+ catch (  IOException ignore) {
+  }
 }
