@@ -1,0 +1,10 @@
+{
+  uploadBlobChunk_result result=new uploadBlobChunk_result();
+  try {
+    iface.uploadBlobChunk(args.session,args.chunk);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}

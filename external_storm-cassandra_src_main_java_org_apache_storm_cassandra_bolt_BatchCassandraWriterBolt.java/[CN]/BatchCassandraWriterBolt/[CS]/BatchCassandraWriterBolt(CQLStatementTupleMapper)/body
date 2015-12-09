@@ -1,0 +1,3 @@
+{
+  this(tupleMapper,DEFAULT_EMIT_FREQUENCY);
+}

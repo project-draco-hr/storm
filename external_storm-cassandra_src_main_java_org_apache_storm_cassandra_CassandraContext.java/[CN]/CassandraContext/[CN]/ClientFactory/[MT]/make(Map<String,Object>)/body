@@ -1,0 +1,9 @@
+{
+  Cluster cluster=this.context.getWorkerBean(Cluster.class,stormConf);
+  if (cluster.isClosed()) {
+    LOG.warn("Cluster is closed - trigger new initialization!");
+    cluster=this.context.getWorkerBean(Cluster.class,stormConf,true);
+  }
+  CassandraConf config=this.context.getWorkerBean(CassandraConf.class,stormConf);
+  return new DefaultClient(cluster,config.getKeyspace());
+}

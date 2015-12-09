@@ -1,0 +1,4 @@
+String key
+String fileLoc
+boolean uncompressed
+String topo

@@ -1,0 +1,4 @@
+{
+  send_setBlobMeta(key,meta);
+  recv_setBlobMeta();
+}

@@ -1,0 +1,14 @@
+{
+  if (hadoopConf == null) {
+    hadoopConf=new Configuration();
+  }
+  try {
+    if (dfscluster == null) {
+      dfscluster=new MiniDFSCluster.Builder(hadoopConf).build();
+      dfscluster.waitActive();
+    }
+  }
+ catch (  IOException e) {
+    LOG.error("error creating MiniDFSCluster");
+  }
+}

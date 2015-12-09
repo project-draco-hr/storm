@@ -1,0 +1,5 @@
+{
+  if (other.is_set_session()) {
+    this.session=other.session;
+  }
+}

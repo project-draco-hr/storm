@@ -1,0 +1,4 @@
+{
+  send_getBlobReplication(key);
+  return recv_getBlobReplication();
+}

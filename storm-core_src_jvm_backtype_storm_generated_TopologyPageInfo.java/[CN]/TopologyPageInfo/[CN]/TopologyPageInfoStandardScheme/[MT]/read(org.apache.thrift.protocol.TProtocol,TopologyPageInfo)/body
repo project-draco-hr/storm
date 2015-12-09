@@ -82,15 +82,15 @@ break;
 case 9:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map394=iprot.readMapBegin();
-struct.id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map394.size);
-String _key395;
-ComponentAggregateStats _val396;
-for (int _i397=0; _i397 < _map394.size; ++_i397) {
-_key395=iprot.readString();
-_val396=new ComponentAggregateStats();
-_val396.read(iprot);
-struct.id_to_spout_agg_stats.put(_key395,_val396);
+org.apache.thrift.protocol.TMap _map402=iprot.readMapBegin();
+struct.id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map402.size);
+String _key403;
+ComponentAggregateStats _val404;
+for (int _i405=0; _i405 < _map402.size; ++_i405) {
+_key403=iprot.readString();
+_val404=new ComponentAggregateStats();
+_val404.read(iprot);
+struct.id_to_spout_agg_stats.put(_key403,_val404);
 }
 iprot.readMapEnd();
 }
@@ -103,15 +103,15 @@ break;
 case 10:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map398=iprot.readMapBegin();
-struct.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map398.size);
-String _key399;
-ComponentAggregateStats _val400;
-for (int _i401=0; _i401 < _map398.size; ++_i401) {
-_key399=iprot.readString();
-_val400=new ComponentAggregateStats();
-_val400.read(iprot);
-struct.id_to_bolt_agg_stats.put(_key399,_val400);
+org.apache.thrift.protocol.TMap _map406=iprot.readMapBegin();
+struct.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map406.size);
+String _key407;
+ComponentAggregateStats _val408;
+for (int _i409=0; _i409 < _map406.size; ++_i409) {
+_key407=iprot.readString();
+_val408=new ComponentAggregateStats();
+_val408.read(iprot);
+struct.id_to_bolt_agg_stats.put(_key407,_val408);
 }
 iprot.readMapEnd();
 }

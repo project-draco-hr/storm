@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_key=true && this.is_set_key();
+  boolean that_present_key=true && that.is_set_key();
+  if (this_present_key || that_present_key) {
+    if (!(this_present_key && that_present_key))     return false;
+    if (!this.key.equals(that.key))     return false;
+  }
+  return true;
+}

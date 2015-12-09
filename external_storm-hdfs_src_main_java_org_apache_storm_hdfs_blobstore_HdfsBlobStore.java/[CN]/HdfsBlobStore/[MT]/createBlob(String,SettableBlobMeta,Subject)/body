@@ -1,0 +1,37 @@
+{
+  if (meta.get_replication_factor() <= 0) {
+    meta.set_replication_factor((int)conf.get(Config.STORM_BLOBSTORE_REPLICATION_FACTOR));
+  }
+  who=checkAndGetSubject(who);
+  validateKey(key);
+  _aclHandler.normalizeSettableBlobMeta(key,meta,who,READ | WRITE | ADMIN);
+  BlobStoreAclHandler.validateSettableACLs(key,meta.get_acl());
+  _aclHandler.hasPermissions(meta.get_acl(),READ | WRITE | ADMIN,who,key);
+  if (_hbs.exists(DATA_PREFIX + key)) {
+    throw new KeyAlreadyExistsException(key);
+  }
+  BlobStoreFileOutputStream mOut=null;
+  try {
+    BlobStoreFile metaFile=_hbs.write(META_PREFIX + key,true);
+    metaFile.setMetadata(meta);
+    mOut=new BlobStoreFileOutputStream(metaFile);
+    mOut.write(Utils.thriftSerialize(meta));
+    mOut.close();
+    mOut=null;
+    BlobStoreFile dataFile=_hbs.write(DATA_PREFIX + key,true);
+    dataFile.setMetadata(meta);
+    return new BlobStoreFileOutputStream(dataFile);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+ finally {
+    if (mOut != null) {
+      try {
+        mOut.cancel();
+      }
+ catch (      IOException e) {
+      }
+    }
+  }
+}

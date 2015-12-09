@@ -1,0 +1,13 @@
+{
+  deleteBlob_result result=new deleteBlob_result();
+  try {
+    iface.deleteBlob(args.key);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+catch (  KeyNotFoundException knf) {
+    result.knf=knf;
+  }
+  return result;
+}

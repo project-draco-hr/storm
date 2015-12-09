@@ -1,0 +1,16 @@
+def recv_setBlobMeta(self):
+    iprot = self._iprot
+    (fname, mtype, rseqid) = iprot.readMessageBegin()
+    if (mtype == TMessageType.EXCEPTION):
+        x = TApplicationException()
+        x.read(iprot)
+        iprot.readMessageEnd()
+        raise x
+    result = setBlobMeta_result()
+    result.read(iprot)
+    iprot.readMessageEnd()
+    if (result.aze is not None):
+        raise result.aze
+    if (result.knf is not None):
+        raise result.knf
+    return

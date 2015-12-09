@@ -1,0 +1,7 @@
+{
+  this.impl=new StormParserImpl(new StringReader(s));
+  this.impl.setTabSize(1);
+  this.impl.setQuotedCasing(Lex.ORACLE.quotedCasing);
+  this.impl.setUnquotedCasing(Lex.ORACLE.unquotedCasing);
+  this.impl.setIdentifierMaxLength(DEFAULT_IDENTIFIER_MAX_LENGTH);
+}

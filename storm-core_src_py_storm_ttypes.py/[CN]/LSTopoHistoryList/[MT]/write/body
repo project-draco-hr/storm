@@ -6,8 +6,8 @@ def write(self, oprot):
     if (self.topo_history is not None):
         oprot.writeFieldBegin('topo_history', TType.LIST, 1)
         oprot.writeListBegin(TType.STRUCT, len(self.topo_history))
-        for iter607 in self.topo_history:
-            iter607.write(oprot)
+        for iter628 in self.topo_history:
+            iter628.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

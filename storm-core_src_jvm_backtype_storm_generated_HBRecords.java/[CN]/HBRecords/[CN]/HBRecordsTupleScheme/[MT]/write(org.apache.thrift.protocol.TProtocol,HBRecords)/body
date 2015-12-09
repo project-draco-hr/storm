@@ -1,0 +1,16 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_pulses()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_pulses()) {
+{
+      oprot.writeI32(struct.pulses.size());
+      for (      HBPulse _iter726 : struct.pulses) {
+        _iter726.write(oprot);
+      }
+    }
+  }
+}

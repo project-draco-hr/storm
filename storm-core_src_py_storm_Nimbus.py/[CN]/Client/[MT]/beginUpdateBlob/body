@@ -1,0 +1,4 @@
+def beginUpdateBlob(self, key):
+    '\n    Parameters:\n     - key\n    '
+    self.send_beginUpdateBlob(key)
+    return self.recv_beginUpdateBlob()

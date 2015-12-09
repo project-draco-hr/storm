@@ -1,0 +1,8 @@
+{
+  if (keySetBlobStore.removeAll(keySetZookeeper) || (keySetZookeeper.isEmpty() && !keySetBlobStore.isEmpty())) {
+    LOG.debug("Key set to delete in blobstore {}",keySetBlobStore);
+    for (    String key : keySetBlobStore) {
+      blobStore.deleteBlob(key,BlobStoreUtils.getNimbusSubject());
+    }
+  }
+}

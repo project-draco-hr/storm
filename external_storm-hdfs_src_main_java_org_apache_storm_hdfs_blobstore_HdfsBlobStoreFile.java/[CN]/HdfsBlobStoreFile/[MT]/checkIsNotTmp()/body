@@ -1,0 +1,5 @@
+{
+  if (!isTmp()) {
+    throw new IllegalStateException("Can only operate on a temporary blobstore file.");
+  }
+}

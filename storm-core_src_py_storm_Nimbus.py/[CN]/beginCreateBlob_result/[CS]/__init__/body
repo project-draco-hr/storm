@@ -1,0 +1,4 @@
+def __init__(self, success=None, aze=None, kae=None):
+    self.success = success
+    self.aze = aze
+    self.kae = kae

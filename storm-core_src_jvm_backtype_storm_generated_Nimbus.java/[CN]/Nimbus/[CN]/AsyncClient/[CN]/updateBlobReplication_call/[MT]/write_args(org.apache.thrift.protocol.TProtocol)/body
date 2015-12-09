@@ -1,0 +1,8 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("updateBlobReplication",org.apache.thrift.protocol.TMessageType.CALL,0));
+  updateBlobReplication_args args=new updateBlobReplication_args();
+  args.set_key(key);
+  args.set_replication(replication);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

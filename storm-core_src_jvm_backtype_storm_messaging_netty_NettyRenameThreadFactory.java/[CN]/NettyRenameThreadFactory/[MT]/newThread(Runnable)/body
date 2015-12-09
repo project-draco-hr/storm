@@ -1,6 +1,11 @@
 {
   Thread t=new Thread(group,r,name + "-" + index.getAndIncrement(),0);
-  if (t.isDaemon())   t.setDaemon(false);
-  if (t.getPriority() != Thread.NORM_PRIORITY)   t.setPriority(Thread.NORM_PRIORITY);
+  if (t.isDaemon()) {
+    t.setDaemon(false);
+  }
+  if (t.getPriority() != Thread.NORM_PRIORITY) {
+    t.setPriority(Thread.NORM_PRIORITY);
+  }
+  t.setUncaughtExceptionHandler(uncaughtExceptionHandler);
   return t;
 }

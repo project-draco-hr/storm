@@ -1,0 +1,20 @@
+{
+  Map<String,DataSource> dataSources=new HashMap<>();
+  for (  String sql : statements) {
+    StormParser parser=new StormParser(sql);
+    SqlNode node=parser.impl().parseSqlStmtEof();
+    if (node instanceof SqlCreateTable) {
+      handleCreateTable((SqlCreateTable)node,dataSources);
+    }
+ else {
+      FrameworkConfig config=Frameworks.newConfigBuilder().defaultSchema(schema).build();
+      Planner planner=Frameworks.getPlanner(config);
+      SqlNode parse=planner.parse(sql);
+      SqlNode validate=planner.validate(parse);
+      RelNode tree=planner.convert(validate);
+      PlanCompiler compiler=new PlanCompiler(typeFactory);
+      AbstractValuesProcessor proc=compiler.compile(tree);
+      proc.initialize(dataSources,result);
+    }
+  }
+}

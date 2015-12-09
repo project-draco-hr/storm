@@ -1,0 +1,5 @@
+{
+  LOG.error("An error occurred while executing cassandra statement",e);
+  collector.fail(tuple);
+  collector.reportError(e);
+}

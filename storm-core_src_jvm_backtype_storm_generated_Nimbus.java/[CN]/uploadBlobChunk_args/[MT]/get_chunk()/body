@@ -1,0 +1,4 @@
+{
+  set_chunk(org.apache.thrift.TBaseHelper.rightSize(chunk));
+  return chunk == null ? null : chunk.array();
+}

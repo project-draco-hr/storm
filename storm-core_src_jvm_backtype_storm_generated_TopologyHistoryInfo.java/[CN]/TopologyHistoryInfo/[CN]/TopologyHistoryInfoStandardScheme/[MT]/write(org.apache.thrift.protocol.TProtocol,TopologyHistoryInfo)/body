@@ -5,8 +5,8 @@
     oprot.writeFieldBegin(TOPO_IDS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,struct.topo_ids.size()));
-      for (      String _iter693 : struct.topo_ids) {
-        oprot.writeString(_iter693);
+      for (      String _iter717 : struct.topo_ids) {
+        oprot.writeString(_iter717);
       }
       oprot.writeListEnd();
     }

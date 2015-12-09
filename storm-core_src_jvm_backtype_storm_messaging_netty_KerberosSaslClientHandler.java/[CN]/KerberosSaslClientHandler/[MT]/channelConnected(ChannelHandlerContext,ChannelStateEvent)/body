@@ -1,0 +1,21 @@
+{
+  Channel channel=ctx.getChannel();
+  client.channelConnected(channel);
+  LOG.info("Connection established from {} to {}",channel.getLocalAddress(),channel.getRemoteAddress());
+  try {
+    KerberosSaslNettyClient saslNettyClient=KerberosSaslNettyClientState.getKerberosSaslNettyClient.get(channel);
+    if (saslNettyClient == null) {
+      LOG.debug("Creating saslNettyClient now for channel: {}",channel);
+      saslNettyClient=new KerberosSaslNettyClient(storm_conf,jaas_section);
+      KerberosSaslNettyClientState.getKerberosSaslNettyClient.set(channel,saslNettyClient);
+    }
+    LOG.debug("Going to initiate Kerberos negotiations.");
+    byte[] initialChallenge=saslNettyClient.saslResponse(new SaslMessageToken(new byte[0]));
+    LOG.debug("Sending initial challenge: {}",initialChallenge);
+    channel.write(new SaslMessageToken(initialChallenge));
+  }
+ catch (  Exception e) {
+    LOG.error("Failed to authenticate with server due to error: ",e);
+  }
+  return;
+}

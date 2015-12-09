@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case SETTABLE:
+    return is_set_settable();
+case VERSION:
+  return is_set_version();
+}
+throw new IllegalStateException();
+}

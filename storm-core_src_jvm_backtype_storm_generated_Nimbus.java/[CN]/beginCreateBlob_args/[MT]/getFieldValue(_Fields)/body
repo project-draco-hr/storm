@@ -1,0 +1,9 @@
+{
+switch (field) {
+case KEY:
+    return get_key();
+case META:
+  return get_meta();
+}
+throw new IllegalStateException();
+}

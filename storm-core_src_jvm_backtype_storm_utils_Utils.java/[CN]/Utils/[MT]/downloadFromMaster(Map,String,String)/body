@@ -1,9 +1,0 @@
-{
-  NimbusClient client=NimbusClient.getConfiguredClient(conf);
-  try {
-    download(client,file,localFile);
-  }
-  finally {
-    client.close();
-  }
-}

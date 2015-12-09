@@ -1,0 +1,2 @@
+long timeout
+Callable<Boolean> cond

@@ -1,0 +1,6 @@
+{
+  if (asyncResultHandler == null) {
+    asyncResultHandler=new BatchAsyncResultHandler(getResultHandler());
+  }
+  return asyncResultHandler;
+}

@@ -18,5 +18,11 @@
     if (!(this_present_state_spouts && that_present_state_spouts))     return false;
     if (!this.state_spouts.equals(that.state_spouts))     return false;
   }
+  boolean this_present_worker_hooks=true && this.is_set_worker_hooks();
+  boolean that_present_worker_hooks=true && that.is_set_worker_hooks();
+  if (this_present_worker_hooks || that_present_worker_hooks) {
+    if (!(this_present_worker_hooks && that_present_worker_hooks))     return false;
+    if (!this.worker_hooks.equals(that.worker_hooks))     return false;
+  }
   return true;
 }

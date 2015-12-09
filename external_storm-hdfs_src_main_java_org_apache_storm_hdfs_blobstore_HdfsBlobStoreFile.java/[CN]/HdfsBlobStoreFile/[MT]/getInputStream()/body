@@ -1,0 +1,4 @@
+{
+  checkIsTmp();
+  return _fs.open(_path);
+}

@@ -1,0 +1,3 @@
+def __init__(self, key=None, meta=None):
+    self.key = key
+    self.meta = meta

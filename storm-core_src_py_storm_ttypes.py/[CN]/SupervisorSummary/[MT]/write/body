@@ -30,9 +30,9 @@ def write(self, oprot):
     if (self.total_resources is not None):
         oprot.writeFieldBegin('total_resources', TType.MAP, 7)
         oprot.writeMapBegin(TType.STRING, TType.DOUBLE, len(self.total_resources))
-        for (kiter73, viter74) in self.total_resources.items():
-            oprot.writeString(kiter73.encode('utf-8'))
-            oprot.writeDouble(viter74)
+        for (kiter80, viter81) in self.total_resources.items():
+            oprot.writeString(kiter80.encode('utf-8'))
+            oprot.writeDouble(viter81)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.used_mem is not None):

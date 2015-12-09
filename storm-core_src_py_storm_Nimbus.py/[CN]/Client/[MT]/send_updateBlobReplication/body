@@ -1,0 +1,8 @@
+def send_updateBlobReplication(self, key, replication):
+    self._oprot.writeMessageBegin('updateBlobReplication', TMessageType.CALL, self._seqid)
+    args = updateBlobReplication_args()
+    args.key = key
+    args.replication = replication
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

@@ -1,0 +1,13 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_type=true && (is_set_type());
+  list.add(present_type);
+  if (present_type)   list.add(type.getValue());
+  boolean present_name=true && (is_set_name());
+  list.add(present_name);
+  if (present_name)   list.add(name);
+  boolean present_access=true;
+  list.add(present_access);
+  if (present_access)   list.add(access);
+  return list.hashCode();
+}

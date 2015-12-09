@@ -1,0 +1,8 @@
+{
+  if (op instanceof RexLiteral && ((RexLiteral)op).getTypeName() == SqlTypeName.NULL) {
+    return nullExpr;
+  }
+ else {
+    return notNullExpr;
+  }
+}

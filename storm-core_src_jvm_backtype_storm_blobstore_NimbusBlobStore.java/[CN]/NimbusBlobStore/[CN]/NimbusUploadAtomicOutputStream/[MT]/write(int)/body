@@ -1,0 +1,10 @@
+{
+  try {
+synchronized (client) {
+      client.getClient().uploadBlobChunk(session,ByteBuffer.wrap(new byte[]{(byte)b}));
+    }
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

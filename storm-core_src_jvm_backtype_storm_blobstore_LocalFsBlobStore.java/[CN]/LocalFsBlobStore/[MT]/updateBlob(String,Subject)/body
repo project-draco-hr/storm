@@ -1,0 +1,12 @@
+{
+  validateKey(key);
+  checkForBlobOrDownload(key);
+  SettableBlobMeta meta=getStoredBlobMeta(key);
+  _aclHandler.hasPermissions(meta.get_acl(),WRITE,who,key);
+  try {
+    return new BlobStoreFileOutputStream(fbs.write(DATA_PREFIX + key,false));
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

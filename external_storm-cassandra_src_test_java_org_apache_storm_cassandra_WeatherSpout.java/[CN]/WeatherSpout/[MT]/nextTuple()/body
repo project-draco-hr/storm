@@ -1,0 +1,5 @@
+{
+  if (emit.get() < maxQueries.get()) {
+    spoutOutputCollector.emit(new Values(stationID,"38??C"),emit.incrementAndGet());
+  }
+}

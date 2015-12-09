@@ -1,0 +1,13 @@
+{
+  Set<Principal> principals;
+  boolean isNimbusInstance=false;
+  if (who != null) {
+    principals=who.getPrincipals();
+    for (    Principal principal : principals) {
+      if (principal instanceof NimbusPrincipal) {
+        isNimbusInstance=true;
+      }
+    }
+  }
+  return isNimbusInstance;
+}

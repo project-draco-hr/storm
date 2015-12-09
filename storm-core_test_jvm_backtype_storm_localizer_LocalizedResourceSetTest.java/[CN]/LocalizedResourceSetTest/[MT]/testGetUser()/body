@@ -1,0 +1,4 @@
+{
+  LocalizedResourceSet lrset=new LocalizedResourceSet(user1);
+  assertEquals("user is wrong",user1,lrset.getUser());
+}

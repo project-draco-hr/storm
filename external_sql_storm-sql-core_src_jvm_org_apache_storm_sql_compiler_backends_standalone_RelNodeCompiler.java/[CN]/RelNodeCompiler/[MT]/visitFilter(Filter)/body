@@ -1,0 +1,8 @@
+{
+  beginStage(filter);
+  ExprCompiler compiler=new ExprCompiler(pw,typeFactory);
+  String r=filter.getCondition().accept(compiler);
+  pw.print(String.format("    if (%s) { ctx.emit(_data); }\n",r));
+  endStage();
+  return null;
+}

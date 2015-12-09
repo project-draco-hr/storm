@@ -1,0 +1,5 @@
+{
+  this._conf=conf;
+  _blobStore=new HdfsBlobStore();
+  _blobStore.prepare(conf,null,null);
+}

@@ -1,0 +1,6 @@
+{
+  if (cleanup != null) {
+    cleanup.cancel();
+    cleanup=null;
+  }
+}

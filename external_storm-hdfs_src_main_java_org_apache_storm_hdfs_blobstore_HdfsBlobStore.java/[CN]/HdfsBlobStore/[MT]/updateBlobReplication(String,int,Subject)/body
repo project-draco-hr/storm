@@ -1,0 +1,14 @@
+{
+  who=checkAndGetSubject(who);
+  validateKey(key);
+  SettableBlobMeta meta=getStoredBlobMeta(key);
+  meta.set_replication_factor(replication);
+  _aclHandler.hasAnyPermissions(meta.get_acl(),WRITE | ADMIN,who,key);
+  try {
+    writeMetadata(key,meta);
+    return _hbs.updateBlobReplication(DATA_PREFIX + key,replication);
+  }
+ catch (  IOException exp) {
+    throw new RuntimeException(exp);
+  }
+}

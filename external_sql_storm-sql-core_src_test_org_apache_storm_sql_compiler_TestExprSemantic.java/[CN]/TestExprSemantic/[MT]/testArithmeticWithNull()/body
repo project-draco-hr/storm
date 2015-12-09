@@ -1,0 +1,4 @@
+{
+  Values v=testExpr(Lists.newArrayList("1 + CAST(NULL AS INT)","CAST(NULL AS INT) + 1","CAST(NULL AS INT) + CAST(NULL AS INT)","1 + 2"));
+  assertEquals(new Values(null,null,null,3),v);
+}

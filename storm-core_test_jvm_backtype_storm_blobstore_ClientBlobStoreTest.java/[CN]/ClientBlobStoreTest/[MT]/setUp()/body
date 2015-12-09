@@ -1,0 +1,5 @@
+{
+  client=new TestClientBlobStore();
+  Map conf=new HashMap<String,String>();
+  client.prepare(conf);
+}

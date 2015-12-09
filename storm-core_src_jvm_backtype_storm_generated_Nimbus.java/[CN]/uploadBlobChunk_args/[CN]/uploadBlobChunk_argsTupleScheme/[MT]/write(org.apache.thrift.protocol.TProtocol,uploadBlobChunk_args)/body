@@ -1,0 +1,17 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_session()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_chunk()) {
+    optionals.set(1);
+  }
+  oprot.writeBitSet(optionals,2);
+  if (struct.is_set_session()) {
+    oprot.writeString(struct.session);
+  }
+  if (struct.is_set_chunk()) {
+    oprot.writeBinary(struct.chunk);
+  }
+}

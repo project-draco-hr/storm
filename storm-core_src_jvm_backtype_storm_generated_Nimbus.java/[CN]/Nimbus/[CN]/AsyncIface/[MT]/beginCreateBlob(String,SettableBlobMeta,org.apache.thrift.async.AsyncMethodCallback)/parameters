@@ -1,0 +1,3 @@
+String key
+SettableBlobMeta meta
+org.apache.thrift.async.AsyncMethodCallback resultHandler

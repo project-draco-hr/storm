@@ -1,0 +1,6 @@
+{
+  ExecutionResultCollector poll;
+  while ((poll=completed.poll()) != null) {
+    poll.handle(collector,handler);
+  }
+}

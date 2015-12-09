@@ -1,0 +1,4 @@
+{
+  StormParser parser=new StormParser(sql);
+  return parser.impl().parseSqlStmtEof();
+}

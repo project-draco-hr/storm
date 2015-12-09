@@ -1,0 +1,3 @@
+def updateBlobReplication(self, key, replication):
+    '\n    Parameters:\n     - key\n     - replication\n    '
+    pass

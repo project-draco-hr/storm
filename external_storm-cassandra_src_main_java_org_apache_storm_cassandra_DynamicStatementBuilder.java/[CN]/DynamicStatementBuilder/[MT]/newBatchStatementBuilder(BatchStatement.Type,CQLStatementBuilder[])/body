@@ -1,0 +1,5 @@
+{
+  List<CQLStatementTupleMapper> mappers=new ArrayList<>(builders.length);
+  for (  CQLStatementBuilder b : Arrays.asList(builders))   mappers.add(b.build());
+  return new BatchStatementTupleMapper(type,mappers);
+}

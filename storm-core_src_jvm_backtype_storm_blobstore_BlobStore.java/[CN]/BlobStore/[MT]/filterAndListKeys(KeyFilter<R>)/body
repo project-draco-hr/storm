@@ -1,0 +1,12 @@
+{
+  Set<R> ret=new HashSet<R>();
+  Iterator<String> keys=listKeys();
+  while (keys.hasNext()) {
+    String key=keys.next();
+    R filtered=filter.filter(key);
+    if (filtered != null) {
+      ret.add(filtered);
+    }
+  }
+  return ret;
+}

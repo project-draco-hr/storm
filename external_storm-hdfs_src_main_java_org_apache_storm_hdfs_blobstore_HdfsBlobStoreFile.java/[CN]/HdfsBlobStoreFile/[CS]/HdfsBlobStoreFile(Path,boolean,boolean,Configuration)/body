@@ -1,0 +1,18 @@
+{
+  _key=base.getName();
+  _hadoopConf=hconf;
+  _isTmp=isTmp;
+  _mustBeNew=mustBeNew;
+  if (_isTmp) {
+    _path=new Path(base,System.currentTimeMillis() + TMP_EXT);
+  }
+ else {
+    _path=new Path(base,BLOBSTORE_DATA_FILE);
+  }
+  try {
+    _fs=_path.getFileSystem(_hadoopConf);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Error getting filesystem for path: " + _path,e);
+  }
+}

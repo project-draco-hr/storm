@@ -1,0 +1,8 @@
+{
+  BlobKeySequenceInfo info1=BlobStoreUtils.normalizeNimbusHostPortSequenceNumberInfo("nimbus1:7800-1");
+  assertTrue(info1.getNimbusHostPort().equals("nimbus1:7800"));
+  assertTrue(info1.getSequenceNumber().equals("1"));
+  BlobKeySequenceInfo info2=BlobStoreUtils.normalizeNimbusHostPortSequenceNumberInfo("nimbus-1:7800-1");
+  assertTrue(info2.getNimbusHostPort().equals("nimbus-1:7800"));
+  assertTrue(info2.getSequenceNumber().equals("1"));
+}

@@ -1,0 +1,13 @@
+{
+  Map conf=new HashMap();
+  String key1="key1";
+  conf.put(Config.STORM_LOCAL_DIR,"local");
+  conf.put(Config.BLOBSTORE_SUPERUSER,"superuser");
+  conf.put(Config.STORM_PRINCIPAL_TO_LOCAL_PLUGIN,"backtype.storm.security.auth.DefaultPrincipalToLocal");
+  LocalFsBlobStore bs=new LocalFsBlobStore();
+  LocalFsBlobStore spy=spy(bs);
+  Mockito.doReturn(true).when(spy).checkForBlobOrDownload(key1);
+  Mockito.doNothing().when(spy).checkForBlobUpdate(key1);
+  spy.prepare(conf,null,null);
+  spy.getBlob(key1,null);
+}

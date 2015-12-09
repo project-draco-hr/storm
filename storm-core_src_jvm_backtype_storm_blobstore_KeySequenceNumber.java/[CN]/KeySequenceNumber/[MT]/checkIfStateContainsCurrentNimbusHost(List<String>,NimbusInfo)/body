@@ -1,0 +1,10 @@
+{
+  boolean containsNimbusHost=false;
+  for (  String stateInfo : stateInfoList) {
+    if (stateInfo.contains(nimbusInfo.getHost())) {
+      containsNimbusHost=true;
+      break;
+    }
+  }
+  return containsNimbusHost;
+}

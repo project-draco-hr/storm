@@ -1,0 +1,7 @@
+{
+  if (!queue.offer(input)) {
+    LOG.info(logPrefix() + "The message queue is full, preparing batch statement...");
+    prepareAndExecuteStatement();
+    queue.add(input);
+  }
+}

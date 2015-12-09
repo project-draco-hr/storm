@@ -1,0 +1,4 @@
+def validate(self):
+    if (self.acl is None):
+        raise TProtocol.TProtocolException(message='Required field acl is unset!')
+    return

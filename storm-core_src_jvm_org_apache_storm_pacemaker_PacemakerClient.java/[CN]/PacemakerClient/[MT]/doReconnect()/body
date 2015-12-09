@@ -1,0 +1,5 @@
+{
+  close_channel();
+  if (closing.get())   return;
+  bootstrap.connect(remote_addr);
+}

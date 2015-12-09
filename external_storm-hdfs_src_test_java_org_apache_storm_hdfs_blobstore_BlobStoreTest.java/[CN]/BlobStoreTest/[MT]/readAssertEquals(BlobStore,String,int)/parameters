@@ -1,0 +1,3 @@
+BlobStore store
+String key
+int value

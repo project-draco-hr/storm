@@ -1,0 +1,13 @@
+{
+switch (ac.get_type()) {
+case OTHER:
+    return ac.get_access();
+case USER:
+  if (users.contains(ac.get_name())) {
+    return ac.get_access();
+  }
+return 0;
+default :
+return 0;
+}
+}

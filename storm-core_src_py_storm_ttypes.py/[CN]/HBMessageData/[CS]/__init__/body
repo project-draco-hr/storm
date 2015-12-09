@@ -1,0 +1,7 @@
+def __init__(self, path=None, pulse=None, boolval=None, records=None, nodes=None, message_blob=None):
+    self.path = path
+    self.pulse = pulse
+    self.boolval = boolval
+    self.records = records
+    self.nodes = nodes
+    self.message_blob = message_blob

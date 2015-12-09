@@ -38,17 +38,17 @@ def write(self, oprot):
     if (self.id_to_spout_agg_stats is not None):
         oprot.writeFieldBegin('id_to_spout_agg_stats', TType.MAP, 9)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.id_to_spout_agg_stats))
-        for (kiter367, viter368) in self.id_to_spout_agg_stats.items():
-            oprot.writeString(kiter367.encode('utf-8'))
-            viter368.write(oprot)
+        for (kiter374, viter375) in self.id_to_spout_agg_stats.items():
+            oprot.writeString(kiter374.encode('utf-8'))
+            viter375.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.id_to_bolt_agg_stats is not None):
         oprot.writeFieldBegin('id_to_bolt_agg_stats', TType.MAP, 10)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.id_to_bolt_agg_stats))
-        for (kiter369, viter370) in self.id_to_bolt_agg_stats.items():
-            oprot.writeString(kiter369.encode('utf-8'))
-            viter370.write(oprot)
+        for (kiter376, viter377) in self.id_to_bolt_agg_stats.items():
+            oprot.writeString(kiter376.encode('utf-8'))
+            viter377.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.sched_status is not None):

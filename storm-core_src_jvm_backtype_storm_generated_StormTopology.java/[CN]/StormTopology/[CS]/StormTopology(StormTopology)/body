@@ -32,4 +32,8 @@
     }
     this.state_spouts=__this__state_spouts;
   }
+  if (other.is_set_worker_hooks()) {
+    List<ByteBuffer> __this__worker_hooks=new ArrayList<ByteBuffer>(other.worker_hooks);
+    this.worker_hooks=__this__worker_hooks;
+  }
 }

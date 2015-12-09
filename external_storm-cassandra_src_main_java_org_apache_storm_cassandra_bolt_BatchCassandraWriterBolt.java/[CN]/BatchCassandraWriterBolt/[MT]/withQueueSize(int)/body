@@ -1,0 +1,4 @@
+{
+  this.batchMaxSize=size;
+  return this;
+}

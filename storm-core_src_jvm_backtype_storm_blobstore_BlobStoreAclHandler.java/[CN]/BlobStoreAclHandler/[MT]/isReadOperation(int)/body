@@ -1,0 +1,6 @@
+{
+  if (operation == 1) {
+    return true;
+  }
+  return false;
+}

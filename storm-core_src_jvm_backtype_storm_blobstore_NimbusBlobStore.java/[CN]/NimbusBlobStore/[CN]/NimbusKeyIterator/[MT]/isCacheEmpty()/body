@@ -1,0 +1,3 @@
+{
+  return listBlobs.get_keys_size() <= offset;
+}

@@ -1,0 +1,3 @@
+{
+  iface.deleteBlob(args.key,resultHandler);
+}

@@ -1,0 +1,12 @@
+{
+  Path dir=getKeyDir(key);
+  boolean res=false;
+  try {
+    _fs=dir.getFileSystem(_hadoopConf);
+    res=_fs.exists(dir);
+  }
+ catch (  IOException e) {
+    LOG.warn("Exception checking for exists on: " + key);
+  }
+  return res;
+}

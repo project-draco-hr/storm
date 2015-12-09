@@ -1,0 +1,8 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.settable=new SettableBlobMeta();
+  struct.settable.read(iprot);
+  struct.set_settable_isSet(true);
+  struct.version=iprot.readI64();
+  struct.set_version_isSet(true);
+}

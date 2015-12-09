@@ -1,0 +1,4 @@
+{
+  this.outputsFields.put(Utils.DEFAULT_STREAM_ID,fields);
+  return this;
+}

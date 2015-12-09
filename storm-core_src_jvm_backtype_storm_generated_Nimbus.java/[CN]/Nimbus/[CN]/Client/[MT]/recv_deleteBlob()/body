@@ -1,0 +1,11 @@
+{
+  deleteBlob_result result=new deleteBlob_result();
+  receiveBase(result,"deleteBlob");
+  if (result.aze != null) {
+    throw result.aze;
+  }
+  if (result.knf != null) {
+    throw result.knf;
+  }
+  return;
+}

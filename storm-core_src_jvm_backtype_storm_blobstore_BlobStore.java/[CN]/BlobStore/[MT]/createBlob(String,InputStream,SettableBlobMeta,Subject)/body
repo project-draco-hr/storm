@@ -1,0 +1,20 @@
+{
+  AtomicOutputStream out=null;
+  try {
+    out=createBlob(key,meta,who);
+    byte[] buffer=new byte[2048];
+    int len=0;
+    while ((len=in.read(buffer)) > 0) {
+      out.write(buffer,0,len);
+    }
+    out.close();
+  }
+ catch (  AuthorizationException|IOException|RuntimeException e) {
+    if (out != null) {
+      out.cancel();
+    }
+  }
+ finally {
+    in.close();
+  }
+}

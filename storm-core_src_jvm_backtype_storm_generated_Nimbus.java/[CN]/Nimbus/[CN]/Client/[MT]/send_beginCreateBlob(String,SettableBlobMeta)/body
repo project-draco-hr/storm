@@ -1,0 +1,6 @@
+{
+  beginCreateBlob_args args=new beginCreateBlob_args();
+  args.set_key(key);
+  args.set_meta(meta);
+  sendBase("beginCreateBlob",args);
+}

@@ -1,0 +1,22 @@
+{
+  if (BLOBSTORE_DATA_FILE.equals(name)) {
+    _isTmp=false;
+  }
+ else {
+    Matcher m=TMP_NAME_PATTERN.matcher(name);
+    if (!m.matches()) {
+      throw new IllegalArgumentException("File name does not match '" + name + "' !~ "+ TMP_NAME_PATTERN);
+    }
+    _isTmp=true;
+  }
+  _hadoopConf=hconf;
+  _key=base.getName();
+  _path=new Path(base,name);
+  _mustBeNew=false;
+  try {
+    _fs=_path.getFileSystem(_hadoopConf);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Error getting filesystem for path: " + _path,e);
+  }
+}

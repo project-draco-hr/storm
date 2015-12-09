@@ -1,0 +1,21 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.type != null) {
+    oprot.writeFieldBegin(TYPE_FIELD_DESC);
+    oprot.writeI32(struct.type.getValue());
+    oprot.writeFieldEnd();
+  }
+  if (struct.data != null) {
+    oprot.writeFieldBegin(DATA_FIELD_DESC);
+    struct.data.write(oprot);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_message_id()) {
+    oprot.writeFieldBegin(MESSAGE_ID_FIELD_DESC);
+    oprot.writeI32(struct.message_id);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

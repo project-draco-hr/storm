@@ -1,0 +1,5 @@
+{
+  LOG.debug("Channel is ready.");
+  ready=true;
+  this.notifyAll();
+}

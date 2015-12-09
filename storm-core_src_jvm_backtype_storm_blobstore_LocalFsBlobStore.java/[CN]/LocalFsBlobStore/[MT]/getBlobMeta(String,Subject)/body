@@ -1,0 +1,18 @@
+{
+  validateKey(key);
+  if (!checkForBlobOrDownload(key)) {
+    checkForBlobUpdate(key);
+  }
+  SettableBlobMeta meta=getStoredBlobMeta(key);
+  _aclHandler.validateUserCanReadMeta(meta.get_acl(),who,key);
+  ReadableBlobMeta rbm=new ReadableBlobMeta();
+  rbm.set_settable(meta);
+  try {
+    LocalFsBlobStoreFile pf=fbs.read(DATA_PREFIX + key);
+    rbm.set_version(pf.getModTime());
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  return rbm;
+}

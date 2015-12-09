@@ -1,0 +1,3 @@
+{
+  return getWorkerBean(clazz,stormConf,false);
+}

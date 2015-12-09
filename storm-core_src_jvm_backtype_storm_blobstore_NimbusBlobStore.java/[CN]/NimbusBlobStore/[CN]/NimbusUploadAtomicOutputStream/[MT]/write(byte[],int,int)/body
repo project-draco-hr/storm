@@ -1,0 +1,15 @@
+{
+  try {
+    int end=offset + len;
+    for (int realOffset=offset; realOffset < end; realOffset+=maxChunkSize) {
+      int realLen=Math.min(end - realOffset,maxChunkSize);
+      LOG.debug("Writing {} bytes of {} remaining",realLen,(end - realOffset));
+synchronized (client) {
+        client.getClient().uploadBlobChunk(session,ByteBuffer.wrap(b,realOffset,realLen));
+      }
+    }
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

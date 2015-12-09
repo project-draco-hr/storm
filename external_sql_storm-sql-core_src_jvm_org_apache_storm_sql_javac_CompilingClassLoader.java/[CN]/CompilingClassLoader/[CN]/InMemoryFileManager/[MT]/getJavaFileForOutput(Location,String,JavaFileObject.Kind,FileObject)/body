@@ -1,0 +1,14 @@
+{
+  return new SimpleJavaFileObject(EMPTY_URI,kind){
+    @Override public OutputStream openOutputStream() throws IOException {
+      ByteArrayOutputStream outputStream=byteCodeForClasses.get(className);
+      if (outputStream != null) {
+        throw new IllegalStateException("Cannot write more than once");
+      }
+      outputStream=new ByteArrayOutputStream(256);
+      byteCodeForClasses.put(className,outputStream);
+      return outputStream;
+    }
+  }
+;
+}

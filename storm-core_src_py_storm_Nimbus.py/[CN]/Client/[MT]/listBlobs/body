@@ -1,0 +1,4 @@
+def listBlobs(self, session):
+    '\n    Parameters:\n     - session\n    '
+    self.send_listBlobs(session)
+    return self.recv_listBlobs()

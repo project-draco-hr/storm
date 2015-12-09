@@ -1,0 +1,13 @@
+{
+  if (s == null) {
+    return nullMeansNull ? "null" : "\"\"";
+  }
+ else {
+    String s1=Util.replace(s,"\\","\\\\");
+    String s2=Util.replace(s1,"\"","\\\"");
+    String s3=Util.replace(s2,"\n\r","\\n");
+    String s4=Util.replace(s3,"\n","\\n");
+    String s5=Util.replace(s4,"\r","\\r");
+    return "\"" + s5 + "\"";
+  }
+}

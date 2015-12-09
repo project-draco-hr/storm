@@ -1,0 +1,3 @@
+{
+  this.worker_hooks=worker_hooks;
+}

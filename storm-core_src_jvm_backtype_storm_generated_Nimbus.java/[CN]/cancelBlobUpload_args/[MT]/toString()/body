@@ -1,0 +1,14 @@
+{
+  StringBuilder sb=new StringBuilder("cancelBlobUpload_args(");
+  boolean first=true;
+  sb.append("session:");
+  if (this.session == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.session);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

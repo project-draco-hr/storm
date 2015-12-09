@@ -1,0 +1,6 @@
+{
+  Assert.assertEquals(false,ThriftTopologyUtils.isWorkerHook(StormTopology._Fields.BOLTS));
+  Assert.assertEquals(false,ThriftTopologyUtils.isWorkerHook(StormTopology._Fields.SPOUTS));
+  Assert.assertEquals(false,ThriftTopologyUtils.isWorkerHook(StormTopology._Fields.STATE_SPOUTS));
+  Assert.assertEquals(true,ThriftTopologyUtils.isWorkerHook(StormTopology._Fields.WORKER_HOOKS));
+}

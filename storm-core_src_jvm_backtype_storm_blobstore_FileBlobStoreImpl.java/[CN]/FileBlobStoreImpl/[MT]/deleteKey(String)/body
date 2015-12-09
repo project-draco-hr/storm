@@ -1,0 +1,6 @@
+{
+  File keyDir=getKeyDir(key);
+  LocalFsBlobStoreFile pf=new LocalFsBlobStoreFile(keyDir,BlobStoreFile.BLOBSTORE_DATA_FILE);
+  pf.delete();
+  delete(keyDir);
+}

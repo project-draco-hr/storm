@@ -10,11 +10,11 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.LIST):
                 self.topo_history = []
-                (_etype604, _size601) = iprot.readListBegin()
-                for _i605 in xrange(_size601):
-                    _elem606 = LSTopoHistory()
-                    _elem606.read(iprot)
-                    self.topo_history.append(_elem606)
+                (_etype625, _size622) = iprot.readListBegin()
+                for _i626 in xrange(_size622):
+                    _elem627 = LSTopoHistory()
+                    _elem627.read(iprot)
+                    self.topo_history.append(_elem627)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

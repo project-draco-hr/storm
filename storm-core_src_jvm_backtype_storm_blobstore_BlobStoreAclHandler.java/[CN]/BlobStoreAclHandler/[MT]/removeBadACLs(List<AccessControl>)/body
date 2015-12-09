@@ -1,0 +1,11 @@
+{
+  List<AccessControl> resultAcl=new ArrayList<AccessControl>();
+  for (  AccessControl control : accessControls) {
+    if (control.get_type().equals(AccessControlType.OTHER) && (control.get_access() == 0)) {
+      LOG.debug("Removing invalid blobstore world ACL " + BlobStoreAclHandler.accessControlToString(control));
+      continue;
+    }
+    resultAcl.add(control);
+  }
+  return resultAcl;
+}

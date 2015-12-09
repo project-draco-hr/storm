@@ -1,0 +1,4 @@
+def downloadBlobChunk(self, session):
+    '\n    Parameters:\n     - session\n    '
+    self.send_downloadBlobChunk(session)
+    return self.recv_downloadBlobChunk()

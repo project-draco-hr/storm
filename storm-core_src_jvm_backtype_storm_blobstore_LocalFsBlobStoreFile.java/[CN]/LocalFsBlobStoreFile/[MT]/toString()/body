@@ -1,0 +1,3 @@
+{
+  return _path + ":" + (_isTmp ? "tmp" : BlobStoreFile.BLOBSTORE_DATA_FILE)+ ":"+ _key;
+}

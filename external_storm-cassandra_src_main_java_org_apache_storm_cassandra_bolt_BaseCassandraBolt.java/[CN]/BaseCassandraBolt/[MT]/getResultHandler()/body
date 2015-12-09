@@ -1,0 +1,4 @@
+{
+  if (resultHandler == null)   resultHandler=new BaseExecutionResultHandler();
+  return resultHandler;
+}
