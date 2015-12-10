@@ -1,0 +1,3 @@
+def sql(sql_file, topo_nam):
+    'Syntax: [storm sql sql-file topology]\n\n    Compiles the SQL statements into a Trident topology and submits it to Storm.\n    '
+    exec_storm_class('org.apache.storm.sql.StormSqlRunner', jvmtype='-client', extrajars=[USER_CONF_DIR, STORM_BIN_DIR], args=[sql_file, topo_name], daemon=False)

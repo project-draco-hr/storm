@@ -1,0 +1,3 @@
+{
+  return ImmutableNullableList.of(tblName,fieldList,inputFormatClass,outputFormatClass,location,properties,query);
+}

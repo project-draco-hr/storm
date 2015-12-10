@@ -1,0 +1,5 @@
+URI uri
+String inputFormatClass
+String outputFormatClass
+String properties
+List<FieldInfo> fields

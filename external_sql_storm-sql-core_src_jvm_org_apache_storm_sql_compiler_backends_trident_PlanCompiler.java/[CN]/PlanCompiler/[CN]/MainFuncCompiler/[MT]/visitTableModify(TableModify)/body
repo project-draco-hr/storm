@@ -1,0 +1,8 @@
+{
+  Preconditions.checkArgument(modify.isInsert(),"Only INSERT statement is supported.");
+  String name=RelNodeCompiler.getStageName(modify);
+  RelNode input=modify.getInput();
+  String inputName=RelNodeCompiler.getStageName(input);
+  pw.print(String.format(TABLEMODIFY_TMPL,name,CompilerUtil.escapeJavaString(Joiner.on('.').join(modify.getTable().getQualifiedName()),true),inputName,getFieldString(input),getFieldString(modify)));
+  return null;
+}

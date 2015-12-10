@@ -1,0 +1,50 @@
+{
+  for (  RelNode input : n.getInputs()) {
+    traverse(input);
+  }
+  if (n instanceof Aggregate) {
+    return visitAggregate((Aggregate)n);
+  }
+ else   if (n instanceof Calc) {
+    return visitCalc((Calc)n);
+  }
+ else   if (n instanceof Collect) {
+    return visitCollect((Collect)n);
+  }
+ else   if (n instanceof Correlate) {
+    return visitCorrelate((Correlate)n);
+  }
+ else   if (n instanceof Delta) {
+    return visitDelta((Delta)n);
+  }
+ else   if (n instanceof Exchange) {
+    return visitExchange((Exchange)n);
+  }
+ else   if (n instanceof Project) {
+    return visitProject((Project)n);
+  }
+ else   if (n instanceof Filter) {
+    return visitFilter((Filter)n);
+  }
+ else   if (n instanceof Sample) {
+    return visitSample((Sample)n);
+  }
+ else   if (n instanceof Sort) {
+    return visitSort((Sort)n);
+  }
+ else   if (n instanceof TableModify) {
+    return visitTableModify((TableModify)n);
+  }
+ else   if (n instanceof TableScan) {
+    return visitTableScan((TableScan)n);
+  }
+ else   if (n instanceof Uncollect) {
+    return visitUncollect((Uncollect)n);
+  }
+ else   if (n instanceof Window) {
+    return visitWindow((Window)n);
+  }
+ else {
+    return defaultValue(n);
+  }
+}

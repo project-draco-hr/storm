@@ -1,0 +1,4 @@
+{
+  Values v=testExpr(Lists.newArrayList("UPPER('a')","LOWER('A')","INITCAP('foo')","SUBSTRING('foo', 2)","CHARACTER_LENGTH('foo')","CHAR_LENGTH('foo')","'ab' || 'cd'"));
+  assertEquals(new Values("A","a","Foo","oo",3,3,"abcd"),v);
+}

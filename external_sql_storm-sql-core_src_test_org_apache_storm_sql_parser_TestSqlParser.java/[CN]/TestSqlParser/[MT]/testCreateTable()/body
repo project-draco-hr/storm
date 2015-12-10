@@ -1,0 +1,4 @@
+{
+  String sql="CREATE EXTERNAL TABLE foo (bar INT) LOCATION 'kafka:///foo'";
+  parse(sql);
+}

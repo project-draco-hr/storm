@@ -1,0 +1,31 @@
+{
+  int port=uri.getPort() != -1 ? uri.getPort() : DEFAULT_ZK_PORT;
+  ZkHosts zk=new ZkHosts(uri.getHost() + ":" + port,uri.getPath());
+  Map<String,String> values=parseURIParams(uri.getQuery());
+  String topic=values.get("topic");
+  Preconditions.checkNotNull(topic,"No topic of the spout is specified");
+  TridentKafkaConfig conf=new TridentKafkaConfig(zk,topic);
+  List<String> fieldNames=new ArrayList<>();
+  int primaryIndex=-1;
+  for (int i=0; i < fields.size(); ++i) {
+    FieldInfo f=fields.get(i);
+    fieldNames.add(f.name());
+    if (f.isPrimary()) {
+      primaryIndex=i;
+    }
+  }
+  Preconditions.checkState(primaryIndex != -1,"Kafka stream table must have a primary key");
+  conf.scheme=new SchemeAsMultiScheme(new JsonScheme(fieldNames));
+  ObjectMapper mapper=new ObjectMapper();
+  Properties producerProp=new Properties();
+  try {
+    @SuppressWarnings("unchecked") HashMap<String,Object> map=mapper.readValue(properties,HashMap.class);
+    @SuppressWarnings("unchecked") HashMap<String,Object> producerConfig=(HashMap<String,Object>)map.get("producer");
+    Preconditions.checkNotNull(producerConfig,"Kafka Table must contain producer config");
+    producerProp.putAll(producerConfig);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  return new KafkaTridentDataSource(conf,topic,primaryIndex,producerProp,fieldNames);
+}

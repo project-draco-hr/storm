@@ -1,0 +1,8 @@
+{
+  if (stats != null || primaryKey == -1) {
+    return stats;
+  }
+  Direction dir=primaryKeyMonotonicity == INCREASING ? ASCENDING : DESCENDING;
+  RelFieldCollation collation=new RelFieldCollation(primaryKey,dir,NullDirection.UNSPECIFIED);
+  return Statistics.of(fields.size(),ImmutableList.of(ImmutableBitSet.of(primaryKey)),ImmutableList.of(RelCollations.of(collation)));
+}

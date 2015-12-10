@@ -1,0 +1,4 @@
+{
+  rows.add(data);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  Values v=testExpr(Lists.newArrayList("TRUE IS TRUE","TRUE IS NOT TRUE","UNKNOWN IS TRUE","UNKNOWN IS NOT TRUE","TRUE IS FALSE","UNKNOWN IS NULL","UNKNOWN IS NOT NULL"));
+  assertEquals(new Values(true,false,false,true,false,true,false),v);
+}
