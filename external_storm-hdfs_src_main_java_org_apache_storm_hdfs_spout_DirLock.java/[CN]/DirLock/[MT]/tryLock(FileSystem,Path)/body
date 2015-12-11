@@ -3,12 +3,23 @@
   try {
     FSDataOutputStream os=fs.create(lockFile,false);
     if (log.isInfoEnabled()) {
-      log.info("Thread acquired dir lock  " + threadInfo() + " - lockfile "+ lockFile);
+      log.info("Thread ({}) acquired lock on dir {}",threadInfo(),dir);
     }
     os.close();
     return new DirLock(fs,lockFile);
   }
  catch (  FileAlreadyExistsException e) {
+    log.info("Thread ({}) cannot lock dir {} as its already locked.",threadInfo(),dir);
     return null;
+  }
+catch (  RemoteException e) {
+    if (e.getClassName().contentEquals(AlreadyBeingCreatedException.class.getName())) {
+      log.info("Thread ({}) cannot lock dir {} as its already locked.",threadInfo(),dir);
+      return null;
+    }
+ else {
+      log.error("Error when acquiring lock on dir " + dir,e);
+      throw e;
+    }
   }
 }

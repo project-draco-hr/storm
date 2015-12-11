@@ -1,4 +1,5 @@
 {
+  conf.set(CommonConfigurationKeys.IPC_PING_INTERVAL_KEY,"5000");
   builder=new MiniDFSCluster.Builder(new Configuration());
   hdfsCluster=builder.build();
   fs=hdfsCluster.getFileSystem();

@@ -3,5 +3,8 @@
   for (int i=0; i < thdCount; i++) {
     result[i]=new DirLockingThread(i,fs,dir);
   }
+  for (  DirLockingThread thd : result) {
+    thd.start();
+  }
   return result;
 }

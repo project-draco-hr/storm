@@ -1,17 +1,30 @@
 {
+  DirLock lock=null;
   try {
-    DirLock lock;
     do {
+      System.err.println("Trying lock " + getName());
       lock=DirLock.tryLock(fs,dir);
+      System.err.println("Acquired lock " + getName());
       if (lock == null) {
         System.out.println("Retrying lock - " + Thread.currentThread().getId());
       }
     }
  while (lock == null);
-    lock.release();
     cleanExit=true;
   }
- catch (  IOException e) {
+ catch (  Exception e) {
     e.printStackTrace();
   }
+ finally {
+    try {
+      if (lock != null) {
+        lock.release();
+        System.err.println("Released lock " + getName());
+      }
+    }
+ catch (    IOException e) {
+      e.printStackTrace(System.err);
+    }
+  }
+  System.err.println("Thread exiting " + getName());
 }
