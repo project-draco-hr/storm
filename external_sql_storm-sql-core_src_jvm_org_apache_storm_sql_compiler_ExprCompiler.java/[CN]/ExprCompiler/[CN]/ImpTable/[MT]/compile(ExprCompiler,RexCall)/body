@@ -1,0 +1,10 @@
+{
+  SqlOperator op=call.getOperator();
+  CallExprPrinter printer=translators.get(op);
+  if (printer == null) {
+    throw new UnsupportedOperationException();
+  }
+ else {
+    return printer.translate(compiler,call);
+  }
+}

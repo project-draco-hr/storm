@@ -20,7 +20,7 @@
   LocalizedResource lrsrc=lrsrcs.get(0);
   LocalizedResource lrsrc2=lrsrcs.get(1);
   LocalizedResource lrsrc3=lrsrcs.get(2);
-  String expectedFileDir=baseDir + "/" + Localizer.USERCACHE+ "/"+ user1+ "/"+ Localizer.FILECACHE+ "/"+ Localizer.FILESDIR;
+  String expectedFileDir=joinPath(baseDir.toString(),Localizer.USERCACHE,user1,Localizer.FILECACHE,Localizer.FILESDIR);
   assertTrue("user filecache dir not created",new File(expectedFileDir).exists());
   File keyFile=new File(expectedFileDir,key1 + Utils.DEFAULT_CURRENT_BLOB_SUFFIX);
   File keyFile2=new File(expectedFileDir,key2 + Utils.DEFAULT_CURRENT_BLOB_SUFFIX);

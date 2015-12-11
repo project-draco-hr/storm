@@ -1,0 +1,10 @@
+{
+  super(pos);
+  this.tblName=tblName;
+  this.fieldList=fieldList;
+  this.inputFormatClass=inputFormatClass;
+  this.outputFormatClass=outputFormatClass;
+  this.location=location;
+  this.properties=properties;
+  this.query=query;
+}

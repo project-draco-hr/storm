@@ -1,0 +1,11 @@
+{
+  List<FieldInfo> fields=updateSchema(n);
+  ISqlTridentDataSource ds=DataSourcesRegistry.constructTridentDataSource(n.location(),n.inputFormatClass(),n.outputFormatClass(),n.properties(),fields);
+  if (ds == null) {
+    throw new RuntimeException("Failed to find data source for " + n.tableName() + " URI: "+ n.location());
+  }
+ else   if (dataSources.containsKey(n.tableName())) {
+    throw new RuntimeException("Duplicated definition for table " + n.tableName());
+  }
+  dataSources.put(n.tableName(),ds);
+}

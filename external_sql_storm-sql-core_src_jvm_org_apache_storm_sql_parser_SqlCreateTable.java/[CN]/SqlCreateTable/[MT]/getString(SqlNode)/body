@@ -1,0 +1,3 @@
+{
+  return n == null ? null : SqlLiteral.stringValue(n);
+}

@@ -1,0 +1,4 @@
+{
+  System.out.println("####### tuple = " + tuple.getValues());
+  collector.emit(tuple.getValues());
+}

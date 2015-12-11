@@ -1,0 +1,12 @@
+{
+  if (args.length != 2) {
+    System.err.println("storm-sql <sql-file> <topo-name>");
+    return;
+  }
+  List<String> stmts=Files.readAllLines(Paths.get(args[0]),StandardCharsets.UTF_8);
+  String topoName=args[1];
+  StormSql sql=StormSql.construct();
+  @SuppressWarnings("unchecked") Map<String,?> conf=Utils.readStormConfig();
+  SubmitOptions options=new SubmitOptions(TopologyInitialStatus.ACTIVE);
+  sql.submit(topoName,stmts,conf,options,null,null);
+}

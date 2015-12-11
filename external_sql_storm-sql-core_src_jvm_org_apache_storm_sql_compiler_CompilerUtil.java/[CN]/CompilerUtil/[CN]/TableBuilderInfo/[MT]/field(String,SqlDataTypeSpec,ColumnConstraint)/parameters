@@ -1,0 +1,3 @@
+String name
+SqlDataTypeSpec type
+ColumnConstraint constraint

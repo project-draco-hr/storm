@@ -1,0 +1,4 @@
+ClassLoader parent
+String className
+String sourceCode
+DiagnosticListener<JavaFileObject> diagnosticListener

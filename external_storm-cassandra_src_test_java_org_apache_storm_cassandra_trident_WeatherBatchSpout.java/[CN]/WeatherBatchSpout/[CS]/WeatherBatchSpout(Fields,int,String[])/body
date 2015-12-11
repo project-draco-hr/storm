@@ -1,0 +1,5 @@
+{
+  this.outputFields=fields;
+  this.batchSize=batchSize;
+  this.stationIds=stationIds;
+}

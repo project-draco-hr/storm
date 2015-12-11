@@ -1,0 +1,34 @@
+{
+  final Statistic stat=buildStatistic();
+  final Table tbl=new Table(){
+    @Override public RelDataType getRowType(    RelDataTypeFactory relDataTypeFactory){
+      RelDataTypeFactory.FieldInfoBuilder b=relDataTypeFactory.builder();
+      for (      FieldType f : fields) {
+        b.add(f.name,f.relDataType);
+      }
+      return b.build();
+    }
+    @Override public Statistic getStatistic(){
+      return stat != null ? stat : Statistics.of(rows.size(),ImmutableList.<ImmutableBitSet>of());
+    }
+    @Override public Schema.TableType getJdbcTableType(){
+      return Schema.TableType.TABLE;
+    }
+  }
+;
+  return new StreamableTable(){
+    @Override public Table stream(){
+      return tbl;
+    }
+    @Override public RelDataType getRowType(    RelDataTypeFactory relDataTypeFactory){
+      return tbl.getRowType(relDataTypeFactory);
+    }
+    @Override public Statistic getStatistic(){
+      return tbl.getStatistic();
+    }
+    @Override public Schema.TableType getJdbcTableType(){
+      return Schema.TableType.TABLE;
+    }
+  }
+;
+}

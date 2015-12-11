@@ -1,0 +1,4 @@
+{
+  this.stats=stats;
+  return this;
+}

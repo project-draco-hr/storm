@@ -1,0 +1,4 @@
+{
+  final Primitive primitive=Primitive.ofBoxOr(typeFactory.getJavaClass(type));
+  return primitive != null && (op == LESS_THAN || op == LESS_THAN_OR_EQUAL || op == GREATER_THAN || op == GREATER_THAN_OR_EQUAL);
+}

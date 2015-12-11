@@ -14,8 +14,8 @@
   assertTrue("failed to create user dir",user1Dir.mkdirs());
   LocalizedResource lrsrc=localizer.getBlob(new LocalResource(key1,true),user1,topo1,user1Dir);
   long timeAfter=System.nanoTime();
-  String expectedUserDir=baseDir + "/" + Localizer.USERCACHE+ "/"+ user1;
-  String expectedFileDir=expectedUserDir + "/" + Localizer.FILECACHE+ "/"+ Localizer.ARCHIVESDIR;
+  String expectedUserDir=joinPath(baseDir.toString(),Localizer.USERCACHE,user1);
+  String expectedFileDir=joinPath(expectedUserDir,Localizer.FILECACHE,Localizer.ARCHIVESDIR);
   assertTrue("user filecache dir not created",new File(expectedFileDir).exists());
   File keyFile=new File(expectedFileDir,key1 + ".0");
   assertTrue("blob not created",keyFile.exists());

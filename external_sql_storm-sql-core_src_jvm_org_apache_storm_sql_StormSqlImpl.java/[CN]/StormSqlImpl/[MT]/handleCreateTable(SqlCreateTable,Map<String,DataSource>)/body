@@ -1,0 +1,11 @@
+{
+  List<FieldInfo> fields=updateSchema(n);
+  DataSource ds=DataSourcesRegistry.construct(n.location(),n.inputFormatClass(),n.outputFormatClass(),fields);
+  if (ds == null) {
+    throw new RuntimeException("Cannot construct data source for " + n.tableName());
+  }
+ else   if (dataSources.containsKey(n.tableName())) {
+    throw new RuntimeException("Duplicated definition for table " + n.tableName());
+  }
+  dataSources.put(n.tableName(),ds);
+}
