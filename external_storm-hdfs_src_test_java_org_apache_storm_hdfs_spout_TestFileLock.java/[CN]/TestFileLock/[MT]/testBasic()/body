@@ -1,0 +1,29 @@
+{
+  Path file1=new Path(filesDir + Path.SEPARATOR + "file1");
+  Path file2=new Path(filesDir + Path.SEPARATOR + "file2");
+  fs.create(file1).close();
+  fs.create(file2).close();
+  FileLock lock1a=FileLock.tryLock(fs,file1,locksDir,"spout1");
+  Assert.assertNotNull(lock1a);
+  Assert.assertTrue(fs.exists(lock1a.getLockFile()));
+  Assert.assertEquals(lock1a.getLockFile().getParent(),locksDir);
+  Assert.assertEquals(lock1a.getLockFile().getName(),file1.getName());
+  FileLock lock1b=FileLock.tryLock(fs,file1,locksDir,"spout1");
+  Assert.assertNull(lock1b);
+  lock1a.release();
+  Assert.assertFalse(fs.exists(lock1a.getLockFile()));
+  FileLock lock1c=FileLock.tryLock(fs,file1,locksDir,"spout1");
+  Assert.assertNotNull(lock1c);
+  Assert.assertTrue(fs.exists(lock1c.getLockFile()));
+  Assert.assertEquals(lock1c.getLockFile().getParent(),locksDir);
+  Assert.assertEquals(lock1c.getLockFile().getName(),file1.getName());
+  FileLock lock2a=FileLock.tryLock(fs,file2,locksDir,"spout1");
+  Assert.assertNotNull(lock2a);
+  Assert.assertTrue(fs.exists(lock2a.getLockFile()));
+  Assert.assertEquals(lock2a.getLockFile().getParent(),locksDir);
+  Assert.assertEquals(lock2a.getLockFile().getName(),file1.getName());
+  lock2a.release();
+  Assert.assertFalse(fs.exists(lock2a.getLockFile()));
+  lock1c.release();
+  Assert.assertFalse(fs.exists(lock1c.getLockFile()));
+}

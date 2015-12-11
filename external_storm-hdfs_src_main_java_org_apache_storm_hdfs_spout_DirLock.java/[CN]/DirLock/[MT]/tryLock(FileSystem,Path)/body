@@ -1,25 +1,19 @@
 {
   Path lockFile=new Path(dir.toString() + Path.SEPARATOR_CHAR + DIR_LOCK_FILE);
   try {
-    FSDataOutputStream os=fs.create(lockFile,false);
-    if (log.isInfoEnabled()) {
+    FSDataOutputStream ostream=HdfsUtils.tryCreateFile(fs,lockFile);
+    if (ostream != null) {
       log.info("Thread ({}) acquired lock on dir {}",threadInfo(),dir);
+      ostream.close();
+      return new DirLock(fs,lockFile);
     }
-    os.close();
-    return new DirLock(fs,lockFile);
-  }
- catch (  FileAlreadyExistsException e) {
-    log.info("Thread ({}) cannot lock dir {} as its already locked.",threadInfo(),dir);
-    return null;
-  }
-catch (  RemoteException e) {
-    if (e.getClassName().contentEquals(AlreadyBeingCreatedException.class.getName())) {
+ else {
       log.info("Thread ({}) cannot lock dir {} as its already locked.",threadInfo(),dir);
       return null;
     }
- else {
-      log.error("Error when acquiring lock on dir " + dir,e);
-      throw e;
-    }
+  }
+ catch (  IOException e) {
+    log.error("Error when acquiring lock on dir " + dir,e);
+    throw e;
   }
 }

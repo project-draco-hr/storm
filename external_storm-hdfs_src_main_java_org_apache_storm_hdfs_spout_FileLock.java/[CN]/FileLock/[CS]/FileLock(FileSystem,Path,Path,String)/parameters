@@ -1,4 +1,0 @@
-FileSystem fs
-Path fileToLock
-Path lockDirPath
-String spoutId

@@ -1,0 +1,17 @@
+{
+  try {
+    FSDataOutputStream os=fs.create(file,false);
+    return os;
+  }
+ catch (  FileAlreadyExistsException e) {
+    return null;
+  }
+catch (  RemoteException e) {
+    if (e.getClassName().contentEquals(AlreadyBeingCreatedException.class.getName())) {
+      return null;
+    }
+ else {
+      throw e;
+    }
+  }
+}

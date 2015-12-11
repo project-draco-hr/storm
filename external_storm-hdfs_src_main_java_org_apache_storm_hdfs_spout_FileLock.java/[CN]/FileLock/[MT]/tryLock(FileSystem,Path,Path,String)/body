@@ -1,3 +1,19 @@
 {
-  return new FileLock(hdfs,fileToLock,lockDirPath,spoutId);
+  String lockFileName=lockDirPath.toString() + Path.SEPARATOR_CHAR + fileToLock.getName();
+  Path lockFile=new Path(lockFileName);
+  try {
+    FSDataOutputStream ostream=HdfsUtils.tryCreateFile(fs,lockFile);
+    if (ostream != null) {
+      log.info("Acquired lock on file {}. LockFile=",fileToLock,lockFile);
+      return new FileLock(fs,lockFile,ostream,spoutId);
+    }
+ else {
+      log.info("Cannot lock file {} as its already locked.",fileToLock);
+      return null;
+    }
+  }
+ catch (  IOException e) {
+    log.error("Error when acquiring lock on file " + fileToLock,e);
+    throw e;
+  }
 }

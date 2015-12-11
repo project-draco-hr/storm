@@ -1,4 +1,4 @@
 {
-  stream.close();
+  lockFileStream.close();
   fs.delete(lockFile,false);
 }

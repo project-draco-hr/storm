@@ -2,8 +2,8 @@
   long now=System.currentTimeMillis();
   LogEntry entry=new LogEntry(now,componentID,fileOffset);
   String line=entry.toString();
-  if (prefixNewLine)   stream.writeBytes(System.lineSeparator() + line);
- else   stream.writeBytes(line);
-  stream.flush();
+  if (prefixNewLine)   lockFileStream.writeBytes(System.lineSeparator() + line);
+ else   lockFileStream.writeBytes(line);
+  lockFileStream.flush();
   lastEntry=entry;
 }
