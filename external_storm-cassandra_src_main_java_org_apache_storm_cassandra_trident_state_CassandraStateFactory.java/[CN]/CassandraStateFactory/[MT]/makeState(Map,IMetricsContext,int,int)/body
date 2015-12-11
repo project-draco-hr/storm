@@ -1,0 +1,5 @@
+{
+  CassandraState cassandraState=new CassandraState(conf,options);
+  cassandraState.prepare();
+  return cassandraState;
+}

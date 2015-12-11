@@ -1,0 +1,2 @@
+long batchId
+TridentCollector collector

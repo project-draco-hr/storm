@@ -1,0 +1,12 @@
+{
+  final Random random=new Random();
+  List<Object> values=new ArrayList<Object>(){
+{
+      add(stationIds[random.nextInt(stationIds.length)]);
+      add(random.nextInt(100) + "");
+      add(UUID.randomUUID());
+    }
+  }
+;
+  return values;
+}

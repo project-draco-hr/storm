@@ -1,0 +1,3 @@
+{
+  batches.remove(batchId);
+}
