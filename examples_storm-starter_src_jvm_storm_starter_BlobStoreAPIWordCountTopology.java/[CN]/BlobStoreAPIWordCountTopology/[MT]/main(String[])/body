@@ -11,6 +11,7 @@
     }
   }
  catch (  KeyAlreadyExistsException kae) {
+    LOG.info("Key already exists {}",kae);
   }
 catch (  AuthorizationException|KeyNotFoundException|IOException exp) {
     throw new RuntimeException(exp);
