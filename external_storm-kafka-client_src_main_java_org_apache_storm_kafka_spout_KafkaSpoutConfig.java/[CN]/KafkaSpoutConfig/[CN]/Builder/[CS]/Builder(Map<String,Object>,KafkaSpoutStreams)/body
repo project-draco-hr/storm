@@ -1,0 +1,10 @@
+{
+  if (kafkaProps == null || kafkaProps.isEmpty()) {
+    throw new IllegalArgumentException("Properties defining consumer connection to Kafka broker are required. " + kafkaProps);
+  }
+  if (kafkaSpoutStreams == null) {
+    throw new IllegalArgumentException("Must specify stream associated with each topic. Multiple topics can emit in the same stream.");
+  }
+  this.kafkaProps=kafkaProps;
+  this.kafkaSpoutStreams=kafkaSpoutStreams;
+}

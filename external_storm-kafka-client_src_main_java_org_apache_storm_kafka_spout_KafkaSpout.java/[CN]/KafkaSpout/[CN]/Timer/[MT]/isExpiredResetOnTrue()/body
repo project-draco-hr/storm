@@ -1,0 +1,7 @@
+{
+  final boolean expired=System.nanoTime() - start > periodNanos;
+  if (expired) {
+    start=System.nanoTime();
+  }
+  return expired;
+}

@@ -1,0 +1,10 @@
+{
+  try {
+    System.out.println("PRESS ENTER TO STOP");
+    new BufferedReader(new InputStreamReader(System.in)).readLine();
+    System.exit(0);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+}

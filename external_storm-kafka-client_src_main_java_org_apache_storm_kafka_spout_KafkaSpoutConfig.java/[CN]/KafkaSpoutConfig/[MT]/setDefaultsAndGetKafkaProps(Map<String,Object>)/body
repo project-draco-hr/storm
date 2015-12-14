@@ -1,0 +1,6 @@
+{
+  if (!kafkaProps.containsKey(Consumer.ENABLE_AUTO_COMMIT)) {
+    kafkaProps.put(Consumer.ENABLE_AUTO_COMMIT,"false");
+  }
+  return kafkaProps;
+}

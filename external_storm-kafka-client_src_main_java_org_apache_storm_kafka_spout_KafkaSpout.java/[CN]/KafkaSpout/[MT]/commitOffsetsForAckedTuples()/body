@@ -1,0 +1,20 @@
+{
+  final Map<TopicPartition,OffsetAndMetadata> nextCommitOffsets=new HashMap<>();
+  for (  Map.Entry<TopicPartition,OffsetEntry> tpOffset : acked.entrySet()) {
+    final OffsetAndMetadata nextCommitOffset=tpOffset.getValue().findNextCommitOffset();
+    if (nextCommitOffset != null) {
+      nextCommitOffsets.put(tpOffset.getKey(),nextCommitOffset);
+    }
+  }
+  if (!nextCommitOffsets.isEmpty()) {
+    kafkaConsumer.commitSync(nextCommitOffsets);
+    LOG.debug("Offsets successfully committed to Kafka [{}]",nextCommitOffsets);
+    for (    Map.Entry<TopicPartition,OffsetEntry> tpOffset : acked.entrySet()) {
+      final OffsetEntry offsetEntry=tpOffset.getValue();
+      offsetEntry.commit(nextCommitOffsets.get(tpOffset.getKey()));
+    }
+  }
+ else {
+    LOG.trace("No offsets to commit. {}",this);
+  }
+}

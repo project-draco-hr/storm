@@ -1,0 +1,10 @@
+{
+switch (pollStrategy) {
+case STREAM:
+    return consumerAutoCommitMode || numUncommittedOffsets < kafkaSpoutConfig.getMaxUncommittedOffsets();
+case BATCH:
+  return consumerAutoCommitMode || numUncommittedOffsets <= 0;
+default :
+throw new IllegalStateException("No implementation defined for polling strategy " + pollStrategy);
+}
+}

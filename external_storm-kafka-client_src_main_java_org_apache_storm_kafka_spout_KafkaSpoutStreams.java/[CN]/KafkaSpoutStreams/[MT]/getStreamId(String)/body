@@ -1,0 +1,8 @@
+{
+  if (topicToStream.containsKey(topic)) {
+    final String streamId=topicToStream.get(topic).getStreamId();
+    LOG.trace("Topic [{}] emitting in stream [{}]",topic,streamId);
+    return streamId;
+  }
+  throw new IllegalStateException(this.getClass().getName() + " not configured for topic: " + topic);
+}

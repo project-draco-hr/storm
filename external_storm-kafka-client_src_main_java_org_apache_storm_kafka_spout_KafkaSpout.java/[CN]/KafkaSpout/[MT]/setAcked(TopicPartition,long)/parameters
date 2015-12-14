@@ -1,0 +1,2 @@
+TopicPartition tp
+long fetchOffset

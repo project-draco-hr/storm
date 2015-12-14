@@ -1,0 +1,5 @@
+{
+  this.kafkaSpoutConfig=kafkaSpoutConfig;
+  this.kafkaSpoutStreams=kafkaSpoutConfig.getKafkaSpoutStreams();
+  this.tupleBuilder=tupleBuilder;
+}

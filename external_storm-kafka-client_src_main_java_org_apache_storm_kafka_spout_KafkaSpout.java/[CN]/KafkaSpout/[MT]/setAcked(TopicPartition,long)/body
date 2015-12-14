@@ -1,0 +1,5 @@
+{
+  if (!consumerAutoCommitMode && !acked.containsKey(tp)) {
+    acked.put(tp,new OffsetEntry(tp,fetchOffset));
+  }
+}

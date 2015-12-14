@@ -1,0 +1,4 @@
+{
+  this.offsetCommitPeriodMs=offsetCommitPeriodMs;
+  return this;
+}

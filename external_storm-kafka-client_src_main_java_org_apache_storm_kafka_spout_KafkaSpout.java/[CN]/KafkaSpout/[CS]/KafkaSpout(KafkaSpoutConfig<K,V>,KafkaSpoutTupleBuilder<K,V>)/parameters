@@ -1,0 +1,2 @@
+KafkaSpoutConfig<K,V> kafkaSpoutConfig
+KafkaSpoutTupleBuilder<K,V> tupleBuilder

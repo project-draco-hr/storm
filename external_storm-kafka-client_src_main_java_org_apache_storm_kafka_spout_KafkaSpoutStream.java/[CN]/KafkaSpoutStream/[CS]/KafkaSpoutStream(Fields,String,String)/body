@@ -1,0 +1,5 @@
+{
+  this.outputFields=outputFields;
+  this.streamId=streamId;
+  this.topic=topic;
+}

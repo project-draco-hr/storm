@@ -1,0 +1,15 @@
+{
+  initialized=false;
+  this.collector=collector;
+  maxRetries=kafkaSpoutConfig.getMaxTupleRetries();
+  numUncommittedOffsets=0;
+  logTimer=new Timer(500,Math.min(1000,kafkaSpoutConfig.getOffsetsCommitPeriodMs() / 2),TimeUnit.MILLISECONDS);
+  firstPollOffsetStrategy=kafkaSpoutConfig.getFirstPollOffsetStrategy();
+  pollStrategy=kafkaSpoutConfig.getPollStrategy();
+  consumerAutoCommitMode=kafkaSpoutConfig.isConsumerAutoCommitMode();
+  if (!consumerAutoCommitMode) {
+    commitTimer=new Timer(500,kafkaSpoutConfig.getOffsetsCommitPeriodMs(),TimeUnit.MILLISECONDS);
+    acked=new HashMap<>();
+  }
+  LOG.info("Kafka Spout opened with the following configuration: {}",kafkaSpoutConfig);
+}

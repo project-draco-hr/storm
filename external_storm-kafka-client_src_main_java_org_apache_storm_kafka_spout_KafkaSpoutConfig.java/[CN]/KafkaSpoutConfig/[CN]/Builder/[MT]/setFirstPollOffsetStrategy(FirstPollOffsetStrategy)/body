@@ -1,0 +1,4 @@
+{
+  this.firstPollOffsetStrategy=firstPollOffsetStrategy;
+  return this;
+}

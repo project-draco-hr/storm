@@ -1,0 +1,16 @@
+{
+  if (initialized) {
+    if (commit()) {
+      commitOffsetsForAckedTuples();
+    }
+ else     if (poll()) {
+      emitTuples(pollKafkaBroker());
+    }
+ else     if (logTimer.isExpiredResetOnTrue()) {
+      log();
+    }
+  }
+ else {
+    LOG.debug("Spout not initialized. Not sending tuples until initialization completes");
+  }
+}

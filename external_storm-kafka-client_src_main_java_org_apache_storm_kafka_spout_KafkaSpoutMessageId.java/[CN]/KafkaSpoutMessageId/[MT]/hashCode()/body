@@ -1,0 +1,5 @@
+{
+  int result=topicPart.hashCode();
+  result=31 * result + (int)(offset ^ (offset >>> 32));
+  return result;
+}

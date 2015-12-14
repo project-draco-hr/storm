@@ -1,0 +1,2 @@
+ConsumerRecord consumerRecord
+List<Object> tuple

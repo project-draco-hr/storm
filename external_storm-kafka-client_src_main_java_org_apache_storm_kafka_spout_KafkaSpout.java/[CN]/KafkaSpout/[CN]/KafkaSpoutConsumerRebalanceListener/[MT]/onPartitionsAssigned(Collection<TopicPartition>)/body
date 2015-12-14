@@ -1,0 +1,4 @@
+{
+  LOG.debug("Partitions reassignment. [consumer-group={}, consumer={}, topic-partitions={}]",kafkaSpoutConfig.getConsumerGroupId(),kafkaConsumer,partitions);
+  initialize(partitions);
+}
