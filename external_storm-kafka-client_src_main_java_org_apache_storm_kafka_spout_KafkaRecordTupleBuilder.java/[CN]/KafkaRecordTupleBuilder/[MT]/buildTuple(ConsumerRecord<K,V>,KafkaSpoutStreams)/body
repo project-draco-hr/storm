@@ -1,0 +1,12 @@
+{
+  final Fields outputFields=kafkaSpoutStreams.getOutputFields(consumerRecord.topic());
+  if (outputFields != null) {
+    if (outputFields.size() == 3) {
+      return new Values(consumerRecord.topic(),consumerRecord.partition(),consumerRecord.offset());
+    }
+ else     if (outputFields.size() == 5) {
+      return new Values(consumerRecord.topic(),consumerRecord.partition(),consumerRecord.offset(),consumerRecord.key(),consumerRecord.value());
+    }
+  }
+  throw new RuntimeException("Failed to build tuple. " + consumerRecord + " "+ kafkaSpoutStreams);
+}

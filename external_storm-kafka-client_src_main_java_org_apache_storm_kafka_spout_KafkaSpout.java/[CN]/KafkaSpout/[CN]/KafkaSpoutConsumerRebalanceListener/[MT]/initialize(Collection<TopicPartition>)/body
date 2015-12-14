@@ -1,0 +1,12 @@
+{
+  if (!consumerAutoCommitMode) {
+    acked.keySet().retainAll(partitions);
+  }
+  for (  TopicPartition tp : partitions) {
+    final OffsetAndMetadata committedOffset=kafkaConsumer.committed(tp);
+    final long fetchOffset=doSeek(tp,committedOffset);
+    setAcked(tp,fetchOffset);
+  }
+  initialized=true;
+  LOG.debug("Initialization complete");
+}

@@ -1,0 +1,13 @@
+{
+  if (this == o) {
+    return true;
+  }
+  if (o == null || getClass() != o.getClass()) {
+    return false;
+  }
+  KafkaSpoutMessageId messageId=(KafkaSpoutMessageId)o;
+  if (offset != messageId.offset) {
+    return false;
+  }
+  return topicPart.equals(messageId.topicPart);
+}

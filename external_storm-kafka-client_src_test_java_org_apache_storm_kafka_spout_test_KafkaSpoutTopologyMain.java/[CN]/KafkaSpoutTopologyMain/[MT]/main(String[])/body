@@ -1,0 +1,8 @@
+{
+  if (args.length == 0) {
+    submitTopologyLocalCluster(getTopolgyKafkaSpout(),getConfig());
+  }
+ else {
+    submitTopologyRemoteCluster(args[0],getTopolgyKafkaSpout(),getConfig());
+  }
+}

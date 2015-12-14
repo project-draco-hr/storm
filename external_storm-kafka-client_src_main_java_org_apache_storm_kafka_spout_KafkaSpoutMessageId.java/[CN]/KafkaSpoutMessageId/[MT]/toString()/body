@@ -1,0 +1,3 @@
+{
+  return "{" + "topic-partition=" + topicPart + ", offset="+ offset+ ", numFails="+ numFails+ ", tuple="+ tuple+ '}';
+}

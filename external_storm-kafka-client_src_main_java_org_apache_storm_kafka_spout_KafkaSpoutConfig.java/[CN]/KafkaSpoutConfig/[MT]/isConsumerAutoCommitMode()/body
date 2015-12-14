@@ -1,0 +1,3 @@
+{
+  return kafkaProps.get(Consumer.ENABLE_AUTO_COMMIT) == null || Boolean.valueOf((String)kafkaProps.get(Consumer.ENABLE_AUTO_COMMIT));
+}

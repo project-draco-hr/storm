@@ -1,0 +1,5 @@
+{
+  for (  String topic : topics) {
+    topicToStream.put(topic,new KafkaSpoutStream(outputFields,streamId,topic));
+  }
+}

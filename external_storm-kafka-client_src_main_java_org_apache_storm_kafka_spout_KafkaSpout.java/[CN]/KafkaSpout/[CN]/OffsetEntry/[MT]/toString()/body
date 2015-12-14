@@ -1,0 +1,3 @@
+{
+  return "OffsetEntry{" + "topic-partition=" + tp + ", fetchOffset="+ initialFetchOffset+ ", committedOffset="+ committedOffset+ ", ackedMsgs="+ ackedMsgs+ '}';
+}

@@ -1,0 +1,4 @@
+{
+  topicToStream.put(stream.getTopic(),stream);
+  return this;
+}

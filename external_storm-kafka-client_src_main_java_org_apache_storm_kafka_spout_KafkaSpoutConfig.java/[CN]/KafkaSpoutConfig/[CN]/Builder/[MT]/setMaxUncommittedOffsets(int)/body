@@ -1,0 +1,4 @@
+{
+  this.maxUncommittedOffsets=maxUncommittedOffsets;
+  return this;
+}
