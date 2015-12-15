@@ -1,4 +1,4 @@
 FileSystem fs
 Path lockFile
-DataOutputStream lockFileStream
+FSDataOutputStream lockFileStream
 String spoutId

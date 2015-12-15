@@ -4,7 +4,7 @@
   try {
     if (clocksInSync)     return FileLock.acquireOldestExpiredLock(hdfs,lockDirPath,lockTimeoutSec,spoutId);
     if (lastExpiredLock == null) {
-      lastExpiredLock=FileLock.locateOldestExpiredLock(hdfs,lockDirPath,lockTimeoutSec,spoutId);
+      lastExpiredLock=FileLock.locateOldestExpiredLock(hdfs,lockDirPath,lockTimeoutSec);
       lastExpiredLockTime=System.currentTimeMillis();
       return null;
     }

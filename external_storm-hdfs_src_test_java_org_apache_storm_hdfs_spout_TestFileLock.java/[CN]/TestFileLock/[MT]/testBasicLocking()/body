@@ -21,7 +21,7 @@
   Assert.assertNotNull(lock2a);
   Assert.assertTrue(fs.exists(lock2a.getLockFile()));
   Assert.assertEquals(lock2a.getLockFile().getParent(),locksDir);
-  Assert.assertEquals(lock2a.getLockFile().getName(),file1.getName());
+  Assert.assertEquals(lock2a.getLockFile().getName(),file2.getName());
   lock2a.release();
   Assert.assertFalse(fs.exists(lock2a.getLockFile()));
   lock1c.release();

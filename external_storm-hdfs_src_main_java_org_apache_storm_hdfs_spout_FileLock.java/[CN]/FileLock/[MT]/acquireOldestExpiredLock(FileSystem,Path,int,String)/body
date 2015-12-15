@@ -4,8 +4,11 @@
   for (  Path file : listing) {
     if (file.getName().equalsIgnoreCase(DirLock.DIR_LOCK_FILE))     continue;
     LogEntry lastEntry=getLastEntryIfStale(fs,file,olderThan);
-    if (lastEntry != null)     return FileLock.takeOwnership(fs,file,lastEntry,spoutId);
+    if (lastEntry != null) {
+      FileLock lock=FileLock.takeOwnership(fs,file,lastEntry,spoutId);
+      if (lock != null)       return lock;
+    }
   }
-  log.info("No abandoned files found");
+  if (listing.isEmpty())   log.info("No abandoned files to be refound");
   return null;
 }

@@ -4,6 +4,6 @@
   String line=entry.toString();
   if (prefixNewLine)   lockFileStream.writeBytes(System.lineSeparator() + line);
  else   lockFileStream.writeBytes(line);
-  lockFileStream.flush();
+  lockFileStream.hflush();
   lastEntry=entry;
 }

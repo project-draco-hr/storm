@@ -13,7 +13,7 @@
   for (  String re : res) {
     System.err.println(re);
   }
-  listDir(source);
+  listDir(archive);
   Path f1=new Path(archive + "/file1.seq");
   Path f2=new Path(archive + "/file2.seq");
   checkCollectorOutput_seq((MockCollector)spout.getCollector(),f1,f2);
