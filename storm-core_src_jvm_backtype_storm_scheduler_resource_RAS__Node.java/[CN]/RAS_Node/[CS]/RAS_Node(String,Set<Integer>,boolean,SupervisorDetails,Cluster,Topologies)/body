@@ -1,17 +1,15 @@
 {
-  _slots=new ArrayList<WorkerSlot>();
-  _nodeId=nodeId;
-  _isAlive=isAlive;
-  if (_isAlive && allPorts != null) {
+  this.nodeId=nodeId;
+  this.isAlive=isAlive;
+  if (this.isAlive && allPorts != null) {
     for (    int port : allPorts) {
-      _freeSlots.add(new WorkerSlot(_nodeId,port));
+      this.freeSlots.add(new WorkerSlot(this.nodeId,port));
     }
-    _sup=sup;
-    _hostname=sup.getHost();
-    _availMemory=this.getTotalMemoryResources();
-    _availCPU=this.getTotalCpuResources();
-    _slots.addAll(_freeSlots);
+    this.sup=sup;
+    this.hostname=sup.getHost();
+    this.availMemory=getTotalMemoryResources();
+    this.availCPU=getTotalCpuResources();
   }
-  this._cluster=cluster;
-  this._topologies=topologies;
+  this.cluster=cluster;
+  this.topologies=topologies;
 }

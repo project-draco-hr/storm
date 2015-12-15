@@ -1,13 +1,13 @@
 {
-  Double topologyComponentCpuPcorePercent=Utils.getDouble(topologyConf.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT),null);
+  Double topologyComponentCpuPcorePercent=Utils.getDouble(this.topologyConf.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT),null);
   if (topologyComponentCpuPcorePercent == null) {
     LOG.warn("default value for topology.component.cpu.pcore.percent needs to be set!");
   }
-  Double topologyComponentResourcesOffheapMemoryMb=Utils.getDouble(topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB),null);
+  Double topologyComponentResourcesOffheapMemoryMb=Utils.getDouble(this.topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB),null);
   if (topologyComponentResourcesOffheapMemoryMb == null) {
     LOG.warn("default value for topology.component.resources.offheap.memory.mb needs to be set!");
   }
-  Double topologyComponentResourcesOnheapMemoryMb=Utils.getDouble(topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB),null);
+  Double topologyComponentResourcesOnheapMemoryMb=Utils.getDouble(this.topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB),null);
   if (topologyComponentResourcesOnheapMemoryMb == null) {
     LOG.warn("default value for topology.component.resources.onheap.memory.mb needs to be set!");
   }
@@ -15,6 +15,6 @@
   defaultResourceList.put(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT,topologyComponentCpuPcorePercent);
   defaultResourceList.put(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB,topologyComponentResourcesOffheapMemoryMb);
   defaultResourceList.put(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB,topologyComponentResourcesOnheapMemoryMb);
-  LOG.debug("Scheduling Executor: {} with memory requirement as onHeap: {} - offHeap: {} " + "and CPU requirement: {}",exec,topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB),topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB),topologyConf.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT));
+  LOG.debug("Scheduling Executor: {} with memory requirement as onHeap: {} - offHeap: {} " + "and CPU requirement: {}",exec,this.topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB),this.topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB),this.topologyConf.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT));
   addResourcesForExec(exec,defaultResourceList);
 }

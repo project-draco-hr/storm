@@ -1,6 +1,6 @@
 {
-  if (_sup != null && _sup.getTotalCPU() != null) {
-    return _sup.getTotalCPU();
+  if (this.sup != null && this.sup.getTotalCPU() != null) {
+    return this.sup.getTotalCPU();
   }
  else {
     return 0.0;

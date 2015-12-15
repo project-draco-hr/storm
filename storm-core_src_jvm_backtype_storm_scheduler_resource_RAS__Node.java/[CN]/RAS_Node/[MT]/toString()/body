@@ -1,3 +1,3 @@
 {
-  return "{Node: " + ((_sup == null) ? "null (possibly down)" : _sup.getHost()) + ", AvailMem: "+ ((_availMemory == null) ? "N/A" : _availMemory.toString())+ ", AvailCPU: "+ ((_availCPU == null) ? "N/A" : _availCPU.toString())+ "}";
+  return "{Node: " + ((this.sup == null) ? "null (possibly down)" : this.sup.getHost()) + ", AvailMem: "+ ((this.availMemory == null) ? "N/A" : this.availMemory.toString())+ ", this.availCPU: "+ ((this.availCPU == null) ? "N/A" : this.availCPU.toString())+ "}";
 }

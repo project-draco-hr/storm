@@ -1,6 +1,6 @@
 {
-  if (_sup != null && _sup.getTotalMemory() != null) {
-    return _sup.getTotalMemory();
+  if (this.sup != null && this.sup.getTotalMemory() != null) {
+    return this.sup.getTotalMemory();
   }
  else {
     return 0.0;

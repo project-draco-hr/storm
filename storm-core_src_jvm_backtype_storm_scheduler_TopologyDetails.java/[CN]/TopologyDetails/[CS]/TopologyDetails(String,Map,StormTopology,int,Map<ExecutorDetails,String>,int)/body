@@ -1,4 +1,15 @@
 {
-  this(topologyId,topologyConf,topology,numWorkers,executorToComponents);
+  this.topologyId=topologyId;
+  this.topologyConf=topologyConf;
+  this.topology=topology;
+  this.numWorkers=numWorkers;
+  this.executorToComponent=new HashMap<>(0);
+  if (executorToComponents != null) {
+    this.executorToComponent.putAll(executorToComponents);
+  }
+  if (this.topology != null) {
+    this.initResourceList();
+  }
+  this.initConfigs();
   this.launchTime=launchTime;
 }

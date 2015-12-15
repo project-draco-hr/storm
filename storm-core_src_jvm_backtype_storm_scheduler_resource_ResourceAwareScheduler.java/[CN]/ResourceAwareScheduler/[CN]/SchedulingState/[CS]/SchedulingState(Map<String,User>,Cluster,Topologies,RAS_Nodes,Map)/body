@@ -4,8 +4,8 @@
     User user=userMapEntry.getValue();
     this.userMap.put(userId,user.getCopy());
   }
-  this.cluster=cluster.getCopy();
-  this.topologies=topologies.getCopy();
+  this.cluster=Cluster.getCopy(cluster);
+  this.topologies=topologies.getCopy(topologies);
   this.nodes=new RAS_Nodes(this.cluster,this.topologies);
   this.conf.putAll(conf);
 }

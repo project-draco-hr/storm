@@ -23,7 +23,7 @@
         result=rasStrategy.schedule(td);
       }
  catch (      Exception e) {
-        LOG.error("Exception thrown when running strategy {} to schedule topology {}. Topology will not be scheduled! Error: {} StackTrack: {}",rasStrategy.getClass().getName(),td.getName(),e.getMessage(),Arrays.toString(e.getStackTrace()));
+        LOG.error("Exception thrown when running strategy {} to schedule topology {}. Topology will not be scheduled! Error: {} StackTrace: {}",rasStrategy.getClass().getName(),td.getName(),e.getMessage(),Arrays.toString(e.getStackTrace()));
         this.restoreCheckpointSchedulingState(schedulingState);
         topologySubmitter=this.userMap.get(td.getTopologySubmitter());
         topologySubmitter.moveTopoFromPendingToInvalid(td);
@@ -72,7 +72,7 @@
               madeSpace=evictionStrategy.makeSpaceForTopo(td);
             }
  catch (            Exception e) {
-              LOG.error("Exception thrown when running eviction strategy {} to schedule topology {}. No evictions will be done! Error: {} StackTrack: {}",evictionStrategy.getClass().getName(),td.getName(),e.getClass().getName(),Arrays.toString(e.getStackTrace()));
+              LOG.error("Exception thrown when running eviction strategy {} to schedule topology {}. No evictions will be done! Error: {} StackTrace: {}",evictionStrategy.getClass().getName(),td.getName(),e.getClass().getName(),Arrays.toString(e.getStackTrace()));
               this.restoreCheckpointSchedulingState(schedulingState);
               topologySubmitter=this.userMap.get(td.getTopologySubmitter());
               topologySubmitter.moveTopoFromPendingToAttempted(td);

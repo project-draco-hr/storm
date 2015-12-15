@@ -1,6 +1,6 @@
 {
   int total=0;
-  for (  Set<WorkerSlot> slots : _topIdToUsedSlots.values()) {
+  for (  Set<WorkerSlot> slots : this.topIdToUsedSlots.values()) {
     total+=slots.size();
   }
   return total;

@@ -1,5 +1,5 @@
 {
-  LOG.info("\n\n\nRerunning ResourceAwareScheduler...");
+  LOG.debug("\n\n\nRerunning ResourceAwareScheduler...");
   this.initialize(topologies,cluster);
   LOG.info("Cluster scheduling:\n{}",ResourceUtils.printScheduling(cluster,topologies));
   LOG.info("Nodes:\n{}",this.nodes);
@@ -23,7 +23,7 @@
       td=schedulingPrioritystrategy.getNextTopologyToSchedule();
     }
  catch (    Exception e) {
-      LOG.error("Exception thrown when running priority strategy {}. No topologies will be scheduled! Error: {} StackTrack: {}",schedulingPrioritystrategy.getClass().getName(),e.getMessage(),Arrays.toString(e.getStackTrace()));
+      LOG.error("Exception thrown when running priority strategy {}. No topologies will be scheduled! Error: {} StackTrace: {}",schedulingPrioritystrategy.getClass().getName(),e.getMessage(),Arrays.toString(e.getStackTrace()));
       break;
     }
     if (td == null) {

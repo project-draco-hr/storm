@@ -1,7 +1,8 @@
 {
-  _availMemory+=amount;
-  LOG.debug("freeing {} memory on node {}...avail mem: {}",amount,this.getHostname(),_availMemory);
-  if (_availMemory > this.getTotalMemoryResources()) {
+  LOG.debug("freeing {} memory on node {}...avail mem: {}",amount,this.getHostname(),this.availMemory);
+  if ((this.availMemory + amount) > this.getTotalCpuResources()) {
     LOG.warn("Freeing more memory than there exists!");
+    return;
   }
+  this.availMemory+=amount;
 }

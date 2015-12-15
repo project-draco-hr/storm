@@ -1,9 +1,3 @@
 {
-  this(topologyId,topologyConf,topology,numWorkers);
-  this.executorToComponent=new HashMap<>(0);
-  if (executorToComponents != null) {
-    this.executorToComponent.putAll(executorToComponents);
-  }
-  this.initResourceList();
-  this.initConfigs();
+  this(topologyId,topologyConf,topology,numWorkers,executorToComponents,0);
 }

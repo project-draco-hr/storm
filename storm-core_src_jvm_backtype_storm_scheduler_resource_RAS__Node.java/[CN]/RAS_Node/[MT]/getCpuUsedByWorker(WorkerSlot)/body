@@ -3,7 +3,7 @@
   if (topo == null) {
     return 0.0;
   }
-  Collection<ExecutorDetails> execs=this.getExecutors(ws,this._cluster);
+  Collection<ExecutorDetails> execs=this.getExecutors(ws,this.cluster);
   double totalCpuUsed=0.0;
   for (  ExecutorDetails exec : execs) {
     totalCpuUsed+=topo.getTotalCpuReqTask(exec);
