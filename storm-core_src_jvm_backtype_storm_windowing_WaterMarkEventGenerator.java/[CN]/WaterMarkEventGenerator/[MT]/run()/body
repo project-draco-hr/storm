@@ -2,7 +2,7 @@
   try {
     long waterMarkTs=computeWaterMarkTs();
     if (waterMarkTs > lastWaterMarkTs) {
-      this.windowManager.add(new WaterMarkEvent<T>(waterMarkTs - eventTsLag));
+      this.windowManager.add(new WaterMarkEvent<T>(waterMarkTs));
       lastWaterMarkTs=waterMarkTs;
     }
   }
