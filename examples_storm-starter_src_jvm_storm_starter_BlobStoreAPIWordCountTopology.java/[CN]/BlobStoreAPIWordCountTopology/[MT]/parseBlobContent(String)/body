@@ -1,0 +1,8 @@
+{
+  StringTokenizer tokens=new StringTokenizer(content,"\r\n");
+  Set<String> wordSet=new HashSet<>();
+  while (tokens.hasMoreElements()) {
+    wordSet.add(tokens.nextToken());
+  }
+  return wordSet;
+}

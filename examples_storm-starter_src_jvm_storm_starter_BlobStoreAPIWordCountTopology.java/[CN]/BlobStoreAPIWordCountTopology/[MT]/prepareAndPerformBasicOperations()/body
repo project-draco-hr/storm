@@ -1,9 +1,0 @@
-{
-  Map conf=Utils.readStormConfig();
-  store.prepare(conf);
-  createBlobWithContent(key,store,new SettableBlobMeta(WORLD_EVERYTHING));
-  LOG.info(getBlobContent(key,store));
-  updateBlobWithContent(key,store);
-  LOG.info(getBlobContent(key,store));
-  store.deleteBlob(key);
-}

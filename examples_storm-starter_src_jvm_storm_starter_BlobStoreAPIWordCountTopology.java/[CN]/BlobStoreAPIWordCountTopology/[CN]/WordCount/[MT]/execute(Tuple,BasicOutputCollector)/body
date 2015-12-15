@@ -1,8 +1,0 @@
-{
-  String word=tuple.getString(0);
-  Integer count=counts.get(word);
-  if (count == null)   count=0;
-  count++;
-  counts.put(word,count);
-  collector.emit(new Values(word,count));
-}

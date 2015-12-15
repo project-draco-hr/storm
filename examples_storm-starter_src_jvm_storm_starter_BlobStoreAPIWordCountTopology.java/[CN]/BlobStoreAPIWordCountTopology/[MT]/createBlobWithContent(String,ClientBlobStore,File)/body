@@ -1,0 +1,10 @@
+{
+  String stringBlobACL="o::rwa";
+  AccessControl blobACL=BlobStoreAclHandler.parseAccessControl(stringBlobACL);
+  List<AccessControl> acls=new LinkedList<AccessControl>();
+  acls.add(blobACL);
+  SettableBlobMeta settableBlobMeta=new SettableBlobMeta(acls);
+  AtomicOutputStream blobStream=clientBlobStore.createBlob(blobKey,settableBlobMeta);
+  blobStream.write(readFile(file).toString().getBytes());
+  blobStream.close();
+}

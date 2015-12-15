@@ -1,5 +1,0 @@
-{
-  AtomicOutputStream blobStream=clientBlobStore.createBlob(blobKey,settableBlobMeta);
-  blobStream.write(getRandomSentence().getBytes());
-  blobStream.close();
-}

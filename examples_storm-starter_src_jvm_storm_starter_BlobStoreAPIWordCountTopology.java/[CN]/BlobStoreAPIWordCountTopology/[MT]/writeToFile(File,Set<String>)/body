@@ -1,0 +1,9 @@
+{
+  FileWriter fw=new FileWriter(file.getCanonicalPath(),false);
+  BufferedWriter bw=new BufferedWriter(fw);
+  Iterator<String> iter=content.iterator();
+  while (iter.hasNext()) {
+    bw.write(iter.next());
+  }
+  bw.close();
+}
