@@ -1,19 +1,19 @@
 {
-  LOG.info("freeing ws {} on node {}",ws,this.hostname);
-  if (this.freeSlots.contains(ws))   return;
-  for (  Entry<String,Set<WorkerSlot>> entry : this.topIdToUsedSlots.entrySet()) {
+  LOG.info("freeing ws {} on node {}",ws,_hostname);
+  if (_freeSlots.contains(ws))   return;
+  for (  Entry<String,Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
     Set<WorkerSlot> slots=entry.getValue();
-    double memUsed=this.getMemoryUsedByWorker(ws);
-    double cpuUsed=this.getCpuUsedByWorker(ws);
+    double memUsed=getMemoryUsedByWorker(ws);
+    double cpuUsed=getCpuUsedByWorker(ws);
     if (slots.remove(ws)) {
-      this.cluster.freeSlot(ws);
-      if (this.isAlive) {
-        this.freeSlots.add(ws);
+      _cluster.freeSlot(ws);
+      if (_isAlive) {
+        _freeSlots.add(ws);
       }
-      this.freeMemory(memUsed);
-      this.freeCPU(cpuUsed);
+      freeMemory(memUsed);
+      freeCPU(cpuUsed);
       return;
     }
   }
-  throw new IllegalArgumentException("Tried to free a slot that was not" + " part of this node " + this.nodeId);
+  throw new IllegalArgumentException("Tried to free a slot that was not" + " part of this node " + _nodeId);
 }

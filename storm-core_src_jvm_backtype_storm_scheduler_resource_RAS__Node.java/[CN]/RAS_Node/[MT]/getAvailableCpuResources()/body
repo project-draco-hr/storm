@@ -1,6 +1,6 @@
 {
-  if (this.availCPU == null) {
+  if (_availCPU == null) {
     return 0.0;
   }
-  return this.availCPU;
+  return _availCPU;
 }

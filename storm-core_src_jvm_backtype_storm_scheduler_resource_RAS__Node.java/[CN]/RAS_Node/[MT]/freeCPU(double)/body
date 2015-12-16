@@ -1,8 +1,8 @@
 {
-  LOG.debug("freeing {} CPU on node...avail CPU: {}",amount,this.getHostname(),this.availCPU);
-  if ((this.availCPU + amount) > this.getAvailableCpuResources()) {
+  LOG.debug("freeing {} CPU on node...avail CPU: {}",amount,getHostname(),_availCPU);
+  if ((_availCPU + amount) > getAvailableCpuResources()) {
     LOG.warn("Freeing more CPU than there exists!");
     return;
   }
-  this.availCPU+=amount;
+  _availCPU+=amount;
 }

@@ -1,3 +1,3 @@
 {
-  return this.freeSlots.size();
+  return _freeSlots.size();
 }

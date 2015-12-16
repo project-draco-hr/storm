@@ -1,8 +1,8 @@
 {
-  if (amount > this.availCPU) {
-    LOG.error("Attempting to consume more CPU than available! Needed: {}, we only have: {}",amount,this.availCPU);
+  if (amount > _availCPU) {
+    LOG.error("Attempting to consume more CPU than available! Needed: {}, we only have: {}",amount,_availCPU);
     return null;
   }
-  this.availCPU=this.availCPU - amount;
-  return this.availCPU;
+  _availCPU=_availCPU - amount;
+  return _availCPU;
 }

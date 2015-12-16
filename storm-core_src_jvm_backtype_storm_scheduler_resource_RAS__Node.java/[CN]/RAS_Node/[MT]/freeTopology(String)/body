@@ -1,15 +1,15 @@
 {
-  Set<WorkerSlot> slots=this.topIdToUsedSlots.get(topId);
+  Set<WorkerSlot> slots=_topIdToUsedSlots.get(topId);
   if (slots == null || slots.isEmpty()) {
     return;
   }
   for (  WorkerSlot ws : slots) {
-    this.cluster.freeSlot(ws);
-    this.freeMemory(this.getMemoryUsedByWorker(ws));
-    this.freeCPU(this.getCpuUsedByWorker(ws));
-    if (this.isAlive) {
-      this.freeSlots.add(ws);
+    _cluster.freeSlot(ws);
+    freeMemory(getMemoryUsedByWorker(ws));
+    freeCPU(getCpuUsedByWorker(ws));
+    if (_isAlive) {
+      _freeSlots.add(ws);
     }
   }
-  this.topIdToUsedSlots.remove(topId);
+  _topIdToUsedSlots.remove(topId);
 }

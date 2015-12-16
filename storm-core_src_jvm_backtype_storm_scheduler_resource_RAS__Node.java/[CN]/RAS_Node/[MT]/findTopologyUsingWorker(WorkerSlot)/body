@@ -1,10 +1,10 @@
 {
-  for (  Entry<String,Set<WorkerSlot>> entry : this.topIdToUsedSlots.entrySet()) {
+  for (  Entry<String,Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
     String topoId=entry.getKey();
     Set<WorkerSlot> workers=entry.getValue();
     for (    WorkerSlot worker : workers) {
       if (worker.getNodeId().equals(ws.getNodeId()) && worker.getPort() == ws.getPort()) {
-        return this.topologies.getById(topoId);
+        return _topologies.getById(topoId);
       }
     }
   }

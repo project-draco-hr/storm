@@ -1,14 +1,14 @@
 {
-  if (!this.isAlive) {
-    LOG.warn("Freeing all slots on a dead node {} ",this.nodeId);
+  if (!_isAlive) {
+    LOG.warn("Freeing all slots on a dead node {} ",_nodeId);
   }
-  for (  Entry<String,Set<WorkerSlot>> entry : this.topIdToUsedSlots.entrySet()) {
-    this.cluster.freeSlots(entry.getValue());
-    this.availCPU=this.getTotalCpuResources();
-    this.availMemory=this.getAvailableMemoryResources();
-    if (this.isAlive) {
-      this.freeSlots.addAll(entry.getValue());
+  for (  Entry<String,Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
+    _cluster.freeSlots(entry.getValue());
+    _availCPU=getTotalCpuResources();
+    _availMemory=getAvailableMemoryResources();
+    if (_isAlive) {
+      _freeSlots.addAll(entry.getValue());
     }
   }
-  this.topIdToUsedSlots=new HashMap<String,Set<WorkerSlot>>();
+  _topIdToUsedSlots=new HashMap<String,Set<WorkerSlot>>();
 }

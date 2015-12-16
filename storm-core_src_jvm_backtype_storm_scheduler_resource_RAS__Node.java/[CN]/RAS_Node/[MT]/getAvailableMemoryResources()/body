@@ -1,6 +1,6 @@
 {
-  if (this.availMemory == null) {
+  if (_availMemory == null) {
     return 0.0;
   }
-  return this.availMemory;
+  return _availMemory;
 }

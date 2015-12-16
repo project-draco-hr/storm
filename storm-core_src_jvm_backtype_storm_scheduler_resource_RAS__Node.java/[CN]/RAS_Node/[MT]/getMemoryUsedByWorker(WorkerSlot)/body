@@ -1,9 +1,9 @@
 {
-  TopologyDetails topo=this.findTopologyUsingWorker(ws);
+  TopologyDetails topo=findTopologyUsingWorker(ws);
   if (topo == null) {
     return 0.0;
   }
-  Collection<ExecutorDetails> execs=this.getExecutors(ws,this.cluster);
+  Collection<ExecutorDetails> execs=getExecutors(ws,_cluster);
   double totalMemoryUsed=0.0;
   for (  ExecutorDetails exec : execs) {
     totalMemoryUsed+=topo.getTotalMemReqTask(exec);

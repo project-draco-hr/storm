@@ -1,22 +1,22 @@
 {
-  if (!this.isAlive) {
-    throw new IllegalStateException("Trying to adding to a dead node " + this.nodeId);
+  if (!_isAlive) {
+    throw new IllegalStateException("Trying to adding to a dead node " + _nodeId);
   }
-  if (this.freeSlots.isEmpty()) {
-    throw new IllegalStateException("Trying to assign to a full node " + this.nodeId);
+  if (_freeSlots.isEmpty()) {
+    throw new IllegalStateException("Trying to assign to a full node " + _nodeId);
   }
   if (executors.size() == 0) {
-    LOG.warn("Trying to assign nothing from " + td.getId() + " to "+ this.nodeId+ " (Ignored)");
+    LOG.warn("Trying to assign nothing from " + td.getId() + " to "+ _nodeId+ " (Ignored)");
   }
   if (target == null) {
-    target=this.freeSlots.iterator().next();
+    target=_freeSlots.iterator().next();
   }
-  if (!this.freeSlots.contains(target)) {
-    throw new IllegalStateException("Trying to assign already used slot" + target.getPort() + "on node "+ this.nodeId);
+  if (!_freeSlots.contains(target)) {
+    throw new IllegalStateException("Trying to assign already used slot" + target.getPort() + "on node "+ _nodeId);
   }
  else {
     allocateResourceToSlot(td,executors,target);
-    this.cluster.assign(target,td.getId(),executors);
+    _cluster.assign(target,td.getId(),executors);
     assignInternal(target,td.getId(),false);
   }
 }

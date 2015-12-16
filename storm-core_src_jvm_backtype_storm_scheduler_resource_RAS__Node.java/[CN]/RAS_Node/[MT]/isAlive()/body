@@ -1,3 +1,3 @@
 {
-  return this.isAlive;
+  return _isAlive;
 }

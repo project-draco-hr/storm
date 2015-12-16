@@ -1,3 +1,3 @@
 {
-  return this.topIdToUsedSlots.isEmpty();
+  return _topIdToUsedSlots.isEmpty();
 }

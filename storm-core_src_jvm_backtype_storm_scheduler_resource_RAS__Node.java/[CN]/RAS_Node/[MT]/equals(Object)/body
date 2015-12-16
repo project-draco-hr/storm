@@ -1,6 +1,6 @@
 {
   if (other instanceof RAS_Node) {
-    return this.nodeId.equals(((RAS_Node)other).nodeId);
+    return _nodeId.equals(((RAS_Node)other)._nodeId);
   }
   return false;
 }

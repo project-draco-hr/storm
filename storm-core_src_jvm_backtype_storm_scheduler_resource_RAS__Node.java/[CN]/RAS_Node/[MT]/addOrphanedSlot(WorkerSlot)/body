@@ -1,15 +1,15 @@
 {
-  if (this.isAlive) {
+  if (_isAlive) {
     throw new IllegalArgumentException("Orphaned Slots " + "only are allowed on dead nodes.");
   }
   validateSlot(ws);
-  if (this.freeSlots.contains(ws)) {
+  if (_freeSlots.contains(ws)) {
     return;
   }
-  for (  Set<WorkerSlot> used : this.topIdToUsedSlots.values()) {
+  for (  Set<WorkerSlot> used : _topIdToUsedSlots.values()) {
     if (used.contains(ws)) {
       return;
     }
   }
-  this.freeSlots.add(ws);
+  _freeSlots.add(ws);
 }

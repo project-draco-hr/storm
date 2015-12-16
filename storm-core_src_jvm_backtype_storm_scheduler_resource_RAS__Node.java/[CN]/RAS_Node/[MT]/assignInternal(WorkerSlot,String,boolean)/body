@@ -1,15 +1,15 @@
 {
   validateSlot(ws);
-  if (!this.freeSlots.remove(ws)) {
+  if (!_freeSlots.remove(ws)) {
     if (dontThrow) {
       return true;
     }
     throw new IllegalStateException("Assigning a slot that was not free " + ws);
   }
-  Set<WorkerSlot> usedSlots=this.topIdToUsedSlots.get(topId);
+  Set<WorkerSlot> usedSlots=_topIdToUsedSlots.get(topId);
   if (usedSlots == null) {
     usedSlots=new HashSet<WorkerSlot>();
-    this.topIdToUsedSlots.put(topId,usedSlots);
+    _topIdToUsedSlots.put(topId,usedSlots);
   }
   usedSlots.add(ws);
   return false;
