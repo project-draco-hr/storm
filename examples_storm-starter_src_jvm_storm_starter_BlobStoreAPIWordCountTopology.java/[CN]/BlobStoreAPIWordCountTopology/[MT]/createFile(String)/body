@@ -5,6 +5,5 @@
     file.createNewFile();
   }
   writeToFile(file,getRandomWordSet());
-  LOG.info(readFile(file).toString());
   return file;
 }

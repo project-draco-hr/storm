@@ -8,6 +8,6 @@
   while (tokens.hasMoreElements()) {
     wordSet.add(tokens.nextToken());
   }
-  LOG.info("parseFile {}",wordSet);
+  LOG.debug("parseFile {}",wordSet);
   return wordSet;
 }

@@ -1,12 +1,22 @@
 {
+  String word=tuple.getString(0);
   try {
-    String word=tuple.getString(0);
-    Set<String> wordSet=parseFile(fileName);
-    if (!wordSet.contains(word)) {
-      collector.emit(new Values(word));
+    if (!poll) {
+      wordSet=parseFile(fileName);
+      pollTime=System.currentTimeMillis();
+      poll=true;
+    }
+ else {
+      if ((System.currentTimeMillis() - pollTime) > 5000) {
+        wordSet=parseFile(fileName);
+        pollTime=System.currentTimeMillis();
+      }
     }
   }
  catch (  IOException exp) {
     throw new RuntimeException(exp);
+  }
+  if (wordSet != null && !wordSet.contains(word)) {
+    collector.emit(new Values(word));
   }
 }
