@@ -1,7 +1,2 @@
 {
-  Double totalCPU=getTotalResource(Config.SUPERVISOR_CPU_CAPACITY);
-  if (totalCPU == null) {
-    throw new IllegalStateException("default value for " + Config.SUPERVISOR_CPU_CAPACITY + " is not set!");
-  }
-  return totalCPU;
 }

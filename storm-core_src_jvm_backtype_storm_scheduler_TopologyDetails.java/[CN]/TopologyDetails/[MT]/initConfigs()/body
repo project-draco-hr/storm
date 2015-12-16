@@ -1,10 +1,2 @@
 {
-  this.topologyWorkerMaxHeapSize=Utils.getDouble(this.topologyConf.get(Config.TOPOLOGY_WORKER_MAX_HEAP_SIZE_MB),null);
-  if (this.topologyWorkerMaxHeapSize == null) {
-    LOG.warn("default value for " + Config.TOPOLOGY_WORKER_MAX_HEAP_SIZE_MB + " needs to be set!");
-  }
-  this.topologyPriority=Utils.getInt(this.topologyConf.get(Config.TOPOLOGY_PRIORITY),null);
-  if (this.topologyPriority == null) {
-    LOG.warn("default value for " + Config.TOPOLOGY_PRIORITY + " needs to be set!");
-  }
 }
