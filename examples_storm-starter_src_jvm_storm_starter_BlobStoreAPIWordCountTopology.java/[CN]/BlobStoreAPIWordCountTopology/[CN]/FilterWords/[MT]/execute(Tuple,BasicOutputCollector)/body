@@ -1,13 +1,12 @@
 {
   try {
-    ClientBlobStore store=Utils.getClientBlobStore(Utils.readStormConfig());
     String word=tuple.getString(0);
-    Set<String> wordSet=parseBlobContent(getBlobContent(key,store).toString());
+    Set<String> wordSet=parseFile(fileName);
     if (!wordSet.contains(word)) {
       collector.emit(new Values(word));
     }
   }
- catch (  AuthorizationException|KeyNotFoundException|IOException exp) {
+ catch (  IOException exp) {
     throw new RuntimeException(exp);
   }
 }
