@@ -1,0 +1,12 @@
+{
+  try {
+    if (stormConf.containsKey(Config.STORM_TOPOLOGY_SUBMISSION_NOTIFIER_PLUGIN)) {
+      ISubmitterHook submitterHook=(ISubmitterHook)Class.forName(stormConf.get(Config.STORM_TOPOLOGY_SUBMISSION_NOTIFIER_PLUGIN).toString()).newInstance();
+      TopologyInfo topologyInfo=Utils.getTopologyInfo(name,asUser,stormConf);
+      submitterHook.notify(topologyInfo,stormConf,topology);
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

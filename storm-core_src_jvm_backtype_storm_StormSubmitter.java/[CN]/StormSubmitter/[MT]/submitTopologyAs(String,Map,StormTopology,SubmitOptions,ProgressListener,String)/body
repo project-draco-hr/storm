@@ -65,4 +65,5 @@ catch (      AlreadyAliveException e) {
  catch (  TException e) {
     throw new RuntimeException(e);
   }
+  invokeSubmitterHook(name,asUser,conf,topology);
 }
