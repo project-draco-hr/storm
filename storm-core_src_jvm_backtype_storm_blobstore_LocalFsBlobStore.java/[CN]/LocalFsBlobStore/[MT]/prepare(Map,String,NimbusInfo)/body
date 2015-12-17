@@ -1,6 +1,7 @@
 {
   this.conf=conf;
   this.nimbusInfo=nimbusInfo;
+  zkClient=BlobStoreUtils.createZKClient(conf);
   if (overrideBase == null) {
     overrideBase=(String)conf.get(Config.BLOBSTORE_DIR);
     if (overrideBase == null) {
