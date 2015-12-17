@@ -1,4 +1,5 @@
 {
+  System.setProperty("test.build.data","target/test/data");
   initializeConfigs();
   baseFile=new File("/tmp/blob-store-test-" + UUID.randomUUID());
   base=baseFile.toURI();
