@@ -1,19 +1,28 @@
 {
   Path file1=new Path(source.toString() + "/file1.txt");
-  createTextFile(file1,5);
-  listDir(source);
+  createTextFile(file1,10);
   Map conf=getDefaultConfig();
   conf.put(Configs.COMMIT_FREQ_COUNT,"1");
-  conf.put(Configs.COMMIT_FREQ_SEC,"1");
+  conf.put(Configs.COMMIT_FREQ_SEC,"100");
   HdfsSpout spout=makeSpout(0,conf,Configs.TEXT);
-  List<String> res=runSpout(spout,"r4");
-  for (  String re : res) {
-    System.err.println(re);
-  }
+  List<String> res=runSpout(spout,"r5");
+  Assert.assertEquals(5,res.size());
   List<String> lockFiles=listDir(spout.getLockDirPath());
   Assert.assertEquals(1,lockFiles.size());
-  runSpout(spout,"r3");
   List<String> lines=readTextFile(fs,lockFiles.get(0));
-  System.err.println(lines);
+  Assert.assertEquals(lines.size(),res.size() + 1);
+  runSpout(spout,"r6");
+  lockFiles=listDir(spout.getLockDirPath());
+  Assert.assertEquals(0,lockFiles.size());
+  Path file2=new Path(source.toString() + "/file2.txt");
+  createTextFile(file2,10);
+  res=runSpout(spout,"r5");
+  Assert.assertEquals(15,res.size());
+  lockFiles=listDir(spout.getLockDirPath());
+  Assert.assertEquals(1,lockFiles.size());
+  lines=readTextFile(fs,lockFiles.get(0));
   Assert.assertEquals(6,lines.size());
+  runSpout(spout,"r6");
+  lockFiles=listDir(spout.getLockDirPath());
+  Assert.assertEquals(0,lockFiles.size());
 }

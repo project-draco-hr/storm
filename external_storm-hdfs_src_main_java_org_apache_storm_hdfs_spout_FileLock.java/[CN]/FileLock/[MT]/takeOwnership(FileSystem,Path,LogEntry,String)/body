@@ -3,8 +3,8 @@
     return new FileLock(fs,lockFile,spoutId,lastEntry);
   }
  catch (  RemoteException e) {
-    if (e.getClassName().contentEquals(AlreadyBeingCreatedException.class.getName())) {
-      log.info("Lock file {} is currently open. cannot transfer ownership on.",lockFile);
+    if (e.unwrapRemoteException() instanceof AlreadyBeingCreatedException) {
+      log.info("Lock file {} is currently open. Cannot transfer ownership.",lockFile);
       return null;
     }
  else {

@@ -1,6 +1,9 @@
 {
   DirLock dirlock=DirLock.tryLock(hdfs,lockDirPath);
-  if (dirlock == null)   return null;
+  if (dirlock == null) {
+    dirlock=DirLock.takeOwnershipIfStale(hdfs,lockDirPath,lockTimeoutSec);
+    if (dirlock == null)     return null;
+  }
   try {
     if (clocksInSync)     return FileLock.acquireOldestExpiredLock(hdfs,lockDirPath,lockTimeoutSec,spoutId);
     if (lastExpiredLock == null) {

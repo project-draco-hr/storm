@@ -7,7 +7,7 @@
     return null;
   }
 catch (  RemoteException e) {
-    if (e.getClassName().contentEquals(AlreadyBeingCreatedException.class.getName())) {
+    if (e.unwrapRemoteException() instanceof AlreadyBeingCreatedException) {
       return null;
     }
  else {

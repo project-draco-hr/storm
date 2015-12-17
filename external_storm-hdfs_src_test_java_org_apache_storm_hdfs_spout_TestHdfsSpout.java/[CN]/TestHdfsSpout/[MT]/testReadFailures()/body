@@ -1,0 +1,15 @@
+{
+  Path file1=new Path(source.toString() + "/file1.txt");
+  Path file2=new Path(source.toString() + "/file2.txt");
+  createTextFile(file1,6);
+  createTextFile(file2,7);
+  Assert.assertEquals(2,listDir(source).size());
+  Map conf=getDefaultConfig();
+  HdfsSpout spout=makeSpout(0,conf,MockTextFailingReader.class.getName());
+  List<String> res=runSpout(spout,"r11");
+  String[] expected=new String[]{"[line 0]","[line 1]","[line 2]","[line 0]","[line 1]","[line 2]"};
+  Assert.assertArrayEquals(expected,res.toArray());
+  Assert.assertEquals(((MockCollector)spout.getCollector()).lines.size(),6);
+  ArrayList<Path> badFiles=HdfsUtils.listFilesByModificationTime(fs,badfiles,0);
+  Assert.assertEquals(badFiles.size(),2);
+}

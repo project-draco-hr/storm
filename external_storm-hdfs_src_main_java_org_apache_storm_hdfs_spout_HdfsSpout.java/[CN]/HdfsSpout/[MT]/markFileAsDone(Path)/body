@@ -1,7 +1,8 @@
 {
   fileReadCompletely=false;
   try {
-    renameCompletedFile(reader.getFilePath());
+    Path newFile=renameCompletedFile(reader.getFilePath());
+    LOG.info("Completed processing {}",newFile);
   }
  catch (  IOException e) {
     LOG.error("Unable to archive completed file" + filePath,e);

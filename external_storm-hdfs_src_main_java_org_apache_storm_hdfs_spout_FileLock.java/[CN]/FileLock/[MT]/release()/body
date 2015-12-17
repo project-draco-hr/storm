@@ -1,4 +1,5 @@
 {
   lockFileStream.close();
   fs.delete(lockFile,false);
+  log.debug("Released lock file {}",lockFile);
 }

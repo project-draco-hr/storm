@@ -15,7 +15,7 @@
       if (reader == null) {
         reader=pickNextFile();
         if (reader == null) {
-          LOG.info("Currently no new files to process under : " + sourceDirPath);
+          LOG.debug("Currently no new files to process under : " + sourceDirPath);
           return;
         }
       }

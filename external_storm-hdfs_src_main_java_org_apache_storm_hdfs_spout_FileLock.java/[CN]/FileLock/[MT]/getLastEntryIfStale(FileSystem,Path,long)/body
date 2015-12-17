@@ -5,6 +5,7 @@
     if (lastEntry == null) {
       throw new RuntimeException(lockFile.getName() + " is empty. this file is invalid.");
     }
+    log.error("{} , lastModified= {},  expiryTime= {},  diff= {}",lockFile,lastEntry.eventTime,olderThan,lastEntry.eventTime - olderThan);
     if (lastEntry.eventTime <= olderThan)     return lastEntry;
   }
   return null;

@@ -1,5 +1,6 @@
 {
-  long olderThan=System.currentTimeMillis() - (locktimeoutSec * 1000);
+  long now=System.currentTimeMillis();
+  long olderThan=now - (locktimeoutSec * 1000);
   Collection<Path> listing=HdfsUtils.listFilesByModificationTime(fs,lockFilesDir,olderThan);
   for (  Path file : listing) {
     if (file.getName().equalsIgnoreCase(DirLock.DIR_LOCK_FILE))     continue;
@@ -9,6 +10,6 @@
       if (lock != null)       return lock;
     }
   }
-  if (listing.isEmpty())   log.info("No abandoned files to be refound");
+  if (listing.isEmpty())   log.info("No abandoned lock files found");
   return null;
 }

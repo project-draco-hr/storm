@@ -1,3 +1,4 @@
 {
   fs.delete(filesDir,true);
+  fs.delete(locksDir,true);
 }

@@ -5,7 +5,7 @@
   while (fileNames.hasNext()) {
     LocatedFileStatus fileStatus=fileNames.next();
     System.err.println(fileStatus.getPath());
-    result.add(fileStatus.getPath().toString());
+    result.add(Path.getPathWithoutSchemeAndAuthority(fileStatus.getPath()).toString());
   }
   return result;
 }
