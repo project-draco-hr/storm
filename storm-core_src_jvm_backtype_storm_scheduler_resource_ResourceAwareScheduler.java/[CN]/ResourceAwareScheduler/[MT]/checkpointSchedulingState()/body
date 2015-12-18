@@ -1,6 +1,6 @@
 {
   LOG.debug("/*********Checkpoint scheduling state************/");
-  for (  User user : this.getUserMap().values()) {
+  for (  User user : getUserMap().values()) {
     LOG.debug(user.getDetailedInfo());
   }
   LOG.debug(ResourceUtils.printScheduling(this.cluster,this.topologies));

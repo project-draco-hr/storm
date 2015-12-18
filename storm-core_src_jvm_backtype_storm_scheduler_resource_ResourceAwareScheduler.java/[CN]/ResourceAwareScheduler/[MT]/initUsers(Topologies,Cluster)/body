@@ -1,6 +1,6 @@
 {
   this.userMap=new HashMap<String,User>();
-  Map<String,Map<String,Double>> userResourcePools=this.getUserResourcePools();
+  Map<String,Map<String,Double>> userResourcePools=getUserResourcePools();
   LOG.debug("userResourcePools: {}",userResourcePools);
   for (  TopologyDetails td : topologies.getTopologies()) {
     String topologySubmitter=td.getTopologySubmitter();

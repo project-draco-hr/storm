@@ -1,9 +1,9 @@
 {
   LOG.debug("\n\n\nRerunning ResourceAwareScheduler...");
-  this.initialize(topologies,cluster);
+  initialize(topologies,cluster);
   LOG.info("Cluster scheduling:\n{}",ResourceUtils.printScheduling(cluster,topologies));
   LOG.info("Nodes:\n{}",this.nodes);
-  for (  User user : this.getUserMap().values()) {
+  for (  User user : getUserMap().values()) {
     LOG.info(user.getDetailedInfo());
   }
   ISchedulingPriorityStrategy schedulingPrioritystrategy=null;

@@ -2,14 +2,14 @@
   User topologySubmitter=this.userMap.get(td.getTopologySubmitter());
   if (cluster.getUnassignedExecutors(td).size() > 0) {
     LOG.debug("/********Scheduling topology {} from User {}************/",td.getName(),topologySubmitter);
-    SchedulingState schedulingState=this.checkpointSchedulingState();
+    SchedulingState schedulingState=checkpointSchedulingState();
     IStrategy rasStrategy=null;
     try {
       rasStrategy=(IStrategy)Utils.newInstance((String)td.getConf().get(Config.TOPOLOGY_SCHEDULER_STRATEGY));
     }
  catch (    RuntimeException e) {
       LOG.error("failed to create instance of IStrategy: {} with error: {}! Topology {} will not be scheduled.",td.getName(),td.getConf().get(Config.TOPOLOGY_SCHEDULER_STRATEGY),e.getMessage());
-      topologySubmitter=this.cleanup(schedulingState,td);
+      topologySubmitter=cleanup(schedulingState,td);
       topologySubmitter.moveTopoFromPendingToInvalid(td);
       this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling - failed to create instance of topology strategy " + td.getConf().get(Config.TOPOLOGY_SCHEDULER_STRATEGY) + ". Please check logs for details");
       return;
@@ -23,7 +23,7 @@
       }
  catch (      Exception ex) {
         LOG.error(String.format("Exception thrown when running strategy %s to schedule topology %s. Topology will not be scheduled!",rasStrategy.getClass().getName(),td.getName()),ex);
-        topologySubmitter=this.cleanup(schedulingState,td);
+        topologySubmitter=cleanup(schedulingState,td);
         topologySubmitter.moveTopoFromPendingToInvalid(td);
         this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling - Exception thrown when running strategy {}" + rasStrategy.getClass().getName() + ". Please check logs for details");
       }
@@ -43,7 +43,7 @@
           }
  catch (          IllegalStateException ex) {
             LOG.error("Unsuccessful in scheduling - IllegalStateException thrown when attempting to assign executors to nodes.",ex);
-            topologySubmitter=this.cleanup(schedulingState,td);
+            topologySubmitter=cleanup(schedulingState,td);
             topologySubmitter.moveTopoFromPendingToAttempted(td);
             this.cluster.setStatus(td.getId(),"Unsuccessful in scheduling - IllegalStateException thrown when attempting to assign executors to nodes. Please check log for details.");
           }
@@ -68,13 +68,13 @@
             }
  catch (            Exception ex) {
               LOG.error(String.format("Exception thrown when running eviction strategy %s to schedule topology %s. No evictions will be done! Error: %s",evictionStrategy.getClass().getName(),td.getName(),ex.getClass().getName()),ex);
-              topologySubmitter=this.cleanup(schedulingState,td);
+              topologySubmitter=cleanup(schedulingState,td);
               topologySubmitter.moveTopoFromPendingToAttempted(td);
               break;
             }
             if (!madeSpace) {
               LOG.debug("Could not make space for topo {} will move to attempted",td);
-              topologySubmitter=this.cleanup(schedulingState,td);
+              topologySubmitter=cleanup(schedulingState,td);
               topologySubmitter.moveTopoFromPendingToAttempted(td);
               this.cluster.setStatus(td.getId(),"Not enough resources to schedule - " + result.getErrorMessage());
               break;
@@ -82,12 +82,12 @@
             continue;
           }
  else           if (result.getStatus() == SchedulingStatus.FAIL_INVALID_TOPOLOGY) {
-            topologySubmitter=this.cleanup(schedulingState,td);
+            topologySubmitter=cleanup(schedulingState,td);
             topologySubmitter.moveTopoFromPendingToInvalid(td,this.cluster);
             break;
           }
  else {
-            topologySubmitter=this.cleanup(schedulingState,td);
+            topologySubmitter=cleanup(schedulingState,td);
             topologySubmitter.moveTopoFromPendingToAttempted(td,this.cluster);
             break;
           }
@@ -95,7 +95,7 @@
       }
  else {
         LOG.warn("Scheduling results returned from topology {} is not vaild! Topology with be ignored.",td.getName());
-        topologySubmitter=this.cleanup(schedulingState,td);
+        topologySubmitter=cleanup(schedulingState,td);
         topologySubmitter.moveTopoFromPendingToInvalid(td,this.cluster);
         break;
       }

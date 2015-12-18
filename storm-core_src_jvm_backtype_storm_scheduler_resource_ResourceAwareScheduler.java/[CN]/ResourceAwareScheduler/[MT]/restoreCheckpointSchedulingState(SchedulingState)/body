@@ -8,7 +8,7 @@
   this.conf=schedulingState.conf;
   this.userMap=schedulingState.userMap;
   this.nodes=schedulingState.nodes;
-  for (  User user : this.getUserMap().values()) {
+  for (  User user : getUserMap().values()) {
     LOG.debug(user.getDetailedInfo());
   }
   LOG.debug(ResourceUtils.printScheduling(cluster,topologies));
