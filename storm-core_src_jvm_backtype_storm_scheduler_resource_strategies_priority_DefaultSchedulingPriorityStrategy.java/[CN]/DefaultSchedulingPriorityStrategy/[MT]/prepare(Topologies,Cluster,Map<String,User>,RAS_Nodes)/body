@@ -1,6 +1,4 @@
 {
-  this.topologies=topologies;
   this.cluster=cluster;
   this.userMap=userMap;
-  this.nodes=nodes;
 }

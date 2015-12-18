@@ -1,6 +1,5 @@
 {
   TestConfig config=new TestConfig();
-  Collection<Object> passCases=new LinkedList<Object>();
   Collection<Object> failCases=new LinkedList<Object>();
   Map<String,Map<String,Integer>> passCase1=new HashMap<String,Map<String,Integer>>();
   passCase1.put("jerry",new HashMap<String,Integer>());
@@ -12,11 +11,8 @@
   passCase1.get("bobby").put("memory",40148);
   passCase1.get("derek").put("cpu",30000);
   passCase1.get("derek").put("memory",60148);
-  passCases.add(passCase1);
-  for (  Object value : passCases) {
-    config.put(TestConfig.TEST_MAP_CONFIG_7,value);
-    ConfigValidation.validateFields(config,TestConfig.class);
-  }
+  config.put(TestConfig.TEST_MAP_CONFIG_7,(Object)passCase1);
+  ConfigValidation.validateFields(config,TestConfig.class);
   Map<String,Map<String,Integer>> failCase1=new HashMap<String,Map<String,Integer>>();
   failCase1.put("jerry",new HashMap<String,Integer>());
   failCase1.put("bobby",new HashMap<String,Integer>());

@@ -21,11 +21,11 @@
   resourceUserPool.get("derek").put("cpu",5000.0);
   resourceUserPool.get("derek").put("memory",16384.0);
   config.put(Config.RESOURCE_AWARE_SCHEDULER_USER_POOLS,resourceUserPool);
-  TopologyDetails topo1=TestUtilsForResourceAwareScheduler.getTopology("topo-1",config,5,15,1,1,Time.currentTimeSecs() - 2,20);
-  TopologyDetails topo2=TestUtilsForResourceAwareScheduler.getTopology("topo-2",config,5,15,1,1,Time.currentTimeSecs() - 8,30);
-  TopologyDetails topo3=TestUtilsForResourceAwareScheduler.getTopology("topo-3",config,5,15,1,1,Time.currentTimeSecs() - 16,30);
-  TopologyDetails topo4=TestUtilsForResourceAwareScheduler.getTopology("topo-4",config,5,15,1,1,Time.currentTimeSecs() - 16,20);
-  TopologyDetails topo5=TestUtilsForResourceAwareScheduler.getTopology("topo-5",config,5,15,1,1,Time.currentTimeSecs() - 24,30);
+  TopologyDetails topo1=TestUtilsForResourceAwareScheduler.getTopology("topo-1",config,5,15,1,1,currentTime - 2,20);
+  TopologyDetails topo2=TestUtilsForResourceAwareScheduler.getTopology("topo-2",config,5,15,1,1,currentTime - 8,30);
+  TopologyDetails topo3=TestUtilsForResourceAwareScheduler.getTopology("topo-3",config,5,15,1,1,currentTime - 16,30);
+  TopologyDetails topo4=TestUtilsForResourceAwareScheduler.getTopology("topo-4",config,5,15,1,1,currentTime - 16,20);
+  TopologyDetails topo5=TestUtilsForResourceAwareScheduler.getTopology("topo-5",config,5,15,1,1,currentTime - 24,30);
   Map<String,TopologyDetails> topoMap=new HashMap<String,TopologyDetails>();
   topoMap.put(topo1.getId(),topo1);
   topoMap.put(topo2.getId(),topo2);
@@ -56,7 +56,7 @@
   topo=itr.next();
   LOG.info("{} - {}",topo.getName(),queue);
   Assert.assertEquals("check order",topo.getName(),"topo-2");
-  TopologyDetails topo6=TestUtilsForResourceAwareScheduler.getTopology("topo-6",config,5,15,1,1,Time.currentTimeSecs() - 30,10);
+  TopologyDetails topo6=TestUtilsForResourceAwareScheduler.getTopology("topo-6",config,5,15,1,1,currentTime - 30,10);
   topoMap.put(topo6.getId(),topo6);
   topologies=new Topologies(topoMap);
   rs.prepare(config);

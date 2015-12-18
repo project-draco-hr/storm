@@ -12,8 +12,8 @@
       try {
         schedulingPrioritystrategy=(ISchedulingPriorityStrategy)Utils.newInstance((String)this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_PRIORITY_STRATEGY));
       }
- catch (      RuntimeException e) {
-        LOG.error("failed to create instance of priority strategy: {} with error: {}! No topologies will be scheduled.",this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_PRIORITY_STRATEGY),e.getMessage());
+ catch (      RuntimeException ex) {
+        LOG.error(String.format("failed to create instance of priority strategy: %s with error: %s! No topologies will be scheduled.",this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_PRIORITY_STRATEGY),ex.getMessage()),ex);
         break;
       }
     }
@@ -22,8 +22,8 @@
       schedulingPrioritystrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
       td=schedulingPrioritystrategy.getNextTopologyToSchedule();
     }
- catch (    Exception e) {
-      LOG.error("Exception thrown when running priority strategy {}. No topologies will be scheduled! Error: {} StackTrace: {}",schedulingPrioritystrategy.getClass().getName(),e.getMessage(),Arrays.toString(e.getStackTrace()));
+ catch (    Exception ex) {
+      LOG.error(String.format("Exception thrown when running priority strategy %s. No topologies will be scheduled! Error: %s",schedulingPrioritystrategy.getClass().getName(),ex.getMessage()),ex.getStackTrace());
       break;
     }
     if (td == null) {

@@ -22,8 +22,8 @@
   config.put(Config.RESOURCE_AWARE_SCHEDULER_USER_POOLS,resourceUserPool);
   Cluster cluster=new Cluster(iNimbus,supMap,new HashMap<String,SchedulerAssignmentImpl>(),config);
   config.put(Config.TOPOLOGY_SUBMITTER_USER,"jerry");
-  TopologyDetails topo1=TestUtilsForResourceAwareScheduler.getTopology("topo-1",config,5,15,1,1,Time.currentTimeSecs() - 2,20);
-  TopologyDetails topo2=TestUtilsForResourceAwareScheduler.getTopology("topo-2",config,5,15,1,1,Time.currentTimeSecs() - 8,29);
+  TopologyDetails topo1=TestUtilsForResourceAwareScheduler.getTopology("topo-1",config,5,15,1,1,currentTime - 2,20);
+  TopologyDetails topo2=TestUtilsForResourceAwareScheduler.getTopology("topo-2",config,5,15,1,1,currentTime - 8,29);
   Map<String,TopologyDetails> topoMap=new HashMap<String,TopologyDetails>();
   topoMap.put(topo1.getId(),topo1);
   topoMap.put(topo2.getId(),topo2);

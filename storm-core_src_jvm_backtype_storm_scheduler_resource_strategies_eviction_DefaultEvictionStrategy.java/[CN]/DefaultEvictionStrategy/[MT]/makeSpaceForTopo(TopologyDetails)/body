@@ -1,7 +1,7 @@
 {
   LOG.debug("attempting to make space for topo {} from user {}",td.getName(),td.getTopologySubmitter());
   User submitter=this.userMap.get(td.getTopologySubmitter());
-  if (submitter.getCPUResourceGuaranteed() == null || submitter.getMemoryResourceGuaranteed() == null) {
+  if (submitter.getCPUResourceGuaranteed() == null || submitter.getMemoryResourceGuaranteed() == null || submitter.getCPUResourceGuaranteed() == 0.0 || submitter.getMemoryResourceGuaranteed() == 0.0) {
     return false;
   }
   double cpuNeeded=td.getTotalRequestedCpu() / submitter.getCPUResourceGuaranteed();
@@ -16,7 +16,7 @@
   }
  else {
     if (evictUser != null) {
-      if ((evictUser.getResourcePoolAverageUtilization() - 1.0) > (cpuNeeded + (submitter.getResourcePoolAverageUtilization() - 1.0))) {
+      if ((evictUser.getResourcePoolAverageUtilization() - 1.0) > (((cpuNeeded + memoryNeeded) / 2) + (submitter.getResourcePoolAverageUtilization() - 1.0))) {
         TopologyDetails topologyEvict=evictUser.getRunningTopologyWithLowestPriority();
         evictTopology(topologyEvict);
         return true;

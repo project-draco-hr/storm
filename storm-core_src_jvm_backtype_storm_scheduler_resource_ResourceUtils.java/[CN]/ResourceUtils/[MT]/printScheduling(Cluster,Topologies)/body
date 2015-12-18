@@ -7,7 +7,7 @@
         WorkerSlot slot=entry.getValue();
         String nodeId=slot.getNodeId();
         ExecutorDetails exec=entry.getKey();
-        if (schedulingMap.containsKey(nodeId) == false) {
+        if (!schedulingMap.containsKey(nodeId)) {
           schedulingMap.put(nodeId,new HashMap<String,Map<WorkerSlot,Collection<ExecutorDetails>>>());
         }
         if (schedulingMap.get(nodeId).containsKey(topo.getId()) == false) {
