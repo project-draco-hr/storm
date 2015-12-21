@@ -1,0 +1,6 @@
+{
+  if (schedulingResultMap == null) {
+    throw new IllegalStateException("Cannot declare scheduling success without providing a non null scheduling map!");
+  }
+  return new SchedulingResult(SchedulingStatus.SUCCESS,schedulingResultMap,message,null);
+}

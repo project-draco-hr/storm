@@ -1,6 +1,3 @@
 {
-  this.topologyId=topologyId;
-  this.topologyConf=topologyConf;
-  this.topology=topology;
-  this.numWorkers=numWorkers;
+  this(topologyId,topologyConf,topology,numWorkers,null,0);
 }

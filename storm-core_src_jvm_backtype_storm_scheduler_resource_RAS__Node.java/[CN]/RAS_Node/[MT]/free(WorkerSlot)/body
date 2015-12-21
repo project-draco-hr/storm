@@ -1,0 +1,19 @@
+{
+  LOG.info("freeing WorkerSlot {} on node {}",ws,_hostname);
+  if (_freeSlots.contains(ws))   return;
+  for (  Entry<String,Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
+    Set<WorkerSlot> slots=entry.getValue();
+    double memUsed=getMemoryUsedByWorker(ws);
+    double cpuUsed=getCpuUsedByWorker(ws);
+    if (slots.remove(ws)) {
+      _cluster.freeSlot(ws);
+      if (_isAlive) {
+        _freeSlots.add(ws);
+      }
+      freeMemory(memUsed);
+      freeCPU(cpuUsed);
+      return;
+    }
+  }
+  throw new IllegalArgumentException("Tried to free a slot that was not" + " part of this node " + _nodeId);
+}

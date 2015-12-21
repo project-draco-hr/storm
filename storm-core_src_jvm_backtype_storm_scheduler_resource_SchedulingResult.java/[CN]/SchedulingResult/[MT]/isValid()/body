@@ -1,0 +1,11 @@
+{
+  if (this.isSuccess() && this.getSchedulingResultMap() == null) {
+    LOG.warn("SchedulingResult not Valid! Status is success but SchedulingResultMap is null");
+    return false;
+  }
+  if (this.isFailure() && this.getSchedulingResultMap() != null) {
+    LOG.warn("SchedulingResult not Valid! Status is Failure but SchedulingResultMap is NOT null");
+    return false;
+  }
+  return true;
+}

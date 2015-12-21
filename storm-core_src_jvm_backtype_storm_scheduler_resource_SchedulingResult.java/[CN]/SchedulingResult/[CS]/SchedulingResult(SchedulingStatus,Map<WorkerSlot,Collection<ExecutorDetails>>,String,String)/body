@@ -1,0 +1,6 @@
+{
+  this.status=status;
+  this.schedulingResultMap=schedulingResultMap;
+  this.message=message;
+  this.errorMessage=errorMessage;
+}

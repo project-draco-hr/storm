@@ -3,5 +3,5 @@
     LOG.warn("Executor {} already exists...ResourceList: {}",exec,getTaskResourceReqList(exec));
     return;
   }
-  _resourceList.put(exec,resourceList);
+  this.resourceList.put(exec,resourceList);
 }

@@ -1,3 +1,0 @@
-{
-  this.assign(null,td,executors,cluster);
-}
