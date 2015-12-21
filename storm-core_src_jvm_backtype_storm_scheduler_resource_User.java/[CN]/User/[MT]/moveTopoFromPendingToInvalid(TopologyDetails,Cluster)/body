@@ -1,0 +1,6 @@
+{
+  moveTopology(topo,this.pendingQueue,"pending",this.invalidQueue,"invalid");
+  if (cluster != null) {
+    cluster.setStatus(topo.getId(),"Scheduling Attempted but topology is invalid");
+  }
+}

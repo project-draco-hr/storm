@@ -1,0 +1,7 @@
+{
+  String ret="";
+  for (  User user : users) {
+    ret+=user.getId() + " - " + user.getResourcePoolAverageUtilization()+ " ";
+  }
+  return ret;
+}

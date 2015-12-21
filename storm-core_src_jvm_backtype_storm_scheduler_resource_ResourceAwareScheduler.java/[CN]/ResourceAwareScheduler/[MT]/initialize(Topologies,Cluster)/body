@@ -1,0 +1,6 @@
+{
+  this.cluster=cluster;
+  this.topologies=topologies;
+  this.nodes=new RAS_Nodes(this.cluster,this.topologies);
+  initUsers(topologies,cluster);
+}

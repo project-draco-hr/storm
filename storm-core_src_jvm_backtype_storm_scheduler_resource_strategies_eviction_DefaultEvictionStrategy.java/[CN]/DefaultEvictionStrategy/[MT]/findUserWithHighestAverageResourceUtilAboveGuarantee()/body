@@ -1,0 +1,12 @@
+{
+  double most=0.0;
+  User mostOverUser=null;
+  for (  User user : this.userMap.values()) {
+    double over=user.getResourcePoolAverageUtilization() - 1.0;
+    if ((over > most) && (!user.getTopologiesRunning().isEmpty())) {
+      most=over;
+      mostOverUser=user;
+    }
+  }
+  return mostOverUser;
+}

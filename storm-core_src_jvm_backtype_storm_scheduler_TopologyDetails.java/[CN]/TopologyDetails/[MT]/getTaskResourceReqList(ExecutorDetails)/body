@@ -1,6 +1,6 @@
 {
   if (hasExecInTopo(exec)) {
-    return _resourceList.get(exec);
+    return this.resourceList.get(exec);
   }
   return null;
 }

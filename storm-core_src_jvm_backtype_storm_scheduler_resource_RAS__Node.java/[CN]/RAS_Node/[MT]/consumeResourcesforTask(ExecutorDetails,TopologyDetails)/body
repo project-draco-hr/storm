@@ -1,6 +1,6 @@
 {
   Double taskMemReq=topo.getTotalMemReqTask(exec);
   Double taskCpuReq=topo.getTotalCpuReqTask(exec);
-  this.consumeCPU(taskCpuReq);
-  this.consumeMemory(taskMemReq);
+  consumeCPU(taskCpuReq);
+  consumeMemory(taskMemReq);
 }
