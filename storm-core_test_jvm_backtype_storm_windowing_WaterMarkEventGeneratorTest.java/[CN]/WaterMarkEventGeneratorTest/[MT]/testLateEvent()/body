@@ -1,0 +1,15 @@
+{
+  assertTrue(waterMarkEventGenerator.track(streamId("s1"),100));
+  assertTrue(waterMarkEventGenerator.track(streamId("s1"),110));
+  waterMarkEventGenerator.run();
+  assertTrue(eventList.get(0).isWatermark());
+  assertEquals(105,eventList.get(0).getTimestamp());
+  eventList.clear();
+  assertTrue(waterMarkEventGenerator.track(streamId("s1"),105));
+  assertTrue(waterMarkEventGenerator.track(streamId("s1"),106));
+  assertTrue(waterMarkEventGenerator.track(streamId("s1"),115));
+  assertFalse(waterMarkEventGenerator.track(streamId("s1"),104));
+  waterMarkEventGenerator.run();
+  assertTrue(eventList.get(0).isWatermark());
+  assertEquals(110,eventList.get(0).getTimestamp());
+}

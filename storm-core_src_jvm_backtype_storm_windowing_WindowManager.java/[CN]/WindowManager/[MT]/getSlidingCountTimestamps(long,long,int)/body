@@ -1,0 +1,16 @@
+{
+  List<Long> timestamps=new ArrayList<>();
+  if (endTs > startTs) {
+    int count=0;
+    long ts=Long.MIN_VALUE;
+    for (    Event<T> event : queue) {
+      if (event.getTimestamp() > startTs && event.getTimestamp() <= endTs) {
+        ts=Math.max(ts,event.getTimestamp());
+        if (++count % slidingCount == 0) {
+          timestamps.add(ts);
+        }
+      }
+    }
+  }
+  return timestamps;
+}

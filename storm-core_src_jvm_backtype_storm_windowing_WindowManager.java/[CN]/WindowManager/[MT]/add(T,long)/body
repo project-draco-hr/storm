@@ -1,6 +1,3 @@
 {
-  Event<T> windowEvent=new EventImpl<T>(event,ts);
-  window.add(windowEvent);
-  track(windowEvent);
-  compactWindow();
+  add(new EventImpl<T>(event,ts));
 }

@@ -1,3 +1,0 @@
-{
-  this.evictionPolicy=new TimeEvictionPolicy<>(duration.value);
-}

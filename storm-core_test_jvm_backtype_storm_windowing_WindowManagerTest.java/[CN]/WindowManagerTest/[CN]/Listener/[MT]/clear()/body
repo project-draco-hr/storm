@@ -3,4 +3,8 @@
   onActivationEvents=Collections.emptyList();
   onActivationNewEvents=Collections.emptyList();
   onActivationExpiredEvents=Collections.emptyList();
+  allOnExpiryEvents.clear();
+  allOnActivationEvents.clear();
+  allOnActivationNewEvents.clear();
+  allOnActivationExpiredEvents.clear();
 }

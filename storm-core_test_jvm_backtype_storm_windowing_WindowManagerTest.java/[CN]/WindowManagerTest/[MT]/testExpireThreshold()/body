@@ -1,8 +1,8 @@
 {
   int threshold=WindowManager.EXPIRE_EVENTS_THRESHOLD;
   int windowLength=5;
-  windowManager.setWindowLength(new Count(5));
-  windowManager.setSlidingInterval(new Duration(1,TimeUnit.HOURS));
+  windowManager.setEvictionPolicy(new CountEvictionPolicy<Integer>(5));
+  windowManager.setTriggerPolicy(new TimeTriggerPolicy<Integer>(new Duration(1,TimeUnit.HOURS).value,windowManager));
   for (  int i : seq(1,5)) {
     windowManager.add(i);
   }

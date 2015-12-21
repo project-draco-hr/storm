@@ -1,3 +1,5 @@
 {
-  currentCount.incrementAndGet();
+  if (!event.isWatermark()) {
+    currentCount.incrementAndGet();
+  }
 }

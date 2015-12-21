@@ -1,0 +1,9 @@
+{
+  long minTs=Long.MAX_VALUE;
+  for (  Event<T> event : queue) {
+    if (event.getTimestamp() > startTs && event.getTimestamp() <= endTs) {
+      minTs=Math.min(minTs,event.getTimestamp());
+    }
+  }
+  return minTs;
+}
