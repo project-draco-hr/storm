@@ -1,0 +1,6 @@
+{
+  if (!(o instanceof User)) {
+    return false;
+  }
+  return this.getId().equals(((User)o).getId());
+}

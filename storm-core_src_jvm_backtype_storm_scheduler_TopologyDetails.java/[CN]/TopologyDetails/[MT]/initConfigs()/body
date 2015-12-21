@@ -1,3 +1,2 @@
 {
-  this.topologyWorkerMaxHeapSize=Utils.getDouble(this.topologyConf.get(Config.TOPOLOGY_WORKER_MAX_HEAP_SIZE_MB),null);
 }

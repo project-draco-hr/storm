@@ -1,3 +1,5 @@
 {
-  connections.remove(key(host,port));
+  if (connections != null) {
+    connections.remove(key(host,port));
+  }
 }

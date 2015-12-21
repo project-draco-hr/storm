@@ -1,0 +1,4 @@
+{
+  windowConfiguration.put(Config.TOPOLOGY_BOLTS_WATERMARK_EVENT_INTERVAL_MS,interval.value);
+  return this;
+}

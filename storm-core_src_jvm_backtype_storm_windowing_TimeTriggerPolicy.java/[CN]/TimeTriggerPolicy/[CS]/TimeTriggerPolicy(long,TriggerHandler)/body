@@ -1,6 +1,3 @@
 {
-  this.duration=millis;
-  this.handler=handler;
-  this.executor=Executors.newSingleThreadScheduledExecutor();
-  this.executorFuture=executor.scheduleAtFixedRate(newTriggerTask(),duration,duration,TimeUnit.MILLISECONDS);
+  this(millis,handler,null);
 }

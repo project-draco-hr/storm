@@ -1,0 +1,8 @@
+String name
+Map config
+int numSpout
+int numBolt
+int spoutParallelism
+int boltParallelism
+int launchTime
+int priority

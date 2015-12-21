@@ -10,6 +10,8 @@
   Config conf=new Config();
   conf.setDebug(true);
   conf.setTopologyWorkerMaxHeapSize(1024.0);
+  conf.setTopologyPriority(29);
+  conf.setTopologyStrategy(backtype.storm.scheduler.resource.strategies.scheduling.DefaultResourceAwareStrategy.class);
   if (args != null && args.length > 0) {
     conf.setNumWorkers(3);
     StormSubmitter.submitTopologyWithProgressBar(args[0],conf,builder.createTopology());

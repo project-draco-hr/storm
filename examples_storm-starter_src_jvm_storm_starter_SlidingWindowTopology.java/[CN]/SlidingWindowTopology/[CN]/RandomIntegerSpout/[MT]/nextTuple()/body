@@ -1,4 +1,0 @@
-{
-  Utils.sleep(100);
-  collector.emit(new Values(rand.nextInt(1000)));
-}

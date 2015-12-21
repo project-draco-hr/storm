@@ -1,0 +1,25 @@
+{
+  Object raw=this.conf.get(Config.RESOURCE_AWARE_SCHEDULER_USER_POOLS);
+  Map<String,Map<String,Double>> ret=new HashMap<String,Map<String,Double>>();
+  if (raw != null) {
+    for (    Map.Entry<String,Map<String,Number>> userPoolEntry : ((Map<String,Map<String,Number>>)raw).entrySet()) {
+      String user=userPoolEntry.getKey();
+      ret.put(user,new HashMap<String,Double>());
+      for (      Map.Entry<String,Number> resourceEntry : userPoolEntry.getValue().entrySet()) {
+        ret.get(user).put(resourceEntry.getKey(),resourceEntry.getValue().doubleValue());
+      }
+    }
+  }
+  Map fromFile=Utils.findAndReadConfigFile("user-resource-pools.yaml",false);
+  Map<String,Map<String,Number>> tmp=(Map<String,Map<String,Number>>)fromFile.get(Config.RESOURCE_AWARE_SCHEDULER_USER_POOLS);
+  if (tmp != null) {
+    for (    Map.Entry<String,Map<String,Number>> userPoolEntry : tmp.entrySet()) {
+      String user=userPoolEntry.getKey();
+      ret.put(user,new HashMap<String,Double>());
+      for (      Map.Entry<String,Number> resourceEntry : userPoolEntry.getValue().entrySet()) {
+        ret.get(user).put(resourceEntry.getKey(),resourceEntry.getValue().doubleValue());
+      }
+    }
+  }
+  return ret;
+}

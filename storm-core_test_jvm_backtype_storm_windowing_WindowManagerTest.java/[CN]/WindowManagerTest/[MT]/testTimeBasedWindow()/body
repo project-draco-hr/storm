@@ -1,6 +1,7 @@
 {
-  windowManager.setWindowLength(new Duration(1,TimeUnit.SECONDS));
-  windowManager.setSlidingInterval(new Duration(1,TimeUnit.DAYS));
+  EvictionPolicy<Integer> evictionPolicy=new TimeEvictionPolicy<Integer>(new Duration(1,TimeUnit.SECONDS).value);
+  windowManager.setEvictionPolicy(evictionPolicy);
+  windowManager.setTriggerPolicy(new TimeTriggerPolicy<Integer>(new Duration(1,TimeUnit.DAYS).value,windowManager,evictionPolicy));
   long now=System.currentTimeMillis();
   for (  int i : seq(1,50)) {
     windowManager.add(i,now - 1000);
@@ -12,6 +13,7 @@
   for (  int i : seq(WindowManager.EXPIRE_EVENTS_THRESHOLD + 1,WindowManager.EXPIRE_EVENTS_THRESHOLD + 100)) {
     windowManager.add(i,now - 1000);
   }
+  evictionPolicy.setContext(now + 100);
   windowManager.onTrigger();
   assertEquals(100,listener.onExpiryEvents.size());
   assertEquals(seq(WindowManager.EXPIRE_EVENTS_THRESHOLD + 1,WindowManager.EXPIRE_EVENTS_THRESHOLD + 100),listener.onExpiryEvents);
@@ -27,6 +29,7 @@
     windowManager.add(i,now);
   }
   activationsEvents.addAll(newEvents);
+  evictionPolicy.setContext(now + 200);
   windowManager.onTrigger();
   assertTrue(listener.onExpiryEvents.isEmpty());
   assertEquals(activationsEvents,listener.onActivationEvents);

@@ -1,0 +1,15 @@
+{
+  Set<WorkerSlot> slots=_topIdToUsedSlots.get(topId);
+  if (slots == null || slots.isEmpty()) {
+    return;
+  }
+  for (  WorkerSlot ws : slots) {
+    _cluster.freeSlot(ws);
+    freeMemory(getMemoryUsedByWorker(ws));
+    freeCPU(getCpuUsedByWorker(ws));
+    if (_isAlive) {
+      _freeSlots.add(ws);
+    }
+  }
+  _topIdToUsedSlots.remove(topId);
+}

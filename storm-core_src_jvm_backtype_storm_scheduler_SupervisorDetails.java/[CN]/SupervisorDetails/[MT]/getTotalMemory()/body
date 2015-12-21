@@ -1,3 +1,2 @@
 {
-  return getTotalResource(Config.SUPERVISOR_MEMORY_CAPACITY_MB);
 }

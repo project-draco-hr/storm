@@ -1,6 +1,7 @@
 {
-  windowManager.setWindowLength(new Count(5));
-  windowManager.setSlidingInterval(new Count(2));
+  EvictionPolicy<Integer> evictionPolicy=new CountEvictionPolicy<Integer>(5);
+  windowManager.setEvictionPolicy(evictionPolicy);
+  windowManager.setTriggerPolicy(new CountTriggerPolicy<Integer>(2,windowManager,evictionPolicy));
   windowManager.add(1);
   windowManager.add(2);
   assertTrue(listener.onExpiryEvents.isEmpty());

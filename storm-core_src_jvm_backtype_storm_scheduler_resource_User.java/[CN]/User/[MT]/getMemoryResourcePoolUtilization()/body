@@ -1,0 +1,7 @@
+{
+  Double memoryGuarantee=this.resourcePool.get("memory");
+  if (memoryGuarantee == null || memoryGuarantee == 0.0) {
+    return Double.MAX_VALUE;
+  }
+  return this.getMemoryResourceUsedByUser() / memoryGuarantee;
+}

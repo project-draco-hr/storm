@@ -1,0 +1,10 @@
+{
+  if (!windowEvent.isWatermark()) {
+    queue.add(windowEvent);
+  }
+ else {
+    LOG.debug("Got watermark event with ts {}",windowEvent.getTimestamp());
+  }
+  track(windowEvent);
+  compactWindow();
+}

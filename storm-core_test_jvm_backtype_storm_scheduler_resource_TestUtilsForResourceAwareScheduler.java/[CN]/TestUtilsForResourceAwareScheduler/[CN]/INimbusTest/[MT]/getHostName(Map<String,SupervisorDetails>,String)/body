@@ -1,0 +1,6 @@
+{
+  if (existingSupervisors.containsKey(nodeId)) {
+    return existingSupervisors.get(nodeId).getHost();
+  }
+  return null;
+}

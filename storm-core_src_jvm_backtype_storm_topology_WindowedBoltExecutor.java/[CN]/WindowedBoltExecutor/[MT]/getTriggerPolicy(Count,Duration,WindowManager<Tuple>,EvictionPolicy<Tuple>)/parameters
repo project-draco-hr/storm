@@ -1,0 +1,4 @@
+Count slidingIntervalCount
+Duration slidingIntervalDuration
+WindowManager<Tuple> manager
+EvictionPolicy<Tuple> evictionPolicy

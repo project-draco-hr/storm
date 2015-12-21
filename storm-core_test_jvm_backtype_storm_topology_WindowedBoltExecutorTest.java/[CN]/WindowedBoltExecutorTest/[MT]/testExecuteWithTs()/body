@@ -1,0 +1,14 @@
+{
+  long[] timstamps={603,605,607,618,626,636};
+  for (  long ts : timstamps) {
+    executor.execute(getTuple("s1",new Fields("ts"),new Values(ts)));
+  }
+  executor.waterMarkEventGenerator.run();
+  assertEquals(3,testWindowedBolt.tupleWindows.size());
+  TupleWindow first=testWindowedBolt.tupleWindows.get(0);
+  assertArrayEquals(new long[]{603,605,607},new long[]{(long)first.get().get(0).getValue(0),(long)first.get().get(1).getValue(0),(long)first.get().get(2).getValue(0)});
+  TupleWindow second=testWindowedBolt.tupleWindows.get(1);
+  assertArrayEquals(new long[]{603,605,607,618},new long[]{(long)second.get().get(0).getValue(0),(long)second.get().get(1).getValue(0),(long)second.get().get(2).getValue(0),(long)second.get().get(3).getValue(0)});
+  TupleWindow third=testWindowedBolt.tupleWindows.get(2);
+  assertArrayEquals(new long[]{618,626},new long[]{(long)third.get().get(0).getValue(0),(long)third.get().get(1).getValue(0)});
+}

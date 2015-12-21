@@ -3,7 +3,7 @@
   List<T> expired=null;
   try {
     lock.lock();
-    windowEvents=expireEvents(true);
+    windowEvents=scanEvents(true);
     expired=new ArrayList<>(expiredEvents);
     expiredEvents.clear();
   }
@@ -19,8 +19,14 @@
     }
   }
   prevWindowEvents.clear();
-  prevWindowEvents.addAll(windowEvents);
-  LOG.debug("invoking windowLifecycleListener onActivation, [{}] events in window.",windowEvents.size());
-  windowLifecycleListener.onActivation(events,newEvents,expired);
+  if (!events.isEmpty()) {
+    prevWindowEvents.addAll(windowEvents);
+    LOG.debug("invoking windowLifecycleListener onActivation, [{}] events in window.",events.size());
+    windowLifecycleListener.onActivation(events,newEvents,expired);
+  }
+ else {
+    LOG.debug("No events in the window, skipping onActivation");
+  }
   triggerPolicy.reset();
+  return !events.isEmpty();
 }

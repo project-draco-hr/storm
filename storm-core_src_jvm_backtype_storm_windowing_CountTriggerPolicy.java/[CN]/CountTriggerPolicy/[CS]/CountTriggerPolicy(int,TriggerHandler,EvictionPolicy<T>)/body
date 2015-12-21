@@ -1,0 +1,6 @@
+{
+  this.count=count;
+  this.currentCount=new AtomicInteger();
+  this.handler=handler;
+  this.evictionPolicy=evictionPolicy;
+}

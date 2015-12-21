@@ -12,5 +12,4 @@
     }
   }
   _freeSlots.add(ws);
-  _slotToExecs.put(ws,new ArrayList<ExecutorDetails>());
 }

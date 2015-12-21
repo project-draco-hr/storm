@@ -1,0 +1,8 @@
+{
+  StringBuilder ret=new StringBuilder();
+  ret.append("Topologies:\n");
+  for (  TopologyDetails td : this.getTopologies()) {
+    ret.append(td.toString()).append("\n");
+  }
+  return ret.toString();
+}
