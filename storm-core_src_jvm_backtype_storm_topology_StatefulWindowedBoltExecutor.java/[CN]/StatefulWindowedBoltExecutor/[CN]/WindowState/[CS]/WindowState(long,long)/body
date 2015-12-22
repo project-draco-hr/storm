@@ -1,0 +1,4 @@
+{
+  this.lastExpired=lastExpired;
+  this.lastEvaluated=lastEvaluated;
+}

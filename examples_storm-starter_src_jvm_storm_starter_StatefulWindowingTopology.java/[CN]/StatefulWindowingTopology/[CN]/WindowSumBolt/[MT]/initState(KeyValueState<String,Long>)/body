@@ -1,0 +1,5 @@
+{
+  this.state=state;
+  sum=state.get("sum",0L);
+  System.out.println("initState with state [" + state + "] current sum ["+ sum+ "]");
+}

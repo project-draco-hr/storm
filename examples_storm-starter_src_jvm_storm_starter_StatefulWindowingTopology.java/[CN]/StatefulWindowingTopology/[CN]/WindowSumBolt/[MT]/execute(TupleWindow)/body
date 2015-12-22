@@ -1,0 +1,7 @@
+{
+  for (  Tuple tuple : inputWindow.get()) {
+    sum+=tuple.getIntegerByField("value");
+  }
+  state.put("sum",sum);
+  collector.emit(new Values(sum));
+}

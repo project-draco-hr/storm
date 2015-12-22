@@ -1,0 +1,6 @@
+{
+  int result=tuples != null ? tuples.hashCode() : 0;
+  result=31 * result + (newTuples != null ? newTuples.hashCode() : 0);
+  result=31 * result + (expiredTuples != null ? expiredTuples.hashCode() : 0);
+  return result;
+}

@@ -1,7 +1,9 @@
 {
   EvictionPolicy<Integer> evictionPolicy=new TimeEvictionPolicy<Integer>(new Duration(100,TimeUnit.MILLISECONDS).value);
   windowManager.setEvictionPolicy(evictionPolicy);
-  windowManager.setTriggerPolicy(new TimeTriggerPolicy<Integer>(new Duration(1,TimeUnit.DAYS).value,windowManager));
+  TriggerPolicy<Integer> triggerPolicy=new TimeTriggerPolicy<Integer>(new Duration(1,TimeUnit.DAYS).value,windowManager);
+  triggerPolicy.start();
+  windowManager.setTriggerPolicy(triggerPolicy);
   long now=System.currentTimeMillis();
   for (  int i : seq(1,10)) {
     windowManager.add(i);

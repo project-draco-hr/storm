@@ -1,0 +1,6 @@
+{
+  mockStormConf.put(Config.TOPOLOGY_BOLTS_MESSAGE_ID_FIELD_NAME,"msgid");
+  mockStormConf.put(Config.TOPOLOGY_BOLTS_WINDOW_LENGTH_COUNT,5);
+  mockStormConf.put(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_COUNT,5);
+  executor.prepare(mockStormConf,mockTopologyContext,mockOutputCollector);
+}

@@ -6,4 +6,5 @@
   }
 ;
   waterMarkEventGenerator=new WaterMarkEventGenerator<>(windowManager,100000,5,Collections.singleton(streamId("s1")));
+  waterMarkEventGenerator.start();
 }

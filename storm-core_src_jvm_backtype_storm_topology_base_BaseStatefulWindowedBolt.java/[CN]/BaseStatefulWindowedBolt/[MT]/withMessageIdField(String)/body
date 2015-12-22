@@ -1,0 +1,4 @@
+{
+  windowConfiguration.put(Config.TOPOLOGY_BOLTS_MESSAGE_ID_FIELD_NAME,fieldName);
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  super.withLag(duration);
+  return this;
+}

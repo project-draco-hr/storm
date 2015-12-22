@@ -1,0 +1,10 @@
+{
+  for (  Tuple tuple : tuples) {
+    TaskStream taskStream=TaskStream.fromTuple(tuple);
+    WindowState curState=state.get(taskStream);
+    WindowState newState;
+    if ((newState=getUpdatedState(curState,getMsgId(tuple),newEvents)) != null) {
+      state.put(taskStream,newState);
+    }
+  }
+}

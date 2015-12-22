@@ -1,0 +1,7 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  TaskStream that=(TaskStream)o;
+  if (sourceTask != that.sourceTask)   return false;
+  return streamId != null ? streamId.equals(that.streamId) : that.streamId == null;
+}

@@ -37,8 +37,8 @@
     waterMarkEventGenerator=new WaterMarkEventGenerator<>(manager,watermarkInterval,maxLagMs,context.getThisSources().keySet());
   }
   validate(stormConf,windowLengthCount,windowLengthDuration,slidingIntervalCount,slidingIntervalDuration);
-  EvictionPolicy<Tuple> evictionPolicy=getEvictionPolicy(windowLengthCount,windowLengthDuration,manager);
-  TriggerPolicy<Tuple> triggerPolicy=getTriggerPolicy(slidingIntervalCount,slidingIntervalDuration,manager,evictionPolicy);
+  evictionPolicy=getEvictionPolicy(windowLengthCount,windowLengthDuration,manager);
+  triggerPolicy=getTriggerPolicy(slidingIntervalCount,slidingIntervalDuration,manager,evictionPolicy);
   manager.setEvictionPolicy(evictionPolicy);
   manager.setTriggerPolicy(triggerPolicy);
   return manager;

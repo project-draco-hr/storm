@@ -1,0 +1,15 @@
+{
+  for (  Map.Entry<TaskStream,WindowState> entry : state.entrySet()) {
+    TaskStream taskStream=entry.getKey();
+    WindowState newState=entry.getValue();
+    WindowState curState=streamState.get(taskStream);
+    if (curState == null) {
+      streamState.put(taskStream,newState);
+    }
+ else {
+      WindowState updatedState=new WindowState(Math.max(newState.lastExpired,curState.lastExpired),Math.max(newState.lastEvaluated,curState.lastEvaluated));
+      LOG.debug("Update window state, taskStream {}, curState {}, newState {}",taskStream,curState,updatedState);
+      streamState.put(taskStream,updatedState);
+    }
+  }
+}

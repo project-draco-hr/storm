@@ -1,0 +1,4 @@
+{
+  init(stormConf,context,collector,windowState);
+  super.prepare(stormConf,context,collector);
+}
