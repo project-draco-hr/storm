@@ -1,4 +1,0 @@
-{
-  listDir(source);
-  listDir(archive);
-}

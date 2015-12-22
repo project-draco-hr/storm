@@ -14,10 +14,14 @@
     try {
       if (reader == null) {
         reader=pickNextFile();
+        fileReadCompletely=false;
         if (reader == null) {
           LOG.debug("Currently no new files to process under : " + sourceDirPath);
           return;
         }
+      }
+      if (fileReadCompletely) {
+        return;
       }
       List<Object> tuple=reader.next();
       if (tuple != null) {

@@ -1,4 +1,5 @@
 {
+  if (offset != null)   throw new IllegalArgumentException("offset cannot be null");
   try {
     String[] parts=offset.split(":");
     this.byteOffset=Long.parseLong(parts[0].split("=")[1]);

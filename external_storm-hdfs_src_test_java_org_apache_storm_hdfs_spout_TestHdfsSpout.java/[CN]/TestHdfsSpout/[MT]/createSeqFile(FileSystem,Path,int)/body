@@ -5,7 +5,7 @@
       fs.delete(file,false);
     }
     SequenceFile.Writer w=SequenceFile.createWriter(fs,conf,file,IntWritable.class,Text.class);
-    for (int i=0; i < 5; i++) {
+    for (int i=0; i < rowCount; i++) {
       w.append(new IntWritable(i),new Text("line " + i));
     }
     w.close();

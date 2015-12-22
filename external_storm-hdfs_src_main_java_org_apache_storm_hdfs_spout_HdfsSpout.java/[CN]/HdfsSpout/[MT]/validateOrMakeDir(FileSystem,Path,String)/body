@@ -1,0 +1,18 @@
+{
+  try {
+    if (fs.exists(dir)) {
+      if (!fs.isDirectory(dir)) {
+        LOG.error(dirDescription + " directory is a file, not a dir. " + dir);
+        throw new RuntimeException(dirDescription + " directory is a file, not a dir. " + dir);
+      }
+    }
+ else     if (!fs.mkdirs(dir)) {
+      LOG.error("Unable to create " + dirDescription + " directory "+ dir);
+      throw new RuntimeException("Unable to create " + dirDescription + " directory "+ dir);
+    }
+  }
+ catch (  IOException e) {
+    LOG.error("Unable to create " + dirDescription + " directory "+ dir,e);
+    throw new RuntimeException("Unable to create " + dirDescription + " directory "+ dir,e);
+  }
+}

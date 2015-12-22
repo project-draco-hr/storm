@@ -10,7 +10,7 @@
       fstats.add(fileStatus);
     }
   }
-  Collections.sort(fstats,new CmpFilesByModificationTime());
+  Collections.sort(fstats,new ModifTimeComparator());
   ArrayList<Path> result=new ArrayList<>(fstats.size());
   for (  LocatedFileStatus fstat : fstats) {
     result.add(fstat.getPath());

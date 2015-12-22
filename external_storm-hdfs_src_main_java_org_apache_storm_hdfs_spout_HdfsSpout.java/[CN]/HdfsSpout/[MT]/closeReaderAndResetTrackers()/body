@@ -1,4 +1,7 @@
 {
+  inflight.clear();
+  tracker.offsets.clear();
+  retryList.clear();
   reader.close();
   reader=null;
   try {

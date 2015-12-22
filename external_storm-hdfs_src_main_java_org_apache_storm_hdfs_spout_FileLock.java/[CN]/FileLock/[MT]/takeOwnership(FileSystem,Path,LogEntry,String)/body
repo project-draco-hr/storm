@@ -4,7 +4,7 @@
   }
  catch (  RemoteException e) {
     if (e.unwrapRemoteException() instanceof AlreadyBeingCreatedException) {
-      log.info("Lock file {} is currently open. Cannot transfer ownership.",lockFile);
+      log.warn("Lock file {} is currently open. Cannot transfer ownership now. Will try later.",lockFile);
       return null;
     }
  else {

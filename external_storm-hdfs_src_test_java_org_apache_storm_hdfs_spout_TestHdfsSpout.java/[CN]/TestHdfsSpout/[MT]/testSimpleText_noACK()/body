@@ -3,16 +3,11 @@
   createTextFile(file1,5);
   Path file2=new Path(source.toString() + "/file2.txt");
   createTextFile(file2,5);
-  listDir(source);
   Map conf=getDefaultConfig();
   conf.put(Configs.COMMIT_FREQ_COUNT,"1");
   conf.put(Configs.COMMIT_FREQ_SEC,"1");
   HdfsSpout spout=makeSpout(0,conf,Configs.TEXT);
-  List<String> res=runSpout(spout,"r11","a0","a1","a2","a3","a4");
-  for (  String re : res) {
-    System.err.println(re);
-  }
-  listCompletedDir();
+  runSpout(spout,"r11");
   Path arc1=new Path(archive.toString() + "/file1.txt");
   Path arc2=new Path(archive.toString() + "/file2.txt");
   checkCollectorOutput_txt((MockCollector)spout.getCollector(),arc1,arc2);

@@ -1,4 +1,5 @@
 {
+  if (position == null)   return;
   if (lock != null && canCommitNow()) {
     try {
       lock.heartbeat(position.toString());

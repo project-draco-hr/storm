@@ -1,10 +1,11 @@
 {
+  if (!ackEnabled)   throw new IllegalStateException("Received an ACKs when ack-ing is disabled");
   MessageId id=(MessageId)msgId;
   inflight.remove(id);
   ++acksSinceLastCommit;
   tracker.recordAckedOffset(id.offset);
   commitProgress(tracker.getCommitPosition());
-  if (fileReadCompletely) {
+  if (fileReadCompletely && inflight.isEmpty()) {
     markFileAsDone(reader.getFilePath());
     reader=null;
   }

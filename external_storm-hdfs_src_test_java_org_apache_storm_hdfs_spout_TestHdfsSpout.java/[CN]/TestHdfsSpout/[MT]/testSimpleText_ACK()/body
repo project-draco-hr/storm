@@ -1,0 +1,17 @@
+{
+  Path file1=new Path(source.toString() + "/file1.txt");
+  createTextFile(file1,5);
+  Path file2=new Path(source.toString() + "/file2.txt");
+  createTextFile(file2,5);
+  Map conf=getDefaultConfig();
+  conf.put(Configs.COMMIT_FREQ_COUNT,"1");
+  conf.put(Configs.COMMIT_FREQ_SEC,"1");
+  conf.put(Config.TOPOLOGY_ACKER_EXECUTORS,"1");
+  HdfsSpout spout=makeSpout(0,conf,Configs.TEXT);
+  runSpout(spout,"r6","a0","a1","a2","a3","a4");
+  Path arc1=new Path(archive.toString() + "/file1.txt");
+  checkCollectorOutput_txt((MockCollector)spout.getCollector(),arc1);
+  runSpout(spout,"r6","a5","a6","a7","a8","a9");
+  Path arc2=new Path(archive.toString() + "/file2.txt");
+  checkCollectorOutput_txt((MockCollector)spout.getCollector(),arc1,arc2);
+}
