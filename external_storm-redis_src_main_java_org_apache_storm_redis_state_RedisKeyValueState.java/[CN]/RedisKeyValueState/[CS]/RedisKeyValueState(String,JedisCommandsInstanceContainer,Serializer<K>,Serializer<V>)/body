@@ -7,7 +7,7 @@
   this.keySerializer=keySerializer;
   this.valueSerializer=valueSerializer;
   this.jedisContainer=jedisContainer;
-  this.pendingPrepare=new HashMap<>();
+  this.pendingPrepare=new ConcurrentHashMap<>();
   initTxids();
   initPendingCommit();
 }

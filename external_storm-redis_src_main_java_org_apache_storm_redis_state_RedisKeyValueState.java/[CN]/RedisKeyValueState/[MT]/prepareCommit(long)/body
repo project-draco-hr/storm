@@ -17,7 +17,7 @@
     txIds.put(PREPARE_TXID_KEY,String.valueOf(txid));
     commands.hmset(txidNamespace,txIds);
     pendingCommit=Collections.unmodifiableMap(pendingPrepare);
-    pendingPrepare=new HashMap<>();
+    pendingPrepare=new ConcurrentHashMap<>();
   }
   finally {
     jedisContainer.returnInstance(commands);

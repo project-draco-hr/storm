@@ -4,8 +4,5 @@
     if (txid <= committedTxid) {
       throw new RuntimeException("Invalid txid '" + txid + "' for prepare. Txid '"+ committedTxid+ "' is already committed");
     }
-    if (txid > committedTxid + 1) {
-      throw new RuntimeException("Cannot prepare a txn with id '" + txid + "' when last committed txid is '"+ committedTxid+ "'");
-    }
   }
 }

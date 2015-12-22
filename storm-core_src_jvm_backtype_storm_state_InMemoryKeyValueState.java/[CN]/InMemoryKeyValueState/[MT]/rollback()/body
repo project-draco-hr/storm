@@ -4,6 +4,6 @@
     state=commitedState.state;
   }
  else {
-    state=new HashMap<>();
+    state=new ConcurrentHashMap<>();
   }
 }

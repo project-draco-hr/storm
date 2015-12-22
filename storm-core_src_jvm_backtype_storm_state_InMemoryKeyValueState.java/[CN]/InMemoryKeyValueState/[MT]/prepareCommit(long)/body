@@ -3,5 +3,5 @@
   if (preparedState != null && txid > preparedState.txid) {
     throw new RuntimeException("Cannot prepare a new txn while there is a pending txn");
   }
-  preparedState=new TxIdState<>(txid,new HashMap<K,V>(state));
+  preparedState=new TxIdState<>(txid,new ConcurrentHashMap<K,V>(state));
 }

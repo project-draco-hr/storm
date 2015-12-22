@@ -8,7 +8,7 @@
  else {
       LOG.debug("Nothing to save for commit");
     }
-    pendingPrepare=new HashMap<>();
+    pendingPrepare=new ConcurrentHashMap<>();
   }
   finally {
     jedisContainer.returnInstance(commands);

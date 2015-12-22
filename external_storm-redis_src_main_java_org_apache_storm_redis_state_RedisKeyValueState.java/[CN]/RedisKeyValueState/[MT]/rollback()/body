@@ -18,7 +18,7 @@
     }
     commands.hmset(txidNamespace,txIds);
     pendingCommit=Collections.emptyMap();
-    pendingPrepare=new HashMap<>();
+    pendingPrepare=new ConcurrentHashMap<>();
   }
   finally {
     jedisContainer.returnInstance(commands);
