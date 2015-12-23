@@ -4,16 +4,16 @@
   try {
     FSDataOutputStream ostream=HdfsUtils.tryCreateFile(fs,lockFile);
     if (ostream != null) {
-      log.debug("Acquired lock on file {}. LockFile=",fileToLock,lockFile);
+      log.debug("Acquired lock on file {}. LockFile= {}, Spout = {}",fileToLock,lockFile,spoutId);
       return new FileLock(fs,lockFile,ostream,spoutId);
     }
  else {
-      log.debug("Cannot lock file {} as its already locked.",fileToLock);
+      log.debug("Cannot lock file {} as its already locked. Spout = {}",fileToLock,spoutId);
       return null;
     }
   }
  catch (  IOException e) {
-    log.error("Error when acquiring lock on file " + fileToLock,e);
+    log.error("Error when acquiring lock on file " + fileToLock + " Spout = "+ spoutId,e);
     throw e;
   }
 }

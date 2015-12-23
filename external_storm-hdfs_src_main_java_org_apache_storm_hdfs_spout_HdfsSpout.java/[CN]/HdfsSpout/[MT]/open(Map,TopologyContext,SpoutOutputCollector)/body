@@ -1,7 +1,7 @@
 {
   this.conf=conf;
   final String FILE_SYSTEM="filesystem";
-  LOG.info("Opening HDFS Spout");
+  LOG.info("Opening HDFS Spout {}",spoutId);
   this.collector=collector;
   this.hdfsConfig=new Configuration();
   this.tupleCounter=0;

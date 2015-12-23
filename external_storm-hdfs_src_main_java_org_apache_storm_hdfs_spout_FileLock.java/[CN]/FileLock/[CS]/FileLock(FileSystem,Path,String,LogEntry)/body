@@ -3,6 +3,6 @@
   this.lockFile=lockFile;
   this.lockFileStream=fs.append(lockFile);
   this.componentID=spoutId;
-  log.debug("Acquired abandoned lockFile {}",lockFile);
+  log.debug("Acquired abandoned lockFile {}, Spout {}",lockFile,spoutId);
   logProgress(entry.fileOffset,true);
 }

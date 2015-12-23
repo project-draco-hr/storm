@@ -8,7 +8,7 @@
       setupCommitElapseTimer();
     }
  catch (    IOException e) {
-      LOG.error("Unable to commit progress Will retry later.",e);
+      LOG.error("Unable to commit progress Will retry later. Spout ID = " + spoutId,e);
     }
   }
 }

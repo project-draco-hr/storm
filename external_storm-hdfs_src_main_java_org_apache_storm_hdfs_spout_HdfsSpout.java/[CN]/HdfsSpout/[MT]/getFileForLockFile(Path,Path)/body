@@ -1,8 +1,8 @@
 {
   String lockFileName=lockFile.getName();
-  Path dataFile=new Path(sourceDirPath + lockFileName + inprogress_suffix);
+  Path dataFile=new Path(sourceDirPath + Path.SEPARATOR + lockFileName+ inprogress_suffix);
   if (hdfs.exists(dataFile))   return dataFile;
-  dataFile=new Path(sourceDirPath + lockFileName);
+  dataFile=new Path(sourceDirPath + Path.SEPARATOR + lockFileName);
   if (hdfs.exists(dataFile))   return dataFile;
   return null;
 }

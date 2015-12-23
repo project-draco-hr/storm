@@ -1,8 +1,6 @@
 {
-  String line=reader.readLine();
+  String line=readLineAndTrackOffset(reader);
   if (line != null) {
-    int strByteSize=line.getBytes().length;
-    offset.increment(strByteSize);
     return Collections.singletonList((Object)line);
   }
   return null;

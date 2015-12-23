@@ -1,5 +1,5 @@
 {
-  LOG.debug("Next Tuple");
+  LOG.debug("Next Tuple {}",spoutId);
   if (!retryList.isEmpty()) {
     LOG.debug("Sending from retry list");
     HdfsUtils.Pair<MessageId,List<Object>> pair=retryList.remove();
@@ -7,7 +7,7 @@
     return;
   }
   if (ackEnabled && tracker.size() >= maxDuplicates) {
-    LOG.warn("Waiting for more ACKs before generating new tuples. " + "Progress tracker size has reached limit {}",maxDuplicates);
+    LOG.warn("Waiting for more ACKs before generating new tuples. " + "Progress tracker size has reached limit {}, SpoutID {}",maxDuplicates,spoutId);
     return;
   }
   while (true) {

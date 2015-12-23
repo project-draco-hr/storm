@@ -1,7 +1,11 @@
 {
   FSDataOutputStream os=fs.create(file);
+  int size=0;
   for (int i=0; i < lineCount; i++) {
     os.writeBytes("line " + i + System.lineSeparator());
+    String msg="line " + i + System.lineSeparator();
+    System.err.print(size + "-" + msg);
+    size+=msg.getBytes().length;
   }
   os.close();
 }

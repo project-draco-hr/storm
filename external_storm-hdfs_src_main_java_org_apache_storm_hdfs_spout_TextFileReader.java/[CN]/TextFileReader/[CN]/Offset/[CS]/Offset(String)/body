@@ -1,11 +1,11 @@
 {
-  if (offset != null)   throw new IllegalArgumentException("offset cannot be null");
+  if (offset == null)   throw new IllegalArgumentException("offset cannot be null");
   try {
     String[] parts=offset.split(":");
-    this.byteOffset=Long.parseLong(parts[0].split("=")[1]);
+    this.charOffset=Long.parseLong(parts[0].split("=")[1]);
     this.lineNumber=Long.parseLong(parts[1].split("=")[1]);
   }
  catch (  Exception e) {
-    throw new IllegalArgumentException("'" + offset + "' cannot be interpreted. It is not in expected format for TextFileReader."+ " Format e.g.  {byte=123:line=5}");
+    throw new IllegalArgumentException("'" + offset + "' cannot be interpreted. It is not in expected format for TextFileReader."+ " Format e.g.  {char=123:line=5}");
   }
 }

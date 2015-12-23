@@ -8,7 +8,7 @@
   Assert.assertNull(pos0);
   TextFileReader.Offset currOffset=reader.getFileOffset();
   Assert.assertNotNull(currOffset);
-  Assert.assertEquals(0,currOffset.byteOffset);
+  Assert.assertEquals(0,currOffset.charOffset);
   Assert.assertNotNull(reader.next());
   TextFileReader.Offset pos1=reader.getFileOffset();
   tracker.recordAckedOffset(pos1);

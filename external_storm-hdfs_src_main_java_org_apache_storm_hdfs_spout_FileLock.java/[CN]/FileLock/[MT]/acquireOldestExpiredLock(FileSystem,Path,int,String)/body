@@ -10,6 +10,6 @@
       if (lock != null)       return lock;
     }
   }
-  if (listing.isEmpty())   log.info("No abandoned lock files found");
+  if (listing.isEmpty())   log.info("No abandoned lock files found by Spout {}",spoutId);
   return null;
 }

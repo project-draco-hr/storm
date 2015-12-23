@@ -1,7 +1,7 @@
 {
   if (rhs instanceof Offset) {
     Offset other=((Offset)rhs);
-    return other.byteOffset > byteOffset && other.lineNumber == lineNumber + 1;
+    return other.charOffset > charOffset && other.lineNumber == lineNumber + 1;
   }
   return false;
 }
