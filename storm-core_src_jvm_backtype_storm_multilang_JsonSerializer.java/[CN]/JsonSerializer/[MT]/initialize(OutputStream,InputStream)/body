@@ -1,7 +1,7 @@
 {
-  this.processIn=new DataOutputStream(processIn);
   try {
-    this.processOut=new BufferedReader(new InputStreamReader(processOut,"UTF-8"));
+    this.processIn=new BufferedWriter(new OutputStreamWriter(processIn,DEFAULT_CHARSET));
+    this.processOut=new BufferedReader(new InputStreamReader(processOut,DEFAULT_CHARSET));
   }
  catch (  UnsupportedEncodingException e) {
     throw new RuntimeException(e);
