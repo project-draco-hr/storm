@@ -1,7 +1,6 @@
 {
-  CheckPointState txState=getTxState();
-  LOG.debug("Got ack with txid {}, current txState {}",msgId,txState);
-  if (txState.txid == ((Number)msgId).longValue()) {
+  LOG.debug("Got ack with txid {}, current txState {}",msgId,curTxState);
+  if (curTxState.getTxid() == ((Number)msgId).longValue()) {
     if (recovering) {
       handleRecoveryAck();
     }
@@ -10,7 +9,7 @@
     }
   }
  else {
-    LOG.warn("Ack msgid {}, txState.txid {} mismatch",msgId,txState.txid);
+    LOG.warn("Ack msgid {}, txState.txid {} mismatch",msgId,curTxState.getTxid());
   }
   resetProgress();
 }

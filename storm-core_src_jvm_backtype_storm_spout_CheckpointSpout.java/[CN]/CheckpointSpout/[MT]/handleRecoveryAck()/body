@@ -1,16 +1,10 @@
 {
-  CheckPointState txState=getTxState();
-  if (shouldRollback(txState)) {
-    txState.state=COMMITTED;
-    --txState.txid;
-    saveTxState(txState);
+  CheckPointState nextState=curTxState.nextState(true);
+  if (curTxState != nextState) {
+    saveTxState(nextState);
   }
- else   if (shouldCommit(txState)) {
-    txState.state=COMMITTED;
-    saveTxState(txState);
-  }
- else   if (shouldInitState(txState)) {
-    LOG.debug("Recovery complete, current state {}",txState);
+ else {
+    LOG.debug("Recovery complete, current state {}",curTxState);
     recovering=false;
   }
 }

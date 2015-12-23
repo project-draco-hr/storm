@@ -1,17 +1,5 @@
 {
-  CheckPointState txState=getTxState();
-  LOG.debug("Current txState is {}",txState);
-  if (shouldRollback(txState)) {
-    LOG.debug("Emitting rollback with txid {}",txState.txid);
-    collector.emit(CHECKPOINT_STREAM_ID,new Values(txState.txid,CHECKPOINT_ACTION_ROLLBACK),txState.txid);
-  }
- else   if (shouldCommit(txState)) {
-    LOG.debug("Emitting commit with txid {}",txState.txid);
-    collector.emit(CHECKPOINT_STREAM_ID,new Values(txState.txid,CHECKPOINT_ACTION_COMMIT),txState.txid);
-  }
- else   if (shouldInitState(txState)) {
-    LOG.debug("Emitting init state with txid {}",txState.txid);
-    collector.emit(CHECKPOINT_STREAM_ID,new Values(txState.txid,CHECKPOINT_ACTION_INITSTATE),txState.txid);
-  }
-  startProgress();
+  LOG.debug("In recovery");
+  Action action=curTxState.nextAction(true);
+  emit(curTxState.getTxid(),action);
 }

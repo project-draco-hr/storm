@@ -1,4 +1,6 @@
 {
+  LOG.debug("saveTxState, current state {} -> new state {}",curTxState,txState);
   checkpointState.put(TX_STATE_KEY,txState);
   checkpointState.commit();
+  curTxState=txState;
 }

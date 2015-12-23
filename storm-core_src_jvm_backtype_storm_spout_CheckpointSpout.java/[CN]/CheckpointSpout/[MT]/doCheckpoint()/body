@@ -1,20 +1,9 @@
 {
-  CheckPointState txState=getTxState();
-  if (txState.state == COMMITTED) {
-    txState.txid++;
-    txState.state=PREPARING;
-    saveTxState(txState);
+  LOG.debug("In checkpoint");
+  if (curTxState.getState() == COMMITTED) {
+    saveTxState(curTxState.nextState(false));
     lastCheckpointTs=System.currentTimeMillis();
-    LOG.debug("Emitting prepare with txid {}",txState.txid);
-    collector.emit(CHECKPOINT_STREAM_ID,new Values(txState.txid,CHECKPOINT_ACTION_PREPARE),txState.txid);
   }
- else   if (txState.state == PREPARING) {
-    LOG.debug("Emitting prepare with txid {}",txState.txid);
-    collector.emit(CHECKPOINT_STREAM_ID,new Values(txState.txid,CHECKPOINT_ACTION_PREPARE),txState.txid);
-  }
- else   if (txState.state == COMMITTING) {
-    LOG.debug("Emitting commit with txid {}",txState.txid);
-    collector.emit(CHECKPOINT_STREAM_ID,new Values(txState.txid,CHECKPOINT_ACTION_COMMIT),txState.txid);
-  }
-  startProgress();
+  Action action=curTxState.nextAction(false);
+  emit(curTxState.getTxid(),action);
 }

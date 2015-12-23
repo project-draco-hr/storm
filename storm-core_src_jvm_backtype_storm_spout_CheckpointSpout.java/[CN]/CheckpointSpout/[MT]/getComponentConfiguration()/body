@@ -1,5 +1,0 @@
-{
-  Config conf=new Config();
-  conf.put(Config.TOPOLOGY_SLEEP_SPOUT_WAIT_STRATEGY_TIME_MS,100);
-  return conf;
-}

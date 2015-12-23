@@ -1,3 +1,0 @@
-{
-  return checkpointState.get(TX_STATE_KEY);
-}

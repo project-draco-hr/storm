@@ -2,7 +2,9 @@
   this.context=context;
   this.collector=collector;
   this.checkpointInterval=checkpointInterval;
+  this.sleepInterval=checkpointInterval / 10;
   this.checkpointState=checkpointState;
+  this.curTxState=checkpointState.get(TX_STATE_KEY);
   lastCheckpointTs=0;
   recoveryStepInProgress=false;
   checkpointStepInProgress=false;

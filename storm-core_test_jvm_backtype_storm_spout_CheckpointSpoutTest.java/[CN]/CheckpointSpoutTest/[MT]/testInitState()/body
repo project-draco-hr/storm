@@ -1,7 +1,7 @@
 {
   spout.open(new HashMap(),mockTopologyContext,mockOutputCollector);
   spout.nextTuple();
-  Values expectedTuple=new Values(-1L,CheckpointSpout.CHECKPOINT_ACTION_INITSTATE);
+  Values expectedTuple=new Values(-1L,Action.INITSTATE);
   ArgumentCaptor<String> stream=ArgumentCaptor.forClass(String.class);
   ArgumentCaptor<Values> values=ArgumentCaptor.forClass(Values.class);
   ArgumentCaptor<Object> msgId=ArgumentCaptor.forClass(Object.class);
@@ -11,7 +11,7 @@
   assertEquals(-1L,msgId.getValue());
   spout.ack(-1L);
   Mockito.verify(mockOutputCollector).emit(stream.capture(),values.capture(),msgId.capture());
-  expectedTuple=new Values(-1L,CheckpointSpout.CHECKPOINT_ACTION_INITSTATE);
+  expectedTuple=new Values(-1L,Action.INITSTATE);
   assertEquals(CheckpointSpout.CHECKPOINT_STREAM_ID,stream.getValue());
   assertEquals(expectedTuple,values.getValue());
   assertEquals(-1L,msgId.getValue());

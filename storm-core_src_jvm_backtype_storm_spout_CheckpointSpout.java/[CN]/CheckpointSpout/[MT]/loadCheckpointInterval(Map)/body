@@ -1,10 +1,9 @@
 {
-  int interval;
+  int interval=0;
   if (stormConf.containsKey(Config.TOPOLOGY_STATE_CHECKPOINT_INTERVAL)) {
     interval=((Number)stormConf.get(Config.TOPOLOGY_STATE_CHECKPOINT_INTERVAL)).intValue();
   }
- else {
-    interval=DEFAULT_CHECKPOINT_INTERVAL;
-  }
+  interval=Math.max(100,interval);
+  LOG.info("Checkpoint interval is {} millis",interval);
   return interval;
 }

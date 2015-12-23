@@ -15,7 +15,7 @@
   Utils.sleep(10);
   spout.nextTuple();
   Mockito.verify(mockOutputCollector,Mockito.times(4)).emit(stream.capture(),values.capture(),msgId.capture());
-  Values expectedTuple=new Values(0L,CheckpointSpout.CHECKPOINT_ACTION_COMMIT);
+  Values expectedTuple=new Values(0L,Action.COMMIT);
   assertEquals(CheckpointSpout.CHECKPOINT_STREAM_ID,stream.getValue());
   assertEquals(expectedTuple,values.getValue());
   assertEquals(0L,msgId.getValue());

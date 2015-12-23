@@ -1,0 +1,4 @@
+{
+  LOG.debug("Current state {}, emitting txid {}, action {}",curTxState,txid,action);
+  collector.emit(CHECKPOINT_STREAM_ID,new Values(txid,action),txid);
+}

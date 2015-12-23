@@ -1,18 +1,18 @@
 {
   LOG.debug("handleCheckPoint with tuple {}, action {}, txid {}",input,action,txid);
-  if (action.equals(CHECKPOINT_ACTION_PREPARE)) {
+  if (action == PREPARE) {
     bolt.prePrepare(txid);
     state.prepareCommit(txid);
   }
- else   if (action.equals(CHECKPOINT_ACTION_COMMIT)) {
+ else   if (action == COMMIT) {
     bolt.preCommit(txid);
     state.commit(txid);
   }
- else   if (action.equals(CHECKPOINT_ACTION_ROLLBACK)) {
+ else   if (action == ROLLBACK) {
     bolt.preRollback();
     state.rollback();
   }
- else   if (action.equals(CHECKPOINT_ACTION_INITSTATE)) {
+ else   if (action == INITSTATE) {
     bolt.initState((T)state);
     boltInitialized=true;
     LOG.debug("{} pending tuples to process",pendingTuples.size());

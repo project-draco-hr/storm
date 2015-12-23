@@ -13,7 +13,7 @@
   spout.ack(99L);
   spout.nextTuple();
   Mockito.verify(mockOutputCollector,Mockito.times(3)).emit(stream.capture(),values.capture(),msgId.capture());
-  Values expectedTuple=new Values(100L,CheckpointSpout.CHECKPOINT_ACTION_PREPARE);
+  Values expectedTuple=new Values(100L,Action.PREPARE);
   assertEquals(CheckpointSpout.CHECKPOINT_STREAM_ID,stream.getValue());
   assertEquals(expectedTuple,values.getValue());
   assertEquals(100L,msgId.getValue());

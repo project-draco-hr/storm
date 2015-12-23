@@ -9,7 +9,7 @@
   ArgumentCaptor<Object> msgId=ArgumentCaptor.forClass(Object.class);
   spout.nextTuple();
   Mockito.verify(mockOutputCollector,Mockito.times(1)).emit(stream.capture(),values.capture(),msgId.capture());
-  Values expectedTuple=new Values(100L,CheckpointSpout.CHECKPOINT_ACTION_COMMIT);
+  Values expectedTuple=new Values(100L,Action.COMMIT);
   assertEquals(CheckpointSpout.CHECKPOINT_STREAM_ID,stream.getValue());
   assertEquals(expectedTuple,values.getValue());
   assertEquals(100L,msgId.getValue());
