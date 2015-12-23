@@ -1,12 +1,21 @@
 {
   try {
     if (offset == null)     throw new IllegalArgumentException("offset cannot be null");
-    String[] parts=offset.split(",");
-    this.lastSyncPoint=Long.parseLong(parts[0].split("=")[1]);
-    this.recordsSinceLastSync=Long.parseLong(parts[1].split("=")[1]);
-    this.currentRecord=Long.parseLong(parts[2].split("=")[1]);
-    this.prevRecordEndOffset=0;
-    this.currRecordEndOffset=0;
+    if (offset.equalsIgnoreCase("0")) {
+      this.lastSyncPoint=0;
+      this.recordsSinceLastSync=0;
+      this.currentRecord=0;
+      this.prevRecordEndOffset=0;
+      this.currRecordEndOffset=0;
+    }
+ else {
+      String[] parts=offset.split(":");
+      this.lastSyncPoint=Long.parseLong(parts[0].split("=")[1]);
+      this.recordsSinceLastSync=Long.parseLong(parts[1].split("=")[1]);
+      this.currentRecord=Long.parseLong(parts[2].split("=")[1]);
+      this.prevRecordEndOffset=0;
+      this.currRecordEndOffset=0;
+    }
   }
  catch (  Exception e) {
     throw new IllegalArgumentException("'" + offset + "' cannot be interpreted. It is not in expected format for SequenceFileReader."+ " Format e.g. {sync=123:afterSync=345:record=67}");

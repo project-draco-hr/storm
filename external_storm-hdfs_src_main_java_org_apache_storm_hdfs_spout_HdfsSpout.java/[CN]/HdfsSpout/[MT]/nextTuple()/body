@@ -14,10 +14,12 @@
     try {
       if (reader == null) {
         reader=pickNextFile();
-        fileReadCompletely=false;
         if (reader == null) {
           LOG.debug("Currently no new files to process under : " + sourceDirPath);
           return;
+        }
+ else {
+          fileReadCompletely=false;
         }
       }
       if (fileReadCompletely) {
