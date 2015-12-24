@@ -1,4 +1,4 @@
 long slidingIntervalMs
 TriggerHandler handler
-EvictionPolicy evictionPolicy
+EvictionPolicy<T> evictionPolicy
 WindowManager<T> windowManager
