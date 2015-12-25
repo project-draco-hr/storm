@@ -3,11 +3,20 @@
     collector.ack(tuple);
   }
  else {
-    toCommitTuples.add(tuple);
-    commitStgy.update();
-    if (commitStgy.commit()) {
+    if (TupleUtils.isTick(tuple)) {
+      LOG.debug("TICK! forcing solr client commit");
+      collector.ack(tuple);
+      commitStgy.commit();
       solrClient.commit(solrMapper.getCollection());
       ackCommittedTuples();
+    }
+ else {
+      toCommitTuples.add(tuple);
+      commitStgy.update();
+      if (commitStgy.commit()) {
+        solrClient.commit(solrMapper.getCollection());
+        ackCommittedTuples();
+      }
     }
   }
 }
