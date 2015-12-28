@@ -8,6 +8,7 @@
  else {
       txIds=new HashMap<>();
     }
+    LOG.debug("initTxids, txIds {}",txIds);
   }
   finally {
     jedisContainer.returnInstance(commands);

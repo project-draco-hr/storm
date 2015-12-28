@@ -16,7 +16,10 @@
  else {
       txIds.remove(PREPARE_TXID_KEY);
     }
-    commands.hmset(txidNamespace,txIds);
+    if (!txIds.isEmpty()) {
+      LOG.debug("hmset txidNamespace {}, txIds {}",txidNamespace,txIds);
+      commands.hmset(txidNamespace,txIds);
+    }
     pendingCommit=Collections.emptyMap();
     pendingPrepare=new ConcurrentHashMap<>();
   }

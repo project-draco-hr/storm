@@ -1,3 +1,4 @@
 {
-  collector.emit(CHECKPOINT_STREAM_ID,input,new Values(txid,action));
+  collector.emit(CHECKPOINT_STREAM_ID,checkpointTuple,new Values(txid,action));
+  collector.ack(checkpointTuple);
 }

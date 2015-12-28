@@ -1,0 +1,9 @@
+{
+  if (!tuples.isEmpty()) {
+    LOG.debug("Acking {} tuples",tuples.size());
+    for (    Tuple tuple : tuples) {
+      collector.ack(tuple);
+    }
+    tuples.clear();
+  }
+}

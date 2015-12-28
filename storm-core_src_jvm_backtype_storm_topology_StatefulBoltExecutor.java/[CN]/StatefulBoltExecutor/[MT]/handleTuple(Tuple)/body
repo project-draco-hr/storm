@@ -1,6 +1,6 @@
 {
   if (boltInitialized) {
-    bolt.execute(input);
+    doExecute(input);
   }
  else {
     LOG.debug("Bolt state not initialized, adding tuple {} to pending tuples",input);

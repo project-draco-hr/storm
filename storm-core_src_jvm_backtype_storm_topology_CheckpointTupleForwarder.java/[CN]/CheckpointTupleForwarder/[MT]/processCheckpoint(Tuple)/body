@@ -15,6 +15,7 @@
       }
  else {
         LOG.debug("Ignoring old transaction. Action {}, txid {}",action,txid);
+        collector.ack(input);
       }
     }
  catch (    Throwable th) {
@@ -25,6 +26,6 @@
   }
  else {
     LOG.debug("Waiting for action {}, txid {} from all input tasks. checkPointInputTaskCount {}, " + "transactionRequestCount {}",action,txid,checkPointInputTaskCount,transactionRequestCount);
+    collector.ack(input);
   }
-  collector.ack(input);
 }
