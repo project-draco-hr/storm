@@ -1,5 +1,5 @@
 {
-  LOG.debug("Emitting - {}",id);
+  log.debug("Emitting - {}",id);
   this.collector.emit(tuple,id);
   inflight.put(id,tuple);
 }

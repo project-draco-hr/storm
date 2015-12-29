@@ -1,5 +1,5 @@
 {
-  super(fs,file,new Fields(DEFAULT_FIELD_NAME));
+  super(fs,file);
   offset=startOffset;
   FSDataInputStream in=fs.open(file);
   String charSet=(conf == null || !conf.containsKey(CHARSET)) ? "UTF-8" : conf.get(CHARSET).toString();

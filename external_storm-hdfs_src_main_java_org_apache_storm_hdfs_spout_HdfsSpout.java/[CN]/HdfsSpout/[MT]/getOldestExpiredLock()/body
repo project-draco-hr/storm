@@ -3,13 +3,13 @@
   if (dirlock == null) {
     dirlock=DirLock.takeOwnershipIfStale(hdfs,lockDirPath,lockTimeoutSec);
     if (dirlock == null) {
-      LOG.debug("Spout {} could not take over ownership of DirLock for {}",spoutId,lockDirPath);
+      log.debug("Spout {} could not take over ownership of DirLock for {}",spoutId,lockDirPath);
       return null;
     }
-    LOG.debug("Spout {} now took over ownership of abandoned DirLock for {}",spoutId,lockDirPath);
+    log.debug("Spout {} now took over ownership of abandoned DirLock for {}",spoutId,lockDirPath);
   }
  else {
-    LOG.debug("Spout {} now owns DirLock for {}",spoutId,lockDirPath);
+    log.debug("Spout {} now owns DirLock for {}",spoutId,lockDirPath);
   }
   try {
     if (clocksInSync)     return FileLock.acquireOldestExpiredLock(hdfs,lockDirPath,lockTimeoutSec,spoutId);
@@ -32,6 +32,6 @@
   }
   finally {
     dirlock.release();
-    LOG.debug("Released DirLock {}, SpoutID {} ",dirlock.getLockFile(),spoutId);
+    log.debug("Released DirLock {}, SpoutID {} ",dirlock.getLockFile(),spoutId);
   }
 }

@@ -1,0 +1,42 @@
+{
+  if (args.length < 6) {
+    System.err.println("Please check command line arguments.");
+    System.err.println("Usage :");
+    System.err.println(HdfsSpoutTopology.class.toString() + " topologyName fileFormat sourceDir sourceArchiveDir badDir destinationDir.");
+    System.err.println(" topologyName - topology name.");
+    System.err.println(" fileFormat -  Set to 'TEXT' for reading text files or 'SEQ' for sequence files.");
+    System.err.println(" sourceDir  - read files from this HDFS dir using HdfsSpout.");
+    System.err.println(" sourceArchiveDir - after a file in sourceDir is read completely, it is moved to this HDFS location.");
+    System.err.println(" badDir - files that cannot be read properly will be moved to this HDFS location.");
+    System.err.println(" destinationDir - write data out to this HDFS location using HDFS bolt.");
+    System.err.println();
+    System.exit(-1);
+  }
+  String topologyName=args[0];
+  String fileFormat=args[1];
+  String sourceDir=args[2];
+  String sourceArchiveDir=args[3];
+  String badDir=args[4];
+  String destinationDir=args[5];
+  HdfsBolt bolt=makeHdfsBolt(args[0],destinationDir);
+  HdfsSpout spout=new HdfsSpout().withOutputFields("line");
+  Config conf=new Config();
+  conf.put(Configs.SOURCE_DIR,sourceDir);
+  conf.put(Configs.ARCHIVE_DIR,sourceArchiveDir);
+  conf.put(Configs.BAD_DIR,badDir);
+  conf.put(Configs.READER_TYPE,fileFormat);
+  conf.setDebug(true);
+  conf.setNumWorkers(WORKER_NUM);
+  conf.registerMetricsConsumer(backtype.storm.metric.LoggingMetricsConsumer.class);
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(SPOUT_ID,spout,SPOUT_NUM);
+  builder.setBolt(BOLT_ID,bolt,BOLT_NUM).shuffleGrouping(SPOUT_ID);
+  Map clusterConf=Utils.readStormConfig();
+  StormSubmitter.submitTopologyWithProgressBar(topologyName,conf,builder.createTopology());
+  Nimbus.Client client=NimbusClient.getConfiguredClient(clusterConf).getClient();
+  for (int i=0; i < 10; i++) {
+    Thread.sleep(30 * 1000);
+    FastWordCountTopology.printMetrics(client,topologyName);
+  }
+  FastWordCountTopology.kill(client,topologyName);
+}

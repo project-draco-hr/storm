@@ -1,5 +1,0 @@
-{
-  if (name == null)   throw new IllegalArgumentException("keyName cannot be null");
-  this.keyName=name;
-  setFields(keyName,valueName);
-}

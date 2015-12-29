@@ -1,7 +1,9 @@
 {
   this.conf=conf;
+  this.commitTimer=new Timer();
+  this.tracker=new ProgressTracker();
   final String FILE_SYSTEM="filesystem";
-  LOG.info("Opening HDFS Spout {}",spoutId);
+  log.info("Opening HDFS Spout {}",spoutId);
   this.collector=collector;
   this.hdfsConfig=new Configuration();
   this.tupleCounter=0;
@@ -9,7 +11,7 @@
     String key=k.toString();
     if (!FILE_SYSTEM.equalsIgnoreCase(key)) {
       String val=conf.get(key).toString();
-      LOG.info("Config setting : " + key + " = "+ val);
+      log.info("Config setting : " + key + " = "+ val);
       this.hdfsConfig.set(key,val);
     }
  else     this.hdfs=(FileSystem)conf.get(key);
@@ -29,22 +31,22 @@
     HdfsSecurityUtil.login(conf,hdfsConfig);
   }
  catch (  IOException e) {
-    LOG.error("Failed to open " + sourceDirPath);
+    log.error("Failed to open " + sourceDirPath);
     throw new RuntimeException(e);
   }
   if (!conf.containsKey(Configs.SOURCE_DIR)) {
-    LOG.error(Configs.SOURCE_DIR + " setting is required");
+    log.error(Configs.SOURCE_DIR + " setting is required");
     throw new RuntimeException(Configs.SOURCE_DIR + " setting is required");
   }
   this.sourceDirPath=new Path(conf.get(Configs.SOURCE_DIR).toString());
   if (!conf.containsKey(Configs.ARCHIVE_DIR)) {
-    LOG.error(Configs.ARCHIVE_DIR + " setting is required");
+    log.error(Configs.ARCHIVE_DIR + " setting is required");
     throw new RuntimeException(Configs.ARCHIVE_DIR + " setting is required");
   }
   this.archiveDirPath=new Path(conf.get(Configs.ARCHIVE_DIR).toString());
   validateOrMakeDir(hdfs,archiveDirPath,"Archive");
   if (!conf.containsKey(Configs.BAD_DIR)) {
-    LOG.error(Configs.BAD_DIR + " setting is required");
+    log.error(Configs.BAD_DIR + " setting is required");
     throw new RuntimeException(Configs.BAD_DIR + " setting is required");
   }
   this.badFilesDirPath=new Path(conf.get(Configs.BAD_DIR).toString());
@@ -60,8 +62,11 @@
   if (ackers != null)   this.ackEnabled=(Integer.parseInt(ackers.toString()) > 0);
  else   this.ackEnabled=false;
   if (conf.get(Configs.COMMIT_FREQ_COUNT) != null)   commitFrequencyCount=Integer.parseInt(conf.get(Configs.COMMIT_FREQ_COUNT).toString());
-  if (conf.get(Configs.COMMIT_FREQ_SEC) != null)   commitFrequencySec=Integer.parseInt(conf.get(Configs.COMMIT_FREQ_SEC).toString());
-  if (conf.get(Configs.MAX_DUPLICATE) != null)   maxDuplicates=Integer.parseInt(conf.get(Configs.MAX_DUPLICATE).toString());
+  if (conf.get(Configs.COMMIT_FREQ_SEC) != null) {
+    commitFrequencySec=Integer.parseInt(conf.get(Configs.COMMIT_FREQ_SEC).toString());
+    if (commitFrequencySec <= 0)     throw new RuntimeException(Configs.COMMIT_FREQ_SEC + " setting must be greater than 0");
+  }
+  if (conf.get(Configs.MAX_OUTSTANDING) != null)   maxOutstanding=Integer.parseInt(conf.get(Configs.MAX_OUTSTANDING).toString());
   if (conf.get(Configs.CLOCKS_INSYNC) != null)   clocksInSync=Boolean.parseBoolean(conf.get(Configs.CLOCKS_INSYNC).toString());
   spoutId=context.getThisComponentId();
   setupCommitElapseTimer();

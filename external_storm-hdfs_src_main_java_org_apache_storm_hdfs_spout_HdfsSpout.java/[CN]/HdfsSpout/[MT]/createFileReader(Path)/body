@@ -7,7 +7,7 @@
     return (FileReader)constructor.newInstance(this.hdfs,file,conf);
   }
  catch (  Exception e) {
-    LOG.error(e.getMessage(),e);
+    log.error(e.getMessage(),e);
     throw new RuntimeException("Unable to instantiate " + readerType,e);
   }
 }

@@ -1,13 +1,13 @@
 {
-  LOG.debug("Next Tuple {}",spoutId);
+  log.debug("Next Tuple {}",spoutId);
   if (!retryList.isEmpty()) {
-    LOG.debug("Sending from retry list");
+    log.debug("Sending from retry list");
     HdfsUtils.Pair<MessageId,List<Object>> pair=retryList.remove();
     emitData(pair.getValue(),pair.getKey());
     return;
   }
-  if (ackEnabled && tracker.size() >= maxDuplicates) {
-    LOG.warn("Waiting for more ACKs before generating new tuples. " + "Progress tracker size has reached limit {}, SpoutID {}",maxDuplicates,spoutId);
+  if (ackEnabled && tracker.size() >= maxOutstanding) {
+    log.warn("Waiting for more ACKs before generating new tuples. " + "Progress tracker size has reached limit {}, SpoutID {}",maxOutstanding,spoutId);
     return;
   }
   while (true) {
@@ -15,7 +15,7 @@
       if (reader == null) {
         reader=pickNextFile();
         if (reader == null) {
-          LOG.debug("Currently no new files to process under : " + sourceDirPath);
+          log.debug("Currently no new files to process under : " + sourceDirPath);
           return;
         }
  else {
@@ -48,11 +48,11 @@
       }
     }
  catch (    IOException e) {
-      LOG.error("I/O Error processing at file location " + getFileProgress(reader),e);
+      log.error("I/O Error processing at file location " + getFileProgress(reader),e);
       return;
     }
 catch (    ParseException e) {
-      LOG.error("Parsing error when processing at file location " + getFileProgress(reader) + ". Skipping remainder of file.",e);
+      log.error("Parsing error when processing at file location " + getFileProgress(reader) + ". Skipping remainder of file.",e);
       markFileAsBad(reader.getFilePath());
     }
   }

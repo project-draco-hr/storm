@@ -3,6 +3,6 @@
     reader.close();
   }
  catch (  IOException e) {
-    LOG.warn("Ignoring error when closing file " + getFilePath(),e);
+    log.warn("Ignoring error when closing file " + getFilePath(),e);
   }
 }
