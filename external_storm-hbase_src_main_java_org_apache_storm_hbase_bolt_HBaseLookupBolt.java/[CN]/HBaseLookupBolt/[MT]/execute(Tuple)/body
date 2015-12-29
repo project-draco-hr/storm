@@ -1,4 +1,8 @@
 {
+  if (TupleUtils.isTick(tuple)) {
+    collector.ack(tuple);
+    return;
+  }
   byte[] rowKey=this.mapper.rowKey(tuple);
   Get get=hBaseClient.constructGetRequests(rowKey,projectionCriteria);
   try {
