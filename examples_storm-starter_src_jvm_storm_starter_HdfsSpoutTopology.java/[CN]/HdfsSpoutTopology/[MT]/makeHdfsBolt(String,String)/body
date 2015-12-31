@@ -1,6 +1,0 @@
-{
-  DefaultFileNameFormat fileNameFormat=new DefaultFileNameFormat().withPath(destinationDir).withExtension(".txt");
-  RecordFormat format=new DelimitedRecordFormat();
-  FileRotationPolicy rotationPolicy=new TimedRotationPolicy(5.0f,TimedRotationPolicy.TimeUnit.MINUTES);
-  return new HdfsBolt().withConfigKey("hdfs.config").withFsUrl(arg).withFileNameFormat(fileNameFormat).withRecordFormat(format).withRotationPolicy(rotationPolicy).withSyncPolicy(new CountSyncPolicy(1000));
-}

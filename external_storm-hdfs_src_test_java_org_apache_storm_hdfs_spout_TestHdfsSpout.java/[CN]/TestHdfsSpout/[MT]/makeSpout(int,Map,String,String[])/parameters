@@ -1,3 +1,4 @@
 int spoutId
 Map conf
 String readerType
+String[] outputFields

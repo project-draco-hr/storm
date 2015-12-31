@@ -1,4 +1,5 @@
 {
+  log.debug("Fail() called for msg {} on spout {}",msgId,spoutId);
   super.fail(msgId);
   HdfsUtils.Pair<MessageId,List<Object>> item=HdfsUtils.Pair.of(msgId,inflight.remove(msgId));
   retryList.add(item);

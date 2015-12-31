@@ -1,4 +1,8 @@
 {
-  fs.delete(lockFile,false);
-  log.info("Thread {} released dir lock {} ",threadInfo(),lockFile);
+  if (!fs.delete(lockFile,false)) {
+    log.error("Thread {} could not delete dir lock {} ",threadInfo(),lockFile);
+  }
+ else {
+    log.info("Thread {} released dir lock {} ",threadInfo(),lockFile);
+  }
 }

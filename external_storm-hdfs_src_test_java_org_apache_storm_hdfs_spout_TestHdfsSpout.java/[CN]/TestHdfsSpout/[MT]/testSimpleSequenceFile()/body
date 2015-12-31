@@ -8,7 +8,7 @@
   Path file2=new Path(source + "/file2.seq");
   createSeqFile(fs,file2,5);
   Map conf=getDefaultConfig();
-  HdfsSpout spout=makeSpout(0,conf,Configs.SEQ);
+  HdfsSpout spout=makeSpout(0,conf,Configs.SEQ,SequenceFileReader.defaultFields);
   List<String> res=runSpout(spout,"r11");
   Assert.assertEquals(10,res.size());
   Assert.assertEquals(2,listDir(archive).size());

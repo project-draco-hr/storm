@@ -4,7 +4,7 @@
   Map conf=getDefaultConfig();
   conf.put(Configs.COMMIT_FREQ_COUNT,"2");
   conf.put(Configs.COMMIT_FREQ_SEC,"1000");
-  HdfsSpout spout=makeSpout(0,conf,Configs.TEXT);
+  HdfsSpout spout=makeSpout(0,conf,Configs.TEXT,TextFileReader.defaultFields);
   runSpout(spout,"r5");
   String lockFile=listDir(spout.getLockDirPath()).get(0);
   List<String> lines=readTextFile(fs,lockFile);

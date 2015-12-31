@@ -3,6 +3,6 @@
   conf.put(Configs.SOURCE_DIR,source.toString());
   conf.put(Configs.ARCHIVE_DIR,archive.toString());
   conf.put(Configs.BAD_DIR,badfiles.toString());
-  conf.put("filesystem",fs);
+  conf.put(Configs.HDFS_URI,hdfsCluster.getURI().toString());
   return conf;
 }

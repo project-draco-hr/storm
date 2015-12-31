@@ -1,5 +1,9 @@
 {
-  if (!ackEnabled)   throw new IllegalStateException("Received an ACKs when ack-ing is disabled");
+  if (!ackEnabled) {
+    log.debug("Ack() called but acker count = 0",msgId,spoutId);
+    return;
+  }
+  log.debug("Ack received for msg {} on spout {}",msgId,spoutId);
   MessageId id=(MessageId)msgId;
   inflight.remove(id);
   ++acksSinceLastCommit;

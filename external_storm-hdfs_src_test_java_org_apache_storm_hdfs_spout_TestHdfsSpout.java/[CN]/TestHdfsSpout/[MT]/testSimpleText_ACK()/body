@@ -7,7 +7,7 @@
   conf.put(Configs.COMMIT_FREQ_COUNT,"1");
   conf.put(Configs.COMMIT_FREQ_SEC,"1");
   conf.put(Config.TOPOLOGY_ACKER_EXECUTORS,"1");
-  HdfsSpout spout=makeSpout(0,conf,Configs.TEXT);
+  HdfsSpout spout=makeSpout(0,conf,Configs.TEXT,TextFileReader.defaultFields);
   runSpout(spout,"r6","a0","a1","a2","a3","a4");
   Path arc1=new Path(archive.toString() + "/file1.txt");
   checkCollectorOutput_txt((MockCollector)spout.getCollector(),arc1);

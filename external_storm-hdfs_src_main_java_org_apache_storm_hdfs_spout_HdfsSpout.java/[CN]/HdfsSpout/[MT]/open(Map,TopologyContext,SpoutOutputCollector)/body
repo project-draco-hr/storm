@@ -1,38 +1,44 @@
 {
+  log.info("Opening HDFS Spout {}",spoutId);
   this.conf=conf;
   this.commitTimer=new Timer();
   this.tracker=new ProgressTracker();
-  final String FILE_SYSTEM="filesystem";
-  log.info("Opening HDFS Spout {}",spoutId);
+  this.hdfsConfig=new Configuration();
   this.collector=collector;
   this.hdfsConfig=new Configuration();
   this.tupleCounter=0;
-  for (  Object k : conf.keySet()) {
-    String key=k.toString();
-    if (!FILE_SYSTEM.equalsIgnoreCase(key)) {
-      String val=conf.get(key).toString();
-      log.info("Config setting : " + key + " = "+ val);
-      this.hdfsConfig.set(key,val);
-    }
- else     this.hdfs=(FileSystem)conf.get(key);
-    if (key.equalsIgnoreCase(Configs.READER_TYPE)) {
-      readerType=conf.get(key).toString();
-      checkValidReader(readerType);
-    }
+  if (conf.containsKey(Configs.HDFS_URI)) {
+    this.hdfsUri=conf.get(Configs.HDFS_URI).toString();
   }
-  this.hdfsConfig=new Configuration();
-  Map<String,Object> map=(Map<String,Object>)conf.get(this.configKey);
-  if (map != null) {
-    for (    String key : map.keySet()) {
-      this.hdfsConfig.set(key,String.valueOf(map.get(key)));
-    }
+ else {
+    throw new RuntimeException(Configs.HDFS_URI + " setting is required");
   }
   try {
-    HdfsSecurityUtil.login(conf,hdfsConfig);
+    this.hdfs=FileSystem.get(URI.create(hdfsUri),hdfsConfig);
   }
  catch (  IOException e) {
-    log.error("Failed to open " + sourceDirPath);
-    throw new RuntimeException(e);
+    log.error("Unable to instantiate file system",e);
+    throw new RuntimeException("Unable to instantiate file system",e);
+  }
+  if (conf.containsKey(configKey)) {
+    Map<String,Object> map=(Map<String,Object>)conf.get(configKey);
+    if (map != null) {
+      for (      String keyName : map.keySet()) {
+        log.info("HDFS Config override : " + keyName + " = "+ String.valueOf(map.get(keyName)));
+        this.hdfsConfig.set(keyName,String.valueOf(map.get(keyName)));
+      }
+      try {
+        HdfsSecurityUtil.login(conf,hdfsConfig);
+      }
+ catch (      IOException e) {
+        log.error("HDFS Login failed ",e);
+        throw new RuntimeException(e);
+      }
+    }
+  }
+  if (conf.containsKey(Configs.READER_TYPE)) {
+    readerType=conf.get(Configs.READER_TYPE).toString();
+    checkValidReader(readerType);
   }
   if (!conf.containsKey(Configs.SOURCE_DIR)) {
     log.error(Configs.SOURCE_DIR + " setting is required");
@@ -61,6 +67,7 @@
   Object ackers=conf.get(Config.TOPOLOGY_ACKER_EXECUTORS);
   if (ackers != null)   this.ackEnabled=(Integer.parseInt(ackers.toString()) > 0);
  else   this.ackEnabled=false;
+  log.info("ACK mode is {}",ackEnabled ? "enabled" : "disabled");
   if (conf.get(Configs.COMMIT_FREQ_COUNT) != null)   commitFrequencyCount=Integer.parseInt(conf.get(Configs.COMMIT_FREQ_COUNT).toString());
   if (conf.get(Configs.COMMIT_FREQ_SEC) != null) {
     commitFrequencySec=Integer.parseInt(conf.get(Configs.COMMIT_FREQ_SEC).toString());

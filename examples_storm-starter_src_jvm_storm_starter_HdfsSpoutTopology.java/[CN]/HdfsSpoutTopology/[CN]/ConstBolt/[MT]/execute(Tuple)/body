@@ -1,0 +1,4 @@
+{
+  log.info("Received tuple : {}",tuple.getValue(0));
+  collector.ack(tuple);
+}
