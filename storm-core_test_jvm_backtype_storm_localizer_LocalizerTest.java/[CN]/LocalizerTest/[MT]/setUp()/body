@@ -3,5 +3,4 @@
   if (!baseDir.mkdir()) {
     throw new IOException("failed to create base directory");
   }
-  ClientBlobStore mockblobstore=mock(ClientBlobStore.class);
 }
