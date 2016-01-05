@@ -1,6 +1,6 @@
 {
   if (o == null) {
-    return Collections.emptyList();
+    return new ArrayList<String>();
   }
  else   if (o instanceof String) {
     return new ArrayList<String>(){
