@@ -1,0 +1,10 @@
+{
+  MqttMessage message=this.mapper.toMessage(tuple);
+  try {
+    this.publisher.publish(message,this.retain);
+  }
+ catch (  Exception e) {
+    LOG.warn("Error publishing MQTT message. Failing tuple.",e);
+    throw new FailedException();
+  }
+}

@@ -1,0 +1,8 @@
+{
+  LOG.warn("Starting broker...");
+  broker=new BrokerService();
+  broker.addConnector("mqtt://localhost:1883");
+  broker.setDataDirectory("target");
+  broker.start();
+  LOG.debug("MQTT broker started");
+}

@@ -1,0 +1,16 @@
+{
+  if (!TupleUtils.isTick(input)) {
+    MqttMessage message=this.mapper.toMessage(input);
+    try {
+      this.publisher.publish(message,this.retain);
+      this.collector.ack(input);
+    }
+ catch (    Exception e) {
+      LOG.warn("Error publishing MQTT message. Failing tuple.",e);
+      collector.fail(input);
+    }
+  }
+ else {
+    collector.ack(input);
+  }
+}

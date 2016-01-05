@@ -1,0 +1,29 @@
+{
+  MQTT client=new MQTT();
+  client.setTracer(new MqttLogger());
+  URI uri=URI.create("tcp://localhost:1883");
+  client.setHost(uri);
+  client.setClientId("MQTTSubscriber");
+  client.setCleanSession(false);
+  BlockingConnection connection=client.blockingConnection();
+  connection.connect();
+  Topic[] topics={new Topic("/integration-result",QoS.AT_LEAST_ONCE)};
+  byte[] qoses=connection.subscribe(topics);
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology("test",new Config(),buildMqttTopology());
+  System.out.println("topology started");
+  Thread.sleep(10000);
+  MqttOptions options=new MqttOptions();
+  options.setCleanConnection(false);
+  MqttPublisher publisher=new MqttPublisher(options);
+  publisher.connectMqtt("MqttPublisher");
+  publisher.publish(new MqttMessage("/mqtt-topology","test".getBytes()),true);
+  LOG.info("published message");
+  Message message=connection.receive();
+  LOG.info("Message recieved on topic: " + message.getTopic());
+  LOG.info("Payload: " + new String(message.getPayload()));
+  message.ack();
+  Assert.assertArrayEquals(message.getPayload(),"hello mqtt".getBytes());
+  Assert.assertEquals(message.getTopic(),"/integration-result");
+  cluster.shutdown();
+}

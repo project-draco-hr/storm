@@ -1,0 +1,2 @@
+MqttMessage message
+boolean retain

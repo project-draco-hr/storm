@@ -1,0 +1,12 @@
+{
+  this.collector=collector;
+  this.topologyName=(String)conf.get(Config.TOPOLOGY_NAME);
+  this.publisher=new MqttPublisher(this.options,this.keyStoreLoader,this.retain);
+  try {
+    this.publisher.connectMqtt(this.topologyName + "-" + context.getThisComponentId()+ "-"+ context.getThisTaskId());
+  }
+ catch (  Exception e) {
+    LOG.error("Unable to connect to MQTT Broker.",e);
+    throw new RuntimeException("Unable to connect to MQTT Broker.",e);
+  }
+}

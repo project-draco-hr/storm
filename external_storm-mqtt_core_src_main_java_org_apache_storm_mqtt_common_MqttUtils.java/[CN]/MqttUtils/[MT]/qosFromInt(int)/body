@@ -1,0 +1,17 @@
+{
+  QoS qos=null;
+switch (i) {
+case 0:
+    qos=QoS.AT_MOST_ONCE;
+  break;
+case 1:
+qos=QoS.AT_LEAST_ONCE;
+break;
+case 2:
+qos=QoS.EXACTLY_ONCE;
+break;
+default :
+throw new IllegalArgumentException(i + "is not a valid MQTT QoS.");
+}
+return qos;
+}

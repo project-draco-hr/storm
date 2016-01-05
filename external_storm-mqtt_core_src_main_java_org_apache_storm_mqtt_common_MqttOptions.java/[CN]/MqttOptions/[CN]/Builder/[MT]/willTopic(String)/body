@@ -1,0 +1,4 @@
+{
+  this.options.willTopic=willTopic;
+  return this;
+}

@@ -1,0 +1,5 @@
+{
+  startBroker();
+  startPublisher();
+  publish();
+}

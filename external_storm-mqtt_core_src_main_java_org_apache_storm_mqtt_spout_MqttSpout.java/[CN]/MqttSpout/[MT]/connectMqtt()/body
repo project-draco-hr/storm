@@ -1,0 +1,42 @@
+{
+  MQTT client=new MQTT();
+  URI uri=URI.create(this.options.getUrl());
+  client.setHost(uri);
+  if (!uri.getScheme().toLowerCase().equals("tcp")) {
+    client.setSslContext(SslUtils.sslContext(uri.getScheme(),this.keyStoreLoader));
+  }
+  client.setClientId(this.topologyName + "-" + this.context.getThisComponentId()+ "-"+ this.context.getThisTaskId());
+  LOG.info("MQTT ClientID: " + client.getClientId().toString());
+  client.setCleanSession(this.options.isCleanConnection());
+  client.setReconnectDelay(this.options.getReconnectDelay());
+  client.setReconnectDelayMax(this.options.getReconnectDelayMax());
+  client.setReconnectBackOffMultiplier(this.options.getReconnectBackOffMultiplier());
+  client.setConnectAttemptsMax(this.options.getConnectAttemptsMax());
+  client.setReconnectAttemptsMax(this.options.getReconnectAttemptsMax());
+  client.setUserName(this.options.getUserName());
+  client.setPassword(this.options.getPassword());
+  client.setTracer(new MqttLogger());
+  if (this.options.getWillTopic() != null && this.options.getWillPayload() != null) {
+    client.setWillTopic(this.options.getWillTopic());
+    client.setWillMessage(this.options.getWillPayload());
+    client.setWillRetain(this.options.getWillRetain());
+    QoS qos=MqttUtils.qosFromInt(this.options.getWillQos());
+    client.setWillQos(qos);
+  }
+  this.connection=client.callbackConnection();
+  this.connection.listener(this);
+  this.connection.connect(new ConnectCallback());
+  while (!this.mqttConnected && !this.mqttConnectFailed) {
+    LOG.info("Waiting for connection...");
+    Thread.sleep(500);
+  }
+  if (this.mqttConnected) {
+    List<String> topicList=this.options.getTopics();
+    Topic[] topics=new Topic[topicList.size()];
+    QoS qos=MqttUtils.qosFromInt(this.options.getQos());
+    for (int i=0; i < topicList.size(); i++) {
+      topics[i]=new Topic(topicList.get(i),qos);
+    }
+    connection.subscribe(topics,new SubscribeCallback());
+  }
+}

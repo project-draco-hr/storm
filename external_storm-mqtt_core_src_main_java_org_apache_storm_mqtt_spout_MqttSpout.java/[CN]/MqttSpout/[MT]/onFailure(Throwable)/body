@@ -1,0 +1,5 @@
+{
+  LOG.error("MQTT Connection Failure.",throwable);
+  MqttSpout.this.connection.disconnect(new DisconnectCallback());
+  throw new RuntimeException("MQTT Connection failure.",throwable);
+}
