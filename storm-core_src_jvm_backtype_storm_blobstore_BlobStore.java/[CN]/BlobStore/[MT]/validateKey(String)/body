@@ -1,6 +1,6 @@
 {
   if (StringUtils.isEmpty(key) || "..".equals(key) || ".".equals(key)|| !KEY_PATTERN.matcher(key).matches()) {
     LOG.error("'{}' does not appear to be valid {}",key,KEY_PATTERN);
-    throw new IllegalArgumentException(key + " does not appear to be a valid blob key");
+    throw new AuthorizationException(key + " does not appear to be a valid blob key");
   }
 }
