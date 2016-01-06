@@ -1,0 +1,27 @@
+{
+  MQTT client=new MQTT();
+  URI uri=URI.create(options.getUrl());
+  client.setHost(uri);
+  if (!uri.getScheme().toLowerCase().equals("tcp")) {
+    client.setSslContext(SslUtils.sslContext(uri.getScheme(),keyStoreLoader));
+  }
+  client.setClientId(clientId);
+  LOG.info("MQTT ClientID: " + client.getClientId().toString());
+  client.setCleanSession(options.isCleanConnection());
+  client.setReconnectDelay(options.getReconnectDelay());
+  client.setReconnectDelayMax(options.getReconnectDelayMax());
+  client.setReconnectBackOffMultiplier(options.getReconnectBackOffMultiplier());
+  client.setConnectAttemptsMax(options.getConnectAttemptsMax());
+  client.setReconnectAttemptsMax(options.getReconnectAttemptsMax());
+  client.setUserName(options.getUserName());
+  client.setPassword(options.getPassword());
+  client.setTracer(new MqttLogger());
+  if (options.getWillTopic() != null && options.getWillPayload() != null) {
+    QoS qos=MqttUtils.qosFromInt(options.getWillQos());
+    client.setWillQos(qos);
+    client.setWillTopic(options.getWillTopic());
+    client.setWillMessage(options.getWillPayload());
+    client.setWillRetain(options.getWillRetain());
+  }
+  return client;
+}

@@ -3,7 +3,7 @@
   MqttOptions options=new MqttOptions();
   options.setTopics(Arrays.asList("/mqtt-topology"));
   options.setCleanConnection(false);
-  MqttSpout spout=new MqttSpout(new StringMessageMapper(),options);
+  TestSpout spout=new TestSpout(new StringMessageMapper(),options);
   MqttBolt bolt=new MqttBolt(options,new MqttTupleMapper(){
     @Override public MqttMessage toMessage(    ITuple tuple){
       LOG.info("Received: " + tuple);

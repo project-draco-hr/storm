@@ -12,12 +12,14 @@
   LocalCluster cluster=new LocalCluster();
   cluster.submitTopology("test",new Config(),buildMqttTopology());
   System.out.println("topology started");
-  Thread.sleep(10000);
+  while (!spoutActivated) {
+    Thread.sleep(500);
+  }
   MqttOptions options=new MqttOptions();
   options.setCleanConnection(false);
-  MqttPublisher publisher=new MqttPublisher(options);
+  MqttPublisher publisher=new MqttPublisher(options,true);
   publisher.connectMqtt("MqttPublisher");
-  publisher.publish(new MqttMessage("/mqtt-topology","test".getBytes()),true);
+  publisher.publish(new MqttMessage("/mqtt-topology","test".getBytes()));
   LOG.info("published message");
   Message message=connection.receive();
   LOG.info("Message recieved on topic: " + message.getTopic());
