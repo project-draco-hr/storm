@@ -12,6 +12,8 @@
       sb.append((char)ch);
     }
   }
-  if (before == offset.charOffset)   return null;
+  if (before == offset.charOffset) {
+    return null;
+  }
   return sb.toString();
 }

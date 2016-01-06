@@ -1,6 +1,10 @@
 {
-  if (this == o)   return true;
-  if (!(o instanceof Offset))   return false;
+  if (this == o) {
+    return true;
+  }
+  if (!(o instanceof Offset)) {
+    return false;
+  }
   Offset offset=(Offset)o;
   return currentRecord == offset.currentRecord;
 }

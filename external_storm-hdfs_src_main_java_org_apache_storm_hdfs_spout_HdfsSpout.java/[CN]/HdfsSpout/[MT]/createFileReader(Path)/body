@@ -1,13 +1,17 @@
 {
-  if (readerType.equalsIgnoreCase(Configs.SEQ))   return new SequenceFileReader(this.hdfs,file,conf);
-  if (readerType.equalsIgnoreCase(Configs.TEXT))   return new TextFileReader(this.hdfs,file,conf);
+  if (readerType.equalsIgnoreCase(Configs.SEQ)) {
+    return new SequenceFileReader(this.hdfs,file,conf);
+  }
+  if (readerType.equalsIgnoreCase(Configs.TEXT)) {
+    return new TextFileReader(this.hdfs,file,conf);
+  }
   try {
     Class<?> clsType=Class.forName(readerType);
     Constructor<?> constructor=clsType.getConstructor(FileSystem.class,Path.class,Map.class);
     return (FileReader)constructor.newInstance(this.hdfs,file,conf);
   }
  catch (  Exception e) {
-    log.error(e.getMessage(),e);
+    LOG.error(e.getMessage(),e);
     throw new RuntimeException("Unable to instantiate " + readerType,e);
   }
 }

@@ -2,7 +2,9 @@
   FSDataInputStream os=null;
   try {
     os=fs.open(file);
-    if (os == null)     return null;
+    if (os == null) {
+      return null;
+    }
     BufferedReader reader=new BufferedReader(new InputStreamReader(os));
     ArrayList<String> lines=new ArrayList<>();
     for (String line=reader.readLine(); line != null; line=reader.readLine()) {
@@ -14,6 +16,8 @@
     return null;
   }
  finally {
-    if (os != null)     os.close();
+    if (os != null) {
+      os.close();
+    }
   }
 }

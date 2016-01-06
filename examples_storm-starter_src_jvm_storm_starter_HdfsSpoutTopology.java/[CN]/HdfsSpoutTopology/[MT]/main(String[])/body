@@ -7,9 +7,9 @@
     System.err.println(" hdfsUri - hdfs name node URI");
     System.err.println(" fileFormat -  Set to 'TEXT' for reading text files or 'SEQ' for sequence files.");
     System.err.println(" sourceDir  - read files from this HDFS dir using HdfsSpout.");
-    System.err.println(" sourceArchiveDir - after a file in sourceDir is read completely, it is moved to this HDFS location.");
+    System.err.println(" archiveDir - after a file in sourceDir is read completely, it is moved to this HDFS location.");
     System.err.println(" badDir - files that cannot be read properly will be moved to this HDFS location.");
-    System.err.println(" destinationDir - write data out to this HDFS location using HDFS bolt.");
+    System.err.println(" spoutCount - Num of spout instances.");
     System.err.println();
     System.exit(-1);
   }
@@ -19,7 +19,7 @@
   String sourceDir=args[3];
   String sourceArchiveDir=args[4];
   String badDir=args[5];
-  String destinationDir=args[6];
+  int spoutNum=Integer.parseInt(args[6]);
   ConstBolt bolt=new ConstBolt();
   HdfsSpout spout=new HdfsSpout().withOutputFields("line");
   Config conf=new Config();
@@ -30,13 +30,14 @@
   conf.put(Configs.HDFS_URI,hdfsUri);
   conf.setDebug(true);
   conf.setNumWorkers(1);
+  conf.setNumAckers(1);
   conf.setMaxTaskParallelism(1);
   conf.setDebug(true);
   conf.setNumWorkers(WORKER_NUM);
   conf.registerMetricsConsumer(backtype.storm.metric.LoggingMetricsConsumer.class);
   TopologyBuilder builder=new TopologyBuilder();
-  builder.setSpout(SPOUT_ID,spout,SPOUT_NUM);
-  builder.setBolt(BOLT_ID,bolt,BOLT_NUM).shuffleGrouping(SPOUT_ID);
+  builder.setSpout(SPOUT_ID,spout,spoutNum);
+  builder.setBolt(BOLT_ID,bolt,1).shuffleGrouping(SPOUT_ID);
   Map clusterConf=Utils.readStormConfig();
   StormSubmitter.submitTopologyWithProgressBar(topologyName,conf,builder.createTopology());
   Nimbus.Client client=NimbusClient.getConfiguredClient(clusterConf).getClient();

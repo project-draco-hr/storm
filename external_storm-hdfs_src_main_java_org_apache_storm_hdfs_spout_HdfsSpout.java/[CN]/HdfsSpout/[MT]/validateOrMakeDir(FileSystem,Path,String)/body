@@ -2,17 +2,17 @@
   try {
     if (fs.exists(dir)) {
       if (!fs.isDirectory(dir)) {
-        log.error(dirDescription + " directory is a file, not a dir. " + dir);
+        LOG.error(dirDescription + " directory is a file, not a dir. " + dir);
         throw new RuntimeException(dirDescription + " directory is a file, not a dir. " + dir);
       }
     }
  else     if (!fs.mkdirs(dir)) {
-      log.error("Unable to create " + dirDescription + " directory "+ dir);
+      LOG.error("Unable to create " + dirDescription + " directory "+ dir);
       throw new RuntimeException("Unable to create " + dirDescription + " directory "+ dir);
     }
   }
  catch (  IOException e) {
-    log.error("Unable to create " + dirDescription + " directory "+ dir,e);
+    LOG.error("Unable to create " + dirDescription + " directory "+ dir,e);
     throw new RuntimeException("Unable to create " + dirDescription + " directory "+ dir,e);
   }
 }

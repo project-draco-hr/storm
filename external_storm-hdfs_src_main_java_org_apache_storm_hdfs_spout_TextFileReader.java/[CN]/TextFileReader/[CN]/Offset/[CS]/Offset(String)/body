@@ -1,5 +1,7 @@
 {
-  if (offset == null)   throw new IllegalArgumentException("offset cannot be null");
+  if (offset == null) {
+    throw new IllegalArgumentException("offset cannot be null");
+  }
   try {
     if (offset.equalsIgnoreCase("0")) {
       this.charOffset=0;

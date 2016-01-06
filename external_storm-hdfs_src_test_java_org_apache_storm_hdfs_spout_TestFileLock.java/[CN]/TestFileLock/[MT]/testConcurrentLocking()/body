@@ -4,7 +4,9 @@
   FileLockingThread[] thds=startThreads(100,file1,locksDir);
   for (  FileLockingThread thd : thds) {
     thd.join();
-    if (!thd.cleanExit)     System.err.println(thd.getName() + " did not exit cleanly");
+    if (!thd.cleanExit) {
+      System.err.println(thd.getName() + " did not exit cleanly");
+    }
     Assert.assertTrue(thd.cleanExit);
   }
   Path lockFile=new Path(locksDir + Path.SEPARATOR + file1.getName());

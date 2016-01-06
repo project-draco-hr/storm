@@ -18,7 +18,7 @@
   Assert.assertEquals(3,res2.size());
   Assert.assertTrue(fs.exists(lock.getLockFile()));
   List<String> contents=readTextFile(fs,lock.getLockFile().toString());
-  System.err.println(contents);
+  Assert.assertFalse(contents.isEmpty());
   res2=runSpout(spout2,"r2");
   Assert.assertEquals(4,res2.size());
   Assert.assertFalse(fs.exists(lock.getLockFile()));

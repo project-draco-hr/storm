@@ -2,29 +2,33 @@
   try {
     lock=getOldestExpiredLock();
     if (lock != null) {
-      log.debug("Spout {} now took over ownership of abandoned FileLock {}",spoutId,lock.getLockFile());
+      LOG.debug("Spout {} now took over ownership of abandoned FileLock {}",spoutId,lock.getLockFile());
       Path file=getFileForLockFile(lock.getLockFile(),sourceDirPath);
       String resumeFromOffset=lock.getLastLogEntry().fileOffset;
-      log.info("Resuming processing of abandoned file : {}",file);
+      LOG.info("Resuming processing of abandoned file : {}",file);
       return createFileReader(file,resumeFromOffset);
     }
     Collection<Path> listing=HdfsUtils.listFilesByModificationTime(hdfs,sourceDirPath,0);
     for (    Path file : listing) {
-      if (file.getName().endsWith(inprogress_suffix))       continue;
-      if (file.getName().endsWith(ignoreSuffix))       continue;
-      lock=FileLock.tryLock(hdfs,file,lockDirPath,spoutId);
-      if (lock == null) {
-        log.debug("Unable to get FileLock, so skipping file: {}",file);
+      if (file.getName().endsWith(inprogress_suffix)) {
         continue;
       }
-      log.info("Processing : {} ",file);
+      if (file.getName().endsWith(ignoreSuffix)) {
+        continue;
+      }
+      lock=FileLock.tryLock(hdfs,file,lockDirPath,spoutId);
+      if (lock == null) {
+        LOG.debug("Unable to get FileLock for {}, so skipping it.",file);
+        continue;
+      }
+      LOG.info("Processing : {} ",file);
       Path newFile=renameSelectedFile(file);
       return createFileReader(newFile);
     }
     return null;
   }
  catch (  IOException e) {
-    log.error("Unable to select next file for consumption " + sourceDirPath,e);
+    LOG.error("Unable to select next file for consumption " + sourceDirPath,e);
     return null;
   }
 }

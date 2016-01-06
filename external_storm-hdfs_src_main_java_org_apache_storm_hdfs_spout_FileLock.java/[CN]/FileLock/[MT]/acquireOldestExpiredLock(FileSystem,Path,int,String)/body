@@ -3,13 +3,19 @@
   long olderThan=now - (locktimeoutSec * 1000);
   Collection<Path> listing=HdfsUtils.listFilesByModificationTime(fs,lockFilesDir,olderThan);
   for (  Path file : listing) {
-    if (file.getName().equalsIgnoreCase(DirLock.DIR_LOCK_FILE))     continue;
+    if (file.getName().equalsIgnoreCase(DirLock.DIR_LOCK_FILE)) {
+      continue;
+    }
     LogEntry lastEntry=getLastEntryIfStale(fs,file,olderThan);
     if (lastEntry != null) {
       FileLock lock=FileLock.takeOwnership(fs,file,lastEntry,spoutId);
-      if (lock != null)       return lock;
+      if (lock != null) {
+        return lock;
+      }
     }
   }
-  if (listing.isEmpty())   log.info("No abandoned lock files found by Spout {}",spoutId);
+  if (listing.isEmpty()) {
+    LOG.debug("No abandoned lock files found by Spout {}",spoutId);
+  }
   return null;
 }

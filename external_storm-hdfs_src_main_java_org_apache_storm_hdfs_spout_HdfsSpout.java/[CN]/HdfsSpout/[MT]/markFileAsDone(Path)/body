@@ -1,10 +1,10 @@
 {
   try {
     Path newFile=renameCompletedFile(reader.getFilePath());
-    log.info("Completed processing {}. Spout Id = {} ",newFile,spoutId);
+    LOG.info("Completed processing {}. Spout Id = {}",newFile,spoutId);
   }
  catch (  IOException e) {
-    log.error("Unable to archive completed file" + filePath + " Spout ID "+ spoutId,e);
+    LOG.error("Unable to archive completed file" + filePath + " Spout ID "+ spoutId,e);
   }
   closeReaderAndResetTrackers();
 }

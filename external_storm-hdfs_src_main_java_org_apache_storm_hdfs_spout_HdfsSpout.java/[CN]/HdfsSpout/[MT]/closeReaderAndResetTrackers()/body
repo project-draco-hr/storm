@@ -6,10 +6,10 @@
   reader=null;
   try {
     lock.release();
-    log.debug("Spout {} released FileLock. SpoutId = {}",lock.getLockFile(),spoutId);
+    LOG.debug("Spout {} released FileLock. SpoutId = {}",lock.getLockFile(),spoutId);
   }
  catch (  IOException e) {
-    log.error("Unable to delete lock file : " + this.lock.getLockFile() + " SpoutId ="+ spoutId,e);
+    LOG.error("Unable to delete lock file : " + this.lock.getLockFile() + " SpoutId ="+ spoutId,e);
   }
   lock=null;
 }

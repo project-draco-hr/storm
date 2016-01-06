@@ -3,17 +3,17 @@
   try {
     FSDataOutputStream ostream=HdfsUtils.tryCreateFile(fs,lockFile);
     if (ostream != null) {
-      log.info("Thread ({}) acquired lock on dir {}",threadInfo(),dir);
+      LOG.debug("Thread ({}) Acquired lock on dir {}",threadInfo(),dir);
       ostream.close();
       return new DirLock(fs,lockFile);
     }
  else {
-      log.info("Thread ({}) cannot lock dir {} as its already locked.",threadInfo(),dir);
+      LOG.debug("Thread ({}) cannot lock dir {} as its already locked.",threadInfo(),dir);
       return null;
     }
   }
  catch (  IOException e) {
-    log.error("Error when acquiring lock on dir " + dir,e);
+    LOG.error("Error when acquiring lock on dir " + dir,e);
     throw e;
   }
 }

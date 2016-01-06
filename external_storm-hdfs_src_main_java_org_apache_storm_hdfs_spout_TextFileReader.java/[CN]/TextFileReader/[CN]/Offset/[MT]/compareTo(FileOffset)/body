@@ -1,6 +1,10 @@
 {
   Offset rhs=((Offset)o);
-  if (lineNumber < rhs.lineNumber)   return -1;
-  if (lineNumber == rhs.lineNumber)   return 0;
+  if (lineNumber < rhs.lineNumber) {
+    return -1;
+  }
+  if (lineNumber == rhs.lineNumber) {
+    return 0;
+  }
   return 1;
 }

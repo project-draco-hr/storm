@@ -1,5 +1,7 @@
 {
-  if (fs.isDirectory(lockFile))   throw new IllegalArgumentException(lockFile.toString() + " is not a directory");
+  if (fs.isDirectory(lockFile)) {
+    throw new IllegalArgumentException(lockFile.toString() + " is not a directory");
+  }
   this.fs=fs;
   this.lockFile=lockFile;
 }

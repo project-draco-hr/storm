@@ -1,5 +1,5 @@
 {
-  log.info("Opening HDFS Spout {}",spoutId);
+  LOG.info("Opening HDFS Spout");
   this.conf=conf;
   this.commitTimer=new Timer();
   this.tracker=new ProgressTracker();
@@ -17,21 +17,21 @@
     this.hdfs=FileSystem.get(URI.create(hdfsUri),hdfsConfig);
   }
  catch (  IOException e) {
-    log.error("Unable to instantiate file system",e);
+    LOG.error("Unable to instantiate file system",e);
     throw new RuntimeException("Unable to instantiate file system",e);
   }
   if (conf.containsKey(configKey)) {
     Map<String,Object> map=(Map<String,Object>)conf.get(configKey);
     if (map != null) {
       for (      String keyName : map.keySet()) {
-        log.info("HDFS Config override : " + keyName + " = "+ String.valueOf(map.get(keyName)));
+        LOG.info("HDFS Config override : " + keyName + " = "+ String.valueOf(map.get(keyName)));
         this.hdfsConfig.set(keyName,String.valueOf(map.get(keyName)));
       }
       try {
         HdfsSecurityUtil.login(conf,hdfsConfig);
       }
  catch (      IOException e) {
-        log.error("HDFS Login failed ",e);
+        LOG.error("HDFS Login failed ",e);
         throw new RuntimeException(e);
       }
     }
@@ -41,18 +41,18 @@
     checkValidReader(readerType);
   }
   if (!conf.containsKey(Configs.SOURCE_DIR)) {
-    log.error(Configs.SOURCE_DIR + " setting is required");
+    LOG.error(Configs.SOURCE_DIR + " setting is required");
     throw new RuntimeException(Configs.SOURCE_DIR + " setting is required");
   }
   this.sourceDirPath=new Path(conf.get(Configs.SOURCE_DIR).toString());
   if (!conf.containsKey(Configs.ARCHIVE_DIR)) {
-    log.error(Configs.ARCHIVE_DIR + " setting is required");
+    LOG.error(Configs.ARCHIVE_DIR + " setting is required");
     throw new RuntimeException(Configs.ARCHIVE_DIR + " setting is required");
   }
   this.archiveDirPath=new Path(conf.get(Configs.ARCHIVE_DIR).toString());
   validateOrMakeDir(hdfs,archiveDirPath,"Archive");
   if (!conf.containsKey(Configs.BAD_DIR)) {
-    log.error(Configs.BAD_DIR + " setting is required");
+    LOG.error(Configs.BAD_DIR + " setting is required");
     throw new RuntimeException(Configs.BAD_DIR + " setting is required");
   }
   this.badFilesDirPath=new Path(conf.get(Configs.BAD_DIR).toString());
@@ -63,15 +63,28 @@
   String lockDir=!conf.containsKey(Configs.LOCK_DIR) ? getDefaultLockDir(sourceDirPath) : conf.get(Configs.LOCK_DIR).toString();
   this.lockDirPath=new Path(lockDir);
   validateOrMakeDir(hdfs,lockDirPath,"locks");
-  if (conf.get(Configs.LOCK_TIMEOUT) != null)   this.lockTimeoutSec=Integer.parseInt(conf.get(Configs.LOCK_TIMEOUT).toString());
+  if (conf.get(Configs.LOCK_TIMEOUT) != null) {
+    this.lockTimeoutSec=Integer.parseInt(conf.get(Configs.LOCK_TIMEOUT).toString());
+  }
   Object ackers=conf.get(Config.TOPOLOGY_ACKER_EXECUTORS);
-  if (ackers != null)   this.ackEnabled=(Integer.parseInt(ackers.toString()) > 0);
- else   this.ackEnabled=false;
-  log.info("ACK mode is {}",ackEnabled ? "enabled" : "disabled");
-  if (conf.get(Configs.COMMIT_FREQ_COUNT) != null)   commitFrequencyCount=Integer.parseInt(conf.get(Configs.COMMIT_FREQ_COUNT).toString());
+  if (ackers != null) {
+    int ackerCount=Integer.parseInt(ackers.toString());
+    this.ackEnabled=(ackerCount > 0);
+    LOG.debug("ACKer count = {}",ackerCount);
+  }
+ else {
+    this.ackEnabled=false;
+    LOG.debug("No ACKers config found");
+  }
+  LOG.info("ACK mode is {}",ackEnabled ? "enabled" : "disabled");
+  if (conf.get(Configs.COMMIT_FREQ_COUNT) != null) {
+    commitFrequencyCount=Integer.parseInt(conf.get(Configs.COMMIT_FREQ_COUNT).toString());
+  }
   if (conf.get(Configs.COMMIT_FREQ_SEC) != null) {
     commitFrequencySec=Integer.parseInt(conf.get(Configs.COMMIT_FREQ_SEC).toString());
-    if (commitFrequencySec <= 0)     throw new RuntimeException(Configs.COMMIT_FREQ_SEC + " setting must be greater than 0");
+    if (commitFrequencySec <= 0) {
+      throw new RuntimeException(Configs.COMMIT_FREQ_SEC + " setting must be greater than 0");
+    }
   }
   if (conf.get(Configs.MAX_OUTSTANDING) != null)   maxOutstanding=Integer.parseInt(conf.get(Configs.MAX_OUTSTANDING).toString());
   if (conf.get(Configs.CLOCKS_INSYNC) != null)   clocksInSync=Boolean.parseBoolean(conf.get(Configs.CLOCKS_INSYNC).toString());

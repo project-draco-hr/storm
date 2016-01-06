@@ -6,11 +6,11 @@
     return;
   }
  catch (  ClassNotFoundException e) {
-    log.error(readerType + " not found in classpath.",e);
+    LOG.error(readerType + " not found in classpath.",e);
     throw new IllegalArgumentException(readerType + " not found in classpath.",e);
   }
 catch (  NoSuchMethodException e) {
-    log.error(readerType + " is missing the expected constructor for Readers.",e);
+    LOG.error(readerType + " is missing the expected constructor for Readers.",e);
     throw new IllegalArgumentException(readerType + " is missing the expected constuctor for Readers.");
   }
 }

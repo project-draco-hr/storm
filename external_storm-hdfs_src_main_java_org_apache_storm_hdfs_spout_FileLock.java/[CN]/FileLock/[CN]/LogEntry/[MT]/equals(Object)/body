@@ -1,8 +1,16 @@
 {
-  if (this == o)   return true;
-  if (!(o instanceof LogEntry))   return false;
+  if (this == o) {
+    return true;
+  }
+  if (!(o instanceof LogEntry)) {
+    return false;
+  }
   LogEntry logEntry=(LogEntry)o;
-  if (eventTime != logEntry.eventTime)   return false;
-  if (!componentID.equals(logEntry.componentID))   return false;
+  if (eventTime != logEntry.eventTime) {
+    return false;
+  }
+  if (!componentID.equals(logEntry.componentID)) {
+    return false;
+  }
   return fileOffset.equals(logEntry.fileOffset);
 }

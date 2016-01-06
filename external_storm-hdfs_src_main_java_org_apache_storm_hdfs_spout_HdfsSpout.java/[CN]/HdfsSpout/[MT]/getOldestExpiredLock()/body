@@ -3,22 +3,26 @@
   if (dirlock == null) {
     dirlock=DirLock.takeOwnershipIfStale(hdfs,lockDirPath,lockTimeoutSec);
     if (dirlock == null) {
-      log.debug("Spout {} could not take over ownership of DirLock for {}",spoutId,lockDirPath);
+      LOG.debug("Spout {} could not take over ownership of DirLock for {}",spoutId,lockDirPath);
       return null;
     }
-    log.debug("Spout {} now took over ownership of abandoned DirLock for {}",spoutId,lockDirPath);
+    LOG.debug("Spout {} now took over ownership of abandoned DirLock for {}",spoutId,lockDirPath);
   }
  else {
-    log.debug("Spout {} now owns DirLock for {}",spoutId,lockDirPath);
+    LOG.debug("Spout {} now owns DirLock for {}",spoutId,lockDirPath);
   }
   try {
-    if (clocksInSync)     return FileLock.acquireOldestExpiredLock(hdfs,lockDirPath,lockTimeoutSec,spoutId);
+    if (clocksInSync) {
+      return FileLock.acquireOldestExpiredLock(hdfs,lockDirPath,lockTimeoutSec,spoutId);
+    }
     if (lastExpiredLock == null) {
       lastExpiredLock=FileLock.locateOldestExpiredLock(hdfs,lockDirPath,lockTimeoutSec);
       lastExpiredLockTime=System.currentTimeMillis();
       return null;
     }
-    if (hasExpired(lastExpiredLockTime))     return null;
+    if (hasExpired(lastExpiredLockTime)) {
+      return null;
+    }
     FileLock.LogEntry lastEntry=FileLock.getLastEntry(hdfs,lastExpiredLock.getKey());
     if (lastEntry.equals(lastExpiredLock.getValue())) {
       FileLock result=FileLock.takeOwnership(hdfs,lastExpiredLock.getKey(),lastEntry,spoutId);
@@ -32,6 +36,6 @@
   }
   finally {
     dirlock.release();
-    log.debug("Released DirLock {}, SpoutID {} ",dirlock.getLockFile(),spoutId);
+    LOG.debug("Released DirLock {}, SpoutID {} ",dirlock.getLockFile(),spoutId);
   }
 }

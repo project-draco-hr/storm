@@ -1,8 +1,8 @@
 {
   lockFileStream.close();
   if (!fs.delete(lockFile,false)) {
-    log.warn("Unable to delete lock file, Spout = {}",componentID);
+    LOG.warn("Unable to delete lock file, Spout = {}",componentID);
     throw new IOException("Unable to delete lock file");
   }
-  log.debug("Released lock file {}. Spout {}",lockFile,componentID);
+  LOG.debug("Released lock file {}. Spout {}",lockFile,componentID);
 }

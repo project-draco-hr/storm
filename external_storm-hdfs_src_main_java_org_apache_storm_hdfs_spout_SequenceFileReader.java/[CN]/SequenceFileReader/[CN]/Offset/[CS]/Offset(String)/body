@@ -1,6 +1,8 @@
 {
   try {
-    if (offset == null)     throw new IllegalArgumentException("offset cannot be null");
+    if (offset == null) {
+      throw new IllegalArgumentException("offset cannot be null");
+    }
     if (offset.equalsIgnoreCase("0")) {
       this.lastSyncPoint=0;
       this.recordsSinceLastSync=0;
