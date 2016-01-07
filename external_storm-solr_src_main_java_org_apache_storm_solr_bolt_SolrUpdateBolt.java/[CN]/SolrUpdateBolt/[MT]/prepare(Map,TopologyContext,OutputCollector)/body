@@ -2,4 +2,9 @@
   this.collector=collector;
   this.solrClient=new CloudSolrClient(solrConfig.getZkHostString());
   this.toCommitTuples=new ArrayList<>(capacity());
+  if (stormConf.containsKey("topology.message.timeout.secs") && tickTupleInterval == 0) {
+    Integer topologyTimeout=Utils.getInt(stormConf.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS));
+    tickTupleInterval=(int)(Math.floor(topologyTimeout / 2));
+    LOG.debug("Setting tick tuple interval to [{}] based on topology timeout",tickTupleInterval);
+  }
 }

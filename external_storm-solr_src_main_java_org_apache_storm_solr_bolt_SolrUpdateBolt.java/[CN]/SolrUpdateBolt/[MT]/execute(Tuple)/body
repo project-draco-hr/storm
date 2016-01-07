@@ -1,7 +1,9 @@
 {
   try {
-    SolrRequest request=solrMapper.toSolrRequest(tuple);
-    solrClient.request(request,solrMapper.getCollection());
+    if (!TupleUtils.isTick(tuple)) {
+      SolrRequest request=solrMapper.toSolrRequest(tuple);
+      solrClient.request(request,solrMapper.getCollection());
+    }
     ack(tuple);
   }
  catch (  Exception e) {
