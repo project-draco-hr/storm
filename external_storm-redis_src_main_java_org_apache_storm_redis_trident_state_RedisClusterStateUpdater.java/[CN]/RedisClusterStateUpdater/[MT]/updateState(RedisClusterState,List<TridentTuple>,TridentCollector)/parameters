@@ -1,3 +1,0 @@
-RedisClusterState redisClusterState
-List<TridentTuple> inputs
-TridentCollector collector

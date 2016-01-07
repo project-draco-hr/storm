@@ -1,6 +1,6 @@
-def confvalue(name, extrapaths):
+def confvalue(name, extrapaths, daemon=True):
     global CONFFILE
-    command = [JAVA_CMD, '-client', get_config_opts(), ('-Dstorm.conf.file=' + CONFFILE), '-cp', get_classpath(extrapaths), 'backtype.storm.command.config_value', name]
+    command = [JAVA_CMD, '-client', get_config_opts(), ('-Dstorm.conf.file=' + CONFFILE), '-cp', get_classpath(extrapaths, daemon), 'backtype.storm.command.config_value', name]
     p = sub.Popen(command, stdout=sub.PIPE)
     (output, errors) = p.communicate()
     if (not isinstance(output, str)):

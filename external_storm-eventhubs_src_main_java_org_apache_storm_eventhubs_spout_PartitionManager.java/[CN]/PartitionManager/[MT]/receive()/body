@@ -1,0 +1,17 @@
+{
+  if (pending.size() >= config.getMaxPendingMsgsPerPartition()) {
+    return null;
+  }
+  EventData eventData;
+  if (toResend.isEmpty()) {
+    eventData=receiver.receive(ehReceiveTimeoutMs);
+  }
+ else {
+    eventData=toResend.pollFirst();
+  }
+  if (eventData != null) {
+    lastOffset=eventData.getMessageId().getOffset();
+    pending.put(lastOffset,eventData);
+  }
+  return eventData;
+}

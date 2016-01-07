@@ -1,0 +1,5 @@
+{
+  for (  Tuple failedTuple : failedTuples) {
+    collector.fail(failedTuple);
+  }
+}

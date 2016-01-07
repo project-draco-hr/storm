@@ -1,0 +1,7 @@
+{
+  DataSourcesProvider provider=providers.get(uri.getScheme());
+  if (provider == null) {
+    return null;
+  }
+  return provider.construct(uri,inputFormatClass,outputFormatClass,fields);
+}

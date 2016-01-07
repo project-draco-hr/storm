@@ -1,0 +1,3 @@
+{
+  iface.beginUpdateBlob(args.key,resultHandler);
+}

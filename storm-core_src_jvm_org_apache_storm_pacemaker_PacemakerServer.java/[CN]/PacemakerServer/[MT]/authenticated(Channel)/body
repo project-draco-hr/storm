@@ -1,0 +1,4 @@
+{
+  LOG.debug("Pacemaker server authenticated channel: {}",c.toString());
+  authenticated_channels.add(c);
+}

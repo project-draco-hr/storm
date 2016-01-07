@@ -1,0 +1,7 @@
+{
+  List<Object> keys=new ArrayList<>();
+  for (  Integer idx : partitionKeyIndexes) {
+    keys.add(values.get(idx));
+  }
+  return keys;
+}

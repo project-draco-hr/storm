@@ -8,8 +8,8 @@
       }
     }
 );
-    LOG.debug("Acquired {}. Switching to first txn",batch);
     batch.beginNextTransaction();
+    LOG.debug("Acquired {}. Switching to first txn",batch);
   }
  catch (  TimeoutException e) {
     throw new TxnBatchFailure(endPoint,e);

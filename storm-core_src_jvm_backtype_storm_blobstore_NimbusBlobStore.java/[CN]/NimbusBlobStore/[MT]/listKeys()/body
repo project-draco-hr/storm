@@ -1,0 +1,10 @@
+{
+  try {
+synchronized (client) {
+      return new NimbusKeyIterator(client.getClient().listBlobs(""));
+    }
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

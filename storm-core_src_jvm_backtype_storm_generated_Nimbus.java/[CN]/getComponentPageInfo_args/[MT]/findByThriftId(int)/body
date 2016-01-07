@@ -1,0 +1,14 @@
+{
+switch (fieldId) {
+case 1:
+    return TOPOLOGY_ID;
+case 2:
+  return COMPONENT_ID;
+case 3:
+return WINDOW;
+case 4:
+return IS_INCLUDE_SYS;
+default :
+return null;
+}
+}

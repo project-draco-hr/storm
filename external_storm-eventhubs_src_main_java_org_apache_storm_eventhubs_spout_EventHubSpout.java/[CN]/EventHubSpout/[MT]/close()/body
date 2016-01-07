@@ -1,0 +1,6 @@
+{
+  for (  IPartitionManager partitionManager : partitionCoordinator.getMyPartitionManagers()) {
+    partitionManager.close();
+  }
+  stateStore.close();
+}

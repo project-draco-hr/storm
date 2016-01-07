@@ -1,0 +1,3 @@
+{
+  this.contextQuery=contextQuery;
+}

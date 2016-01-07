@@ -1,0 +1,8 @@
+{
+  Path p=new Path(path);
+  for (  FileStatus file : fs.listStatus(p)) {
+    if (file.getLen() > 0) {
+      fileIsGoodAvro(file.getPath(),schema);
+    }
+  }
+}

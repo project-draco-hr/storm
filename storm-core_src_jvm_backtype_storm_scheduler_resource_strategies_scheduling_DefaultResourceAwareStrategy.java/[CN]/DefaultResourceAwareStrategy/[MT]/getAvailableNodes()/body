@@ -1,0 +1,7 @@
+{
+  LinkedList<RAS_Node> nodes=new LinkedList<>();
+  for (  String clusterId : _clusterInfo.keySet()) {
+    nodes.addAll(this.getAvailableNodesFromCluster(clusterId));
+  }
+  return nodes;
+}

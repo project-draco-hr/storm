@@ -1,0 +1,24 @@
+{
+  if (!Utils.getBoolean(conf.get(Config.SUPERVISOR_RUN_WORKER_AS_USER),false)) {
+    return;
+  }
+  String wlCommand=Utils.getString(conf.get(Config.SUPERVISOR_WORKER_LAUNCHER),"");
+  if (wlCommand.isEmpty()) {
+    String stormHome=System.getProperty("storm.home");
+    wlCommand=stormHome + "/bin/worker-launcher";
+  }
+  List<String> command=new ArrayList<String>(Arrays.asList(wlCommand,user,"blob",path));
+  String[] commandArray=command.toArray(new String[command.size()]);
+  ShellCommandExecutor shExec=new ShellCommandExecutor(commandArray);
+  LOG.info("Setting blob permissions, command: {}",Arrays.toString(commandArray));
+  try {
+    shExec.execute();
+    LOG.debug("output: {}",shExec.getOutput());
+  }
+ catch (  ExitCodeException e) {
+    int exitCode=shExec.getExitCode();
+    LOG.warn("Exit code from worker-launcher is : " + exitCode,e);
+    LOG.debug("output: {}",shExec.getOutput());
+    throw new IOException("Setting blob permissions failed" + " (exitCode=" + exitCode + ") with output: "+ shExec.getOutput(),e);
+  }
+}

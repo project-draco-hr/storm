@@ -1,0 +1,26 @@
+{
+  this.userMap=new HashMap<String,User>();
+  Map<String,Map<String,Double>> userResourcePools=getUserResourcePools();
+  LOG.debug("userResourcePools: {}",userResourcePools);
+  for (  TopologyDetails td : topologies.getTopologies()) {
+    String topologySubmitter=td.getTopologySubmitter();
+    if (topologySubmitter == null || topologySubmitter.equals("")) {
+      LOG.error("Cannot determine user for topology {}.  Will skip scheduling this topology",td.getName());
+      continue;
+    }
+    if (!this.userMap.containsKey(topologySubmitter)) {
+      this.userMap.put(topologySubmitter,new User(topologySubmitter,userResourcePools.get(topologySubmitter)));
+    }
+    if (cluster.getUnassignedExecutors(td).size() > 0) {
+      LOG.debug("adding td: {} to pending queue",td.getName());
+      this.userMap.get(topologySubmitter).addTopologyToPendingQueue(td);
+    }
+ else {
+      LOG.debug("adding td: {} to running queue with existing status: {}",td.getName(),cluster.getStatusMap().get(td.getId()));
+      this.userMap.get(topologySubmitter).addTopologyToRunningQueue(td);
+      if (cluster.getStatusMap().get(td.getId()) == null || cluster.getStatusMap().get(td.getId()).equals("")) {
+        cluster.setStatus(td.getId(),"Fully Scheduled");
+      }
+    }
+  }
+}

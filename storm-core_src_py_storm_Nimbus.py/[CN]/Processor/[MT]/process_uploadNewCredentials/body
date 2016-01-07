@@ -5,13 +5,23 @@ def process_uploadNewCredentials(self, seqid, iprot, oprot):
     result = uploadNewCredentials_result()
     try:
         self._handler.uploadNewCredentials(args.name, args.creds)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
     except NotAliveException as e:
+        msg_type = TMessageType.REPLY
         result.e = e
     except InvalidTopologyException as ite:
+        msg_type = TMessageType.REPLY
         result.ite = ite
     except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
         result.aze = aze
-    oprot.writeMessageBegin('uploadNewCredentials', TMessageType.REPLY, seqid)
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('uploadNewCredentials', msg_type, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()

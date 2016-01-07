@@ -33,5 +33,15 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_nimbuses()).compareTo(other.is_set_nimbuses());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_nimbuses()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.nimbuses,other.nimbuses);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

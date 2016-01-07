@@ -1,9 +1,0 @@
-{
-  Validate.notNull(mapper,"mapper can not be null");
-  Validate.notNull(topicSelector,"topicSelector can not be null");
-  Map configMap=(Map)stormConf.get(KAFKA_BROKER_PROPERTIES);
-  Properties properties=new Properties();
-  properties.putAll(configMap);
-  ProducerConfig config=new ProducerConfig(properties);
-  producer=new Producer(config);
-}

@@ -1,0 +1,5 @@
+{
+  if (!skipTest) {
+    Flux.main(new String[]{"-s","30000","src/test/resources/configs/existing-topology.yaml"});
+  }
+}

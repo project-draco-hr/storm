@@ -1,0 +1,3 @@
+def beginCreateBlob(self, key, meta):
+    '\n    Parameters:\n     - key\n     - meta\n    '
+    pass

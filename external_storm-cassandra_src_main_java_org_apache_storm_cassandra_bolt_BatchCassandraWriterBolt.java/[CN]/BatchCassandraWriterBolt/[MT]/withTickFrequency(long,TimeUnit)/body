@@ -1,0 +1,4 @@
+{
+  this.tickFrequencyInSeconds=(int)unit.toSeconds(time);
+  return this;
+}

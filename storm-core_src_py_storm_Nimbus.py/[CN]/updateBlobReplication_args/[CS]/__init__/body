@@ -1,0 +1,3 @@
+def __init__(self, key=None, replication=None):
+    self.key = key
+    self.replication = replication

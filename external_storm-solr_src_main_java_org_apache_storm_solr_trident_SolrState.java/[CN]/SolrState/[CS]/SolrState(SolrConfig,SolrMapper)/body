@@ -1,0 +1,4 @@
+{
+  this.solrConfig=solrConfig;
+  this.solrMapper=solrMapper;
+}

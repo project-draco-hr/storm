@@ -1,0 +1,18 @@
+def process_getComponentPendingProfileActions(self, seqid, iprot, oprot):
+    args = getComponentPendingProfileActions_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getComponentPendingProfileActions_result()
+    try:
+        result.success = self._handler.getComponentPendingProfileActions(args.id, args.component_id, args.action)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('getComponentPendingProfileActions', msg_type, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

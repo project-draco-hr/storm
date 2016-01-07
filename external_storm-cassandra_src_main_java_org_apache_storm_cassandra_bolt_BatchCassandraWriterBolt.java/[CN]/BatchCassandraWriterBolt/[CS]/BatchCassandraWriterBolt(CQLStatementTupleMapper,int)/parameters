@@ -1,0 +1,2 @@
+CQLStatementTupleMapper tupleMapper
+int tickFrequencyInSeconds

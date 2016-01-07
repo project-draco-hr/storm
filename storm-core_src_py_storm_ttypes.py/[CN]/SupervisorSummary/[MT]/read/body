@@ -32,6 +32,32 @@ def read(self, iprot):
                 self.supervisor_id = iprot.readString().decode('utf-8')
             else:
                 iprot.skip(ftype)
+        elif (fid == 6):
+            if (ftype == TType.STRING):
+                self.version = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 7):
+            if (ftype == TType.MAP):
+                self.total_resources = {}
+                (_ktype74, _vtype75, _size73) = iprot.readMapBegin()
+                for _i77 in xrange(_size73):
+                    _key78 = iprot.readString().decode('utf-8')
+                    _val79 = iprot.readDouble()
+                    self.total_resources[_key78] = _val79
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 8):
+            if (ftype == TType.DOUBLE):
+                self.used_mem = iprot.readDouble()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 9):
+            if (ftype == TType.DOUBLE):
+                self.used_cpu = iprot.readDouble()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

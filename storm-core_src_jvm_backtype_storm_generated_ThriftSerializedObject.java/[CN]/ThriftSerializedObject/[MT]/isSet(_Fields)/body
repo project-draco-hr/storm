@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case NAME:
+    return is_set_name();
+case BITS:
+  return is_set_bits();
+}
+throw new IllegalStateException();
+}

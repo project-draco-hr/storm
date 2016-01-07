@@ -1,0 +1,3 @@
+SqlOperator op
+String javaOperator
+String backupMethodName

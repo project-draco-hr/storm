@@ -1,0 +1,4 @@
+def getBlobReplication(self, key):
+    '\n    Parameters:\n     - key\n    '
+    self.send_getBlobReplication(key)
+    return self.recv_getBlobReplication()

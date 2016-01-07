@@ -1,0 +1,10 @@
+{
+  try {
+    out.close();
+    part.commit();
+  }
+ catch (  IOException|RuntimeException e) {
+    cancel();
+    throw e;
+  }
+}

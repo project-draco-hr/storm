@@ -11,41 +11,53 @@
   if (struct.is_set_executor_start_time_secs()) {
     optionals.set(2);
   }
-  oprot.writeBitSet(optionals,3);
+  if (struct.is_set_worker_resources()) {
+    optionals.set(3);
+  }
+  oprot.writeBitSet(optionals,4);
   if (struct.is_set_node_host()) {
 {
       oprot.writeI32(struct.node_host.size());
-      for (      Map.Entry<String,String> _iter393 : struct.node_host.entrySet()) {
-        oprot.writeString(_iter393.getKey());
-        oprot.writeString(_iter393.getValue());
+      for (      Map.Entry<String,String> _iter576 : struct.node_host.entrySet()) {
+        oprot.writeString(_iter576.getKey());
+        oprot.writeString(_iter576.getValue());
       }
     }
   }
   if (struct.is_set_executor_node_port()) {
 {
       oprot.writeI32(struct.executor_node_port.size());
-      for (      Map.Entry<List<Long>,NodeInfo> _iter394 : struct.executor_node_port.entrySet()) {
+      for (      Map.Entry<List<Long>,NodeInfo> _iter577 : struct.executor_node_port.entrySet()) {
 {
-          oprot.writeI32(_iter394.getKey().size());
-          for (          long _iter395 : _iter394.getKey()) {
-            oprot.writeI64(_iter395);
+          oprot.writeI32(_iter577.getKey().size());
+          for (          long _iter578 : _iter577.getKey()) {
+            oprot.writeI64(_iter578);
           }
         }
-        _iter394.getValue().write(oprot);
+        _iter577.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_executor_start_time_secs()) {
 {
       oprot.writeI32(struct.executor_start_time_secs.size());
-      for (      Map.Entry<List<Long>,Long> _iter396 : struct.executor_start_time_secs.entrySet()) {
+      for (      Map.Entry<List<Long>,Long> _iter579 : struct.executor_start_time_secs.entrySet()) {
 {
-          oprot.writeI32(_iter396.getKey().size());
-          for (          long _iter397 : _iter396.getKey()) {
-            oprot.writeI64(_iter397);
+          oprot.writeI32(_iter579.getKey().size());
+          for (          long _iter580 : _iter579.getKey()) {
+            oprot.writeI64(_iter580);
           }
         }
-        oprot.writeI64(_iter396.getValue());
+        oprot.writeI64(_iter579.getValue());
+      }
+    }
+  }
+  if (struct.is_set_worker_resources()) {
+{
+      oprot.writeI32(struct.worker_resources.size());
+      for (      Map.Entry<NodeInfo,WorkerResources> _iter581 : struct.worker_resources.entrySet()) {
+        _iter581.getKey().write(oprot);
+        _iter581.getValue().write(oprot);
       }
     }
   }

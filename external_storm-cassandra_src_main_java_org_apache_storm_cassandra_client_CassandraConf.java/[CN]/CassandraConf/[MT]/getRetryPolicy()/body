@@ -1,0 +1,6 @@
+{
+  if (this.retryPolicyName.equals(DowngradingConsistencyRetryPolicy.class.getSimpleName()))   return DowngradingConsistencyRetryPolicy.INSTANCE;
+  if (this.retryPolicyName.equals(FallthroughRetryPolicy.class.getSimpleName()))   return FallthroughRetryPolicy.INSTANCE;
+  if (this.retryPolicyName.equals(DefaultRetryPolicy.class.getSimpleName()))   return DefaultRetryPolicy.INSTANCE;
+  throw new IllegalArgumentException("Unknown cassandra retry policy " + this.retryPolicyName);
+}

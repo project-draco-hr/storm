@@ -40,5 +40,37 @@ unset_supervisor_id();
 set_supervisor_id((String)value);
 }
 break;
+case VERSION:
+if (value == null) {
+unset_version();
+}
+ else {
+set_version((String)value);
+}
+break;
+case TOTAL_RESOURCES:
+if (value == null) {
+unset_total_resources();
+}
+ else {
+set_total_resources((Map<String,Double>)value);
+}
+break;
+case USED_MEM:
+if (value == null) {
+unset_used_mem();
+}
+ else {
+set_used_mem((Double)value);
+}
+break;
+case USED_CPU:
+if (value == null) {
+unset_used_cpu();
+}
+ else {
+set_used_cpu((Double)value);
+}
+break;
 }
 }

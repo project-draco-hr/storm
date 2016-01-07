@@ -1,0 +1,6 @@
+Map conf
+String key
+File localFile
+String user
+boolean uncompress
+boolean isUpdate

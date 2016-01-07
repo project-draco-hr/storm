@@ -1,5 +1,5 @@
 {
-  List<Tuple> anchors=new ArrayList<Tuple>();
+  List<Tuple> anchors=new ArrayList<>();
   List<String> recvAnchors=shellMsg.getAnchors();
   if (recvAnchors != null) {
     for (    String anchor : recvAnchors) {
@@ -13,7 +13,7 @@
   if (shellMsg.getTask() == 0) {
     List<Integer> outtasks=_collector.emit(shellMsg.getStream(),anchors,shellMsg.getTuple());
     if (shellMsg.areTaskIdsNeeded()) {
-      _pendingWrites.put(outtasks);
+      _pendingWrites.putTaskIds(outtasks);
     }
   }
  else {

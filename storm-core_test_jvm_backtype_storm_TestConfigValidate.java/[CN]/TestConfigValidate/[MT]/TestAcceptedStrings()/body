@@ -1,0 +1,18 @@
+{
+  TestConfig config=new TestConfig();
+  String[] passCases={"aaa","bbb","ccc"};
+  for (  Object value : passCases) {
+    config.put(TestConfig.TEST_MAP_CONFIG_5,value);
+    ConfigValidation.validateFields(config,TestConfig.class);
+  }
+  String[] failCases={"aa","bb","cc","abc","a","b","c",""};
+  for (  Object value : failCases) {
+    try {
+      config.put(TestConfig.TEST_MAP_CONFIG_5,value);
+      ConfigValidation.validateFields(config,TestConfig.class);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+}

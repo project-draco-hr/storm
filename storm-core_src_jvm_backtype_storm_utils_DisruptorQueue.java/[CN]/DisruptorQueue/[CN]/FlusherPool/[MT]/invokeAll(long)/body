@@ -1,0 +1,8 @@
+{
+  ArrayList<Flusher> tasks=_pendingFlush.get(flushInterval);
+  if (tasks != null) {
+    for (    Flusher f : tasks) {
+      _exec.submit(f);
+    }
+  }
+}

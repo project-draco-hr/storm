@@ -1,0 +1,20 @@
+{
+switch (field) {
+case SESSION:
+    if (value == null) {
+      unset_session();
+    }
+ else {
+      set_session((String)value);
+    }
+  break;
+case CHUNK:
+if (value == null) {
+  unset_chunk();
+}
+ else {
+  set_chunk((ByteBuffer)value);
+}
+break;
+}
+}

@@ -1,0 +1,8 @@
+{
+  try {
+    return new KeyTranslationIterator(_hbs.listKeys(),DATA_PREFIX);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

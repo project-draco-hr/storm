@@ -1,4 +1,4 @@
-def __init__(self, name=None, status=None, num_workers=None, component_executors=None, launch_time_secs=None, owner=None, topology_action_options=None, prev_status=None):
+def __init__(self, name=None, status=None, num_workers=None, component_executors=None, launch_time_secs=None, owner=None, topology_action_options=None, prev_status=None, component_debug=None):
     self.name = name
     self.status = status
     self.num_workers = num_workers
@@ -7,3 +7,4 @@ def __init__(self, name=None, status=None, num_workers=None, component_executors
     self.owner = owner
     self.topology_action_options = topology_action_options
     self.prev_status = prev_status
+    self.component_debug = component_debug

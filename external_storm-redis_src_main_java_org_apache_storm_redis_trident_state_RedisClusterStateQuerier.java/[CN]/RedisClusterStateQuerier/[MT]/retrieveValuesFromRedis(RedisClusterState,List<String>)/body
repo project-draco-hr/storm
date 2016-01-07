@@ -1,0 +1,25 @@
+{
+  JedisCluster jedisCluster=null;
+  try {
+    jedisCluster=state.getJedisCluster();
+    List<String> redisVals=new ArrayList<String>();
+    for (    String key : keys) {
+switch (dataType) {
+case STRING:
+        redisVals.add(jedisCluster.get(key));
+      break;
+case HASH:
+    redisVals.add(jedisCluster.hget(additionalKey,key));
+  break;
+default :
+throw new IllegalArgumentException("Cannot process such data type: " + dataType);
+}
+}
+return redisVals;
+}
+  finally {
+if (jedisCluster != null) {
+state.returnJedisCluster(jedisCluster);
+}
+}
+}

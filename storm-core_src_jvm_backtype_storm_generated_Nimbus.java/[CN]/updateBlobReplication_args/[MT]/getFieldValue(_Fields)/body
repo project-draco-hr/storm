@@ -1,0 +1,9 @@
+{
+switch (field) {
+case KEY:
+    return get_key();
+case REPLICATION:
+  return get_replication();
+}
+throw new IllegalStateException();
+}

@@ -1,0 +1,8 @@
+{
+  if (!is_set_type()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'type' is unset! Struct:" + toString());
+  }
+  if (!is_set_access()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'access' is unset! Struct:" + toString());
+  }
+}

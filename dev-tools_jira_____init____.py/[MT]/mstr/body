@@ -1,4 +1,4 @@
 def mstr(obj):
-    if (obj == None):
+    if (obj is None):
         return ''
     return unicode(obj)

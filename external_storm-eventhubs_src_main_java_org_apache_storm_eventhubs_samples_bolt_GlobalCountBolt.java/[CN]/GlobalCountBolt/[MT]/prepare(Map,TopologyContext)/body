@@ -1,0 +1,19 @@
+{
+  globalCount=0;
+  globalCountDiff=0;
+  lastMetricsTime=System.nanoTime();
+  context.registerMetric("GlobalMessageCount",new IMetric(){
+    @Override public Object getValueAndReset(){
+      long now=System.nanoTime();
+      long millis=(now - lastMetricsTime) / 1000000;
+      throughput=globalCountDiff / millis * 1000;
+      Map values=new HashMap();
+      values.put("global_count",globalCount);
+      values.put("throughput",throughput);
+      lastMetricsTime=now;
+      globalCountDiff=0;
+      return values;
+    }
+  }
+,(Integer)config.get(Config.TOPOLOGY_BUILTIN_METRICS_BUCKET_SIZE_SECS));
+}

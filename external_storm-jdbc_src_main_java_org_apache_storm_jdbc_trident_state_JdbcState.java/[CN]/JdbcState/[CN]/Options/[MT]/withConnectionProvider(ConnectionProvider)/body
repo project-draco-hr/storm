@@ -1,0 +1,4 @@
+{
+  this.connectionProvider=connectionProvider;
+  return this;
+}

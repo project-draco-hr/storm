@@ -1,0 +1,7 @@
+{
+  AsyncExecutor<T> executor=localAsyncExecutor.get();
+  if (executor == null) {
+    localAsyncExecutor.set(executor=new AsyncExecutor<>(session,handler));
+  }
+  return executor;
+}

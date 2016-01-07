@@ -1,0 +1,21 @@
+{
+  takeLock.lockInterruptibly();
+  long nanos=unit.toNanos(timeout);
+  try {
+    while (taskIdsQueue.peek() == null && boltMsgQueue.peek() == null) {
+      if (nanos <= 0) {
+        return null;
+      }
+      nanos=notEmpty.awaitNanos(nanos);
+    }
+    List<Integer> taskIds=taskIdsQueue.peek();
+    if (taskIds != null) {
+      taskIds=taskIdsQueue.poll();
+      return taskIds;
+    }
+    return boltMsgQueue.poll();
+  }
+  finally {
+    takeLock.unlock();
+  }
+}

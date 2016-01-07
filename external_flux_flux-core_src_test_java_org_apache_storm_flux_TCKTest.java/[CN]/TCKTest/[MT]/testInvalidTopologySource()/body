@@ -1,0 +1,7 @@
+{
+  TopologyDef topologyDef=FluxParser.parseResource("/configs/invalid-existing-topology.yaml",false,true,null,false);
+  assertFalse("Topology config is invalid.",topologyDef.validate());
+  Config conf=FluxBuilder.buildConfig(topologyDef);
+  ExecutionContext context=new ExecutionContext(topologyDef,conf);
+  StormTopology topology=FluxBuilder.buildTopology(context);
+}

@@ -1,0 +1,9 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  return new GeneralTopologyContext(builder.createTopology(),new Config(),new HashMap(),new HashMap(),new HashMap(),""){
+    @Override public Fields getComponentOutputFields(    String componentId,    String streamId){
+      return fields;
+    }
+  }
+;
+}

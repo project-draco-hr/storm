@@ -1,0 +1,5 @@
+{
+  cancelBlobUpload_args args=new cancelBlobUpload_args();
+  args.set_session(session);
+  sendBase("cancelBlobUpload",args);
+}

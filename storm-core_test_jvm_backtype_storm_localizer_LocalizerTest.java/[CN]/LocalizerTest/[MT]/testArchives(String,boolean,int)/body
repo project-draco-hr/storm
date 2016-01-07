@@ -1,0 +1,56 @@
+{
+  Map conf=new HashMap();
+  conf.put(Config.SUPERVISOR_LOCALIZER_CACHE_CLEANUP_INTERVAL_MS,60 * 60 * 1000);
+  String key1=new File(archivePath).getName();
+  String topo1="topo1";
+  Localizer localizer=new TestLocalizer(conf,baseDir.toString());
+  localizer.setTargetCacheSize(1);
+  ReadableBlobMeta rbm=new ReadableBlobMeta();
+  rbm.set_settable(new SettableBlobMeta(BlobStoreAclHandler.WORLD_EVERYTHING));
+  when(mockblobstore.getBlobMeta(key1)).thenReturn(rbm);
+  when(mockblobstore.getBlob(key1)).thenReturn(new TestInputStreamWithMeta(new FileInputStream(archivePath)));
+  long timeBefore=System.nanoTime();
+  File user1Dir=localizer.getLocalUserFileCacheDir(user1);
+  assertTrue("failed to create user dir",user1Dir.mkdirs());
+  LocalizedResource lrsrc=localizer.getBlob(new LocalResource(key1,true),user1,topo1,user1Dir);
+  long timeAfter=System.nanoTime();
+  String expectedUserDir=joinPath(baseDir.toString(),Localizer.USERCACHE,user1);
+  String expectedFileDir=joinPath(expectedUserDir,Localizer.FILECACHE,Localizer.ARCHIVESDIR);
+  assertTrue("user filecache dir not created",new File(expectedFileDir).exists());
+  File keyFile=new File(expectedFileDir,key1 + ".0");
+  assertTrue("blob not created",keyFile.exists());
+  assertTrue("blob is not uncompressed",keyFile.isDirectory());
+  File symlinkFile=new File(keyFile,"tmptestsymlink");
+  if (supportSymlinks) {
+    assertTrue("blob uncompressed doesn't contain symlink",Files.isSymbolicLink(symlinkFile.toPath()));
+  }
+ else {
+    assertTrue("blob symlink file doesn't exist",symlinkFile.exists());
+  }
+  LocalizedResourceSet lrsrcSet=localizer.getUserResources().get(user1);
+  assertEquals("local resource set size wrong",1,lrsrcSet.getSize());
+  assertEquals("user doesn't match",user1,lrsrcSet.getUser());
+  LocalizedResource key1rsrc=lrsrcSet.get(key1,true);
+  assertNotNull("Local resource doesn't exist but should",key1rsrc);
+  assertEquals("key doesn't match",key1,key1rsrc.getKey());
+  assertEquals("refcount doesn't match",1,key1rsrc.getRefCount());
+  assertEquals("file path doesn't match",keyFile.toString(),key1rsrc.getFilePathWithVersion());
+  assertEquals("size doesn't match",size,key1rsrc.getSize());
+  assertTrue("timestamp not within range",(key1rsrc.getLastAccessTime() >= timeBefore && key1rsrc.getLastAccessTime() <= timeAfter));
+  timeBefore=System.nanoTime();
+  localizer.removeBlobReference(lrsrc.getKey(),user1,topo1,true);
+  timeAfter=System.nanoTime();
+  lrsrcSet=localizer.getUserResources().get(user1);
+  assertEquals("local resource set size wrong",1,lrsrcSet.getSize());
+  key1rsrc=lrsrcSet.get(key1,true);
+  assertNotNull("Local resource doesn't exist but should",key1rsrc);
+  assertEquals("refcount doesn't match",0,key1rsrc.getRefCount());
+  assertTrue("timestamp not within range",(key1rsrc.getLastAccessTime() >= timeBefore && key1rsrc.getLastAccessTime() <= timeAfter));
+  localizer.handleCacheCleanup();
+  lrsrcSet=localizer.getUserResources().get(user1);
+  assertFalse("blob contents not deleted",symlinkFile.exists());
+  assertFalse("blob not deleted",keyFile.exists());
+  assertFalse("blob file dir not deleted",new File(expectedFileDir).exists());
+  assertFalse("blob dir not deleted",new File(expectedUserDir).exists());
+  assertNull("user set should be null",lrsrcSet);
+}

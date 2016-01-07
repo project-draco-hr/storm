@@ -1,0 +1,14 @@
+{
+  StringBuilder sb=new StringBuilder("LSSupervisorId(");
+  boolean first=true;
+  sb.append("supervisor_id:");
+  if (this.supervisor_id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.supervisor_id);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

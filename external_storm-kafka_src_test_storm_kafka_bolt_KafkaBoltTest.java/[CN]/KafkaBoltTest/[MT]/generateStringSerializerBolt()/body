@@ -1,10 +1,12 @@
 {
-  KafkaBolt bolt=new KafkaBolt();
   Properties props=new Properties();
-  props.put("metadata.broker.list",broker.getBrokerConnectionString());
-  props.put("request.required.acks","1");
-  props.put("serializer.class","kafka.serializer.StringEncoder");
-  config.put(KafkaBolt.KAFKA_BROKER_PROPERTIES,props);
+  props.put("acks","1");
+  props.put("bootstrap.servers",broker.getBrokerConnectionString());
+  props.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
+  props.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+  props.put("metadata.fetch.timeout.ms",1000);
+  KafkaBolt bolt=new KafkaBolt().withProducerProperties(props);
   bolt.prepare(config,null,new OutputCollector(collector));
+  bolt.setAsync(false);
   return bolt;
 }

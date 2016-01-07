@@ -1,0 +1,4 @@
+def getBlobMeta(self, key):
+    '\n    Parameters:\n     - key\n    '
+    self.send_getBlobMeta(key)
+    return self.recv_getBlobMeta()

@@ -1,0 +1,44 @@
+{
+  this.conf=conf;
+  if (overrideBase == null) {
+    overrideBase=(String)conf.get(Config.BLOBSTORE_DIR);
+  }
+  if (overrideBase == null) {
+    throw new RuntimeException("You must specify a blobstore directory for HDFS to use!");
+  }
+  LOG.debug("directory is: {}",overrideBase);
+  try {
+    String principal=(String)conf.get(Config.BLOBSTORE_HDFS_PRINCIPAL);
+    String keyTab=(String)conf.get(Config.BLOBSTORE_HDFS_KEYTAB);
+    if (principal != null && keyTab != null) {
+      UserGroupInformation.loginUserFromKeytab(principal,keyTab);
+    }
+ else {
+      if (principal == null && keyTab != null) {
+        throw new RuntimeException("You must specify an HDFS principal to go with the keytab!");
+      }
+ else {
+        if (principal != null && keyTab == null) {
+          throw new RuntimeException("You must specify HDFS keytab go with the principal!");
+        }
+      }
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Error logging in from keytab!",e);
+  }
+  Path baseDir=new Path(overrideBase,BASE_BLOBS_DIR_NAME);
+  try {
+    if (hadoopConf != null) {
+      _hbs=new HdfsBlobStoreImpl(baseDir,conf,hadoopConf);
+    }
+ else {
+      _hbs=new HdfsBlobStoreImpl(baseDir,conf);
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  _localSubject=getHadoopUser();
+  _aclHandler=new BlobStoreAclHandler(conf);
+}

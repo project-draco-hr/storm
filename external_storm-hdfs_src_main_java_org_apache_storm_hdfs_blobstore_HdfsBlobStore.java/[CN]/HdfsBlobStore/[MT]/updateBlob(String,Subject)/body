@@ -1,0 +1,14 @@
+{
+  who=checkAndGetSubject(who);
+  SettableBlobMeta meta=getStoredBlobMeta(key);
+  validateKey(key);
+  _aclHandler.hasPermissions(meta.get_acl(),WRITE,who,key);
+  try {
+    BlobStoreFile dataFile=_hbs.write(DATA_PREFIX + key,false);
+    dataFile.setMetadata(meta);
+    return new BlobStoreFileOutputStream(dataFile);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

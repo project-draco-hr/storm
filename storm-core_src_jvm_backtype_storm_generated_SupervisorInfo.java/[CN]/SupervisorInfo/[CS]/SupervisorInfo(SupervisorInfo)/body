@@ -20,4 +20,11 @@
     this.scheduler_meta=__this__scheduler_meta;
   }
   this.uptime_secs=other.uptime_secs;
+  if (other.is_set_version()) {
+    this.version=other.version;
+  }
+  if (other.is_set_resources_map()) {
+    Map<String,Double> __this__resources_map=new HashMap<String,Double>(other.resources_map);
+    this.resources_map=__this__resources_map;
+  }
 }

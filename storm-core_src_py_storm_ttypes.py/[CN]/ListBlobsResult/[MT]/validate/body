@@ -1,0 +1,6 @@
+def validate(self):
+    if (self.keys is None):
+        raise TProtocol.TProtocolException(message='Required field keys is unset!')
+    if (self.session is None):
+        raise TProtocol.TProtocolException(message='Required field session is unset!')
+    return

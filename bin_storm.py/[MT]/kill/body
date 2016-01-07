@@ -1,3 +1,6 @@
 def kill(*args):
     "Syntax: [storm kill topology-name [-w wait-time-secs]]\n\n    Kills the topology with the name topology-name. Storm will\n    first deactivate the topology's spouts for the duration of\n    the topology's message timeout to allow all messages currently\n    being processed to finish processing. Storm will then shutdown\n    the workers and clean up their state. You can override the length\n    of time Storm waits between deactivation and shutdown with the -w flag.\n    "
+    if (not args):
+        print_usage(command='kill')
+        sys.exit(2)
     exec_storm_class('backtype.storm.command.kill_topology', args=args, jvmtype='-client', extrajars=[USER_CONF_DIR, STORM_BIN_DIR])

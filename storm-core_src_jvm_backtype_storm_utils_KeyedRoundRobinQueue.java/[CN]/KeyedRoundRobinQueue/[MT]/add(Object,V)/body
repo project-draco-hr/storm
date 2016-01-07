@@ -2,7 +2,7 @@
 synchronized (_lock) {
     Queue<V> queue=_queues.get(key);
     if (queue == null) {
-      queue=new LinkedList<V>();
+      queue=new LinkedList<>();
       _queues.put(key,queue);
       _keyOrder.add(key);
     }

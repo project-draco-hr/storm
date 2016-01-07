@@ -1,0 +1,36 @@
+{
+  StringBuilder sb=new StringBuilder("getComponentPageInfo_args(");
+  boolean first=true;
+  sb.append("topology_id:");
+  if (this.topology_id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.topology_id);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("component_id:");
+  if (this.component_id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.component_id);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("window:");
+  if (this.window == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.window);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("is_include_sys:");
+  sb.append(this.is_include_sys);
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

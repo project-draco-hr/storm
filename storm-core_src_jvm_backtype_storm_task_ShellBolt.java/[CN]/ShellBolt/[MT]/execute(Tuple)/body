@@ -6,7 +6,7 @@
   _inputs.put(genId,input);
   try {
     BoltMsg boltMsg=createBoltMessage(input,genId);
-    _pendingWrites.put(boltMsg);
+    _pendingWrites.putBoltMsg(boltMsg);
   }
  catch (  InterruptedException e) {
     String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();

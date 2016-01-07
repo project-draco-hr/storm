@@ -18,8 +18,8 @@ def write(self, oprot):
     if (self.executors is not None):
         oprot.writeFieldBegin('executors', TType.LIST, 4)
         oprot.writeListBegin(TType.STRUCT, len(self.executors))
-        for iter279 in self.executors:
-            iter279.write(oprot)
+        for iter309 in self.executors:
+            iter309.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.status is not None):
@@ -29,12 +29,20 @@ def write(self, oprot):
     if (self.errors is not None):
         oprot.writeFieldBegin('errors', TType.MAP, 6)
         oprot.writeMapBegin(TType.STRING, TType.LIST, len(self.errors))
-        for (kiter280, viter281) in self.errors.items():
-            oprot.writeString(kiter280.encode('utf-8'))
-            oprot.writeListBegin(TType.STRUCT, len(viter281))
-            for iter282 in viter281:
-                iter282.write(oprot)
+        for (kiter310, viter311) in self.errors.items():
+            oprot.writeString(kiter310.encode('utf-8'))
+            oprot.writeListBegin(TType.STRUCT, len(viter311))
+            for iter312 in viter311:
+                iter312.write(oprot)
             oprot.writeListEnd()
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.component_debug is not None):
+        oprot.writeFieldBegin('component_debug', TType.MAP, 7)
+        oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.component_debug))
+        for (kiter313, viter314) in self.component_debug.items():
+            oprot.writeString(kiter313.encode('utf-8'))
+            viter314.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.sched_status is not None):
@@ -44,6 +52,34 @@ def write(self, oprot):
     if (self.owner is not None):
         oprot.writeFieldBegin('owner', TType.STRING, 514)
         oprot.writeString(self.owner.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.replication_count is not None):
+        oprot.writeFieldBegin('replication_count', TType.I32, 515)
+        oprot.writeI32(self.replication_count)
+        oprot.writeFieldEnd()
+    if (self.requested_memonheap is not None):
+        oprot.writeFieldBegin('requested_memonheap', TType.DOUBLE, 521)
+        oprot.writeDouble(self.requested_memonheap)
+        oprot.writeFieldEnd()
+    if (self.requested_memoffheap is not None):
+        oprot.writeFieldBegin('requested_memoffheap', TType.DOUBLE, 522)
+        oprot.writeDouble(self.requested_memoffheap)
+        oprot.writeFieldEnd()
+    if (self.requested_cpu is not None):
+        oprot.writeFieldBegin('requested_cpu', TType.DOUBLE, 523)
+        oprot.writeDouble(self.requested_cpu)
+        oprot.writeFieldEnd()
+    if (self.assigned_memonheap is not None):
+        oprot.writeFieldBegin('assigned_memonheap', TType.DOUBLE, 524)
+        oprot.writeDouble(self.assigned_memonheap)
+        oprot.writeFieldEnd()
+    if (self.assigned_memoffheap is not None):
+        oprot.writeFieldBegin('assigned_memoffheap', TType.DOUBLE, 525)
+        oprot.writeDouble(self.assigned_memoffheap)
+        oprot.writeFieldEnd()
+    if (self.assigned_cpu is not None):
+        oprot.writeFieldBegin('assigned_cpu', TType.DOUBLE, 526)
+        oprot.writeDouble(self.assigned_cpu)
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

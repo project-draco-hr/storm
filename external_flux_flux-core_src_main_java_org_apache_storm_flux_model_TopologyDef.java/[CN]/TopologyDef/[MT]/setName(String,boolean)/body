@@ -1,0 +1,8 @@
+{
+  if (this.name == null || override) {
+    this.name=name;
+  }
+ else {
+    LOG.warn("Ignoring attempt to set property 'name' with override == false.");
+  }
+}

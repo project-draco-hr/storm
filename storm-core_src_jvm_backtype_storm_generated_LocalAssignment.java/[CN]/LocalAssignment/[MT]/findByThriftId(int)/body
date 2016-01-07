@@ -1,0 +1,12 @@
+{
+switch (fieldId) {
+case 1:
+    return TOPOLOGY_ID;
+case 2:
+  return EXECUTORS;
+case 3:
+return RESOURCES;
+default :
+return null;
+}
+}

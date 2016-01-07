@@ -1,0 +1,3 @@
+{
+  executeStatementAndAssert(async(insertInto("weather","temperature").values(all()),insertInto("weather","temperature").values(all())),"INSERT INTO weather.temperature(weather_station_id,event_time,temperature) VALUES ('1'," + NOW.getTime() + ",'0??C');","INSERT INTO weather.temperature(weather_station_id,event_time,temperature) VALUES ('1'," + NOW.getTime() + ",'0??C');");
+}

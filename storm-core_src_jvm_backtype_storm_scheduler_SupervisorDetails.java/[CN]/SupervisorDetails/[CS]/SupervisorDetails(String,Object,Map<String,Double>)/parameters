@@ -1,0 +1,3 @@
+String id
+Object meta
+Map<String,Double> total_resources

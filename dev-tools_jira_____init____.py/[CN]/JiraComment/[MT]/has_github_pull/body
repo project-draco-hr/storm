@@ -1,0 +1,2 @@
+def has_github_pull(self):
+    return (self.githubPull is not None)

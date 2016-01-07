@@ -1,0 +1,52 @@
+{
+  TreeSet<Integer> sequenceNumbers=new TreeSet<Integer>();
+  CuratorFramework zkClient=BlobStoreUtils.createZKClient(conf);
+  try {
+    if (zkClient.checkExists().forPath(BLOBSTORE_SUBTREE + "/" + key) == null) {
+      zkClient.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).withACL(ZooDefs.Ids.OPEN_ACL_UNSAFE).forPath(BLOBSTORE_MAX_KEY_SEQUENCE_SUBTREE + "/" + key);
+      zkClient.setData().forPath(BLOBSTORE_MAX_KEY_SEQUENCE_SUBTREE + "/" + key,ByteBuffer.allocate(INT_CAPACITY).putInt(INITIAL_SEQUENCE_NUMBER).array());
+      return INITIAL_SEQUENCE_NUMBER;
+    }
+    List<String> stateInfoList=zkClient.getChildren().forPath(BLOBSTORE_SUBTREE + "/" + key);
+    LOG.debug("stateInfoList-size {} stateInfoList-data {}",stateInfoList.size(),stateInfoList);
+    if (stateInfoList.isEmpty()) {
+      return getMaxSequenceNumber(zkClient);
+    }
+    LOG.debug("stateInfoSize {}",stateInfoList.size());
+    for (    String stateInfo : stateInfoList) {
+      sequenceNumbers.add(Integer.parseInt(BlobStoreUtils.normalizeNimbusHostPortSequenceNumberInfo(stateInfo).getSequenceNumber()));
+    }
+    int currentSeqNumber=getMaxSequenceNumber(zkClient);
+    if (!checkIfStateContainsCurrentNimbusHost(stateInfoList,nimbusInfo) && !nimbusInfo.isLeader()) {
+      if (sequenceNumbers.last() < currentSeqNumber) {
+        return currentSeqNumber;
+      }
+ else {
+        return INITIAL_SEQUENCE_NUMBER - 1;
+      }
+    }
+    if (!checkIfStateContainsCurrentNimbusHost(stateInfoList,nimbusInfo) && nimbusInfo.isLeader()) {
+      incrementMaxSequenceNumber(zkClient,currentSeqNumber);
+      return currentSeqNumber + 1;
+    }
+    if (sequenceNumbers.size() == 1) {
+      if (sequenceNumbers.first() < currentSeqNumber) {
+        incrementMaxSequenceNumber(zkClient,currentSeqNumber);
+        return currentSeqNumber + 1;
+      }
+ else {
+        incrementMaxSequenceNumber(zkClient,currentSeqNumber);
+        return sequenceNumbers.first() + 1;
+      }
+    }
+  }
+ catch (  Exception e) {
+    LOG.error("Exception {}",e);
+  }
+ finally {
+    if (zkClient != null) {
+      zkClient.close();
+    }
+  }
+  return sequenceNumbers.last();
+}

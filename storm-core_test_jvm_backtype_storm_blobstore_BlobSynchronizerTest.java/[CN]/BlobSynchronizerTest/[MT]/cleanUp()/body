@@ -1,0 +1,6 @@
+{
+  FileUtils.deleteDirectory(baseFile);
+  if (factory != null) {
+    factory.shutdown();
+  }
+}

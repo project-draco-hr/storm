@@ -65,6 +65,48 @@
     }
     first=false;
   }
+  if (is_set_replication_count()) {
+    if (!first)     sb.append(", ");
+    sb.append("replication_count:");
+    sb.append(this.replication_count);
+    first=false;
+  }
+  if (is_set_requested_memonheap()) {
+    if (!first)     sb.append(", ");
+    sb.append("requested_memonheap:");
+    sb.append(this.requested_memonheap);
+    first=false;
+  }
+  if (is_set_requested_memoffheap()) {
+    if (!first)     sb.append(", ");
+    sb.append("requested_memoffheap:");
+    sb.append(this.requested_memoffheap);
+    first=false;
+  }
+  if (is_set_requested_cpu()) {
+    if (!first)     sb.append(", ");
+    sb.append("requested_cpu:");
+    sb.append(this.requested_cpu);
+    first=false;
+  }
+  if (is_set_assigned_memonheap()) {
+    if (!first)     sb.append(", ");
+    sb.append("assigned_memonheap:");
+    sb.append(this.assigned_memonheap);
+    first=false;
+  }
+  if (is_set_assigned_memoffheap()) {
+    if (!first)     sb.append(", ");
+    sb.append("assigned_memoffheap:");
+    sb.append(this.assigned_memoffheap);
+    first=false;
+  }
+  if (is_set_assigned_cpu()) {
+    if (!first)     sb.append(", ");
+    sb.append("assigned_cpu:");
+    sb.append(this.assigned_cpu);
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

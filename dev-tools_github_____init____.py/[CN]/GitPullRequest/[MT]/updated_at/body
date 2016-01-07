@@ -1,2 +1,2 @@
 def updated_at(self):
-    return gittime(self.data['updated_at'])
+    return git_time(self.data['updated_at'])

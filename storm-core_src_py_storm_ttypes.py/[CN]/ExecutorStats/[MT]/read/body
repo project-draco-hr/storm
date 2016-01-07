@@ -10,34 +10,34 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.emitted = {}
-                (_ktype225, _vtype226, _size224) = iprot.readMapBegin()
-                for _i228 in xrange(_size224):
-                    _key229 = iprot.readString().decode('utf-8')
-                    _val230 = {}
-                    (_ktype232, _vtype233, _size231) = iprot.readMapBegin()
-                    for _i235 in xrange(_size231):
-                        _key236 = iprot.readString().decode('utf-8')
-                        _val237 = iprot.readI64()
-                        _val230[_key236] = _val237
+                (_ktype248, _vtype249, _size247) = iprot.readMapBegin()
+                for _i251 in xrange(_size247):
+                    _key252 = iprot.readString().decode('utf-8')
+                    _val253 = {}
+                    (_ktype255, _vtype256, _size254) = iprot.readMapBegin()
+                    for _i258 in xrange(_size254):
+                        _key259 = iprot.readString().decode('utf-8')
+                        _val260 = iprot.readI64()
+                        _val253[_key259] = _val260
                     iprot.readMapEnd()
-                    self.emitted[_key229] = _val230
+                    self.emitted[_key252] = _val253
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 2):
             if (ftype == TType.MAP):
                 self.transferred = {}
-                (_ktype239, _vtype240, _size238) = iprot.readMapBegin()
-                for _i242 in xrange(_size238):
-                    _key243 = iprot.readString().decode('utf-8')
-                    _val244 = {}
-                    (_ktype246, _vtype247, _size245) = iprot.readMapBegin()
-                    for _i249 in xrange(_size245):
-                        _key250 = iprot.readString().decode('utf-8')
-                        _val251 = iprot.readI64()
-                        _val244[_key250] = _val251
+                (_ktype262, _vtype263, _size261) = iprot.readMapBegin()
+                for _i265 in xrange(_size261):
+                    _key266 = iprot.readString().decode('utf-8')
+                    _val267 = {}
+                    (_ktype269, _vtype270, _size268) = iprot.readMapBegin()
+                    for _i272 in xrange(_size268):
+                        _key273 = iprot.readString().decode('utf-8')
+                        _val274 = iprot.readI64()
+                        _val267[_key273] = _val274
                     iprot.readMapEnd()
-                    self.transferred[_key243] = _val244
+                    self.transferred[_key266] = _val267
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

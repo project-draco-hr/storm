@@ -1,0 +1,23 @@
+{
+  if (!hasNext()) {
+    throw new NoSuchElementException();
+  }
+  String current=next;
+  next=null;
+  if (it != null) {
+    if (!it.hasNext()) {
+      it=null;
+      currentBucket++;
+      try {
+        primeNext();
+      }
+ catch (      IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+ else {
+      next=it.next();
+    }
+  }
+  return current;
+}

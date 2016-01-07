@@ -1,0 +1,3 @@
+{
+  outputFieldsDeclarer.declare(new Fields("weather_station_id","temperature"));
+}

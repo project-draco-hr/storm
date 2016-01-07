@@ -1,0 +1,3 @@
+TarArchiveInputStream tis
+TarArchiveEntry entry
+File outputDir

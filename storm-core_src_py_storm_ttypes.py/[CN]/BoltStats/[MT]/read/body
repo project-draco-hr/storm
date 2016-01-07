@@ -10,90 +10,90 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.acked = {}
-                (_ktype81, _vtype82, _size80) = iprot.readMapBegin()
-                for _i84 in xrange(_size80):
-                    _key85 = iprot.readString().decode('utf-8')
-                    _val86 = {}
-                    (_ktype88, _vtype89, _size87) = iprot.readMapBegin()
-                    for _i91 in xrange(_size87):
-                        _key92 = GlobalStreamId()
-                        _key92.read(iprot)
-                        _val93 = iprot.readI64()
-                        _val86[_key92] = _val93
+                (_ktype104, _vtype105, _size103) = iprot.readMapBegin()
+                for _i107 in xrange(_size103):
+                    _key108 = iprot.readString().decode('utf-8')
+                    _val109 = {}
+                    (_ktype111, _vtype112, _size110) = iprot.readMapBegin()
+                    for _i114 in xrange(_size110):
+                        _key115 = GlobalStreamId()
+                        _key115.read(iprot)
+                        _val116 = iprot.readI64()
+                        _val109[_key115] = _val116
                     iprot.readMapEnd()
-                    self.acked[_key85] = _val86
+                    self.acked[_key108] = _val109
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 2):
             if (ftype == TType.MAP):
                 self.failed = {}
-                (_ktype95, _vtype96, _size94) = iprot.readMapBegin()
-                for _i98 in xrange(_size94):
-                    _key99 = iprot.readString().decode('utf-8')
-                    _val100 = {}
-                    (_ktype102, _vtype103, _size101) = iprot.readMapBegin()
-                    for _i105 in xrange(_size101):
-                        _key106 = GlobalStreamId()
-                        _key106.read(iprot)
-                        _val107 = iprot.readI64()
-                        _val100[_key106] = _val107
+                (_ktype118, _vtype119, _size117) = iprot.readMapBegin()
+                for _i121 in xrange(_size117):
+                    _key122 = iprot.readString().decode('utf-8')
+                    _val123 = {}
+                    (_ktype125, _vtype126, _size124) = iprot.readMapBegin()
+                    for _i128 in xrange(_size124):
+                        _key129 = GlobalStreamId()
+                        _key129.read(iprot)
+                        _val130 = iprot.readI64()
+                        _val123[_key129] = _val130
                     iprot.readMapEnd()
-                    self.failed[_key99] = _val100
+                    self.failed[_key122] = _val123
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 3):
             if (ftype == TType.MAP):
                 self.process_ms_avg = {}
-                (_ktype109, _vtype110, _size108) = iprot.readMapBegin()
-                for _i112 in xrange(_size108):
-                    _key113 = iprot.readString().decode('utf-8')
-                    _val114 = {}
-                    (_ktype116, _vtype117, _size115) = iprot.readMapBegin()
-                    for _i119 in xrange(_size115):
-                        _key120 = GlobalStreamId()
-                        _key120.read(iprot)
-                        _val121 = iprot.readDouble()
-                        _val114[_key120] = _val121
+                (_ktype132, _vtype133, _size131) = iprot.readMapBegin()
+                for _i135 in xrange(_size131):
+                    _key136 = iprot.readString().decode('utf-8')
+                    _val137 = {}
+                    (_ktype139, _vtype140, _size138) = iprot.readMapBegin()
+                    for _i142 in xrange(_size138):
+                        _key143 = GlobalStreamId()
+                        _key143.read(iprot)
+                        _val144 = iprot.readDouble()
+                        _val137[_key143] = _val144
                     iprot.readMapEnd()
-                    self.process_ms_avg[_key113] = _val114
+                    self.process_ms_avg[_key136] = _val137
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 4):
             if (ftype == TType.MAP):
                 self.executed = {}
-                (_ktype123, _vtype124, _size122) = iprot.readMapBegin()
-                for _i126 in xrange(_size122):
-                    _key127 = iprot.readString().decode('utf-8')
-                    _val128 = {}
-                    (_ktype130, _vtype131, _size129) = iprot.readMapBegin()
-                    for _i133 in xrange(_size129):
-                        _key134 = GlobalStreamId()
-                        _key134.read(iprot)
-                        _val135 = iprot.readI64()
-                        _val128[_key134] = _val135
+                (_ktype146, _vtype147, _size145) = iprot.readMapBegin()
+                for _i149 in xrange(_size145):
+                    _key150 = iprot.readString().decode('utf-8')
+                    _val151 = {}
+                    (_ktype153, _vtype154, _size152) = iprot.readMapBegin()
+                    for _i156 in xrange(_size152):
+                        _key157 = GlobalStreamId()
+                        _key157.read(iprot)
+                        _val158 = iprot.readI64()
+                        _val151[_key157] = _val158
                     iprot.readMapEnd()
-                    self.executed[_key127] = _val128
+                    self.executed[_key150] = _val151
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 5):
             if (ftype == TType.MAP):
                 self.execute_ms_avg = {}
-                (_ktype137, _vtype138, _size136) = iprot.readMapBegin()
-                for _i140 in xrange(_size136):
-                    _key141 = iprot.readString().decode('utf-8')
-                    _val142 = {}
-                    (_ktype144, _vtype145, _size143) = iprot.readMapBegin()
-                    for _i147 in xrange(_size143):
-                        _key148 = GlobalStreamId()
-                        _key148.read(iprot)
-                        _val149 = iprot.readDouble()
-                        _val142[_key148] = _val149
+                (_ktype160, _vtype161, _size159) = iprot.readMapBegin()
+                for _i163 in xrange(_size159):
+                    _key164 = iprot.readString().decode('utf-8')
+                    _val165 = {}
+                    (_ktype167, _vtype168, _size166) = iprot.readMapBegin()
+                    for _i170 in xrange(_size166):
+                        _key171 = GlobalStreamId()
+                        _key171.read(iprot)
+                        _val172 = iprot.readDouble()
+                        _val165[_key171] = _val172
                     iprot.readMapEnd()
-                    self.execute_ms_avg[_key141] = _val142
+                    self.execute_ms_avg[_key164] = _val165
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

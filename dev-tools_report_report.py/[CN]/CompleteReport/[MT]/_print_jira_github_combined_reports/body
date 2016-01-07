@@ -1,0 +1,3 @@
+def _print_jira_github_combined_reports(self):
+    for jira_github_combined in self.jira_github_combined_reports:
+        jira_github_combined.print_report()

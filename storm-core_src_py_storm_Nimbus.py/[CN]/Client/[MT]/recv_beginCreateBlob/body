@@ -1,0 +1,18 @@
+def recv_beginCreateBlob(self):
+    iprot = self._iprot
+    (fname, mtype, rseqid) = iprot.readMessageBegin()
+    if (mtype == TMessageType.EXCEPTION):
+        x = TApplicationException()
+        x.read(iprot)
+        iprot.readMessageEnd()
+        raise x
+    result = beginCreateBlob_result()
+    result.read(iprot)
+    iprot.readMessageEnd()
+    if (result.success is not None):
+        return result.success
+    if (result.aze is not None):
+        raise result.aze
+    if (result.kae is not None):
+        raise result.kae
+    raise TApplicationException(TApplicationException.MISSING_RESULT, 'beginCreateBlob failed: unknown result')

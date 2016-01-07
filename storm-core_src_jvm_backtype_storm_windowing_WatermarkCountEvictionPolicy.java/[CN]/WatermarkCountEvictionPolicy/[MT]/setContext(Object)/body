@@ -1,0 +1,4 @@
+{
+  referenceTime=(Long)context;
+  currentCount.set(windowManager.getEventCount(referenceTime));
+}

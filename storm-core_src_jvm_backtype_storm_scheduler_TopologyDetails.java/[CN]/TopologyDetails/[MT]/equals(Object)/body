@@ -1,0 +1,6 @@
+{
+  if (!(o instanceof TopologyDetails)) {
+    return false;
+  }
+  return (this.topologyId.equals(((TopologyDetails)o).getId()));
+}

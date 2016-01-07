@@ -1,3 +1,3 @@
 {
-  assertEquals(Arrays.asList("test"),scheme.deserializeKeyAndValue(null,"test".getBytes()));
+  assertEquals(Collections.singletonList("test"),scheme.deserializeKeyAndValue(null,wrapString("test")));
 }

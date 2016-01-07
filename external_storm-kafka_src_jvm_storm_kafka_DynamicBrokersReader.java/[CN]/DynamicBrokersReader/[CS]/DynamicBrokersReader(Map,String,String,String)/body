@@ -1,11 +1,18 @@
 {
+  Preconditions.checkNotNull(conf,"conf cannot be null");
+  validateConfig(conf);
+  Preconditions.checkNotNull(zkStr,"zkString cannot be null");
+  Preconditions.checkNotNull(zkPath,"zkPath cannot be null");
+  Preconditions.checkNotNull(topic,"topic cannot be null");
   _zkPath=zkPath;
   _topic=topic;
+  _isWildcardTopic=Utils.getBoolean(conf.get("kafka.topic.wildcard.match"),false);
   try {
     _curator=CuratorFrameworkFactory.newClient(zkStr,Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_CONNECTION_TIMEOUT)),new RetryNTimes(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL))));
     _curator.start();
   }
  catch (  Exception ex) {
     LOG.error("Couldn't connect to zookeeper",ex);
+    throw new RuntimeException(ex);
   }
 }

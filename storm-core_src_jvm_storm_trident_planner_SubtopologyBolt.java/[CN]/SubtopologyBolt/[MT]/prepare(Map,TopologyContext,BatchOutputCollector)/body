@@ -7,7 +7,7 @@
     }
   }
   DirectedSubgraph<Node,Object> subgraph=new DirectedSubgraph(_graph,_nodes,null);
-  TopologicalOrderIterator it=new TopologicalOrderIterator<Node,Object>(subgraph);
+  TopologicalOrderIterator it=new TopologicalOrderIterator<>(subgraph);
   int stateIndex=0;
   while (it.hasNext()) {
     Node n=(Node)it.next();
@@ -18,8 +18,8 @@
         _myTopologicallyOrdered.put(batchGroup,new ArrayList());
       }
       _myTopologicallyOrdered.get(batchGroup).add(pn.processor);
-      List<String> parentStreams=new ArrayList();
-      List<Factory> parentFactories=new ArrayList();
+      List<String> parentStreams=new ArrayList<>();
+      List<Factory> parentFactories=new ArrayList<>();
       for (      Node p : TridentUtils.getParents(_graph,n)) {
         parentStreams.add(p.streamId);
         if (_nodes.contains(p)) {
@@ -33,7 +33,7 @@
           parentFactories.add(_roots.get(p.streamId).getOutputFactory());
         }
       }
-      List<TupleReceiver> targets=new ArrayList();
+      List<TupleReceiver> targets=new ArrayList<>();
       boolean outgoingNode=false;
       for (      Node cn : TridentUtils.getChildren(_graph,n)) {
         if (_nodes.contains(cn)) {

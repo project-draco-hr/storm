@@ -1,0 +1,18 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.component_id))
+    value = ((value * 31) ^ hash(self.component_type))
+    value = ((value * 31) ^ hash(self.topology_id))
+    value = ((value * 31) ^ hash(self.topology_name))
+    value = ((value * 31) ^ hash(self.num_executors))
+    value = ((value * 31) ^ hash(self.num_tasks))
+    value = ((value * 31) ^ hash(self.window_to_stats))
+    value = ((value * 31) ^ hash(self.gsid_to_input_stats))
+    value = ((value * 31) ^ hash(self.sid_to_output_stats))
+    value = ((value * 31) ^ hash(self.exec_stats))
+    value = ((value * 31) ^ hash(self.errors))
+    value = ((value * 31) ^ hash(self.eventlog_host))
+    value = ((value * 31) ^ hash(self.eventlog_port))
+    value = ((value * 31) ^ hash(self.debug_options))
+    value = ((value * 31) ^ hash(self.topology_status))
+    return value

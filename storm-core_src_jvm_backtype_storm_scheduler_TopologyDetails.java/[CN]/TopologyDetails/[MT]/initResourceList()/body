@@ -1,0 +1,34 @@
+{
+  this.resourceList=new HashMap<>();
+  if (this.topology.get_bolts() != null) {
+    for (    Map.Entry<String,Bolt> bolt : this.topology.get_bolts().entrySet()) {
+      Map<String,Double> topology_resources=ResourceUtils.parseResources(bolt.getValue().get_common().get_json_conf());
+      ResourceUtils.checkIntialization(topology_resources,bolt.getValue().toString(),this.topologyConf);
+      for (      Map.Entry<ExecutorDetails,String> anExecutorToComponent : this.executorToComponent.entrySet()) {
+        if (bolt.getKey().equals(anExecutorToComponent.getValue())) {
+          this.resourceList.put(anExecutorToComponent.getKey(),topology_resources);
+        }
+      }
+    }
+  }
+  if (this.topology.get_spouts() != null) {
+    for (    Map.Entry<String,SpoutSpec> spout : this.topology.get_spouts().entrySet()) {
+      Map<String,Double> topology_resources=ResourceUtils.parseResources(spout.getValue().get_common().get_json_conf());
+      ResourceUtils.checkIntialization(topology_resources,spout.getValue().toString(),this.topologyConf);
+      for (      Map.Entry<ExecutorDetails,String> anExecutorToComponent : this.executorToComponent.entrySet()) {
+        if (spout.getKey().equals(anExecutorToComponent.getValue())) {
+          this.resourceList.put(anExecutorToComponent.getKey(),topology_resources);
+        }
+      }
+    }
+  }
+ else {
+    LOG.warn("Topology " + this.topologyId + " does not seem to have any spouts!");
+  }
+  for (  ExecutorDetails exec : this.getExecutors()) {
+    if (!this.resourceList.containsKey(exec)) {
+      LOG.debug("Scheduling {} {} with memory requirement as 'on heap' - {} and 'off heap' - {} and CPU requirement as {}",this.getExecutorToComponent().get(exec),exec,this.topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB),this.topologyConf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB),this.topologyConf.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT));
+      this.addDefaultResforExec(exec);
+    }
+  }
+}

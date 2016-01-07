@@ -1,0 +1,8 @@
+{
+  if (!hasNext()) {
+    throw new NoSuchElementException();
+  }
+  String ret=listBlobs.get_keys().get(offset);
+  offset++;
+  return ret;
+}

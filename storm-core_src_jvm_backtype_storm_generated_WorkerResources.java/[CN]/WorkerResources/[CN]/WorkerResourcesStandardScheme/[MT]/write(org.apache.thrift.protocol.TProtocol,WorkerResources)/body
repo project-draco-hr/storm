@@ -1,0 +1,21 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.is_set_mem_on_heap()) {
+    oprot.writeFieldBegin(MEM_ON_HEAP_FIELD_DESC);
+    oprot.writeDouble(struct.mem_on_heap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_mem_off_heap()) {
+    oprot.writeFieldBegin(MEM_OFF_HEAP_FIELD_DESC);
+    oprot.writeDouble(struct.mem_off_heap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_cpu()) {
+    oprot.writeFieldBegin(CPU_FIELD_DESC);
+    oprot.writeDouble(struct.cpu);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

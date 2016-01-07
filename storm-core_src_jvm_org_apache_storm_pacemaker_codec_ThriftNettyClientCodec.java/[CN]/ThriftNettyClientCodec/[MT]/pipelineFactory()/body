@@ -1,0 +1,33 @@
+{
+  return new ChannelPipelineFactory(){
+    public ChannelPipeline getPipeline(){
+      ChannelPipeline pipeline=Channels.pipeline();
+      pipeline.addLast("encoder",new ThriftEncoder());
+      pipeline.addLast("decoder",new ThriftDecoder());
+      if (authMethod == AuthMethod.KERBEROS) {
+        try {
+          LOG.debug("Adding KerberosSaslClientHandler to pacemaker client pipeline.");
+          pipeline.addLast(KERBEROS_HANDLER,new KerberosSaslClientHandler(client,storm_conf,AuthUtils.LOGIN_CONTEXT_PACEMAKER_CLIENT));
+        }
+ catch (        IOException e) {
+          throw new RuntimeException(e);
+        }
+      }
+ else       if (authMethod == AuthMethod.DIGEST) {
+        try {
+          LOG.debug("Adding SaslStormClientHandler to pacemaker client pipeline.");
+          pipeline.addLast(SASL_HANDLER,new SaslStormClientHandler(client));
+        }
+ catch (        IOException e) {
+          throw new RuntimeException(e);
+        }
+      }
+ else {
+        client.channelReady();
+      }
+      pipeline.addLast("PacemakerClientHandler",new PacemakerClientHandler(client));
+      return pipeline;
+    }
+  }
+;
+}

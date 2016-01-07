@@ -5,4 +5,36 @@
   oprot.writeI32(struct.num_workers);
   oprot.writeI32(struct.num_used_workers);
   oprot.writeString(struct.supervisor_id);
+  BitSet optionals=new BitSet();
+  if (struct.is_set_version()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_total_resources()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_used_mem()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_used_cpu()) {
+    optionals.set(3);
+  }
+  oprot.writeBitSet(optionals,4);
+  if (struct.is_set_version()) {
+    oprot.writeString(struct.version);
+  }
+  if (struct.is_set_total_resources()) {
+{
+      oprot.writeI32(struct.total_resources.size());
+      for (      Map.Entry<String,Double> _iter87 : struct.total_resources.entrySet()) {
+        oprot.writeString(_iter87.getKey());
+        oprot.writeDouble(_iter87.getValue());
+      }
+    }
+  }
+  if (struct.is_set_used_mem()) {
+    oprot.writeDouble(struct.used_mem);
+  }
+  if (struct.is_set_used_cpu()) {
+    oprot.writeDouble(struct.used_cpu);
+  }
 }

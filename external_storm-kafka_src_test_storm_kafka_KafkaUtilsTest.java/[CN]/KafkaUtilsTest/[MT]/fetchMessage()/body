@@ -2,7 +2,7 @@
   String value="test";
   createTopicAndSendMessage(value);
   long offset=KafkaUtils.getOffset(simpleConsumer,config.topic,0,OffsetRequest.LatestTime()) - 1;
-  ByteBufferMessageSet messageAndOffsets=KafkaUtils.fetchMessages(config,simpleConsumer,new Partition(Broker.fromString(broker.getBrokerConnectionString()),0),offset);
+  ByteBufferMessageSet messageAndOffsets=KafkaUtils.fetchMessages(config,simpleConsumer,new Partition(Broker.fromString(broker.getBrokerConnectionString()),TEST_TOPIC,0),offset);
   String message=new String(Utils.toByteArray(messageAndOffsets.iterator().next().message().payload()));
   assertThat(message,is(equalTo(value)));
 }

@@ -1,0 +1,20 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case NUM_EXECUTORS:
+    return is_set_num_executors();
+case NUM_TASKS:
+  return is_set_num_tasks();
+case EMITTED:
+return is_set_emitted();
+case TRANSFERRED:
+return is_set_transferred();
+case ACKED:
+return is_set_acked();
+case FAILED:
+return is_set_failed();
+}
+throw new IllegalStateException();
+}

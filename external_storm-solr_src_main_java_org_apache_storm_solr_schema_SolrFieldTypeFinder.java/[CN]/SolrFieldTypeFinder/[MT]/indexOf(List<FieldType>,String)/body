@@ -1,0 +1,10 @@
+{
+  int i=0;
+  for (  FieldType fieldType : fieldTypes) {
+    if (fieldType.getName().equals(type)) {
+      return i;
+    }
+    i++;
+  }
+  return -1;
+}

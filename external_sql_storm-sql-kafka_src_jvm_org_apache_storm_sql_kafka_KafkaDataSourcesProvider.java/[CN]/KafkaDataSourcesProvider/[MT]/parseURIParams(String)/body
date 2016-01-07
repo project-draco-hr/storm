@@ -1,0 +1,14 @@
+{
+  HashMap<String,String> res=new HashMap<>();
+  if (query == null) {
+    return res;
+  }
+  String[] params=query.split("&");
+  for (  String p : params) {
+    String[] v=p.split("=",2);
+    if (v.length > 1) {
+      res.put(v[0],v[1]);
+    }
+  }
+  return res;
+}

@@ -1,0 +1,11 @@
+{
+  int replicationCount=0;
+  validateKey(key);
+  SettableBlobMeta meta=getStoredBlobMeta(key);
+  _aclHandler.hasPermissions(meta.get_acl(),READ,who,key);
+  if (zkClient.checkExists().forPath(BLOBSTORE_SUBTREE + key) == null) {
+    return 0;
+  }
+  replicationCount=zkClient.getChildren().forPath(BLOBSTORE_SUBTREE + key).size();
+  return replicationCount;
+}

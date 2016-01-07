@@ -1,0 +1,49 @@
+{
+  if (topologyDef.getIncludes() != null) {
+    for (    IncludeDef include : topologyDef.getIncludes()) {
+      TopologyDef includeTopologyDef=null;
+      if (include.isResource()) {
+        LOG.info("Loading includes from resource: {}",include.getFile());
+        includeTopologyDef=parseResource(include.getFile(),true,false,propsFile,envSub);
+      }
+ else {
+        LOG.info("Loading includes from file: {}",include.getFile());
+        includeTopologyDef=parseFile(include.getFile(),true,false,propsFile,envSub);
+      }
+      boolean override=include.isOverride();
+      if (includeTopologyDef.getName() != null) {
+        topologyDef.setName(includeTopologyDef.getName(),override);
+      }
+      if (includeTopologyDef.getConfig() != null) {
+        Map<String,Object> config=topologyDef.getConfig();
+        Map<String,Object> includeConfig=includeTopologyDef.getConfig();
+        if (override) {
+          config.putAll(includeTopologyDef.getConfig());
+        }
+ else {
+          for (          String key : includeConfig.keySet()) {
+            if (config.containsKey(key)) {
+              LOG.warn("Ignoring attempt to set topology config property '{}' with override == false",key);
+            }
+ else {
+              config.put(key,includeConfig.get(key));
+            }
+          }
+        }
+      }
+      if (includeTopologyDef.getComponents() != null) {
+        topologyDef.addAllComponents(includeTopologyDef.getComponents(),override);
+      }
+      if (includeTopologyDef.getBolts() != null) {
+        topologyDef.addAllBolts(includeTopologyDef.getBolts(),override);
+      }
+      if (includeTopologyDef.getSpouts() != null) {
+        topologyDef.addAllSpouts(includeTopologyDef.getSpouts(),override);
+      }
+      if (includeTopologyDef.getStreams() != null) {
+        topologyDef.addAllStreams(includeTopologyDef.getStreams(),override);
+      }
+    }
+  }
+  return topologyDef;
+}

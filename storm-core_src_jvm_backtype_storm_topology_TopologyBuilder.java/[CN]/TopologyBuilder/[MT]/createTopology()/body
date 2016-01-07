@@ -1,6 +1,6 @@
 {
-  Map<String,Bolt> boltSpecs=new HashMap<String,Bolt>();
-  Map<String,SpoutSpec> spoutSpecs=new HashMap<String,SpoutSpec>();
+  Map<String,Bolt> boltSpecs=new HashMap<>();
+  Map<String,SpoutSpec> spoutSpecs=new HashMap<>();
   for (  String boltId : _bolts.keySet()) {
     IRichBolt bolt=_bolts.get(boltId);
     ComponentCommon common=getComponentCommon(boltId,bolt);
@@ -27,5 +27,7 @@
       throw wrapperCause;
     }
   }
-  return new StormTopology(spoutSpecs,boltSpecs,new HashMap<String,StateSpoutSpec>());
+  StormTopology stormTopology=new StormTopology(spoutSpecs,boltSpecs,new HashMap<String,StateSpoutSpec>());
+  stormTopology.set_worker_hooks(_workerHooks);
+  return stormTopology;
 }

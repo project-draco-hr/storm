@@ -1,0 +1,7 @@
+{
+  Double ret=null;
+  if (hasExecInTopo(exec)) {
+    ret=this.resourceList.get(exec).get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB);
+  }
+  return ret;
+}

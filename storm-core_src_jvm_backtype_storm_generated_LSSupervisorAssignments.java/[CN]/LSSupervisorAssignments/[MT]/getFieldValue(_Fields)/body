@@ -1,0 +1,7 @@
+{
+switch (field) {
+case ASSIGNMENTS:
+    return get_assignments();
+}
+throw new IllegalStateException();
+}

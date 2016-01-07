@@ -1,0 +1,4 @@
+{
+  this.cqlResultSetValuesMapper=cqlResultSetValuesMapper;
+  return this;
+}

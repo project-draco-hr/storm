@@ -1,0 +1,8 @@
+{
+  if (schema == null) {
+    throw new IllegalArgumentException("Schema object is null");
+  }
+  this.schema=schema;
+  this.fieldToWrapper=new HashMap<>();
+  buildMap();
+}

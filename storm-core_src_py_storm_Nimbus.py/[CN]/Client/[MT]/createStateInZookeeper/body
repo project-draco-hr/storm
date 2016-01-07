@@ -1,0 +1,4 @@
+def createStateInZookeeper(self, key):
+    '\n    Parameters:\n     - key\n    '
+    self.send_createStateInZookeeper(key)
+    self.recv_createStateInZookeeper()

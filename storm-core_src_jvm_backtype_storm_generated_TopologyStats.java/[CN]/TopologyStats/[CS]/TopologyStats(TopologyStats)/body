@@ -1,0 +1,22 @@
+{
+  if (other.is_set_window_to_emitted()) {
+    Map<String,Long> __this__window_to_emitted=new HashMap<String,Long>(other.window_to_emitted);
+    this.window_to_emitted=__this__window_to_emitted;
+  }
+  if (other.is_set_window_to_transferred()) {
+    Map<String,Long> __this__window_to_transferred=new HashMap<String,Long>(other.window_to_transferred);
+    this.window_to_transferred=__this__window_to_transferred;
+  }
+  if (other.is_set_window_to_complete_latencies_ms()) {
+    Map<String,Double> __this__window_to_complete_latencies_ms=new HashMap<String,Double>(other.window_to_complete_latencies_ms);
+    this.window_to_complete_latencies_ms=__this__window_to_complete_latencies_ms;
+  }
+  if (other.is_set_window_to_acked()) {
+    Map<String,Long> __this__window_to_acked=new HashMap<String,Long>(other.window_to_acked);
+    this.window_to_acked=__this__window_to_acked;
+  }
+  if (other.is_set_window_to_failed()) {
+    Map<String,Long> __this__window_to_failed=new HashMap<String,Long>(other.window_to_failed);
+    this.window_to_failed=__this__window_to_failed;
+  }
+}

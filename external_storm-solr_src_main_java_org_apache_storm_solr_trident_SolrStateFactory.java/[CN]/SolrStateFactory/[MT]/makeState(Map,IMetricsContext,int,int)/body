@@ -1,0 +1,5 @@
+{
+  SolrState state=new SolrState(solrConfig,solrMapper);
+  state.prepare();
+  return state;
+}

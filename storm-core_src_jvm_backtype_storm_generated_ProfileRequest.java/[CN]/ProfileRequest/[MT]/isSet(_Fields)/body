@@ -1,0 +1,14 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case NODE_INFO:
+    return is_set_nodeInfo();
+case ACTION:
+  return is_set_action();
+case TIME_STAMP:
+return is_set_time_stamp();
+}
+throw new IllegalStateException();
+}

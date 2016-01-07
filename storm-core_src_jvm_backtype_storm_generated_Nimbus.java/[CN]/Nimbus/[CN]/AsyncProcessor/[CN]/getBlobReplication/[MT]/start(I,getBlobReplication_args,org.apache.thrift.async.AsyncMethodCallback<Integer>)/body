@@ -1,0 +1,3 @@
+{
+  iface.getBlobReplication(args.key,resultHandler);
+}

@@ -1,0 +1,7 @@
+{
+  long nextCheckpointTime=lastCheckpointTime + checkpointIntervalInSeconds * 1000;
+  if (nextCheckpointTime < System.currentTimeMillis()) {
+    checkpoint();
+    lastCheckpointTime=System.currentTimeMillis();
+  }
+}

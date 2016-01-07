@@ -1,5 +1,5 @@
 {
-  GlobalPartitionInformation globalPartitionInformation=new GlobalPartitionInformation();
+  GlobalPartitionInformation globalPartitionInformation=new GlobalPartitionInformation(TOPIC);
   for (int i=0; i < numPartitions; i++) {
     globalPartitionInformation.addPartition(i,Broker.fromString("broker-" + i + " :"+ brokerPort));
   }

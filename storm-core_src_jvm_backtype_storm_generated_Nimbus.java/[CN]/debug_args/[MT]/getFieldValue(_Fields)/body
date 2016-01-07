@@ -1,0 +1,13 @@
+{
+switch (field) {
+case NAME:
+    return get_name();
+case COMPONENT:
+  return get_component();
+case ENABLE:
+return is_enable();
+case SAMPLING_PERCENTAGE:
+return get_samplingPercentage();
+}
+throw new IllegalStateException();
+}

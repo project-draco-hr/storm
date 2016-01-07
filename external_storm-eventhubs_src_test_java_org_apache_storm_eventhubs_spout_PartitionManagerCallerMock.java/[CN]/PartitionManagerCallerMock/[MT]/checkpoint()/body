@@ -1,0 +1,4 @@
+{
+  pm.checkpoint();
+  return stateStore.readData(statePath);
+}

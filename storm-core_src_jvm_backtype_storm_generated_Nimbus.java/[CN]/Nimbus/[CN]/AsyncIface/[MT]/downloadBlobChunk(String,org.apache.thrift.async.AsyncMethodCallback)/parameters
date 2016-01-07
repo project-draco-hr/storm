@@ -1,0 +1,2 @@
+String session
+org.apache.thrift.async.AsyncMethodCallback resultHandler

@@ -1,3 +1,0 @@
-def emitDirect(task, *args, **kwargs):
-    kwargs['directTask'] = task
-    __emit(*args, **kwargs)

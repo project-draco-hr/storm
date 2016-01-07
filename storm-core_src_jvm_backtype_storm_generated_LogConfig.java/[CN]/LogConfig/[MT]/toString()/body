@@ -1,0 +1,16 @@
+{
+  StringBuilder sb=new StringBuilder("LogConfig(");
+  boolean first=true;
+  if (is_set_named_logger_level()) {
+    sb.append("named_logger_level:");
+    if (this.named_logger_level == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.named_logger_level);
+    }
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}

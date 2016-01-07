@@ -1,0 +1,28 @@
+{
+  final Set<Integer> eventsScanned=new HashSet<>();
+  EvictionPolicy<Integer> evictionPolicy=new WatermarkTimeEvictionPolicy<Integer>(20,5){
+    @Override public Action evict(    Event<Integer> event){
+      eventsScanned.add(event.get());
+      return super.evict(event);
+    }
+  }
+;
+  windowManager.setEvictionPolicy(evictionPolicy);
+  windowManager.setTriggerPolicy(new WatermarkTimeTriggerPolicy<Integer>(10,windowManager,evictionPolicy,windowManager));
+  windowManager.add(1,603);
+  windowManager.add(2,605);
+  windowManager.add(3,607);
+  windowManager.add(4,618);
+  windowManager.add(5,626);
+  windowManager.add(6,629);
+  windowManager.add(7,636);
+  windowManager.add(8,637);
+  windowManager.add(9,638);
+  windowManager.add(10,639);
+  windowManager.add(new WaterMarkEvent<Integer>(631));
+  assertEquals(3,listener.allOnActivationEvents.size());
+  assertEquals(seq(1,3),listener.allOnActivationEvents.get(0));
+  assertEquals(seq(1,4),listener.allOnActivationEvents.get(1));
+  assertEquals(Arrays.asList(4,5,6),listener.allOnActivationEvents.get(2));
+  assertEquals(new HashSet<>(seq(1,7)),eventsScanned);
+}

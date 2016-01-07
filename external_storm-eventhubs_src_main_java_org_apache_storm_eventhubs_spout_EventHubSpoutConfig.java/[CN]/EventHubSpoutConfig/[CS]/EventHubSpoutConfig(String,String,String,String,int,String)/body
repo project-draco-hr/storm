@@ -1,0 +1,4 @@
+{
+  this(username,password,namespace,entityPath,partitionCount);
+  setZkConnectionString(zkConnectionString);
+}

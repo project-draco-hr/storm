@@ -1,0 +1,5 @@
+{
+  this(username,password,namespace,entityPath,partitionCount,zkConnectionString,checkpointIntervalInSeconds,receiverCredits);
+  setMaxPendingMsgsPerPartition(maxPendingMsgsPerPartition);
+  setEnqueueTimeFilter(enqueueTimeFilter);
+}

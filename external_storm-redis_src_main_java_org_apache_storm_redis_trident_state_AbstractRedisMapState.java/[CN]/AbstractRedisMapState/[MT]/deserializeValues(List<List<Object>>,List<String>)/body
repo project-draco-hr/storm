@@ -1,0 +1,12 @@
+{
+  List<T> result=new ArrayList<T>(keys.size());
+  for (  String value : values) {
+    if (value != null) {
+      result.add((T)getSerializer().deserialize(value.getBytes()));
+    }
+ else {
+      result.add(null);
+    }
+  }
+  return result;
+}

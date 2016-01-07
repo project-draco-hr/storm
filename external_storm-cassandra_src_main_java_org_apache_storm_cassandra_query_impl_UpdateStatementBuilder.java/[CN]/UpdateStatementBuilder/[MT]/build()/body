@@ -1,0 +1,14 @@
+{
+  return new SimpleCQLStatementTupleMapper(){
+    @Override public Statement map(    ITuple tuple){
+      Update stmt=QueryBuilder.update(keyspace,table);
+      for (      Map.Entry<String,Object> entry : valuesMapper.map(tuple).entrySet())       stmt.with(set(entry.getKey(),entry.getValue()));
+      for (      Clause clause : clausesMapper.map(tuple))       stmt.where(clause);
+      if (hasIfClauses())       for (      Clause clause : onlyIfClausesMapper.map(tuple)) {
+        stmt.onlyIf(clause);
+      }
+      return stmt;
+    }
+  }
+;
+}

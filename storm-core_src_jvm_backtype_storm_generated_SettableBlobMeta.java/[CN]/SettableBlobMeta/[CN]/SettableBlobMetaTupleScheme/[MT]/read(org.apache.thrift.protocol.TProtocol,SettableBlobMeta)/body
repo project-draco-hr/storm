@@ -1,0 +1,19 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+{
+    org.apache.thrift.protocol.TList _list493=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+    struct.acl=new ArrayList<AccessControl>(_list493.size);
+    AccessControl _elem494;
+    for (int _i495=0; _i495 < _list493.size; ++_i495) {
+      _elem494=new AccessControl();
+      _elem494.read(iprot);
+      struct.acl.add(_elem494);
+    }
+  }
+  struct.set_acl_isSet(true);
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+    struct.replication_factor=iprot.readI32();
+    struct.set_replication_factor_isSet(true);
+  }
+}

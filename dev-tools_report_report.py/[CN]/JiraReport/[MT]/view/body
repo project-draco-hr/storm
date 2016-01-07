@@ -1,0 +1,5 @@
+def view(self, excluded):
+    issues_view = dict(self.issues)
+    for key in excluded:
+        issues_view.pop(key, None)
+    return issues_view

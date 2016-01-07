@@ -6,7 +6,7 @@ try:
     import json
 except ImportError:
     import simplejson as json
-githubUser = re.compile('Git[Hh]ub user ([\\w-]+)')
-githubPull = re.compile('https://github.com/[^/\\s]+/[^/\\s]+/pull/[0-9]+')
-hasVote = re.compile('\\s+([-+][01])\\s*')
-isDiff = re.compile('--- End diff --')
+github_user = re.compile('Git[Hh]ub user ([\\w-]+)')
+github_pull = re.compile('https://github.com/[^/\\s]+/[^/\\s]+/pull/[0-9]+')
+has_vote = re.compile('\\s+([-+][01])\\s*')
+is_diff = re.compile('--- End diff --')

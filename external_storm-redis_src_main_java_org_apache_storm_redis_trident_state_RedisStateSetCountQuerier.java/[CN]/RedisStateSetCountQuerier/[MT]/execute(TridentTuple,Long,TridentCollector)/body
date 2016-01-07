@@ -1,4 +1,0 @@
-{
-  String key=this.tupleMapper.getKeyFromTridentTuple(tuple);
-  collector.emit(new Values(key,s));
-}

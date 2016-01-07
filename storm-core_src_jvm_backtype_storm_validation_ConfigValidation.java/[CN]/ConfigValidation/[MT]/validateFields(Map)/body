@@ -1,0 +1,3 @@
+{
+  validateFields(conf,CONFIG_CLASS);
+}

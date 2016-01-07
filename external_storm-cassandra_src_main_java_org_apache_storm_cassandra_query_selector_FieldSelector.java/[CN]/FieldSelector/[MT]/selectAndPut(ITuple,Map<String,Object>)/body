@@ -1,0 +1,3 @@
+{
+  values.put(as != null ? as : field,isNow ? UUIDs.timeBased() : t.getValueByField(field));
+}

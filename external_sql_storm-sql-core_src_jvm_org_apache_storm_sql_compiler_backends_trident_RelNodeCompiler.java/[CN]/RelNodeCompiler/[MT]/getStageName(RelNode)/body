@@ -1,0 +1,3 @@
+{
+  return n.getClass().getSimpleName().toUpperCase() + "_" + n.getId();
+}

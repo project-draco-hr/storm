@@ -1,0 +1,4 @@
+def updateBlobReplication(self, key, replication):
+    '\n    Parameters:\n     - key\n     - replication\n    '
+    self.send_updateBlobReplication(key, replication)
+    return self.recv_updateBlobReplication()

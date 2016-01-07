@@ -1,0 +1,11 @@
+{
+  this();
+  this.host=host;
+  this.port=port;
+  set_port_isSet(true);
+  this.uptime_secs=uptime_secs;
+  set_uptime_secs_isSet(true);
+  this.isLeader=isLeader;
+  set_isLeader_isSet(true);
+  this.version=version;
+}

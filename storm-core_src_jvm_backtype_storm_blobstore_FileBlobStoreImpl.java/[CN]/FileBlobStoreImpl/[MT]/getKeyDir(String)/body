@@ -1,0 +1,6 @@
+{
+  String hash=String.valueOf(Math.abs((long)key.hashCode()) % BUCKETS);
+  File ret=new File(new File(fullPath,hash),key);
+  LOG.debug("{} Looking for {} in {}",new Object[]{fullPath,key,hash});
+  return ret;
+}

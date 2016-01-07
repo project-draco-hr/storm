@@ -1,0 +1,16 @@
+{
+  IntegerValidator validator=new IntegerValidator();
+  Object[] passCases={null,1000,Integer.MAX_VALUE};
+  for (  Object value : passCases) {
+    validator.validateField("test",value);
+  }
+  Object[] failCases={1.34,new Long(Integer.MAX_VALUE) + 1};
+  for (  Object value : failCases) {
+    try {
+      validator.validateField("test",value);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+}

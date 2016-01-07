@@ -1,0 +1,7 @@
+{
+  MessageId mid=(MessageId)messageId;
+  String pid=mid.getPartitionId();
+  String offset=mid.getOffset();
+  emittedOffset.append(pid + "_" + offset+ ",");
+  return null;
+}

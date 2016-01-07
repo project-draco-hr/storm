@@ -1,6 +1,0 @@
-def getPriority(self):
-    ret = ''
-    pri = self.fields['priority']
-    if (pri != None):
-        ret = pri['name']
-    return mstr(ret)

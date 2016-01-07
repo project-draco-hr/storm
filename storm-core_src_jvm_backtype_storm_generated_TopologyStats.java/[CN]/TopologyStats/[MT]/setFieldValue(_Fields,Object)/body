@@ -1,0 +1,44 @@
+{
+switch (field) {
+case WINDOW_TO_EMITTED:
+    if (value == null) {
+      unset_window_to_emitted();
+    }
+ else {
+      set_window_to_emitted((Map<String,Long>)value);
+    }
+  break;
+case WINDOW_TO_TRANSFERRED:
+if (value == null) {
+  unset_window_to_transferred();
+}
+ else {
+  set_window_to_transferred((Map<String,Long>)value);
+}
+break;
+case WINDOW_TO_COMPLETE_LATENCIES_MS:
+if (value == null) {
+unset_window_to_complete_latencies_ms();
+}
+ else {
+set_window_to_complete_latencies_ms((Map<String,Double>)value);
+}
+break;
+case WINDOW_TO_ACKED:
+if (value == null) {
+unset_window_to_acked();
+}
+ else {
+set_window_to_acked((Map<String,Long>)value);
+}
+break;
+case WINDOW_TO_FAILED:
+if (value == null) {
+unset_window_to_failed();
+}
+ else {
+set_window_to_failed((Map<String,Long>)value);
+}
+break;
+}
+}

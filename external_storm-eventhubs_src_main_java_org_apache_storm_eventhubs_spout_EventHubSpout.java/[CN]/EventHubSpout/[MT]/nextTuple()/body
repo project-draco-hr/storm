@@ -1,0 +1,24 @@
+{
+  EventData eventData=null;
+  List<IPartitionManager> partitionManagers=partitionCoordinator.getMyPartitionManagers();
+  for (int i=0; i < partitionManagers.size(); i++) {
+    currentPartitionIndex=(currentPartitionIndex + 1) % partitionManagers.size();
+    IPartitionManager partitionManager=partitionManagers.get(currentPartitionIndex);
+    if (partitionManager == null) {
+      throw new RuntimeException("partitionManager doesn't exist.");
+    }
+    eventData=partitionManager.receive();
+    if (eventData != null) {
+      break;
+    }
+  }
+  if (eventData != null) {
+    MessageId messageId=eventData.getMessageId();
+    Message message=eventData.getMessage();
+    List<Object> tuples=scheme.deserialize(message);
+    if (tuples != null) {
+      collector.emit(tuples,messageId);
+    }
+  }
+  checkpointIfNeeded();
+}

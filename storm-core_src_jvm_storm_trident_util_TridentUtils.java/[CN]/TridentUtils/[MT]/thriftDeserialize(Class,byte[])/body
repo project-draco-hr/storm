@@ -1,15 +1,3 @@
 {
-  try {
-    T ret=(T)c.newInstance();
-    TDeserializer des=threadDes.get();
-    if (des == null) {
-      des=new TDeserializer();
-      threadDes.set(des);
-    }
-    des.deserialize((TBase)ret,b);
-    return ret;
-  }
- catch (  Exception e) {
-    throw new RuntimeException(e);
-  }
+  return Utils.thriftDeserialize(c,b);
 }

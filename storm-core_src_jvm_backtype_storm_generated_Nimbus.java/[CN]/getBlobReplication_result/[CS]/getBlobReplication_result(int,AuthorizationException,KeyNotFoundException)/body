@@ -1,0 +1,7 @@
+{
+  this();
+  this.success=success;
+  set_success_isSet(true);
+  this.aze=aze;
+  this.knf=knf;
+}

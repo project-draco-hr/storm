@@ -1,0 +1,18 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case HOST:
+    return is_set_host();
+case PORT:
+  return is_set_port();
+case UPTIME_SECS:
+return is_set_uptime_secs();
+case IS_LEADER:
+return is_set_isLeader();
+case VERSION:
+return is_set_version();
+}
+throw new IllegalStateException();
+}

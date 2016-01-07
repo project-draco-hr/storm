@@ -1,0 +1,11 @@
+{
+  Class<? extends BaseBeanFactory> clazz=this.getClass();
+  try {
+    BaseBeanFactory factory=clazz.newInstance();
+    factory.setStormContext(this.context);
+    return factory;
+  }
+ catch (  IllegalAccessException|InstantiationException e) {
+    throw new RuntimeException("Cannot create a new instance of " + clazz.getSimpleName(),e);
+  }
+}

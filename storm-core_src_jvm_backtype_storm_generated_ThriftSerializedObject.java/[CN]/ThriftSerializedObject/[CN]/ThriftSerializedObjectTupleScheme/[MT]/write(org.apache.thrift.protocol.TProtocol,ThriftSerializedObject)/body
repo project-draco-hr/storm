@@ -1,0 +1,5 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.name);
+  oprot.writeBinary(struct.bits);
+}

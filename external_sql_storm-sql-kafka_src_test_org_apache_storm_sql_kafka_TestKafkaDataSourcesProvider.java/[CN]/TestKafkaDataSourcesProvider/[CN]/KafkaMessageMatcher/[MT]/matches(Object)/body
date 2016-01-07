@@ -1,0 +1,9 @@
+{
+  ProducerRecord<Object,ByteBuffer> m=(ProducerRecord<Object,ByteBuffer>)o;
+  if (m.key() != tuple.get(PRIMARY_INDEX)) {
+    return false;
+  }
+  ByteBuffer buf=m.value();
+  ByteBuffer b=SERIALIZER.write(tuple.getValues(),null);
+  return b.equals(buf);
+}

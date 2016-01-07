@@ -1,0 +1,6 @@
+{
+  if (boltMsgCapacity <= 0) {
+    throw new IllegalArgumentException();
+  }
+  this.boltMsgQueue=new LinkedBlockingQueue<>(boltMsgCapacity);
+}

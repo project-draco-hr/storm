@@ -4,7 +4,7 @@
   FinishCondition finish=new FinishCondition();
   finish.msgId=msgId;
   List<Integer> tasks=_collector.emit(_stream,new ConsList(batchId,values));
-  Set<Integer> outTasksSet=new HashSet<Integer>(tasks);
+  Set<Integer> outTasksSet=new HashSet<>(tasks);
   for (  Integer t : _outputTasks) {
     int count=0;
     if (outTasksSet.contains(t)) {

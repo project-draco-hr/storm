@@ -1,0 +1,7 @@
+{
+  for (  BoltDef def : context.getTopologyDef().getBolts()) {
+    Class clazz=Class.forName(def.getClassName());
+    Object bolt=buildObject(def,context);
+    context.addBolt(def.getId(),bolt);
+  }
+}

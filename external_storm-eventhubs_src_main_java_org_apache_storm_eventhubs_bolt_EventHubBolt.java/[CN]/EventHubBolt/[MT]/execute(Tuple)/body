@@ -1,0 +1,10 @@
+{
+  try {
+    sender.send(boltConfig.getEventDataFormat().serialize(tuple));
+    collector.ack(tuple);
+  }
+ catch (  EventHubException ex) {
+    logger.error(ex.getMessage());
+    collector.fail(tuple);
+  }
+}

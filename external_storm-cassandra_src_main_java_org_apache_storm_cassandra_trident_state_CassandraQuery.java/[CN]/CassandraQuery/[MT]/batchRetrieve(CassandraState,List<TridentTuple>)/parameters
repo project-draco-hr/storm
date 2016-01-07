@@ -1,0 +1,2 @@
+CassandraState state
+List<TridentTuple> tridentTuples

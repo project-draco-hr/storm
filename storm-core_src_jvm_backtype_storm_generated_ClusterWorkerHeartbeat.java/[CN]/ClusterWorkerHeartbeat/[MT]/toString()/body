@@ -22,6 +22,10 @@
   sb.append("time_secs:");
   sb.append(this.time_secs);
   first=false;
+  if (!first)   sb.append(", ");
+  sb.append("uptime_secs:");
+  sb.append(this.uptime_secs);
+  first=false;
   sb.append(")");
   return sb.toString();
 }

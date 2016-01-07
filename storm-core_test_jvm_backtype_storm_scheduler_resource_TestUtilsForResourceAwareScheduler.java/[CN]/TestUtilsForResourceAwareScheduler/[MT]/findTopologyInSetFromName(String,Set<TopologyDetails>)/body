@@ -1,0 +1,9 @@
+{
+  TopologyDetails ret=null;
+  for (  TopologyDetails entry : set) {
+    if (entry.getName().equals(topoName)) {
+      ret=entry;
+    }
+  }
+  return ret;
+}

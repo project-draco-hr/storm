@@ -1,0 +1,4 @@
+{
+  if (instance != null)   return instance;
+  return instance=make(stormConf);
+}

@@ -1,0 +1,3 @@
+{
+  this(keyspace,null,mapper2TableName);
+}

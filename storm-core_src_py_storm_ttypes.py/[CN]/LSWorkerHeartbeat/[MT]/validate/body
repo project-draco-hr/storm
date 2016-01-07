@@ -1,0 +1,10 @@
+def validate(self):
+    if (self.time_secs is None):
+        raise TProtocol.TProtocolException(message='Required field time_secs is unset!')
+    if (self.topology_id is None):
+        raise TProtocol.TProtocolException(message='Required field topology_id is unset!')
+    if (self.executors is None):
+        raise TProtocol.TProtocolException(message='Required field executors is unset!')
+    if (self.port is None):
+        raise TProtocol.TProtocolException(message='Required field port is unset!')
+    return

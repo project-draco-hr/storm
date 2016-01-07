@@ -1,0 +1,7 @@
+{
+  TridentTopology topology=new TridentTopology();
+  TransactionalTridentEventHubSpout spout=new TransactionalTridentEventHubSpout(spoutConfig);
+  TridentState state=topology.newStream("stream-" + spoutConfig.getTopologyName(),spout).parallelismHint(spoutConfig.getPartitionCount()).aggregate(new Count(),new Fields("partial-count")).persistentAggregate(new MemoryMapState.Factory(),new Fields("partial-count"),new Sum(),new Fields("count"));
+  state.newValuesStream().each(new Fields("count"),new LoggingFilter("got count: ",10000));
+  return topology.build();
+}

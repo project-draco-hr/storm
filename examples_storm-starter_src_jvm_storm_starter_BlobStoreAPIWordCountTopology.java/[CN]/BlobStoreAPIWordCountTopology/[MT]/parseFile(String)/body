@@ -1,0 +1,13 @@
+{
+  File file=new File(fileName);
+  Set<String> wordSet=new HashSet<>();
+  if (!file.exists()) {
+    return wordSet;
+  }
+  StringTokenizer tokens=new StringTokenizer(readFile(file).toString(),"\r\n");
+  while (tokens.hasMoreElements()) {
+    wordSet.add(tokens.nextToken());
+  }
+  LOG.debug("parseFile {}",wordSet);
+  return wordSet;
+}

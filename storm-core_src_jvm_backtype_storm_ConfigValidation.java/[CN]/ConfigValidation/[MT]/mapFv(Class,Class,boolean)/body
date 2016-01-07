@@ -1,3 +1,0 @@
-{
-  return mapFv(fv(key,false),fv(val,false),nullAllowed);
-}

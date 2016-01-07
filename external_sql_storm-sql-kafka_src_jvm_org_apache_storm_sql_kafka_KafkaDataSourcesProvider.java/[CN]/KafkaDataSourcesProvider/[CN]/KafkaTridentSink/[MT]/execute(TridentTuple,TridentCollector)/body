@@ -1,0 +1,3 @@
+{
+  state.updateState(Collections.singletonList(tuple),collector);
+}

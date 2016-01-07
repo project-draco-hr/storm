@@ -1,0 +1,16 @@
+{
+  Map<String,Map<String,List<String>>> outputMap=new HashMap<>();
+  for (  Map.Entry<GlobalStreamId,Grouping> entry : this.getThisSources().entrySet()) {
+    String componentId=entry.getKey().get_componentId();
+    Set<String> streams=getComponentStreams(componentId);
+    for (    String stream : streams) {
+      Map<String,List<String>> streamFieldMap=outputMap.get(componentId);
+      if (streamFieldMap == null) {
+        streamFieldMap=new HashMap<>();
+        outputMap.put(componentId,streamFieldMap);
+      }
+      streamFieldMap.put(stream,getComponentOutputFields(componentId,stream).toList());
+    }
+  }
+  return outputMap;
+}

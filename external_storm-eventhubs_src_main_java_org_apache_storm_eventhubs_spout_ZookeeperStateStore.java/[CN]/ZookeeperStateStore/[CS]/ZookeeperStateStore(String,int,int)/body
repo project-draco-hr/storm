@@ -1,0 +1,10 @@
+{
+  if (connectionString == null) {
+    zookeeperConnectionString="localhost:2181";
+  }
+ else {
+    zookeeperConnectionString=connectionString;
+  }
+  RetryPolicy retryPolicy=new RetryNTimes(retries,retryInterval);
+  curatorFramework=CuratorFrameworkFactory.newClient(zookeeperConnectionString,retryPolicy);
+}

@@ -1,0 +1,5 @@
+{
+  deleteBlob_args args=new deleteBlob_args();
+  args.set_key(key);
+  sendBase("deleteBlob",args);
+}

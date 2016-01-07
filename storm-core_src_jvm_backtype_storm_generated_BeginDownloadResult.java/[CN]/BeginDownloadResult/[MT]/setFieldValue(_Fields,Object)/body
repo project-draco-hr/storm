@@ -1,0 +1,28 @@
+{
+switch (field) {
+case VERSION:
+    if (value == null) {
+      unset_version();
+    }
+ else {
+      set_version((Long)value);
+    }
+  break;
+case SESSION:
+if (value == null) {
+  unset_session();
+}
+ else {
+  set_session((String)value);
+}
+break;
+case DATA_SIZE:
+if (value == null) {
+unset_data_size();
+}
+ else {
+set_data_size((Long)value);
+}
+break;
+}
+}

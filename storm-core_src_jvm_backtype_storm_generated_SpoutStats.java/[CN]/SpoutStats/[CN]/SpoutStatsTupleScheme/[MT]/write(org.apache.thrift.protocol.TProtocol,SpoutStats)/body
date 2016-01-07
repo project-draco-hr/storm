@@ -2,39 +2,39 @@
   TTupleProtocol oprot=(TTupleProtocol)prot;
 {
     oprot.writeI32(struct.acked.size());
-    for (    Map.Entry<String,Map<String,Long>> _iter220 : struct.acked.entrySet()) {
-      oprot.writeString(_iter220.getKey());
+    for (    Map.Entry<String,Map<String,Long>> _iter246 : struct.acked.entrySet()) {
+      oprot.writeString(_iter246.getKey());
 {
-        oprot.writeI32(_iter220.getValue().size());
-        for (        Map.Entry<String,Long> _iter221 : _iter220.getValue().entrySet()) {
-          oprot.writeString(_iter221.getKey());
-          oprot.writeI64(_iter221.getValue());
+        oprot.writeI32(_iter246.getValue().size());
+        for (        Map.Entry<String,Long> _iter247 : _iter246.getValue().entrySet()) {
+          oprot.writeString(_iter247.getKey());
+          oprot.writeI64(_iter247.getValue());
         }
       }
     }
   }
 {
     oprot.writeI32(struct.failed.size());
-    for (    Map.Entry<String,Map<String,Long>> _iter222 : struct.failed.entrySet()) {
-      oprot.writeString(_iter222.getKey());
+    for (    Map.Entry<String,Map<String,Long>> _iter248 : struct.failed.entrySet()) {
+      oprot.writeString(_iter248.getKey());
 {
-        oprot.writeI32(_iter222.getValue().size());
-        for (        Map.Entry<String,Long> _iter223 : _iter222.getValue().entrySet()) {
-          oprot.writeString(_iter223.getKey());
-          oprot.writeI64(_iter223.getValue());
+        oprot.writeI32(_iter248.getValue().size());
+        for (        Map.Entry<String,Long> _iter249 : _iter248.getValue().entrySet()) {
+          oprot.writeString(_iter249.getKey());
+          oprot.writeI64(_iter249.getValue());
         }
       }
     }
   }
 {
     oprot.writeI32(struct.complete_ms_avg.size());
-    for (    Map.Entry<String,Map<String,Double>> _iter224 : struct.complete_ms_avg.entrySet()) {
-      oprot.writeString(_iter224.getKey());
+    for (    Map.Entry<String,Map<String,Double>> _iter250 : struct.complete_ms_avg.entrySet()) {
+      oprot.writeString(_iter250.getKey());
 {
-        oprot.writeI32(_iter224.getValue().size());
-        for (        Map.Entry<String,Double> _iter225 : _iter224.getValue().entrySet()) {
-          oprot.writeString(_iter225.getKey());
-          oprot.writeDouble(_iter225.getValue());
+        oprot.writeI32(_iter250.getValue().size());
+        for (        Map.Entry<String,Double> _iter251 : _iter250.getValue().entrySet()) {
+          oprot.writeString(_iter251.getKey());
+          oprot.writeDouble(_iter251.getValue());
         }
       }
     }

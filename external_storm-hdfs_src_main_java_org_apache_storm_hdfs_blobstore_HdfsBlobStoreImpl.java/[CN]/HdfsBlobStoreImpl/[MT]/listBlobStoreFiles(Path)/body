@@ -1,0 +1,15 @@
+{
+  ArrayList<BlobStoreFile> ret=new ArrayList<BlobStoreFile>();
+  FileStatus[] files=_fs.listStatus(new Path[]{path});
+  if (files != null) {
+    for (    FileStatus sub : files) {
+      try {
+        ret.add(new HdfsBlobStoreFile(sub.getPath().getParent(),sub.getPath().getName(),_hadoopConf));
+      }
+ catch (      IllegalArgumentException e) {
+        LOG.warn("Found an unexpected file in {} {}",path,sub.getPath().getName());
+      }
+    }
+  }
+  return ret.iterator();
+}

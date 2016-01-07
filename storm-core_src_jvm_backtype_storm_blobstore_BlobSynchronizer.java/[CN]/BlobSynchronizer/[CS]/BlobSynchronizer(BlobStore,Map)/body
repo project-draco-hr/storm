@@ -1,0 +1,4 @@
+{
+  this.blobStore=blobStore;
+  this.conf=conf;
+}

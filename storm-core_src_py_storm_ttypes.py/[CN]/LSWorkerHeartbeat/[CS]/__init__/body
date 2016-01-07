@@ -1,0 +1,5 @@
+def __init__(self, time_secs=None, topology_id=None, executors=None, port=None):
+    self.time_secs = time_secs
+    self.topology_id = topology_id
+    self.executors = executors
+    self.port = port

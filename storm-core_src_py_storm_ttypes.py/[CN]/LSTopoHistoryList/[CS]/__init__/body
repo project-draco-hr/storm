@@ -1,0 +1,2 @@
+def __init__(self, topo_history=None):
+    self.topo_history = topo_history

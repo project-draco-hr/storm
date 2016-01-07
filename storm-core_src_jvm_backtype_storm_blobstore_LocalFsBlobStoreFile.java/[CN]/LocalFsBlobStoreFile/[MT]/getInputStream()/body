@@ -1,0 +1,6 @@
+{
+  if (isTmp()) {
+    throw new IllegalStateException("Cannot read from a temporary part file.");
+  }
+  return new FileInputStream(_path);
+}

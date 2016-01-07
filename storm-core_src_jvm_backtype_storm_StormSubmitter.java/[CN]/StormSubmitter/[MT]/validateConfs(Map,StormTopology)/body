@@ -1,0 +1,4 @@
+{
+  ConfigValidation.validateFields(stormConf);
+  validateTopologyWorkerMaxHeapSizeMBConfigs(stormConf,topology);
+}

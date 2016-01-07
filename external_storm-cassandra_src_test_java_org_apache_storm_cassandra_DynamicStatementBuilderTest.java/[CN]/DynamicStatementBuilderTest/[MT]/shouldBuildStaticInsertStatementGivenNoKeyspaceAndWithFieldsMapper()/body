@@ -1,0 +1,3 @@
+{
+  executeStatementAndAssert(insertInto("temperature").values(with(fields("weather_station_id","event_time","temperature"))).build(),"INSERT INTO temperature(weather_station_id,event_time,temperature) VALUES ('1'," + NOW.getTime() + ",'0??C');");
+}

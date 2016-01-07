@@ -1,0 +1,15 @@
+{
+  ArrayList<LocalFsBlobStoreFile> ret=new ArrayList<LocalFsBlobStoreFile>();
+  File[] files=path.listFiles();
+  if (files != null) {
+    for (    File sub : files) {
+      try {
+        ret.add(new LocalFsBlobStoreFile(sub.getParentFile(),sub.getName()));
+      }
+ catch (      IllegalArgumentException e) {
+        LOG.warn("Found an unexpected file in {} {}",path,sub.getName());
+      }
+    }
+  }
+  return ret.iterator();
+}

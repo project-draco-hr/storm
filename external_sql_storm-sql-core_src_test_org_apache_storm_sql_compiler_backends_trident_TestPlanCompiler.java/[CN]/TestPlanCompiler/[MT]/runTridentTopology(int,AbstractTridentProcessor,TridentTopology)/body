@@ -1,0 +1,20 @@
+{
+  final Config conf=new Config();
+  conf.setMaxSpoutPending(20);
+  ILocalCluster cluster=new LocalCluster();
+  StormTopology stormTopo=topo.build();
+  try {
+    Utils.setClassLoaderForJavaDeSerialize(proc.getClass().getClassLoader());
+    cluster.submitTopology("storm-sql",conf,stormTopo);
+    waitForCompletion(1000 * 1000,new Callable<Boolean>(){
+      @Override public Boolean call() throws Exception {
+        return getCollectedValues().size() < expectedValueSize;
+      }
+    }
+);
+  }
+  finally {
+    Utils.resetClassLoaderForJavaDeSerialize();
+    cluster.shutdown();
+  }
+}

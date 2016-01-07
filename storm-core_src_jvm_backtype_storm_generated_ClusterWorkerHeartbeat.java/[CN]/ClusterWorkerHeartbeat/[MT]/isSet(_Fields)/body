@@ -9,6 +9,8 @@ case EXECUTOR_STATS:
   return is_set_executor_stats();
 case TIME_SECS:
 return is_set_time_secs();
+case UPTIME_SECS:
+return is_set_uptime_secs();
 }
 throw new IllegalStateException();
 }

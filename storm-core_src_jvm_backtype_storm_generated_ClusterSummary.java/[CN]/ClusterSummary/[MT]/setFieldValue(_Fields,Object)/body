@@ -24,5 +24,13 @@ unset_topologies();
 set_topologies((List<TopologySummary>)value);
 }
 break;
+case NIMBUSES:
+if (value == null) {
+unset_nimbuses();
+}
+ else {
+set_nimbuses((List<NimbusSummary>)value);
+}
+break;
 }
 }

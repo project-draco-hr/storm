@@ -1,0 +1,4 @@
+{
+  final int defArrListCpcty=10;
+  return (commitStgy instanceof CountBasedCommit) ? ((CountBasedCommit)commitStgy).getThreshold() : defArrListCpcty;
+}

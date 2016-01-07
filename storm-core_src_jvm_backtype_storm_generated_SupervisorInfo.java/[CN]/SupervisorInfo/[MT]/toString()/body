@@ -63,6 +63,28 @@
     sb.append(this.uptime_secs);
     first=false;
   }
+  if (is_set_version()) {
+    if (!first)     sb.append(", ");
+    sb.append("version:");
+    if (this.version == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.version);
+    }
+    first=false;
+  }
+  if (is_set_resources_map()) {
+    if (!first)     sb.append(", ");
+    sb.append("resources_map:");
+    if (this.resources_map == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.resources_map);
+    }
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

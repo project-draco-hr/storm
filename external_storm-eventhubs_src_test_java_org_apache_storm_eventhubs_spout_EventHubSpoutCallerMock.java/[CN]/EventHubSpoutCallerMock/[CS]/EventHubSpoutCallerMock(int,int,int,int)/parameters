@@ -1,0 +1,4 @@
+int totalPartitions
+int totalTasks
+int taskIndex
+int checkpointInterval

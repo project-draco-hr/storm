@@ -1,0 +1,4 @@
+{
+  set_bits(org.apache.thrift.TBaseHelper.rightSize(bits));
+  return bits == null ? null : bits.array();
+}

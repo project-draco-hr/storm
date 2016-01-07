@@ -1,0 +1,5 @@
+{
+  SimpleClient client=getWorkerBean(SimpleClient.class,config);
+  if (client.isClose())   client=getWorkerBean(SimpleClient.class,config,true);
+  return client;
+}

@@ -1,0 +1,5 @@
+{
+  Channel channel=ctx.getChannel();
+  client.channelConnected(channel);
+  LOG.info("Connection established from {} to {}",channel.getLocalAddress(),channel.getRemoteAddress());
+}

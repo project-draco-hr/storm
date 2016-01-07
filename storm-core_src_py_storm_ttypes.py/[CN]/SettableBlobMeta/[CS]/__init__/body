@@ -1,0 +1,3 @@
+def __init__(self, acl=None, replication_factor=None):
+    self.acl = acl
+    self.replication_factor = replication_factor

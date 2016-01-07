@@ -1,0 +1,6 @@
+{
+  List<String> stateInfoList=new ArrayList<String>();
+  stateInfoList.add("nimbus1:8000-2");
+  stateInfoList.add("nimbus-1:8000-4");
+  assertTrue("Failed to get the latest version",BlobStoreUtils.getLatestSequenceNumber(stateInfoList) == 4);
+}

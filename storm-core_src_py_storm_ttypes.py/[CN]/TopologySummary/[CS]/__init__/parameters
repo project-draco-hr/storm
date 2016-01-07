@@ -8,3 +8,10 @@ uptime_secs
 status
 sched_status
 owner
+replication_count
+requested_memonheap
+requested_memoffheap
+requested_cpu
+assigned_memonheap
+assigned_memoffheap
+assigned_cpu

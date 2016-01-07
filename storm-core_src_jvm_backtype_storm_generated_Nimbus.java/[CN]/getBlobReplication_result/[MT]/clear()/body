@@ -1,0 +1,6 @@
+{
+  set_success_isSet(false);
+  this.success=0;
+  this.aze=null;
+  this.knf=null;
+}

@@ -1,0 +1,24 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.LIST):
+                self.topo_history = []
+                (_etype625, _size622) = iprot.readListBegin()
+                for _i626 in xrange(_size622):
+                    _elem627 = LSTopoHistory()
+                    _elem627.read(iprot)
+                    self.topo_history.append(_elem627)
+                iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

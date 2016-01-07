@@ -1,0 +1,4 @@
+def __init__(self, jira_repo=None, github_repo=None):
+    ReportBuilder.__init__(self, jira_repo, github_repo)
+    self.report = CompleteReport()
+    self.build()

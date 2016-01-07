@@ -1,0 +1,4 @@
+{
+  BlobStore store=initHdfs("/storm/blobstoreReplication");
+  testReplication("/storm/blobstoreReplication/test",store);
+}

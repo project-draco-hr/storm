@@ -1,0 +1,7 @@
+{
+  if (_modTime == null) {
+    FileSystem fs=_path.getFileSystem(_hadoopConf);
+    _modTime=fs.getFileStatus(_path).getModificationTime();
+  }
+  return _modTime;
+}

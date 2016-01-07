@@ -1,0 +1,4 @@
+{
+  this.part=part;
+  this.out=part.getOutputStream();
+}

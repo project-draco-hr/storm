@@ -1,0 +1,6 @@
+String userName
+String password
+String namespace
+String targetFqnAddress
+String entityPath
+boolean partitionMode

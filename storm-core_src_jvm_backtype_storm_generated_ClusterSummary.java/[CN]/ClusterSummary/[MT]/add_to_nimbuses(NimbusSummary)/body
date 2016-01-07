@@ -1,0 +1,6 @@
+{
+  if (this.nimbuses == null) {
+    this.nimbuses=new ArrayList<NimbusSummary>();
+  }
+  this.nimbuses.add(elem);
+}

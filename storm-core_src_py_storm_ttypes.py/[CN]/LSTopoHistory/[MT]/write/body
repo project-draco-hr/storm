@@ -1,0 +1,29 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('LSTopoHistory')
+    if (self.topology_id is not None):
+        oprot.writeFieldBegin('topology_id', TType.STRING, 1)
+        oprot.writeString(self.topology_id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.time_stamp is not None):
+        oprot.writeFieldBegin('time_stamp', TType.I64, 2)
+        oprot.writeI64(self.time_stamp)
+        oprot.writeFieldEnd()
+    if (self.users is not None):
+        oprot.writeFieldBegin('users', TType.LIST, 3)
+        oprot.writeListBegin(TType.STRING, len(self.users))
+        for iter620 in self.users:
+            oprot.writeString(iter620.encode('utf-8'))
+        oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    if (self.groups is not None):
+        oprot.writeFieldBegin('groups', TType.LIST, 4)
+        oprot.writeListBegin(TType.STRING, len(self.groups))
+        for iter621 in self.groups:
+            oprot.writeString(iter621.encode('utf-8'))
+        oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

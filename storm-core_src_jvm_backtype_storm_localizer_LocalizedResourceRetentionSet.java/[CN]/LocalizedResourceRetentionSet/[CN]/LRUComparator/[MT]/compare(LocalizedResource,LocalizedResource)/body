@@ -1,0 +1,7 @@
+{
+  long ret=r1.getLastAccessTime() - r2.getLastAccessTime();
+  if (0 == ret) {
+    return System.identityHashCode(r1) - System.identityHashCode(r2);
+  }
+  return ret > 0 ? 1 : -1;
+}

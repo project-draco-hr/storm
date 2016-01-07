@@ -1,2 +1,2 @@
 def merged(self):
-    return (self.data['merged_at'] != None)
+    return (self.data['merged_at'] is not None)

@@ -1,0 +1,4 @@
+INimbus nimbus
+Map<String,SupervisorDetails> supervisors
+Map<String,SchedulerAssignmentImpl> assignments
+Map storm_conf

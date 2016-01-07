@@ -1,0 +1,4 @@
+{
+  windowConfiguration.put(Config.TOPOLOGY_BOLTS_WINDOW_LENGTH_COUNT,count.value);
+  return this;
+}

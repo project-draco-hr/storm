@@ -1,0 +1,16 @@
+{
+  if (isDisconnected()) {
+    LOG.info("Connected to cluster: {}",cluster.getClusterName());
+    for (    Host host : getAllHosts())     LOG.info("Datacenter: {}; Host: {}; Rack: {}",host.getDatacenter(),host.getAddress(),host.getRack());
+    LOG.info("Connect to cluster using keyspace %s",keyspace);
+    session=cluster.connect(keyspace);
+  }
+ else {
+    LOG.warn("{} - Already connected to cluster: {}",getExecutorName(),cluster.getClusterName());
+  }
+  if (session.isClosed()) {
+    LOG.warn("Session has been closed - create new one!");
+    this.session=cluster.newSession();
+  }
+  return session;
+}

@@ -4,7 +4,7 @@
   this.options=options;
   this.keyFactory=options.keyFactory;
   if (this.keyFactory == null) {
-    this.keyFactory=new DefaultKeyFactory();
+    this.keyFactory=new KeyFactory.DefaultKeyFactory();
   }
   this.serializer=options.serializer;
   if (this.serializer == null) {

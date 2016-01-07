@@ -1,0 +1,3 @@
+{
+  return insertInto("weather","temperature").values(with(field("weather_station_id"),field("event_time").now(),field("temperature"))).build();
+}

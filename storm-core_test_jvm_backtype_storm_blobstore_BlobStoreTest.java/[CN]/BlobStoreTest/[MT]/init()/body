@@ -1,0 +1,5 @@
+{
+  initializeConfigs();
+  baseFile=new File("target/blob-store-test-" + UUID.randomUUID());
+  base=baseFile.toURI();
+}

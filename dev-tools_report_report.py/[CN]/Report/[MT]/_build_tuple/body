@@ -1,0 +1,8 @@
+@staticmethod
+def _build_tuple(contents, padding=''):
+    if (padding is not ''):
+        out = []
+        for i in range(len(contents)):
+            out += ([(padding[1:] + str(contents[i]))] if (padding[0] is '-') else [(str(contents[i]) + padding)])
+        return tuple(out)
+    return contents

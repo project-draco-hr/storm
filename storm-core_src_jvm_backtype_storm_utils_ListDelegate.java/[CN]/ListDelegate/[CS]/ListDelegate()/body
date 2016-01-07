@@ -1,3 +1,3 @@
 {
-  _delegate=new ArrayList<Object>();
+  _delegate=new ArrayList<>();
 }

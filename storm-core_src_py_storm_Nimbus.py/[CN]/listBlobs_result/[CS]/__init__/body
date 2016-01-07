@@ -1,0 +1,2 @@
+def __init__(self, success=None):
+    self.success = success

@@ -1,0 +1,5 @@
+{
+  if (!is_set_acl()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'acl' is unset! Struct:" + toString());
+  }
+}

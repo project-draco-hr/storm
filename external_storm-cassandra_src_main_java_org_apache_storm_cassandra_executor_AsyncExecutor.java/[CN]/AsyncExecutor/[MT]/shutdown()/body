@@ -1,0 +1,6 @@
+{
+  if (!executorService.isShutdown()) {
+    LOG.info("shutting down async handler executor");
+    this.executorService.shutdownNow();
+  }
+}

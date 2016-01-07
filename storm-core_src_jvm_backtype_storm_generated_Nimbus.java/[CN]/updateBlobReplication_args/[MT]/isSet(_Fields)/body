@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case KEY:
+    return is_set_key();
+case REPLICATION:
+  return is_set_replication();
+}
+throw new IllegalStateException();
+}

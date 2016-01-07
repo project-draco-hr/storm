@@ -1,5 +1,5 @@
 {
-  List<String> ret=new ArrayList<String>();
+  List<String> ret=new ArrayList<>();
   for (  ValuePointer p : index) {
     ret.add(p.field);
   }

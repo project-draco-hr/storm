@@ -1,0 +1,5 @@
+{
+  this._localrsrcFiles=new ConcurrentHashMap<String,LocalizedResource>();
+  this._localrsrcArchives=new ConcurrentHashMap<String,LocalizedResource>();
+  _user=user;
+}

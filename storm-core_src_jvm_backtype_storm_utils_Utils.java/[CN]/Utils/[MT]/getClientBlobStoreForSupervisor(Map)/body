@@ -1,0 +1,5 @@
+{
+  ClientBlobStore store=(ClientBlobStore)newInstance((String)conf.get(Config.SUPERVISOR_BLOBSTORE));
+  store.prepare(conf);
+  return store;
+}

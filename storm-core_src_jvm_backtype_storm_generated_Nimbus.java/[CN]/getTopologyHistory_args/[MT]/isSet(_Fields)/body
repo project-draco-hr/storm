@@ -1,0 +1,10 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case USER:
+    return is_set_user();
+}
+throw new IllegalStateException();
+}

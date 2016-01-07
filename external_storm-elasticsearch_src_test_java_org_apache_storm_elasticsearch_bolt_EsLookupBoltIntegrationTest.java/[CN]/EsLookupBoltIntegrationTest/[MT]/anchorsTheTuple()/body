@@ -1,0 +1,5 @@
+{
+  bolt.execute(tuple);
+  verify(outputCollector).emit(anchor.capture(),emmitedValues.capture());
+  assertThat(anchor.getValue(),is(tuple));
+}

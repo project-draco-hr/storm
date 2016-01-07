@@ -1,0 +1,4 @@
+{
+  this.emitted=emitted;
+  set_emitted_isSet(true);
+}

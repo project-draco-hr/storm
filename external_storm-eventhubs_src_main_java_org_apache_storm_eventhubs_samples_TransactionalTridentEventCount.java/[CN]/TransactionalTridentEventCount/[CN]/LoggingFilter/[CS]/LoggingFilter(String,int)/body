@@ -1,0 +1,5 @@
+{
+  this.prefix=prefix;
+  this.logIntervalMs=logIntervalMs;
+  lastTime=System.nanoTime();
+}

@@ -1,0 +1,5 @@
+{
+  super(windowLength);
+  referenceTime=0L;
+  this.lag=lag;
+}

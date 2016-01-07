@@ -1,0 +1,4 @@
+{
+  bolt=createBolt(esConfig());
+  bolt.prepare(config,null,outputCollector);
+}

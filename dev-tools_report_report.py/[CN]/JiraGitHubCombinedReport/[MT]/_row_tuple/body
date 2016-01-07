@@ -1,0 +1,5 @@
+def _row_tuple(self, pull_idx):
+    pull = self._pull_request(pull_idx)
+    jira_id = self._jira_id(pull_idx)
+    jira_issue = self._jira_issue(jira_id)
+    return (jira_id, mstr(pull), jira_issue.get_trimmed_summary(), daydiff(Report.now, jira_issue.get_created()), daydiff(Report.now, pull.created_at()), daydiff(Report.now, jira_issue.get_updated()), daydiff(Report.now, pull.updated_at()), jira_issue.get_status(), pull.user())

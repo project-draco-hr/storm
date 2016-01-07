@@ -1,0 +1,5 @@
+{
+  this.cluster=cluster;
+  this.userMap=userMap;
+  this.nodes=nodes;
+}

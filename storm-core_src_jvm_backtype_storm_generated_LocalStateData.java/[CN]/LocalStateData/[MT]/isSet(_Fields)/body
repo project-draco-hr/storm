@@ -1,0 +1,10 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case SERIALIZED_PARTS:
+    return is_set_serialized_parts();
+}
+throw new IllegalStateException();
+}

@@ -1,0 +1,16 @@
+{
+  List<Object> fieldContents=new ArrayList<Object>();
+  for (  Section section : message.getPayload()) {
+    if (section instanceof Data) {
+      Data data=(Data)section;
+      fieldContents.add(new String(data.getValue().getArray()));
+      return fieldContents;
+    }
+ else     if (section instanceof AmqpValue) {
+      AmqpValue amqpValue=(AmqpValue)section;
+      fieldContents.add(amqpValue.getValue().toString());
+      return fieldContents;
+    }
+  }
+  return null;
+}

@@ -1,0 +1,35 @@
+{
+  if (parameterTypes.length != args.size()) {
+    LOG.warn("parameter types were the wrong size");
+    return false;
+  }
+  for (int i=0; i < args.size(); i++) {
+    Object obj=args.get(i);
+    Class paramType=parameterTypes[i];
+    Class objectType=obj.getClass();
+    LOG.debug("Comparing parameter class {} to object class {} to see if assignment is possible.",paramType,objectType);
+    if (paramType.equals(objectType)) {
+      LOG.debug("Yes, they are the same class.");
+    }
+ else     if (paramType.isAssignableFrom(objectType)) {
+      LOG.debug("Yes, assignment is possible.");
+    }
+ else     if (isPrimitiveBoolean(paramType) && Boolean.class.isAssignableFrom(objectType)) {
+      LOG.debug("Yes, assignment is possible.");
+    }
+ else     if (isPrimitiveNumber(paramType) && Number.class.isAssignableFrom(objectType)) {
+      LOG.debug("Yes, assignment is possible.");
+    }
+ else     if (paramType.isEnum() && objectType.equals(String.class)) {
+      LOG.debug("Yes, will convert a String to enum");
+    }
+ else     if (paramType.isArray() && List.class.isAssignableFrom(objectType)) {
+      LOG.debug("Assignment is possible if we convert a List to an array.");
+      LOG.debug("Array Type: {}, List type: {}",paramType.getComponentType(),((List)obj).get(0).getClass());
+    }
+ else {
+      return false;
+    }
+  }
+  return true;
+}

@@ -1,0 +1,5 @@
+{
+  if (stream == null || stream.length() == 0)   throw new IllegalArgumentException("'stream' should not be null");
+  this.outputsFields.put(stream,fields);
+  return this;
+}

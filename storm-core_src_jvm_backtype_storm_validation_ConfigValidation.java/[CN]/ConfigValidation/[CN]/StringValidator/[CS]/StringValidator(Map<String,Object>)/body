@@ -1,0 +1,6 @@
+{
+  this.acceptedValues=new HashSet<String>(Arrays.asList((String[])params.get(ConfigValidationAnnotations.ValidatorParams.ACCEPTED_VALUES)));
+  if (this.acceptedValues.isEmpty() || (this.acceptedValues.size() == 1 && this.acceptedValues.contains(""))) {
+    this.acceptedValues=null;
+  }
+}

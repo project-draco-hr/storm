@@ -1,0 +1,11 @@
+{
+  try {
+    Class<?> clazz=Class.forName(obj.get_name());
+    TBase instance=(TBase)clazz.newInstance();
+    td.deserialize(instance,obj.get_bits());
+    return instance;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

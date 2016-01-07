@@ -1,0 +1,3 @@
+{
+  this.type=(Class)params.get(ConfigValidationAnnotations.ValidatorParams.TYPE);
+}

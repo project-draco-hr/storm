@@ -1,0 +1,3 @@
+{
+  this(tupleMapper,new CassandraContext());
+}

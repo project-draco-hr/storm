@@ -1,0 +1,6 @@
+{
+  checkReady();
+  deleteBlob_call method_call=new deleteBlob_call(key,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

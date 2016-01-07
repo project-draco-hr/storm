@@ -1,10 +1,9 @@
 {
   ChannelBufferOutputStream bout=new ChannelBufferOutputStream(ChannelBuffers.directBuffer(encodeLength()));
-  short identifier=-500;
   int payload_len=0;
   if (token != null)   payload_len=token.length;
-  bout.writeShort((short)identifier);
-  bout.writeInt((int)payload_len);
+  bout.writeShort(IDENTIFIER);
+  bout.writeInt(payload_len);
   if (payload_len > 0) {
     bout.write(token);
   }

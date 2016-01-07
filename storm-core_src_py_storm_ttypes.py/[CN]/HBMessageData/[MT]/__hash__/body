@@ -1,0 +1,9 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.path))
+    value = ((value * 31) ^ hash(self.pulse))
+    value = ((value * 31) ^ hash(self.boolval))
+    value = ((value * 31) ^ hash(self.records))
+    value = ((value * 31) ^ hash(self.nodes))
+    value = ((value * 31) ^ hash(self.message_blob))
+    return value

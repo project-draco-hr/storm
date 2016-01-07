@@ -1,0 +1,4 @@
+{
+  this.requested_cpu=requested_cpu;
+  set_requested_cpu_isSet(true);
+}

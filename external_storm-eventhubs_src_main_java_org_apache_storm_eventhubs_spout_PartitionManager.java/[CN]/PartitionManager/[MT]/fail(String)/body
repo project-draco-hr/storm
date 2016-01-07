@@ -1,0 +1,5 @@
+{
+  logger.warn("fail on " + offset);
+  EventData eventData=pending.remove(offset);
+  toResend.add(eventData);
+}

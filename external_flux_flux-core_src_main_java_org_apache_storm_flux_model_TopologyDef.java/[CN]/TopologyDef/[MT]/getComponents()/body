@@ -1,0 +1,5 @@
+{
+  ArrayList<BeanDef> retval=new ArrayList<BeanDef>();
+  retval.addAll(this.componentMap.values());
+  return retval;
+}

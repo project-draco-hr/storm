@@ -1,0 +1,12 @@
+{
+  String wordName=input.getStringByField("wordName");
+  String countStr=input.getStringByField("count");
+  if (RANDOM.nextInt(1000) > 995) {
+    int count=0;
+    if (countStr != null) {
+      count=Integer.parseInt(countStr);
+    }
+    LOG.info("Lookup result - word : " + wordName + " / count : "+ count);
+  }
+  collector.ack(input);
+}

@@ -1,0 +1,6 @@
+{
+  this.spout=new FixedBatchSpout(new Fields("sentence"),20,new Values("one two"),new Values("two three"),new Values("three four"),new Values("four five"),new Values("five six"));
+  TridentTopology trident=new TridentTopology();
+  trident.newStream("wordcount",spout).name("sentence").parallelismHint(1).shuffle().each(new Fields("sentence"),new Split(),new Fields("word")).parallelismHint(1).groupBy(new Fields("word")).persistentAggregate(new MemoryMapState.Factory(),new Count(),new Fields("count")).parallelismHint(1);
+  return trident.build();
+}

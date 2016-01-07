@@ -1,0 +1,7 @@
+{
+  Object o=conf.get(key);
+  if (o == null) {
+    throw new IllegalArgumentException("No '" + key + "' value found in configuration!");
+  }
+  return (T)o;
+}

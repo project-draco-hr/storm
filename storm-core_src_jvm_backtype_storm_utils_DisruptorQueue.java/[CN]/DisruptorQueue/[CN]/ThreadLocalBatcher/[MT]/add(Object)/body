@@ -1,0 +1,32 @@
+{
+  _currentBatch.add(obj);
+  _overflowCount.incrementAndGet();
+  if (_enableBackpressure && _cb != null && (_metrics.population() + _overflowCount.get()) >= _highWaterMark) {
+    try {
+      if (!_throttleOn) {
+        _cb.highWaterMark();
+        _throttleOn=true;
+      }
+    }
+ catch (    Exception e) {
+      throw new RuntimeException("Exception during calling highWaterMark callback!",e);
+    }
+  }
+  if (_currentBatch.size() >= _inputBatchSize) {
+    boolean flushed=false;
+    if (_overflow.isEmpty()) {
+      try {
+        publishDirect(_currentBatch,false);
+        _overflowCount.addAndGet(0 - _currentBatch.size());
+        _currentBatch.clear();
+        flushed=true;
+      }
+ catch (      InsufficientCapacityException e) {
+      }
+    }
+    if (!flushed) {
+      _overflow.add(_currentBatch);
+      _currentBatch=new ArrayList<Object>(_inputBatchSize);
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  addResourcesForSet(set.getLocalFilesIterator(),set);
+  addResourcesForSet(set.getLocalArchivesIterator(),set);
+}

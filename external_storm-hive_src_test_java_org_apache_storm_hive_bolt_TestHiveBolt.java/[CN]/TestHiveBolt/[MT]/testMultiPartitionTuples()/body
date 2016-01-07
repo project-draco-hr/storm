@@ -8,11 +8,13 @@
   String city="San Jose";
   String state="CA";
   checkRecordCountInTable(tblName,dbName,0);
+  Set<Tuple> tupleSet=new HashSet<Tuple>();
   for (int i=0; i < 100; i++) {
     Tuple tuple=generateTestTuple(id,msg,city,state);
+    tupleSet.add(tuple);
     bolt.execute(tuple);
-    verify(collector).ack(tuple);
   }
   checkRecordCountInTable(tblName,dbName,100);
+  for (  Tuple t : tupleSet)   verify(collector).ack(t);
   bolt.cleanup();
 }

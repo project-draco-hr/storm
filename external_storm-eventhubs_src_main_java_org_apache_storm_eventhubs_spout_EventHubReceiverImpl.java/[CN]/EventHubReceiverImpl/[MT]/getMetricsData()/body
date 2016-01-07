@@ -1,0 +1,7 @@
+{
+  Map ret=new HashMap();
+  ret.put(partitionId + "/receiveApiLatencyMean",receiveApiLatencyMean.getValueAndReset());
+  ret.put(partitionId + "/receiveApiCallCount",receiveApiCallCount.getValueAndReset());
+  ret.put(partitionId + "/receiveMessageCount",receiveMessageCount.getValueAndReset());
+  return ret;
+}

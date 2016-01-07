@@ -1,0 +1,28 @@
+{
+  Session session=cassandraCQLUnit.session;
+  String[] stationIds={"station-1","station-2","station-3"};
+  for (int i=1; i < 4; i++) {
+    ResultSet resultSet=session.execute("INSERT INTO weather.station(id, name) VALUES(?, ?)",stationIds[i - 1],"Foo-Station-" + new Random().nextInt());
+  }
+  ResultSet rows=cassandraCQLUnit.session.execute("SELECT * FROM weather.station");
+  for (  Row row : rows) {
+    System.out.println("####### row = " + row);
+  }
+  WeatherBatchSpout weatherBatchSpout=new WeatherBatchSpout(new Fields("weather_station_id","temperature","event_time"),3,stationIds);
+  TridentTopology topology=new TridentTopology();
+  Stream stream=topology.newStream("cassandra-trident-stream",weatherBatchSpout);
+  CassandraStateFactory insertValuesStateFactory=getInsertTemperatureStateFactory();
+  CassandraStateFactory selectWeatherStationStateFactory=getSelectWeatherStationStateFactory();
+  TridentState selectState=topology.newStaticState(selectWeatherStationStateFactory);
+  stream=stream.stateQuery(selectState,new Fields("weather_station_id"),new CassandraQuery(),new Fields("name"));
+  stream=stream.each(new Fields("name"),new PrintFunction(),new Fields("name_x"));
+  stream.partitionPersist(insertValuesStateFactory,new Fields("weather_station_id","name","event_time","temperature"),new CassandraStateUpdater(),new Fields());
+  StormTopology stormTopology=topology.build();
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology("wordCounter",getConfig(),stormTopology);
+  Thread.sleep(30 * 1000);
+  rows=cassandraCQLUnit.session.execute("SELECT * FROM weather.temperature");
+  Assert.assertTrue(rows.iterator().hasNext());
+  cluster.killTopology("wordCounter");
+  cluster.shutdown();
+}

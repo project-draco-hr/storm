@@ -24,5 +24,11 @@
     if (!(this_present_executor_start_time_secs && that_present_executor_start_time_secs))     return false;
     if (!this.executor_start_time_secs.equals(that.executor_start_time_secs))     return false;
   }
+  boolean this_present_worker_resources=true && this.is_set_worker_resources();
+  boolean that_present_worker_resources=true && that.is_set_worker_resources();
+  if (this_present_worker_resources || that_present_worker_resources) {
+    if (!(this_present_worker_resources && that_present_worker_resources))     return false;
+    if (!this.worker_resources.equals(that.worker_resources))     return false;
+  }
   return true;
 }

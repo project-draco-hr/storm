@@ -1,0 +1,7 @@
+{
+  int lastComparison=org.apache.thrift.TBaseHelper.compareTo(getSetField(),other.getSetField());
+  if (lastComparison == 0) {
+    return org.apache.thrift.TBaseHelper.compareTo(getFieldValue(),other.getFieldValue());
+  }
+  return lastComparison;
+}

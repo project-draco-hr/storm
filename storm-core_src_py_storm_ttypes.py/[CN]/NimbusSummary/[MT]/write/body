@@ -1,0 +1,27 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('NimbusSummary')
+    if (self.host is not None):
+        oprot.writeFieldBegin('host', TType.STRING, 1)
+        oprot.writeString(self.host.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.port is not None):
+        oprot.writeFieldBegin('port', TType.I32, 2)
+        oprot.writeI32(self.port)
+        oprot.writeFieldEnd()
+    if (self.uptime_secs is not None):
+        oprot.writeFieldBegin('uptime_secs', TType.I32, 3)
+        oprot.writeI32(self.uptime_secs)
+        oprot.writeFieldEnd()
+    if (self.isLeader is not None):
+        oprot.writeFieldBegin('isLeader', TType.BOOL, 4)
+        oprot.writeBool(self.isLeader)
+        oprot.writeFieldEnd()
+    if (self.version is not None):
+        oprot.writeFieldBegin('version', TType.STRING, 5)
+        oprot.writeString(self.version.encode('utf-8'))
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

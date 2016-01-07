@@ -1,0 +1,6 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout("SolrFieldsSpout",new SolrFieldsSpout());
+  builder.setBolt("SolrUpdateBolt",new SolrUpdateBolt(getSolrConfig(),getSolrMapper(),getSolrCommitStgy())).shuffleGrouping("SolrFieldsSpout");
+  return builder.createTopology();
+}

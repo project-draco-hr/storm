@@ -10,14 +10,18 @@ def write(self, oprot):
     if (self.executor_stats is not None):
         oprot.writeFieldBegin('executor_stats', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRUCT, TType.STRUCT, len(self.executor_stats))
-        for (kiter388, viter389) in self.executor_stats.items():
-            kiter388.write(oprot)
-            viter389.write(oprot)
+        for (kiter565, viter566) in self.executor_stats.items():
+            kiter565.write(oprot)
+            viter566.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.time_secs is not None):
         oprot.writeFieldBegin('time_secs', TType.I32, 3)
         oprot.writeI32(self.time_secs)
+        oprot.writeFieldEnd()
+    if (self.uptime_secs is not None):
+        oprot.writeFieldBegin('uptime_secs', TType.I32, 4)
+        oprot.writeI32(self.uptime_secs)
         oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

@@ -1,0 +1,7 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_named_logger_level=true && (is_set_named_logger_level());
+  list.add(present_named_logger_level);
+  if (present_named_logger_level)   list.add(named_logger_level);
+  return list.hashCode();
+}

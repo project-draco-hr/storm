@@ -1,0 +1,20 @@
+{
+switch (field) {
+case KEY:
+    if (value == null) {
+      unset_key();
+    }
+ else {
+      set_key((String)value);
+    }
+  break;
+case META:
+if (value == null) {
+  unset_meta();
+}
+ else {
+  set_meta((SettableBlobMeta)value);
+}
+break;
+}
+}

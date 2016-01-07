@@ -1,0 +1,3 @@
+{
+  new NullPointerTester().setDefault(EsConfig.class,esConfig()).testAllPublicConstructors(getBoltClass());
+}

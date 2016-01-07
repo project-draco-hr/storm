@@ -1,0 +1,29 @@
+{
+  Map<String,Object> conf=new HashMap<String,Object>();
+  Collection<Object> passCases=new LinkedList<Object>();
+  Collection<Object> failCases=new LinkedList<Object>();
+  Integer[] test1={1233,1234,1235};
+  Integer[] test2={1233};
+  passCases.add(Arrays.asList(test1));
+  passCases.add(Arrays.asList(test2));
+  String[] test3={"1233","1234","1235"};
+  Integer[] test4={1233,1233,1235};
+  failCases.add(test3);
+  failCases.add(test4);
+  failCases.add(null);
+  failCases.add("1234");
+  failCases.add(1234);
+  for (  Object value : passCases) {
+    conf.put(Config.SUPERVISOR_SLOTS_PORTS,value);
+    ConfigValidation.validateFields(conf);
+  }
+  for (  Object value : failCases) {
+    try {
+      conf.put(Config.SUPERVISOR_SLOTS_PORTS,value);
+      ConfigValidation.validateFields(conf);
+      Assert.fail("Expected Exception not Thrown for value: " + value);
+    }
+ catch (    IllegalArgumentException Ex) {
+    }
+  }
+}

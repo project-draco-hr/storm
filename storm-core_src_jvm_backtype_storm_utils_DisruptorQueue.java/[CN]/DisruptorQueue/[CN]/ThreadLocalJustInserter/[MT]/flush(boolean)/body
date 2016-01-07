@@ -1,0 +1,20 @@
+{
+  if (block) {
+    _flushLock.lock();
+  }
+ else   if (!_flushLock.tryLock()) {
+    return;
+  }
+  try {
+    while (!_overflow.isEmpty()) {
+      publishDirectSingle(_overflow.peek(),block);
+      _overflowCount.addAndGet(-1);
+      _overflow.poll();
+    }
+  }
+ catch (  InsufficientCapacityException e) {
+  }
+ finally {
+    _flushLock.unlock();
+  }
+}

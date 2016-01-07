@@ -1,0 +1,123 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.STRING):
+                self.component_id = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 2):
+            if (ftype == TType.I32):
+                self.component_type = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 3):
+            if (ftype == TType.STRING):
+                self.topology_id = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 4):
+            if (ftype == TType.STRING):
+                self.topology_name = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 5):
+            if (ftype == TType.I32):
+                self.num_executors = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 6):
+            if (ftype == TType.I32):
+                self.num_tasks = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 7):
+            if (ftype == TType.MAP):
+                self.window_to_stats = {}
+                (_ktype379, _vtype380, _size378) = iprot.readMapBegin()
+                for _i382 in xrange(_size378):
+                    _key383 = iprot.readString().decode('utf-8')
+                    _val384 = ComponentAggregateStats()
+                    _val384.read(iprot)
+                    self.window_to_stats[_key383] = _val384
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 8):
+            if (ftype == TType.MAP):
+                self.gsid_to_input_stats = {}
+                (_ktype386, _vtype387, _size385) = iprot.readMapBegin()
+                for _i389 in xrange(_size385):
+                    _key390 = GlobalStreamId()
+                    _key390.read(iprot)
+                    _val391 = ComponentAggregateStats()
+                    _val391.read(iprot)
+                    self.gsid_to_input_stats[_key390] = _val391
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 9):
+            if (ftype == TType.MAP):
+                self.sid_to_output_stats = {}
+                (_ktype393, _vtype394, _size392) = iprot.readMapBegin()
+                for _i396 in xrange(_size392):
+                    _key397 = iprot.readString().decode('utf-8')
+                    _val398 = ComponentAggregateStats()
+                    _val398.read(iprot)
+                    self.sid_to_output_stats[_key397] = _val398
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 10):
+            if (ftype == TType.LIST):
+                self.exec_stats = []
+                (_etype402, _size399) = iprot.readListBegin()
+                for _i403 in xrange(_size399):
+                    _elem404 = ExecutorAggregateStats()
+                    _elem404.read(iprot)
+                    self.exec_stats.append(_elem404)
+                iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 11):
+            if (ftype == TType.LIST):
+                self.errors = []
+                (_etype408, _size405) = iprot.readListBegin()
+                for _i409 in xrange(_size405):
+                    _elem410 = ErrorInfo()
+                    _elem410.read(iprot)
+                    self.errors.append(_elem410)
+                iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 12):
+            if (ftype == TType.STRING):
+                self.eventlog_host = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        elif (fid == 13):
+            if (ftype == TType.I32):
+                self.eventlog_port = iprot.readI32()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 14):
+            if (ftype == TType.STRUCT):
+                self.debug_options = DebugOptions()
+                self.debug_options.read(iprot)
+            else:
+                iprot.skip(ftype)
+        elif (fid == 15):
+            if (ftype == TType.STRING):
+                self.topology_status = iprot.readString().decode('utf-8')
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

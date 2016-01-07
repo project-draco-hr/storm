@@ -1,3 +1,0 @@
-def emit(*args, **kwargs):
-    __emit(*args, **kwargs)
-    return readTaskIds()

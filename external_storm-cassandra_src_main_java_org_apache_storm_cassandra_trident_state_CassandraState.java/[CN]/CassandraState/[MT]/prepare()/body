@@ -1,0 +1,5 @@
+{
+  Preconditions.checkNotNull(options.cqlStatementTupleMapper,"CassandraState.Options should have cqlStatementTupleMapper");
+  client=options.clientProvider.getClient(conf);
+  session=client.connect();
+}

@@ -1,7 +1,7 @@
 {
 switch (field) {
 case TIME_SECS:
-    return Long.valueOf(get_time_secs());
+    return get_time_secs();
 case HOSTNAME:
   return get_hostname();
 case ASSIGNMENT_ID:
@@ -13,7 +13,11 @@ return get_meta();
 case SCHEDULER_META:
 return get_scheduler_meta();
 case UPTIME_SECS:
-return Long.valueOf(get_uptime_secs());
+return get_uptime_secs();
+case VERSION:
+return get_version();
+case RESOURCES_MAP:
+return get_resources_map();
 }
 throw new IllegalStateException();
 }

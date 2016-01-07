@@ -1,0 +1,5 @@
+{
+  this(username,password,namespace,entityPath,partitionCount,zkConnectionString);
+  setCheckpointIntervalInSeconds(checkpointIntervalInSeconds);
+  setReceiverCredits(receiverCredits);
+}

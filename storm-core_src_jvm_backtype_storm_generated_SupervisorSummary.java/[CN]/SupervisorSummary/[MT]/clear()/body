@@ -7,4 +7,10 @@
   set_num_used_workers_isSet(false);
   this.num_used_workers=0;
   this.supervisor_id=null;
+  this.version="VERSION_NOT_PROVIDED";
+  this.total_resources=null;
+  set_used_mem_isSet(false);
+  this.used_mem=0.0;
+  set_used_cpu_isSet(false);
+  this.used_cpu=0.0;
 }

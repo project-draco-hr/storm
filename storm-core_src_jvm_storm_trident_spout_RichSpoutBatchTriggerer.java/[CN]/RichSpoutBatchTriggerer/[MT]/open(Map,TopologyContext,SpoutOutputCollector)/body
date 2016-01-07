@@ -1,6 +1,6 @@
 {
   _delegate.open(conf,context,new SpoutOutputCollector(new StreamOverrideCollector(collector)));
-  _outputTasks=new ArrayList<Integer>();
+  _outputTasks=new ArrayList<>();
   for (  String component : Utils.get(context.getThisTargets(),_coordStream,new HashMap<String,Grouping>()).keySet()) {
     _outputTasks.addAll(context.getComponentTasks(component));
   }

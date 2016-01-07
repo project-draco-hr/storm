@@ -1,0 +1,3 @@
+{
+  return (this.pulseIds == null) ? null : this.pulseIds.iterator();
+}

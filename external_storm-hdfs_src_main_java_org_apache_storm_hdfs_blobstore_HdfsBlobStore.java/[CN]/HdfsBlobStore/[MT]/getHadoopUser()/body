@@ -1,0 +1,15 @@
+{
+  Subject subj;
+  try {
+    subj=UserGroupInformation.getCurrentUser().doAs(new PrivilegedAction<Subject>(){
+      @Override public Subject run(){
+        return Subject.getSubject(AccessController.getContext());
+      }
+    }
+);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Error creating subject and logging user in!",e);
+  }
+  return subj;
+}

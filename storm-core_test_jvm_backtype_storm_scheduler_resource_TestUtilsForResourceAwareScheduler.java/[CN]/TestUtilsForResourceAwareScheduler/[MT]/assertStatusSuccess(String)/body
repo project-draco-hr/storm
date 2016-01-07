@@ -1,0 +1,3 @@
+{
+  return isContain(status,"fully") && isContain(status,"scheduled") && !isContain(status,"unsuccessful");
+}

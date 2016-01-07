@@ -1,0 +1,5 @@
+{
+  HBMessageData x=new HBMessageData();
+  x.set_path(value);
+  return x;
+}

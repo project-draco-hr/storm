@@ -1,0 +1,3 @@
+{
+  return tridentTopology.newDRPCStream("words",drpc).each(new Fields("args"),new Split(),new Fields("word")).groupBy(new Fields("word")).stateQuery(state,new Fields("word"),new MapGet(),new Fields("count")).each(new Fields("count"),new FilterNull()).project(new Fields("word","count"));
+}

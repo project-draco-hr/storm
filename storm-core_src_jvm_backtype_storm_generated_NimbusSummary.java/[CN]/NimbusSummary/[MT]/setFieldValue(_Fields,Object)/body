@@ -1,0 +1,44 @@
+{
+switch (field) {
+case HOST:
+    if (value == null) {
+      unset_host();
+    }
+ else {
+      set_host((String)value);
+    }
+  break;
+case PORT:
+if (value == null) {
+  unset_port();
+}
+ else {
+  set_port((Integer)value);
+}
+break;
+case UPTIME_SECS:
+if (value == null) {
+unset_uptime_secs();
+}
+ else {
+set_uptime_secs((Integer)value);
+}
+break;
+case IS_LEADER:
+if (value == null) {
+unset_isLeader();
+}
+ else {
+set_isLeader((Boolean)value);
+}
+break;
+case VERSION:
+if (value == null) {
+unset_version();
+}
+ else {
+set_version((String)value);
+}
+break;
+}
+}

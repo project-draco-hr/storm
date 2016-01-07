@@ -1,0 +1,12 @@
+{
+switch (field) {
+case APPROVED_WORKERS:
+    if (value == null) {
+      unset_approved_workers();
+    }
+ else {
+      set_approved_workers((Map<String,Integer>)value);
+    }
+  break;
+}
+}

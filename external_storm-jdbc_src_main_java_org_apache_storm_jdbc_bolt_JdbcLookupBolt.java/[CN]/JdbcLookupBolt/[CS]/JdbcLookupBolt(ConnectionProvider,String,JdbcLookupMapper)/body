@@ -1,0 +1,7 @@
+{
+  super(connectionProvider);
+  Validate.notNull(selectQuery);
+  Validate.notNull(jdbcLookupMapper);
+  this.selectQuery=selectQuery;
+  this.jdbcLookupMapper=jdbcLookupMapper;
+}

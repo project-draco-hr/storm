@@ -1,0 +1,5 @@
+{
+  Preconditions.checkNotNull(cluster,"Cluster cannot be 'null");
+  this.cluster=cluster;
+  this.keyspace=keyspace;
+}

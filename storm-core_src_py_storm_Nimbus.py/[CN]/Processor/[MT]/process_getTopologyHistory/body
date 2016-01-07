@@ -1,0 +1,21 @@
+def process_getTopologyHistory(self, seqid, iprot, oprot):
+    args = getTopologyHistory_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getTopologyHistory_result()
+    try:
+        result.success = self._handler.getTopologyHistory(args.user)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
+    except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
+        result.aze = aze
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('getTopologyHistory', msg_type, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

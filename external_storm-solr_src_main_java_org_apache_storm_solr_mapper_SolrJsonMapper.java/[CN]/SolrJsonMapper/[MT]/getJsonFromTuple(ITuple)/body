@@ -1,0 +1,10 @@
+{
+  String json="";
+  if (tuple.contains(jsonTupleField)) {
+    json=doGetJson(tuple.getValueByField(jsonTupleField));
+  }
+ else {
+    throw new SolrMapperException("Tuple does not contain JSON object");
+  }
+  return json;
+}

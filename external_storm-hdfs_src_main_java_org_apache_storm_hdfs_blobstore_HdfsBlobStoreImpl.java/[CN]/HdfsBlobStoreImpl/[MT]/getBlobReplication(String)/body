@@ -1,0 +1,5 @@
+{
+  Path path=getKeyDir(key);
+  Path dest=new Path(path,BLOBSTORE_DATA);
+  return _fs.getFileStatus(dest).getReplication();
+}

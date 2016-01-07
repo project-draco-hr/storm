@@ -1,0 +1,4 @@
+{
+  this.as=as;
+  return this;
+}

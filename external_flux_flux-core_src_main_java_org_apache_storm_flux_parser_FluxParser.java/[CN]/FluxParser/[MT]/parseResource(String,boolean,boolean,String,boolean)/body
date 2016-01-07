@@ -1,0 +1,6 @@
+{
+  InputStream in=FluxParser.class.getResourceAsStream(resource);
+  TopologyDef topology=parseInputStream(in,dumpYaml,processIncludes,propertiesFile,envSub);
+  in.close();
+  return topology;
+}

@@ -1,0 +1,7 @@
+{
+  SyncPolicy fieldsSyncPolicy=new CountSyncPolicy(countSync);
+  FileRotationPolicy fieldsRotationPolicy=new FileSizeRotationPolicy(rotationSizeMB,FileSizeRotationPolicy.Units.MB);
+  FileNameFormat fieldsFileNameFormat=new DefaultFileNameFormat().withPath(testRoot);
+  SequenceFormat seqFormat=new DefaultSequenceFormat("key","value");
+  return new SequenceFileBolt().withFsUrl(nameNodeAddr).withFileNameFormat(fieldsFileNameFormat).withRotationPolicy(fieldsRotationPolicy).withSequenceFormat(seqFormat).withSyncPolicy(fieldsSyncPolicy);
+}

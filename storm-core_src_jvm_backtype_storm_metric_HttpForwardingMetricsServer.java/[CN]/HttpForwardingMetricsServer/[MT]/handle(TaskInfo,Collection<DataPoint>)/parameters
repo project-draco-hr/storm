@@ -1,0 +1,2 @@
+TaskInfo taskInfo
+Collection<DataPoint> dataPoints

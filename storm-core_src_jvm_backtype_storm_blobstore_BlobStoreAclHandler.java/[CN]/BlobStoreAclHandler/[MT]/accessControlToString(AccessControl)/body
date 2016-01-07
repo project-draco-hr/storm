@@ -1,0 +1,20 @@
+{
+  StringBuilder ret=new StringBuilder();
+switch (ac.get_type()) {
+case OTHER:
+    ret.append("o");
+  break;
+case USER:
+ret.append("u");
+break;
+default :
+throw new IllegalArgumentException("Don't know what a type of " + ac.get_type() + " means ");
+}
+ret.append(":");
+if (ac.is_set_name()) {
+ret.append(ac.get_name());
+}
+ret.append(":");
+ret.append(accessToString(ac.get_access()));
+return ret.toString();
+}

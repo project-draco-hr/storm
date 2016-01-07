@@ -1,0 +1,26 @@
+{
+  if (o == null) {
+    return;
+  }
+  SimpleTypeValidator.validateField(name,Map.class,o);
+  for (  Map.Entry<Object,Object> entry : ((Map<Object,Object>)o).entrySet()) {
+    for (    Class kv : keyValidators) {
+      Object keyValidator=kv.getConstructor().newInstance();
+      if (keyValidator instanceof Validator) {
+        ((Validator)keyValidator).validateField(name + " Map key",entry.getKey());
+      }
+ else {
+        LOG.warn("validator: {} cannot be used in MapEntryCustomValidator to validate keys.  Individual entry validators must a instance of Validator class",kv.getName());
+      }
+    }
+    for (    Class vv : valueValidators) {
+      Object valueValidator=vv.getConstructor().newInstance();
+      if (valueValidator instanceof Validator) {
+        ((Validator)valueValidator).validateField(name + " Map value",entry.getValue());
+      }
+ else {
+        LOG.warn("validator: {} cannot be used in MapEntryCustomValidator to validate values.  Individual entry validators must a instance of Validator class",vv.getName());
+      }
+    }
+  }
+}

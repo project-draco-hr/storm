@@ -1,0 +1,10 @@
+{
+  finishBlobUpload_result result=new finishBlobUpload_result();
+  try {
+    iface.finishBlobUpload(args.session);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}

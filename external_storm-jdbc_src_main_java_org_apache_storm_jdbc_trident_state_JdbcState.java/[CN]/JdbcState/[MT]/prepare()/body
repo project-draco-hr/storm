@@ -1,11 +1,10 @@
 {
-  Map<String,Object> conf=(Map<String,Object>)map.get(options.configKey);
-  Validate.notEmpty(conf,"Hikari configuration not found using key '" + options.configKey + "'");
+  options.connectionProvider.prepare();
   if (StringUtils.isBlank(options.insertQuery) && StringUtils.isBlank(options.tableName) && StringUtils.isBlank(options.selectQuery)) {
     throw new IllegalArgumentException("If you are trying to insert into DB you must supply either insertQuery or tableName." + "If you are attempting to user a query state you must supply a select query.");
   }
   if (options.queryTimeoutSecs == null) {
     options.queryTimeoutSecs=Integer.parseInt(map.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS).toString());
   }
-  this.jdbcClient=new JdbcClient(conf,options.queryTimeoutSecs);
+  this.jdbcClient=new JdbcClient(options.connectionProvider,options.queryTimeoutSecs);
 }

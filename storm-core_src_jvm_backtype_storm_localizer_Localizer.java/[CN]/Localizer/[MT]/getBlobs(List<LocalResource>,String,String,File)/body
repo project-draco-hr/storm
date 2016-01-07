@@ -1,0 +1,68 @@
+{
+  LocalizedResourceSet newSet=new LocalizedResourceSet(user);
+  LocalizedResourceSet lrsrcSet=_userRsrc.putIfAbsent(user,newSet);
+  if (lrsrcSet == null) {
+    lrsrcSet=newSet;
+  }
+  ArrayList<LocalizedResource> results=new ArrayList<>();
+  ArrayList<Callable<LocalizedResource>> downloads=new ArrayList<>();
+  ClientBlobStore blobstore=null;
+  try {
+    blobstore=getClientBlobStore();
+    for (    LocalResource localResource : localResources) {
+      String key=localResource.getBlobName();
+      boolean uncompress=localResource.shouldUncompress();
+      LocalizedResource lrsrc=lrsrcSet.get(key,localResource.shouldUncompress());
+      boolean isUpdate=false;
+      if ((lrsrc != null) && (lrsrc.isUncompressed() == localResource.shouldUncompress()) && (isLocalizedResourceDownloaded(lrsrc))) {
+        if (isLocalizedResourceUpToDate(lrsrc,blobstore)) {
+          LOG.debug("blob already exists: {}",key);
+          lrsrc.addReference(topo);
+          results.add(lrsrc);
+          continue;
+        }
+        LOG.debug("blob exists but isn't up to date: {}",key);
+        isUpdate=true;
+      }
+      LOG.debug("fetching blob: {}",key);
+      File downloadDir=getCacheDirForFiles(userFileDir);
+      File localFile=new File(downloadDir,key);
+      if (uncompress) {
+        downloadDir=getCacheDirForArchives(userFileDir);
+        localFile=new File(downloadDir,key);
+      }
+      downloadDir.mkdir();
+      downloads.add(new DownloadBlob(this,_conf,key,localFile,user,uncompress,isUpdate));
+    }
+  }
+  finally {
+    if (blobstore != null) {
+      blobstore.shutdown();
+    }
+  }
+  try {
+    List<Future<LocalizedResource>> futures=_execService.invokeAll(downloads);
+    for (    Future<LocalizedResource> futureRsrc : futures) {
+      LocalizedResource lrsrc=futureRsrc.get();
+      lrsrc.addReference(topo);
+      lrsrcSet.addResource(lrsrc.getKey(),lrsrc,lrsrc.isUncompressed());
+      results.add(lrsrc);
+    }
+  }
+ catch (  ExecutionException e) {
+    if (e.getCause() instanceof AuthorizationException)     throw (AuthorizationException)e.getCause();
+ else     if (e.getCause() instanceof KeyNotFoundException) {
+      throw (KeyNotFoundException)e.getCause();
+    }
+ else {
+      throw new IOException("Error getting blobs",e);
+    }
+  }
+catch (  RejectedExecutionException re) {
+    throw new IOException("RejectedExecutionException: ",re);
+  }
+catch (  InterruptedException ie) {
+    throw new IOException("Interrupted Exception",ie);
+  }
+  return results;
+}

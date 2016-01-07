@@ -1,0 +1,6 @@
+{
+  if (who == null) {
+    return _localSubject;
+  }
+  return who;
+}

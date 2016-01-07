@@ -1,0 +1,7 @@
+{
+  long time=0;
+  RateTracker rt=new RateTracker(10000,10,time);
+  rt.notify(10);
+  rt.forceRotate(10,1000l);
+  assertEquals(0.0,rt.reportRate(10000l),0.00001);
+}

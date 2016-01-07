@@ -1,0 +1,7 @@
+{
+  Map<String,Object> conf=new HashMap<String,Object>();
+  conf.put(Config.STORM_MESSAGING_NETTY_SOCKET_BACKLOG,5);
+  conf.put(Config.STORM_MESSAGING_NETTY_MIN_SLEEP_MS,500);
+  conf.put(Config.STORM_MESSAGING_NETTY_AUTHENTICATION,true);
+  ConfigValidation.validateFields(conf);
+}

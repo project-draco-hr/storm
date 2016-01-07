@@ -1,0 +1,26 @@
+{
+  Class clazz=Class.forName(def.getClassName());
+  Object obj=null;
+  if (def.hasConstructorArgs()) {
+    LOG.debug("Found constructor arguments in definition: " + def.getConstructorArgs().getClass().getName());
+    List<Object> cArgs=def.getConstructorArgs();
+    if (def.hasReferences()) {
+      cArgs=resolveReferences(cArgs,context);
+    }
+    Constructor con=findCompatibleConstructor(cArgs,clazz);
+    if (con != null) {
+      LOG.debug("Found something seemingly compatible, attempting invocation...");
+      obj=con.newInstance(getArgsWithListCoercian(cArgs,con.getParameterTypes()));
+    }
+ else {
+      String msg=String.format("Couldn't find a suitable constructor for class '%s' with arguments '%s'.",clazz.getName(),cArgs);
+      throw new IllegalArgumentException(msg);
+    }
+  }
+ else {
+    obj=clazz.newInstance();
+  }
+  applyProperties(def,obj,context);
+  invokeConfigMethods(def,obj,context);
+  return obj;
+}

@@ -1,0 +1,4 @@
+{
+  this.tickTupleInterval=interval;
+  return this;
+}
