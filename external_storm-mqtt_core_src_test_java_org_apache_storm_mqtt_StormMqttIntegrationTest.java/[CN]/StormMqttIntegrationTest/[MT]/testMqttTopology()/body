@@ -11,7 +11,7 @@
   byte[] qoses=connection.subscribe(topics);
   LocalCluster cluster=new LocalCluster();
   cluster.submitTopology("test",new Config(),buildMqttTopology());
-  System.out.println("topology started");
+  LOG.info("topology started");
   while (!spoutActivated) {
     Thread.sleep(500);
   }
@@ -22,8 +22,8 @@
   publisher.publish(new MqttMessage(TEST_TOPIC,"test".getBytes()));
   LOG.info("published message");
   Message message=connection.receive();
-  LOG.info("Message recieved on topic: " + message.getTopic());
-  LOG.info("Payload: " + new String(message.getPayload()));
+  LOG.info("Message recieved on topic: {}",message.getTopic());
+  LOG.info("Payload: {}",new String(message.getPayload()));
   message.ack();
   Assert.assertArrayEquals(message.getPayload(),RESULT_PAYLOAD.getBytes());
   Assert.assertEquals(message.getTopic(),RESULT_TOPIC);

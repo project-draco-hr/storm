@@ -6,7 +6,7 @@
   TestSpout spout=new TestSpout(new StringMessageMapper(),options);
   MqttBolt bolt=new MqttBolt(options,new MqttTupleMapper(){
     @Override public MqttMessage toMessage(    ITuple tuple){
-      LOG.info("Received: " + tuple);
+      LOG.info("Received: {}",tuple);
       return new MqttMessage(RESULT_TOPIC,RESULT_PAYLOAD.getBytes());
     }
   }
