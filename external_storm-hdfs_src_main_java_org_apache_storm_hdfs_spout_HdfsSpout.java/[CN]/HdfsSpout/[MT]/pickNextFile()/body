@@ -22,7 +22,7 @@
         continue;
       }
       LOG.info("Processing : {} ",file);
-      Path newFile=renameSelectedFile(file);
+      Path newFile=renameToInProgressFile(file);
       return createFileReader(newFile);
     }
     return null;

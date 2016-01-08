@@ -4,12 +4,6 @@
   retryList.clear();
   reader.close();
   reader=null;
-  try {
-    lock.release();
-    LOG.debug("Spout {} released FileLock. SpoutId = {}",lock.getLockFile(),spoutId);
-  }
- catch (  IOException e) {
-    LOG.error("Unable to delete lock file : " + this.lock.getLockFile() + " SpoutId ="+ spoutId,e);
-  }
+  releaseLockAndLog(lock,spoutId);
   lock=null;
 }
