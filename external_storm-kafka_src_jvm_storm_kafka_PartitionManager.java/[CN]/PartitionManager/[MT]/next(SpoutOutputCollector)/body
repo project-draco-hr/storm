@@ -3,32 +3,32 @@
     fill();
   }
   while (true) {
-    MessageAndRealOffset toEmit=_waitingToEmit.pollFirst();
+    MessageAndOffset toEmit=_waitingToEmit.pollFirst();
     if (toEmit == null) {
       return EmitState.NO_EMITTED;
     }
     Iterable<List<Object>> tups;
     if (_spoutConfig.scheme instanceof MessageMetadataSchemeAsMultiScheme) {
-      tups=KafkaUtils.generateTuples((MessageMetadataSchemeAsMultiScheme)_spoutConfig.scheme,toEmit.msg,_partition,toEmit.offset);
+      tups=KafkaUtils.generateTuples((MessageMetadataSchemeAsMultiScheme)_spoutConfig.scheme,toEmit.message(),_partition,toEmit.offset());
     }
  else {
-      tups=KafkaUtils.generateTuples(_spoutConfig,toEmit.msg,_partition.topic);
+      tups=KafkaUtils.generateTuples(_spoutConfig,toEmit.message(),_partition.topic);
     }
     if ((tups != null) && tups.iterator().hasNext()) {
       if (!Strings.isNullOrEmpty(_spoutConfig.outputStreamId)) {
         for (        List<Object> tup : tups) {
-          collector.emit(_spoutConfig.outputStreamId,tup,new KafkaMessageId(_partition,toEmit.offset));
+          collector.emit(_spoutConfig.topic,tup,new KafkaMessageId(_partition,toEmit.offset()));
         }
       }
  else {
         for (        List<Object> tup : tups) {
-          collector.emit(tup,new KafkaMessageId(_partition,toEmit.offset));
+          collector.emit(tup,new KafkaMessageId(_partition,toEmit.offset()));
         }
       }
       break;
     }
  else {
-      ack(toEmit.offset);
+      ack(toEmit.offset());
     }
   }
   if (!_waitingToEmit.isEmpty()) {

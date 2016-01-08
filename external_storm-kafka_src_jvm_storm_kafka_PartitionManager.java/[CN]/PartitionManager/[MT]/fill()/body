@@ -36,7 +36,7 @@
         if (!_pending.containsKey(cur_offset)) {
           _pending.put(cur_offset,System.currentTimeMillis());
         }
-        _waitingToEmit.add(new MessageAndRealOffset(msg.message(),cur_offset));
+        _waitingToEmit.add(msg);
         _emittedToOffset=Math.max(msg.nextOffset(),_emittedToOffset);
         if (_failedMsgRetryManager.shouldRetryMsg(cur_offset)) {
           this._failedMsgRetryManager.retryStarted(cur_offset);
