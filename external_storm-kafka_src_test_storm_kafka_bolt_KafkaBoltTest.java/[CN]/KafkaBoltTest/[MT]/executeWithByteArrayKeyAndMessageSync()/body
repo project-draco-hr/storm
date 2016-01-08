@@ -1,7 +1,7 @@
 {
   boolean async=false;
   boolean fireAndForget=false;
-  bolt=generateDefaultSerializerBolt(async,fireAndForget);
+  bolt=generateDefaultSerializerBolt(async,fireAndForget,null);
   String keyString="test-key";
   String messageString="test-message";
   byte[] key=keyString.getBytes();
