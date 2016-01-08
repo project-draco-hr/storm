@@ -3,17 +3,12 @@
     collector.ack(tuple);
   }
  else {
-    boolean forceCommit=false;
-    if (TupleUtils.isTick(tuple)) {
-      LOG.debug("TICK! forcing solr client commit");
-      collector.ack(tuple);
-      forceCommit=true;
-    }
- else {
+    final boolean isTickTuple=TupleUtils.isTick(tuple);
+    if (!isTickTuple) {
       toCommitTuples.add(tuple);
       commitStgy.update();
     }
-    if (forceCommit || commitStgy.commit()) {
+    if (isTickTuple || commitStgy.commit()) {
       solrClient.commit(solrMapper.getCollection());
       ackCommittedTuples();
     }
