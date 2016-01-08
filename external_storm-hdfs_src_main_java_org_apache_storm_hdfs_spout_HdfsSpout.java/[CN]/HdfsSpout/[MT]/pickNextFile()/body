@@ -21,9 +21,17 @@
         LOG.debug("Unable to get FileLock for {}, so skipping it.",file);
         continue;
       }
-      LOG.info("Processing : {} ",file);
-      Path newFile=renameToInProgressFile(file);
-      return createFileReader(newFile);
+      try {
+        Path newFile=renameToInProgressFile(file);
+        FileReader result=createFileReader(newFile);
+        LOG.info("Processing : {} ",file);
+        return result;
+      }
+ catch (      Exception e) {
+        LOG.error("Skipping file " + file,e);
+        releaseLockAndLog(lock,spoutId);
+        continue;
+      }
     }
     return null;
   }

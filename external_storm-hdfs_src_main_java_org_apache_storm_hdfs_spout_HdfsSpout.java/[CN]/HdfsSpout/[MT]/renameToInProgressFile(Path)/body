@@ -1,7 +1,12 @@
 {
   Path newFile=new Path(file.toString() + inprogress_suffix);
-  if (hdfs.rename(file,newFile)) {
-    return newFile;
+  try {
+    if (hdfs.rename(file,newFile)) {
+      return newFile;
+    }
+    throw new RenameException(file,newFile);
   }
-  throw new IOException("Rename of " + file + " to "+ newFile+ " failed");
+ catch (  IOException e) {
+    throw new RenameException(file,newFile,e);
+  }
 }

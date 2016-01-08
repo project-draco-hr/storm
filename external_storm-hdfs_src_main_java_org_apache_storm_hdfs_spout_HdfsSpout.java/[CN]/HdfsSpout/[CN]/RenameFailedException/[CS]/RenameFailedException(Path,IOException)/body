@@ -1,4 +1,0 @@
-{
-  super("Rename failed for file: " + file,e);
-  this.file=file;
-}
