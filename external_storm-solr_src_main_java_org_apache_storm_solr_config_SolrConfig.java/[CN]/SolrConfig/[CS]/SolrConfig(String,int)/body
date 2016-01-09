@@ -1,3 +1,4 @@
 {
+  this.zkHostString=zkHostString;
   this.tickTupleInterval=tickTupleInterval;
 }

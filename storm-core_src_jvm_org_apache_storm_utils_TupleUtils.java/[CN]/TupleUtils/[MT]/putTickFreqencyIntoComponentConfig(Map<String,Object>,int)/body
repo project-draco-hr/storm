@@ -1,0 +1,10 @@
+{
+  if (conf == null) {
+    conf=new Config();
+  }
+  if (tickFreqSecs > 0) {
+    LOG.info("Enabling tick tuple with interval [{}]",tickFreqSecs);
+    conf.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS,tickFreqSecs);
+  }
+  return conf;
+}
