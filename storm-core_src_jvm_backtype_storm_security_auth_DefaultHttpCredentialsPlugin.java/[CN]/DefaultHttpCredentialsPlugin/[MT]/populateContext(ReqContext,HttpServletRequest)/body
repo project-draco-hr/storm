@@ -8,6 +8,9 @@
     context.setRealPrincipal(new SingleUserPrincipal(userName));
     userName=doAsUser;
   }
+ else {
+    context.setRealPrincipal(null);
+  }
   Set<Principal> principals=new HashSet<>();
   if (userName != null) {
     Principal p=new SingleUserPrincipal(userName);
