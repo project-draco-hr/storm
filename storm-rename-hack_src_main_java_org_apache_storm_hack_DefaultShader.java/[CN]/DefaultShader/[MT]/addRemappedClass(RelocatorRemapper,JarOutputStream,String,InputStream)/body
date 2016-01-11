@@ -1,0 +1,49 @@
+{
+  LOG.debug("Remapping class... " + name);
+  if (!remapper.hasRelocators()) {
+    try {
+      LOG.debug("Just copy class...");
+      jos.putNextEntry(new JarEntry(name));
+      IOUtil.copy(is,jos);
+    }
+ catch (    ZipException e) {
+      LOG.info("zip exception ",e);
+    }
+    return;
+  }
+  ClassReader cr=new ClassReader(is);
+  ClassWriter cw=new ClassWriter(0);
+  final String pkg=name.substring(0,name.lastIndexOf('/') + 1);
+  ClassVisitor cv=new RemappingClassAdapter(cw,remapper){
+    @Override public void visitSource(    final String source,    final String debug){
+      LOG.debug("visitSource " + source);
+      if (source == null) {
+        super.visitSource(source,debug);
+      }
+ else {
+        final String fqSource=pkg + source;
+        final String mappedSource=remapper.map(fqSource);
+        final String filename=mappedSource.substring(mappedSource.lastIndexOf('/') + 1);
+        LOG.debug("Remapped to " + filename);
+        super.visitSource(filename,debug);
+      }
+    }
+  }
+;
+  try {
+    cr.accept(cv,ClassReader.EXPAND_FRAMES);
+  }
+ catch (  Throwable ise) {
+    throw new IOException("Error in ASM processing class " + name,ise);
+  }
+  byte[] renamedClass=cw.toByteArray();
+  String mappedName=remapper.map(name.substring(0,name.indexOf('.')));
+  LOG.debug("Remapped class name to " + mappedName);
+  try {
+    jos.putNextEntry(new JarEntry(mappedName + ".class"));
+    jos.write(renamedClass);
+  }
+ catch (  ZipException e) {
+    LOG.info("zip exception ",e);
+  }
+}

@@ -1,0 +1,12 @@
+{
+  boolean resourceTransformed=false;
+  for (  ResourceTransformer transformer : resourceTransformers) {
+    if (transformer.canTransformResource(name)) {
+      LOG.debug("Transforming " + name + " using "+ transformer.getClass().getName());
+      transformer.processResource(name,is,relocators);
+      resourceTransformed=true;
+      break;
+    }
+  }
+  return resourceTransformed;
+}

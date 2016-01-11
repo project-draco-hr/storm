@@ -1,0 +1,5 @@
+{
+  jos.putNextEntry(new JarEntry(name));
+  IOUtil.copy(is,jos);
+  resources.add(name);
+}

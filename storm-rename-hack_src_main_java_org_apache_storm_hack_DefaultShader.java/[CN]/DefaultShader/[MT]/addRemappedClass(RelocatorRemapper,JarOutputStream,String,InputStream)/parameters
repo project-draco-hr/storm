@@ -1,0 +1,4 @@
+RelocatorRemapper remapper
+JarOutputStream jos
+String name
+InputStream is

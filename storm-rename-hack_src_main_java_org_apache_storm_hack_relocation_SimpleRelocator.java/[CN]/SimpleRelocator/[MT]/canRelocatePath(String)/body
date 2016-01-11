@@ -1,0 +1,6 @@
+{
+  if (path.endsWith(".class")) {
+    path=path.substring(0,path.length() - 6);
+  }
+  return path.startsWith(pathPattern) || path.startsWith("/" + pathPattern);
+}
