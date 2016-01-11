@@ -1,7 +1,0 @@
-{
-  CQLStatementTupleMapper mapper=async(simpleQuery(QUERY_STRING).with(all()),simpleQuery(QUERY_STRING).with(all()));
-  List<Statement> stmts=mapper.map(Maps.newHashMap(),cassandraCQLUnit.session,mockTuple);
-  Assert.assertEquals(2,stmts.size());
-  makeAssertSimpleStatement(QUERY_STRING,stmts.get(0));
-  makeAssertSimpleStatement(QUERY_STRING,stmts.get(1));
-}

@@ -1,7 +1,0 @@
-{
-  Config config=new Config();
-  config.put("cassandra.keyspace","weather");
-  config.put("cassandra.nodes","localhost");
-  config.put("cassandra.port","9142");
-  return config;
-}
