@@ -1,0 +1,6 @@
+{
+  this.info=info;
+  this.condition=condition;
+  this.attemptId=attemptId;
+  receivedCommit=condition.commitStream == null;
+}

@@ -1,0 +1,20 @@
+{
+switch (field) {
+case INITIAL_STATUS:
+    if (value == null) {
+      unset_initial_status();
+    }
+ else {
+      set_initial_status((TopologyInitialStatus)value);
+    }
+  break;
+case CREDS:
+if (value == null) {
+  unset_creds();
+}
+ else {
+  set_creds((Credentials)value);
+}
+break;
+}
+}

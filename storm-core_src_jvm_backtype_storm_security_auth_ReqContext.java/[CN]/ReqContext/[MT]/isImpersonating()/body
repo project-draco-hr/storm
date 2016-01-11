@@ -1,3 +1,0 @@
-{
-  return this.realPrincipal != null && !this.realPrincipal.equals(this.principal());
-}

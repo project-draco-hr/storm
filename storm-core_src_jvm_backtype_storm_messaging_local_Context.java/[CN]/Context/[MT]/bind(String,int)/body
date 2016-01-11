@@ -1,3 +1,0 @@
-{
-  return getLocalServer(storm_id,port);
-}

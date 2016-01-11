@@ -1,5 +1,0 @@
-{
-  for (  Callback callback : callbacks) {
-    LOG.info("Kerberos Client Callback Handler got callback: {}",callback.getClass());
-  }
-}

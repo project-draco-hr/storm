@@ -1,5 +1,0 @@
-{
-  long ret=_value;
-  _value=0;
-  return ret;
-}

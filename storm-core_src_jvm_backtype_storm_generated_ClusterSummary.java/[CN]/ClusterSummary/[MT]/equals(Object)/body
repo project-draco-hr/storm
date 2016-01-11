@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof ClusterSummary)   return this.equals((ClusterSummary)that);
-  return false;
-}

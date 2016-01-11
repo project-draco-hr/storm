@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof ClusterWorkerHeartbeat)   return this.equals((ClusterWorkerHeartbeat)that);
-  return false;
-}

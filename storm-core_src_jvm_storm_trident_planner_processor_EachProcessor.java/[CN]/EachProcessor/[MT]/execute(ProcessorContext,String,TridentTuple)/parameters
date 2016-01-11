@@ -1,3 +1,0 @@
-ProcessorContext processorContext
-String streamId
-TridentTuple tuple

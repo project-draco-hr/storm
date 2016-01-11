@@ -1,0 +1,27 @@
+{
+  validateKey(key);
+  checkForBlobOrDownload(key);
+  _aclHandler.normalizeSettableBlobMeta(key,meta,who,ADMIN);
+  BlobStoreAclHandler.validateSettableACLs(key,meta.get_acl());
+  SettableBlobMeta orig=getStoredBlobMeta(key);
+  _aclHandler.hasPermissions(orig.get_acl(),ADMIN,who,key);
+  BlobStoreFileOutputStream mOut=null;
+  try {
+    mOut=new BlobStoreFileOutputStream(fbs.write(META_PREFIX + key,false));
+    mOut.write(Utils.thriftSerialize(meta));
+    mOut.close();
+    mOut=null;
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+ finally {
+    if (mOut != null) {
+      try {
+        mOut.cancel();
+      }
+ catch (      IOException e) {
+      }
+    }
+  }
+}

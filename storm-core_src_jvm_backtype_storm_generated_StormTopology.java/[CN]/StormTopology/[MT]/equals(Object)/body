@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof StormTopology)   return this.equals((StormTopology)that);
-  return false;
-}

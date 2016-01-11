@@ -1,0 +1,5 @@
+{
+synchronized (failed) {
+    return get(failed,stormId,0);
+  }
+}

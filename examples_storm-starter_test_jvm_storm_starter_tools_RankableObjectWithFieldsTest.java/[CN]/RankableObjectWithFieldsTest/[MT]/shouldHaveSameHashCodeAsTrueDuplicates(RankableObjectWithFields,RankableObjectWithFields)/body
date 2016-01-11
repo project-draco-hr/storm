@@ -1,3 +1,0 @@
-{
-  assertThat(r.hashCode()).isEqualTo(trueDuplicate.hashCode());
-}

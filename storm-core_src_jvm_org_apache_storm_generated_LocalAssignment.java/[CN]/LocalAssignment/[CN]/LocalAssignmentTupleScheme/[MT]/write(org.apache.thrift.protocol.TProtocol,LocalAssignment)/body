@@ -1,0 +1,18 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.topology_id);
+{
+    oprot.writeI32(struct.executors.size());
+    for (    ExecutorInfo _iter648 : struct.executors) {
+      _iter648.write(oprot);
+    }
+  }
+  BitSet optionals=new BitSet();
+  if (struct.is_set_resources()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_resources()) {
+    struct.resources.write(oprot);
+  }
+}

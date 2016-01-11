@@ -1,3 +1,0 @@
-{
-  getRegisteredDecorators(conf).add(klass.getName());
-}

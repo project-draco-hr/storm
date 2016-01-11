@@ -1,0 +1,4 @@
+{
+  _flushLock=new ReentrantLock();
+  _overflow=new ConcurrentLinkedQueue<>();
+}

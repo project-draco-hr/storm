@@ -1,6 +1,0 @@
-{
-  if (this.runningQueue.isEmpty()) {
-    return null;
-  }
-  return this.runningQueue.last();
-}

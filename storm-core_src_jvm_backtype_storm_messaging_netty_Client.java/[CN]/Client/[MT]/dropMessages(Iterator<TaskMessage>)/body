@@ -1,4 +1,0 @@
-{
-  int msgCount=iteratorSize(msgs);
-  messagesLost.getAndAdd(msgCount);
-}

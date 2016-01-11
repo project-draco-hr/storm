@@ -1,0 +1,4 @@
+{
+  resetIfNecessary();
+  return _windowEvents >= _maxAmt;
+}

@@ -1,3 +1,0 @@
-{
-  return ThriftTopologyUtils.getComponentIds(getRawTopology());
-}

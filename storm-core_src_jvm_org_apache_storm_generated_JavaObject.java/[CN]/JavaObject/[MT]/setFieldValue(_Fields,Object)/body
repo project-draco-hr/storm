@@ -1,0 +1,20 @@
+{
+switch (field) {
+case FULL_CLASS_NAME:
+    if (value == null) {
+      unset_full_class_name();
+    }
+ else {
+      set_full_class_name((String)value);
+    }
+  break;
+case ARGS_LIST:
+if (value == null) {
+  unset_args_list();
+}
+ else {
+  set_args_list((List<JavaObjectArg>)value);
+}
+break;
+}
+}

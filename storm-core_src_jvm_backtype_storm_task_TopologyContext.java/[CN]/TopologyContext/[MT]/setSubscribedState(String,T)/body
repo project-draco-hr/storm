@@ -1,3 +1,0 @@
-{
-  return setSubscribedState(componentId,Utils.DEFAULT_STREAM_ID,obj);
-}

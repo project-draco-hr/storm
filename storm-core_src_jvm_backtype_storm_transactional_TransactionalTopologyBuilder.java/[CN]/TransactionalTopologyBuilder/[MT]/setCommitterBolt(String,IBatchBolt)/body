@@ -1,3 +1,0 @@
-{
-  return setCommitterBolt(id,bolt,null);
-}

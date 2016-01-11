@@ -1,3 +1,0 @@
-{
-  return new debug_args();
-}

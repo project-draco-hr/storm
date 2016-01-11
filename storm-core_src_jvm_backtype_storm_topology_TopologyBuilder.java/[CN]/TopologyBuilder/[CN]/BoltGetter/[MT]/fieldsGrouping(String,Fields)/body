@@ -1,3 +1,0 @@
-{
-  return fieldsGrouping(componentId,Utils.DEFAULT_STREAM_ID,fields);
-}

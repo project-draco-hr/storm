@@ -1,6 +1,0 @@
-{
-  if (request != null) {
-    LOG.info("Access from: {} url: {} principal: {}",request.getRemoteAddr(),request.getRequestURL(),(request.getUserPrincipal() == null ? "" : request.getUserPrincipal().getName()));
-  }
-  chain.doFilter(request,response);
-}

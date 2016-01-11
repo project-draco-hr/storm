@@ -1,0 +1,7 @@
+{
+  Aggregator groupedAgg=new GroupedAggregator(agg,_groupFields,inputFields,functionFields.size());
+  Fields allInFields=TridentUtils.fieldsUnion(_groupFields,inputFields);
+  Fields allOutFields=TridentUtils.fieldsConcat(_groupFields,functionFields);
+  Stream s=_stream.partitionAggregate(allInFields,groupedAgg,allOutFields);
+  return new GroupedStream(s,_groupFields);
+}

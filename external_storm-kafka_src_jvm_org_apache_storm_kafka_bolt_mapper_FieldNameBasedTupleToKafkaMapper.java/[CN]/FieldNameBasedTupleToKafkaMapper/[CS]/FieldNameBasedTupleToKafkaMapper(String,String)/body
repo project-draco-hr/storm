@@ -1,0 +1,4 @@
+{
+  this.boltKeyField=boltKeyField;
+  this.boltMessageField=boltMessageField;
+}

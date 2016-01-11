@@ -1,0 +1,3 @@
+{
+  return "ReqContext{" + "realPrincipal=" + ((realPrincipal != null) ? realPrincipal.getName() : "null") + ", _reqID="+ _reqID+ ", _remoteAddr="+ _remoteAddr+ ", _authZPrincipal="+ ((principal() != null) ? principal().getName() : "null")+ ", ThreadId="+ Thread.currentThread().toString()+ '}';
+}

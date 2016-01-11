@@ -1,0 +1,8 @@
+{
+  this();
+  this.emitted=emitted;
+  this.transferred=transferred;
+  this.specific=specific;
+  this.rate=rate;
+  set_rate_isSet(true);
+}

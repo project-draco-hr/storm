@@ -1,5 +1,0 @@
-{
-  finishBlobUpload_args args=new finishBlobUpload_args();
-  args.set_session(session);
-  sendBase("finishBlobUpload",args);
-}

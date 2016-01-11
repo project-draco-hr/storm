@@ -1,4 +1,0 @@
-{
-  initCombiner(inputFields,agg,functionFields);
-  return partitionAggregate(functionFields,new CombinerAggregatorCombineImpl(agg),functionFields);
-}

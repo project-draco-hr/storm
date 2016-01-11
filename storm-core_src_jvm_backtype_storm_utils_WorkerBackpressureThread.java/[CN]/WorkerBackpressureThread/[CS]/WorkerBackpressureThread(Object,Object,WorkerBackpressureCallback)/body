@@ -1,5 +1,0 @@
-{
-  this.trigger=trigger;
-  this.workerData=workerData;
-  this.callback=callback;
-}

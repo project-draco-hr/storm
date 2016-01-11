@@ -1,7 +1,0 @@
-{
-  TTupleProtocol iprot=(TTupleProtocol)prot;
-  struct.componentId=iprot.readString();
-  struct.set_componentId_isSet(true);
-  struct.streamId=iprot.readString();
-  struct.set_streamId_isSet(true);
-}

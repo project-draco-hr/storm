@@ -1,4 +1,0 @@
-List<File> dirs
-long quota
-boolean for_per_dir
-Set<String> active_dirs

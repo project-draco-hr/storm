@@ -1,0 +1,3 @@
+{
+  builder.setBolt("bolt",mock(IRichBolt.class),0);
+}

@@ -1,0 +1,20 @@
+{
+switch (field) {
+case ID:
+    if (value == null) {
+      unset_id();
+    }
+ else {
+      set_id((String)value);
+    }
+  break;
+case DETAILS:
+if (value == null) {
+  unset_details();
+}
+ else {
+  set_details((ByteBuffer)value);
+}
+break;
+}
+}

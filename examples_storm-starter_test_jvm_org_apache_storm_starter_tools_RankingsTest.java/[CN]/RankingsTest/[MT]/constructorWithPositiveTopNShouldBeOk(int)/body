@@ -1,0 +1,4 @@
+{
+  Rankings rankings=new Rankings(topN);
+  assertThat(rankings.maxSize()).isEqualTo(topN);
+}

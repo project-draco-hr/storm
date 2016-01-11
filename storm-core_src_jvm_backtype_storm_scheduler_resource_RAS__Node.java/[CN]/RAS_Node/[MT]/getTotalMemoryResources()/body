@@ -1,8 +1,0 @@
-{
-  if (_sup != null && _sup.getTotalMemory() != null) {
-    return _sup.getTotalMemory();
-  }
- else {
-    return 0.0;
-  }
-}

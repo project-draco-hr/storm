@@ -1,0 +1,4 @@
+{
+  this.producerProperties=props;
+  return this;
+}

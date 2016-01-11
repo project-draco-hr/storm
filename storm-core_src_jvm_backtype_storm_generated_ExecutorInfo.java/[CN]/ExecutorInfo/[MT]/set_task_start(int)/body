@@ -1,4 +1,0 @@
-{
-  this.task_start=task_start;
-  set_task_start_isSet(true);
-}

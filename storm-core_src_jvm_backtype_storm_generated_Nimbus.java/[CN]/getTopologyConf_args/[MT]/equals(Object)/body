@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof getTopologyConf_args)   return this.equals((getTopologyConf_args)that);
-  return false;
-}

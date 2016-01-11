@@ -1,3 +1,0 @@
-{
-  return new getTopologyHistory_args(this);
-}

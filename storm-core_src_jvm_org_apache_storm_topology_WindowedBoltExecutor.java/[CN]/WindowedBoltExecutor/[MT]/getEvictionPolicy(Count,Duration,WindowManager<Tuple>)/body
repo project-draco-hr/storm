@@ -1,0 +1,18 @@
+{
+  if (windowLengthCount != null) {
+    if (isTupleTs()) {
+      return new WatermarkCountEvictionPolicy<>(windowLengthCount.value,manager);
+    }
+ else {
+      return new CountEvictionPolicy<>(windowLengthCount.value);
+    }
+  }
+ else {
+    if (isTupleTs()) {
+      return new WatermarkTimeEvictionPolicy<>(windowLengthDuration.value,maxLagMs);
+    }
+ else {
+      return new TimeEvictionPolicy<>(windowLengthDuration.value);
+    }
+  }
+}

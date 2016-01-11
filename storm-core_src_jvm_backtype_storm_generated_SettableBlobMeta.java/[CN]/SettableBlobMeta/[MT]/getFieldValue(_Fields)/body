@@ -1,9 +1,0 @@
-{
-switch (field) {
-case ACL:
-    return get_acl();
-case REPLICATION_FACTOR:
-  return get_replication_factor();
-}
-throw new IllegalStateException();
-}

@@ -1,0 +1,6 @@
+{
+  if (i + 1 < fields.size()) {
+    return new Seq(fields,values,i + 1);
+  }
+  return null;
+}

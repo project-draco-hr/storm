@@ -1,0 +1,6 @@
+{
+  if (this == o)   return true;
+  if (!(o instanceof CoordType))   return false;
+  CoordType coordType=(CoordType)o;
+  return singleCount == coordType.singleCount;
+}

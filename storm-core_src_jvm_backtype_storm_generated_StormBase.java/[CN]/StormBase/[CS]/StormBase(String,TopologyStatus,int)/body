@@ -1,7 +1,0 @@
-{
-  this();
-  this.name=name;
-  this.status=status;
-  this.num_workers=num_workers;
-  set_num_workers_isSet(true);
-}

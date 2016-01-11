@@ -1,6 +1,0 @@
-{
-  Subject subject=new Subject();
-  SingleUserPrincipal user=new SingleUserPrincipal(name);
-  subject.getPrincipals().add(user);
-  return subject;
-}

@@ -1,0 +1,10 @@
+{
+  Long ret=INIT_TXID;
+  for (  TransactionalState state : _states) {
+    Long curr=(Long)state.getData(CURRENT_TX);
+    if (curr != null && curr.compareTo(ret) > 0) {
+      ret=curr;
+    }
+  }
+  return ret;
+}

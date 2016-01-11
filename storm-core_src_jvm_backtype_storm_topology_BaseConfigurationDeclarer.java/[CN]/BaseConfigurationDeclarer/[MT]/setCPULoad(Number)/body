@@ -1,6 +1,0 @@
-{
-  if (amount != null) {
-    return addConfiguration(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT,amount);
-  }
-  return null;
-}

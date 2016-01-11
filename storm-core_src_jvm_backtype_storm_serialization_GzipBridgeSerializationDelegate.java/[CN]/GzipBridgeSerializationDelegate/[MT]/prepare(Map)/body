@@ -1,4 +1,0 @@
-{
-  defaultDelegate.prepare(stormConf);
-  gzipDelegate.prepare(stormConf);
-}

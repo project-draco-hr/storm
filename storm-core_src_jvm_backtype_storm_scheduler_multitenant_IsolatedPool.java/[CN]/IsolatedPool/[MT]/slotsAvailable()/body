@@ -1,9 +1,0 @@
-{
-  int total=0;
-  for (  Entry<String,Set<Node>> entry : _topologyIdToNodes.entrySet()) {
-    if (!_isolated.contains(entry.getKey())) {
-      total+=Node.countTotalSlotsAlive(entry.getValue());
-    }
-  }
-  return total;
-}

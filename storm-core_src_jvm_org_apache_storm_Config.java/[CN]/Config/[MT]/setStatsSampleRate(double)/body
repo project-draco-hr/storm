@@ -1,0 +1,3 @@
+{
+  setStatsSampleRate(this,rate);
+}

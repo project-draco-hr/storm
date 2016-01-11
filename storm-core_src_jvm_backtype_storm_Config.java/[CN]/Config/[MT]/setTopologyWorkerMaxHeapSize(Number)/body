@@ -1,5 +1,0 @@
-{
-  if (size != null) {
-    this.put(Config.TOPOLOGY_WORKER_MAX_HEAP_SIZE_MB,size);
-  }
-}

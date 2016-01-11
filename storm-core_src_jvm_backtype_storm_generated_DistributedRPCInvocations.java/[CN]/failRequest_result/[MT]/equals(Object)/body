@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof failRequest_result)   return this.equals((failRequest_result)that);
-  return false;
-}

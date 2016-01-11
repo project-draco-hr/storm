@@ -1,3 +1,0 @@
-{
-  return new Object[][]{{5,Lists.newArrayList(A,B,C)},{2,Lists.newArrayList(A,B,C,D)},{1,Lists.newArrayList()},{1,Lists.newArrayList(A)},{1,Lists.newArrayList(A,B)}};
-}

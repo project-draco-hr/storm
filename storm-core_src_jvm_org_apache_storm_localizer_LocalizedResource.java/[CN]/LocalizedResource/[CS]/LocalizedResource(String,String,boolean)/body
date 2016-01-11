@@ -1,0 +1,10 @@
+{
+  _ref=new HashSet<String>();
+  _localPath=fileLoc;
+  _versionFilePath=Utils.constructVersionFileName(fileLoc);
+  _symlinkPath=Utils.constructBlobCurrentSymlinkName(fileLoc);
+  _uncompressed=uncompressed;
+  _key=key;
+  _size=Utils.getDU(new File(getFilePathWithVersion()));
+  LOG.debug("size of {} is: {}",fileLoc,_size);
+}

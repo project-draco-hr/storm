@@ -1,8 +1,0 @@
-{
-  if (other.is_set_key()) {
-    this.key=other.key;
-  }
-  if (other.is_set_meta()) {
-    this.meta=new SettableBlobMeta(other.meta);
-  }
-}

@@ -1,3 +1,0 @@
-{
-  Time.advanceTime(seconds * MILLIS_IN_SEC);
-}

@@ -1,0 +1,19 @@
+{
+  Value val=DATABASE.get(GLOBAL_COUNT_KEY);
+  Value newval;
+  if (val == null || !val.txid.equals(_attempt.getTransactionId())) {
+    newval=new Value();
+    newval.txid=_attempt.getTransactionId();
+    if (val == null) {
+      newval.count=_sum;
+    }
+ else {
+      newval.count=_sum + val.count;
+    }
+    DATABASE.put(GLOBAL_COUNT_KEY,newval);
+  }
+ else {
+    newval=val;
+  }
+  _collector.emit(new Values(_attempt,newval.count));
+}

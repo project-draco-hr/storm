@@ -1,7 +1,0 @@
-{
-  Object ret=(stored == null) ? this.agg.init() : stored;
-  for (  TridentTuple t : tuples) {
-    ret=this.agg.reduce(ret,t);
-  }
-  return ret;
-}

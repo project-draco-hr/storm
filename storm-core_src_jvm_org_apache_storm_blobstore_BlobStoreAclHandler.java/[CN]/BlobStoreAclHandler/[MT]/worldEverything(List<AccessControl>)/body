@@ -1,0 +1,10 @@
+{
+  boolean isWorldEverything=false;
+  for (  AccessControl acl : acls) {
+    if (acl.get_type() == AccessControlType.OTHER && acl.get_access() == (READ | WRITE | ADMIN)) {
+      isWorldEverything=true;
+      break;
+    }
+  }
+  return isWorldEverything;
+}

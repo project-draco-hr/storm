@@ -1,5 +1,0 @@
-{
-  if (!value) {
-    this.assignment_id=null;
-  }
-}

@@ -1,0 +1,3 @@
+{
+  return this.bolt_object != null;
+}

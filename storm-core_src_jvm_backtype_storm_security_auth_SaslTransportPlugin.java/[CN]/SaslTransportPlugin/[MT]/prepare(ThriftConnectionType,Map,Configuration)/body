@@ -1,5 +1,0 @@
-{
-  this.type=type;
-  this.storm_conf=storm_conf;
-  this.login_conf=login_conf;
-}

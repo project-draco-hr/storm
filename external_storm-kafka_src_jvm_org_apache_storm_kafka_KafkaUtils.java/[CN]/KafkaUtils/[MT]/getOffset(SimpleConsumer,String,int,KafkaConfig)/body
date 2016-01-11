@@ -1,0 +1,4 @@
+{
+  long startOffsetTime=config.startOffsetTime;
+  return getOffset(consumer,topic,partition,startOffsetTime);
+}

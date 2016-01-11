@@ -1,3 +1,0 @@
-{
-  iface.updateBlobReplication(args.key,args.replication,resultHandler);
-}

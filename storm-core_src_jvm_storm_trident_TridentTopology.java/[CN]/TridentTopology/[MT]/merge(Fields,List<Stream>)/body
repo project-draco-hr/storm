@@ -1,3 +1,0 @@
-{
-  return multiReduce(streams,new IdentityMultiReducer(),outputFields);
-}

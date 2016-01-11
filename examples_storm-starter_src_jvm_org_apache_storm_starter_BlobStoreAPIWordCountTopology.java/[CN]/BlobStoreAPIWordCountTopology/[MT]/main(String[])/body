@@ -1,0 +1,19 @@
+{
+  prepare();
+  BlobStoreAPIWordCountTopology wc=new BlobStoreAPIWordCountTopology();
+  try {
+    File file=createFile(fileName);
+    createBlobWithContent(key,store,file);
+    wc.buildAndLaunchWordCountTopology(args);
+    for (int i=0; i < 10; i++) {
+      updateBlobWithContent(key,store,updateFile(file));
+      Utils.sleep(5000);
+    }
+  }
+ catch (  KeyAlreadyExistsException kae) {
+    LOG.info("Key already exists {}",kae);
+  }
+catch (  AuthorizationException|KeyNotFoundException|IOException exp) {
+    throw new RuntimeException(exp);
+  }
+}

@@ -1,3 +1,0 @@
-String topId
-Collection<ExecutorDetails> executors
-Cluster cluster

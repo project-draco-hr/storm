@@ -1,3 +1,0 @@
-boolean async
-boolean fireAndForget
-KafkaProducer<?,?> mockProducer

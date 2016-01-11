@@ -1,0 +1,5 @@
+{
+  if (other.is_set_name()) {
+    this.name=other.name;
+  }
+}

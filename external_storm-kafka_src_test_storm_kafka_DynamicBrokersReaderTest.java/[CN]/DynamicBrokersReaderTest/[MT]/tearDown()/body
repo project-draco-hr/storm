@@ -1,5 +1,0 @@
-{
-  dynamicBrokersReader.close();
-  zookeeper.close();
-  server.close();
-}

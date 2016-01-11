@@ -1,0 +1,7 @@
+{
+  Tuple normalTuple=mockRankingsTuple(ANY_OBJECT,ANY_COUNT);
+  BasicOutputCollector collector=mock(BasicOutputCollector.class);
+  TotalRankingsBolt bolt=new TotalRankingsBolt();
+  bolt.execute(normalTuple,collector);
+  verifyZeroInteractions(collector);
+}

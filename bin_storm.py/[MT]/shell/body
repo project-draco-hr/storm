@@ -3,5 +3,5 @@ def shell(resourcesdir, command, *args):
     os.system(('jar cf %s %s' % (tmpjarpath, resourcesdir)))
     runnerargs = [tmpjarpath, command]
     runnerargs.extend(args)
-    exec_storm_class('backtype.storm.command.shell_submission', args=runnerargs, jvmtype='-client', extrajars=[USER_CONF_DIR], fork=True)
+    exec_storm_class('org.apache.storm.command.shell_submission', args=runnerargs, jvmtype='-client', extrajars=[USER_CONF_DIR], fork=True)
     os.system(('rm ' + tmpjarpath))

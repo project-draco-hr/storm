@@ -1,3 +1,0 @@
-{
-  return this.func_args != null;
-}

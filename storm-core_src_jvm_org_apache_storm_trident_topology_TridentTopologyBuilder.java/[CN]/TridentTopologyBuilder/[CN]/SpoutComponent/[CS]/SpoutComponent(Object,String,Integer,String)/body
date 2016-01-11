@@ -1,0 +1,6 @@
+{
+  this.spout=spout;
+  this.streamName=streamName;
+  this.parallelism=parallelism;
+  this.batchGroupId=batchGroupId;
+}

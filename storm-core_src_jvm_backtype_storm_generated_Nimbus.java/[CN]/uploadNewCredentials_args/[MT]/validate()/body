@@ -1,5 +1,0 @@
-{
-  if (creds != null) {
-    creds.validate();
-  }
-}

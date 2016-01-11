@@ -1,4 +1,0 @@
-{
-  __isset_bitfield=other.__isset_bitfield;
-  this.wait_secs=other.wait_secs;
-}

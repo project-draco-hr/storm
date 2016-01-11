@@ -1,0 +1,3 @@
+ChainedResult val
+TridentTuple tuple
+TridentCollector collector

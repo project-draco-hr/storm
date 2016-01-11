@@ -1,6 +1,0 @@
-{
-  if (!topologyToActions.containsKey(topologyName)) {
-    topologyToActions.put(topologyName,new LinkedList<String>());
-  }
-  topologyToActions.get(topologyName).addLast(action);
-}

@@ -1,0 +1,7 @@
+{
+  if (spoutIds.isEmpty()) {
+    throw new IllegalArgumentException("Must manage at least one spout");
+  }
+  _managedSpoutIds=spoutIds;
+  _spouts=spouts;
+}

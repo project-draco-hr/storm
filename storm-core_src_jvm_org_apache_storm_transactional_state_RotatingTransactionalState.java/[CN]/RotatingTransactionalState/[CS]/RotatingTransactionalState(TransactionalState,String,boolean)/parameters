@@ -1,0 +1,3 @@
+TransactionalState state
+String subdir
+boolean strictOrder

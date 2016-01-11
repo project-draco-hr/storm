@@ -1,6 +1,0 @@
-{
-  if (null == o) {
-    throw new IllegalArgumentException("Don't know how to convert null to String");
-  }
-  return o.toString();
-}

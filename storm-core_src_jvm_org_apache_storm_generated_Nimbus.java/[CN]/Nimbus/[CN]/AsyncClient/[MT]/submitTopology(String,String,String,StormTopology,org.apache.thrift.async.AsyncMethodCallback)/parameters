@@ -1,0 +1,5 @@
+String name
+String uploadedJarLocation
+String jsonConf
+StormTopology topology
+org.apache.thrift.async.AsyncMethodCallback resultHandler

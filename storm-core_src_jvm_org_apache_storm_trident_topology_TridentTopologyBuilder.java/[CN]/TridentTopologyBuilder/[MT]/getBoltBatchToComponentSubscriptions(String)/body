@@ -1,0 +1,9 @@
+{
+  Map<String,Set<String>> ret=new HashMap();
+  for (  GlobalStreamId s : getBoltSubscriptionStreams(id)) {
+    String b=_batchIds.get(s);
+    if (!ret.containsKey(b))     ret.put(b,new HashSet());
+    ret.get(b).add(s.get_componentId());
+  }
+  return ret;
+}

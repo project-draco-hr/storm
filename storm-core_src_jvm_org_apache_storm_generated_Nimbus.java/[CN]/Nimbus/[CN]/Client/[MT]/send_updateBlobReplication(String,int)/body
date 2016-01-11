@@ -1,0 +1,6 @@
+{
+  updateBlobReplication_args args=new updateBlobReplication_args();
+  args.set_key(key);
+  args.set_replication(replication);
+  sendBase("updateBlobReplication",args);
+}

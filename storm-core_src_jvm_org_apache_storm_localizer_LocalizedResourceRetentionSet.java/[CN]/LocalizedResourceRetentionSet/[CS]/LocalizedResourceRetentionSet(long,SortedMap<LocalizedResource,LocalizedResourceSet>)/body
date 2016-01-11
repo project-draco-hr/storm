@@ -1,0 +1,4 @@
+{
+  this._noReferences=retain;
+  this._targetSize=targetSize;
+}

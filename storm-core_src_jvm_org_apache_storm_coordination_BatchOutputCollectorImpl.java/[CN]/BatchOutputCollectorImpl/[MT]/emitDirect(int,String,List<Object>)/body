@@ -1,0 +1,3 @@
+{
+  _collector.emitDirect(taskId,streamId,tuple);
+}

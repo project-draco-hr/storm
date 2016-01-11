@@ -1,0 +1,3 @@
+{
+  return (this.worker_hooks == null) ? 0 : this.worker_hooks.size();
+}

@@ -1,3 +1,0 @@
-{
-  return groupIndex.get(n);
-}

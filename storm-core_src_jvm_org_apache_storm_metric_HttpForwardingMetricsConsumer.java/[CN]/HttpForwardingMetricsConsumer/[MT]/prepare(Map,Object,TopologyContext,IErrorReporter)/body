@@ -1,0 +1,10 @@
+{
+  try {
+    _url=new URL((String)registrationArgument);
+    _errorReporter=errorReporter;
+    _serializer=new KryoValuesSerializer(stormConf);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

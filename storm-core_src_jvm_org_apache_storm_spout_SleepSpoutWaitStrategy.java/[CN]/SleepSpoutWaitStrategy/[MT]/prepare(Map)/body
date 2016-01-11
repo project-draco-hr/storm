@@ -1,0 +1,3 @@
+{
+  sleepMillis=((Number)conf.get(Config.TOPOLOGY_SLEEP_SPOUT_WAIT_STRATEGY_TIME_MS)).longValue();
+}

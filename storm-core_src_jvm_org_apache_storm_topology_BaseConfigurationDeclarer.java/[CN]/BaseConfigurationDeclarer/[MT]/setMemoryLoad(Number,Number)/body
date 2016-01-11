@@ -1,0 +1,12 @@
+{
+  T ret=null;
+  if (onHeap != null) {
+    onHeap=onHeap.doubleValue();
+    ret=addConfiguration(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB,onHeap);
+  }
+  if (offHeap != null) {
+    offHeap=offHeap.doubleValue();
+    ret=addConfiguration(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB,offHeap);
+  }
+  return ret;
+}

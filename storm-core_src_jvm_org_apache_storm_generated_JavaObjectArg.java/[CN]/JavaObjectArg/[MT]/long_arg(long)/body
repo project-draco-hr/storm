@@ -1,0 +1,5 @@
+{
+  JavaObjectArg x=new JavaObjectArg();
+  x.set_long_arg(value);
+  return x;
+}

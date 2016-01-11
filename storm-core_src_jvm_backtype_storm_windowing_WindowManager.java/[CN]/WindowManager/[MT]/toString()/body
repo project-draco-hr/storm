@@ -1,3 +1,0 @@
-{
-  return "WindowManager{" + "evictionPolicy=" + evictionPolicy + ", triggerPolicy="+ triggerPolicy+ '}';
-}

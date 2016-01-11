@@ -1,3 +1,0 @@
-{
-  return partitionAggregate(null,agg,functionFields);
-}

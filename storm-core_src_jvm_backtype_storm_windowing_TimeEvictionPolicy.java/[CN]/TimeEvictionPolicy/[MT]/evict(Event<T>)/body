@@ -1,8 +1,0 @@
-{
-  long now=referenceTime == null ? System.currentTimeMillis() : referenceTime;
-  long diff=now - event.getTimestamp();
-  if (diff >= windowLength) {
-    return Action.EXPIRE;
-  }
-  return Action.PROCESS;
-}

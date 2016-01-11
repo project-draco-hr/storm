@@ -1,3 +1,0 @@
-{
-  return new downloadBlobChunk_result(this);
-}

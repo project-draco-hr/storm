@@ -1,0 +1,4 @@
+{
+  String stringMessage=StringScheme.deserializeString(message);
+  return new Values(stringMessage,partition.partition,offset);
+}

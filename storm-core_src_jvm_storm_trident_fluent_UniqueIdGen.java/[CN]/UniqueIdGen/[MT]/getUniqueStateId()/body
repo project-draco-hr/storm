@@ -1,4 +1,0 @@
-{
-  _stateCounter++;
-  return "state" + _stateCounter;
-}

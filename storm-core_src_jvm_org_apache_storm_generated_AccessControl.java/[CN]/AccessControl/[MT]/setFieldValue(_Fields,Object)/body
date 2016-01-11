@@ -1,0 +1,28 @@
+{
+switch (field) {
+case TYPE:
+    if (value == null) {
+      unset_type();
+    }
+ else {
+      set_type((AccessControlType)value);
+    }
+  break;
+case NAME:
+if (value == null) {
+  unset_name();
+}
+ else {
+  set_name((String)value);
+}
+break;
+case ACCESS:
+if (value == null) {
+unset_access();
+}
+ else {
+set_access((Integer)value);
+}
+break;
+}
+}

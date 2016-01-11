@@ -1,0 +1,11 @@
+{
+  if (s != null) {
+    byte[] buffer=s.getBytes("UTF-8");
+    int len=buffer.length;
+    out.writeInt(len);
+    out.write(buffer,0,len);
+  }
+ else {
+    out.writeInt(-1);
+  }
+}

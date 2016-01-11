@@ -1,0 +1,6 @@
+{
+  if (this.window_to_emitted == null) {
+    this.window_to_emitted=new HashMap<String,Long>();
+  }
+  this.window_to_emitted.put(key,val);
+}

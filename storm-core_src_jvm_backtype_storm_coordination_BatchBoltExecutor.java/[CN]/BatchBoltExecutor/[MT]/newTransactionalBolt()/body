@@ -1,3 +1,0 @@
-{
-  return Utils.javaDeserialize(_boltSer,IBatchBolt.class);
-}

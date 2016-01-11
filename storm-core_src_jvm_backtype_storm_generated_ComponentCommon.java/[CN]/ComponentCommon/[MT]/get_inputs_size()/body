@@ -1,3 +1,0 @@
-{
-  return (this.inputs == null) ? 0 : this.inputs.size();
-}

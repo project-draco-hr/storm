@@ -1,3 +1,0 @@
-WorkerTopologyContext context
-GlobalStreamId stream
-List<Integer> targets

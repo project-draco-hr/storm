@@ -1,3 +1,0 @@
-{
-  return new Stream(_topology,name,_node);
-}

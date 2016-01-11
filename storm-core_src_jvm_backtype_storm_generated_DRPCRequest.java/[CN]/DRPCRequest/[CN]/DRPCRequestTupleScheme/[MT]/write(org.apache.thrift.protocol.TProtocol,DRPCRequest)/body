@@ -1,5 +1,0 @@
-{
-  TTupleProtocol oprot=(TTupleProtocol)prot;
-  oprot.writeString(struct.func_args);
-  oprot.writeString(struct.request_id);
-}

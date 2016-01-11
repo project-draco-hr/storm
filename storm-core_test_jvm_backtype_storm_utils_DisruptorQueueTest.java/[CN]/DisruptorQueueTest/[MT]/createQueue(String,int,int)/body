@@ -1,3 +1,0 @@
-{
-  return new DisruptorQueue(name,ProducerType.MULTI,queueSize,0L,batchSize,1L);
-}

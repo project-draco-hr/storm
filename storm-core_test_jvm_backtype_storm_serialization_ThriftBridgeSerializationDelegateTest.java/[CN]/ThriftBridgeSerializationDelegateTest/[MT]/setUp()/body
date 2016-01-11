@@ -1,4 +1,0 @@
-{
-  testDelegate=new ThriftSerializationDelegate();
-  testDelegate.prepare(null);
-}

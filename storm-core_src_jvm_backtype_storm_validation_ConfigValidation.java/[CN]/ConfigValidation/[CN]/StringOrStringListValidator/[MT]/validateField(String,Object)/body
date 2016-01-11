@@ -1,6 +1,0 @@
-{
-  if (o == null || o instanceof String) {
-    return;
-  }
-  this.fv.validateField(name,o);
-}

@@ -1,0 +1,3 @@
+{
+  return "Task [" + (taskIndex + 1) + "/"+ totalTasks+ "] ";
+}

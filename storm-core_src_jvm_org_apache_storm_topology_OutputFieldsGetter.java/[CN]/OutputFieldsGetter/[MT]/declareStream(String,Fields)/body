@@ -1,0 +1,3 @@
+{
+  declareStream(streamId,false,fields);
+}

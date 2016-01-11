@@ -1,0 +1,5 @@
+{
+  StormTopology stormTopology=genereateStormTopology(true);
+  Set<String> componentIds=ThriftTopologyUtils.getComponentIds(stormTopology);
+  Assert.assertEquals("We expect to get the IDs of the components sans the Worker Hook",ImmutableSet.of("bolt-1","spout-1"),componentIds);
+}

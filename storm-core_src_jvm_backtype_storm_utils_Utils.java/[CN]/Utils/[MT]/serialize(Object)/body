@@ -1,3 +1,0 @@
-{
-  return serializationDelegate.serialize(obj);
-}

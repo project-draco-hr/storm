@@ -1,0 +1,36 @@
+{
+  ReqContext req_context=ReqContext.context();
+  TTransport trans=inProt.getTransport();
+  if (trans instanceof TMemoryInputTransport) {
+    try {
+      req_context.setRemoteAddress(InetAddress.getLocalHost());
+    }
+ catch (    UnknownHostException e) {
+      throw new RuntimeException(e);
+    }
+  }
+ else   if (trans instanceof TSocket) {
+    TSocket tsocket=(TSocket)trans;
+    Socket socket=tsocket.getSocket();
+    req_context.setRemoteAddress(socket.getInetAddress());
+  }
+  Subject s=getDefaultSubject();
+  if (s == null) {
+    final String user=(String)storm_conf.get("debug.simple.transport.user");
+    if (user != null) {
+      HashSet<Principal> principals=new HashSet<>();
+      principals.add(new Principal(){
+        public String getName(){
+          return user;
+        }
+        public String toString(){
+          return user;
+        }
+      }
+);
+      s=new Subject(true,principals,new HashSet<>(),new HashSet<>());
+    }
+  }
+  req_context.setSubject(s);
+  return wrapped.process(inProt,outProt);
+}

@@ -1,0 +1,3 @@
+{
+  return (this.executor_start_time_secs == null) ? 0 : this.executor_start_time_secs.size();
+}

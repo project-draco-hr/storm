@@ -1,0 +1,3 @@
+List<PartitionManager> partitionManagersBefore
+List<PartitionManager> partitionManagersAfter
+int partitionsPerTask

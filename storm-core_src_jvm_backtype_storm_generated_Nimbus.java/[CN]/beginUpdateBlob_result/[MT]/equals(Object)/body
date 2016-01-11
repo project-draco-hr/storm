@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof beginUpdateBlob_result)   return this.equals((beginUpdateBlob_result)that);
-  return false;
-}

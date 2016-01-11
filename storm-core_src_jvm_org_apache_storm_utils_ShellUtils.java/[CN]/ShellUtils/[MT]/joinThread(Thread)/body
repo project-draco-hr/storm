@@ -1,0 +1,13 @@
+{
+  while (t.isAlive()) {
+    try {
+      t.join();
+    }
+ catch (    InterruptedException ie) {
+      if (LOG.isWarnEnabled()) {
+        LOG.warn("Interrupted while joining on: " + t,ie);
+      }
+      t.interrupt();
+    }
+  }
+}

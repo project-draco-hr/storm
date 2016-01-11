@@ -1,0 +1,11 @@
+{
+  int base=sum / numPieces;
+  int numInc=sum % numPieces;
+  int numBases=numPieces - numInc;
+  TreeMap<Integer,Integer> ret=new TreeMap<Integer,Integer>();
+  ret.put(base,numBases);
+  if (numInc != 0) {
+    ret.put(base + 1,numInc);
+  }
+  return ret;
+}

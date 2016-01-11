@@ -1,8 +1,0 @@
-{
-  _delegate.beginCommit(txid);
-  if (txid == null || !txid.equals(_currTx)) {
-    _backing.multiRemove(_removed);
-  }
-  _removed=new ArrayList();
-  _currTx=txid;
-}

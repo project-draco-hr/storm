@@ -1,6 +1,0 @@
-{
-  if (!isTmp()) {
-    throw new IllegalStateException("Can only write to a temporary part file.");
-  }
-  delete();
-}

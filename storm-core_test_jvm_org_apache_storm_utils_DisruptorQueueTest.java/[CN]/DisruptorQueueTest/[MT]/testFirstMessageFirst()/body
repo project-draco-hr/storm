@@ -1,0 +1,20 @@
+{
+  for (int i=0; i < 100; i++) {
+    DisruptorQueue queue=createQueue("firstMessageOrder",16);
+    queue.publish("FIRST");
+    Runnable producer=new IncProducer(queue,i + 100);
+    final AtomicReference<Object> result=new AtomicReference<>();
+    Runnable consumer=new Consumer(queue,new EventHandler<Object>(){
+      private boolean head=true;
+      @Override public void onEvent(      Object obj,      long sequence,      boolean endOfBatch) throws Exception {
+        if (head) {
+          head=false;
+          result.set(obj);
+        }
+      }
+    }
+);
+    run(producer,consumer,queue);
+    Assert.assertEquals("We expect to receive first published message first, but received " + result.get(),"FIRST",result.get());
+  }
+}

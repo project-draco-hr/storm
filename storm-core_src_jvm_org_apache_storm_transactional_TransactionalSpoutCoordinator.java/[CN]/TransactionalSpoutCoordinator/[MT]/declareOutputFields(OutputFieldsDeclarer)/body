@@ -1,0 +1,4 @@
+{
+  declarer.declareStream(TRANSACTION_BATCH_STREAM_ID,new Fields("tx","tx-meta","committed-txid"));
+  declarer.declareStream(TRANSACTION_COMMIT_STREAM_ID,new Fields("tx"));
+}

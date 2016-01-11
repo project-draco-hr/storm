@@ -1,3 +1,0 @@
-{
-  SimpleTypeValidator.validateField(name,Boolean.class,o);
-}

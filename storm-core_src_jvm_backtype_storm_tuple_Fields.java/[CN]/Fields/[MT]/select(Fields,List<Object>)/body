@@ -1,7 +1,0 @@
-{
-  List<Object> ret=new ArrayList<>(selector.size());
-  for (  String s : selector) {
-    ret.add(tuple.get(_index.get(s)));
-  }
-  return ret;
-}

@@ -1,6 +1,0 @@
-{
-  for (  GlobalPartitionInformation partitionInformation : partitions) {
-    if (partitionInformation.topic.equals(topic))     return partitionInformation;
-  }
-  return null;
-}

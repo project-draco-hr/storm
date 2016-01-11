@@ -1,8 +1,0 @@
-{
-  if (_local != null) {
-    return _local.getTopologyInfo(id);
-  }
- else {
-    return _client.getTopologyInfo(id);
-  }
-}

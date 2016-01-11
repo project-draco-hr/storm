@@ -1,3 +1,0 @@
-{
-  assertThat(first.compareTo(second)).isEqualTo(expCompareToValue);
-}

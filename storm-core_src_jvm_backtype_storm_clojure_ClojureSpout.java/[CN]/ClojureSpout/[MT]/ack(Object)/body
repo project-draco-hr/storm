@@ -1,7 +1,0 @@
-{
-  try {
-    _spout.ack(msgId);
-  }
- catch (  AbstractMethodError ame) {
-  }
-}

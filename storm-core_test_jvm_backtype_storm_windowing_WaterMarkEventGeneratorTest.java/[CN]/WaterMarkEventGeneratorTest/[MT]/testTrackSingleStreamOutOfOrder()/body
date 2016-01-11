@@ -1,8 +1,0 @@
-{
-  waterMarkEventGenerator.track(streamId("s1"),100);
-  waterMarkEventGenerator.track(streamId("s1"),110);
-  waterMarkEventGenerator.track(streamId("s1"),104);
-  waterMarkEventGenerator.run();
-  assertTrue(eventList.get(0).isWatermark());
-  assertEquals(105,eventList.get(0).getTimestamp());
-}

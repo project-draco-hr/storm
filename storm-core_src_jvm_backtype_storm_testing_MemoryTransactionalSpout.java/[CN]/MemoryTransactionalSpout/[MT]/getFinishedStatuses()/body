@@ -1,3 +1,0 @@
-{
-  return (Map<Integer,Boolean>)RegisteredGlobalState.getState(_finishedPartitionsId);
-}

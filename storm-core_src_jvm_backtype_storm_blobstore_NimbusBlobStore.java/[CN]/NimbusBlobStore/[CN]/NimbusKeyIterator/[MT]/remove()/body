@@ -1,3 +1,0 @@
-{
-  throw new UnsupportedOperationException("Delete Not Supported");
-}

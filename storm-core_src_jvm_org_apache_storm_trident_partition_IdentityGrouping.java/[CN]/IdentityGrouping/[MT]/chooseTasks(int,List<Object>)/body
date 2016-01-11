@@ -1,0 +1,7 @@
+{
+  List<Integer> ret=_precomputed.get(task);
+  if (ret == null) {
+    throw new RuntimeException("Tuple emitted by task that's not part of this component. Should be impossible");
+  }
+  return ret;
+}

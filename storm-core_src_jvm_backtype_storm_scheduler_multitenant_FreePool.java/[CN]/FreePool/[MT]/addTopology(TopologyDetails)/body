@@ -1,3 +1,0 @@
-{
-  throw new IllegalArgumentException("The free pool cannot run any topologies");
-}

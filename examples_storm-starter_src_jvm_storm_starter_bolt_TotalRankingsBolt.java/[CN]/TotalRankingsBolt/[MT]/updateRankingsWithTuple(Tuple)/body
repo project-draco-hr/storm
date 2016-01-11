@@ -1,5 +1,0 @@
-{
-  Rankings rankingsToBeMerged=(Rankings)tuple.getValue(0);
-  super.getRankings().updateWith(rankingsToBeMerged);
-  super.getRankings().pruneZeroCounts();
-}

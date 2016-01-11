@@ -1,0 +1,12 @@
+{
+  try {
+    BufferedReader r=new BufferedReader(new InputStreamReader(in));
+    String line=null;
+    while ((line=r.readLine()) != null) {
+      LOG.info("{}:{}",prefix,line);
+    }
+  }
+ catch (  IOException e) {
+    LOG.warn("Error whiel trying to log stream",e);
+  }
+}

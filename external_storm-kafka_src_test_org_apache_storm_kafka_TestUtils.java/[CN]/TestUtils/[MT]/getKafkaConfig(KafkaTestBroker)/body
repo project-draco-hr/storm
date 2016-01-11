@@ -1,0 +1,5 @@
+{
+  BrokerHosts brokerHosts=getBrokerHosts(broker);
+  KafkaConfig kafkaConfig=new KafkaConfig(brokerHosts,TOPIC);
+  return kafkaConfig;
+}

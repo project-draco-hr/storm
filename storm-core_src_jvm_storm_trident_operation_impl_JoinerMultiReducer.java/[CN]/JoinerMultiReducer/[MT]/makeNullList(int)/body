@@ -1,7 +1,0 @@
-{
-  List<Object> ret=new ArrayList(size);
-  for (int i=0; i < size; i++) {
-    ret.add(null);
-  }
-  return ret;
-}

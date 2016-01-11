@@ -1,4 +1,0 @@
-{
-  send_result(id,result);
-  recv_result();
-}

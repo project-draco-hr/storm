@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return OUTPUT_FIELDS;
+case 2:
+  return DIRECT;
+default :
+return null;
+}
+}

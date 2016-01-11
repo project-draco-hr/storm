@@ -1,3 +1,0 @@
-{
-  testArchives(joinPath("test","jvm","backtype","storm","localizer","localtestwithsymlink.jar"),false,21416);
-}

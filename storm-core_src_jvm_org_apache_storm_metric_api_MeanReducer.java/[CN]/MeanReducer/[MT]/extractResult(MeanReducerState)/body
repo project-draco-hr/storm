@@ -1,0 +1,8 @@
+{
+  if (acc.count > 0) {
+    return acc.sum / (double)acc.count;
+  }
+ else {
+    return null;
+  }
+}

@@ -1,3 +1,0 @@
-{
-  return new Object[]{new GroupCollector(collector,_fact),new HashMap(),batchId};
-}

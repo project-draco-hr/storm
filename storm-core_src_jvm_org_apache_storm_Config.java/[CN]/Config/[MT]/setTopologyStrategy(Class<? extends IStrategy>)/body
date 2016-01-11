@@ -1,0 +1,5 @@
+{
+  if (clazz != null) {
+    this.put(Config.TOPOLOGY_SCHEDULER_STRATEGY,clazz.getName());
+  }
+}

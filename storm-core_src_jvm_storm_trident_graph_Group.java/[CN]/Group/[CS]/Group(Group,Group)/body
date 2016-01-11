@@ -1,5 +1,0 @@
-{
-  this.graph=g1.graph;
-  nodes.addAll(g1.nodes);
-  nodes.addAll(g2.nodes);
-}

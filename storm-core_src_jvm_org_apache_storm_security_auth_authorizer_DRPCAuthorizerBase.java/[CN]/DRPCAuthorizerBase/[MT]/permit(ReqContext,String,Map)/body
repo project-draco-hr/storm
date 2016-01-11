@@ -1,0 +1,10 @@
+{
+  if ("execute".equals(operation)) {
+    return permitClientRequest(context,operation,params);
+  }
+ else   if ("failRequest".equals(operation) || "fetchRequest".equals(operation) || "result".equals(operation)) {
+    return permitInvocationRequest(context,operation,params);
+  }
+  LOG.warn("Denying unsupported operation \"" + operation + "\" from "+ context.remoteAddress());
+  return false;
+}

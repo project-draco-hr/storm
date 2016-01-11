@@ -1,3 +1,0 @@
-{
-  __isset_bitfield=EncodingUtils.clearBit(__isset_bitfield,__NIMBUS_UPTIME_SECS_ISSET_ID);
-}

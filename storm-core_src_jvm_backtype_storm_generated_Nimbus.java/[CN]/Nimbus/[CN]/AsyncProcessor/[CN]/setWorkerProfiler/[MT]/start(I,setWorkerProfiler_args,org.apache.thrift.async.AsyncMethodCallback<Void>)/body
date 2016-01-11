@@ -1,3 +1,0 @@
-{
-  iface.setWorkerProfiler(args.id,args.profileRequest,resultHandler);
-}

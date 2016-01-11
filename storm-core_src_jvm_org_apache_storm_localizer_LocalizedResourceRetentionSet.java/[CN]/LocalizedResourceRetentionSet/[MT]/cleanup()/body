@@ -1,0 +1,18 @@
+{
+  LOG.debug("cleanup target size: {} current size is: {}",_targetSize,_currentSize);
+  for (Iterator<Map.Entry<LocalizedResource,LocalizedResourceSet>> i=_noReferences.entrySet().iterator(); _currentSize - _delSize > _targetSize && i.hasNext(); ) {
+    Map.Entry<LocalizedResource,LocalizedResourceSet> rsrc=i.next();
+    LocalizedResource resource=rsrc.getKey();
+    LocalizedResourceSet set=rsrc.getValue();
+    if (resource != null && set.remove(resource)) {
+      if (deleteResource(resource)) {
+        _delSize+=resource.getSize();
+        LOG.info("deleting: " + resource.getFilePath() + " size of: "+ resource.getSize());
+        i.remove();
+      }
+ else {
+        set.addResource(resource.getKey(),resource,resource.isUncompressed());
+      }
+    }
+  }
+}

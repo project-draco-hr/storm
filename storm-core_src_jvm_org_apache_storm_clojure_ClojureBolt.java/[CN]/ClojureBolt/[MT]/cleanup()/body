@@ -1,0 +1,7 @@
+{
+  try {
+    _bolt.cleanup();
+  }
+ catch (  AbstractMethodError ame) {
+  }
+}

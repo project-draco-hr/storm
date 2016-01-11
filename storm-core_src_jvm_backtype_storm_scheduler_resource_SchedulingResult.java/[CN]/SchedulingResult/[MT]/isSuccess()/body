@@ -1,3 +1,0 @@
-{
-  return SchedulingStatus.isStatusSuccess(this.status);
-}

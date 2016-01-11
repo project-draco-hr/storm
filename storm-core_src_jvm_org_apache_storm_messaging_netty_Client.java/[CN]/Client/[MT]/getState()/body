@@ -1,0 +1,14 @@
+{
+  LOG.debug("Getting metrics for client connection to {}",dstAddressPrefixedName);
+  HashMap<String,Object> ret=new HashMap<String,Object>();
+  ret.put("reconnects",totalConnectionAttempts.getAndSet(0));
+  ret.put("sent",messagesSent.getAndSet(0));
+  ret.put("pending",pendingMessages.get());
+  ret.put("lostOnSend",messagesLost.getAndSet(0));
+  ret.put("dest",dstAddress.toString());
+  String src=srcAddressName();
+  if (src != null) {
+    ret.put("src",src);
+  }
+  return ret;
+}

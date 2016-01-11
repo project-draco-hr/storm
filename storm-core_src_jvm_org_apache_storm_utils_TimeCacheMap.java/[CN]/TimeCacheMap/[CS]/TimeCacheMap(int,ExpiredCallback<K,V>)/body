@@ -1,0 +1,3 @@
+{
+  this(expirationSecs,DEFAULT_NUM_BUCKETS,callback);
+}

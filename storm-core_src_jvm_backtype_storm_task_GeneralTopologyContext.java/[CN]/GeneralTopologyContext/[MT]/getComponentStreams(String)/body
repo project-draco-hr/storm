@@ -1,3 +1,0 @@
-{
-  return getComponentCommon(componentId).get_streams().keySet();
-}

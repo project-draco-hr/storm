@@ -1,0 +1,5 @@
+{
+  SortedMap<Long,Object> prevMap=_curr.headMap(txid);
+  if (prevMap.isEmpty())   return null;
+ else   return prevMap.get(prevMap.lastKey());
+}

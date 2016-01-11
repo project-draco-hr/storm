@@ -1,6 +1,0 @@
-{
-  this();
-  this.success=success;
-  this.aze=aze;
-  this.knf=knf;
-}

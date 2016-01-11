@@ -1,3 +1,0 @@
-{
-  return new getBlobReplication_resultStandardScheme();
-}

@@ -1,0 +1,12 @@
+{
+  long timeSpent=time - _bucketStart.getAndSet(time);
+  long currentVal=_currentBucket.getAndSet(0);
+  for (int i=0; i < _oldBuckets.length; i++) {
+    long tmpTime=_bucketTime[i];
+    _bucketTime[i]=timeSpent;
+    timeSpent=tmpTime;
+    long cnt=_oldBuckets[i];
+    _oldBuckets[i]=currentVal;
+    currentVal=cnt;
+  }
+}

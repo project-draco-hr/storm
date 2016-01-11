@@ -1,0 +1,3 @@
+{
+  this.nodeMap=getAllNodesFrom(cluster,topologies);
+}

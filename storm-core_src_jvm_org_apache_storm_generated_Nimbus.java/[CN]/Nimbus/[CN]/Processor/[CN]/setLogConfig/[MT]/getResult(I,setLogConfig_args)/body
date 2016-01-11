@@ -1,0 +1,5 @@
+{
+  setLogConfig_result result=new setLogConfig_result();
+  iface.setLogConfig(args.name,args.config);
+  return result;
+}

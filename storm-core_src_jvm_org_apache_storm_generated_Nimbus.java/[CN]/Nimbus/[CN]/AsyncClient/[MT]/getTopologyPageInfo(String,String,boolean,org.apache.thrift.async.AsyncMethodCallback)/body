@@ -1,0 +1,6 @@
+{
+  checkReady();
+  getTopologyPageInfo_call method_call=new getTopologyPageInfo_call(id,window,is_include_sys,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

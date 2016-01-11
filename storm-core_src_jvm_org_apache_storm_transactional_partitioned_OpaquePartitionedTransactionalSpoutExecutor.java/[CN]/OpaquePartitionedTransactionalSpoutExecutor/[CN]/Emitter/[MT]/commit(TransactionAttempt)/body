@@ -1,0 +1,9 @@
+{
+  BigInteger txid=attempt.getTransactionId();
+  Map<Integer,Object> metas=_cachedMetas.remove(txid);
+  for (  Entry<Integer,Object> entry : metas.entrySet()) {
+    Integer partition=entry.getKey();
+    Object meta=entry.getValue();
+    _partitionStates.get(partition).overrideState(txid,meta);
+  }
+}

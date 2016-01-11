@@ -1,0 +1,7 @@
+{
+  List<Long> all=getAllVersions();
+  for (  Long v : all) {
+    if (v <= maxVersion)     return v;
+  }
+  return null;
+}

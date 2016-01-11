@@ -1,0 +1,13 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.host=iprot.readString();
+  struct.set_host_isSet(true);
+  struct.port=iprot.readI32();
+  struct.set_port_isSet(true);
+  struct.uptime_secs=iprot.readI32();
+  struct.set_uptime_secs_isSet(true);
+  struct.isLeader=iprot.readBool();
+  struct.set_isLeader_isSet(true);
+  struct.version=iprot.readString();
+  struct.set_version_isSet(true);
+}

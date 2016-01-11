@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("createStateInZookeeper",org.apache.thrift.protocol.TMessageType.CALL,0));
+  createStateInZookeeper_args args=new createStateInZookeeper_args();
+  args.set_key(key);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

@@ -1,0 +1,3 @@
+{
+  return new Object[][]{{new RankableObjectWithFields("foo",0),new RankableObjectWithFields("foo",1)},{new RankableObjectWithFields("foo",1),new RankableObjectWithFields("Foo",1)},{new RankableObjectWithFields("foo",1),new RankableObjectWithFields("FOO",1)},{new RankableObjectWithFields("foo",1),new RankableObjectWithFields("bar",1)},{new RankableObjectWithFields("",0),new RankableObjectWithFields("",1)},{new RankableObjectWithFields("",1),new RankableObjectWithFields("bar",1)}};
+}

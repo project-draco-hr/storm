@@ -1,3 +1,0 @@
-{
-  return txPath("" + tx);
-}

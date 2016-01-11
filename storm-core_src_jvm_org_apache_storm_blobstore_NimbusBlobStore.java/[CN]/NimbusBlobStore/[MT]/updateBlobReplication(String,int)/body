@@ -1,0 +1,11 @@
+{
+  try {
+    return client.getClient().updateBlobReplication(key,replication);
+  }
+ catch (  AuthorizationException|KeyNotFoundException exp) {
+    throw exp;
+  }
+catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

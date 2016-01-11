@@ -1,0 +1,5 @@
+{
+  this.tuples=tuples;
+  this.newTuples=newTuples;
+  this.expiredTuples=expiredTuples;
+}

@@ -1,0 +1,10 @@
+{
+  final int MAX_RETRY_ATTEMPTS=2;
+  final int ATTEMPTS_INTERVAL_TIME=100;
+  for (int retryAttempts=0; retryAttempts < MAX_RETRY_ATTEMPTS; retryAttempts++) {
+    if (downloadResourcesAsSupervisorAttempt(cb,key,localFile)) {
+      break;
+    }
+    Utils.sleep(ATTEMPTS_INTERVAL_TIME);
+  }
+}

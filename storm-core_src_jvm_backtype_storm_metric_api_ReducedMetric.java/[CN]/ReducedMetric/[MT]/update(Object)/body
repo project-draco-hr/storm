@@ -1,3 +1,0 @@
-{
-  _accumulator=_reducer.reduce(_accumulator,value);
-}

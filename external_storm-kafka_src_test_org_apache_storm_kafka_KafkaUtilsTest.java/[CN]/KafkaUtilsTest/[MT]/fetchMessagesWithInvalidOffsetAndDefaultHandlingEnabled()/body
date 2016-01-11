@@ -1,0 +1,6 @@
+{
+  config=new KafkaConfig(brokerHosts,"newTopic");
+  String value="test";
+  createTopicAndSendMessage(value);
+  KafkaUtils.fetchMessages(config,simpleConsumer,new Partition(Broker.fromString(broker.getBrokerConnectionString()),"newTopic",0),-99);
+}

@@ -1,0 +1,7 @@
+{
+synchronized (_lock) {
+    String id=UUID.randomUUID().toString();
+    _states.put(id,init);
+    return id;
+  }
+}

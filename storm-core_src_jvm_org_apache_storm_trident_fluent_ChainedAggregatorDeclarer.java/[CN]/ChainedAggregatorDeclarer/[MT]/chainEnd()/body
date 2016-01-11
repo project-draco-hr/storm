@@ -1,0 +1,38 @@
+{
+  Fields[] inputFields=new Fields[_aggs.size()];
+  Aggregator[] aggs=new Aggregator[_aggs.size()];
+  int[] outSizes=new int[_aggs.size()];
+  List<String> allOutFields=new ArrayList<>();
+  Set<String> allInFields=new HashSet<>();
+  for (int i=0; i < _aggs.size(); i++) {
+    AggSpec spec=_aggs.get(i);
+    Fields infields=spec.inFields;
+    if (infields == null)     infields=new Fields();
+    Fields outfields=spec.outFields;
+    if (outfields == null)     outfields=new Fields();
+    inputFields[i]=infields;
+    aggs[i]=spec.agg;
+    outSizes[i]=outfields.size();
+    allOutFields.addAll(outfields.toList());
+    allInFields.addAll(infields.toList());
+  }
+  if (new HashSet(allOutFields).size() != allOutFields.size()) {
+    throw new IllegalArgumentException("Output fields for chained aggregators must be distinct: " + allOutFields.toString());
+  }
+  Fields inFields=new Fields(new ArrayList<>(allInFields));
+  Fields outFields=new Fields(allOutFields);
+  Aggregator combined=new ChainedAggregatorImpl(aggs,inputFields,new ComboList.Factory(outSizes));
+  if (_type != AggType.FULL) {
+    _stream=_stream.partitionAggregate(inFields,combined,outFields);
+  }
+  if (_type != AggType.PARTITION) {
+    _stream=_globalScheme.aggPartition(_stream);
+    BatchToPartition singleEmit=_globalScheme.singleEmitPartitioner();
+    Aggregator toAgg=combined;
+    if (singleEmit != null) {
+      toAgg=new SingleEmitAggregator(combined,singleEmit);
+    }
+    _stream=_stream.partitionAggregate(inFields,toAgg,outFields);
+  }
+  return _stream.toStream();
+}

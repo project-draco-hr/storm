@@ -1,0 +1,8 @@
+{
+  if (alist == null) {
+    return 1;
+  }
+ else {
+    return Arrays.deepHashCode(alist.toArray());
+  }
+}

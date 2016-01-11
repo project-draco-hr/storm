@@ -1,5 +1,0 @@
-{
-  Config conf=new Config();
-  conf.putAll(Utils.readStormConfig());
-  store=Utils.getClientBlobStore(conf);
-}

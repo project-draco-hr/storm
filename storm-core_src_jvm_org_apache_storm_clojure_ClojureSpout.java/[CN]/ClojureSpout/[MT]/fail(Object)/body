@@ -1,0 +1,7 @@
+{
+  try {
+    _spout.fail(msgId);
+  }
+ catch (  AbstractMethodError ame) {
+  }
+}

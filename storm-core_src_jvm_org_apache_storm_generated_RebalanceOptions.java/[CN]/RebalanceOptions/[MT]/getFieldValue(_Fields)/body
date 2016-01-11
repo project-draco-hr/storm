@@ -1,0 +1,11 @@
+{
+switch (field) {
+case WAIT_SECS:
+    return get_wait_secs();
+case NUM_WORKERS:
+  return get_num_workers();
+case NUM_EXECUTORS:
+return get_num_executors();
+}
+throw new IllegalStateException();
+}

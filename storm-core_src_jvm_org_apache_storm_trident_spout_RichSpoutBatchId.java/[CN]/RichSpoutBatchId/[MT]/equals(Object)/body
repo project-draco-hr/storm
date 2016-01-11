@@ -1,0 +1,5 @@
+{
+  if (!(o instanceof RichSpoutBatchId))   return false;
+  RichSpoutBatchId other=(RichSpoutBatchId)o;
+  return _id == other._id;
+}

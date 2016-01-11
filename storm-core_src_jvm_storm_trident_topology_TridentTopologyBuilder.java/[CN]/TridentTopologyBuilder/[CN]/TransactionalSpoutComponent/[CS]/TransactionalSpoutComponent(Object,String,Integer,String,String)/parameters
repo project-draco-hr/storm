@@ -1,5 +1,0 @@
-Object spout
-String streamName
-Integer parallelism
-String commitStateId
-String batchGroupId

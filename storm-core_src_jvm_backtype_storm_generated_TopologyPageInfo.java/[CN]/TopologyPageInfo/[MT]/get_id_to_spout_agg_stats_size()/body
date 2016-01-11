@@ -1,3 +1,0 @@
-{
-  return (this.id_to_spout_agg_stats == null) ? 0 : this.id_to_spout_agg_stats.size();
-}

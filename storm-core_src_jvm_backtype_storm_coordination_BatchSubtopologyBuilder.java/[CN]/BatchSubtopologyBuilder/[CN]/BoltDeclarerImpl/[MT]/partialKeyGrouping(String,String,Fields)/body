@@ -1,3 +1,0 @@
-{
-  return customGrouping(componentId,streamId,new PartialKeyGrouping(fields));
-}

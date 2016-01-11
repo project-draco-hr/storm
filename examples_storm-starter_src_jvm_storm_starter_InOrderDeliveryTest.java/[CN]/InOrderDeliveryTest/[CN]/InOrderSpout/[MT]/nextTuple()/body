@@ -1,5 +1,0 @@
-{
-  Values v=new Values(_base,_i);
-  _collector.emit(v,"ACK");
-  _i++;
-}

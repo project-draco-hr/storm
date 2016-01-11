@@ -1,3 +1,0 @@
-{
-  return "Partition{" + "host=" + host + ", topic="+ topic+ ", partition="+ partition+ '}';
-}

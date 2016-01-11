@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof ThriftSerializedObject)   return this.equals((ThriftSerializedObject)that);
-  return false;
-}

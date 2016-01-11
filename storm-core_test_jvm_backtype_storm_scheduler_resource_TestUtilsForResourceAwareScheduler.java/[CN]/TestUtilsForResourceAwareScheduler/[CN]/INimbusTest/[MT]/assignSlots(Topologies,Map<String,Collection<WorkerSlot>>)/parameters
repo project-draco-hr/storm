@@ -1,2 +1,0 @@
-Topologies topologies
-Map<String,Collection<WorkerSlot>> newSlotsByTopologyId

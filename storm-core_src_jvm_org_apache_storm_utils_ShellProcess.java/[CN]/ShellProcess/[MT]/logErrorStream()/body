@@ -1,0 +1,12 @@
+{
+  try {
+    while (processErrorStream.available() > 0) {
+      int bufferSize=processErrorStream.available();
+      byte[] errorReadingBuffer=new byte[bufferSize];
+      processErrorStream.read(errorReadingBuffer,0,bufferSize);
+      ShellLogger.info(new String(errorReadingBuffer));
+    }
+  }
+ catch (  Exception e) {
+  }
+}

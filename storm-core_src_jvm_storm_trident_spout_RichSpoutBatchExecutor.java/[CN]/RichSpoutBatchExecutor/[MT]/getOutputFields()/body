@@ -1,3 +1,0 @@
-{
-  return TridentUtils.getSingleOutputStreamFields(_spout);
-}

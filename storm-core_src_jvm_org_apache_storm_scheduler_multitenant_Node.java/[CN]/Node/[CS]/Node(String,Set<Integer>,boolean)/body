@@ -1,0 +1,9 @@
+{
+  _nodeId=nodeId;
+  _isAlive=isAlive;
+  if (_isAlive && allPorts != null) {
+    for (    int port : allPorts) {
+      _freeSlots.add(new WorkerSlot(_nodeId,port));
+    }
+  }
+}

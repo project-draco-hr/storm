@@ -1,3 +1,0 @@
-{
-  return partition(Grouping.all(new NullStruct()));
-}

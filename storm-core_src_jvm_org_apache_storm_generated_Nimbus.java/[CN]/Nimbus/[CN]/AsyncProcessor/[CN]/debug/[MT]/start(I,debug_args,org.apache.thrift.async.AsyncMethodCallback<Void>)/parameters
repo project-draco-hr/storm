@@ -1,0 +1,3 @@
+I iface
+debug_args args
+org.apache.thrift.async.AsyncMethodCallback<Void> resultHandler

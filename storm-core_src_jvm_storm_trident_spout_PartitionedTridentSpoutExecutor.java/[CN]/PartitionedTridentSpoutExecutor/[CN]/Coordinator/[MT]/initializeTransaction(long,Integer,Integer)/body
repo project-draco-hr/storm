@@ -1,8 +1,0 @@
-{
-  if (currMetadata != null) {
-    return currMetadata;
-  }
- else {
-    return _coordinator.getPartitionsForBatch();
-  }
-}

@@ -1,5 +1,0 @@
-{
-  AccessControl submitterAcl=BlobStoreAclHandler.parseAccessControl("u:tester:rwa");
-  meta.add_to_acl(submitterAcl);
-  client.createBlob(testKey,meta);
-}

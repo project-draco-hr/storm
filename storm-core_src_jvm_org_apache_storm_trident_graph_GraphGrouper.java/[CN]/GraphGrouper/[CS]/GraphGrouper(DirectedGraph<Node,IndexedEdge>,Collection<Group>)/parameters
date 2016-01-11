@@ -1,0 +1,2 @@
+DirectedGraph<Node,IndexedEdge> graph
+Collection<Group> initialGroups

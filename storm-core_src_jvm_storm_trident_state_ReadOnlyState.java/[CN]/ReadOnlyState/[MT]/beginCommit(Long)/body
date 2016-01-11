@@ -1,3 +1,0 @@
-{
-  throw new UnsupportedOperationException("This state is read-only and does not support updates");
-}

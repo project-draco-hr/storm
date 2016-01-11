@@ -1,4 +1,0 @@
-{
-  this.brokerZkStr=brokerZkStr;
-  this.brokerZkPath=brokerZkPath;
-}

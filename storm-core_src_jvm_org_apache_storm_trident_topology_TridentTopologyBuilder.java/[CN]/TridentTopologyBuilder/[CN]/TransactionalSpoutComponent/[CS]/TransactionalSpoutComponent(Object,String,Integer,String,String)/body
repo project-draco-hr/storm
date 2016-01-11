@@ -1,0 +1,4 @@
+{
+  super(spout,streamName,parallelism,batchGroupId);
+  this.commitStateId=commitStateId;
+}

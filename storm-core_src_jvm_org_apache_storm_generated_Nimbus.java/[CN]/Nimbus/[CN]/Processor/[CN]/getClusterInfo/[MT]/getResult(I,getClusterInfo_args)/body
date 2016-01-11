@@ -1,0 +1,10 @@
+{
+  getClusterInfo_result result=new getClusterInfo_result();
+  try {
+    result.success=iface.getClusterInfo();
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}

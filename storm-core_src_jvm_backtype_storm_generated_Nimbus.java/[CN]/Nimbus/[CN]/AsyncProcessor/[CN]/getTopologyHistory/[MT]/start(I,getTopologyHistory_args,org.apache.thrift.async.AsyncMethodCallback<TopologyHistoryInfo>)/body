@@ -1,3 +1,0 @@
-{
-  iface.getTopologyHistory(args.user,resultHandler);
-}

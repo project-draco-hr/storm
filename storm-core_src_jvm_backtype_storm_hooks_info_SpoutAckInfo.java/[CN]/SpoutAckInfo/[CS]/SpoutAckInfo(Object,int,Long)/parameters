@@ -1,3 +1,0 @@
-Object messageId
-int spoutTaskId
-Long completeLatencyMs

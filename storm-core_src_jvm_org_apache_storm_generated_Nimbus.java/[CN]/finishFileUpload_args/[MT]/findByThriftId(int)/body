@@ -1,0 +1,8 @@
+{
+switch (fieldId) {
+case 1:
+    return LOCATION;
+default :
+  return null;
+}
+}

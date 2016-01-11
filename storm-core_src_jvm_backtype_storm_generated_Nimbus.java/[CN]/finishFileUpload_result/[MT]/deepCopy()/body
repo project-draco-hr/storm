@@ -1,3 +1,0 @@
-{
-  return new finishFileUpload_result(this);
-}

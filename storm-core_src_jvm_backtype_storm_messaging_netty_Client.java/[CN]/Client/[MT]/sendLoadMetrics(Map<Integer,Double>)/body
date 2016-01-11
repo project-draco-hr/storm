@@ -1,3 +1,0 @@
-{
-  throw new RuntimeException("Client connection should not send load metrics");
-}

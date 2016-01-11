@@ -1,9 +1,0 @@
-{
-  long[] counts=objToCounts.get(obj);
-  if (counts == null) {
-    return 0;
-  }
- else {
-    return counts[slot];
-  }
-}

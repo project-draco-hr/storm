@@ -1,3 +1,0 @@
-{
-  return new Fields(indexToFieldsList(_index));
-}

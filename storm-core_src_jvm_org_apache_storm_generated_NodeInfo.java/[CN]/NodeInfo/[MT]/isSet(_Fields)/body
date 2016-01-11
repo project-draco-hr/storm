@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case NODE:
+    return is_set_node();
+case PORT:
+  return is_set_port();
+}
+throw new IllegalStateException();
+}

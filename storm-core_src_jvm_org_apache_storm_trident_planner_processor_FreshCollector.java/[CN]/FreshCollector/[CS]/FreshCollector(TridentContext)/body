@@ -1,0 +1,4 @@
+{
+  _triContext=context;
+  _factory=new FreshOutputFactory(context.getSelfOutputFields());
+}

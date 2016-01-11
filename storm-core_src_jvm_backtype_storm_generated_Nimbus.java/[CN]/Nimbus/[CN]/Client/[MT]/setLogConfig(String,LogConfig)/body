@@ -1,4 +1,0 @@
-{
-  send_setLogConfig(name,config);
-  recv_setLogConfig();
-}

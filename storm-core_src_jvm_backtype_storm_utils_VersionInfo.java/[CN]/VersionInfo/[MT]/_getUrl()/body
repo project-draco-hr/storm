@@ -1,3 +1,0 @@
-{
-  return info.getProperty("url","Unknown");
-}

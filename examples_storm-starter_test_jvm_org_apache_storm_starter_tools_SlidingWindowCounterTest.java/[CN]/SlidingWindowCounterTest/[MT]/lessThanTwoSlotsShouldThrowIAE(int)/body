@@ -1,0 +1,3 @@
+{
+  new SlidingWindowCounter<Object>(windowLengthInSlots);
+}

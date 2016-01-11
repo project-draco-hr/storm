@@ -1,3 +1,0 @@
-{
-  return this.prev_status != null;
-}

@@ -1,0 +1,3 @@
+{
+  return new LocalFsBlobStoreFile(getKeyDir(key),BlobStoreFile.BLOBSTORE_DATA_FILE);
+}

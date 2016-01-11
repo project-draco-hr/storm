@@ -1,0 +1,6 @@
+{
+  Map<String,ThriftSerializedObject> curr=partialSnapshot(null);
+  TSerializer ser=new TSerializer();
+  curr.put(key,serialize(val,ser));
+  persistInternal(curr,ser,cleanup);
+}

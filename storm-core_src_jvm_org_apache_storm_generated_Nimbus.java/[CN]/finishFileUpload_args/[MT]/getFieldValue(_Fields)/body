@@ -1,0 +1,7 @@
+{
+switch (field) {
+case LOCATION:
+    return get_location();
+}
+throw new IllegalStateException();
+}

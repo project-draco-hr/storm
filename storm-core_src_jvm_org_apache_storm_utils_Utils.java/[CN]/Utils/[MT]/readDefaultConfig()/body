@@ -1,0 +1,3 @@
+{
+  return findAndReadConfigFile("defaults.yaml",true);
+}

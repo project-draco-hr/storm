@@ -1,8 +1,0 @@
-{
-switch (fieldId) {
-case 1:
-    return SUPERVISOR_ID;
-default :
-  return null;
-}
-}

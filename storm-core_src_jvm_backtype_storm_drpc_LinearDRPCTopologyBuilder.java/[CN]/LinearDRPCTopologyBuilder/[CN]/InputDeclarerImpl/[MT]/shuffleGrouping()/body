@@ -1,9 +1,0 @@
-{
-  addDeclaration(new InputDeclaration(){
-    @Override public void declare(    String prevComponent,    InputDeclarer declarer){
-      declarer.shuffleGrouping(prevComponent);
-    }
-  }
-);
-  return this;
-}

@@ -1,0 +1,36 @@
+{
+switch (field) {
+case SPOUTS:
+    if (value == null) {
+      unset_spouts();
+    }
+ else {
+      set_spouts((Map<String,SpoutSpec>)value);
+    }
+  break;
+case BOLTS:
+if (value == null) {
+  unset_bolts();
+}
+ else {
+  set_bolts((Map<String,Bolt>)value);
+}
+break;
+case STATE_SPOUTS:
+if (value == null) {
+unset_state_spouts();
+}
+ else {
+set_state_spouts((Map<String,StateSpoutSpec>)value);
+}
+break;
+case WORKER_HOOKS:
+if (value == null) {
+unset_worker_hooks();
+}
+ else {
+set_worker_hooks((List<ByteBuffer>)value);
+}
+break;
+}
+}

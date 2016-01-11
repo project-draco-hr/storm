@@ -1,3 +1,0 @@
-{
-  return new failRequest_result(this);
-}

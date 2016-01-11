@@ -1,7 +1,0 @@
-{
-switch (field) {
-case TOPO_IDS:
-    return get_topo_ids();
-}
-throw new IllegalStateException();
-}

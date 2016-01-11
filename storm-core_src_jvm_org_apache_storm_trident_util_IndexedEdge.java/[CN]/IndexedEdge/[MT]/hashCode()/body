@@ -1,0 +1,3 @@
+{
+  return 13 * source.hashCode() + 7 * target.hashCode() + index;
+}

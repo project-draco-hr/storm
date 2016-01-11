@@ -1,8 +1,0 @@
-{
-  if (other.is_set_name()) {
-    this.name=other.name;
-  }
-  if (other.is_set_creds()) {
-    this.creds=new Credentials(other.creds);
-  }
-}

@@ -1,4 +1,0 @@
-{
-  _component.componentConfs.add(conf);
-  return this;
-}

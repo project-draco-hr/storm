@@ -1,3 +1,0 @@
-{
-  return new SchedulingResult(status,null,null,errorMessage);
-}

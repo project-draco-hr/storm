@@ -1,3 +1,0 @@
-long millis
-TriggerHandler handler
-EvictionPolicy<T> evictionPolicy

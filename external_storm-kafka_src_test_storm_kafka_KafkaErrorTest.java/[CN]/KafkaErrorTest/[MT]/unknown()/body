@@ -1,3 +1,0 @@
-{
-  assertThat(KafkaError.getError(13),is(equalTo(KafkaError.UNKNOWN)));
-}

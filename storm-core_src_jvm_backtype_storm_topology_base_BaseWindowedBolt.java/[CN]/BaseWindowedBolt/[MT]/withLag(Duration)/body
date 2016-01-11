@@ -1,4 +1,0 @@
-{
-  windowConfiguration.put(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_MAX_LAG_MS,duration.value);
-  return this;
-}

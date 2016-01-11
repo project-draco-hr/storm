@@ -1,8 +1,0 @@
-{
-switch (fieldId) {
-case 1:
-    return FILE;
-default :
-  return null;
-}
-}

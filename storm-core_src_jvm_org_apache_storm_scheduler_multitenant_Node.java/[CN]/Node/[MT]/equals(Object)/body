@@ -1,0 +1,3 @@
+{
+  return other instanceof Node && _nodeId.equals(((Node)other)._nodeId);
+}

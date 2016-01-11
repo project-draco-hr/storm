@@ -1,3 +1,0 @@
-{
-  return principal == null ? null : principal.getName().split("[/@]")[0];
-}

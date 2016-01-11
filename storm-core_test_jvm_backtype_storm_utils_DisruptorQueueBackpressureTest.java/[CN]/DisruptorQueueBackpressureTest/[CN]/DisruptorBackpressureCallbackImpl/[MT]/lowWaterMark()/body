@@ -1,6 +1,0 @@
-{
-  if (throttleOn.get()) {
-    lowWaterMarkCalledPopulation=queue.getMetrics().writePos() - consumerCursor.get() + queue.getMetrics().overflow();
-    throttleOn.set(false);
-  }
-}

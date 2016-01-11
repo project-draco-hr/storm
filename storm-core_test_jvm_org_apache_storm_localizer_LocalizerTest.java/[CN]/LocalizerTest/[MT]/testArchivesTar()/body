@@ -1,0 +1,3 @@
+{
+  testArchives(joinPath("test","jvm","org","apache","storm","localizer","localtestwithsymlink.tar"),true,21344);
+}

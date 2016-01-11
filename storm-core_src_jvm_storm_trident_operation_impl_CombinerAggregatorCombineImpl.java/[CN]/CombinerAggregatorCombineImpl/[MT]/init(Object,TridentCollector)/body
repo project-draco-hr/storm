@@ -1,5 +1,0 @@
-{
-  Result ret=new Result();
-  ret.obj=_agg.zero();
-  return ret;
-}

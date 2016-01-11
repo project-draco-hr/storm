@@ -1,0 +1,10 @@
+{
+  stateConf=new HashMap(stateConf);
+  try {
+    _curator=newCurator(stateConf);
+    _curator.start();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

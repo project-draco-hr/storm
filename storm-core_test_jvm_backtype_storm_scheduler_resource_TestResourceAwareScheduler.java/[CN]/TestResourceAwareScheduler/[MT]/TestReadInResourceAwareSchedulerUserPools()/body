@@ -1,5 +1,0 @@
-{
-  Map fromFile=Utils.findAndReadConfigFile("user-resource-pools.yaml",false);
-  LOG.info("fromFile: {}",fromFile);
-  ConfigValidation.validateFields(fromFile);
-}

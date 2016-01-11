@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_state_spout_object=true && (is_set_state_spout_object());
+  list.add(present_state_spout_object);
+  if (present_state_spout_object)   list.add(state_spout_object);
+  boolean present_common=true && (is_set_common());
+  list.add(present_common);
+  if (present_common)   list.add(common);
+  return list.hashCode();
+}

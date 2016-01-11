@@ -1,3 +1,0 @@
-{
-  return authorizedHosts.contains(WILD_CARD) || authorizedHosts.contains(remoteAddress.getCanonicalHostName()) || authorizedHosts.contains(remoteAddress.getHostName())|| authorizedHosts.contains(remoteAddress.getHostAddress());
-}

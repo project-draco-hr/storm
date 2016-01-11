@@ -1,0 +1,23 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_mem_on_heap()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_mem_off_heap()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_cpu()) {
+    optionals.set(2);
+  }
+  oprot.writeBitSet(optionals,3);
+  if (struct.is_set_mem_on_heap()) {
+    oprot.writeDouble(struct.mem_on_heap);
+  }
+  if (struct.is_set_mem_off_heap()) {
+    oprot.writeDouble(struct.mem_off_heap);
+  }
+  if (struct.is_set_cpu()) {
+    oprot.writeDouble(struct.cpu);
+  }
+}

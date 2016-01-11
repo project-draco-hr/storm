@@ -1,0 +1,2 @@
+String topologyId
+Map<ExecutorDetails,WorkerSlot> executorToSlots

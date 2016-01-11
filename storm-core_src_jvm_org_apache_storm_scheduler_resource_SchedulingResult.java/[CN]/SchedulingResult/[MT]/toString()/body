@@ -1,0 +1,10 @@
+{
+  String ret=null;
+  if (this.isSuccess()) {
+    ret="Status: " + this.getStatus() + " message: "+ this.getMessage()+ " scheduling: "+ this.getSchedulingResultMap();
+  }
+ else {
+    ret="Status: " + this.getStatus() + " error message: "+ this.getErrorMessage();
+  }
+  return ret;
+}

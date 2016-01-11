@@ -1,0 +1,10 @@
+{
+  getTopologyHistory_result result=new getTopologyHistory_result();
+  try {
+    result.success=iface.getTopologyHistory(args.user);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}

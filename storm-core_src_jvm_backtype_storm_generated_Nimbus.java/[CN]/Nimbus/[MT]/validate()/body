@@ -1,5 +1,0 @@
-{
-  if (topology != null) {
-    topology.validate();
-  }
-}

@@ -1,4 +1,0 @@
-{
-  send_beginFileDownload(file);
-  return recv_beginFileDownload();
-}

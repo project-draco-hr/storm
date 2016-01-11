@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof setLogConfig_result)   return this.equals((setLogConfig_result)that);
-  return false;
-}

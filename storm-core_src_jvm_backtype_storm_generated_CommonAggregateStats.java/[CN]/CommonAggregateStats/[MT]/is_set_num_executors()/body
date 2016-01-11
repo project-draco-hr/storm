@@ -1,3 +1,0 @@
-{
-  return EncodingUtils.testBit(__isset_bitfield,__NUM_EXECUTORS_ISSET_ID);
-}

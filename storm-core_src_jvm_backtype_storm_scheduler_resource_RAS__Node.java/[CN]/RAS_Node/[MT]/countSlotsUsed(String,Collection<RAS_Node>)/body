@@ -1,7 +1,0 @@
-{
-  int total=0;
-  for (  RAS_Node n : nodes) {
-    total+=n.totalSlotsUsed(topId);
-  }
-  return total;
-}

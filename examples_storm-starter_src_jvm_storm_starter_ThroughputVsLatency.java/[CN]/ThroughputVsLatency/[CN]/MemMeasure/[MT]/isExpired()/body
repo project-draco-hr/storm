@@ -1,3 +1,0 @@
-{
-  return (System.currentTimeMillis() - _time) >= 20000;
-}

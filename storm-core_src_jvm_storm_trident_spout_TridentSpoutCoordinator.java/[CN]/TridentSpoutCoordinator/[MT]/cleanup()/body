@@ -1,4 +1,0 @@
-{
-  _coord.close();
-  _underlyingState.close();
-}

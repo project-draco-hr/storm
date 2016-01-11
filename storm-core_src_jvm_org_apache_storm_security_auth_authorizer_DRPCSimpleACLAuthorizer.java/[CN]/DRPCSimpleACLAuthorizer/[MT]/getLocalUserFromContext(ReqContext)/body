@@ -1,0 +1,6 @@
+{
+  if (context != null) {
+    return _ptol.toLocal(context.principal());
+  }
+  return null;
+}

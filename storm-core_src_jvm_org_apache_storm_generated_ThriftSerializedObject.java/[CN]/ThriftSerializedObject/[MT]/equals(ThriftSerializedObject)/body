@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_name=true && this.is_set_name();
+  boolean that_present_name=true && that.is_set_name();
+  if (this_present_name || that_present_name) {
+    if (!(this_present_name && that_present_name))     return false;
+    if (!this.name.equals(that.name))     return false;
+  }
+  boolean this_present_bits=true && this.is_set_bits();
+  boolean that_present_bits=true && that.is_set_bits();
+  if (this_present_bits || that_present_bits) {
+    if (!(this_present_bits && that_present_bits))     return false;
+    if (!this.bits.equals(that.bits))     return false;
+  }
+  return true;
+}

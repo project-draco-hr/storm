@@ -1,4 +1,0 @@
-{
-  this();
-  this.msg=msg;
-}

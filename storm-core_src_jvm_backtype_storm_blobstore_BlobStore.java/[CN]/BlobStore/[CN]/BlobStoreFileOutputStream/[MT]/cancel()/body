@@ -1,8 +1,0 @@
-{
-  try {
-    out.close();
-  }
-  finally {
-    part.cancel();
-  }
-}

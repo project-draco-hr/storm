@@ -1,0 +1,16 @@
+{
+  validateSlot(ws);
+  if (!_freeSlots.remove(ws)) {
+    if (dontThrow) {
+      return true;
+    }
+    throw new IllegalStateException("Assigning a slot that was not free " + ws);
+  }
+  Set<WorkerSlot> usedSlots=_topIdToUsedSlots.get(topId);
+  if (usedSlots == null) {
+    usedSlots=new HashSet<WorkerSlot>();
+    _topIdToUsedSlots.put(topId,usedSlots);
+  }
+  usedSlots.add(ws);
+  return false;
+}

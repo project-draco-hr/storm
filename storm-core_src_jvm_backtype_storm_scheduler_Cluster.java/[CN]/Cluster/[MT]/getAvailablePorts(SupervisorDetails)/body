@@ -1,7 +1,0 @@
-{
-  Set<Integer> usedPorts=this.getUsedPorts(supervisor);
-  Set<Integer> ret=new HashSet();
-  ret.addAll(getAssignablePorts(supervisor));
-  ret.removeAll(usedPorts);
-  return ret;
-}

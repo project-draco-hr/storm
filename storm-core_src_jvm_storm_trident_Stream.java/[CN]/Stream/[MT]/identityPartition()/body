@@ -1,3 +1,0 @@
-{
-  return partition(new IdentityGrouping());
-}

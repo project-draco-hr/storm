@@ -1,0 +1,12 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(2);
+  if (incoming.get(0)) {
+    struct.functionName=iprot.readString();
+    struct.set_functionName_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.funcArgs=iprot.readString();
+    struct.set_funcArgs_isSet(true);
+  }
+}

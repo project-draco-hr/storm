@@ -1,3 +1,0 @@
-{
-  return new uploadBlobChunk_result(this);
-}

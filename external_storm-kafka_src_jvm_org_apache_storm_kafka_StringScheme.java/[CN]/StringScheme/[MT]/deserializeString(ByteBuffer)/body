@@ -1,0 +1,9 @@
+{
+  if (string.hasArray()) {
+    int base=string.arrayOffset();
+    return new String(string.array(),base + string.position(),string.remaining());
+  }
+ else {
+    return new String(Utils.toByteArray(string),UTF8_CHARSET);
+  }
+}

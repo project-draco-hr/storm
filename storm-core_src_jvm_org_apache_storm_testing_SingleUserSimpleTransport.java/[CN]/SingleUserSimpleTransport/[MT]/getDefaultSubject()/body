@@ -1,0 +1,13 @@
+{
+  HashSet<Principal> principals=new HashSet<Principal>();
+  principals.add(new Principal(){
+    public String getName(){
+      return "user";
+    }
+    public String toString(){
+      return "user";
+    }
+  }
+);
+  return new Subject(true,principals,new HashSet<Object>(),new HashSet<Object>());
+}

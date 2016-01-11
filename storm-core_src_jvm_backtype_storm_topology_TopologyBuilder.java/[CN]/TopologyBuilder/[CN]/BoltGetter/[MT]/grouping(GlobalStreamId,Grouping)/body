@@ -1,3 +1,0 @@
-{
-  return grouping(id.get_componentId(),id.get_streamId(),grouping);
-}

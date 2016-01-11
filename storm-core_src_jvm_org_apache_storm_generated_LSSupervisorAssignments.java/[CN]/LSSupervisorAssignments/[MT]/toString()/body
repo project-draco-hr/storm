@@ -1,0 +1,14 @@
+{
+  StringBuilder sb=new StringBuilder("LSSupervisorAssignments(");
+  boolean first=true;
+  sb.append("assignments:");
+  if (this.assignments == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.assignments);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

@@ -1,0 +1,14 @@
+{
+  _collector.setContext(processorContext);
+  Object batchId=processorContext.batchId;
+  List<TridentTuple> buffer=(List)processorContext.state[_context.getStateIndex()];
+  if (buffer.size() > 0) {
+    Long txid=null;
+    if (batchId instanceof TransactionAttempt) {
+      txid=((TransactionAttempt)batchId).getTransactionId();
+    }
+    _state.beginCommit(txid);
+    _updater.updateState(_state,buffer,_collector);
+    _state.commit(txid);
+  }
+}

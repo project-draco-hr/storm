@@ -1,9 +1,0 @@
-{
-  Map<Integer,Load> newLocal=new HashMap<Integer,Load>();
-  if (local != null) {
-    for (    Map.Entry<Integer,Double> entry : local.entrySet()) {
-      newLocal.put(entry.getKey(),new Load(true,entry.getValue(),0.0));
-    }
-  }
-  _local.set(newLocal);
-}

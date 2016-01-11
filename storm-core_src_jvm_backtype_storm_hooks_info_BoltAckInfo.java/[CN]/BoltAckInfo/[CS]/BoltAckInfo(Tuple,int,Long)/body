@@ -1,5 +1,0 @@
-{
-  this.tuple=tuple;
-  this.ackingTaskId=ackingTaskId;
-  this.processLatencyMs=processLatencyMs;
-}

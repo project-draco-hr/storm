@@ -1,4 +1,0 @@
-{
-  headSlot=tailSlot;
-  tailSlot=slotAfter(tailSlot);
-}

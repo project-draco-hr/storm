@@ -1,0 +1,4 @@
+SimpleConsumer consumer
+Partition partition
+TridentCollector collector
+Map lastMeta

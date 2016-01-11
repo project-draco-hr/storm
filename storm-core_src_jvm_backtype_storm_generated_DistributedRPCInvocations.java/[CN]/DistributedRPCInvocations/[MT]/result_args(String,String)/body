@@ -1,5 +1,0 @@
-{
-  this();
-  this.id=id;
-  this.result=result;
-}

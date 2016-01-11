@@ -1,0 +1,10 @@
+{
+  this();
+  this.executor_info=executor_info;
+  this.component_id=component_id;
+  this.host=host;
+  this.port=port;
+  set_port_isSet(true);
+  this.uptime_secs=uptime_secs;
+  set_uptime_secs_isSet(true);
+}

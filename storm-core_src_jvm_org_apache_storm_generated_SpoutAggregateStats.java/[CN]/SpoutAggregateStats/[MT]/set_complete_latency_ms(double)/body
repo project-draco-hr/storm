@@ -1,0 +1,4 @@
+{
+  this.complete_latency_ms=complete_latency_ms;
+  set_complete_latency_ms_isSet(true);
+}

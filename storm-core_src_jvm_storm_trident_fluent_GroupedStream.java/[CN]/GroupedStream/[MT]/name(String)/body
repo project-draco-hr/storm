@@ -1,3 +1,0 @@
-{
-  return new GroupedStream(_stream.name(name),_groupFields);
-}

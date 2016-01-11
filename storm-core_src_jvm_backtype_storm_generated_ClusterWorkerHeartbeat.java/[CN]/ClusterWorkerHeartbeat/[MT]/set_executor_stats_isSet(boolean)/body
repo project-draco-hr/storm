@@ -1,5 +1,0 @@
-{
-  if (!value) {
-    this.executor_stats=null;
-  }
-}

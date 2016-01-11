@@ -1,0 +1,6 @@
+{
+  if (this.supervisors.containsKey(nodeId)) {
+    return this.supervisors.get(nodeId);
+  }
+  return null;
+}

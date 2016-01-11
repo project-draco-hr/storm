@@ -1,3 +1,0 @@
-{
-  iface.finishFileUpload(args.location,resultHandler);
-}

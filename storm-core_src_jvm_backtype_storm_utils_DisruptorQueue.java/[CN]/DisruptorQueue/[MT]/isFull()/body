@@ -1,3 +1,0 @@
-{
-  return (_metrics.population() + _overflowCount.get()) >= _metrics.capacity();
-}

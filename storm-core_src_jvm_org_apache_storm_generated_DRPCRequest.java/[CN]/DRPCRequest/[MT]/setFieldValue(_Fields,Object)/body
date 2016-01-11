@@ -1,0 +1,20 @@
+{
+switch (field) {
+case FUNC_ARGS:
+    if (value == null) {
+      unset_func_args();
+    }
+ else {
+      set_func_args((String)value);
+    }
+  break;
+case REQUEST_ID:
+if (value == null) {
+  unset_request_id();
+}
+ else {
+  set_request_id((String)value);
+}
+break;
+}
+}

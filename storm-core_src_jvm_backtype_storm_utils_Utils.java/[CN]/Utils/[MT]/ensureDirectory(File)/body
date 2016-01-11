@@ -1,5 +1,0 @@
-{
-  if (!dir.mkdirs() && !dir.isDirectory()) {
-    throw new IOException("Mkdirs failed to create " + dir.toString());
-  }
-}

@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof listBlobs_result)   return this.equals((listBlobs_result)that);
-  return false;
-}

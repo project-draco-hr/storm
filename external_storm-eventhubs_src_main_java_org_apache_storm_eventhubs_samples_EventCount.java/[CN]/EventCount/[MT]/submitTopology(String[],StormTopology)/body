@@ -1,7 +1,7 @@
 {
   Config config=new Config();
   config.setDebug(false);
-  config.registerMetricsConsumer(backtype.storm.metric.LoggingMetricsConsumer.class,1);
+  config.registerMetricsConsumer(org.apache.storm.metric.LoggingMetricsConsumer.class,1);
   if (args != null && args.length > 0) {
     config.setNumWorkers(numWorkers);
     StormSubmitter.submitTopology(args[0],config,topology);

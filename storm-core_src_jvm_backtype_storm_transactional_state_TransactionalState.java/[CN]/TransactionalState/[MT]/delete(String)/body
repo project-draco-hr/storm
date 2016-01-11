@@ -1,9 +1,0 @@
-{
-  path="/" + path;
-  try {
-    _curator.delete().forPath(path);
-  }
- catch (  Exception e) {
-    throw new RuntimeException(e);
-  }
-}

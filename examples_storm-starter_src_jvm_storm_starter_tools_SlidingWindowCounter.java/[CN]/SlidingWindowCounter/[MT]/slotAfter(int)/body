@@ -1,3 +1,0 @@
-{
-  return (slot + 1) % windowLengthInSlots;
-}

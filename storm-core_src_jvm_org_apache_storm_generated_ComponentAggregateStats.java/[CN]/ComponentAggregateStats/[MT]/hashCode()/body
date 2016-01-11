@@ -1,0 +1,16 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_type=true && (is_set_type());
+  list.add(present_type);
+  if (present_type)   list.add(type.getValue());
+  boolean present_common_stats=true && (is_set_common_stats());
+  list.add(present_common_stats);
+  if (present_common_stats)   list.add(common_stats);
+  boolean present_specific_stats=true && (is_set_specific_stats());
+  list.add(present_specific_stats);
+  if (present_specific_stats)   list.add(specific_stats);
+  boolean present_last_error=true && (is_set_last_error());
+  list.add(present_last_error);
+  if (present_last_error)   list.add(last_error);
+  return list.hashCode();
+}

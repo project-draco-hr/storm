@@ -1,0 +1,5 @@
+{
+  TopologyActionOptions x=new TopologyActionOptions();
+  x.set_rebalance_options(value);
+  return x;
+}

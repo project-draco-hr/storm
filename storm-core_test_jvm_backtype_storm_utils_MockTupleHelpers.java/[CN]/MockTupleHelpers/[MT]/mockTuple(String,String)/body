@@ -1,6 +1,0 @@
-{
-  Tuple tuple=Mockito.mock(Tuple.class);
-  Mockito.when(tuple.getSourceComponent()).thenReturn(componentId);
-  Mockito.when(tuple.getSourceStreamId()).thenReturn(streamId);
-  return tuple;
-}

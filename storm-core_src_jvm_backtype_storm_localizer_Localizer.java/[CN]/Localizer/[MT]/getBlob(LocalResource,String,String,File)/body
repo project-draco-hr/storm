@@ -1,9 +1,0 @@
-{
-  ArrayList<LocalResource> arr=new ArrayList<LocalResource>();
-  arr.add(localResource);
-  List<LocalizedResource> results=getBlobs(arr,user,topo,userFileDir);
-  if (results.isEmpty() || results.size() != 1) {
-    throw new IOException("Unknown error getting blob: " + localResource + ", for user: "+ user+ ", topo: "+ topo);
-  }
-  return results.get(0);
-}

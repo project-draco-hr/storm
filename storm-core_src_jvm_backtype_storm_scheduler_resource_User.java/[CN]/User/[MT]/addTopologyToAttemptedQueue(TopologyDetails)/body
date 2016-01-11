@@ -1,3 +1,0 @@
-{
-  this.attemptedQueue.add(topo);
-}

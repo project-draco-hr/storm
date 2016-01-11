@@ -1,0 +1,11 @@
+{
+  if (closing) {
+    return Status.Closed;
+  }
+ else   if (!connectionEstablished(allChannels)) {
+    return Status.Connecting;
+  }
+ else {
+    return Status.Ready;
+  }
+}

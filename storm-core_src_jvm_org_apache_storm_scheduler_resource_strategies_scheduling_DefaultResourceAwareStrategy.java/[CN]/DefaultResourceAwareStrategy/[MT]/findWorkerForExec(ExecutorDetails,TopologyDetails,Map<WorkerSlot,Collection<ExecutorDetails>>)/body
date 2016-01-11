@@ -1,0 +1,15 @@
+{
+  WorkerSlot ws;
+  if (this.refNode == null) {
+    String clus=this.getBestClustering();
+    ws=this.getBestWorker(exec,td,clus,scheduleAssignmentMap);
+  }
+ else {
+    ws=this.getBestWorker(exec,td,scheduleAssignmentMap);
+  }
+  if (ws != null) {
+    this.refNode=this.idToNode(ws.getNodeId());
+  }
+  LOG.debug("reference node for the resource aware scheduler is: {}",this.refNode);
+  return ws;
+}

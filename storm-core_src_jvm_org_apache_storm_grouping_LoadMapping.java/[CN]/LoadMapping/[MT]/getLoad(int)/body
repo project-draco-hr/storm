@@ -1,0 +1,10 @@
+{
+  Load ret=_local.get().get(task);
+  if (ret == null) {
+    ret=_remote.get().get(task);
+  }
+  if (ret == null) {
+    ret=NOT_CONNECTED;
+  }
+  return ret;
+}

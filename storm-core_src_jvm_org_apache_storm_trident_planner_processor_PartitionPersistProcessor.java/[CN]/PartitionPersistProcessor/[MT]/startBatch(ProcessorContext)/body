@@ -1,0 +1,3 @@
+{
+  processorContext.state[_context.getStateIndex()]=new ArrayList<TridentTuple>();
+}

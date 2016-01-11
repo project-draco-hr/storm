@@ -1,5 +1,0 @@
-{
-  if (!value) {
-    this.topology_action_options=null;
-  }
-}

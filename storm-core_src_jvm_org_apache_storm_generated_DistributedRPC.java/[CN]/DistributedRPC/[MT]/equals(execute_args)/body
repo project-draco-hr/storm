@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_functionName=true && this.is_set_functionName();
+  boolean that_present_functionName=true && that.is_set_functionName();
+  if (this_present_functionName || that_present_functionName) {
+    if (!(this_present_functionName && that_present_functionName))     return false;
+    if (!this.functionName.equals(that.functionName))     return false;
+  }
+  boolean this_present_funcArgs=true && this.is_set_funcArgs();
+  boolean that_present_funcArgs=true && that.is_set_funcArgs();
+  if (this_present_funcArgs || that_present_funcArgs) {
+    if (!(this_present_funcArgs && that_present_funcArgs))     return false;
+    if (!this.funcArgs.equals(that.funcArgs))     return false;
+  }
+  return true;
+}

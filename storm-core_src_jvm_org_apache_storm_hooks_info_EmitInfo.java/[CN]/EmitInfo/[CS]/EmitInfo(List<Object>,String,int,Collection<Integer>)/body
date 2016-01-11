@@ -1,0 +1,6 @@
+{
+  this.values=values;
+  this.stream=stream;
+  this.taskId=taskId;
+  this.outTasks=outTasks;
+}

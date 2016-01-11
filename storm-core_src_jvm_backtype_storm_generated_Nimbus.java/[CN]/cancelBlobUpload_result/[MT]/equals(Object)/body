@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof cancelBlobUpload_result)   return this.equals((cancelBlobUpload_result)that);
-  return false;
-}

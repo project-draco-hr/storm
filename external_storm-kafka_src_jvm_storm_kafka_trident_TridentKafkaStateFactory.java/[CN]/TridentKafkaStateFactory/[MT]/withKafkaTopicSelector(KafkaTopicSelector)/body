@@ -1,4 +1,0 @@
-{
-  this.topicSelector=selector;
-  return this;
-}

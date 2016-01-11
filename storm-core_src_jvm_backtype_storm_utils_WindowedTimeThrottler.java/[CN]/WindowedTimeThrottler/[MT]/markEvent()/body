@@ -1,4 +1,0 @@
-{
-  resetIfNecessary();
-  _windowEvents++;
-}

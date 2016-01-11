@@ -1,6 +1,0 @@
-{
-synchronized (failed) {
-    int curr=get(failed,_id,0);
-    failed.put(_id,curr + 1);
-  }
-}

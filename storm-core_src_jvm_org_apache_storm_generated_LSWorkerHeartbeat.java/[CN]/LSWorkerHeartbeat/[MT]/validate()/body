@@ -1,0 +1,14 @@
+{
+  if (!is_set_time_secs()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'time_secs' is unset! Struct:" + toString());
+  }
+  if (!is_set_topology_id()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'topology_id' is unset! Struct:" + toString());
+  }
+  if (!is_set_executors()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'executors' is unset! Struct:" + toString());
+  }
+  if (!is_set_port()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'port' is unset! Struct:" + toString());
+  }
+}

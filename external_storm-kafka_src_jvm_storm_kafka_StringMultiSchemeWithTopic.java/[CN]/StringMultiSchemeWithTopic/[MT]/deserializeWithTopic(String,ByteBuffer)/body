@@ -1,4 +1,0 @@
-{
-  List<Object> items=new Values(StringScheme.deserializeString(bytes),topic);
-  return Collections.singletonList(items);
-}

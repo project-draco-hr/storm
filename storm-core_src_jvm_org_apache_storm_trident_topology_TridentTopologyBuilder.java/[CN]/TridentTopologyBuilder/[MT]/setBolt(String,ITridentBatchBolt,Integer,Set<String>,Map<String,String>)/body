@@ -1,0 +1,6 @@
+{
+  markBatchGroups(id,batchGroups);
+  Component c=new Component(bolt,parallelism,committerBatches);
+  _bolts.put(id,c);
+  return new BoltDeclarerImpl(c);
+}

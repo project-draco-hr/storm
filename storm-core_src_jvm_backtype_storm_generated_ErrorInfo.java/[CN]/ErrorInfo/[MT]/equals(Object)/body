@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof ErrorInfo)   return this.equals((ErrorInfo)that);
-  return false;
-}

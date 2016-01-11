@@ -1,0 +1,16 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case TYPE:
+    return is_set_type();
+case COMMON_STATS:
+  return is_set_common_stats();
+case SPECIFIC_STATS:
+return is_set_specific_stats();
+case LAST_ERROR:
+return is_set_last_error();
+}
+throw new IllegalStateException();
+}

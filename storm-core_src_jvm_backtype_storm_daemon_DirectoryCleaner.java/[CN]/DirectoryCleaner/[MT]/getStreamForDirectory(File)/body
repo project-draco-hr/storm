@@ -1,4 +1,0 @@
-{
-  DirectoryStream<Path> stream=Files.newDirectoryStream(dir.toPath());
-  return stream;
-}

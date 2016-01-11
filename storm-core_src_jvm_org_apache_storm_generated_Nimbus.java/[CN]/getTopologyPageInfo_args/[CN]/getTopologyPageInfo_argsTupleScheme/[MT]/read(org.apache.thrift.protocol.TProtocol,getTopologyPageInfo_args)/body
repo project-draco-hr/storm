@@ -1,0 +1,16 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(3);
+  if (incoming.get(0)) {
+    struct.id=iprot.readString();
+    struct.set_id_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.window=iprot.readString();
+    struct.set_window_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.is_include_sys=iprot.readBool();
+    struct.set_is_include_sys_isSet(true);
+  }
+}

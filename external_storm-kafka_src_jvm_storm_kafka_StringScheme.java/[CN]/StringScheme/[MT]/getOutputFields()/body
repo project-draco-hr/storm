@@ -1,3 +1,0 @@
-{
-  return new Fields(STRING_SCHEME_KEY);
-}

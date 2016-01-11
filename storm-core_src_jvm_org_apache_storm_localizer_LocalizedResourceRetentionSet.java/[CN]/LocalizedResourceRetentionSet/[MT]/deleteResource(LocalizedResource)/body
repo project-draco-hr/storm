@@ -1,0 +1,21 @@
+{
+  try {
+    String fileWithVersion=resource.getFilePathWithVersion();
+    String currentSymlinkName=resource.getCurrentSymlinkPath();
+    String versionFile=resource.getVersionFilePath();
+    File deletePath=new File(fileWithVersion);
+    if (resource.isUncompressed()) {
+      FileUtils.deleteDirectory(deletePath);
+    }
+ else {
+      Files.delete(deletePath.toPath());
+    }
+    Files.delete(new File(currentSymlinkName).toPath());
+    Files.delete(new File(versionFile).toPath());
+    return true;
+  }
+ catch (  IOException e) {
+    LOG.warn("Could not delete: {}",resource.getFilePath());
+  }
+  return false;
+}

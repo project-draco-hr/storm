@@ -1,3 +1,0 @@
-{
-  return this.execute_latency_ms;
-}

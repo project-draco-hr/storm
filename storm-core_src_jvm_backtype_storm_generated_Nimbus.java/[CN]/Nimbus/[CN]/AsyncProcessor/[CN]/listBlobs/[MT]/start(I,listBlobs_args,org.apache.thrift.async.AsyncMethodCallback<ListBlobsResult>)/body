@@ -1,3 +1,0 @@
-{
-  iface.listBlobs(args.session,resultHandler);
-}
