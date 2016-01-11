@@ -1,6 +1,18 @@
 {
-  builder.connectString(zkStr).connectionTimeoutMs(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_CONNECTION_TIMEOUT))).sessionTimeoutMs(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT))).retryPolicy(new StormBoundedExponentialBackoffRetry(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL_CEILING)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES))));
+  List<String> exhibitorServers=getStrings(conf.get(Config.STORM_EXHIBITOR_SERVERS));
+  if (!exhibitorServers.isEmpty()) {
+    builder.ensembleProvider(new ExhibitorEnsembleProvider(new Exhibitors(exhibitorServers,Utils.getInt(conf.get(Config.STORM_EXHIBITOR_PORT)),new Exhibitors.BackupConnectionStringProvider(){
+      @Override public String getBackupConnectionString() throws Exception {
+        return zkStr;
+      }
+    }
+),new DefaultExhibitorRestClient(),Utils.getString(conf.get(Config.STORM_EXHIBITOR_URIPATH)),Utils.getInt(conf.get(Config.STORM_EXHIBITOR_POLL)),new StormBoundedExponentialBackoffRetry(Utils.getInt(conf.get(Config.STORM_EXHIBITOR_RETRY_INTERVAL)),Utils.getInt(conf.get(Config.STORM_EXHIBITOR_RETRY_INTERVAL_CEILING)),Utils.getInt(conf.get(Config.STORM_EXHIBITOR_RETRY_TIMES)))));
+  }
+ else {
+    builder.connectString(zkStr);
+  }
+  builder.connectionTimeoutMs(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_CONNECTION_TIMEOUT))).sessionTimeoutMs(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT))).retryPolicy(new StormBoundedExponentialBackoffRetry(Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_INTERVAL_CEILING)),Utils.getInt(conf.get(Config.STORM_ZOOKEEPER_RETRY_TIMES))));
   if (auth != null && auth.scheme != null && auth.payload != null) {
-    builder=builder.authorization(auth.scheme,auth.payload);
+    builder.authorization(auth.scheme,auth.payload);
   }
 }
