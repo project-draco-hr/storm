@@ -1,5 +1,0 @@
-{
-  Assert.assertTrue(actual instanceof SimpleStatement);
-  Assert.assertEquals(expected,actual.toString());
-  Assert.assertEquals(3,((SimpleStatement)actual).getValues(ProtocolVersion.V3).length);
-}

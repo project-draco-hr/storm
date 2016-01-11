@@ -1,6 +1,0 @@
-{
-  SimpleCQLStatementMapper mapper=simpleQuery(QUERY_STRING).with(all()).build();
-  List<Statement> stmts=mapper.map(Maps.newHashMap(),cassandraCQLUnit.session,mockTuple);
-  Assert.assertEquals(1,stmts.size());
-  makeAssertSimpleStatement(QUERY_STRING,stmts.get(0));
-}

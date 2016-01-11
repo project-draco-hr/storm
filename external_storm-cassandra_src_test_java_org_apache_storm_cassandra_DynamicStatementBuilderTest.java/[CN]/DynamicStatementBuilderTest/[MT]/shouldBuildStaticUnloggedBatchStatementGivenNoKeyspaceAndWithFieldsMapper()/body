@@ -1,6 +1,0 @@
-{
-  BatchCQLStatementTupleMapper mapper=unLoggedBatch(simpleQuery(QUERY_STRING).with(fields(COL_WEATHER_STATION_ID,COL_EVENT_TIME,COL_TEMPERATURE)));
-  List<Statement> stmts=mapper.map(Maps.newHashMap(),cassandraCQLUnit.session,mockTuple);
-  Assert.assertEquals(1,stmts.size());
-  makeAssertBatchStatement(QUERY_STRING,stmts.get(0));
-}

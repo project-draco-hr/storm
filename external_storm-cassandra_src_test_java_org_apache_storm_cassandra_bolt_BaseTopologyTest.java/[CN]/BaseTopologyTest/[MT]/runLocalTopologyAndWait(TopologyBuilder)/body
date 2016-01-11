@@ -1,9 +1,0 @@
-{
-  LocalCluster cluster=new LocalCluster();
-  StormTopology topology=builder.createTopology();
-  Config config=getConfig();
-  cluster.submitTopology("my-cassandra-topology",config,topology);
-  Utils.sleep(TimeUnit.SECONDS.toMillis(15));
-  cluster.killTopology("my-cassandra-topology");
-  cluster.shutdown();
-}
