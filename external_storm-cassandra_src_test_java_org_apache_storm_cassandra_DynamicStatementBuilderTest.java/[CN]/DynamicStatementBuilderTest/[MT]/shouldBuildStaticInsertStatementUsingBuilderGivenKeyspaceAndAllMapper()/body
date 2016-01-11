@@ -1,0 +1,7 @@
+{
+  Insert insert=QueryBuilder.insertInto("weather","temperature").value(COL_WEATHER_STATION_ID,"?").value(COL_EVENT_TIME,"?").value(COL_TEMPERATURE,"?");
+  SimpleCQLStatementMapper mapper=simpleQuery(insert).with(all()).build();
+  List<Statement> stmts=mapper.map(Maps.newHashMap(),cassandraCQLUnit.session,mockTuple);
+  Assert.assertEquals(1,stmts.size());
+  makeAssertSimpleStatement(QUERY_STRING,stmts.get(0));
+}

@@ -1,0 +1,8 @@
+{
+  Assert.assertTrue(actual instanceof BatchStatement);
+  Collection<Statement> statements=((BatchStatement)actual).getStatements();
+  for (  Statement s : statements) {
+    Assert.assertEquals(expected,s.toString());
+    Assert.assertEquals(3,((SimpleStatement)s).getValues(ProtocolVersion.V3).length);
+  }
+}

@@ -1,5 +1,5 @@
 {
-  CQLStatementTupleMapper mapper=boundQuery("INSERT INTO weather.temperature(weather_station_id, event_time, temperature) VALUES(?, ?, ?)").bind(with(field("weather_station_id"),field("event_time").now(),field("temperature")));
+  CQLStatementTupleMapper mapper=async(boundQuery(QUERY_STRING).bind(field(COL_WEATHER_STATION_ID),field(COL_EVENT_TIME).now(),field(COL_TEMPERATURE)));
   List<Statement> map=mapper.map(Maps.newHashMap(),cassandraCQLUnit.session,mockTuple);
   Statement statement=map.get(0);
   Assert.assertNotNull(statement);

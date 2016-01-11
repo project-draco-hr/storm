@@ -1,0 +1,5 @@
+{
+  int result=columnName != null ? columnName.hashCode() : 0;
+  result=31 * result + (val != null ? val.hashCode() : 0);
+  return result;
+}

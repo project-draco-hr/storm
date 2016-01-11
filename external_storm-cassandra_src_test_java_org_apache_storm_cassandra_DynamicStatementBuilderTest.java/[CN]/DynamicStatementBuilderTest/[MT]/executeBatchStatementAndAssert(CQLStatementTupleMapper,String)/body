@@ -1,7 +1,0 @@
-{
-  List<Statement> map=mapper.map(Maps.newHashMap(),cassandraCQLUnit.session,mockTuple);
-  BatchStatement statement=(BatchStatement)map.get(0);
-  Collection<Statement> statements=statement.getStatements();
-  Assert.assertEquals(results.length,statements.size());
-  for (  Statement s : statements)   Assert.assertTrue(Arrays.asList(results).contains(s.toString()));
-}

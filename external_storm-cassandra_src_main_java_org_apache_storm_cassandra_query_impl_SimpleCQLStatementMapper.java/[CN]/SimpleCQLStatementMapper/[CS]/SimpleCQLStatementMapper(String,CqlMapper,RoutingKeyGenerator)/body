@@ -1,0 +1,7 @@
+{
+  Preconditions.checkNotNull(queryString,"Query string must not be null");
+  Preconditions.checkNotNull(mapper,"Mapper should not be null");
+  this.queryString=queryString;
+  this.mapper=mapper;
+  this.rkGenerator=rkGenerator;
+}
