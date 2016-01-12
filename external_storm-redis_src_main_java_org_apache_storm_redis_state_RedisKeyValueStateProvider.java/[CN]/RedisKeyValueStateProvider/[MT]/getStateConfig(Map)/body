@@ -3,8 +3,8 @@
   String providerConfig=null;
   ObjectMapper mapper=new ObjectMapper();
   mapper.setVisibility(PropertyAccessor.FIELD,JsonAutoDetect.Visibility.ANY);
-  if (stormConf.containsKey(backtype.storm.Config.TOPOLOGY_STATE_PROVIDER_CONFIG)) {
-    providerConfig=(String)stormConf.get(backtype.storm.Config.TOPOLOGY_STATE_PROVIDER_CONFIG);
+  if (stormConf.containsKey(org.apache.storm.Config.TOPOLOGY_STATE_PROVIDER_CONFIG)) {
+    providerConfig=(String)stormConf.get(org.apache.storm.Config.TOPOLOGY_STATE_PROVIDER_CONFIG);
     stateConfig=mapper.readValue(providerConfig,StateConfig.class);
   }
  else {
