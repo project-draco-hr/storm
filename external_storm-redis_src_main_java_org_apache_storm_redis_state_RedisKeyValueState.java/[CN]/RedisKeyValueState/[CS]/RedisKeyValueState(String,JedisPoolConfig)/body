@@ -1,0 +1,3 @@
+{
+  this(namespace,poolConfig,new DefaultStateSerializer<K>(),new DefaultStateSerializer<V>());
+}

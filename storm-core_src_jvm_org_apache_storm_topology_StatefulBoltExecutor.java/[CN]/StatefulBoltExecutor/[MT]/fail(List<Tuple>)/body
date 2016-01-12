@@ -1,0 +1,9 @@
+{
+  if (!tuples.isEmpty()) {
+    LOG.debug("Failing {} tuples",tuples.size());
+    for (    Tuple tuple : tuples) {
+      collector.fail(tuple);
+    }
+    tuples.clear();
+  }
+}

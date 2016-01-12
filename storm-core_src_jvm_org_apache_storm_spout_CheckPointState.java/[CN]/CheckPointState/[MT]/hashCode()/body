@@ -1,0 +1,5 @@
+{
+  int result=(int)(txid ^ (txid >>> 32));
+  result=31 * result + (state != null ? state.hashCode() : 0);
+  return result;
+}

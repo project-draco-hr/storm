@@ -1,0 +1,4 @@
+{
+  CheckPointState nextState=curTxState.nextState(false);
+  saveTxState(nextState);
+}

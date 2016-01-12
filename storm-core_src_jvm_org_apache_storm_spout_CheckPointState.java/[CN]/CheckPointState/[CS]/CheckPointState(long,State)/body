@@ -1,0 +1,4 @@
+{
+  this.txid=txid;
+  this.state=state;
+}

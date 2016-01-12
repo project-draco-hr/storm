@@ -1,0 +1,5 @@
+{
+  collector.setContext(tuple);
+  bolt.execute(tuple);
+  executedTuples.add(tuple);
+}

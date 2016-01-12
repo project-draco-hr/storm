@@ -1,0 +1,10 @@
+{
+  RedisKeyValueStateProvider provider=new RedisKeyValueStateProvider();
+  Map<String,String> stormConf=new HashMap<>();
+  stormConf.put(Config.TOPOLOGY_STATE_PROVIDER_CONFIG,"{\"keyClass\":\"String\", \"valueClass\":\"String\"," + " \"jedisPoolConfig\":" + "{\"host\":\"localhost\", \"port\":1000}}");
+  RedisKeyValueStateProvider.StateConfig config=provider.getStateConfig(stormConf);
+  assertEquals("String",config.keyClass);
+  assertEquals("String",config.valueClass);
+  assertEquals("localhost",config.jedisPoolConfig.getHost());
+  assertEquals(1000,config.jedisPoolConfig.getPort());
+}

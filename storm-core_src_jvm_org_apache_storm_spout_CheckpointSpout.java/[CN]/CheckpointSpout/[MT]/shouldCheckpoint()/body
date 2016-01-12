@@ -1,0 +1,3 @@
+{
+  return !recovering && !checkpointStepInProgress && (curTxState.getState() != COMMITTED || checkpointIntervalElapsed());
+}

@@ -1,0 +1,8 @@
+{
+  if (CheckpointSpout.isCheckpoint(input)) {
+    processCheckpoint(input);
+  }
+ else {
+    handleTuple(input);
+  }
+}

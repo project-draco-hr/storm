@@ -1,0 +1,8 @@
+{
+  Long lastId=null;
+  String str=txIds.get(key);
+  if (str != null) {
+    lastId=Long.valueOf(str);
+  }
+  return lastId;
+}

@@ -1,0 +1,5 @@
+{
+  collector.setContext(input);
+  bolt.execute(input);
+  collector.ack(input);
+}

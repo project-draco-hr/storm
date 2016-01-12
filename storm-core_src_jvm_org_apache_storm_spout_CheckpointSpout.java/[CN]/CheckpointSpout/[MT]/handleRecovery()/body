@@ -1,0 +1,5 @@
+{
+  LOG.debug("In recovery");
+  Action action=curTxState.nextAction(true);
+  emit(curTxState.getTxid(),action);
+}

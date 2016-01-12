@@ -1,0 +1,7 @@
+{
+  kryo=new Kryo();
+  output=new Output(2000,2000000000);
+  for (  Class<?> klazz : classesToRegister) {
+    kryo.register(klazz);
+  }
+}

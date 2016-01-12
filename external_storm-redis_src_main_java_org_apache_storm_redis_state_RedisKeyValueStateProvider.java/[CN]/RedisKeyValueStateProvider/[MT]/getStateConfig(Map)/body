@@ -1,0 +1,14 @@
+{
+  StateConfig stateConfig=null;
+  String providerConfig=null;
+  ObjectMapper mapper=new ObjectMapper();
+  mapper.setVisibility(PropertyAccessor.FIELD,JsonAutoDetect.Visibility.ANY);
+  if (stormConf.containsKey(org.apache.storm.Config.TOPOLOGY_STATE_PROVIDER_CONFIG)) {
+    providerConfig=(String)stormConf.get(org.apache.storm.Config.TOPOLOGY_STATE_PROVIDER_CONFIG);
+    stateConfig=mapper.readValue(providerConfig,StateConfig.class);
+  }
+ else {
+    stateConfig=new StateConfig();
+  }
+  return stateConfig;
+}

@@ -1,0 +1,4 @@
+String namespace
+JedisPoolConfig poolConfig
+Serializer<K> keySerializer
+Serializer<V> valueSerializer

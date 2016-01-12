@@ -1,0 +1,4 @@
+TopologyContext context
+SpoutOutputCollector collector
+int checkpointInterval
+KeyValueState<String,CheckPointState> checkpointState

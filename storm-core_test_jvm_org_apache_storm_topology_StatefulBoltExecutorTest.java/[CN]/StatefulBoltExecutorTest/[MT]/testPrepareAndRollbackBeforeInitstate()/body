@@ -1,0 +1,14 @@
+{
+  Mockito.when(mockTuple.getSourceStreamId()).thenReturn("default");
+  executor.execute(mockTuple);
+  Mockito.when(mockCheckpointTuple.getSourceStreamId()).thenReturn(CheckpointSpout.CHECKPOINT_STREAM_ID);
+  Mockito.when(mockCheckpointTuple.getValueByField(CHECKPOINT_FIELD_ACTION)).thenReturn(PREPARE);
+  Mockito.when(mockCheckpointTuple.getLongByField(CHECKPOINT_FIELD_TXID)).thenReturn(new Long(100));
+  executor.execute(mockCheckpointTuple);
+  Mockito.verify(mockOutputCollector,Mockito.times(1)).fail(mockCheckpointTuple);
+  Mockito.when(mockCheckpointTuple.getValueByField(CHECKPOINT_FIELD_ACTION)).thenReturn(ROLLBACK);
+  Mockito.when(mockCheckpointTuple.getLongByField(CHECKPOINT_FIELD_TXID)).thenReturn(new Long(100));
+  Mockito.doNothing().when(mockOutputCollector).ack(mockCheckpointTuple);
+  executor.execute(mockCheckpointTuple);
+  Mockito.verify(mockState,Mockito.times(1)).rollback();
+}

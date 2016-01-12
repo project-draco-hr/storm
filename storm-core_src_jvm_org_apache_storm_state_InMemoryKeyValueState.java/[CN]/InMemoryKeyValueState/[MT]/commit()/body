@@ -1,0 +1,3 @@
+{
+  commitedState=new TxIdState<>(DEFAULT_TXID,new ConcurrentHashMap<>(state));
+}
