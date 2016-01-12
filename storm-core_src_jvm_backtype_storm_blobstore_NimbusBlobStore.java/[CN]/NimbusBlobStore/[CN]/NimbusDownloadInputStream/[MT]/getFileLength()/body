@@ -1,3 +1,0 @@
-{
-  return beginBlobDownload.get_data_size();
-}

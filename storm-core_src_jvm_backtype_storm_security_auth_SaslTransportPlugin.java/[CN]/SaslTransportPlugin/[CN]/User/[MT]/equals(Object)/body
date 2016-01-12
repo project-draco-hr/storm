@@ -1,6 +1,0 @@
-{
-  if (this == o) {
-    return true;
-  }
-  return !(o == null || getClass() != o.getClass()) && (name.equals(((User)o).name));
-}

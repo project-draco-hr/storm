@@ -1,4 +1,0 @@
-{
-  registerNode(n);
-  return new Stream(this,n.name,n);
-}

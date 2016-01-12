@@ -1,0 +1,13 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.nodeInfo=new NodeInfo();
+  struct.nodeInfo.read(iprot);
+  struct.set_nodeInfo_isSet(true);
+  struct.action=org.apache.storm.generated.ProfileAction.findByValue(iprot.readI32());
+  struct.set_action_isSet(true);
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+    struct.time_stamp=iprot.readI64();
+    struct.set_time_stamp_isSet(true);
+  }
+}

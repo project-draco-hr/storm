@@ -1,0 +1,3 @@
+{
+  setMaxSpoutPending(this,max);
+}

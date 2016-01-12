@@ -1,6 +1,0 @@
-{
-  if (val.emitted < _n) {
-    collector.emit(tuple);
-    val.emitted++;
-  }
-}

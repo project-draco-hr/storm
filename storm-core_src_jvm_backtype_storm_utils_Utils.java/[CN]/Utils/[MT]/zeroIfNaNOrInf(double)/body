@@ -1,3 +1,0 @@
-{
-  return (Double.isNaN(x) || Double.isInfinite(x)) ? 0.0 : x;
-}

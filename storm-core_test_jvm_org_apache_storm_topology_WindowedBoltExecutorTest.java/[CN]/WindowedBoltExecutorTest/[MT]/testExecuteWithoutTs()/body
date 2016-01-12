@@ -1,0 +1,3 @@
+{
+  executor.execute(getTuple("s1",new Fields("a"),new Values(1)));
+}

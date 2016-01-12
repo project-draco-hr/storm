@@ -1,0 +1,4 @@
+{
+  _isDistributed=isDistributed;
+  _outFields=outFields;
+}

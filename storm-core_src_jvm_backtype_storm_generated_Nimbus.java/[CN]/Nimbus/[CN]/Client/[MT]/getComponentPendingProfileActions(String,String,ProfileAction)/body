@@ -1,4 +1,0 @@
-{
-  send_getComponentPendingProfileActions(id,component_id,action);
-  return recv_getComponentPendingProfileActions();
-}

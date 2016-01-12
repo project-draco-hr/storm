@@ -1,0 +1,5 @@
+{
+  _delegate.ack(msgId);
+  Map stats=(Map)RegisteredGlobalState.getState(_trackId);
+  ((AtomicInteger)stats.get("processed")).incrementAndGet();
+}

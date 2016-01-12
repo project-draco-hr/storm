@@ -1,5 +1,0 @@
-{
-  if (!value) {
-    this.sid_to_output_stats=null;
-  }
-}

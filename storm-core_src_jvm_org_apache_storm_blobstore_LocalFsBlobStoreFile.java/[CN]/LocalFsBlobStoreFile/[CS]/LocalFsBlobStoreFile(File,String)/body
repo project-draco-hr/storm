@@ -1,0 +1,15 @@
+{
+  if (BlobStoreFile.BLOBSTORE_DATA_FILE.equals(name)) {
+    _isTmp=false;
+  }
+ else {
+    Matcher m=TMP_NAME_PATTERN.matcher(name);
+    if (!m.matches()) {
+      throw new IllegalArgumentException("File name does not match '" + name + "' !~ "+ TMP_NAME_PATTERN);
+    }
+    _isTmp=true;
+  }
+  _key=base.getName();
+  _path=new File(base,name);
+  _mustBeNew=false;
+}

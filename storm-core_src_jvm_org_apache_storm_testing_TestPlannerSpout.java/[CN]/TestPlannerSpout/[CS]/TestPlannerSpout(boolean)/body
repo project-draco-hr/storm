@@ -1,0 +1,3 @@
+{
+  this(new Fields("field1","field2"),isDistributed);
+}

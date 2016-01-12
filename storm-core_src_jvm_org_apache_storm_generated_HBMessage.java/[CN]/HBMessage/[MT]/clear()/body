@@ -1,0 +1,5 @@
+{
+  this.type=null;
+  this.data=null;
+  this.message_id=-1;
+}

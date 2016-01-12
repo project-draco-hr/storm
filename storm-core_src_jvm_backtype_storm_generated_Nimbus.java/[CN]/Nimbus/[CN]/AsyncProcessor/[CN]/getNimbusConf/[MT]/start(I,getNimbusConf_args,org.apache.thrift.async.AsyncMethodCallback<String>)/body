@@ -1,3 +1,0 @@
-{
-  iface.getNimbusConf(resultHandler);
-}

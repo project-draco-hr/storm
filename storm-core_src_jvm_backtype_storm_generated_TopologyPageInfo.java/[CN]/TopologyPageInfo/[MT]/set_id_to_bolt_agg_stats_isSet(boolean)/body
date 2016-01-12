@@ -1,5 +1,0 @@
-{
-  if (!value) {
-    this.id_to_bolt_agg_stats=null;
-  }
-}

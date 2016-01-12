@@ -1,3 +1,0 @@
-{
-  executeAndAssertWith(100000,new BatchCassandraWriterBolt(getInsertInto()));
-}

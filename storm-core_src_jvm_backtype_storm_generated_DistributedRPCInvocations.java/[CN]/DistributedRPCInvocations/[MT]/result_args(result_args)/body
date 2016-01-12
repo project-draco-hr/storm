@@ -1,8 +1,0 @@
-{
-  if (other.is_set_id()) {
-    this.id=other.id;
-  }
-  if (other.is_set_result()) {
-    this.result=other.result;
-  }
-}

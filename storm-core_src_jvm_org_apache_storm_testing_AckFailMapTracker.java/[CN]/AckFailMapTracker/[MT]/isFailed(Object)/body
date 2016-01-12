@@ -1,0 +1,3 @@
+{
+  return ((Set)RegisteredGlobalState.getState(_failed)).contains(id);
+}

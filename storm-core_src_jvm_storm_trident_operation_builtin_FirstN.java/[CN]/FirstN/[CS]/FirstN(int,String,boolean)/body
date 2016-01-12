@@ -1,8 +1,0 @@
-{
-  if (sortField != null) {
-    _agg=new FirstNSortedAgg(n,sortField,reverse);
-  }
- else {
-    _agg=new FirstNAgg(n);
-  }
-}

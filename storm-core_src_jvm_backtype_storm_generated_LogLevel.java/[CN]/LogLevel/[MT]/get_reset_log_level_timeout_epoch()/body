@@ -1,3 +1,0 @@
-{
-  return this.reset_log_level_timeout_epoch;
-}

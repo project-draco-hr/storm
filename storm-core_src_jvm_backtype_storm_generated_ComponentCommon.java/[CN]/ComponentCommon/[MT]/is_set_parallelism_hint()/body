@@ -1,3 +1,0 @@
-{
-  return EncodingUtils.testBit(__isset_bitfield,__PARALLELISM_HINT_ISSET_ID);
-}

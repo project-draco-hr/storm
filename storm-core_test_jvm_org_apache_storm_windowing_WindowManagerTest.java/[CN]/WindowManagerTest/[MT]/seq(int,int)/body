@@ -1,0 +1,7 @@
+{
+  List<Integer> ints=new ArrayList<>();
+  for (int i=start; i <= stop; i++) {
+    ints.add(i);
+  }
+  return ints;
+}

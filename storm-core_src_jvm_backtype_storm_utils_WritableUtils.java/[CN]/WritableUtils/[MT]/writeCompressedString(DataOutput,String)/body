@@ -1,3 +1,0 @@
-{
-  return writeCompressedByteArray(out,(s != null) ? s.getBytes("UTF-8") : null);
-}

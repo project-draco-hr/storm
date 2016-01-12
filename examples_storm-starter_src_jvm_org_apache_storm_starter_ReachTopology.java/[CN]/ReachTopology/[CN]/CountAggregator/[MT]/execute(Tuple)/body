@@ -1,0 +1,3 @@
+{
+  _count+=tuple.getInteger(1);
+}

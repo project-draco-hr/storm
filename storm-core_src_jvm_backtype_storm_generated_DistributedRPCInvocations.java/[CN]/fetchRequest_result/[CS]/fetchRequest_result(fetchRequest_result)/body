@@ -1,8 +1,0 @@
-{
-  if (other.is_set_success()) {
-    this.success=new DRPCRequest(other.success);
-  }
-  if (other.is_set_aze()) {
-    this.aze=new AuthorizationException(other.aze);
-  }
-}

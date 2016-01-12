@@ -1,6 +1,0 @@
-String nodeId
-Set<Integer> allPorts
-boolean isAlive
-SupervisorDetails sup
-Cluster cluster
-Topologies topologies

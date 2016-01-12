@@ -1,0 +1,5 @@
+{
+  this();
+  this.session=session;
+  this.chunk=org.apache.thrift.TBaseHelper.copyBinary(chunk);
+}

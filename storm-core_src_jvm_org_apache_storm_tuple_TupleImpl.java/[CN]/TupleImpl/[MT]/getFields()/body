@@ -1,0 +1,3 @@
+{
+  return context.getComponentOutputFields(getSourceComponent(),getSourceStreamId());
+}

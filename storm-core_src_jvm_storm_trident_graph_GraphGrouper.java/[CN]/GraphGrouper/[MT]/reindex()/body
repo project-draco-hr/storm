@@ -1,8 +1,0 @@
-{
-  groupIndex.clear();
-  for (  Group g : currGroups) {
-    for (    Node n : g.nodes) {
-      groupIndex.put(n,g);
-    }
-  }
-}

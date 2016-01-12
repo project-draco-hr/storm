@@ -1,0 +1,6 @@
+{
+  if (!this.assignments.containsKey(topologyId)) {
+    return null;
+  }
+  return this.assignments.get(topologyId).getSlots();
+}

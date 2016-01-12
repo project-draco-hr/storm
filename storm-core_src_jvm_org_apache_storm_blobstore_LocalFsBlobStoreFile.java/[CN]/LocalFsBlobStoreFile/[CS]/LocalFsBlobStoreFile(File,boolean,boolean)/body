@@ -1,0 +1,11 @@
+{
+  _key=base.getName();
+  _isTmp=isTmp;
+  _mustBeNew=mustBeNew;
+  if (_isTmp) {
+    _path=new File(base,System.currentTimeMillis() + TMP_EXT);
+  }
+ else {
+    _path=new File(base,BlobStoreFile.BLOBSTORE_DATA_FILE);
+  }
+}

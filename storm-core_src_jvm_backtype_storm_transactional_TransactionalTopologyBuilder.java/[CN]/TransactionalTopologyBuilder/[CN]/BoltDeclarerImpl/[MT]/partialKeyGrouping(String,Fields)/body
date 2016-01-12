@@ -1,3 +1,0 @@
-{
-  return customGrouping(componentId,new PartialKeyGrouping(fields));
-}

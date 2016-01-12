@@ -1,4 +1,0 @@
-{
-  this.conf=conf;
-  allBlobs=new HashMap<String,SettableBlobMeta>();
-}

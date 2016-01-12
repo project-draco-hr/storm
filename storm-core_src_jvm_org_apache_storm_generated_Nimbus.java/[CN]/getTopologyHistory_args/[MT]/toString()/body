@@ -1,0 +1,14 @@
+{
+  StringBuilder sb=new StringBuilder("getTopologyHistory_args(");
+  boolean first=true;
+  sb.append("user:");
+  if (this.user == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.user);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

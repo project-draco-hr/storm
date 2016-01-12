@@ -1,0 +1,16 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_pulseIds()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_pulseIds()) {
+{
+      oprot.writeI32(struct.pulseIds.size());
+      for (      String _iter734 : struct.pulseIds) {
+        oprot.writeString(_iter734);
+      }
+    }
+  }
+}

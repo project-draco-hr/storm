@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof setBlobMeta_args)   return this.equals((setBlobMeta_args)that);
-  return false;
-}

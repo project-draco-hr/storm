@@ -1,6 +1,0 @@
-{
-  this.slidingIntervalMs=slidingIntervalMs;
-  this.handler=handler;
-  this.evictionPolicy=evictionPolicy;
-  this.windowManager=windowManager;
-}

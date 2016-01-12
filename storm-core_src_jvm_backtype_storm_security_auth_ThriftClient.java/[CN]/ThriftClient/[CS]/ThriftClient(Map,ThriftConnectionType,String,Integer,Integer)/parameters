@@ -1,5 +1,0 @@
-Map storm_conf
-ThriftConnectionType type
-String host
-Integer port
-Integer timeout

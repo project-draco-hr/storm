@@ -1,5 +1,0 @@
-{
-  for (  SimpleConsumer consumer : _kafka.values()) {
-    consumer.close();
-  }
-}

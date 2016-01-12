@@ -1,3 +1,0 @@
-{
-  this.moveTopoFromPendingToRunning(topo,null);
-}

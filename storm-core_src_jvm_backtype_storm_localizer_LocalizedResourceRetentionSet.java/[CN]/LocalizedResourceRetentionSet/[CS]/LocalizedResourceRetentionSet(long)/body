@@ -1,3 +1,0 @@
-{
-  this(targetSize,new LRUComparator());
-}

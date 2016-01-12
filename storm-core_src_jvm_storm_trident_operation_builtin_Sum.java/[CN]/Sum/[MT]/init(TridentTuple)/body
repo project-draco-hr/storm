@@ -1,3 +1,0 @@
-{
-  return (Number)tuple.getValue(0);
-}

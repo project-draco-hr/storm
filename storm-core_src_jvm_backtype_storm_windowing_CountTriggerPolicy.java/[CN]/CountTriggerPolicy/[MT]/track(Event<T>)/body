@@ -1,8 +1,0 @@
-{
-  if (!event.isWatermark()) {
-    if (currentCount.incrementAndGet() >= count) {
-      evictionPolicy.setContext(System.currentTimeMillis());
-      handler.onTrigger();
-    }
-  }
-}

@@ -1,9 +1,0 @@
-{
-  try {
-    Set<PosixFilePermission> perms=new HashSet<PosixFilePermission>(Arrays.asList(PosixFilePermission.OWNER_READ,PosixFilePermission.OWNER_WRITE,PosixFilePermission.OWNER_EXECUTE,PosixFilePermission.GROUP_READ,PosixFilePermission.GROUP_EXECUTE));
-    Files.setPosixFilePermissions(FileSystems.getDefault().getPath(baseDir),perms);
-  }
- catch (  IOException e) {
-    throw new RuntimeException(e);
-  }
-}

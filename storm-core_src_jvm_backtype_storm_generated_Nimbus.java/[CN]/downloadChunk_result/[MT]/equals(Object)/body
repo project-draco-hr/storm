@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof downloadChunk_result)   return this.equals((downloadChunk_result)that);
-  return false;
-}

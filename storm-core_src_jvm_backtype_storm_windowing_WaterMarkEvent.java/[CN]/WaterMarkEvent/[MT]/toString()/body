@@ -1,3 +1,0 @@
-{
-  return "WaterMarkEvent{} " + super.toString();
-}

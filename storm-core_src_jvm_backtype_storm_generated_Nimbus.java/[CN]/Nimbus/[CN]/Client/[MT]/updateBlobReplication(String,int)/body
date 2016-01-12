@@ -1,4 +1,0 @@
-{
-  send_updateBlobReplication(key,replication);
-  return recv_updateBlobReplication();
-}

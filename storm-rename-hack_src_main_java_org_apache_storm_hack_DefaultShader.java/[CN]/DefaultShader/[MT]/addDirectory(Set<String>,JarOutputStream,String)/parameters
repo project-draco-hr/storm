@@ -1,0 +1,3 @@
+Set<String> resources
+JarOutputStream jos
+String name

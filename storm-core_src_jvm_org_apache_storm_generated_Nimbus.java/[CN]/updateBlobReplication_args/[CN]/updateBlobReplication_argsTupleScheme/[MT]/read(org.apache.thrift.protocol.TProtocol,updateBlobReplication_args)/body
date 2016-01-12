@@ -1,0 +1,12 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(2);
+  if (incoming.get(0)) {
+    struct.key=iprot.readString();
+    struct.set_key_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.replication=iprot.readI32();
+    struct.set_replication_isSet(true);
+  }
+}

@@ -1,0 +1,12 @@
+{
+switch (field) {
+case LOCATION:
+    if (value == null) {
+      unset_location();
+    }
+ else {
+      set_location((String)value);
+    }
+  break;
+}
+}

@@ -1,3 +1,0 @@
-{
-  return COMMON_VERSION_INFO._getUrl();
-}

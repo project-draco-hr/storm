@@ -1,2 +1,0 @@
-Map<GlobalStreamId,Grouping> inputs
-Map<String,StreamInfo> streams

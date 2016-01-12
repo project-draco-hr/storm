@@ -1,7 +1,0 @@
-{
-  if (allChannels != null) {
-    allChannels.close().awaitUninterruptibly();
-    factory.releaseExternalResources();
-    allChannels=null;
-  }
-}

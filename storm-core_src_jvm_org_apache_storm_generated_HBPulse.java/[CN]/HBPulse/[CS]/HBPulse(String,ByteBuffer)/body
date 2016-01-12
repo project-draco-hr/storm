@@ -1,0 +1,5 @@
+{
+  this();
+  this.id=id;
+  this.details=org.apache.thrift.TBaseHelper.copyBinary(details);
+}

@@ -1,0 +1,35 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_name()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_uploadedJarLocation()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_jsonConf()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_topology()) {
+    optionals.set(3);
+  }
+  if (struct.is_set_options()) {
+    optionals.set(4);
+  }
+  oprot.writeBitSet(optionals,5);
+  if (struct.is_set_name()) {
+    oprot.writeString(struct.name);
+  }
+  if (struct.is_set_uploadedJarLocation()) {
+    oprot.writeString(struct.uploadedJarLocation);
+  }
+  if (struct.is_set_jsonConf()) {
+    oprot.writeString(struct.jsonConf);
+  }
+  if (struct.is_set_topology()) {
+    struct.topology.write(oprot);
+  }
+  if (struct.is_set_options()) {
+    struct.options.write(oprot);
+  }
+}

@@ -1,0 +1,5 @@
+{
+  for (  TransactionalState state : _states) {
+    state.close();
+  }
+}

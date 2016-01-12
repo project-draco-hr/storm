@@ -1,4 +1,0 @@
-{
-  if (k instanceof Keyword)   return assocEx(((Keyword)k).getName(),v);
-  return new IndifferentAccessMap(getMap().assocEx(k,v));
-}

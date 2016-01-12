@@ -1,0 +1,7 @@
+{
+  if (tridentContext.getParentTupleFactories().size() != 1) {
+    throw new RuntimeException("Projection processor can only have one parent");
+  }
+  _context=tridentContext;
+  _factory=new ProjectionFactory(tridentContext.getParentTupleFactories().get(0),_projectFields);
+}

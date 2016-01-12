@@ -1,8 +1,0 @@
-{
-  this();
-  this.acked=acked;
-  this.failed=failed;
-  this.process_ms_avg=process_ms_avg;
-  this.executed=executed;
-  this.execute_ms_avg=execute_ms_avg;
-}

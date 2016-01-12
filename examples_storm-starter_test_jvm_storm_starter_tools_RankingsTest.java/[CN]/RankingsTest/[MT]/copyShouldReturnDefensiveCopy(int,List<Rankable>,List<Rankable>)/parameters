@@ -1,3 +1,0 @@
-int topN
-List<Rankable> rankables
-List<Rankable> changes

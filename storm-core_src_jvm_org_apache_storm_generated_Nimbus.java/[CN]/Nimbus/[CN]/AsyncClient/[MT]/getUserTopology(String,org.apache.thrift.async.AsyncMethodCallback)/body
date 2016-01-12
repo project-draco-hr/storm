@@ -1,0 +1,6 @@
+{
+  checkReady();
+  getUserTopology_call method_call=new getUserTopology_call(id,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

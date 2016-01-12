@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof ExecutorAggregateStats)   return this.equals((ExecutorAggregateStats)that);
-  return false;
-}

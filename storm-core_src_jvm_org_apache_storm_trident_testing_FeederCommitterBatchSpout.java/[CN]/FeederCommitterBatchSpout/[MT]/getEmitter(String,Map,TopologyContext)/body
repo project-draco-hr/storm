@@ -1,0 +1,3 @@
+{
+  return new CommitterEmitter(_spout.getEmitter(txStateId,conf,context));
+}

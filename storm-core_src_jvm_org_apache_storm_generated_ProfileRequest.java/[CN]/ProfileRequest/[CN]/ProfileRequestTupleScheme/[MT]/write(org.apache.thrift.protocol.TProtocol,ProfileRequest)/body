@@ -1,0 +1,13 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  struct.nodeInfo.write(oprot);
+  oprot.writeI32(struct.action.getValue());
+  BitSet optionals=new BitSet();
+  if (struct.is_set_time_stamp()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_time_stamp()) {
+    oprot.writeI64(struct.time_stamp);
+  }
+}

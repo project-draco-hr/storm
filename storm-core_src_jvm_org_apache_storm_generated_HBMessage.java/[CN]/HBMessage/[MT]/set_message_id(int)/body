@@ -1,0 +1,4 @@
+{
+  this.message_id=message_id;
+  set_message_id_isSet(true);
+}

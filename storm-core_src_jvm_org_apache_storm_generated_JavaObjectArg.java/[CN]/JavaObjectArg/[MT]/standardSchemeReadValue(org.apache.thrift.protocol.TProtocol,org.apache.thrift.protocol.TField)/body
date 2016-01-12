@@ -1,0 +1,73 @@
+{
+  _Fields setField=_Fields.findByThriftId(field.id);
+  if (setField != null) {
+switch (setField) {
+case INT_ARG:
+      if (field.type == INT_ARG_FIELD_DESC.type) {
+        Integer int_arg;
+        int_arg=iprot.readI32();
+        return int_arg;
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+        return null;
+      }
+case LONG_ARG:
+    if (field.type == LONG_ARG_FIELD_DESC.type) {
+      Long long_arg;
+      long_arg=iprot.readI64();
+      return long_arg;
+    }
+ else {
+      org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+      return null;
+    }
+case STRING_ARG:
+  if (field.type == STRING_ARG_FIELD_DESC.type) {
+    String string_arg;
+    string_arg=iprot.readString();
+    return string_arg;
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+    return null;
+  }
+case BOOL_ARG:
+if (field.type == BOOL_ARG_FIELD_DESC.type) {
+  Boolean bool_arg;
+  bool_arg=iprot.readBool();
+  return bool_arg;
+}
+ else {
+  org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+  return null;
+}
+case BINARY_ARG:
+if (field.type == BINARY_ARG_FIELD_DESC.type) {
+ByteBuffer binary_arg;
+binary_arg=iprot.readBinary();
+return binary_arg;
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+case DOUBLE_ARG:
+if (field.type == DOUBLE_ARG_FIELD_DESC.type) {
+Double double_arg;
+double_arg=iprot.readDouble();
+return double_arg;
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+default :
+throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+}
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+}

@@ -1,3 +1,0 @@
-{
-  this.addTopologyToPendingQueue(topo,null);
-}

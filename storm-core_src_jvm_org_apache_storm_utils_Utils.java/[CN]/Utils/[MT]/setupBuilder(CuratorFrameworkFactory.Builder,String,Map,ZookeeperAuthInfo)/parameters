@@ -1,0 +1,4 @@
+CuratorFrameworkFactory.Builder builder
+String zkStr
+Map conf
+ZookeeperAuthInfo auth

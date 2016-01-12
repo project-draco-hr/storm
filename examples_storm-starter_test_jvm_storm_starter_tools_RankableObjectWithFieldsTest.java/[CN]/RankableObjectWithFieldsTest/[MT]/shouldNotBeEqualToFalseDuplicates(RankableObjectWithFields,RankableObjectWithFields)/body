@@ -1,3 +1,0 @@
-{
-  assertFalse(r.equals(falseDuplicate),r + " is equal to " + falseDuplicate+ " but it should not be");
-}

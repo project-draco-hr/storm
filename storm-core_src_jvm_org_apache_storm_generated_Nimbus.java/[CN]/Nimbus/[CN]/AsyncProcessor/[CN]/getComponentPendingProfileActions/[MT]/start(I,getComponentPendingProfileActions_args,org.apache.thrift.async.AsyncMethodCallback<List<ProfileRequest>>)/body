@@ -1,0 +1,3 @@
+{
+  iface.getComponentPendingProfileActions(args.id,args.component_id,args.action,resultHandler);
+}

@@ -1,3 +1,0 @@
-{
-  return fileName + Utils.DEFAULT_BLOB_VERSION_SUFFIX;
-}

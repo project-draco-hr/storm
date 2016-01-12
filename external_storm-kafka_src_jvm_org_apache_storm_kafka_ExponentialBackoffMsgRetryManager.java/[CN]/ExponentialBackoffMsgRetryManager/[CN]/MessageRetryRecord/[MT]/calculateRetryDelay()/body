@@ -1,0 +1,7 @@
+{
+  double delayMultiplier=Math.pow(retryDelayMultiplier,this.retryNum - 1);
+  double delay=retryInitialDelayMs * delayMultiplier;
+  Long maxLong=Long.MAX_VALUE;
+  long delayThisRetryMs=delay >= maxLong.doubleValue() ? maxLong : (long)delay;
+  return Math.min(delayThisRetryMs,retryDelayMaxMs);
+}

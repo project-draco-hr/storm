@@ -1,0 +1,14 @@
+{
+  SlotBasedCounter<Object> counter=new SlotBasedCounter<Object>(ANY_NUM_SLOTS);
+  for (int i=0; i < objects.length; i++) {
+    Object obj=objects[i];
+    int numIncrements=expCounts[i];
+    for (int j=0; j < numIncrements; j++) {
+      counter.incrementCount(obj,ANY_SLOT);
+    }
+  }
+  for (int i=0; i < objects.length; i++) {
+    assertThat(counter.getCount(objects[i],ANY_SLOT)).isEqualTo(expCounts[i]);
+  }
+  assertThat(counter.getCount("nonexistentObject",ANY_SLOT)).isEqualTo(0);
+}

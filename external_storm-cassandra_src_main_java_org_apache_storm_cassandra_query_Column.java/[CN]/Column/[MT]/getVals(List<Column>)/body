@@ -1,0 +1,5 @@
+{
+  List<Object> vals=new ArrayList<>(columns.size());
+  for (  Column c : columns)   vals.add(c.getVal());
+  return vals.toArray();
+}

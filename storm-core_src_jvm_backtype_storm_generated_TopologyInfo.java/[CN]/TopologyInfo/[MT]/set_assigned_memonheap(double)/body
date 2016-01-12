@@ -1,4 +1,0 @@
-{
-  this.assigned_memonheap=assigned_memonheap;
-  set_assigned_memonheap_isSet(true);
-}

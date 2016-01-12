@@ -1,0 +1,5 @@
+{
+  super(hosts,topic);
+  this.zkRoot=zkRoot;
+  this.id=id;
+}

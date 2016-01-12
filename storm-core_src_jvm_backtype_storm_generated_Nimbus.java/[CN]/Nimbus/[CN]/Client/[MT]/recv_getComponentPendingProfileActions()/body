@@ -1,8 +1,0 @@
-{
-  getComponentPendingProfileActions_result result=new getComponentPendingProfileActions_result();
-  receiveBase(result,"getComponentPendingProfileActions");
-  if (result.is_set_success()) {
-    return result.success;
-  }
-  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"getComponentPendingProfileActions failed: unknown result");
-}

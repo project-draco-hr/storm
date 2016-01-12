@@ -1,0 +1,3 @@
+{
+  return IndexHashGrouping.objectToIndex(batchId,numPartitions);
+}

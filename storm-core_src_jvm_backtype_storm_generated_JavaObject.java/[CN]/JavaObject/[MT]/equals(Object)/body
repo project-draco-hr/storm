@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof JavaObject)   return this.equals((JavaObject)that);
-  return false;
-}

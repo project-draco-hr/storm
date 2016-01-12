@@ -1,4 +1,0 @@
-{
-  this.rate=rate;
-  set_rate_isSet(true);
-}

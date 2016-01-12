@@ -1,6 +1,0 @@
-{
-  this();
-  this.key=key;
-  this.replication=replication;
-  set_replication_isSet(true);
-}

@@ -1,0 +1,3 @@
+{
+  return createTopology(new DRPCSpout(_function,drpc));
+}

@@ -1,8 +1,0 @@
-{
-  __isset_bitfield=other.__isset_bitfield;
-  this.version=other.version;
-  if (other.is_set_session()) {
-    this.session=other.session;
-  }
-  this.data_size=other.data_size;
-}

@@ -1,4 +1,0 @@
-{
-  config.scheme=new SchemeAsMultiScheme(new StringScheme());
-  runGetValueOnlyTuplesTest();
-}

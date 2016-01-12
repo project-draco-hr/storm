@@ -1,0 +1,5 @@
+{
+  if (o == null) {
+    throw new IllegalArgumentException("Field " + name + "cannot be null! Actual value: "+ o);
+  }
+}

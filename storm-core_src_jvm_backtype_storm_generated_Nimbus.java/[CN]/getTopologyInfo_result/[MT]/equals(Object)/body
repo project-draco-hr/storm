@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof getTopologyInfo_result)   return this.equals((getTopologyInfo_result)that);
-  return false;
-}

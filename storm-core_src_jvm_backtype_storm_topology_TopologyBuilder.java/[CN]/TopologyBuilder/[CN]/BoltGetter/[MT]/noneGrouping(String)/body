@@ -1,3 +1,0 @@
-{
-  return noneGrouping(componentId,Utils.DEFAULT_STREAM_ID);
-}

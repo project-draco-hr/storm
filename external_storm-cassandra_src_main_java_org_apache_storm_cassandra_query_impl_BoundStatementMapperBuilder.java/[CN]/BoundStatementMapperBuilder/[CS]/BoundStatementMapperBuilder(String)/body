@@ -1,3 +1,0 @@
-{
-  this.contextQuery=new StaticContextQuery(cql);
-}

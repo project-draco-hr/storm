@@ -1,3 +1,0 @@
-{
-  this(topN,DEFAULT_EMIT_FREQUENCY_IN_SECONDS);
-}

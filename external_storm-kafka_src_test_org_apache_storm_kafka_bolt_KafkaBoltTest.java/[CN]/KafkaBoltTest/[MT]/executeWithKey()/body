@@ -1,0 +1,8 @@
+{
+  String message="value-123";
+  String key="key-123";
+  Tuple tuple=generateTestTuple(key,message);
+  bolt.execute(tuple);
+  verify(collector).ack(tuple);
+  verifyMessage(key,message);
+}

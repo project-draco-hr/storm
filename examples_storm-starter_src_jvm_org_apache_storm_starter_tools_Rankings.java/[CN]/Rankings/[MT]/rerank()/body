@@ -1,0 +1,4 @@
+{
+  Collections.sort(rankedItems);
+  Collections.reverse(rankedItems);
+}

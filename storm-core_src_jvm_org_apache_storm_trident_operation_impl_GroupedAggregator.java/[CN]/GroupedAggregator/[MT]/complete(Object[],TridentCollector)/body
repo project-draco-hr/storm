@@ -1,0 +1,8 @@
+{
+  Map<List,Object> val=(Map)arr[1];
+  GroupCollector groupColl=(GroupCollector)arr[0];
+  for (  Entry<List,Object> e : val.entrySet()) {
+    groupColl.currGroup=e.getKey();
+    _agg.complete(e.getValue(),groupColl);
+  }
+}

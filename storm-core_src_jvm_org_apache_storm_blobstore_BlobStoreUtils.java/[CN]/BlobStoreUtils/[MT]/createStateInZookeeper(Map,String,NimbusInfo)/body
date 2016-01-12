@@ -1,0 +1,5 @@
+{
+  ClientBlobStore cb=new NimbusBlobStore();
+  cb.setClient(conf,new NimbusClient(conf,nimbusInfo.getHost(),nimbusInfo.getPort(),null));
+  cb.createStateInZookeeper(key);
+}

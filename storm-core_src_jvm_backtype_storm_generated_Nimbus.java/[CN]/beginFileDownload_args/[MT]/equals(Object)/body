@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof beginFileDownload_args)   return this.equals((beginFileDownload_args)that);
-  return false;
-}

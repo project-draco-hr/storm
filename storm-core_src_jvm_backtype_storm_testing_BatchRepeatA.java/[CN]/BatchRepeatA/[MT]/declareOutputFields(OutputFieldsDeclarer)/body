@@ -1,4 +1,0 @@
-{
-  declarer.declareStream("multi",new Fields("id","word"));
-  declarer.declareStream("single",new Fields("id","word"));
-}

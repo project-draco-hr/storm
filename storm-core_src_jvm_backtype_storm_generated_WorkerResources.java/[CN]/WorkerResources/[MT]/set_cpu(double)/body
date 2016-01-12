@@ -1,4 +1,0 @@
-{
-  this.cpu=cpu;
-  set_cpu_isSet(true);
-}

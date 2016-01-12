@@ -1,0 +1,13 @@
+{
+  getBlobMeta_result result=new getBlobMeta_result();
+  try {
+    result.success=iface.getBlobMeta(args.key);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+catch (  KeyNotFoundException knf) {
+    result.knf=knf;
+  }
+  return result;
+}

@@ -1,5 +1,0 @@
-{
-  this.inFields=inFields;
-  this.agg=agg;
-  this.outFields=outFields;
-}

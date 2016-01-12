@@ -1,4 +1,0 @@
-{
-  _delegate.cleanup();
-  _tracked.cleanup();
-}

@@ -1,3 +1,0 @@
-{
-  return (ExecutorService)_defaultResources.get(SHARED_EXECUTOR);
-}

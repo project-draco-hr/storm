@@ -1,5 +1,0 @@
-{
-  TreeSet<TopologyDetails> ret=new TreeSet<TopologyDetails>(new PQsortByPriorityAndSubmittionTime());
-  ret.addAll(this.attemptedQueue);
-  return ret;
-}

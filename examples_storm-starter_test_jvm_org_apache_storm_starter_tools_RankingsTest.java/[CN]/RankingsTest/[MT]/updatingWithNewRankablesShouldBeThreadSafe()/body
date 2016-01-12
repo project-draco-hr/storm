@@ -1,0 +1,28 @@
+{
+  final List<Rankable> entries=ImmutableList.of(A,B,C,D);
+  final Rankings rankings=new Rankings(entries.size());
+  final List<Exception> exceptions=Lists.newArrayList();
+  Blitzer blitzer=new Blitzer(1000);
+  blitzer.blitz(new Runnable(){
+    public void run(){
+      for (      Rankable r : entries) {
+        try {
+          rankings.updateWith(r);
+        }
+ catch (        RuntimeException e) {
+synchronized (exceptions) {
+            exceptions.add(e);
+          }
+        }
+      }
+    }
+  }
+);
+  blitzer.shutdown();
+  if (!exceptions.isEmpty()) {
+    for (    Exception e : exceptions) {
+      System.err.println(Throwables.getStackTraceAsString(e));
+    }
+  }
+  assertThat(exceptions).isEmpty();
+}

@@ -1,7 +1,0 @@
-{
-switch (field) {
-case NUM_ERR_CHOICE:
-    return get_num_err_choice();
-}
-throw new IllegalStateException();
-}

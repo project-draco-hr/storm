@@ -1,0 +1,8 @@
+{
+  if (getSetField() == _Fields.DIRECT) {
+    return (NullStruct)getFieldValue();
+  }
+ else {
+    throw new RuntimeException("Cannot get field 'direct' because union is currently set to " + getFieldDesc(getSetField()).name);
+  }
+}

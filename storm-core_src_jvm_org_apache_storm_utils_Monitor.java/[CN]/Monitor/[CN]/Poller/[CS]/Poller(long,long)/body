@@ -1,0 +1,4 @@
+{
+  this.startTime=startTime;
+  this.pollMs=pollMs;
+}

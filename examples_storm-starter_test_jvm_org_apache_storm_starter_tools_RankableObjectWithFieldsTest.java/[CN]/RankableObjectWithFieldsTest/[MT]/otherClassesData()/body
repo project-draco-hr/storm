@@ -1,0 +1,3 @@
+{
+  return new Object[][]{{new String("foo")},{new Object()},{Integer.valueOf(4)},{Lists.newArrayList(7,8,9)}};
+}

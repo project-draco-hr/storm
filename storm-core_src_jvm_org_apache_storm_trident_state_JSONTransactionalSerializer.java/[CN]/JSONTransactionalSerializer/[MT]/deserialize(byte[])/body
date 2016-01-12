@@ -1,0 +1,10 @@
+{
+  try {
+    String s=new String(b,"UTF-8");
+    List deser=(List)JSONValue.parse(s);
+    return new TransactionalValue((Long)deser.get(0),deser.get(1));
+  }
+ catch (  UnsupportedEncodingException e) {
+    throw new RuntimeException(e);
+  }
+}

@@ -1,8 +1,0 @@
-{
-  submitTopology_args args=new submitTopology_args();
-  args.set_name(name);
-  args.set_uploadedJarLocation(uploadedJarLocation);
-  args.set_jsonConf(jsonConf);
-  args.set_topology(topology);
-  sendBase("submitTopology",args);
-}

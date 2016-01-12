@@ -1,7 +1,0 @@
-{
-  List<Fields> ret=new ArrayList<>();
-  for (  Object o : streams) {
-    ret.add(((IAggregatableStream)o).getOutputFields());
-  }
-  return ret;
-}

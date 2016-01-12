@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_id=true && this.is_set_id();
+  boolean that_present_id=true && that.is_set_id();
+  if (this_present_id || that_present_id) {
+    if (!(this_present_id && that_present_id))     return false;
+    if (!this.id.equals(that.id))     return false;
+  }
+  return true;
+}

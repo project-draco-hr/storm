@@ -1,0 +1,16 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case EMITTED:
+    return is_set_emitted();
+case TRANSFERRED:
+  return is_set_transferred();
+case SPECIFIC:
+return is_set_specific();
+case RATE:
+return is_set_rate();
+}
+throw new IllegalStateException();
+}

@@ -1,0 +1,3 @@
+{
+  return mockTuple(Constants.SYSTEM_COMPONENT_ID,Constants.SYSTEM_TICK_STREAM_ID);
+}

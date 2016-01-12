@@ -1,0 +1,2 @@
+Map<WorkerSlot,Collection<ExecutorDetails>> schedulingResultMap
+String message

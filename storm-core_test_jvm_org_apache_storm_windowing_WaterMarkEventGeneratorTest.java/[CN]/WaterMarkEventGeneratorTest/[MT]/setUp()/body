@@ -1,0 +1,9 @@
+{
+  windowManager=new WindowManager<Integer>(null){
+    @Override public void add(    Event<Integer> event){
+      eventList.add(event);
+    }
+  }
+;
+  waterMarkEventGenerator=new WaterMarkEventGenerator<>(windowManager,100000,5,Collections.singleton(streamId("s1")));
+}

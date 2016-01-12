@@ -1,5 +1,0 @@
-{
-  simpleConsumer.close();
-  broker.shutdown();
-  bolt.cleanup();
-}

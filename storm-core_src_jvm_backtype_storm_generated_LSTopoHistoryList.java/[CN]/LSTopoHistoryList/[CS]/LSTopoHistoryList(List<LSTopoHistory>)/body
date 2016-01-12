@@ -1,4 +1,0 @@
-{
-  this();
-  this.topo_history=topo_history;
-}

@@ -1,4 +1,0 @@
-{
-  TTupleProtocol oprot=(TTupleProtocol)prot;
-  oprot.writeString(struct.msg);
-}

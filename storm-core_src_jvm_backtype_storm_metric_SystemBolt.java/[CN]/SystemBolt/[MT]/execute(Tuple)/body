@@ -1,3 +1,0 @@
-{
-  throw new RuntimeException("Non-system tuples should never be sent to __system bolt.");
-}

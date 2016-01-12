@@ -1,0 +1,3 @@
+{
+  return (this.acl == null) ? null : this.acl.iterator();
+}

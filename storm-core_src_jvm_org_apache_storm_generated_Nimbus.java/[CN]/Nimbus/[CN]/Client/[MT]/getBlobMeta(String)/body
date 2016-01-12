@@ -1,0 +1,4 @@
+{
+  send_getBlobMeta(key);
+  return recv_getBlobMeta();
+}

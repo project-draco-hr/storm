@@ -1,3 +1,0 @@
-{
-  return emitted_tuples.get(_name);
-}

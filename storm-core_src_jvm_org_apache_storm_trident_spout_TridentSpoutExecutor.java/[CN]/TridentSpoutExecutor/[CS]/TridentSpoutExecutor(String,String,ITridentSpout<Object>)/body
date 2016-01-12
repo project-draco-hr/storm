@@ -1,0 +1,5 @@
+{
+  _txStateId=txStateId;
+  _spout=spout;
+  _streamName=streamName;
+}

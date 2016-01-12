@@ -1,5 +1,0 @@
-{
-  createStateInZookeeper_args args=new createStateInZookeeper_args();
-  args.set_key(key);
-  sendBase("createStateInZookeeper",args);
-}

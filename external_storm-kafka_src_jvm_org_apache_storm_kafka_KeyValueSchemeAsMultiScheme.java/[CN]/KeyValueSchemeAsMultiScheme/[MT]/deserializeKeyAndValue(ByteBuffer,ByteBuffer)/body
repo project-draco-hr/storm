@@ -1,0 +1,5 @@
+{
+  List<Object> o=((KeyValueScheme)scheme).deserializeKeyAndValue(key,value);
+  if (o == null)   return null;
+ else   return Arrays.asList(o);
+}

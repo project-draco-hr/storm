@@ -1,0 +1,3 @@
+{
+  return registerMetric(name,new ReducedMetric(reducer),timeBucketSizeInSecs);
+}

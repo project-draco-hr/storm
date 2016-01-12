@@ -1,7 +1,0 @@
-{
-  MockitoAnnotations.initMocks(this);
-  broker=new KafkaTestBroker();
-  setupKafkaConsumer();
-  config.put(KafkaBolt.TOPIC,TEST_TOPIC);
-  bolt=generateStringSerializerBolt();
-}

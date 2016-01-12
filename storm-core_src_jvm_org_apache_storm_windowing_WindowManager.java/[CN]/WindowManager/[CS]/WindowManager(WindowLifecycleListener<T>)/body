@@ -1,0 +1,8 @@
+{
+  windowLifecycleListener=lifecycleListener;
+  queue=new ConcurrentLinkedQueue<>();
+  expiredEvents=new ArrayList<>();
+  prevWindowEvents=new HashSet<>();
+  eventsSinceLastExpiry=new AtomicInteger();
+  lock=new ReentrantLock(true);
+}

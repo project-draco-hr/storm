@@ -1,3 +1,0 @@
-{
-  validateField(name,this.type,o);
-}

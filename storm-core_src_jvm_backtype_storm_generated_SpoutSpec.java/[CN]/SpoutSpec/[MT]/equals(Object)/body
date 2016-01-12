@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof SpoutSpec)   return this.equals((SpoutSpec)that);
-  return false;
-}

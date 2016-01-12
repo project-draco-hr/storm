@@ -1,5 +1,0 @@
-{
-  super(client,protocolFactory,transport,resultHandler,false);
-  this.session=session;
-  this.chunk=chunk;
-}

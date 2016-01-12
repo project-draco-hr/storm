@@ -1,4 +1,0 @@
-{
-  if (isBlackListed(supervisor.id))   return new HashSet();
-  return supervisor.allPorts;
-}

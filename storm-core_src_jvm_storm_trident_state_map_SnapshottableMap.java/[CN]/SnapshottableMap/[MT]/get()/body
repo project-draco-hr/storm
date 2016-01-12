@@ -1,3 +1,0 @@
-{
-  return multiGet(_keys).get(0);
-}

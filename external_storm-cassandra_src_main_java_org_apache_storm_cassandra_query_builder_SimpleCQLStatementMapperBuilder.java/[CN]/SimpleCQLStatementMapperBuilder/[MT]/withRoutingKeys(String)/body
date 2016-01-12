@@ -1,0 +1,4 @@
+{
+  this.routingKeys=Arrays.asList(fields);
+  return this;
+}

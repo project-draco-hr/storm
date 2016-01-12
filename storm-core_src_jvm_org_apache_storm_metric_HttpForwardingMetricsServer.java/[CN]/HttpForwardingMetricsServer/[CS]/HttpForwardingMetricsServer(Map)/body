@@ -1,0 +1,6 @@
+{
+  _conf=Utils.readStormConfig();
+  if (conf != null) {
+    _conf.putAll(conf);
+  }
+}

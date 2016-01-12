@@ -1,0 +1,6 @@
+{
+  if (this.executed == null) {
+    this.executed=new HashMap<String,Map<GlobalStreamId,Long>>();
+  }
+  this.executed.put(key,val);
+}

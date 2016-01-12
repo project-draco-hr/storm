@@ -1,0 +1,7 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_file=true && (is_set_file());
+  list.add(present_file);
+  if (present_file)   list.add(file);
+  return list.hashCode();
+}

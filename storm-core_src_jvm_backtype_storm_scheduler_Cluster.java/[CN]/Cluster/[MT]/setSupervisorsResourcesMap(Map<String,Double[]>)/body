@@ -1,3 +1,0 @@
-{
-  this.supervisorsResources.putAll(supervisors_resources);
-}

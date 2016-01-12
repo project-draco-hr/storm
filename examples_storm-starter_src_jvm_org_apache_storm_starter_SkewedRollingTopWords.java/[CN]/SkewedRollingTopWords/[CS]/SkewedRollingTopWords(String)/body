@@ -1,0 +1,7 @@
+{
+  builder=new TopologyBuilder();
+  this.topologyName=topologyName;
+  topologyConfig=createTopologyConfiguration();
+  runtimeInSeconds=DEFAULT_RUNTIME_IN_SECONDS;
+  wireTopology();
+}

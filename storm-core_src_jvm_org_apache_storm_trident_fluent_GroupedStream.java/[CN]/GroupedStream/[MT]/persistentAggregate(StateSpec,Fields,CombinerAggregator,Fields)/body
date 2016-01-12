@@ -1,0 +1,3 @@
+{
+  return aggregate(inputFields,agg,functionFields).partitionPersist(spec,TridentUtils.fieldsUnion(_groupFields,functionFields),new MapCombinerAggStateUpdater(agg,_groupFields,functionFields),TridentUtils.fieldsConcat(_groupFields,functionFields));
+}

@@ -1,8 +1,0 @@
-{
-  for (  TopologyDetails topo : this.pendingQueue) {
-    if (!this.attemptedQueue.contains(topo)) {
-      return topo;
-    }
-  }
-  return null;
-}

@@ -1,0 +1,12 @@
+{
+  if (j == -1)   return false;
+  if (j == overrideIndex) {
+    return increment(lengths,indices,j - 1,overrideIndex);
+  }
+  indices[j]++;
+  if (indices[j] >= lengths[j].size()) {
+    indices[j]=0;
+    return increment(lengths,indices,j - 1,overrideIndex);
+  }
+  return true;
+}

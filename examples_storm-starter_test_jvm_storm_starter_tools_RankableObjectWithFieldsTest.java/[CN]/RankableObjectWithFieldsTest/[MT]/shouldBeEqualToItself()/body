@@ -1,4 +1,0 @@
-{
-  RankableObjectWithFields r=new RankableObjectWithFields(ANY_OBJECT,ANY_COUNT);
-  assertThat(r).isEqualTo(r);
-}

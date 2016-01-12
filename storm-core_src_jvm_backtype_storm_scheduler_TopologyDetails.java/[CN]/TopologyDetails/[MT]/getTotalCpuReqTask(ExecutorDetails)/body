@@ -1,6 +1,0 @@
-{
-  if (hasExecInTopo(exec)) {
-    return this.resourceList.get(exec).get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT);
-  }
-  return null;
-}

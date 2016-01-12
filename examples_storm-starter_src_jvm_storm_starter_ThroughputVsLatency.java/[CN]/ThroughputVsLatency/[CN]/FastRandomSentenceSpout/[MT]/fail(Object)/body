@@ -1,4 +1,0 @@
-{
-  SentWithTime st=(SentWithTime)id;
-  _collector.emit(new Values(st.sentence),id);
-}

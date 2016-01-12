@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof uploadChunk_result)   return this.equals((uploadChunk_result)that);
-  return false;
-}

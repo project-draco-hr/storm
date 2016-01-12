@@ -1,0 +1,5 @@
+{
+  if (blackListedHosts == null)   blackListedHosts=new HashSet<String>();
+  if (!(blackListedHosts instanceof HashSet))   blackListedHosts=new HashSet<String>(blackListedHosts);
+  blackListedHosts.add(host);
+}

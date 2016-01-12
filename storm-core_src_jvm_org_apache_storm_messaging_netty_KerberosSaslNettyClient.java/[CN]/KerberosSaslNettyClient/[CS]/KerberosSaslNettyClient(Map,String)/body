@@ -1,0 +1,67 @@
+{
+  LOG.debug("KerberosSaslNettyClient: Creating SASL {} client to authenticate to server ",SaslUtils.KERBEROS);
+  LOG.info("Creating Kerberos Client.");
+  Configuration login_conf;
+  try {
+    login_conf=AuthUtils.GetConfiguration(storm_conf);
+  }
+ catch (  Throwable t) {
+    LOG.error("Failed to get login_conf: ",t);
+    throw t;
+  }
+  LOG.debug("KerberosSaslNettyClient: authmethod {}",SaslUtils.KERBEROS);
+  SaslClientCallbackHandler ch=new SaslClientCallbackHandler();
+  subject=null;
+  try {
+    LOG.debug("Setting Configuration to login_config: {}",login_conf);
+    Configuration.setConfiguration(login_conf);
+    LOG.debug("Trying to login.");
+    Login login=new Login(jaas_section,ch);
+    subject=login.getSubject();
+    LOG.debug("Got Subject: {}",subject.toString());
+  }
+ catch (  LoginException ex) {
+    LOG.error("Client failed to login in principal:" + ex,ex);
+    throw new RuntimeException(ex);
+  }
+  if (subject.getPrivateCredentials(KerberosTicket.class).isEmpty()) {
+    LOG.error("Failed to verify user principal.");
+    throw new RuntimeException("Fail to verify user principal with section \"" + jaas_section + "\" in login configuration file "+ login_conf);
+  }
+  String serviceName=null;
+  try {
+    serviceName=AuthUtils.get(login_conf,jaas_section,"serviceName");
+  }
+ catch (  IOException e) {
+    LOG.error("Failed to get service name.",e);
+    throw new RuntimeException(e);
+  }
+  try {
+    Principal principal=(Principal)subject.getPrincipals().toArray()[0];
+    final String fPrincipalName=principal.getName();
+    final String fHost=(String)storm_conf.get(Config.PACEMAKER_HOST);
+    final String fServiceName=serviceName;
+    final CallbackHandler fch=ch;
+    LOG.debug("Kerberos Client with principal: {}, host: {}",fPrincipalName,fHost);
+    saslClient=Subject.doAs(subject,new PrivilegedExceptionAction<SaslClient>(){
+      public SaslClient run(){
+        try {
+          Map<String,String> props=new TreeMap<String,String>();
+          props.put(Sasl.QOP,"auth");
+          props.put(Sasl.SERVER_AUTH,"false");
+          return Sasl.createSaslClient(new String[]{SaslUtils.KERBEROS},fPrincipalName,fServiceName,fHost,props,fch);
+        }
+ catch (        Exception e) {
+          LOG.error("Subject failed to create sasl client.",e);
+          return null;
+        }
+      }
+    }
+);
+    LOG.info("Got Client: {}",saslClient);
+  }
+ catch (  PrivilegedActionException e) {
+    LOG.error("KerberosSaslNettyClient: Could not create Sasl Netty Client.");
+    throw new RuntimeException(e);
+  }
+}

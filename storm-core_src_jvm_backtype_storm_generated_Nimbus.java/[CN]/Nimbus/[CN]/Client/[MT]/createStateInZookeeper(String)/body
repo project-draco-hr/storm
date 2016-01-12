@@ -1,4 +1,0 @@
-{
-  send_createStateInZookeeper(key);
-  recv_createStateInZookeeper();
-}

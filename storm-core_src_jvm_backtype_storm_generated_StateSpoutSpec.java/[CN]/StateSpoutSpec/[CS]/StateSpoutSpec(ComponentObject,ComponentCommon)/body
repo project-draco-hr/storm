@@ -1,5 +1,0 @@
-{
-  this();
-  this.state_spout_object=state_spout_object;
-  this.common=common;
-}

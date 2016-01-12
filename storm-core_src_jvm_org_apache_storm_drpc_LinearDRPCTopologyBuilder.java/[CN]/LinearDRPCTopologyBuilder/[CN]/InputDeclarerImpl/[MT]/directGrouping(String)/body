@@ -1,0 +1,9 @@
+{
+  addDeclaration(new InputDeclaration(){
+    @Override public void declare(    String prevComponent,    InputDeclarer declarer){
+      declarer.directGrouping(prevComponent,streamId);
+    }
+  }
+);
+  return this;
+}

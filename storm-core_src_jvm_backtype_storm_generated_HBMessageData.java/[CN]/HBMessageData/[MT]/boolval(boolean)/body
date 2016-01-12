@@ -1,5 +1,0 @@
-{
-  HBMessageData x=new HBMessageData();
-  x.set_boolval(value);
-  return x;
-}

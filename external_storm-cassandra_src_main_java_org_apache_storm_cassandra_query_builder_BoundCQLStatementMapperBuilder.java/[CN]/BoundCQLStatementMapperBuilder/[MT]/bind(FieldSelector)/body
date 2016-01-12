@@ -1,0 +1,4 @@
+{
+  this.mapper=new CqlMapper.SelectableCqlMapper(Arrays.asList(fields));
+  return this;
+}

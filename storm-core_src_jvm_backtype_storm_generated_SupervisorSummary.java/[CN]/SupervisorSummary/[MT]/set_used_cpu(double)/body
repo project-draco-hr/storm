@@ -1,4 +1,0 @@
-{
-  this.used_cpu=used_cpu;
-  set_used_cpu_isSet(true);
-}

@@ -1,0 +1,23 @@
+{
+  StringBuilder sb=new StringBuilder("DRPCRequest(");
+  boolean first=true;
+  sb.append("func_args:");
+  if (this.func_args == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.func_args);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("request_id:");
+  if (this.request_id == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.request_id);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

@@ -1,3 +1,0 @@
-{
-  return SaslUtils.getSecretKey(storm_conf);
-}

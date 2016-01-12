@@ -1,0 +1,11 @@
+{
+  if (value == null) {
+    incr();
+  }
+ else   if (value instanceof Long) {
+    incrBy((Long)value);
+  }
+ else {
+    throw new RuntimeException("CountShellMetric updateMetricFromRPC params should be null or Long");
+  }
+}

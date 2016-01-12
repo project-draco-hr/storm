@@ -1,3 +1,0 @@
-{
-  this(targetSize,new TreeMap<LocalizedResource,LocalizedResourceSet>(cmp));
-}

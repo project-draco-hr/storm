@@ -1,3 +1,0 @@
-{
-  this.value=(int)timeUnit.toMillis(value);
-}

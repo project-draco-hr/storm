@@ -1,0 +1,12 @@
+{
+  for (  java.io.Closeable c : closeables) {
+    if (c != null) {
+      try {
+        c.close();
+      }
+ catch (      IOException e) {
+        LOG.debug("Exception in closing " + c,e);
+      }
+    }
+  }
+}

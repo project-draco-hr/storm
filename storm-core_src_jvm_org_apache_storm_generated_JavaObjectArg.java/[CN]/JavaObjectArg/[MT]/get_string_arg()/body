@@ -1,0 +1,8 @@
+{
+  if (getSetField() == _Fields.STRING_ARG) {
+    return (String)getFieldValue();
+  }
+ else {
+    throw new RuntimeException("Cannot get field 'string_arg' because union is currently set to " + getFieldDesc(getSetField()).name);
+  }
+}

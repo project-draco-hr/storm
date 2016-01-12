@@ -1,0 +1,13 @@
+{
+  try {
+    ByteArrayOutputStream bao=new ByteArrayOutputStream();
+    ObjectOutputStream out=new ObjectOutputStream(bao);
+    out.writeObject(tgt);
+    out.flush();
+    out.close();
+    credentials.put("TGT",DatatypeConverter.printBase64Binary(bao.toByteArray()));
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

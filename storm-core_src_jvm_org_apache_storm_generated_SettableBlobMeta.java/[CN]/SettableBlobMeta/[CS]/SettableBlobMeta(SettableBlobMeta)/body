@@ -1,0 +1,11 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_acl()) {
+    List<AccessControl> __this__acl=new ArrayList<AccessControl>(other.acl.size());
+    for (    AccessControl other_element : other.acl) {
+      __this__acl.add(new AccessControl(other_element));
+    }
+    this.acl=__this__acl;
+  }
+  this.replication_factor=other.replication_factor;
+}

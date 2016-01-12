@@ -1,0 +1,8 @@
+{
+  LOG.debug("freeing {} CPU on node...avail CPU: {}",amount,getHostname(),_availCPU);
+  if ((_availCPU + amount) > getAvailableCpuResources()) {
+    LOG.warn("Freeing more CPU than there exists!");
+    return;
+  }
+  _availCPU+=amount;
+}

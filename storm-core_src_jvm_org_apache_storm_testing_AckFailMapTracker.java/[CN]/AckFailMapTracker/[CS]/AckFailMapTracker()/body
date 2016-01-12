@@ -1,0 +1,4 @@
+{
+  _acked=RegisteredGlobalState.registerState(new HashSet());
+  _failed=RegisteredGlobalState.registerState(new HashSet());
+}

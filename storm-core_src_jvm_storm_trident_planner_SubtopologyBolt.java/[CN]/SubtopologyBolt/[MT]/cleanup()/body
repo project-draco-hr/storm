@@ -1,7 +1,0 @@
-{
-  for (  String bg : _myTopologicallyOrdered.keySet()) {
-    for (    TridentProcessor p : _myTopologicallyOrdered.get(bg)) {
-      p.cleanup();
-    }
-  }
-}

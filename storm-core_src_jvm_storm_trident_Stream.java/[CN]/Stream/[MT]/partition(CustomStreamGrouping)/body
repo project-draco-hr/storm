@@ -1,3 +1,0 @@
-{
-  return partition(Grouping.custom_serialized(Utils.javaSerialize(partitioner)));
-}

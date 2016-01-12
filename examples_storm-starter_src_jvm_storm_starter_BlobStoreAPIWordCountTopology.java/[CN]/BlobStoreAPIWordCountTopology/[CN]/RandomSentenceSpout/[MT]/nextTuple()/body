@@ -1,4 +1,0 @@
-{
-  Utils.sleep(100);
-  _collector.emit(new Values(getRandomSentence()));
-}

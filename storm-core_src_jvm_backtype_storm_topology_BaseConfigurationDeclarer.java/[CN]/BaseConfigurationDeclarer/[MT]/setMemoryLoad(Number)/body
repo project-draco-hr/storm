@@ -1,3 +1,0 @@
-{
-  return setMemoryLoad(onHeap,Utils.getDouble(conf.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB)));
-}

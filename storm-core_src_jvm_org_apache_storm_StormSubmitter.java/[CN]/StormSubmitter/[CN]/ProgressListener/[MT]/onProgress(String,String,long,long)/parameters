@@ -1,0 +1,4 @@
+String srcFile
+String targetFile
+long bytesUploaded
+long totalBytes

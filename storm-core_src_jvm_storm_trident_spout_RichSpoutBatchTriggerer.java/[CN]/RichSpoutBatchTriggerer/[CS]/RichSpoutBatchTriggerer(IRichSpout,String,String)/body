@@ -1,5 +1,0 @@
-{
-  _delegate=delegate;
-  _stream=streamName;
-  _coordStream=TridentBoltExecutor.COORD_STREAM(batchGroup);
-}

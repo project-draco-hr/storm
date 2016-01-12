@@ -1,0 +1,3 @@
+{
+  return this.uptime_secs;
+}

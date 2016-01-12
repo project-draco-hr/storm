@@ -1,5 +1,0 @@
-{
-  if (success != null) {
-    success.validate();
-  }
-}

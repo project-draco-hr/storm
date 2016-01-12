@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof finishFileUpload_args)   return this.equals((finishFileUpload_args)that);
-  return false;
-}

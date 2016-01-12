@@ -1,0 +1,14 @@
+{
+  StringBuilder sb=new StringBuilder("LSApprovedWorkers(");
+  boolean first=true;
+  sb.append("approved_workers:");
+  if (this.approved_workers == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.approved_workers);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

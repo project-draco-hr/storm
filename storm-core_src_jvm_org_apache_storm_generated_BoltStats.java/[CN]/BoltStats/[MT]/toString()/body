@@ -1,0 +1,50 @@
+{
+  StringBuilder sb=new StringBuilder("BoltStats(");
+  boolean first=true;
+  sb.append("acked:");
+  if (this.acked == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.acked);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("failed:");
+  if (this.failed == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.failed);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("process_ms_avg:");
+  if (this.process_ms_avg == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.process_ms_avg);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("executed:");
+  if (this.executed == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.executed);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("execute_ms_avg:");
+  if (this.execute_ms_avg == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.execute_ms_avg);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

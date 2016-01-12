@@ -1,8 +1,0 @@
-{
-  if (_local != null) {
-    _local.submitTopology(name,stormConf,topology);
-  }
- else {
-    StormSubmitter.submitTopology(name,stormConf,topology);
-  }
-}

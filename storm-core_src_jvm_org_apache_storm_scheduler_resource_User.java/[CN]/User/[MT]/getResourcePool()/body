@@ -1,0 +1,6 @@
+{
+  if (this.resourcePool != null) {
+    return new HashMap<String,Number>(this.resourcePool);
+  }
+  return null;
+}

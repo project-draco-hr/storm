@@ -1,0 +1,13 @@
+{
+  Map<ExecutorDetails,String> executorToComponents=this.getNeedsSchedulingExecutorToComponents(topology);
+  Map<String,List<ExecutorDetails>> componentToExecutors=new HashMap<String,List<ExecutorDetails>>();
+  for (  Map.Entry<ExecutorDetails,String> entry : executorToComponents.entrySet()) {
+    ExecutorDetails executor=entry.getKey();
+    String component=entry.getValue();
+    if (!componentToExecutors.containsKey(component)) {
+      componentToExecutors.put(component,new ArrayList<ExecutorDetails>());
+    }
+    componentToExecutors.get(component).add(executor);
+  }
+  return componentToExecutors;
+}

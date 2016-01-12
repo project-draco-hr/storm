@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_id=true && this.is_set_id();
+  boolean that_present_id=true && that.is_set_id();
+  if (this_present_id || that_present_id) {
+    if (!(this_present_id && that_present_id))     return false;
+    if (!this.id.equals(that.id))     return false;
+  }
+  boolean this_present_options=true && this.is_set_options();
+  boolean that_present_options=true && that.is_set_options();
+  if (this_present_options || that_present_options) {
+    if (!(this_present_options && that_present_options))     return false;
+    if (!this.options.equals(that.options))     return false;
+  }
+  return true;
+}

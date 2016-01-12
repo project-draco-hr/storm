@@ -1,0 +1,8 @@
+{
+  if (cachedGroups.containsKey(user)) {
+    return cachedGroups.get(user);
+  }
+  Set<String> groups=getUnixGroups(user);
+  if (!groups.isEmpty())   cachedGroups.put(user,groups);
+  return groups;
+}

@@ -1,0 +1,11 @@
+{
+  Integer sourceId=input.getInteger(0);
+  Long eventId=input.getLong(1);
+  Long recentEvent=recentEventId.get(sourceId);
+  if (null != recentEvent && eventId <= recentEvent) {
+    String error="Error: event id is not in strict order! event source Id: " + sourceId + ", last event Id: "+ recentEvent+ ", current event Id: "+ eventId;
+    _collector.emit(input,new Values(error));
+  }
+  recentEventId.put(sourceId,eventId);
+  _collector.ack(input);
+}

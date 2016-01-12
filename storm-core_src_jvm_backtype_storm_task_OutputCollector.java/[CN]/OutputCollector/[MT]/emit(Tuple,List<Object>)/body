@@ -1,3 +1,0 @@
-{
-  return emit(Utils.DEFAULT_STREAM_ID,anchor,tuple);
-}

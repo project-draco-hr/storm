@@ -1,0 +1,3 @@
+{
+  _backing=new CachedBatchReadsMap(backing);
+}

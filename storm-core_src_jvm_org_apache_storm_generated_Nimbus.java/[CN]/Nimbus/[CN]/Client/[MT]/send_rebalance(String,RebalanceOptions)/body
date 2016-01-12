@@ -1,0 +1,6 @@
+{
+  rebalance_args args=new rebalance_args();
+  args.set_name(name);
+  args.set_options(options);
+  sendBase("rebalance",args);
+}

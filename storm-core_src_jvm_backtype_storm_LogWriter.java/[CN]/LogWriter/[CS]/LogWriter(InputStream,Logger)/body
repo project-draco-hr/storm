@@ -1,4 +1,0 @@
-{
-  this.in=new BufferedReader(new InputStreamReader(in));
-  this.logger=logger;
-}

@@ -1,4 +1,0 @@
-ExecutorDetails exec
-WorkerSlot ws
-TopologyDetails td
-Map<WorkerSlot,Collection<ExecutorDetails>> scheduleAssignmentMap

@@ -1,9 +1,0 @@
-{
-switch (field) {
-case SESSION:
-    return get_session();
-case CHUNK:
-  return get_chunk();
-}
-throw new IllegalStateException();
-}

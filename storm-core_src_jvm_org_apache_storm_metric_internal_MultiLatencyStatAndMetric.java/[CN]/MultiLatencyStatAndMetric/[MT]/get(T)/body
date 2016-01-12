@@ -1,0 +1,13 @@
+{
+  LatencyStatAndMetric c=_lat.get(key);
+  if (c == null) {
+synchronized (this) {
+      c=_lat.get(key);
+      if (c == null) {
+        c=new LatencyStatAndMetric(_numBuckets);
+        _lat.put(key,c);
+      }
+    }
+  }
+  return c;
+}

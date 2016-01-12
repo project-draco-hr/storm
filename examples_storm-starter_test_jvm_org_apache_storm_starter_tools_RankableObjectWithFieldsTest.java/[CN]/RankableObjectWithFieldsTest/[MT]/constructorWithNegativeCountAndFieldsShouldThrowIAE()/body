@@ -1,0 +1,4 @@
+{
+  Object someAdditionalField=new Object();
+  new RankableObjectWithFields(ANY_OBJECT,-1,someAdditionalField);
+}

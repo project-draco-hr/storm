@@ -1,0 +1,3 @@
+{
+  this(queryString,mapper,null);
+}

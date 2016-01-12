@@ -1,0 +1,110 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.id=iprot.readString();
+  struct.set_id_isSet(true);
+  BitSet incoming=iprot.readBitSet(20);
+  if (incoming.get(0)) {
+    struct.name=iprot.readString();
+    struct.set_name_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.uptime_secs=iprot.readI32();
+    struct.set_uptime_secs_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.status=iprot.readString();
+    struct.set_status_isSet(true);
+  }
+  if (incoming.get(3)) {
+    struct.num_tasks=iprot.readI32();
+    struct.set_num_tasks_isSet(true);
+  }
+  if (incoming.get(4)) {
+    struct.num_workers=iprot.readI32();
+    struct.set_num_workers_isSet(true);
+  }
+  if (incoming.get(5)) {
+    struct.num_executors=iprot.readI32();
+    struct.set_num_executors_isSet(true);
+  }
+  if (incoming.get(6)) {
+    struct.topology_conf=iprot.readString();
+    struct.set_topology_conf_isSet(true);
+  }
+  if (incoming.get(7)) {
+{
+      org.apache.thrift.protocol.TMap _map414=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map414.size);
+      String _key415;
+      ComponentAggregateStats _val416;
+      for (int _i417=0; _i417 < _map414.size; ++_i417) {
+        _key415=iprot.readString();
+        _val416=new ComponentAggregateStats();
+        _val416.read(iprot);
+        struct.id_to_spout_agg_stats.put(_key415,_val416);
+      }
+    }
+    struct.set_id_to_spout_agg_stats_isSet(true);
+  }
+  if (incoming.get(8)) {
+{
+      org.apache.thrift.protocol.TMap _map418=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map418.size);
+      String _key419;
+      ComponentAggregateStats _val420;
+      for (int _i421=0; _i421 < _map418.size; ++_i421) {
+        _key419=iprot.readString();
+        _val420=new ComponentAggregateStats();
+        _val420.read(iprot);
+        struct.id_to_bolt_agg_stats.put(_key419,_val420);
+      }
+    }
+    struct.set_id_to_bolt_agg_stats_isSet(true);
+  }
+  if (incoming.get(9)) {
+    struct.sched_status=iprot.readString();
+    struct.set_sched_status_isSet(true);
+  }
+  if (incoming.get(10)) {
+    struct.topology_stats=new TopologyStats();
+    struct.topology_stats.read(iprot);
+    struct.set_topology_stats_isSet(true);
+  }
+  if (incoming.get(11)) {
+    struct.owner=iprot.readString();
+    struct.set_owner_isSet(true);
+  }
+  if (incoming.get(12)) {
+    struct.debug_options=new DebugOptions();
+    struct.debug_options.read(iprot);
+    struct.set_debug_options_isSet(true);
+  }
+  if (incoming.get(13)) {
+    struct.replication_count=iprot.readI32();
+    struct.set_replication_count_isSet(true);
+  }
+  if (incoming.get(14)) {
+    struct.requested_memonheap=iprot.readDouble();
+    struct.set_requested_memonheap_isSet(true);
+  }
+  if (incoming.get(15)) {
+    struct.requested_memoffheap=iprot.readDouble();
+    struct.set_requested_memoffheap_isSet(true);
+  }
+  if (incoming.get(16)) {
+    struct.requested_cpu=iprot.readDouble();
+    struct.set_requested_cpu_isSet(true);
+  }
+  if (incoming.get(17)) {
+    struct.assigned_memonheap=iprot.readDouble();
+    struct.set_assigned_memonheap_isSet(true);
+  }
+  if (incoming.get(18)) {
+    struct.assigned_memoffheap=iprot.readDouble();
+    struct.set_assigned_memoffheap_isSet(true);
+  }
+  if (incoming.get(19)) {
+    struct.assigned_cpu=iprot.readDouble();
+    struct.set_assigned_cpu_isSet(true);
+  }
+}

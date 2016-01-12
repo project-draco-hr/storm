@@ -1,0 +1,18 @@
+{
+switch (fieldId) {
+case 1:
+    return PATH;
+case 2:
+  return PULSE;
+case 3:
+return BOOLVAL;
+case 4:
+return RECORDS;
+case 5:
+return NODES;
+case 7:
+return MESSAGE_BLOB;
+default :
+return null;
+}
+}

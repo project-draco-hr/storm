@@ -1,0 +1,3 @@
+{
+  return (int)(currentTimeMillis() / 1000);
+}

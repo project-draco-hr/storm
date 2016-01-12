@@ -1,0 +1,8 @@
+{
+  if (streamIndex == 0) {
+    state.returnInfo=input.getString(0);
+  }
+ else {
+    state.results.add(input);
+  }
+}

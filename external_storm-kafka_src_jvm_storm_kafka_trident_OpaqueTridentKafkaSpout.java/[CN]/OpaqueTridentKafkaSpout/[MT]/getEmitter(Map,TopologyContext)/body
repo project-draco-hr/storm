@@ -1,3 +1,0 @@
-{
-  return new TridentKafkaEmitter(conf,context,_config,context.getStormId()).asOpaqueEmitter();
-}

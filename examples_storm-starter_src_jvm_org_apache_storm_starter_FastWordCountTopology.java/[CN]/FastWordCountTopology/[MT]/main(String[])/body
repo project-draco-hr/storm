@@ -1,0 +1,22 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout("spout",new FastRandomSentenceSpout(),4);
+  builder.setBolt("split",new SplitSentence(),4).shuffleGrouping("spout");
+  builder.setBolt("count",new WordCount(),4).fieldsGrouping("split",new Fields("word"));
+  Config conf=new Config();
+  conf.registerMetricsConsumer(org.apache.storm.metric.LoggingMetricsConsumer.class);
+  String name="wc-test";
+  if (args != null && args.length > 0) {
+    name=args[0];
+  }
+  conf.setNumWorkers(1);
+  StormSubmitter.submitTopologyWithProgressBar(name,conf,builder.createTopology());
+  Map clusterConf=Utils.readStormConfig();
+  clusterConf.putAll(Utils.readCommandLineOpts());
+  Nimbus.Client client=NimbusClient.getConfiguredClient(clusterConf).getClient();
+  for (int i=0; i < 10; i++) {
+    Thread.sleep(30 * 1000);
+    printMetrics(client,name);
+  }
+  kill(client,name);
+}

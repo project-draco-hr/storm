@@ -1,0 +1,3 @@
+{
+  _spout.ack(tx.getTransactionId());
+}

@@ -1,8 +1,0 @@
-{
-switch (fieldId) {
-case 1:
-    return COMPLETE_LATENCY_MS;
-default :
-  return null;
-}
-}

@@ -1,3 +1,0 @@
-{
-  return "WatermarkCountTriggerPolicy{" + "count=" + count + ", lastProcessedTs="+ lastProcessedTs+ '}';
-}

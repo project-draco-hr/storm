@@ -1,4 +1,0 @@
-{
-  Map stats=(Map)RegisteredGlobalState.getState(_trackId);
-  ((AtomicInteger)stats.get("spout-emitted")).incrementAndGet();
-}

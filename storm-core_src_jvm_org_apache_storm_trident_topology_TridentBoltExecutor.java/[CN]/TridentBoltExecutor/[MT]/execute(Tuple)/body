@@ -1,0 +1,64 @@
+{
+  if (TupleUtils.isTick(tuple)) {
+    long now=System.currentTimeMillis();
+    if (now - _lastRotate > _messageTimeoutMs) {
+      _batches.rotate();
+      _lastRotate=now;
+    }
+    return;
+  }
+  String batchGroup=_batchGroupIds.get(tuple.getSourceGlobalStreamId());
+  if (batchGroup == null) {
+    _coordCollector.setCurrBatch(null);
+    _bolt.execute(null,tuple);
+    _collector.ack(tuple);
+    return;
+  }
+  IBatchID id=(IBatchID)tuple.getValue(0);
+  TrackedBatch tracked=(TrackedBatch)_batches.get(id.getId());
+  if (tracked != null) {
+    if (id.getAttemptId() > tracked.attemptId) {
+      _batches.remove(id.getId());
+      tracked=null;
+    }
+ else     if (id.getAttemptId() < tracked.attemptId) {
+      return;
+    }
+  }
+  if (tracked == null) {
+    tracked=new TrackedBatch(new BatchInfo(batchGroup,id,_bolt.initBatchState(batchGroup,id)),_coordConditions.get(batchGroup),id.getAttemptId());
+    _batches.put(id.getId(),tracked);
+  }
+  _coordCollector.setCurrBatch(tracked);
+  TupleType t=getTupleType(tuple,tracked);
+  if (t == TupleType.COMMIT) {
+    tracked.receivedCommit=true;
+    checkFinish(tracked,tuple,t);
+  }
+ else   if (t == TupleType.COORD) {
+    int count=tuple.getInteger(1);
+    tracked.reportedTasks++;
+    tracked.expectedTupleCount+=count;
+    checkFinish(tracked,tuple,t);
+  }
+ else {
+    tracked.receivedTuples++;
+    boolean success=true;
+    try {
+      _bolt.execute(tracked.info,tuple);
+      if (tracked.condition.expectedTaskReports == 0) {
+        success=finishBatch(tracked,tuple);
+      }
+    }
+ catch (    FailedException e) {
+      failBatch(tracked,e);
+    }
+    if (success) {
+      _collector.ack(tuple);
+    }
+ else {
+      _collector.fail(tuple);
+    }
+  }
+  _coordCollector.setCurrBatch(null);
+}

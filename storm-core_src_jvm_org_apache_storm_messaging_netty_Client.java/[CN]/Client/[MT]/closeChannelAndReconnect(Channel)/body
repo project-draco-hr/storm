@@ -1,0 +1,10 @@
+{
+  if (channel != null) {
+    channel.close();
+    if (channelRef.compareAndSet(channel,null)) {
+      scheduleConnect(NO_DELAY_MS);
+      return true;
+    }
+  }
+  return false;
+}

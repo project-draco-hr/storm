@@ -1,0 +1,28 @@
+{
+  try {
+    if (nimbusDetails == null) {
+      return;
+    }
+    boolean isListContainsCurrentNimbusInfo=false;
+    List<String> stateInfo;
+    if (zkClient.checkExists().forPath(BLOBSTORE_SUBTREE + "/" + key) == null) {
+      return;
+    }
+    stateInfo=zkClient.getChildren().forPath(BLOBSTORE_SUBTREE + "/" + key);
+    LOG.debug("StateInfo for update {}",stateInfo);
+    Set<NimbusInfo> nimbusInfoList=getNimbodesWithLatestSequenceNumberOfBlob(zkClient,key);
+    for (    NimbusInfo nimbusInfo : nimbusInfoList) {
+      if (nimbusInfo.getHost().equals(nimbusDetails.getHost())) {
+        isListContainsCurrentNimbusInfo=true;
+        break;
+      }
+    }
+    if (!isListContainsCurrentNimbusInfo && downloadUpdatedBlob(conf,blobStore,key,nimbusInfoList)) {
+      LOG.debug("Updating state inside zookeeper for an update");
+      createStateInZookeeper(conf,key,nimbusDetails);
+    }
+  }
+ catch (  Exception exp) {
+    throw new RuntimeException(exp);
+  }
+}

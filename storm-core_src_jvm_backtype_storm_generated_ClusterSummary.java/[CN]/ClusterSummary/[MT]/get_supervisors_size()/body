@@ -1,3 +1,0 @@
-{
-  return (this.supervisors == null) ? 0 : this.supervisors.size();
-}

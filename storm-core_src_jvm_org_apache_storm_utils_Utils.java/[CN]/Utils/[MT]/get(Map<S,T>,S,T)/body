@@ -1,0 +1,7 @@
+{
+  T ret=m.get(key);
+  if (ret == null) {
+    ret=def;
+  }
+  return ret;
+}

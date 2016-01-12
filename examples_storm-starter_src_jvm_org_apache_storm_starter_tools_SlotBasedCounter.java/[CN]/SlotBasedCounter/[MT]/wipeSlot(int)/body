@@ -1,0 +1,5 @@
+{
+  for (  T obj : objToCounts.keySet()) {
+    resetSlotCountToZero(obj,slot);
+  }
+}

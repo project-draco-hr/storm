@@ -1,5 +1,0 @@
-{
-  beginUpdateBlob_args args=new beginUpdateBlob_args();
-  args.set_key(key);
-  sendBase("beginUpdateBlob",args);
-}

@@ -1,0 +1,20 @@
+{
+  boolean checkBlobDownload=false;
+  try {
+    List<String> keyList=BlobStoreUtils.getKeyListFromBlobStore(this);
+    if (!keyList.contains(key)) {
+      if (zkClient.checkExists().forPath(BLOBSTORE_SUBTREE + key) != null) {
+        Set<NimbusInfo> nimbusSet=BlobStoreUtils.getNimbodesWithLatestSequenceNumberOfBlob(zkClient,key);
+        if (BlobStoreUtils.downloadMissingBlob(conf,this,key,nimbusSet)) {
+          LOG.debug("Updating blobs state");
+          BlobStoreUtils.createStateInZookeeper(conf,key,nimbusInfo);
+          checkBlobDownload=true;
+        }
+      }
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return checkBlobDownload;
+}

@@ -1,3 +1,0 @@
-{
-  return (this.used_ports == null) ? 0 : this.used_ports.size();
-}

@@ -1,5 +1,0 @@
-{
-  if (!value) {
-    this.output_fields=null;
-  }
-}

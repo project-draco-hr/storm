@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return ACL;
+case 2:
+  return REPLICATION_FACTOR;
+default :
+return null;
+}
+}

@@ -1,7 +1,0 @@
-{
-  rotate(lat,count,timeSpent,_tmSize,_tmTime,_tmLatBuckets,_tmCountBuckets);
-  rotate(lat,count,timeSpent,_thSize,_thTime,_thLatBuckets,_thCountBuckets);
-  rotate(lat,count,timeSpent,_odSize,_odTime,_odLatBuckets,_odCountBuckets);
-  _allTimeLat+=lat;
-  _allTimeCount+=count;
-}

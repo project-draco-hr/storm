@@ -1,2 +1,0 @@
-BatchStatement.Type type
-List<CQLStatementTupleMapper> mappers

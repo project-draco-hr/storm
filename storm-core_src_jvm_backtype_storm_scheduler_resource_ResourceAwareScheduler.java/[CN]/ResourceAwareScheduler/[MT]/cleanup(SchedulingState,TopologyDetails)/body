@@ -1,4 +1,0 @@
-{
-  restoreCheckpointSchedulingState(schedulingState);
-  return this.userMap.get(td.getTopologySubmitter());
-}

@@ -1,0 +1,5 @@
+{
+  _kryo=new KryoValuesSerializer(conf);
+  _kryoOut=new Output(2000,2000000000);
+  _ids=new SerializationFactory.IdDictionary(context.getRawTopology());
+}

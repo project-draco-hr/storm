@@ -1,7 +1,0 @@
-{
-  int total=0;
-  for (  Node n : _nodes) {
-    if (n.isAlive())     total++;
-  }
-  return total;
-}

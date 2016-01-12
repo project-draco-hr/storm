@@ -1,0 +1,10 @@
+{
+switch (fieldId) {
+case 1:
+    return TASK_START;
+case 2:
+  return TASK_END;
+default :
+return null;
+}
+}

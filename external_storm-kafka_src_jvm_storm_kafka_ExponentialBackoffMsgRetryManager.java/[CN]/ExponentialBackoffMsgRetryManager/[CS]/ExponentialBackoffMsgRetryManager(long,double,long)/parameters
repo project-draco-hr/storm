@@ -1,3 +1,0 @@
-long retryInitialDelayMs
-double retryDelayMultiplier
-long retryDelayMaxMs

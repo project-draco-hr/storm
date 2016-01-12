@@ -1,0 +1,21 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_host()) {
+    this.host=other.host;
+  }
+  this.uptime_secs=other.uptime_secs;
+  this.num_workers=other.num_workers;
+  this.num_used_workers=other.num_used_workers;
+  if (other.is_set_supervisor_id()) {
+    this.supervisor_id=other.supervisor_id;
+  }
+  if (other.is_set_version()) {
+    this.version=other.version;
+  }
+  if (other.is_set_total_resources()) {
+    Map<String,Double> __this__total_resources=new HashMap<String,Double>(other.total_resources);
+    this.total_resources=__this__total_resources;
+  }
+  this.used_mem=other.used_mem;
+  this.used_cpu=other.used_cpu;
+}

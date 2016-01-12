@@ -1,3 +1,0 @@
-{
-  return inimbus.getHostName(supervisors,supervisorId);
-}

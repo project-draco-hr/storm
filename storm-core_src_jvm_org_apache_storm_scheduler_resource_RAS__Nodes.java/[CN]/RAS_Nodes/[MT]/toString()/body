@@ -1,0 +1,7 @@
+{
+  String ret="";
+  for (  RAS_Node node : this.nodeMap.values()) {
+    ret+=node.toString() + "\n";
+  }
+  return ret;
+}

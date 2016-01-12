@@ -1,3 +1,0 @@
-{
-  _spout.emitBatch(tx.getTransactionId(),collector);
-}

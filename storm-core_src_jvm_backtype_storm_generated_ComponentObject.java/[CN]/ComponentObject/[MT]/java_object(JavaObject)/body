@@ -1,5 +1,0 @@
-{
-  ComponentObject x=new ComponentObject();
-  x.set_java_object(value);
-  return x;
-}

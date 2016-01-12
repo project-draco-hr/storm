@@ -1,5 +1,0 @@
-{
-  HBMessageData x=new HBMessageData();
-  x.set_message_blob(ByteBuffer.wrap(Arrays.copyOf(value,value.length)));
-  return x;
-}

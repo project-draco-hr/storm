@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getTopology",org.apache.thrift.protocol.TMessageType.CALL,0));
+  getTopology_args args=new getTopology_args();
+  args.set_id(id);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

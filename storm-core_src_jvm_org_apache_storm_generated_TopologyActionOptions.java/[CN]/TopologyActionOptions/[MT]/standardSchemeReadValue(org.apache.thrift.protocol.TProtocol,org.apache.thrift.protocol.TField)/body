@@ -1,0 +1,35 @@
+{
+  _Fields setField=_Fields.findByThriftId(field.id);
+  if (setField != null) {
+switch (setField) {
+case KILL_OPTIONS:
+      if (field.type == KILL_OPTIONS_FIELD_DESC.type) {
+        KillOptions kill_options;
+        kill_options=new KillOptions();
+        kill_options.read(iprot);
+        return kill_options;
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+        return null;
+      }
+case REBALANCE_OPTIONS:
+    if (field.type == REBALANCE_OPTIONS_FIELD_DESC.type) {
+      RebalanceOptions rebalance_options;
+      rebalance_options=new RebalanceOptions();
+      rebalance_options.read(iprot);
+      return rebalance_options;
+    }
+ else {
+      org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+      return null;
+    }
+default :
+  throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+}
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+}

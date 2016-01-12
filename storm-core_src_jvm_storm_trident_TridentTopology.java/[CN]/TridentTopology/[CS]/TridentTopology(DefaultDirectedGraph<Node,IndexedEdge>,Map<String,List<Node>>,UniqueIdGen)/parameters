@@ -1,3 +1,0 @@
-DefaultDirectedGraph<Node,IndexedEdge> graph
-Map<String,List<Node>> colocate
-UniqueIdGen gen

@@ -1,3 +1,0 @@
-{
-  return value < -120 || (value >= -112 && value < 0);
-}

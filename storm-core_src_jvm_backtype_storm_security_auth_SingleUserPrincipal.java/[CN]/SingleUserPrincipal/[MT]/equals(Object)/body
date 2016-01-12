@@ -1,3 +1,0 @@
-{
-  return another instanceof SingleUserPrincipal && _userName.equals(((SingleUserPrincipal)another)._userName);
-}

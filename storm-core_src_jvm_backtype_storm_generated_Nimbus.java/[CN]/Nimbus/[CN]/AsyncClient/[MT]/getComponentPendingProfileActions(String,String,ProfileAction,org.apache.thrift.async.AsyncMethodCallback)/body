@@ -1,6 +1,0 @@
-{
-  checkReady();
-  getComponentPendingProfileActions_call method_call=new getComponentPendingProfileActions_call(id,component_id,action,resultHandler,this,___protocolFactory,___transport);
-  this.___currentMethod=method_call;
-  ___manager.call(method_call);
-}

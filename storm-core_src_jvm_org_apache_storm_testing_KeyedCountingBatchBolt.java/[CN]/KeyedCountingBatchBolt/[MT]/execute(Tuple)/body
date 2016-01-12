@@ -1,0 +1,5 @@
+{
+  Object key=tuple.getValue(1);
+  int curr=Utils.get(_counts,key,0);
+  _counts.put(key,curr + 1);
+}

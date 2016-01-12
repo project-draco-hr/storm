@@ -1,7 +1,0 @@
-{
-  Set<WorkerSlot> ret=new HashSet();
-  for (  SchedulerAssignmentImpl s : assignments.values()) {
-    ret.addAll(s.getExecutorToSlot().values());
-  }
-  return ret;
-}

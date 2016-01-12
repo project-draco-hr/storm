@@ -1,0 +1,9 @@
+{
+  MessageRetryRecord record=this.records.get(offset);
+  if (record == null || !this.waiting.contains(record)) {
+    throw new IllegalStateException("cannot retry a message that has not failed");
+  }
+ else {
+    this.waiting.remove(record);
+  }
+}

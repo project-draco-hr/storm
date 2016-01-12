@@ -1,0 +1,132 @@
+{
+switch (field) {
+case ID:
+    if (value == null) {
+      unset_id();
+    }
+ else {
+      set_id((String)value);
+    }
+  break;
+case NAME:
+if (value == null) {
+  unset_name();
+}
+ else {
+  set_name((String)value);
+}
+break;
+case NUM_TASKS:
+if (value == null) {
+unset_num_tasks();
+}
+ else {
+set_num_tasks((Integer)value);
+}
+break;
+case NUM_EXECUTORS:
+if (value == null) {
+unset_num_executors();
+}
+ else {
+set_num_executors((Integer)value);
+}
+break;
+case NUM_WORKERS:
+if (value == null) {
+unset_num_workers();
+}
+ else {
+set_num_workers((Integer)value);
+}
+break;
+case UPTIME_SECS:
+if (value == null) {
+unset_uptime_secs();
+}
+ else {
+set_uptime_secs((Integer)value);
+}
+break;
+case STATUS:
+if (value == null) {
+unset_status();
+}
+ else {
+set_status((String)value);
+}
+break;
+case SCHED_STATUS:
+if (value == null) {
+unset_sched_status();
+}
+ else {
+set_sched_status((String)value);
+}
+break;
+case OWNER:
+if (value == null) {
+unset_owner();
+}
+ else {
+set_owner((String)value);
+}
+break;
+case REPLICATION_COUNT:
+if (value == null) {
+unset_replication_count();
+}
+ else {
+set_replication_count((Integer)value);
+}
+break;
+case REQUESTED_MEMONHEAP:
+if (value == null) {
+unset_requested_memonheap();
+}
+ else {
+set_requested_memonheap((Double)value);
+}
+break;
+case REQUESTED_MEMOFFHEAP:
+if (value == null) {
+unset_requested_memoffheap();
+}
+ else {
+set_requested_memoffheap((Double)value);
+}
+break;
+case REQUESTED_CPU:
+if (value == null) {
+unset_requested_cpu();
+}
+ else {
+set_requested_cpu((Double)value);
+}
+break;
+case ASSIGNED_MEMONHEAP:
+if (value == null) {
+unset_assigned_memonheap();
+}
+ else {
+set_assigned_memonheap((Double)value);
+}
+break;
+case ASSIGNED_MEMOFFHEAP:
+if (value == null) {
+unset_assigned_memoffheap();
+}
+ else {
+set_assigned_memoffheap((Double)value);
+}
+break;
+case ASSIGNED_CPU:
+if (value == null) {
+unset_assigned_cpu();
+}
+ else {
+set_assigned_cpu((Double)value);
+}
+break;
+}
+}

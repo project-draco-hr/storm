@@ -1,6 +1,0 @@
-{
-  if (this.acl == null) {
-    this.acl=new ArrayList<AccessControl>();
-  }
-  this.acl.add(elem);
-}

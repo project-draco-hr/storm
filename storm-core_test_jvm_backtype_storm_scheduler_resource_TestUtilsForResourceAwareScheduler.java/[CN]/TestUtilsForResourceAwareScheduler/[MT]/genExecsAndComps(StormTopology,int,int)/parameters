@@ -1,3 +1,0 @@
-StormTopology topology
-int spoutParallelism
-int boltParallelism

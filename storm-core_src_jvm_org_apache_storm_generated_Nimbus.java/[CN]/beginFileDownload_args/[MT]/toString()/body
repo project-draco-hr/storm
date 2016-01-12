@@ -1,0 +1,14 @@
+{
+  StringBuilder sb=new StringBuilder("beginFileDownload_args(");
+  boolean first=true;
+  sb.append("file:");
+  if (this.file == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.file);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

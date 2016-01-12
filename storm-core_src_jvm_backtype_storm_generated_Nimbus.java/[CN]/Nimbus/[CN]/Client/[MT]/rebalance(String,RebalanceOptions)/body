@@ -1,4 +1,0 @@
-{
-  send_rebalance(name,options);
-  recv_rebalance();
-}

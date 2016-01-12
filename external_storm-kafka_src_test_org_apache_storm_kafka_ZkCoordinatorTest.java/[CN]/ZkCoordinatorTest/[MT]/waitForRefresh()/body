@@ -1,0 +1,3 @@
+{
+  Thread.sleep(((ZkHosts)spoutConfig.hosts).refreshFreqSecs * 1000 + 1);
+}

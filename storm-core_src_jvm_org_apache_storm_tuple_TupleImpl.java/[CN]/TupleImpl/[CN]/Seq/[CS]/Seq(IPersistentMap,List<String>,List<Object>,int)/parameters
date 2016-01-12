@@ -1,0 +1,4 @@
+IPersistentMap meta
+List<String> fields
+List<Object> values
+int i

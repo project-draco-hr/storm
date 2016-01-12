@@ -1,4 +1,0 @@
-BrokerHosts hosts
-String topic
-String zkRoot
-String id

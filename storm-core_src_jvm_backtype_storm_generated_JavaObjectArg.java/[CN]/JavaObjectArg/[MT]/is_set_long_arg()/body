@@ -1,3 +1,0 @@
-{
-  return setField_ == _Fields.LONG_ARG;
-}

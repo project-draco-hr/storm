@@ -1,0 +1,15 @@
+{
+  String encryption_key;
+  try {
+    encryption_key=(String)storm_conf.get(SECRET_KEY);
+    LOG.debug("Blowfish serializer being constructed ...");
+    if (encryption_key == null) {
+      throw new RuntimeException("Blowfish encryption key not specified");
+    }
+    byte[] bytes=Hex.decodeHex(encryption_key.toCharArray());
+    _serializer=new BlowfishSerializer(new ListDelegateSerializer(),bytes);
+  }
+ catch (  org.apache.commons.codec.DecoderException ex) {
+    throw new RuntimeException("Blowfish encryption key invalid",ex);
+  }
+}

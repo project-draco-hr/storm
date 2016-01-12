@@ -1,0 +1,11 @@
+{
+  if (!is_set_supervisors()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'supervisors' is unset! Struct:" + toString());
+  }
+  if (!is_set_topologies()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'topologies' is unset! Struct:" + toString());
+  }
+  if (!is_set_nimbuses()) {
+    throw new org.apache.thrift.protocol.TProtocolException("Required field 'nimbuses' is unset! Struct:" + toString());
+  }
+}

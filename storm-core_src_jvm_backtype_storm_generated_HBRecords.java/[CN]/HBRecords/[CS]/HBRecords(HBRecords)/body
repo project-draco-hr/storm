@@ -1,9 +1,0 @@
-{
-  if (other.is_set_pulses()) {
-    List<HBPulse> __this__pulses=new ArrayList<HBPulse>(other.pulses.size());
-    for (    HBPulse other_element : other.pulses) {
-      __this__pulses.add(new HBPulse(other_element));
-    }
-    this.pulses=__this__pulses;
-  }
-}

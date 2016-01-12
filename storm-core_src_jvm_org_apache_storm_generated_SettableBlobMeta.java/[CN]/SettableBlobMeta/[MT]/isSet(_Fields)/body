@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case ACL:
+    return is_set_acl();
+case REPLICATION_FACTOR:
+  return is_set_replication_factor();
+}
+throw new IllegalStateException();
+}

@@ -1,3 +1,0 @@
-{
-  return EncodingUtils.testBit(__isset_bitfield,__NUM_USED_WORKERS_ISSET_ID);
-}

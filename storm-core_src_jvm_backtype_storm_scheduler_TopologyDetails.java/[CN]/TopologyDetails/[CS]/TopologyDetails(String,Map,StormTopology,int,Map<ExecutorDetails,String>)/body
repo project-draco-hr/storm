@@ -1,3 +1,0 @@
-{
-  this(topologyId,topologyConf,topology,numWorkers,executorToComponents,0);
-}

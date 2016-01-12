@@ -1,0 +1,8 @@
+{
+  if (other.is_set_id()) {
+    this.id=other.id;
+  }
+  if (other.is_set_options()) {
+    this.options=new GetInfoOptions(other.options);
+  }
+}

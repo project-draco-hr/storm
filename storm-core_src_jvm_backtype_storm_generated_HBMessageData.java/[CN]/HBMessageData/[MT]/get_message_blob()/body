@@ -1,5 +1,0 @@
-{
-  set_message_blob(org.apache.thrift.TBaseHelper.rightSize(buffer_for_message_blob()));
-  ByteBuffer b=buffer_for_message_blob();
-  return b == null ? null : b.array();
-}

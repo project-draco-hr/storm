@@ -1,0 +1,7 @@
+{
+  List<Iterator<List<Object>>> ret=new ArrayList<>(args.size());
+  for (  TridentTuple arg : args) {
+    ret.add(((ITupleCollection)state).getTuples());
+  }
+  return ret;
+}

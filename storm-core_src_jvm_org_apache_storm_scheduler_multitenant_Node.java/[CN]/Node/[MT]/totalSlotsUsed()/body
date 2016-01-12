@@ -1,0 +1,7 @@
+{
+  int total=0;
+  for (  Set<WorkerSlot> slots : _topIdToUsedSlots.values()) {
+    total+=slots.size();
+  }
+  return total;
+}

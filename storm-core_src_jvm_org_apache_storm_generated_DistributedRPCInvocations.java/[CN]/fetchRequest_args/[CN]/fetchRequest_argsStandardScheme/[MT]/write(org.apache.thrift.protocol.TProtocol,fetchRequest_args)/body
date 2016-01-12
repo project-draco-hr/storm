@@ -1,0 +1,11 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.functionName != null) {
+    oprot.writeFieldBegin(FUNCTION_NAME_FIELD_DESC);
+    oprot.writeString(struct.functionName);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

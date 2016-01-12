@@ -1,0 +1,10 @@
+{
+  Set<String> removeSet=new HashSet<String>(minus.toList());
+  List<String> toKeep=new ArrayList<String>();
+  for (  String s : all.toList()) {
+    if (!removeSet.contains(s)) {
+      toKeep.add(s);
+    }
+  }
+  return new Fields(toKeep);
+}

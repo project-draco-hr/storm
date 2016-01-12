@@ -1,0 +1,6 @@
+{
+  if (_meta == null) {
+    _meta=new PersistentArrayMap(new Object[]{makeKeyword("stream"),getSourceStreamId(),makeKeyword("component"),getSourceComponent(),makeKeyword("task"),getSourceTask()});
+  }
+  return _meta;
+}

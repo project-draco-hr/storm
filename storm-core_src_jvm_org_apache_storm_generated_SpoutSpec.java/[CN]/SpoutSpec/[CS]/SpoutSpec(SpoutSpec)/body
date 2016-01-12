@@ -1,0 +1,8 @@
+{
+  if (other.is_set_spout_object()) {
+    this.spout_object=new ComponentObject(other.spout_object);
+  }
+  if (other.is_set_common()) {
+    this.common=new ComponentCommon(other.common);
+  }
+}

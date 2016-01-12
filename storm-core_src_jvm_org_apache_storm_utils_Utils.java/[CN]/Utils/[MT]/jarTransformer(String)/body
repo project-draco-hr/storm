@@ -1,0 +1,7 @@
+{
+  JarTransformer ret=null;
+  if (klass != null) {
+    ret=(JarTransformer)newInstance(klass);
+  }
+  return ret;
+}

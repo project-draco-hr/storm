@@ -1,0 +1,6 @@
+{
+  GlobalPartitionInformation globalPartitionInformation=new GlobalPartitionInformation(TEST_TOPIC);
+  List<GlobalPartitionInformation> partitions=new ArrayList<GlobalPartitionInformation>();
+  partitions.add(globalPartitionInformation);
+  KafkaUtils.calculatePartitionsForTask(partitions,1,1);
+}

@@ -1,0 +1,5 @@
+{
+  Map<String,SourceArgs> ret=new HashMap<>();
+  ret.put(sourceComponent,sourceArgs);
+  return ret;
+}

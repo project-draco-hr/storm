@@ -1,0 +1,3 @@
+{
+  return "FreePool of " + _nodes.size() + " nodes with "+ _totalSlots+ " slots";
+}

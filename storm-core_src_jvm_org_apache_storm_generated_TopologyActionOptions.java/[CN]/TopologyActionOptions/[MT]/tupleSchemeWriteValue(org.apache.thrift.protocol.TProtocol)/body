@@ -1,0 +1,14 @@
+{
+switch (setField_) {
+case KILL_OPTIONS:
+    KillOptions kill_options=(KillOptions)value_;
+  kill_options.write(oprot);
+return;
+case REBALANCE_OPTIONS:
+RebalanceOptions rebalance_options=(RebalanceOptions)value_;
+rebalance_options.write(oprot);
+return;
+default :
+throw new IllegalStateException("Cannot write union with unknown field " + setField_);
+}
+}

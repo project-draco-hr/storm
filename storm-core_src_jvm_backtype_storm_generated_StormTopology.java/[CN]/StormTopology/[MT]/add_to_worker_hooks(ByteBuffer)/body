@@ -1,6 +1,0 @@
-{
-  if (this.worker_hooks == null) {
-    this.worker_hooks=new ArrayList<ByteBuffer>();
-  }
-  this.worker_hooks.add(elem);
-}

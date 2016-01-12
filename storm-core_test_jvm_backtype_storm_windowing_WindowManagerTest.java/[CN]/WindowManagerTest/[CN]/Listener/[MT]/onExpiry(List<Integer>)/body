@@ -1,4 +1,0 @@
-{
-  onExpiryEvents=events;
-  allOnExpiryEvents.add(events);
-}

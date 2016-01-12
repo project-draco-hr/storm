@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof SupervisorInfo)   return this.equals((SupervisorInfo)that);
-  return false;
-}

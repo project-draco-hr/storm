@@ -1,0 +1,3 @@
+{
+  return submitJarAs(conf,localJar,listener,null);
+}

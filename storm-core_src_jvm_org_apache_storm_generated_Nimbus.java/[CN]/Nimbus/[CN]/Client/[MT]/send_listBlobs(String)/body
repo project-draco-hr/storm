@@ -1,0 +1,5 @@
+{
+  listBlobs_args args=new listBlobs_args();
+  args.set_session(session);
+  sendBase("listBlobs",args);
+}

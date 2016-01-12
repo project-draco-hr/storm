@@ -1,9 +1,0 @@
-{
-  try {
-    Utils.handleUncaughtException(e);
-  }
- catch (  Error error) {
-    LOG.info("Received error in netty thread.. terminating server...");
-    Runtime.getRuntime().exit(1);
-  }
-}

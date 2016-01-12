@@ -1,4 +1,0 @@
-{
-  super(message);
-  this.exitCode=exitCode;
-}

@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof NotAliveException)   return this.equals((NotAliveException)that);
-  return false;
-}
