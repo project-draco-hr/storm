@@ -11,7 +11,4 @@
       collector.fail(input);
     }
   }
- else {
-    collector.ack(input);
-  }
 }
