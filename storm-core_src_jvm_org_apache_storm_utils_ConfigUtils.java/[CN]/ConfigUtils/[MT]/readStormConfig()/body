@@ -1,3 +1,6 @@
 {
-  return Utils.readStormConfig();
+  if (mockedStormConfig != null)   return mockedStormConfig;
+  Map conf=Utils.readStormConfig();
+  ConfigValidation.validateFields(conf);
+  return conf;
 }
