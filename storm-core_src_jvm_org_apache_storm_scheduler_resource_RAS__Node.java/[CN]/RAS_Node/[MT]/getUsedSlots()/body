@@ -1,7 +1,3 @@
 {
-  Collection<WorkerSlot> ret=new LinkedList<WorkerSlot>();
-  for (  Collection<WorkerSlot> workers : _topIdToUsedSlots.values()) {
-    ret.addAll(workers);
-  }
-  return ret;
+  return workerIdsToWorkers(getUsedSlotsId());
 }

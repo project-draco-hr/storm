@@ -1,0 +1,7 @@
+{
+  Collection<WorkerSlot> ret=new LinkedList<WorkerSlot>();
+  for (  String workerId : workerIds) {
+    ret.add(_slots.get(workerId));
+  }
+  return ret;
+}

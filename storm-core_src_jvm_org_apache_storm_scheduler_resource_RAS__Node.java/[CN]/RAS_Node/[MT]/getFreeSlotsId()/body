@@ -1,0 +1,10 @@
+{
+  if (!_isAlive) {
+    return new HashSet<String>();
+  }
+  Collection<String> usedSlotsId=getUsedSlotsId();
+  Set<String> ret=new HashSet<>();
+  ret.addAll(_slots.keySet());
+  ret.removeAll(usedSlotsId);
+  return ret;
+}

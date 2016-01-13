@@ -12,6 +12,9 @@
       Collection<ExecutorDetails> execsNeedScheduling=workerToTasksEntry.getValue();
       RAS_Node targetNode=this.nodes.getNodeById(targetSlot.getNodeId());
       targetNode.assign(targetSlot,td,execsNeedScheduling);
+      for (      ExecutorDetails exec : execsNeedScheduling) {
+        targetNode.consumeResourcesforTask(exec,td);
+      }
       LOG.debug("ASSIGNMENT    TOPOLOGY: {}  TASKS: {} To Node: {} on Slot: {}",td.getName(),execsNeedScheduling,targetNode.getHostname(),targetSlot.getPort());
       if (!nodesUsed.contains(targetNode.getId())) {
         nodesUsed.add(targetNode.getId());

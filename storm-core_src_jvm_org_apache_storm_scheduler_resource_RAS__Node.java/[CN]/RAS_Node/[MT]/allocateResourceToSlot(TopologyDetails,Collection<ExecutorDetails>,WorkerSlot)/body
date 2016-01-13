@@ -16,5 +16,5 @@
       cpu+=cpuForExec;
     }
   }
-  slot.allocateResource(onHeapMem,offHeapMem,cpu);
+  return new WorkerSlot(slot.getNodeId(),slot.getPort(),onHeapMem,offHeapMem,cpu);
 }

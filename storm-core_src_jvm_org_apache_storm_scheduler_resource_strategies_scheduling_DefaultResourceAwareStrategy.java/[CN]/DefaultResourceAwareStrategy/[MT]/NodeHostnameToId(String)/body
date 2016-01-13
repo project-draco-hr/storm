@@ -1,5 +1,5 @@
 {
-  for (  RAS_Node n : _nodes.values()) {
+  for (  NodeDetails n : _nodes.values()) {
     if (n.getHostname() == null) {
       continue;
     }

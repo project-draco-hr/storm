@@ -1,0 +1,7 @@
+{
+  Collection<String> ret=new LinkedList<String>();
+  for (  Map<String,Collection<ExecutorDetails>> entry : _topIdToUsedSlots.values()) {
+    ret.addAll(entry.keySet());
+  }
+  return ret;
+}

@@ -1,0 +1,20 @@
+{
+  _nodeId=nodeId;
+  _isAlive=!cluster.isBlackListed(_nodeId);
+  if (_isAlive && sup != null) {
+    _hostname=sup.getHost();
+    _sup=sup;
+    _availMemory=getTotalMemoryResources();
+    _availCPU=getTotalCpuResources();
+    LOG.debug("Found a {} Node {} {}",_isAlive ? "living" : "dead",_nodeId,sup.getAllPorts());
+    LOG.debug("resources_mem: {}, resources_CPU: {}",sup.getTotalMemory(),sup.getTotalCPU());
+  }
+  _cluster=cluster;
+  _topologies=topologies;
+  if (workerIdToWorker != null) {
+    _slots=workerIdToWorker;
+  }
+  if (assignmentMap != null) {
+    _topIdToUsedSlots=assignmentMap;
+  }
+}

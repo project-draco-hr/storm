@@ -30,5 +30,6 @@
       break;
     }
     scheduleTopology(td);
+    LOG.info("Nodes after scheduling:{}",this.nodes);
   }
 }

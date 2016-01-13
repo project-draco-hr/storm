@@ -18,7 +18,7 @@
     while (true) {
       SchedulingResult result=null;
       try {
-        rasStrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
+        rasStrategy.prepare(new ClusterStateData(this.cluster,this.topologies));
         result=rasStrategy.schedule(td);
       }
  catch (      Exception ex) {
