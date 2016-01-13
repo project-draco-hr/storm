@@ -1,7 +1,7 @@
 {
   if (amount > _availMemory) {
     LOG.error("Attempting to consume more memory than available! Needed: {}, we only have: {}",amount,_availMemory);
-    return null;
+    throw new IllegalStateException("Attempting to consume more memory than available");
   }
   _availMemory=_availMemory - amount;
   return _availMemory;

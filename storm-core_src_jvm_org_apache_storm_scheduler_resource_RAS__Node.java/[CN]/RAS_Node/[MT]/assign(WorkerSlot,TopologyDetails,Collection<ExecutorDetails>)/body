@@ -15,7 +15,7 @@
   if (!freeSlots.contains(target)) {
     throw new IllegalStateException("Trying to assign already used slot" + target.getPort() + "on node "+ _nodeId);
   }
-  target=allocateResourceToSlot(td,executors,target);
+  LOG.info("target slot: {}",target);
   _cluster.assign(target,td.getId(),executors);
   if (!_topIdToUsedSlots.containsKey(td.getId())) {
     _topIdToUsedSlots.put(td.getId(),new HashMap<String,Collection<ExecutorDetails>>());

@@ -42,6 +42,5 @@
       nodeIdToNode.put(nodeId,new RAS_Node(nodeId,null,cluster,topologies,workerIdToWorker.get(nodeId),assignments));
     }
   }
-  updateAvailableResources(cluster,topologies,nodeIdToNode);
   return nodeIdToNode;
 }

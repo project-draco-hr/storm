@@ -4,6 +4,7 @@
     return 0.0;
   }
   Collection<ExecutorDetails> execs=getExecutors(ws,_cluster);
+  LOG.info("getMemoryUsedByWorker executors: {}",execs);
   double totalMemoryUsed=0.0;
   for (  ExecutorDetails exec : execs) {
     totalMemoryUsed+=topo.getTotalMemReqTask(exec);

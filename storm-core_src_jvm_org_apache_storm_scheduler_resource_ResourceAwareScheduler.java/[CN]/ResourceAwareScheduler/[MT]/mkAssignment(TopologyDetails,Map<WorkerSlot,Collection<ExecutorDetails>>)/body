@@ -11,11 +11,12 @@
       WorkerSlot targetSlot=workerToTasksEntry.getKey();
       Collection<ExecutorDetails> execsNeedScheduling=workerToTasksEntry.getValue();
       RAS_Node targetNode=this.nodes.getNodeById(targetSlot.getNodeId());
+      targetSlot=allocateResourceToSlot(td,execsNeedScheduling,targetSlot);
       targetNode.assign(targetSlot,td,execsNeedScheduling);
+      LOG.debug("ASSIGNMENT    TOPOLOGY: {}  TASKS: {} To Node: {} on Slot: {}",td.getName(),execsNeedScheduling,targetNode.getHostname(),targetSlot.getPort());
       for (      ExecutorDetails exec : execsNeedScheduling) {
         targetNode.consumeResourcesforTask(exec,td);
       }
-      LOG.debug("ASSIGNMENT    TOPOLOGY: {}  TASKS: {} To Node: {} on Slot: {}",td.getName(),execsNeedScheduling,targetNode.getHostname(),targetSlot.getPort());
       if (!nodesUsed.contains(targetNode.getId())) {
         nodesUsed.add(targetNode.getId());
       }
@@ -24,9 +25,8 @@
       assignedCpu+=targetSlot.getAllocatedCpu();
     }
     Double[] resources={requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu};
-    LOG.debug("setResources for {}: requested on-heap mem, off-heap mem, cpu: {} {} {} " + "assigned on-heap mem, off-heap mem, cpu: {} {} {}",td.getId(),requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu);
-    this.cluster.setResources(td.getId(),resources);
-    updateSupervisorsResources(this.cluster,this.topologies);
+    LOG.debug("setTopologyResources for {}: requested on-heap mem, off-heap mem, cpu: {} {} {} " + "assigned on-heap mem, off-heap mem, cpu: {} {} {}",td.getId(),requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu);
+    this.cluster.setTopologyResources(td.getId(),resources);
     return true;
   }
  else {

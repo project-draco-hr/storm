@@ -3,7 +3,7 @@
   this.cluster.setAssignments(schedulingState.cluster.getAssignments());
   this.cluster.setSupervisorsResourcesMap(schedulingState.cluster.getSupervisorsResourcesMap());
   this.cluster.setStatusMap(schedulingState.cluster.getStatusMap());
-  this.cluster.setResourcesMap(schedulingState.cluster.getResourcesMap());
+  this.cluster.setTopologyResourcesMap(schedulingState.cluster.getTopologyResourcesMap());
   this.topologies=schedulingState.topologies;
   this.conf=schedulingState.conf;
   this.userMap=schedulingState.userMap;

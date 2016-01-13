@@ -30,6 +30,7 @@
       break;
     }
     scheduleTopology(td);
-    LOG.info("Nodes after scheduling:{}",this.nodes);
+    LOG.debug("Nodes after scheduling:\n{}",this.nodes);
   }
+  updateSupervisorsResources(this.cluster,this.topologies);
 }

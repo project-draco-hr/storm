@@ -7,10 +7,10 @@
   if (topo == null) {
     throw new IllegalArgumentException("Tried to free a slot " + ws + " that was already free!");
   }
-  _cluster.freeSlot(ws);
-  _topIdToUsedSlots.get(topo.getId()).remove(ws.getId());
   double memUsed=getMemoryUsedByWorker(ws);
   double cpuUsed=getCpuUsedByWorker(ws);
   freeMemory(memUsed);
   freeCPU(cpuUsed);
+  _cluster.freeSlot(ws);
+  _topIdToUsedSlots.get(topo.getId()).remove(ws.getId());
 }

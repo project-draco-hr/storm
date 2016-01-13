@@ -15,14 +15,14 @@
         supervisorToAssignedMem.put(nodeId,assignedMemPerSlot);
       }
     }
-    if (this.getResourcesMap().containsKey(topId)) {
-      Double[] topo_resources=getResourcesMap().get(topId);
+    if (this.getTopologyResourcesMap().containsKey(topId)) {
+      Double[] topo_resources=getTopologyResourcesMap().get(topId);
       topo_resources[3]=assignedMemForTopology;
     }
  else {
       Double[] topo_resources={0.0,0.0,0.0,0.0,0.0,0.0};
       topo_resources[3]=assignedMemForTopology;
-      this.setResources(topId,topo_resources);
+      this.setTopologyResources(topId,topo_resources);
     }
   }
   for (  Map.Entry<String,Double> entry : supervisorToAssignedMem.entrySet()) {
