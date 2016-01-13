@@ -1,3 +1,0 @@
-{
-  return Files.getOwner(FileSystems.getDefault().getPath(path)).getName();
-}

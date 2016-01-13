@@ -1,0 +1,6 @@
+{
+  Fields outFields=TridentUtils.getSingleOutputStreamFields(_delegate);
+  outFields=TridentUtils.fieldsConcat(new Fields("$id$"),outFields);
+  declarer.declareStream(_stream,outFields);
+  declarer.declareStream(_coordStream,true,new Fields("id","count"));
+}

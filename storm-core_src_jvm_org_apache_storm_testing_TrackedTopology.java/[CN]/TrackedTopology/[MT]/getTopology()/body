@@ -1,0 +1,3 @@
+{
+  return (StormTopology)get(Keyword.intern("topology"));
+}

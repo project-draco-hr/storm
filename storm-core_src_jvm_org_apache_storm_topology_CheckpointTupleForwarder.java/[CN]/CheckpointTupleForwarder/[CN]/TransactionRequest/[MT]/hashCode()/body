@@ -1,0 +1,5 @@
+{
+  int result=action != null ? action.hashCode() : 0;
+  result=31 * result + (int)(txid ^ (txid >>> 32));
+  return result;
+}

@@ -1,0 +1,13 @@
+{
+switch (field) {
+case NAME:
+    return get_name();
+case UPLOADED_JAR_LOCATION:
+  return get_uploadedJarLocation();
+case JSON_CONF:
+return get_jsonConf();
+case TOPOLOGY:
+return get_topology();
+}
+throw new IllegalStateException();
+}

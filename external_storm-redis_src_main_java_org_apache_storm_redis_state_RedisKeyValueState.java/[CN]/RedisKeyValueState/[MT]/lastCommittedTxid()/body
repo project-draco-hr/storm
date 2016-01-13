@@ -1,0 +1,3 @@
+{
+  return lastId(COMMIT_TXID_KEY);
+}

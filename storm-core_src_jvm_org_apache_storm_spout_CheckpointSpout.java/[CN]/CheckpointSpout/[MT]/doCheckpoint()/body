@@ -1,0 +1,9 @@
+{
+  LOG.debug("In checkpoint");
+  if (curTxState.getState() == COMMITTED) {
+    saveTxState(curTxState.nextState(false));
+    lastCheckpointTs=System.currentTimeMillis();
+  }
+  Action action=curTxState.nextAction(false);
+  emit(curTxState.getTxid(),action);
+}

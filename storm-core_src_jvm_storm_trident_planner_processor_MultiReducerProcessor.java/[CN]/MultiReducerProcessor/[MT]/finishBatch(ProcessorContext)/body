@@ -1,4 +1,0 @@
-{
-  _collector.setContext(processorContext);
-  _reducer.complete(processorContext.state[_context.getStateIndex()],_collector);
-}

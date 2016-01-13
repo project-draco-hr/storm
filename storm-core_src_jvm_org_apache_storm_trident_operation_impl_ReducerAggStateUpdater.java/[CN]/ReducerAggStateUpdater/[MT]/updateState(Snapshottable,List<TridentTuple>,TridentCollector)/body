@@ -1,0 +1,4 @@
+{
+  Object newVal=state.update(new ReducerValueUpdater(_agg,tuples));
+  collector.emit(new Values(newVal));
+}

@@ -1,0 +1,3 @@
+{
+  _triContext.getDelegateCollector().reportError(t);
+}

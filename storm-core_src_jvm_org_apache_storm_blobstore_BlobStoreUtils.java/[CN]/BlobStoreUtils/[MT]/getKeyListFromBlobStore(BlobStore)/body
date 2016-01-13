@@ -1,0 +1,11 @@
+{
+  Iterator<String> keys=blobStore.listKeys();
+  List<String> keyList=new ArrayList<String>();
+  if (keys != null) {
+    while (keys.hasNext()) {
+      keyList.add(keys.next());
+    }
+  }
+  LOG.debug("KeyList from blobstore {}",keyList);
+  return keyList;
+}

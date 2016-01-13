@@ -1,0 +1,5 @@
+{
+  if (value == null)   throw new NullPointerException();
+  setField_=_Fields.MESSAGE_BLOB;
+  value_=value;
+}

@@ -1,5 +1,0 @@
-{
-  if (!is_set_assignments()) {
-    throw new org.apache.thrift.protocol.TProtocolException("Required field 'assignments' is unset! Struct:" + toString());
-  }
-}

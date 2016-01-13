@@ -1,0 +1,8 @@
+{
+  output=new StringBuffer();
+  char[] buf=new char[512];
+  int nRead;
+  while ((nRead=lines.read(buf,0,buf.length)) > 0) {
+    output.append(buf,0,nRead);
+  }
+}

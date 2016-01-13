@@ -1,3 +1,0 @@
-{
-  return submitJar(conf,localJar,null);
-}

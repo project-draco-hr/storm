@@ -1,9 +1,0 @@
-{
-switch (field) {
-case TASK_START:
-    return get_task_start();
-case TASK_END:
-  return get_task_end();
-}
-throw new IllegalStateException();
-}

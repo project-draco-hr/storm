@@ -1,9 +1,0 @@
-{
-switch (field) {
-case BOLT_OBJECT:
-    return get_bolt_object();
-case COMMON:
-  return get_common();
-}
-throw new IllegalStateException();
-}

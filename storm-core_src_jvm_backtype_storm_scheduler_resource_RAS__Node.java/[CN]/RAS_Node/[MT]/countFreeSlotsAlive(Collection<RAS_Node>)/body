@@ -1,9 +1,0 @@
-{
-  int total=0;
-  for (  RAS_Node n : nodes) {
-    if (n.isAlive()) {
-      total+=n.totalSlotsFree();
-    }
-  }
-  return total;
-}

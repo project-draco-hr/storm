@@ -1,0 +1,4 @@
+{
+  waterMarkEventGenerator.run();
+  assertTrue(eventList.isEmpty());
+}

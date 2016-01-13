@@ -1,0 +1,5 @@
+{
+  List<Integer> tasks=_delegate.emit(stream,anchors,tuple);
+  updateTaskCounts(tasks);
+  return tasks;
+}

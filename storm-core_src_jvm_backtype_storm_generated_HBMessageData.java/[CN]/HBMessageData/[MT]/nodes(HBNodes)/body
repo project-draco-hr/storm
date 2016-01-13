@@ -1,5 +1,0 @@
-{
-  HBMessageData x=new HBMessageData();
-  x.set_nodes(value);
-  return x;
-}

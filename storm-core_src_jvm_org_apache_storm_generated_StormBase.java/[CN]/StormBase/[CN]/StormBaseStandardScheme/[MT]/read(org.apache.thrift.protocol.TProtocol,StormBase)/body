@@ -1,0 +1,122 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 1:
+      if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+        struct.name=iprot.readString();
+        struct.set_name_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 2:
+  if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+    struct.status=org.apache.storm.generated.TopologyStatus.findByValue(iprot.readI32());
+    struct.set_status_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+case 3:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.num_workers=iprot.readI32();
+struct.set_num_workers_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 4:
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map604=iprot.readMapBegin();
+struct.component_executors=new HashMap<String,Integer>(2 * _map604.size);
+String _key605;
+int _val606;
+for (int _i607=0; _i607 < _map604.size; ++_i607) {
+_key605=iprot.readString();
+_val606=iprot.readI32();
+struct.component_executors.put(_key605,_val606);
+}
+iprot.readMapEnd();
+}
+struct.set_component_executors_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 5:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.launch_time_secs=iprot.readI32();
+struct.set_launch_time_secs_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 6:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+struct.owner=iprot.readString();
+struct.set_owner_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 7:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
+struct.topology_action_options=new TopologyActionOptions();
+struct.topology_action_options.read(iprot);
+struct.set_topology_action_options_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 8:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.prev_status=org.apache.storm.generated.TopologyStatus.findByValue(iprot.readI32());
+struct.set_prev_status_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 9:
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map608=iprot.readMapBegin();
+struct.component_debug=new HashMap<String,DebugOptions>(2 * _map608.size);
+String _key609;
+DebugOptions _val610;
+for (int _i611=0; _i611 < _map608.size; ++_i611) {
+_key609=iprot.readString();
+_val610=new DebugOptions();
+_val610.read(iprot);
+struct.component_debug.put(_key609,_val610);
+}
+iprot.readMapEnd();
+}
+struct.set_component_debug_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

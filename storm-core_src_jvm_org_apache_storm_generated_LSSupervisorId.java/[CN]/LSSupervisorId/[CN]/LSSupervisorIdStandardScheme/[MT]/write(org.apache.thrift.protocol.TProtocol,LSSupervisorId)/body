@@ -1,0 +1,11 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.supervisor_id != null) {
+    oprot.writeFieldBegin(SUPERVISOR_ID_FIELD_DESC);
+    oprot.writeString(struct.supervisor_id);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

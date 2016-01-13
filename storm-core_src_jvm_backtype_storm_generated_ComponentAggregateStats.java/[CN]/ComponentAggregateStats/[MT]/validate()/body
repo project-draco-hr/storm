@@ -1,8 +1,0 @@
-{
-  if (common_stats != null) {
-    common_stats.validate();
-  }
-  if (last_error != null) {
-    last_error.validate();
-  }
-}

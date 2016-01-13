@@ -1,0 +1,3 @@
+{
+  set_serialized_java(ByteBuffer.wrap(Arrays.copyOf(value,value.length)));
+}

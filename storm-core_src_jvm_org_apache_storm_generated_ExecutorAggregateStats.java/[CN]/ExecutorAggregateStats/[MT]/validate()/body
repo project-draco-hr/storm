@@ -1,0 +1,8 @@
+{
+  if (exec_summary != null) {
+    exec_summary.validate();
+  }
+  if (stats != null) {
+    stats.validate();
+  }
+}

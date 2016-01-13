@@ -1,0 +1,26 @@
+{
+  boolean somethingHappened=true;
+  while (somethingHappened) {
+    somethingHappened=false;
+    for (    Group g : currGroups) {
+      Collection<Group> outgoingGroups=outgoingGroups(g);
+      if (outgoingGroups.size() == 1) {
+        Group out=outgoingGroups.iterator().next();
+        if (out != null) {
+          merge(g,out);
+          somethingHappened=true;
+          break;
+        }
+      }
+      Collection<Group> incomingGroups=incomingGroups(g);
+      if (incomingGroups.size() == 1) {
+        Group in=incomingGroups.iterator().next();
+        if (in != null) {
+          merge(g,in);
+          somethingHappened=true;
+          break;
+        }
+      }
+    }
+  }
+}

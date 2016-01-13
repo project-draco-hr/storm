@@ -1,0 +1,3 @@
+{
+  emitDirect(taskId,streamId,anchor == null ? (List)null : Arrays.asList(anchor),tuple);
+}

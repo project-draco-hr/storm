@@ -1,0 +1,6 @@
+{
+  TridentTuple t=_project.create(_factory.create(tuple));
+  for (  TridentProcessor r : _receivers) {
+    r.execute(context,_stream,t);
+  }
+}

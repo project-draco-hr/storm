@@ -1,0 +1,4 @@
+{
+  LOG.debug("put key '{}', value '{}'",key,value);
+  pendingPrepare.put(encode(keySerializer.serialize(key)),encode(valueSerializer.serialize(value)));
+}

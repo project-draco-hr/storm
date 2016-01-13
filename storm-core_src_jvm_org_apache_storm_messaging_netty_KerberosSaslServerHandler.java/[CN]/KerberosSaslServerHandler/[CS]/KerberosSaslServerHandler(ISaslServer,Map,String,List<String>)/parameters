@@ -1,0 +1,4 @@
+ISaslServer server
+Map storm_conf
+String jaas_section
+List<String> authorizedUsers

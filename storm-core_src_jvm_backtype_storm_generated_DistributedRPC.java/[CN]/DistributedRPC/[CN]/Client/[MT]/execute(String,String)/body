@@ -1,4 +1,0 @@
-{
-  send_execute(functionName,funcArgs);
-  return recv_execute();
-}

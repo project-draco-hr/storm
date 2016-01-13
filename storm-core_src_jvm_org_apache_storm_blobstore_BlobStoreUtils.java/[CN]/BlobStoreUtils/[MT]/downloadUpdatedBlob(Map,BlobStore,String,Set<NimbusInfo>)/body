@@ -1,0 +1,42 @@
+{
+  NimbusClient client;
+  ClientBlobStore remoteBlobStore;
+  InputStreamWithMeta in;
+  AtomicOutputStream out;
+  boolean isSuccess=false;
+  LOG.debug("Download blob NimbusInfos {}",nimbusInfos);
+  for (  NimbusInfo nimbusInfo : nimbusInfos) {
+    if (isSuccess) {
+      break;
+    }
+    try {
+      client=new NimbusClient(conf,nimbusInfo.getHost(),nimbusInfo.getPort(),null);
+      remoteBlobStore=new NimbusBlobStore();
+      remoteBlobStore.setClient(conf,client);
+      in=remoteBlobStore.getBlob(key);
+      out=blobStore.updateBlob(key,getNimbusSubject());
+      byte[] buffer=new byte[2048];
+      int len=0;
+      while ((len=in.read(buffer)) > 0) {
+        out.write(buffer,0,len);
+      }
+      if (out != null) {
+        out.close();
+      }
+      isSuccess=true;
+    }
+ catch (    IOException|AuthorizationException exception) {
+      throw new RuntimeException(exception);
+    }
+catch (    KeyNotFoundException knf) {
+      LOG.info("KeyNotFoundException {}",knf);
+    }
+catch (    Exception exp) {
+      LOG.error("Exception {}",exp);
+    }
+  }
+  if (!isSuccess) {
+    LOG.error("Could not update the blob with key" + key);
+  }
+  return isSuccess;
+}

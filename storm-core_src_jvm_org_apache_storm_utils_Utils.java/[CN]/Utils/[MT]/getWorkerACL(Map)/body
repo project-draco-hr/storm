@@ -1,0 +1,16 @@
+{
+  if (!isZkAuthenticationConfiguredTopology(conf)) {
+    return null;
+  }
+  String stormZKUser=(String)conf.get(Config.STORM_ZOOKEEPER_SUPERACL);
+  if (stormZKUser == null) {
+    throw new IllegalArgumentException("Authentication is enabled but " + Config.STORM_ZOOKEEPER_SUPERACL + " is not set");
+  }
+  String[] split=stormZKUser.split(":",2);
+  if (split.length != 2) {
+    throw new IllegalArgumentException(Config.STORM_ZOOKEEPER_SUPERACL + " does not appear to be in the form scheme:acl, i.e. sasl:storm-user");
+  }
+  ArrayList<ACL> ret=new ArrayList<ACL>(ZooDefs.Ids.CREATOR_ALL_ACL);
+  ret.add(new ACL(ZooDefs.Perms.ALL,new Id(split[0],split[1])));
+  return ret;
+}

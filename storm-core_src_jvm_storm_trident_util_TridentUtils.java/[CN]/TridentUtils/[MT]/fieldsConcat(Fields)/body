@@ -1,7 +1,0 @@
-{
-  List<String> ret=new ArrayList<String>();
-  for (  Fields f : fields) {
-    if (f != null)     ret.addAll(f.toList());
-  }
-  return new Fields(ret);
-}

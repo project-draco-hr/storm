@@ -1,9 +1,0 @@
-{
-  this.selfFields=selfFields;
-  this.parentFactories=parentFactories;
-  this.parentStreams=parentStreams;
-  this.receivers=receivers;
-  this.outStreamId=outStreamId;
-  this.stateIndex=stateIndex;
-  this.collector=collector;
-}

@@ -1,0 +1,10 @@
+{
+  LOG.debug("Acquire TGT from Cache");
+  getKerbTicketFromCache();
+  if (kerbTicket != null) {
+    return true;
+  }
+ else {
+    throw new LoginException("Authentication failed, the TGT not found.");
+  }
+}

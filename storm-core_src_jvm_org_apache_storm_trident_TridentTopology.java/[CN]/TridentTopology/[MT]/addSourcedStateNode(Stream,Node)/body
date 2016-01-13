@@ -1,0 +1,3 @@
+{
+  return addSourcedStateNode(Arrays.asList(source),newNode);
+}

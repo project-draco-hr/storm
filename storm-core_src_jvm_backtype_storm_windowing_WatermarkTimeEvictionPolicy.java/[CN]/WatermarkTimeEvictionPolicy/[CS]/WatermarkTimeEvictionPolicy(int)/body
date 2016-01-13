@@ -1,3 +1,0 @@
-{
-  this(windowLength,Integer.MAX_VALUE);
-}

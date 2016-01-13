@@ -1,3 +1,0 @@
-{
-  _boltSer=Utils.javaSerialize(bolt);
-}

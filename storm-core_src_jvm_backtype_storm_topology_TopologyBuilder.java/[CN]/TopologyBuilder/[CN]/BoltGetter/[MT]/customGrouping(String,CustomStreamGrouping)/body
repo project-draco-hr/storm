@@ -1,3 +1,0 @@
-{
-  return customGrouping(componentId,Utils.DEFAULT_STREAM_ID,grouping);
-}

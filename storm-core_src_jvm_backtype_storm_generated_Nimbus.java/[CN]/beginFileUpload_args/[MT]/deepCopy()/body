@@ -1,3 +1,0 @@
-{
-  return new beginFileUpload_args(this);
-}

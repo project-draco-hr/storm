@@ -1,3 +1,0 @@
-{
-  return ByteBuffer.wrap(zkClient.getData().forPath(BLOBSTORE_MAX_KEY_SEQUENCE_SUBTREE + "/" + key)).getInt();
-}

@@ -1,4 +1,0 @@
-List fnSpec
-List confSpec
-List<Object> params
-Map<String,StreamInfo> fields

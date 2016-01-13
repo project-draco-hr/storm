@@ -1,3 +1,0 @@
-{
-  return addSourcedNode(Arrays.asList(source),newNode);
-}

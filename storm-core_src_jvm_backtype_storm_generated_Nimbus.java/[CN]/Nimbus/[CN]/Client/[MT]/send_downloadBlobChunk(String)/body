@@ -1,5 +1,0 @@
-{
-  downloadBlobChunk_args args=new downloadBlobChunk_args();
-  args.set_session(session);
-  sendBase("downloadBlobChunk",args);
-}

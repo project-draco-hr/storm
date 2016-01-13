@@ -1,6 +1,0 @@
-{
-  if (_map == null) {
-    setMap(toMap());
-  }
-  return _map;
-}

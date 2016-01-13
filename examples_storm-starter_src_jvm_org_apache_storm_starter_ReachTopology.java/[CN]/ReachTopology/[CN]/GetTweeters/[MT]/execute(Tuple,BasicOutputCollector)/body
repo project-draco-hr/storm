@@ -1,0 +1,10 @@
+{
+  Object id=tuple.getValue(0);
+  String url=tuple.getString(1);
+  List<String> tweeters=TWEETERS_DB.get(url);
+  if (tweeters != null) {
+    for (    String tweeter : tweeters) {
+      collector.emit(new Values(id,tweeter));
+    }
+  }
+}

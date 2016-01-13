@@ -1,7 +1,0 @@
-{
-  this.topology_id=null;
-  set_time_stamp_isSet(false);
-  this.time_stamp=0;
-  this.users=null;
-  this.groups=null;
-}

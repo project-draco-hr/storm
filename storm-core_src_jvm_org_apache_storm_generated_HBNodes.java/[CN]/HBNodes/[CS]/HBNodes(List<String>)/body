@@ -1,0 +1,4 @@
+{
+  this();
+  this.pulseIds=pulseIds;
+}

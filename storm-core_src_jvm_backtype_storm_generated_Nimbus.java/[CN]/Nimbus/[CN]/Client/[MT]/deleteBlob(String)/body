@@ -1,4 +1,0 @@
-{
-  send_deleteBlob(key);
-  recv_deleteBlob();
-}

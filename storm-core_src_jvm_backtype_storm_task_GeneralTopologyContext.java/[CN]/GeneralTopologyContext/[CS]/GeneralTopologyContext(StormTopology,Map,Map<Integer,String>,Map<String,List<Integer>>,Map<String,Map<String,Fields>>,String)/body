@@ -1,8 +1,0 @@
-{
-  _topology=topology;
-  _stormConf=stormConf;
-  _taskToComponent=taskToComponent;
-  _stormId=stormId;
-  _componentToTasks=componentToSortedTasks;
-  _componentToStreamToFields=componentToStreamToFields;
-}

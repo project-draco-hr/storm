@@ -1,5 +1,0 @@
-{
-  BatchState state=(BatchState)processorContext.state[_context.getStateIndex()];
-  state.tuples.add(tuple);
-  state.args.add(_projection.create(tuple));
-}

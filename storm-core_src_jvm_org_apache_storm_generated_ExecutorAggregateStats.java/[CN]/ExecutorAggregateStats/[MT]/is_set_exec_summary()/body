@@ -1,0 +1,3 @@
+{
+  return this.exec_summary != null;
+}

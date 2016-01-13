@@ -1,5 +1,0 @@
-{
-  if (!(o instanceof TransactionAttempt))   return false;
-  TransactionAttempt other=(TransactionAttempt)o;
-  return _txid.equals(other._txid) && _attemptId == other._attemptId;
-}

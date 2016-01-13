@@ -1,9 +1,0 @@
-{
-  try {
-    publishDirect(new ArrayList<Object>(Arrays.asList(INTERRUPT)),true);
-    _flusher.close();
-  }
- catch (  InsufficientCapacityException e) {
-    throw new RuntimeException(e);
-  }
-}

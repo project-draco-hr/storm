@@ -1,0 +1,8 @@
+{
+  for (  SchedulerAssignment assignment : this.assignments.values()) {
+    if (assignment.isSlotOccupied(slot)) {
+      return true;
+    }
+  }
+  return false;
+}

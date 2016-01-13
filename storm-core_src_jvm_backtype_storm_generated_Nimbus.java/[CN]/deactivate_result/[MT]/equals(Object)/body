@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof deactivate_result)   return this.equals((deactivate_result)that);
-  return false;
-}

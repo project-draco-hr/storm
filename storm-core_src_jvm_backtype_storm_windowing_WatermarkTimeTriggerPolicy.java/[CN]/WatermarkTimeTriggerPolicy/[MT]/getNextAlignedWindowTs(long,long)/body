@@ -1,7 +1,0 @@
-{
-  long nextTs=windowManager.getEarliestEventTs(startTs,endTs);
-  if (nextTs == Long.MAX_VALUE || (nextTs % slidingIntervalMs == 0)) {
-    return nextTs;
-  }
-  return nextTs + (slidingIntervalMs - (nextTs % slidingIntervalMs));
-}

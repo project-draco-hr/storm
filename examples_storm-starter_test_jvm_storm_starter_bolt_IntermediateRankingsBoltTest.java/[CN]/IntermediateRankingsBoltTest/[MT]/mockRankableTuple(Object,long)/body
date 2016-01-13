@@ -1,5 +1,0 @@
-{
-  Tuple tuple=MockTupleHelpers.mockTuple(ANY_NON_SYSTEM_COMPONENT_ID,ANY_NON_SYSTEM_STREAM_ID);
-  when(tuple.getValues()).thenReturn(Lists.newArrayList(ANY_OBJECT,ANY_COUNT));
-  return tuple;
-}

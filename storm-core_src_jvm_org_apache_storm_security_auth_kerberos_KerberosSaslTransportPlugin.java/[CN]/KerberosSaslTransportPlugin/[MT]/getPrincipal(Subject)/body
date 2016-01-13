@@ -1,0 +1,8 @@
+{
+  Set<Principal> principals=(Set<Principal>)subject.getPrincipals();
+  if (principals == null || principals.size() < 1) {
+    LOG.info("No principal found in login subject");
+    return null;
+  }
+  return ((Principal)(principals.toArray()[0])).getName();
+}

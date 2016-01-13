@@ -1,8 +1,0 @@
-{
-  try {
-    return new KeyTranslationIterator(fbs.listKeys(),DATA_PREFIX);
-  }
- catch (  IOException e) {
-    throw new RuntimeException(e);
-  }
-}

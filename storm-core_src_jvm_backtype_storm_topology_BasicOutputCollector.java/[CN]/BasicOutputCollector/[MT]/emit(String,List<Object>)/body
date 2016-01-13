@@ -1,3 +1,0 @@
-{
-  return out.emit(streamId,inputTuple,tuple);
-}

@@ -1,5 +1,0 @@
-{
-  if (!value) {
-    this.serialized_parts=null;
-  }
-}

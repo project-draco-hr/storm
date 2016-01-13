@@ -1,8 +1,0 @@
-{
-  _fields=new ArrayList<>(fields.size());
-  for (  String field : fields) {
-    if (_fields.contains(field))     throw new IllegalArgumentException(String.format("duplicate field '%s'",field));
-    _fields.add(field);
-  }
-  index();
-}

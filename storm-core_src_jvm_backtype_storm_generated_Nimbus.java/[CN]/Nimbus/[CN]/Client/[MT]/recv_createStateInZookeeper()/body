@@ -1,5 +1,0 @@
-{
-  createStateInZookeeper_result result=new createStateInZookeeper_result();
-  receiveBase(result,"createStateInZookeeper");
-  return;
-}

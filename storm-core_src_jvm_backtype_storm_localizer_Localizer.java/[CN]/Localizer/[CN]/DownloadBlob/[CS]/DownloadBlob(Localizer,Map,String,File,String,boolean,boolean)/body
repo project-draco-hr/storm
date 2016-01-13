@@ -1,9 +1,0 @@
-{
-  _localizer=localizer;
-  _conf=conf;
-  _key=key;
-  _localFile=localFile;
-  _user=user;
-  _uncompress=uncompress;
-  _isUpdate=update;
-}

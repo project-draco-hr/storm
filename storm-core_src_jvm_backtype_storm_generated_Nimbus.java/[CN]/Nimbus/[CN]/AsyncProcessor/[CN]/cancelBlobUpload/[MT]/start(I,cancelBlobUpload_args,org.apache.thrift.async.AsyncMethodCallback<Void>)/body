@@ -1,3 +1,0 @@
-{
-  iface.cancelBlobUpload(args.session,resultHandler);
-}

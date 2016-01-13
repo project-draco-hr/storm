@@ -1,0 +1,3 @@
+{
+  this(BOLT_KEY,BOLT_MESSAGE);
+}

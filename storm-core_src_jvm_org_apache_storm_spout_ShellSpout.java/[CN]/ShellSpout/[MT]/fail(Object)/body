@@ -1,0 +1,8 @@
+{
+  if (_spoutMsg == null) {
+    _spoutMsg=new SpoutMsg();
+  }
+  _spoutMsg.setCommand("fail");
+  _spoutMsg.setId(msgId);
+  querySubprocess();
+}

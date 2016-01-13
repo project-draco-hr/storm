@@ -1,8 +1,0 @@
-{
-  if (id.equals(INIT_TXID)) {
-    return null;
-  }
- else {
-    return id.subtract(BigInteger.ONE);
-  }
-}

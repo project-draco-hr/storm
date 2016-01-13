@@ -1,0 +1,10 @@
+{
+  LOG.debug("commit, txid {}",txid);
+  if (preparedState != null && txid == preparedState.txid) {
+    commitedState=preparedState;
+    preparedState=null;
+  }
+ else {
+    throw new RuntimeException("Invalid prepared state for commit, " + "preparedState " + preparedState + " txid "+ txid);
+  }
+}

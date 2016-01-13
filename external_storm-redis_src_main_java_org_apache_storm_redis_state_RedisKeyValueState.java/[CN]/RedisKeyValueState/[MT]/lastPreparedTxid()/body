@@ -1,0 +1,3 @@
+{
+  return lastId(PREPARE_TXID_KEY);
+}

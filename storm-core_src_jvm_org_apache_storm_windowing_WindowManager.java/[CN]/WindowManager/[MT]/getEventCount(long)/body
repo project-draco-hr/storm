@@ -1,0 +1,9 @@
+{
+  int count=0;
+  for (  Event<T> event : queue) {
+    if (event.getTimestamp() <= referenceTime) {
+      ++count;
+    }
+  }
+  return count;
+}

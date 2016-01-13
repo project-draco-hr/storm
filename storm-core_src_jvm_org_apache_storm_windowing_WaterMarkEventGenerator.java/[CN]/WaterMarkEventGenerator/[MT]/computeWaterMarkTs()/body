@@ -1,0 +1,10 @@
+{
+  long ts=0;
+  if (streamToTs.size() >= inputStreams.size()) {
+    ts=Long.MAX_VALUE;
+    for (    Map.Entry<GlobalStreamId,Long> entry : streamToTs.entrySet()) {
+      ts=Math.min(ts,entry.getValue());
+    }
+  }
+  return ts - eventTsLag;
+}

@@ -1,0 +1,7 @@
+{
+  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("getTopologyHistory",org.apache.thrift.protocol.TMessageType.CALL,0));
+  getTopologyHistory_args args=new getTopologyHistory_args();
+  args.set_user(user);
+  args.write(prot);
+  prot.writeMessageEnd();
+}

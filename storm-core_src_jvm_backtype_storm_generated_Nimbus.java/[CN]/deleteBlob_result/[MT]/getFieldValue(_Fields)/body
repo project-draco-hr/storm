@@ -1,9 +1,0 @@
-{
-switch (field) {
-case AZE:
-    return get_aze();
-case KNF:
-  return get_knf();
-}
-throw new IllegalStateException();
-}

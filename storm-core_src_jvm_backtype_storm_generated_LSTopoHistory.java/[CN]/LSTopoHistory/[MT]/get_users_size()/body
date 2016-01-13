@@ -1,3 +1,0 @@
-{
-  return (this.users == null) ? 0 : this.users.size();
-}

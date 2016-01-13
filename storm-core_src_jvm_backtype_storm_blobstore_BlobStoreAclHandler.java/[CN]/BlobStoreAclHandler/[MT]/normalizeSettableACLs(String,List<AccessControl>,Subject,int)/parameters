@@ -1,4 +1,0 @@
-String key
-List<AccessControl> acls
-Subject who
-int opMask

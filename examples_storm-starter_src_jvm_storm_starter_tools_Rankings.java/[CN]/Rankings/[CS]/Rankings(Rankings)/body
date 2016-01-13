@@ -1,4 +1,0 @@
-{
-  this(other.maxSize());
-  updateWith(other);
-}

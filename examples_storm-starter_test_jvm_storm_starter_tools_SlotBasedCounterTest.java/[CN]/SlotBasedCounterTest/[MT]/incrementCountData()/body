@@ -1,3 +1,0 @@
-{
-  return new Object[][]{{new String[]{"foo","bar"},new int[]{3,2}}};
-}

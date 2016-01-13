@@ -1,0 +1,6 @@
+{
+  if (word != null) {
+    Collections.sort(intSet);
+    _collector.emit(new Values(word,intSet));
+  }
+}

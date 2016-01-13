@@ -1,5 +1,0 @@
-{
-  listBlobs_result result=new listBlobs_result();
-  result.success=iface.listBlobs(args.session);
-  return result;
-}

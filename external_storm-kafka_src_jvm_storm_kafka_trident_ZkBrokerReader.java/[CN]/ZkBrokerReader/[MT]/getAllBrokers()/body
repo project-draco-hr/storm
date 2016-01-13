@@ -1,4 +1,0 @@
-{
-  refresh();
-  return cachedBrokers;
-}

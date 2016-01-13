@@ -1,3 +1,0 @@
-{
-  declarer.declareStream(MasterBatchCoordinator.BATCH_STREAM_ID,new Fields("tx","metadata"));
-}

@@ -1,0 +1,11 @@
+{
+  try {
+    LOG.info("logFilePath {}",logFilePath);
+    eventLogPath=logFilePath;
+    eventLogWriter=Files.newBufferedWriter(eventLogPath,StandardCharsets.UTF_8,StandardOpenOption.CREATE,StandardOpenOption.WRITE,StandardOpenOption.APPEND);
+  }
+ catch (  IOException e) {
+    LOG.error("Error setting up FileBasedEventLogger.",e);
+    throw new RuntimeException(e);
+  }
+}

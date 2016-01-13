@@ -1,0 +1,21 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout("spout",new RandomIntegerSpout());
+  builder.setBolt("partialsum",new StatefulSumBolt("partial"),1).shuffleGrouping("spout");
+  builder.setBolt("printer",new PrinterBolt(),2).shuffleGrouping("partialsum");
+  builder.setBolt("total",new StatefulSumBolt("total"),1).shuffleGrouping("printer");
+  Config conf=new Config();
+  conf.setDebug(false);
+  if (args != null && args.length > 0) {
+    conf.setNumWorkers(1);
+    StormSubmitter.submitTopologyWithProgressBar(args[0],conf,builder.createTopology());
+  }
+ else {
+    LocalCluster cluster=new LocalCluster();
+    StormTopology topology=builder.createTopology();
+    cluster.submitTopology("test",conf,topology);
+    Utils.sleep(40000);
+    cluster.killTopology("test");
+    cluster.shutdown();
+  }
+}

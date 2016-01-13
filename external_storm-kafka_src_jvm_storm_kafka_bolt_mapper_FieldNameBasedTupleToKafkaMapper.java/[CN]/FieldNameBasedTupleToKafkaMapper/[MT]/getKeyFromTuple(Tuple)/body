@@ -1,3 +1,0 @@
-{
-  return tuple.contains(boltKeyField) ? (K)tuple.getValueByField(boltKeyField) : null;
-}

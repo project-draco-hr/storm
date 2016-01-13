@@ -1,3 +1,0 @@
-{
-  this(id,spoutId,new OpaquePartitionedTransactionalSpoutExecutor(spout),spoutParallelism);
-}

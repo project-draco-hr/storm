@@ -1,5 +1,0 @@
-{
-  this.host=host;
-  this.port=port;
-  this.isLeader=isLeader;
-}

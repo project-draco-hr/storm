@@ -1,0 +1,3 @@
+{
+  ofd.declare(new Fields("value"));
+}

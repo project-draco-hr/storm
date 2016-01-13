@@ -1,0 +1,13 @@
+{
+  try {
+    Enumeration<URL> resources=Thread.currentThread().getContextClassLoader().getResources(name);
+    List<URL> ret=new ArrayList<URL>();
+    while (resources.hasMoreElements()) {
+      ret.add(resources.nextElement());
+    }
+    return ret;
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

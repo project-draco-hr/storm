@@ -1,0 +1,20 @@
+{
+switch (field) {
+case EXEC_SUMMARY:
+    if (value == null) {
+      unset_exec_summary();
+    }
+ else {
+      set_exec_summary((ExecutorSummary)value);
+    }
+  break;
+case STATS:
+if (value == null) {
+  unset_stats();
+}
+ else {
+  set_stats((ComponentAggregateStats)value);
+}
+break;
+}
+}

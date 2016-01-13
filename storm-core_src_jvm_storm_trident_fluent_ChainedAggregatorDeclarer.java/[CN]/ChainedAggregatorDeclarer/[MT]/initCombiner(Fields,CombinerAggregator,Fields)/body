@@ -1,3 +1,0 @@
-{
-  _stream=_stream.each(inputFields,new CombinerAggregatorInitImpl(agg),functionFields);
-}

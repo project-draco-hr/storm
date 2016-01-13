@@ -1,0 +1,48 @@
+{
+  long start=System.nanoTime();
+  Long offset;
+  offset=this._failedMsgRetryManager.nextFailedMessageToRetry();
+  final boolean processingNewTuples=(offset == null);
+  if (processingNewTuples) {
+    offset=_emittedToOffset;
+  }
+  ByteBufferMessageSet msgs=null;
+  try {
+    msgs=KafkaUtils.fetchMessages(_spoutConfig,_consumer,_partition,offset);
+  }
+ catch (  TopicOffsetOutOfRangeException e) {
+    _emittedToOffset=KafkaUtils.getOffset(_consumer,_partition.topic,_partition.partition,kafka.api.OffsetRequest.EarliestTime());
+    LOG.warn("{} Using new offset: {}",_partition.partition,_emittedToOffset);
+    if (!processingNewTuples) {
+      Set<Long> omitted=this._failedMsgRetryManager.clearInvalidMessages(_emittedToOffset);
+      LOG.warn("Removing the failed offsets that are out of range: {}",omitted);
+    }
+    return;
+  }
+  long end=System.nanoTime();
+  long millis=(end - start) / 1000000;
+  _fetchAPILatencyMax.update(millis);
+  _fetchAPILatencyMean.update(millis);
+  _fetchAPICallCount.incr();
+  if (msgs != null) {
+    int numMessages=0;
+    for (    MessageAndOffset msg : msgs) {
+      final Long cur_offset=msg.offset();
+      if (cur_offset < offset) {
+        continue;
+      }
+      if (processingNewTuples || this._failedMsgRetryManager.shouldRetryMsg(cur_offset)) {
+        numMessages+=1;
+        if (!_pending.containsKey(cur_offset)) {
+          _pending.put(cur_offset,System.currentTimeMillis());
+        }
+        _waitingToEmit.add(msg);
+        _emittedToOffset=Math.max(msg.nextOffset(),_emittedToOffset);
+        if (_failedMsgRetryManager.shouldRetryMsg(cur_offset)) {
+          this._failedMsgRetryManager.retryStarted(cur_offset);
+        }
+      }
+    }
+    _fetchAPIMessageCount.incrBy(numMessages);
+  }
+}

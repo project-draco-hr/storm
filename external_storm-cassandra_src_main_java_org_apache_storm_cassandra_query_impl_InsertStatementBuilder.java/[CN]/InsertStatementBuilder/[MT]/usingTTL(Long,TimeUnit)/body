@@ -1,4 +1,0 @@
-{
-  this.ttlInSeconds=(int)unit.toSeconds(time);
-  return this;
-}

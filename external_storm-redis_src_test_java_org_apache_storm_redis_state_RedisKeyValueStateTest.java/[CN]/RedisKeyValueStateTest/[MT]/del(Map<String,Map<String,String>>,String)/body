@@ -1,0 +1,4 @@
+{
+  mockMap.remove(key);
+  return 0L;
+}

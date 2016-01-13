@@ -1,0 +1,26 @@
+{
+  if (object instanceof String) {
+    String name=(String)object;
+    String value=name;
+    String prefix="";
+    String suffix="";
+    Matcher m=classPattern.matcher(name);
+    if (m.matches()) {
+      prefix=m.group(1) + "L";
+      suffix=";";
+      name=m.group(2);
+    }
+    for (    Relocator r : relocators) {
+      if (r.canRelocateClass(name)) {
+        value=prefix + r.relocateClass(name) + suffix;
+        break;
+      }
+ else       if (r.canRelocatePath(name)) {
+        value=prefix + r.relocatePath(name) + suffix;
+        break;
+      }
+    }
+    return value;
+  }
+  return super.mapValue(object);
+}

@@ -1,8 +1,0 @@
-{
-  Long mostRecent=mostRecentVersion();
-  long version=Time.currentTimeMillis();
-  if (mostRecent != null && version <= mostRecent) {
-    version=mostRecent + 1;
-  }
-  return createVersion(version);
-}

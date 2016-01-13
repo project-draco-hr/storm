@@ -1,0 +1,15 @@
+{
+  Set<String> user=constructUserFromPrincipals(who);
+  LOG.debug("user {}",user);
+  if (checkForValidUsers(who,mask)) {
+    return;
+  }
+  for (  AccessControl ac : acl) {
+    int allowed=getAllowed(ac,user);
+    LOG.debug(" user: {} allowed: {} key: {}",user,allowed,key);
+    if ((allowed & mask) > 0) {
+      return;
+    }
+  }
+  throw new AuthorizationException(user + " does not have access to " + key);
+}

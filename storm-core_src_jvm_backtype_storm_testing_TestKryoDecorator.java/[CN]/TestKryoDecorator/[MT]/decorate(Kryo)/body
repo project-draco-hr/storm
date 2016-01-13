@@ -1,3 +1,0 @@
-{
-  k.register(TestSerObject.class);
-}

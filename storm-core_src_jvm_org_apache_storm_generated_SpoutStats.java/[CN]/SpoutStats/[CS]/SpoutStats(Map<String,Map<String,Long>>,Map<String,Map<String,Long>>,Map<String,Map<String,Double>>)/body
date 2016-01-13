@@ -1,0 +1,6 @@
+{
+  this();
+  this.acked=acked;
+  this.failed=failed;
+  this.complete_ms_avg=complete_ms_avg;
+}

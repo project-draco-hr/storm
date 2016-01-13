@@ -1,4 +1,0 @@
-SchedulingStatus status
-Map<WorkerSlot,Collection<ExecutorDetails>> schedulingResultMap
-String message
-String errorMessage

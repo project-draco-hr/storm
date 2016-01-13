@@ -1,8 +1,0 @@
-{
-  if (uncompress) {
-    _localrsrcArchives.put(resourceName,newResource);
-  }
- else {
-    _localrsrcFiles.put(resourceName,newResource);
-  }
-}

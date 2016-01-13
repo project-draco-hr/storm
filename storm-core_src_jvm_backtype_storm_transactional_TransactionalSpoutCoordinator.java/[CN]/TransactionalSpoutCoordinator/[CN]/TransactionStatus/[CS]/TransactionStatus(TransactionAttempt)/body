@@ -1,4 +1,0 @@
-{
-  this.attempt=attempt;
-  this.status=AttemptStatus.PROCESSING;
-}

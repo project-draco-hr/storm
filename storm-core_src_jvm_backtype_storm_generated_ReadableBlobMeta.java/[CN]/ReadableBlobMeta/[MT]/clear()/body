@@ -1,5 +1,0 @@
-{
-  this.settable=null;
-  set_version_isSet(false);
-  this.version=0;
-}

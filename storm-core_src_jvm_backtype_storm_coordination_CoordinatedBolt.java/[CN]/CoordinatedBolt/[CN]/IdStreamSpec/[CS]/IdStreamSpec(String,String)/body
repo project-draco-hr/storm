@@ -1,3 +1,0 @@
-{
-  _id=new GlobalStreamId(component,stream);
-}

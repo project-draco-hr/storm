@@ -1,3 +1,0 @@
-{
-  return join(streams,joinFields,outFields,repeat(streams.size(),type));
-}

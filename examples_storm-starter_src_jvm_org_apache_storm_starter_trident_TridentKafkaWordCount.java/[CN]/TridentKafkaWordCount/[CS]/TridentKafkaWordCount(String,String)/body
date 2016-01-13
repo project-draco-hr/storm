@@ -1,0 +1,4 @@
+{
+  this.zkUrl=zkUrl;
+  this.brokerUrl=brokerUrl;
+}

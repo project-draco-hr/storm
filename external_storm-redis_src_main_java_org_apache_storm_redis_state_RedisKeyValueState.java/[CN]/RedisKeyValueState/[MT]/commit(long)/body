@@ -1,0 +1,21 @@
+{
+  LOG.debug("commit txid {}",txid);
+  validateCommitTxid(txid);
+  JedisCommands commands=null;
+  try {
+    commands=jedisContainer.getInstance();
+    if (!pendingCommit.isEmpty()) {
+      commands.hmset(namespace,pendingCommit);
+    }
+ else {
+      LOG.debug("Nothing to save for commit, txid {}.",txid);
+    }
+    txIds.put(COMMIT_TXID_KEY,String.valueOf(txid));
+    commands.hmset(txidNamespace,txIds);
+    commands.del(prepareNamespace);
+    pendingCommit=Collections.emptyMap();
+  }
+  finally {
+    jedisContainer.returnInstance(commands);
+  }
+}

@@ -1,0 +1,13 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(2);
+  if (incoming.get(0)) {
+    struct.key=iprot.readString();
+    struct.set_key_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.meta=new SettableBlobMeta();
+    struct.meta.read(iprot);
+    struct.set_meta_isSet(true);
+  }
+}

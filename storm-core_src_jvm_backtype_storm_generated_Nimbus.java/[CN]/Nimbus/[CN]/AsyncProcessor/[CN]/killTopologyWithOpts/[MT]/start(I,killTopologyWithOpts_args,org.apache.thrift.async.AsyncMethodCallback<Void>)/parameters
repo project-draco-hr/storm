@@ -1,3 +1,0 @@
-I iface
-killTopologyWithOpts_args args
-org.apache.thrift.async.AsyncMethodCallback<Void> resultHandler

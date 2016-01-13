@@ -1,0 +1,7 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_serialized_parts=true && (is_set_serialized_parts());
+  list.add(present_serialized_parts);
+  if (present_serialized_parts)   list.add(serialized_parts);
+  return list.hashCode();
+}

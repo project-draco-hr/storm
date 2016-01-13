@@ -1,0 +1,23 @@
+{
+  StringBuilder sb=new StringBuilder("JavaObject(");
+  boolean first=true;
+  sb.append("full_class_name:");
+  if (this.full_class_name == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.full_class_name);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("args_list:");
+  if (this.args_list == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.args_list);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

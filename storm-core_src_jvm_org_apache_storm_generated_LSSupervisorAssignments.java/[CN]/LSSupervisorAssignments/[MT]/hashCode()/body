@@ -1,0 +1,7 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_assignments=true && (is_set_assignments());
+  list.add(present_assignments);
+  if (present_assignments)   list.add(assignments);
+  return list.hashCode();
+}

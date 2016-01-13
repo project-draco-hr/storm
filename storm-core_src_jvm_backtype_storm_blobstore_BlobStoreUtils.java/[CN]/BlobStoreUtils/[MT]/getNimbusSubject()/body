@@ -1,5 +1,0 @@
-{
-  Subject subject=new Subject();
-  subject.getPrincipals().add(new NimbusPrincipal());
-  return subject;
-}

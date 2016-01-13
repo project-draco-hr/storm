@@ -1,0 +1,4 @@
+List<ResourceTransformer> resourceTransformers
+String name
+InputStream is
+List<Relocator> relocators

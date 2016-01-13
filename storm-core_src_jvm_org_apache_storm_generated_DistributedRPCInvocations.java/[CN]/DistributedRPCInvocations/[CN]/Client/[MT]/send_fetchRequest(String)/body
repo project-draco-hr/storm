@@ -1,0 +1,5 @@
+{
+  fetchRequest_args args=new fetchRequest_args();
+  args.set_functionName(functionName);
+  sendBase("fetchRequest",args);
+}

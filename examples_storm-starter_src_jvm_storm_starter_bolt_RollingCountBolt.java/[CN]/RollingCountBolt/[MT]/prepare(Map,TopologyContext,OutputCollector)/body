@@ -1,4 +1,0 @@
-{
-  this.collector=collector;
-  lastModifiedTracker=new NthLastModifiedTimeTracker(deriveNumWindowChunksFrom(this.windowLengthInSeconds,this.emitFrequencyInSeconds));
-}

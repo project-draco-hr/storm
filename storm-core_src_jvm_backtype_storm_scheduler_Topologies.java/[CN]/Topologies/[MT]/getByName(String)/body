@@ -1,9 +1,0 @@
-{
-  String topologyId=this.nameToId.get(topologyName);
-  if (topologyId == null) {
-    return null;
-  }
- else {
-    return this.getById(topologyId);
-  }
-}

@@ -1,0 +1,4 @@
+{
+  channel.close().awaitUninterruptibly();
+  allChannels.remove(channel);
+}

@@ -1,0 +1,15 @@
+{
+  addDeclaration(new InputDeclaration(){
+    @Override public void declare(    InputDeclarer declarer){
+      declarer.customGrouping(component,grouping);
+    }
+    @Override public String getComponent(){
+      return component;
+    }
+    @Override public String getStream(){
+      return null;
+    }
+  }
+);
+  return this;
+}

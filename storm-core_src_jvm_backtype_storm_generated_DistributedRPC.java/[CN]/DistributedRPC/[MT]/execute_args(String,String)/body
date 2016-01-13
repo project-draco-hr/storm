@@ -1,5 +1,0 @@
-{
-  this();
-  this.functionName=functionName;
-  this.funcArgs=funcArgs;
-}

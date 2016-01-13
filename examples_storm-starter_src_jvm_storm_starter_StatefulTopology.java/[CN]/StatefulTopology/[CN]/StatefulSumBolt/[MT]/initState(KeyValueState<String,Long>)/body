@@ -1,0 +1,5 @@
+{
+  kvState=state;
+  sum=kvState.get("sum",0L);
+  LOG.debug("Initstate, sum from saved state = {} ",sum);
+}

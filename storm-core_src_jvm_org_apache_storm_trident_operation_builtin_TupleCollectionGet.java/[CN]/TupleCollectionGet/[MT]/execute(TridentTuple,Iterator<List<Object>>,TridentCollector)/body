@@ -1,0 +1,5 @@
+{
+  while (tuplesIterator.hasNext()) {
+    collector.emit(tuplesIterator.next());
+  }
+}

@@ -1,0 +1,10 @@
+{
+  if (mapper == null) {
+    this.mapper=new FieldNameBasedTupleToKafkaMapper<K,V>();
+  }
+  if (topicSelector == null) {
+    this.topicSelector=new DefaultTopicSelector((String)stormConf.get(TOPIC));
+  }
+  producer=new KafkaProducer<>(boltSpecfiedProperties);
+  this.collector=collector;
+}

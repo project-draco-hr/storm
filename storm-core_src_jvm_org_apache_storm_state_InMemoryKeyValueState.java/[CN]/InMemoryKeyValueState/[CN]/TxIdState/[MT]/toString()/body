@@ -1,0 +1,3 @@
+{
+  return "TxIdState{" + "txid=" + txid + ", state="+ state+ '}';
+}

@@ -1,4 +1,0 @@
-int task
-String stream
-Collection<Tuple> anchors
-List<Object> tuple

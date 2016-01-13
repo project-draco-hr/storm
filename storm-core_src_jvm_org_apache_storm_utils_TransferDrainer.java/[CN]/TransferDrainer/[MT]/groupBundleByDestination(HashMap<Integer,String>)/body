@@ -1,0 +1,12 @@
+{
+  HashMap<String,ArrayList<ArrayList<TaskMessage>>> bundleMap=Maps.newHashMap();
+  for (  Integer task : this.bundles.keySet()) {
+    String hostPort=taskToNode.get(task);
+    if (hostPort != null) {
+      for (      ArrayList<TaskMessage> chunk : this.bundles.get(task)) {
+        addListRefToMap(bundleMap,hostPort,chunk);
+      }
+    }
+  }
+  return bundleMap;
+}

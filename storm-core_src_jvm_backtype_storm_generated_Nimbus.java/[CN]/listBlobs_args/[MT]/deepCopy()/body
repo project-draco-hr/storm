@@ -1,3 +1,0 @@
-{
-  return new listBlobs_args(this);
-}

@@ -1,0 +1,37 @@
+{
+  InputStream in=null;
+  boolean confFileEmpty=false;
+  try {
+    in=getConfigFileInputStream(name);
+    if (null != in) {
+      Yaml yaml=new Yaml(new SafeConstructor());
+      Map ret=(Map)yaml.load(new InputStreamReader(in));
+      if (null != ret) {
+        return new HashMap(ret);
+      }
+ else {
+        confFileEmpty=true;
+      }
+    }
+    if (mustExist) {
+      if (confFileEmpty)       throw new RuntimeException("Config file " + name + " doesn't have any valid storm configs");
+ else       throw new RuntimeException("Could not find config file on classpath " + name);
+    }
+ else {
+      return new HashMap();
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+ finally {
+    if (null != in) {
+      try {
+        in.close();
+      }
+ catch (      IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+}

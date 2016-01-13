@@ -1,0 +1,13 @@
+{
+  IMetric metric=null;
+  for (  Map<Integer,Map<String,IMetric>> taskIdToNameToMetric : _registeredMetrics.values()) {
+    Map<String,IMetric> nameToMetric=taskIdToNameToMetric.get(_taskId);
+    if (nameToMetric != null) {
+      metric=nameToMetric.get(name);
+      if (metric != null) {
+        break;
+      }
+    }
+  }
+  return metric;
+}

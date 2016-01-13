@@ -1,0 +1,3 @@
+{
+  StormRunner.runTopologyLocally(builder.createTopology(),topologyName,topologyConfig,runtimeInSeconds);
+}

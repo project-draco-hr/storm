@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_state_spout_object=true && this.is_set_state_spout_object();
+  boolean that_present_state_spout_object=true && that.is_set_state_spout_object();
+  if (this_present_state_spout_object || that_present_state_spout_object) {
+    if (!(this_present_state_spout_object && that_present_state_spout_object))     return false;
+    if (!this.state_spout_object.equals(that.state_spout_object))     return false;
+  }
+  boolean this_present_common=true && this.is_set_common();
+  boolean that_present_common=true && that.is_set_common();
+  if (this_present_common || that_present_common) {
+    if (!(this_present_common && that_present_common))     return false;
+    if (!this.common.equals(that.common))     return false;
+  }
+  return true;
+}

@@ -1,0 +1,4 @@
+{
+  this.status.clear();
+  this.status.putAll(statusMap);
+}

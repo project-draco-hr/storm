@@ -1,0 +1,4 @@
+{
+  this.location=null;
+  this.chunk=null;
+}

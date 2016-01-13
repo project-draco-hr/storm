@@ -1,0 +1,4 @@
+{
+  send_getUserTopology(id);
+  return recv_getUserTopology();
+}

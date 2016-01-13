@@ -1,7 +1,0 @@
-{
-  long total=0;
-  for (  MemMeasure mem : _memoryBytes.values()) {
-    total+=mem.get();
-  }
-  return total;
-}

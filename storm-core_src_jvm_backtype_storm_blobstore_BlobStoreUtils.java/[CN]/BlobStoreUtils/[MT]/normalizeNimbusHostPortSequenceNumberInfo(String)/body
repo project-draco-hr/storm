@@ -1,7 +1,0 @@
-{
-  BlobKeySequenceInfo keySequenceInfo=new BlobKeySequenceInfo();
-  int lastIndex=nimbusSeqNumberInfo.lastIndexOf("-");
-  keySequenceInfo.setNimbusHostPort(nimbusSeqNumberInfo.substring(0,lastIndex));
-  keySequenceInfo.setSequenceNumber(nimbusSeqNumberInfo.substring(lastIndex + 1));
-  return keySequenceInfo;
-}

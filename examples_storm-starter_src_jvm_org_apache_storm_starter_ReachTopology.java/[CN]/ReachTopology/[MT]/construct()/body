@@ -1,0 +1,8 @@
+{
+  LinearDRPCTopologyBuilder builder=new LinearDRPCTopologyBuilder("reach");
+  builder.addBolt(new GetTweeters(),4);
+  builder.addBolt(new GetFollowers(),12).shuffleGrouping();
+  builder.addBolt(new PartialUniquer(),6).fieldsGrouping(new Fields("id","follower"));
+  builder.addBolt(new CountAggregator(),3).fieldsGrouping(new Fields("id"));
+  return builder;
+}

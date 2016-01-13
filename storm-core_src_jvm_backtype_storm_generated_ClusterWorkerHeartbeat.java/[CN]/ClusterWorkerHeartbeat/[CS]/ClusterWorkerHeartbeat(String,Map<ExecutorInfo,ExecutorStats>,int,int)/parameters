@@ -1,4 +1,0 @@
-String storm_id
-Map<ExecutorInfo,ExecutorStats> executor_stats
-int time_secs
-int uptime_secs

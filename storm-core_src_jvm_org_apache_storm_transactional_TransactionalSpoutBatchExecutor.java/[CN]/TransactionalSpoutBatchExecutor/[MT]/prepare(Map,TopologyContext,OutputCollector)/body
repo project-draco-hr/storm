@@ -1,0 +1,4 @@
+{
+  _collector=new BatchOutputCollectorImpl(collector);
+  _emitter=_spout.getEmitter(conf,context);
+}

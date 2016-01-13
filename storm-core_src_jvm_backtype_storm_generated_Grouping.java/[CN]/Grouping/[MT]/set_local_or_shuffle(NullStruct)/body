@@ -1,5 +1,0 @@
-{
-  if (value == null)   throw new NullPointerException();
-  setField_=_Fields.LOCAL_OR_SHUFFLE;
-  value_=value;
-}

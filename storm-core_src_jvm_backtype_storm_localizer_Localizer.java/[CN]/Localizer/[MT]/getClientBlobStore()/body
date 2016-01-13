@@ -1,3 +1,0 @@
-{
-  return Utils.getClientBlobStoreForSupervisor(_conf);
-}

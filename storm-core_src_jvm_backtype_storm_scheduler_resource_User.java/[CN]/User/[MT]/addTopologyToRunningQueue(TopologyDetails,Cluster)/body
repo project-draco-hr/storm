@@ -1,6 +1,0 @@
-{
-  this.runningQueue.add(topo);
-  if (cluster != null) {
-    cluster.setStatus(topo.getId(),"Fully Scheduled");
-  }
-}

@@ -1,0 +1,6 @@
+{
+  if (mockMap.containsKey(namespace)) {
+    return mockMap.get(namespace).get(key);
+  }
+  return null;
+}

@@ -1,4 +1,0 @@
-{
-  this.clausesMapper=clauses;
-  return this;
-}

@@ -1,0 +1,6 @@
+{
+  getTopologyInfoWithOpts_args args=new getTopologyInfoWithOpts_args();
+  args.set_id(id);
+  args.set_options(options);
+  sendBase("getTopologyInfoWithOpts",args);
+}

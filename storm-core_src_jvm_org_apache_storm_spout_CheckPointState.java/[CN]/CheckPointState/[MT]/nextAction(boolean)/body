@@ -1,0 +1,17 @@
+{
+  Action action;
+switch (state) {
+case PREPARING:
+    action=recovering ? Action.ROLLBACK : Action.PREPARE;
+  break;
+case COMMITTING:
+action=Action.COMMIT;
+break;
+case COMMITTED:
+action=recovering ? Action.INITSTATE : Action.PREPARE;
+break;
+default :
+throw new IllegalStateException("Unknown state " + state);
+}
+return action;
+}

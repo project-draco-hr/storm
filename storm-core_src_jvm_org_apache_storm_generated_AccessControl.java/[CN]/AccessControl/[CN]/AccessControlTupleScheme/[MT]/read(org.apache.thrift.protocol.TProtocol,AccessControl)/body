@@ -1,0 +1,12 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.type=org.apache.storm.generated.AccessControlType.findByValue(iprot.readI32());
+  struct.set_type_isSet(true);
+  struct.access=iprot.readI32();
+  struct.set_access_isSet(true);
+  BitSet incoming=iprot.readBitSet(1);
+  if (incoming.get(0)) {
+    struct.name=iprot.readString();
+    struct.set_name_isSet(true);
+  }
+}

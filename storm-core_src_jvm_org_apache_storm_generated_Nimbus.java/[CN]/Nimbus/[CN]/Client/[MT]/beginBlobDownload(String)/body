@@ -1,0 +1,4 @@
+{
+  send_beginBlobDownload(key);
+  return recv_beginBlobDownload();
+}

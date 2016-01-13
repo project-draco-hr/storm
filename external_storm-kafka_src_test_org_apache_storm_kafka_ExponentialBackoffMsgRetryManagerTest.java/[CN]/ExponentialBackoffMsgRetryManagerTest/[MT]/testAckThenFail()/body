@@ -1,0 +1,9 @@
+{
+  ExponentialBackoffMsgRetryManager manager=new ExponentialBackoffMsgRetryManager(0,0d,0);
+  manager.acked(TEST_OFFSET);
+  assertFalse("message should not be ready after acked",manager.shouldRetryMsg(TEST_OFFSET));
+  manager.failed(TEST_OFFSET);
+  Long next=manager.nextFailedMessageToRetry();
+  assertEquals("expect test offset next available for retry",TEST_OFFSET,next);
+  assertTrue("message should be ready for retry",manager.shouldRetryMsg(TEST_OFFSET));
+}

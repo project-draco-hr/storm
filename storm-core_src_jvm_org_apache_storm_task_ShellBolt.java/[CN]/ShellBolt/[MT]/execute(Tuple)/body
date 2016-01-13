@@ -1,0 +1,15 @@
+{
+  if (_exception != null) {
+    throw new RuntimeException(_exception);
+  }
+  String genId=Long.toString(_rand.nextLong());
+  _inputs.put(genId,input);
+  try {
+    BoltMsg boltMsg=createBoltMessage(input,genId);
+    _pendingWrites.putBoltMsg(boltMsg);
+  }
+ catch (  InterruptedException e) {
+    String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();
+    throw new RuntimeException("Error during multilang processing " + processInfo,e);
+  }
+}

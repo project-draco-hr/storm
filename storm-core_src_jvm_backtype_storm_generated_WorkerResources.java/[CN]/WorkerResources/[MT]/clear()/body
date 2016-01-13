@@ -1,8 +1,0 @@
-{
-  set_mem_on_heap_isSet(false);
-  this.mem_on_heap=0.0;
-  set_mem_off_heap_isSet(false);
-  this.mem_off_heap=0.0;
-  set_cpu_isSet(false);
-  this.cpu=0.0;
-}

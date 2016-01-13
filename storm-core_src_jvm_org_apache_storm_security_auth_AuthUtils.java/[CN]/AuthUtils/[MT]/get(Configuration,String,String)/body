@@ -1,0 +1,12 @@
+{
+  AppConfigurationEntry configurationEntries[]=configuration.getAppConfigurationEntry(section);
+  if (configurationEntries == null) {
+    String errorMessage="Could not find a '" + section + "' entry in this configuration.";
+    throw new IOException(errorMessage);
+  }
+  for (  AppConfigurationEntry entry : configurationEntries) {
+    Object val=entry.getOptions().get(key);
+    if (val != null)     return (String)val;
+  }
+  return null;
+}

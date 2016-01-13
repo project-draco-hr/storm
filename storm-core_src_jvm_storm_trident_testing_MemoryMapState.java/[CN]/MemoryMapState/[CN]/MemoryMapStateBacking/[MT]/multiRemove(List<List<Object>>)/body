@@ -1,5 +1,0 @@
-{
-  for (  List<Object> key : keys) {
-    db.remove(key);
-  }
-}

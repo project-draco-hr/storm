@@ -1,0 +1,15 @@
+{
+  Config config=new Config();
+  config.putAll(Utils.readDefaultConfig());
+  List<TopologyDetails> topos=TestUtilsForResourceAwareScheduler.getListOfTopologies(config);
+  User user1=new User("user1");
+  for (  TopologyDetails topo : topos) {
+    user1.addTopologyToPendingQueue(topo);
+  }
+  Assert.assertTrue(user1.getTopologiesPending().size() == topos.size());
+  List<String> correctOrder=TestUtilsForResourceAwareScheduler.getListOfTopologiesCorrectOrder();
+  Iterator<String> itr=correctOrder.iterator();
+  for (  TopologyDetails topo : user1.getTopologiesPending()) {
+    Assert.assertEquals("check order",topo.getName(),itr.next());
+  }
+}

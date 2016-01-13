@@ -1,0 +1,4 @@
+{
+  Map conf=Utils.readStormConfig();
+  ConfigValidation.validateFields(conf);
+}

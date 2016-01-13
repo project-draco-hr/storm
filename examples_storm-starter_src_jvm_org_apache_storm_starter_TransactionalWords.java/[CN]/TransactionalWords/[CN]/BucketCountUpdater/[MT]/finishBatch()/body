@@ -1,0 +1,17 @@
+{
+  for (  Integer bucket : _accum.keySet()) {
+    BucketValue currVal=BUCKET_DATABASE.get(bucket);
+    BucketValue newVal;
+    if (currVal == null || !currVal.txid.equals(_attempt.getTransactionId())) {
+      newVal=new BucketValue();
+      newVal.txid=_attempt.getTransactionId();
+      newVal.count=_accum.get(bucket);
+      if (currVal != null)       newVal.count+=currVal.count;
+      BUCKET_DATABASE.put(bucket,newVal);
+    }
+ else {
+      newVal=currVal;
+    }
+    _collector.emit(new Values(_attempt,bucket,newVal.count));
+  }
+}

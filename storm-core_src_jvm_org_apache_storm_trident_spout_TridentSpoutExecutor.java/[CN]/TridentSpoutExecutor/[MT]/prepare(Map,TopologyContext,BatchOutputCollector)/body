@@ -1,0 +1,4 @@
+{
+  _emitter=_spout.getEmitter(_txStateId,conf,context);
+  _collector=new AddIdCollector(_streamName,collector);
+}

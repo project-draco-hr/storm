@@ -1,0 +1,14 @@
+{
+  Time.startSimulating();
+  NthLastModifiedTimeTracker tracker=new NthLastModifiedTimeTracker(numTimesToTrack);
+  int[] modifiedTimes=new int[expLastModifiedTimes.length];
+  int i=0;
+  for (  int secondsToAdvance : secondsToAdvancePerIteration) {
+    advanceSimulatedTimeBy(secondsToAdvance);
+    tracker.markAsModified();
+    modifiedTimes[i]=tracker.secondsSinceOldestModification();
+    i++;
+  }
+  assertThat(modifiedTimes).isEqualTo(expLastModifiedTimes);
+  Time.stopSimulating();
+}

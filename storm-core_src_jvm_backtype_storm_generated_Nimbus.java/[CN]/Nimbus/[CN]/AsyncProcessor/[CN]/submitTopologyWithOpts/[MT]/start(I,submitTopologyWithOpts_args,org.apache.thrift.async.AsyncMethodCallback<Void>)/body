@@ -1,3 +1,0 @@
-{
-  iface.submitTopologyWithOpts(args.name,args.uploadedJarLocation,args.jsonConf,args.topology,args.options,resultHandler);
-}

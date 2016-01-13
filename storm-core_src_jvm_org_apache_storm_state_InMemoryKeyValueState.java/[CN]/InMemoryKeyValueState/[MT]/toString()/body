@@ -1,0 +1,3 @@
+{
+  return "InMemoryKeyValueState{" + "commitedState=" + commitedState + ", preparedState="+ preparedState+ ", state="+ state+ '}';
+}

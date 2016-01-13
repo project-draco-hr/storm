@@ -1,7 +1,0 @@
-{
-  ByteBuffer payload=msg.payload();
-  if (payload == null) {
-    return null;
-  }
-  return scheme.deserializeMessageWithMetadata(payload,partition,offset);
-}

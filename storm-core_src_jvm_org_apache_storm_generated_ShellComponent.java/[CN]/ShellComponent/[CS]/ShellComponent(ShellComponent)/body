@@ -1,0 +1,8 @@
+{
+  if (other.is_set_execution_command()) {
+    this.execution_command=other.execution_command;
+  }
+  if (other.is_set_script()) {
+    this.script=other.script;
+  }
+}

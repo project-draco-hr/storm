@@ -1,3 +1,0 @@
-int taskId
-Collection<Tuple> anchors
-List<Object> tuple

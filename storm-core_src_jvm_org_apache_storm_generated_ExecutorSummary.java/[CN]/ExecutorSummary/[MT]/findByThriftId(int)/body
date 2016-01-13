@@ -1,0 +1,18 @@
+{
+switch (fieldId) {
+case 1:
+    return EXECUTOR_INFO;
+case 2:
+  return COMPONENT_ID;
+case 3:
+return HOST;
+case 4:
+return PORT;
+case 5:
+return UPTIME_SECS;
+case 7:
+return STATS;
+default :
+return null;
+}
+}

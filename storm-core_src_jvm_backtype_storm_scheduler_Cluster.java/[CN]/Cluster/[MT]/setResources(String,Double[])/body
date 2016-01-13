@@ -1,3 +1,0 @@
-{
-  this.resources.put(topologyId,resources);
-}

@@ -1,0 +1,13 @@
+{
+  beginCreateBlob_result result=new beginCreateBlob_result();
+  try {
+    result.success=iface.beginCreateBlob(args.key,args.meta);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+catch (  KeyAlreadyExistsException kae) {
+    result.kae=kae;
+  }
+  return result;
+}

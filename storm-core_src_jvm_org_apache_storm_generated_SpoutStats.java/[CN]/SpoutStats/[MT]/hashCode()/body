@@ -1,0 +1,13 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_acked=true && (is_set_acked());
+  list.add(present_acked);
+  if (present_acked)   list.add(acked);
+  boolean present_failed=true && (is_set_failed());
+  list.add(present_failed);
+  if (present_failed)   list.add(failed);
+  boolean present_complete_ms_avg=true && (is_set_complete_ms_avg());
+  list.add(present_complete_ms_avg);
+  if (present_complete_ms_avg)   list.add(complete_ms_avg);
+  return list.hashCode();
+}

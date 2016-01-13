@@ -1,4 +1,0 @@
-{
-  send_beginUpdateBlob(key);
-  return recv_beginUpdateBlob();
-}

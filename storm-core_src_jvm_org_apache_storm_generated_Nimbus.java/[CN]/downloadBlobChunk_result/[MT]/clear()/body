@@ -1,0 +1,4 @@
+{
+  this.success=null;
+  this.aze=null;
+}

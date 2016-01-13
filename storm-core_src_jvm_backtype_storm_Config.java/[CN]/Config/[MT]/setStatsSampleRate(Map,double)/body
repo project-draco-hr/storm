@@ -1,3 +1,0 @@
-{
-  conf.put(Config.TOPOLOGY_STATS_SAMPLE_RATE,rate);
-}

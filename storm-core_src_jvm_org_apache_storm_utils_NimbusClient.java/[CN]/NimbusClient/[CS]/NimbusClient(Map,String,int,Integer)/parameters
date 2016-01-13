@@ -1,0 +1,4 @@
+Map conf
+String host
+int port
+Integer timeout

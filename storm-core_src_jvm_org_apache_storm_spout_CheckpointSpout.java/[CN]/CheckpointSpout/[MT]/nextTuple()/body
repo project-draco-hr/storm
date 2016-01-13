@@ -1,0 +1,13 @@
+{
+  if (shouldRecover()) {
+    handleRecovery();
+    startProgress();
+  }
+ else   if (shouldCheckpoint()) {
+    doCheckpoint();
+    startProgress();
+  }
+ else {
+    Utils.sleep(sleepInterval);
+  }
+}

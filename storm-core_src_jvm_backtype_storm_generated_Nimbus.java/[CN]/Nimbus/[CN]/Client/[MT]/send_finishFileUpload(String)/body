@@ -1,5 +1,0 @@
-{
-  finishFileUpload_args args=new finishFileUpload_args();
-  args.set_location(location);
-  sendBase("finishFileUpload",args);
-}

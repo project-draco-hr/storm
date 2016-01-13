@@ -1,6 +1,0 @@
-{
-  if (this.groups == null) {
-    this.groups=new ArrayList<String>();
-  }
-  this.groups.add(elem);
-}

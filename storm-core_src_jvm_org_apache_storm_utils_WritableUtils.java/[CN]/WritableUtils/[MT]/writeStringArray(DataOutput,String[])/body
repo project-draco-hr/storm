@@ -1,0 +1,6 @@
+{
+  out.writeInt(s.length);
+  for (int i=0; i < s.length; i++) {
+    writeString(out,s[i]);
+  }
+}

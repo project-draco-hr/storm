@@ -1,0 +1,3 @@
+{
+  return clazz.replaceFirst(pattern,shadedPattern);
+}

@@ -1,0 +1,14 @@
+{
+  beginBlobDownload_result result=new beginBlobDownload_result();
+  receiveBase(result,"beginBlobDownload");
+  if (result.is_set_success()) {
+    return result.success;
+  }
+  if (result.aze != null) {
+    throw result.aze;
+  }
+  if (result.knf != null) {
+    throw result.knf;
+  }
+  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"beginBlobDownload failed: unknown result");
+}

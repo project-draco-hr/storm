@@ -1,4 +1,0 @@
-{
-  if (_index.length == 0)   return EMPTY_TUPLE;
- else   return new TridentTupleView(((TridentTupleView)parent)._delegates,_index,_fieldIndex);
-}

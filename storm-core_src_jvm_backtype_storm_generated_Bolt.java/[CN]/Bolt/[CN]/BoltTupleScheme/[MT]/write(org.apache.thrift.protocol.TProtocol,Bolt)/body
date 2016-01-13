@@ -1,5 +1,0 @@
-{
-  TTupleProtocol oprot=(TTupleProtocol)prot;
-  struct.bolt_object.write(oprot);
-  struct.common.write(oprot);
-}

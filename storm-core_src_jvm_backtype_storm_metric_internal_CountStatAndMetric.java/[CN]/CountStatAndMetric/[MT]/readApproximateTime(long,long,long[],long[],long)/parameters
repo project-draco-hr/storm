@@ -1,5 +1,0 @@
-long value
-long timeSpent
-long[] bucketTime
-long[] buckets
-long desiredTime

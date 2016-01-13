@@ -1,8 +1,0 @@
-{
-  Map<String,TBase> result=new HashMap<>();
-  TDeserializer td=new TDeserializer();
-  for (  Map.Entry<String,ThriftSerializedObject> ent : partialDeserializeLatestVersion(td).entrySet()) {
-    result.put(ent.getKey(),deserialize(ent.getValue(),td));
-  }
-  return result;
-}

@@ -1,0 +1,16 @@
+{
+  Map<String,Object> params=new HashMap<String,Object>();
+  for (  Method method : validatorClass.getDeclaredMethods()) {
+    Object value=null;
+    try {
+      value=(Object)method.invoke(v);
+    }
+ catch (    IllegalArgumentException ex) {
+      value=null;
+    }
+    if (value != null) {
+      params.put(method.getName(),value);
+    }
+  }
+  return params;
+}

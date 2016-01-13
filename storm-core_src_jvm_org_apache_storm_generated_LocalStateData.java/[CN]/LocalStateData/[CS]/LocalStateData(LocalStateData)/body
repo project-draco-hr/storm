@@ -1,0 +1,13 @@
+{
+  if (other.is_set_serialized_parts()) {
+    Map<String,ThriftSerializedObject> __this__serialized_parts=new HashMap<String,ThriftSerializedObject>(other.serialized_parts.size());
+    for (    Map.Entry<String,ThriftSerializedObject> other_element : other.serialized_parts.entrySet()) {
+      String other_element_key=other_element.getKey();
+      ThriftSerializedObject other_element_value=other_element.getValue();
+      String __this__serialized_parts_copy_key=other_element_key;
+      ThriftSerializedObject __this__serialized_parts_copy_value=new ThriftSerializedObject(other_element_value);
+      __this__serialized_parts.put(__this__serialized_parts_copy_key,__this__serialized_parts_copy_value);
+    }
+    this.serialized_parts=__this__serialized_parts;
+  }
+}

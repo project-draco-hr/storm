@@ -1,0 +1,3 @@
+{
+  _bolt.declareOutputFields(declarer);
+}

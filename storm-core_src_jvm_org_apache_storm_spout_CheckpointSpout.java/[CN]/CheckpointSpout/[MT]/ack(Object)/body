@@ -1,0 +1,15 @@
+{
+  LOG.debug("Got ack with txid {}, current txState {}",msgId,curTxState);
+  if (curTxState.getTxid() == ((Number)msgId).longValue()) {
+    if (recovering) {
+      handleRecoveryAck();
+    }
+ else {
+      handleCheckpointAck();
+    }
+  }
+ else {
+    LOG.warn("Ack msgid {}, txState.txid {} mismatch",msgId,curTxState.getTxid());
+  }
+  resetProgress();
+}

@@ -1,7 +1,0 @@
-{
-  __isset_bitfield=other.__isset_bitfield;
-  if (other.is_set_settable()) {
-    this.settable=new SettableBlobMeta(other.settable);
-  }
-  this.version=other.version;
-}

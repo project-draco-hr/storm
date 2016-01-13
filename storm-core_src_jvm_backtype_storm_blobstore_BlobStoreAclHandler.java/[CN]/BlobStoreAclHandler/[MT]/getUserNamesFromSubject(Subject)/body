@@ -1,9 +1,0 @@
-{
-  Set<String> user=new HashSet<String>();
-  if (who != null) {
-    for (    Principal p : who.getPrincipals()) {
-      user.add(_ptol.toLocal(p));
-    }
-  }
-  return user;
-}

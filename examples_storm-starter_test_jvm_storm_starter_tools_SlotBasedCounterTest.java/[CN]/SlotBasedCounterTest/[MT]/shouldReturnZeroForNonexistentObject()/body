@@ -1,5 +1,0 @@
-{
-  SlotBasedCounter<Object> counter=new SlotBasedCounter<Object>(ANY_NUM_SLOTS);
-  counter.incrementCount("somethingElse",ANY_SLOT);
-  assertThat(counter.getCount("nonexistentObject",ANY_SLOT)).isEqualTo(0);
-}

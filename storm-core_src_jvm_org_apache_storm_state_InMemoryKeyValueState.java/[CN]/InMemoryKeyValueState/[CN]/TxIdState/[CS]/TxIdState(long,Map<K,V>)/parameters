@@ -1,0 +1,2 @@
+long txid
+Map<K,V> state

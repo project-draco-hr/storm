@@ -1,0 +1,5 @@
+{
+  for (  Object key : _counts.keySet()) {
+    _collector.emit(new Values(_id,key,_counts.get(key)));
+  }
+}

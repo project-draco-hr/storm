@@ -1,3 +1,0 @@
-{
-  return this.approved_workers != null;
-}

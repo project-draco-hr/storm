@@ -1,5 +1,0 @@
-{
-  if (_filter.isKeep(tuple)) {
-    collector.emit(null);
-  }
-}

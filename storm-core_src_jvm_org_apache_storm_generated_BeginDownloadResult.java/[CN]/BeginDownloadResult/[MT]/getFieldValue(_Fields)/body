@@ -1,0 +1,11 @@
+{
+switch (field) {
+case VERSION:
+    return get_version();
+case SESSION:
+  return get_session();
+case DATA_SIZE:
+return get_data_size();
+}
+throw new IllegalStateException();
+}

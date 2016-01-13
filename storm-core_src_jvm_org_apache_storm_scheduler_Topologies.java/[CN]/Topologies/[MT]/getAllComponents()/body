@@ -1,0 +1,9 @@
+{
+  if (_allComponents == null) {
+    _allComponents=new HashMap<>();
+    for (    Map.Entry<String,TopologyDetails> entry : this.topologies.entrySet()) {
+      _allComponents.put(entry.getKey(),entry.getValue().getComponents());
+    }
+  }
+  return _allComponents;
+}

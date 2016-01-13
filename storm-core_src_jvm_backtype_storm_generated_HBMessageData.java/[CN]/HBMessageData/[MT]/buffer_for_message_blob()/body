@@ -1,8 +1,0 @@
-{
-  if (getSetField() == _Fields.MESSAGE_BLOB) {
-    return org.apache.thrift.TBaseHelper.copyBinary((ByteBuffer)getFieldValue());
-  }
- else {
-    throw new RuntimeException("Cannot get field 'message_blob' because union is currently set to " + getFieldDesc(getSetField()).name);
-  }
-}

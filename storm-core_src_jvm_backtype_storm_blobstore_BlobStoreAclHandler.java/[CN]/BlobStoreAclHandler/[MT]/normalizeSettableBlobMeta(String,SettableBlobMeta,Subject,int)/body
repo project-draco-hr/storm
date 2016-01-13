@@ -1,3 +1,0 @@
-{
-  meta.set_acl(normalizeSettableACLs(key,meta.get_acl(),who,opMask));
-}

@@ -1,3 +1,0 @@
-{
-  declareStream(Utils.DEFAULT_STREAM_ID,direct,fields);
-}

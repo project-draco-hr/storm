@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof ExecutorSummary)   return this.equals((ExecutorSummary)that);
-  return false;
-}

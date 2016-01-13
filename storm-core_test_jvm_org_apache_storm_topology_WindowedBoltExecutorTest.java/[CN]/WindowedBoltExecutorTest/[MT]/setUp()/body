@@ -1,0 +1,12 @@
+{
+  testWindowedBolt=new TestWindowedBolt();
+  executor=new WindowedBoltExecutor(testWindowedBolt);
+  Map<String,Object> conf=new HashMap<>();
+  conf.put(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS,100000);
+  conf.put(Config.TOPOLOGY_BOLTS_WINDOW_LENGTH_DURATION_MS,20);
+  conf.put(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_DURATION_MS,10);
+  conf.put(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_FIELD_NAME,"ts");
+  conf.put(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_MAX_LAG_MS,5);
+  conf.put(Config.TOPOLOGY_BOLTS_WATERMARK_EVENT_INTERVAL_MS,100000);
+  executor.prepare(conf,getTopologyContext(),getOutputCollector());
+}

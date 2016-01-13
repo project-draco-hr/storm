@@ -1,4 +1,0 @@
-{
-  this.mappers=new ArrayList<>(mappers);
-  this.type=type;
-}

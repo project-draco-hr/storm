@@ -1,0 +1,22 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.acl != null) {
+    oprot.writeFieldBegin(ACL_FIELD_DESC);
+{
+      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.acl.size()));
+      for (      AccessControl _iter491 : struct.acl) {
+        _iter491.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_replication_factor()) {
+    oprot.writeFieldBegin(REPLICATION_FACTOR_FIELD_DESC);
+    oprot.writeI32(struct.replication_factor);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

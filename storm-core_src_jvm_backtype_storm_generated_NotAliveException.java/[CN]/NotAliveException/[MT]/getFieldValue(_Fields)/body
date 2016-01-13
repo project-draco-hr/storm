@@ -1,7 +1,0 @@
-{
-switch (field) {
-case MSG:
-    return get_msg();
-}
-throw new IllegalStateException();
-}

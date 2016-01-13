@@ -1,0 +1,9 @@
+{
+  String secretKey;
+  topologyName=server.name();
+  secretKey=server.secretKey();
+  if (secretKey != null) {
+    token=secretKey.getBytes();
+  }
+  LOG.debug("SASL credentials for storm topology {} is {}",topologyName,secretKey);
+}

@@ -1,3 +1,0 @@
-I iface
-beginBlobDownload_args args
-org.apache.thrift.async.AsyncMethodCallback<BeginDownloadResult> resultHandler

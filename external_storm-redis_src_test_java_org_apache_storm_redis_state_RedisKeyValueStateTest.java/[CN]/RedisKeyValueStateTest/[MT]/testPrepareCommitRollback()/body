@@ -1,0 +1,17 @@
+{
+  keyValueState.put("a","1");
+  keyValueState.put("b","2");
+  keyValueState.prepareCommit(1);
+  keyValueState.put("c","3");
+  assertArrayEquals(new String[]{"1","2","3"},getValues());
+  keyValueState.rollback();
+  assertArrayEquals(new String[]{null,null,null},getValues());
+  keyValueState.put("a","1");
+  keyValueState.put("b","2");
+  keyValueState.prepareCommit(1);
+  keyValueState.commit(1);
+  keyValueState.put("c","3");
+  assertArrayEquals(new String[]{"1","2","3"},getValues());
+  keyValueState.rollback();
+  assertArrayEquals(new String[]{"1","2",null},getValues());
+}

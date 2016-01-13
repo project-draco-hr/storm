@@ -1,0 +1,25 @@
+{
+  String msg=shellMsg.getMsg();
+  msg="ShellLog " + _process.getProcessInfoString() + " "+ msg;
+  ShellMsg.ShellLogLevel logLevel=shellMsg.getLogLevel();
+switch (logLevel) {
+case TRACE:
+    LOG.trace(msg);
+  break;
+case DEBUG:
+LOG.debug(msg);
+break;
+case INFO:
+LOG.info(msg);
+break;
+case WARN:
+LOG.warn(msg);
+break;
+case ERROR:
+LOG.error(msg);
+break;
+default :
+LOG.info(msg);
+break;
+}
+}

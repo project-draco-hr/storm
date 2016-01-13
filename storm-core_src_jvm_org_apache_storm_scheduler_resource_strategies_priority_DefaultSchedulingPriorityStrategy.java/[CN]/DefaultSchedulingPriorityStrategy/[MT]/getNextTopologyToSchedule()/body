@@ -1,0 +1,7 @@
+{
+  User nextUser=this.getNextUser();
+  if (nextUser == null) {
+    return null;
+  }
+  return nextUser.getNextTopologyToSchedule();
+}

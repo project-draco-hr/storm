@@ -1,0 +1,4 @@
+{
+  LOG.debug("KerberosSaslCallback: Creating KerberosSaslCallback handler.");
+  this.authorizedUsers=authorizedUsers;
+}

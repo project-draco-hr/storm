@@ -1,3 +1,0 @@
-{
-  g.addEdge(source,target,new IndexedEdge(source,target,index));
-}

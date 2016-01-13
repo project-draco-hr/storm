@@ -1,6 +1,0 @@
-{
-  if (meta != null && meta.is_set_acl()) {
-    BlobStoreAclHandler.validateSettableACLs(key,meta.get_acl());
-  }
-  return createBlobToExtend(key,meta);
-}

@@ -1,3 +1,0 @@
-{
-  return new CQLValuesTupleMapper.WithFieldTupleMapper(Arrays.asList(fields));
-}

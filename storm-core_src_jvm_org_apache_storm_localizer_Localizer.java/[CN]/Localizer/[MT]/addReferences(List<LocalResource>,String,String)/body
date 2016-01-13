@@ -1,0 +1,18 @@
+{
+  LocalizedResourceSet lrsrcSet=_userRsrc.get(user);
+  if (lrsrcSet != null) {
+    for (    LocalResource blob : localresource) {
+      LocalizedResource lrsrc=lrsrcSet.get(blob.getBlobName(),blob.shouldUncompress());
+      if (lrsrc != null) {
+        lrsrc.addReference(topo);
+        LOG.debug("added reference for topo: {} key: {}",topo,blob);
+      }
+ else {
+        LOG.warn("trying to add reference to non-existent blob, key: " + blob + " topo: "+ topo);
+      }
+    }
+  }
+ else {
+    LOG.warn("trying to add reference to non-existent local resource set, " + "user: " + user + " topo: "+ topo);
+  }
+}

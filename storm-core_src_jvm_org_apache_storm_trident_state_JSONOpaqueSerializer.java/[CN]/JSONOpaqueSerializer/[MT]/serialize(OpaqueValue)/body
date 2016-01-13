@@ -1,0 +1,12 @@
+{
+  List toSer=new ArrayList(3);
+  toSer.add(obj.currTxid);
+  toSer.add(obj.curr);
+  toSer.add(obj.prev);
+  try {
+    return JSONValue.toJSONString(toSer).getBytes("UTF-8");
+  }
+ catch (  UnsupportedEncodingException e) {
+    throw new RuntimeException(e);
+  }
+}

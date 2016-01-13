@@ -1,5 +1,0 @@
-{
-  getComponentPendingProfileActions_result result=new getComponentPendingProfileActions_result();
-  result.success=iface.getComponentPendingProfileActions(args.id,args.component_id,args.action);
-  return result;
-}

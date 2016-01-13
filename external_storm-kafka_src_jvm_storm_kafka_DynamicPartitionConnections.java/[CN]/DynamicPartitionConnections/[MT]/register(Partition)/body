@@ -1,4 +1,0 @@
-{
-  Broker broker=_reader.getBrokerForTopic(partition.topic).getBrokerFor(partition.partition);
-  return register(broker,partition.topic,partition.partition);
-}

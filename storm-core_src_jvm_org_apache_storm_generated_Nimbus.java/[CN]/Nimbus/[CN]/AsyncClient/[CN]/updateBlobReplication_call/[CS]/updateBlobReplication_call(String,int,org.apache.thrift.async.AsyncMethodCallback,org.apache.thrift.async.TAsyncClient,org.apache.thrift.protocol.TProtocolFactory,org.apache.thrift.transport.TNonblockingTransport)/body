@@ -1,0 +1,5 @@
+{
+  super(client,protocolFactory,transport,resultHandler,false);
+  this.key=key;
+  this.replication=replication;
+}

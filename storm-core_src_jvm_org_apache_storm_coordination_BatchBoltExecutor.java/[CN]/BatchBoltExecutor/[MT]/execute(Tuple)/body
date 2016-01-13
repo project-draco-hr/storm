@@ -1,0 +1,12 @@
+{
+  Object id=input.getValue(0);
+  IBatchBolt bolt=getBatchBolt(id);
+  try {
+    bolt.execute(input);
+    _collector.ack(input);
+  }
+ catch (  FailedException e) {
+    LOG.error("Failed to process tuple in batch",e);
+    _collector.fail(input);
+  }
+}

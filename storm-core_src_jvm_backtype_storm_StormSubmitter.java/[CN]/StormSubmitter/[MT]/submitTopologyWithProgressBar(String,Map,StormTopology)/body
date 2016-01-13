@@ -1,3 +1,0 @@
-{
-  submitTopologyWithProgressBar(name,stormConf,topology,null);
-}

@@ -1,5 +1,0 @@
-{
-  _agg.prepare(conf,context);
-  this.myPartitionIndex=context.getPartitionIndex();
-  this.totalPartitions=context.numPartitions();
-}

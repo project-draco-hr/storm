@@ -1,0 +1,6 @@
+{
+  if (this.failed == null) {
+    this.failed=new HashMap<String,Map<GlobalStreamId,Long>>();
+  }
+  this.failed.put(key,val);
+}

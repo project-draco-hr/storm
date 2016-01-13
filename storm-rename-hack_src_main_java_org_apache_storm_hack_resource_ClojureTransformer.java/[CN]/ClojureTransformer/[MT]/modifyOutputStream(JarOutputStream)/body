@@ -1,0 +1,6 @@
+{
+  for (  String key : this.entries.keySet()) {
+    jarOut.putNextEntry(new JarEntry(key));
+    jarOut.write(this.entries.get(key).getBytes());
+  }
+}

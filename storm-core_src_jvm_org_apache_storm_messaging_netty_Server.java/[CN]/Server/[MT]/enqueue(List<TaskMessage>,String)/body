@@ -1,0 +1,9 @@
+{
+  if (null == msgs || msgs.size() == 0 || closing) {
+    return;
+  }
+  addReceiveCount(from,msgs.size());
+  if (_cb != null) {
+    _cb.recv(msgs);
+  }
+}

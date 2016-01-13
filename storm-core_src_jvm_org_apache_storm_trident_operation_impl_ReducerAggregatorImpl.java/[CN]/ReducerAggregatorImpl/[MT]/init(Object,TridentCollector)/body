@@ -1,0 +1,5 @@
+{
+  Result ret=new Result();
+  ret.obj=_agg.init();
+  return ret;
+}

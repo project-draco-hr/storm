@@ -1,4 +1,0 @@
-{
-  populateSubjectWithTGT(subject,credentials);
-  loginHadoopUser(subject);
-}

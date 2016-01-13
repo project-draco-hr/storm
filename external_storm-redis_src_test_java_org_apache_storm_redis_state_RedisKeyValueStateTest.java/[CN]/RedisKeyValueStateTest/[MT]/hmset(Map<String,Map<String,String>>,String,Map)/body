@@ -1,0 +1,4 @@
+{
+  mockMap.put(key,value);
+  return "";
+}

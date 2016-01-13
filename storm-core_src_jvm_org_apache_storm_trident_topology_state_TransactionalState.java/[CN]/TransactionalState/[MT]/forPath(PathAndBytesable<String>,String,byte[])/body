@@ -1,0 +1,3 @@
+{
+  return (data == null) ? builder.forPath(path) : builder.forPath(path,data);
+}

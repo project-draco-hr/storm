@@ -1,3 +1,0 @@
-{
-  partitionMap.put(partitionId,broker);
-}

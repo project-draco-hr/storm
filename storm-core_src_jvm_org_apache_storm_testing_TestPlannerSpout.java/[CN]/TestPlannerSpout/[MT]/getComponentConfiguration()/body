@@ -1,0 +1,7 @@
+{
+  Map<String,Object> ret=new HashMap<String,Object>();
+  if (!_isDistributed) {
+    ret.put(Config.TOPOLOGY_MAX_TASK_PARALLELISM,1);
+  }
+  return ret;
+}

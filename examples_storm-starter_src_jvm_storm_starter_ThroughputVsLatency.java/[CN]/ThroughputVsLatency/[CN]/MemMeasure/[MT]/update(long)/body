@@ -1,4 +1,0 @@
-{
-  _mem=mem;
-  _time=System.currentTimeMillis();
-}

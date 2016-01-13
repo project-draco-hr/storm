@@ -1,0 +1,76 @@
+{
+  _Fields setField=_Fields.findByThriftId(field.id);
+  if (setField != null) {
+switch (setField) {
+case PATH:
+      if (field.type == PATH_FIELD_DESC.type) {
+        String path;
+        path=iprot.readString();
+        return path;
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+        return null;
+      }
+case PULSE:
+    if (field.type == PULSE_FIELD_DESC.type) {
+      HBPulse pulse;
+      pulse=new HBPulse();
+      pulse.read(iprot);
+      return pulse;
+    }
+ else {
+      org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+      return null;
+    }
+case BOOLVAL:
+  if (field.type == BOOLVAL_FIELD_DESC.type) {
+    Boolean boolval;
+    boolval=iprot.readBool();
+    return boolval;
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+    return null;
+  }
+case RECORDS:
+if (field.type == RECORDS_FIELD_DESC.type) {
+  HBRecords records;
+  records=new HBRecords();
+  records.read(iprot);
+  return records;
+}
+ else {
+  org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+  return null;
+}
+case NODES:
+if (field.type == NODES_FIELD_DESC.type) {
+HBNodes nodes;
+nodes=new HBNodes();
+nodes.read(iprot);
+return nodes;
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+case MESSAGE_BLOB:
+if (field.type == MESSAGE_BLOB_FIELD_DESC.type) {
+ByteBuffer message_blob;
+message_blob=iprot.readBinary();
+return message_blob;
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+default :
+throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+}
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,field.type);
+return null;
+}
+}

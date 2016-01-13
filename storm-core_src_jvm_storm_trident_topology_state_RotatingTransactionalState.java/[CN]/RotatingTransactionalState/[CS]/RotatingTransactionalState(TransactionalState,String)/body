@@ -1,6 +1,0 @@
-{
-  _state=state;
-  _subdir=subdir;
-  state.mkdir(subdir);
-  sync();
-}

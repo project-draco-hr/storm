@@ -1,0 +1,8 @@
+{
+  if (i < values.size()) {
+    return values.get(i);
+  }
+ else {
+    return null;
+  }
+}

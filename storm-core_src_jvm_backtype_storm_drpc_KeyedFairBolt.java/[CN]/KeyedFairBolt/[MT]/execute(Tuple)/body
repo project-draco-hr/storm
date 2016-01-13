@@ -1,4 +1,0 @@
-{
-  Object key=input.getValue(0);
-  _rrQueue.add(key,input);
-}

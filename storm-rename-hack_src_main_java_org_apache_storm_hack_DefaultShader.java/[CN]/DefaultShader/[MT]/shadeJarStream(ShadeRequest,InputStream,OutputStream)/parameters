@@ -1,0 +1,3 @@
+ShadeRequest shadeRequest
+InputStream in
+OutputStream fileOutputStream

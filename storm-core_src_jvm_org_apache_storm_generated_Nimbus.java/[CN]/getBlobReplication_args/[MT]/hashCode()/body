@@ -1,0 +1,7 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_key=true && (is_set_key());
+  list.add(present_key);
+  if (present_key)   list.add(key);
+  return list.hashCode();
+}

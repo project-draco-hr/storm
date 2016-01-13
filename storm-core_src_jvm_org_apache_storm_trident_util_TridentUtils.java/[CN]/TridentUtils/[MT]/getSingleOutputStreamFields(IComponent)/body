@@ -1,0 +1,13 @@
+{
+  OutputFieldsGetter getter=new OutputFieldsGetter();
+  component.declareOutputFields(getter);
+  Map<String,StreamInfo> declaration=getter.getFieldsDeclaration();
+  if (declaration.size() != 1) {
+    throw new RuntimeException("Trident only supports components that emit a single stream");
+  }
+  StreamInfo si=declaration.values().iterator().next();
+  if (si.is_direct()) {
+    throw new RuntimeException("Trident does not support direct streams");
+  }
+  return new Fields(si.get_output_fields());
+}

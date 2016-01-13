@@ -1,8 +1,0 @@
-{
-  uploadBlobChunk_result result=new uploadBlobChunk_result();
-  receiveBase(result,"uploadBlobChunk");
-  if (result.aze != null) {
-    throw result.aze;
-  }
-  return;
-}

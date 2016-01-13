@@ -1,3 +1,0 @@
-Map<String,ThriftSerializedObject> serialized
-TSerializer ser
-boolean cleanup

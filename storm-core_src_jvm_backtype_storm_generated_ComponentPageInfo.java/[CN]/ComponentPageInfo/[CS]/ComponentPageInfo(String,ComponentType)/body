@@ -1,5 +1,0 @@
-{
-  this();
-  this.component_id=component_id;
-  this.component_type=component_type;
-}

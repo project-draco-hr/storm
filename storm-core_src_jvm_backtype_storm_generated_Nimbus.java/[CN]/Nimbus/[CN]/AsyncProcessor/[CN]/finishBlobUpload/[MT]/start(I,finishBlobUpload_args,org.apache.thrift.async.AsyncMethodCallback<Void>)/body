@@ -1,3 +1,0 @@
-{
-  iface.finishBlobUpload(args.session,resultHandler);
-}

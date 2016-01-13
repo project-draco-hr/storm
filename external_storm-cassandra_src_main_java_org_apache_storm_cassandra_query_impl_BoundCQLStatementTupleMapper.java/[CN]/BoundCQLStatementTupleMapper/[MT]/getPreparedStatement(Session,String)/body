@@ -1,0 +1,8 @@
+{
+  PreparedStatement statement=cache.get(query);
+  if (statement == null) {
+    statement=session.prepare(query);
+    cache.put(query,statement);
+  }
+  return statement;
+}

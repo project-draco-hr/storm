@@ -1,5 +1,0 @@
-{
-  Object ret=valAt(o);
-  if (ret == null)   ret=def;
-  return ret;
-}

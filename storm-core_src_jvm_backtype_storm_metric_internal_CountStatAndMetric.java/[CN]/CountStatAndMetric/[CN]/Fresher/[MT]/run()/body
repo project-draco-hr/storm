@@ -1,3 +1,0 @@
-{
-  rotateSched(System.currentTimeMillis());
-}

@@ -1,0 +1,17 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_functionName()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_funcArgs()) {
+    optionals.set(1);
+  }
+  oprot.writeBitSet(optionals,2);
+  if (struct.is_set_functionName()) {
+    oprot.writeString(struct.functionName);
+  }
+  if (struct.is_set_funcArgs()) {
+    oprot.writeString(struct.funcArgs);
+  }
+}

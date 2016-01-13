@@ -1,5 +1,0 @@
-{
-  if (_task != null) {
-    _task.cancel();
-  }
-}

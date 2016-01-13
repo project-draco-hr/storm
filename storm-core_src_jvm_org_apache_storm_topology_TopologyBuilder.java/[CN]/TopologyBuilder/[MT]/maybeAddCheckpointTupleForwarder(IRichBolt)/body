@@ -1,0 +1,6 @@
+{
+  if (hasStatefulBolt && !(bolt instanceof StatefulBoltExecutor)) {
+    bolt=new CheckpointTupleForwarder(bolt);
+  }
+  return bolt;
+}

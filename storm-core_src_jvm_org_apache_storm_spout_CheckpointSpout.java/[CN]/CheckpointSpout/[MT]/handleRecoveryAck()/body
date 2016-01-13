@@ -1,0 +1,10 @@
+{
+  CheckPointState nextState=curTxState.nextState(true);
+  if (curTxState != nextState) {
+    saveTxState(nextState);
+  }
+ else {
+    LOG.debug("Recovery complete, current state {}",curTxState);
+    recovering=false;
+  }
+}

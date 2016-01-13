@@ -1,0 +1,7 @@
+{
+  try {
+    _spout.nextTuple();
+  }
+ catch (  AbstractMethodError ame) {
+  }
+}

@@ -1,4 +1,0 @@
-{
-  this.queue=queue;
-  this._max=max;
-}

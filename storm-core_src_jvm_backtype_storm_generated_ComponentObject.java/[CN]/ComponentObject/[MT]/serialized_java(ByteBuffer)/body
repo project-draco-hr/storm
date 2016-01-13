@@ -1,5 +1,0 @@
-{
-  ComponentObject x=new ComponentObject();
-  x.set_serialized_java(value);
-  return x;
-}

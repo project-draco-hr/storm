@@ -1,0 +1,8 @@
+{
+  Long currentVal=streamToTs.get(stream);
+  if (currentVal == null || ts > currentVal) {
+    streamToTs.put(stream,ts);
+  }
+  checkFailures();
+  return ts >= lastWaterMarkTs;
+}

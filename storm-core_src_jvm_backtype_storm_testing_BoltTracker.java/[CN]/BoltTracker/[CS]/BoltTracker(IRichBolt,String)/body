@@ -1,4 +1,0 @@
-{
-  super(delegate,id);
-  _richDelegate=delegate;
-}

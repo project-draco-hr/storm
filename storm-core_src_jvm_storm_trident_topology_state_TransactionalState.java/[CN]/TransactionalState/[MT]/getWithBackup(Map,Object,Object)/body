@@ -1,5 +1,0 @@
-{
-  Object ret=amap.get(primary);
-  if (ret == null)   return amap.get(backup);
-  return ret;
-}

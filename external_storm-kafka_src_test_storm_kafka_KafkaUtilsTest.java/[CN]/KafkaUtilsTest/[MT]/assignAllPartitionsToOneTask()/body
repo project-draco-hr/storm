@@ -1,3 +1,0 @@
-{
-  runPartitionToTaskMappingTest(32,32);
-}

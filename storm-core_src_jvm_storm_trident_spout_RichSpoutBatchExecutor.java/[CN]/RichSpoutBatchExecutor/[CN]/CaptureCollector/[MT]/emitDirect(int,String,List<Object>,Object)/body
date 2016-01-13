@@ -1,3 +1,0 @@
-{
-  throw new UnsupportedOperationException("Trident does not support direct streams");
-}

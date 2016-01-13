@@ -1,0 +1,3 @@
+{
+  return config.jedisPoolConfig != null ? config.jedisPoolConfig : new JedisPoolConfig.Builder().build();
+}

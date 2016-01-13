@@ -1,5 +1,0 @@
-{
-  if (zkClient != null) {
-    zkClient.close();
-  }
-}

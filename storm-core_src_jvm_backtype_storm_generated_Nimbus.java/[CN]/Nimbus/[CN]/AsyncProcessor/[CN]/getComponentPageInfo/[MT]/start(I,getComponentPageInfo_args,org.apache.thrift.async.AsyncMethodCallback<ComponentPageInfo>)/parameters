@@ -1,3 +1,0 @@
-I iface
-getComponentPageInfo_args args
-org.apache.thrift.async.AsyncMethodCallback<ComponentPageInfo> resultHandler

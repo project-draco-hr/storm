@@ -1,3 +1,0 @@
-I iface
-downloadBlobChunk_args args
-org.apache.thrift.async.AsyncMethodCallback<ByteBuffer> resultHandler

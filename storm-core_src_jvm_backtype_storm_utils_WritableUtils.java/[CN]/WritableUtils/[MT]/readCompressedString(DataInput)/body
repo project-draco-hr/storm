@@ -1,5 +1,0 @@
-{
-  byte[] bytes=readCompressedByteArray(in);
-  if (bytes == null)   return null;
-  return new String(bytes,"UTF-8");
-}

@@ -1,0 +1,7 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  TransactionRequest that=(TransactionRequest)o;
+  if (txid != that.txid)   return false;
+  return !(action != null ? !action.equals(that.action) : that.action != null);
+}

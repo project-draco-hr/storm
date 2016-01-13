@@ -1,4 +1,0 @@
-{
-  this.listBlobs=listBlobs;
-  this.eof=(listBlobs.get_keys_size() == 0);
-}

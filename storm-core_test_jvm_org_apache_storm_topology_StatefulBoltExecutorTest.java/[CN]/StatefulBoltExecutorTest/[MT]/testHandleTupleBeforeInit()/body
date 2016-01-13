@@ -1,0 +1,5 @@
+{
+  Mockito.when(mockTuple.getSourceStreamId()).thenReturn("default");
+  executor.execute(mockTuple);
+  Mockito.verify(mockBolt,Mockito.times(0)).execute(Mockito.any(Tuple.class));
+}

@@ -1,0 +1,5 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  this.task_start=other.task_start;
+  this.task_end=other.task_end;
+}

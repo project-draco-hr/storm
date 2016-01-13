@@ -1,7 +1,0 @@
-{
-switch (field) {
-case PULSE_IDS:
-    return get_pulseIds();
-}
-throw new IllegalStateException();
-}

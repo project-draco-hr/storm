@@ -1,0 +1,16 @@
+{
+  Map conf=new HashMap();
+  conf.put(Config.SUPERVISOR_LOCALIZER_CACHE_CLEANUP_INTERVAL_MS,60 * 60 * 1000);
+  String topo1="topo1";
+  String key1="key1";
+  Localizer localizer=new TestLocalizer(conf,baseDir.toString());
+  ReadableBlobMeta rbm=new ReadableBlobMeta();
+  AccessControl acl=new AccessControl(AccessControlType.USER,BlobStoreAclHandler.ADMIN);
+  acl.set_name(user1);
+  rbm.set_settable(new SettableBlobMeta(Arrays.asList(acl)));
+  when(mockblobstore.getBlobMeta(anyString())).thenReturn(rbm);
+  when(mockblobstore.getBlob(key1)).thenReturn(new TestInputStreamWithMeta());
+  File user1Dir=localizer.getLocalUserFileCacheDir(user1);
+  assertTrue("failed to create user dir",user1Dir.mkdirs());
+  localizer.getBlob(new LocalResource(key1,false),user1,topo1,user1Dir);
+}

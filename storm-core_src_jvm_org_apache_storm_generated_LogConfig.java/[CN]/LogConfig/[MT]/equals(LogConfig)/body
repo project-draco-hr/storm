@@ -1,0 +1,10 @@
+{
+  if (that == null)   return false;
+  boolean this_present_named_logger_level=true && this.is_set_named_logger_level();
+  boolean that_present_named_logger_level=true && that.is_set_named_logger_level();
+  if (this_present_named_logger_level || that_present_named_logger_level) {
+    if (!(this_present_named_logger_level && that_present_named_logger_level))     return false;
+    if (!this.named_logger_level.equals(that.named_logger_level))     return false;
+  }
+  return true;
+}

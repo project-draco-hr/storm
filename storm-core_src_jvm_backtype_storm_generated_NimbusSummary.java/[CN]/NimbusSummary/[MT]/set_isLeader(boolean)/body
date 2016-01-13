@@ -1,4 +1,0 @@
-{
-  this.isLeader=isLeader;
-  set_isLeader_isSet(true);
-}

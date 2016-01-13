@@ -1,7 +1,0 @@
-{
-  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("finishBlobUpload",org.apache.thrift.protocol.TMessageType.CALL,0));
-  finishBlobUpload_args args=new finishBlobUpload_args();
-  args.set_session(session);
-  args.write(prot);
-  prot.writeMessageEnd();
-}

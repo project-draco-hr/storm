@@ -1,4 +1,0 @@
-TransactionAttempt tx
-BatchOutputCollector collector
-int partition
-MemoryTransactionalSpoutMeta partitionMeta

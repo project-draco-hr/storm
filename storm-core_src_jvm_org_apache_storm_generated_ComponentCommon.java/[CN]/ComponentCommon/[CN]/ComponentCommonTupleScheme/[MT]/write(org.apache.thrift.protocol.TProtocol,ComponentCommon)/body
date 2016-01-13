@@ -1,0 +1,31 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+{
+    oprot.writeI32(struct.inputs.size());
+    for (    Map.Entry<GlobalStreamId,Grouping> _iter34 : struct.inputs.entrySet()) {
+      _iter34.getKey().write(oprot);
+      _iter34.getValue().write(oprot);
+    }
+  }
+{
+    oprot.writeI32(struct.streams.size());
+    for (    Map.Entry<String,StreamInfo> _iter35 : struct.streams.entrySet()) {
+      oprot.writeString(_iter35.getKey());
+      _iter35.getValue().write(oprot);
+    }
+  }
+  BitSet optionals=new BitSet();
+  if (struct.is_set_parallelism_hint()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_json_conf()) {
+    optionals.set(1);
+  }
+  oprot.writeBitSet(optionals,2);
+  if (struct.is_set_parallelism_hint()) {
+    oprot.writeI32(struct.parallelism_hint);
+  }
+  if (struct.is_set_json_conf()) {
+    oprot.writeString(struct.json_conf);
+  }
+}

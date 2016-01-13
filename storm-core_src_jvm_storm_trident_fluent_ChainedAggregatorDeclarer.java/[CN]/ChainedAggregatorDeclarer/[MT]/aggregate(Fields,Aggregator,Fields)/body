@@ -1,3 +1,0 @@
-{
-  return aggregate(inputFields,agg,functionFields,false);
-}

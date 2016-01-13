@@ -1,0 +1,8 @@
+{
+  this.storm_id=null;
+  this.executor_stats=null;
+  set_time_secs_isSet(false);
+  this.time_secs=0;
+  set_uptime_secs_isSet(false);
+  this.uptime_secs=0;
+}

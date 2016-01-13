@@ -1,3 +1,0 @@
-{
-  return (this.acked == null) ? 0 : this.acked.size();
-}

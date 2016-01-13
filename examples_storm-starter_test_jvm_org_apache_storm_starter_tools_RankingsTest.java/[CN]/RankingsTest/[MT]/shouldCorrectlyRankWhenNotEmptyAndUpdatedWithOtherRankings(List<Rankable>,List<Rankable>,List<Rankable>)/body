@@ -1,0 +1,12 @@
+{
+  Rankings rankings=new Rankings(expSorted.size());
+  for (  Rankable r : unsorted) {
+    rankings.updateWith(r);
+  }
+  Rankings otherRankings=new Rankings(unsortedForOtherRankings.size());
+  for (  Rankable r : unsortedForOtherRankings) {
+    otherRankings.updateWith(r);
+  }
+  rankings.updateWith(otherRankings);
+  assertThat(rankings.getRankings()).isEqualTo(expSorted);
+}

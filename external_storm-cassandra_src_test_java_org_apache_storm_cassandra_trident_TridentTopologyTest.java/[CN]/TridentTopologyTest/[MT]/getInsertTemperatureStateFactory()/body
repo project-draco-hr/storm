@@ -1,6 +1,0 @@
-{
-  CassandraState.Options options=new CassandraState.Options(new CassandraContext());
-  CQLStatementTupleMapper insertTemperatureValues=boundQuery("INSERT INTO weather.temperature(weather_station_id, weather_station_name, event_time, temperature) VALUES(?, ?, ?, ?)").bind(with(field("weather_station_id"),field("name").as("weather_station_name"),field("event_time").now(),field("temperature")));
-  options.withCQLStatementTupleMapper(insertTemperatureValues);
-  return new CassandraStateFactory(options);
-}

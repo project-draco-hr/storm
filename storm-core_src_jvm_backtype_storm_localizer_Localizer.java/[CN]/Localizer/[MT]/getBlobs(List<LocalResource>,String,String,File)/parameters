@@ -1,4 +1,0 @@
-List<LocalResource> localResources
-String user
-String topo
-File userFileDir

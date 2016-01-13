@@ -1,9 +1,0 @@
-{
-switch (field) {
-case NODE:
-    return get_node();
-case PORT:
-  return get_port();
-}
-throw new IllegalStateException();
-}

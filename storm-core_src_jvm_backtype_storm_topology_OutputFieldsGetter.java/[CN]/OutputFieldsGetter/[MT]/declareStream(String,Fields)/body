@@ -1,3 +1,0 @@
-{
-  declareStream(streamId,false,fields);
-}

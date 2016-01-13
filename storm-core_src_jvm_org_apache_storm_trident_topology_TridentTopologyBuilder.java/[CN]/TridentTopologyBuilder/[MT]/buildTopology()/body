@@ -1,0 +1,88 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  Map<GlobalStreamId,String> batchIdsForSpouts=fleshOutStreamBatchIds(false);
+  Map<GlobalStreamId,String> batchIdsForBolts=fleshOutStreamBatchIds(true);
+  Map<String,List<String>> batchesToCommitIds=new HashMap<>();
+  Map<String,List<ITridentSpout>> batchesToSpouts=new HashMap<>();
+  for (  String id : _spouts.keySet()) {
+    TransactionalSpoutComponent c=_spouts.get(id);
+    if (c.spout instanceof IRichSpout) {
+      builder.setSpout(id,(IRichSpout)c.spout,c.parallelism);
+    }
+ else {
+      String batchGroup=c.batchGroupId;
+      if (!batchesToCommitIds.containsKey(batchGroup)) {
+        batchesToCommitIds.put(batchGroup,new ArrayList<String>());
+      }
+      batchesToCommitIds.get(batchGroup).add(c.commitStateId);
+      if (!batchesToSpouts.containsKey(batchGroup)) {
+        batchesToSpouts.put(batchGroup,new ArrayList<ITridentSpout>());
+      }
+      batchesToSpouts.get(batchGroup).add((ITridentSpout)c.spout);
+      BoltDeclarer scd=builder.setBolt(spoutCoordinator(id),new TridentSpoutCoordinator(c.commitStateId,(ITridentSpout)c.spout)).globalGrouping(masterCoordinator(c.batchGroupId),MasterBatchCoordinator.BATCH_STREAM_ID).globalGrouping(masterCoordinator(c.batchGroupId),MasterBatchCoordinator.SUCCESS_STREAM_ID);
+      for (      Map<String,Object> m : c.componentConfs) {
+        scd.addConfigurations(m);
+      }
+      Map<String,TridentBoltExecutor.CoordSpec> specs=new HashMap();
+      specs.put(c.batchGroupId,new CoordSpec());
+      BoltDeclarer bd=builder.setBolt(id,new TridentBoltExecutor(new TridentSpoutExecutor(c.commitStateId,c.streamName,((ITridentSpout)c.spout)),batchIdsForSpouts,specs),c.parallelism);
+      bd.allGrouping(spoutCoordinator(id),MasterBatchCoordinator.BATCH_STREAM_ID);
+      bd.allGrouping(masterCoordinator(batchGroup),MasterBatchCoordinator.SUCCESS_STREAM_ID);
+      if (c.spout instanceof ICommitterTridentSpout) {
+        bd.allGrouping(masterCoordinator(batchGroup),MasterBatchCoordinator.COMMIT_STREAM_ID);
+      }
+      for (      Map<String,Object> m : c.componentConfs) {
+        bd.addConfigurations(m);
+      }
+    }
+  }
+  for (  String id : _batchPerTupleSpouts.keySet()) {
+    SpoutComponent c=_batchPerTupleSpouts.get(id);
+    SpoutDeclarer d=builder.setSpout(id,new RichSpoutBatchTriggerer((IRichSpout)c.spout,c.streamName,c.batchGroupId),c.parallelism);
+    for (    Map<String,Object> conf : c.componentConfs) {
+      d.addConfigurations(conf);
+    }
+  }
+  for (  Map.Entry<String,List<String>> entry : batchesToCommitIds.entrySet()) {
+    String batch=entry.getKey();
+    List<String> commitIds=entry.getValue();
+    builder.setSpout(masterCoordinator(batch),new MasterBatchCoordinator(commitIds,batchesToSpouts.get(batch)));
+  }
+  for (  String id : _bolts.keySet()) {
+    Component c=_bolts.get(id);
+    Map<String,CoordSpec> specs=new HashMap<>();
+    for (    GlobalStreamId s : getBoltSubscriptionStreams(id)) {
+      String batch=batchIdsForBolts.get(s);
+      if (!specs.containsKey(batch))       specs.put(batch,new CoordSpec());
+      CoordSpec spec=specs.get(batch);
+      CoordType ct;
+      if (_batchPerTupleSpouts.containsKey(s.get_componentId())) {
+        ct=CoordType.single();
+      }
+ else {
+        ct=CoordType.all();
+      }
+      spec.coords.put(s.get_componentId(),ct);
+    }
+    for (    String b : c.committerBatches) {
+      specs.get(b).commitStream=new GlobalStreamId(masterCoordinator(b),MasterBatchCoordinator.COMMIT_STREAM_ID);
+    }
+    BoltDeclarer d=builder.setBolt(id,new TridentBoltExecutor(c.bolt,batchIdsForBolts,specs),c.parallelism);
+    for (    Map<String,Object> conf : c.componentConfs) {
+      d.addConfigurations(conf);
+    }
+    for (    InputDeclaration inputDecl : c.declarations) {
+      inputDecl.declare(d);
+    }
+    Map<String,Set<String>> batchToComponents=getBoltBatchToComponentSubscriptions(id);
+    for (    Map.Entry<String,Set<String>> entry : batchToComponents.entrySet()) {
+      for (      String comp : entry.getValue()) {
+        d.directGrouping(comp,TridentBoltExecutor.COORD_STREAM(entry.getKey()));
+      }
+    }
+    for (    String b : c.committerBatches) {
+      d.allGrouping(masterCoordinator(b),MasterBatchCoordinator.COMMIT_STREAM_ID);
+    }
+  }
+  return builder.createTopology();
+}

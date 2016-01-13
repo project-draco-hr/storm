@@ -1,0 +1,17 @@
+{
+  JedisCommands commands=null;
+  try {
+    commands=jedisContainer.getInstance();
+    if (commands.exists(prepareNamespace)) {
+      LOG.debug("Loading previously prepared commit from {}",prepareNamespace);
+      pendingCommit=Collections.unmodifiableMap(commands.hgetAll(prepareNamespace));
+    }
+ else {
+      LOG.debug("No previously prepared commits.");
+      pendingCommit=Collections.emptyMap();
+    }
+  }
+  finally {
+    jedisContainer.returnInstance(commands);
+  }
+}

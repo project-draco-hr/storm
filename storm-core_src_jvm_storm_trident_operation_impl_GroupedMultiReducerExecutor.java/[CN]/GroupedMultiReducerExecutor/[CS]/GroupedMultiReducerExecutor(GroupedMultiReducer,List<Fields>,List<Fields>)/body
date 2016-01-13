@@ -1,8 +1,0 @@
-{
-  if (inputFields.size() != groupFields.size()) {
-    throw new IllegalArgumentException("Multireducer groupFields and inputFields must be the same size");
-  }
-  _groupFields=groupFields;
-  _inputFields=inputFields;
-  _reducer=reducer;
-}

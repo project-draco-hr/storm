@@ -1,0 +1,8 @@
+{
+  Time.startSimulating();
+  NthLastModifiedTimeTracker tracker=new NthLastModifiedTimeTracker(ANY_NUM_TIMES_TO_TRACK);
+  advanceSimulatedTimeBy(secondsToAdvance);
+  int seconds=tracker.secondsSinceOldestModification();
+  assertThat(seconds).isEqualTo(secondsToAdvance);
+  Time.stopSimulating();
+}

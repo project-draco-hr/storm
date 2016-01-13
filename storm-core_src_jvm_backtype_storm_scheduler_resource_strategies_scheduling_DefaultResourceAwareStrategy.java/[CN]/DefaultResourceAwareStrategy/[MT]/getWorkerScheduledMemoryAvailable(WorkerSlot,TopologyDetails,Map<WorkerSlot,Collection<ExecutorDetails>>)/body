@@ -1,4 +1,0 @@
-{
-  Double memScheduleUsed=this.getWorkerScheduledMemoryUse(ws,td,scheduleAssignmentMap);
-  return td.getTopologyWorkerMaxHeapSize() - memScheduleUsed;
-}

@@ -1,3 +1,0 @@
-{
-  return EncodingUtils.testBit(__isset_bitfield,__TASK_START_ISSET_ID);
-}

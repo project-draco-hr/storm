@@ -1,7 +1,0 @@
-{
-  boolean retVal=false;
-  if (this.getWorkerScheduledMemoryAvailable(ws,td,scheduleAssignmentMap) >= td.getTotalMemReqTask(exec)) {
-    retVal=true;
-  }
-  return retVal;
-}

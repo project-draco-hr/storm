@@ -1,0 +1,3 @@
+{
+  return new LRUMemoryMapState(_maxSize,_id + partitionIndex);
+}

@@ -1,5 +1,0 @@
-{
-  if (_fieldName != null) {
-    declarer.declare(new Fields(_fieldName));
-  }
-}

@@ -1,3 +1,0 @@
-{
-  return (this.meta == null) ? 0 : this.meta.size();
-}

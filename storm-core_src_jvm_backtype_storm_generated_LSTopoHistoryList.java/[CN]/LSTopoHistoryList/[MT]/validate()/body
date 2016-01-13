@@ -1,5 +1,0 @@
-{
-  if (!is_set_topo_history()) {
-    throw new org.apache.thrift.protocol.TProtocolException("Required field 'topo_history' is unset! Struct:" + toString());
-  }
-}

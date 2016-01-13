@@ -1,3 +1,0 @@
-{
-  return _stream.partitionBy(_groupFields).partitionPersist(spec,TridentUtils.fieldsUnion(_groupFields,inputFields),new MapReducerAggStateUpdater(agg,_groupFields,inputFields),TridentUtils.fieldsConcat(_groupFields,functionFields));
-}

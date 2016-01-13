@@ -1,6 +1,0 @@
-{
-  if (other.is_set_pulseIds()) {
-    List<String> __this__pulseIds=new ArrayList<String>(other.pulseIds);
-    this.pulseIds=__this__pulseIds;
-  }
-}

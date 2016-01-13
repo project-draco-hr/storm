@@ -1,3 +1,0 @@
-{
-  multiPut(_keys,Arrays.asList(o));
-}

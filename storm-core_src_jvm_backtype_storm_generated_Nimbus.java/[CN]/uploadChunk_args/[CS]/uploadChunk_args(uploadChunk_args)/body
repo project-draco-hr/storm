@@ -1,8 +1,0 @@
-{
-  if (other.is_set_location()) {
-    this.location=other.location;
-  }
-  if (other.is_set_chunk()) {
-    this.chunk=org.apache.thrift.TBaseHelper.copyBinary(other.chunk);
-  }
-}

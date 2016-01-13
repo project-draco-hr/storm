@@ -1,0 +1,14 @@
+{
+  Serializer serializer=null;
+  if (config.keySerializerClass != null) {
+    Class<?> klass=(Class<?>)Class.forName(config.keySerializerClass);
+    serializer=(Serializer)klass.newInstance();
+  }
+ else   if (config.keyClass != null) {
+    serializer=new DefaultStateSerializer(Collections.singletonList(Class.forName(config.keyClass)));
+  }
+ else {
+    serializer=new DefaultStateSerializer();
+  }
+  return serializer;
+}

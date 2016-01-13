@@ -1,4 +1,0 @@
-Object state
-int streamIndex
-TridentTuple input
-TridentCollector collector

@@ -1,0 +1,5 @@
+{
+  _kryoOut.clear();
+  _kryo.writeClassAndObject(_kryoOut,obj);
+  return _kryoOut.toBytes();
+}

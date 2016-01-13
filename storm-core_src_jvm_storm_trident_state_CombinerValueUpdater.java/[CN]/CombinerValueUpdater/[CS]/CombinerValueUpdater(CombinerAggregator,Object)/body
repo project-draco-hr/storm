@@ -1,4 +1,0 @@
-{
-  this.agg=agg;
-  this.arg=arg;
-}

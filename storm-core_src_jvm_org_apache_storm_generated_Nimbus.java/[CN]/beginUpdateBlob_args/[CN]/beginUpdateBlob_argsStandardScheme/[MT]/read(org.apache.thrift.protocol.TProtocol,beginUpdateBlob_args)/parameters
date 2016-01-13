@@ -1,0 +1,2 @@
+org.apache.thrift.protocol.TProtocol iprot
+beginUpdateBlob_args struct

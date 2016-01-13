@@ -1,2 +1,0 @@
-TopologyDetails td
-Map<WorkerSlot,Collection<ExecutorDetails>> schedulerAssignmentMap

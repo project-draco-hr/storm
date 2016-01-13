@@ -1,6 +1,0 @@
-{
-  if (this.worker_resources == null) {
-    this.worker_resources=new HashMap<NodeInfo,WorkerResources>();
-  }
-  this.worker_resources.put(key,val);
-}

@@ -1,6 +1,0 @@
-{
-  if (this.port == null) {
-    this.port=new HashSet<Long>();
-  }
-  this.port.add(elem);
-}

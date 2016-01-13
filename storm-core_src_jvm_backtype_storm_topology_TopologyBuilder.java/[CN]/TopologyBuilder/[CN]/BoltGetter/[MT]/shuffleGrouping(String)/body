@@ -1,3 +1,0 @@
-{
-  return shuffleGrouping(componentId,Utils.DEFAULT_STREAM_ID);
-}

@@ -1,0 +1,4 @@
+{
+  _delegate.declareOutputFields(declarer);
+  declarer.declareStream(Constants.COORDINATED_STREAM_ID,true,new Fields("id","count"));
+}

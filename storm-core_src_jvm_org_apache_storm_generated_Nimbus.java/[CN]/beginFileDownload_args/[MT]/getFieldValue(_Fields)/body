@@ -1,0 +1,7 @@
+{
+switch (field) {
+case FILE:
+    return get_file();
+}
+throw new IllegalStateException();
+}

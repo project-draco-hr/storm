@@ -1,5 +1,0 @@
-{
-  if (!value) {
-    this.full_class_name=null;
-  }
-}

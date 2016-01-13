@@ -1,8 +1,0 @@
-{
-  targetTasks=new ArrayList<Integer>(targetTasks);
-  Collections.sort(targetTasks);
-  _outTasks=new ArrayList<Integer>();
-  for (int i=0; i < _n; i++) {
-    _outTasks.add(targetTasks.get(i));
-  }
-}

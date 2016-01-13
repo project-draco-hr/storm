@@ -1,0 +1,11 @@
+{
+  State state=states.get(namespace);
+  if (state == null) {
+    State newState=new InMemoryKeyValueState<>();
+    state=states.putIfAbsent(namespace,newState);
+    if (state == null) {
+      state=newState;
+    }
+  }
+  return state;
+}

@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof debug_result)   return this.equals((debug_result)that);
-  return false;
-}

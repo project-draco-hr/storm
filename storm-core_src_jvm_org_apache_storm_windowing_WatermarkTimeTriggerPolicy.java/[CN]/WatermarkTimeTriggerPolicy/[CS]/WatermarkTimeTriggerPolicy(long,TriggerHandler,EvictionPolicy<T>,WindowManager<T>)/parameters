@@ -1,0 +1,4 @@
+long slidingIntervalMs
+TriggerHandler handler
+EvictionPolicy<T> evictionPolicy
+WindowManager<T> windowManager

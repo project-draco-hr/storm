@@ -1,0 +1,3 @@
+{
+  return (this.nimbuses == null) ? 0 : this.nimbuses.size();
+}

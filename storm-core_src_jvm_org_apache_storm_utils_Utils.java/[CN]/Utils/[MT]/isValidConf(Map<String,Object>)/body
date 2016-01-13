@@ -1,0 +1,3 @@
+{
+  return normalizeConf(stormConf).equals(normalizeConf((Map)JSONValue.parse(JSONValue.toJSONString(stormConf))));
+}

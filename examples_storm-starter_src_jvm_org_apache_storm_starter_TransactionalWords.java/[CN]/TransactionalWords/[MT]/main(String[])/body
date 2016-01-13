@@ -1,0 +1,14 @@
+{
+  MemoryTransactionalSpout spout=new MemoryTransactionalSpout(DATA,new Fields("word"),PARTITION_TAKE_PER_BATCH);
+  TransactionalTopologyBuilder builder=new TransactionalTopologyBuilder("top-n-words","spout",spout,2);
+  builder.setBolt("count",new KeyedCountUpdater(),5).fieldsGrouping("spout",new Fields("word"));
+  builder.setBolt("bucketize",new Bucketize()).noneGrouping("count");
+  builder.setBolt("buckets",new BucketCountUpdater(),5).fieldsGrouping("bucketize",new Fields("bucket"));
+  LocalCluster cluster=new LocalCluster();
+  Config config=new Config();
+  config.setDebug(true);
+  config.setMaxSpoutPending(3);
+  cluster.submitTopology("top-n-topology",config,builder.buildTopology());
+  Thread.sleep(3000);
+  cluster.shutdown();
+}

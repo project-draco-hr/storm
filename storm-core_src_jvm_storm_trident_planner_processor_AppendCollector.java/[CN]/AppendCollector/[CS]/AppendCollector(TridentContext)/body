@@ -1,4 +1,0 @@
-{
-  _triContext=context;
-  _factory=new OperationOutputFactory(context.getParentTupleFactories().get(0),context.getSelfOutputFields());
-}

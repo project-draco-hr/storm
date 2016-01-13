@@ -1,2 +1,0 @@
-long targetSize
-Comparator<? super LocalizedResource> cmp

@@ -1,6 +1,0 @@
-{
-  this.wrapped=wrapped;
-  this.subject=subject;
-  Set<Principal> principals=(Set<Principal>)subject.getPrincipals();
-  if (principals.size() > 0)   LOG.info("Service principal:" + ((Principal)(principals.toArray()[0])).getName());
-}

@@ -1,0 +1,3 @@
+{
+  return computeTotalCount(obj) == 0;
+}

@@ -1,8 +1,0 @@
-{
-  try {
-    return Utils.thriftDeserialize(c,b,0,b.length);
-  }
- catch (  Exception e) {
-    throw new RuntimeException(e);
-  }
-}

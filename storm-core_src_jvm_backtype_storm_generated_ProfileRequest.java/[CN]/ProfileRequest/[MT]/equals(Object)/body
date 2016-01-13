@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof ProfileRequest)   return this.equals((ProfileRequest)that);
-  return false;
-}

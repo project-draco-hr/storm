@@ -1,0 +1,6 @@
+{
+  if (s.endsWith(".clj")) {
+    return true;
+  }
+  return false;
+}

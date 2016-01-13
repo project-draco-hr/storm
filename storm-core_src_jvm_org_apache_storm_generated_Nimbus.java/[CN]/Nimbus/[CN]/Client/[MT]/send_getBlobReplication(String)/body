@@ -1,0 +1,5 @@
+{
+  getBlobReplication_args args=new getBlobReplication_args();
+  args.set_key(key);
+  sendBase("getBlobReplication",args);
+}

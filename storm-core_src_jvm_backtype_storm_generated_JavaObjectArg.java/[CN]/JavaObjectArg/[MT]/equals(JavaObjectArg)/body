@@ -1,3 +1,0 @@
-{
-  return other != null && getSetField() == other.getSetField() && getFieldValue().equals(other.getFieldValue());
-}

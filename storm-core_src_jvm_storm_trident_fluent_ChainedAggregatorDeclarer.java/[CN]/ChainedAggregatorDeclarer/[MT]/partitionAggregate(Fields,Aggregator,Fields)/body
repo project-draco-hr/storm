@@ -1,5 +1,0 @@
-{
-  _type=AggType.PARTITION;
-  _aggs.add(new AggSpec(inputFields,agg,functionFields));
-  return this;
-}

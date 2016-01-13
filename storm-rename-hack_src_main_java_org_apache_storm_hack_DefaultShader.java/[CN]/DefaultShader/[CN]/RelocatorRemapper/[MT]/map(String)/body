@@ -1,0 +1,23 @@
+{
+  String orig=name;
+  String value=name;
+  String prefix="";
+  String suffix="";
+  Matcher m=classPattern.matcher(name);
+  if (m.matches()) {
+    prefix=m.group(1) + "L";
+    suffix=";";
+    name=m.group(2);
+  }
+  for (  Relocator r : relocators) {
+    if (r.canRelocatePath(name)) {
+      value=prefix + r.relocatePath(name) + suffix;
+      if (!warned.contains(orig)) {
+        LOG.warn("Relocating {} to {} in {} please modify your code to use the new namespace",orig,value,className);
+        warned.add(orig);
+      }
+      break;
+    }
+  }
+  return value;
+}

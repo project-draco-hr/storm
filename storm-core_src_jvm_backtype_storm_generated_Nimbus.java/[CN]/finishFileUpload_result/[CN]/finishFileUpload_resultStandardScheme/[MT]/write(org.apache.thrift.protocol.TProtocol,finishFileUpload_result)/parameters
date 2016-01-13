@@ -1,2 +1,0 @@
-org.apache.thrift.protocol.TProtocol oprot
-finishFileUpload_result struct

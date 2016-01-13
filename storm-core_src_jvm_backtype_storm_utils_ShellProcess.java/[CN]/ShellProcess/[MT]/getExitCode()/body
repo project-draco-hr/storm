@@ -1,8 +1,0 @@
-{
-  try {
-    return this._subprocess != null ? this._subprocess.exitValue() : -1;
-  }
- catch (  IllegalThreadStateException e) {
-    return -1;
-  }
-}

@@ -1,3 +1,0 @@
-{
-  iostream=IOUtils.toInputStream("some test data for my input stream");
-}

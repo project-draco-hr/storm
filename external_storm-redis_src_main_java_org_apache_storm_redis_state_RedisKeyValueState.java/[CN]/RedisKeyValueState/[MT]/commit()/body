@@ -1,0 +1,16 @@
+{
+  JedisCommands commands=null;
+  try {
+    commands=jedisContainer.getInstance();
+    if (!pendingPrepare.isEmpty()) {
+      commands.hmset(namespace,pendingPrepare);
+    }
+ else {
+      LOG.debug("Nothing to save for commit");
+    }
+    pendingPrepare=new ConcurrentHashMap<>();
+  }
+  finally {
+    jedisContainer.returnInstance(commands);
+  }
+}

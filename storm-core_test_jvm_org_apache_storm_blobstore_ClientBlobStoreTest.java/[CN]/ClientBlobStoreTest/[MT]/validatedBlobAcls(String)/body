@@ -1,0 +1,6 @@
+{
+  ReadableBlobMeta blobMeta=client.getBlobMeta(testKey);
+  Assert.assertNotNull("The blob" + testKey + "does not have any readable blobMeta.",blobMeta);
+  SettableBlobMeta settableBlob=blobMeta.get_settable();
+  Assert.assertNotNull("The blob" + testKey + "does not have any settable blobMeta.",settableBlob);
+}

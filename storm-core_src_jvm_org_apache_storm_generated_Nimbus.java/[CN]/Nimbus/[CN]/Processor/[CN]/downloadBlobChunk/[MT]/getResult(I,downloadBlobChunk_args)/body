@@ -1,0 +1,10 @@
+{
+  downloadBlobChunk_result result=new downloadBlobChunk_result();
+  try {
+    result.success=iface.downloadBlobChunk(args.session);
+  }
+ catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}

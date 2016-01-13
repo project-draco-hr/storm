@@ -1,6 +1,0 @@
-{
-  if (_modTime == null) {
-    _modTime=_path.lastModified();
-  }
-  return _modTime;
-}

@@ -1,0 +1,10 @@
+{
+  _graph.addVertex(n);
+  if (n.stateInfo != null) {
+    String id=n.stateInfo.id;
+    if (!_colocate.containsKey(id)) {
+      _colocate.put(id,new ArrayList());
+    }
+    _colocate.get(id).add(n);
+  }
+}

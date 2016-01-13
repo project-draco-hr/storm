@@ -1,3 +1,0 @@
-{
-  return EncodingUtils.testBit(__isset_bitfield,__EXECUTE_LATENCY_MS_ISSET_ID);
-}

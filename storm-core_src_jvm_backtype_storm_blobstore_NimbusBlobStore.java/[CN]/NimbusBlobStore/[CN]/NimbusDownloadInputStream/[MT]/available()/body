@@ -1,3 +1,0 @@
-{
-  return buffer == null ? 0 : (end - offset);
-}

@@ -1,3 +1,0 @@
-{
-  _value=_combiner.combine(_value,value);
-}

@@ -1,0 +1,8 @@
+{
+  if (other instanceof TopologyActionOptions) {
+    return equals((TopologyActionOptions)other);
+  }
+ else {
+    return false;
+  }
+}

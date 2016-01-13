@@ -1,3 +1,0 @@
-{
-  return getNimbusBlobStore(conf,null,nimbusInfo);
-}

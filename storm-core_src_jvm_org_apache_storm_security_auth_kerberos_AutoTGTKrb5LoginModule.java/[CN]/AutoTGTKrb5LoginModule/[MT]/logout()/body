@@ -1,0 +1,8 @@
+{
+  if (subject != null && !subject.isReadOnly() && kerbTicket != null) {
+    subject.getPrincipals().remove(kerbTicket.getClient());
+    subject.getPrivateCredentials().remove(kerbTicket);
+  }
+  kerbTicket=null;
+  return true;
+}

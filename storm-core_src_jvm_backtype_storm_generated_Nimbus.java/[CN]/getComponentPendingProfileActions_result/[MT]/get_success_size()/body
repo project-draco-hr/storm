@@ -1,3 +1,0 @@
-{
-  return (this.success == null) ? 0 : this.success.size();
-}

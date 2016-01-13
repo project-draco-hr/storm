@@ -1,0 +1,2 @@
+int slotsNeeded
+NodePool[] pools

@@ -1,8 +1,0 @@
-{
-  try {
-    clojure.lang.Compiler.eval(RT.readString("(require '" + namespace + ")"));
-  }
- catch (  Exception e) {
-  }
-  return (IFn)RT.var(namespace,name).deref();
-}

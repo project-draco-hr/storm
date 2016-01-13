@@ -1,2 +1,0 @@
-org.apache.thrift.protocol.TProtocol prot
-getTopology_args struct

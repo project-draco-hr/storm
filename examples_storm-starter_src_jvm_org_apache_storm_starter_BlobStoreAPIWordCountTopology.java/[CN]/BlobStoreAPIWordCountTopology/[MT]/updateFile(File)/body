@@ -1,0 +1,4 @@
+{
+  writeToFile(file,getRandomWordSet());
+  return file;
+}

@@ -1,4 +1,0 @@
-{
-  RegisteredGlobalState.clearState(_id);
-  RegisteredGlobalState.clearState(_finishedPartitionsId);
-}

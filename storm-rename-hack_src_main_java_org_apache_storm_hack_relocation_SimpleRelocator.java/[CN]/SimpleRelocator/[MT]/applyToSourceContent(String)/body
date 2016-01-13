@@ -1,0 +1,3 @@
+{
+  return sourceContent.replaceAll("\\b" + pattern,shadedPattern);
+}

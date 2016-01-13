@@ -1,0 +1,5 @@
+{
+  BigInteger ret=(BigInteger)state.getData(CURRENT_TX);
+  if (ret == null)   return INIT_TXID;
+ else   return ret;
+}

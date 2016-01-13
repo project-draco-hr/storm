@@ -1,0 +1,8 @@
+{
+  finishBlobUpload_result result=new finishBlobUpload_result();
+  receiveBase(result,"finishBlobUpload");
+  if (result.aze != null) {
+    throw result.aze;
+  }
+  return;
+}

@@ -1,0 +1,5 @@
+{
+  Config conf=new Config();
+  conf.registerSerialization(MemoryTransactionalSpoutMeta.class);
+  return conf;
+}

@@ -1,0 +1,36 @@
+{
+  _Fields setField=_Fields.findByThriftId(fieldID);
+  if (setField != null) {
+switch (setField) {
+case INT_ARG:
+      Integer int_arg;
+    int_arg=iprot.readI32();
+  return int_arg;
+case LONG_ARG:
+Long long_arg;
+long_arg=iprot.readI64();
+return long_arg;
+case STRING_ARG:
+String string_arg;
+string_arg=iprot.readString();
+return string_arg;
+case BOOL_ARG:
+Boolean bool_arg;
+bool_arg=iprot.readBool();
+return bool_arg;
+case BINARY_ARG:
+ByteBuffer binary_arg;
+binary_arg=iprot.readBinary();
+return binary_arg;
+case DOUBLE_ARG:
+Double double_arg;
+double_arg=iprot.readDouble();
+return double_arg;
+default :
+throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
+}
+}
+ else {
+throw new TProtocolException("Couldn't find a field with field id " + fieldID);
+}
+}

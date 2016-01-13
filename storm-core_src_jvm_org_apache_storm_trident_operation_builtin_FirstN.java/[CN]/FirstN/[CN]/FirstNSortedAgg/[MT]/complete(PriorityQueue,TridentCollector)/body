@@ -1,0 +1,7 @@
+{
+  int total=val.size();
+  for (int i=0; i < _n && i < total; i++) {
+    TridentTuple t=(TridentTuple)val.remove();
+    collector.emit(t);
+  }
+}

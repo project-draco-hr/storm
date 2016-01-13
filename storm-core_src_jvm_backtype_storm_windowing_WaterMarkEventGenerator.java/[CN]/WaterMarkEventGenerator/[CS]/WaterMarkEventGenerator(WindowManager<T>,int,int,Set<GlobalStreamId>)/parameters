@@ -1,4 +1,0 @@
-WindowManager<T> windowManager
-int interval
-int eventTsLag
-Set<GlobalStreamId> inputStreams

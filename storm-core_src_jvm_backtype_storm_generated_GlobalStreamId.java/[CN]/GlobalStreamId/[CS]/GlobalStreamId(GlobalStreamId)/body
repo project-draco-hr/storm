@@ -1,8 +1,0 @@
-{
-  if (other.is_set_componentId()) {
-    this.componentId=other.componentId;
-  }
-  if (other.is_set_streamId()) {
-    this.streamId=other.streamId;
-  }
-}

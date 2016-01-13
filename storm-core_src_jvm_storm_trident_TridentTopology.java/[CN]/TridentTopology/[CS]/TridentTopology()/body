@@ -1,3 +1,0 @@
-{
-  this(new DefaultDirectedGraph<Node,IndexedEdge>(new ErrorEdgeFactory()),new LinkedHashMap<String,List<Node>>(),new UniqueIdGen());
-}

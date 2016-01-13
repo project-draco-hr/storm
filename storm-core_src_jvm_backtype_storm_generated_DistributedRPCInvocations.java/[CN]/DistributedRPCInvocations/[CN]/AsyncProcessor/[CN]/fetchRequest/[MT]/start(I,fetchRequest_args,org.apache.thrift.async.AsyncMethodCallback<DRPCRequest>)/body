@@ -1,3 +1,0 @@
-{
-  iface.fetchRequest(args.functionName,resultHandler);
-}

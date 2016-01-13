@@ -1,5 +1,0 @@
-{
-  if (!_nodeId.equals(ws.getNodeId())) {
-    throw new IllegalArgumentException("Trying to add a slot to the wrong node " + ws + " is not a part of "+ _nodeId);
-  }
-}
