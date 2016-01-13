@@ -1,0 +1,3 @@
+{
+  return (masterStormDistRoot(conf) + FILE_SEPARATOR + stormId);
+}

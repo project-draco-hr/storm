@@ -1,0 +1,3 @@
+{
+  return ((supervisorLocalDir(conf) + FILE_SEPARATOR + "isupervisor"));
+}

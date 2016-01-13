@@ -1,0 +1,8 @@
+{
+  LOG.info("SET worker-user {} {}",workerId,user);
+  File file=new File(workerUserFile(conf,workerId));
+  file.getParentFile().mkdirs();
+  try (FileWriter fw=new FileWriter(file);BufferedWriter writer=new BufferedWriter(fw)){
+    writer.write(user);
+  }
+ }

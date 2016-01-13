@@ -1,0 +1,3 @@
+{
+  return (stormRoot + FILE_SEPARATOR + "stormjar.jar");
+}

@@ -1,0 +1,14 @@
+{
+  if (key == null)   return null;
+  String ret=null;
+  if (key.endsWith("-stormjar.jar")) {
+    ret=key.substring(0,key.length() - 13);
+  }
+ else   if (key.endsWith("-stormcode.ser")) {
+    ret=key.substring(0,key.length() - 14);
+  }
+ else   if (key.endsWith("-stormconf.ser")) {
+    ret=key.substring(0,key.length() - 14);
+  }
+  return ret;
+}

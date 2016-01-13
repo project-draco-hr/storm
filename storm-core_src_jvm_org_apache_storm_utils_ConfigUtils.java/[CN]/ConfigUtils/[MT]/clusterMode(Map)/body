@@ -1,0 +1,4 @@
+{
+  String mode=(String)conf.get(Config.STORM_CLUSTER_MODE);
+  return mode;
+}

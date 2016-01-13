@@ -1,0 +1,3 @@
+{
+  return supervisorStormDistRoot(conf) + FILE_SEPARATOR + stormId;
+}
