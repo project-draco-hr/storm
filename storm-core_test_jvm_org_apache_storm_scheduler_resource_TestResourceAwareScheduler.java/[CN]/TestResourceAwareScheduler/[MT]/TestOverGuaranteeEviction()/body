@@ -113,11 +113,4 @@
   Assert.assertEquals("# of pending topologies",0,rs.getUser("bobby").getTopologiesPending().size());
   Assert.assertEquals("# of attempted topologies",0,rs.getUser("bobby").getTopologiesAttempted().size());
   Assert.assertEquals("# of invalid topologies",0,rs.getUser("bobby").getTopologiesInvalid().size());
-  LOG.info("Assignments: {}",cluster.getAssignments());
-  for (  Map.Entry<String,SchedulerAssignment> entry : cluster.getAssignments().entrySet()) {
-    LOG.info("Topology id: {}",entry.getKey());
-    for (    WorkerSlot target : entry.getValue().getSlots()) {
-      LOG.info("target resources onheap: {} offheap: {} cpu: {}",target.getAllocatedMemOnHeap(),target.getAllocatedMemOffHeap(),target.getAllocatedCpu());
-    }
-  }
 }
