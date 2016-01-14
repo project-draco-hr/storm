@@ -1,0 +1,9 @@
+{
+  inflight.clear();
+  tracker.offsets.clear();
+  retryList.clear();
+  reader.close();
+  reader=null;
+  releaseLockAndLog(lock,spoutId);
+  lock=null;
+}

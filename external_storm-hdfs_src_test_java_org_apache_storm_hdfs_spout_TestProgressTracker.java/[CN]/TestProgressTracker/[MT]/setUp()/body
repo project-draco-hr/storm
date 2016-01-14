@@ -1,0 +1,3 @@
+{
+  fs=FileSystem.getLocal(conf);
+}

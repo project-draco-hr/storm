@@ -1,0 +1,10 @@
+{
+  if (newOffset == null) {
+    return;
+  }
+  offsets.add(newOffset);
+  FileOffset currHead=offsets.first();
+  if (currHead.isNextOffset(newOffset)) {
+    trimHead();
+  }
+}

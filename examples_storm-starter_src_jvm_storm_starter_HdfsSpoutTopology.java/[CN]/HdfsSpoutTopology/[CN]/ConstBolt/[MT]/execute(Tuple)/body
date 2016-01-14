@@ -1,0 +1,10 @@
+{
+  log.info("Received tuple : {}",tuple.getValue(0));
+  count++;
+  if (count == 3) {
+    collector.fail(tuple);
+  }
+ else {
+    collector.ack(tuple);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  try {
+    reader.close();
+  }
+ catch (  IOException e) {
+    LOG.warn("Ignoring error when closing file " + getFilePath(),e);
+  }
+}

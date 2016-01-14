@@ -1,0 +1,10 @@
+{
+  readAttempts++;
+  if (readAttempts == 3 || readAttempts == 4) {
+    throw new IOException("mock test exception");
+  }
+ else   if (readAttempts > 5) {
+    throw new ParseException("mock test exception",null);
+  }
+  return super.next();
+}

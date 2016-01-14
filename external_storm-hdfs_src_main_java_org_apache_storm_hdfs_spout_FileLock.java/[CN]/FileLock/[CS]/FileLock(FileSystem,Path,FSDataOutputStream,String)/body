@@ -1,0 +1,7 @@
+{
+  this.fs=fs;
+  this.lockFile=lockFile;
+  this.lockFileStream=lockFileStream;
+  this.componentID=spoutId;
+  logProgress("0",false);
+}

@@ -1,0 +1,3 @@
+{
+  return new Path(dir.toString() + Path.SEPARATOR_CHAR + DIR_LOCK_FILE);
+}

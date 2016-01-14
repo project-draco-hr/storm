@@ -1,0 +1,3 @@
+{
+  return sourceDirPath.toString() + Path.SEPARATOR + Configs.DEFAULT_LOCK_DIR;
+}

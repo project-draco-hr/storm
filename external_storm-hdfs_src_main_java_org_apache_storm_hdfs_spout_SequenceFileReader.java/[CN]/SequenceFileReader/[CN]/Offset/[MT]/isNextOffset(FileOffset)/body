@@ -1,0 +1,7 @@
+{
+  if (rhs instanceof Offset) {
+    Offset other=((Offset)rhs);
+    return other.currentRecord > currentRecord + 1;
+  }
+  return false;
+}

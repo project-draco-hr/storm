@@ -1,0 +1,3 @@
+{
+  lockFileStream.close();
+}

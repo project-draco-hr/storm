@@ -1,0 +1,12 @@
+{
+  if (!syncSeen) {
+    ++recordsSinceLastSync;
+  }
+ else {
+    recordsSinceLastSync=1;
+    lastSyncPoint=prevRecordEndOffset;
+  }
+  ++currentRecord;
+  prevRecordEndOffset=currRecordEndOffset;
+  currentRecord=newBytePosition;
+}

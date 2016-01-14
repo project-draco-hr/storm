@@ -1,0 +1,4 @@
+FileSystem fs
+Path lockFile
+LogEntry lastEntry
+String spoutId

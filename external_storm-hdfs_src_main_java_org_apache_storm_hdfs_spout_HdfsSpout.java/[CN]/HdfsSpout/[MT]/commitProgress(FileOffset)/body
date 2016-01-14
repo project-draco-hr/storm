@@ -1,0 +1,18 @@
+{
+  if (position == null) {
+    return;
+  }
+  if (lock != null && canCommitNow()) {
+    try {
+      String pos=position.toString();
+      lock.heartbeat(pos);
+      LOG.debug("{} Committed progress. {}",spoutId,pos);
+      acksSinceLastCommit=0;
+      commitTimeElapsed.set(false);
+      setupCommitElapseTimer();
+    }
+ catch (    IOException e) {
+      LOG.error("Unable to commit progress Will retry later. Spout ID = " + spoutId,e);
+    }
+  }
+}

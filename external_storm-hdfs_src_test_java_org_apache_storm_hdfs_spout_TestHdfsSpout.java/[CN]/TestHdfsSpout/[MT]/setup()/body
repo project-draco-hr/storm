@@ -1,0 +1,9 @@
+{
+  baseFolder=tempFolder.newFolder("hdfsspout");
+  source=new Path(baseFolder.toString() + "/source");
+  fs.mkdirs(source);
+  archive=new Path(baseFolder.toString() + "/archive");
+  fs.mkdirs(archive);
+  badfiles=new Path(baseFolder.toString() + "/bad");
+  fs.mkdirs(badfiles);
+}

@@ -1,0 +1,27 @@
+{
+  final int LOCK_EXPIRY_SEC=1;
+  final int WAIT_MSEC=1500;
+  Path file1=new Path(filesDir + Path.SEPARATOR + "file1");
+  fs.create(file1).close();
+  FileLock lock1=FileLock.tryLock(fs,file1,locksDir,"spout1");
+  try {
+    Assert.assertNotNull(lock1);
+    Assert.assertTrue(fs.exists(lock1.getLockFile()));
+    Thread.sleep(WAIT_MSEC);
+    HdfsUtils.Pair<Path,FileLock.LogEntry> expired=FileLock.locateOldestExpiredLock(fs,locksDir,LOCK_EXPIRY_SEC);
+    Assert.assertNotNull(expired);
+    lock1.heartbeat("1");
+    expired=FileLock.locateOldestExpiredLock(fs,locksDir,1);
+    Assert.assertNull(expired);
+    FileLock.LogEntry lastEntry=lock1.getLastLogEntry();
+    Assert.assertNotNull(lastEntry);
+    Assert.assertEquals("1",lastEntry.fileOffset);
+    Thread.sleep(WAIT_MSEC);
+    expired=FileLock.locateOldestExpiredLock(fs,locksDir,LOCK_EXPIRY_SEC);
+    Assert.assertNotNull(expired);
+  }
+  finally {
+    lock1.release();
+    fs.delete(file1,false);
+  }
+}

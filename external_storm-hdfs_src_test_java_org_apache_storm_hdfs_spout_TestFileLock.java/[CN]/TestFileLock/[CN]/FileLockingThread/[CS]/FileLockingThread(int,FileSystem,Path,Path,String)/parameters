@@ -1,0 +1,5 @@
+int thdNum
+FileSystem fs
+Path fileToLock
+Path locksDir
+String spoutId

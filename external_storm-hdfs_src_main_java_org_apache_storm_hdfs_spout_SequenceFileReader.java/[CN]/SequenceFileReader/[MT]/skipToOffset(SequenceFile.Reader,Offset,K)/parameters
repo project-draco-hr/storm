@@ -1,0 +1,3 @@
+SequenceFile.Reader reader
+Offset offset
+K key

@@ -1,0 +1,9 @@
+{
+  FSDataInputStream in=fs.open(lockFile);
+  BufferedReader reader=new BufferedReader(new InputStreamReader(in));
+  String lastLine=null;
+  for (String line=reader.readLine(); line != null; line=reader.readLine()) {
+    lastLine=line;
+  }
+  return LogEntry.deserialize(lastLine);
+}

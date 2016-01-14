@@ -1,0 +1,16 @@
+{
+  if (fs instanceof DistributedFileSystem) {
+    if (!((DistributedFileSystem)fs).recoverLease(dirLockFile)) {
+      LOG.warn("Unable to recover lease on dir lock file " + dirLockFile + " right now. Cannot transfer ownership. Will need to try later.");
+      return null;
+    }
+  }
+  if (fs.delete(dirLockFile,false)) {
+    FSDataOutputStream ostream=HdfsUtils.tryCreateFile(fs,dirLockFile);
+    if (ostream != null) {
+      ostream.close();
+    }
+    return new DirLock(fs,dirLockFile);
+  }
+  return null;
+}

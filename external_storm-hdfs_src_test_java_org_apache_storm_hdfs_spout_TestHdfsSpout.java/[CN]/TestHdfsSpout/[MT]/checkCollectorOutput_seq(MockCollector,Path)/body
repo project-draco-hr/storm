@@ -1,0 +1,8 @@
+{
+  ArrayList<String> expected=new ArrayList<>();
+  for (  Path seqFile : seqFiles) {
+    List<String> lines=getSeqFileContents(fs,seqFile);
+    expected.addAll(lines);
+  }
+  Assert.assertTrue(expected.equals(collector.lines));
+}

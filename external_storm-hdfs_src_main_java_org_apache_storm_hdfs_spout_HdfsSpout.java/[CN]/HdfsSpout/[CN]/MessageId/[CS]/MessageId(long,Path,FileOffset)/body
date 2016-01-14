@@ -1,0 +1,5 @@
+{
+  this.msgNumber=msgNumber;
+  this.fullPath=fullPath.toString();
+  this.offset=offset;
+}

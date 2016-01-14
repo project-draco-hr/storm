@@ -1,0 +1,17 @@
+{
+  Path file=new Path(dir.toString() + Path.SEPARATOR_CHAR + "file1");
+  Assert.assertFalse(fs.exists(file));
+  try {
+    Assert.assertFalse(fs.delete(file,false));
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  fs.create(file,false);
+  Assert.assertTrue(fs.delete(file,false));
+  FSDataOutputStream os=fs.create(file,false);
+  os.close();
+  Assert.assertTrue(fs.exists(file));
+  Assert.assertTrue(fs.delete(file,false));
+  Assert.assertFalse(fs.exists(file));
+}

@@ -1,0 +1,5 @@
+{
+  Method m=FileLock.class.getDeclaredMethod("forceCloseLockFile");
+  m.setAccessible(true);
+  m.invoke(lock);
+}

@@ -1,0 +1,4 @@
+FileSystem fs
+Path file
+Map conf
+TextFileReader.Offset startOffset

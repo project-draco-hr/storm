@@ -1,0 +1,5 @@
+{
+  Field readerFld=HdfsSpout.class.getDeclaredField(fieldName);
+  readerFld.setAccessible(true);
+  return readerFld.getBoolean(spout);
+}

@@ -1,0 +1,23 @@
+{
+  Path file1=new Path(filesDir + Path.SEPARATOR + "file1");
+  fs.create(file1).close();
+  FileLock lock1=FileLock.tryLock(fs,file1,locksDir,"spout1");
+  Assert.assertNotNull(lock1);
+  Assert.assertTrue(fs.exists(lock1.getLockFile()));
+  ArrayList<String> lines=readTextFile(lock1.getLockFile());
+  Assert.assertEquals("heartbeats appear to be missing",1,lines.size());
+  lock1.heartbeat("1");
+  lock1.heartbeat("2");
+  lock1.heartbeat("3");
+  lines=readTextFile(lock1.getLockFile());
+  Assert.assertEquals("heartbeats appear to be missing",4,lines.size());
+  lock1.heartbeat("4");
+  lock1.heartbeat("5");
+  lock1.heartbeat("6");
+  lines=readTextFile(lock1.getLockFile());
+  Assert.assertEquals("heartbeats appear to be missing",7,lines.size());
+  lock1.release();
+  lines=readTextFile(lock1.getLockFile());
+  Assert.assertNull(lines);
+  Assert.assertFalse(fs.exists(lock1.getLockFile()));
+}

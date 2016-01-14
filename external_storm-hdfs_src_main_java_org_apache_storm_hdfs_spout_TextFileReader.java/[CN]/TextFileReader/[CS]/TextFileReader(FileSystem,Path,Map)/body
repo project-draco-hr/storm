@@ -1,0 +1,3 @@
+{
+  this(fs,file,conf,new TextFileReader.Offset(0,0));
+}
