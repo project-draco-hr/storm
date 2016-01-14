@@ -1,6 +1,5 @@
 {
-  String lockFileName=lockDirPath.toString() + Path.SEPARATOR_CHAR + fileToLock.getName();
-  Path lockFile=new Path(lockFileName);
+  Path lockFile=new Path(lockDirPath,fileToLock.getName());
   try {
     FSDataOutputStream ostream=HdfsUtils.tryCreateFile(fs,lockFile);
     if (ostream != null) {

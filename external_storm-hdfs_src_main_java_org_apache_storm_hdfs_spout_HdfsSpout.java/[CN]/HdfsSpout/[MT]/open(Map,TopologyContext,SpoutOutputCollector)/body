@@ -24,7 +24,7 @@
     Map<String,Object> map=(Map<String,Object>)conf.get(configKey);
     if (map != null) {
       for (      String keyName : map.keySet()) {
-        LOG.info("HDFS Config override : " + keyName + " = "+ String.valueOf(map.get(keyName)));
+        LOG.info("HDFS Config override : {} = {} ",keyName,String.valueOf(map.get(keyName)));
         this.hdfsConfig.set(keyName,String.valueOf(map.get(keyName)));
       }
       try {
@@ -73,8 +73,8 @@
     LOG.debug("ACKer count = {}",ackerCount);
   }
  else {
-    this.ackEnabled=false;
-    LOG.debug("No ACKers config found");
+    this.ackEnabled=true;
+    LOG.debug("ACK count not explicitly set on topology.");
   }
   LOG.info("ACK mode is {}",ackEnabled ? "enabled" : "disabled");
   if (conf.get(Configs.COMMIT_FREQ_COUNT) != null) {
@@ -86,8 +86,12 @@
       throw new RuntimeException(Configs.COMMIT_FREQ_SEC + " setting must be greater than 0");
     }
   }
-  if (conf.get(Configs.MAX_OUTSTANDING) != null)   maxOutstanding=Integer.parseInt(conf.get(Configs.MAX_OUTSTANDING).toString());
-  if (conf.get(Configs.CLOCKS_INSYNC) != null)   clocksInSync=Boolean.parseBoolean(conf.get(Configs.CLOCKS_INSYNC).toString());
+  if (conf.get(Configs.MAX_OUTSTANDING) != null) {
+    maxOutstanding=Integer.parseInt(conf.get(Configs.MAX_OUTSTANDING).toString());
+  }
+  if (conf.get(Configs.CLOCKS_INSYNC) != null) {
+    clocksInSync=Boolean.parseBoolean(conf.get(Configs.CLOCKS_INSYNC).toString());
+  }
   spoutId=context.getThisComponentId();
   setupCommitElapseTimer();
 }

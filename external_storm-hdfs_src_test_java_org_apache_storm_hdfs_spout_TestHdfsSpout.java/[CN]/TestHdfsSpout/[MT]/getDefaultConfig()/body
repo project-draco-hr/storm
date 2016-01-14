@@ -4,5 +4,6 @@
   conf.put(Configs.ARCHIVE_DIR,archive.toString());
   conf.put(Configs.BAD_DIR,badfiles.toString());
   conf.put(Configs.HDFS_URI,hdfsCluster.getURI().toString());
+  conf.put(Config.TOPOLOGY_ACKER_EXECUTORS,"0");
   return conf;
 }
