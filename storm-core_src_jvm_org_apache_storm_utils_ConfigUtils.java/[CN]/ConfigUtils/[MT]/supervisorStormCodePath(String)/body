@@ -1,3 +1,7 @@
 {
-  return (stormRoot + FILE_SEPARATOR + "stormcode.ser");
+  String ret="";
+  if (stormRoot != null) {
+    ret=stormRoot;
+  }
+  return (ret + FILE_SEPARATOR + "stormcode.ser");
 }
