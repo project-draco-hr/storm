@@ -1,0 +1,14 @@
+{
+  DirLock lock1=DirLock.tryLock(fs,locksDir);
+  Assert.assertNotNull(lock1);
+  DirLock lock2=DirLock.takeOwnershipIfStale(fs,locksDir,LOCK_EXPIRY_SEC);
+  Assert.assertNull(lock2);
+  Thread.sleep(LOCK_EXPIRY_SEC * 1000 + 500);
+  Assert.assertTrue(fs.exists(lock1.getLockFile()));
+  DirLock lock3=DirLock.takeOwnershipIfStale(fs,locksDir,LOCK_EXPIRY_SEC);
+  Assert.assertNotNull(lock3);
+  Assert.assertTrue(fs.exists(lock3.getLockFile()));
+  lock3.release();
+  Assert.assertFalse(fs.exists(lock3.getLockFile()));
+  lock1.release();
+}

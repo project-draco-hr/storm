@@ -1,0 +1,11 @@
+{
+  try {
+    if (fLock != null) {
+      fLock.release();
+      LOG.debug("Spout {} released FileLock. SpoutId = {}",fLock.getLockFile(),spoutId);
+    }
+  }
+ catch (  IOException e) {
+    LOG.error("Unable to delete lock file : " + fLock.getLockFile() + " SpoutId ="+ spoutId,e);
+  }
+}

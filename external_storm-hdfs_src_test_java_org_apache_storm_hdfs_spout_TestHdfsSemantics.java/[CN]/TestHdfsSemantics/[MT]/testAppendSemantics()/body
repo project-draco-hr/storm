@@ -1,0 +1,14 @@
+{
+  Path file1=new Path(dir.toString() + Path.SEPARATOR_CHAR + "file1");
+  FSDataOutputStream os1=fs.create(file1,false);
+  try {
+    fs.append(file1);
+    Assert.assertTrue("Append did not throw an exception",false);
+  }
+ catch (  RemoteException e) {
+    Assert.assertEquals(AlreadyBeingCreatedException.class,e.unwrapRemoteException().getClass());
+  }
+  os1.close();
+  FSDataOutputStream os2=fs.append(file1);
+  os2.close();
+}

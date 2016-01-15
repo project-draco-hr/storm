@@ -1,0 +1,3 @@
+int thdCount
+Path fileToLock
+Path locksDir

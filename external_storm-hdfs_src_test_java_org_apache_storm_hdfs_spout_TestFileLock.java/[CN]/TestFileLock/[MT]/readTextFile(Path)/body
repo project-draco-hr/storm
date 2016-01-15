@@ -1,0 +1,23 @@
+{
+  FSDataInputStream os=null;
+  try {
+    os=fs.open(file);
+    if (os == null) {
+      return null;
+    }
+    BufferedReader reader=new BufferedReader(new InputStreamReader(os));
+    ArrayList<String> lines=new ArrayList<>();
+    for (String line=reader.readLine(); line != null; line=reader.readLine()) {
+      lines.add(line);
+    }
+    return lines;
+  }
+ catch (  FileNotFoundException e) {
+    return null;
+  }
+ finally {
+    if (os != null) {
+      os.close();
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  this.thdNum=thdNum;
+  this.fs=fs;
+  this.fileToLock=fileToLock;
+  this.locksDir=locksDir;
+  this.spoutId=spoutId;
+}

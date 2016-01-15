@@ -1,0 +1,9 @@
+{
+  Path file=new Path(f);
+  FSDataInputStream x=fs.open(file);
+  BufferedReader reader=new BufferedReader(new InputStreamReader(x));
+  String line=null;
+  ArrayList<String> result=new ArrayList<>();
+  while ((line=reader.readLine()) != null)   result.add(line);
+  return result;
+}

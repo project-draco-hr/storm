@@ -1,0 +1,21 @@
+{
+  try {
+    if (fs instanceof DistributedFileSystem) {
+      if (!((DistributedFileSystem)fs).recoverLease(lockFile)) {
+        LOG.warn("Unable to recover lease on lock file {} right now. Cannot transfer ownership. Will need to try later. Spout = {}",lockFile,spoutId);
+        return null;
+      }
+    }
+    return new FileLock(fs,lockFile,spoutId,lastEntry);
+  }
+ catch (  IOException e) {
+    if (e instanceof RemoteException && ((RemoteException)e).unwrapRemoteException() instanceof AlreadyBeingCreatedException) {
+      LOG.warn("Lock file " + lockFile + "is currently open. Cannot transfer ownership now. Will need to try later. Spout= "+ spoutId,e);
+      return null;
+    }
+ else {
+      LOG.warn("Cannot transfer ownership now for lock file " + lockFile + ". Will need to try later. Spout ="+ spoutId,e);
+      throw e;
+    }
+  }
+}

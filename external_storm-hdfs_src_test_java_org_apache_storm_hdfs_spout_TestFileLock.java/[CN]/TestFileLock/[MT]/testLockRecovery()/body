@@ -1,0 +1,40 @@
+{
+  final int LOCK_EXPIRY_SEC=1;
+  final int WAIT_MSEC=LOCK_EXPIRY_SEC * 1000 + 500;
+  Path file1=new Path(filesDir + Path.SEPARATOR + "file1");
+  Path file2=new Path(filesDir + Path.SEPARATOR + "file2");
+  Path file3=new Path(filesDir + Path.SEPARATOR + "file3");
+  fs.create(file1).close();
+  fs.create(file2).close();
+  fs.create(file3).close();
+  FileLock lock1=FileLock.tryLock(fs,file1,locksDir,"spout1");
+  FileLock lock2=FileLock.tryLock(fs,file2,locksDir,"spout2");
+  FileLock lock3=FileLock.tryLock(fs,file3,locksDir,"spout3");
+  Assert.assertNotNull(lock1);
+  Assert.assertNotNull(lock2);
+  Assert.assertNotNull(lock3);
+  try {
+    HdfsUtils.Pair<Path,FileLock.LogEntry> expired=FileLock.locateOldestExpiredLock(fs,locksDir,LOCK_EXPIRY_SEC);
+    Assert.assertNull(expired);
+    closeUnderlyingLockFile(lock3);
+    Thread.sleep(WAIT_MSEC * 2);
+    lock1.heartbeat("1");
+    lock2.heartbeat("1");
+    FileLock lock3b=FileLock.acquireOldestExpiredLock(fs,locksDir,LOCK_EXPIRY_SEC,"spout1");
+    Assert.assertNotNull(lock3b);
+    Assert.assertEquals("Expected lock3 file",Path.getPathWithoutSchemeAndAuthority(lock3b.getLockFile()),lock3.getLockFile());
+  }
+  finally {
+    lock1.release();
+    lock2.release();
+    lock3.release();
+    fs.delete(file1,false);
+    fs.delete(file2,false);
+    try {
+      fs.delete(file3,false);
+    }
+ catch (    Exception e) {
+      e.printStackTrace();
+    }
+  }
+}

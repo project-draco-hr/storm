@@ -1,0 +1,11 @@
+{
+  ArrayList<String> result=new ArrayList<>();
+  FSDataInputStream istream=fs.open(txtFile);
+  InputStreamReader isreader=new InputStreamReader(istream,"UTF-8");
+  BufferedReader reader=new BufferedReader(isreader);
+  for (String line=reader.readLine(); line != null; line=reader.readLine()) {
+    result.add(line);
+  }
+  isreader.close();
+  return result;
+}

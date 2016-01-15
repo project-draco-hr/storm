@@ -1,0 +1,12 @@
+{
+  if (commitFrequencySec <= 0) {
+    return;
+  }
+  TimerTask timerTask=new TimerTask(){
+    @Override public void run(){
+      commitTimeElapsed.set(true);
+    }
+  }
+;
+  commitTimer.schedule(timerTask,commitFrequencySec * 1000);
+}

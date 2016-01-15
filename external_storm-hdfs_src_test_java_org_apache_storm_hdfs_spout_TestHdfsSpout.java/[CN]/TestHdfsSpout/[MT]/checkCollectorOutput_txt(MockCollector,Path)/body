@@ -1,0 +1,12 @@
+{
+  ArrayList<String> expected=new ArrayList<>();
+  for (  Path txtFile : txtFiles) {
+    List<String> lines=getTextFileContents(fs,txtFile);
+    expected.addAll(lines);
+  }
+  List<String> actual=new ArrayList<>();
+  for (  Pair<HdfsSpout.MessageId,List<Object>> item : collector.items) {
+    actual.add(item.getValue().get(0).toString());
+  }
+  Assert.assertEquals(expected,actual);
+}

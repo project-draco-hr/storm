@@ -1,0 +1,4 @@
+{
+  String[] fields=line.split(",",NUM_FIELDS);
+  return new LogEntry(Long.parseLong(fields[0]),fields[1],fields[2]);
+}

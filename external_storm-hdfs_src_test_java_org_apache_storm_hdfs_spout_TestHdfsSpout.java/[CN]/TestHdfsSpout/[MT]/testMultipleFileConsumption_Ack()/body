@@ -1,0 +1,36 @@
+{
+  Path file1=new Path(source.toString() + "/file1.txt");
+  createTextFile(file1,5);
+  Map conf=getDefaultConfig();
+  conf.put(Configs.COMMIT_FREQ_COUNT,"1");
+  conf.put(Configs.COMMIT_FREQ_SEC,"1");
+  conf.put(Config.TOPOLOGY_ACKER_EXECUTORS,"1");
+  HdfsSpout spout=makeSpout(0,conf,Configs.TEXT,TextFileReader.defaultFields);
+  runSpout(spout,"r3");
+  FileReader reader=getField(spout,"reader");
+  Assert.assertNotNull(reader);
+  Assert.assertEquals(false,getBoolField(spout,"fileReadCompletely"));
+  runSpout(spout,"r3");
+  reader=getField(spout,"reader");
+  Assert.assertNotNull(reader);
+  Assert.assertEquals(true,getBoolField(spout,"fileReadCompletely"));
+  runSpout(spout,"a0","a1","a2");
+  reader=getField(spout,"reader");
+  Assert.assertNotNull(reader);
+  Assert.assertEquals(true,getBoolField(spout,"fileReadCompletely"));
+  runSpout(spout,"a3","a4");
+  reader=getField(spout,"reader");
+  Assert.assertNull(reader);
+  Assert.assertEquals(true,getBoolField(spout,"fileReadCompletely"));
+  Path file2=new Path(source.toString() + "/file2.txt");
+  createTextFile(file2,5);
+  runSpout(spout,"r1");
+  Assert.assertNotNull(getField(spout,"reader"));
+  Assert.assertEquals(false,getBoolField(spout,"fileReadCompletely"));
+  runSpout(spout,"a5");
+  Assert.assertNotNull(getField(spout,"reader"));
+  Assert.assertEquals(false,getBoolField(spout,"fileReadCompletely"));
+  runSpout(spout,"r5","a6","a7","a8","a9");
+  Assert.assertNull(getField(spout,"reader"));
+  Assert.assertEquals(true,getBoolField(spout,"fileReadCompletely"));
+}

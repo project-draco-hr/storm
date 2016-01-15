@@ -1,0 +1,16 @@
+{
+  LOG.trace("Ack received for msg {} on spout {}",msgId,spoutId);
+  if (!ackEnabled) {
+    return;
+  }
+  MessageId id=(MessageId)msgId;
+  inflight.remove(id);
+  ++acksSinceLastCommit;
+  tracker.recordAckedOffset(id.offset);
+  commitProgress(tracker.getCommitPosition());
+  if (fileReadCompletely && inflight.isEmpty()) {
+    markFileAsDone(reader.getFilePath());
+    reader=null;
+  }
+  super.ack(msgId);
+}

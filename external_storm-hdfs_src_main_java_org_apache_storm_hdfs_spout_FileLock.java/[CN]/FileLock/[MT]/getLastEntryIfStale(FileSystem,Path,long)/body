@@ -1,0 +1,17 @@
+{
+  long modifiedTime=fs.getFileStatus(lockFile).getModificationTime();
+  if (modifiedTime <= olderThan) {
+    LogEntry lastEntry=getLastEntry(fs,lockFile);
+    if (lastEntry == null) {
+      LOG.warn("Empty lock file found. Deleting it. {}",lockFile);
+      try {
+        if (!fs.delete(lockFile,false))         throw new IOException("Empty lock file deletion failed");
+      }
+ catch (      Exception e) {
+        LOG.error("Unable to delete empty lock file " + lockFile,e);
+      }
+    }
+    if (lastEntry.eventTime <= olderThan)     return lastEntry;
+  }
+  return null;
+}

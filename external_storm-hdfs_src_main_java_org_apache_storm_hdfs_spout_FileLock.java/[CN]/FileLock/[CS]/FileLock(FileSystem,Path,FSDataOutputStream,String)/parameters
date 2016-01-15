@@ -1,0 +1,4 @@
+FileSystem fs
+Path lockFile
+FSDataOutputStream lockFileStream
+String spoutId

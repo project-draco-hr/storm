@@ -1,0 +1,5 @@
+long lastSyncPoint
+long recordsSinceLastSync
+long currentRecord
+long currRecordEndOffset
+long prevRecordEndOffset

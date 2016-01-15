@@ -1,0 +1,42 @@
+{
+  try {
+    lock=getOldestExpiredLock();
+    if (lock != null) {
+      LOG.debug("Spout {} now took over ownership of abandoned FileLock {}",spoutId,lock.getLockFile());
+      Path file=getFileForLockFile(lock.getLockFile(),sourceDirPath);
+      String resumeFromOffset=lock.getLastLogEntry().fileOffset;
+      LOG.info("Resuming processing of abandoned file : {}",file);
+      return createFileReader(file,resumeFromOffset);
+    }
+    Collection<Path> listing=HdfsUtils.listFilesByModificationTime(hdfs,sourceDirPath,0);
+    for (    Path file : listing) {
+      if (file.getName().endsWith(inprogress_suffix)) {
+        continue;
+      }
+      if (file.getName().endsWith(ignoreSuffix)) {
+        continue;
+      }
+      lock=FileLock.tryLock(hdfs,file,lockDirPath,spoutId);
+      if (lock == null) {
+        LOG.debug("Unable to get FileLock for {}, so skipping it.",file);
+        continue;
+      }
+      try {
+        Path newFile=renameToInProgressFile(file);
+        FileReader result=createFileReader(newFile);
+        LOG.info("Processing : {} ",file);
+        return result;
+      }
+ catch (      Exception e) {
+        LOG.error("Skipping file " + file,e);
+        releaseLockAndLog(lock,spoutId);
+        continue;
+      }
+    }
+    return null;
+  }
+ catch (  IOException e) {
+    LOG.error("Unable to select next file for consumption " + sourceDirPath,e);
+    return null;
+  }
+}

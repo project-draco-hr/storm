@@ -1,0 +1,3 @@
+{
+  this(lastSyncPoint,recordsSinceLastSync,currentRecord,0,0);
+}

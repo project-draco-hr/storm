@@ -1,0 +1,7 @@
+{
+  String line=readLineAndTrackOffset(reader);
+  if (line != null) {
+    return Collections.singletonList((Object)line);
+  }
+  return null;
+}

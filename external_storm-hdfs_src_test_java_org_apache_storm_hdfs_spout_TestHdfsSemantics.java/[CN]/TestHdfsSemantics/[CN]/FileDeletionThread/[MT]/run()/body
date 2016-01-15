@@ -1,0 +1,9 @@
+{
+  Thread.currentThread().setName("FileDeletionThread-" + thdNum);
+  try {
+    succeeded=fs.delete(file,false);
+  }
+ catch (  Exception e) {
+    exception=e;
+  }
+}

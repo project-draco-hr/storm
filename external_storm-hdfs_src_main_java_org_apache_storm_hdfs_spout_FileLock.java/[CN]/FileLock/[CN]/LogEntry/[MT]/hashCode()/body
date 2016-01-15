@@ -1,0 +1,6 @@
+{
+  int result=(int)(eventTime ^ (eventTime >>> 32));
+  result=31 * result + componentID.hashCode();
+  result=31 * result + fileOffset.hashCode();
+  return result;
+}

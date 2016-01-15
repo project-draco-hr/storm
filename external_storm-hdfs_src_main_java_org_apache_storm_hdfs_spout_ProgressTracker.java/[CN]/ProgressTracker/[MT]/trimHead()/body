@@ -1,0 +1,12 @@
+{
+  if (offsets.size() <= 1) {
+    return;
+  }
+  FileOffset head=offsets.first();
+  FileOffset head2=offsets.higher(head);
+  if (head.isNextOffset(head2)) {
+    offsets.pollFirst();
+    trimHead();
+  }
+  return;
+}

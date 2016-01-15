@@ -1,0 +1,12 @@
+{
+  String fileName=file.toString();
+  String fileNameMinusSuffix=fileName.substring(0,fileName.indexOf(inprogress_suffix));
+  String newName=new Path(fileNameMinusSuffix).getName();
+  Path newFile=new Path(archiveDirPath + Path.SEPARATOR + newName);
+  LOG.info("Completed consuming file {}",fileNameMinusSuffix);
+  if (!hdfs.rename(file,newFile)) {
+    throw new IOException("Rename failed for file: " + file);
+  }
+  LOG.debug("Renamed file {} to {} ",file,newFile);
+  return newFile;
+}

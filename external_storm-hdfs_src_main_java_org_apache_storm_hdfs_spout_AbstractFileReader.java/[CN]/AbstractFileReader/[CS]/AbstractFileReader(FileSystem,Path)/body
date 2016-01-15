@@ -1,0 +1,9 @@
+{
+  if (fs == null) {
+    throw new IllegalArgumentException("filesystem arg cannot be null for reader");
+  }
+  if (file == null) {
+    throw new IllegalArgumentException("file arg cannot be null for reader");
+  }
+  this.file=file;
+}

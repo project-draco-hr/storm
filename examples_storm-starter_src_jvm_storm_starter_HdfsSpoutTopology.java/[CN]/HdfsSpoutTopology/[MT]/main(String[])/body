@@ -1,0 +1,49 @@
+{
+  if (args.length < 7) {
+    System.err.println("Please check command line arguments.");
+    System.err.println("Usage :");
+    System.err.println(HdfsSpoutTopology.class.toString() + " topologyName hdfsUri fileFormat sourceDir sourceArchiveDir badDir destinationDir.");
+    System.err.println(" topologyName - topology name.");
+    System.err.println(" hdfsUri - hdfs name node URI");
+    System.err.println(" fileFormat -  Set to 'TEXT' for reading text files or 'SEQ' for sequence files.");
+    System.err.println(" sourceDir  - read files from this HDFS dir using HdfsSpout.");
+    System.err.println(" archiveDir - after a file in sourceDir is read completely, it is moved to this HDFS location.");
+    System.err.println(" badDir - files that cannot be read properly will be moved to this HDFS location.");
+    System.err.println(" spoutCount - Num of spout instances.");
+    System.err.println();
+    System.exit(-1);
+  }
+  String topologyName=args[0];
+  String hdfsUri=args[1];
+  String fileFormat=args[2];
+  String sourceDir=args[3];
+  String sourceArchiveDir=args[4];
+  String badDir=args[5];
+  int spoutNum=Integer.parseInt(args[6]);
+  ConstBolt bolt=new ConstBolt();
+  HdfsSpout spout=new HdfsSpout().withOutputFields("line");
+  Config conf=new Config();
+  conf.put(Configs.SOURCE_DIR,sourceDir);
+  conf.put(Configs.ARCHIVE_DIR,sourceArchiveDir);
+  conf.put(Configs.BAD_DIR,badDir);
+  conf.put(Configs.READER_TYPE,fileFormat);
+  conf.put(Configs.HDFS_URI,hdfsUri);
+  conf.setDebug(true);
+  conf.setNumWorkers(1);
+  conf.setNumAckers(1);
+  conf.setMaxTaskParallelism(1);
+  conf.setDebug(true);
+  conf.setNumWorkers(WORKER_NUM);
+  conf.registerMetricsConsumer(LoggingMetricsConsumer.class);
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(SPOUT_ID,spout,spoutNum);
+  builder.setBolt(BOLT_ID,bolt,1).shuffleGrouping(SPOUT_ID);
+  Map clusterConf=Utils.readStormConfig();
+  StormSubmitter.submitTopologyWithProgressBar(topologyName,conf,builder.createTopology());
+  Nimbus.Client client=NimbusClient.getConfiguredClient(clusterConf).getClient();
+  for (int i=0; i < 40; i++) {
+    Thread.sleep(30 * 1000);
+    FastWordCountTopology.printMetrics(client,topologyName);
+  }
+  FastWordCountTopology.kill(client,topologyName);
+}
