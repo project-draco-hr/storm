@@ -1,3 +1,6 @@
 {
+  if (mockedSupervisorState != null) {
+    return null;
+  }
   return new LocalState((supervisorLocalDir(conf) + FILE_SEPARATOR + "localstate"));
 }
