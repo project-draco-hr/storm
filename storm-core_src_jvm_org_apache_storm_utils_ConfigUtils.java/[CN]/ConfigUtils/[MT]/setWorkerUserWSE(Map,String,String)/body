@@ -1,6 +1,10 @@
 {
+  if (mockedWorkerUserWSE != null) {
+    return;
+  }
   LOG.info("SET worker-user {} {}",workerId,user);
   File file=new File(workerUserFile(conf,workerId));
+  LOG.info("zliu  SET worker-user to create worker file:" + file.getCanonicalPath());
   file.getParentFile().mkdirs();
   try (FileWriter fw=new FileWriter(file);BufferedWriter writer=new BufferedWriter(fw)){
     writer.write(user);

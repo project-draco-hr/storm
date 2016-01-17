@@ -1,3 +1,8 @@
 {
+  LOG.info("zliu workers root's current listFiles are:");
+  File r=new File((absoluteStormLocalDir(conf) + FILE_SEPARATOR + "workers"));
+  if (r.exists())   for (  File f : r.listFiles()) {
+    LOG.info(f.getName());
+  }
   return (absoluteStormLocalDir(conf) + FILE_SEPARATOR + "workers");
 }
