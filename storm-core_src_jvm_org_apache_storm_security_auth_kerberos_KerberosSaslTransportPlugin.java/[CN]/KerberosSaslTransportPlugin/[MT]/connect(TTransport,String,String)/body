@@ -1,9 +1,9 @@
 {
   ClientCallbackHandler client_callback_handler=new ClientCallbackHandler(login_conf);
-  Login login=null;
+  ZookeeperSaslLogin login=null;
   try {
     Configuration.setConfiguration(login_conf);
-    login=new Login(AuthUtils.LOGIN_CONTEXT_CLIENT,client_callback_handler);
+    login=new ZookeeperSaslLogin(AuthUtils.LOGIN_CONTEXT_CLIENT,client_callback_handler);
   }
  catch (  LoginException ex) {
     LOG.error("Server failed to login in principal:" + ex,ex);

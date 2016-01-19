@@ -6,11 +6,9 @@
   if (login == null) {
     throw new LoginException("login must be done first");
   }
-  if (!hasSufficientTimeElapsed()) {
-    return;
-  }
+  sleepUntilSufficientTimeElapsed();
   LOG.info("Initiating logout for " + principal);
-synchronized (Login.class) {
+synchronized (ZookeeperSaslLogin.class) {
     login.logout();
     login=new LoginContext(loginContextName,getSubject());
     LOG.info("Initiating re-login for " + principal);

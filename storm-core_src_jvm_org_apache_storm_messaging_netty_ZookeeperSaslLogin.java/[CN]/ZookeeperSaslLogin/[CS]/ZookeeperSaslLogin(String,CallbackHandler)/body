@@ -56,14 +56,23 @@
             }
             nextRefresh=Math.max(nextRefresh,now + MIN_TIME_BEFORE_RELOGIN);
           }
-          nextRefreshDate=new Date(nextRefresh);
-          if (nextRefresh > expiry) {
-            LOG.error("next refresh: " + nextRefreshDate + " is later than expiry "+ expiryDate+ ". This may indicate a clock skew problem. Check that this host and the KDC's "+ "hosts' clocks are in sync. Exiting refresh thread.");
-            return;
-          }
         }
-        if (now == nextRefresh) {
-          LOG.info("refreshing now because expiry is before next scheduled refresh time.");
+        if (tgt != null && now > tgt.getEndTime().getTime()) {
+          if ((now - tgt.getEndTime().getTime()) < (10 * MIN_TIME_BEFORE_RELOGIN)) {
+            Date until=new Date(now + MIN_TIME_BEFORE_RELOGIN);
+            LOG.info("TGT already expired but giving additional 10 minutes past TGT expiry, refresh sleeping until: " + until.toString());
+            try {
+              Thread.sleep(MIN_TIME_BEFORE_RELOGIN);
+            }
+ catch (            InterruptedException ie) {
+              LOG.warn("TGT renewal thread has been interrupted and will exit.");
+              return;
+            }
+          }
+ else {
+            LOG.error("nextRefresh:" + new Date(nextRefresh) + " is in the past: exiting refresh thread. Check"+ " clock sync between this host and KDC - (KDC's clock is likely ahead of this host)."+ " Manual intervention will be required for this client to successfully authenticate."+ " Exiting worker!.");
+            Runtime.getRuntime().exit(-3);
+          }
         }
  else         if (now < nextRefresh) {
           Date until=new Date(nextRefresh);
@@ -73,12 +82,8 @@
           }
  catch (          InterruptedException ie) {
             LOG.warn("TGT renewal thread has been interrupted and will exit.");
-            break;
+            return;
           }
-        }
- else {
-          LOG.error("nextRefresh:" + nextRefreshDate + " is in the past: exiting refresh thread. Check"+ " clock sync between this host and KDC - (KDC's clock is likely ahead of this host)."+ " Manual intervention will be required for this client to successfully authenticate."+ " Exiting refresh thread.");
-          break;
         }
         if (isUsingTicketCache) {
           String cmd="/usr/bin/kinit";
@@ -143,5 +148,6 @@
     }
   }
 );
+  t.setName("ZK-Refresh-TGT-fromAutoTGT");
   t.setDaemon(true);
 }

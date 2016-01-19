@@ -16,7 +16,7 @@
     LOG.debug("Setting Configuration to login_config: {}",login_conf);
     Configuration.setConfiguration(login_conf);
     LOG.debug("Trying to login.");
-    Login login=new Login(jaas_section,ch);
+    ZookeeperSaslLogin login=new ZookeeperSaslLogin(jaas_section,ch);
     subject=login.getSubject();
     LOG.debug("Got Subject: {}",subject.toString());
   }
