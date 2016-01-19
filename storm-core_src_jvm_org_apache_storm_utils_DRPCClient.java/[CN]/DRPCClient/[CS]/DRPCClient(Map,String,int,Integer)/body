@@ -3,4 +3,5 @@
   this.host=host;
   this.port=port;
   this.client=new DistributedRPC.Client(_protocol);
+  _retryForever=true;
 }

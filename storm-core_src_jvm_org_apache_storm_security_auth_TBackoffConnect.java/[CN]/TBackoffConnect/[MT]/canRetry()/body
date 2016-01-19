@@ -1,3 +1,3 @@
 {
-  return (_completedRetries < _retryTimes);
+  return _retryForever || (_completedRetries < _retryTimes);
 }
