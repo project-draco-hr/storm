@@ -11,11 +11,14 @@
     msgs=KafkaUtils.fetchMessages(_spoutConfig,_consumer,_partition,offset);
   }
  catch (  TopicOffsetOutOfRangeException e) {
-    _emittedToOffset=KafkaUtils.getOffset(_consumer,_partition.topic,_partition.partition,kafka.api.OffsetRequest.EarliestTime());
-    LOG.warn("{} Using new offset: {}",_partition.partition,_emittedToOffset);
+    offset=KafkaUtils.getOffset(_consumer,_partition.topic,_partition.partition,kafka.api.OffsetRequest.EarliestTime());
     if (!processingNewTuples) {
-      Set<Long> omitted=this._failedMsgRetryManager.clearInvalidMessages(_emittedToOffset);
+      Set<Long> omitted=this._failedMsgRetryManager.clearInvalidMessages(offset);
       LOG.warn("Removing the failed offsets that are out of range: {}",omitted);
+    }
+    if (offset > _emittedToOffset) {
+      _emittedToOffset=offset;
+      LOG.warn("{} Using new offset: {}",_partition.partition,_emittedToOffset);
     }
     return;
   }
