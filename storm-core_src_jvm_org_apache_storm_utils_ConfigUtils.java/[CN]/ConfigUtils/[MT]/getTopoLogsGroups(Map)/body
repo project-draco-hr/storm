@@ -2,14 +2,18 @@
   List<String> logsGroups=(List<String>)topologyConf.get(Config.LOGS_GROUPS);
   List<String> topologyGroups=(List<String>)topologyConf.get(Config.TOPOLOGY_GROUPS);
   Set<String> mergedGroups=new HashSet<String>();
-  for (  String user : logsGroups) {
-    if (!user.equals("null")) {
-      mergedGroups.add(user);
+  if (logsGroups != null) {
+    for (    String group : logsGroups) {
+      if (group != null) {
+        mergedGroups.add(group);
+      }
     }
   }
-  for (  String user : topologyGroups) {
-    if (!user.equals("null")) {
-      mergedGroups.add(user);
+  if (topologyGroups != null) {
+    for (    String group : topologyGroups) {
+      if (group != null) {
+        mergedGroups.add(group);
+      }
     }
   }
   List<String> ret=new ArrayList<String>(mergedGroups);
