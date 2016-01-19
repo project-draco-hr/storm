@@ -1,3 +1,3 @@
 String logRoot
 String id
-String port
+Integer port
