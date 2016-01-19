@@ -1,4 +1,7 @@
 {
+  if (mockedWorkerArtifactsRoot != null) {
+    return mockedWorkerArtifactsRoot;
+  }
   String artifactsDir=(String)conf.get(Config.STORM_WORKERS_ARTIFACTS_DIR);
   if (artifactsDir == null) {
     return (LOG_DIR + FILE_SEPARATOR + "workers-artifacts");

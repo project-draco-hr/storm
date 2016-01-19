@@ -3,4 +3,5 @@
   if (loginConfFile != null) {
     conf.put("java.security.auth.login.config",loginConfFile);
   }
+  return conf;
 }

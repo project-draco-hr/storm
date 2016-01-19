@@ -1,3 +1,6 @@
 {
+  if (mockedWorkerArtifactsRoot != null) {
+    return mockedWorkerArtifactsRoot;
+  }
   return (workerArtifactsRoot(conf) + FILE_SEPARATOR + id);
 }
