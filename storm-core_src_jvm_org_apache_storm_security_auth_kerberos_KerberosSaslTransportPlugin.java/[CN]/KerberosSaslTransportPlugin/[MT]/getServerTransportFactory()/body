@@ -3,7 +3,7 @@
   Subject subject=null;
   try {
     Configuration.setConfiguration(login_conf);
-    ZookeeperSaslLogin login=new ZookeeperSaslLogin(AuthUtils.LOGIN_CONTEXT_SERVER,server_callback_handler);
+    Login login=new Login(AuthUtils.LOGIN_CONTEXT_SERVER,server_callback_handler);
     subject=login.getSubject();
   }
  catch (  LoginException ex) {

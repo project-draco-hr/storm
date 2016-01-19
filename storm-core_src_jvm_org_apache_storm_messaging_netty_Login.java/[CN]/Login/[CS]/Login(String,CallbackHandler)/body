@@ -148,6 +148,6 @@
     }
   }
 );
-  t.setName("ZK-Refresh-TGT-fromAutoTGT");
+  t.setName("Refresh-TGT");
   t.setDaemon(true);
 }

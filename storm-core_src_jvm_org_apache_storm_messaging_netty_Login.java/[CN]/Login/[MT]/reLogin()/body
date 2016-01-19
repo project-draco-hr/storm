@@ -8,7 +8,7 @@
   }
   sleepUntilSufficientTimeElapsed();
   LOG.info("Initiating logout for " + principal);
-synchronized (ZookeeperSaslLogin.class) {
+synchronized (Login.class) {
     login.logout();
     login=new LoginContext(loginContextName,getSubject());
     LOG.info("Initiating re-login for " + principal);
