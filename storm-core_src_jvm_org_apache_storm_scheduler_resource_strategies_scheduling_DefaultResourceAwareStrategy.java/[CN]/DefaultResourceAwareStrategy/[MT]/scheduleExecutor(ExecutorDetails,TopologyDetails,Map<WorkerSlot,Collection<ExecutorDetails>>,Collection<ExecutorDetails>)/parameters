@@ -1,0 +1,4 @@
+ExecutorDetails exec
+TopologyDetails td
+Map<WorkerSlot,Collection<ExecutorDetails>> schedulerAssignmentMap
+Collection<ExecutorDetails> scheduledTasks

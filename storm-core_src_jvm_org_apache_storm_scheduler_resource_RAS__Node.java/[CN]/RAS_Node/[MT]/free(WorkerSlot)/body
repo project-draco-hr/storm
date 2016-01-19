@@ -1,19 +1,16 @@
 {
   LOG.info("freeing WorkerSlot {} on node {}",ws,_hostname);
-  if (_freeSlots.contains(ws))   return;
-  for (  Entry<String,Set<WorkerSlot>> entry : _topIdToUsedSlots.entrySet()) {
-    Set<WorkerSlot> slots=entry.getValue();
-    double memUsed=getMemoryUsedByWorker(ws);
-    double cpuUsed=getCpuUsedByWorker(ws);
-    if (slots.remove(ws)) {
-      _cluster.freeSlot(ws);
-      if (_isAlive) {
-        _freeSlots.add(ws);
-      }
-      freeMemory(memUsed);
-      freeCPU(cpuUsed);
-      return;
-    }
+  if (!_slots.containsKey(ws.getId())) {
+    throw new IllegalArgumentException("Tried to free a slot " + ws + " that was not"+ " part of this node "+ _nodeId);
   }
-  throw new IllegalArgumentException("Tried to free a slot that was not" + " part of this node " + _nodeId);
+  TopologyDetails topo=findTopologyUsingWorker(ws);
+  if (topo == null) {
+    throw new IllegalArgumentException("Tried to free a slot " + ws + " that was already free!");
+  }
+  double memUsed=getMemoryUsedByWorker(ws);
+  double cpuUsed=getCpuUsedByWorker(ws);
+  freeMemory(memUsed);
+  freeCPU(cpuUsed);
+  _cluster.freeSlot(ws);
+  _topIdToUsedSlots.get(topo.getId()).remove(ws.getId());
 }

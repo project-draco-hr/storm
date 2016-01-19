@@ -1,0 +1,6 @@
+String nodeId
+SupervisorDetails sup
+Cluster cluster
+Topologies topologies
+Map<String,WorkerSlot> workerIdToWorker
+Map<String,Map<String,Collection<ExecutorDetails>>> assignmentMap

@@ -1,0 +1,5 @@
+String nodeId
+Number port
+double memOnHeap
+double memOffHeap
+double cpu

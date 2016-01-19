@@ -1,0 +1,3 @@
+{
+  return workerIdsToWorkers(_topIdToUsedSlots.get(topId).keySet());
+}

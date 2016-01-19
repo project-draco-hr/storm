@@ -1,0 +1,8 @@
+{
+  for (  List<String> entry : nodeToComps.values()) {
+    if (schedulingToFind.containsAll(entry) && entry.containsAll(schedulingToFind)) {
+      return true;
+    }
+  }
+  return false;
+}
