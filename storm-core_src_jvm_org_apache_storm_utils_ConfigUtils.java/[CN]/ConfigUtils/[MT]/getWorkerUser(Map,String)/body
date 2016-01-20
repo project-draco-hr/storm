@@ -1,7 +1,6 @@
 {
   LOG.info("GET worker-user for {}",workerId);
   File file=new File(workerUserFile(conf,workerId));
-  LOG.info("zliu this file is existed?" + file.exists());
   try (InputStream in=new FileInputStream(file);Reader reader=new InputStreamReader(in);BufferedReader br=new BufferedReader(reader)){
     StringBuilder sb=new StringBuilder();
     int r;

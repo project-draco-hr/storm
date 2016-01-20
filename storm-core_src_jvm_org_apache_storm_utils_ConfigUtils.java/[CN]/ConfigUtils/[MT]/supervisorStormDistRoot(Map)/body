@@ -1,5 +1,4 @@
 {
-  LOG.info("zliu supervisorStormDistRoot resl is: " + stormDistPath(supervisorLocalDir(conf)) + "mocked set is "+ mockedSupervisorStormDistRoot);
   if (mockedSupervisorStormDistRoot != null) {
     return null;
   }
