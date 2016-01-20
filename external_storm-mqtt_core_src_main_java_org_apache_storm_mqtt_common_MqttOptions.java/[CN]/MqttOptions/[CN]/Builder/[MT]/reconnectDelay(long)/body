@@ -1,0 +1,4 @@
+{
+  this.options.reconnectDelay=reconnectDelay;
+  return this;
+}

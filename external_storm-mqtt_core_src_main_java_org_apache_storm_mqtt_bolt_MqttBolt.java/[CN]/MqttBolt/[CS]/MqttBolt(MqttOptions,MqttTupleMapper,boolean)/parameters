@@ -1,0 +1,3 @@
+MqttOptions options
+MqttTupleMapper mapper
+boolean retain

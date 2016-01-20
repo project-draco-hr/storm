@@ -1,0 +1,11 @@
+{
+  AckableMessage tm=this.incoming.poll();
+  if (tm != null) {
+    Long id=nextId();
+    this.collector.emit(this.type.toValues(tm.getMessage()),id);
+    this.pending.put(id,tm);
+  }
+ else {
+    Thread.yield();
+  }
+}

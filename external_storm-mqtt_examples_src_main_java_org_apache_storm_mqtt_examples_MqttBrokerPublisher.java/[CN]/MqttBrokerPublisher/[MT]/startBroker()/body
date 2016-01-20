@@ -1,0 +1,20 @@
+{
+  LOG.info("Starting broker...");
+  broker=new BrokerService();
+  broker.addConnector("mqtt://localhost:1883");
+  broker.setDataDirectory("target");
+  broker.start();
+  LOG.info("MQTT broker started");
+  Runtime.getRuntime().addShutdownHook(new Thread(){
+    @Override public void run(){
+      try {
+        LOG.info("Shutting down MQTT broker...");
+        broker.stop();
+      }
+ catch (      Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+);
+}

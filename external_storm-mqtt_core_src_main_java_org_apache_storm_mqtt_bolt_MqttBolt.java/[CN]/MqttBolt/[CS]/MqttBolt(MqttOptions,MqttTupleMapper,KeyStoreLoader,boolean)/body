@@ -1,0 +1,7 @@
+{
+  this.options=options;
+  this.mapper=mapper;
+  this.retain=retain;
+  this.keyStoreLoader=keyStoreLoader;
+  SslUtils.checkSslConfig(this.options.getUrl(),keyStoreLoader);
+}

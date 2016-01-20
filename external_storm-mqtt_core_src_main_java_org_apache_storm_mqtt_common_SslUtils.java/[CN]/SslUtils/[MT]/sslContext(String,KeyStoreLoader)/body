@@ -1,0 +1,14 @@
+{
+  KeyStore ks=KeyStore.getInstance("JKS");
+  ks.load(keyStoreLoader.keyStoreInputStream(),keyStoreLoader.keyStorePassword().toCharArray());
+  KeyStore ts=KeyStore.getInstance("JKS");
+  ts.load(keyStoreLoader.trustStoreInputStream(),keyStoreLoader.trustStorePassword().toCharArray());
+  KeyManagerFactory kmf=KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+  kmf.init(ks,keyStoreLoader.keyPassword().toCharArray());
+  TrustManagerFactory tmf=TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+  tmf.init(ts);
+  SSLContext sc=SSLContext.getInstance(scheme.toUpperCase());
+  TrustManager[] trustManagers=tmf.getTrustManagers();
+  sc.init(kmf.getKeyManagers(),trustManagers,null);
+  return sc;
+}

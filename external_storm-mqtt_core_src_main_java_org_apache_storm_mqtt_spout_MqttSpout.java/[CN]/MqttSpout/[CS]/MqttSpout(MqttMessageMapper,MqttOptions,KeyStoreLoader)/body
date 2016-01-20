@@ -1,0 +1,6 @@
+{
+  this.type=type;
+  this.options=options;
+  this.keyStoreLoader=keyStoreLoader;
+  SslUtils.checkSslConfig(this.options.getUrl(),this.keyStoreLoader);
+}

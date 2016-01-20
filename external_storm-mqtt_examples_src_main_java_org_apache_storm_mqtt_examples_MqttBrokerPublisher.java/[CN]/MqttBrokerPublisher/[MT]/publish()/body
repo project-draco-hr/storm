@@ -1,0 +1,13 @@
+{
+  String topic="/users/tgoetz/office/1234";
+  Random rand=new Random();
+  LOG.info("Publishing to topic {}",topic);
+  LOG.info("Cntrl+C to exit.");
+  while (true) {
+    int temp=rand.nextInt(100);
+    int hum=rand.nextInt(100);
+    String payload=temp + "/" + hum;
+    connection.publish(topic,payload.getBytes(),QoS.AT_LEAST_ONCE,false);
+    Thread.sleep(500);
+  }
+}

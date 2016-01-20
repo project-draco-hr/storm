@@ -1,0 +1,3 @@
+{
+  this.connection.publish(message.getTopic(),message.getMessage(),this.qos,this.retain);
+}

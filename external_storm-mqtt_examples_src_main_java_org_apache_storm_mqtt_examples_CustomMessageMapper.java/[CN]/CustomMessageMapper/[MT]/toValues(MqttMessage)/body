@@ -1,0 +1,6 @@
+{
+  String topic=message.getTopic();
+  String[] topicElements=topic.split("/");
+  String[] payloadElements=new String(message.getMessage()).split("/");
+  return new Values(topicElements[2],topicElements[4],topicElements[3],Float.parseFloat(payloadElements[0]),Float.parseFloat(payloadElements[1]));
+}

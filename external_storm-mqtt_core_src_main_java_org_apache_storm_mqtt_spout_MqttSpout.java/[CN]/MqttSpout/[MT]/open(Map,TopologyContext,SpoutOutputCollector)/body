@@ -1,0 +1,15 @@
+{
+  this.topologyName=(String)conf.get(Config.TOPOLOGY_NAME);
+  this.collector=collector;
+  this.context=context;
+  this.conf=conf;
+  this.incoming=new LinkedBlockingQueue<>();
+  this.pending=new HashMap<>();
+  try {
+    connectMqtt();
+  }
+ catch (  Exception e) {
+    this.collector.reportError(e);
+    throw new RuntimeException("MQTT Connection failed.",e);
+  }
+}

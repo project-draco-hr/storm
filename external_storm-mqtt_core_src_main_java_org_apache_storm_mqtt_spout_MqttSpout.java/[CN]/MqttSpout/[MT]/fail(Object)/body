@@ -1,0 +1,8 @@
+{
+  try {
+    this.incoming.put(this.pending.remove(msgId));
+  }
+ catch (  InterruptedException e) {
+    LOG.warn("Interrupted while re-queueing message.",e);
+  }
+}

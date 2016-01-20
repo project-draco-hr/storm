@@ -1,0 +1,4 @@
+{
+  this.options.topics=topics;
+  return this;
+}

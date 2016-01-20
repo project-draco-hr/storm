@@ -1,0 +1,17 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  MqttOptions options=new MqttOptions();
+  options.setTopics(Arrays.asList(TEST_TOPIC));
+  options.setCleanConnection(false);
+  TestSpout spout=new TestSpout(new StringMessageMapper(),options);
+  MqttBolt bolt=new MqttBolt(options,new MqttTupleMapper(){
+    @Override public MqttMessage toMessage(    ITuple tuple){
+      LOG.info("Received: {}",tuple);
+      return new MqttMessage(RESULT_TOPIC,RESULT_PAYLOAD.getBytes());
+    }
+  }
+);
+  builder.setSpout("mqtt-spout",spout);
+  builder.setBolt("mqtt-bolt",bolt).shuffleGrouping("mqtt-spout");
+  return builder.createTopology();
+}

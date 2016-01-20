@@ -1,0 +1,10 @@
+{
+  URI uri=URI.create(url);
+  String scheme=uri.getScheme().toLowerCase();
+  if (!(scheme.equals("tcp") || scheme.startsWith("tls") || scheme.startsWith("ssl"))) {
+    throw new IllegalArgumentException("Unrecognized URI scheme: " + scheme);
+  }
+  if (!scheme.equalsIgnoreCase("tcp") && loader == null) {
+    throw new IllegalStateException("A TLS/SSL MQTT URL was specified, but no KeyStoreLoader configured. " + "A KeyStoreLoader implementation is required when using TLS/SSL.");
+  }
+}

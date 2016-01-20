@@ -1,0 +1,5 @@
+{
+  this.topic=topic;
+  this.message=message;
+  this.ack=ack;
+}
