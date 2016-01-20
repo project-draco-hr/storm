@@ -1,0 +1,3 @@
+{
+  return each(inputFields,new FilterExecutor(filter),new Fields());
+}
