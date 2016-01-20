@@ -1,5 +1,0 @@
-{
-  String ret=stormTmpPath(masterLocalDir(conf));
-  FileUtils.forceMkdir(new File(ret));
-  return ret;
-}

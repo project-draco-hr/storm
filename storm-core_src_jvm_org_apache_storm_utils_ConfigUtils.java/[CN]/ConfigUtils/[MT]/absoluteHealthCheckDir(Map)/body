@@ -1,7 +1,7 @@
 {
   String stormHome=System.getProperty("storm.home");
-  String healthCheckDir=String.valueOf(conf.get(Config.STORM_HEALTH_CHECK_DIR));
-  if (healthCheckDir.equals("null")) {
+  String healthCheckDir=(String)conf.get(Config.STORM_HEALTH_CHECK_DIR);
+  if (healthCheckDir == null) {
     return (stormHome + FILE_SEPARATOR + "healthchecks");
   }
  else {

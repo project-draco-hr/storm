@@ -4,14 +4,14 @@
   }
   String artifactsDir=(String)conf.get(Config.STORM_WORKERS_ARTIFACTS_DIR);
   if (artifactsDir == null) {
-    return (LOG_DIR + FILE_SEPARATOR + "workers-artifacts");
+    return (getLogDir() + FILE_SEPARATOR + "workers-artifacts");
   }
  else {
     if (new File(artifactsDir).isAbsolute()) {
       return artifactsDir;
     }
  else {
-      return (LOG_DIR + FILE_SEPARATOR + artifactsDir);
+      return (getLogDir() + FILE_SEPARATOR + artifactsDir);
     }
   }
 }

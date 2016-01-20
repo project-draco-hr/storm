@@ -1,0 +1,24 @@
+{
+  String dir;
+  Map conf;
+  if (System.getProperty("storm.log.dir") != null) {
+    dir=System.getProperty("storm.log.dir");
+  }
+ else   if ((conf=readStormConfig()).get("storm.log.dir") != null) {
+    dir=String.valueOf(conf.get("storm.log.dir"));
+  }
+ else {
+    if (System.getProperty("storm.home") != null) {
+      dir=System.getProperty("storm.home") + FILE_SEPARATOR + "logs";
+    }
+ else {
+      dir=FILE_SEPARATOR + "logs";
+    }
+  }
+  try {
+    return new File(dir).getCanonicalPath();
+  }
+ catch (  IOException ex) {
+    throw new IllegalArgumentException("Illegal storm.log.dir in conf: " + dir);
+  }
+}

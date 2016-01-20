@@ -1,3 +1,0 @@
-{
-  return (stormRoot + FILE_SEPARATOR + "stormcode.ser");
-}
