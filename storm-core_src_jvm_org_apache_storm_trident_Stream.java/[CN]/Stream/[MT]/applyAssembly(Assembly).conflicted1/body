@@ -1,3 +1,0 @@
-{
-  return assembly.apply(this);
-}
