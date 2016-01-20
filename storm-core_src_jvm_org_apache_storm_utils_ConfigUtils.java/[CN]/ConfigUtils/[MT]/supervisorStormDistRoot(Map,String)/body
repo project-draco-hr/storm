@@ -2,5 +2,5 @@
   if (mockedSupervisorStormDistRoot != null) {
     return null;
   }
-  return supervisorStormDistRoot(conf) + FILE_SEPARATOR + stormId;
+  return supervisorStormDistRoot(conf) + FILE_SEPARATOR + URLEncoder.encode(stormId,"UTF-8");
 }
