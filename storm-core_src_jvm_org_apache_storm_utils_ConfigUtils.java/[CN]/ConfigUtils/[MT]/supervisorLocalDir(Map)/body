@@ -1,8 +1,3 @@
 {
-  if (mockedSupervisorLocalDir != null) {
-    return null;
-  }
-  String ret=absoluteStormLocalDir(conf) + FILE_SEPARATOR + "supervisor";
-  FileUtils.forceMkdir(new File(ret));
-  return ret;
+  return _instance.supervisorLocalDirImpl(conf);
 }

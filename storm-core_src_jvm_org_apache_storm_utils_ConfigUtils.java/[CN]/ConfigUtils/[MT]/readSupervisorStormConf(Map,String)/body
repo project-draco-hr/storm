@@ -1,8 +1,3 @@
 {
-  if (mockedSupervisorStormConf != null) {
-    return mockedSupervisorStormConf;
-  }
-  String stormRoot=supervisorStormDistRoot(conf,stormId);
-  String confPath=supervisorStormConfPath(stormRoot);
-  return readSupervisorStormConfGivenPath(conf,confPath);
+  return _instance.readSupervisorStormConfImpl(conf,stormId);
 }

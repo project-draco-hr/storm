@@ -1,6 +1,3 @@
 {
-  if (mockedNimbusTopoHistoryState != null) {
-    return null;
-  }
-  return new LocalState((masterLocalDir(conf) + FILE_SEPARATOR + "history"));
+  return _instance.nimbusTopoHistoryStateImpl(conf);
 }

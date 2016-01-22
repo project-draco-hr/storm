@@ -1,0 +1,3 @@
+{
+  return stormDistPath(supervisorLocalDir(conf));
+}

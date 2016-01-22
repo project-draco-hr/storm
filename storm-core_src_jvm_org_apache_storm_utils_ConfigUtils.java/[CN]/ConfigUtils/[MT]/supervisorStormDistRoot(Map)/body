@@ -1,6 +1,3 @@
 {
-  if (mockedSupervisorStormDistRoot != null) {
-    return null;
-  }
-  return stormDistPath(supervisorLocalDir(conf));
+  return _instance.supervisorStormDistRootImpl(conf);
 }

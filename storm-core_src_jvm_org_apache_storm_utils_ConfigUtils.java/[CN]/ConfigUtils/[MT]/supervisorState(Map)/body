@@ -1,6 +1,3 @@
 {
-  if (mockedSupervisorState != null) {
-    return null;
-  }
-  return new LocalState((supervisorLocalDir(conf) + FILE_SEPARATOR + "localstate"));
+  return _instance.supervisorStateImpl(conf);
 }

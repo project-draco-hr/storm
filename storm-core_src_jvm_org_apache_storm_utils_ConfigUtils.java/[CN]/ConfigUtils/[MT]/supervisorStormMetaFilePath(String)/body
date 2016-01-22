@@ -1,7 +1,0 @@
-{
-  String ret="";
-  if (stormRoot != null) {
-    ret=stormRoot;
-  }
-  return (ret + FILE_SEPARATOR + "storm-code-distributor.meta");
-}
