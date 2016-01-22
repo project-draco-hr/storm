@@ -1,0 +1,5 @@
+{
+  _retryForever=retryForever;
+  _retryTimes=retryTimes;
+  waitGrabber=new StormBoundedExponentialBackoffRetry(retryInterval,retryIntervalCeiling,retryTimes);
+}
