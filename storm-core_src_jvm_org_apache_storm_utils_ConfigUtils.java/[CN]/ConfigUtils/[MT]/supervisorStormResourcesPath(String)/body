@@ -1,7 +1,3 @@
 {
-  String ret="";
-  if (stormRoot != null) {
-    ret=stormRoot;
-  }
-  return (ret + FILE_SEPARATOR + RESOURCES_SUBDIR);
+  return (concatIfNotNull(stormRoot) + FILE_SEPARATOR + RESOURCES_SUBDIR);
 }

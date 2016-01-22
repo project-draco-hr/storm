@@ -1,0 +1,7 @@
+{
+  String ret="";
+  if (dir != null) {
+    ret=dir;
+  }
+  return ret;
+}

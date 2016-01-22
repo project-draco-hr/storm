@@ -1,7 +1,3 @@
 {
-  String ret="";
-  if (stormRoot != null) {
-    ret=stormRoot;
-  }
-  return (ret + FILE_SEPARATOR + "stormconf.ser");
+  return (concatIfNotNull(stormRoot) + FILE_SEPARATOR + "stormconf.ser");
 }

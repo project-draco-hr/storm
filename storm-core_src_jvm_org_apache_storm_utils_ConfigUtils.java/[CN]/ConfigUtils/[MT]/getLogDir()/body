@@ -8,12 +8,7 @@
     dir=String.valueOf(conf.get("storm.log.dir"));
   }
  else {
-    if (System.getProperty("storm.home") != null) {
-      dir=System.getProperty("storm.home") + FILE_SEPARATOR + "logs";
-    }
- else {
-      dir=FILE_SEPARATOR + "logs";
-    }
+    dir=concatIfNotNull(System.getProperty("storm.home")) + FILE_SEPARATOR + "logs";
   }
   try {
     return new File(dir).getCanonicalPath();
