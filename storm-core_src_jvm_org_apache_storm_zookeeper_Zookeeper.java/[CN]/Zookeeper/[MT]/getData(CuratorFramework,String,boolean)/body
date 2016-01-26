@@ -1,0 +1,19 @@
+{
+  try {
+    String npath=Utils.normalizePath(path);
+    if (existsNode(zk,npath,watch)) {
+      if (watch) {
+        return zk.getData().watched().forPath(npath);
+      }
+ else {
+        return zk.getData().forPath(npath);
+      }
+    }
+  }
+ catch (  KeeperException e) {
+  }
+catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+  return null;
+}

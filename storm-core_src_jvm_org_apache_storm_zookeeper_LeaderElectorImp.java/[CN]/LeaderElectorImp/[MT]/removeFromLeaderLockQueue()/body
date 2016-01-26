@@ -1,0 +1,14 @@
+{
+  if (LeaderLatch.State.STARTED.equals(leaderLatch.get().getState())) {
+    try {
+      leaderLatch.get().close();
+      LOG.info("Removed from leader lock queue.");
+    }
+ catch (    IOException e) {
+      LOG.warn("failed to  close leaderLatch!!");
+    }
+  }
+ else {
+    LOG.info("leader latch is not started so no removeFromLeaderLockQueue needed.");
+  }
+}

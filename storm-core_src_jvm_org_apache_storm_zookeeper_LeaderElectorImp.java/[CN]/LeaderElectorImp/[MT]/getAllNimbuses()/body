@@ -1,0 +1,13 @@
+{
+  List<NimbusInfo> nimbusInfos=new ArrayList<>();
+  try {
+    Collection<Participant> participants=leaderLatch.get().getParticipants();
+    for (    Participant participant : participants) {
+      nimbusInfos.add(Zookeeper.toNimbusInfo(participant));
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("failed to get nimbuses",e);
+  }
+  return nimbusInfos;
+}

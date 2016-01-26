@@ -1,0 +1,3 @@
+{
+  LOG.info("no-op for zookeeper implementation");
+}

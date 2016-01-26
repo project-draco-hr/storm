@@ -1,0 +1,14 @@
+{
+  try {
+    String npath=Utils.normalizePath(path);
+    if (existsNode(zk,npath,false)) {
+      zk.delete().deletingChildrenIfNeeded().forPath(Utils.normalizePath(path));
+    }
+  }
+ catch (  KeeperException.NoNodeException e) {
+    LOG.info("exception",e);
+  }
+catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}

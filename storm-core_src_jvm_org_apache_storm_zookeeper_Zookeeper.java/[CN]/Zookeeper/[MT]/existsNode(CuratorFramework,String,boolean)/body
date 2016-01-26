@@ -1,0 +1,15 @@
+{
+  Stat stat=null;
+  try {
+    if (watch) {
+      stat=zk.checkExists().watched().forPath(Utils.normalizePath(path));
+    }
+ else {
+      stat=zk.checkExists().forPath(Utils.normalizePath(path));
+    }
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+  return stat != null;
+}

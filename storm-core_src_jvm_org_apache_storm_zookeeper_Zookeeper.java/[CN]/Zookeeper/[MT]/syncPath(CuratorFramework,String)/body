@@ -1,0 +1,8 @@
+{
+  try {
+    zk.sync().forPath(Utils.normalizePath(path));
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}

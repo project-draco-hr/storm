@@ -1,0 +1,12 @@
+{
+  final String hostName=InetAddress.getLocalHost().getCanonicalHostName();
+  return new LeaderLatchListener(){
+    @Override public void isLeader(){
+      LOG.info(hostName + " gained leadership");
+    }
+    @Override public void notLeader(){
+      LOG.info(hostName + " lost leadership.");
+    }
+  }
+;
+}

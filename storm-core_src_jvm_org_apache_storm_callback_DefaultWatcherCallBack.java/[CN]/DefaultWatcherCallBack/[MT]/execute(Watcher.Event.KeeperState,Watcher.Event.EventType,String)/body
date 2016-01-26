@@ -1,0 +1,3 @@
+{
+  LOG.info("Zookeeper state update:" + ZkKeeperStates.getStateName(state) + ","+ ZkEventTypes.getStateName(type)+ ","+ path);
+}
