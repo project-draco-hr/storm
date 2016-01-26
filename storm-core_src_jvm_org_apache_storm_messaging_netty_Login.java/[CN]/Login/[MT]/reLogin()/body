@@ -1,0 +1,18 @@
+{
+  if (!isKrbTicket) {
+    return;
+  }
+  LoginContext login=getLogin();
+  if (login == null) {
+    throw new LoginException("login must be done first");
+  }
+  sleepUntilSufficientTimeElapsed();
+  LOG.info("Initiating logout for " + principal);
+synchronized (Login.class) {
+    login.logout();
+    login=new LoginContext(loginContextName,getSubject());
+    LOG.info("Initiating re-login for " + principal);
+    login.login();
+    setLogin(login);
+  }
+}

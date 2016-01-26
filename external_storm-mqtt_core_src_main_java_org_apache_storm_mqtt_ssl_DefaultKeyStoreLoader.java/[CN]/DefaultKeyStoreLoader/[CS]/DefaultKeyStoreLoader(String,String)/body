@@ -1,0 +1,4 @@
+{
+  this.ksFile=keystore;
+  this.tsFile=truststore;
+}

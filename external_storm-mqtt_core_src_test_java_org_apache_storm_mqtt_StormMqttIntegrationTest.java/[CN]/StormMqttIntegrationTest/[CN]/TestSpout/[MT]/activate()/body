@@ -1,0 +1,5 @@
+{
+  super.activate();
+  LOG.info("Spout activated.");
+  spoutActivated=true;
+}

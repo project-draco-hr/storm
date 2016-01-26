@@ -1,0 +1,4 @@
+{
+  LOG.error("MQTT Subscripton failed.",throwable);
+  throw new RuntimeException("MQTT Subscribe failed.",throwable);
+}

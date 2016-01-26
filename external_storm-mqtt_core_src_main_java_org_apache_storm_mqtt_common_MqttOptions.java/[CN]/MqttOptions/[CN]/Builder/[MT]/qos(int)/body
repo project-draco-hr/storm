@@ -1,0 +1,4 @@
+{
+  this.options.setQos(qos);
+  return this;
+}

@@ -1,0 +1,4 @@
+int retryTimes
+int retryInterval
+int retryIntervalCeiling
+boolean retryForever

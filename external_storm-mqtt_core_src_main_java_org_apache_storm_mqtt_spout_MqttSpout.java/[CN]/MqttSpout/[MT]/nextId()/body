@@ -1,0 +1,7 @@
+{
+  this.sequence++;
+  if (this.sequence == Long.MAX_VALUE) {
+    this.sequence=Long.MIN_VALUE;
+  }
+  return this.sequence;
+}

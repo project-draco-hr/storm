@@ -1,0 +1,3 @@
+{
+  LOG.info("Subscripton sucessful.");
+}

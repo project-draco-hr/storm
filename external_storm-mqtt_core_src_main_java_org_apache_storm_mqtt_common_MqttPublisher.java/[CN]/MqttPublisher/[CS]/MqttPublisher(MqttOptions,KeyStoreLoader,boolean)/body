@@ -1,0 +1,7 @@
+{
+  this.retain=retain;
+  this.options=options;
+  this.keyStoreLoader=keyStoreLoader;
+  SslUtils.checkSslConfig(this.options.getUrl(),keyStoreLoader);
+  this.qos=MqttUtils.qosFromInt(this.options.getQos());
+}

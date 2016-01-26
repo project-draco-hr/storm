@@ -1,0 +1,4 @@
+{
+  this.topic=topic;
+  this.message=payload;
+}

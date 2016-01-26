@@ -1,0 +1,6 @@
+{
+  if (qos < 0 || qos > 2) {
+    throw new IllegalArgumentException("MQTT Will QoS must be >= 0 and <= 2");
+  }
+  this.willQos=qos;
+}

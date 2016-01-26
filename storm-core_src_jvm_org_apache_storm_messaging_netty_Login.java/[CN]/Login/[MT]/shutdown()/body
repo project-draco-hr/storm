@@ -1,0 +1,11 @@
+{
+  if ((t != null) && (t.isAlive())) {
+    t.interrupt();
+    try {
+      t.join();
+    }
+ catch (    InterruptedException e) {
+      LOG.warn("error while waiting for Login thread to shutdown: " + e);
+    }
+  }
+}

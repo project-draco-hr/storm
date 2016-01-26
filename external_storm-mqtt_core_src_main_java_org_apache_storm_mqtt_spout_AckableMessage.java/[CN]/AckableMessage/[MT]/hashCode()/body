@@ -1,0 +1,3 @@
+{
+  return new HashCodeBuilder(71,123).append(this.topic).append(this.message).toHashCode();
+}

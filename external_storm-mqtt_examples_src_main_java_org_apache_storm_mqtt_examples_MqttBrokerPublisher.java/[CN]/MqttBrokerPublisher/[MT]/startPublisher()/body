@@ -1,0 +1,20 @@
+{
+  MQTT client=new MQTT();
+  client.setTracer(new MqttLogger());
+  client.setHost("tcp://localhost:1883");
+  client.setClientId("MqttBrokerPublisher");
+  connection=client.blockingConnection();
+  Runtime.getRuntime().addShutdownHook(new Thread(){
+    @Override public void run(){
+      try {
+        LOG.info("Shutting down MQTT client...");
+        connection.disconnect();
+      }
+ catch (      Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+);
+  connection.connect();
+}

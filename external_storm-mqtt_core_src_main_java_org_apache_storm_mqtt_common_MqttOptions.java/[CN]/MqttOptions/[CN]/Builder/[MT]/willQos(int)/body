@@ -1,0 +1,4 @@
+{
+  this.options.setWillQos(qos);
+  return this;
+}

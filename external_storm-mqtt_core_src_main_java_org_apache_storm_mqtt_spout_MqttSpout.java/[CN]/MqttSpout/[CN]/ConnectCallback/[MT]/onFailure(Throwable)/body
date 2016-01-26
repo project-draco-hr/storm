@@ -1,0 +1,4 @@
+{
+  LOG.info("MQTT Connection failed.");
+  MqttSpout.this.mqttConnectFailed=true;
+}

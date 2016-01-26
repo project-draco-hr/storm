@@ -1,0 +1,4 @@
+{
+  LOG.info("MQTT Connected. Subscribing to topic...");
+  MqttSpout.this.mqttConnected=true;
+}
