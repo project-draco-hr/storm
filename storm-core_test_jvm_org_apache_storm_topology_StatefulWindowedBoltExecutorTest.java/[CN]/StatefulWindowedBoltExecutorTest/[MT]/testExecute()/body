@@ -1,0 +1,16 @@
+{
+  mockStormConf.put(Config.TOPOLOGY_BOLTS_MESSAGE_ID_FIELD_NAME,"msgid");
+  mockStormConf.put(Config.TOPOLOGY_BOLTS_WINDOW_LENGTH_COUNT,5);
+  mockStormConf.put(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_COUNT,5);
+  KeyValueState<TaskStream,WindowState> mockState;
+  mockState=Mockito.mock(KeyValueState.class);
+  executor.prepare(mockStormConf,mockTopologyContext,mockOutputCollector,mockState);
+  executor.initState(null);
+  List<Tuple> tuples=getMockTuples(5);
+  for (  Tuple tuple : tuples) {
+    executor.execute(tuple);
+  }
+  Mockito.verify(mockBolt,Mockito.times(1)).execute(getTupleWindow(tuples));
+  WindowState expectedState=new WindowState(Long.MIN_VALUE,4);
+  Mockito.verify(mockState,Mockito.times(1)).put(Mockito.any(TaskStream.class),Mockito.eq(expectedState));
+}

@@ -2,7 +2,7 @@
   this.windowManager=windowManager;
   streamToTs=new ConcurrentHashMap<>();
   executorService=Executors.newSingleThreadScheduledExecutor();
-  this.executorFuture=executorService.scheduleAtFixedRate(this,interval,interval,TimeUnit.MILLISECONDS);
+  this.interval=interval;
   this.eventTsLag=eventTsLag;
   this.inputStreams=inputStreams;
 }

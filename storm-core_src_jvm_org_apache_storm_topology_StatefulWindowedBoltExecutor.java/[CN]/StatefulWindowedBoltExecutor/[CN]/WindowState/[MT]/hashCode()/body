@@ -1,0 +1,5 @@
+{
+  int result=(int)(lastExpired ^ (lastExpired >>> 32));
+  result=31 * result + (int)(lastEvaluated ^ (lastEvaluated >>> 32));
+  return result;
+}

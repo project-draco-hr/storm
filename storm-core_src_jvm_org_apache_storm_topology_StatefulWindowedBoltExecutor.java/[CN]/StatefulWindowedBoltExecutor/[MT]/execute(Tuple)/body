@@ -1,0 +1,11 @@
+{
+  if (!isStateInitialized()) {
+    throw new IllegalStateException("execute invoked before initState with input tuple " + input);
+  }
+ else   if (isRecovering()) {
+    handleRecovery(input);
+  }
+ else {
+    super.execute(input);
+  }
+}

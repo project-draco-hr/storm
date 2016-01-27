@@ -1,0 +1,18 @@
+{
+  if (stateInitialized) {
+    LOG.warn("State is already initialized. Ignoring initState");
+    return;
+  }
+  statefulWindowedBolt.initState((T)state);
+  for (  GlobalStreamId streamId : topologyContext.getThisSources().keySet()) {
+    for (    int taskId : topologyContext.getComponentTasks(streamId.get_componentId())) {
+      WindowState windowState=streamState.get(new TaskStream(taskId,streamId));
+      if (windowState != null) {
+        recoveryStates.put(new TaskStream(taskId,streamId),windowState);
+      }
+    }
+  }
+  LOG.debug("recoveryStates {}",recoveryStates);
+  stateInitialized=true;
+  start();
+}

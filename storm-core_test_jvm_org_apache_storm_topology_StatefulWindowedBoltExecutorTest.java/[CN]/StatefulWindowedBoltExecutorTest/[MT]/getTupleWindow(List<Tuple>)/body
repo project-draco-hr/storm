@@ -1,0 +1,3 @@
+{
+  return new TupleWindowImpl(tuples,tuples,Collections.<Tuple>emptyList());
+}

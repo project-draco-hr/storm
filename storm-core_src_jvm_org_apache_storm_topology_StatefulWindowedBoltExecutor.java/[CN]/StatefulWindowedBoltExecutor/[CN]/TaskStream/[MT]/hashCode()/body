@@ -1,0 +1,5 @@
+{
+  int result=streamId != null ? streamId.hashCode() : 0;
+  result=31 * result + sourceTask;
+  return result;
+}

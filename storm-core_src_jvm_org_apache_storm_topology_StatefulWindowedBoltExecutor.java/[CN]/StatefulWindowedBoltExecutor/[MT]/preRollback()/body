@@ -1,0 +1,4 @@
+{
+  LOG.debug("Rollback streamState, stateInitialized {}",stateInitialized);
+  streamState.rollback();
+}

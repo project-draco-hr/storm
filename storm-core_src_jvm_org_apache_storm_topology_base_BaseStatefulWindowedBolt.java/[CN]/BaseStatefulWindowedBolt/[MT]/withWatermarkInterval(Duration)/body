@@ -1,0 +1,4 @@
+{
+  super.withWatermarkInterval(interval);
+  return this;
+}

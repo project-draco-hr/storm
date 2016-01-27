@@ -1,0 +1,4 @@
+{
+  this.sourceTask=sourceTask;
+  this.streamId=streamId;
+}
