@@ -1,6 +1,6 @@
 {
   try {
-    String npath=Utils.normalizePath(path);
+    String npath=normalizePath(path);
     return zk.setData().forPath(npath,data);
   }
  catch (  Exception e) {

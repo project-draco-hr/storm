@@ -1,19 +1,15 @@
 {
-  try {
-    if (LeaderLatch.State.CLOSED.equals(leaderLatch.get().getState())) {
-      leaderLatch.set(new LeaderLatch(zk,leaderlockPath));
-      leaderLatchListener.set(Zookeeper.leaderLatchListenerImpl(conf,zk,leaderLatch.get()));
-    }
-    if (LeaderLatch.State.LATENT.equals(leaderLatch.get().getState())) {
-      leaderLatch.get().addListener(leaderLatchListener.get());
-      leaderLatch.get().start();
-      LOG.info("Queued up for leader lock.");
-    }
- else {
-      LOG.info("Node already in queue for leader lock.");
-    }
+  if (LeaderLatch.State.CLOSED.equals(leaderLatch.get().getState())) {
+    leaderLatch.set(new LeaderLatch(zk,leaderlockPath));
+    leaderLatchListener.set(Zookeeper.leaderLatchListenerImpl(conf,zk,leaderLatch.get()));
+    LOG.info("LeaderLatch was in closed state. Resetted the leaderLatch and listeners.");
   }
- catch (  Exception e) {
-    LOG.warn("failed to add LeaderLatchListener",e);
+  if (LeaderLatch.State.LATENT.equals(leaderLatch.get().getState())) {
+    leaderLatch.get().addListener(leaderLatchListener.get());
+    leaderLatch.get().start();
+    LOG.info("Queued up for leader lock.");
+  }
+ else {
+    LOG.info("Node already in queue for leader lock.");
   }
 }

@@ -1,11 +1,11 @@
 {
   StringBuffer buff=new StringBuffer();
-  buff.append(File.separator);
+  buff.append("/");
   int size=toks.size();
   for (int i=0; i < size; i++) {
     buff.append(toks.get(i));
     if (i < (size - 1)) {
-      buff.append(File.separator);
+      buff.append("/");
     }
   }
   return buff.toString();

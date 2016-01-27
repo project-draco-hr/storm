@@ -2,10 +2,10 @@
   Stat stat=null;
   try {
     if (watch) {
-      stat=zk.checkExists().watched().forPath(Utils.normalizePath(path));
+      stat=zk.checkExists().watched().forPath(normalizePath(path));
     }
  else {
-      stat=zk.checkExists().forPath(Utils.normalizePath(path));
+      stat=zk.checkExists().forPath(normalizePath(path));
     }
   }
  catch (  Exception e) {

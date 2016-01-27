@@ -1,5 +1,5 @@
 {
-  String npath=Utils.normalizePath(path);
+  String npath=normalizePath(path);
   if (npath.equals("/")) {
     return;
   }
@@ -8,5 +8,11 @@
   }
   byte[] byteArray=new byte[1];
   byteArray[0]=(byte)7;
-  createNode(zk,npath,byteArray,org.apache.zookeeper.CreateMode.PERSISTENT,acls);
+  try {
+    createNode(zk,npath,byteArray,org.apache.zookeeper.CreateMode.PERSISTENT,acls);
+  }
+ catch (  Exception e) {
+    if (exceptionCause(KeeperException.NodeExistsException.class,e)) {
+    }
+  }
 }

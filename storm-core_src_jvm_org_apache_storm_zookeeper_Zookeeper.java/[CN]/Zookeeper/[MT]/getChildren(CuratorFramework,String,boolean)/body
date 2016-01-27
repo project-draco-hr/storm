@@ -1,6 +1,6 @@
 {
   try {
-    String npath=Utils.normalizePath(path);
+    String npath=normalizePath(path);
     if (watch) {
       return zk.getChildren().watched().forPath(npath);
     }

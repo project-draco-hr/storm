@@ -1,9 +1,9 @@
 {
-  PersistentArrayMap map=null;
+  APersistentMap map=null;
   try {
     byte[] bytes=null;
     Stat stats=new Stat();
-    String npath=Utils.normalizePath(path);
+    String npath=normalizePath(path);
     if (existsNode(zk,npath,watch)) {
       if (watch) {
         bytes=zk.getData().storingStatIn(stats).watched().forPath(npath);
@@ -17,10 +17,12 @@
       }
     }
   }
- catch (  KeeperException.NoNodeException e) {
-  }
-catch (  Exception e) {
-    Utils.wrapInRuntime(e);
+ catch (  Exception e) {
+    if (exceptionCause(KeeperException.NoNodeException.class,e)) {
+    }
+ else {
+      Utils.wrapInRuntime(e);
+    }
   }
   return map;
 }

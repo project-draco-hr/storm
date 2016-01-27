@@ -1,7 +1,7 @@
 {
   String ret=null;
   try {
-    String npath=Utils.normalizePath(path);
+    String npath=normalizePath(path);
     ret=zk.create().withMode(mode).withACL(acls).forPath(npath,data);
   }
  catch (  Exception e) {

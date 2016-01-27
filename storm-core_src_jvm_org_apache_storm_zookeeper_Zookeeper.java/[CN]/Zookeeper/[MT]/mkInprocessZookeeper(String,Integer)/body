@@ -1,5 +1,5 @@
 {
-  LOG.info("Starting inprocess zookeeper at port " + port + " and dir "+ localdir);
+  LOG.info("Starting inprocess zookeeper at port {} and dir {}",port,localdir);
   File localfile=new File(localdir);
   ZooKeeperServer zk=new ZooKeeperServer(localfile,localfile,2000);
   NIOServerCnxnFactory factory=null;
@@ -12,7 +12,7 @@
   while (true) {
     try {
       factory=new NIOServerCnxnFactory();
-      factory.configure(new InetSocketAddress(port),0);
+      factory.configure(new InetSocketAddress(report),0);
       break;
     }
  catch (    BindException e) {
