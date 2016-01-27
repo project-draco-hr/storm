@@ -1,0 +1,5 @@
+{
+  for (  Values values : function.execute(new Values(tuple.getValues().toArray()))) {
+    collector.emit(values);
+  }
+}
