@@ -1,4 +1,9 @@
 {
+  Channel oldChannel=channelRef.get();
+  if (oldChannel != null) {
+    LOG.debug("Closing oldChannel is connected: {}",oldChannel.toString());
+    close_channel();
+  }
   LOG.debug("Channel is connected: {}",channel.toString());
   channelRef.set(channel);
   if (authMethod == ThriftNettyClientCodec.AuthMethod.NONE) {
