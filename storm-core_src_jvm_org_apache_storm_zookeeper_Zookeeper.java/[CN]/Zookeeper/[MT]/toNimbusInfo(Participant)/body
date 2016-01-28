@@ -1,0 +1,9 @@
+{
+  String id=participant.getId();
+  if (StringUtils.isBlank(id)) {
+    throw new RuntimeException("No nimbus leader participant host found, have you started your nimbus hosts?");
+  }
+  NimbusInfo nimbusInfo=NimbusInfo.parse(id);
+  nimbusInfo.setLeader(participant.isLeader());
+  return nimbusInfo;
+}

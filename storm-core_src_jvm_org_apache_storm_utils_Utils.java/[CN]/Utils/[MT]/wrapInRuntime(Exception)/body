@@ -1,0 +1,8 @@
+{
+  if (e instanceof RuntimeException) {
+    return (RuntimeException)e;
+  }
+ else {
+    return new RuntimeException(e);
+  }
+}

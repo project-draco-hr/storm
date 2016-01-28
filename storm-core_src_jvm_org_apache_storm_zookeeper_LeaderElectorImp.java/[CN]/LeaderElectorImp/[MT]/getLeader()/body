@@ -1,0 +1,8 @@
+{
+  try {
+    return Zookeeper.toNimbusInfo(leaderLatch.get().getLeader());
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}

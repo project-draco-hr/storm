@@ -1,0 +1,8 @@
+{
+  List<NimbusInfo> nimbusInfos=new ArrayList<>();
+  Collection<Participant> participants=leaderLatch.get().getParticipants();
+  for (  Participant participant : participants) {
+    nimbusInfos.add(Zookeeper.toNimbusInfo(participant));
+  }
+  return nimbusInfos;
+}

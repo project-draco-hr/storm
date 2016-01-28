@@ -1,0 +1,10 @@
+{
+  String[] toks=path.split("/");
+  java.util.ArrayList<String> rtn=new ArrayList<String>();
+  for (  String str : toks) {
+    if (!str.isEmpty()) {
+      rtn.add(str);
+    }
+  }
+  return rtn;
+}
