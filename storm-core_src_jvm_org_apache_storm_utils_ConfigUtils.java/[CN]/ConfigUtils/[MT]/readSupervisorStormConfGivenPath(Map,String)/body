@@ -1,0 +1,5 @@
+{
+  Map ret=new HashMap(conf);
+  ret.putAll(Utils.fromCompressedJsonConf(FileUtils.readFileToByteArray(new File(stormConfPath))));
+  return ret;
+}

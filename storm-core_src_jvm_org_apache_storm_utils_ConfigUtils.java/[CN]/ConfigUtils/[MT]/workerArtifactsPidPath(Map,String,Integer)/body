@@ -1,0 +1,3 @@
+{
+  return (workerArtifactsRoot(conf,id,port) + FILE_SEPARATOR + "worker.pid");
+}

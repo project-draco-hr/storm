@@ -1,0 +1,19 @@
+{
+  List<Object> ret=new ArrayList<Object>();
+  Config config=new Config();
+  Class<?> ConfigClass=config.getClass();
+  Field[] fields=ConfigClass.getFields();
+  for (int i=0; i < fields.length; i++) {
+    try {
+      Object obj=fields[i].get(null);
+      ret.add(obj);
+    }
+ catch (    IllegalArgumentException e) {
+      LOG.error(e.getMessage(),e);
+    }
+catch (    IllegalAccessException e) {
+      LOG.error(e.getMessage(),e);
+    }
+  }
+  return ret;
+}

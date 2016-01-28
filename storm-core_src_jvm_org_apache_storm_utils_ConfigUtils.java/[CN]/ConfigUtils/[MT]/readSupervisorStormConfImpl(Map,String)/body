@@ -1,0 +1,5 @@
+{
+  String stormRoot=supervisorStormDistRoot(conf,stormId);
+  String confPath=supervisorStormConfPath(stormRoot);
+  return readSupervisorStormConfGivenPath(conf,confPath);
+}

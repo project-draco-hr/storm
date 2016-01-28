@@ -1,0 +1,3 @@
+{
+  return (workerUserRoot(conf) + FILE_SEPARATOR + workerId);
+}
