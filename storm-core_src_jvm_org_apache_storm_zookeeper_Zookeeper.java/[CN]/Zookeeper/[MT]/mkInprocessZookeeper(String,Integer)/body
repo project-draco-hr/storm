@@ -1,5 +1,4 @@
 {
-  LOG.info("Starting inprocess zookeeper at port {} and dir {}",port,localdir);
   File localfile=new File(localdir);
   ZooKeeperServer zk=new ZooKeeperServer(localfile,localfile,2000);
   NIOServerCnxnFactory factory=null;
@@ -22,6 +21,7 @@
       }
     }
   }
+  LOG.info("Starting inprocess zookeeper at port {} and dir {}",report,localdir);
   factory.startup(zk);
   return Arrays.asList((Object)new Long(report),(Object)factory);
 }
