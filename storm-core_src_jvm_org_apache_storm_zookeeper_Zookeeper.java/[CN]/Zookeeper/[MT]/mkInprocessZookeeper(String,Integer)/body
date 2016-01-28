@@ -23,5 +23,5 @@
     }
   }
   factory.startup(zk);
-  return factory;
+  return Arrays.asList((Object)new Long(report),(Object)factory);
 }
