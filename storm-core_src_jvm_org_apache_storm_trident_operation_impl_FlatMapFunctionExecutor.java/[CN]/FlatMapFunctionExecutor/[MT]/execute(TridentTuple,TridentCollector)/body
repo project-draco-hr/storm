@@ -1,5 +1,5 @@
 {
-  for (  Values values : function.execute(new Values(tuple.getValues().toArray()))) {
+  for (  Values values : function.execute(tuple)) {
     collector.emit(values);
   }
 }
