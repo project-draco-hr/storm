@@ -1,0 +1,5 @@
+{
+  this.fields=fields;
+  this.batchSize=batchSize;
+  this.maxNumber=maxNumber;
+}

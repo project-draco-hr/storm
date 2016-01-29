@@ -1,0 +1,10 @@
+{
+  T value1=valueFromTuple(state.previousTuple);
+  T value2=valueFromTuple(tuple);
+  if (value2 == null) {
+    return;
+  }
+  if (value1 == null || compare(value1,value2) == value2) {
+    state.previousTuple=tuple;
+  }
+}

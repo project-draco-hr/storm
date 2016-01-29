@@ -1,0 +1,21 @@
+{
+  Config conf=new Config();
+  conf.setMaxSpoutPending(20);
+  StormTopology[] topologies={buildWordsTopology(),buildIdsTopology(),buildVehiclesTopology()};
+  if (args.length == 0) {
+    for (    StormTopology topology : topologies) {
+      LocalCluster cluster=new LocalCluster();
+      cluster.submitTopology("min-max-topology",conf,topology);
+      Utils.sleep(60 * 1000);
+      cluster.shutdown();
+    }
+    System.exit(0);
+  }
+ else {
+    conf.setNumWorkers(3);
+    int ct=1;
+    for (    StormTopology topology : topologies) {
+      StormSubmitter.submitTopologyWithProgressBar(args[0] + "-" + ct++,conf,topology);
+    }
+  }
+}

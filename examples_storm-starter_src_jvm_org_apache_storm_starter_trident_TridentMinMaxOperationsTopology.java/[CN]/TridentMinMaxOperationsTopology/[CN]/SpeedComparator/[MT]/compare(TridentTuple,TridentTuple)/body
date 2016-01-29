@@ -1,0 +1,5 @@
+{
+  Vehicle vehicle1=(Vehicle)tuple1.getValueByField("vehicle");
+  Vehicle vehicle2=(Vehicle)tuple2.getValueByField("vehicle");
+  return Integer.compare(vehicle1.maxSpeed,vehicle2.maxSpeed);
+}

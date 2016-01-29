@@ -1,0 +1,9 @@
+{
+  FixedBatchSpout spout=new FixedBatchSpout(new Fields("sentence"),3,new Values("the cow jumped over the moon"),new Values("the man went to the store and bought some candy"),new Values("four score and seven years ago"),new Values("how many apples can you eat"),new Values("to be or not to be the person"));
+  spout.setCycle(true);
+  TridentTopology topology=new TridentTopology();
+  Stream wordsStream=topology.newStream("spout1",spout).parallelismHint(16).each(new Fields("sentence"),new Split(),new Fields("word")).each(new Fields("word"),new Debug("##### words"));
+  wordsStream.minBy("word").each(new Fields("word"),new Debug("#### lowest word"));
+  wordsStream.maxBy("word").each(new Fields("word"),new Debug("#### highest word"));
+  return topology.build();
+}

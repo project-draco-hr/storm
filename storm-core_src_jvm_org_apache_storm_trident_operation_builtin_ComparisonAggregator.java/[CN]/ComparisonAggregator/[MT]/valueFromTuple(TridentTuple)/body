@@ -1,0 +1,3 @@
+{
+  return (T)(inputFieldName != null && tuple != null ? tuple.getValueByField(inputFieldName) : tuple);
+}
