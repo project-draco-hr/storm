@@ -1,0 +1,4 @@
+{
+  String namespace=context.getThisComponentId() + "-" + context.getThisTaskId()+ "-window";
+  return (KeyValueState<TaskStream,WindowState>)StateFactory.getState(namespace,stormConf,context);
+}

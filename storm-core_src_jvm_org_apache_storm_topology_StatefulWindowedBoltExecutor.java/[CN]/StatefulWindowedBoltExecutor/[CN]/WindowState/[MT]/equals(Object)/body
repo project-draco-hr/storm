@@ -1,0 +1,7 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  WindowState that=(WindowState)o;
+  if (lastExpired != that.lastExpired)   return false;
+  return lastEvaluated == that.lastEvaluated;
+}

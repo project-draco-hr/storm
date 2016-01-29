@@ -1,0 +1,13 @@
+{
+  if (!isStateInitialized()) {
+    LOG.warn("Cannot prepare before initState");
+  }
+ else   if (!isRecovering()) {
+    LOG.debug("Prepare streamState, txid {}",txid);
+    streamState.prepareCommit(txid);
+    prePrepared=true;
+  }
+ else {
+    LOG.debug("Still recovering, ignoring prePrepare and not preparing streamState.");
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return "WatermarkTimeTriggerPolicy{" + "slidingIntervalMs=" + slidingIntervalMs + ", nextWindowEndTs="+ nextWindowEndTs+ ", started="+ started+ '}';
+}

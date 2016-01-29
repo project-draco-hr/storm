@@ -1,0 +1,3 @@
+{
+  return readYamlConfig(name,true);
+}

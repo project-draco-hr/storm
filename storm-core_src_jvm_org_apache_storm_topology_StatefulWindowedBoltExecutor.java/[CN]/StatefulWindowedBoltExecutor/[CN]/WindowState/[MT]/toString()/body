@@ -1,0 +1,3 @@
+{
+  return "WindowState{" + "lastExpired=" + lastExpired + ", lastEvaluated="+ lastEvaluated+ '}';
+}

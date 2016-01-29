@@ -1,0 +1,4 @@
+{
+  LOG.info("REMOVE worker-user {}",workerId);
+  new File(workerUserFile(conf,workerId)).delete();
+}

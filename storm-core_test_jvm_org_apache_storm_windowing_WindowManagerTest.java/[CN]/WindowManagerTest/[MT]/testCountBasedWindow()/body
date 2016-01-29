@@ -1,7 +1,9 @@
 {
   EvictionPolicy<Integer> evictionPolicy=new CountEvictionPolicy<Integer>(5);
+  TriggerPolicy<Integer> triggerPolicy=new CountTriggerPolicy<Integer>(2,windowManager,evictionPolicy);
+  triggerPolicy.start();
   windowManager.setEvictionPolicy(evictionPolicy);
-  windowManager.setTriggerPolicy(new CountTriggerPolicy<Integer>(2,windowManager,evictionPolicy));
+  windowManager.setTriggerPolicy(triggerPolicy);
   windowManager.add(1);
   windowManager.add(2);
   assertTrue(listener.onExpiryEvents.isEmpty());

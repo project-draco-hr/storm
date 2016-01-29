@@ -1,5 +1,5 @@
 {
-  if (executorFuture.isDone()) {
+  if (executorFuture != null && executorFuture.isDone()) {
     try {
       executorFuture.get();
     }

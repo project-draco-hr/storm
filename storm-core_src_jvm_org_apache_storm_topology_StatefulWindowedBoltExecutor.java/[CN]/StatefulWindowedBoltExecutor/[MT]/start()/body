@@ -1,0 +1,8 @@
+{
+  if (!isStateInitialized() || isRecovering()) {
+    LOG.debug("Will invoke start after recovery is complete.");
+  }
+ else {
+    super.start();
+  }
+}

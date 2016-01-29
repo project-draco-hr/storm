@@ -1,0 +1,6 @@
+{
+  mockBolt=Mockito.mock(IStatefulWindowedBolt.class);
+  mockTopologyContext=Mockito.mock(TopologyContext.class);
+  mockOutputCollector=Mockito.mock(OutputCollector.class);
+  executor=new StatefulWindowedBoltExecutor<>(mockBolt);
+}

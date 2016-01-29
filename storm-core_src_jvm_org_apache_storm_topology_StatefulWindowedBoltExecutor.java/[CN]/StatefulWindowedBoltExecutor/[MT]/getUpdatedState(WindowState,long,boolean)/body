@@ -1,0 +1,20 @@
+{
+  WindowState result=null;
+  if (newEvents) {
+    if (state == null) {
+      result=new WindowState(Long.MIN_VALUE,msgId);
+    }
+ else     if (msgId > state.lastEvaluated) {
+      result=new WindowState(state.lastExpired,msgId);
+    }
+  }
+ else {
+    if (state == null) {
+      result=new WindowState(msgId,Long.MIN_VALUE);
+    }
+ else     if (msgId > state.lastExpired) {
+      result=new WindowState(msgId,state.lastEvaluated);
+    }
+  }
+  return result;
+}

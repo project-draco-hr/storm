@@ -1,0 +1,11 @@
+{
+  List<Tuple> mockTuples=new ArrayList<>();
+  for (long i=0; i < count; i++) {
+    Tuple mockTuple=Mockito.mock(Tuple.class);
+    Mockito.when(mockTuple.getLongByField("msgid")).thenReturn(i);
+    Mockito.when(mockTuple.getSourceTask()).thenReturn(1);
+    Mockito.when(mockTuple.getSourceGlobalStreamId()).thenReturn(new GlobalStreamId("a","s"));
+    mockTuples.add(mockTuple);
+  }
+  return mockTuples;
+}

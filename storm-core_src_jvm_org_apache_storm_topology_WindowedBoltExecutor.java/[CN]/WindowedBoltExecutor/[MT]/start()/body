@@ -1,0 +1,8 @@
+{
+  if (waterMarkEventGenerator != null) {
+    LOG.debug("Starting waterMarkEventGenerator");
+    waterMarkEventGenerator.start();
+  }
+  LOG.debug("Starting trigger policy");
+  triggerPolicy.start();
+}

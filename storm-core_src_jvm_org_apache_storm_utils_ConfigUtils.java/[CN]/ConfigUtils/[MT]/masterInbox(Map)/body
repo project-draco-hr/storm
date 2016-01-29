@@ -1,0 +1,5 @@
+{
+  String ret=masterLocalDir(conf) + FILE_SEPARATOR + "inbox";
+  FileUtils.forceMkdir(new File(ret));
+  return ret;
+}

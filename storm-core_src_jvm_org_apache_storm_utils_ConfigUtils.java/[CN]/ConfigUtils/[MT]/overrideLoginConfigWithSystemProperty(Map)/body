@@ -1,0 +1,7 @@
+{
+  String loginConfFile=System.getProperty("java.security.auth.login.config");
+  if (loginConfFile != null) {
+    conf.put("java.security.auth.login.config",loginConfFile);
+  }
+  return conf;
+}

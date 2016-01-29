@@ -1,0 +1,24 @@
+{
+  long msgId=getMsgId(input);
+  TaskStream taskStream=TaskStream.fromTuple(input);
+  WindowState state=recoveryStates.get(taskStream);
+  LOG.debug("handleRecovery, recoveryStates {}",recoveryStates);
+  if (state != null) {
+    LOG.debug("Tuple msgid {}, saved state {}",msgId,state);
+    if (msgId <= state.lastExpired) {
+      LOG.debug("Ignoring tuple since msg id {} <= lastExpired id {}",msgId,state.lastExpired);
+      outputCollector.ack(input);
+    }
+ else     if (msgId <= state.lastEvaluated) {
+      super.execute(input);
+    }
+ else {
+      LOG.debug("Tuple msg id {} > lastEvaluated id {}, adding to pendingTuples and clearing recovery state " + "for taskStream {}",msgId,state.lastEvaluated,taskStream);
+      pendingTuples.add(input);
+      clearRecoveryState(taskStream);
+    }
+  }
+ else {
+    pendingTuples.add(input);
+  }
+}

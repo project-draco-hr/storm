@@ -1,0 +1,5 @@
+{
+  String ret=supervisorLocalDir(conf) + FILE_SEPARATOR + "tmp";
+  FileUtils.forceMkdir(new File(ret));
+  return ret;
+}

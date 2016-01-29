@@ -1,0 +1,20 @@
+{
+  final WindowLifecycleListener<Tuple> parentListener=super.newWindowLifecycleListener();
+  return new WindowLifecycleListener<Tuple>(){
+    @Override public void onExpiry(    List<Tuple> events){
+      parentListener.onExpiry(events);
+    }
+    @Override public void onActivation(    List<Tuple> events,    List<Tuple> newEvents,    List<Tuple> expired){
+      if (isRecovering()) {
+        String msg=String.format("Unexpected activation with events %s, newEvents %s, expired %s in recovering state. " + "recoveryStates %s ",events,newEvents,expired,recoveryStates);
+        LOG.error(msg);
+        throw new IllegalStateException(msg);
+      }
+ else {
+        parentListener.onActivation(events,newEvents,expired);
+        updateWindowState(expired,newEvents);
+      }
+    }
+  }
+;
+}

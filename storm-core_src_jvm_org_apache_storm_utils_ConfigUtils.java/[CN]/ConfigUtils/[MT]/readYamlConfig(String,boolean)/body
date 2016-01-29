@@ -1,0 +1,5 @@
+{
+  Map conf=Utils.findAndReadConfigFile(name,mustExist);
+  ConfigValidation.validateFields(conf);
+  return conf;
+}

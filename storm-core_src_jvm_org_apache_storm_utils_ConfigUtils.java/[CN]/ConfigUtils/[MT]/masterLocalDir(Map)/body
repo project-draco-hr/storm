@@ -1,0 +1,5 @@
+{
+  String ret=String.valueOf(conf.get(Config.STORM_LOCAL_DIR)) + FILE_SEPARATOR + "nimbus";
+  FileUtils.forceMkdir(new File(ret));
+  return ret;
+}

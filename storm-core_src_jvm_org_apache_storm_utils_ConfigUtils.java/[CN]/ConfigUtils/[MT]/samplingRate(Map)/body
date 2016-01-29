@@ -1,0 +1,7 @@
+{
+  double rate=Utils.getDouble(conf.get(Config.TOPOLOGY_STATS_SAMPLE_RATE));
+  if (rate != 0) {
+    return (int)(1 / rate);
+  }
+  throw new IllegalArgumentException("Illegal topology.stats.sample.rate in conf: " + rate);
+}

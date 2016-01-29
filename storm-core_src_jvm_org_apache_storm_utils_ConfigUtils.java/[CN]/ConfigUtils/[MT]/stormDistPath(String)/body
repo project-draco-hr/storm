@@ -1,0 +1,7 @@
+{
+  String ret="";
+  if (stormRoot != null) {
+    ret=stormRoot;
+  }
+  return ret + FILE_SEPARATOR + "stormdist";
+}

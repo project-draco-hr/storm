@@ -1,0 +1,10 @@
+{
+  recoveryStates.remove(stream);
+  if (!isRecovering()) {
+    super.start();
+    LOG.debug("Recovery complete, processing {} pending tuples",pendingTuples.size());
+    for (    Tuple tuple : pendingTuples) {
+      super.execute(tuple);
+    }
+  }
+}

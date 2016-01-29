@@ -1,0 +1,18 @@
+{
+  if (!ready || channelRef.get() == null) {
+synchronized (this) {
+      if (!ready) {
+        LOG.debug("Waiting for netty channel to be ready.");
+        try {
+          this.wait(1000);
+          if (!ready || channelRef.get() == null) {
+            throw new RuntimeException("Timed out waiting for channel ready.");
+          }
+        }
+ catch (        InterruptedException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    }
+  }
+}

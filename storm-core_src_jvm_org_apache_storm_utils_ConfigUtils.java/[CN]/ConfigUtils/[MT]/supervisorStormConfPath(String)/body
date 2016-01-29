@@ -1,0 +1,3 @@
+{
+  return (concatIfNotNull(stormRoot) + FILE_SEPARATOR + "stormconf.ser");
+}

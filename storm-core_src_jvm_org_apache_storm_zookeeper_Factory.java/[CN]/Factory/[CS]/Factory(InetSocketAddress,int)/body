@@ -1,4 +1,0 @@
-{
-  super();
-  this.configure(addr,maxcc);
-}
