@@ -1,0 +1,7 @@
+Map conf
+List<String> servers
+CuratorFramework zk
+String leaderlockPath
+String id
+AtomicReference<LeaderLatch> leaderLatch
+AtomicReference<LeaderLatchListener> leaderLatchListener

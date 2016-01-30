@@ -1,0 +1,4 @@
+{
+  LOG.info("closing zookeeper connection of leader elector.");
+  zk.close();
+}

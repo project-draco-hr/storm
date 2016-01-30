@@ -1,0 +1,9 @@
+{
+  try {
+    String npath=normalizePath(path);
+    return zk.setData().forPath(npath,data);
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}
