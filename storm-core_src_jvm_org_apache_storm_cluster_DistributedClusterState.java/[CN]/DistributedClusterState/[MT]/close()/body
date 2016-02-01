@@ -1,0 +1,7 @@
+{
+  this.active.set(false);
+  zkWriter.close();
+  if (isNimbus) {
+    zkReader.close();
+  }
+}

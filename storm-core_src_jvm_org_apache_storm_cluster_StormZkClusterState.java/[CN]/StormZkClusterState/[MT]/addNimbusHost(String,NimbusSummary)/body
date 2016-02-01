@@ -1,0 +1,14 @@
+{
+  clusterState.delete_node(Cluster.nimbusPath(nimbusId));
+  clusterState.add_listener(new ConnectionStateListener(){
+    @Override public void stateChanged(    CuratorFramework curatorFramework,    ConnectionState connectionState){
+      LOG.info("Connection state listener invoked, zookeeper connection state has changed to {}",connectionState);
+      if (connectionState.equals(ConnectionState.RECONNECTED)) {
+        LOG.info("Connection state has changed to reconnected so setting nimbuses entry one more time");
+        clusterState.set_ephemeral_node(Cluster.nimbusPath(nimbusId),Utils.serialize(nimbusSummary),acls);
+      }
+    }
+  }
+);
+  clusterState.set_ephemeral_node(Cluster.nimbusPath(nimbusId),Utils.serialize(nimbusSummary),acls);
+}

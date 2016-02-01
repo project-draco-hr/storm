@@ -1,0 +1,3 @@
+{
+  clusterState.set_data(Cluster.assignmentPath(stormId),Utils.serialize(info),acls);
+}

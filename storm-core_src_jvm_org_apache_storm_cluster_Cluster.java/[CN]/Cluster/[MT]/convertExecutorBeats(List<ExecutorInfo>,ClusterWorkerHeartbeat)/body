@@ -1,0 +1,10 @@
+{
+  Map<ExecutorInfo,ClusterWorkerHeartbeat> executorWhb=new HashMap<>();
+  Map<ExecutorInfo,ExecutorStats> executorStatsMap=workerHeartbeat.get_executor_stats();
+  for (  ExecutorInfo executor : executors) {
+    if (executorStatsMap.containsKey(executor)) {
+      executorWhb.put(executor,workerHeartbeat);
+    }
+  }
+  return executorWhb;
+}

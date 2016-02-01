@@ -1,0 +1,7 @@
+{
+  clusterState.delete_node(Cluster.assignmentPath(stormId));
+  clusterState.delete_node(Cluster.credentialsPath(stormId));
+  clusterState.delete_node(Cluster.logConfigPath(stormId));
+  clusterState.delete_node(Cluster.profilerConfigPath(stormId));
+  removeStormBase(stormId);
+}

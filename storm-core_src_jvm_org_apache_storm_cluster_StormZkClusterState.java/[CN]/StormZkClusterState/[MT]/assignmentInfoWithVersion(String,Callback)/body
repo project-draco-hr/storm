@@ -1,0 +1,10 @@
+{
+  if (callback != null) {
+    assignmentInfoWithVersionCallback.put(stormId,callback);
+  }
+  APersistentMap aPersistentMap=clusterState.get_data_with_version(Cluster.assignmentPath(stormId),callback != null);
+  Assignment assignment=Cluster.maybeDeserialize((byte[])aPersistentMap.get("data"),Assignment.class);
+  Integer version=(Integer)aPersistentMap.get("version");
+  APersistentMap map=new PersistentArrayMap(new Object[]{RT.keyword(null,"data"),assignment,RT.keyword(null,"version"),version});
+  return map;
+}

@@ -1,0 +1,13 @@
+{
+  try {
+    clusterState.delete_node(Cluster.errorStormRoot(stormId));
+  }
+ catch (  Exception e) {
+    if (Zookeeper.exceptionCause(KeeperException.class,e)) {
+      LOG.warn("Could not teardown errors for {}.",stormId);
+    }
+ else {
+      throw e;
+    }
+  }
+}

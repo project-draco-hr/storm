@@ -1,0 +1,8 @@
+{
+  List<String> toks=Zookeeper.tokenizePath(path);
+  int size=toks.size();
+  if (size > 0) {
+    toks.remove(size - 1);
+  }
+  return Zookeeper.toksToPath(toks);
+}

@@ -1,0 +1,14 @@
+{
+  List<ProfileRequest> profileRequests=new ArrayList<>();
+  String path=Cluster.profilerConfigPath(stormId);
+  if (clusterState.node_exists(path,false)) {
+    List<String> strs=clusterState.get_children(path,false);
+    for (    String str : strs) {
+      String childPath=path + Cluster.ZK_SEPERATOR + str;
+      byte[] raw=clusterState.get_data(childPath,false);
+      ProfileRequest request=Cluster.maybeDeserialize(raw,ProfileRequest.class);
+      if (request != null)       profileRequests.add(request);
+    }
+  }
+  return profileRequests;
+}

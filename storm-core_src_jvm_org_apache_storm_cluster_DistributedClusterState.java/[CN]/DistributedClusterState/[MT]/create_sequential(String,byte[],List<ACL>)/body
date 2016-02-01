@@ -1,0 +1,3 @@
+{
+  return Zookeeper.createNode(zkWriter,path,data,CreateMode.EPHEMERAL_SEQUENTIAL,acls);
+}

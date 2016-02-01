@@ -1,0 +1,6 @@
+{
+  if (callback != null) {
+    stormBaseCallback.put(stormId,callback);
+  }
+  return Cluster.maybeDeserialize(clusterState.get_data(Cluster.stormPath(stormId),callback != null),StormBase.class);
+}

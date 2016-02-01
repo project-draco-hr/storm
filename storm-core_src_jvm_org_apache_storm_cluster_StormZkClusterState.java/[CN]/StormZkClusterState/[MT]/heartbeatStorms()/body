@@ -1,0 +1,3 @@
+{
+  return clusterState.get_worker_hb_children(Cluster.WORKERBEATS_SUBTREE,false);
+}

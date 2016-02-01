@@ -1,0 +1,4 @@
+{
+  String path=Cluster.logConfigPath(stormId);
+  return Cluster.maybeDeserialize(clusterState.get_data(path,cb != null),LogConfig.class);
+}

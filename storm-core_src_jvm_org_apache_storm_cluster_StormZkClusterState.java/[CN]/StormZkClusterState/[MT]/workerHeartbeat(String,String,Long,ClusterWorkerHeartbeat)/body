@@ -1,0 +1,6 @@
+{
+  if (info != null) {
+    String path=Cluster.workerbeatPath(stormId,node,port);
+    clusterState.set_worker_hb(path,Utils.serialize(info),acls);
+  }
+}

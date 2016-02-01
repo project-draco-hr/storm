@@ -1,0 +1,21 @@
+{
+  try {
+    String path=Cluster.errorPath(stormId,componentId);
+    String lastErrorPath=Cluster.lastErrorPath(stormId,componentId);
+    ErrorInfo errorInfo=new ErrorInfo(error,Time.currentTimeSecs());
+    errorInfo.set_host(node);
+    errorInfo.set_port(port.intValue());
+    byte[] serData=Utils.serialize(errorInfo);
+    clusterState.mkdirs(path,acls);
+    clusterState.create_sequential(path + Cluster.ZK_SEPERATOR + "e",serData,acls);
+    clusterState.set_data(lastErrorPath,serData,acls);
+    List<String> childrens=clusterState.get_children(path,false);
+    Collections.sort(childrens);
+    while (childrens.size() >= 10) {
+      clusterState.delete_node(path + Cluster.ZK_SEPERATOR + childrens.remove(0));
+    }
+  }
+ catch (  UnsupportedEncodingException e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}

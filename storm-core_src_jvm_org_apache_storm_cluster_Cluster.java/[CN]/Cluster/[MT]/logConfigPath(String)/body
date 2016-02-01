@@ -1,0 +1,3 @@
+{
+  return LOGCONFIG_SUBTREE + ZK_SEPERATOR + stormId;
+}

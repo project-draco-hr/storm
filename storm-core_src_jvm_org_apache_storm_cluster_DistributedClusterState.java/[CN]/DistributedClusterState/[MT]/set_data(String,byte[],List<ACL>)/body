@@ -1,0 +1,9 @@
+{
+  if (Zookeeper.exists(zkWriter,path,false)) {
+    Zookeeper.setData(zkWriter,path,data);
+  }
+ else {
+    Zookeeper.mkdirs(zkWriter,parentPath(path),acls);
+    Zookeeper.createNode(zkWriter,path,data,CreateMode.PERSISTENT,acls);
+  }
+}

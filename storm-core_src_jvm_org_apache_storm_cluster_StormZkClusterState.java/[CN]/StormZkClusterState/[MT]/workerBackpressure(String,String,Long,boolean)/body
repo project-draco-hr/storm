@@ -1,0 +1,12 @@
+{
+  String path=Cluster.backpressurePath(stormId,node,port);
+  boolean existed=clusterState.node_exists(path,false);
+  if (existed) {
+    if (on == false)     clusterState.delete_node(path);
+  }
+ else {
+    if (on == true) {
+      clusterState.set_ephemeral_node(path,null,acls);
+    }
+  }
+}

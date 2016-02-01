@@ -1,0 +1,3 @@
+{
+  return errorStormRoot(stormId) + ZK_SEPERATOR + URLEncoder.encode(componentId,"UTF-8");
+}

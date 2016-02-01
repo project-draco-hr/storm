@@ -1,0 +1,3 @@
+String stormId
+NodeInfo nodeInfo
+boolean isThrift
