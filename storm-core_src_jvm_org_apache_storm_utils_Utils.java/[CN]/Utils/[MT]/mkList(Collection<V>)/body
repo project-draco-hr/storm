@@ -1,0 +1,9 @@
+{
+  ArrayList<V> rtn=new ArrayList<V>();
+  if (args != null) {
+    for (    V o : args) {
+      rtn.add(o);
+    }
+  }
+  return rtn;
+}

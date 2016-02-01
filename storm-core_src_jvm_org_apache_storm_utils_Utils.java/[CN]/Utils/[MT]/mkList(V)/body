@@ -1,0 +1,7 @@
+{
+  ArrayList<V> rtn=new ArrayList<V>();
+  for (  V o : args) {
+    rtn.add(o);
+  }
+  return rtn;
+}

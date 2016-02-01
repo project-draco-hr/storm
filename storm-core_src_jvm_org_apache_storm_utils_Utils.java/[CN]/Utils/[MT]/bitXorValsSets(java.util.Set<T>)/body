@@ -1,0 +1,7 @@
+{
+  long rtn=0l;
+  for (  T n : vals) {
+    rtn=bitXor(rtn,n);
+  }
+  return rtn;
+}
