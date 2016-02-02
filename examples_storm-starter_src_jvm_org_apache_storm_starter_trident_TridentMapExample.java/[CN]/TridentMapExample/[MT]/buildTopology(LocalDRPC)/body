@@ -2,7 +2,7 @@
   FixedBatchSpout spout=new FixedBatchSpout(new Fields("word"),3,new Values("the cow jumped over the moon"),new Values("the man went to the store and bought some candy"),new Values("four score and seven years ago"),new Values("how many apples can you eat"),new Values("to be or not to be the person"));
   spout.setCycle(true);
   TridentTopology topology=new TridentTopology();
-  TridentState wordCounts=topology.newStream("spout1",spout).parallelismHint(16).flatMap(split).map(toUpper).groupBy(new Fields("word")).persistentAggregate(new MemoryMapState.Factory(),new Count(),new Fields("count")).parallelismHint(16);
-  topology.newDRPCStream("words",drpc).flatMap(split).groupBy(new Fields("args")).stateQuery(wordCounts,new Fields("args"),new MapGet(),new Fields("count")).each(new Fields("count"),new FilterNull()).aggregate(new Fields("count"),new Sum(),new Fields("sum"));
+  TridentState wordCounts=topology.newStream("spout1",spout).parallelismHint(16).flatMap(split).map(toUpper).filter(theFilter).groupBy(new Fields("word")).persistentAggregate(new MemoryMapState.Factory(),new Count(),new Fields("count")).parallelismHint(16);
+  topology.newDRPCStream("words",drpc).flatMap(split).groupBy(new Fields("args")).stateQuery(wordCounts,new Fields("args"),new MapGet(),new Fields("count")).filter(new FilterNull()).aggregate(new Fields("count"),new Sum(),new Fields("sum"));
   return topology.build();
 }
