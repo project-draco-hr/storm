@@ -1,0 +1,11 @@
+{
+  final String subject=schema.getName();
+  final int guid;
+  try {
+    guid=theClient.register(subject,schema);
+  }
+ catch (  IOException|RestClientException e) {
+    throw new RuntimeException(e);
+  }
+  return Integer.toString(guid);
+}

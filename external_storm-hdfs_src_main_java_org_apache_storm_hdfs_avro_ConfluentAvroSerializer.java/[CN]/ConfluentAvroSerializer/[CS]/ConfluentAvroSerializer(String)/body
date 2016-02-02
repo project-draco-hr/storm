@@ -1,0 +1,4 @@
+{
+  this.url=url;
+  this.theClient=new CachedSchemaRegistryClient(this.url,10000);
+}
