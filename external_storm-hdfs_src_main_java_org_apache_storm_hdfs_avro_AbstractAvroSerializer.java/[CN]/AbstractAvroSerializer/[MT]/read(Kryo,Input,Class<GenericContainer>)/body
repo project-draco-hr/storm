@@ -1,0 +1,13 @@
+{
+  Schema theSchema=this.getSchema(input.readString());
+  GenericDatumReader<GenericContainer> reader=new GenericDatumReader<>(theSchema);
+  Decoder decoder=DecoderFactory.get().directBinaryDecoder(input,null);
+  GenericContainer foo;
+  try {
+    foo=reader.read(null,decoder);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  return foo;
+}

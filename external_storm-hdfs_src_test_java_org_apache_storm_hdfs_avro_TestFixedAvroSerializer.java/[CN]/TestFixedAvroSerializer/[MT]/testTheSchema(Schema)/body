@@ -1,0 +1,7 @@
+{
+  String fp1=reg.getFingerprint(schema);
+  Schema found=reg.getSchema(fp1);
+  String fp2=reg.getFingerprint(found);
+  Assert.assertEquals(found,schema);
+  Assert.assertEquals(fp1,fp2);
+}

@@ -1,0 +1,4 @@
+{
+  url=(String)stormConf.get("avro.schemaregistry.confluent");
+  this.theClient=new CachedSchemaRegistryClient(this.url,10000);
+}
