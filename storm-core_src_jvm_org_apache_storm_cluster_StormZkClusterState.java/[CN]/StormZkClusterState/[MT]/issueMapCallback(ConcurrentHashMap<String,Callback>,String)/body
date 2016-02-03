@@ -1,4 +1,0 @@
-{
-  Callback callback=callbackConcurrentHashMap.remove(key);
-  callback.execute();
-}

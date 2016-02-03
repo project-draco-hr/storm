@@ -1,5 +1,0 @@
-String stormId
-String componentId
-String node
-Long port
-String error

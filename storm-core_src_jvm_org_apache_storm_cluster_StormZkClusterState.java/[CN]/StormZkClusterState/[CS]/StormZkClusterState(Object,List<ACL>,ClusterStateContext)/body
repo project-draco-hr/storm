@@ -33,7 +33,7 @@
       if (size >= 1) {
         String params=null;
         String root=toks.get(0);
-        Callback fn=null;
+        IFn fn=null;
         if (root.equals(Cluster.ASSIGNMENTS_ROOT)) {
           if (size == 1) {
             issueCallback(assignmentsCallback);

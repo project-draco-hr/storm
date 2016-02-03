@@ -1,9 +1,0 @@
-{
-  List<ProfileRequest> requests=new ArrayList<>();
-  List<ProfileRequest> profileRequests=getTopologyProfileRequets(stormId,isThrift);
-  for (  ProfileRequest profileRequest : profileRequests) {
-    NodeInfo nodeInfo1=profileRequest.get_nodeInfo();
-    if (nodeInfo1.equals(nodeInfo))     requests.add(profileRequest);
-  }
-  return requests;
-}

@@ -1,0 +1,4 @@
+{
+  IFn callback=callbackConcurrentHashMap.remove(key);
+  callback.invoke();
+}

@@ -1,4 +1,0 @@
-{
-  Callback callback=cb.getAndSet(null);
-  callback.execute();
-}

@@ -1,0 +1,7 @@
+{
+  String path=Cluster.blobstorePath(key) + Cluster.ZK_SEPERATOR + nimbusInfo.toHostPortString()+ "-"+ versionInfo;
+  LOG.info("set-path: {}",path);
+  clusterState.mkdirs(Cluster.blobstorePath(key),acls);
+  clusterState.delete_node_blobstore(Cluster.blobstorePath(key),nimbusInfo.toHostPortString());
+  clusterState.set_ephemeral_node(path,null,acls);
+}
