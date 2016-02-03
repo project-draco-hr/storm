@@ -1,0 +1,3 @@
+{
+  return schema2fingerprintMap.get(schema);
+}

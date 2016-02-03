@@ -1,0 +1,5 @@
+{
+  String fp1=reg.getFingerprint(schema1);
+  String fp2=reg.getFingerprint(schema2);
+  Assert.assertNotEquals(fp1,fp2);
+}

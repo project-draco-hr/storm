@@ -1,0 +1,12 @@
+{
+  String fingerPrint=this.getFingerprint(record.getSchema());
+  output.writeString(fingerPrint);
+  GenericDatumWriter<GenericContainer> writer=new GenericDatumWriter<>(record.getSchema());
+  BinaryEncoder encoder=EncoderFactory.get().directBinaryEncoder(output,null);
+  try {
+    writer.write(record,encoder);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}
