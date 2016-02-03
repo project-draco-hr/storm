@@ -1,0 +1,9 @@
+{
+  if (reporter != null) {
+    LOG.info("Starting...");
+    reporter.start(10,TimeUnit.SECONDS);
+  }
+ else {
+    throw new IllegalStateException("Attempt to start without preparing " + getClass().getSimpleName());
+  }
+}

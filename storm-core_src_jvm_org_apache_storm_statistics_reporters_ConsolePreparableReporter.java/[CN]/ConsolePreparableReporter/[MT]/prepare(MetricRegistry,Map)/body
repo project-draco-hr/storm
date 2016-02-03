@@ -1,0 +1,25 @@
+{
+  LOG.info("Preparing...");
+  ConsoleReporter.Builder builder=ConsoleReporter.forRegistry(metricsRegistry);
+  PrintStream stream=(PrintStream)stormConf.get(":stream");
+  if (stream != null) {
+    builder.outputTo(stream);
+  }
+  Locale locale=(Locale)stormConf.get(":locale");
+  if (locale != null) {
+    builder.formattedFor(locale);
+  }
+  String rateUnit=Utils.getString(stormConf.get(":rate-unit"),null);
+  if (rateUnit != null) {
+    builder.convertRatesTo(TimeUnit.valueOf(rateUnit));
+  }
+  String durationUnit=Utils.getString(stormConf.get(":duration-unit"),null);
+  if (durationUnit != null) {
+    builder.convertDurationsTo(TimeUnit.valueOf(durationUnit));
+  }
+  MetricFilter filter=(MetricFilter)stormConf.get(":filter");
+  if (filter != null) {
+    builder.filter(filter);
+  }
+  reporter=builder.build();
+}
