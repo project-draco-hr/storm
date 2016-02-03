@@ -1,0 +1,4 @@
+{
+  LOG.info("Starting...");
+  reporter.start();
+}

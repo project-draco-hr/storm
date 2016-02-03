@@ -1,0 +1,17 @@
+{
+  LOG.info("Preparing...");
+  JmxReporter.Builder builder=JmxReporter.forRegistry(metricsRegistry);
+  String domain=Utils.getString(stormConf.get(":domain"),null);
+  if (domain != null) {
+    builder.inDomain(domain);
+  }
+  String rateUnit=Utils.getString(stormConf.get(":rate-unit"),null);
+  if (rateUnit != null) {
+    builder.convertRatesTo(TimeUnit.valueOf(rateUnit));
+  }
+  MetricFilter filter=(MetricFilter)stormConf.get(":filter");
+  if (filter != null) {
+    builder.filter(filter);
+  }
+  reporter=builder.build();
+}

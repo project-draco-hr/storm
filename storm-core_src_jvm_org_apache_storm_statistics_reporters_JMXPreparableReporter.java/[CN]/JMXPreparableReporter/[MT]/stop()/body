@@ -1,0 +1,4 @@
+{
+  LOG.info("Stopping...");
+  reporter.stop();
+}
