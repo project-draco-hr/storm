@@ -1,17 +1,13 @@
 {
   LOG.info("Preparing...");
   JmxReporter.Builder builder=JmxReporter.forRegistry(metricsRegistry);
-  String domain=Utils.getString(stormConf.get(":domain"),null);
+  String domain=Utils.getString(stormConf.get(Config.STORM_DAEMON_METRICS_REPORTER_PLUGIN_DOMAIN),null);
   if (domain != null) {
     builder.inDomain(domain);
   }
-  String rateUnit=Utils.getString(stormConf.get(":rate-unit"),null);
+  TimeUnit rateUnit=MetricsUtils.getMetricsRateUnit(stormConf);
   if (rateUnit != null) {
-    builder.convertRatesTo(TimeUnit.valueOf(rateUnit));
-  }
-  MetricFilter filter=(MetricFilter)stormConf.get(":filter");
-  if (filter != null) {
-    builder.filter(filter);
+    builder.convertRatesTo(rateUnit);
   }
   reporter=builder.build();
 }

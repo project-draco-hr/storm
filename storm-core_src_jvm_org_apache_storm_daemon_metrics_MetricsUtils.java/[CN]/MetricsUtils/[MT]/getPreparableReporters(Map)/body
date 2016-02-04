@@ -1,5 +1,4 @@
 {
-  PreparableReporter reporter=new JmxPreparableReporter();
   List<String> clazzes=(List<String>)stormConf.get(Config.STORM_DAEMON_METRICS_REPORTER_PLUGINS);
   List<PreparableReporter> reporterList=new ArrayList<>();
   if (clazzes != null) {

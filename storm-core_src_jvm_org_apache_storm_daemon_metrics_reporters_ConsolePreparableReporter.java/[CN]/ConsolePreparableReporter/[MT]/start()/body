@@ -1,6 +1,6 @@
 {
   if (reporter != null) {
-    LOG.info("Starting...");
+    LOG.debug("Starting...");
     reporter.start(10,TimeUnit.SECONDS);
   }
  else {

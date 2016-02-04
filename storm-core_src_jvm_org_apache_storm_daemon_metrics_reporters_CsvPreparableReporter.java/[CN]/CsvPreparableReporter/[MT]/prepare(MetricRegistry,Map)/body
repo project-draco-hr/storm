@@ -1,24 +1,20 @@
 {
-  LOG.info("Preparing...");
+  LOG.debug("Preparing...");
   CsvReporter.Builder builder=CsvReporter.forRegistry(metricsRegistry);
-  Locale locale=(Locale)stormConf.get(":locale");
+  Locale locale=MetricsUtils.getMetricsReporterLocale(stormConf);
   if (locale != null) {
     builder.formatFor(locale);
   }
-  String rateUnit=Utils.getString(stormConf.get(":rate-unit"),null);
+  TimeUnit rateUnit=MetricsUtils.getMetricsRateUnit(stormConf);
   if (rateUnit != null) {
-    builder.convertRatesTo(TimeUnit.valueOf(rateUnit));
+    builder.convertRatesTo(rateUnit);
   }
-  String durationUnit=Utils.getString(stormConf.get(":duration-unit"),null);
+  TimeUnit durationUnit=MetricsUtils.getMetricsDurationUnit(stormConf);
   if (durationUnit != null) {
-    builder.convertDurationsTo(TimeUnit.valueOf(durationUnit));
-  }
-  MetricFilter filter=(MetricFilter)stormConf.get(":filter");
-  if (filter != null) {
-    builder.filter(filter);
+    builder.convertDurationsTo(durationUnit);
   }
   String localStormDirLocation=Utils.getString(stormConf.get(Config.STORM_LOCAL_DIR),".");
-  File logDir=new File(localStormDirLocation + "csvmetrics");
-  validateCreateOutputDir(logDir);
-  reporter=builder.build(logDir);
+  File csvMetricsDir=new File(localStormDirLocation + System.getProperty("file.separator") + "csvmetrics");
+  validateCreateOutputDir(csvMetricsDir);
+  reporter=builder.build(csvMetricsDir);
 }

@@ -1,6 +1,6 @@
 {
   if (reporter != null) {
-    LOG.info("Stopping...");
+    LOG.debug("Stopping...");
     reporter.stop();
   }
  else {
