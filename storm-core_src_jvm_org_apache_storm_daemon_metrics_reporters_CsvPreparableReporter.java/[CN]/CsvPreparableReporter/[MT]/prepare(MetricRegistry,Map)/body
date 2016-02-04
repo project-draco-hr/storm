@@ -13,8 +13,6 @@
   if (durationUnit != null) {
     builder.convertDurationsTo(durationUnit);
   }
-  String localStormDirLocation=Utils.getString(stormConf.get(Config.STORM_LOCAL_DIR),".");
-  File csvMetricsDir=new File(localStormDirLocation + System.getProperty("file.separator") + "csvmetrics");
-  validateCreateOutputDir(csvMetricsDir);
+  File csvMetricsDir=MetricsUtils.getCsvLogDir(stormConf);
   reporter=builder.build(csvMetricsDir);
 }
