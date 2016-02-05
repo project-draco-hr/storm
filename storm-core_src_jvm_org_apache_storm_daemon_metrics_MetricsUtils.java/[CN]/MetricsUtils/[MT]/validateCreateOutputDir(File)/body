@@ -1,0 +1,11 @@
+{
+  if (!dir.exists()) {
+    dir.mkdirs();
+  }
+  if (!dir.canWrite()) {
+    throw new IllegalStateException(dir.getName() + " does not have write permissions.");
+  }
+  if (!dir.isDirectory()) {
+    throw new IllegalStateException(dir.getName() + " is not a directory.");
+  }
+}
