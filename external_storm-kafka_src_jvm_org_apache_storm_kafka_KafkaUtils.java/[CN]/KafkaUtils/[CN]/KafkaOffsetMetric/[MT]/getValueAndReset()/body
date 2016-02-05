@@ -3,7 +3,7 @@
     HashMap ret=new HashMap();
     if (_partitions != null && _partitions.size() == _partitionToOffset.size()) {
       Map<String,TopicMetrics> topicMetricsMap=new TreeMap<String,TopicMetrics>();
-      for (      Map.Entry<Partition,Long> e : _partitionToOffset.entrySet()) {
+      for (      Map.Entry<Partition,PartitionManager.OffsetData> e : _partitionToOffset.entrySet()) {
         Partition partition=e.getKey();
         SimpleConsumer consumer=_connections.getConnection(partition);
         if (consumer == null) {
@@ -16,8 +16,9 @@
           LOG.warn("No data found in Kafka Partition " + partition.getId());
           return null;
         }
-        long latestEmittedOffset=e.getValue();
-        long spoutLag=latestTimeOffset - latestEmittedOffset;
+        long latestEmittedOffset=e.getValue().latestEmittedOffset;
+        long latestCompletedOffset=e.getValue().latestCompletedOffset;
+        long spoutLag=latestTimeOffset - latestCompletedOffset;
         String topic=partition.topic;
         String metricPath=partition.getId();
         if (!metricPath.startsWith(topic + "/")) {
@@ -27,6 +28,7 @@
         ret.put(metricPath + "/" + "earliestTimeOffset",earliestTimeOffset);
         ret.put(metricPath + "/" + "latestTimeOffset",latestTimeOffset);
         ret.put(metricPath + "/" + "latestEmittedOffset",latestEmittedOffset);
+        ret.put(metricPath + "/" + "latestCompletedOffset",latestCompletedOffset);
         if (!topicMetricsMap.containsKey(partition.topic)) {
           topicMetricsMap.put(partition.topic,new TopicMetrics());
         }
@@ -35,6 +37,7 @@
         topicMetrics.totalEarliestTimeOffset+=earliestTimeOffset;
         topicMetrics.totalLatestTimeOffset+=latestTimeOffset;
         topicMetrics.totalLatestEmittedOffset+=latestEmittedOffset;
+        topicMetrics.totalLatestCompletedOffset+=latestCompletedOffset;
       }
       for (      Map.Entry<String,TopicMetrics> e : topicMetricsMap.entrySet()) {
         String topic=e.getKey();
@@ -43,6 +46,7 @@
         ret.put(topic + "/" + "totalEarliestTimeOffset",topicMetrics.totalEarliestTimeOffset);
         ret.put(topic + "/" + "totalLatestTimeOffset",topicMetrics.totalLatestTimeOffset);
         ret.put(topic + "/" + "totalLatestEmittedOffset",topicMetrics.totalLatestEmittedOffset);
+        ret.put(topic + "/" + "totalLatestCompletedOffset",topicMetrics.totalLatestCompletedOffset);
       }
       return ret;
     }
