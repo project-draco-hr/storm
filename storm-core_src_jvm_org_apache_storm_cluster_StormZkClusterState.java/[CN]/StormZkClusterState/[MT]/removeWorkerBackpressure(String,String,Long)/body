@@ -1,3 +1,0 @@
-{
-  clusterState.delete_node(Cluster.backpressurePath(stormId,node,port));
-}

@@ -1,0 +1,4 @@
+StateStorage StateStorage
+List<ACL> acls
+ClusterStateContext context
+boolean solo

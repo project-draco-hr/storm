@@ -1,7 +1,0 @@
-{
-  ProfileAction profileAction=profileRequest.get_action();
-  String host=profileRequest.get_nodeInfo().get_node();
-  Long port=profileRequest.get_nodeInfo().get_port_iterator().next();
-  String path=Cluster.profilerConfigPath(stormId,host,port,profileAction);
-  clusterState.set_data(path,Utils.serialize(profileRequest),acls);
-}

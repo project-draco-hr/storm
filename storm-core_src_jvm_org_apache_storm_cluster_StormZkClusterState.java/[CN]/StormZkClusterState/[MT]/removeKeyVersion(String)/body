@@ -1,3 +1,0 @@
-{
-  clusterState.delete_node(Cluster.blobstoreMaxKeySequenceNumberPath(blobKey));
-}

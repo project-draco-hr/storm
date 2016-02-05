@@ -1,3 +1,0 @@
-{
-  return new StormZkClusterState(clusterState,acls,context);
-}

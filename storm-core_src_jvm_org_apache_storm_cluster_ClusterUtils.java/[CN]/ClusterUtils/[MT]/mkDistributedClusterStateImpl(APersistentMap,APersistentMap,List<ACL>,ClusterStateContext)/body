@@ -1,0 +1,14 @@
+{
+  String className=null;
+  StateStorage stateStorage=null;
+  if (config.get(Config.STORM_CLUSTER_STATE_STORE) != null) {
+    className=(String)config.get(Config.STORM_CLUSTER_STATE_STORE);
+  }
+ else {
+    className="org.apache.storm.cluster.ZKStateStorageFactory";
+  }
+  Class clazz=Class.forName(className);
+  StateStorageFactory storageFactory=(StateStorageFactory)clazz.newInstance();
+  stateStorage=storageFactory.mkState(config,auth_conf,acls,context);
+  return stateStorage;
+}

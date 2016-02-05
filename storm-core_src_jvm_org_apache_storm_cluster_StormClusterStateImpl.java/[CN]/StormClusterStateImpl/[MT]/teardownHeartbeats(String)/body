@@ -1,0 +1,13 @@
+{
+  try {
+    stateStorage.delete_worker_hb(ClusterUtils.workerbeatStormRoot(stormId));
+  }
+ catch (  Exception e) {
+    if (Zookeeper.exceptionCause(KeeperException.class,e)) {
+      LOG.warn("Could not teardown heartbeats for {}.",stormId);
+    }
+ else {
+      throw e;
+    }
+  }
+}

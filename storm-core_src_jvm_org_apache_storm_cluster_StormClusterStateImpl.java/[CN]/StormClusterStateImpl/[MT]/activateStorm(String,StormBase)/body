@@ -1,0 +1,4 @@
+{
+  String path=ClusterUtils.stormPath(stormId);
+  stateStorage.set_data(path,Utils.serialize(stormBase),acls);
+}

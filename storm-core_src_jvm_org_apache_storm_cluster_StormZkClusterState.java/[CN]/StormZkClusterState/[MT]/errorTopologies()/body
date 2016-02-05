@@ -1,3 +1,0 @@
-{
-  return clusterState.get_children(Cluster.ERRORS_SUBTREE,false);
-}

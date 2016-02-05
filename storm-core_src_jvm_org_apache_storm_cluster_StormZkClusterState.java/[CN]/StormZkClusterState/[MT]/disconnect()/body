@@ -1,4 +1,0 @@
-{
-  clusterState.unregister(stateId);
-  if (solo)   clusterState.close();
-}

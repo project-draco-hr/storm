@@ -1,0 +1,7 @@
+{
+  if (callback != null) {
+    blobstoreCallback.set(callback);
+  }
+  stateStorage.sync_path(ClusterUtils.BLOBSTORE_SUBTREE);
+  return stateStorage.get_children(ClusterUtils.BLOBSTORE_SUBTREE,callback != null);
+}

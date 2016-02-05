@@ -1,0 +1,3 @@
+{
+  stateStorage.set_data(ClusterUtils.assignmentPath(stormId),Utils.serialize(info),acls);
+}

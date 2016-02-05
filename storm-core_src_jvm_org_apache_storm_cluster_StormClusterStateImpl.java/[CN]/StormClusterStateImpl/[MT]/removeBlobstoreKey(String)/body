@@ -1,0 +1,4 @@
+{
+  LOG.debug("remove key {}",blobKey);
+  stateStorage.delete_node(ClusterUtils.blobstorePath(blobKey));
+}

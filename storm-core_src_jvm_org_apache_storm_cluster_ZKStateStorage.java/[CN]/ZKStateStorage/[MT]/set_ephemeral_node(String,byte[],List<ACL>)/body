@@ -1,0 +1,19 @@
+{
+  Zookeeper.mkdirs(zkWriter,parentPath(path),acls);
+  if (Zookeeper.exists(zkWriter,path,false)) {
+    try {
+      Zookeeper.setData(zkWriter,path,data);
+    }
+ catch (    Exception e) {
+      if (Utils.exceptionCauseIsInstanceOf(KeeperException.NoNodeException.class,e)) {
+        Zookeeper.createNode(zkWriter,path,data,CreateMode.EPHEMERAL,acls);
+      }
+ else {
+        throw Utils.wrapInRuntime(e);
+      }
+    }
+  }
+ else {
+    Zookeeper.createNode(zkWriter,path,data,CreateMode.EPHEMERAL,acls);
+  }
+}

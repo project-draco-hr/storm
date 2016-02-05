@@ -1,3 +1,0 @@
-{
-  clusterState.set_data(Cluster.logConfigPath(stormId),Utils.serialize(logConfig),acls);
-}

@@ -1,7 +1,0 @@
-{
-  byte[] bytes=clusterState.get_worker_hb(Cluster.workerbeatPath(stormId,node,port),false);
-  if (bytes != null) {
-    return Cluster.maybeDeserialize(bytes,ClusterWorkerHeartbeat.class);
-  }
-  return null;
-}

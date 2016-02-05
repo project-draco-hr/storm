@@ -1,0 +1,5 @@
+{
+  List<ACL> aclList=ClusterUtils.mkTopoOnlyAcls(topoConf);
+  String path=ClusterUtils.credentialsPath(stormId);
+  stateStorage.set_data(path,Utils.serialize(creds),aclList);
+}

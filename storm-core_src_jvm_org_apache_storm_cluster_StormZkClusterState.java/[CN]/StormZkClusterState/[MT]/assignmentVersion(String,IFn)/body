@@ -1,6 +1,0 @@
-{
-  if (callback != null) {
-    assignmentVersionCallback.put(stormId,callback);
-  }
-  return clusterState.get_version(Cluster.assignmentPath(stormId),callback != null);
-}

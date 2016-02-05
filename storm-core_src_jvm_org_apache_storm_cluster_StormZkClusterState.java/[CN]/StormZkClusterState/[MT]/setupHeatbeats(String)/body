@@ -1,3 +1,0 @@
-{
-  clusterState.mkdirs(Cluster.workerbeatStormRoot(stormId),acls);
-}

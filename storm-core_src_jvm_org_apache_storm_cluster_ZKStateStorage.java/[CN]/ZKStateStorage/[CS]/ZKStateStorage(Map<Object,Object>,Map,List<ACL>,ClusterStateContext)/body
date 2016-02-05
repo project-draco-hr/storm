@@ -1,0 +1,53 @@
+{
+  this.conf=conf;
+  this.authConf=authConf;
+  if (context.getDaemonType().equals(DaemonType.NIMBUS))   this.isNimbus=true;
+  CuratorFramework zkTemp=mkZk();
+  String rootPath=String.valueOf(conf.get(Config.STORM_ZOOKEEPER_ROOT));
+  Zookeeper.mkdirs(zkTemp,rootPath,acls);
+  zkTemp.close();
+  active=new AtomicBoolean(true);
+  zkWriter=mkZk(new WatcherCallBack(){
+    @Override public void execute(    Watcher.Event.KeeperState state,    Watcher.Event.EventType type,    String path){
+      if (active.get()) {
+        if (!(state.equals(Watcher.Event.KeeperState.SyncConnected))) {
+          LOG.warn("Received event {} : {}: {} with disconnected Zookeeper.",state,type,path);
+        }
+ else {
+          LOG.info("Received event {} : {} : {}",state,type,path);
+        }
+        if (!type.equals(Watcher.Event.EventType.None)) {
+          for (          Map.Entry<String,ZKStateChangedCallback> e : callbacks.entrySet()) {
+            ZKStateChangedCallback fn=e.getValue();
+            fn.changed(type,path);
+          }
+        }
+      }
+    }
+  }
+);
+  if (isNimbus) {
+    zkReader=mkZk(new WatcherCallBack(){
+      @Override public void execute(      Watcher.Event.KeeperState state,      Watcher.Event.EventType type,      String path){
+        if (active.get()) {
+          if (!(state.equals(Watcher.Event.KeeperState.SyncConnected))) {
+            LOG.warn("Received event {} : {}: {} with disconnected Zookeeper.",state,type,path);
+          }
+ else {
+            LOG.debug("Received event {} : {} : {}",state,type,path);
+          }
+          if (!type.equals(Watcher.Event.EventType.None)) {
+            for (            Map.Entry<String,ZKStateChangedCallback> e : callbacks.entrySet()) {
+              ZKStateChangedCallback fn=e.getValue();
+              fn.changed(type,path);
+            }
+          }
+        }
+      }
+    }
+);
+  }
+ else {
+    zkReader=zkWriter;
+  }
+}

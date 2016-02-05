@@ -1,4 +1,0 @@
-{
-  String path=Cluster.supervisorPath(supervisorId);
-  return Cluster.maybeDeserialize(clusterState.get_data(path,false),SupervisorInfo.class);
-}

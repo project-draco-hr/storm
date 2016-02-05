@@ -1,0 +1,4 @@
+{
+  String path=ClusterUtils.supervisorPath(supervisorId);
+  stateStorage.set_ephemeral_node(path,Utils.serialize(info),acls);
+}
