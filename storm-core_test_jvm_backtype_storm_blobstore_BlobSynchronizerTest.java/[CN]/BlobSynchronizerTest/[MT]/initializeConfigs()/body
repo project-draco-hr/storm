@@ -1,4 +1,0 @@
-{
-  conf.put(Config.NIMBUS_ADMINS,"admin");
-  conf.put(Config.NIMBUS_SUPERVISOR_USERS,"supervisor");
-}

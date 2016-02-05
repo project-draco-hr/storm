@@ -1,0 +1,6 @@
+{
+  if (kerbTicket != null) {
+    return kerbTicket.getClient();
+  }
+  return null;
+}

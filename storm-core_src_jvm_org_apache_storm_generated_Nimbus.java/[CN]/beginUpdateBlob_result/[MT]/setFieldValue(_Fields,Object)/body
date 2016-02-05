@@ -1,0 +1,28 @@
+{
+switch (field) {
+case SUCCESS:
+    if (value == null) {
+      unset_success();
+    }
+ else {
+      set_success((String)value);
+    }
+  break;
+case AZE:
+if (value == null) {
+  unset_aze();
+}
+ else {
+  set_aze((AuthorizationException)value);
+}
+break;
+case KNF:
+if (value == null) {
+unset_knf();
+}
+ else {
+set_knf((KeyNotFoundException)value);
+}
+break;
+}
+}

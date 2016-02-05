@@ -1,0 +1,34 @@
+{
+  final int LOCK_EXPIRY_SEC=1;
+  final int WAIT_MSEC=1500;
+  Path file1=new Path(filesDir + Path.SEPARATOR + "file1");
+  Path file2=new Path(filesDir + Path.SEPARATOR + "file2");
+  Path file3=new Path(filesDir + Path.SEPARATOR + "file3");
+  fs.create(file1).close();
+  fs.create(file2).close();
+  fs.create(file3).close();
+  FileLock lock1=FileLock.tryLock(fs,file1,locksDir,"spout1");
+  FileLock lock2=FileLock.tryLock(fs,file2,locksDir,"spout2");
+  FileLock lock3=FileLock.tryLock(fs,file3,locksDir,"spout3");
+  Assert.assertNotNull(lock1);
+  Assert.assertNotNull(lock2);
+  Assert.assertNotNull(lock3);
+  try {
+    HdfsUtils.Pair<Path,FileLock.LogEntry> expired=FileLock.locateOldestExpiredLock(fs,locksDir,LOCK_EXPIRY_SEC);
+    Assert.assertNull(expired);
+    Thread.sleep(WAIT_MSEC);
+    lock1.heartbeat("1");
+    lock2.heartbeat("1");
+    expired=FileLock.locateOldestExpiredLock(fs,locksDir,LOCK_EXPIRY_SEC);
+    Assert.assertNotNull(expired);
+    Assert.assertEquals("spout3",expired.getValue().componentID);
+  }
+  finally {
+    lock1.release();
+    lock2.release();
+    lock3.release();
+    fs.delete(file1,false);
+    fs.delete(file2,false);
+    fs.delete(file3,false);
+  }
+}

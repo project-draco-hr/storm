@@ -1,0 +1,4 @@
+{
+  List<TaskMessage> msgs=(List<TaskMessage>)message;
+  enqueue(msgs,remote);
+}

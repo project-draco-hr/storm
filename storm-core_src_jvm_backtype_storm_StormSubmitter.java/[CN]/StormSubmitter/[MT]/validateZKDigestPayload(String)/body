@@ -1,7 +1,0 @@
-{
-  if (payload != null) {
-    Matcher m=zkDigestPattern.matcher(payload);
-    return m.matches();
-  }
-  return false;
-}

@@ -1,0 +1,9 @@
+{
+  Set<String> randomWordSet=new HashSet<>();
+  Random random=new Random();
+  String[] words=new String[]{"cow","jumped","over","the","moon","apple","day","doctor","away","four","seven","ago","snow","white","seven","dwarfs","nature","two"};
+  for (int i=0; i < 5; i++) {
+    randomWordSet.add(words[random.nextInt(words.length)]);
+  }
+  return randomWordSet;
+}

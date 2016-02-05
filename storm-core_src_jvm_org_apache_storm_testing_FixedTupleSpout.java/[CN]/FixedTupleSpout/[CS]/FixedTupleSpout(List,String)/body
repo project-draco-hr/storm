@@ -1,0 +1,21 @@
+{
+  _id=UUID.randomUUID().toString();
+synchronized (acked) {
+    acked.put(_id,0);
+  }
+synchronized (failed) {
+    failed.put(_id,0);
+  }
+  _tuples=new ArrayList<FixedTuple>();
+  for (  Object o : tuples) {
+    FixedTuple ft;
+    if (o instanceof FixedTuple) {
+      ft=(FixedTuple)o;
+    }
+ else {
+      ft=new FixedTuple((List)o);
+    }
+    _tuples.add(ft);
+  }
+  _fieldName=fieldName;
+}

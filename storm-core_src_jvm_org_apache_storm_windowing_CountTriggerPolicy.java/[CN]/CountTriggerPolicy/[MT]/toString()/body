@@ -1,0 +1,3 @@
+{
+  return "CountTriggerPolicy{" + "count=" + count + ", currentCount="+ currentCount+ ", started="+ started+ '}';
+}

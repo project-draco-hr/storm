@@ -1,3 +1,0 @@
-{
-  this.resources.putAll(topologies_resources);
-}

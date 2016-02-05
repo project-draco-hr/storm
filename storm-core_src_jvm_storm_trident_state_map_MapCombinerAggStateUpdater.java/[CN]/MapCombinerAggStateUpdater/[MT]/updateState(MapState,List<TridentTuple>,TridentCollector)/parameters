@@ -1,3 +1,0 @@
-MapState map
-List<TridentTuple> tuples
-TridentCollector collector

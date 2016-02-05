@@ -1,4 +1,0 @@
-{
-  projectionValidation(fields);
-  return partition(Grouping.fields(fields.toList()));
-}

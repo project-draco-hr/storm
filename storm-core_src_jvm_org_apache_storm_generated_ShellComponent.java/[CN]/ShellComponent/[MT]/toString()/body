@@ -1,0 +1,23 @@
+{
+  StringBuilder sb=new StringBuilder("ShellComponent(");
+  boolean first=true;
+  sb.append("execution_command:");
+  if (this.execution_command == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.execution_command);
+  }
+  first=false;
+  if (!first)   sb.append(", ");
+  sb.append("script:");
+  if (this.script == null) {
+    sb.append("null");
+  }
+ else {
+    sb.append(this.script);
+  }
+  first=false;
+  sb.append(")");
+  return sb.toString();
+}

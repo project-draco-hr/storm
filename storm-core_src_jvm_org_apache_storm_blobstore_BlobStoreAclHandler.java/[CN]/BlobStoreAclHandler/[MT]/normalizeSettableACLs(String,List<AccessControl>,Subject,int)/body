@@ -1,0 +1,13 @@
+{
+  List<AccessControl> cleanAcls=removeBadACLs(acls);
+  Set<String> userNames=getUserNamesFromSubject(who);
+  for (  String user : userNames) {
+    fixACLsForUser(cleanAcls,user,opMask);
+  }
+  if ((who == null || userNames.isEmpty()) && !worldEverything(acls)) {
+    cleanAcls.addAll(BlobStoreAclHandler.WORLD_EVERYTHING);
+    LOG.debug("Access Control for key {} is normalized to world everything {}",key,cleanAcls);
+    if (!acls.isEmpty())     LOG.warn("Access control for blob with key {} is normalized to WORLD_EVERYTHING",key);
+  }
+  return cleanAcls;
+}

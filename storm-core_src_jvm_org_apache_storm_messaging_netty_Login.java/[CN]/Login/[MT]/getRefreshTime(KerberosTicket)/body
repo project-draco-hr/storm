@@ -1,0 +1,13 @@
+{
+  long start=tgt.getStartTime().getTime();
+  long expires=tgt.getEndTime().getTime();
+  LOG.info("TGT valid starting at:        " + tgt.getStartTime().toString());
+  LOG.info("TGT expires:                  " + tgt.getEndTime().toString());
+  long proposedRefresh=start + (long)((expires - start) * (TICKET_RENEW_WINDOW + (TICKET_RENEW_JITTER * rng.nextDouble())));
+  if (proposedRefresh > expires) {
+    return System.currentTimeMillis();
+  }
+ else {
+    return proposedRefresh;
+  }
+}

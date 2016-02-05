@@ -1,5 +1,0 @@
-{
-  if (lastTime + interval > System.currentTimeMillis())   return;
-  exitCode=0;
-  runCommand();
-}

@@ -1,5 +1,0 @@
-{
-  this.graph=graph;
-  this.currGroups=new LinkedHashSet<>(initialGroups);
-  reindex();
-}

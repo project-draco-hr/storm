@@ -1,3 +1,0 @@
-{
-  return Keyword.intern(Symbol.create(name));
-}

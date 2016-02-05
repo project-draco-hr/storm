@@ -1,0 +1,13 @@
+{
+  DirLock lock=DirLock.tryLock(fs,locksDir);
+  Assert.assertTrue(fs.exists(lock.getLockFile()));
+  DirLock lock2=DirLock.tryLock(fs,locksDir);
+  Assert.assertNull(lock2);
+  lock.release();
+  Assert.assertFalse(fs.exists(lock.getLockFile()));
+  lock2=DirLock.tryLock(fs,locksDir);
+  Assert.assertTrue(fs.exists(lock2.getLockFile()));
+  lock2.release();
+  Assert.assertFalse(fs.exists(lock.getLockFile()));
+  lock2.release();
+}

@@ -1,3 +1,0 @@
-{
-  return each(null,function,functionFields);
-}

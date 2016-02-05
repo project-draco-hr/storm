@@ -1,3 +1,0 @@
-String session
-ByteBuffer chunk
-org.apache.thrift.async.AsyncMethodCallback resultHandler

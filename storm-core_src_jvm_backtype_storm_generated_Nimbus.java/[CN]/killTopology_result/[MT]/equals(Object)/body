@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof killTopology_result)   return this.equals((killTopology_result)that);
-  return false;
-}

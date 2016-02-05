@@ -1,0 +1,3 @@
+{
+  return new File((logRoot + FILE_SEPARATOR + id+ FILE_SEPARATOR+ port));
+}

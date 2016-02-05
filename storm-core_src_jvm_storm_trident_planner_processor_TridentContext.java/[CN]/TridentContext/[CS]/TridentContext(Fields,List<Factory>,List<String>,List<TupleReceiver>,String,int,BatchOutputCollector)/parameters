@@ -1,7 +1,0 @@
-Fields selfFields
-List<Factory> parentFactories
-List<String> parentStreams
-List<TupleReceiver> receivers
-String outStreamId
-int stateIndex
-BatchOutputCollector collector

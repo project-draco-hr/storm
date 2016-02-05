@@ -1,0 +1,3 @@
+{
+  this.chunk=org.apache.thrift.TBaseHelper.copyBinary(chunk);
+}

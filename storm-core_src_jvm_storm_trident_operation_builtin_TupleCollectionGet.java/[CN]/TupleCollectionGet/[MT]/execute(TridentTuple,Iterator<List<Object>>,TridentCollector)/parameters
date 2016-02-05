@@ -1,3 +1,0 @@
-TridentTuple tuple
-Iterator<List<Object>> tuplesIterator
-TridentCollector collector

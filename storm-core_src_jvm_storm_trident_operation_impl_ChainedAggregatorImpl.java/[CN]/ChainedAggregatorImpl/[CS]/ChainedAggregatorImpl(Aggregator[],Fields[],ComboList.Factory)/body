@@ -1,8 +1,0 @@
-{
-  _aggs=aggs;
-  _inputFields=inputFields;
-  _fact=fact;
-  if (_aggs.length != _inputFields.length) {
-    throw new IllegalArgumentException("Require input fields for each aggregator");
-  }
-}

@@ -1,7 +1,0 @@
-{
-  int length=in.readInt();
-  if (length == -1)   return null;
-  byte[] buffer=new byte[length];
-  in.readFully(buffer);
-  return new String(buffer,"UTF-8");
-}

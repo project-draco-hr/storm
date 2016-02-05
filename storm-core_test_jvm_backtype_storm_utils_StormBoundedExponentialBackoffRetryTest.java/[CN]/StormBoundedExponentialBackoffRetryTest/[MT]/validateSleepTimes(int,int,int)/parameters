@@ -1,3 +1,0 @@
-int baseSleepMs
-int maxSleepMs
-int maxRetries

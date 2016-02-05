@@ -1,5 +1,0 @@
-{
-  if (!value) {
-    this.named_logger_level=null;
-  }
-}

@@ -1,0 +1,50 @@
+{
+  if (_availNodes.size() <= 0) {
+    LOG.warn("No available nodes to schedule tasks on!");
+    return SchedulingResult.failure(SchedulingStatus.FAIL_NOT_ENOUGH_RESOURCES,"No available nodes to schedule tasks on!");
+  }
+  Collection<ExecutorDetails> unassignedExecutors=_clusterStateData.getUnassignedExecutors(td.getId());
+  Map<WorkerSlot,Collection<ExecutorDetails>> schedulerAssignmentMap=new HashMap<>();
+  LOG.debug("ExecutorsNeedScheduling: {}",unassignedExecutors);
+  Collection<ExecutorDetails> scheduledTasks=new ArrayList<>();
+  List<Component> spouts=this.getSpouts(td);
+  if (spouts.size() == 0) {
+    LOG.error("Cannot find a Spout!");
+    return SchedulingResult.failure(SchedulingStatus.FAIL_INVALID_TOPOLOGY,"Cannot find a Spout!");
+  }
+  Queue<Component> ordered__Component_list=bfs(td,spouts);
+  Map<Integer,List<ExecutorDetails>> priorityToExecutorMap=getPriorityToExecutorDetailsListMap(ordered__Component_list,unassignedExecutors);
+  Collection<ExecutorDetails> executorsNotScheduled=new HashSet<>(unassignedExecutors);
+  Integer longestPriorityListSize=this.getLongestPriorityListSize(priorityToExecutorMap);
+  for (int i=0; i < longestPriorityListSize; i++) {
+    for (    Entry<Integer,List<ExecutorDetails>> entry : priorityToExecutorMap.entrySet()) {
+      Iterator<ExecutorDetails> it=entry.getValue().iterator();
+      if (it.hasNext()) {
+        ExecutorDetails exec=it.next();
+        LOG.debug("\n\nAttempting to schedule: {} of component {}[avail {}] with rank {}",new Object[]{exec,td.getExecutorToComponent().get(exec),td.getTaskResourceReqList(exec),entry.getKey()});
+        scheduleExecutor(exec,td,schedulerAssignmentMap,scheduledTasks);
+        it.remove();
+      }
+    }
+  }
+  executorsNotScheduled.removeAll(scheduledTasks);
+  LOG.debug("/* Scheduling left over task (most likely sys tasks) */");
+  for (  ExecutorDetails exec : executorsNotScheduled) {
+    scheduleExecutor(exec,td,schedulerAssignmentMap,scheduledTasks);
+  }
+  SchedulingResult result;
+  executorsNotScheduled.removeAll(scheduledTasks);
+  if (executorsNotScheduled.size() > 0) {
+    LOG.error("Not all executors successfully scheduled: {}",executorsNotScheduled);
+    schedulerAssignmentMap=null;
+    result=SchedulingResult.failure(SchedulingStatus.FAIL_NOT_ENOUGH_RESOURCES,(td.getExecutors().size() - unassignedExecutors.size()) + "/" + td.getExecutors().size()+ " executors scheduled");
+  }
+ else {
+    LOG.debug("All resources successfully scheduled!");
+    result=SchedulingResult.successWithMsg(schedulerAssignmentMap,"Fully Scheduled by DefaultResourceAwareStrategy");
+  }
+  if (schedulerAssignmentMap == null) {
+    LOG.error("Topology {} not successfully scheduled!",td.getId());
+  }
+  return result;
+}

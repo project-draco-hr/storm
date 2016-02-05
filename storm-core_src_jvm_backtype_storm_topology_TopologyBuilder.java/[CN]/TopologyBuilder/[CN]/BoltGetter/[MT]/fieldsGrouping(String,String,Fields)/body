@@ -1,3 +1,0 @@
-{
-  return grouping(componentId,streamId,Grouping.fields(fields.toList()));
-}

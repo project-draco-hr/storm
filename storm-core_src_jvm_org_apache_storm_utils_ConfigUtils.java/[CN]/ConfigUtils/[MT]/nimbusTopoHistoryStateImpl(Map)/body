@@ -1,0 +1,3 @@
+{
+  return new LocalState((masterLocalDir(conf) + FILE_SEPARATOR + "history"));
+}

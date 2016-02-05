@@ -1,0 +1,2 @@
+org.apache.thrift.protocol.TProtocol oprot
+result_args struct

@@ -1,0 +1,8 @@
+{
+synchronized (acked) {
+    acked.remove(_id);
+  }
+synchronized (failed) {
+    failed.remove(_id);
+  }
+}

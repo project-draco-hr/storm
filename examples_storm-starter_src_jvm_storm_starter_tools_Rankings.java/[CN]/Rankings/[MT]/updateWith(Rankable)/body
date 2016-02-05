@@ -1,7 +1,0 @@
-{
-synchronized (rankedItems) {
-    addOrReplace(r);
-    rerank();
-    shrinkRankingsIfNeeded();
-  }
-}

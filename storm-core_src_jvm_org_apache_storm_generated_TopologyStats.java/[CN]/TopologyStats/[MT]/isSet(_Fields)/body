@@ -1,0 +1,18 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case WINDOW_TO_EMITTED:
+    return is_set_window_to_emitted();
+case WINDOW_TO_TRANSFERRED:
+  return is_set_window_to_transferred();
+case WINDOW_TO_COMPLETE_LATENCIES_MS:
+return is_set_window_to_complete_latencies_ms();
+case WINDOW_TO_ACKED:
+return is_set_window_to_acked();
+case WINDOW_TO_FAILED:
+return is_set_window_to_failed();
+}
+throw new IllegalStateException();
+}

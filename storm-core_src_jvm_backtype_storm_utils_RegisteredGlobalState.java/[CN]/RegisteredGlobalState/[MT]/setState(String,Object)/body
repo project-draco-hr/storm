@@ -1,5 +1,0 @@
-{
-synchronized (_lock) {
-    _states.put(id,init);
-  }
-}

@@ -1,5 +1,0 @@
-{
-  final BatchStatement batch=new BatchStatement(this.type);
-  for (  CQLStatementTupleMapper m : mappers)   batch.addAll(m.map(conf,session,tuple));
-  return Arrays.asList((Statement)batch);
-}

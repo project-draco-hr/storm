@@ -1,4 +1,0 @@
-{
-  this.data_size=data_size;
-  set_data_size_isSet(true);
-}

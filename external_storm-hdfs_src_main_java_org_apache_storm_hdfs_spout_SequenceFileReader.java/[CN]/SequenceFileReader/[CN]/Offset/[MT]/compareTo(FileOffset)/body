@@ -1,0 +1,10 @@
+{
+  Offset rhs=((Offset)o);
+  if (currentRecord < rhs.currentRecord) {
+    return -1;
+  }
+  if (currentRecord == rhs.currentRecord) {
+    return 0;
+  }
+  return 1;
+}

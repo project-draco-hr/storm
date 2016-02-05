@@ -1,0 +1,8 @@
+{
+  if (getSetField() == _Fields.SHUFFLE) {
+    return (NullStruct)getFieldValue();
+  }
+ else {
+    throw new RuntimeException("Cannot get field 'shuffle' because union is currently set to " + getFieldDesc(getSetField()).name);
+  }
+}

@@ -1,3 +1,0 @@
-{
-  return fileName + Utils.DEFAULT_CURRENT_BLOB_SUFFIX;
-}

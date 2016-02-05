@@ -1,0 +1,8 @@
+{
+  if (other.is_set_session()) {
+    this.session=other.session;
+  }
+  if (other.is_set_chunk()) {
+    this.chunk=org.apache.thrift.TBaseHelper.copyBinary(other.chunk);
+  }
+}

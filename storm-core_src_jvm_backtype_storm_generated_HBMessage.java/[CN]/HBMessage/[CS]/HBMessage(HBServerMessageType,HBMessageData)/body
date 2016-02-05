@@ -1,5 +1,0 @@
-{
-  this();
-  this.type=type;
-  this.data=data;
-}

@@ -1,5 +1,0 @@
-{
-  beginFileDownload_args args=new beginFileDownload_args();
-  args.set_file(file);
-  sendBase("beginFileDownload",args);
-}

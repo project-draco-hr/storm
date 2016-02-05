@@ -1,0 +1,22 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_executor_info=true && (is_set_executor_info());
+  list.add(present_executor_info);
+  if (present_executor_info)   list.add(executor_info);
+  boolean present_component_id=true && (is_set_component_id());
+  list.add(present_component_id);
+  if (present_component_id)   list.add(component_id);
+  boolean present_host=true && (is_set_host());
+  list.add(present_host);
+  if (present_host)   list.add(host);
+  boolean present_port=true;
+  list.add(present_port);
+  if (present_port)   list.add(port);
+  boolean present_uptime_secs=true;
+  list.add(present_uptime_secs);
+  if (present_uptime_secs)   list.add(uptime_secs);
+  boolean present_stats=true && (is_set_stats());
+  list.add(present_stats);
+  if (present_stats)   list.add(stats);
+  return list.hashCode();
+}

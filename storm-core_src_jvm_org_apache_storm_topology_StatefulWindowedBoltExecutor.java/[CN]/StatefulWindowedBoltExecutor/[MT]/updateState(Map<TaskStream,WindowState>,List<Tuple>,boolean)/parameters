@@ -1,0 +1,3 @@
+Map<TaskStream,WindowState> state
+List<Tuple> tuples
+boolean newEvents

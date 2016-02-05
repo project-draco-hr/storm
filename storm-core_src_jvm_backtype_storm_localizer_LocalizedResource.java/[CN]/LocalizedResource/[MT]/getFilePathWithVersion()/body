@@ -1,4 +1,0 @@
-{
-  long version=Utils.localVersionOfBlob(_localPath);
-  return Utils.constructBlobWithVersionFileName(_localPath,version);
-}

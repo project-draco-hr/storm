@@ -1,0 +1,6 @@
+{
+  TaskMessage msg=new TaskMessage(taskId,payload);
+  List<TaskMessage> wrapper=new ArrayList<TaskMessage>(1);
+  wrapper.add(msg);
+  send(wrapper.iterator());
+}

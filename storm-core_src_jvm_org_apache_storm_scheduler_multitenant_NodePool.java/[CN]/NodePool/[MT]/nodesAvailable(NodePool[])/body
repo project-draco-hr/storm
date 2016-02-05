@@ -1,0 +1,7 @@
+{
+  int nodesAvailable=0;
+  for (  NodePool pool : pools) {
+    nodesAvailable+=pool.nodesAvailable();
+  }
+  return nodesAvailable;
+}

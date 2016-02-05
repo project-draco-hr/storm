@@ -1,0 +1,6 @@
+{
+  builder=new MiniDFSCluster.Builder(new Configuration());
+  hdfsCluster=builder.build();
+  fs=hdfsCluster.getFileSystem();
+  hdfsURI="hdfs://localhost:" + hdfsCluster.getNameNodePort() + "/";
+}

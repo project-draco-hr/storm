@@ -1,0 +1,5 @@
+{
+  Tuple tickTuple=mockTickTuple();
+  bolt.execute(tickTuple);
+  verify(collector).ack(tickTuple);
+}

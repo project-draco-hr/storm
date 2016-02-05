@@ -1,3 +1,0 @@
-{
-  return isNimbus(who) || isAdmin(who) || isSupervisor(who,mask);
-}

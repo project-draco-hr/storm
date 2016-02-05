@@ -1,0 +1,5 @@
+{
+  if (started && event.isWatermark()) {
+    handleWaterMarkEvent(event);
+  }
+}

@@ -1,0 +1,3 @@
+long txid
+Map<Integer,List<List<Object>>> prevMetadata
+Map<Integer,List<List<Object>>> currMetadata

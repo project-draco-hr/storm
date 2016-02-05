@@ -1,0 +1,20 @@
+{
+switch (field) {
+case KEY:
+    if (value == null) {
+      unset_key();
+    }
+ else {
+      set_key((String)value);
+    }
+  break;
+case REPLICATION:
+if (value == null) {
+  unset_replication();
+}
+ else {
+  set_replication((Integer)value);
+}
+break;
+}
+}

@@ -1,7 +1,0 @@
-{
-  final Map<String,Object> values=mapper.map(tuple);
-  final String query=contextQuery.resolves(config,tuple);
-  Object[] objects=values.values().toArray(new Object[values.size()]);
-  PreparedStatement statement=getPreparedStatement(session,query);
-  return Arrays.asList((Statement)statement.bind(objects));
-}

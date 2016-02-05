@@ -1,0 +1,3 @@
+String id
+IRichStateSpout stateSpout
+Number parallelism_hint

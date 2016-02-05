@@ -1,0 +1,4 @@
+{
+  _commons.get(_boltId).put_to_inputs(new GlobalStreamId(componentId,streamId),grouping);
+  return this;
+}

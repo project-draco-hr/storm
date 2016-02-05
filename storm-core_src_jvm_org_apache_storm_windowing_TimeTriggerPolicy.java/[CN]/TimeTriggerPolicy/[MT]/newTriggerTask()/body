@@ -1,0 +1,17 @@
+{
+  return new Runnable(){
+    @Override public void run(){
+      try {
+        if (evictionPolicy != null) {
+          evictionPolicy.setContext(System.currentTimeMillis());
+        }
+        handler.onTrigger();
+      }
+ catch (      Throwable th) {
+        LOG.error("handler.onTrigger failed ",th);
+        throw th;
+      }
+    }
+  }
+;
+}

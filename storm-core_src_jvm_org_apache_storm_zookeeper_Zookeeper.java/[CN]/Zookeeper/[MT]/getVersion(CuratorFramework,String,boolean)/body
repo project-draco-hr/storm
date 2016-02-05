@@ -1,0 +1,13 @@
+{
+  String npath=normalizePath(path);
+  Stat stat=null;
+  if (existsNode(zk,npath,watch)) {
+    if (watch) {
+      stat=zk.checkExists().watched().forPath(npath);
+    }
+ else {
+      stat=zk.checkExists().forPath(npath);
+    }
+  }
+  return stat == null ? null : Integer.valueOf(stat.getVersion());
+}

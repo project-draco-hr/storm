@@ -1,0 +1,27 @@
+{
+  File localfile=new File(localdir);
+  ZooKeeperServer zk=new ZooKeeperServer(localfile,localfile,2000);
+  NIOServerCnxnFactory factory=null;
+  int report=2000;
+  int limitPort=65535;
+  if (port != null) {
+    report=port;
+    limitPort=port;
+  }
+  while (true) {
+    try {
+      factory=new NIOServerCnxnFactory();
+      factory.configure(new InetSocketAddress(report),0);
+      break;
+    }
+ catch (    BindException e) {
+      report++;
+      if (report > limitPort) {
+        throw new RuntimeException("No port is available to launch an inprocess zookeeper");
+      }
+    }
+  }
+  LOG.info("Starting inprocess zookeeper at port {} and dir {}",report,localdir);
+  factory.startup(zk);
+  return Arrays.asList((Object)new Long(report),(Object)factory);
+}

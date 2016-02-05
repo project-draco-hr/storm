@@ -1,4 +1,0 @@
-{
-  projectionValidation(fields);
-  return new GroupedStream(this,fields);
-}

@@ -1,4 +1,0 @@
-{
-  send_deactivate(name);
-  recv_deactivate();
-}

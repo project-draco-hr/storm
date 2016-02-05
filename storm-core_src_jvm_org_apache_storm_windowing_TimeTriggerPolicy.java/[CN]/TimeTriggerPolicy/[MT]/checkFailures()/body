@@ -1,0 +1,15 @@
+{
+  if (executorFuture != null && executorFuture.isDone()) {
+    try {
+      executorFuture.get();
+    }
+ catch (    InterruptedException ex) {
+      LOG.error("Got exception ",ex);
+      throw new FailedException(ex);
+    }
+catch (    ExecutionException ex) {
+      LOG.error("Got exception ",ex);
+      throw new FailedException(ex.getCause());
+    }
+  }
+}

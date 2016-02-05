@@ -1,7 +1,0 @@
-long lat
-long count
-long timeSpent
-long targetSize
-long[] times
-long[] latBuckets
-long[] countBuckets

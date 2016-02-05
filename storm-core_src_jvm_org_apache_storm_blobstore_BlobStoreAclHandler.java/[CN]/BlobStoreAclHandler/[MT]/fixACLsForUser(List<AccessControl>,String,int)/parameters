@@ -1,0 +1,3 @@
+List<AccessControl> acls
+String user
+int mask

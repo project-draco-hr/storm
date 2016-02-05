@@ -1,8 +1,0 @@
-{
-  ReadableBlobMeta reableMeta=null;
-  if (allBlobs.containsKey(key)) {
-    reableMeta=new ReadableBlobMeta();
-    reableMeta.set_settable(allBlobs.get(key));
-  }
-  return reableMeta;
-}

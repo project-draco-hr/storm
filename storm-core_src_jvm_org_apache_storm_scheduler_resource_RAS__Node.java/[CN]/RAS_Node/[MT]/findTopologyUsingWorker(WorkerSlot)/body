@@ -1,0 +1,12 @@
+{
+  for (  Entry<String,Map<String,Collection<ExecutorDetails>>> entry : _topIdToUsedSlots.entrySet()) {
+    String topoId=entry.getKey();
+    Set<String> workerIds=entry.getValue().keySet();
+    for (    String workerId : workerIds) {
+      if (ws.getId().equals(workerId)) {
+        return _topologies.getById(topoId);
+      }
+    }
+  }
+  return null;
+}

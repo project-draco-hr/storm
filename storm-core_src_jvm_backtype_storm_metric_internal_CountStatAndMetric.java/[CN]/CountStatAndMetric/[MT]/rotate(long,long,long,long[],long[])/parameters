@@ -1,5 +1,0 @@
-long value
-long timeSpent
-long targetSize
-long[] times
-long[] buckets

@@ -1,0 +1,19 @@
+{
+  int threshold=WindowManager.EXPIRE_EVENTS_THRESHOLD;
+  int windowLength=5;
+  windowManager.setEvictionPolicy(new CountEvictionPolicy<Integer>(5));
+  TriggerPolicy<Integer> triggerPolicy=new TimeTriggerPolicy<Integer>(new Duration(1,TimeUnit.HOURS).value,windowManager);
+  triggerPolicy.start();
+  windowManager.setTriggerPolicy(triggerPolicy);
+  for (  int i : seq(1,5)) {
+    windowManager.add(i);
+  }
+  assertTrue(listener.onExpiryEvents.isEmpty());
+  for (  int i : seq(6,10)) {
+    windowManager.add(i);
+  }
+  for (  int i : seq(11,threshold)) {
+    windowManager.add(i);
+  }
+  assertEquals(seq(1,threshold - windowLength),listener.onExpiryEvents);
+}

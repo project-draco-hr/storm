@@ -1,0 +1,6 @@
+{
+  RedisKeyValueStateProvider provider=new RedisKeyValueStateProvider();
+  Map<String,String> stormConf=new HashMap<>();
+  RedisKeyValueStateProvider.StateConfig config=provider.getStateConfig(stormConf);
+  assertNotNull(config);
+}

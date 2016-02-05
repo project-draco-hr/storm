@@ -1,0 +1,6 @@
+{
+  String[] subStrings=fname.split(FILE_SEPARATOR);
+  String id=subStrings[0];
+  Integer port=Integer.parseInt(subStrings[1]);
+  return getLogMetaDataFile(Utils.readStormConfig(),id,port);
+}

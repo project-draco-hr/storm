@@ -1,5 +1,0 @@
-{
-  this.messageId=messageId;
-  this.spoutTaskId=spoutTaskId;
-  this.failLatencyMs=failLatencyMs;
-}

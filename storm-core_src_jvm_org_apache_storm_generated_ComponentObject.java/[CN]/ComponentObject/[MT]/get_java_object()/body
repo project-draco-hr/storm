@@ -1,0 +1,8 @@
+{
+  if (getSetField() == _Fields.JAVA_OBJECT) {
+    return (JavaObject)getFieldValue();
+  }
+ else {
+    throw new RuntimeException("Cannot get field 'java_object' because union is currently set to " + getFieldDesc(getSetField()).name);
+  }
+}

@@ -1,3 +1,0 @@
-{
-  super(client,protocolFactory,transport,resultHandler,false);
-}

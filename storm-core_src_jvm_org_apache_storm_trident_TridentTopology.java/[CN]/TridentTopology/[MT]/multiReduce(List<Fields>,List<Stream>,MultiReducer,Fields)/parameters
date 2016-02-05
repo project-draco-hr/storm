@@ -1,0 +1,4 @@
+List<Fields> inputFields
+List<Stream> streams
+MultiReducer function
+Fields outputFields

@@ -1,0 +1,9 @@
+{
+  if (reader.next(key,value)) {
+    ArrayList<Object> result=new ArrayList<Object>(2);
+    Collections.addAll(result,key,value);
+    offset.increment(reader.syncSeen(),reader.getPosition());
+    return result;
+  }
+  return null;
+}

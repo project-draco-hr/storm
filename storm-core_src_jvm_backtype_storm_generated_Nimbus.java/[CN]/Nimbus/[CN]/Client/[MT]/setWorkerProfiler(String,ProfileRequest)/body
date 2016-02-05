@@ -1,4 +1,0 @@
-{
-  send_setWorkerProfiler(id,profileRequest);
-  recv_setWorkerProfiler();
-}

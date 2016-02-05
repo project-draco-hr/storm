@@ -1,0 +1,4 @@
+{
+  this(conf,host,port,null);
+  _retryForever=true;
+}

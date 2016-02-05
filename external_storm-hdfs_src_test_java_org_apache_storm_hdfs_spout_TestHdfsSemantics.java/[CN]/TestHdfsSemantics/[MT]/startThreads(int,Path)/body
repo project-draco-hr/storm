@@ -1,0 +1,10 @@
+{
+  FileDeletionThread[] result=new FileDeletionThread[thdCount];
+  for (int i=0; i < thdCount; i++) {
+    result[i]=new FileDeletionThread(i,fs,file);
+  }
+  for (  FileDeletionThread thd : result) {
+    thd.start();
+  }
+  return result;
+}

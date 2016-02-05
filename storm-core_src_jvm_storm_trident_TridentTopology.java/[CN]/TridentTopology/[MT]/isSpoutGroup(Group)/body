@@ -1,3 +1,0 @@
-{
-  return g.nodes.size() == 1 && g.nodes.iterator().next() instanceof SpoutNode;
-}

@@ -1,0 +1,3 @@
+{
+  return serializationDelegate.deserialize(serialized,clazz);
+}

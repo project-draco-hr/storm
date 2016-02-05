@@ -1,0 +1,3 @@
+{
+  return "CheckPointState{" + "txid=" + txid + ", state="+ state+ '}';
+}

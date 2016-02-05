@@ -1,0 +1,11 @@
+{
+  if (topN < 1) {
+    throw new IllegalArgumentException("topN must be >= 1 (you requested " + topN + ")");
+  }
+  if (emitFrequencyInSeconds < 1) {
+    throw new IllegalArgumentException("The emit frequency must be >= 1 seconds (you requested " + emitFrequencyInSeconds + " seconds)");
+  }
+  count=topN;
+  this.emitFrequencyInSeconds=emitFrequencyInSeconds;
+  rankings=new Rankings(count);
+}

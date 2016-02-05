@@ -1,0 +1,16 @@
+{
+  JedisCommands commands=null;
+  try {
+    commands=jedisContainer.getInstance();
+    if (commands.exists(txidNamespace)) {
+      txIds=commands.hgetAll(txidNamespace);
+    }
+ else {
+      txIds=new HashMap<>();
+    }
+    LOG.debug("initTxids, txIds {}",txIds);
+  }
+  finally {
+    jedisContainer.returnInstance(commands);
+  }
+}

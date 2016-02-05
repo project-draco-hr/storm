@@ -1,5 +1,0 @@
-{
-  this();
-  this.name=name;
-  this.bits=org.apache.thrift.TBaseHelper.copyBinary(bits);
-}

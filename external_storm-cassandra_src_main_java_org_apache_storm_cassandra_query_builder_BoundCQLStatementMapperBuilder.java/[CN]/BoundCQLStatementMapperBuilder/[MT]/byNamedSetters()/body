@@ -1,0 +1,4 @@
+{
+  this.binder=new PreparedStatementBinder.CQL3NamedSettersBinder();
+  return this;
+}

@@ -1,0 +1,11 @@
+{
+  try {
+synchronized (client) {
+      client.getClient().finishBlobUpload(session);
+      client.getClient().createStateInZookeeper(key);
+    }
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

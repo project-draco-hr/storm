@@ -1,5 +1,0 @@
-{
-  Object key=tuple.getValue(1);
-  Number curr=Utils.get(_sums,key,0);
-  _sums.put(key,Numbers.add(curr,tuple.getValue(2)));
-}

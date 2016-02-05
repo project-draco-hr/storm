@@ -1,3 +1,0 @@
-{
-  return COORD_STREAM_PREFIX + batch;
-}

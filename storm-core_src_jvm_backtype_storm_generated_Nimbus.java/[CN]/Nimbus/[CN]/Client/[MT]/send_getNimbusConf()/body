@@ -1,4 +1,0 @@
-{
-  getNimbusConf_args args=new getNimbusConf_args();
-  sendBase("getNimbusConf",args);
-}

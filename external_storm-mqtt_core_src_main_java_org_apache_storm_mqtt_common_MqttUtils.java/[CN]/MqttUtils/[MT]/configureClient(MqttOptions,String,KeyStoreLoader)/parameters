@@ -1,0 +1,3 @@
+MqttOptions options
+String clientId
+KeyStoreLoader keyStoreLoader

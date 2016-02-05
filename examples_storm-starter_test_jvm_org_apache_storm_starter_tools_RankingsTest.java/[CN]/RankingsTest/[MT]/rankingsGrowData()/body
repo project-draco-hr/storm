@@ -1,0 +1,3 @@
+{
+  return new Object[][]{{2,Lists.newArrayList(new RankableObjectWithFields("A",1),new RankableObjectWithFields("B",2),new RankableObjectWithFields("C",3))},{2,Lists.newArrayList(new RankableObjectWithFields("A",1),new RankableObjectWithFields("B",2),new RankableObjectWithFields("C",3),new RankableObjectWithFields("D",4))}};
+}

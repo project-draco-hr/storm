@@ -1,0 +1,10 @@
+{
+  final Schema theSchema;
+  try {
+    theSchema=theClient.getByID(Integer.parseInt(fingerPrint));
+  }
+ catch (  IOException|RestClientException e) {
+    throw new RuntimeException(e);
+  }
+  return theSchema;
+}

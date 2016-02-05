@@ -1,5 +1,0 @@
-{
-  if (_ackFailDelegate != null) {
-    _ackFailDelegate.ack(msgId);
-  }
-}

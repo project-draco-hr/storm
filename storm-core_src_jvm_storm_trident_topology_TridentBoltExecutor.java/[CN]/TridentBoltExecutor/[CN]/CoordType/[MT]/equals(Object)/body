@@ -1,3 +1,0 @@
-{
-  return singleCount == ((CoordType)o).singleCount;
-}

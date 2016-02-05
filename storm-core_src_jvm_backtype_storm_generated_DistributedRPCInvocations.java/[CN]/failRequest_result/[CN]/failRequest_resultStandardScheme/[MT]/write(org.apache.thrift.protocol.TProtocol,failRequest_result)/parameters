@@ -1,2 +1,0 @@
-org.apache.thrift.protocol.TProtocol oprot
-failRequest_result struct

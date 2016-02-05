@@ -1,0 +1,3 @@
+{
+  assertEquals(Collections.singletonList("test"),scheme.deserializeKeyAndValue(null,wrapString("test")));
+}

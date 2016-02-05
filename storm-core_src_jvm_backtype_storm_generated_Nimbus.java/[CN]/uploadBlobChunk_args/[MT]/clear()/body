@@ -1,4 +1,0 @@
-{
-  this.session=null;
-  this.chunk=null;
-}

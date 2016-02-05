@@ -1,0 +1,3 @@
+{
+  LOG.debug(String.format(message,args));
+}

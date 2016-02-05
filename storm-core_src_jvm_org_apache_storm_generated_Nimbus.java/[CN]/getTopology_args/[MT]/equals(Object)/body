@@ -1,0 +1,5 @@
+{
+  if (that == null)   return false;
+  if (that instanceof getTopology_args)   return this.equals((getTopology_args)that);
+  return false;
+}

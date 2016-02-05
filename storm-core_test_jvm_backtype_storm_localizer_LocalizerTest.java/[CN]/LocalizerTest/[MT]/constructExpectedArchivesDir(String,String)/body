@@ -1,3 +1,0 @@
-{
-  return constructUserCacheDir(base,user) + "/" + Localizer.FILECACHE+ "/"+ Localizer.ARCHIVESDIR;
-}

@@ -1,0 +1,3 @@
+String id
+IWindowedBolt bolt
+Number parallelism_hint

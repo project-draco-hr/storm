@@ -1,0 +1,6 @@
+{
+  LOG.debug("Shutting down WindowManager");
+  if (triggerPolicy != null) {
+    triggerPolicy.shutdown();
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return existsNode(zk,path,watch);
+}

@@ -1,0 +1,57 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  lastComparison=Boolean.valueOf(is_set_action()).compareTo(other.is_set_action());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_action()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.action,other.action);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_target_log_level()).compareTo(other.is_set_target_log_level());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_target_log_level()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.target_log_level,other.target_log_level);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_reset_log_level_timeout_secs()).compareTo(other.is_set_reset_log_level_timeout_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_reset_log_level_timeout_secs()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.reset_log_level_timeout_secs,other.reset_log_level_timeout_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_reset_log_level_timeout_epoch()).compareTo(other.is_set_reset_log_level_timeout_epoch());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_reset_log_level_timeout_epoch()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.reset_log_level_timeout_epoch,other.reset_log_level_timeout_epoch);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_reset_log_level()).compareTo(other.is_set_reset_log_level());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_reset_log_level()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.reset_log_level,other.reset_log_level);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

@@ -1,0 +1,3 @@
+WindowState state
+long msgId
+boolean newEvents

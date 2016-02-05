@@ -1,0 +1,9 @@
+{
+  index=new ValuePointer[inputFields.size()];
+  int i=0;
+  for (  String f : inputFields) {
+    index[i]=new ValuePointer(0,i,f);
+    i++;
+  }
+  fieldIndex=ValuePointer.buildFieldIndex(index);
+}

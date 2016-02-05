@@ -1,4 +1,0 @@
-{
-  send_getTopology(id);
-  return recv_getTopology();
-}

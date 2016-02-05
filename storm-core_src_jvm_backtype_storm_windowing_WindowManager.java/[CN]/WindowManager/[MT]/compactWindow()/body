@@ -1,5 +1,0 @@
-{
-  if (eventsSinceLastExpiry.incrementAndGet() >= EXPIRE_EVENTS_THRESHOLD) {
-    expireEvents(false);
-  }
-}

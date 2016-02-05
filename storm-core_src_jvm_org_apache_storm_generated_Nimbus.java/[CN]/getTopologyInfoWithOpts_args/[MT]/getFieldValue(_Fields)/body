@@ -1,0 +1,9 @@
+{
+switch (field) {
+case ID:
+    return get_id();
+case OPTIONS:
+  return get_options();
+}
+throw new IllegalStateException();
+}

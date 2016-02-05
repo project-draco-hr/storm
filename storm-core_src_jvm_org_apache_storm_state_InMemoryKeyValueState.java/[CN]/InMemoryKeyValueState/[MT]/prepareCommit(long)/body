@@ -1,0 +1,7 @@
+{
+  LOG.debug("prepare commit, txid {}",txid);
+  if (preparedState != null && txid > preparedState.txid) {
+    throw new RuntimeException("Cannot prepare a new txn while there is a pending txn");
+  }
+  preparedState=new TxIdState<>(txid,new ConcurrentHashMap<K,V>(state));
+}

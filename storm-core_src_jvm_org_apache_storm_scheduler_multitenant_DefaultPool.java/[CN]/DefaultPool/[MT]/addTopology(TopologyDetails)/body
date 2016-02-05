@@ -1,0 +1,12 @@
+{
+  String topId=td.getId();
+  LOG.debug("Adding in Topology {}",topId);
+  _tds.put(topId,td);
+  SchedulerAssignment assignment=_cluster.getAssignmentById(topId);
+  if (assignment != null) {
+    for (    WorkerSlot ws : assignment.getSlots()) {
+      Node n=_nodeIdToNode.get(ws.getNodeId());
+      _nodes.add(n);
+    }
+  }
+}

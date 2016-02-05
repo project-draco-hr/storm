@@ -1,0 +1,6 @@
+{
+  if (val == null) {
+    return 0;
+  }
+  return Utils.toPositive(val.hashCode()) % numPartitions;
+}

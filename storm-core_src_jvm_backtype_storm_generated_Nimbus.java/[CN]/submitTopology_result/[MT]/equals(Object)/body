@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof submitTopology_result)   return this.equals((submitTopology_result)that);
-  return false;
-}

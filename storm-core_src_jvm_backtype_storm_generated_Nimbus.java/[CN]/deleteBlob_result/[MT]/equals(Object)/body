@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof deleteBlob_result)   return this.equals((deleteBlob_result)that);
-  return false;
-}

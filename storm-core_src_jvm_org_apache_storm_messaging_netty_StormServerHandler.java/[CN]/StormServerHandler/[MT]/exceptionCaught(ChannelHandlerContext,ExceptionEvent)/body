@@ -1,0 +1,5 @@
+{
+  LOG.error("server errors in handling the request",e.getCause());
+  Utils.handleUncaughtException(e.getCause());
+  server.closeChannel(e.getChannel());
+}

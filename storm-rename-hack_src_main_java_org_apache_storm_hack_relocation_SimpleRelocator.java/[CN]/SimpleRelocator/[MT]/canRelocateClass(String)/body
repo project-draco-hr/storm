@@ -1,0 +1,3 @@
+{
+  return clazz.indexOf('/') < 0 && canRelocatePath(clazz.replace('.','/'));
+}

@@ -1,0 +1,9 @@
+{
+switch (field) {
+case COMPONENT_ID:
+    return get_componentId();
+case STREAM_ID:
+  return get_streamId();
+}
+throw new IllegalStateException();
+}

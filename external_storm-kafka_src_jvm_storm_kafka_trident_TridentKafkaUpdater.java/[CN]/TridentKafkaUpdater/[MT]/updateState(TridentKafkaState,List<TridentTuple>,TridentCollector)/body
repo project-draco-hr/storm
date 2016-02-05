@@ -1,3 +1,0 @@
-{
-  state.updateState(tuples,collector);
-}

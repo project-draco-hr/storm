@@ -1,0 +1,5 @@
+{
+  lines.add(tuple.toString());
+  items.add(HdfsUtils.Pair.of(messageId,tuple));
+  return null;
+}

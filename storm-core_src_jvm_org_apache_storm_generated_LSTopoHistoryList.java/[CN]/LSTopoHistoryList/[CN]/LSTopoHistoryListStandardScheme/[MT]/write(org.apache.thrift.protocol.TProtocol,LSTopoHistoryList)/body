@@ -1,0 +1,17 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.topo_history != null) {
+    oprot.writeFieldBegin(TOPO_HISTORY_FIELD_DESC);
+{
+      oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.topo_history.size()));
+      for (      LSTopoHistory _iter699 : struct.topo_history) {
+        _iter699.write(oprot);
+      }
+      oprot.writeListEnd();
+    }
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

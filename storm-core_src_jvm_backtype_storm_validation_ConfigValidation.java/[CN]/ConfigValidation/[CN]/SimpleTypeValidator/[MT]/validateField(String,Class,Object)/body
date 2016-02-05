@@ -1,9 +1,0 @@
-{
-  if (o == null) {
-    return;
-  }
-  if (type.isInstance(o)) {
-    return;
-  }
-  throw new IllegalArgumentException("Field " + name + " must be of type "+ type+ ". Object: "+ o+ " actual type: "+ o.getClass());
-}

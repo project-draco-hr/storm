@@ -1,0 +1,9 @@
+{
+  int total=0;
+  for (  Node n : nodes) {
+    if (n.isAlive()) {
+      total+=n.totalSlots();
+    }
+  }
+  return total;
+}

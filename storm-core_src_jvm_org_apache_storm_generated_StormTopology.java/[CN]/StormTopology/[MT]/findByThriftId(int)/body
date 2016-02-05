@@ -1,0 +1,14 @@
+{
+switch (fieldId) {
+case 1:
+    return SPOUTS;
+case 2:
+  return BOLTS;
+case 3:
+return STATE_SPOUTS;
+case 4:
+return WORKER_HOOKS;
+default :
+return null;
+}
+}

@@ -1,0 +1,3 @@
+GroupedMultiReducer reducer
+List<Fields> groupFields
+List<Fields> inputFields

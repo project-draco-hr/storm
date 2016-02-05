@@ -1,0 +1,3 @@
+{
+  _delegate.emit(_stream,new ConsList(_id,values));
+}

@@ -1,0 +1,3 @@
+{
+  iface.uploadChunk(args.location,args.chunk,resultHandler);
+}

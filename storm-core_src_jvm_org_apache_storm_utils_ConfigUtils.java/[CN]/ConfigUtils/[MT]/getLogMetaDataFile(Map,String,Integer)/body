@@ -1,0 +1,4 @@
+{
+  String fname=workerArtifactsRoot(conf,id,port) + FILE_SEPARATOR + "worker.yaml";
+  return new File(fname);
+}

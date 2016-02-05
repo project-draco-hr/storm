@@ -1,0 +1,7 @@
+{
+  keyValueState.put("a","1");
+  keyValueState.put("b","2");
+  assertEquals("1",keyValueState.get("a"));
+  assertEquals("2",keyValueState.get("b"));
+  assertEquals(null,keyValueState.get("c"));
+}

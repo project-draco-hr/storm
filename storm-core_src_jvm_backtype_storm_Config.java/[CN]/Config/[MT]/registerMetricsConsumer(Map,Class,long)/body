@@ -1,3 +1,0 @@
-{
-  registerMetricsConsumer(conf,klass,null,parallelismHint);
-}

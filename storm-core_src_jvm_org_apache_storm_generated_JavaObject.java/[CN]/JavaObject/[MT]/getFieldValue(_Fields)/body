@@ -1,0 +1,9 @@
+{
+switch (field) {
+case FULL_CLASS_NAME:
+    return get_full_class_name();
+case ARGS_LIST:
+  return get_args_list();
+}
+throw new IllegalStateException();
+}

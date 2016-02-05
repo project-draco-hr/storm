@@ -1,3 +1,0 @@
-{
-  return new MemoryMapState(_id + partitionIndex);
-}

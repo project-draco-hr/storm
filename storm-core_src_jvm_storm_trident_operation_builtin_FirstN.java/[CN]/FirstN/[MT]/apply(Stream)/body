@@ -1,4 +1,0 @@
-{
-  Fields outputFields=input.getOutputFields();
-  return input.partitionAggregate(outputFields,_agg,outputFields).global().partitionAggregate(outputFields,_agg,outputFields);
-}

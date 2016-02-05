@@ -1,0 +1,8 @@
+{
+switch (fieldId) {
+case 1:
+    return WAIT_SECS;
+default :
+  return null;
+}
+}

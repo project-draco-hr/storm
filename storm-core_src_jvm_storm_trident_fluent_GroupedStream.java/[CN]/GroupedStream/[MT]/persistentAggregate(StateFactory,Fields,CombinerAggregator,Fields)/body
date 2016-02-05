@@ -1,3 +1,0 @@
-{
-  return persistentAggregate(new StateSpec(stateFactory),inputFields,agg,functionFields);
-}

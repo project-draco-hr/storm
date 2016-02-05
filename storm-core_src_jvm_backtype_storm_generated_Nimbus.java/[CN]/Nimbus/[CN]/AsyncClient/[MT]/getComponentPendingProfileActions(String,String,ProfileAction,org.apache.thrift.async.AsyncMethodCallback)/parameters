@@ -1,4 +1,0 @@
-String id
-String component_id
-ProfileAction action
-org.apache.thrift.async.AsyncMethodCallback resultHandler

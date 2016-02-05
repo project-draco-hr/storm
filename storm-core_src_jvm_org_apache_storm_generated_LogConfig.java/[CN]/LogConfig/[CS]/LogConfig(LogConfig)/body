@@ -1,0 +1,13 @@
+{
+  if (other.is_set_named_logger_level()) {
+    Map<String,LogLevel> __this__named_logger_level=new HashMap<String,LogLevel>(other.named_logger_level.size());
+    for (    Map.Entry<String,LogLevel> other_element : other.named_logger_level.entrySet()) {
+      String other_element_key=other_element.getKey();
+      LogLevel other_element_value=other_element.getValue();
+      String __this__named_logger_level_copy_key=other_element_key;
+      LogLevel __this__named_logger_level_copy_value=new LogLevel(other_element_value);
+      __this__named_logger_level.put(__this__named_logger_level_copy_key,__this__named_logger_level_copy_value);
+    }
+    this.named_logger_level=__this__named_logger_level;
+  }
+}

@@ -1,7 +1,0 @@
-{
-  this.consumerKey=consumerKey;
-  this.consumerSecret=consumerSecret;
-  this.accessToken=accessToken;
-  this.accessTokenSecret=accessTokenSecret;
-  this.keyWords=keyWords;
-}

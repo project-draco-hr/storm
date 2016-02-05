@@ -1,5 +1,0 @@
-{
-  JavaObjectArg x=new JavaObjectArg();
-  x.set_bool_arg(value);
-  return x;
-}

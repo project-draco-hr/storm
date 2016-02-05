@@ -1,5 +1,0 @@
-{
-  this.acked=null;
-  this.failed=null;
-  this.complete_ms_avg=null;
-}

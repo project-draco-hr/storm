@@ -1,0 +1,11 @@
+{
+  try {
+    if (isCacheEmpty()) {
+      readMore();
+    }
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+  return !eof;
+}

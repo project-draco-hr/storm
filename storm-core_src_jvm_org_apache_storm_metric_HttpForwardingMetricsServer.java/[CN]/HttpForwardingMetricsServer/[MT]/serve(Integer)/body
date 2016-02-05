@@ -1,0 +1,24 @@
+{
+  try {
+    if (_server != null)     throw new RuntimeException("The server is already running");
+    if (port == null || port <= 0) {
+      ServerSocket s=new ServerSocket(0);
+      port=s.getLocalPort();
+      s.close();
+    }
+    _server=new Server(port);
+    _port=port;
+    _url="http://" + InetAddress.getLocalHost().getHostName() + ":"+ _port+ "/";
+    ServletContextHandler context=new ServletContextHandler(ServletContextHandler.SESSIONS);
+    context.setContextPath("/");
+    _server.setHandler(context);
+    context.addServlet(new ServletHolder(new MetricsCollectionServlet()),"/*");
+    _server.start();
+  }
+ catch (  RuntimeException e) {
+    throw e;
+  }
+catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

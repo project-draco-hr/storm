@@ -1,3 +1,0 @@
-{
-  return getValueByPointer(_fieldIndex.get(field));
-}

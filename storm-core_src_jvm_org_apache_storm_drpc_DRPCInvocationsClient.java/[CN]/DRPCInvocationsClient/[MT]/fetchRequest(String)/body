@@ -1,0 +1,16 @@
+{
+  DistributedRPCInvocations.Client c=client.get();
+  try {
+    if (c == null) {
+      throw new TException("Client is not connected...");
+    }
+    return c.fetchRequest(func);
+  }
+ catch (  AuthorizationException aze) {
+    throw aze;
+  }
+catch (  TException e) {
+    client.compareAndSet(c,null);
+    throw e;
+  }
+}

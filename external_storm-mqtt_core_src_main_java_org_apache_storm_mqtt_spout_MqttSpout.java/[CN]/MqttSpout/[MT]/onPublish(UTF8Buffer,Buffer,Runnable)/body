@@ -1,0 +1,9 @@
+{
+  LOG.debug("Received message: topic={}, payload={}",topic.toString(),new String(payload.toByteArray()));
+  try {
+    this.incoming.put(new AckableMessage(topic.toString(),payload.toByteArray(),ack));
+  }
+ catch (  InterruptedException e) {
+    LOG.warn("Interrupted while queueing an MQTT message.");
+  }
+}

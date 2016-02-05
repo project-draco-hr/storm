@@ -1,0 +1,7 @@
+{
+  this.targetTasks=targetTasks;
+  targetTaskStats=new long[this.targetTasks.size()];
+  if (this.fields != null) {
+    this.outFields=context.getComponentOutputFields(stream);
+  }
+}

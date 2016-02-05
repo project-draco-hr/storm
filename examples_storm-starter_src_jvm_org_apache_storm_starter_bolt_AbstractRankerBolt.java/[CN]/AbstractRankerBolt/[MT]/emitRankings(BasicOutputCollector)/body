@@ -1,0 +1,4 @@
+{
+  collector.emit(new Values(rankings.copy()));
+  getLogger().debug("Rankings: " + rankings);
+}

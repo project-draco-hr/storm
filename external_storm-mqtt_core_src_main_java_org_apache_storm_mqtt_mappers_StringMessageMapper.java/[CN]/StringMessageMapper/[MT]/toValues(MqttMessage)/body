@@ -1,0 +1,3 @@
+{
+  return new Values(message.getTopic(),new String(message.getMessage()));
+}

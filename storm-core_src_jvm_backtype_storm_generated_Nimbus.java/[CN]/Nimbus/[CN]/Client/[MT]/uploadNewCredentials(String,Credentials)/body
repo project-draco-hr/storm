@@ -1,4 +1,0 @@
-{
-  send_uploadNewCredentials(name,creds);
-  recv_uploadNewCredentials();
-}

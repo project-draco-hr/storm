@@ -1,4 +1,0 @@
-{
-  MessageRetryRecord record=this.records.get(offset);
-  return record != null && this.waiting.contains(record) && System.currentTimeMillis() >= record.retryTimeUTC;
-}

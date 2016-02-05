@@ -1,3 +1,0 @@
-{
-  return other instanceof MessageId && _anchorsToIds.equals(((MessageId)other)._anchorsToIds);
-}

@@ -1,0 +1,19 @@
+{
+  this.conf=conf;
+  this.nimbusInfo=nimbusInfo;
+  zkClient=BlobStoreUtils.createZKClient(conf);
+  if (overrideBase == null) {
+    overrideBase=(String)conf.get(Config.BLOBSTORE_DIR);
+    if (overrideBase == null) {
+      overrideBase=(String)conf.get(Config.STORM_LOCAL_DIR);
+    }
+  }
+  File baseDir=new File(overrideBase,BASE_BLOBS_DIR_NAME);
+  try {
+    fbs=new FileBlobStoreImpl(baseDir,conf);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  _aclHandler=new BlobStoreAclHandler(conf);
+}

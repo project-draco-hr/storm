@@ -1,7 +1,0 @@
-{
-  List<Object> ret=new ArrayList<Object>();
-  for (  Object v : values) {
-    ret.add(v);
-  }
-  return ret;
-}

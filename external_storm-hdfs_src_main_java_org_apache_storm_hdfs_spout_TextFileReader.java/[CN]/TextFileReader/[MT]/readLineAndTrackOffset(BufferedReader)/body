@@ -1,0 +1,19 @@
+{
+  StringBuffer sb=new StringBuffer(1000);
+  long before=offset.charOffset;
+  int ch;
+  while ((ch=reader.read()) != -1) {
+    ++offset.charOffset;
+    if (ch == '\n') {
+      ++offset.lineNumber;
+      return sb.toString();
+    }
+ else     if (ch != '\r') {
+      sb.append((char)ch);
+    }
+  }
+  if (before == offset.charOffset) {
+    return null;
+  }
+  return sb.toString();
+}

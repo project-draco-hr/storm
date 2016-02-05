@@ -1,0 +1,14 @@
+{
+  Long committedTxid=lastCommittedTxid();
+  if (committedTxid != null) {
+    if (txid < committedTxid) {
+      throw new RuntimeException("Invalid txid '" + txid + "' txid '"+ committedTxid+ "' is already committed");
+    }
+  }
+  Long preparedTxid=lastPreparedTxid();
+  if (preparedTxid != null) {
+    if (txid != preparedTxid) {
+      throw new RuntimeException("Invalid txid '" + txid + "' not same as prepared txid '"+ preparedTxid+ "'");
+    }
+  }
+}

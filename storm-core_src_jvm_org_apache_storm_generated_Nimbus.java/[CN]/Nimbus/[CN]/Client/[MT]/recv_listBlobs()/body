@@ -1,0 +1,8 @@
+{
+  listBlobs_result result=new listBlobs_result();
+  receiveBase(result,"listBlobs");
+  if (result.is_set_success()) {
+    return result.success;
+  }
+  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"listBlobs failed: unknown result");
+}

@@ -1,0 +1,3 @@
+int windowLengthInSlots
+int[] incrementsPerIteration
+long[] expCountsPerIteration

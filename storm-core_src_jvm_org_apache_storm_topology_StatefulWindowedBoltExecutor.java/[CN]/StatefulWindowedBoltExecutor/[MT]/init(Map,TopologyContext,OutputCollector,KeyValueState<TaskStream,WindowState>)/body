@@ -1,0 +1,15 @@
+{
+  if (stormConf.containsKey(Config.TOPOLOGY_BOLTS_MESSAGE_ID_FIELD_NAME)) {
+    msgIdFieldName=(String)stormConf.get(Config.TOPOLOGY_BOLTS_MESSAGE_ID_FIELD_NAME);
+  }
+ else {
+    throw new IllegalArgumentException(Config.TOPOLOGY_BOLTS_MESSAGE_ID_FIELD_NAME + " is not set");
+  }
+  topologyContext=context;
+  outputCollector=collector;
+  streamState=windowState;
+  pendingTuples=new ArrayList<>();
+  recoveryStates=new HashMap<>();
+  stateInitialized=false;
+  prePrepared=false;
+}

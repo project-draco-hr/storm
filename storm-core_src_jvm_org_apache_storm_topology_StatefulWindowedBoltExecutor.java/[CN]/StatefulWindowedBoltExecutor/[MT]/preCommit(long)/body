@@ -1,0 +1,9 @@
+{
+  if (!isStateInitialized() || (!isRecovering() && prePrepared)) {
+    LOG.debug("Commit streamState, txid {}",txid);
+    streamState.commit(txid);
+  }
+ else {
+    LOG.debug("Still recovering, ignoring preCommit and not committing streamState.");
+  }
+}

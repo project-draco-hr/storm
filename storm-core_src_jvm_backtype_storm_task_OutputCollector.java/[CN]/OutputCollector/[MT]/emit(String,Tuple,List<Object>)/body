@@ -1,3 +1,0 @@
-{
-  return emit(streamId,Arrays.asList(anchor),tuple);
-}

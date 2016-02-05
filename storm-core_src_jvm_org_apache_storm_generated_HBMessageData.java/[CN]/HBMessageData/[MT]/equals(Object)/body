@@ -1,0 +1,8 @@
+{
+  if (other instanceof HBMessageData) {
+    return equals((HBMessageData)other);
+  }
+ else {
+    return false;
+  }
+}

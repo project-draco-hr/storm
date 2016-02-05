@@ -1,5 +1,0 @@
-Map conf
-BlobStore blobStore
-CuratorFramework zkClient
-String key
-NimbusInfo nimbusDetails

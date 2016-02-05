@@ -1,0 +1,4 @@
+{
+  String namespace=context.getThisComponentId() + "-" + context.getThisTaskId();
+  prepare(stormConf,context,collector,StateFactory.getState(namespace,stormConf,context));
+}

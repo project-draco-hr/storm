@@ -1,6 +1,0 @@
-{
-  setWorkerProfiler_args args=new setWorkerProfiler_args();
-  args.set_id(id);
-  args.set_profileRequest(profileRequest);
-  sendBase("setWorkerProfiler",args);
-}

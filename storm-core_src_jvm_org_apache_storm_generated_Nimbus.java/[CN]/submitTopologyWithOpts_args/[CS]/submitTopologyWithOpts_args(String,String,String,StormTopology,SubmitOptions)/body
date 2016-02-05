@@ -1,0 +1,8 @@
+{
+  this();
+  this.name=name;
+  this.uploadedJarLocation=uploadedJarLocation;
+  this.jsonConf=jsonConf;
+  this.topology=topology;
+  this.options=options;
+}

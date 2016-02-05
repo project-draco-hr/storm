@@ -1,0 +1,3 @@
+{
+  _lastAccessTime.set(currentTime());
+}

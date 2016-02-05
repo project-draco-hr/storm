@@ -1,4 +1,0 @@
-int time_secs
-String topology_id
-List<ExecutorInfo> executors
-int port

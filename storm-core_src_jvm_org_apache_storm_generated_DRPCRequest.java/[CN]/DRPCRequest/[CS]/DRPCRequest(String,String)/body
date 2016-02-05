@@ -1,0 +1,5 @@
+{
+  this();
+  this.func_args=func_args;
+  this.request_id=request_id;
+}

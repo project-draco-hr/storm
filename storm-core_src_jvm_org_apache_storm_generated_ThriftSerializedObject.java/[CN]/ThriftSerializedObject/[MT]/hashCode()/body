@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_name=true && (is_set_name());
+  list.add(present_name);
+  if (present_name)   list.add(name);
+  boolean present_bits=true && (is_set_bits());
+  list.add(present_bits);
+  if (present_bits)   list.add(bits);
+  return list.hashCode();
+}

@@ -1,0 +1,3 @@
+{
+  return new String[]{"bash","-c","id -gn " + user + "&& id -Gn "+ user};
+}

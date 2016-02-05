@@ -1,5 +1,0 @@
-{
-  if (duration > timeout) {
-    throw new IllegalArgumentException("Window duration (length + sliding interval) value " + duration + " is more than "+ Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS+ " value "+ timeout);
-  }
-}

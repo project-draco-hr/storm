@@ -1,0 +1,2 @@
+ExecutorDetails exec
+Map<String,Double> resourceList

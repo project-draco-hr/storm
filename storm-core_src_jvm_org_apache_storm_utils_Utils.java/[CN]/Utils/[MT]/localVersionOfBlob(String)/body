@@ -1,0 +1,29 @@
+{
+  File f=new File(localFile + DEFAULT_BLOB_VERSION_SUFFIX);
+  long currentVersion=0;
+  if (f.exists() && !(f.isDirectory())) {
+    BufferedReader br=null;
+    try {
+      br=new BufferedReader(new FileReader(f));
+      String line=br.readLine();
+      currentVersion=Long.parseLong(line);
+    }
+ catch (    IOException e) {
+      throw new RuntimeException(e);
+    }
+ finally {
+      try {
+        if (br != null) {
+          br.close();
+        }
+      }
+ catch (      Exception ignore) {
+        LOG.error("Exception trying to cleanup",ignore);
+      }
+    }
+    return currentVersion;
+  }
+ else {
+    return -1;
+  }
+}

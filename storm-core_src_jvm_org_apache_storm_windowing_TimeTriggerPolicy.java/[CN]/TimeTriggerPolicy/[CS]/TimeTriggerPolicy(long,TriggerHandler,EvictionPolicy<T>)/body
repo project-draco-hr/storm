@@ -1,0 +1,6 @@
+{
+  this.duration=millis;
+  this.handler=handler;
+  this.executor=Executors.newSingleThreadScheduledExecutor();
+  this.evictionPolicy=evictionPolicy;
+}

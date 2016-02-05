@@ -1,3 +1,0 @@
-{
-  return _topoContext.getComponentTasks(_topoContext.getThisComponentId()).size();
-}

@@ -1,0 +1,3 @@
+{
+  return "StateConfig{" + "keyClass='" + keyClass + '\''+ ", valueClass='"+ valueClass+ '\''+ ", keySerializerClass='"+ keySerializerClass+ '\''+ ", valueSerializerClass='"+ valueSerializerClass+ '\''+ ", jedisPoolConfig="+ jedisPoolConfig+ '}';
+}

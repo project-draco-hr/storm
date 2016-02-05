@@ -1,3 +1,0 @@
-{
-  return new beginUpdateBlob_resultTupleScheme();
-}

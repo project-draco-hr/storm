@@ -1,5 +1,0 @@
-{
-  ComponentObject x=new ComponentObject();
-  x.set_shell(value);
-  return x;
-}

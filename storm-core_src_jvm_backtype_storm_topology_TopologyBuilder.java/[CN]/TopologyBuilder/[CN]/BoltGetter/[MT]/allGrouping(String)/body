@@ -1,3 +1,0 @@
-{
-  return allGrouping(componentId,Utils.DEFAULT_STREAM_ID);
-}

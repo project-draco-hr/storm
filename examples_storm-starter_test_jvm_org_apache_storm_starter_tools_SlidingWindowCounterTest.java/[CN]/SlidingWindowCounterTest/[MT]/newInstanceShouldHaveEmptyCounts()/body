@@ -1,0 +1,5 @@
+{
+  SlidingWindowCounter<Object> counter=new SlidingWindowCounter<Object>(ANY_WINDOW_LENGTH_IN_SLOTS);
+  Map<Object,Long> counts=counter.getCountsThenAdvanceWindow();
+  assertThat(counts).isEmpty();
+}

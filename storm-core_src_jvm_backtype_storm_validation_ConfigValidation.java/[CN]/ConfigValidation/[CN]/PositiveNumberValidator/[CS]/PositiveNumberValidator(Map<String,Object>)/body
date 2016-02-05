@@ -1,3 +1,0 @@
-{
-  this.includeZero=(boolean)params.get(ConfigValidationAnnotations.ValidatorParams.INCLUDE_ZERO);
-}

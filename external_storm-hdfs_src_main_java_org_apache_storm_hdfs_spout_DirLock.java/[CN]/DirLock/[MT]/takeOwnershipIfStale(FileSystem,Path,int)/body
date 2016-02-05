@@ -1,0 +1,15 @@
+{
+  Path dirLockFile=getDirLockFile(dirToLock);
+  long now=System.currentTimeMillis();
+  long expiryTime=now - (lockTimeoutSec * 1000);
+  try {
+    long modTime=fs.getFileStatus(dirLockFile).getModificationTime();
+    if (modTime <= expiryTime) {
+      return takeOwnership(fs,dirLockFile);
+    }
+    return null;
+  }
+ catch (  IOException e) {
+    return null;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  for (  Entry<String,Map<String,Collection<ExecutorDetails>>> entry : _topIdToUsedSlots.entrySet()) {
+    String topoId=entry.getKey();
+    Map<String,Collection<ExecutorDetails>> assignment=entry.getValue();
+    Map<ExecutorDetails,Double> topoMemoryResourceList=_topologies.getById(topoId).getTotalMemoryResourceList();
+    for (    Collection<ExecutorDetails> execs : assignment.values()) {
+      for (      ExecutorDetails exec : execs) {
+        if (!_isAlive) {
+          continue;
+        }
+        if (topoMemoryResourceList.containsKey(exec)) {
+          consumeResourcesforTask(exec,_topologies.getById(topoId));
+        }
+ else {
+          throw new IllegalStateException("Executor " + exec + "not found!");
+        }
+      }
+    }
+  }
+}

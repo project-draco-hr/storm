@@ -1,0 +1,3 @@
+{
+  collector.emit(new Values(tuple.getString(0).length()));
+}

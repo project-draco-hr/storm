@@ -1,0 +1,13 @@
+{
+  Path file=new Path(dir.toString() + Path.SEPARATOR_CHAR + "file1");
+  fs.create(file).close();
+  FileDeletionThread[] thds=startThreads(10,file);
+  int successCount=0;
+  for (  FileDeletionThread thd : thds) {
+    thd.join();
+    if (thd.succeeded)     successCount++;
+    if (thd.exception != null)     Assert.assertNotNull(thd.exception);
+  }
+  System.err.println(successCount);
+  Assert.assertEquals(1,successCount);
+}

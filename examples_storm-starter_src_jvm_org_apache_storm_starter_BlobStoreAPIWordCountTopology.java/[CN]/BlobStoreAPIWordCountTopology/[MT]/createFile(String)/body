@@ -1,0 +1,9 @@
+{
+  File file=null;
+  file=new File(fileName);
+  if (!file.exists()) {
+    file.createNewFile();
+  }
+  writeToFile(file,getRandomWordSet());
+  return file;
+}

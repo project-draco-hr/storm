@@ -1,0 +1,4 @@
+{
+  AckableMessage msg=this.pending.remove(msgId);
+  this.connection.getDispatchQueue().execute(msg.ack());
+}

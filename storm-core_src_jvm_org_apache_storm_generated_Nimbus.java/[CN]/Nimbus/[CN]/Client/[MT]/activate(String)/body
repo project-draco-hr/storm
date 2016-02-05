@@ -1,0 +1,4 @@
+{
+  send_activate(name);
+  recv_activate();
+}

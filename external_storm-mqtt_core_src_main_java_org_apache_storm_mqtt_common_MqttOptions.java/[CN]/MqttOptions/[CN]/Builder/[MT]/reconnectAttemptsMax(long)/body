@@ -1,0 +1,4 @@
+{
+  this.options.reconnectAttemptsMax=reconnectAttemptsMax;
+  return this;
+}

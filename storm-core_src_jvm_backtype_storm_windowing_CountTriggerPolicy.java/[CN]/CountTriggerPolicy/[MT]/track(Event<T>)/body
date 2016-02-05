@@ -1,5 +1,0 @@
-{
-  if (currentCount.incrementAndGet() >= count) {
-    handler.onTrigger();
-  }
-}

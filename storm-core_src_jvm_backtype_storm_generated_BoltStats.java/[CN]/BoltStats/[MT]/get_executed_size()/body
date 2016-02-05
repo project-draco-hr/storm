@@ -1,3 +1,0 @@
-{
-  return (this.executed == null) ? 0 : this.executed.size();
-}

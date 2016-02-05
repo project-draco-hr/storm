@@ -1,0 +1,6 @@
+{
+  if (this.streams == null) {
+    this.streams=new HashMap<String,StreamInfo>();
+  }
+  this.streams.put(key,val);
+}

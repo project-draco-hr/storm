@@ -1,0 +1,5 @@
+{
+  killTopology_args args=new killTopology_args();
+  args.set_name(name);
+  sendBase("killTopology",args);
+}

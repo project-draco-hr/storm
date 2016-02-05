@@ -1,9 +1,0 @@
-{
-  random=new Random();
-  choices=new ArrayList<List<Integer>>(targetTasks.size());
-  for (  Integer i : targetTasks) {
-    choices.add(Arrays.asList(i));
-  }
-  Collections.shuffle(choices,random);
-  current=new AtomicInteger(0);
-}

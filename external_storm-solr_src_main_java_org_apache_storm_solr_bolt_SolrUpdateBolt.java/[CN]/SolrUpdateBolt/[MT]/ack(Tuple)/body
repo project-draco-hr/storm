@@ -3,9 +3,12 @@
     collector.ack(tuple);
   }
  else {
-    toCommitTuples.add(tuple);
-    commitStgy.update();
-    if (commitStgy.commit()) {
+    final boolean isTickTuple=TupleUtils.isTick(tuple);
+    if (!isTickTuple) {
+      toCommitTuples.add(tuple);
+      commitStgy.update();
+    }
+    if (isTickTuple || commitStgy.commit()) {
       solrClient.commit(solrMapper.getCollection());
       ackCommittedTuples();
     }

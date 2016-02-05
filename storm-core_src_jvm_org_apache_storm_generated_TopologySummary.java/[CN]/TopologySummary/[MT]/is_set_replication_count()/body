@@ -1,0 +1,3 @@
+{
+  return EncodingUtils.testBit(__isset_bitfield,__REPLICATION_COUNT_ISSET_ID);
+}

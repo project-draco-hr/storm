@@ -1,0 +1,5 @@
+{
+  this.windowLengthInSeconds=windowLengthInSeconds;
+  this.emitFrequencyInSeconds=emitFrequencyInSeconds;
+  counter=new SlidingWindowCounter<Object>(deriveNumWindowChunksFrom(this.windowLengthInSeconds,this.emitFrequencyInSeconds));
+}

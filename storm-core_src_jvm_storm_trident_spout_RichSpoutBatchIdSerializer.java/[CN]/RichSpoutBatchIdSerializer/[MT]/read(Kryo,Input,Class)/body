@@ -1,4 +1,0 @@
-{
-  long l=input.readLong();
-  return new RichSpoutBatchId(l);
-}

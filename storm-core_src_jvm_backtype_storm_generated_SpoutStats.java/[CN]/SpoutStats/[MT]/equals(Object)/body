@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof SpoutStats)   return this.equals((SpoutStats)that);
-  return false;
-}

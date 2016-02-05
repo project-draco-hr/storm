@@ -1,0 +1,4 @@
+{
+  this.replication_count=replication_count;
+  set_replication_count_isSet(true);
+}

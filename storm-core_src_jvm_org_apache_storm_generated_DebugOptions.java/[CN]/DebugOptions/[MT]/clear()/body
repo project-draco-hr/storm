@@ -1,0 +1,6 @@
+{
+  set_enable_isSet(false);
+  this.enable=false;
+  set_samplingpct_isSet(false);
+  this.samplingpct=0.0;
+}

@@ -1,0 +1,13 @@
+{
+  List<List<Object>> batch=this.batches.get(batchId);
+  if (batch == null) {
+    batch=new ArrayList<>();
+    for (int i=0; i < batchSize; i++) {
+      batch.add(createTuple());
+    }
+    this.batches.put(batchId,batch);
+  }
+  for (  List<Object> list : batch) {
+    collector.emit(list);
+  }
+}

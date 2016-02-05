@@ -1,0 +1,4 @@
+{
+  set_complete_latency_ms_isSet(false);
+  this.complete_latency_ms=0.0;
+}

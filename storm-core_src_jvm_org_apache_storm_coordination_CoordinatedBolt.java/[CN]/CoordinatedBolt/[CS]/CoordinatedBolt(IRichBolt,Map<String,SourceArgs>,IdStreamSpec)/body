@@ -1,0 +1,6 @@
+{
+  _sourceArgs=sourceArgs;
+  if (_sourceArgs == null)   _sourceArgs=new HashMap<>();
+  _delegate=delegate;
+  _idStreamSpec=idStreamSpec;
+}

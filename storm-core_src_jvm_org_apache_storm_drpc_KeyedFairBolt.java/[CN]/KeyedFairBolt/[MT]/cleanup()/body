@@ -1,0 +1,4 @@
+{
+  _executor.interrupt();
+  _delegate.cleanup();
+}

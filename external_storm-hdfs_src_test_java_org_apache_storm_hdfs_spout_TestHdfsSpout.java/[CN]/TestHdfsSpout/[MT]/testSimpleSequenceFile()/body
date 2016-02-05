@@ -1,0 +1,18 @@
+{
+  source=new Path("/tmp/hdfsspout/source");
+  fs.mkdirs(source);
+  archive=new Path("/tmp/hdfsspout/archive");
+  fs.mkdirs(archive);
+  Path file1=new Path(source + "/file1.seq");
+  createSeqFile(fs,file1,5);
+  Path file2=new Path(source + "/file2.seq");
+  createSeqFile(fs,file2,5);
+  Map conf=getDefaultConfig();
+  HdfsSpout spout=makeSpout(0,conf,Configs.SEQ,SequenceFileReader.defaultFields);
+  List<String> res=runSpout(spout,"r11");
+  Assert.assertEquals(10,res.size());
+  Assert.assertEquals(2,listDir(archive).size());
+  Path f1=new Path(archive + "/file1.seq");
+  Path f2=new Path(archive + "/file2.seq");
+  checkCollectorOutput_seq((MockCollector)spout.getCollector(),f1,f2);
+}

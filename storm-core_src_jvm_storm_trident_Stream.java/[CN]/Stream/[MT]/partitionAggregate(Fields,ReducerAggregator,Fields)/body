@@ -1,4 +1,0 @@
-{
-  projectionValidation(inputFields);
-  return chainedAgg().partitionAggregate(inputFields,agg,functionFields).chainEnd();
-}

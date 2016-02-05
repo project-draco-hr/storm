@@ -1,0 +1,3 @@
+String masterBoltId
+IBasicBolt masterBolt
+Number boltParallelism

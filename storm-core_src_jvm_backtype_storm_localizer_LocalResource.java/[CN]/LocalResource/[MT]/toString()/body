@@ -1,3 +1,0 @@
-{
-  return "Key: " + _blobKey + " uncompress: "+ _uncompress;
-}

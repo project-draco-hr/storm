@@ -1,0 +1,4 @@
+{
+  List<Object> shallowCopyOfFields=ImmutableList.copyOf(getFields());
+  return new RankableObjectWithFields(getObject(),getCount(),shallowCopyOfFields);
+}

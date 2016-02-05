@@ -1,0 +1,25 @@
+{
+  LOG.debug("prepareCommit txid {}",txid);
+  validatePrepareTxid(txid);
+  JedisCommands commands=null;
+  try {
+    commands=jedisContainer.getInstance();
+    if (commands.exists(prepareNamespace)) {
+      LOG.debug("Prepared txn already exists, will merge",txid);
+      pendingPrepare.putAll(pendingCommit);
+    }
+    if (!pendingPrepare.isEmpty()) {
+      commands.hmset(prepareNamespace,pendingPrepare);
+    }
+ else {
+      LOG.debug("Nothing to save for prepareCommit, txid {}.",txid);
+    }
+    txIds.put(PREPARE_TXID_KEY,String.valueOf(txid));
+    commands.hmset(txidNamespace,txIds);
+    pendingCommit=Collections.unmodifiableMap(pendingPrepare);
+    pendingPrepare=new ConcurrentHashMap<>();
+  }
+  finally {
+    jedisContainer.returnInstance(commands);
+  }
+}

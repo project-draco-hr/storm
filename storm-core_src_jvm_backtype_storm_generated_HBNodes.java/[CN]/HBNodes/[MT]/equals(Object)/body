@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof HBNodes)   return this.equals((HBNodes)that);
-  return false;
-}

@@ -1,3 +1,0 @@
-TridentKafkaState state
-List<TridentTuple> tuples
-TridentCollector collector

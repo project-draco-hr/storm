@@ -1,0 +1,4 @@
+{
+  this();
+  this.approved_workers=approved_workers;
+}

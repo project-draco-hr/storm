@@ -1,0 +1,5 @@
+{
+  if (msg == null)   throw new RuntimeException("null object forbidden in message batch");
+  msgs.add(msg);
+  encoded_length+=msgEncodeLength(msg);
+}

@@ -1,0 +1,3 @@
+{
+  return newStaticState(new StateSpec(factory));
+}

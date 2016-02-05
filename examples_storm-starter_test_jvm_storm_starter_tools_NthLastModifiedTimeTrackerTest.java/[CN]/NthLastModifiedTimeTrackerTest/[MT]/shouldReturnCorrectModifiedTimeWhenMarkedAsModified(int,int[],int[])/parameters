@@ -1,3 +1,0 @@
-int numTimesToTrack
-int[] secondsToAdvancePerIteration
-int[] expLastModifiedTimes

@@ -1,5 +1,0 @@
-String id
-ITridentBatchBolt bolt
-Integer parallelism
-Set<String> committerBatches
-Map<String,String> batchGroups

@@ -1,8 +1,0 @@
-{
-  if (uncompress) {
-    _localrsrcArchives.putIfAbsent(resourceName,updatedResource);
-  }
- else {
-    _localrsrcFiles.putIfAbsent(resourceName,updatedResource);
-  }
-}

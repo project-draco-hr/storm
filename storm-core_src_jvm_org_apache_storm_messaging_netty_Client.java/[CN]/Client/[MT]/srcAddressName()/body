@@ -1,0 +1,11 @@
+{
+  String name=null;
+  Channel channel=channelRef.get();
+  if (channel != null) {
+    SocketAddress address=channel.getLocalAddress();
+    if (address != null) {
+      name=address.toString();
+    }
+  }
+  return name;
+}

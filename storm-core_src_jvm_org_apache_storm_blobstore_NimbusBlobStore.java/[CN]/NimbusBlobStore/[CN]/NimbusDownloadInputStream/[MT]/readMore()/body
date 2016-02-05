@@ -1,0 +1,15 @@
+{
+  if (!eof) {
+    ByteBuffer buff;
+synchronized (client) {
+      buff=client.getClient().downloadBlobChunk(beginBlobDownload.get_session());
+    }
+    buffer=buff.array();
+    offset=buff.arrayOffset() + buff.position();
+    int length=buff.remaining();
+    end=offset + length;
+    if (length == 0) {
+      eof=true;
+    }
+  }
+}

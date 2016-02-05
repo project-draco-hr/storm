@@ -1,0 +1,5 @@
+{
+  Grouping x=new Grouping();
+  x.set_all(value);
+  return x;
+}

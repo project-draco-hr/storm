@@ -1,5 +1,0 @@
-{
-  Grouping x=new Grouping();
-  x.set_fields(value);
-  return x;
-}

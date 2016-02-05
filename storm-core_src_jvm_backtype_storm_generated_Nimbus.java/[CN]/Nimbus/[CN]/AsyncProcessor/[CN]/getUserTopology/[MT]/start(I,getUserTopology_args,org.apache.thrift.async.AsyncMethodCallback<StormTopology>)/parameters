@@ -1,3 +1,0 @@
-I iface
-getUserTopology_args args
-org.apache.thrift.async.AsyncMethodCallback<StormTopology> resultHandler

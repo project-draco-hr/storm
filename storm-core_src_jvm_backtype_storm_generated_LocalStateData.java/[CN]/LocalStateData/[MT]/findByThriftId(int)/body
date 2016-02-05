@@ -1,8 +1,0 @@
-{
-switch (fieldId) {
-case 1:
-    return SERIALIZED_PARTS;
-default :
-  return null;
-}
-}

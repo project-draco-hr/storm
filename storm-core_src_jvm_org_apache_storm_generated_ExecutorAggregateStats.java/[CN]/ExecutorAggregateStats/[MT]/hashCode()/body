@@ -1,0 +1,10 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_exec_summary=true && (is_set_exec_summary());
+  list.add(present_exec_summary);
+  if (present_exec_summary)   list.add(exec_summary);
+  boolean present_stats=true && (is_set_stats());
+  list.add(present_stats);
+  if (present_stats)   list.add(stats);
+  return list.hashCode();
+}

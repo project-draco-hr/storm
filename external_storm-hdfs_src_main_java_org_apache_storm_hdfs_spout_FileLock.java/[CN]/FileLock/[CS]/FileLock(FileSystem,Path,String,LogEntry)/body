@@ -1,0 +1,8 @@
+{
+  this.fs=fs;
+  this.lockFile=lockFile;
+  this.lockFileStream=fs.append(lockFile);
+  this.componentID=spoutId;
+  LOG.info("Acquired abandoned lockFile {}, Spout {}",lockFile,spoutId);
+  logProgress(entry.fileOffset,true);
+}

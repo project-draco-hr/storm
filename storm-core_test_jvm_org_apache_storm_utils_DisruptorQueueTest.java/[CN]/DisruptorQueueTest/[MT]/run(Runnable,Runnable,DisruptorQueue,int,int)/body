@@ -1,0 +1,20 @@
+{
+  Thread[] producerThreads=new Thread[producerNum];
+  for (int i=0; i < producerNum; i++) {
+    producerThreads[i]=new Thread(producer);
+    producerThreads[i].start();
+  }
+  Thread consumerThread=new Thread(consumer);
+  consumerThread.start();
+  Thread.sleep(sleepMs);
+  for (int i=0; i < producerNum; i++) {
+    producerThreads[i].interrupt();
+  }
+  for (int i=0; i < producerNum; i++) {
+    producerThreads[i].join(TIMEOUT);
+    assertFalse("producer " + i + " is still alive",producerThreads[i].isAlive());
+  }
+  queue.haltWithInterrupt();
+  consumerThread.join(TIMEOUT);
+  assertFalse("consumer is still alive",consumerThread.isAlive());
+}

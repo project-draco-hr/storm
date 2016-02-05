@@ -1,0 +1,3 @@
+{
+  return "TimeEvictionPolicy{" + "windowLength=" + windowLength + ", referenceTime="+ referenceTime+ '}';
+}

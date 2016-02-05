@@ -1,0 +1,21 @@
+{
+  if (_delegate instanceof FinishedCallback) {
+    _callback=(FinishedCallback)_delegate;
+  }
+  _delegate.prepare(stormConf,context,collector);
+  _rrQueue=new KeyedRoundRobinQueue<Tuple>();
+  _executor=new Thread(new Runnable(){
+    public void run(){
+      try {
+        while (true) {
+          _delegate.execute(_rrQueue.take());
+        }
+      }
+ catch (      InterruptedException e) {
+      }
+    }
+  }
+);
+  _executor.setDaemon(true);
+  _executor.start();
+}

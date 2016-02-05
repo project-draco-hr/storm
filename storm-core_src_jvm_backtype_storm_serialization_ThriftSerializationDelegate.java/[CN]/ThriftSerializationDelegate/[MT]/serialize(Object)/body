@@ -1,8 +1,0 @@
-{
-  try {
-    return new TSerializer().serialize((TBase)object);
-  }
- catch (  TException e) {
-    throw new RuntimeException(e);
-  }
-}

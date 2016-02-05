@@ -1,8 +1,0 @@
-{
-  if (_local != null) {
-    return _local.getClusterInfo();
-  }
- else {
-    return _client.getClusterInfo();
-  }
-}

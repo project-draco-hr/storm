@@ -1,5 +1,0 @@
-{
-  _conf=conf;
-  _context=context;
-  _cb=callback;
-}

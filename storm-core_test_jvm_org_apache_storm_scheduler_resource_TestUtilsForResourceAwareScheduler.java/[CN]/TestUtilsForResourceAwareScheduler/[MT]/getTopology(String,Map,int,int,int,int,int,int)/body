@@ -1,0 +1,10 @@
+{
+  Config conf=new Config();
+  conf.putAll(config);
+  conf.put(Config.TOPOLOGY_PRIORITY,priority);
+  conf.put(Config.TOPOLOGY_NAME,name);
+  conf.put(Config.TOPOLOGY_WORKER_MAX_HEAP_SIZE_MB,Double.MAX_VALUE);
+  StormTopology topology=buildTopology(numSpout,numBolt,spoutParallelism,boltParallelism);
+  TopologyDetails topo=new TopologyDetails(name + "-" + launchTime,conf,topology,0,genExecsAndComps(topology,spoutParallelism,boltParallelism),launchTime);
+  return topo;
+}

@@ -1,0 +1,20 @@
+{
+  int thisBatchSize;
+  if (_options.maxMultiGetBatchSize == 0) {
+    thisBatchSize=keys.size();
+  }
+ else {
+    thisBatchSize=_options.maxMultiGetBatchSize;
+  }
+  LinkedList<List<Object>> keysTodo=new LinkedList<List<Object>>(keys);
+  List<T> ret=new ArrayList<T>(keys.size());
+  while (!keysTodo.isEmpty()) {
+    List<List<Object>> keysBatch=new ArrayList<List<Object>>(thisBatchSize);
+    for (int i=0; i < thisBatchSize && !keysTodo.isEmpty(); i++) {
+      keysBatch.add(keysTodo.removeFirst());
+    }
+    List<T> retSubset=_delegate.multiGet(keysBatch);
+    ret.addAll(retSubset);
+  }
+  return ret;
+}

@@ -1,0 +1,10 @@
+{
+  LOG.debug("/*********Checkpoint scheduling state************/");
+  for (  User user : getUserMap().values()) {
+    LOG.debug(user.getDetailedInfo());
+  }
+  LOG.debug(ResourceUtils.printScheduling(this.cluster,this.topologies));
+  LOG.debug("nodes:\n{}",this.nodes);
+  LOG.debug("/*********End************/");
+  return new SchedulingState(this.userMap,this.cluster,this.topologies,this.nodes,this.conf);
+}

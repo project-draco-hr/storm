@@ -1,6 +1,0 @@
-{
-  if (this.topologies == null) {
-    this.topologies=new ArrayList<TopologySummary>();
-  }
-  this.topologies.add(elem);
-}

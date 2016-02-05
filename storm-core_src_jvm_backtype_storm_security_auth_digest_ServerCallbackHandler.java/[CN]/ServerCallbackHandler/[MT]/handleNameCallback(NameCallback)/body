@@ -1,5 +1,0 @@
-{
-  LOG.debug("handleNameCallback");
-  userName=nc.getDefaultName();
-  nc.setName(nc.getDefaultName());
-}

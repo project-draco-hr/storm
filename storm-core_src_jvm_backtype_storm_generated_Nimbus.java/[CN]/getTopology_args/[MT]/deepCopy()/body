@@ -1,3 +1,0 @@
-{
-  return new getTopology_args(this);
-}

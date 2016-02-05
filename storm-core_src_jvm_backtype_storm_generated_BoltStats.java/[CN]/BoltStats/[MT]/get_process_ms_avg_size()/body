@@ -1,3 +1,0 @@
-{
-  return (this.process_ms_avg == null) ? 0 : this.process_ms_avg.size();
-}

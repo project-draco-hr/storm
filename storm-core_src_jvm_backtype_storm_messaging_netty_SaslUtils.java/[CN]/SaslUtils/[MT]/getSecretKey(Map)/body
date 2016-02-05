@@ -1,3 +1,0 @@
-{
-  return conf == null || conf.isEmpty() ? null : (String)conf.get(Config.STORM_ZOOKEEPER_TOPOLOGY_AUTH_PAYLOAD);
-}

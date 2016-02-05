@@ -1,0 +1,9 @@
+{
+  if (!_isAlive) {
+    LOG.warn("Freeing all slots on a dead node {} ",_nodeId);
+  }
+  _cluster.freeSlots(_slots.values());
+  _availCPU=getTotalCpuResources();
+  _availMemory=getAvailableMemoryResources();
+  _topIdToUsedSlots.clear();
+}

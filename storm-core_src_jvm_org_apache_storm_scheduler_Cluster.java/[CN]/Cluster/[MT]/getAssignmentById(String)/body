@@ -1,0 +1,6 @@
+{
+  if (this.assignments.containsKey(topologyId)) {
+    return this.assignments.get(topologyId);
+  }
+  return null;
+}

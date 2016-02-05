@@ -1,0 +1,7 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  struct.task_start=iprot.readI32();
+  struct.set_task_start_isSet(true);
+  struct.task_end=iprot.readI32();
+  struct.set_task_end_isSet(true);
+}

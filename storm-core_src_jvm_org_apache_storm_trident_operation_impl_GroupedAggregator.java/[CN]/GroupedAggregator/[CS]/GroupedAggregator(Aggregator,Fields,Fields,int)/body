@@ -1,0 +1,9 @@
+{
+  _groupFields=group;
+  _inFields=input;
+  _agg=agg;
+  int[] sizes=new int[2];
+  sizes[0]=_groupFields.size();
+  sizes[1]=outSize;
+  _fact=new ComboList.Factory(sizes);
+}

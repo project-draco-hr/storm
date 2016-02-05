@@ -1,3 +1,0 @@
-{
-  iface.uploadBlobChunk(args.session,args.chunk,resultHandler);
-}

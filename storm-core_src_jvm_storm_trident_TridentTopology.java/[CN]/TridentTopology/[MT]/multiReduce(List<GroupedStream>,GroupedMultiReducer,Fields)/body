@@ -1,3 +1,0 @@
-{
-  return multiReduce(getAllOutputFields(streams),streams,function,outputFields);
-}

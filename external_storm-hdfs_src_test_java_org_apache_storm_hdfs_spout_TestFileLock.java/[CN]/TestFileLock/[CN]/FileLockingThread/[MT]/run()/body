@@ -1,0 +1,31 @@
+{
+  Thread.currentThread().setName("FileLockingThread-" + thdNum);
+  FileLock lock=null;
+  try {
+    do {
+      System.err.println("Trying lock - " + getName());
+      lock=FileLock.tryLock(fs,this.fileToLock,this.locksDir,spoutId);
+      System.err.println("Acquired lock - " + getName());
+      if (lock == null) {
+        System.out.println("Retrying lock - " + getName());
+      }
+    }
+ while (lock == null);
+    cleanExit=true;
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+ finally {
+    try {
+      if (lock != null) {
+        lock.release();
+        System.err.println("Released lock - " + getName());
+      }
+    }
+ catch (    IOException e) {
+      e.printStackTrace(System.err);
+    }
+  }
+  System.err.println("Thread exiting - " + getName());
+}

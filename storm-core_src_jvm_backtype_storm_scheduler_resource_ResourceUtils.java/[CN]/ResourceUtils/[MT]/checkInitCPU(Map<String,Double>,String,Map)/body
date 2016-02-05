@@ -1,6 +1,0 @@
-{
-  if (!topology_resources.containsKey(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT)) {
-    topology_resources.put(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT,backtype.storm.utils.Utils.getDouble(topologyConf.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT),null));
-    debugMessage("CPU",Com,topologyConf);
-  }
-}

@@ -1,3 +1,0 @@
-{
-  builder.setSpout("spout",mock(IRichSpout.class),0);
-}

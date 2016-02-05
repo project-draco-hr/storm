@@ -1,0 +1,7 @@
+{
+  this.lastSyncPoint=lastSyncPoint;
+  this.recordsSinceLastSync=recordsSinceLastSync;
+  this.currentRecord=currentRecord;
+  this.prevRecordEndOffset=prevRecordEndOffset;
+  this.currRecordEndOffset=currRecordEndOffset;
+}

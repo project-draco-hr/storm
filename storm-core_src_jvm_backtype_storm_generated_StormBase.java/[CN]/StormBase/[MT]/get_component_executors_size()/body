@@ -1,3 +1,0 @@
-{
-  return (this.component_executors == null) ? 0 : this.component_executors.size();
-}

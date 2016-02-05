@@ -1,0 +1,3 @@
+{
+  return new Object[][]{{Lists.newArrayList(A,ZERO),Lists.newArrayList(A)},{Lists.newArrayList(A),Lists.newArrayList(A)},{Lists.newArrayList(ZERO,A),Lists.newArrayList(A)},{Lists.newArrayList(ZERO),Lists.newArrayList()},{Lists.newArrayList(ZERO,new RankableObjectWithFields("ZERO2",0)),Lists.newArrayList()},{Lists.newArrayList(B,ZERO,new RankableObjectWithFields("ZERO2",0),D,new RankableObjectWithFields("ZERO3",0),new RankableObjectWithFields("ZERO4",0),C),Lists.newArrayList(D,C,B)},{Lists.newArrayList(A,ZERO,B),Lists.newArrayList(B,A)}};
+}

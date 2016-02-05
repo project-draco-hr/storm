@@ -1,0 +1,8 @@
+{
+  List<NodeDetails> nodes=this.getAvailableNodesFromCluster(clusterId);
+  List<WorkerSlot> workers=new LinkedList<>();
+  for (  NodeDetails node : nodes) {
+    workers.addAll(node.getFreeSlots());
+  }
+  return workers;
+}

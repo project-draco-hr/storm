@@ -1,7 +1,0 @@
-{
-  int slotsAvailable=0;
-  for (  NodePool pool : pools) {
-    slotsAvailable+=pool.slotsAvailable();
-  }
-  return slotsAvailable;
-}

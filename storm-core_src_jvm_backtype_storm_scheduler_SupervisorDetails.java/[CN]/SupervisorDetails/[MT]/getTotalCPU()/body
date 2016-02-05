@@ -1,3 +1,0 @@
-{
-  return getTotalResource(Config.SUPERVISOR_CPU_CAPACITY);
-}

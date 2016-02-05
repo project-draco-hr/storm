@@ -1,7 +1,0 @@
-{
-  if (hasExecInTopo(exec)) {
-    LOG.warn("Executor {} already exists...ResourceList: {}",exec,getTaskResourceReqList(exec));
-    return;
-  }
-  _resourceList.put(exec,resourceList);
-}

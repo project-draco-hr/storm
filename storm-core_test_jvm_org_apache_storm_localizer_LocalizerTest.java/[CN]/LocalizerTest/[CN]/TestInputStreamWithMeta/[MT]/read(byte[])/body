@@ -1,0 +1,7 @@
+{
+  int length=iostream.read(b);
+  if (length == 0) {
+    return -1;
+  }
+  return length;
+}

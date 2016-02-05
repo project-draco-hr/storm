@@ -1,0 +1,3 @@
+{
+  return CHECKPOINT_STREAM_ID.equals(input.getSourceStreamId());
+}

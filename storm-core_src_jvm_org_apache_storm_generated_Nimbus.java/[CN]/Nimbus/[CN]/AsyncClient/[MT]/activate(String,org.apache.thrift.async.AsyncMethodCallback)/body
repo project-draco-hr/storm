@@ -1,0 +1,6 @@
+{
+  checkReady();
+  activate_call method_call=new activate_call(name,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

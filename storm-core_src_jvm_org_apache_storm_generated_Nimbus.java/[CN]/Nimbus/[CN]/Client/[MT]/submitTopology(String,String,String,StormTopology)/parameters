@@ -1,0 +1,4 @@
+String name
+String uploadedJarLocation
+String jsonConf
+StormTopology topology

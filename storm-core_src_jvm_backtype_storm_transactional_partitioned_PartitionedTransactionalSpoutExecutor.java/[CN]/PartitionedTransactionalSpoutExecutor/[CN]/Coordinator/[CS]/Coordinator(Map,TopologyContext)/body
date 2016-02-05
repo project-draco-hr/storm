@@ -1,3 +1,0 @@
-{
-  _coordinator=_spout.getCoordinator(conf,context);
-}

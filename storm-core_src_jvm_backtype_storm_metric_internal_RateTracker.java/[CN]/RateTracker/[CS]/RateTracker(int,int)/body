@@ -1,3 +1,0 @@
-{
-  this(validTimeWindowInMils,numBuckets,-1);
-}

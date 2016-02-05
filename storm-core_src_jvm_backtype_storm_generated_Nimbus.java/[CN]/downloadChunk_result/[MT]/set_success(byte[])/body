@@ -1,3 +1,0 @@
-{
-  this.success=success == null ? (ByteBuffer)null : ByteBuffer.wrap(Arrays.copyOf(success,success.length));
-}

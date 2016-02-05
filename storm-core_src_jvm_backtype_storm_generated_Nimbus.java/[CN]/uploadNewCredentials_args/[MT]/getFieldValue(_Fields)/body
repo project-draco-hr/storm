@@ -1,9 +1,0 @@
-{
-switch (field) {
-case NAME:
-    return get_name();
-case CREDS:
-  return get_creds();
-}
-throw new IllegalStateException();
-}

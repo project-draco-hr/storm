@@ -1,0 +1,9 @@
+{
+  try {
+    clazz.getMethod(method);
+  }
+ catch (  NoSuchMethodException ex) {
+    return false;
+  }
+  return true;
+}

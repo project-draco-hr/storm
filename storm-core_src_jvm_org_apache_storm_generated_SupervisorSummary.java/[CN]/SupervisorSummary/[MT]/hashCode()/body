@@ -1,0 +1,31 @@
+{
+  List<Object> list=new ArrayList<Object>();
+  boolean present_host=true && (is_set_host());
+  list.add(present_host);
+  if (present_host)   list.add(host);
+  boolean present_uptime_secs=true;
+  list.add(present_uptime_secs);
+  if (present_uptime_secs)   list.add(uptime_secs);
+  boolean present_num_workers=true;
+  list.add(present_num_workers);
+  if (present_num_workers)   list.add(num_workers);
+  boolean present_num_used_workers=true;
+  list.add(present_num_used_workers);
+  if (present_num_used_workers)   list.add(num_used_workers);
+  boolean present_supervisor_id=true && (is_set_supervisor_id());
+  list.add(present_supervisor_id);
+  if (present_supervisor_id)   list.add(supervisor_id);
+  boolean present_version=true && (is_set_version());
+  list.add(present_version);
+  if (present_version)   list.add(version);
+  boolean present_total_resources=true && (is_set_total_resources());
+  list.add(present_total_resources);
+  if (present_total_resources)   list.add(total_resources);
+  boolean present_used_mem=true && (is_set_used_mem());
+  list.add(present_used_mem);
+  if (present_used_mem)   list.add(used_mem);
+  boolean present_used_cpu=true && (is_set_used_cpu());
+  list.add(present_used_cpu);
+  if (present_used_cpu)   list.add(used_cpu);
+  return list.hashCode();
+}

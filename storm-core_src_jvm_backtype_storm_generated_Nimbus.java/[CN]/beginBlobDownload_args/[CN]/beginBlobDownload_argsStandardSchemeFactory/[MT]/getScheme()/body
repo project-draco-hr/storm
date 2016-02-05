@@ -1,3 +1,0 @@
-{
-  return new beginBlobDownload_argsStandardScheme();
-}

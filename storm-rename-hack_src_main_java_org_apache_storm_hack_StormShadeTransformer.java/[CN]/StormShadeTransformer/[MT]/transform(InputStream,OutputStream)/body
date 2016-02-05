@@ -1,0 +1,5 @@
+{
+  DefaultShader shader=new DefaultShader();
+  ShadeRequest request=StormShadeRequest.makeRequest();
+  shader.shadeJarStream(request,input,output);
+}

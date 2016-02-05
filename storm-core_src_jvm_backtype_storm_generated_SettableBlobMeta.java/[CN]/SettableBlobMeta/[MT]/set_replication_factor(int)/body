@@ -1,4 +1,0 @@
-{
-  this.replication_factor=replication_factor;
-  set_replication_factor_isSet(true);
-}

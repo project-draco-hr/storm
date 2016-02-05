@@ -1,0 +1,15 @@
+{
+  Set<String> aclUsers=new HashSet<>();
+  List<String> duplicateUsers=new ArrayList<>();
+  for (  AccessControl acl : acls) {
+    String aclUser=acl.get_name();
+    if (!StringUtils.isEmpty(aclUser) && !aclUsers.add(aclUser)) {
+      LOG.error("'{}' user can't appear more than once in the ACLs",aclUser);
+      duplicateUsers.add(aclUser);
+    }
+  }
+  if (duplicateUsers.size() > 0) {
+    String errorMessage="user " + Arrays.toString(duplicateUsers.toArray()) + " can't appear more than once in the ACLs for key ["+ key+ "].";
+    throw new AuthorizationException(errorMessage);
+  }
+}

@@ -1,3 +1,0 @@
-{
-  return partitionPersist(stateFactory,updater,new Fields());
-}

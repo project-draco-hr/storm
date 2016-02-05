@@ -1,0 +1,16 @@
+{
+switch (fieldId) {
+case 1:
+    return HOST;
+case 2:
+  return PORT;
+case 3:
+return UPTIME_SECS;
+case 4:
+return IS_LEADER;
+case 5:
+return VERSION;
+default :
+return null;
+}
+}

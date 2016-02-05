@@ -1,7 +1,0 @@
-{
-  prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("downloadBlobChunk",org.apache.thrift.protocol.TMessageType.CALL,0));
-  downloadBlobChunk_args args=new downloadBlobChunk_args();
-  args.set_session(session);
-  args.write(prot);
-  prot.writeMessageEnd();
-}

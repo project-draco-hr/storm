@@ -1,3 +1,0 @@
-{
-  return new TridentTupleView(PersistentVector.EMPTY.cons(parent.getValues()),index,fieldIndex);
-}

@@ -1,3 +1,0 @@
-{
-  return new ProcessorNode(getUniqueStreamId(),null,allOutputFields,new Fields(),new EachProcessor(new Fields(),new FilterExecutor(new TrueFilter())));
-}

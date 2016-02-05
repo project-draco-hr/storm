@@ -1,0 +1,6 @@
+{
+  Tuple tuple=MockTupleHelpers.mockTuple(ANY_NON_SYSTEM_COMPONENT_ID,ANY_NON_SYSTEM_STREAM_ID);
+  Rankings rankings=mock(Rankings.class);
+  when(tuple.getValue(0)).thenReturn(rankings);
+  return tuple;
+}

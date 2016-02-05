@@ -1,4 +1,0 @@
-{
-  registerSourcedNode(sources,newNode);
-  return new TridentState(this,newNode);
-}

@@ -1,3 +1,0 @@
-{
-  iface.result(args.id,args.result,resultHandler);
-}

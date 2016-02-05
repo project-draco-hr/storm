@@ -1,0 +1,5 @@
+{
+  for (  Tuple tuple : tuples.values()) {
+    _collector.fail(tuple);
+  }
+}

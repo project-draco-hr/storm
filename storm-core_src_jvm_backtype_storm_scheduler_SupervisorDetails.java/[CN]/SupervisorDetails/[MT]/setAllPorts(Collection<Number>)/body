@@ -1,8 +1,0 @@
-{
-  this.allPorts=new HashSet<>();
-  if (allPorts != null) {
-    for (    Number n : allPorts) {
-      this.allPorts.add(n.intValue());
-    }
-  }
-}

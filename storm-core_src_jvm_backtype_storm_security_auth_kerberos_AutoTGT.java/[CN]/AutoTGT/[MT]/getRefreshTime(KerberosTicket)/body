@@ -1,5 +1,0 @@
-{
-  long start=tgt.getStartTime().getTime();
-  long end=tgt.getEndTime().getTime();
-  return start + (long)((end - start) * TICKET_RENEW_WINDOW);
-}

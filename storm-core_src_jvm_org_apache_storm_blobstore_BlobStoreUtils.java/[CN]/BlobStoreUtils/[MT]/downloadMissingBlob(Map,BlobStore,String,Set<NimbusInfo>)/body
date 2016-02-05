@@ -1,0 +1,45 @@
+{
+  NimbusClient client;
+  ReadableBlobMeta rbm;
+  ClientBlobStore remoteBlobStore;
+  InputStreamWithMeta in;
+  boolean isSuccess=false;
+  LOG.debug("Download blob NimbusInfos {}",nimbusInfos);
+  for (  NimbusInfo nimbusInfo : nimbusInfos) {
+    if (isSuccess) {
+      break;
+    }
+    try {
+      client=new NimbusClient(conf,nimbusInfo.getHost(),nimbusInfo.getPort(),null);
+      rbm=client.getClient().getBlobMeta(key);
+      remoteBlobStore=new NimbusBlobStore();
+      remoteBlobStore.setClient(conf,client);
+      in=remoteBlobStore.getBlob(key);
+      blobStore.createBlob(key,in,rbm.get_settable(),getNimbusSubject());
+      Iterator<String> keyIterator=blobStore.listKeys();
+      while (keyIterator.hasNext()) {
+        if (keyIterator.next().equals(key)) {
+          LOG.debug("Success creating key, {}",key);
+          isSuccess=true;
+          break;
+        }
+      }
+    }
+ catch (    IOException|AuthorizationException exception) {
+      throw new RuntimeException(exception);
+    }
+catch (    KeyAlreadyExistsException kae) {
+      LOG.info("KeyAlreadyExistsException Key: {} {}",key,kae);
+    }
+catch (    KeyNotFoundException knf) {
+      LOG.info("KeyNotFoundException Key: {} {}",key,knf);
+    }
+catch (    Exception exp) {
+      LOG.error("Exception {}",exp);
+    }
+  }
+  if (!isSuccess) {
+    LOG.error("Could not download blob with key" + key);
+  }
+  return isSuccess;
+}

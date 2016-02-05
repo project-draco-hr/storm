@@ -1,0 +1,3 @@
+{
+  this(namespace,JedisCommandsContainerBuilder.build(poolConfig),keySerializer,valueSerializer);
+}

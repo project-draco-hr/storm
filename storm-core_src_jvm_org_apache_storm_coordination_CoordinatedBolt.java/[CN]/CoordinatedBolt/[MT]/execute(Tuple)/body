@@ -1,0 +1,32 @@
+{
+  Object id=tuple.getValue(0);
+  TrackingInfo track;
+  TupleType type=getTupleType(tuple);
+synchronized (_tracked) {
+    track=_tracked.get(id);
+    if (track == null) {
+      track=new TrackingInfo();
+      if (_idStreamSpec == null)       track.receivedId=true;
+      _tracked.put(id,track);
+    }
+  }
+  if (type == TupleType.ID) {
+synchronized (_tracked) {
+      track.receivedId=true;
+    }
+    checkFinishId(tuple,type);
+  }
+ else   if (type == TupleType.COORD) {
+    int count=(Integer)tuple.getValue(1);
+synchronized (_tracked) {
+      track.reportCount++;
+      track.expectedTupleCount+=count;
+    }
+    checkFinishId(tuple,type);
+  }
+ else {
+synchronized (_tracked) {
+      _delegate.execute(tuple);
+    }
+  }
+}

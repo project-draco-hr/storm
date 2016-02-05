@@ -1,0 +1,3 @@
+{
+  return (workerPidsRoot(conf,id) + FILE_SEPARATOR + pid);
+}

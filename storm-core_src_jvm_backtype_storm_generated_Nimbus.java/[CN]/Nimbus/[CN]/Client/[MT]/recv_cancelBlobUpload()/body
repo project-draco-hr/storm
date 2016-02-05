@@ -1,8 +1,0 @@
-{
-  cancelBlobUpload_result result=new cancelBlobUpload_result();
-  receiveBase(result,"cancelBlobUpload");
-  if (result.aze != null) {
-    throw result.aze;
-  }
-  return;
-}

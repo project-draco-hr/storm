@@ -1,0 +1,3 @@
+{
+  return (this.used_ports == null) ? null : this.used_ports.iterator();
+}

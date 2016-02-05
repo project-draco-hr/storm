@@ -1,0 +1,35 @@
+{
+  double taskMem=td.getTotalMemReqTask(exec);
+  double taskCPU=td.getTotalCpuReqTask(exec);
+  List<NodeDetails> nodes;
+  if (clusterId != null) {
+    nodes=this.getAvailableNodesFromCluster(clusterId);
+  }
+ else {
+    nodes=this.getAvailableNodes();
+  }
+  TreeMap<Double,NodeDetails> nodeRankMap=new TreeMap<>();
+  for (  NodeDetails n : nodes) {
+    if (n.getFreeSlots().size() > 0) {
+      if (n.getAvailableMemoryResources() >= taskMem && n.getAvailableCpuResources() >= taskCPU) {
+        double a=Math.pow(((taskCPU - n.getAvailableCpuResources()) / (n.getAvailableCpuResources() + 1)) * this.CPU_WEIGHT,2);
+        double b=Math.pow(((taskMem - n.getAvailableMemoryResources()) / (n.getAvailableMemoryResources() + 1)) * this.MEM_WEIGHT,2);
+        double c=0.0;
+        if (this.refNode != null) {
+          c=Math.pow(this.distToNode(this.refNode,n) * this.NETWORK_WEIGHT,2);
+        }
+        double distance=Math.sqrt(a + b + c);
+        nodeRankMap.put(distance,n);
+      }
+    }
+  }
+  for (  Map.Entry<Double,NodeDetails> entry : nodeRankMap.entrySet()) {
+    NodeDetails n=entry.getValue();
+    for (    WorkerSlot ws : n.getFreeSlots()) {
+      if (checkWorkerConstraints(exec,ws,td,scheduleAssignmentMap)) {
+        return ws;
+      }
+    }
+  }
+  return null;
+}

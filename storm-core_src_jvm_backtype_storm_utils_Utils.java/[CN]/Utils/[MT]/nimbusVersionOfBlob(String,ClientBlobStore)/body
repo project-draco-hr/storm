@@ -1,6 +1,0 @@
-{
-  long nimbusBlobVersion=0;
-  ReadableBlobMeta metadata=cb.getBlobMeta(key);
-  nimbusBlobVersion=metadata.get_version();
-  return nimbusBlobVersion;
-}

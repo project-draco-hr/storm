@@ -1,0 +1,54 @@
+{
+  String result=(String)input.getValue(0);
+  String returnInfo=(String)input.getValue(1);
+  if (returnInfo != null) {
+    Map retMap=(Map)JSONValue.parse(returnInfo);
+    final String host=(String)retMap.get("host");
+    final int port=Utils.getInt(retMap.get("port"));
+    String id=(String)retMap.get("id");
+    DistributedRPCInvocations.Iface client;
+    if (local) {
+      client=(DistributedRPCInvocations.Iface)ServiceRegistry.getService(host);
+    }
+ else {
+      List server=new ArrayList(){
+{
+          add(host);
+          add(port);
+        }
+      }
+;
+      if (!_clients.containsKey(server)) {
+        try {
+          _clients.put(server,new DRPCInvocationsClient(_conf,host,port));
+        }
+ catch (        TTransportException ex) {
+          throw new RuntimeException(ex);
+        }
+      }
+      client=_clients.get(server);
+    }
+    int retryCnt=0;
+    int maxRetries=3;
+    while (retryCnt < maxRetries) {
+      retryCnt++;
+      try {
+        client.result(id,result);
+        _collector.ack(input);
+        break;
+      }
+ catch (      AuthorizationException aze) {
+        LOG.error("Not authorized to return results to DRPC server",aze);
+        _collector.fail(input);
+        throw new RuntimeException(aze);
+      }
+catch (      TException tex) {
+        if (retryCnt >= maxRetries) {
+          LOG.error("Failed to return results to DRPC server",tex);
+          _collector.fail(input);
+        }
+        reconnectClient((DRPCInvocationsClient)client);
+      }
+    }
+  }
+}

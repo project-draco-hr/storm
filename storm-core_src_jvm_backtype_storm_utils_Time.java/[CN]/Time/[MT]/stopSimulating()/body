@@ -1,6 +1,0 @@
-{
-synchronized (sleepTimesLock) {
-    simulating.set(false);
-    threadSleepTimes=null;
-  }
-}

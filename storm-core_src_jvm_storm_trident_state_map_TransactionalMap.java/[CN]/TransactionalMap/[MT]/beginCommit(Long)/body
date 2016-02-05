@@ -1,4 +1,0 @@
-{
-  _currTx=txid;
-  _backing.reset();
-}

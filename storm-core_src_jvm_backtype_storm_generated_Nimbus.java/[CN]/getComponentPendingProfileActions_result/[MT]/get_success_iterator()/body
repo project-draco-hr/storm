@@ -1,3 +1,0 @@
-{
-  return (this.success == null) ? null : this.success.iterator();
-}

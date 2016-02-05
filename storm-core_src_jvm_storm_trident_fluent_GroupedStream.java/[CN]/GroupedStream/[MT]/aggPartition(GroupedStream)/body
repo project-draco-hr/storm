@@ -1,3 +1,0 @@
-{
-  return new GroupedStream(s._stream.partitionBy(_groupFields),_groupFields);
-}

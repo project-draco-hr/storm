@@ -1,0 +1,11 @@
+{
+  if (client instanceof DRPCInvocationsClient) {
+    try {
+      LOG.info("reconnecting... ");
+      client.reconnectClient();
+    }
+ catch (    TException e2) {
+      LOG.error("Failed to connect to DRPC server",e2);
+    }
+  }
+}

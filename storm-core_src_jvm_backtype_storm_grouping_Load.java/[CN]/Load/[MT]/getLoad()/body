@@ -1,6 +1,0 @@
-{
-  if (!hasMetrics) {
-    return 1.0;
-  }
-  return connectionLoad > boltLoad ? connectionLoad : boltLoad;
-}

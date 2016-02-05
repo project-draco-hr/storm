@@ -1,0 +1,7 @@
+{
+  Integer index=txIndices.get(txid);
+  if (index != null) {
+    Semaphore sem=(Semaphore)((List)RegisteredGlobalState.getState(_semaphoreId)).get(index);
+    sem.release();
+  }
+}

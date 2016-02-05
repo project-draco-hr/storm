@@ -1,5 +1,0 @@
-{
-  if (_server._cb != null) {
-    _server._cb.recv(Arrays.asList(new TaskMessage(taskId,payload)));
-  }
-}

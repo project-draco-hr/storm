@@ -1,0 +1,25 @@
+{
+  MockCollector collector=(MockCollector)spout.getCollector();
+  for (  String cmd : cmds) {
+    if (cmd.startsWith("r")) {
+      int count=1;
+      if (cmd.length() > 1) {
+        count=Integer.parseInt(cmd.substring(1));
+      }
+      for (int i=0; i < count; ++i) {
+        spout.nextTuple();
+      }
+    }
+ else     if (cmd.startsWith("a")) {
+      int n=Integer.parseInt(cmd.substring(1));
+      Pair<HdfsSpout.MessageId,List<Object>> item=collector.items.get(n);
+      spout.ack(item.getKey());
+    }
+ else     if (cmd.startsWith("f")) {
+      int n=Integer.parseInt(cmd.substring(1));
+      Pair<HdfsSpout.MessageId,List<Object>> item=collector.items.get(n);
+      spout.fail(item.getKey());
+    }
+  }
+  return collector.lines;
+}

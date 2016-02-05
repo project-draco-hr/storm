@@ -1,0 +1,8 @@
+{
+  return new TupleImpl(getContext(fields),values,1,streamId){
+    @Override public GlobalStreamId getSourceGlobalStreamId(){
+      return new GlobalStreamId("s1","default");
+    }
+  }
+;
+}

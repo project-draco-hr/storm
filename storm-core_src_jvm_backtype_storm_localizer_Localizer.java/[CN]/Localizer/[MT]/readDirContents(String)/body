@@ -1,8 +1,0 @@
-{
-  File dir=new File(location);
-  File[] files=null;
-  if (dir.exists()) {
-    files=dir.listFiles();
-  }
-  return files;
-}

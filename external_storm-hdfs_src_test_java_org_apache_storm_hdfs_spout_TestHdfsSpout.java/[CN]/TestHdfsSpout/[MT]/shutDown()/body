@@ -1,0 +1,3 @@
+{
+  fs.delete(new Path(baseFolder.toString()),true);
+}

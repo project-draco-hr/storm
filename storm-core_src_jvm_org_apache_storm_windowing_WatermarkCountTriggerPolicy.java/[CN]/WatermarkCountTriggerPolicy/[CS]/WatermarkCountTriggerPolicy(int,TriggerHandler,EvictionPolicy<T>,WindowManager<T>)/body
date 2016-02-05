@@ -1,0 +1,7 @@
+{
+  this.count=count;
+  this.handler=handler;
+  this.evictionPolicy=evictionPolicy;
+  this.windowManager=windowManager;
+  this.started=false;
+}

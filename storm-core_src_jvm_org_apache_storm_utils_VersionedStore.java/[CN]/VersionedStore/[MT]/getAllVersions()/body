@@ -1,0 +1,11 @@
+{
+  List<Long> ret=new ArrayList<Long>();
+  for (  String s : listDir(_root)) {
+    if (s.endsWith(FINISHED_VERSION_SUFFIX)) {
+      ret.add(validateAndGetVersion(s));
+    }
+  }
+  Collections.sort(ret);
+  Collections.reverse(ret);
+  return ret;
+}

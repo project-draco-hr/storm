@@ -1,0 +1,6 @@
+{
+  reader.sync(offset.lastSyncPoint);
+  for (int i=0; i < offset.recordsSinceLastSync; ++i) {
+    reader.next(key);
+  }
+}

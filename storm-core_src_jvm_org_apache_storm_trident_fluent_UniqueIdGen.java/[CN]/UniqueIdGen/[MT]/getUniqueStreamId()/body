@@ -1,0 +1,4 @@
+{
+  _streamCounter++;
+  return "s" + _streamCounter;
+}

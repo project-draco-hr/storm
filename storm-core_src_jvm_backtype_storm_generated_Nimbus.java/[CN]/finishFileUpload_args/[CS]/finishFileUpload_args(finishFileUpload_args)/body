@@ -1,5 +1,0 @@
-{
-  if (other.is_set_location()) {
-    this.location=other.location;
-  }
-}

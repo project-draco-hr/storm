@@ -1,0 +1,3 @@
+{
+  assertThat(KafkaError.getError(0),is(equalTo(KafkaError.NO_ERROR)));
+}

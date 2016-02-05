@@ -1,6 +1,0 @@
-{
-  this.supervisors=null;
-  this.nimbus_uptime_secs=0;
-  this.topologies=null;
-  this.nimbuses=null;
-}

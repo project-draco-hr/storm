@@ -1,0 +1,17 @@
+{
+  for (  Field field : configClass.getFields()) {
+    Object keyObj=null;
+    try {
+      keyObj=field.get(null);
+    }
+ catch (    IllegalAccessException e) {
+      throw new RuntimeException(e);
+    }
+    if (keyObj instanceof String) {
+      String confKey=(String)keyObj;
+      if (conf.containsKey(confKey)) {
+        validateField(field,conf);
+      }
+    }
+  }
+}

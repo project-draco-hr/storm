@@ -1,0 +1,10 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case ASSIGNMENTS:
+    return is_set_assignments();
+}
+throw new IllegalStateException();
+}

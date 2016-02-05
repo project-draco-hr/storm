@@ -1,9 +1,0 @@
-{
-  __isset_bitfield=other.__isset_bitfield;
-  this.wait_secs=other.wait_secs;
-  this.num_workers=other.num_workers;
-  if (other.is_set_num_executors()) {
-    Map<String,Integer> __this__num_executors=new HashMap<String,Integer>(other.num_executors);
-    this.num_executors=__this__num_executors;
-  }
-}

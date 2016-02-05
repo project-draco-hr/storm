@@ -1,0 +1,4 @@
+{
+  if (val != null)   val=val.intValue();
+  return addConfiguration(Config.TOPOLOGY_TASKS,val);
+}

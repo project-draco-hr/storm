@@ -1,0 +1,14 @@
+{
+  try {
+    if (subject == null) {
+      subject=new Subject();
+    }
+    for (    IAutoCredentials autoCred : autos) {
+      autoCred.populateSubject(subject,credentials);
+    }
+    return subject;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

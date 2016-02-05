@@ -1,0 +1,5 @@
+{
+  Grouping x=new Grouping();
+  x.set_shuffle(value);
+  return x;
+}

@@ -1,6 +1,0 @@
-String id
-String host
-Object meta
-Object schedulerMeta
-Collection<Number> allPorts
-Map<String,Double> total_resources

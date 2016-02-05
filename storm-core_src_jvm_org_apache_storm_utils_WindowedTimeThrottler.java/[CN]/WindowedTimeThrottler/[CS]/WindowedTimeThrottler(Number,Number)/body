@@ -1,0 +1,5 @@
+{
+  _windowMillis=windowMillis.longValue();
+  _maxAmt=maxAmt.intValue();
+  _windowStartTime=System.currentTimeMillis();
+}

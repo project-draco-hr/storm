@@ -1,0 +1,3 @@
+{
+  FLUSHER.stop(this,_flushInterval);
+}

@@ -1,0 +1,11 @@
+{
+switch (field) {
+case SUCCESS:
+    return get_success();
+case AZE:
+  return get_aze();
+case KNF:
+return get_knf();
+}
+throw new IllegalStateException();
+}

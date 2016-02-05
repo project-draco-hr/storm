@@ -1,0 +1,3 @@
+ITridentBatchBolt bolt
+Map<GlobalStreamId,String> batchGroupIds
+Map<String,CoordSpec> coordinationSpecs

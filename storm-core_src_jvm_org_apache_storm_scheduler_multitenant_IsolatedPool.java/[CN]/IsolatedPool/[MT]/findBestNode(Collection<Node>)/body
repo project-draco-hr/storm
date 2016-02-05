@@ -1,0 +1,23 @@
+{
+  Node ret=null;
+  for (  Node node : nodes) {
+    if (ret == null) {
+      if (node.totalSlotsFree() > 0) {
+        ret=node;
+      }
+    }
+ else {
+      if (node.totalSlotsFree() > 0) {
+        if (node.totalSlotsUsed() < ret.totalSlotsUsed()) {
+          ret=node;
+        }
+ else         if (node.totalSlotsUsed() == ret.totalSlotsUsed()) {
+          if (node.totalSlotsFree() > ret.totalSlotsFree()) {
+            ret=node;
+          }
+        }
+      }
+    }
+  }
+  return ret;
+}

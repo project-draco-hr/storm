@@ -1,5 +1,0 @@
-{
-  onActivationEvents=events;
-  onActivationNewEvents=newEvents;
-  onActivationExpiredEvents=expired;
-}

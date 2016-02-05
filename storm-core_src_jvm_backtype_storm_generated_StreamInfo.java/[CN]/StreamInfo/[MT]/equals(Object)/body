@@ -1,5 +1,0 @@
-{
-  if (that == null)   return false;
-  if (that instanceof StreamInfo)   return this.equals((StreamInfo)that);
-  return false;
-}

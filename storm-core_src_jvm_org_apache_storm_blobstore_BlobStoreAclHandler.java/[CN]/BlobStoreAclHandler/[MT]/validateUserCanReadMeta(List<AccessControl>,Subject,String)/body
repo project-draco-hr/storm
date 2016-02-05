@@ -1,0 +1,3 @@
+{
+  hasAnyPermissions(acl,(READ | WRITE | ADMIN),who,key);
+}

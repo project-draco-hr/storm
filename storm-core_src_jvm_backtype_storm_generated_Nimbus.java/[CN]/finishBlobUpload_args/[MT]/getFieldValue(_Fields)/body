@@ -1,7 +1,0 @@
-{
-switch (field) {
-case SESSION:
-    return get_session();
-}
-throw new IllegalStateException();
-}

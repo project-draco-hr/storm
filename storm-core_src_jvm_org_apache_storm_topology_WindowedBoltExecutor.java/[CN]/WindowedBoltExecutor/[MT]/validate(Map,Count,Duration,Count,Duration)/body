@@ -1,0 +1,25 @@
+{
+  int topologyTimeout=getTopologyTimeoutMillis(stormConf);
+  int maxSpoutPending=getMaxSpoutPending(stormConf);
+  if (windowLengthCount == null && windowLengthDuration == null) {
+    throw new IllegalArgumentException("Window length is not specified");
+  }
+  if (windowLengthDuration != null && slidingIntervalDuration != null) {
+    ensureDurationLessThanTimeout(windowLengthDuration.value + slidingIntervalDuration.value,topologyTimeout);
+  }
+ else   if (windowLengthDuration != null) {
+    ensureDurationLessThanTimeout(windowLengthDuration.value,topologyTimeout);
+  }
+ else   if (slidingIntervalDuration != null) {
+    ensureDurationLessThanTimeout(slidingIntervalDuration.value,topologyTimeout);
+  }
+  if (windowLengthCount != null && slidingIntervalCount != null) {
+    ensureCountLessThanMaxPending(windowLengthCount.value + slidingIntervalCount.value,maxSpoutPending);
+  }
+ else   if (windowLengthCount != null) {
+    ensureCountLessThanMaxPending(windowLengthCount.value,maxSpoutPending);
+  }
+ else   if (slidingIntervalCount != null) {
+    ensureCountLessThanMaxPending(slidingIntervalCount.value,maxSpoutPending);
+  }
+}

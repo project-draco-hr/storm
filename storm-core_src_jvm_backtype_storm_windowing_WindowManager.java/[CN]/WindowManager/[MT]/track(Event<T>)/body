@@ -1,4 +1,0 @@
-{
-  evictionPolicy.track(windowEvent);
-  triggerPolicy.track(windowEvent);
-}

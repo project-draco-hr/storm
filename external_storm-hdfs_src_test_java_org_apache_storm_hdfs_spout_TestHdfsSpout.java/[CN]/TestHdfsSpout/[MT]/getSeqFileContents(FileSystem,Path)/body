@@ -1,0 +1,19 @@
+{
+  ArrayList<String> result=new ArrayList<>();
+  for (  Path seqFile : seqFiles) {
+    Path file=new Path(fs.getUri().toString() + seqFile.toString());
+    SequenceFile.Reader reader=new SequenceFile.Reader(conf,SequenceFile.Reader.file(file));
+    try {
+      Writable key=(Writable)ReflectionUtils.newInstance(reader.getKeyClass(),conf);
+      Writable value=(Writable)ReflectionUtils.newInstance(reader.getValueClass(),conf);
+      while (reader.next(key,value)) {
+        String keyValStr=Arrays.asList(key,value).toString();
+        result.add(keyValStr);
+      }
+    }
+  finally {
+      reader.close();
+    }
+  }
+  return result;
+}

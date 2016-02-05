@@ -1,4 +1,0 @@
-{
-  this.dest=dest;
-  this.tuple=tuple;
-}

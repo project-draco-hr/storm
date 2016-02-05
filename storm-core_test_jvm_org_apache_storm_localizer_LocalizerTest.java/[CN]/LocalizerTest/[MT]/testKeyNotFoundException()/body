@@ -1,0 +1,11 @@
+{
+  Map conf=Utils.readStormConfig();
+  String key1="key1";
+  conf.put(Config.STORM_LOCAL_DIR,"target");
+  LocalFsBlobStore bs=new LocalFsBlobStore();
+  LocalFsBlobStore spy=spy(bs);
+  Mockito.doReturn(true).when(spy).checkForBlobOrDownload(key1);
+  Mockito.doNothing().when(spy).checkForBlobUpdate(key1);
+  spy.prepare(conf,null,null);
+  spy.getBlob(key1,null);
+}

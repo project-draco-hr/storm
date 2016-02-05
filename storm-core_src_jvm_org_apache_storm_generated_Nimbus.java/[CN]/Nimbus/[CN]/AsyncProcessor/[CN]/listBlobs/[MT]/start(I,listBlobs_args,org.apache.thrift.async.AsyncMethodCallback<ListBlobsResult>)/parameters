@@ -1,0 +1,3 @@
+I iface
+listBlobs_args args
+org.apache.thrift.async.AsyncMethodCallback<ListBlobsResult> resultHandler

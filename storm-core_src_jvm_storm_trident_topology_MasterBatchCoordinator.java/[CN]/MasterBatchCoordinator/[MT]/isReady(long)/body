@@ -1,7 +1,0 @@
-{
-  if (_throttler.isThrottled())   return false;
-  for (  ITridentSpout.BatchCoordinator coord : _coordinators) {
-    if (coord.isReady(txid))     return true;
-  }
-  return false;
-}

@@ -1,5 +1,0 @@
-{
-  Long v=mostRecentVersion(maxVersion);
-  if (v == null)   return null;
-  return versionPath(v);
-}

@@ -1,4 +1,0 @@
-List<Stream> streams
-List<Fields> joinFields
-Fields outFields
-JoinType type

@@ -1,3 +1,0 @@
-{
-  this(keyspace,table,null);
-}

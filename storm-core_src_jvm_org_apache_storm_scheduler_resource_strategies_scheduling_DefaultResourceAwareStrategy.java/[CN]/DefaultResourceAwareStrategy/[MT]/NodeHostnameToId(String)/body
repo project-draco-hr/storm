@@ -1,0 +1,12 @@
+{
+  for (  NodeDetails n : _nodes.values()) {
+    if (n.getHostname() == null) {
+      continue;
+    }
+    if (n.getHostname().equals(hostname)) {
+      return n.getId();
+    }
+  }
+  LOG.error("Cannot find Node with hostname {}",hostname);
+  return null;
+}

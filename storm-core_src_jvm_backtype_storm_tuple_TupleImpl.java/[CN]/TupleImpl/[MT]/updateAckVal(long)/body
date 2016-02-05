@@ -1,3 +1,0 @@
-{
-  _outAckVal=_outAckVal ^ val;
-}

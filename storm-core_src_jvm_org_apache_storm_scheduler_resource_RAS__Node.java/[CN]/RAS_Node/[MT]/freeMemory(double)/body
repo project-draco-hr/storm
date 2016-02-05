@@ -1,0 +1,8 @@
+{
+  LOG.debug("freeing {} memory on node {}...avail mem: {}",amount,getHostname(),_availMemory);
+  if ((_availMemory + amount) > getTotalMemoryResources()) {
+    LOG.warn("Freeing more memory than there exists! Memory trying to free: {} Total memory on Node: {}",(_availMemory + amount),getTotalMemoryResources());
+    return;
+  }
+  _availMemory+=amount;
+}

@@ -1,4 +1,0 @@
-{
-  this();
-  this.serialized_parts=serialized_parts;
-}

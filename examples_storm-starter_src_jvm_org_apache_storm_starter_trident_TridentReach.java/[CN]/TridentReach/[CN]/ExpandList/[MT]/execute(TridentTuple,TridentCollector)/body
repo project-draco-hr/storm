@@ -1,0 +1,8 @@
+{
+  List l=(List)tuple.getValue(0);
+  if (l != null) {
+    for (    Object o : l) {
+      collector.emit(new Values(o));
+    }
+  }
+}

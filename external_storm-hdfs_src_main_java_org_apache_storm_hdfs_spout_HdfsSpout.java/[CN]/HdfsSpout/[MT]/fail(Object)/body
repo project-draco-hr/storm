@@ -1,0 +1,8 @@
+{
+  LOG.trace("Fail received for msg id {} on spout {}",msgId,spoutId);
+  super.fail(msgId);
+  if (ackEnabled) {
+    HdfsUtils.Pair<MessageId,List<Object>> item=HdfsUtils.Pair.of(msgId,inflight.remove(msgId));
+    retryList.add(item);
+  }
+}

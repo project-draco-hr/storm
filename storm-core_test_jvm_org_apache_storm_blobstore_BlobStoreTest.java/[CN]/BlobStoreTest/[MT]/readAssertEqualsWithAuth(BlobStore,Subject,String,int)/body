@@ -1,0 +1,3 @@
+{
+  assertEquals(value,readInt(store,who,key));
+}

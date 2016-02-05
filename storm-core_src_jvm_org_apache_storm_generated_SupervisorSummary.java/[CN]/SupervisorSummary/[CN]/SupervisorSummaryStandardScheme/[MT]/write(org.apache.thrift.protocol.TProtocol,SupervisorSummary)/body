@@ -1,0 +1,56 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.host != null) {
+    oprot.writeFieldBegin(HOST_FIELD_DESC);
+    oprot.writeString(struct.host);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+  oprot.writeI32(struct.uptime_secs);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(NUM_WORKERS_FIELD_DESC);
+  oprot.writeI32(struct.num_workers);
+  oprot.writeFieldEnd();
+  oprot.writeFieldBegin(NUM_USED_WORKERS_FIELD_DESC);
+  oprot.writeI32(struct.num_used_workers);
+  oprot.writeFieldEnd();
+  if (struct.supervisor_id != null) {
+    oprot.writeFieldBegin(SUPERVISOR_ID_FIELD_DESC);
+    oprot.writeString(struct.supervisor_id);
+    oprot.writeFieldEnd();
+  }
+  if (struct.version != null) {
+    if (struct.is_set_version()) {
+      oprot.writeFieldBegin(VERSION_FIELD_DESC);
+      oprot.writeString(struct.version);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.total_resources != null) {
+    if (struct.is_set_total_resources()) {
+      oprot.writeFieldBegin(TOTAL_RESOURCES_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.DOUBLE,struct.total_resources.size()));
+        for (        Map.Entry<String,Double> _iter86 : struct.total_resources.entrySet()) {
+          oprot.writeString(_iter86.getKey());
+          oprot.writeDouble(_iter86.getValue());
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.is_set_used_mem()) {
+    oprot.writeFieldBegin(USED_MEM_FIELD_DESC);
+    oprot.writeDouble(struct.used_mem);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_used_cpu()) {
+    oprot.writeFieldBegin(USED_CPU_FIELD_DESC);
+    oprot.writeDouble(struct.used_cpu);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

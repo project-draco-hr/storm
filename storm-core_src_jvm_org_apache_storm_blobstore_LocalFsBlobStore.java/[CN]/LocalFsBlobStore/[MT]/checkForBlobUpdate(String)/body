@@ -1,0 +1,3 @@
+{
+  BlobStoreUtils.updateKeyForBlobStore(conf,this,zkClient,key,nimbusInfo);
+}

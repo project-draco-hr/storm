@@ -1,5 +1,0 @@
-{
-  this.interval=interval;
-  this.lastTime=(interval < 0) ? 0 : -interval;
-  this.redirectErrorStream=redirectErrorStream;
-}

@@ -1,7 +1,0 @@
-{
-  List<WorkerSlot> workers=new LinkedList<>();
-  for (  String clusterId : _clusterInfo.keySet()) {
-    workers.addAll(this.getAvailableWorkersFromCluster(clusterId));
-  }
-  return workers;
-}

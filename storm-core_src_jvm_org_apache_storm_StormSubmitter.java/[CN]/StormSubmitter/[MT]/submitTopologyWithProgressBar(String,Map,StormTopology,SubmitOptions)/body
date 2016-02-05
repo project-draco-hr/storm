@@ -1,0 +1,18 @@
+{
+  submitTopology(name,stormConf,topology,opts,new StormSubmitter.ProgressListener(){
+    @Override public void onStart(    String srcFile,    String targetFile,    long totalBytes){
+      System.out.printf("Start uploading file '%s' to '%s' (%d bytes)\n",srcFile,targetFile,totalBytes);
+    }
+    @Override public void onProgress(    String srcFile,    String targetFile,    long bytesUploaded,    long totalBytes){
+      int length=50;
+      int p=(int)((length * bytesUploaded) / totalBytes);
+      String progress=StringUtils.repeat("=",p);
+      String todo=StringUtils.repeat(" ",length - p);
+      System.out.printf("\r[%s%s] %d / %d",progress,todo,bytesUploaded,totalBytes);
+    }
+    @Override public void onCompleted(    String srcFile,    String targetFile,    long totalBytes){
+      System.out.printf("\nFile '%s' uploaded to '%s' (%d bytes)\n",srcFile,targetFile,totalBytes);
+    }
+  }
+);
+}

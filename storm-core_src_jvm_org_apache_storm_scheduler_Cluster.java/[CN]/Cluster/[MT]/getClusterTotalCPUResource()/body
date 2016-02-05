@@ -1,0 +1,7 @@
+{
+  double sum=0.0;
+  for (  SupervisorDetails sup : this.supervisors.values()) {
+    sum+=sup.getTotalCPU();
+  }
+  return sum;
+}

@@ -1,0 +1,28 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(6);
+  if (incoming.get(0)) {
+    struct.num_executors=iprot.readI32();
+    struct.set_num_executors_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.num_tasks=iprot.readI32();
+    struct.set_num_tasks_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.emitted=iprot.readI64();
+    struct.set_emitted_isSet(true);
+  }
+  if (incoming.get(3)) {
+    struct.transferred=iprot.readI64();
+    struct.set_transferred_isSet(true);
+  }
+  if (incoming.get(4)) {
+    struct.acked=iprot.readI64();
+    struct.set_acked_isSet(true);
+  }
+  if (incoming.get(5)) {
+    struct.failed=iprot.readI64();
+    struct.set_failed_isSet(true);
+  }
+}

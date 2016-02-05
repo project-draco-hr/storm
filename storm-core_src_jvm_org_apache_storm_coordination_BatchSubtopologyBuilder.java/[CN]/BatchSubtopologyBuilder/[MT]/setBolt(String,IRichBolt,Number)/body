@@ -1,0 +1,7 @@
+{
+  Integer p=null;
+  if (parallelism != null)   p=parallelism.intValue();
+  Component component=new Component(bolt,p);
+  _bolts.put(id,component);
+  return new BoltDeclarerImpl(component);
+}

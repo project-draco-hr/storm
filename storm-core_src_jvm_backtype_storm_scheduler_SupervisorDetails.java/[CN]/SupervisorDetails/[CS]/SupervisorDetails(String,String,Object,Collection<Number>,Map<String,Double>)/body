@@ -1,3 +1,0 @@
-{
-  this(id,host,null,schedulerMeta,allPorts,total_resources);
-}

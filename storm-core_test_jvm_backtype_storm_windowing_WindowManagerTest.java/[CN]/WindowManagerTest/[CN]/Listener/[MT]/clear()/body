@@ -1,6 +1,0 @@
-{
-  onExpiryEvents=Collections.emptyList();
-  onActivationEvents=Collections.emptyList();
-  onActivationNewEvents=Collections.emptyList();
-  onActivationExpiredEvents=Collections.emptyList();
-}

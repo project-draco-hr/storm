@@ -1,0 +1,4 @@
+{
+  this.batchId=batchId;
+  this.state=state;
+}

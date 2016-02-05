@@ -1,4 +1,0 @@
-{
-  byte[] b=Utils.toByteArray(ser);
-  return tuple(new Object[]{b});
-}

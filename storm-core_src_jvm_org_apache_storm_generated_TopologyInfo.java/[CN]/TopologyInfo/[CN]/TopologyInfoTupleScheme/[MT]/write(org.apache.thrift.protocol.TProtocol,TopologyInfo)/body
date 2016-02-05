@@ -1,0 +1,93 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeString(struct.id);
+  oprot.writeString(struct.name);
+  oprot.writeI32(struct.uptime_secs);
+{
+    oprot.writeI32(struct.executors.size());
+    for (    ExecutorSummary _iter334 : struct.executors) {
+      _iter334.write(oprot);
+    }
+  }
+  oprot.writeString(struct.status);
+{
+    oprot.writeI32(struct.errors.size());
+    for (    Map.Entry<String,List<ErrorInfo>> _iter335 : struct.errors.entrySet()) {
+      oprot.writeString(_iter335.getKey());
+{
+        oprot.writeI32(_iter335.getValue().size());
+        for (        ErrorInfo _iter336 : _iter335.getValue()) {
+          _iter336.write(oprot);
+        }
+      }
+    }
+  }
+  BitSet optionals=new BitSet();
+  if (struct.is_set_component_debug()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_sched_status()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_owner()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_replication_count()) {
+    optionals.set(3);
+  }
+  if (struct.is_set_requested_memonheap()) {
+    optionals.set(4);
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    optionals.set(5);
+  }
+  if (struct.is_set_requested_cpu()) {
+    optionals.set(6);
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    optionals.set(7);
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    optionals.set(8);
+  }
+  if (struct.is_set_assigned_cpu()) {
+    optionals.set(9);
+  }
+  oprot.writeBitSet(optionals,10);
+  if (struct.is_set_component_debug()) {
+{
+      oprot.writeI32(struct.component_debug.size());
+      for (      Map.Entry<String,DebugOptions> _iter337 : struct.component_debug.entrySet()) {
+        oprot.writeString(_iter337.getKey());
+        _iter337.getValue().write(oprot);
+      }
+    }
+  }
+  if (struct.is_set_sched_status()) {
+    oprot.writeString(struct.sched_status);
+  }
+  if (struct.is_set_owner()) {
+    oprot.writeString(struct.owner);
+  }
+  if (struct.is_set_replication_count()) {
+    oprot.writeI32(struct.replication_count);
+  }
+  if (struct.is_set_requested_memonheap()) {
+    oprot.writeDouble(struct.requested_memonheap);
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    oprot.writeDouble(struct.requested_memoffheap);
+  }
+  if (struct.is_set_requested_cpu()) {
+    oprot.writeDouble(struct.requested_cpu);
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    oprot.writeDouble(struct.assigned_memonheap);
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    oprot.writeDouble(struct.assigned_memoffheap);
+  }
+  if (struct.is_set_assigned_cpu()) {
+    oprot.writeDouble(struct.assigned_cpu);
+  }
+}

@@ -1,0 +1,13 @@
+{
+  String normalizedPatentPath=normalizePath(parentPath);
+  List<String> childPathList=null;
+  if (existsNode(zk,normalizedPatentPath,false)) {
+    childPathList=getChildren(zk,normalizedPatentPath,false);
+    for (    String child : childPathList) {
+      if (child.startsWith(hostPortInfo)) {
+        LOG.debug("deleteNode child {}",child);
+        deleteNode(zk,normalizedPatentPath + "/" + child);
+      }
+    }
+  }
+}

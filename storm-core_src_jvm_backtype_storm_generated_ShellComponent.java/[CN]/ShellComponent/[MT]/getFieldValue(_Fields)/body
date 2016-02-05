@@ -1,9 +1,0 @@
-{
-switch (field) {
-case EXECUTION_COMMAND:
-    return get_execution_command();
-case SCRIPT:
-  return get_script();
-}
-throw new IllegalStateException();
-}

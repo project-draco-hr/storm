@@ -1,0 +1,12 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  oprot.writeI32(struct.initial_status.getValue());
+  BitSet optionals=new BitSet();
+  if (struct.is_set_creds()) {
+    optionals.set(0);
+  }
+  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_creds()) {
+    struct.creds.write(oprot);
+  }
+}

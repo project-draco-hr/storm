@@ -1,3 +1,0 @@
-{
-  return _delegate.emit(streamId,tuple,messageId);
-}

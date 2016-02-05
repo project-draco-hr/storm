@@ -1,9 +1,0 @@
-{
-  Rankings rankings=new Rankings(topN);
-  for (  Rankable r : rankables) {
-    rankings.updateWith(r);
-  }
-  Rankings copy=rankings.copy();
-  assertThat(copy.maxSize()).isEqualTo(rankings.maxSize());
-  assertThat(copy.getRankings()).isEqualTo(rankings.getRankings());
-}

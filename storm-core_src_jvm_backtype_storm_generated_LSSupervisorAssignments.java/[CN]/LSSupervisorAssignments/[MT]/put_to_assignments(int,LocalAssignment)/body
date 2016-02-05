@@ -1,6 +1,0 @@
-{
-  if (this.assignments == null) {
-    this.assignments=new HashMap<Integer,LocalAssignment>();
-  }
-  this.assignments.put(key,val);
-}

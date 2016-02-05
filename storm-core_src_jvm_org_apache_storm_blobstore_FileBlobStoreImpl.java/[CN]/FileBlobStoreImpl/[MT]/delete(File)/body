@@ -1,0 +1,3 @@
+{
+  Files.deleteIfExists(path.toPath());
+}

@@ -1,0 +1,3 @@
+{
+  return (ListDelegate)_serializer.read(kryo,input,type);
+}

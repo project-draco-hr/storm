@@ -1,3 +1,0 @@
-{
-  this.entryValidators=(Class[])params.get(ConfigValidationAnnotations.ValidatorParams.ENTRY_VALIDATOR_CLASSES);
-}

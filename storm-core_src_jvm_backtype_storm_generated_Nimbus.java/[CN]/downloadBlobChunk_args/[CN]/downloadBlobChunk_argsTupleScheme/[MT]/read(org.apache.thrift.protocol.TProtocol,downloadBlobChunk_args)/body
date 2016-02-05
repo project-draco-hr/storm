@@ -1,8 +1,0 @@
-{
-  TTupleProtocol iprot=(TTupleProtocol)prot;
-  BitSet incoming=iprot.readBitSet(1);
-  if (incoming.get(0)) {
-    struct.session=iprot.readString();
-    struct.set_session_isSet(true);
-  }
-}

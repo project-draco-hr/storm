@@ -1,4 +1,0 @@
-{
-  this.valuesMapper=valuesMapper;
-  return this;
-}

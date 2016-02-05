@@ -1,0 +1,4 @@
+String key
+SettableBlobMeta meta
+Subject who
+int opMask

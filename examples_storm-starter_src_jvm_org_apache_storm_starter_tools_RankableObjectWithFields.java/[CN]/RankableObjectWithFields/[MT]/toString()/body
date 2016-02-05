@@ -1,0 +1,13 @@
+{
+  StringBuffer buf=new StringBuffer();
+  buf.append("[");
+  buf.append(obj);
+  buf.append(toStringSeparator);
+  buf.append(count);
+  for (  Object field : fields) {
+    buf.append(toStringSeparator);
+    buf.append(field);
+  }
+  buf.append("]");
+  return buf.toString();
+}

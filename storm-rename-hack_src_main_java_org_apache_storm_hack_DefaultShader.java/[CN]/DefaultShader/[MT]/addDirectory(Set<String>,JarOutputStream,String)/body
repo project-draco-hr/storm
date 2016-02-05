@@ -1,0 +1,12 @@
+{
+  if (name.lastIndexOf('/') > 0) {
+    String parent=name.substring(0,name.lastIndexOf('/'));
+    if (!resources.contains(parent)) {
+      addDirectory(resources,jos,parent);
+    }
+  }
+  JarEntry entry=new JarEntry(name + "/");
+  LOG.debug("Adding JAR directory " + entry);
+  jos.putNextEntry(entry);
+  resources.add(name);
+}

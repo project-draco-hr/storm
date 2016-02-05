@@ -1,0 +1,10 @@
+{
+  try {
+synchronized (client) {
+      client.getClient().cancelBlobUpload(session);
+    }
+  }
+ catch (  TException e) {
+    throw new RuntimeException(e);
+  }
+}

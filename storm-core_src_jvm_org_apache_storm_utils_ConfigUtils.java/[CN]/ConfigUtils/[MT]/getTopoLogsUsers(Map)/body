@@ -1,0 +1,22 @@
+{
+  List<String> logsUsers=(List<String>)topologyConf.get(Config.LOGS_USERS);
+  List<String> topologyUsers=(List<String>)topologyConf.get(Config.TOPOLOGY_USERS);
+  Set<String> mergedUsers=new HashSet<String>();
+  if (logsUsers != null) {
+    for (    String user : logsUsers) {
+      if (user != null) {
+        mergedUsers.add(user);
+      }
+    }
+  }
+  if (topologyUsers != null) {
+    for (    String user : topologyUsers) {
+      if (user != null) {
+        mergedUsers.add(user);
+      }
+    }
+  }
+  List<String> ret=new ArrayList<String>(mergedUsers);
+  Collections.sort(ret);
+  return ret;
+}

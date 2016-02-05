@@ -1,0 +1,10 @@
+{
+  super.init(cluster,nodeIdToNode);
+  for (  Node n : nodeIdToNode.values()) {
+    if (n.isTotallyFree() && n.isAlive()) {
+      _nodes.add(n);
+      _totalSlots+=n.totalSlotsFree();
+    }
+  }
+  LOG.debug("Found {} nodes with {} slots",_nodes.size(),_totalSlots);
+}

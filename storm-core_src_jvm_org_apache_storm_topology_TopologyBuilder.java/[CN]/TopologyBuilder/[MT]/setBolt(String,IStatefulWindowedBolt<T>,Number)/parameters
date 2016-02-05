@@ -1,0 +1,3 @@
+String id
+IStatefulWindowedBolt<T> bolt
+Number parallelism_hint

@@ -1,0 +1,4 @@
+{
+  Input input=new Input(b);
+  return (T)kryo.readClassAndObject(input);
+}

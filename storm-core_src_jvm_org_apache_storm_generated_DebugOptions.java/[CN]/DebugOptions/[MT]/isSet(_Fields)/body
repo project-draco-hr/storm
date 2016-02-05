@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case ENABLE:
+    return is_set_enable();
+case SAMPLINGPCT:
+  return is_set_samplingpct();
+}
+throw new IllegalStateException();
+}

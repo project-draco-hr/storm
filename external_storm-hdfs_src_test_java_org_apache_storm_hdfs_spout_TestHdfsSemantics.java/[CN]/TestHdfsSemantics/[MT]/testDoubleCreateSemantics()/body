@@ -1,0 +1,21 @@
+{
+  Path file1=new Path(dir.toString() + Path.SEPARATOR_CHAR + "file1");
+  FSDataOutputStream os1=fs.create(file1,false);
+  try {
+    fs.create(file1,false);
+    Assert.assertTrue("Create did not throw an exception",false);
+  }
+ catch (  RemoteException e) {
+    Assert.assertEquals(AlreadyBeingCreatedException.class,e.unwrapRemoteException().getClass());
+  }
+  os1.close();
+  try {
+    fs.create(file1,false);
+  }
+ catch (  FileAlreadyExistsException e) {
+  }
+  fs.delete(file1,false);
+  FSDataOutputStream os2=fs.create(file1,false);
+  Assert.assertNotNull(os2);
+  os2.close();
+}

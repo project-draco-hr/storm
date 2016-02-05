@@ -1,8 +1,0 @@
-{
-  if (other.is_set_exec_summary()) {
-    this.exec_summary=new ExecutorSummary(other.exec_summary);
-  }
-  if (other.is_set_stats()) {
-    this.stats=new ComponentAggregateStats(other.stats);
-  }
-}

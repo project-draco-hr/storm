@@ -1,4 +1,0 @@
-{
-  this.stream=stream;
-  this.values=values;
-}
