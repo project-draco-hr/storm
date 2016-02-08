@@ -1,3 +1,0 @@
-{
-  return asyncLoop(afn,false,null,Thread.NORM_PRIORITY,false,true,threadName);
-}
