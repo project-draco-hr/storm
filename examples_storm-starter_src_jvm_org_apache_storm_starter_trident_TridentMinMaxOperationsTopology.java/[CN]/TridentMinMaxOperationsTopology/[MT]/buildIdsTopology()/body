@@ -1,8 +1,0 @@
-{
-  NumberGeneratorSpout spout=new NumberGeneratorSpout(new Fields("id"),10,1000);
-  TridentTopology topology=new TridentTopology();
-  Stream wordsStream=topology.newStream("numgen-spout",spout).each(new Fields("id"),new Debug("##### ids"));
-  wordsStream.minBy("id").each(new Fields("id"),new Debug("#### min-id"));
-  wordsStream.maxBy("id").each(new Fields("id"),new Debug("#### max-id"));
-  return topology.build();
-}

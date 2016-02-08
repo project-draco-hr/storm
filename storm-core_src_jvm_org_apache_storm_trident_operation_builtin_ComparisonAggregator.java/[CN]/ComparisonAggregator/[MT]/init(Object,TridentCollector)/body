@@ -1,3 +1,5 @@
 {
+  this.batchId=batchId;
+  log.debug("Started comparison aggregation for batch: [{}] in operation [{}]",batchId,this);
   return new State();
 }

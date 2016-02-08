@@ -1,3 +1,11 @@
 {
-  return (T)(inputFieldName != null && tuple != null ? tuple.getValueByField(inputFieldName) : tuple);
+  Object value=null;
+  if (inputFieldName != null && tuple != null) {
+    value=tuple.getValueByField(inputFieldName);
+  }
+ else {
+    value=tuple;
+  }
+  log.debug("value from tuple is [{}] with input field [{}] and tuple [{}]",value,inputFieldName,tuple);
+  return (T)value;
 }
