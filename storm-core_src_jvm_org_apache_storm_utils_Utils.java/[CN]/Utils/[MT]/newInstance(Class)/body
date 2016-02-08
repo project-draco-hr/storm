@@ -1,4 +1,3 @@
 {
-  LOG.info("Inside other newInstance static method.");
   return _instance.newInstanceImpl(klass);
 }

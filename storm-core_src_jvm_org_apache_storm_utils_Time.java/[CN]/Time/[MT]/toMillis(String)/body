@@ -1,3 +1,0 @@
-{
-  return 1000 * Long.parseLong(secs);
-}
