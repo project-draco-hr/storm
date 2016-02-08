@@ -1,0 +1,4 @@
+{
+  testTheSchema(schema1);
+  testTheSchema(schema2);
+}

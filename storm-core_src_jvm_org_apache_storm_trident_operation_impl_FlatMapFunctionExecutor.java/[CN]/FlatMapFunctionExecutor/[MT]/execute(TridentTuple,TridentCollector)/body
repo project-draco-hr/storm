@@ -1,0 +1,5 @@
+{
+  for (  Values values : function.execute(tuple)) {
+    collector.emit(values);
+  }
+}

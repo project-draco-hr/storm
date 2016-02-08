@@ -1,0 +1,8 @@
+{
+  PreparableReporter reporter=null;
+  LOG.info("Using statistics reporter plugin:" + clazz);
+  if (clazz != null) {
+    reporter=(PreparableReporter)Utils.newInstance(clazz);
+  }
+  return reporter;
+}

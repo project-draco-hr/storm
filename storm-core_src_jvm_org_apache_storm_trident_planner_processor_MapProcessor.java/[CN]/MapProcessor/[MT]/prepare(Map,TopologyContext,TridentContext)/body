@@ -1,0 +1,10 @@
+{
+  List<TridentTuple.Factory> parents=tridentContext.getParentTupleFactories();
+  if (parents.size() != 1) {
+    throw new RuntimeException("Map operation can only have one parent");
+  }
+  _context=tridentContext;
+  _collector=new FreshCollector(tridentContext);
+  _projection=new TridentTupleView.ProjectionFactory(parents.get(0),_inputFields);
+  _function.prepare(conf,new TridentOperationContext(context,_projection));
+}

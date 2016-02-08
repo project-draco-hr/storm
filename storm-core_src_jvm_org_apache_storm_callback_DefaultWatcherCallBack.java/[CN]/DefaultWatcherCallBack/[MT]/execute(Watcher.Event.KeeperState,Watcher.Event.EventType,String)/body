@@ -1,0 +1,3 @@
+{
+  LOG.debug("Zookeeper state update:  {}, {}, {}",ZkKeeperStates.getStateName(state),ZkEventTypes.getTypeName(type),path);
+}

@@ -1,0 +1,28 @@
+{
+  APersistentMap map=null;
+  try {
+    byte[] bytes=null;
+    Stat stats=new Stat();
+    String npath=normalizePath(path);
+    if (existsNode(zk,npath,watch)) {
+      if (watch) {
+        bytes=zk.getData().storingStatIn(stats).watched().forPath(npath);
+      }
+ else {
+        bytes=zk.getData().storingStatIn(stats).forPath(npath);
+      }
+      if (bytes != null) {
+        int version=stats.getVersion();
+        map=new PersistentArrayMap(new Object[]{RT.keyword(null,"data"),bytes,RT.keyword(null,"version"),version});
+      }
+    }
+  }
+ catch (  Exception e) {
+    if (exceptionCause(KeeperException.NoNodeException.class,e)) {
+    }
+ else {
+      Utils.wrapInRuntime(e);
+    }
+  }
+  return map;
+}

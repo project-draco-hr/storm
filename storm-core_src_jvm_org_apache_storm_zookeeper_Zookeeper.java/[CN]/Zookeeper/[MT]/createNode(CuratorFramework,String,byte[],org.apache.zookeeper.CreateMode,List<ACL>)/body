@@ -1,0 +1,11 @@
+{
+  String ret=null;
+  try {
+    String npath=normalizePath(path);
+    ret=zk.create().creatingParentsIfNeeded().withMode(mode).withACL(acls).forPath(npath,data);
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+  return ret;
+}

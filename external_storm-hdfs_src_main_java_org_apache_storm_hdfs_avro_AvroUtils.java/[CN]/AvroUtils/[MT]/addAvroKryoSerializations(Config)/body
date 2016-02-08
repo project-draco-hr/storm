@@ -1,0 +1,11 @@
+{
+  final Class serializerClass;
+  if (conf.containsKey("avro.serializer")) {
+    serializerClass=Class.forName((String)conf.get("avro.serializer"));
+  }
+ else {
+    serializerClass=GenericAvroSerializer.class;
+  }
+  conf.registerSerialization(GenericData.Record.class,serializerClass);
+  conf.setSkipMissingKryoRegistrations(false);
+}

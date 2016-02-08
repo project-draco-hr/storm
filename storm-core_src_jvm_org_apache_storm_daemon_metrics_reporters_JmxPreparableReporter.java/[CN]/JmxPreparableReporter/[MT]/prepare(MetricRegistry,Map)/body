@@ -1,0 +1,13 @@
+{
+  LOG.info("Preparing...");
+  JmxReporter.Builder builder=JmxReporter.forRegistry(metricsRegistry);
+  String domain=Utils.getString(stormConf.get(Config.STORM_DAEMON_METRICS_REPORTER_PLUGIN_DOMAIN),null);
+  if (domain != null) {
+    builder.inDomain(domain);
+  }
+  TimeUnit rateUnit=MetricsUtils.getMetricsRateUnit(stormConf);
+  if (rateUnit != null) {
+    builder.convertRatesTo(rateUnit);
+  }
+  reporter=builder.build();
+}

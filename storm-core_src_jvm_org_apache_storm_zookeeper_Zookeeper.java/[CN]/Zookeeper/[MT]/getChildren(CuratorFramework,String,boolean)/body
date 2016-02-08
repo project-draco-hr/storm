@@ -1,0 +1,14 @@
+{
+  try {
+    String npath=normalizePath(path);
+    if (watch) {
+      return zk.getChildren().watched().forPath(npath);
+    }
+ else {
+      return zk.getChildren().forPath(npath);
+    }
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}

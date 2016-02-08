@@ -32,7 +32,7 @@
       }
       _kafkaOffsetMetric.refreshPartitions(latestPartitions);
       for (      PartitionManager pm : pms) {
-        _kafkaOffsetMetric.setLatestEmittedOffset(pm.getPartition(),pm.lastCompletedOffset());
+        _kafkaOffsetMetric.setOffsetData(pm.getPartition(),pm.getOffsetData());
       }
       return _kafkaOffsetMetric.getValueAndReset();
     }

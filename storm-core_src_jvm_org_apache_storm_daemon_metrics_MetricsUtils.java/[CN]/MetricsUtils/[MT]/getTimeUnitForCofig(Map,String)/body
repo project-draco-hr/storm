@@ -1,0 +1,7 @@
+{
+  String rateUnitString=Utils.getString(stormConf.get(configName),null);
+  if (rateUnitString != null) {
+    return TimeUnit.valueOf(rateUnitString);
+  }
+  return null;
+}

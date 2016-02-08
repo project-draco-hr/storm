@@ -1,0 +1,4 @@
+{
+  this.latestEmittedOffset=latestEmittedOffset;
+  this.latestCompletedOffset=latestCompletedOffset;
+}
