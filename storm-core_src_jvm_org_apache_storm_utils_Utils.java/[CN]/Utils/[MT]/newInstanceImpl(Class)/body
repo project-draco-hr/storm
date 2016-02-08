@@ -1,0 +1,9 @@
+{
+  try {
+    LOG.info("Returning {}.newInstance()",klass);
+    return klass.newInstance();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

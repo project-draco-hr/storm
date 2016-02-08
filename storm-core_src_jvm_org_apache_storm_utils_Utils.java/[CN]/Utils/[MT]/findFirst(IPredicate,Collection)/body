@@ -1,0 +1,15 @@
+{
+  if (coll == null || pred == null) {
+    return null;
+  }
+ else {
+    Iterator<Object> iter=coll.iterator();
+    while (iter != null && iter.hasNext()) {
+      Object obj=iter.next();
+      if (pred.test(obj)) {
+        return obj;
+      }
+    }
+    return null;
+  }
+}

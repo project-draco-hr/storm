@@ -1,0 +1,18 @@
+{
+  Map<K,List<V>> ret=new HashMap<>();
+  Set<K> keys=new HashSet<>();
+  for (  Map<K,V> map : maps) {
+    keys.addAll(map.keySet());
+  }
+  for (  Map<K,V> m : maps) {
+    for (    K key : keys) {
+      V value=m.get(key);
+      if (!ret.containsKey(key)) {
+        ret.put(key,new ArrayList<V>());
+      }
+      List<V> targetList=ret.get(key);
+      targetList.add(value);
+    }
+  }
+  return ret;
+}

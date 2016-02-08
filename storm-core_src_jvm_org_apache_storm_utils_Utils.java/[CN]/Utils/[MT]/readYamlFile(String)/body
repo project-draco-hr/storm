@@ -1,0 +1,9 @@
+{
+  try (FileReader reader=new FileReader(yamlFile)){
+    return new Yaml(new SafeConstructor()).load(reader);
+  }
+ catch (  Exception ex) {
+    LOG.error("Failed to read yaml file.",ex);
+  }
+  return null;
+}

@@ -1,0 +1,14 @@
+{
+  List<ZipEntry> entries=(List<ZipEntry>)Collections.list(new ZipFile(zipfile).entries());
+  if (entries == null) {
+    return false;
+  }
+  String targetDir=target + "/";
+  for (  ZipEntry entry : entries) {
+    String name=entry.getName();
+    if (name.startsWith(targetDir)) {
+      return true;
+    }
+  }
+  return false;
+}

@@ -1,0 +1,4 @@
+{
+  container.object=obj;
+  return container;
+}

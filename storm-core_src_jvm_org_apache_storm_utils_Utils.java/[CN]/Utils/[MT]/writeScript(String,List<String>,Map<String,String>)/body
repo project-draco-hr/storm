@@ -1,0 +1,24 @@
+{
+  String path=Utils.scriptFilePath(dir);
+  try (BufferedWriter out=new BufferedWriter(new FileWriter(path))){
+    out.write("#!/bin/bash");
+    out.newLine();
+    if (environment != null) {
+      for (      String k : environment.keySet()) {
+        String v=environment.get(k);
+        if (v == null) {
+          v="";
+        }
+        out.write(Utils.shellCmd(Arrays.asList("export",k + "=" + v)));
+        out.write(";");
+        out.newLine();
+      }
+    }
+    out.newLine();
+    out.write("exec " + Utils.shellCmd(command) + ";");
+  }
+ catch (  IOException io) {
+    throw new RuntimeException("Could not write posix script file",io);
+  }
+  return path;
+}

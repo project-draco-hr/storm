@@ -1,0 +1,4 @@
+String dir
+String targetDir
+String targetFilename
+String filename

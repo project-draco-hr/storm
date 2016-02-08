@@ -1,0 +1,16 @@
+{
+  File[] files=new File(dir).listFiles(new FilenameFilter(){
+    @Override public boolean accept(    File dir,    String name){
+      return name.endsWith(".jar");
+    }
+  }
+);
+  if (files == null) {
+    return new ArrayList<>();
+  }
+  List<String> ret=new ArrayList<>(files.length);
+  for (  File f : files) {
+    ret.add(Paths.get(dir,f.getName()).toString());
+  }
+  return ret;
+}

@@ -1,7 +1,7 @@
 {
   try {
-    Class c=Class.forName(klass);
-    return c.newInstance();
+    LOG.info("Creating new instance for class {}",klass);
+    return newInstance(Class.forName(klass));
   }
  catch (  Exception e) {
     throw new RuntimeException(e);

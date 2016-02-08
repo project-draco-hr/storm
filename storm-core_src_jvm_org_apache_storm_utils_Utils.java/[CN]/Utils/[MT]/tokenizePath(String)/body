@@ -1,0 +1,13 @@
+{
+  String[] tokens=path.split("/");
+  Vector<String> outputs=new Vector<String>();
+  if (tokens == null || tokens.length == 0) {
+    return null;
+  }
+  for (  String tok : tokens) {
+    if (!tok.isEmpty()) {
+      outputs.add(tok);
+    }
+  }
+  return outputs;
+}
