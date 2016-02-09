@@ -1,0 +1,10 @@
+{
+  LOG.info("making Timer...");
+  StormTimerTask task=new StormTimerTask();
+  task.setOnKillFunc(onKill);
+  task.setActive(true);
+  task.setDaemon(true);
+  task.setPriority(Thread.MAX_PRIORITY);
+  task.start();
+  return task;
+}

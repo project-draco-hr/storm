@@ -1,0 +1,8 @@
+{
+  checkActive(task);
+synchronized (task.lock) {
+    task.setActive(false);
+    task.interrupt();
+  }
+  task.cancelNotifier.acquire();
+}

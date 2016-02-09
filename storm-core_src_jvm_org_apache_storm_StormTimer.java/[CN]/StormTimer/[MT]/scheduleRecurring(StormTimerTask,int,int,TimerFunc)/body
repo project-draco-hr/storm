@@ -1,0 +1,11 @@
+{
+  schedule(task,delaySecs,new TimerFunc(){
+    @Override public void run(    Object o){
+      LOG.info("scheduleRecurring running...");
+      afn.run(null);
+      LOG.info("scheduleRecurring schedule again...");
+      schedule(task,recurSecs,this,false,0);
+    }
+  }
+);
+}

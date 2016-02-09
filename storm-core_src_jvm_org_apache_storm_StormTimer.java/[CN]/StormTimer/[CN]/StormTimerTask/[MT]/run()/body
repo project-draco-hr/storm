@@ -1,0 +1,28 @@
+{
+  LOG.info("in run...");
+  while (this.active.get()) {
+    try {
+      Long endTimeMillis;
+synchronized (this.lock) {
+        endTimeMillis=this.queue.peek();
+      }
+      if ((endTimeMillis != null) && (currentTimeMillis() >= endTimeMillis)) {
+synchronized (this.lock) {
+          this.queue.poll();
+        }
+        LOG.info("About to run function...");
+        this.afn.run(null);
+      }
+ else       if (endTimeMillis != null) {
+        Time.sleep(Math.min(1000,(endTimeMillis - currentTimeMillis())));
+      }
+ else {
+        Time.sleep(1000);
+      }
+    }
+ catch (    Throwable t) {
+      this.onKill.run(t);
+    }
+  }
+  this.cancelNotifier.release();
+}
