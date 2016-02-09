@@ -3,7 +3,6 @@
   Path target=Paths.get(targetDir,targetFilename).toAbsolutePath();
   LOG.debug("Creating symlink [{}] to [{}]",path,target);
   if (!path.toFile().exists()) {
-    return Files.createSymbolicLink(path,target);
+    Files.createSymbolicLink(path,target);
   }
-  return null;
 }

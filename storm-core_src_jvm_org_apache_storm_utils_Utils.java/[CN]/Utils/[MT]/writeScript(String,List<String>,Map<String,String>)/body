@@ -17,8 +17,5 @@
     out.newLine();
     out.write("exec " + Utils.shellCmd(command) + ";");
   }
- catch (  IOException io) {
-    throw new RuntimeException("Could not write posix script file",io);
-  }
-  return path;
+   return path;
 }

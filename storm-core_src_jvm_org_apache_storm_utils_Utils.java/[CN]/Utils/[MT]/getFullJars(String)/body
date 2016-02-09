@@ -1,10 +1,5 @@
 {
-  File[] files=new File(dir).listFiles(new FilenameFilter(){
-    @Override public boolean accept(    File dir,    String name){
-      return name.endsWith(".jar");
-    }
-  }
-);
+  File[] files=new File(dir).listFiles(jarFilter);
   if (files == null) {
     return new ArrayList<>();
   }
