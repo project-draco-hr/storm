@@ -1,7 +1,0 @@
-{
-  String combinedErrorMessage="";
-  for (  Object oneMessage : strings) {
-    combinedErrorMessage=combinedErrorMessage + oneMessage.toString();
-  }
-  throw new RuntimeException(combinedErrorMessage);
-}

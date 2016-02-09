@@ -1,28 +1,23 @@
 {
-  int retval=0;
+  String pid=Long.toString(lpid);
   try {
-    String killString=null;
     if (isOnWindows()) {
       if (signum == SIGKILL) {
-        killString="taskkill /f /pid ";
+        execCommand("taskkill","/f","/pid",pid);
       }
  else {
-        killString="taskkill /pid ";
+        execCommand("taskkill","/pid",pid);
       }
     }
  else {
-      killString="kill -" + signum + " ";
+      execCommand("kill","-" + signum,pid);
     }
-    killString=killString + pid;
-    retval=execCommand(killString);
   }
  catch (  ExecuteException e) {
     LOG.info("Error when trying to kill " + pid + ". Process is probably already dead.");
   }
 catch (  IOException e) {
     LOG.info("IOException Error when trying to kill " + pid + ".");
-  }
- finally {
-    return retval;
+    throw e;
   }
 }

@@ -1,50 +1,18 @@
 {
-  JarFile jarFile=null;
-  FileOutputStream out=null;
-  InputStream in=null;
-  try {
-    jarFile=new JarFile(jarpath);
+  try (JarFile jarFile=new JarFile(jarpath)){
     Enumeration<JarEntry> jarEnums=jarFile.entries();
     while (jarEnums.hasMoreElements()) {
       JarEntry entry=jarEnums.nextElement();
       if (!entry.isDirectory() && entry.getName().startsWith(dir)) {
         File aFile=new File(destdir,entry.getName());
         aFile.getParentFile().mkdirs();
-        out=new FileOutputStream(aFile);
-        in=jarFile.getInputStream(entry);
-        IOUtils.copy(in,out);
-        out.close();
-        in.close();
-      }
+        try (FileOutputStream out=new FileOutputStream(aFile);InputStream in=jarFile.getInputStream(entry)){
+          IOUtils.copy(in,out);
+        }
+       }
     }
   }
  catch (  IOException e) {
     LOG.info("Could not extract {} from {}",dir,jarpath);
-  }
- finally {
-    if (jarFile != null) {
-      try {
-        jarFile.close();
-      }
- catch (      IOException e) {
-        throw new RuntimeException("Something really strange happened when trying to close the jar file" + jarpath);
-      }
-    }
-    if (out != null) {
-      try {
-        out.close();
-      }
- catch (      IOException e) {
-        throw new RuntimeException("Something really strange happened when trying to close the output for jar file" + jarpath);
-      }
-    }
-    if (in != null) {
-      try {
-        in.close();
-      }
- catch (      IOException e) {
-        throw new RuntimeException("Something really strange happened when trying to close the input for jar file" + jarpath);
-      }
-    }
   }
 }

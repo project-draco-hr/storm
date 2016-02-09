@@ -1,6 +1,6 @@
 {
   StringBuilder errorMessage=new StringBuilder();
-  errorMessage.append("halting process: ");
+  errorMessage.append("Halting process: ");
   for (  Object oneMessage : msg) {
     errorMessage.append(oneMessage);
   }

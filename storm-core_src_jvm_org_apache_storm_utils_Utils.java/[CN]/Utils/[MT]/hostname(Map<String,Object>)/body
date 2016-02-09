@@ -3,11 +3,8 @@
     return memoizedLocalHostname();
   }
   Object hostnameString=conf.get(Config.STORM_LOCAL_HOSTNAME);
-  if (hostnameString == null) {
+  if (hostnameString == null || hostnameString.equals("")) {
     return memoizedLocalHostname();
   }
-  if (hostnameString.equals("")) {
-    return memoizedLocalHostname();
-  }
-  return hostnameString.toString();
+  return (String)hostnameString;
 }

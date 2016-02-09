@@ -1,0 +1,6 @@
+{
+  if (map == null) {
+    return null;
+  }
+  return findFirst(pred,(Set<T>)map.entrySet());
+}

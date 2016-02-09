@@ -1,0 +1,4 @@
+{
+  object=obj;
+  return this;
+}

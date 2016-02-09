@@ -1,5 +1,5 @@
 {
-  List<String> changedCommands=new LinkedList<>();
+  List<String> changedCommands=new ArrayList<>(command.size());
   for (  String str : command) {
     if (str == null) {
       continue;

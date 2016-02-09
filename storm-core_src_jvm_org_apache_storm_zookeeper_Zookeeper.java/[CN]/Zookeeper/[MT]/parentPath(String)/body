@@ -1,0 +1,5 @@
+{
+  List<String> tokens=tokenizePath(path);
+  tokens.remove(tokens.size() - 1);
+  return "/" + StringUtils.join(tokens,"/");
+}

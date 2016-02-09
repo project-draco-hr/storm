@@ -15,6 +15,7 @@
     }
   }
   finally {
-    cleanup(tis,inputStream);
+    tis.close();
+    inputStream.close();
   }
 }

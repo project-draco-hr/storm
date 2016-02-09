@@ -6,7 +6,7 @@
         Runtime.getRuntime().halt(20);
       }
  catch (      Exception e) {
-        LOG.warn("Exception in the ShutDownHook: " + e);
+        LOG.warn("Exception in the ShutDownHook",e);
       }
     }
   }

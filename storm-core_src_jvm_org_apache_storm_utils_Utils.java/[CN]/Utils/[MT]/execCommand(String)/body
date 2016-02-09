@@ -1,8 +1,7 @@
 {
-  String[] cmdlist=command.split(" ");
-  CommandLine cmd=new CommandLine(cmdlist[0]);
-  for (int i=1; i < cmdlist.length; i++) {
-    cmd.addArgument(cmdlist[i]);
+  CommandLine cmd=new CommandLine(command[0]);
+  for (int i=1; i < command.length; i++) {
+    cmd.addArgument(command[i]);
   }
   DefaultExecutor exec=new DefaultExecutor();
   return exec.execute(cmd);

@@ -1,6 +1,6 @@
 {
   try {
-    return newInstance(Class.forName(klass));
+    return newInstance((Class<T>)Class.forName(klass));
   }
  catch (  Exception e) {
     throw new RuntimeException(e);

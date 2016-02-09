@@ -1,8 +1,0 @@
-{
-  if (val != null) {
-    return val;
-  }
- else {
-    return defaultObj;
-  }
-}

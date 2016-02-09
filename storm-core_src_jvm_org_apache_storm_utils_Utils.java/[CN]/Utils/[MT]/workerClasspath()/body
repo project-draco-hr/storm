@@ -1,12 +1,12 @@
 {
   String stormDir=System.getProperty("storm.home");
+  if (stormDir == null) {
+    return Utils.currentClasspath();
+  }
   String stormLibDir=Paths.get(stormDir,"lib").toString();
   String stormConfDir=System.getenv("STORM_CONF_DIR") != null ? System.getenv("STORM_CONF_DIR") : Paths.get(stormDir,"conf").toString();
   String stormExtlibDir=Paths.get(stormDir,"extlib").toString();
   String extcp=System.getenv("STORM_EXT_CLASSPATH");
-  if (stormDir == null) {
-    return Utils.currentClasspath();
-  }
   List<String> pathElements=new LinkedList<>();
   pathElements.addAll(Utils.getFullJars(stormLibDir));
   pathElements.addAll(Utils.getFullJars(stormExtlibDir));

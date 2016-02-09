@@ -1,2 +1,2 @@
-long pid
+long lpid
 int signum

@@ -1,3 +1,3 @@
 {
-  return stormId + FILE_PATH_SEPARATOR + Integer.toString(port)+ FILE_PATH_SEPARATOR+ "worker.log";
+  return stormId + FILE_PATH_SEPARATOR + port+ FILE_PATH_SEPARATOR+ "worker.log";
 }
