@@ -14,10 +14,10 @@
     }
   }
  catch (  ExecuteException e) {
-    LOG.info("Error when trying to kill " + pid + ". Process is probably already dead.");
+    LOG.info("Error when trying to kill {}. Process is probably already dead.",pid);
   }
 catch (  IOException e) {
-    LOG.info("IOException Error when trying to kill " + pid + ".");
+    LOG.info("IOException Error when trying to kill {}.",pid);
     throw e;
   }
 }
