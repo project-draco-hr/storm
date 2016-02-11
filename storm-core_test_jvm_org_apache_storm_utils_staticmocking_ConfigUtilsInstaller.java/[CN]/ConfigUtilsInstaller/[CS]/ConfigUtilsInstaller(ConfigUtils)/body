@@ -1,0 +1,4 @@
+{
+  _oldInstance=ConfigUtils.setInstance(instance);
+  _curInstance=instance;
+}

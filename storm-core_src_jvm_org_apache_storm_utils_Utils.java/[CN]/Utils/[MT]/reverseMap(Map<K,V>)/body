@@ -1,7 +1,17 @@
 {
-  Map<V,K> ret=new HashMap<V,K>();
-  for (  Map.Entry<K,V> entry : map.entrySet()) {
-    ret.put(entry.getValue(),entry.getKey());
+  HashMap<V,List<K>> rtn=new HashMap<V,List<K>>();
+  if (map == null) {
+    return rtn;
   }
-  return ret;
+  for (  Entry<K,V> entry : map.entrySet()) {
+    K key=entry.getKey();
+    V val=entry.getValue();
+    List<K> list=rtn.get(val);
+    if (list == null) {
+      list=new ArrayList<K>();
+      rtn.put(entry.getValue(),list);
+    }
+    list.add(key);
+  }
+  return rtn;
 }
