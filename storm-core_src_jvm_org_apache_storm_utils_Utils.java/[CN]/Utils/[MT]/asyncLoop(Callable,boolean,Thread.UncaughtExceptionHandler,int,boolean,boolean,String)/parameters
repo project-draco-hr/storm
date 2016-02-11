@@ -1,0 +1,7 @@
+Callable afn
+boolean isDaemon
+Thread.UncaughtExceptionHandler eh
+int priority
+boolean isFactory
+boolean startImmediately
+String threadName

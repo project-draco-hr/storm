@@ -1,0 +1,8 @@
+{
+  CommandLine cmd=new CommandLine(command[0]);
+  for (int i=1; i < command.length; i++) {
+    cmd.addArgument(command[i]);
+  }
+  DefaultExecutor exec=new DefaultExecutor();
+  return exec.execute(cmd);
+}

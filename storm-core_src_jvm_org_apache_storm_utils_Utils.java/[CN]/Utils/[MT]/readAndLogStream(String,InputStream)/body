@@ -7,6 +7,6 @@
     }
   }
  catch (  IOException e) {
-    LOG.warn("Error whiel trying to log stream",e);
+    LOG.warn("Error while trying to log stream",e);
   }
 }

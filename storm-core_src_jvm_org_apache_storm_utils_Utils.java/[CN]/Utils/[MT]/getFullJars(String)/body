@@ -1,0 +1,11 @@
+{
+  File[] files=new File(dir).listFiles(jarFilter);
+  if (files == null) {
+    return new ArrayList<>();
+  }
+  List<String> ret=new ArrayList<>(files.length);
+  for (  File f : files) {
+    ret.add(Paths.get(dir,f.getName()).toString());
+  }
+  return ret;
+}

@@ -1,0 +1,5 @@
+{
+  if (secs > 0) {
+    sleep(secs * 1000);
+  }
+}

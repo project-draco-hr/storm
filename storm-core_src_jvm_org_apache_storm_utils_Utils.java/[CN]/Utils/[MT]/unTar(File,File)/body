@@ -5,7 +5,7 @@
     }
   }
   boolean gzipped=inFile.toString().endsWith("gz");
-  if (onWindows()) {
+  if (isOnWindows()) {
     unTarUsingJava(inFile,untarDir,gzipped);
   }
  else {
