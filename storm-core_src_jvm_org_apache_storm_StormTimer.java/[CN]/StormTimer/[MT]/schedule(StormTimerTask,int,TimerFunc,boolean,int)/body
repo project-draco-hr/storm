@@ -10,7 +10,6 @@
   if (jitterMs > 0) {
     endTimeMs=task.random.nextInt(jitterMs) + endTimeMs;
   }
-  LOG.info("add event: {}-{}-{}",id,endTimeMs,afn);
 synchronized (task.lock) {
     task.add(new QueueEntry(endTimeMs,afn,id));
   }

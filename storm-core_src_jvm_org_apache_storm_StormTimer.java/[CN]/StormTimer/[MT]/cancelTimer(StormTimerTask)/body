@@ -2,7 +2,6 @@
   if (task == null) {
     throw new RuntimeException("task is null!");
   }
-  LOG.info("cancel task: {} - {} - {}",task.getName(),task.getId(),task.queue);
   checkActive(task);
 synchronized (task.lock) {
     task.setActive(false);

@@ -1,12 +1,10 @@
 {
-  LOG.info("in run...{}",this.getName());
   while (this.active.get()) {
     QueueEntry queueEntry=null;
     try {
 synchronized (this.lock) {
         queueEntry=this.queue.peek();
       }
-      LOG.info("event: {} -- {}",this.getName(),queueEntry);
       if ((queueEntry != null) && (Time.currentTimeMillis() >= queueEntry.endTimeMs)) {
 synchronized (this.lock) {
           this.queue.poll();
@@ -22,7 +20,6 @@ synchronized (this.lock) {
     }
  catch (    Throwable t) {
       if (!(Utils.exceptionCauseIsInstanceOf(InterruptedException.class,t))) {
-        LOG.info("Exception throw for event: {} --- {}",queueEntry,t);
         this.onKill.run(t);
         this.setActive(false);
         throw new RuntimeException(t);

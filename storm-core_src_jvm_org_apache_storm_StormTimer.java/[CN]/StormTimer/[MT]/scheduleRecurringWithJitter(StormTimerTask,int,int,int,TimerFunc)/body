@@ -1,9 +1,7 @@
 {
   schedule(task,delaySecs,new TimerFunc(){
     @Override public void run(    Object o){
-      LOG.info("scheduleRecurringWithJitter running...");
       afn.run(null);
-      LOG.info("scheduleRecurringWithJitter schedule again...");
       schedule(task,recurSecs,this,false,jitterMs);
     }
   }
