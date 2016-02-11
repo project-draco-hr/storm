@@ -1,0 +1,7 @@
+{
+  Set<String> pids=processMap.keySet();
+  for (  String pid : pids) {
+    killProcess(pid);
+  }
+  LOG.info("Successfully kill all processes");
+}
