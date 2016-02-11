@@ -1,0 +1,11 @@
+{
+  if (coll == null) {
+    return null;
+  }
+  for (  T elem : coll) {
+    if (pred.test(elem)) {
+      return elem;
+    }
+  }
+  return null;
+}

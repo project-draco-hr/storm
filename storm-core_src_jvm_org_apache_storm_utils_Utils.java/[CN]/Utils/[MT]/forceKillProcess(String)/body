@@ -1,0 +1,3 @@
+{
+  sendSignalToProcess(Long.parseLong(pid),SIGKILL);
+}

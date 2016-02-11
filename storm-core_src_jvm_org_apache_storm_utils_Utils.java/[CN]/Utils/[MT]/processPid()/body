@@ -1,0 +1,8 @@
+{
+  String name=ManagementFactory.getRuntimeMXBean().getName();
+  String[] split=name.split("@");
+  if (split.length != 2) {
+    throw new RuntimeException("Got unexpected process name: " + name);
+  }
+  return split[0];
+}

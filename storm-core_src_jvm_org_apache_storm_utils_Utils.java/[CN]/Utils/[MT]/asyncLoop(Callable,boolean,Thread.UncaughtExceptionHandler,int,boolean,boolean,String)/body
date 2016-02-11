@@ -1,0 +1,43 @@
+{
+  SmartThread thread=new SmartThread(new Runnable(){
+    public void run(){
+      Object s;
+      try {
+        Callable fn=isFactory ? (Callable)afn.call() : afn;
+        while ((s=fn.call()) instanceof Long) {
+          Time.sleepSecs((Long)s);
+        }
+      }
+ catch (      Throwable t) {
+        if (Utils.exceptionCauseIsInstanceOf(InterruptedException.class,t)) {
+          LOG.info("Async loop interrupted!");
+          return;
+        }
+        LOG.error("Async loop died!",t);
+        throw new RuntimeException(t);
+      }
+    }
+  }
+);
+  if (eh != null) {
+    thread.setUncaughtExceptionHandler(eh);
+  }
+ else {
+    thread.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler(){
+      public void uncaughtException(      Thread t,      Throwable e){
+        LOG.error("Async loop died!",e);
+        Utils.exitProcess(1,"Async loop died!");
+      }
+    }
+);
+  }
+  thread.setDaemon(isDaemon);
+  thread.setPriority(priority);
+  if (threadName != null && !threadName.isEmpty()) {
+    thread.setName(thread.getName() + "-" + threadName);
+  }
+  if (startImmediately) {
+    thread.start();
+  }
+  return thread;
+}
