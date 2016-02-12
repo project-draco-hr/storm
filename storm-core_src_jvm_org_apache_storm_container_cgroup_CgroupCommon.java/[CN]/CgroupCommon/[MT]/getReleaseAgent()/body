@@ -1,0 +1,6 @@
+{
+  if (!this.isRoot) {
+    return null;
+  }
+  return CgroupUtils.readFileByLine(Constants.getDir(this.dir,RELEASE_AGENT)).get(0);
+}

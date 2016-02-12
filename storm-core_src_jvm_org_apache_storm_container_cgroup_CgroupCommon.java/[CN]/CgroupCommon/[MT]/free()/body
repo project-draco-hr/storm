@@ -1,0 +1,15 @@
+{
+  for (  CgroupCommon child : this.children) {
+    child.free();
+  }
+  if (this.isRoot) {
+    return;
+  }
+  Set<Integer> tasks=this.getTasks();
+  if (tasks != null) {
+    for (    Integer task : tasks) {
+      this.parent.addTask(task);
+    }
+  }
+  CgroupUtils.deleteDir(this.dir);
+}

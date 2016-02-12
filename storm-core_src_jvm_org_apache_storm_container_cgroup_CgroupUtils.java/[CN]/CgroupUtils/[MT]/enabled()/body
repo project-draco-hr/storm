@@ -1,0 +1,3 @@
+{
+  return CgroupUtils.fileExists(Constants.CGROUP_STATUS_FILE);
+}

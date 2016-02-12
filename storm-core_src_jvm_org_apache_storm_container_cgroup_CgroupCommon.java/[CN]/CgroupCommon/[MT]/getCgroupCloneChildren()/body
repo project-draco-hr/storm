@@ -1,0 +1,3 @@
+{
+  return CgroupUtils.readFileByLine(Constants.getDir(this.dir,CGROUP_CLONE_CHILDREN)).get(0).equals("1") ? true : false;
+}

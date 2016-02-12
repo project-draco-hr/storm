@@ -1,0 +1,4 @@
+{
+  Record record=new Record(type,device,accesses);
+  CgroupUtils.writeFileByLine(Constants.getDir(this.dir,prop),record.toString());
+}

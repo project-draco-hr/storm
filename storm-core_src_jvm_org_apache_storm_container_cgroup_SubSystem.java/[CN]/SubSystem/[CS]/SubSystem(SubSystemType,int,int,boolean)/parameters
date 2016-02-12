@@ -1,0 +1,4 @@
+SubSystemType type
+int hierarchyID
+int cgroupNum
+boolean enable

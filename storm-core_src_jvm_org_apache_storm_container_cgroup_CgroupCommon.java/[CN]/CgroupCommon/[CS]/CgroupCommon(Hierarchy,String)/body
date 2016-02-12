@@ -1,0 +1,9 @@
+{
+  this.name="";
+  this.hierarchy=hierarchy;
+  this.parent=null;
+  this.dir=dir;
+  this.init();
+  cores=CgroupCoreFactory.getInstance(this.hierarchy.getSubSystems(),this.dir);
+  this.isRoot=true;
+}

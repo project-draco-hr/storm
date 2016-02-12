@@ -1,0 +1,6 @@
+{
+  if (!this.isRoot) {
+    return;
+  }
+  CgroupUtils.writeFileByLine(Constants.getDir(this.dir,RELEASE_AGENT),command);
+}

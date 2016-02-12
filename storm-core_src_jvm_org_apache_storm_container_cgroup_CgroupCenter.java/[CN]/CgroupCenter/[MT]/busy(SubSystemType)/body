@@ -1,0 +1,11 @@
+{
+  List<Hierarchy> hierarchies=this.getHierarchies();
+  for (  Hierarchy hierarchy : hierarchies) {
+    for (    SubSystemType type : hierarchy.getSubSystems()) {
+      if (type == subsystem) {
+        return hierarchy;
+      }
+    }
+  }
+  return null;
+}

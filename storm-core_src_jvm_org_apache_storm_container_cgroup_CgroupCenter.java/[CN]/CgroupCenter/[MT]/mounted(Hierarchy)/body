@@ -1,0 +1,11 @@
+{
+  List<Hierarchy> hierarchies=this.getHierarchies();
+  if (CgroupUtils.dirExists(hierarchy.getDir())) {
+    for (    Hierarchy h : hierarchies) {
+      if (h.equals(hierarchy)) {
+        return h;
+      }
+    }
+  }
+  return null;
+}

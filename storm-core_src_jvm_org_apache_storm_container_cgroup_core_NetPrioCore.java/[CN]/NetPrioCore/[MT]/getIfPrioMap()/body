@@ -1,0 +1,9 @@
+{
+  Map<String,Integer> result=new HashMap<String,Integer>();
+  List<String> strs=CgroupUtils.readFileByLine(Constants.getDir(this.dir,NET_PRIO_IFPRIOMAP));
+  for (  String str : strs) {
+    String[] strArgs=str.split(" ");
+    result.put(strArgs[0],Integer.valueOf(strArgs[1]));
+  }
+  return result;
+}

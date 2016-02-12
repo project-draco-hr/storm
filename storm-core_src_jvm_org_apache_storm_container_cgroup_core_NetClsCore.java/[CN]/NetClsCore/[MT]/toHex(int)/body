@@ -1,0 +1,13 @@
+{
+  String hex=num + "";
+  StringBuilder sb=new StringBuilder();
+  int l=hex.length();
+  if (l > 4) {
+    hex=hex.substring(l - 4 - 1,l);
+  }
+  for (; l < 4; l++) {
+    sb.append('0');
+  }
+  sb.append(hex);
+  return sb;
+}

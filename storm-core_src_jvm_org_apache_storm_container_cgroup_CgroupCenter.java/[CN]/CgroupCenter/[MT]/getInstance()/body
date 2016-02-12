@@ -1,0 +1,6 @@
+{
+  if (instance == null) {
+    instance=new CgroupCenter();
+  }
+  return CgroupUtils.enabled() ? instance : null;
+}

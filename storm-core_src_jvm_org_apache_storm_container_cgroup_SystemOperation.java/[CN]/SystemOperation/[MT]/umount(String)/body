@@ -1,0 +1,5 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append("umount ").append(name);
+  SystemOperation.exec(sb.toString());
+}

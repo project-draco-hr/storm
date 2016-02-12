@@ -1,0 +1,4 @@
+{
+  int output=Integer.parseInt(CgroupUtils.readFileByLine(Constants.getDir(this.dir,MEMORY_USE_HIERARCHY)).get(0));
+  return output > 0;
+}

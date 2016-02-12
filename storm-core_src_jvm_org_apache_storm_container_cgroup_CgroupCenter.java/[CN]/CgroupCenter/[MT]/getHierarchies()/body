@@ -1,0 +1,23 @@
+{
+  Map<String,Hierarchy> hierarchies=new HashMap<String,Hierarchy>();
+  try (FileReader reader=new FileReader(Constants.MOUNT_STATUS_FILE);BufferedReader br=new BufferedReader(reader)){
+    String str=null;
+    while ((str=br.readLine()) != null) {
+      String[] strSplit=str.split(" ");
+      if (!strSplit[2].equals("cgroup")) {
+        continue;
+      }
+      String name=strSplit[0];
+      String type=strSplit[3];
+      String dir=strSplit[1];
+      Hierarchy h=hierarchies.get(type);
+      h=new Hierarchy(name,CgroupUtils.analyse(type),dir);
+      hierarchies.put(type,h);
+    }
+    return new ArrayList<Hierarchy>(hierarchies.values());
+  }
+ catch (  Exception e) {
+    LOG.error("Get hierarchies error {}",e);
+  }
+  return null;
+}

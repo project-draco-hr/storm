@@ -1,0 +1,3 @@
+{
+  return Integer.parseInt(CgroupUtils.readFileByLine(Constants.getDir(this.dir,NET_PRIO_PRIOIDX)).get(0));
+}

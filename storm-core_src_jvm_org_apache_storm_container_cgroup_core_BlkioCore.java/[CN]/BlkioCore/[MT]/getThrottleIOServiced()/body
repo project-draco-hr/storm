@@ -1,0 +1,3 @@
+{
+  return this.analyseRecord(CgroupUtils.readFileByLine(Constants.getDir(this.dir,BLKIO_THROTTLE_IO_SERVICED)));
+}

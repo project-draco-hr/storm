@@ -1,0 +1,14 @@
+{
+  File file=new File(fileDir);
+  if (!file.exists()) {
+    LOG.error("{} is no existed",fileDir);
+    return;
+  }
+  try (FileWriter writer=new FileWriter(file,true);BufferedWriter bw=new BufferedWriter(writer)){
+    for (    String string : strings) {
+      bw.write(string);
+      bw.newLine();
+      bw.flush();
+    }
+  }
+ }

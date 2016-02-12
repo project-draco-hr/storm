@@ -1,0 +1,6 @@
+{
+  String output=CgroupUtils.readFileByLine(Constants.getDir(this.dir,MEMORY_OOM_CONTROL)).get(0);
+  output=output.split("\n")[0].split("[\\s]")[1];
+  int value=Integer.parseInt(output);
+  return value > 0;
+}

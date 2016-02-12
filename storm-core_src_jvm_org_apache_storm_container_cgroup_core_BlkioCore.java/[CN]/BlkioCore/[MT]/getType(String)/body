@@ -1,0 +1,20 @@
+{
+  if (type.equals("Read")) {
+    return read;
+  }
+ else   if (type.equals("Write")) {
+    return write;
+  }
+ else   if (type.equals("Sync")) {
+    return sync;
+  }
+ else   if (type.equals("Async")) {
+    return async;
+  }
+ else   if (type.equals("Total")) {
+    return total;
+  }
+ else {
+    return null;
+  }
+}

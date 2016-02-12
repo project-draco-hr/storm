@@ -1,0 +1,8 @@
+{
+  List<String> stringPids=CgroupUtils.readFileByLine(Constants.getDir(this.dir,CGROUP_PROCS));
+  Set<Integer> pids=new HashSet<Integer>();
+  for (  String task : stringPids) {
+    pids.add(Integer.valueOf(task));
+  }
+  return pids;
+}

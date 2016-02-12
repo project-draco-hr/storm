@@ -1,0 +1,3 @@
+{
+  return Long.parseLong(CgroupUtils.readFileByLine(Constants.getDir(this.dir,CPU_RT_RUNTIME_US)).get(0));
+}

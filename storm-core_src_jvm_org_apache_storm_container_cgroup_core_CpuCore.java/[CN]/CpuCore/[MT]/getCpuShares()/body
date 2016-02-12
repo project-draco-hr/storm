@@ -1,0 +1,3 @@
+{
+  return Integer.parseInt(CgroupUtils.readFileByLine(Constants.getDir(this.dir,CPU_SHARES)).get(0));
+}

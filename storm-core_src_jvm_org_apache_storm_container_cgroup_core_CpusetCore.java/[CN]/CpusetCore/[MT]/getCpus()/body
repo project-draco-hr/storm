@@ -1,0 +1,4 @@
+{
+  String output=CgroupUtils.readFileByLine(Constants.getDir(this.dir,CPUSET_CPUS)).get(0);
+  return parseNums(output);
+}

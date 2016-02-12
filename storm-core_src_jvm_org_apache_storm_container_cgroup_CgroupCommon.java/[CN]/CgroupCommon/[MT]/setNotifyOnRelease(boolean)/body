@@ -1,0 +1,3 @@
+{
+  CgroupUtils.writeFileByLine(Constants.getDir(this.dir,NOTIFY_ON_RELEASE),flag ? "1" : "0");
+}

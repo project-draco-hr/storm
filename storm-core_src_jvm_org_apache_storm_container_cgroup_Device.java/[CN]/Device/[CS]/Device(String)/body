@@ -1,0 +1,5 @@
+{
+  String[] strArgs=str.split(":");
+  this.major=Integer.valueOf(strArgs[0]);
+  this.minor=Integer.valueOf(strArgs[1]);
+}

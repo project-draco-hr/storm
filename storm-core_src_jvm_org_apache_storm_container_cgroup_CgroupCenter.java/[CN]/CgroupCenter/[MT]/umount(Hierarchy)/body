@@ -1,0 +1,7 @@
+{
+  if (this.mounted(hierarchy) != null) {
+    hierarchy.getRootCgroups().delete();
+    SystemOperation.umount(hierarchy.getDir());
+    CgroupUtils.deleteDir(hierarchy.getDir());
+  }
+}

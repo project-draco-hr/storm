@@ -1,0 +1,12 @@
+{
+  File file=new File(this.dir);
+  File[] files=file.listFiles();
+  if (files == null) {
+    return;
+  }
+  for (  File child : files) {
+    if (child.isDirectory()) {
+      this.children.add(new CgroupCommon(child.getName(),this.hierarchy,this));
+    }
+  }
+}

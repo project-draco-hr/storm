@@ -1,0 +1,8 @@
+{
+  List<String> stringTasks=CgroupUtils.readFileByLine(Constants.getDir(this.dir,TASKS));
+  Set<Integer> tasks=new HashSet<Integer>();
+  for (  String task : stringTasks) {
+    tasks.add(Integer.valueOf(task));
+  }
+  return tasks;
+}

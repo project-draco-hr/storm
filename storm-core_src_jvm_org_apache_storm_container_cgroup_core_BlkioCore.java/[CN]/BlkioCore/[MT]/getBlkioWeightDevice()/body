@@ -1,0 +1,11 @@
+{
+  List<String> strings=CgroupUtils.readFileByLine(Constants.getDir(this.dir,BLKIO_WEIGHT_DEVICE));
+  Map<Device,Integer> result=new HashMap<Device,Integer>();
+  for (  String string : strings) {
+    String[] strArgs=string.split(" ");
+    Device device=new Device(strArgs[0]);
+    Integer weight=Integer.valueOf(strArgs[1]);
+    result.put(device,weight);
+  }
+  return result;
+}

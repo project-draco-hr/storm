@@ -1,0 +1,24 @@
+{
+  if (output.contains("*")) {
+    System.out.println("Pre:" + output);
+    output=output.replaceAll("\\*","-1");
+    System.out.println("After:" + output);
+  }
+  String[] splits=output.split("[: ]");
+  type=splits[0].charAt(0);
+  int major=Integer.parseInt(splits[1]);
+  int minor=Integer.parseInt(splits[2]);
+  device=new Device(major,minor);
+  accesses=0;
+  for (  char c : splits[3].toCharArray()) {
+    if (c == ACCESS_READ_CH) {
+      accesses|=ACCESS_READ;
+    }
+    if (c == ACCESS_CREATE_CH) {
+      accesses|=ACCESS_CREATE;
+    }
+    if (c == ACCESS_WRITE_CH) {
+      accesses|=ACCESS_WRITE;
+    }
+  }
+}

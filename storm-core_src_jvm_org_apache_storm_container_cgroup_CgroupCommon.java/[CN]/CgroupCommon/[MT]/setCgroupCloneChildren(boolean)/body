@@ -1,0 +1,6 @@
+{
+  if (!this.cores.keySet().contains(SubSystemType.cpuset)) {
+    return;
+  }
+  CgroupUtils.writeFileByLine(Constants.getDir(this.dir,CGROUP_CLONE_CHILDREN),flag ? "1" : "0");
+}
