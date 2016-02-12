@@ -1,6 +1,6 @@
 {
-  if (!this.cores.keySet().contains(SubSystemType.cpuset)) {
+  if (!getCores().keySet().contains(SubSystemType.cpuset)) {
     return;
   }
-  CgroupUtils.writeFileByLine(Constants.getDir(this.dir,CGROUP_CLONE_CHILDREN),flag ? "1" : "0");
+  CgroupUtils.writeFileByLine(CgroupUtils.getDir(this.dir,CGROUP_CLONE_CHILDREN),flag ? "1" : "0");
 }

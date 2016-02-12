@@ -13,6 +13,6 @@
     return output;
   }
  catch (  InterruptedException ie) {
-    throw new IOException(ie.toString());
+    throw new IOException(ie);
   }
 }

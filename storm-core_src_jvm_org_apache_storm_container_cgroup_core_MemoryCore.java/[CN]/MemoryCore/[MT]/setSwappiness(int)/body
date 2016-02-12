@@ -1,3 +1,3 @@
 {
-  CgroupUtils.writeFileByLine(Constants.getDir(this.dir,MEMORY_SWAPPINESS),String.valueOf(value));
+  CgroupUtils.writeFileByLine(CgroupUtils.getDir(this.dir,MEMORY_SWAPPINESS),String.valueOf(value));
 }

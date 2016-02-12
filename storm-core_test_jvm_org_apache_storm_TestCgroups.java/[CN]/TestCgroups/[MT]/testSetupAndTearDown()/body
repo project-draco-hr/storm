@@ -1,7 +1,7 @@
 {
   Config config=new Config();
   config.putAll(Utils.readDefaultConfig());
-  Assume.assumeTrue("Check if CGroups are setup",((boolean)config.get(Config.STORM_CGROUP_ENABLE)) == true);
+  Assume.assumeTrue("Check if CGroups are setup",((boolean)config.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN_ENABLE)) == true);
   Assert.assertTrue("Check if STORM_CGROUP_HIERARCHY_DIR exists",stormCgroupHierarchyExists(config));
   Assert.assertTrue("Check if STORM_SUPERVISOR_CGROUP_ROOTDIR exists",stormCgroupSupervisorRootDirExists(config));
   CgroupManager manager=new CgroupManager();
@@ -10,10 +10,15 @@
   resourcesMap.put("cpu",200);
   resourcesMap.put("memory",1024);
   String workerId=UUID.randomUUID().toString();
-  String command=manager.startNewWorker(workerId,resourcesMap);
-  String correctCommand1=config.get(Config.STORM_CGROUP_CGEXEC_CMD) + " -g memory,cpu:/" + config.get(Config.STORM_SUPERVISOR_CGROUP_ROOTDIR)+ "/"+ workerId;
-  String correctCommand2=config.get(Config.STORM_CGROUP_CGEXEC_CMD) + " -g cpu,memory:/" + config.get(Config.STORM_SUPERVISOR_CGROUP_ROOTDIR)+ "/"+ workerId;
-  Assert.assertTrue("Check if cgroup launch command is correct",command.equals(correctCommand1) || command.equals(correctCommand2));
+  manager.reserveResourcesForWorker(workerId,resourcesMap);
+  List<String> commandList=manager.getLaunchCommand(workerId,new ArrayList<String>());
+  StringBuilder command=new StringBuilder();
+  for (  String entry : commandList) {
+    command.append(entry).append(" ");
+  }
+  String correctCommand1=config.get(Config.STORM_CGROUP_CGEXEC_CMD) + " -g memory,cpu:/" + config.get(Config.STORM_SUPERVISOR_CGROUP_ROOTDIR)+ "/"+ workerId+ " ";
+  String correctCommand2=config.get(Config.STORM_CGROUP_CGEXEC_CMD) + " -g cpu,memory:/" + config.get(Config.STORM_SUPERVISOR_CGROUP_ROOTDIR)+ "/"+ workerId+ " ";
+  Assert.assertTrue("Check if cgroup launch command is correct",command.toString().equals(correctCommand1) || command.toString().equals(correctCommand2));
   String pathToWorkerCgroupDir=((String)config.get(Config.STORM_CGROUP_HIERARCHY_DIR)) + "/" + ((String)config.get(Config.STORM_SUPERVISOR_CGROUP_ROOTDIR))+ "/"+ workerId;
   Assert.assertTrue("Check if cgroup directory exists for worker",dirExists(pathToWorkerCgroupDir));
   String pathToCpuShares=pathToWorkerCgroupDir + "/cpu.shares";
@@ -22,6 +27,6 @@
   String pathTomemoryLimitInBytes=pathToWorkerCgroupDir + "/memory.limit_in_bytes";
   Assert.assertTrue("Check if memory.limit_in_bytes file exists",fileExists(pathTomemoryLimitInBytes));
   Assert.assertEquals("Check if the correct value is written into memory.limit_in_bytes",String.valueOf(1024 * 1024 * 1024),readFileAll(pathTomemoryLimitInBytes));
-  manager.shutDownWorker(workerId,true);
+  manager.releaseResourcesForWorker(workerId);
   Assert.assertFalse("Make sure cgroup was removed properly",dirExists(pathToWorkerCgroupDir));
 }

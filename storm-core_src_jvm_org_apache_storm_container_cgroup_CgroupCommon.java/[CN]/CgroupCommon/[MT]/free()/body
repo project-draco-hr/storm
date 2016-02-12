@@ -1,5 +1,5 @@
 {
-  for (  CgroupCommon child : this.children) {
+  for (  CgroupCommon child : getChildren()) {
     child.free();
   }
   if (this.isRoot) {

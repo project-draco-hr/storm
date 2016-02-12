@@ -1,8 +1,8 @@
 {
   if (output.contains("*")) {
-    System.out.println("Pre:" + output);
+    LOG.debug("Pre: {}",output);
     output=output.replaceAll("\\*","-1");
-    System.out.println("After:" + output);
+    LOG.debug("After: {}",output);
   }
   String[] splits=output.split("[: ]");
   type=splits[0].charAt(0);

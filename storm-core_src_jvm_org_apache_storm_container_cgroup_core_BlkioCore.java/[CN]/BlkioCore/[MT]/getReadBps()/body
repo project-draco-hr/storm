@@ -1,11 +1,3 @@
 {
-  List<String> strings=CgroupUtils.readFileByLine(Constants.getDir(this.dir,BLKIO_THROTTLE_READ_BPS_DEVICE));
-  Map<Device,Long> result=new HashMap<Device,Long>();
-  for (  String string : strings) {
-    String[] strArgs=string.split(" ");
-    Device device=new Device(strArgs[0]);
-    Long bps=Long.valueOf(strArgs[1]);
-    result.put(device,bps);
-  }
-  return result;
+  return parseConfig(BLKIO_THROTTLE_READ_BPS_DEVICE);
 }

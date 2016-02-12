@@ -3,5 +3,5 @@
   sb.append(iface);
   sb.append(' ');
   sb.append(priority);
-  CgroupUtils.writeFileByLine(Constants.getDir(this.dir,NET_PRIO_IFPRIOMAP),sb.toString());
+  CgroupUtils.writeFileByLine(CgroupUtils.getDir(this.dir,NET_PRIO_IFPRIOMAP),sb.toString());
 }

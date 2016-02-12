@@ -1,9 +1,0 @@
-{
-  Set<SubSystem> subSystems=this.getSubSystems();
-  for (  SubSystem subSystem : subSystems) {
-    if (subSystem.getType() == subsystem) {
-      return true;
-    }
-  }
-  return false;
-}

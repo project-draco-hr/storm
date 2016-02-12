@@ -1,4 +1,4 @@
 {
-  String output=CgroupUtils.readFileByLine(Constants.getDir(this.dir,CPUSET_MEMORY_PRESSURE)).get(0);
+  String output=CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,CPUSET_MEMORY_PRESSURE)).get(0);
   return Integer.parseInt(output);
 }

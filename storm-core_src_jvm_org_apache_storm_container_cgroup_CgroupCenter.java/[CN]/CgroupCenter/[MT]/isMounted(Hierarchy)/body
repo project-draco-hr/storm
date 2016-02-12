@@ -1,0 +1,11 @@
+{
+  if (Utils.CheckDirExists(hierarchy.getDir())) {
+    List<Hierarchy> hierarchies=this.getHierarchies();
+    for (    Hierarchy h : hierarchies) {
+      if (h.equals(hierarchy)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

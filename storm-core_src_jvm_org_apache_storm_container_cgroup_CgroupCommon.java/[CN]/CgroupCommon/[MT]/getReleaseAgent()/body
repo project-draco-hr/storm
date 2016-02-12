@@ -1,6 +1,7 @@
 {
   if (!this.isRoot) {
+    LOG.warn("Cannot get {} in {} since its not the root group",RELEASE_AGENT,this.isRoot);
     return null;
   }
-  return CgroupUtils.readFileByLine(Constants.getDir(this.dir,RELEASE_AGENT)).get(0);
+  return CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,RELEASE_AGENT)).get(0);
 }

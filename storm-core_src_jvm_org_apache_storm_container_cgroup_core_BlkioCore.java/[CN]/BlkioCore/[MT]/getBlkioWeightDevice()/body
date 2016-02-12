@@ -1,5 +1,5 @@
 {
-  List<String> strings=CgroupUtils.readFileByLine(Constants.getDir(this.dir,BLKIO_WEIGHT_DEVICE));
+  List<String> strings=CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,BLKIO_WEIGHT_DEVICE));
   Map<Device,Integer> result=new HashMap<Device,Integer>();
   for (  String string : strings) {
     String[] strArgs=string.split(" ");

@@ -3,7 +3,7 @@
   for (  String resource : Config.getCgroupStormResources(conf)) {
     subSystemTypes.add(SubSystemType.getSubSystem(resource));
   }
-  this.hierarchy=center.busy(subSystemTypes);
+  this.hierarchy=center.getHierarchyWithSubSystems(subSystemTypes);
   if (this.hierarchy == null) {
     Set<SubSystemType> types=new HashSet<SubSystemType>();
     types.add(SubSystemType.cpu);

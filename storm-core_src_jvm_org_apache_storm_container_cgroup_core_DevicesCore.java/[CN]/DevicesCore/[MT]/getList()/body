@@ -1,4 +1,4 @@
 {
-  List<String> output=CgroupUtils.readFileByLine(Constants.getDir(this.dir,DEVICES_LIST));
+  List<String> output=CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,DEVICES_LIST));
   return Record.parseRecordList(output);
 }

@@ -1,4 +1,4 @@
 String name
 String target
 String type
-String data
+String options

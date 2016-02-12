@@ -1,5 +1,5 @@
 {
   StringBuilder sb=new StringBuilder();
-  sb.append("umount ").append(name);
+  sb.append("umount ").append(pathToDir);
   SystemOperation.exec(sb.toString());
 }

@@ -1,2 +1,2 @@
-String fileDir
-String string
+String filePath
+String lineToWrite

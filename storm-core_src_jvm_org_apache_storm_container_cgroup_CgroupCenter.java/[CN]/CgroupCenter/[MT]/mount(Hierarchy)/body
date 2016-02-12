@@ -1,21 +1,22 @@
 {
-  if (this.mounted(hierarchy) != null) {
-    LOG.error("{} is mounted",hierarchy.getDir());
+  if (this.isMounted(hierarchy)) {
+    LOG.error("{} is already mounted",hierarchy.getDir());
     return;
   }
-  Set<SubSystemType> subsystems=hierarchy.getSubSystems();
-  for (  SubSystemType type : subsystems) {
-    if (this.busy(type) != null) {
-      LOG.error("subsystem: {} is busy",type.name());
-      subsystems.remove(type);
+  Set<SubSystemType> subSystems=hierarchy.getSubSystems();
+  for (  SubSystemType type : subSystems) {
+    Hierarchy hierarchyWithSubSystem=this.getHierarchyWithSubSystem(type);
+    if (hierarchyWithSubSystem != null) {
+      LOG.error("subSystem: {} is already mounted on hierarchy: {}",type.name(),hierarchyWithSubSystem);
+      subSystems.remove(type);
     }
   }
-  if (subsystems.size() == 0) {
+  if (subSystems.size() == 0) {
     return;
   }
-  if (!CgroupUtils.dirExists(hierarchy.getDir())) {
+  if (!Utils.CheckDirExists(hierarchy.getDir())) {
     new File(hierarchy.getDir()).mkdirs();
   }
-  String subSystems=CgroupUtils.reAnalyse(subsystems);
-  SystemOperation.mount(subSystems,hierarchy.getDir(),"cgroup",subSystems);
+  String subSystemsName=CgroupUtils.subSystemsToString(subSystems);
+  SystemOperation.mount(subSystemsName,hierarchy.getDir(),"cgroup",subSystemsName);
 }

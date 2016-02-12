@@ -7,5 +7,5 @@
     sb.append(' ');
     sb.append(arg);
   }
-  CgroupUtils.writeFileByLine(Constants.getDir(this.dir,CGROUP_EVENT_CONTROL),sb.toString());
+  CgroupUtils.writeFileByLine(CgroupUtils.getDir(this.dir,CGROUP_EVENT_CONTROL),sb.toString());
 }

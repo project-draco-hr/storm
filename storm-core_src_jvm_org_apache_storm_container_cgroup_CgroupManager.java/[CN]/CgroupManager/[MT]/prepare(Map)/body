@@ -2,11 +2,11 @@
   this.conf=conf;
   this.rootDir=Config.getCgroupRootDir(this.conf);
   if (this.rootDir == null) {
-    throw new RuntimeException("Check configuration file. The supervisor.cgroup.rootdir is missing.");
+    throw new RuntimeException("Check configuration file. The storm.supervisor.cgroup.rootdir is missing.");
   }
   File file=new File(Config.getCgroupStormHierarchyDir(conf) + "/" + this.rootDir);
   if (!file.exists()) {
-    LOG.error("{}/{} is not existing.",Config.getCgroupStormHierarchyDir(conf),this.rootDir);
+    LOG.error("{} is not existing.",file.getPath());
     throw new RuntimeException("Check if cgconfig service starts or /etc/cgconfig.conf is consistent with configuration file.");
   }
   this.center=CgroupCenter.getInstance();

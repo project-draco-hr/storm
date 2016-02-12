@@ -3,5 +3,5 @@
   this.subSystems=subSystems;
   this.dir=dir;
   this.rootCgroups=new CgroupCommon(this,dir);
-  this.type=CgroupUtils.reAnalyse(subSystems);
+  this.type=CgroupUtils.subSystemsToString(subSystems);
 }

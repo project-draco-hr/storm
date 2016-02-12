@@ -1,3 +1,15 @@
 {
+  File file=new File(this.dir);
+  File[] files=file.listFiles();
+  if (files == null) {
+    LOG.info("{} is not a directory",this.dir);
+    return null;
+  }
+  Set<CgroupCommon> children=new HashSet<CgroupCommon>();
+  for (  File child : files) {
+    if (child.isDirectory()) {
+      children.add(new CgroupCommon(child.getName(),this.hierarchy,this));
+    }
+  }
   return children;
 }

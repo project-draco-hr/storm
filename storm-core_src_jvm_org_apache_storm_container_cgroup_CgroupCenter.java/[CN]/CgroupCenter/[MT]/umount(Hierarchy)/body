@@ -1,7 +1,10 @@
 {
-  if (this.mounted(hierarchy) != null) {
+  if (this.isMounted(hierarchy)) {
     hierarchy.getRootCgroups().delete();
     SystemOperation.umount(hierarchy.getDir());
     CgroupUtils.deleteDir(hierarchy.getDir());
+  }
+ else {
+    LOG.error("{} is not mounted",hierarchy.getDir());
   }
 }
