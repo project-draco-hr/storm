@@ -1,15 +1,7 @@
 {
   KerberosTicket ret=null;
-  if (credentials != null && credentials.containsKey("TGT")) {
-    try {
-      ByteArrayInputStream bin=new ByteArrayInputStream(DatatypeConverter.parseBase64Binary(credentials.get("TGT")));
-      ObjectInputStream in=new ObjectInputStream(bin);
-      ret=(KerberosTicket)in.readObject();
-      in.close();
-    }
- catch (    Exception e) {
-      throw new RuntimeException(e);
-    }
+  if (credentials != null && credentials.containsKey("TGT") && credentials.get("TGT") != null) {
+    ret=AuthUtils.deserializeKerberosTicket(DatatypeConverter.parseBase64Binary(credentials.get("TGT")));
   }
   return ret;
 }
