@@ -1,0 +1,42 @@
+{
+  Options options=new Options();
+  for (  Opt opt : opts) {
+    options.addOption(Option.builder(opt.s).longOpt(opt.l).hasArg().build());
+  }
+  DefaultParser parser=new DefaultParser();
+  CommandLine cl=parser.parse(options,rawArgs);
+  HashMap<String,Object> ret=new HashMap<>();
+  for (  Opt opt : opts) {
+    Object current=null;
+    for (    String val : cl.getOptionValues(opt.s)) {
+      current=opt.process(current,val);
+    }
+    if (current == null) {
+      current=opt.defaultValue;
+    }
+    ret.put(opt.s,current);
+  }
+  List<String> stringArgs=cl.getArgList();
+  if (args.size() > stringArgs.size()) {
+    throw new RuntimeException("Wrong number of arguments at least " + args.size() + " expected, but only "+ stringArgs.size()+ " found");
+  }
+  int argIndex=0;
+  int stringArgIndex=0;
+  if (args.size() > 0) {
+    while (argIndex < args.size()) {
+      Arg arg=args.get(argIndex);
+      boolean isLastArg=(argIndex == (args.size() - 1));
+      Object current=null;
+      int maxStringIndex=isLastArg ? stringArgs.size() : (stringArgIndex + 1);
+      for (; stringArgIndex < maxStringIndex; stringArgIndex++) {
+        current=arg.process(current,stringArgs.get(stringArgIndex));
+      }
+      ret.put(arg.name,current);
+      argIndex++;
+    }
+  }
+ else {
+    ret.put("ARGS",stringArgs);
+  }
+  return ret;
+}

@@ -1,0 +1,4 @@
+{
+  args.add(new Arg(name,parse,assoc));
+  return this;
+}

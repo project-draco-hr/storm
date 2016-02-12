@@ -1,0 +1,3 @@
+{
+  return new CLIBuilder().opt(s,l,defaultValue,parse,assoc);
+}
