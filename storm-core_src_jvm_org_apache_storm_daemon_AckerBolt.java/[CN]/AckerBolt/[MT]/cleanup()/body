@@ -1,2 +1,3 @@
 {
+  LOG.info("Acker: cleanup successfully");
 }
