@@ -1,0 +1,7 @@
+{
+  ConnectionState stormState=mapCuratorToStorm.get(state);
+  if (stormState != null) {
+    return stormState;
+  }
+  throw new IllegalStateException("Unknown ConnectionState from Curator: " + state);
+}

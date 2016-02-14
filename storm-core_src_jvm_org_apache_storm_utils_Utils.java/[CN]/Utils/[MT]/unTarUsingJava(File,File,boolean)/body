@@ -1,6 +1,5 @@
 {
   InputStream inputStream=null;
-  TarArchiveInputStream tis=null;
   try {
     if (gzipped) {
       inputStream=new BufferedInputStream(new GZIPInputStream(new FileInputStream(inFile)));
@@ -8,13 +7,16 @@
  else {
       inputStream=new BufferedInputStream(new FileInputStream(inFile));
     }
-    tis=new TarArchiveInputStream(inputStream);
-    for (TarArchiveEntry entry=tis.getNextTarEntry(); entry != null; ) {
-      unpackEntries(tis,entry,untarDir);
-      entry=tis.getNextTarEntry();
+    try (TarArchiveInputStream tis=new TarArchiveInputStream(inputStream)){
+      for (TarArchiveEntry entry=tis.getNextTarEntry(); entry != null; ) {
+        unpackEntries(tis,entry,untarDir);
+        entry=tis.getNextTarEntry();
+      }
     }
-  }
+   }
   finally {
-    cleanup(tis,inputStream);
+    if (inputStream != null) {
+      inputStream.close();
+    }
   }
 }

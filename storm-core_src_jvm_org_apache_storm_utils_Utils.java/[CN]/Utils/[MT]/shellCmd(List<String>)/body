@@ -1,0 +1,10 @@
+{
+  List<String> changedCommands=new ArrayList<>(command.size());
+  for (  String str : command) {
+    if (str == null) {
+      continue;
+    }
+    changedCommands.add("'" + str.replaceAll("'","'\"'\"'") + "'");
+  }
+  return StringUtils.join(changedCommands," ");
+}

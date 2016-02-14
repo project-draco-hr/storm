@@ -1,0 +1,12 @@
+{
+  InputStream in=this.getClass().getClassLoader().getResourceAsStream("FixedAvroSerializer.config");
+  BufferedReader reader=new BufferedReader(new InputStreamReader(in));
+  String line;
+  while ((line=reader.readLine()) != null) {
+    Schema schema=new Schema.Parser().parse(line);
+    byte[] fp=SchemaNormalization.parsingFingerprint(FP_ALGO,schema);
+    String fingerPrint=new String(Base64.decodeBase64(fp));
+    fingerprint2schemaMap.put(fingerPrint,schema);
+    schema2fingerprintMap.put(schema,fingerPrint);
+  }
+}

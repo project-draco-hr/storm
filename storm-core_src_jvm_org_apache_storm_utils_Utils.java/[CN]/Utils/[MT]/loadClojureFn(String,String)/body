@@ -4,5 +4,5 @@
   }
  catch (  Exception e) {
   }
-  return (IFn)RT.var(namespace,name).deref();
+  return (clojure.lang.IFn)RT.var(namespace,name).deref();
 }
