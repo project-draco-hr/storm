@@ -1,0 +1,3 @@
+{
+  Assert.assertTrue(Utils.isZkAuthenticationConfiguredTopology(topologyMockMap("foobar")));
+}

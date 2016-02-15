@@ -1,0 +1,7 @@
+{
+  Time.startSimulating();
+  long current=Time.currentTimeMillis();
+  Time.advanceTime(0);
+  Assert.assertEquals(Time.deltaMs(current),0);
+  Time.stopSimulating();
+}

@@ -1,0 +1,5 @@
+{
+  Time.startSimulating();
+  Assert.assertTrue(Time.isSimulating());
+  Time.stopSimulating();
+}

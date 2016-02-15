@@ -1,0 +1,5 @@
+{
+  Map config=ConfigUtils.readStormConfig();
+  config.put(Config.STORM_NIMBUS_RETRY_TIMES,0);
+  new NimbusClient(config,"",65535);
+}

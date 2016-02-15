@@ -1,0 +1,7 @@
+{
+  CuratorFrameworkFactory.Builder builder=setupBuilder(false,true);
+  List<AuthInfo> authInfos=builder.getAuthInfos();
+  AuthInfo authInfo=authInfos.get(0);
+  Assert.assertEquals(authInfo.getScheme(),"scheme");
+  Assert.assertArrayEquals(authInfo.getAuth(),"abc".getBytes());
+}

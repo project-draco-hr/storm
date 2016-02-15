@@ -1,0 +1,5 @@
+{
+  CuratorFrameworkFactory.Builder builder=setupBuilder(false);
+  Assert.assertEquals(builder.getEnsembleProvider().getConnectionString(),"zk_connection_string");
+  Assert.assertEquals(builder.getEnsembleProvider().getClass(),FixedEnsembleProvider.class);
+}
