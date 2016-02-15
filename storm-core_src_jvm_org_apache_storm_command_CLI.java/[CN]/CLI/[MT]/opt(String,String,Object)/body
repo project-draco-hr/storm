@@ -1,3 +1,3 @@
 {
-  return new CLIBuilder().opt(s,l,defaultValue);
+  return new CLIBuilder().opt(shortName,longName,defaultValue);
 }

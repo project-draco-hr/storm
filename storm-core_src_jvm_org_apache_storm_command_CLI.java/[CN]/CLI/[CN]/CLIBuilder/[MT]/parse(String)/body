@@ -1,20 +1,20 @@
 {
   Options options=new Options();
   for (  Opt opt : opts) {
-    options.addOption(Option.builder(opt.s).longOpt(opt.l).hasArg().build());
+    options.addOption(Option.builder(opt.shortName).longOpt(opt.longName).hasArg().build());
   }
   DefaultParser parser=new DefaultParser();
   CommandLine cl=parser.parse(options,rawArgs);
   HashMap<String,Object> ret=new HashMap<>();
   for (  Opt opt : opts) {
     Object current=null;
-    for (    String val : cl.getOptionValues(opt.s)) {
+    for (    String val : cl.getOptionValues(opt.shortName)) {
       current=opt.process(current,val);
     }
     if (current == null) {
       current=opt.defaultValue;
     }
-    ret.put(opt.s,current);
+    ret.put(opt.shortName,current);
   }
   List<String> stringArgs=cl.getArgList();
   if (args.size() > stringArgs.size()) {

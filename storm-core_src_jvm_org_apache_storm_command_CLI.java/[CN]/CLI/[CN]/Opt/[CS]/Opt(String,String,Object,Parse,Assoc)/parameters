@@ -1,5 +1,5 @@
-String s
-String l
+String shortName
+String longName
 Object defaultValue
 Parse parse
 Assoc assoc

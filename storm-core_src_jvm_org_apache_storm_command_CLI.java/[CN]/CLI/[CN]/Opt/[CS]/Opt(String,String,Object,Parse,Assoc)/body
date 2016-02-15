@@ -1,6 +1,6 @@
 {
-  this.s=s;
-  this.l=l;
+  this.shortName=shortName;
+  this.longName=longName;
   this.defaultValue=defaultValue;
   this.parse=parse == null ? AS_STRING : parse;
   this.assoc=assoc == null ? LAST_WINS : assoc;
