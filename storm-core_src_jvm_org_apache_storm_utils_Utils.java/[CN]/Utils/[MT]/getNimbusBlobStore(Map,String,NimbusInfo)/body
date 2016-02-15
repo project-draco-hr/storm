@@ -6,6 +6,8 @@
   BlobStore store=(BlobStore)newInstance(type);
   HashMap nconf=new HashMap(conf);
   nconf.put(Config.BLOBSTORE_CLEANUP_ENABLE,Boolean.TRUE);
-  store.prepare(nconf,baseDir,nimbusInfo);
+  if (store != null) {
+    store.prepare(nconf,baseDir,nimbusInfo);
+  }
   return store;
 }

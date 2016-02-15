@@ -1,0 +1,7 @@
+{
+  String languageTag=Utils.getString(stormConf.get(Config.STORM_DAEMON_METRICS_REPORTER_PLUGIN_LOCALE),null);
+  if (languageTag != null) {
+    return Locale.forLanguageTag(languageTag);
+  }
+  return null;
+}

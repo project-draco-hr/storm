@@ -1,0 +1,3 @@
+{
+  collector.emit(function.execute(tuple));
+}

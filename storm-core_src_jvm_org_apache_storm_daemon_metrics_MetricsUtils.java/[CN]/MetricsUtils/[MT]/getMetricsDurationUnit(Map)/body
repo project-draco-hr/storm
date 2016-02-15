@@ -1,0 +1,3 @@
+{
+  return getTimeUnitForCofig(stormConf,Config.STORM_DAEMON_METRICS_REPORTER_PLUGIN_DURATION_UNIT);
+}
