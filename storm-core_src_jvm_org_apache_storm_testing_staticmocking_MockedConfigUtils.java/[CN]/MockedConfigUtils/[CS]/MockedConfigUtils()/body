@@ -1,3 +1,0 @@
-{
-  ConfigUtils.setInstance(this);
-}

@@ -1,0 +1,22 @@
+{
+  String errorString=null;
+  StringWriter result=null;
+  PrintWriter printWriter=null;
+  try {
+    result=new StringWriter();
+    printWriter=new PrintWriter(result);
+    error.printStackTrace(printWriter);
+    if (result != null) {
+      errorString=result.toString();
+    }
+  }
+  finally {
+    try {
+      if (result != null)       result.close();
+      if (printWriter != null)       printWriter.close();
+    }
+ catch (    Exception e) {
+    }
+  }
+  return errorString;
+}

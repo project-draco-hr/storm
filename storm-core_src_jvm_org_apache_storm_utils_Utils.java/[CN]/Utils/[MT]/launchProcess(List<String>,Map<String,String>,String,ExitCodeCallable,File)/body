@@ -1,0 +1,3 @@
+{
+  return _instance.launchProcessImpl(command,environment,logPrefix,exitCodeCallback,dir);
+}

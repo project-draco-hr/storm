@@ -1,6 +1,8 @@
 {
   SimpleConsumer consumer=_connections.register(partition);
   Map ret=doEmitNewPartitionBatch(consumer,partition,collector,lastMeta);
-  _kafkaOffsetMetric.setLatestEmittedOffset(partition,(Long)ret.get("offset"));
+  Long offset=(Long)ret.get("offset");
+  Long endOffset=(Long)ret.get("nextOffset");
+  _kafkaOffsetMetric.setOffsetData(partition,new PartitionManager.OffsetData(endOffset,offset));
   return ret;
 }

@@ -1,0 +1,9 @@
+{
+  if (reporter != null) {
+    LOG.debug("Stopping...");
+    reporter.stop();
+  }
+ else {
+    throw new IllegalStateException("Attempt to stop without preparing " + getClass().getSimpleName());
+  }
+}

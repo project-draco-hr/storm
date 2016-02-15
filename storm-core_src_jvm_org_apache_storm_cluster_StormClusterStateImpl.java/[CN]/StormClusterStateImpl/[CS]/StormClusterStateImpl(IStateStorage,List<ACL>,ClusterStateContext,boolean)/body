@@ -1,6 +1,7 @@
 {
   this.stateStorage=StateStorage;
   this.solo=solo;
+  this.acls=acls;
   assignmentInfoCallback=new ConcurrentHashMap<>();
   assignmentInfoWithVersionCallback=new ConcurrentHashMap<>();
   assignmentVersionCallback=new ConcurrentHashMap<>();
@@ -16,9 +17,7 @@
       List<String> toks=Zookeeper.tokenizePath(path);
       int size=toks.size();
       if (size >= 1) {
-        String params=null;
         String root=toks.get(0);
-        IFn fn=null;
         if (root.equals(ClusterUtils.ASSIGNMENTS_ROOT)) {
           if (size == 1) {
             issueCallback(assignmentsCallback);

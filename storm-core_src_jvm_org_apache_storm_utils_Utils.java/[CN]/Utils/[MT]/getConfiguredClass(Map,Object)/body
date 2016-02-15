@@ -1,0 +1,6 @@
+{
+  if (conf.containsKey(configKey)) {
+    return newInstance((String)conf.get(configKey));
+  }
+  return null;
+}

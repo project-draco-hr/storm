@@ -1,0 +1,18 @@
+{
+  try (JarFile jarFile=new JarFile(jarpath)){
+    Enumeration<JarEntry> jarEnums=jarFile.entries();
+    while (jarEnums.hasMoreElements()) {
+      JarEntry entry=jarEnums.nextElement();
+      if (!entry.isDirectory() && entry.getName().startsWith(dir)) {
+        File aFile=new File(destdir,entry.getName());
+        aFile.getParentFile().mkdirs();
+        try (FileOutputStream out=new FileOutputStream(aFile);InputStream in=jarFile.getInputStream(entry)){
+          IOUtils.copy(in,out);
+        }
+       }
+    }
+  }
+ catch (  IOException e) {
+    LOG.info("Could not extract {} from {}",dir,jarpath);
+  }
+}

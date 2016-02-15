@@ -1,0 +1,4 @@
+{
+  consumer.accept(tuple);
+  collector.emit(tuple);
+}

@@ -1,0 +1,10 @@
+{
+  LOG.debug("Deleting path {}",path);
+  if (checkFileExists(path)) {
+    try {
+      FileUtils.forceDelete(new File(path));
+    }
+ catch (    FileNotFoundException ignored) {
+    }
+  }
+}

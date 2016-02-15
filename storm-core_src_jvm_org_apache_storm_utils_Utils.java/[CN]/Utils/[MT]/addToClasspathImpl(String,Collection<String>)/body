@@ -1,0 +1,9 @@
+{
+  if (paths == null || paths.isEmpty()) {
+    return classpath;
+  }
+  List<String> l=new LinkedList<>();
+  l.add(classpath);
+  l.addAll(paths);
+  return StringUtils.join(l,CLASS_PATH_SEPARATOR);
+}

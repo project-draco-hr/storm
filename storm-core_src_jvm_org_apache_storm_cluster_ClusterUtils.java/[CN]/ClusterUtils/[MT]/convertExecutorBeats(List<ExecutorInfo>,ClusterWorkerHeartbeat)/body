@@ -1,9 +1,10 @@
 {
-  Map<ExecutorInfo,ClusterWorkerHeartbeat> executorWhb=new HashMap<>();
+  Map<ExecutorInfo,APersistentMap> executorWhb=new HashMap<>();
   Map<ExecutorInfo,ExecutorStats> executorStatsMap=workerHeartbeat.get_executor_stats();
   for (  ExecutorInfo executor : executors) {
     if (executorStatsMap.containsKey(executor)) {
-      executorWhb.put(executor,workerHeartbeat);
+      APersistentMap executorBeat=new PersistentArrayMap(new Object[]{RT.keyword(null,"time-secs"),workerHeartbeat.get_time_secs(),RT.keyword(null,"uptime"),workerHeartbeat.get_uptime_secs(),RT.keyword(null,"stats"),workerHeartbeat.get_executor_stats().get(executor)});
+      executorWhb.put(executor,executorBeat);
     }
   }
   return executorWhb;
