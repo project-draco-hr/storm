@@ -1,0 +1,20 @@
+{
+  int retry=maxRetries;
+  while (true) {
+    try {
+      HBMessage message=new HBMessage(HBServerMessageType.GET_PULSE,HBMessageData.path(path));
+      HBMessage response=pacemakerClient.send(message);
+      if (response.get_type() != HBServerMessageType.GET_PULSE_RESPONSE) {
+        throw new HBExecutionException("Invalid Response Type");
+      }
+      LOG.debug("Successful get_worker_hb");
+      return response.get_data().get_pulse().get_details();
+    }
+ catch (    Exception e) {
+      if (retry <= 0) {
+        throw Utils.wrapInRuntime(e);
+      }
+      LOG.error("{} Failed to get_worker_hb. Will make {} more attempts.",e.getMessage(),retry--);
+    }
+  }
+}

@@ -1,3 +1,0 @@
-{
-  return _instance.mkDistributedClusterStateImpl(config,auth_conf,acls,context);
-}

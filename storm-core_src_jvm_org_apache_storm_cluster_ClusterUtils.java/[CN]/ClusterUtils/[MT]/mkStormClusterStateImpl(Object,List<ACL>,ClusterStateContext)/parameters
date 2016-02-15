@@ -1,3 +1,3 @@
-Object StateStorage
+Object stateStorage
 List<ACL> acls
 ClusterStateContext context

@@ -1,4 +1,4 @@
-StateStorage StateStorage
+IStateStorage StateStorage
 List<ACL> acls
 ClusterStateContext context
 boolean solo

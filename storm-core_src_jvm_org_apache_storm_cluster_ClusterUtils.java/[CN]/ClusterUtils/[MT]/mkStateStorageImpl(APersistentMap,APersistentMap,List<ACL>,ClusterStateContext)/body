@@ -1,6 +1,6 @@
 {
   String className=null;
-  StateStorage stateStorage=null;
+  IStateStorage stateStorage=null;
   if (config.get(Config.STORM_CLUSTER_STATE_STORE) != null) {
     className=(String)config.get(Config.STORM_CLUSTER_STATE_STORE);
   }
@@ -9,6 +9,6 @@
   }
   Class clazz=Class.forName(className);
   StateStorageFactory storageFactory=(StateStorageFactory)clazz.newInstance();
-  stateStorage=storageFactory.mkState(config,auth_conf,acls,context);
+  stateStorage=storageFactory.mkStore(config,auth_conf,acls,context);
   return stateStorage;
 }

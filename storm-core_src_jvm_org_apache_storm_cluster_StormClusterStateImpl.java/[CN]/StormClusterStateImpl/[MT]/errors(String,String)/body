@@ -12,7 +12,7 @@
     }
     Collections.sort(errorInfos,new Comparator<ErrorInfo>(){
       public int compare(      ErrorInfo arg0,      ErrorInfo arg1){
-        return -Integer.compare(arg0.get_error_time_secs(),arg1.get_error_time_secs());
+        return Integer.compare(arg1.get_error_time_secs(),arg0.get_error_time_secs());
       }
     }
 );
