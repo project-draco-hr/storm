@@ -1,0 +1,2 @@
+List<WorkerSlot> availableSlots
+Cluster cluster

@@ -1,0 +1,43 @@
+{
+  List<WorkerSlot> availableSlots=cluster.getAvailableSlots();
+  Set<ExecutorDetails> allExecutors=(Set<ExecutorDetails>)topology.getExecutors();
+  Map<WorkerSlot,List<ExecutorDetails>> aliveAssigned=getAliveAssignedWorkerSlotExecutors(cluster,topology.getId());
+  int totalSlotsToUse=Math.min(topology.getNumWorkers(),availableSlots.size() + aliveAssigned.size());
+  List<WorkerSlot> sortedList=sortSlots(availableSlots,cluster);
+  if (sortedList == null) {
+    LOG.error("Available slots are not enough for topology: {}",topology.getName());
+    return new HashMap<ExecutorDetails,WorkerSlot>();
+  }
+  List<WorkerSlot> reassignSlots=sortedList.subList(0,totalSlotsToUse - aliveAssigned.size());
+  Set<ExecutorDetails> aliveExecutors=new HashSet<ExecutorDetails>();
+  for (  List<ExecutorDetails> list : aliveAssigned.values()) {
+    aliveExecutors.addAll(list);
+  }
+  Set<ExecutorDetails> reassignExecutors=Sets.difference(allExecutors,aliveExecutors);
+  Map<ExecutorDetails,WorkerSlot> reassignment=new HashMap<ExecutorDetails,WorkerSlot>();
+  if (reassignSlots.size() == 0) {
+    return reassignment;
+  }
+  List<ExecutorDetails> _executors=new ArrayList<ExecutorDetails>(reassignExecutors);
+  Collections.sort(_executors,new Comparator<ExecutorDetails>(){
+    @Override public int compare(    ExecutorDetails o1,    ExecutorDetails o2){
+      return o1.getStartTask() - o2.getStartTask();
+    }
+  }
+);
+  int numExecutors=_executors.size();
+  List<WorkerSlot> _slots=new ArrayList<WorkerSlot>(numExecutors);
+  int numSlots=reassignSlots.size();
+  for (int i=0; i < numExecutors; i++) {
+    _slots.add(reassignSlots.get(i % numSlots));
+  }
+  Iterator<WorkerSlot> slotIterator=_slots.iterator();
+  Iterator<ExecutorDetails> executorIterator=_executors.iterator();
+  while (slotIterator.hasNext() && executorIterator.hasNext()) {
+    reassignment.put(executorIterator.next(),slotIterator.next());
+  }
+  if (reassignment.size() != 0) {
+    LOG.info("Available slots: {}",availableSlots.toString());
+  }
+  return reassignment;
+}
