@@ -1,0 +1,5 @@
+{
+  String name=args[0];
+  Map<String,Object> conf=ConfigUtils.readStormConfig();
+  System.out.println("VALUE: " + conf.get(name));
+}

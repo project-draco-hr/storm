@@ -1,0 +1,16 @@
+{
+  Runnable sleepKill=new Runnable(){
+    @Override public void run(){
+      try {
+        Time.sleepSecs(1);
+        Runtime.getRuntime().halt(20);
+      }
+ catch (      Exception e) {
+        LOG.warn("Exception in the ShutDownHook",e);
+      }
+    }
+  }
+;
+  Runtime.getRuntime().addShutdownHook(new Thread(func));
+  Runtime.getRuntime().addShutdownHook(new Thread(sleepKill));
+}

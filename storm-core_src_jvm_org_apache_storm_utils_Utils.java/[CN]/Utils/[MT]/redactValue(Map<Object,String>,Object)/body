@@ -1,0 +1,10 @@
+{
+  if (m.containsKey(key)) {
+    HashMap<Object,String> newMap=new HashMap<>(m);
+    String value=newMap.get(key);
+    String redacted=new String(new char[value.length()]).replace("\0","#");
+    newMap.put(key,redacted);
+    return newMap;
+  }
+  return m;
+}

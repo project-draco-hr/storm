@@ -1,0 +1,10 @@
+{
+  Collection<String> ret=new HashSet<>();
+  File[] files=new File(dir).listFiles();
+  if (files != null) {
+    for (    File f : files) {
+      ret.add(f.getName());
+    }
+  }
+  return ret;
+}
