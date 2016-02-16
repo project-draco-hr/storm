@@ -1,7 +1,4 @@
 {
-  if (this.task == null) {
-    throw new RuntimeException("task is null!");
-  }
   if (func == null) {
     throw new RuntimeException("function to schedule is null!");
   }
