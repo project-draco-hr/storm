@@ -1,0 +1,10 @@
+{
+  try {
+    running.set(false);
+    runner.interrupt();
+    runner.join();
+  }
+ catch (  InterruptedException e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}
