@@ -1,0 +1,4 @@
+{
+  opts.add(new Opt(shortName,longName,defaultValue,parse,assoc));
+  return this;
+}

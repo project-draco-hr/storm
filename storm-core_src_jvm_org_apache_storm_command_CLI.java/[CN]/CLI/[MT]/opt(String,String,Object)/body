@@ -1,0 +1,3 @@
+{
+  return new CLIBuilder().opt(shortName,longName,defaultValue);
+}
