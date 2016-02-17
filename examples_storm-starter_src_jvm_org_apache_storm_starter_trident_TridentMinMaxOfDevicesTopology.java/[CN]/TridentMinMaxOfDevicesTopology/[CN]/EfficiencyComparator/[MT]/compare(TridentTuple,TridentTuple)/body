@@ -1,0 +1,5 @@
+{
+  Vehicle vehicle1=(Vehicle)tuple1.getValueByField(Vehicle.FIELD_NAME);
+  Vehicle vehicle2=(Vehicle)tuple2.getValueByField(Vehicle.FIELD_NAME);
+  return Double.compare(vehicle1.efficiency,vehicle2.efficiency);
+}

@@ -1,0 +1,16 @@
+{
+  Map<String,Object> cl=CLI.opt("w","wait",null,CLI.AS_INT).arg("TOPO",CLI.FIRST_WINS).parse(args);
+  final String name=(String)cl.get("TOPO");
+  Integer wait=(Integer)cl.get("w");
+  final KillOptions opts=new KillOptions();
+  if (wait != null) {
+    opts.set_wait_secs(wait);
+  }
+  NimbusClient.withConfiguredClient(new NimbusClient.WithNimbus(){
+    @Override public void run(    Nimbus.Client nimbus) throws Exception {
+      nimbus.killTopologyWithOpts(name,opts);
+      LOG.info("Killed topology: {}",name);
+    }
+  }
+);
+}

@@ -1,0 +1,4 @@
+{
+  Aggregator<ComparisonAggregator.State> min=new Min(inputFieldName);
+  return comparableAggregateStream(inputFieldName,min);
+}

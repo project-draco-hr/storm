@@ -1,0 +1,8 @@
+{
+  ReqContext context=ReqContext.context();
+  Principal principal=context.principal();
+  String user=principal == null ? null : principal.getName();
+  try (NimbusClient client=getConfiguredClientAs(conf,user)){
+    cb.run(client.getClient());
+  }
+ }
