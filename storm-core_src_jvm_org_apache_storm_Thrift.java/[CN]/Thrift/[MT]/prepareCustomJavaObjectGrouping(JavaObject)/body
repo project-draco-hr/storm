@@ -1,0 +1,3 @@
+{
+  return Grouping.custom_object(obj);
+}

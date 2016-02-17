@@ -1,0 +1,6 @@
+{
+  if (!Grouping._Fields.FIELDS.equals(groupingType(grouping))) {
+    throw new IllegalArgumentException("Tried to get grouping fields from non fields grouping");
+  }
+  return grouping.get_fields();
+}

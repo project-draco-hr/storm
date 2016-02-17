@@ -1,0 +1,6 @@
+{
+  if (obj.getSetField() != ComponentObject._Fields.SERIALIZED_JAVA) {
+    throw new RuntimeException("Cannot deserialize non-java-serialized object");
+  }
+  return Utils.javaDeserialize(obj.get_serialized_java(),Serializable.class);
+}
