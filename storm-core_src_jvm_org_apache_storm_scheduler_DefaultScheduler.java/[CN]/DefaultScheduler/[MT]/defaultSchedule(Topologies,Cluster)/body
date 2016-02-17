@@ -10,12 +10,12 @@
     }
     Set<WorkerSlot> canReassignSlots=slotsCanReassign(cluster,aliveAssigned.keySet());
     int totalSlotsToUse=Math.min(topology.getNumWorkers(),canReassignSlots.size() + availableSlots.size());
-    Set<WorkerSlot> badSlot=null;
+    Set<WorkerSlot> badSlots=null;
     if (totalSlotsToUse > aliveAssigned.size() || !allExecutors.equals(aliveExecutors)) {
-      badSlot=badSlots(aliveAssigned,allExecutors.size(),totalSlotsToUse);
+      badSlots=badSlots(aliveAssigned,allExecutors.size(),totalSlotsToUse);
     }
-    if (badSlot != null) {
-      cluster.freeSlots(badSlot);
+    if (badSlots != null) {
+      cluster.freeSlots(badSlots);
     }
     Map<String,TopologyDetails> _topologies=new HashMap<String,TopologyDetails>();
     _topologies.put(topology.getId(),topology);
