@@ -1,0 +1,8 @@
+{
+  List<Object>[] vehicles=new List[count];
+  for (int i=0; i < count; i++) {
+    int id=i - 1;
+    vehicles[i]=(new Values(new Vehicle("Vehicle-" + id,ThreadLocalRandom.current().nextInt(0,100),ThreadLocalRandom.current().nextDouble(1,5)),new Driver("Driver-" + id,id)));
+  }
+  return vehicles;
+}
