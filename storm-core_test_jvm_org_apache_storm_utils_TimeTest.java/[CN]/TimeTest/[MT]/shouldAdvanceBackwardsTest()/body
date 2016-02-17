@@ -3,5 +3,7 @@
   long current=Time.currentTimeMillis();
   Time.advanceTime(1000);
   Assert.assertEquals(Time.deltaMs(current),1000);
+  Time.advanceTime(-1500);
+  Assert.assertEquals(Time.deltaMs(current),-500);
   Time.stopSimulating();
 }

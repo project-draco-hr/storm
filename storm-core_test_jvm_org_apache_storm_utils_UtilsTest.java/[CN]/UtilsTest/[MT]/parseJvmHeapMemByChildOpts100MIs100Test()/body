@@ -1,3 +1,0 @@
-{
-  Assert.assertEquals(Utils.parseJvmHeapMemByChildOpts("Xmx100M",0.0).doubleValue(),100.0,0);
-}

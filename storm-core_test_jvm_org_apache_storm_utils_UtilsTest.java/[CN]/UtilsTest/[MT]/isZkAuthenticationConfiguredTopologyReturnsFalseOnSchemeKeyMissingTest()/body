@@ -1,3 +1,0 @@
-{
-  Assert.assertFalse(Utils.isZkAuthenticationConfiguredTopology(emptyMockMap()));
-}
