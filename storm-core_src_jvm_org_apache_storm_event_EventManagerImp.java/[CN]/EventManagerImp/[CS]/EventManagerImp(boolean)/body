@@ -6,12 +6,12 @@
     @Override public void run(){
       while (running.get()) {
         try {
-          IRunnableCallback r=queue.take();
+          Runnable r=queue.take();
           if (r == null) {
             return;
           }
           r.run();
-          proccessinc();
+          proccessInc();
         }
  catch (        Throwable t) {
           if (Utils.exceptionCauseIsInstanceOf(InterruptedIOException.class,t)) {
@@ -29,6 +29,6 @@
     }
   }
 ;
-  runner.setDaemon(daemon);
+  runner.setDaemon(isDaemon);
   runner.start();
 }
