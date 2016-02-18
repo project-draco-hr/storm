@@ -1,0 +1,3 @@
+{
+  return new Stat(CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,CPU_STAT)));
+}

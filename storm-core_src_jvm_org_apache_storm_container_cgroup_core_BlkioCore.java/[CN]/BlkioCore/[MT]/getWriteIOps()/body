@@ -1,0 +1,3 @@
+{
+  return parseConfig(BLKIO_THROTTLE_WRITE_IOPS_DEVICE);
+}

@@ -1,0 +1,13 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if ((accesses & ACCESS_READ) != 0) {
+    sb.append(ACCESS_READ_CH);
+  }
+  if ((accesses & ACCESS_WRITE) != 0) {
+    sb.append(ACCESS_WRITE_CH);
+  }
+  if ((accesses & ACCESS_CREATE) != 0) {
+    sb.append(ACCESS_CREATE_CH);
+  }
+  return sb;
+}

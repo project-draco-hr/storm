@@ -1,0 +1,5 @@
+{
+  this.type=type;
+  this.device=device;
+  this.accesses=accesses;
+}

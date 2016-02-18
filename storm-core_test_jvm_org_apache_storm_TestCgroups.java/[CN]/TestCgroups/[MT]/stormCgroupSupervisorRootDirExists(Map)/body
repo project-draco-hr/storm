@@ -1,0 +1,4 @@
+{
+  String pathTostormCgroupSupervisorRootDir=((String)config.get(Config.STORM_CGROUP_HIERARCHY_DIR)) + "/" + ((String)config.get(Config.STORM_SUPERVISOR_CGROUP_ROOTDIR));
+  return dirExists(pathTostormCgroupSupervisorRootDir);
+}
