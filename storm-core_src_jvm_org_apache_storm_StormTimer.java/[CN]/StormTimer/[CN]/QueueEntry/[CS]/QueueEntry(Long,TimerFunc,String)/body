@@ -1,0 +1,5 @@
+{
+  this.endTimeMs=endTimeMs;
+  this.afn=afn;
+  this.id=id;
+}

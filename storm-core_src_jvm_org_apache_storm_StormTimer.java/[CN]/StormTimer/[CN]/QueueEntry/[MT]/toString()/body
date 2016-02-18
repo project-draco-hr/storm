@@ -1,0 +1,3 @@
+{
+  return this.id + " " + this.endTimeMs+ " "+ this.afn;
+}

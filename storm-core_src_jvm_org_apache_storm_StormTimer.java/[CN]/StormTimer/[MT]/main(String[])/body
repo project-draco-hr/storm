@@ -1,7 +1,0 @@
-{
-  mkTimer(new TimerFunc(){
-    @Override public void run(    Object o){
-    }
-  }
-,"erer");
-}

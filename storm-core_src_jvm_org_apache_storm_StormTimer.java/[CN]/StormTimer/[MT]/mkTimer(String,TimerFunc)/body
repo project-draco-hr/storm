@@ -1,6 +1,14 @@
 {
-  LOG.info("making Timer...");
+  if (onKill == null) {
+    throw new RuntimeException("onKill func is null!");
+  }
   StormTimerTask task=new StormTimerTask();
+  if (name == null) {
+    task.setName("timer");
+  }
+ else {
+    task.setName(name);
+  }
   task.setOnKillFunc(onKill);
   task.setActive(true);
   task.setDaemon(true);

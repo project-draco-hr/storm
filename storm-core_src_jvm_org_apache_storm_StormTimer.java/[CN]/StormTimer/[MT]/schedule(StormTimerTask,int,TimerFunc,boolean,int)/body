@@ -1,10 +1,17 @@
 {
-  long endTimeMs=currentTimeMillis() + secsToMillisLong(delaySecs);
+  if (task == null) {
+    throw new RuntimeException("task is null!");
+  }
+  if (afn == null) {
+    throw new RuntimeException("function to schedule is null!");
+  }
+  String id=Utils.uuid();
+  long endTimeMs=Time.currentTimeMillis() + Time.secsToMillisLong(delaySecs);
   if (jitterMs > 0) {
     endTimeMs=task.random.nextInt(jitterMs) + endTimeMs;
   }
-  task.setFunc(afn);
+  LOG.info("add event: {}-{}-{}",id,endTimeMs,afn);
 synchronized (task.lock) {
-    task.add(endTimeMs);
+    task.add(new QueueEntry(endTimeMs,afn,id));
   }
 }

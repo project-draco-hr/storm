@@ -1,3 +1,6 @@
 {
+  if (task == null) {
+    throw new RuntimeException("task is null!");
+  }
   return Time.isThreadWaiting(task);
 }
