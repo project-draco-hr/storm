@@ -2,14 +2,10 @@
   while (this.active.get()) {
     QueueEntry queueEntry=null;
     try {
-synchronized (this.lock) {
-        queueEntry=this.queue.peek();
-      }
+      queueEntry=this.queue.peek();
       if ((queueEntry != null) && (Time.currentTimeMillis() >= queueEntry.endTimeMs)) {
-synchronized (this.lock) {
-          this.queue.poll();
-        }
-        queueEntry.afn.run(null);
+        this.queue.remove(queueEntry);
+        queueEntry.func.run();
       }
  else       if (queueEntry != null) {
         Time.sleep(Math.min(1000,(queueEntry.endTimeMs - Time.currentTimeMillis())));
@@ -18,13 +14,11 @@ synchronized (this.lock) {
         Time.sleep(1000);
       }
     }
- catch (    Throwable t) {
-      if (!(Utils.exceptionCauseIsInstanceOf(InterruptedException.class,t))) {
-        this.onKill.run(t);
+ catch (    Throwable e) {
+      if (!(Utils.exceptionCauseIsInstanceOf(InterruptedException.class,e))) {
+        this.onKill.uncaughtException(this,e);
         this.setActive(false);
-        throw new RuntimeException(t);
       }
     }
   }
-  this.cancelNotifier.release();
 }

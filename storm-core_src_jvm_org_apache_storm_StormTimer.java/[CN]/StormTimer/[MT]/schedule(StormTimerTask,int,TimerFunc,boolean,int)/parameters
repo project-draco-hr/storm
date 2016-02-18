@@ -1,5 +1,0 @@
-StormTimerTask task
-int delaySecs
-TimerFunc afn
-boolean checkActive
-int jitterMs

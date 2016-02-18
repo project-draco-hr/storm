@@ -1,4 +1,0 @@
-StormTimerTask task
-int delaySecs
-int recurSecs
-TimerFunc afn
