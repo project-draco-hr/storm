@@ -1,0 +1,2 @@
+IRichSpout spout
+Map<String,StreamInfo> outputs
