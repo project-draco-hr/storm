@@ -1,0 +1,12 @@
+{
+  LSTopoHistoryList lsTopoHistoryListWrapper=(LSTopoHistoryList)get(LS_TOPO_HISTORY);
+  List<LSTopoHistory> filteredTopoHistoryList=new ArrayList<>();
+  if (null != lsTopoHistoryListWrapper) {
+    for (    LSTopoHistory topoHistory : lsTopoHistoryListWrapper.get_topo_history()) {
+      if (topoHistory.get_time_stamp() > cutOffAge) {
+        filteredTopoHistoryList.add(topoHistory);
+      }
+    }
+  }
+  put(LS_TOPO_HISTORY,new LSTopoHistoryList(filteredTopoHistoryList));
+}
