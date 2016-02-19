@@ -1,0 +1,3 @@
+int timeSecs
+int uptime
+ExecutorStats stats

@@ -3,7 +3,7 @@
     return new StormClusterStateImpl((IStateStorage)stateStorage,acls,context,false);
   }
  else {
-    IStateStorage Storage=_instance.mkStateStorageImpl((APersistentMap)stateStorage,(APersistentMap)stateStorage,acls,context);
+    IStateStorage Storage=_instance.mkStateStorageImpl((Map)stateStorage,(Map)stateStorage,acls,context);
     return new StormClusterStateImpl(Storage,acls,context,true);
   }
 }

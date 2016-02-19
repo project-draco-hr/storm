@@ -1,9 +1,12 @@
 {
-  Map<ExecutorInfo,APersistentMap> executorWhb=new HashMap<>();
+  Map<ExecutorInfo,ExecutorBeat> executorWhb=new HashMap<>();
   Map<ExecutorInfo,ExecutorStats> executorStatsMap=workerHeartbeat.get_executor_stats();
   for (  ExecutorInfo executor : executors) {
     if (executorStatsMap.containsKey(executor)) {
-      APersistentMap executorBeat=new PersistentArrayMap(new Object[]{RT.keyword(null,"time-secs"),workerHeartbeat.get_time_secs(),RT.keyword(null,"uptime"),workerHeartbeat.get_uptime_secs(),RT.keyword(null,"stats"),workerHeartbeat.get_executor_stats().get(executor)});
+      int time=workerHeartbeat.get_time_secs();
+      int uptime=workerHeartbeat.get_uptime_secs();
+      ExecutorStats executorStats=workerHeartbeat.get_executor_stats().get(executor);
+      ExecutorBeat executorBeat=new ExecutorBeat(time,uptime,executorStats);
       executorWhb.put(executor,executorBeat);
     }
   }

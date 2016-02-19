@@ -1,4 +1,0 @@
-{
-  IFn callback=cb.getAndSet(null);
-  if (callback != null)   callback.invoke();
-}

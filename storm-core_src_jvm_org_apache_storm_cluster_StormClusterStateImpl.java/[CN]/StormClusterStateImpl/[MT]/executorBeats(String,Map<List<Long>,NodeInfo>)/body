@@ -1,6 +1,6 @@
 {
-  Map<ExecutorInfo,APersistentMap> executorWhbs=new HashMap<>();
-  Map<NodeInfo,List<List<Long>>> nodePortExecutors=ClusterUtils.reverseMap(executorNodePort);
+  Map<ExecutorInfo,ExecutorBeat> executorWhbs=new HashMap<>();
+  Map<NodeInfo,List<List<Long>>> nodePortExecutors=Utils.reverseMap(executorNodePort);
   for (  Map.Entry<NodeInfo,List<List<Long>>> entry : nodePortExecutors.entrySet()) {
     String node=entry.getKey().get_node();
     Long port=entry.getKey().get_port_iterator().next();

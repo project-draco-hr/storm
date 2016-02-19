@@ -1,4 +1,0 @@
-APersistentMap config
-APersistentMap auth_conf
-List<ACL> acls
-ClusterStateContext context
