@@ -1,0 +1,4 @@
+{
+  log.debug("Completed comparison aggregation for batch [{}] with resultant tuple: [{}] in operation [{}]",batchId,state.previousTuple,this);
+  collector.emit(state.previousTuple != null ? state.previousTuple.getValues() : null);
+}

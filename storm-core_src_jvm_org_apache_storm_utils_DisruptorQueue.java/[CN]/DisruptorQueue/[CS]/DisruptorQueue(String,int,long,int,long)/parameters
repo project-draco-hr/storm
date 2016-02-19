@@ -1,0 +1,5 @@
+String queueName
+int size
+long readTimeout
+int inputBatchSize
+long flushInterval
