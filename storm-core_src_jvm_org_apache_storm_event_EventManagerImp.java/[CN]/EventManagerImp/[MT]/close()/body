@@ -1,0 +1,5 @@
+{
+  running.set(false);
+  runner.interrupt();
+  runner.join();
+}

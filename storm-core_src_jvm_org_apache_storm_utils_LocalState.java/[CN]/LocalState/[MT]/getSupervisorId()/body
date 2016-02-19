@@ -1,0 +1,7 @@
+{
+  LSSupervisorId lsSupervisorId=(LSSupervisorId)get(LS_ID);
+  if (null != lsSupervisorId) {
+    return lsSupervisorId.get_supervisor_id();
+  }
+  return null;
+}
