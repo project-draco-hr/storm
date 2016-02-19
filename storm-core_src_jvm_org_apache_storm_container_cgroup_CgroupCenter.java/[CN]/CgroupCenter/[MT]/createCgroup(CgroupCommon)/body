@@ -1,0 +1,23 @@
+{
+  if (cgroup.isRoot()) {
+    LOG.error("You can't create rootCgroup in this function");
+    throw new RuntimeException("You can't create rootCgroup in this function");
+  }
+  CgroupCommon parent=cgroup.getParent();
+  while (parent != null) {
+    if (!Utils.CheckDirExists(parent.getDir())) {
+      throw new RuntimeException("Parent " + parent.getDir() + "does not exist");
+    }
+    parent=parent.getParent();
+  }
+  Hierarchy h=cgroup.getHierarchy();
+  if (!isMounted(h)) {
+    throw new RuntimeException("hierarchy " + h.getDir() + " is not mounted");
+  }
+  if (Utils.CheckDirExists(cgroup.getDir())) {
+    throw new RuntimeException("cgroup {} already exists " + cgroup.getDir());
+  }
+  if (!(new File(cgroup.getDir())).mkdir()) {
+    throw new RuntimeException("Could not create cgroup dir at " + cgroup.getDir());
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,NOTIFY_ON_RELEASE)).get(0).equals("1") ? true : false;
+}

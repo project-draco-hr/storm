@@ -1,0 +1,3 @@
+{
+  CgroupUtils.writeFileByLine(CgroupUtils.getDir(this.dir,CPU_SHARES),String.valueOf(weight));
+}

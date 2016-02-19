@@ -1,0 +1,6 @@
+{
+  if (Grouping._Fields.FIELDS.equals(groupingType(grouping))) {
+    return fieldGrouping(grouping).isEmpty();
+  }
+  return false;
+}

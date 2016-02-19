@@ -1,0 +1,10 @@
+{
+  StringBuilder errorMessage=new StringBuilder();
+  errorMessage.append("Halting process: ");
+  for (  Object oneMessage : msg) {
+    errorMessage.append(oneMessage);
+  }
+  String combinedErrorMessage=errorMessage.toString();
+  LOG.error(combinedErrorMessage,new RuntimeException(combinedErrorMessage));
+  Runtime.getRuntime().exit(val);
+}

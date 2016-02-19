@@ -1,0 +1,4 @@
+{
+  BoltDetails details=new BoltDetails(bolt,conf,parallelismHint,inputs);
+  return details;
+}

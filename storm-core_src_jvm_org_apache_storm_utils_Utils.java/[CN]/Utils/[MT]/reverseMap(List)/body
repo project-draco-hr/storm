@@ -1,0 +1,18 @@
+{
+  HashMap<Object,List<Object>> rtn=new HashMap();
+  if (listSeq == null) {
+    return rtn;
+  }
+  for (  Object entry : listSeq) {
+    List listEntry=(List)entry;
+    Object key=listEntry.get(0);
+    Object val=listEntry.get(1);
+    List list=rtn.get(val);
+    if (list == null) {
+      list=new ArrayList<Object>();
+      rtn.put(val,list);
+    }
+    list.add(key);
+  }
+  return rtn;
+}

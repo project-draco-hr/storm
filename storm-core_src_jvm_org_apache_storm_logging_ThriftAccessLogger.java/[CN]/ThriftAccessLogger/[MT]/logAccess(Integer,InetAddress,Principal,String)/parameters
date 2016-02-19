@@ -1,0 +1,4 @@
+Integer requestId
+InetAddress remoteAddress
+Principal principal
+String operation

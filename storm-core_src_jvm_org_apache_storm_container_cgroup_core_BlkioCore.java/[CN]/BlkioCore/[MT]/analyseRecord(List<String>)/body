@@ -1,0 +1,19 @@
+{
+  Map<Device,Map<RecordType,Long>> result=new HashMap<Device,Map<RecordType,Long>>();
+  for (  String str : strs) {
+    String[] strArgs=str.split(" ");
+    if (strArgs.length != 3) {
+      continue;
+    }
+    Device device=new Device(strArgs[0]);
+    RecordType key=RecordType.getType(strArgs[1]);
+    Long value=Long.parseLong(strArgs[2]);
+    Map<RecordType,Long> record=result.get(device);
+    if (record == null) {
+      record=new HashMap<RecordType,Long>();
+      result.put(device,record);
+    }
+    record.put(key,value);
+  }
+  return result;
+}

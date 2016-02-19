@@ -1,0 +1,29 @@
+{
+  String[] splits=output.split("\n");
+  this.cacheSize=Long.parseLong(splits[0]);
+  this.rssSize=Long.parseLong(splits[1]);
+  this.mappedFileSize=Long.parseLong(splits[2]);
+  this.pgpginNum=Long.parseLong(splits[3]);
+  this.pgpgoutNum=Long.parseLong(splits[4]);
+  this.swapSize=Long.parseLong(splits[5]);
+  this.inactiveAnonSize=Long.parseLong(splits[6]);
+  this.activeAnonSize=Long.parseLong(splits[7]);
+  this.inactiveFileSize=Long.parseLong(splits[8]);
+  this.activeFileSize=Long.parseLong(splits[9]);
+  this.unevictableSize=Long.parseLong(splits[10]);
+  this.hierarchicalMemoryLimitSize=Long.parseLong(splits[11]);
+  this.hierarchicalMemSwapLimitSize=Long.parseLong(splits[12]);
+  this.totalCacheSize=Long.parseLong(splits[13]);
+  this.totalRssSize=Long.parseLong(splits[14]);
+  this.totalMappedFileSize=Long.parseLong(splits[15]);
+  this.totalPgpginNum=Long.parseLong(splits[16]);
+  this.totalPgpgoutNum=Long.parseLong(splits[17]);
+  this.totalSwapSize=Long.parseLong(splits[18]);
+  this.totalInactiveAnonSize=Long.parseLong(splits[19]);
+  this.totalActiveAnonSize=Long.parseLong(splits[20]);
+  this.totalInactiveFileSize=Long.parseLong(splits[21]);
+  this.totalActiveFileSize=Long.parseLong(splits[22]);
+  this.totalUnevictableSize=Long.parseLong(splits[23]);
+  this.totalHierarchicalMemoryLimitSize=Long.parseLong(splits[24]);
+  this.totalHierarchicalMemSwapLimitSize=Long.parseLong(splits[25]);
+}

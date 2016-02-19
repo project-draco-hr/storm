@@ -1,0 +1,5 @@
+{
+  this.nrPeriods=Integer.parseInt(statStr.get(0).split(" ")[1]);
+  this.nrThrottled=Integer.parseInt(statStr.get(1).split(" ")[1]);
+  this.throttledTime=Integer.parseInt(statStr.get(2).split(" ")[1]);
+}

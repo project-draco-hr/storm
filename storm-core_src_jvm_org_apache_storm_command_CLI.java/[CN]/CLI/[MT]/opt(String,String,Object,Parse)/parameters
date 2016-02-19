@@ -1,0 +1,4 @@
+String shortName
+String longName
+Object defaultValue
+Parse parse

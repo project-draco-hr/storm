@@ -1,0 +1,7 @@
+{
+  LSApprovedWorkers lsApprovedWorkers=(LSApprovedWorkers)get(LS_APPROVED_WORKERS);
+  if (null != lsApprovedWorkers) {
+    return lsApprovedWorkers.get_approved_workers();
+  }
+  return null;
+}

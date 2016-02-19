@@ -1,0 +1,7 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append(iface);
+  sb.append(' ');
+  sb.append(priority);
+  CgroupUtils.writeFileByLine(CgroupUtils.getDir(this.dir,NET_PRIO_IFPRIOMAP),sb.toString());
+}

@@ -1,0 +1,3 @@
+{
+  return Files.readLines(new File(filePath),Charset.defaultCharset());
+}
