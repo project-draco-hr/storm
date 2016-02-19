@@ -1,0 +1,5 @@
+{
+  Utils.setupDefaultUncaughtExceptionHandler();
+  final Drpc service=new Drpc();
+  service.launchServer();
+}

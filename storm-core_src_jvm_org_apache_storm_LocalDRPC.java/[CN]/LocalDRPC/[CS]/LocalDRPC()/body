@@ -1,0 +1,18 @@
+{
+  thread=new Thread(new Runnable(){
+    @Override public void run(){
+      LOG.info("Begin to init local Drpc");
+      try {
+        handler.launchServer();
+      }
+ catch (      Exception e) {
+        LOG.info("Failed to  start local drpc");
+        System.exit(-1);
+      }
+      LOG.info("Successfully start local drpc");
+    }
+  }
+);
+  thread.start();
+  serviceId=ServiceRegistry.registerService(handler);
+}

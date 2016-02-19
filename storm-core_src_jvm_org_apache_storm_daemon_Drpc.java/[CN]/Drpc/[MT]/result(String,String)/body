@@ -1,0 +1,15 @@
+{
+  meterResultCalls.mark();
+  String func=this.idtoFunction.get(id);
+  if (func != null) {
+    Map<String,String> map=new HashMap<>();
+    map.put(DRPCAuthorizerBase.FUNCTION_NAME,func);
+    checkAuthorization(authorizer,map,"result");
+    Semaphore sem=this.idtoSem.get(id);
+    LOG.debug("Received result {} for {} at {}",result,id,System.currentTimeMillis());
+    if (sem != null) {
+      this.idtoResult.put(id,result);
+      sem.release();
+    }
+  }
+}

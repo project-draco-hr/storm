@@ -1,0 +1,6 @@
+{
+  LOG.info("Starting drpc server for storm version {}",VersionInfo.getVersion());
+  conf=ConfigUtils.readStormConfig();
+  initClearThread();
+  initServer();
+}
