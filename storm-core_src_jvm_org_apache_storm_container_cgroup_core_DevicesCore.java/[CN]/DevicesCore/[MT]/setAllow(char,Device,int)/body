@@ -1,0 +1,3 @@
+{
+  setPermission(DEVICES_ALLOW,type,device,accesses);
+}

@@ -1,0 +1,13 @@
+{
+  File d=new File(dir);
+  if (!d.exists()) {
+    LOG.warn("dir {} does not exist!",dir);
+    return;
+  }
+  if (!d.isDirectory()) {
+    throw new RuntimeException("dir " + dir + " is not a directory!");
+  }
+  if (!d.delete()) {
+    throw new RuntimeException("Cannot delete dir " + dir);
+  }
+}

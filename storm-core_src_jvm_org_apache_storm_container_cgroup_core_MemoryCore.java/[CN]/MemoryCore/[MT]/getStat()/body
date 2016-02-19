@@ -1,0 +1,5 @@
+{
+  String output=CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,MEMORY_STAT)).get(0);
+  Stat stat=new Stat(output);
+  return stat;
+}

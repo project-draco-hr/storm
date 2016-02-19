@@ -1,0 +1,3 @@
+{
+  put(LS_APPROVED_WORKERS,new LSApprovedWorkers(approvedWorkers));
+}

@@ -1,0 +1,4 @@
+Map<GlobalStreamId,Grouping> inputs
+Object bolt
+Integer parallelismHint
+Map conf

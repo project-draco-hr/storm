@@ -1,0 +1,41 @@
+{
+  Number cpuNum=null;
+  if (this.conf.get(Config.STORM_WORKER_CGROUP_CPU_LIMIT) != null) {
+    cpuNum=(Number)this.conf.get(Config.STORM_WORKER_CGROUP_CPU_LIMIT);
+  }
+ else   if (resourcesMap.get("cpu") != null) {
+    cpuNum=(Number)resourcesMap.get("cpu");
+  }
+  Number totalMem=null;
+  if (this.conf.get(Config.STORM_WORKER_CGROUP_MEMORY_MB_LIMIT) != null) {
+    totalMem=(Number)this.conf.get(Config.STORM_WORKER_CGROUP_MEMORY_MB_LIMIT);
+  }
+ else   if (resourcesMap.get("memory") != null) {
+    totalMem=(Number)resourcesMap.get("memory");
+  }
+  CgroupCommon workerGroup=new CgroupCommon(workerId,this.hierarchy,this.rootCgroup);
+  try {
+    this.center.createCgroup(workerGroup);
+  }
+ catch (  Exception e) {
+    LOG.error("Error when creating Cgroup: {}",e);
+  }
+  if (cpuNum != null) {
+    CpuCore cpuCore=(CpuCore)workerGroup.getCores().get(SubSystemType.cpu);
+    try {
+      cpuCore.setCpuShares(cpuNum.intValue());
+    }
+ catch (    IOException e) {
+      throw new RuntimeException("Cannot set cpu.shares! Exception: ",e);
+    }
+  }
+  if (totalMem != null) {
+    MemoryCore memCore=(MemoryCore)workerGroup.getCores().get(SubSystemType.memory);
+    try {
+      memCore.setPhysicalUsageLimit(Long.valueOf(totalMem.longValue() * 1024 * 1024));
+    }
+ catch (    IOException e) {
+      throw new RuntimeException("Cannot set memory.limit_in_bytes! Exception: ",e);
+    }
+  }
+}

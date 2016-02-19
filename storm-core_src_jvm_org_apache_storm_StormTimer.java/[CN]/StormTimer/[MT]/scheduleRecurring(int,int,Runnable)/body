@@ -1,0 +1,9 @@
+{
+  schedule(delaySecs,new Runnable(){
+    @Override public void run(){
+      func.run();
+      schedule(recurSecs,this,false,0);
+    }
+  }
+);
+}

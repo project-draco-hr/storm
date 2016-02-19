@@ -1,0 +1,46 @@
+{
+  char[] output=outputStr.toCharArray();
+  LinkedList<Integer> numList=new LinkedList<Integer>();
+  int value=0;
+  int start=0;
+  boolean isHyphen=false;
+  for (  char ch : output) {
+    if (ch == ',') {
+      if (isHyphen) {
+        for (; start <= value; start++) {
+          numList.add(start);
+        }
+        isHyphen=false;
+      }
+ else {
+        numList.add(value);
+      }
+      value=0;
+    }
+ else     if (ch == '-') {
+      isHyphen=true;
+      start=value;
+      value=0;
+    }
+ else {
+      value=value * 10 + (ch - '0');
+    }
+  }
+  if (output[output.length - 1] != ',') {
+    if (isHyphen) {
+      for (; start <= value; start++) {
+        numList.add(start);
+      }
+    }
+ else {
+      numList.add(value);
+    }
+  }
+  int[] nums=new int[numList.size()];
+  int index=0;
+  for (  int num : numList) {
+    nums[index]=num;
+    index++;
+  }
+  return nums;
+}

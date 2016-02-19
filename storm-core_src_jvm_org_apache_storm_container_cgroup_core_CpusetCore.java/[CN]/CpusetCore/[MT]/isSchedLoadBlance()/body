@@ -1,0 +1,4 @@
+{
+  int output=Integer.parseInt(CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,CPUSET_SCHED_LOAD_BALANCE)).get(0));
+  return output > 0;
+}
