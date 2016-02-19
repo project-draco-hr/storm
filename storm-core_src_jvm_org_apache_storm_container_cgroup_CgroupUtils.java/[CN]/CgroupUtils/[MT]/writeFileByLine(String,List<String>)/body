@@ -1,0 +1,15 @@
+{
+  LOG.debug("For CGroups - writing {} to {} ",linesToWrite,filePath);
+  File file=new File(filePath);
+  if (!file.exists()) {
+    LOG.error("{} does not exist",filePath);
+    return;
+  }
+  try (FileWriter writer=new FileWriter(file,true);BufferedWriter bw=new BufferedWriter(writer)){
+    for (    String string : linesToWrite) {
+      bw.write(string);
+      bw.newLine();
+      bw.flush();
+    }
+  }
+ }

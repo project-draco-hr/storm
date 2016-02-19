@@ -1,0 +1,24 @@
+{
+  while (this.active.get()) {
+    QueueEntry queueEntry=null;
+    try {
+      queueEntry=this.queue.peek();
+      if ((queueEntry != null) && (Time.currentTimeMillis() >= queueEntry.endTimeMs)) {
+        this.queue.remove(queueEntry);
+        queueEntry.func.run();
+      }
+ else       if (queueEntry != null) {
+        Time.sleep(Math.min(1000,(queueEntry.endTimeMs - Time.currentTimeMillis())));
+      }
+ else {
+        Time.sleep(1000);
+      }
+    }
+ catch (    Throwable e) {
+      if (!(Utils.exceptionCauseIsInstanceOf(InterruptedException.class,e))) {
+        this.onKill.uncaughtException(this,e);
+        this.setActive(false);
+      }
+    }
+  }
+}

@@ -33,11 +33,11 @@
     return FAILED_WITH_EXIT_CODE;
   }
  catch (  InterruptedException e) {
-    System.out.println("Script " + script + " timed out.");
+    LOG.warn("Script:  {} timed out.",script);
     return TIMEOUT;
   }
 catch (  Exception e) {
-    System.out.println("Script failed with exception: " + e);
+    LOG.warn("Script failed with exception: ",e);
     return FAILED_WITH_EXIT_CODE;
   }
  finally {

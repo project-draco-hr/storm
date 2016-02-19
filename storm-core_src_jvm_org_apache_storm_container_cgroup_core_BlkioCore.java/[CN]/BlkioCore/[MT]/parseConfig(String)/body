@@ -1,0 +1,11 @@
+{
+  List<String> strings=CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,config));
+  Map<Device,Long> result=new HashMap<Device,Long>();
+  for (  String string : strings) {
+    String[] strArgs=string.split(" ");
+    Device device=new Device(strArgs[0]);
+    Long value=Long.valueOf(strArgs[1]);
+    result.put(device,value);
+  }
+  return result;
+}

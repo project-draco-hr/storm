@@ -1,0 +1,9 @@
+{
+  if (cpuCoreUpperLimit == -1) {
+    cpuCore.setCpuCfsQuotaUs(cpuCoreUpperLimit);
+  }
+ else {
+    cpuCore.setCpuCfsPeriodUs(100000);
+    cpuCore.setCpuCfsQuotaUs(cpuCoreUpperLimit * 1000);
+  }
+}

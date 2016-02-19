@@ -1,0 +1,7 @@
+{
+  LSSupervisorAssignments assignments=(LSSupervisorAssignments)get(LS_LOCAL_ASSIGNMENTS);
+  if (null != assignments) {
+    return assignments.get_assignments();
+  }
+  return null;
+}
