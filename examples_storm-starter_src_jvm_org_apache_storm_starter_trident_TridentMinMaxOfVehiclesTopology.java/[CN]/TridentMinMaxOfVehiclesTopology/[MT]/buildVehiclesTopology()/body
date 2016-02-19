@@ -1,0 +1,15 @@
+{
+  Fields driverField=new Fields(Driver.FIELD_NAME);
+  Fields vehicleField=new Fields(Vehicle.FIELD_NAME);
+  Fields allFields=new Fields(Vehicle.FIELD_NAME,Driver.FIELD_NAME);
+  FixedBatchSpout spout=new FixedBatchSpout(allFields,10,Vehicle.generateVehicles(20));
+  spout.setCycle(true);
+  TridentTopology topology=new TridentTopology();
+  Stream vehiclesStream=topology.newStream("spout1",spout).each(allFields,new Debug("##### vehicles"));
+  Stream slowVehiclesStream=vehiclesStream.min(new SpeedComparator()).each(vehicleField,new Debug("#### slowest vehicle"));
+  Stream slowDriversStream=slowVehiclesStream.project(driverField).each(driverField,new Debug("##### slowest driver"));
+  vehiclesStream.max(new SpeedComparator()).each(vehicleField,new Debug("#### fastest vehicle")).project(driverField).each(driverField,new Debug("##### fastest driver"));
+  vehiclesStream.minBy(Vehicle.FIELD_NAME,new EfficiencyComparator()).each(vehicleField,new Debug("#### least efficient vehicle"));
+  vehiclesStream.maxBy(Vehicle.FIELD_NAME,new EfficiencyComparator()).each(vehicleField,new Debug("#### most efficient vehicle"));
+  return topology.build();
+}

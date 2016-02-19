@@ -1,0 +1,4 @@
+int delaySecs
+Runnable func
+boolean checkActive
+int jitterMs

@@ -1,0 +1,3 @@
+{
+  return Integer.valueOf(CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,BLKIO_WEIGHT)).get(0)).intValue();
+}

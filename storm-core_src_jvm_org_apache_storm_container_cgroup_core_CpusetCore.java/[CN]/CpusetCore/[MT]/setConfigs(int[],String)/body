@@ -1,0 +1,9 @@
+{
+  StringBuilder sb=new StringBuilder();
+  for (  int num : nums) {
+    sb.append(num);
+    sb.append(',');
+  }
+  sb.deleteCharAt(sb.length() - 1);
+  CgroupUtils.writeFileByLine(CgroupUtils.getDir(this.dir,config),sb.toString());
+}

@@ -1,0 +1,14 @@
+{
+  if (state.equals("FROZEN")) {
+    return frozen;
+  }
+ else   if (state.equals("FREEZING")) {
+    return freezing;
+  }
+ else   if (state.equals("THAWED")) {
+    return thawed;
+  }
+ else {
+    return null;
+  }
+}

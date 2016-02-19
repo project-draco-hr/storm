@@ -1,0 +1,37 @@
+{
+  boolean ret=false;
+  if (o != null && (o instanceof CgroupCommon)) {
+    boolean hierarchyFlag=false;
+    if (((CgroupCommon)o).hierarchy != null && this.hierarchy != null) {
+      hierarchyFlag=((CgroupCommon)o).hierarchy.equals(this.hierarchy);
+    }
+ else     if (((CgroupCommon)o).hierarchy == null && this.hierarchy == null) {
+      hierarchyFlag=true;
+    }
+ else {
+      hierarchyFlag=false;
+    }
+    boolean nameFlag=false;
+    if (((CgroupCommon)o).name != null && this.name != null) {
+      nameFlag=((CgroupCommon)o).name.equals(this.name);
+    }
+ else     if (((CgroupCommon)o).name == null && this.name == null) {
+      nameFlag=true;
+    }
+ else {
+      nameFlag=false;
+    }
+    boolean dirFlag=false;
+    if (((CgroupCommon)o).dir != null && this.dir != null) {
+      dirFlag=((CgroupCommon)o).dir.equals(this.dir);
+    }
+ else     if (((CgroupCommon)o).dir == null && this.dir == null) {
+      dirFlag=true;
+    }
+ else {
+      dirFlag=false;
+    }
+    ret=hierarchyFlag && nameFlag && dirFlag;
+  }
+  return ret;
+}

@@ -1,0 +1,7 @@
+{
+  this.name=parent.getName() + "/" + name;
+  this.hierarchy=hierarchy;
+  this.parent=parent;
+  this.dir=parent.getDir() + "/" + name;
+  this.isRoot=false;
+}

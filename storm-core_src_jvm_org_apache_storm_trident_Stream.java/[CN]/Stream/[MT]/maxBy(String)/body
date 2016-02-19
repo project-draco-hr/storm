@@ -1,0 +1,4 @@
+{
+  Aggregator<ComparisonAggregator.State> max=new Max(inputFieldName);
+  return comparableAggregateStream(inputFieldName,max);
+}

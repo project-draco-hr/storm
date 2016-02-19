@@ -1,0 +1,3 @@
+{
+  put(LS_LOCAL_ASSIGNMENTS,new LSSupervisorAssignments(localAssignmentMap));
+}

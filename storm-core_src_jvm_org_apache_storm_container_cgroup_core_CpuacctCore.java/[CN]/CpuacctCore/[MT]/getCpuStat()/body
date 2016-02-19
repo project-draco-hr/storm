@@ -1,0 +1,7 @@
+{
+  List<String> strs=CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,CPUACCT_STAT));
+  Map<StatType,Long> result=new HashMap<StatType,Long>();
+  result.put(StatType.user,Long.parseLong(strs.get(0).split(" ")[1]));
+  result.put(StatType.system,Long.parseLong(strs.get(1).split(" ")[1]));
+  return result;
+}

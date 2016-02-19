@@ -1,0 +1,4 @@
+{
+  String pathToStormCgroupHierarchy=(String)config.get(Config.STORM_CGROUP_HIERARCHY_DIR);
+  return dirExists(pathToStormCgroupHierarchy);
+}

@@ -1,0 +1,4 @@
+{
+  String output=CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,CPUSET_SCHED_RELAX_DOMAIN_LEVEL)).get(0);
+  return Integer.parseInt(output);
+}

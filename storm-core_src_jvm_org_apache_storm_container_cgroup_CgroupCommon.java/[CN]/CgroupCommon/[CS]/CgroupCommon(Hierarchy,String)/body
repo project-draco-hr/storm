@@ -1,0 +1,7 @@
+{
+  this.name="";
+  this.hierarchy=hierarchy;
+  this.parent=null;
+  this.dir=dir;
+  this.isRoot=true;
+}

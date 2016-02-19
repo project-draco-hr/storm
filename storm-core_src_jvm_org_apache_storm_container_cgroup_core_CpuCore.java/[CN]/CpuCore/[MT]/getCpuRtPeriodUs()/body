@@ -1,0 +1,3 @@
+{
+  return Long.parseLong(CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,CPU_RT_PERIOD_US)).get(0));
+}

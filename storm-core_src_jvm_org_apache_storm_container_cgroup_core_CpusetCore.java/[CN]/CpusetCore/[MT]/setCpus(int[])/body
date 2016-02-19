@@ -1,0 +1,3 @@
+{
+  setConfigs(nums,CPUSET_CPUS);
+}
