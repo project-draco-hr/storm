@@ -1,6 +1,10 @@
 {
   Assert.assertFalse(Time.isSimulating());
   Time.startSimulating();
-  Assert.assertTrue(Time.isSimulating());
-  Time.stopSimulating();
+  try {
+    Assert.assertTrue(Time.isSimulating());
+  }
+  finally {
+    Time.stopSimulating();
+  }
 }

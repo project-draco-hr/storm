@@ -5,9 +5,7 @@
     System.setProperty("java.security.auth.login.config","anything");
     Assert.assertTrue(Utils.isZkAuthenticationConfiguredStormServer(emptyMockMap()));
   }
- catch (  Exception ignore) {
-  }
- finally {
+  finally {
     if (oldValue == null) {
       System.clearProperty(key);
     }
