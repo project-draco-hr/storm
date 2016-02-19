@@ -1,0 +1,3 @@
+{
+  return buildTopology(spoutMap,boltMap);
+}

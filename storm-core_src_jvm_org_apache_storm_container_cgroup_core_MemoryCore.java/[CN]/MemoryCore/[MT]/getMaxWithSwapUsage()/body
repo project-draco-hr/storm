@@ -1,0 +1,3 @@
+{
+  return Long.parseLong(CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,MEMORY_MEMSW_MAX_USAGE_IN_BYTES)).get(0));
+}

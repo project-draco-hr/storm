@@ -1,0 +1,15 @@
+{
+  List<SubSystemType> subSystemTypes=new LinkedList<>();
+  for (  String resource : Config.getCgroupStormResources(conf)) {
+    subSystemTypes.add(SubSystemType.getSubSystem(resource));
+  }
+  this.hierarchy=center.getHierarchyWithSubSystems(subSystemTypes);
+  if (this.hierarchy == null) {
+    Set<SubSystemType> types=new HashSet<SubSystemType>();
+    types.add(SubSystemType.cpu);
+    this.hierarchy=new Hierarchy(Config.getCgroupStormHierarchyName(conf),types,Config.getCgroupStormHierarchyDir(conf));
+  }
+  this.rootCgroup=new CgroupCommon(this.rootDir,this.hierarchy,this.hierarchy.getRootCgroups());
+  CpuCore supervisorRootCPU=(CpuCore)this.rootCgroup.getCores().get(SubSystemType.cpu);
+  setCpuUsageUpperLimit(supervisorRootCPU,((Number)this.conf.get(Config.SUPERVISOR_CPU_CAPACITY)).intValue());
+}

@@ -1,0 +1,4 @@
+{
+  String result=SystemOperation.exec("echo $EUID").substring(0,1);
+  return Integer.valueOf(result.substring(0,result.length())).intValue() == 0 ? true : false;
+}

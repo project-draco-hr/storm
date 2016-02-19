@@ -1,0 +1,6 @@
+{
+  this.free();
+  if (!this.isRoot) {
+    this.parent.getChildren().remove(this);
+  }
+}

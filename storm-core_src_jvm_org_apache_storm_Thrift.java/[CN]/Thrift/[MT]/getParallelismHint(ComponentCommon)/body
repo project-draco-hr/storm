@@ -1,0 +1,8 @@
+{
+  if (!componentCommon.is_set_parallelism_hint()) {
+    return 1;
+  }
+ else {
+    return componentCommon.get_parallelism_hint();
+  }
+}

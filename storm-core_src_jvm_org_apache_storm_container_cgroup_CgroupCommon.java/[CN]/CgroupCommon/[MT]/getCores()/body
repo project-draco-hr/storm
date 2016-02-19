@@ -1,0 +1,3 @@
+{
+  return CgroupCoreFactory.getInstance(this.hierarchy.getSubSystems(),this.dir);
+}

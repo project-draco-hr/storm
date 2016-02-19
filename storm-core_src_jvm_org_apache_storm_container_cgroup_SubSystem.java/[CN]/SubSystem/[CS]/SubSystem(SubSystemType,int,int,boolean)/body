@@ -1,0 +1,6 @@
+{
+  this.type=type;
+  this.hierarchyID=hierarchyID;
+  this.cgroupsNum=cgroupNum;
+  this.enable=enable;
+}

@@ -1,0 +1,16 @@
+{
+  List<Hierarchy> hierarchies=this.getHierarchies();
+  for (  Hierarchy hierarchy : hierarchies) {
+    Hierarchy ret=hierarchy;
+    for (    SubSystemType subSystem : subSystems) {
+      if (!hierarchy.getSubSystems().contains(subSystem)) {
+        ret=null;
+        break;
+      }
+    }
+    if (ret != null) {
+      return ret;
+    }
+  }
+  return null;
+}

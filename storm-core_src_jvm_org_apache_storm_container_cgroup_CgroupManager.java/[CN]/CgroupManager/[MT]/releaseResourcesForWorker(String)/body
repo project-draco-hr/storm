@@ -1,0 +1,13 @@
+{
+  CgroupCommon workerGroup=new CgroupCommon(workerId,hierarchy,this.rootCgroup);
+  try {
+    Set<Integer> tasks=workerGroup.getTasks();
+    if (!tasks.isEmpty()) {
+      throw new Exception("Cannot correctly showdown worker CGroup " + workerId + "tasks "+ tasks.toString()+ " still running!");
+    }
+    this.center.deleteCgroup(workerGroup);
+  }
+ catch (  Exception e) {
+    LOG.error("Exception thrown when shutting worker {} Exception: {}",workerId,e);
+  }
+}

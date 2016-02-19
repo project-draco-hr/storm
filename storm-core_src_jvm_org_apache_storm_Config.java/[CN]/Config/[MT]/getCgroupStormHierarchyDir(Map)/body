@@ -1,0 +1,3 @@
+{
+  return (String)conf.get(Config.STORM_CGROUP_HIERARCHY_DIR);
+}

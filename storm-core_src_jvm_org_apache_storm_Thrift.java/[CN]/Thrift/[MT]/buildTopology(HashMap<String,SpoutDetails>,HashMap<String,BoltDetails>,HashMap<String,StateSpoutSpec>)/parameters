@@ -1,0 +1,3 @@
+HashMap<String,SpoutDetails> spoutMap
+HashMap<String,BoltDetails> boltMap
+HashMap<String,StateSpoutSpec> stateMap
