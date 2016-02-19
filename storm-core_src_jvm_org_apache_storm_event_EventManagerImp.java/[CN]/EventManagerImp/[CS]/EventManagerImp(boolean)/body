@@ -1,0 +1,34 @@
+{
+  added=new AtomicInteger();
+  processed=new AtomicInteger();
+  running=new AtomicBoolean(true);
+  runner=new Thread(){
+    @Override public void run(){
+      while (running.get()) {
+        try {
+          Runnable r=queue.take();
+          if (r == null) {
+            return;
+          }
+          r.run();
+          proccessInc();
+        }
+ catch (        Throwable t) {
+          if (Utils.exceptionCauseIsInstanceOf(InterruptedIOException.class,t)) {
+            LOG.info("Event manager interrupted while doing IO");
+          }
+ else           if (Utils.exceptionCauseIsInstanceOf(InterruptedException.class,t)) {
+            LOG.info("Event manager interrupted");
+          }
+ else {
+            LOG.error("{} Error when processing event",t);
+            Utils.exitProcess(20,"Error when processing an event");
+          }
+        }
+      }
+    }
+  }
+;
+  runner.setDaemon(isDaemon);
+  runner.start();
+}
