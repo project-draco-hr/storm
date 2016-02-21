@@ -2,11 +2,14 @@
   if (availableSlots != null && availableSlots.size() > 0) {
     Map<String,List<WorkerSlot>> slotGroups=new TreeMap<String,List<WorkerSlot>>();
     for (    WorkerSlot slot : availableSlots) {
-      String host=cluster.getHost(slot.getNodeId());
-      List<WorkerSlot> slots=slotGroups.get(host);
-      if (slots == null) {
+      String node=slot.getNodeId();
+      List<WorkerSlot> slots=null;
+      if (slotGroups.containsKey(node)) {
+        slots=slotGroups.get(node);
+      }
+ else {
         slots=new ArrayList<WorkerSlot>();
-        slotGroups.put(host,slots);
+        slotGroups.put(node,slots);
       }
       slots.add(slot);
     }

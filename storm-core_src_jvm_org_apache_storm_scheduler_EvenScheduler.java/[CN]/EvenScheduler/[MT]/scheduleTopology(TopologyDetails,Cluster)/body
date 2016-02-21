@@ -3,7 +3,7 @@
   Set<ExecutorDetails> allExecutors=(Set<ExecutorDetails>)topology.getExecutors();
   Map<WorkerSlot,List<ExecutorDetails>> aliveAssigned=getAliveAssignedWorkerSlotExecutors(cluster,topology.getId());
   int totalSlotsToUse=Math.min(topology.getNumWorkers(),availableSlots.size() + aliveAssigned.size());
-  List<WorkerSlot> sortedList=sortSlots(availableSlots,cluster);
+  List<WorkerSlot> sortedList=sortSlots(availableSlots);
   if (sortedList == null || sortedList.size() < (totalSlotsToUse - aliveAssigned.size())) {
     LOG.error("Available slots are not enough for topology: {}",topology.getName());
     return new HashMap<ExecutorDetails,WorkerSlot>();
