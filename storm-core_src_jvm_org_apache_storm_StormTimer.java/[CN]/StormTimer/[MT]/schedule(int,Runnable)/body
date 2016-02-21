@@ -1,0 +1,3 @@
+{
+  schedule(delaySecs,func,true,0);
+}

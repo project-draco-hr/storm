@@ -1,0 +1,6 @@
+{
+  if (componentId == null) {
+    return new GlobalStreamId(streamId,DEFAULT_STREAM_ID);
+  }
+  return new GlobalStreamId(streamId,componentId);
+}

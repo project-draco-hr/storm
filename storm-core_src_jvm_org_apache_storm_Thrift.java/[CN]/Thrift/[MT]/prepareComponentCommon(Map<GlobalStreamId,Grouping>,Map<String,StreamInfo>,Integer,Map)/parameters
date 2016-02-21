@@ -1,0 +1,4 @@
+Map<GlobalStreamId,Grouping> inputs
+Map<String,StreamInfo> outputs
+Integer parallelismHint
+Map conf

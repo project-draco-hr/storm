@@ -1,0 +1,46 @@
+{
+  Thread interruptThread=null;
+  try {
+    Process process=Runtime.getRuntime().exec(script);
+    final long timeout=(long)(conf.get(Config.STORM_HEALTH_CHECK_TIMEOUT_MS));
+    final Thread curThread=Thread.currentThread();
+    interruptThread=new Thread(new Runnable(){
+      @Override public void run(){
+        try {
+          Thread.sleep(timeout);
+          curThread.interrupt();
+        }
+ catch (        InterruptedException e) {
+        }
+      }
+    }
+);
+    interruptThread.start();
+    process.waitFor();
+    interruptThread.interrupt();
+    curThread.interrupted();
+    if (process.exitValue() != 0) {
+      String str;
+      InputStream stdin=process.getInputStream();
+      BufferedReader reader=new BufferedReader(new InputStreamReader(stdin));
+      while ((str=reader.readLine()) != null) {
+        if (str.startsWith("ERROR")) {
+          return FAILED;
+        }
+      }
+      return SUCCESS;
+    }
+    return FAILED_WITH_EXIT_CODE;
+  }
+ catch (  InterruptedException e) {
+    LOG.warn("Script:  {} timed out.",script);
+    return TIMEOUT;
+  }
+catch (  Exception e) {
+    LOG.warn("Script failed with exception: ",e);
+    return FAILED_WITH_EXIT_CODE;
+  }
+ finally {
+    if (interruptThread != null)     interruptThread.interrupt();
+  }
+}

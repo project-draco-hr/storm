@@ -1,0 +1,16 @@
+{
+  if (onKill == null) {
+    throw new RuntimeException("onKill func is null!");
+  }
+  if (name == null) {
+    this.task.setName("timer");
+  }
+ else {
+    this.task.setName(name);
+  }
+  this.task.setOnKillFunc(onKill);
+  this.task.setActive(true);
+  this.task.setDaemon(true);
+  this.task.setPriority(Thread.MAX_PRIORITY);
+  this.task.start();
+}

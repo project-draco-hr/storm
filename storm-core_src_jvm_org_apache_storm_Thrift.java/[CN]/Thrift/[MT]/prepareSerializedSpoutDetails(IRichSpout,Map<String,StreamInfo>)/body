@@ -1,0 +1,3 @@
+{
+  return new SpoutSpec(ComponentObject.serialized_java(Utils.javaSerialize(spout)),prepareComponentCommon(new HashMap(),outputs,null,null));
+}

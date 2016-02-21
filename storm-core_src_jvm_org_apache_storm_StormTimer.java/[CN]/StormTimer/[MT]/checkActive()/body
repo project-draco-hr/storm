@@ -1,0 +1,5 @@
+{
+  if (!this.task.isActive()) {
+    throw new IllegalStateException("Timer is not active");
+  }
+}
