@@ -1,0 +1,3 @@
+{
+  writeFileByLine(filePath,Arrays.asList(lineToWrite));
+}

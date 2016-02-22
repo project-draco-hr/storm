@@ -1,0 +1,6 @@
+{
+  this.bolt=bolt;
+  this.conf=conf;
+  this.parallelism=parallelism;
+  this.inputs=inputs;
+}

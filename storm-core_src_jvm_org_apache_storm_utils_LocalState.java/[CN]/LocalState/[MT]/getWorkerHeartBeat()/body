@@ -1,0 +1,3 @@
+{
+  return (LSWorkerHeartbeat)get(LS_WORKER_HEARTBEAT);
+}

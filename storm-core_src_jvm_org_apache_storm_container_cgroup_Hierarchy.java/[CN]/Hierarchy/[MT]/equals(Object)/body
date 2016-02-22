@@ -1,0 +1,37 @@
+{
+  if (this == obj) {
+    return true;
+  }
+  if (obj == null) {
+    return false;
+  }
+  if (getClass() != obj.getClass()) {
+    return false;
+  }
+  Hierarchy other=(Hierarchy)obj;
+  if (dir == null) {
+    if (other.dir != null) {
+      return false;
+    }
+  }
+ else   if (!dir.equals(other.dir)) {
+    return false;
+  }
+  if (name == null) {
+    if (other.name != null) {
+      return false;
+    }
+  }
+ else   if (!name.equals(other.name)) {
+    return false;
+  }
+  if (type == null) {
+    if (other.type != null) {
+      return false;
+    }
+  }
+ else   if (!type.equals(other.type)) {
+    return false;
+  }
+  return true;
+}

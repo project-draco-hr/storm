@@ -1,0 +1,22 @@
+{
+  if (this == obj) {
+    return true;
+  }
+  if (obj == null) {
+    return false;
+  }
+  if (getClass() != obj.getClass()) {
+    return false;
+  }
+  Stat other=(Stat)obj;
+  if (nrPeriods != other.nrPeriods) {
+    return false;
+  }
+  if (nrThrottled != other.nrThrottled) {
+    return false;
+  }
+  if (throttledTime != other.throttledTime) {
+    return false;
+  }
+  return true;
+}

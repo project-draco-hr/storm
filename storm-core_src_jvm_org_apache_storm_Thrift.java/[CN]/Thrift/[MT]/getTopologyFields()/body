@@ -1,0 +1,3 @@
+{
+  return STORM_TOPOLOGY_FIELDS;
+}

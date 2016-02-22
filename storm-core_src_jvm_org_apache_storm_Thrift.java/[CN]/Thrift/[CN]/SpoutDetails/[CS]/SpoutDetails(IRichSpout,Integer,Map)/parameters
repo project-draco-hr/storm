@@ -1,0 +1,3 @@
+IRichSpout spout
+Integer parallelism
+Map conf

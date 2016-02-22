@@ -1,0 +1,6 @@
+{
+  if (inputFieldName != null) {
+    projectionValidation(new Fields(inputFieldName));
+  }
+  return partitionAggregate(getOutputFields(),aggregator,getOutputFields());
+}

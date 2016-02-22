@@ -1,0 +1,3 @@
+{
+  this(queueName,ProducerType.MULTI,size,readTimeout,inputBatchSize,flushInterval);
+}

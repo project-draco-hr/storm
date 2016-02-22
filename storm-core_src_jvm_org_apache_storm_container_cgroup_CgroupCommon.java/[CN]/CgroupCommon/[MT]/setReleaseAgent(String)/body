@@ -1,0 +1,7 @@
+{
+  if (!this.isRoot) {
+    LOG.warn("Cannot set {} in {} since its not the root group",RELEASE_AGENT,this.isRoot);
+    return;
+  }
+  CgroupUtils.writeFileByLine(CgroupUtils.getDir(this.dir,RELEASE_AGENT),command);
+}
