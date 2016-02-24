@@ -1,3 +1,0 @@
-{
-  return Lists.newArrayList(keyword("h1"),"User '",StringEscapeUtils.escapeHtml(user),"' is not authorized.");
-}

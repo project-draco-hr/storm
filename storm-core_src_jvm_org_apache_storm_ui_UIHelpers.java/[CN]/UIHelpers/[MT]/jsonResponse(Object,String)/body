@@ -1,3 +1,0 @@
-{
-  return jsonResponse(data,callback,true,null,null);
-}

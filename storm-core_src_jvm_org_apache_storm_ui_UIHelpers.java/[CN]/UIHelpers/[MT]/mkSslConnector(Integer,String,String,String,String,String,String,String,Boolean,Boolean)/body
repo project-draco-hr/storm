@@ -15,7 +15,7 @@
   if (needClientAuth != null && needClientAuth) {
     factory.setNeedClientAuth(true);
   }
-  if (wantClientAuth != null && wantClientAuth) {
+ else   if (wantClientAuth != null && wantClientAuth) {
     factory.setWantClientAuth(true);
   }
   SslSocketConnector sslConnector=new SslSocketConnector(factory);

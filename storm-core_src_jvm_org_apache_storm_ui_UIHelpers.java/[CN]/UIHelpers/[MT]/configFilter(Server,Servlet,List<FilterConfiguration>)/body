@@ -1,0 +1,32 @@
+{
+  if (filtersConfs != null) {
+    ServletHolder servletHolder=new ServletHolder(servlet);
+    ServletContextHandler context=new ServletContextHandler(server,"/");
+    context.addServlet(servletHolder,"/");
+    context.addFilter(corsFilterHandle(),"/*",EnumSet.allOf(DispatcherType.class));
+    for (    FilterConfiguration filterConf : filtersConfs) {
+      String filterName=filterConf.getFilterName();
+      String filterClass=filterConf.getFilterClass();
+      Map filterParams=filterConf.getFilterParams();
+      if (filterClass != null) {
+        FilterHolder filterHolder=new FilterHolder();
+        filterHolder.setClassName(filterClass);
+        if (filterName != null) {
+          filterHolder.setName(filterName);
+        }
+ else {
+          filterHolder.setName(filterClass);
+        }
+        if (filterParams != null) {
+          filterHolder.setInitParameters(filterParams);
+        }
+ else {
+          filterHolder.setInitParameters(new HashMap<String,String>());
+        }
+        context.addFilter(filterHolder,"/*",FilterMapping.ALL);
+      }
+    }
+    context.addFilter(mkAccessLoggingFilterHandle(),"/*",EnumSet.allOf(DispatcherType.class));
+    server.setHandler(context);
+  }
+}
