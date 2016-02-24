@@ -1,0 +1,16 @@
+{
+  Object trigger=new Object();
+  AtomicLong workerData=new AtomicLong(0);
+  WorkerBackpressureCallback callback=new WorkerBackpressureCallback(){
+    @Override public void onEvent(    Object obj){
+      ((AtomicLong)obj).getAndDecrement();
+    }
+  }
+;
+  WorkerBackpressureThread workerBackpressureThread=new WorkerBackpressureThread(trigger,workerData,callback);
+  workerBackpressureThread.start();
+  Thread.sleep(100);
+  WorkerBackpressureThread.notifyBackpressureChecker(trigger);
+  Thread.sleep(100);
+  Assert.assertNotEquals("Check the calling times of backpressure events, should not be 0. ",workerData.get(),0);
+}
