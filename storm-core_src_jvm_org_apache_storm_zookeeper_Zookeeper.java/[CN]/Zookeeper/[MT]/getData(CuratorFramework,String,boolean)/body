@@ -11,7 +11,7 @@
     }
   }
  catch (  Exception e) {
-    if (exceptionCause(KeeperException.NoNodeException.class,e)) {
+    if (Utils.exceptionCauseIsInstanceOf(KeeperException.NoNodeException.class,e)) {
     }
  else {
       throw Utils.wrapInRuntime(e);

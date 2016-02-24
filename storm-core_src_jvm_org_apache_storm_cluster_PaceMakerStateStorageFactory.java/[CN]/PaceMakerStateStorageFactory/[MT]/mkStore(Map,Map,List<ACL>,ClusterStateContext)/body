@@ -1,0 +1,8 @@
+{
+  try {
+    return new PaceMakerStateStorage(initMakeClient(config),initZKstate(config,auth_conf,acls,context));
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  stateStorage.sync_path(path);
+}

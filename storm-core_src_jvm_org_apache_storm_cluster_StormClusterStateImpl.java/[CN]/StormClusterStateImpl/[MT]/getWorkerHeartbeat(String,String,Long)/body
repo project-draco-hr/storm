@@ -1,0 +1,4 @@
+{
+  byte[] bytes=stateStorage.get_worker_hb(ClusterUtils.workerbeatPath(stormId,node,port),false);
+  return ClusterUtils.maybeDeserialize(bytes,ClusterWorkerHeartbeat.class);
+}

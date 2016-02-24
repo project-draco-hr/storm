@@ -1,0 +1,7 @@
+{
+  if (callback != null) {
+    assignmentInfoCallback.put(stormId,callback);
+  }
+  byte[] serialized=stateStorage.get_data(ClusterUtils.assignmentPath(stormId),callback != null);
+  return ClusterUtils.maybeDeserialize(serialized,Assignment.class);
+}

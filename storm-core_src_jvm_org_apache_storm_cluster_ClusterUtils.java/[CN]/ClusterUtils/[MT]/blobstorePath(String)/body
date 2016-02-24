@@ -1,0 +1,3 @@
+{
+  return BLOBSTORE_SUBTREE + ZK_SEPERATOR + key;
+}

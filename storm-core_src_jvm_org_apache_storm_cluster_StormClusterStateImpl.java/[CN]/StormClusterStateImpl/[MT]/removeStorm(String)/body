@@ -1,0 +1,7 @@
+{
+  stateStorage.delete_node(ClusterUtils.assignmentPath(stormId));
+  stateStorage.delete_node(ClusterUtils.credentialsPath(stormId));
+  stateStorage.delete_node(ClusterUtils.logConfigPath(stormId));
+  stateStorage.delete_node(ClusterUtils.profilerConfigPath(stormId));
+  removeStormBase(stormId);
+}

@@ -1,0 +1,10 @@
+{
+  List<NimbusSummary> nimbusSummaries=new ArrayList<>();
+  List<String> nimbusIds=stateStorage.get_children(ClusterUtils.NIMBUSES_SUBTREE,false);
+  for (  String nimbusId : nimbusIds) {
+    byte[] serialized=stateStorage.get_data(ClusterUtils.nimbusPath(nimbusId),false);
+    NimbusSummary nimbusSummary=ClusterUtils.maybeDeserialize(serialized,NimbusSummary.class);
+    nimbusSummaries.add(nimbusSummary);
+  }
+  return nimbusSummaries;
+}

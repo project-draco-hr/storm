@@ -1,0 +1,3 @@
+{
+  return Zookeeper.getData(zkReader,path,watch);
+}
