@@ -1,0 +1,7 @@
+{
+  Assert.assertEquals("1024K results in 1 MB",Utils.parseJvmHeapMemByChildOpts("Xmx1024K",0.0).doubleValue(),1.0,0);
+  Assert.assertEquals("100M results in 100 MB",Utils.parseJvmHeapMemByChildOpts("Xmx100M",0.0).doubleValue(),100.0,0);
+  Assert.assertEquals("1G results in 1024 MB",Utils.parseJvmHeapMemByChildOpts("Xmx1G",0.0).doubleValue(),1024.0,0);
+  Assert.assertEquals("Unmatched value results in default",Utils.parseJvmHeapMemByChildOpts("Xmx1T",123.0).doubleValue(),123.0,0);
+  Assert.assertEquals("Null value results in default",Utils.parseJvmHeapMemByChildOpts(null,123.0).doubleValue(),123.0,0);
+}

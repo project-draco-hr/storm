@@ -1,0 +1,3 @@
+{
+  return mockMap(Config.STORM_ZOOKEEPER_AUTH_SCHEME,value);
+}
