@@ -1,0 +1,24 @@
+{
+  Map ret=new HashMap();
+  Map commonStats=preProcessStreamSummary(aggregateCommonStats(statsSeq),includeSys);
+  List acked=new ArrayList();
+  List failed=new ArrayList();
+  List executed=new ArrayList();
+  List processLatencies=new ArrayList();
+  List executeLatencies=new ArrayList();
+  for (  Object o : statsSeq) {
+    ExecutorStats stat=(ExecutorStats)o;
+    acked.add(stat.get_specific().get_bolt().get_acked());
+    failed.add(stat.get_specific().get_bolt().get_failed());
+    executed.add(stat.get_specific().get_bolt().get_executed());
+    processLatencies.add(stat.get_specific().get_bolt().get_process_ms_avg());
+    executeLatencies.add(stat.get_specific().get_bolt().get_execute_ms_avg());
+  }
+  mergeMaps(ret,commonStats);
+  putRawKV(ret,ACKED,aggregateCounts(acked));
+  putRawKV(ret,FAILED,aggregateCounts(failed));
+  putRawKV(ret,EXECUTED,aggregateCounts(executed));
+  putRawKV(ret,PROC_LATENCIES,aggregateAverages(processLatencies,acked));
+  putRawKV(ret,EXEC_LATENCIES,aggregateAverages(executeLatencies,executed));
+  return ret;
+}

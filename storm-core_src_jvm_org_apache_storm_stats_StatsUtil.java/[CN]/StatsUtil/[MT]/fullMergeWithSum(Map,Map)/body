@@ -1,0 +1,21 @@
+{
+  Set<Object> allKeys=new HashSet<>();
+  if (m1 != null) {
+    allKeys.addAll(m1.keySet());
+  }
+  if (m2 != null) {
+    allKeys.addAll(m2.keySet());
+  }
+  Map ret=new HashMap();
+  for (  Object k : allKeys) {
+    Map mm1=null, mm2=null;
+    if (m1 != null) {
+      mm1=(Map)m1.get(k);
+    }
+    if (m2 != null) {
+      mm2=(Map)m2.get(k);
+    }
+    ret.put(k,mergeWithSum(mm1,mm2));
+  }
+  return ret;
+}

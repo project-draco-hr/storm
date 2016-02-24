@@ -1,0 +1,57 @@
+{
+  ComponentPageInfo ret=new ComponentPageInfo();
+  ret.set_component_id(compId);
+  Map win2stats=new HashMap();
+  putRawKV(win2stats,EMITTED,getMapByKeyword(data,WIN_TO_EMITTED));
+  putRawKV(win2stats,TRANSFERRED,getMapByKeyword(data,WIN_TO_TRANSFERRED));
+  putRawKV(win2stats,ACKED,getMapByKeyword(data,WIN_TO_ACKED));
+  putRawKV(win2stats,FAILED,getMapByKeyword(data,WIN_TO_FAILED));
+  Keyword type=(Keyword)getByKeyword(data,TYPE);
+  String compType=type.getName();
+  if (compType.equals(SPOUT)) {
+    ret.set_component_type(ComponentType.SPOUT);
+    putRawKV(win2stats,COMP_LATENCY,getMapByKeyword(data,WIN_TO_COMP_LAT));
+  }
+ else {
+    ret.set_component_type(ComponentType.BOLT);
+    putRawKV(win2stats,EXEC_LATENCY,getMapByKeyword(data,WIN_TO_EXEC_LAT));
+    putRawKV(win2stats,PROC_LATENCY,getMapByKeyword(data,WIN_TO_PROC_LAT));
+    putRawKV(win2stats,EXECUTED,getMapByKeyword(data,WIN_TO_EXECUTED));
+  }
+  win2stats=swapMapOrder(win2stats);
+  List<ExecutorAggregateStats> execStats=new ArrayList<>();
+  List executorStats=(List)getByKeyword(data,EXECUTOR_STATS);
+  if (executorStats != null) {
+    for (    Object o : executorStats) {
+      execStats.add(thriftifyExecAggStats(compId,type,(Map)o));
+    }
+  }
+  Map gsid2inputStats, sid2outputStats;
+  if (compType.equals(SPOUT)) {
+    Map tmp=new HashMap();
+    for (    Object k : win2stats.keySet()) {
+      tmp.put(k,thriftifySpoutAggStats((Map)win2stats.get(k)));
+    }
+    win2stats=tmp;
+    gsid2inputStats=null;
+    sid2outputStats=thriftifySpoutOutputStats(getMapByKeyword(data,SID_TO_OUT_STATS));
+  }
+ else {
+    Map tmp=new HashMap();
+    for (    Object k : win2stats.keySet()) {
+      tmp.put(k,thriftifyBoltAggStats((Map)win2stats.get(k)));
+    }
+    win2stats=tmp;
+    gsid2inputStats=thriftifyBoltInputStats(getMapByKeyword(data,CID_SID_TO_IN_STATS));
+    sid2outputStats=thriftifyBoltOutputStats(getMapByKeyword(data,SID_TO_OUT_STATS));
+  }
+  ret.set_num_executors(getByKeywordOr0(data,NUM_EXECUTORS).intValue());
+  ret.set_num_tasks(getByKeywordOr0(data,NUM_TASKS).intValue());
+  ret.set_topology_id(topologyId);
+  ret.set_topology_name(null);
+  ret.set_window_to_stats(win2stats);
+  ret.set_sid_to_output_stats(sid2outputStats);
+  ret.set_exec_stats(execStats);
+  ret.set_gsid_to_input_stats(gsid2inputStats);
+  return ret;
+}

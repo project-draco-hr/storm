@@ -1,0 +1,36 @@
+{
+  List ret=new ArrayList();
+  for (  Object o : executor2hostPort.entrySet()) {
+    Map.Entry entry=(Map.Entry)o;
+    List key=(List)entry.getKey();
+    List value=(List)entry.getValue();
+    Integer start=((Number)key.get(0)).intValue();
+    Integer end=((Number)key.get(1)).intValue();
+    String host=(String)value.get(0);
+    Integer port=((Number)value.get(1)).intValue();
+    Map beat=(Map)beats.get(key);
+    if (beat == null) {
+      continue;
+    }
+    String id=(String)task2component.get(start);
+    Map m=new HashMap();
+    if ((compId == null || compId.equals(id)) && (includeSys || !Utils.isSystemId(id))) {
+      putRawKV(m,"exec-id",entry.getKey());
+      putRawKV(m,"comp-id",id);
+      putRawKV(m,NUM_TASKS,end - start + 1);
+      putRawKV(m,HOST,host);
+      putRawKV(m,PORT,port);
+      putRawKV(m,UPTIME,beat.get(keyword(UPTIME)));
+      putRawKV(m,STATS,beat.get(keyword(STATS)));
+      Keyword type=componentType(topology,compId);
+      if (type != null) {
+        putRawKV(m,TYPE,type);
+      }
+ else {
+        putRawKV(m,TYPE,getByKeyword(getMapByKeyword(beat,STATS),TYPE));
+      }
+      ret.add(m);
+    }
+  }
+  return ret;
+}

@@ -1,0 +1,21 @@
+{
+  if (uptime != null) {
+    Map execAvg=(Map)((Map)getByKeyword(m,EXEC_LATENCIES)).get(TEN_MIN_IN_SECONDS_STR);
+    Map exec=(Map)((Map)getByKeyword(m,EXECUTED)).get(TEN_MIN_IN_SECONDS_STR);
+    Set<Object> allKeys=new HashSet<>();
+    if (execAvg != null) {
+      allKeys.addAll(execAvg.keySet());
+    }
+    if (exec != null) {
+      allKeys.addAll(exec.keySet());
+    }
+    double totalAvg=0;
+    for (    Object k : allKeys) {
+      double avg=getOr0(execAvg,k).doubleValue();
+      long cnt=getOr0(exec,k).longValue();
+      totalAvg+=avg * cnt;
+    }
+    return totalAvg / (Math.min(uptime,TEN_MIN_IN_SECONDS) * 1000);
+  }
+  return 0.0;
+}

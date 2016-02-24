@@ -1,0 +1,16 @@
+{
+  long sum=0;
+  if (m == null) {
+    return sum;
+  }
+  for (  Object v : m.values()) {
+    Map sub=(Map)v;
+    for (    Object o : sub.entrySet()) {
+      Map.Entry e=(Map.Entry)o;
+      if (((Keyword)e.getKey()).getName().equals(key)) {
+        sum+=((Number)e.getValue()).longValue();
+      }
+    }
+  }
+  return sum;
+}

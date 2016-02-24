@@ -1,0 +1,20 @@
+{
+  Map ret=new HashMap();
+  Map m=new HashMap();
+  for (  Object win : getMapByKeyword(newStats,ACKED).keySet()) {
+    m.put(win,aggSpoutLatAndCount((Map)(getMapByKeyword(newStats,COMP_LATENCIES)).get(win),(Map)(getMapByKeyword(newStats,ACKED)).get(win)));
+  }
+  m=swapMapOrder(m);
+  Map win2compLatWgtAvg=getMapByKeyword(m,COMP_LAT_TOTAL);
+  Map win2acked=getMapByKeyword(m,ACKED);
+  Map emitted=getMapByKeyword(newStats,EMITTED);
+  emitted=mergeWithSum(aggregateCountStreams(filterSysStreams(emitted,includeSys)),getMapByKeyword(accStats,WIN_TO_EMITTED));
+  putRawKV(ret,WIN_TO_EMITTED,emitted);
+  Map transferred=getMapByKeyword(newStats,TRANSFERRED);
+  transferred=mergeWithSum(aggregateCountStreams(filterSysStreams(transferred,includeSys)),getMapByKeyword(accStats,WIN_TO_TRANSFERRED));
+  putRawKV(ret,WIN_TO_TRANSFERRED,transferred);
+  putRawKV(ret,WIN_TO_COMP_LAT_WGT_AVG,mergeWithSum(getMapByKeyword(accStats,WIN_TO_COMP_LAT_WGT_AVG),win2compLatWgtAvg));
+  putRawKV(ret,WIN_TO_ACKED,mergeWithSum(getMapByKeyword(accStats,WIN_TO_ACKED),win2acked));
+  putRawKV(ret,WIN_TO_FAILED,mergeWithSum(aggregateCountStreams(getMapByKeyword(newStats,FAILED)),getMapByKeyword(accStats,WIN_TO_FAILED)));
+  return ret;
+}

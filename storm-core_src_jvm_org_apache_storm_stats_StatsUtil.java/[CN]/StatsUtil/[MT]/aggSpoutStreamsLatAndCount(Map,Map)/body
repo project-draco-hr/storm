@@ -1,0 +1,13 @@
+{
+  Map ret=new HashMap();
+  if (id2compAvg == null || id2acked == null) {
+    return ret;
+  }
+  for (  Object k : id2compAvg.keySet()) {
+    Map subMap=new HashMap();
+    putRawKV(subMap,COMP_LAT_TOTAL,weightAvg(id2compAvg,id2acked,k));
+    putRawKV(subMap,ACKED,id2acked.get(k));
+    ret.put(k,subMap);
+  }
+  return ret;
+}

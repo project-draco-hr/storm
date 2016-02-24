@@ -1,0 +1,14 @@
+{
+  Map ret=new HashMap();
+  Map acked=windowSetConverter(stats.get_acked(),FROM_GSID,IDENTITY);
+  Map failed=windowSetConverter(stats.get_failed(),FROM_GSID,IDENTITY);
+  Map processAvg=windowSetConverter(stats.get_process_ms_avg(),FROM_GSID,IDENTITY);
+  Map executed=windowSetConverter(stats.get_executed(),FROM_GSID,IDENTITY);
+  Map executeAvg=windowSetConverter(stats.get_execute_ms_avg(),FROM_GSID,IDENTITY);
+  putRawKV(ret,ACKED,acked);
+  putRawKV(ret,FAILED,failed);
+  putRawKV(ret,PROC_LATENCIES,processAvg);
+  putRawKV(ret,EXECUTED,executed);
+  putRawKV(ret,EXEC_LATENCIES,executeAvg);
+  return ret;
+}

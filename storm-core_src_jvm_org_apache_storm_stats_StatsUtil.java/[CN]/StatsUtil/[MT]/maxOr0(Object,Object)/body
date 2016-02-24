@@ -1,0 +1,6 @@
+{
+  if (isValidNumber(a) && isValidNumber(b)) {
+    return Math.max(((Number)a).doubleValue(),((Number)b).doubleValue());
+  }
+  return 0;
+}

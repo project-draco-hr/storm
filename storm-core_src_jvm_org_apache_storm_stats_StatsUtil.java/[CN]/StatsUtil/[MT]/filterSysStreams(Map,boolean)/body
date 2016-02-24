@@ -1,0 +1,14 @@
+{
+  if (!includeSys) {
+    for (    Object win : stats.keySet()) {
+      Map stream2stat=(Map)stats.get(win);
+      for (Iterator itr=stream2stat.keySet().iterator(); itr.hasNext(); ) {
+        Object key=itr.next();
+        if (key instanceof String && Utils.isSystemId((String)key)) {
+          itr.remove();
+        }
+      }
+    }
+  }
+  return stats;
+}

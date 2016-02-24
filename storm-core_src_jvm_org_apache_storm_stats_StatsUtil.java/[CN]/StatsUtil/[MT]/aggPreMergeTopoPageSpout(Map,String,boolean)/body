@@ -1,0 +1,25 @@
+{
+  Map ret=new HashMap();
+  Map subRet=new HashMap();
+  putRawKV(subRet,NUM_EXECUTORS,1);
+  putRawKV(subRet,NUM_TASKS,getByKeyword(m,NUM_TASKS));
+  Map stat2win2sid2num=getMapByKeyword(m,STATS);
+  for (  String key : new String[]{EMITTED,TRANSFERRED,FAILED}) {
+    Map stat=(Map)windowSetConverter(getMapByKeyword(stat2win2sid2num,key),TO_STRING).get(window);
+    if (EMITTED.equals(key) || TRANSFERRED.equals(key)) {
+      stat=filterSysStreams(stat,includeSys);
+    }
+    long sum=0;
+    if (stat != null) {
+      for (      Object o : stat.values()) {
+        sum+=((Number)o).longValue();
+      }
+    }
+    putRawKV(subRet,key,sum);
+  }
+  Map win2sid2compLat=windowSetConverter(getMapByKeyword(stat2win2sid2num,COMP_LATENCIES),TO_STRING);
+  Map win2sid2acked=windowSetConverter(getMapByKeyword(stat2win2sid2num,ACKED),TO_STRING);
+  subRet.putAll(aggSpoutLatAndCount((Map)win2sid2compLat.get(window),(Map)win2sid2acked.get(window)));
+  ret.put(getByKeyword(m,"comp-id"),subRet);
+  return ret;
+}

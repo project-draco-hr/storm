@@ -1,0 +1,16 @@
+{
+  Map ret=new HashMap();
+  Map expands=expandAveragesSeq(avgSeq,countSeq);
+  for (  Object o : expands.entrySet()) {
+    Map.Entry entry=(Map.Entry)o;
+    Object k=entry.getKey();
+    Map tmp=new HashMap();
+    Map inner=(Map)entry.getValue();
+    for (    Object kk : inner.keySet()) {
+      List vv=(List)inner.get(kk);
+      tmp.put(kk,valAvg(((Number)vv.get(0)).doubleValue(),((Number)vv.get(1)).longValue()));
+    }
+    ret.put(k,tmp);
+  }
+  return ret;
+}

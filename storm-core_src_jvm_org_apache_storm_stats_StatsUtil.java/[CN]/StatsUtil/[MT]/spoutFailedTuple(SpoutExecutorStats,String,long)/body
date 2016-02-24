@@ -1,0 +1,3 @@
+{
+  stats.getFailed().incBy(stream,stats.rate);
+}

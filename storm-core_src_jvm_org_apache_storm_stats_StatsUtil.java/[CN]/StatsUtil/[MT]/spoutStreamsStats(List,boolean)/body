@@ -1,0 +1,4 @@
+{
+  List statsSeq=getFilledStats(summs);
+  return aggregateSpoutStreams(aggregateSpoutStats(statsSeq,includeSys));
+}

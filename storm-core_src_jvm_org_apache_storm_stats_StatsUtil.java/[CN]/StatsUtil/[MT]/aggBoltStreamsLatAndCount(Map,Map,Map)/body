@@ -1,0 +1,14 @@
+{
+  Map ret=new HashMap();
+  if (id2execAvg == null || id2procAvg == null || id2numExec == null) {
+    return ret;
+  }
+  for (  Object k : id2execAvg.keySet()) {
+    Map subMap=new HashMap();
+    putRawKV(subMap,EXEC_LAT_TOTAL,weightAvg(id2execAvg,id2numExec,k));
+    putRawKV(subMap,PROC_LAT_TOTAL,weightAvg(id2procAvg,id2numExec,k));
+    putRawKV(subMap,EXECUTED,id2numExec.get(k));
+    ret.put(k,subMap);
+  }
+  return ret;
+}

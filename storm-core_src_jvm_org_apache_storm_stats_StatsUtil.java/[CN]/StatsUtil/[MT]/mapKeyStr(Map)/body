@@ -1,0 +1,7 @@
+{
+  Map ret=new HashMap();
+  for (  Object k : m.keySet()) {
+    ret.put(k.toString(),m.get(k));
+  }
+  return ret;
+}

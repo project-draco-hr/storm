@@ -1,0 +1,37 @@
+{
+  Map ret=new HashMap();
+  Map accIn=getMapByKeyword(accBoltStats,CID_SID_TO_IN_STATS);
+  Map accOut=getMapByKeyword(accBoltStats,SID_TO_OUT_STATS);
+  Map boltIn=getMapByKeyword(boltStats,CID_SID_TO_IN_STATS);
+  Map boltOut=getMapByKeyword(boltStats,SID_TO_OUT_STATS);
+  int numExecutors=getByKeywordOr0(accBoltStats,NUM_EXECUTORS).intValue();
+  putRawKV(ret,NUM_EXECUTORS,numExecutors + 1);
+  putRawKV(ret,NUM_TASKS,sumOr0(getByKeywordOr0(accBoltStats,NUM_TASKS),getByKeywordOr0(boltStats,NUM_TASKS)));
+  putRawKV(ret,SID_TO_OUT_STATS,fullMergeWithSum(accOut,boltOut));
+  putRawKV(ret,CID_SID_TO_IN_STATS,fullMergeWithSum(accIn,boltIn));
+  long executed=sumStreamsLong(boltIn,EXECUTED);
+  putRawKV(ret,EXECUTED,executed);
+  Map executorStats=new HashMap();
+  putRawKV(executorStats,EXECUTOR_ID,getByKeyword(boltStats,EXECUTOR_ID));
+  putRawKV(executorStats,UPTIME,getByKeyword(boltStats,UPTIME));
+  putRawKV(executorStats,HOST,getByKeyword(boltStats,HOST));
+  putRawKV(executorStats,PORT,getByKeyword(boltStats,PORT));
+  putRawKV(executorStats,CAPACITY,getByKeyword(boltStats,CAPACITY));
+  putRawKV(executorStats,EMITTED,sumStreamsLong(boltOut,EMITTED));
+  putRawKV(executorStats,TRANSFERRED,sumStreamsLong(boltOut,TRANSFERRED));
+  putRawKV(executorStats,ACKED,sumStreamsLong(boltIn,ACKED));
+  putRawKV(executorStats,FAILED,sumStreamsLong(boltIn,FAILED));
+  putRawKV(executorStats,EXECUTED,executed);
+  if (executed > 0) {
+    putRawKV(executorStats,EXEC_LATENCY,sumStreamsDouble(boltIn,EXEC_LAT_TOTAL) / executed);
+    putRawKV(executorStats,PROC_LATENCY,sumStreamsDouble(boltIn,PROC_LAT_TOTAL) / executed);
+  }
+ else {
+    putRawKV(executorStats,EXEC_LATENCY,null);
+    putRawKV(executorStats,PROC_LATENCY,null);
+  }
+  List executorStatsList=((List)getByKeyword(accBoltStats,EXECUTOR_STATS));
+  executorStatsList.add(executorStats);
+  putRawKV(ret,EXECUTOR_STATS,executorStatsList);
+  return ret;
+}

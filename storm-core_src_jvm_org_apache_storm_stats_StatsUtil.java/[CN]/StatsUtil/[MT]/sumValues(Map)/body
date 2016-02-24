@@ -1,0 +1,10 @@
+{
+  long ret=0L;
+  if (m == null) {
+    return ret;
+  }
+  for (  Object o : m.values()) {
+    ret+=((Number)o).longValue();
+  }
+  return ret;
+}

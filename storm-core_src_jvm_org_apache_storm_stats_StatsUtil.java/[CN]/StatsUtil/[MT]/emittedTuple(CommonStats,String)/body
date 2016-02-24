@@ -1,0 +1,3 @@
+{
+  stats.getEmitted().incBy(stream,stats.rate);
+}

@@ -1,0 +1,14 @@
+{
+  Map initVal=null;
+  for (int i=0; i < avgSeq.size(); i++) {
+    Map avg=(Map)avgSeq.get(i);
+    Map count=(Map)countSeq.get(i);
+    if (initVal == null) {
+      initVal=expandAverages(avg,count);
+    }
+ else {
+      initVal=mergeWithAddPair(initVal,expandAverages(avg,count));
+    }
+  }
+  return initVal;
+}

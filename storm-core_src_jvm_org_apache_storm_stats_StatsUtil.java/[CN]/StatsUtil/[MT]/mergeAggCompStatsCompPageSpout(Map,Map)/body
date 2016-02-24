@@ -1,0 +1,29 @@
+{
+  Map ret=new HashMap();
+  Map accOut=getMapByKeyword(accSpoutStats,SID_TO_OUT_STATS);
+  Map spoutOut=getMapByKeyword(spoutStats,SID_TO_OUT_STATS);
+  int numExecutors=getByKeywordOr0(accSpoutStats,NUM_EXECUTORS).intValue();
+  putRawKV(ret,NUM_EXECUTORS,numExecutors + 1);
+  putRawKV(ret,NUM_TASKS,sumOr0(getByKeywordOr0(accSpoutStats,NUM_TASKS),getByKeywordOr0(spoutStats,NUM_TASKS)));
+  putRawKV(ret,SID_TO_OUT_STATS,fullMergeWithSum(accOut,spoutOut));
+  Map executorStats=new HashMap();
+  putRawKV(executorStats,EXECUTOR_ID,getByKeyword(spoutStats,EXECUTOR_ID));
+  putRawKV(executorStats,UPTIME,getByKeyword(spoutStats,UPTIME));
+  putRawKV(executorStats,HOST,getByKeyword(spoutStats,HOST));
+  putRawKV(executorStats,PORT,getByKeyword(spoutStats,PORT));
+  putRawKV(executorStats,EMITTED,sumStreamsLong(spoutOut,EMITTED));
+  putRawKV(executorStats,TRANSFERRED,sumStreamsLong(spoutOut,TRANSFERRED));
+  putRawKV(executorStats,FAILED,sumStreamsLong(spoutOut,FAILED));
+  long acked=sumStreamsLong(spoutOut,ACKED);
+  putRawKV(executorStats,ACKED,acked);
+  if (acked > 0) {
+    putRawKV(executorStats,COMP_LATENCY,sumStreamsDouble(spoutOut,COMP_LAT_TOTAL) / acked);
+  }
+ else {
+    putRawKV(executorStats,COMP_LATENCY,null);
+  }
+  List executorStatsList=((List)getByKeyword(accSpoutStats,EXECUTOR_STATS));
+  executorStatsList.add(executorStats);
+  putRawKV(ret,EXECUTOR_STATS,executorStatsList);
+  return ret;
+}

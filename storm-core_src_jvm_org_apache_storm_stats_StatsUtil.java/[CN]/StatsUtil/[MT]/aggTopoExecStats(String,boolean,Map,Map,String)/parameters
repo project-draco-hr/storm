@@ -1,0 +1,5 @@
+String window
+boolean includeSys
+Map accStats
+Map newData
+String compType

@@ -1,0 +1,40 @@
+{
+  Map ret=new HashMap();
+  putRawKV(ret,EXECUTOR_ID,getByKeyword(m,"exec-id"));
+  putRawKV(ret,HOST,getByKeyword(m,HOST));
+  putRawKV(ret,PORT,getByKeyword(m,PORT));
+  putRawKV(ret,UPTIME,getByKeyword(m,UPTIME));
+  putRawKV(ret,NUM_EXECUTORS,1);
+  putRawKV(ret,NUM_TASKS,getByKeyword(m,NUM_TASKS));
+  Map stat2win2sid2num=getMapByKeyword(m,STATS);
+  putRawKV(ret,CAPACITY,computeAggCapacity(stat2win2sid2num,getByKeywordOr0(m,UPTIME).intValue()));
+  Map inputStats=new HashMap();
+  Map sid2acked=(Map)windowSetConverter(getMapByKeyword(stat2win2sid2num,ACKED),TO_STRING).get(window);
+  Map sid2failed=(Map)windowSetConverter(getMapByKeyword(stat2win2sid2num,FAILED),TO_STRING).get(window);
+  putRawKV(inputStats,ACKED,sid2acked != null ? sid2acked : new HashMap());
+  putRawKV(inputStats,FAILED,sid2failed != null ? sid2failed : new HashMap());
+  inputStats=swapMapOrder(inputStats);
+  Map sid2execLat=(Map)windowSetConverter(getMapByKeyword(stat2win2sid2num,EXEC_LATENCIES),TO_STRING).get(window);
+  Map sid2procLat=(Map)windowSetConverter(getMapByKeyword(stat2win2sid2num,PROC_LATENCIES),TO_STRING).get(window);
+  Map sid2exec=(Map)windowSetConverter(getMapByKeyword(stat2win2sid2num,EXECUTED),TO_STRING).get(window);
+  mergeMaps(inputStats,aggBoltStreamsLatAndCount(sid2execLat,sid2procLat,sid2exec));
+  putRawKV(ret,CID_SID_TO_IN_STATS,inputStats);
+  Map outputStats=new HashMap();
+  Map sid2emitted=(Map)windowSetConverter(getMapByKeyword(stat2win2sid2num,EMITTED),TO_STRING).get(window);
+  Map sid2transferred=(Map)windowSetConverter(getMapByKeyword(stat2win2sid2num,TRANSFERRED),TO_STRING).get(window);
+  if (sid2emitted != null) {
+    putRawKV(outputStats,EMITTED,filterSysStreams(sid2emitted,includeSys));
+  }
+ else {
+    putRawKV(outputStats,EMITTED,new HashMap());
+  }
+  if (sid2transferred != null) {
+    putRawKV(outputStats,TRANSFERRED,filterSysStreams(sid2transferred,includeSys));
+  }
+ else {
+    putRawKV(outputStats,TRANSFERRED,new HashMap());
+  }
+  outputStats=swapMapOrder(outputStats);
+  putRawKV(ret,SID_TO_OUT_STATS,outputStats);
+  return ret;
+}

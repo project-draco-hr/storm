@@ -1,0 +1,15 @@
+{
+  Map ret=new HashMap();
+  Integer numExecutors=getByKeywordOr0(accBoltStats,NUM_EXECUTORS).intValue();
+  putRawKV(ret,NUM_EXECUTORS,numExecutors + 1);
+  putRawKV(ret,NUM_TASKS,sumOr0(getByKeywordOr0(accBoltStats,NUM_TASKS),getByKeywordOr0(boltStats,NUM_TASKS)));
+  putRawKV(ret,EMITTED,sumOr0(getByKeywordOr0(accBoltStats,EMITTED),getByKeywordOr0(boltStats,EMITTED)));
+  putRawKV(ret,TRANSFERRED,sumOr0(getByKeywordOr0(accBoltStats,TRANSFERRED),getByKeywordOr0(boltStats,TRANSFERRED)));
+  putRawKV(ret,EXEC_LAT_TOTAL,sumOr0(getByKeywordOr0(accBoltStats,EXEC_LAT_TOTAL),getByKeywordOr0(boltStats,EXEC_LAT_TOTAL)));
+  putRawKV(ret,PROC_LAT_TOTAL,sumOr0(getByKeywordOr0(accBoltStats,PROC_LAT_TOTAL),getByKeywordOr0(boltStats,PROC_LAT_TOTAL)));
+  putRawKV(ret,EXECUTED,sumOr0(getByKeywordOr0(accBoltStats,EXECUTED),getByKeywordOr0(boltStats,EXECUTED)));
+  putRawKV(ret,ACKED,sumOr0(getByKeywordOr0(accBoltStats,ACKED),getByKeywordOr0(boltStats,ACKED)));
+  putRawKV(ret,FAILED,sumOr0(getByKeywordOr0(accBoltStats,FAILED),getByKeywordOr0(boltStats,FAILED)));
+  putRawKV(ret,CAPACITY,maxOr0(getByKeywordOr0(accBoltStats,CAPACITY),getByKeywordOr0(boltStats,CAPACITY)));
+  return ret;
+}

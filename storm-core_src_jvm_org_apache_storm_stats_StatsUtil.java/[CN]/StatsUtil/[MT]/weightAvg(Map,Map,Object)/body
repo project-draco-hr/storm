@@ -1,0 +1,6 @@
+{
+  if (id2Avg == null || id2num == null) {
+    return 0.0;
+  }
+  return productOr0(id2Avg.get(key),id2num.get(key));
+}

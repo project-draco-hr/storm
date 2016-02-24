@@ -1,0 +1,10 @@
+{
+  if (compId == null) {
+    return null;
+  }
+  Map<String,Bolt> bolts=topology.get_bolts();
+  if (Utils.isSystemId(compId) || bolts.containsKey(compId)) {
+    return KW_BOLT;
+  }
+  return KW_SPOUT;
+}

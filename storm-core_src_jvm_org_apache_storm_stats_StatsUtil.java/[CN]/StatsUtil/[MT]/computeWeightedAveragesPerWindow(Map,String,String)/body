@@ -1,0 +1,13 @@
+{
+  Map ret=new HashMap();
+  for (  Object o : getMapByKeyword(accData,wgtAvgKey).entrySet()) {
+    Map.Entry e=(Map.Entry)o;
+    Object window=e.getKey();
+    double wgtAvg=((Number)e.getValue()).doubleValue();
+    long divisor=((Number)getMapByKeyword(accData,divisorKey).get(window)).longValue();
+    if (divisor > 0) {
+      ret.put(window.toString(),wgtAvg / divisor);
+    }
+  }
+  return ret;
+}

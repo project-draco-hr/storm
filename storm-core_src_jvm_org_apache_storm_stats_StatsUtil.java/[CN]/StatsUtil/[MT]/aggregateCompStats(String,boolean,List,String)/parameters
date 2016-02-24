@@ -1,0 +1,4 @@
+String window
+boolean includeSys
+List data
+String compType

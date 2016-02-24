@@ -1,0 +1,8 @@
+{
+  Map ret=new HashMap();
+  for (  Object e : cidSid2inputStats.entrySet()) {
+    Map.Entry entry=(Map.Entry)e;
+    ret.put(toGlobalStreamId((List)entry.getKey()),thriftifyBoltAggStats((Map)entry.getValue()));
+  }
+  return ret;
+}

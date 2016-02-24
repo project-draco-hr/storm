@@ -1,0 +1,3 @@
+{
+  return x != null && x instanceof Number && !Double.isNaN(((Number)x).doubleValue()) && !Double.isInfinite(((Number)x).doubleValue());
+}

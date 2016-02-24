@@ -1,0 +1,11 @@
+{
+  ComponentAggregateStats stats=new ComponentAggregateStats();
+  stats.set_type(ComponentType.SPOUT);
+  stats.set_last_error((ErrorInfo)getByKeyword(m,LAST_ERROR));
+  thriftifyCommonAggStats(stats,m);
+  SpoutAggregateStats spoutAggStats=new SpoutAggregateStats();
+  spoutAggStats.set_complete_latency_ms(getByKeywordOr0(m,COMP_LATENCY).doubleValue());
+  SpecificAggregateStats specificStats=SpecificAggregateStats.spout(spoutAggStats);
+  stats.set_specific_stats(specificStats);
+  return stats;
+}

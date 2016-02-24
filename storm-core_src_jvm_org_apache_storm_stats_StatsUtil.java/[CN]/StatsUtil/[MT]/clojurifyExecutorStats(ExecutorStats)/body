@@ -1,0 +1,15 @@
+{
+  Map ret=new HashMap();
+  putRawKV(ret,EMITTED,stats.get_emitted());
+  putRawKV(ret,TRANSFERRED,stats.get_transferred());
+  putRawKV(ret,"rate",stats.get_rate());
+  if (stats.get_specific().is_set_bolt()) {
+    mergeMaps(ret,clojurifySpecificStats(stats.get_specific().get_bolt()));
+    putRawKV(ret,TYPE,KW_BOLT);
+  }
+ else {
+    mergeMaps(ret,clojurifySpecificStats(stats.get_specific().get_spout()));
+    putRawKV(ret,TYPE,KW_SPOUT);
+  }
+  return ret;
+}

@@ -1,0 +1,6 @@
+{
+  if (n1 instanceof Long || n1 instanceof Integer) {
+    return n1.longValue() + n2.longValue();
+  }
+  return n1.doubleValue() + n2.doubleValue();
+}

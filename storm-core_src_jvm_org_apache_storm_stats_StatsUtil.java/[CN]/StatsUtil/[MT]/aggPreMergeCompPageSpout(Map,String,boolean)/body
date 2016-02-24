@@ -1,0 +1,26 @@
+{
+  Map ret=new HashMap();
+  putRawKV(ret,EXECUTOR_ID,getByKeyword(m,"exec-id"));
+  putRawKV(ret,HOST,getByKeyword(m,HOST));
+  putRawKV(ret,PORT,getByKeyword(m,PORT));
+  putRawKV(ret,UPTIME,getByKeyword(m,UPTIME));
+  putRawKV(ret,NUM_EXECUTORS,1);
+  putRawKV(ret,NUM_TASKS,getByKeyword(m,NUM_TASKS));
+  Map stat2win2sid2num=getMapByKeyword(m,STATS);
+  Map outputStats=new HashMap();
+  Map win2sid2acked=windowSetConverter(getMapByKeyword(stat2win2sid2num,ACKED),TO_STRING);
+  Map win2sid2failed=windowSetConverter(getMapByKeyword(stat2win2sid2num,FAILED),TO_STRING);
+  Map win2sid2emitted=windowSetConverter(getMapByKeyword(stat2win2sid2num,EMITTED),TO_STRING);
+  Map win2sid2transferred=windowSetConverter(getMapByKeyword(stat2win2sid2num,TRANSFERRED),TO_STRING);
+  Map win2sid2compLat=windowSetConverter(getMapByKeyword(stat2win2sid2num,COMP_LATENCIES),TO_STRING);
+  putRawKV(outputStats,ACKED,win2sid2acked.get(window));
+  putRawKV(outputStats,FAILED,win2sid2failed.get(window));
+  putRawKV(outputStats,EMITTED,filterSysStreams((Map)win2sid2emitted.get(window),includeSys));
+  putRawKV(outputStats,TRANSFERRED,filterSysStreams((Map)win2sid2transferred.get(window),includeSys));
+  outputStats=swapMapOrder(outputStats);
+  Map sid2compLat=(Map)win2sid2compLat.get(window);
+  Map sid2acked=(Map)win2sid2acked.get(window);
+  mergeMaps(outputStats,aggSpoutStreamsLatAndCount(sid2compLat,sid2acked));
+  putRawKV(ret,SID_TO_OUT_STATS,outputStats);
+  return ret;
+}

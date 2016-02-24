@@ -1,0 +1,17 @@
+{
+  Map ret=new HashMap();
+  for (  Object win : counts.keySet()) {
+    Map inner=new HashMap();
+    Map stream2cnt=(Map)counts.get(win);
+    for (    Object stream : stream2cnt.keySet()) {
+      Long cnt=(Long)stream2cnt.get(stream);
+      Double avg=(Double)((Map)avgs.get(win)).get(stream);
+      if (avg == null) {
+        avg=0.0;
+      }
+      inner.put(stream,Lists.newArrayList(cnt * avg,cnt));
+    }
+    ret.put(win,inner);
+  }
+  return ret;
+}

@@ -1,0 +1,14 @@
+{
+  ComponentAggregateStats stats=new ComponentAggregateStats();
+  stats.set_type(ComponentType.BOLT);
+  stats.set_last_error((ErrorInfo)getByKeyword(m,LAST_ERROR));
+  thriftifyCommonAggStats(stats,m);
+  BoltAggregateStats boltAggStats=new BoltAggregateStats();
+  boltAggStats.set_execute_latency_ms(getByKeywordOr0(m,EXEC_LATENCY).doubleValue());
+  boltAggStats.set_process_latency_ms(getByKeywordOr0(m,PROC_LATENCY).doubleValue());
+  boltAggStats.set_executed(getByKeywordOr0(m,EXECUTED).longValue());
+  boltAggStats.set_capacity(getByKeywordOr0(m,CAPACITY).doubleValue());
+  SpecificAggregateStats specificStats=SpecificAggregateStats.bolt(boltAggStats);
+  stats.set_specific_stats(specificStats);
+  return stats;
+}

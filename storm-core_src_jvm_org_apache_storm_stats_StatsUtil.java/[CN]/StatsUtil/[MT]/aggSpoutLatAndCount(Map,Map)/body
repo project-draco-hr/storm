@@ -1,0 +1,6 @@
+{
+  Map ret=new HashMap();
+  putRawKV(ret,COMP_LAT_TOTAL,weightAvgAndSum(id2compAvg,id2numAcked));
+  putRawKV(ret,ACKED,sumValues(id2numAcked));
+  return ret;
+}

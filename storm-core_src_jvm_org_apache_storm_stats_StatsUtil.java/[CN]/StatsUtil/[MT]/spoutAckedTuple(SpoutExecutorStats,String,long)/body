@@ -1,0 +1,4 @@
+{
+  stats.getAcked().incBy(stream,stats.rate);
+  stats.getCompleteLatencies().record(stream,latencyMs);
+}
