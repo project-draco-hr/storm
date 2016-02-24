@@ -44,7 +44,7 @@
           issueMapCallback(logConfigCallback,toks.get(1));
         }
  else         if (root.equals(ClusterUtils.BACKPRESSURE_ROOT) && size > 1) {
-          issueMapCallback(logConfigCallback,toks.get(1));
+          issueMapCallback(backPressureCallback,toks.get(1));
         }
  else {
           LOG.error("{} Unknown callback for subtree {}",new RuntimeException("Unknown callback for this path"),path);

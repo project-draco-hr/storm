@@ -1,6 +1,6 @@
 {
   List<ProfileRequest> requests=new ArrayList<>();
-  List<ProfileRequest> profileRequests=getTopologyProfileRequests(stormId,isThrift);
+  List<ProfileRequest> profileRequests=getTopologyProfileRequests(stormId);
   for (  ProfileRequest profileRequest : profileRequests) {
     NodeInfo nodeInfo1=profileRequest.get_nodeInfo();
     if (nodeInfo1.equals(nodeInfo))     requests.add(profileRequest);

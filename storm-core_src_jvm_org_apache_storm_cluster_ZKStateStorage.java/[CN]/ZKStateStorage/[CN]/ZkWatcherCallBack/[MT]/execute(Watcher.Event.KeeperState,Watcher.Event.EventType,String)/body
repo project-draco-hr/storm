@@ -1,0 +1,16 @@
+{
+  if (active.get()) {
+    if (!(state.equals(Watcher.Event.KeeperState.SyncConnected))) {
+      LOG.debug("Received event {} : {}: {} with disconnected Zookeeper.",state,type,path);
+    }
+ else {
+      LOG.debug("Received event {} : {} : {}",state,type,path);
+    }
+    if (!type.equals(Watcher.Event.EventType.None)) {
+      for (      Map.Entry<String,ZKStateChangedCallback> e : callbacks.entrySet()) {
+        ZKStateChangedCallback fn=e.getValue();
+        fn.changed(type,path);
+      }
+    }
+  }
+}

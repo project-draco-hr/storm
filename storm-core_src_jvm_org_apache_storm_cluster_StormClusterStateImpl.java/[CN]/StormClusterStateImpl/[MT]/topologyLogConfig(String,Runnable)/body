@@ -1,4 +1,7 @@
 {
+  if (cb != null) {
+    logConfigCallback.put(stormId,cb);
+  }
   String path=ClusterUtils.logConfigPath(stormId);
   return ClusterUtils.maybeDeserialize(stateStorage.get_data(path,cb != null),LogConfig.class);
 }
