@@ -1,0 +1,5 @@
+{
+  Rebalance.ExecutorParser executorParser=new Rebalance.ExecutorParser();
+  Map<String,Integer> componentParallelism=(Map<String,Integer>)executorParser.parse("comp1=3");
+  Assert.assertEquals(3,(int)componentParallelism.get("comp1"));
+}

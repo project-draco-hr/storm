@@ -1,19 +1,12 @@
 {
-  NimbusClient client=NimbusClient.getConfiguredClientAs(stormConf,asUser);
-  TopologyInfo topologyInfo=null;
-  try {
-    ClusterSummary summary=client.getClient().getClusterInfo();
-    for (    TopologySummary s : summary.get_topologies()) {
-      if (s.get_name().equals(name)) {
-        topologyInfo=client.getClient().getTopologyInfo(s.get_id());
-      }
+  try (NimbusClient client=NimbusClient.getConfiguredClientAs(stormConf,asUser)){
+    String topologyId=getTopologyId(name,client.getClient());
+    if (null != topologyId) {
+      return client.getClient().getTopologyInfo(topologyId);
     }
+    return null;
   }
  catch (  Exception e) {
     throw new RuntimeException(e);
   }
- finally {
-    client.close();
-  }
-  return topologyInfo;
 }

@@ -1,6 +1,6 @@
 {
-  Map<String,Object> values=CLI.opt("a","aa",null).opt("b","bb",1,CLI.AS_INT).opt("c","cc",1,CLI.AS_INT,CLI.FIRST_WINS).opt("d","dd",null,CLI.AS_STRING,CLI.INTO_LIST).opt("e","ee",null,CLI.AS_INT).arg("A").arg("B",CLI.AS_INT).parse("-a100","--aa","200","-c2","-b","50","--cc","100","A-VALUE","1","2","3","-b40","-d1","-d2","-d3");
-  assertEquals(7,values.size());
+  Map<String,Object> values=CLI.opt("a","aa",null).opt("b","bb",1,CLI.AS_INT).opt("c","cc",1,CLI.AS_INT,CLI.FIRST_WINS).opt("d","dd",null,CLI.AS_STRING,CLI.INTO_LIST).opt("e","ee",null,CLI.AS_INT).opt("f","ff",null,new PairParse(),CLI.INTO_MAP).arg("A").arg("B",CLI.AS_INT).parse("-a100","--aa","200","-c2","-b","50","--cc","100","A-VALUE","1","2","3","-b40","-d1","-d2","-d3","-f","key1=value1","-f","key2=value2");
+  assertEquals(8,values.size());
   assertEquals("200",(String)values.get("a"));
   assertEquals((Integer)40,(Integer)values.get("b"));
   assertEquals((Integer)2,(Integer)values.get("c"));
@@ -18,4 +18,8 @@
   assertEquals((Integer)1,B.get(0));
   assertEquals((Integer)2,B.get(1));
   assertEquals((Integer)3,B.get(2));
+  Map<String,String> f=(Map<String,String>)values.get("f");
+  assertEquals(2,f.size());
+  assertEquals("value1",f.get("key1"));
+  assertEquals("value2",f.get("key2"));
 }
