@@ -1,0 +1,3 @@
+{
+  return stateStorage.get_children(ClusterUtils.BLOBSTORE_SUBTREE,false);
+}

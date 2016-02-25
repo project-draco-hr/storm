@@ -1,0 +1,15 @@
+{
+  Map<ExecutorInfo,ExecutorBeat> executorWhbs=new HashMap<>();
+  Map<NodeInfo,List<List<Long>>> nodePortExecutors=Utils.reverseMap(executorNodePort);
+  for (  Map.Entry<NodeInfo,List<List<Long>>> entry : nodePortExecutors.entrySet()) {
+    String node=entry.getKey().get_node();
+    Long port=entry.getKey().get_port_iterator().next();
+    ClusterWorkerHeartbeat whb=getWorkerHeartbeat(stormId,node,port);
+    List<ExecutorInfo> executorInfoList=new ArrayList<>();
+    for (    List<Long> list : entry.getValue()) {
+      executorInfoList.add(new ExecutorInfo(list.get(0).intValue(),list.get(list.size() - 1).intValue()));
+    }
+    if (whb != null)     executorWhbs.putAll(ClusterUtils.convertExecutorBeats(executorInfoList,whb));
+  }
+  return executorWhbs;
+}

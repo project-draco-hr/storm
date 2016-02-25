@@ -1,0 +1,3 @@
+{
+  return _instance.mkStateStorageImpl(config,auth_conf,acls,context);
+}

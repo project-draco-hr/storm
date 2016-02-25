@@ -1,0 +1,17 @@
+{
+  this.conf=conf;
+  this.authConf=authConf;
+  if (context.getDaemonType().equals(DaemonType.NIMBUS))   this.isNimbus=true;
+  CuratorFramework zkTemp=mkZk();
+  String rootPath=String.valueOf(conf.get(Config.STORM_ZOOKEEPER_ROOT));
+  Zookeeper.mkdirs(zkTemp,rootPath,acls);
+  zkTemp.close();
+  active=new AtomicBoolean(true);
+  zkWriter=mkZk(new ZkWatcherCallBack());
+  if (isNimbus) {
+    zkReader=mkZk(new ZkWatcherCallBack());
+  }
+ else {
+    zkReader=zkWriter;
+  }
+}

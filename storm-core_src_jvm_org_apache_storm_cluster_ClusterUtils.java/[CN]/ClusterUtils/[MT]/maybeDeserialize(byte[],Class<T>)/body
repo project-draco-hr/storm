@@ -1,0 +1,6 @@
+{
+  if (serialized != null) {
+    return Utils.deserialize(serialized,clazz);
+  }
+  return null;
+}

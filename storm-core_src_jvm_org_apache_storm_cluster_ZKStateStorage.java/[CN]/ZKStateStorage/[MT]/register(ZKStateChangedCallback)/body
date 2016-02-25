@@ -1,0 +1,5 @@
+{
+  String id=UUID.randomUUID().toString();
+  this.callbacks.put(id,callback);
+  return id;
+}

@@ -1,0 +1,3 @@
+{
+  return stateStorage.get_worker_hb_children(ClusterUtils.WORKERBEATS_SUBTREE,false);
+}

@@ -1,0 +1,4 @@
+{
+  stateStorage.close();
+  pacemakerClient.close();
+}

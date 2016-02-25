@@ -1,0 +1,4 @@
+{
+  String path=ClusterUtils.workerbeatPath(stormId,node,port);
+  stateStorage.delete_worker_hb(path);
+}

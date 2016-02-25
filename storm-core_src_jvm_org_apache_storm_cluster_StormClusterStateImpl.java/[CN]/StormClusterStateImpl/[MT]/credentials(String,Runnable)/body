@@ -1,0 +1,7 @@
+{
+  if (callback != null) {
+    credentialsCallback.put(stormId,callback);
+  }
+  String path=ClusterUtils.credentialsPath(stormId);
+  return ClusterUtils.maybeDeserialize(stateStorage.get_data(path,callback != null),Credentials.class);
+}

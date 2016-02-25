@@ -1,0 +1,3 @@
+{
+  Zookeeper.syncPath(zkWriter,path);
+}

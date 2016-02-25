@@ -1,0 +1,8 @@
+{
+  String path=ClusterUtils.lastErrorPath(stormId,componentId);
+  if (stateStorage.node_exists(path,false)) {
+    ErrorInfo errorInfo=ClusterUtils.maybeDeserialize(stateStorage.get_data(path,false),ErrorInfo.class);
+    return errorInfo;
+  }
+  return null;
+}
