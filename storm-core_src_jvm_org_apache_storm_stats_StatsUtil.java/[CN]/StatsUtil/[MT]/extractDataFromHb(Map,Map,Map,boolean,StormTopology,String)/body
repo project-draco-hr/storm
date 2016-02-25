@@ -1,5 +1,8 @@
 {
   List ret=new ArrayList();
+  if (executor2hostPort == null) {
+    return ret;
+  }
   for (  Object o : executor2hostPort.entrySet()) {
     Map.Entry entry=(Map.Entry)o;
     List key=(List)entry.getKey();
