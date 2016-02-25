@@ -1,0 +1,4 @@
+{
+  LOG.error("Received error or exception in WorkerBackpressureThread.. terminating the worker...",e);
+  Runtime.getRuntime().exit(1);
+}
