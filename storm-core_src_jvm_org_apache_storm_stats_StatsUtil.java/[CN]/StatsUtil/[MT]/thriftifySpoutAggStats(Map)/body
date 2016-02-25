@@ -1,4 +1,5 @@
 {
+  logger.warn("spout agg stats:{}",m);
   ComponentAggregateStats stats=new ComponentAggregateStats();
   stats.set_type(ComponentType.SPOUT);
   stats.set_last_error((ErrorInfo)getByKeyword(m,LAST_ERROR));

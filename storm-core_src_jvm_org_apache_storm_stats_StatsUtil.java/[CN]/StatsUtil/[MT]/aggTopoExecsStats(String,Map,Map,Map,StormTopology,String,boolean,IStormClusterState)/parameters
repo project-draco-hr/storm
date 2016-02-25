@@ -5,3 +5,4 @@ Map beats
 StormTopology topology
 String window
 boolean includeSys
+IStormClusterState clusterState
