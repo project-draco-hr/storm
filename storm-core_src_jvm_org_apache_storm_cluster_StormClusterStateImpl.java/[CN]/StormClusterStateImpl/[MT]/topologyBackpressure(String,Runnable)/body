@@ -1,0 +1,8 @@
+{
+  if (callback != null) {
+    backPressureCallback.put(stormId,callback);
+  }
+  String path=ClusterUtils.backpressureStormRoot(stormId);
+  List<String> childrens=stateStorage.get_children(path,callback != null);
+  return childrens.size() > 0;
+}

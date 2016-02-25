@@ -1,0 +1,3 @@
+{
+  this.callbacks.remove(id);
+}

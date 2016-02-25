@@ -1,0 +1,6 @@
+{
+  if (callback != null) {
+    assignmentVersionCallback.put(stormId,callback);
+  }
+  return stateStorage.get_version(ClusterUtils.assignmentPath(stormId),callback != null);
+}

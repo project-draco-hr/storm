@@ -1,0 +1,3 @@
+{
+  Zookeeper.deleteNode(zkWriter,path);
+}

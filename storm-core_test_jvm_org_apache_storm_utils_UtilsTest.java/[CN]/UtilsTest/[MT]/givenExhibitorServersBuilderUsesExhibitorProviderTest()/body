@@ -1,0 +1,5 @@
+{
+  CuratorFrameworkFactory.Builder builder=setupBuilder(true);
+  Assert.assertEquals(builder.getEnsembleProvider().getConnectionString(),"");
+  Assert.assertEquals(builder.getEnsembleProvider().getClass(),ExhibitorEnsembleProvider.class);
+}

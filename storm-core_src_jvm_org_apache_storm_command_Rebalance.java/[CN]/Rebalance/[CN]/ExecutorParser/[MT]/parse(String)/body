@@ -1,0 +1,13 @@
+{
+  try {
+    int splitIndex=value.lastIndexOf('=');
+    String componentName=value.substring(0,splitIndex);
+    Integer parallelism=Integer.parseInt(value.substring(splitIndex + 1));
+    Map<String,Integer> result=new HashMap<String,Integer>();
+    result.put(componentName,parallelism);
+    return result;
+  }
+ catch (  Throwable ex) {
+    throw new IllegalArgumentException(format("Failed to parse '%s' correctly. Expected in <component>=<parallelism> format",value),ex);
+  }
+}
