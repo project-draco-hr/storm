@@ -2,4 +2,7 @@
   this.trigger=trigger;
   this.workerData=workerData;
   this.callback=callback;
+  this.setName("WorkerBackpressureThread");
+  this.setDaemon(true);
+  this.setUncaughtExceptionHandler(new BackpressureUncaughtExceptionHandler());
 }
