@@ -7,7 +7,6 @@ synchronized (trigger) {
       callback.onEvent(workerData);
     }
  catch (    InterruptedException interEx) {
-      LOG.info("WorkerBackpressureThread gets interrupted! Ignoring Exception: ",interEx);
     }
   }
 }

@@ -1,3 +1,5 @@
 {
   running=false;
+  interrupt();
+  join();
 }

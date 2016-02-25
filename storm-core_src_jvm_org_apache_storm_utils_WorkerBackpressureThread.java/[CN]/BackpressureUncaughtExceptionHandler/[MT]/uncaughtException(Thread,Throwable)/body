@@ -1,9 +1,4 @@
 {
-  try {
-    Utils.handleUncaughtException(e);
-  }
- catch (  Error error) {
-    LOG.info("Received error in WorkerBackpressureThread.. terminating the worker...");
-    Runtime.getRuntime().exit(1);
-  }
+  LOG.error("Received error or exception in WorkerBackpressureThread.. terminating the worker...",e);
+  Runtime.getRuntime().exit(1);
 }
