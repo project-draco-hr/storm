@@ -1,0 +1,7 @@
+{
+  Server s=jettyCreateServer(port,host,httpsPort);
+  if (configurator != null) {
+    configurator.execute(s);
+  }
+  s.start();
+}
