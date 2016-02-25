@@ -1,0 +1,11 @@
+{
+  return new BaseStatefulBolt(){
+    @Override public void execute(    Tuple input){
+    }
+    @Override public void initState(    State state){
+    }
+    private void writeObject(    java.io.ObjectOutputStream stream){
+    }
+  }
+;
+}
