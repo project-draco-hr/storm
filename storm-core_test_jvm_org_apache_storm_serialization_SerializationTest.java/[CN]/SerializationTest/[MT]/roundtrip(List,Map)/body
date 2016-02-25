@@ -1,0 +1,10 @@
+{
+  List ret=null;
+  try {
+    ret=deserialize(serialize(vals,conf),conf);
+  }
+ catch (  IOException e) {
+    LOG.error("Exception when serialize/deserialize ",e);
+  }
+  return ret;
+}

@@ -1,0 +1,7 @@
+{
+  StringBuilder sb=new StringBuilder();
+  while (size-- > 0) {
+    sb.append("a");
+  }
+  return sb.toString();
+}
