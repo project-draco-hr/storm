@@ -1,5 +1,0 @@
-{
-  for (  String field : CommonStats.COMMON_FIELDS) {
-    cleanupStat(stats.get(field));
-  }
-}

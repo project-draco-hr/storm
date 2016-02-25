@@ -1,4 +1,0 @@
-BoltExecutorStats stats
-String component
-String stream
-long latencyMs

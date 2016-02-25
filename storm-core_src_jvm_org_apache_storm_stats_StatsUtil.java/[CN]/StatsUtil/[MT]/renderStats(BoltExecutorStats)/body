@@ -1,8 +1,0 @@
-{
-  cleanupBoltStats(stats);
-  Map ret=new HashMap();
-  ret.putAll(valueStats(stats,CommonStats.COMMON_FIELDS));
-  ret.putAll(valueStats(stats,BoltExecutorStats.BOLT_FIELDS));
-  putRawKV(ret,TYPE,KW_BOLT);
-  return ret;
-}

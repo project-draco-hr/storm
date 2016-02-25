@@ -1,0 +1,6 @@
+{
+  super.cleanupStats();
+  for (  String field : SpoutExecutorStats.SPOUT_FIELDS) {
+    cleanupStat(this.get(field));
+  }
+}

@@ -1,6 +1,0 @@
-{
-  cleanupCommonStats(stats);
-  for (  String field : SpoutExecutorStats.SPOUT_FIELDS) {
-    cleanupStat(stats.get(field));
-  }
-}

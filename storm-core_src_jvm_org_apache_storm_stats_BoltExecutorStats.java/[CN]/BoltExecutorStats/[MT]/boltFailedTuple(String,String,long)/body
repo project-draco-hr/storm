@@ -1,0 +1,4 @@
+{
+  Object key=PersistentVector.create(component,stream);
+  this.getFailed().incBy(key,this.rate);
+}

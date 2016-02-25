@@ -1,0 +1,8 @@
+{
+  cleanupStats();
+  Map ret=new HashMap();
+  ret.putAll(valueStats(CommonStats.COMMON_FIELDS));
+  ret.putAll(valueStats(SpoutExecutorStats.SPOUT_FIELDS));
+  StatsUtil.putRawKV(ret,StatsUtil.TYPE,StatsUtil.KW_SPOUT);
+  return ret;
+}

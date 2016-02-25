@@ -1,6 +1,0 @@
-{
-  cleanupCommonStats(stats);
-  for (  String field : BoltExecutorStats.BOLT_FIELDS) {
-    cleanupStat(stats.get(field));
-  }
-}

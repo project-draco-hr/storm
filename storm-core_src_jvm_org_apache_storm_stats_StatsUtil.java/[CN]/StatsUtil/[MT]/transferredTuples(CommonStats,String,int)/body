@@ -1,3 +1,0 @@
-{
-  stats.getTransferred().incBy(stream,stats.rate * amount);
-}

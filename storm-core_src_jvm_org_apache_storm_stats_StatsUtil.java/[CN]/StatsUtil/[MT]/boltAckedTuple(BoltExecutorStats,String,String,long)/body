@@ -1,5 +1,0 @@
-{
-  Object key=PersistentVector.create(component,stream);
-  stats.getAcked().incBy(key,stats.rate);
-  stats.getProcessLatencies().record(key,latencyMs);
-}

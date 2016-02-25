@@ -1,0 +1,14 @@
+{
+  Map ret=new HashMap();
+  for (  String field : fields) {
+    IMetric metric=this.get(field);
+    if (metric instanceof MultiCountStatAndMetric) {
+      StatsUtil.putRawKV(ret,field,((MultiCountStatAndMetric)metric).getTimeCounts());
+    }
+ else     if (metric instanceof MultiLatencyStatAndMetric) {
+      StatsUtil.putRawKV(ret,field,((MultiLatencyStatAndMetric)metric).getTimeLatAvg());
+    }
+  }
+  StatsUtil.putRawKV(ret,CommonStats.RATE,this.getRate());
+  return ret;
+}
