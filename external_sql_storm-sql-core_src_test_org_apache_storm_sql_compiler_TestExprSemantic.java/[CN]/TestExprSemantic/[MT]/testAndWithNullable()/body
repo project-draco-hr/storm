@@ -1,0 +1,4 @@
+{
+  Values v=testExpr(Lists.newArrayList("ADDR = 'a' AND NAME = 'a'","NAME = 'a' AND ADDR = 'a'","NAME = 'x' AND ADDR = 'a'","ADDR = 'a' AND NAME = 'x'"));
+  assertEquals(new Values(false,false,null,null),v);
+}
