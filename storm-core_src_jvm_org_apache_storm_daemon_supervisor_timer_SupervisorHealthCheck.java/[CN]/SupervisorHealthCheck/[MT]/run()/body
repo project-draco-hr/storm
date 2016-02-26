@@ -1,0 +1,15 @@
+{
+  Map conf=supervisorData.getConf();
+  int healthCode=HealthCheck.healthCheck(conf);
+  Collection<String> workerIds=SupervisorUtils.supervisorWorkerIds(conf);
+  if (healthCode != 0) {
+    for (    String workerId : workerIds) {
+      try {
+        shutWorker(supervisorData,workerId);
+      }
+ catch (      Exception e) {
+        throw Utils.wrapInRuntime(e);
+      }
+    }
+  }
+}

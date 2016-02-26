@@ -27,23 +27,7 @@
       eventTimer.scheduleRecurring(0,10,new EventManagerPushCallback(syncSupervisorEvent,syncSupEventManager));
       eventTimer.scheduleRecurring(0,(Integer)conf.get(Config.SUPERVISOR_MONITOR_FREQUENCY_SECS),new EventManagerPushCallback(syncProcessEvent,syncProcessManager));
       supervisorData.getBlobUpdateTimer().scheduleRecurring(30,30,new EventManagerPushCallback(updateBlobsThread,syncSupEventManager));
-      eventTimer.scheduleRecurring(300,300,new Runnable(){
-        @Override public void run(){
-          int healthCode=HealthCheck.healthCheck(conf);
-          Collection<String> workerIds=SupervisorUtils.supervisorWorkerIds(conf);
-          if (healthCode != 0) {
-            for (            String workerId : workerIds) {
-              try {
-                shutWorker(supervisorData,workerId);
-              }
- catch (              Exception e) {
-                throw Utils.wrapInRuntime(e);
-              }
-            }
-          }
-        }
-      }
-);
+      eventTimer.scheduleRecurring(300,300,new SupervisorHealthCheck(supervisorData));
       eventTimer.scheduleRecurring(30,30,new EventManagerPushCallback(runProfilerActionThread,syncSupEventManager));
     }
     supervisorManger=new SupervisorManger(supervisorData,syncSupEventManager,syncProcessManager);
