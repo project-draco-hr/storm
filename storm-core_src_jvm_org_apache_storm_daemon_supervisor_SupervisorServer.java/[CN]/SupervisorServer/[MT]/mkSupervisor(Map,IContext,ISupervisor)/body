@@ -1,0 +1,64 @@
+{
+  SupervisorManger supervisorManger=null;
+  try {
+    LOG.info("Starting Supervisor with conf {}",conf);
+    iSupervisor.prepare(conf,ConfigUtils.supervisorIsupervisorDir(conf));
+    String path=ConfigUtils.supervisorTmpDir(conf);
+    FileUtils.cleanDirectory(new File(path));
+    final SupervisorData supervisorData=new SupervisorData(conf,sharedContext,iSupervisor);
+    Localizer localizer=supervisorData.getLocalizer();
+    SupervisorHeartbeat hb=new SupervisorHeartbeat(conf,supervisorData);
+    hb.run();
+    Integer heartbeatFrequency=(Integer)conf.get(Config.SUPERVISOR_HEARTBEAT_FREQUENCY_SECS);
+    supervisorData.getHeartbeatTimer().scheduleRecurring(0,heartbeatFrequency,hb);
+    Set<String> downdedStormId=SupervisorUtils.readDownLoadedStormIds(conf);
+    for (    String stormId : downdedStormId) {
+      SupervisorUtils.addBlobReferences(localizer,stormId,conf);
+    }
+    localizer.startCleaner();
+    EventManagerImp syncSupEventManager=new EventManagerImp(false);
+    EventManagerImp syncProcessManager=new EventManagerImp(false);
+    SyncProcessEvent syncProcessEvent=new SyncProcessEvent(supervisorData);
+    SyncSupervisorEvent syncSupervisorEvent=new SyncSupervisorEvent(supervisorData,syncProcessEvent,syncSupEventManager,syncProcessManager);
+    UpdateBlobs updateBlobsThread=new UpdateBlobs(supervisorData);
+    RunProfilerActions runProfilerActionThread=new RunProfilerActions(supervisorData);
+    if ((Boolean)conf.get(Config.SUPERVISOR_ENABLE)) {
+      StormTimer eventTimer=supervisorData.getEventTimer();
+      eventTimer.scheduleRecurring(0,10,new EventManagerPushCallback(syncSupervisorEvent,syncSupEventManager));
+      eventTimer.scheduleRecurring(0,(Integer)conf.get(Config.SUPERVISOR_MONITOR_FREQUENCY_SECS),new EventManagerPushCallback(syncProcessEvent,syncProcessManager));
+      supervisorData.getBlobUpdateTimer().scheduleRecurring(30,30,new EventManagerPushCallback(updateBlobsThread,syncSupEventManager));
+      eventTimer.scheduleRecurring(300,300,new Runnable(){
+        @Override public void run(){
+          int healthCode=HealthCheck.healthCheck(conf);
+          Collection<String> workerIds=SupervisorUtils.supervisorWorkerIds(conf);
+          if (healthCode != 0) {
+            for (            String workerId : workerIds) {
+              try {
+                shutWorker(supervisorData,workerId);
+              }
+ catch (              Exception e) {
+                throw Utils.wrapInRuntime(e);
+              }
+            }
+          }
+        }
+      }
+);
+      eventTimer.scheduleRecurring(30,30,new EventManagerPushCallback(runProfilerActionThread,syncSupEventManager));
+    }
+    supervisorManger=new SupervisorManger(supervisorData,syncSupEventManager,syncProcessManager);
+  }
+ catch (  Throwable t) {
+    if (Utils.exceptionCauseIsInstanceOf(InterruptedIOException.class,t)) {
+      throw t;
+    }
+ else     if (Utils.exceptionCauseIsInstanceOf(InterruptedException.class,t)) {
+      throw t;
+    }
+ else {
+      LOG.error("Error on initialization of server supervisor");
+      Utils.exitProcess(13,"Error on initialization");
+    }
+  }
+  return supervisorManger;
+}

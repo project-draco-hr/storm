@@ -1,0 +1,9 @@
+{
+  Map<Integer,LocalAssignment> reassignExecutors=new HashMap<>();
+  for (  Integer port : keepPorts) {
+    if (assignExecutors.containsKey(port)) {
+      reassignExecutors.put(port,assignExecutors.get(port));
+    }
+  }
+  return reassignExecutors;
+}

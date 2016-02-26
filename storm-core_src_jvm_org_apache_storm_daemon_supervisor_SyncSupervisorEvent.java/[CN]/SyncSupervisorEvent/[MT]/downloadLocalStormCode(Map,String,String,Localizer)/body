@@ -1,0 +1,37 @@
+{
+  String tmproot=ConfigUtils.supervisorTmpDir(conf) + Utils.FILE_PATH_SEPARATOR + Utils.uuid();
+  String stormroot=ConfigUtils.supervisorStormDistRoot(conf,stormId);
+  BlobStore blobStore=Utils.getNimbusBlobStore(conf,masterCodeDir,null);
+  try {
+    FileUtils.forceMkdir(new File(tmproot));
+    String stormCodeKey=ConfigUtils.masterStormCodeKey(stormId);
+    String stormConfKey=ConfigUtils.masterStormConfKey(stormId);
+    String codePath=ConfigUtils.supervisorStormCodePath(tmproot);
+    String confPath=ConfigUtils.supervisorStormConfPath(tmproot);
+    blobStore.readBlobTo(stormCodeKey,new FileOutputStream(codePath),null);
+    blobStore.readBlobTo(stormConfKey,new FileOutputStream(confPath),null);
+  }
+  finally {
+    blobStore.shutdown();
+  }
+  FileUtils.moveDirectory(new File(tmproot),new File(stormroot));
+  SupervisorUtils.setupStormCodeDir(conf,ConfigUtils.readSupervisorStormConf(conf,stormId),stormroot);
+  ClassLoader classloader=Thread.currentThread().getContextClassLoader();
+  String resourcesJar=resourcesJar();
+  URL url=classloader.getResource(ConfigUtils.RESOURCES_SUBDIR);
+  String targetDir=stormroot + Utils.FILE_PATH_SEPARATOR + ConfigUtils.RESOURCES_SUBDIR;
+  if (resourcesJar != null) {
+    LOG.info("Extracting resources from jar at {} to {}",resourcesJar,targetDir);
+    Utils.extractDirFromJar(resourcesJar,ConfigUtils.RESOURCES_SUBDIR,stormroot);
+  }
+ else   if (url != null) {
+    LOG.info("Copying resources at {} to {} ",url.toString(),targetDir);
+    if (url.getProtocol() == "jar") {
+      JarURLConnection urlConnection=(JarURLConnection)url.openConnection();
+      Utils.extractDirFromJar(urlConnection.getJarFileURL().getFile(),ConfigUtils.RESOURCES_SUBDIR,stormroot);
+    }
+ else {
+      FileUtils.copyDirectory(new File(url.getFile()),(new File(targetDir)));
+    }
+  }
+}

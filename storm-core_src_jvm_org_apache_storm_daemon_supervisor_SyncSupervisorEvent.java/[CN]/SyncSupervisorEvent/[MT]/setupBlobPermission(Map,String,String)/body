@@ -1,0 +1,6 @@
+{
+  if (Utils.getBoolean(Config.SUPERVISOR_RUN_WORKER_AS_USER,false)) {
+    String logPrefix="setup blob permissions for " + path;
+    SupervisorUtils.workerLauncherAndWait(conf,user,Arrays.asList("blob",path),null,logPrefix);
+  }
+}

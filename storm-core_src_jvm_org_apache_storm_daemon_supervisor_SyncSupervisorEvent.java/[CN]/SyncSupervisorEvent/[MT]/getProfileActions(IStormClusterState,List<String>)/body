@@ -1,0 +1,8 @@
+{
+  Map<String,List<ProfileRequest>> ret=new HashMap<String,List<ProfileRequest>>();
+  for (  String stormId : stormIds) {
+    List<ProfileRequest> profileRequests=stormClusterState.getTopologyProfileRequests(stormId);
+    ret.put(stormId,profileRequests);
+  }
+  return ret;
+}

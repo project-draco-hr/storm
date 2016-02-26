@@ -1,0 +1,35 @@
+{
+  Map<String,StateHeartbeat> workerIdHbstate=new HashMap<>();
+  Map conf=supervisorData.getConf();
+  LocalState localState=supervisorData.getLocalState();
+  Map<String,LSWorkerHeartbeat> idToHeartbeat=readWorkerHeartbeats(conf);
+  Map<String,Integer> approvedWorkers=localState.getApprovedWorkers();
+  Set<String> approvedIds=new HashSet<>();
+  if (approvedWorkers != null) {
+    approvedIds.addAll(approvedWorkers.keySet());
+  }
+  for (  Map.Entry<String,LSWorkerHeartbeat> entry : idToHeartbeat.entrySet()) {
+    String workerId=entry.getKey();
+    LSWorkerHeartbeat whb=entry.getValue();
+    State state;
+    if (whb == null) {
+      state=State.notStarted;
+    }
+ else     if (!approvedIds.contains(workerId) || !matchesAssignment(whb,assignedExecutors)) {
+      state=State.disallowed;
+    }
+ else     if (supervisorData.getDeadWorkers().contains(workerId)) {
+      LOG.info("Worker Process {}as died",workerId);
+      state=State.timedOut;
+    }
+ else     if ((now - whb.get_time_secs()) > (Integer)(conf.get(Config.SUPERVISOR_WORKER_TIMEOUT_SECS))) {
+      state=State.timedOut;
+    }
+ else {
+      state=State.valid;
+    }
+    LOG.debug("Worker:{} state:{} WorkerHeartbeat:{} at supervisor time-secs {}",workerId,state,whb.toString(),now);
+    workerIdHbstate.put(workerId,new StateHeartbeat(state,whb));
+  }
+  return workerIdHbstate;
+}

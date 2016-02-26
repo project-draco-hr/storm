@@ -1,0 +1,11 @@
+{
+  String ret=null;
+  String javaHome=System.getProperty("JAVA_HOME");
+  if (StringUtils.isNotBlank(javaHome)) {
+    ret=javaHome + Utils.FILE_PATH_SEPARATOR + "bin"+ Utils.FILE_PATH_SEPARATOR+ cmd;
+  }
+ else {
+    ret=cmd;
+  }
+  return ret;
+}

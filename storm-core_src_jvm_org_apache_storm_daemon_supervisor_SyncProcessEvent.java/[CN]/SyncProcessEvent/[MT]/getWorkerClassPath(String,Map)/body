@@ -1,0 +1,10 @@
+{
+  List<String> topoClasspath=new ArrayList<>();
+  Object object=stormConf.get(Config.TOPOLOGY_CLASSPATH);
+  if (object != null) {
+    topoClasspath.addAll((List<String>)object);
+  }
+  String classPath=Utils.workerClasspath();
+  String classAddPath=Utils.addToClasspath(classPath,Arrays.asList(stormJar));
+  return Utils.addToClasspath(classAddPath,topoClasspath);
+}

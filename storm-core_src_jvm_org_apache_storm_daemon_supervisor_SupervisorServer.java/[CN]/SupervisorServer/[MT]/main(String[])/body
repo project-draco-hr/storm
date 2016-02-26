@@ -1,0 +1,5 @@
+{
+  Utils.setupDefaultUncaughtExceptionHandler();
+  SupervisorServer instance=new SupervisorServer();
+  instance.distributeLaunch();
+}

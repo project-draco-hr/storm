@@ -1,0 +1,58 @@
+{
+  this.conf=conf;
+  this.sharedContext=sharedContext;
+  this.iSupervisor=iSupervisor;
+  this.active=true;
+  this.upTime=Utils.makeUptimeComputer();
+  this.stormVersion=VersionInfo.getVersion();
+  this.workerThreadPidsAtom=new ConcurrentHashMap<String,String>();
+  this.deadWorkers=new ConcurrentHashSet();
+  List<ACL> acls=null;
+  if (Utils.isZkAuthenticationConfiguredStormServer(conf)) {
+    acls=new ArrayList<>();
+    acls.add(ZooDefs.Ids.CREATOR_ALL_ACL.get(0));
+    acls.add(new ACL((ZooDefs.Perms.READ ^ ZooDefs.Perms.CREATE),ZooDefs.Ids.ANYONE_ID_UNSAFE));
+  }
+  try {
+    this.stormClusterState=ClusterUtils.mkStormClusterState(conf,acls,new ClusterStateContext(DaemonType.SUPERVISOR));
+  }
+ catch (  Exception e) {
+    LOG.error("supervisor can't create stormClusterState");
+    throw Utils.wrapInRuntime(e);
+  }
+  try {
+    this.localState=ConfigUtils.supervisorState(conf);
+    this.localizer=Utils.createLocalizer(conf,ConfigUtils.supervisorLocalDir(conf));
+  }
+ catch (  IOException e) {
+    throw Utils.wrapInRuntime(e);
+  }
+  this.supervisorId=iSupervisor.getSupervisorId();
+  this.assignmentId=iSupervisor.getAssignmentId();
+  try {
+    this.hostName=Utils.hostname(conf);
+  }
+ catch (  UnknownHostException e) {
+    throw Utils.wrapInRuntime(e);
+  }
+  this.currAssignment=new ConcurrentHashMap<>();
+  this.heartbeatTimer=new StormTimer(null,new DefaultUncaughtExceptionHandler());
+  this.eventTimer=new StormTimer(null,new DefaultUncaughtExceptionHandler());
+  this.blobUpdateTimer=new StormTimer("blob-update-timer",new DefaultUncaughtExceptionHandler());
+  this.assignmentVersions=new ConcurrentHashMap<>();
+  this.syncRetry=new AtomicInteger(0);
+  this.stormIdToProfileActions=new ConcurrentHashMap<>();
+  if (Utils.getBoolean(conf.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN_ENABLE),false)) {
+    try {
+      this.resourceIsolationManager=(CgroupManager)Utils.newInstance((String)conf.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN));
+      this.resourceIsolationManager.prepare(conf);
+      LOG.info("Using resource isolation plugin {} {}",conf.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN),resourceIsolationManager);
+    }
+ catch (    IOException e) {
+      throw Utils.wrapInRuntime(e);
+    }
+  }
+ else {
+    this.resourceIsolationManager=null;
+  }
+}

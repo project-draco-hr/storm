@@ -1,0 +1,19 @@
+{
+  if (StringUtils.isBlank(user)) {
+    throw new IllegalArgumentException("User cannot be blank when calling workerLauncher.");
+  }
+  String wlinitial=(String)(conf.get(Config.SUPERVISOR_WORKER_LAUNCHER));
+  String stormHome=System.getProperty("storm.home");
+  String wl;
+  if (StringUtils.isNotBlank(wlinitial)) {
+    wl=wlinitial;
+  }
+ else {
+    wl=stormHome + "/bin/worker-launcher";
+  }
+  List<String> commands=new ArrayList<>();
+  commands.add(wl);
+  commands.add(user);
+  commands.addAll(args);
+  return Utils.launchProcess(commands,environment,logPreFix,exitCodeCallback,dir);
+}

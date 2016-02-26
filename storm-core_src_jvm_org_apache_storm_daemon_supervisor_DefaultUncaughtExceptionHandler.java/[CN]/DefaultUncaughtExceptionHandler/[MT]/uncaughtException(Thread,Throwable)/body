@@ -1,0 +1,4 @@
+{
+  LOG.error("Error when processing event",e);
+  Utils.exitProcess(20,"Error when processing an event");
+}

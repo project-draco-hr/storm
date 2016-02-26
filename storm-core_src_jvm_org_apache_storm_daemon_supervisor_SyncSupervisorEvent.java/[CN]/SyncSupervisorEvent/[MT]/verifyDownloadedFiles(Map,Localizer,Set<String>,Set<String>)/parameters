@@ -1,0 +1,4 @@
+Map conf
+Localizer localizer
+Set<String> assignedStormIds
+Set<String> allDownloadedTopologyIds

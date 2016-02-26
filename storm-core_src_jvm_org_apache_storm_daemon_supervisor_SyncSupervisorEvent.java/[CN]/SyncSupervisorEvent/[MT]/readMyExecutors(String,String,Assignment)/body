@@ -1,0 +1,36 @@
+{
+  Map<Integer,LocalAssignment> portTasks=new HashMap<>();
+  Map<Long,WorkerResources> slotsResources=new HashMap<>();
+  Map<NodeInfo,WorkerResources> nodeInfoWorkerResourcesMap=assignment.get_worker_resources();
+  if (nodeInfoWorkerResourcesMap != null) {
+    for (    Map.Entry<NodeInfo,WorkerResources> entry : nodeInfoWorkerResourcesMap.entrySet()) {
+      if (entry.getKey().get_node().equals(assignmentId)) {
+        Set<Long> ports=entry.getKey().get_port();
+        for (        Long port : ports) {
+          slotsResources.put(port,entry.getValue());
+        }
+      }
+    }
+  }
+  Map<List<Long>,NodeInfo> executorNodePort=assignment.get_executor_node_port();
+  if (executorNodePort != null) {
+    for (    Map.Entry<List<Long>,NodeInfo> entry : executorNodePort.entrySet()) {
+      if (entry.getValue().get_node().equals(assignmentId)) {
+        for (        Long port : entry.getValue().get_port()) {
+          LocalAssignment localAssignment=portTasks.get(port);
+          if (localAssignment == null) {
+            List<ExecutorInfo> executors=new ArrayList<ExecutorInfo>();
+            localAssignment=new LocalAssignment(stormId,executors);
+            if (slotsResources.containsKey(port)) {
+              localAssignment.set_resources(slotsResources.get(port));
+            }
+            portTasks.put(port.intValue(),localAssignment);
+          }
+          List<ExecutorInfo> executorInfoList=localAssignment.get_executors();
+          executorInfoList.add(new ExecutorInfo(entry.getKey().get(0).intValue(),entry.getKey().get(entry.getKey().size() - 1).intValue()));
+        }
+      }
+    }
+  }
+  return portTasks;
+}

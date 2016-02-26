@@ -1,0 +1,4 @@
+{
+  this.assignmentVersions.clear();
+  this.assignmentVersions.putAll(assignmentVersions);
+}

@@ -1,0 +1,4 @@
+Map conf
+String stormconfPath
+Localizer localizer
+String tmpRoot

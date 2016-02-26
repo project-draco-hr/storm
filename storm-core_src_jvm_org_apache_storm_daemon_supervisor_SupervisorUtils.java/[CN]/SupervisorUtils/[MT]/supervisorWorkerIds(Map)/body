@@ -1,0 +1,4 @@
+{
+  String workerRoot=ConfigUtils.workerRoot(conf);
+  return Utils.readDirContents(workerRoot);
+}

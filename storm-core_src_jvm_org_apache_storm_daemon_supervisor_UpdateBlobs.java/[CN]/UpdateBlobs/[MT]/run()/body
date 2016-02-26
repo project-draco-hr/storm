@@ -1,0 +1,29 @@
+{
+  try {
+    Map conf=supervisorData.getConf();
+    Set<String> downloadedStormIds=SupervisorUtils.readDownLoadedStormIds(conf);
+    ConcurrentHashMap<Long,LocalAssignment> newAssignment=supervisorData.getCurrAssignment();
+    Set<String> assignedStormIds=new HashSet<>();
+    for (    LocalAssignment localAssignment : newAssignment.values()) {
+      assignedStormIds.add(localAssignment.get_topology_id());
+    }
+    for (    String stormId : downloadedStormIds) {
+      if (assignedStormIds.contains(stormId)) {
+        String stormRoot=ConfigUtils.supervisorStormDistRoot(conf,stormId);
+        LOG.debug("Checking Blob updates for storm topology id {} With target_dir: {}",stormId,stormRoot);
+        updateBlobsForTopology(conf,stormId,supervisorData.getLocalizer());
+      }
+    }
+  }
+ catch (  Exception e) {
+    if (Utils.exceptionCauseIsInstanceOf(TTransportException.class,e)) {
+      LOG.error("Network error while updating blobs, will retry again later",e);
+    }
+ else     if (Utils.exceptionCauseIsInstanceOf(NimbusLeaderNotFoundException.class,e)) {
+      LOG.error("Nimbus unavailable to update blobs, will retry again later",e);
+    }
+ else {
+      throw Utils.wrapInRuntime(e);
+    }
+  }
+}

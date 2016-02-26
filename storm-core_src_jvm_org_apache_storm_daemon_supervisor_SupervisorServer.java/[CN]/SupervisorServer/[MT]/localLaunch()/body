@@ -1,0 +1,17 @@
+{
+  LOG.info("Starting supervisor for storm version '{}'.",VersionInfo.getVersion());
+  SupervisorManger supervisorManager;
+  try {
+    Map<Object,Object> conf=Utils.readStormConfig();
+    if (!ConfigUtils.isLocalMode(conf)) {
+      throw new IllegalArgumentException("Cannot start server in distribute mode!");
+    }
+    ISupervisor iSupervisor=new StandaloneSupervisor();
+    supervisorManager=mkSupervisor(conf,null,iSupervisor);
+    if (supervisorManager != null)     Utils.addShutdownHookWithForceKillIn1Sec(supervisorManager);
+  }
+ catch (  Exception e) {
+    LOG.error("Failed to start supervisor\n",e);
+    System.exit(1);
+  }
+}

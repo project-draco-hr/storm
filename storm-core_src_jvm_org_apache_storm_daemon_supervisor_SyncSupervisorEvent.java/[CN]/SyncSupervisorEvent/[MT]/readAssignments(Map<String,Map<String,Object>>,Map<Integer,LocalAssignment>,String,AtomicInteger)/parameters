@@ -1,0 +1,4 @@
+Map<String,Map<String,Object>> assignmentsSnapshot
+Map<Integer,LocalAssignment> existingAssignment
+String assignmentId
+AtomicInteger retries

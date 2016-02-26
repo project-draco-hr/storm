@@ -1,0 +1,4 @@
+String stormId
+Integer port
+String workerId
+WorkerResources resources

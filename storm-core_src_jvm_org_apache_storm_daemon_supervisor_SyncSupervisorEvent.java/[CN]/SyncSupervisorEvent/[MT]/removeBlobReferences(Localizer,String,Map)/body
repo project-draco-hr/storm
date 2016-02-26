@@ -1,0 +1,13 @@
+{
+  Map stormConf=ConfigUtils.readSupervisorStormConf(conf,stormId);
+  Map<String,Map<String,Object>> blobstoreMap=(Map<String,Map<String,Object>>)stormConf.get(Config.TOPOLOGY_BLOBSTORE_MAP);
+  String user=(String)stormConf.get(Config.TOPOLOGY_SUBMITTER_USER);
+  String topoName=(String)stormConf.get(Config.TOPOLOGY_NAME);
+  if (blobstoreMap != null) {
+    for (    Map.Entry<String,Map<String,Object>> entry : blobstoreMap.entrySet()) {
+      String key=entry.getKey();
+      Map<String,Object> blobInfo=entry.getValue();
+      localizer.removeBlobReference(key,user,topoName,SupervisorUtils.isShouldUncompressBlob(blobInfo));
+    }
+  }
+}

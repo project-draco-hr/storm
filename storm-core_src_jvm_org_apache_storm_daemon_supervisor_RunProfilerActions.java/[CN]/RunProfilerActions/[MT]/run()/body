@@ -1,0 +1,67 @@
+{
+  Map<String,List<ProfileRequest>> stormIdToActions=supervisorData.getStormIdToProfileActions();
+  try {
+    for (    Map.Entry<String,List<ProfileRequest>> entry : stormIdToActions.entrySet()) {
+      String stormId=entry.getKey();
+      List<ProfileRequest> requests=entry.getValue();
+      if (requests != null) {
+        for (        ProfileRequest profileRequest : requests) {
+          if (profileRequest.get_nodeInfo().get_node().equals(hostName)) {
+            boolean stop=System.currentTimeMillis() > profileRequest.get_time_stamp() ? true : false;
+            Long port=profileRequest.get_nodeInfo().get_port().iterator().next();
+            String targetDir=ConfigUtils.workerArtifactsRoot(conf,String.valueOf(port));
+            Map stormConf=ConfigUtils.readSupervisorStormConf(conf,stormId);
+            String user=null;
+            if (stormConf.get(Config.TOPOLOGY_SUBMITTER_USER) != null) {
+              user=(String)(stormConf.get(Config.TOPOLOGY_SUBMITTER_USER));
+            }
+            Map<String,String> env=null;
+            if (stormConf.get(Config.TOPOLOGY_ENVIRONMENT) != null) {
+              env=(Map<String,String>)stormConf.get(Config.TOPOLOGY_ENVIRONMENT);
+            }
+ else {
+              env=new HashMap<String,String>();
+            }
+            String str=ConfigUtils.workerArtifactsPidPath(conf,stormId,port.intValue());
+            StringBuilder stringBuilder=new StringBuilder();
+            FileReader reader=null;
+            BufferedReader br=null;
+            try {
+              reader=new FileReader(str);
+              br=new BufferedReader(reader);
+              int c;
+              while ((c=br.read()) >= 0) {
+                stringBuilder.append(c);
+              }
+            }
+ catch (            IOException e) {
+              if (reader != null)               reader.close();
+              if (br != null)               br.close();
+            }
+            String workerPid=stringBuilder.toString().trim();
+            ProfileAction profileAction=profileRequest.get_action();
+            String logPrefix="ProfilerAction process " + stormId + ":"+ port+ " PROFILER_ACTION: "+ profileAction+ " ";
+            String command=mkCommand(profileAction,stop,workerPid,targetDir);
+            List<String> listCommand=new ArrayList<>();
+            if (command != null) {
+              listCommand.addAll(Arrays.asList(command.split(" ")));
+            }
+            try {
+              ActionExitCallback actionExitCallback=new ActionExitCallback(stormId,profileRequest,logPrefix);
+              launchProfilerActionForWorker(user,targetDir,listCommand,env,actionExitCallback,logPrefix);
+            }
+ catch (            IOException e) {
+              LOG.error("Error in processing ProfilerAction '{}' for {}:{}, will retry later",profileAction,stormId,port);
+            }
+catch (            RuntimeException e) {
+              LOG.error("Error in processing ProfilerAction '{}' for {}:{}, will retry later",profileAction,stormId,port);
+            }
+          }
+        }
+      }
+    }
+  }
+ catch (  Exception e) {
+    LOG.error("Error running profiler actions, will retry again later");
+  }
+}

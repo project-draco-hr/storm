@@ -1,0 +1,9 @@
+{
+  Set<String> stormIds=new HashSet<>();
+  String path=ConfigUtils.supervisorStormDistRoot(conf);
+  Collection<String> rets=Utils.readDirContents(path);
+  for (  String ret : rets) {
+    stormIds.add(URLDecoder.decode(ret));
+  }
+  return stormIds;
+}

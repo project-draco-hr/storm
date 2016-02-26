@@ -1,0 +1,5 @@
+Object value
+String workerId
+String stormId
+Integer port
+int memOnheap

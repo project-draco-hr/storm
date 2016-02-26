@@ -1,0 +1,4 @@
+{
+  this.currAssignment.clear();
+  this.currAssignment.putAll(currAssignment);
+}

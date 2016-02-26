@@ -1,0 +1,5 @@
+{
+  this.stormId=stormId;
+  this.profileRequest=profileRequest;
+  this.logPrefix=logPrefix;
+}

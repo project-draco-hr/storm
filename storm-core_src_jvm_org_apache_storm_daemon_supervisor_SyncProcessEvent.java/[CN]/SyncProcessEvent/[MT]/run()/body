@@ -1,0 +1,49 @@
+{
+  LOG.debug("Syncing processes");
+  try {
+    Map conf=supervisorData.getConf();
+    Map<Integer,LocalAssignment> assignedExecutors=localState.getLocalAssignmentsMap();
+    if (assignedExecutors == null) {
+      assignedExecutors=new HashMap<>();
+    }
+    int now=Time.currentTimeSecs();
+    Map<String,StateHeartbeat> localWorkerStats=getLocalWorkerStats(assignedExecutors,now);
+    Set<String> keeperWorkerIds=new HashSet<>();
+    Set<Integer> keepPorts=new HashSet<>();
+    for (    Map.Entry<String,StateHeartbeat> entry : localWorkerStats.entrySet()) {
+      StateHeartbeat stateHeartbeat=entry.getValue();
+      if (stateHeartbeat.getState() == State.valid) {
+        keeperWorkerIds.add(entry.getKey());
+        keepPorts.add(stateHeartbeat.getHeartbeat().get_port());
+      }
+    }
+    Map<Integer,LocalAssignment> reassignExecutors=getReassignExecutors(assignedExecutors,keepPorts);
+    Map<Integer,String> newWorkerIds=new HashMap<>();
+    for (    Integer port : reassignExecutors.keySet()) {
+      newWorkerIds.put(port,Utils.uuid());
+    }
+    LOG.debug("Syncing processes");
+    LOG.debug("Assigned executors: {}",assignedExecutors);
+    LOG.debug("Allocated: {}",localWorkerStats);
+    for (    Map.Entry<String,StateHeartbeat> entry : localWorkerStats.entrySet()) {
+      StateHeartbeat stateHeartbeat=entry.getValue();
+      if (stateHeartbeat.getState() != State.valid) {
+        LOG.info("Shutting down and clearing state for id {}, Current supervisor time: {}, State: {}, Heartbeat: {}",entry.getKey(),now,stateHeartbeat.getState(),stateHeartbeat.getHeartbeat());
+        shutWorker(supervisorData,entry.getKey());
+      }
+    }
+    Map<String,Integer> newWorkerPortToIds=startNewWorkers(newWorkerIds,reassignExecutors);
+    Map<String,Integer> allWorkerPortToIds=new HashMap<>();
+    Map<String,Integer> approvedWorkers=localState.getApprovedWorkers();
+    for (    String keeper : keeperWorkerIds) {
+      allWorkerPortToIds.put(keeper,approvedWorkers.get(keeper));
+    }
+    allWorkerPortToIds.putAll(newWorkerPortToIds);
+    localState.setApprovedWorkers(allWorkerPortToIds);
+    waitForWorkersLaunch(conf,newWorkerPortToIds.keySet());
+  }
+ catch (  Exception e) {
+    LOG.error("Failed Sync Process",e);
+    throw Utils.wrapInRuntime(e);
+  }
+}

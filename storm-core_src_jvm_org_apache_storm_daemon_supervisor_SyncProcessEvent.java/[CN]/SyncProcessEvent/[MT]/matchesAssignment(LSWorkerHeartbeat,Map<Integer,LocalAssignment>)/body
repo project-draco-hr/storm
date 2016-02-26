@@ -1,0 +1,12 @@
+{
+  LocalAssignment localAssignment=assignedExecutors.get(whb.get_port());
+  if (localAssignment == null || localAssignment.get_topology_id() != whb.get_topology_id()) {
+    return false;
+  }
+  List<ExecutorInfo> executorInfos=new ArrayList<>();
+  executorInfos.addAll(whb.get_executors());
+  executorInfos.remove(new ExecutorInfo(-1,-1));
+  List<ExecutorInfo> localExecuorInfos=localAssignment.get_executors();
+  if (executorInfos != localExecuorInfos)   return false;
+  return true;
+}

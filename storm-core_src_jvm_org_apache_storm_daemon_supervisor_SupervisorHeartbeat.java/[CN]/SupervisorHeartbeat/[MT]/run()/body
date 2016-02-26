@@ -1,0 +1,4 @@
+{
+  SupervisorInfo supervisorInfo=update(conf,supervisorData);
+  stormClusterState.supervisorHeartbeat(supervisorId,supervisorInfo);
+}

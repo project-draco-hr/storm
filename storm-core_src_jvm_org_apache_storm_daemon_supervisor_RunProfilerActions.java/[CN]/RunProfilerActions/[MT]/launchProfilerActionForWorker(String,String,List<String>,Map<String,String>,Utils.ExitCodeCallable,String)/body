@@ -1,0 +1,23 @@
+{
+  File targetFile=new File(targetDir);
+  if (Utils.getBoolean(conf.get(Config.SUPERVISOR_RUN_WORKER_AS_USER),false)) {
+    LOG.info("Running as user:{} command:{}",user,commands);
+    String containerFile=Utils.containerFilePath(targetDir);
+    if (Utils.checkFileExists(containerFile)) {
+      SupervisorUtils.rmrAsUser(conf,containerFile,containerFile);
+    }
+    String scriptFile=Utils.scriptFilePath(targetDir);
+    if (Utils.checkFileExists(scriptFile)) {
+      SupervisorUtils.rmrAsUser(conf,scriptFile,scriptFile);
+    }
+    String script=Utils.writeScript(targetDir,commands,environment);
+    List<String> newCommands=new ArrayList<>();
+    newCommands.add("profiler");
+    newCommands.add(targetDir);
+    newCommands.add(script);
+    SupervisorUtils.workerLauncher(conf,user,newCommands,environment,logPrefix,exitCodeCallable,targetFile);
+  }
+ else {
+    Utils.launchProcess(commands,environment,logPrefix,exitCodeCallable,targetFile);
+  }
+}

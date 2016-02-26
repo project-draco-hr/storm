@@ -1,0 +1,8 @@
+{
+  List<PreparableReporter> preparableReporters=MetricsUtils.getPreparableReporters(conf);
+  for (  PreparableReporter reporter : preparableReporters) {
+    reporter.prepare(new MetricRegistry(),conf);
+    reporter.start();
+  }
+  LOG.info("Started statistics report plugin...");
+}
