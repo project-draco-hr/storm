@@ -1,0 +1,11 @@
+{
+  Set<SubSystemType> result=new HashSet<SubSystemType>();
+  String[] subSystems=str.split(",");
+  for (  String subSystem : subSystems) {
+    SubSystemType type=SubSystemType.getSubSystem(subSystem);
+    if (type != null) {
+      result.add(type);
+    }
+  }
+  return result;
+}

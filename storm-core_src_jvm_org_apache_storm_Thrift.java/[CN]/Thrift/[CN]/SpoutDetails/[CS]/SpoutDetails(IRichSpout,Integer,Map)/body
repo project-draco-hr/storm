@@ -1,0 +1,5 @@
+{
+  this.spout=spout;
+  this.parallelism=parallelism;
+  this.conf=conf;
+}

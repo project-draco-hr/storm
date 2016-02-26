@@ -1,0 +1,5 @@
+{
+  if (port > 0) {
+    server.addConnector(mkSslConnector(port,ksPath,ksPassword,ksType,keyPassword,tsPath,tsPassword,tsType,needClientAuth,wantClientAuth));
+  }
+}

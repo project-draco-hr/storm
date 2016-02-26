@@ -1,0 +1,13 @@
+{
+  SelectChannelConnector connector=new SelectChannelConnector();
+  connector.setPort(Utils.getInt(port,80));
+  connector.setHost(host);
+  connector.setMaxIdleTime(200000);
+  Server server=new Server();
+  server.addConnector(connector);
+  server.setSendDateHeader(true);
+  if (httpsPort != null && httpsPort > 0) {
+    removeNonSslConnector(server);
+  }
+  return server;
+}

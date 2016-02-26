@@ -1,0 +1,4 @@
+{
+  String output=CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,CPUSET_MEMS)).get(0);
+  return parseNums(output);
+}

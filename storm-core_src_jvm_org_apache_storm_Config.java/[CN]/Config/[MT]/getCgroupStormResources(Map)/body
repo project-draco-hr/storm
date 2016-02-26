@@ -1,0 +1,7 @@
+{
+  ArrayList<String> ret=new ArrayList<String>();
+  for (  String entry : ((Iterable<String>)conf.get(Config.STORM_CGROUP_RESOURCES))) {
+    ret.add(entry);
+  }
+  return ret;
+}

@@ -1,0 +1,4 @@
+{
+  SpoutDetails details=new SpoutDetails(spout,parallelismHint,conf);
+  return details;
+}

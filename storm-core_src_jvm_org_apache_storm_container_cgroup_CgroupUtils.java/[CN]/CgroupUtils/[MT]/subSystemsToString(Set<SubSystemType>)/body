@@ -1,0 +1,10 @@
+{
+  StringBuilder sb=new StringBuilder();
+  if (subSystems.size() == 0) {
+    return sb.toString();
+  }
+  for (  SubSystemType type : subSystems) {
+    sb.append(type.name()).append(",");
+  }
+  return sb.toString().substring(0,sb.length() - 1);
+}

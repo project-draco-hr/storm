@@ -1,0 +1,7 @@
+{
+  LSTopoHistoryList lsTopoHistoryListWrapper=(LSTopoHistoryList)get(LS_TOPO_HISTORY);
+  if (null != lsTopoHistoryListWrapper) {
+    return lsTopoHistoryListWrapper.get_topo_history();
+  }
+  return null;
+}

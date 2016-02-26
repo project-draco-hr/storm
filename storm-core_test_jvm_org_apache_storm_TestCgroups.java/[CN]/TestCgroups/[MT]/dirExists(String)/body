@@ -1,0 +1,4 @@
+{
+  File path=new File(rawPath);
+  return path.exists() && path.isDirectory();
+}

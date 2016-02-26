@@ -1,0 +1,5 @@
+{
+  for (  Entry<GlobalStreamId,Grouping> entry : inputs.entrySet()) {
+    declarer.grouping(entry.getKey(),entry.getValue());
+  }
+}

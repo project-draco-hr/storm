@@ -1,0 +1,3 @@
+{
+  return "[" + e.get_task_start() + "-"+ e.get_task_end()+ "]";
+}

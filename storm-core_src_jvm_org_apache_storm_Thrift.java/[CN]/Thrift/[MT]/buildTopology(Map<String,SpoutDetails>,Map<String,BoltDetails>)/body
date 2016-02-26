@@ -1,0 +1,23 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  for (  Entry<String,SpoutDetails> entry : spoutMap.entrySet()) {
+    String spoutID=entry.getKey();
+    SpoutDetails spec=entry.getValue();
+    SpoutDeclarer spoutDeclarer=builder.setSpout(spoutID,spec.getSpout(),spec.getParallelism());
+    spoutDeclarer.addConfigurations(spec.getConf());
+  }
+  for (  Entry<String,BoltDetails> entry : boltMap.entrySet()) {
+    String spoutID=entry.getKey();
+    BoltDetails spec=entry.getValue();
+    BoltDeclarer boltDeclarer=null;
+    if (spec.bolt instanceof IRichBolt) {
+      boltDeclarer=builder.setBolt(spoutID,(IRichBolt)spec.getBolt(),spec.getParallelism());
+    }
+ else {
+      boltDeclarer=builder.setBolt(spoutID,(IBasicBolt)spec.getBolt(),spec.getParallelism());
+    }
+    boltDeclarer.addConfigurations(spec.getConf());
+    addInputs(boltDeclarer,spec.getInputs());
+  }
+  return builder.createTopology();
+}

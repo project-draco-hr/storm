@@ -8,8 +8,11 @@
   HashMap<String,Object> ret=new HashMap<>();
   for (  Opt opt : opts) {
     Object current=null;
-    for (    String val : cl.getOptionValues(opt.shortName)) {
-      current=opt.process(current,val);
+    String[] strings=cl.getOptionValues(opt.shortName);
+    if (strings != null) {
+      for (      String val : strings) {
+        current=opt.process(current,val);
+      }
     }
     if (current == null) {
       current=opt.defaultValue;

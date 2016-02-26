@@ -1,0 +1,4 @@
+{
+  byte[] data=Files.readAllBytes(Paths.get(filePath));
+  return new String(data).trim();
+}

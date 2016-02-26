@@ -1,0 +1,9 @@
+{
+  LSTopoHistoryList lsTopoHistoryListWrapper=(LSTopoHistoryList)get(LS_TOPO_HISTORY);
+  List<LSTopoHistory> currentTopoHistoryList=new ArrayList<>();
+  if (null != lsTopoHistoryListWrapper) {
+    currentTopoHistoryList.addAll(lsTopoHistoryListWrapper.get_topo_history());
+  }
+  currentTopoHistoryList.add(lsTopoHistory);
+  put(LS_TOPO_HISTORY,new LSTopoHistoryList(currentTopoHistoryList));
+}

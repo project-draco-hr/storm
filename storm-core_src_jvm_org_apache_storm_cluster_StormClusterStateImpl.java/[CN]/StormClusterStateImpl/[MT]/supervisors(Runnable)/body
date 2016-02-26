@@ -1,0 +1,6 @@
+{
+  if (callback != null) {
+    supervisorsCallback.set(callback);
+  }
+  return stateStorage.get_children(ClusterUtils.SUPERVISORS_SUBTREE,callback != null);
+}

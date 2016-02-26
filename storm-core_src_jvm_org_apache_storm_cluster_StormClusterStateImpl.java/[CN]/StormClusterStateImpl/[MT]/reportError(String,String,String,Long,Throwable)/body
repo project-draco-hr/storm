@@ -1,0 +1,21 @@
+{
+  String path=ClusterUtils.errorPath(stormId,componentId);
+  String lastErrorPath=ClusterUtils.lastErrorPath(stormId,componentId);
+  ErrorInfo errorInfo=new ErrorInfo(ClusterUtils.stringifyError(error),Time.currentTimeSecs());
+  errorInfo.set_host(node);
+  errorInfo.set_port(port.intValue());
+  byte[] serData=Utils.serialize(errorInfo);
+  stateStorage.mkdirs(path,acls);
+  stateStorage.create_sequential(path + ClusterUtils.ZK_SEPERATOR + "e",serData,acls);
+  stateStorage.set_data(lastErrorPath,serData,acls);
+  List<String> childrens=stateStorage.get_children(path,false);
+  Collections.sort(childrens,new Comparator<String>(){
+    public int compare(    String arg0,    String arg1){
+      return Long.compare(Long.parseLong(arg0.substring(1)),Long.parseLong(arg1.substring(1)));
+    }
+  }
+);
+  while (childrens.size() > 10) {
+    stateStorage.delete_node(path + ClusterUtils.ZK_SEPERATOR + childrens.remove(0));
+  }
+}

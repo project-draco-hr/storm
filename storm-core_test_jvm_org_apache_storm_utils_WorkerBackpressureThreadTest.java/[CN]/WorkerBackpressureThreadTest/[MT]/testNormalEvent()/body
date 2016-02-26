@@ -1,0 +1,18 @@
+{
+  Object trigger=new Object();
+  AtomicLong workerData=new AtomicLong(0);
+  WorkerBackpressureCallback callback=new WorkerBackpressureCallback(){
+    @Override public void onEvent(    Object obj){
+      ((AtomicLong)obj).getAndDecrement();
+    }
+  }
+;
+  WorkerBackpressureThread workerBackpressureThread=new WorkerBackpressureThread(trigger,workerData,callback);
+  workerBackpressureThread.start();
+  WorkerBackpressureThread.notifyBackpressureChecker(trigger);
+  long start=System.currentTimeMillis();
+  while (workerData.get() == 0) {
+    assertTrue("Timeout",(System.currentTimeMillis() - start) < 1000);
+    Thread.sleep(100);
+  }
+}

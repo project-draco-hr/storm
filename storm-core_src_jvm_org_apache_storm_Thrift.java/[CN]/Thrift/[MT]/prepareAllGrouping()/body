@@ -1,0 +1,3 @@
+{
+  return Grouping.all(new NullStruct());
+}

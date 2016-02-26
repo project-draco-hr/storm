@@ -1,0 +1,4 @@
+{
+  Integer ret=Zookeeper.getVersion(zkReader,path,watch);
+  return ret;
+}

@@ -1,0 +1,27 @@
+{
+  if (this == obj) {
+    return true;
+  }
+  if (obj == null) {
+    return false;
+  }
+  if (getClass() != obj.getClass()) {
+    return false;
+  }
+  Record other=(Record)obj;
+  if (accesses != other.accesses) {
+    return false;
+  }
+  if (device == null) {
+    if (other.device != null) {
+      return false;
+    }
+  }
+ else   if (!device.equals(other.device)) {
+    return false;
+  }
+  if (type != other.type) {
+    return false;
+  }
+  return true;
+}

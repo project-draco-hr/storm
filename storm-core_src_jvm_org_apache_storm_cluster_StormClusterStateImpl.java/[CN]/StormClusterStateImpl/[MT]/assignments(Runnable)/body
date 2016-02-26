@@ -1,0 +1,6 @@
+{
+  if (callback != null) {
+    assignmentsCallback.set(callback);
+  }
+  return stateStorage.get_children(ClusterUtils.ASSIGNMENTS_SUBTREE,callback != null);
+}

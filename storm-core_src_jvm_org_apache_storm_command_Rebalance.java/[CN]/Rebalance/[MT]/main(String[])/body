@@ -1,0 +1,24 @@
+{
+  Map<String,Object> cl=CLI.opt("w","wait",null,CLI.AS_INT).opt("n","num-workers",null,CLI.AS_INT).opt("e","executor",null,new ExecutorParser(),CLI.INTO_MAP).arg("topologyName",CLI.FIRST_WINS).parse(args);
+  final String name=(String)cl.get("topologyName");
+  final RebalanceOptions rebalanceOptions=new RebalanceOptions();
+  Integer wait=(Integer)cl.get("w");
+  Integer numWorkers=(Integer)cl.get("n");
+  Map<String,Integer> numExecutors=(Map<String,Integer>)cl.get("e");
+  if (null != wait) {
+    rebalanceOptions.set_wait_secs(wait);
+  }
+  if (null != numWorkers) {
+    rebalanceOptions.set_num_workers(numWorkers);
+  }
+  if (null != numExecutors) {
+    rebalanceOptions.set_num_executors(numExecutors);
+  }
+  NimbusClient.withConfiguredClient(new NimbusClient.WithNimbus(){
+    @Override public void run(    Nimbus.Client nimbus) throws Exception {
+      nimbus.rebalance(name,rebalanceOptions);
+      LOG.info("Topology {} is rebalancing",name);
+    }
+  }
+);
+}

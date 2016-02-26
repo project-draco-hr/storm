@@ -1,0 +1,4 @@
+{
+  SetLogLevel.LogLevelsParser logLevelsParser=new SetLogLevel.LogLevelsParser(LogLevelAction.UPDATE);
+  logLevelsParser.parse("com.foo.bar=CRITICAL");
+}

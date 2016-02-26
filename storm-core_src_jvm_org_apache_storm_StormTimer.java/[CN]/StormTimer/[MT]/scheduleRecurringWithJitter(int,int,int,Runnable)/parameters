@@ -1,0 +1,4 @@
+int delaySecs
+int recurSecs
+int jitterMs
+Runnable func

@@ -1,0 +1,8 @@
+{
+  final int prime=31;
+  int result=1;
+  result=prime * result + nrPeriods;
+  result=prime * result + nrThrottled;
+  result=prime * result + throttledTime;
+  return result;
+}

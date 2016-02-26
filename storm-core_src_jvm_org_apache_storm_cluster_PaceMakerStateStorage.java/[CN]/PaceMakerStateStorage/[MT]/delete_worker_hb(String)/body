@@ -1,0 +1,21 @@
+{
+  int retry=maxRetries;
+  while (true) {
+    try {
+      HBMessage message=new HBMessage(HBServerMessageType.DELETE_PATH,HBMessageData.path(path));
+      HBMessage response=pacemakerClient.send(message);
+      if (response.get_type() != HBServerMessageType.DELETE_PATH_RESPONSE) {
+        throw new HBExecutionException("Invalid Response Type");
+      }
+      LOG.debug("Successful get_worker_hb");
+      break;
+    }
+ catch (    Exception e) {
+      if (retry <= 0) {
+        throw Utils.wrapInRuntime(e);
+      }
+      retry--;
+      LOG.error("{} Failed to delete_worker_hb. Will make {} more attempts.",e.getMessage(),retry);
+    }
+  }
+}

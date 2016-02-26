@@ -1,0 +1,8 @@
+{
+  Zookeeper.addListener(zkReader,new ConnectionStateListener(){
+    @Override public void stateChanged(    CuratorFramework curatorFramework,    ConnectionState connectionState){
+      listener.stateChanged(curatorFramework,connectionState);
+    }
+  }
+);
+}

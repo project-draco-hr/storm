@@ -1,0 +1,9 @@
+{
+  String str=CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,CPUACCT_USAGE_PERCPU)).get(0);
+  String[] strArgs=str.split(" ");
+  Long[] result=new Long[strArgs.length];
+  for (int i=0; i < result.length; i++) {
+    result[i]=Long.parseLong(strArgs[i]);
+  }
+  return result;
+}

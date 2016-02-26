@@ -1,0 +1,3 @@
+{
+  return Integer.parseInt(CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,MEMORY_SWAPPINESS)).get(0));
+}
