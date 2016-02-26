@@ -1,0 +1,10 @@
+{
+  try {
+    Map conf=ConfigUtils.readStormConfig();
+    handler.launchServer(true,conf);
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+  serviceId=ServiceRegistry.registerService(handler);
+}

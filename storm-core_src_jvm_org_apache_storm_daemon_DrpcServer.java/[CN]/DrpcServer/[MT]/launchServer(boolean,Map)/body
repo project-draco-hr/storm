@@ -1,0 +1,7 @@
+{
+  LOG.info("Starting drpc server for storm version {}",VersionInfo.getVersion());
+  this.conf=conf;
+  authorizer=mkAuthorizationHandler((String)(conf.get(Config.DRPC_AUTHORIZER)),conf);
+  initClearThread();
+  if (!isLocal)   initServer();
+}
