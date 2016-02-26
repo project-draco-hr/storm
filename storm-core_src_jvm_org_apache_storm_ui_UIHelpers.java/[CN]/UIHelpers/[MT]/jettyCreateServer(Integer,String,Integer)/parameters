@@ -1,0 +1,3 @@
+Integer port
+String host
+Integer httpsPort

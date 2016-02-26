@@ -1,0 +1,8 @@
+{
+  for (  Connector c : server.getConnectors()) {
+    if (c != null && !(c instanceof SslSocketConnector)) {
+      server.removeConnector(c);
+    }
+  }
+  return server;
+}

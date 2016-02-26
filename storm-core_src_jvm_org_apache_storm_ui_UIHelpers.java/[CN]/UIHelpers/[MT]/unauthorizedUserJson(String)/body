@@ -1,0 +1,3 @@
+{
+  return ImmutableMap.of("error","No Authorization","errorMessage",String.format("User %s is not authorized.",user));
+}

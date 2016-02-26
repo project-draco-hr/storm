@@ -1,0 +1,3 @@
+{
+  return prettyUptimeStr(String.valueOf(secs),PRETTY_SEC_DIVIDERS);
+}

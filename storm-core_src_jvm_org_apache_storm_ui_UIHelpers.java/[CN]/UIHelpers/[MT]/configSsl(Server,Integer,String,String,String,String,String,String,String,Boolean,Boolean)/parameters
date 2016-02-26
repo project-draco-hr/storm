@@ -1,0 +1,11 @@
+Server server
+Integer port
+String ksPath
+String ksPassword
+String ksType
+String keyPassword
+String tsPath
+String tsPassword
+String tsType
+Boolean needClientAuth
+Boolean wantClientAuth

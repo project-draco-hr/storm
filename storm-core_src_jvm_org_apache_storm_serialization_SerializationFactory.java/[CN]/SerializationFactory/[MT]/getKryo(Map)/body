@@ -19,6 +19,7 @@
   k.register(Values.class);
   k.register(org.apache.storm.metric.api.IMetricsConsumer.DataPoint.class);
   k.register(org.apache.storm.metric.api.IMetricsConsumer.TaskInfo.class);
+  k.register(ConsList.class);
   try {
     JavaBridge.registerPrimitives(k);
     JavaBridge.registerCollections(k);
