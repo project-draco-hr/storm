@@ -1,0 +1,5 @@
+{
+  Assert.assertTrue(getFields().contains("foo"));
+  Assert.assertTrue(getFields().contains("bar"));
+  Assert.assertFalse(getFields().contains("baz"));
+}

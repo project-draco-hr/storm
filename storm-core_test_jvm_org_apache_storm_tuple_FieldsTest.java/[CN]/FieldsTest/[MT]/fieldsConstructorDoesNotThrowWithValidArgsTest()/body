@@ -1,0 +1,4 @@
+{
+  Assert.assertEquals(new Fields("foo","bar").size(),2);
+  Assert.assertEquals(new Fields(new String[]{"foo","bar"}).size(),2);
+}

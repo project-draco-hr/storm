@@ -1,0 +1,8 @@
+{
+  Iterator<String> fieldIter=getFields().iterator();
+  Assert.assertTrue("First item is foo",fieldIter.hasNext());
+  Assert.assertEquals(fieldIter.next(),"foo");
+  Assert.assertTrue("Second item is bar",fieldIter.hasNext());
+  Assert.assertEquals(fieldIter.next(),"bar");
+  Assert.assertFalse("At end. hasNext should return false",fieldIter.hasNext());
+}
