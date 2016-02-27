@@ -1,34 +1,32 @@
 {
   meterExecuteCalls.mark();
-  LOG.debug("Received DRPC request for {} {} at {} ",functionName,funcArgs,System.currentTimeMillis());
+  LOG.debug("Received DRPC request for {} ({}) at {} ",functionName,funcArgs,System.currentTimeMillis());
   Map<String,String> map=new HashMap<>();
   map.put(DRPCAuthorizerBase.FUNCTION_NAME,functionName);
   checkAuthorization(authorizer,map,"execute");
-  int idinc=this.ctr.incrementAndGet();
-  int maxvalue=1000000000;
-  int newid=idinc % maxvalue;
-  if (idinc != newid) {
-    this.ctr.compareAndSet(idinc,newid);
+  int newid=0;
+  int orig=0;
+  do {
+    orig=ctr.get();
+    newid=(orig + 1) % 1000000000;
   }
+ while (!ctr.compareAndSet(orig,newid));
   String strid=String.valueOf(newid);
-  Semaphore sem=new Semaphore(0);
   DRPCRequest req=new DRPCRequest(funcArgs,strid);
-  this.idtoStart.put(strid,Time.currentTimeSecs());
-  this.idtoSem.put(strid,sem);
-  this.idtoFunction.put(strid,functionName);
-  this.idtoRequest.put(strid,req);
+  InternalRequest internalRequest=new InternalRequest(functionName,req);
+  this.outstandingRequests.put(strid,internalRequest);
   ConcurrentLinkedQueue<DRPCRequest> queue=acquireQueue(functionName);
   queue.add(req);
   LOG.debug("Waiting for DRPC request for {} {} at {}",functionName,funcArgs,System.currentTimeMillis());
   try {
-    sem.acquire();
+    internalRequest.sem.acquire();
   }
  catch (  InterruptedException e) {
     LOG.error("acquire fail ",e);
   }
   LOG.debug("Acquired for DRPC request for {} {} at {}",functionName,funcArgs,System.currentTimeMillis());
-  Object result=this.idtoResult.get(strid);
-  LOG.info("Returning for DRPC request for " + functionName + " "+ funcArgs+ " at "+ (System.currentTimeMillis()));
+  Object result=internalRequest.result;
+  LOG.debug("Returning for DRPC request for " + functionName + " "+ funcArgs+ " at "+ (System.currentTimeMillis()));
   this.cleanup(strid);
   if (result instanceof DRPCExecutionException) {
     throw (DRPCExecutionException)result;
@@ -36,5 +34,10 @@
   if (result == null) {
     throw new DRPCExecutionException("Request timed out");
   }
-  return String.valueOf(result);
+  try {
+    return String.valueOf(result);
+  }
+ catch (  Exception e) {
+    throw new DRPCExecutionException(e.getMessage());
+  }
 }

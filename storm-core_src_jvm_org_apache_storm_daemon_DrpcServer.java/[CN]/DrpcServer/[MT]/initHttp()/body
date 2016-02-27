@@ -1,27 +1,6 @@
 {
+  LOG.info("Starting  RPC Http servers...");
   Integer drpcHttpPort=(Integer)conf.get(Config.DRPC_HTTP_PORT);
-  handlerServer=initHandlerServer(conf,this);
-  invokeServer=initInvokeServer(conf,this);
-  httpCredsHandler=AuthUtils.GetDrpcHttpCredentialsPlugin(conf);
-  Utils.addShutdownHookWithForceKillIn1Sec(new Runnable(){
-    @Override public void run(){
-      if (handlerServer != null) {
-        handlerServer.stop();
-      }
- else {
-        invokeServer.stop();
-      }
-    }
-  }
-);
-  LOG.info("Starting Distributed RPC servers...");
-  LOG.info("Starting Distributed RPC servers...");
-  new Thread(new Runnable(){
-    @Override public void run(){
-      invokeServer.serve();
-    }
-  }
-).start();
   if (drpcHttpPort != null && drpcHttpPort > 0) {
     String filterClass=(String)(conf.get(Config.DRPC_HTTP_FILTER));
     Map<String,String> filterParams=(Map<String,String>)(conf.get(Config.DRPC_HTTP_FILTER_PARAMS));
@@ -45,11 +24,4 @@
     }
 );
   }
-  List<PreparableReporter> reporters=MetricsUtils.getPreparableReporters(conf);
-  for (  PreparableReporter reporter : reporters) {
-    reporter.prepare(new MetricRegistry(),conf);
-    reporter.start();
-    LOG.info("Started statistics report plugin...");
-  }
-  if (handlerServer != null)   handlerServer.serve();
 }

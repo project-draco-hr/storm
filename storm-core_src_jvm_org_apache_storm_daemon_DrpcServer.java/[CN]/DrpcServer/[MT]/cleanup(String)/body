@@ -1,7 +1,3 @@
 {
-  idtoSem.remove(id);
-  idtoResult.remove(id);
-  idtoStart.remove(id);
-  idtoFunction.remove(id);
-  idtoRequest.remove(id);
+  outstandingRequests.remove(id);
 }

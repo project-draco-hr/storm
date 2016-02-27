@@ -1,8 +1,11 @@
 {
   ConcurrentLinkedQueue<DRPCRequest> reqQueue=requestQueues.get(function);
   if (reqQueue == null) {
-    reqQueue=new ConcurrentLinkedQueue<DRPCRequest>();
-    requestQueues.put(function,reqQueue);
+    reqQueue=new ConcurrentLinkedQueue<>();
+    ConcurrentLinkedQueue<DRPCRequest> old=requestQueues.putIfAbsent(function,reqQueue);
+    if (old != null) {
+      reqQueue=old;
+    }
   }
   return reqQueue;
 }

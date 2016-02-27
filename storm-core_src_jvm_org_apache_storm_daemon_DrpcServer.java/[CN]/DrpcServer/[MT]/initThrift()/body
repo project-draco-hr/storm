@@ -1,0 +1,30 @@
+{
+  handlerServer=initHandlerServer(conf,this);
+  invokeServer=initInvokeServer(conf,this);
+  httpCredsHandler=AuthUtils.GetDrpcHttpCredentialsPlugin(conf);
+  Utils.addShutdownHookWithForceKillIn1Sec(new Runnable(){
+    @Override public void run(){
+      if (handlerServer != null) {
+        handlerServer.stop();
+      }
+ else {
+        invokeServer.stop();
+      }
+    }
+  }
+);
+  LOG.info("Starting Distributed RPC servers...");
+  new Thread(new Runnable(){
+    @Override public void run(){
+      invokeServer.serve();
+    }
+  }
+).start();
+  List<PreparableReporter> reporters=MetricsUtils.getPreparableReporters(conf);
+  for (  PreparableReporter reporter : reporters) {
+    reporter.prepare(new MetricRegistry(),conf);
+    reporter.start();
+    LOG.info("Started statistics report plugin: {}",reporter);
+  }
+  if (handlerServer != null)   handlerServer.serve();
+}

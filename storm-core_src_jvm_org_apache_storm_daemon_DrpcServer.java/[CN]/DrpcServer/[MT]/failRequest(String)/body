@@ -1,13 +1,13 @@
 {
   meterFailRequestCalls.mark();
-  String func=this.idtoFunction.get(id);
-  if (func != null) {
+  InternalRequest internalRequest=this.outstandingRequests.get(id);
+  if (internalRequest != null) {
     Map<String,String> map=new HashMap<>();
-    map.put(DRPCAuthorizerBase.FUNCTION_NAME,func);
+    map.put(DRPCAuthorizerBase.FUNCTION_NAME,internalRequest.function);
     checkAuthorization(authorizer,map,"failRequest");
-    Semaphore sem=this.idtoSem.get(id);
+    Semaphore sem=internalRequest.sem;
     if (sem != null) {
-      this.idtoResult.put(id,new DRPCExecutionException("Request failed"));
+      internalRequest.result=new DRPCExecutionException("Request failed");
       sem.release();
     }
   }

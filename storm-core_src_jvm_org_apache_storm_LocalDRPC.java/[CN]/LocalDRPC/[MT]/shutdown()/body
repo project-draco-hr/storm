@@ -1,4 +1,4 @@
 {
   ServiceRegistry.unregisterService(this.serviceId);
-  this.handler.shutdown();
+  this.handler.close();
 }

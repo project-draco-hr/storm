@@ -3,5 +3,8 @@
   this.conf=conf;
   authorizer=mkAuthorizationHandler((String)(conf.get(Config.DRPC_AUTHORIZER)),conf);
   initClearThread();
-  if (!isLocal)   initServer();
+  if (!isLocal) {
+    initThrift();
+    initHttp();
+  }
 }

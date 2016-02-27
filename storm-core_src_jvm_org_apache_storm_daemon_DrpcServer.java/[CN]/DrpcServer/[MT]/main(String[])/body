@@ -1,5 +1,0 @@
-{
-  Utils.setupDefaultUncaughtExceptionHandler();
-  final DrpcServer service=new DrpcServer();
-  service.launchServer(false,ConfigUtils.readStormConfig());
-}

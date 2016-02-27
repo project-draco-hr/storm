@@ -1,14 +1,13 @@
 {
   meterResultCalls.mark();
-  String func=this.idtoFunction.get(id);
-  if (func != null) {
-    Map<String,String> map=new HashMap<>();
-    map.put(DRPCAuthorizerBase.FUNCTION_NAME,func);
+  InternalRequest internalRequest=this.outstandingRequests.get(id);
+  if (internalRequest != null) {
+    Map<String,String> map=ImmutableMap.of(DRPCAuthorizerBase.FUNCTION_NAME,internalRequest.function);
     checkAuthorization(authorizer,map,"result");
-    Semaphore sem=this.idtoSem.get(id);
+    Semaphore sem=internalRequest.sem;
     LOG.debug("Received result {} for {} at {}",result,id,System.currentTimeMillis());
     if (sem != null) {
-      this.idtoResult.put(id,result);
+      internalRequest.result=result;
       sem.release();
     }
   }
