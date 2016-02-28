@@ -1,0 +1,3 @@
+{
+  return stateStorage.node_exists(path,watch);
+}

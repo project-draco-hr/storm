@@ -1,0 +1,30 @@
+{
+  Map<String,Object> cl=CLI.opt("i","interval",4,CLI.AS_INT).opt("m","component",null).opt("s","stream","default").opt("w","watch","emitted").arg("topologyName",CLI.FIRST_WINS).parse(args);
+  final org.apache.storm.utils.Monitor monitor=new org.apache.storm.utils.Monitor();
+  Integer interval=(Integer)cl.get("i");
+  String component=(String)cl.get("m");
+  String stream=(String)cl.get("s");
+  String watch=(String)cl.get("w");
+  String topologyName=(String)cl.get("topologyName");
+  if (null != interval) {
+    monitor.set_interval(interval);
+  }
+  if (null != component) {
+    monitor.set_component(component);
+  }
+  if (null != stream) {
+    monitor.set_stream(stream);
+  }
+  if (null != watch) {
+    monitor.set_watch(watch);
+  }
+  if (null != topologyName) {
+    monitor.set_topology(topologyName);
+  }
+  NimbusClient.withConfiguredClient(new NimbusClient.WithNimbus(){
+    @Override public void run(    Nimbus.Client nimbus) throws Exception {
+      monitor.metrics(nimbus);
+    }
+  }
+);
+}

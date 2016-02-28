@@ -1,20 +1,3 @@
 {
-  CuratorFramework fk;
-  if (authConf != null) {
-    fk=Utils.newCurator(conf,servers,port,root,new ZookeeperAuthInfo(authConf));
-  }
- else {
-    fk=Utils.newCurator(conf,servers,port,root);
-  }
-  fk.getCuratorListenable().addListener(new CuratorListener(){
-    @Override public void eventReceived(    CuratorFramework _fk,    CuratorEvent e) throws Exception {
-      if (e.getType().equals(CuratorEventType.WATCHED)) {
-        WatchedEvent event=e.getWatchedEvent();
-        watcher.execute(event.getState(),event.getType(),event.getPath());
-      }
-    }
-  }
-);
-  fk.start();
-  return fk;
+  return _instance.mkClientImpl(conf,servers,port,root,watcher,authConf);
 }

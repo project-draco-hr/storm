@@ -1,0 +1,4 @@
+{
+  Runnable callback=callbackConcurrentHashMap.remove(key);
+  if (callback != null)   callback.run();
+}

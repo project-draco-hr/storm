@@ -1,0 +1,5 @@
+{
+  String path=ClusterUtils.blobstorePath(blobKey);
+  stateStorage.sync_path(path);
+  return stateStorage.get_children(path,false);
+}

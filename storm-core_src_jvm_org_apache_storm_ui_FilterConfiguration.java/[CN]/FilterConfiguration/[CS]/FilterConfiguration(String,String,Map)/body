@@ -1,0 +1,5 @@
+{
+  this.filterClass=filterClass;
+  this.filterName=filterName;
+  this.filterParams=filterParams;
+}

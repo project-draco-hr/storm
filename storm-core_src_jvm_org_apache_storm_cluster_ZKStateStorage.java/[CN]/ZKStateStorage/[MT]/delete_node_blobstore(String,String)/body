@@ -1,0 +1,3 @@
+{
+  Zookeeper.deleteNodeBlobstore(zkWriter,path,nimbusHostPortInfo);
+}

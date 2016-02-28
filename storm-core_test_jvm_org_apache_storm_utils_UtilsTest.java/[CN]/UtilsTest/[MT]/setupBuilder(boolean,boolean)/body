@@ -1,0 +1,25 @@
+{
+  CuratorFrameworkFactory.Builder builder=CuratorFrameworkFactory.builder();
+  Map<String,Object> conf=new HashMap<String,Object>();
+  if (withExhibitor) {
+    conf.put(Config.STORM_EXHIBITOR_SERVERS,"foo");
+    conf.put(Config.STORM_EXHIBITOR_PORT,0);
+    conf.put(Config.STORM_EXHIBITOR_URIPATH,"/exhibitor");
+    conf.put(Config.STORM_EXHIBITOR_POLL,0);
+    conf.put(Config.STORM_EXHIBITOR_RETRY_INTERVAL,0);
+    conf.put(Config.STORM_EXHIBITOR_RETRY_INTERVAL_CEILING,0);
+    conf.put(Config.STORM_EXHIBITOR_RETRY_TIMES,0);
+  }
+  conf.put(Config.STORM_ZOOKEEPER_CONNECTION_TIMEOUT,0);
+  conf.put(Config.STORM_ZOOKEEPER_SESSION_TIMEOUT,0);
+  conf.put(Config.STORM_ZOOKEEPER_RETRY_INTERVAL,0);
+  conf.put(Config.STORM_ZOOKEEPER_RETRY_INTERVAL_CEILING,0);
+  conf.put(Config.STORM_ZOOKEEPER_RETRY_TIMES,0);
+  String zkStr=new String("zk_connection_string");
+  ZookeeperAuthInfo auth=null;
+  if (withAuth) {
+    auth=new ZookeeperAuthInfo("scheme","abc".getBytes());
+  }
+  Utils.testSetupBuilder(builder,zkStr,conf,auth);
+  return builder;
+}

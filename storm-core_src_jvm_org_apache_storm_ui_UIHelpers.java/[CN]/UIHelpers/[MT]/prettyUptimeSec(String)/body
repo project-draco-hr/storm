@@ -1,0 +1,3 @@
+{
+  return prettyUptimeStr(sec,PRETTY_SEC_DIVIDERS);
+}

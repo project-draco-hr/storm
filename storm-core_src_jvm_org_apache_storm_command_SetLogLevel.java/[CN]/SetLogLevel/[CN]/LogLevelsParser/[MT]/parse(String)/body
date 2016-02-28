@@ -1,0 +1,24 @@
+{
+  final LogLevel logLevel=new LogLevel();
+  logLevel.set_action(action);
+  String name=null;
+  if (action == LogLevelAction.REMOVE) {
+    name=value;
+  }
+ else {
+    String[] splits=value.split("=");
+    Preconditions.checkArgument(splits.length == 2,"Invalid log string '%s'",value);
+    name=splits[0];
+    splits=splits[1].split(":");
+    Integer timeout=0;
+    Level level=Level.valueOf(splits[0]);
+    logLevel.set_reset_log_level(level.toString());
+    if (splits.length > 1) {
+      timeout=Integer.parseInt(splits[1]);
+    }
+    logLevel.set_reset_log_level_timeout_secs(timeout);
+  }
+  Map<String,LogLevel> result=new HashMap<>();
+  result.put(name,logLevel);
+  return result;
+}
