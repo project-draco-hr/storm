@@ -1,6 +1,0 @@
-{
-  super.cleanupStats();
-  for (  String field : BOLT_FIELDS) {
-    cleanupStat(this.get(field));
-  }
-}

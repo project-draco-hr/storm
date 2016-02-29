@@ -1,5 +1,0 @@
-{
-  SpoutExecutorStats stats=new SpoutExecutorStats();
-  stats.setRate(rate);
-  return stats;
-}

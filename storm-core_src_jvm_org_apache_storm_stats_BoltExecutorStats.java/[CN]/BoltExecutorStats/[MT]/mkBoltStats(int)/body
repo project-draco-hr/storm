@@ -1,5 +1,0 @@
-{
-  BoltExecutorStats stats=new BoltExecutorStats();
-  stats.setRate(rate);
-  return stats;
-}

@@ -1,8 +1,0 @@
-{
-  super();
-  put(ACKED,new MultiCountStatAndMetric(NUM_STAT_BUCKETS));
-  put(FAILED,new MultiCountStatAndMetric(NUM_STAT_BUCKETS));
-  put(EXECUTED,new MultiCountStatAndMetric(NUM_STAT_BUCKETS));
-  put(PROCESS_LATENCIES,new MultiLatencyStatAndMetric(NUM_STAT_BUCKETS));
-  put(EXECUTE_LATENCIES,new MultiLatencyStatAndMetric(NUM_STAT_BUCKETS));
-}

@@ -1,5 +1,5 @@
 {
-  for (  String field : COMMON_FIELDS) {
-    cleanupStat(this.get(field));
+  for (  Object imetric : this.metricMap.values()) {
+    cleanupStat((IMetric)imetric);
   }
 }

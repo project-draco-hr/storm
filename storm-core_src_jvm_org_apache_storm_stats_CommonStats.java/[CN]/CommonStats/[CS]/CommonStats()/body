@@ -1,4 +1,0 @@
-{
-  put(EMITTED,new MultiCountStatAndMetric(NUM_STAT_BUCKETS));
-  put(TRANSFERRED,new MultiCountStatAndMetric(NUM_STAT_BUCKETS));
-}
