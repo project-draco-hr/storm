@@ -1,3 +1,4 @@
 {
-  getFields().select(new Fields("bar","baz"),Arrays.asList(new Object[]{"a","b","c"}));
+  Fields fields=getFields();
+  fields.select(new Fields("bar","baz"),Arrays.asList(new Object[]{"a","b","c"}));
 }

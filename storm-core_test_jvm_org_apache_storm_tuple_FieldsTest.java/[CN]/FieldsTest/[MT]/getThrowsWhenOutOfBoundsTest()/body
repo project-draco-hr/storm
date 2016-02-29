@@ -1,3 +1,4 @@
 {
-  getFields().get(3);
+  Fields fields=getFields();
+  fields.get(2);
 }

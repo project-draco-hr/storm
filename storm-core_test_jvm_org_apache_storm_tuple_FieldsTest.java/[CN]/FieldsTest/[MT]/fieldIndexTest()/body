@@ -1,4 +1,5 @@
 {
-  Assert.assertEquals(getFields().fieldIndex("foo"),0);
-  Assert.assertEquals(getFields().fieldIndex("bar"),1);
+  Fields fields=getFields();
+  Assert.assertEquals(fields.fieldIndex("foo"),0);
+  Assert.assertEquals(fields.fieldIndex("bar"),1);
 }

@@ -1,5 +1,6 @@
 {
-  List<String> fieldList=getFields().toList();
+  Fields fields=getFields();
+  List<String> fieldList=fields.toList();
   Assert.assertEquals(fieldList.size(),2);
   Assert.assertEquals(fieldList.get(0),"foo");
   Assert.assertEquals(fieldList.get(1),"bar");

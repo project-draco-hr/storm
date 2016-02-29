@@ -1,5 +1,6 @@
 {
-  Assert.assertTrue(getFields().contains("foo"));
-  Assert.assertTrue(getFields().contains("bar"));
-  Assert.assertFalse(getFields().contains("baz"));
+  Fields fields=getFields();
+  Assert.assertTrue(fields.contains("foo"));
+  Assert.assertTrue(fields.contains("bar"));
+  Assert.assertFalse(fields.contains("baz"));
 }
