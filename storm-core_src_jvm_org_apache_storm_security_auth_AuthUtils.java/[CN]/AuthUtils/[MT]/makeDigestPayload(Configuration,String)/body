@@ -2,7 +2,7 @@
   String username=null;
   String password=null;
   try {
-    Map<String,?> results=AuthUtils.PullConfig(login_config,config_section);
+    Map<String,?> results=AuthUtils.pullConfig(login_config,config_section);
     username=(String)results.get(USERNAME);
     password=(String)results.get(PASSWORD);
   }
@@ -15,11 +15,7 @@
   try {
     MessageDigest digest=MessageDigest.getInstance("SHA-512");
     byte[] output=digest.digest((username + ":" + password).getBytes());
-    StringBuilder builder=new StringBuilder();
-    for (    byte b : output) {
-      builder.append(String.format("%02x",b));
-    }
-    return builder.toString();
+    return Hex.encodeHexString(output);
   }
  catch (  java.security.NoSuchAlgorithmException e) {
     LOG.error("Cant run SHA-512 digest. Algorithm not available.",e);

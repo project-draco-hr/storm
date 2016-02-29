@@ -1,0 +1,8 @@
+{
+  AuthUtilsTestMock autoCred=Mockito.mock(AuthUtilsTestMock.class);
+  Subject subject=new Subject();
+  Map<String,String> cred=new HashMap<String,String>();
+  Collection<IAutoCredentials> autos=Arrays.asList(new IAutoCredentials[]{autoCred});
+  AuthUtils.populateSubject(subject,autos,cred);
+  Mockito.verify(autoCred,Mockito.times(1)).populateSubject(subject,cred);
+}

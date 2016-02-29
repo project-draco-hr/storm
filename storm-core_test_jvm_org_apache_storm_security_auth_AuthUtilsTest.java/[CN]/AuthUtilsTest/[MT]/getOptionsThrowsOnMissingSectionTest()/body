@@ -1,0 +1,4 @@
+{
+  Configuration mockConfig=Mockito.mock(Configuration.class);
+  AuthUtils.get(mockConfig,"bogus-section","");
+}

@@ -1,13 +1,11 @@
 {
-  ITransportPlugin transportPlugin;
   try {
     String transport_plugin_klassName=type.getTransportPlugin(storm_conf);
-    Class klass=Class.forName(transport_plugin_klassName);
-    transportPlugin=(ITransportPlugin)klass.newInstance();
+    ITransportPlugin transportPlugin=Utils.newInstance(transport_plugin_klassName);
     transportPlugin.prepare(type,storm_conf,login_conf);
+    return transportPlugin;
   }
  catch (  Exception e) {
     throw new RuntimeException(e);
   }
-  return transportPlugin;
 }

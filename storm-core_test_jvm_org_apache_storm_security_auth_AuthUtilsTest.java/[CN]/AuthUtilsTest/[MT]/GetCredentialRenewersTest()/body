@@ -1,0 +1,7 @@
+{
+  Map emptyMap=new HashMap<String,String>();
+  Map<String,Collection<String>> map=new HashMap<String,Collection<String>>();
+  map.put(Config.NIMBUS_CREDENTIAL_RENEWERS,Arrays.asList(new String[]{"org.apache.storm.security.auth.AuthUtilsTestMock"}));
+  Assert.assertTrue(AuthUtils.GetCredentialRenewers(emptyMap).isEmpty());
+  Assert.assertEquals(AuthUtils.GetCredentialRenewers(map).size(),1);
+}
