@@ -1,0 +1,4 @@
+{
+  schema.add(sqlCreateFunction.functionName().toUpperCase(),ScalarFunctionImpl.create(Class.forName(sqlCreateFunction.className()),"evaluate"));
+  hasUdf=true;
+}
