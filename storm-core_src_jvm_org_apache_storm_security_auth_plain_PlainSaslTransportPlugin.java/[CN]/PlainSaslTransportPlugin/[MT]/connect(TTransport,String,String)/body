@@ -1,0 +1,7 @@
+{
+  PlainClientCallbackHandler client_callback_handler=new PlainClientCallbackHandler();
+  TSaslClientTransport wrapper_transport=new TSaslClientTransport(PLAIN,null,AuthUtils.SERVICE,serverHost,null,client_callback_handler,transport);
+  wrapper_transport.open();
+  LOG.debug("SASL PLAIN client transport has been established");
+  return wrapper_transport;
+}

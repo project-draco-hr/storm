@@ -1,0 +1,3 @@
+{
+  return (props == null) || "false".equals(props.get(Sasl.POLICY_NOPLAINTEXT)) ? new String[]{"PLAIN"} : new String[0];
+}
