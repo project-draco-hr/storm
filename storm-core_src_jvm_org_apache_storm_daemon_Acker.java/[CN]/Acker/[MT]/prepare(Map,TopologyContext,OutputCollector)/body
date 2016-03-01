@@ -1,0 +1,4 @@
+{
+  this.collector=collector;
+  this.pending=new RotatingMap<Object,AckObject>(TIMEOUT_BUCKET_NUM);
+}
