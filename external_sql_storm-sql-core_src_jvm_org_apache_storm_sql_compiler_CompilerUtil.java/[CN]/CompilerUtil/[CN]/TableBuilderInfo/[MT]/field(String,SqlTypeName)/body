@@ -1,5 +1,3 @@
 {
-  RelDataType dataType=typeFactory.createSqlType(type);
-  fields.add(new FieldType(name,dataType));
-  return this;
+  return field(name,typeFactory.createSqlType(type));
 }
