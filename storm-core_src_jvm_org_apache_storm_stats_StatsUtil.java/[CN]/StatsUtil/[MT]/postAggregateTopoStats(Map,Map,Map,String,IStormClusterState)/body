@@ -2,7 +2,7 @@
   Map ret=new HashMap();
   putRawKV(ret,NUM_TASKS,task2comp.size());
   putRawKV(ret,NUM_WORKERS,((Set)getByKeyword(accData,WORKERS_SET)).size());
-  putRawKV(ret,NUM_EXECUTORS,exec2nodePort.size());
+  putRawKV(ret,NUM_EXECUTORS,exec2nodePort != null ? exec2nodePort.size() : 0);
   Map bolt2stats=getMapByKeyword(accData,BOLT_TO_STATS);
   Map aggBolt2stats=new HashMap();
   for (  Object o : bolt2stats.entrySet()) {
