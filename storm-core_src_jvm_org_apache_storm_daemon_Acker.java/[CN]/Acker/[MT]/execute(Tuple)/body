@@ -1,0 +1,57 @@
+{
+  if (TupleUtils.isTick(input)) {
+    Map<Object,AckObject> tmp=pending.rotate();
+    LOG.debug("Number of timeout tuples:{}",tmp.size());
+    return;
+  }
+  String streamId=input.getSourceStreamId();
+  Object id=input.getValue(0);
+  AckObject curr=pending.get(id);
+  if (ACKER_INIT_STREAM_ID.equals(streamId)) {
+    if (curr == null) {
+      curr=new AckObject();
+      curr.val=input.getLong(1);
+      curr.spoutTask=input.getInteger(2);
+      pending.put(id,curr);
+    }
+ else {
+      curr.updateAck(input.getLong(1));
+      curr.spoutTask=input.getInteger(2);
+    }
+  }
+ else   if (ACKER_ACK_STREAM_ID.equals(streamId)) {
+    if (curr != null) {
+      curr.updateAck(input.getLong(1));
+    }
+ else {
+      curr=new AckObject();
+      curr.val=input.getLong(1);
+      pending.put(id,curr);
+    }
+  }
+ else   if (ACKER_FAIL_STREAM_ID.equals(streamId)) {
+    if (curr == null) {
+      curr=new AckObject();
+    }
+    curr.failed=true;
+    pending.put(id,curr);
+  }
+ else {
+    LOG.warn("Unknown source stream {} from task-{}",streamId,input.getSourceTask());
+    return;
+  }
+  Integer task=curr.spoutTask;
+  if (curr != null && task != null) {
+    if (curr.val == 0) {
+      pending.remove(id);
+      collector.emitDirect(task,ACKER_ACK_STREAM_ID,new Values(id));
+    }
+ else {
+      if (curr.failed) {
+        pending.remove(id);
+        collector.emitDirect(task,ACKER_FAIL_STREAM_ID,new Values(id));
+      }
+    }
+  }
+  collector.ack(input);
+}

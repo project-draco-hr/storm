@@ -1,0 +1,3 @@
+{
+  val=Utils.bitXor(val,value);
+}
