@@ -1,7 +1,7 @@
 {
   SchemaPlus schema=Frameworks.createRootSchema(true);
   JavaTypeFactory typeFactory=new JavaTypeFactoryImpl(RelDataTypeSystem.DEFAULT);
-  StreamableTable streamableTable=new CompilerUtil.TableBuilderInfo(typeFactory).field("ID",SqlTypeName.INTEGER).field("NAME",typeFactory.createType(String.class)).field("ADDR",typeFactory.createType(String.class)).build();
+  StreamableTable streamableTable=new CompilerUtil.TableBuilderInfo(typeFactory).field("ID",SqlTypeName.INTEGER).field("MAPFIELD",SqlTypeName.ANY).field("NESTEDMAPFIELD",SqlTypeName.ANY).field("ARRAYFIELD",SqlTypeName.ANY).build();
   Table table=streamableTable.stream();
   schema.add("FOO",table);
   schema.add("BAR",table);
