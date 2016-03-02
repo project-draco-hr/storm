@@ -1,10 +1,10 @@
 {
   T ret;
   try {
-    ret=metrics.register(name,metric);
+    ret=DEFAULT_REGISTRY.register(name,metric);
   }
  catch (  IllegalArgumentException e) {
-    ret=(T)metrics.getMetrics().get(name);
+    ret=(T)DEFAULT_REGISTRY.getMetrics().get(name);
     if (ret == null) {
       throw e;
     }
