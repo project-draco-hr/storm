@@ -1,8 +1,8 @@
 {
-  CallbackHandler serer_callback_handler=new PlainServerCallbackHandler();
+  CallbackHandler server_callback_handler=new PlainServerCallbackHandler();
   Security.addProvider(new SaslPlainServer.SecurityProvider());
   TSaslServerTransport.Factory factory=new TSaslServerTransport.Factory();
-  factory.addServerDefinition(PLAIN,AuthUtils.SERVICE,"localhost",null,serer_callback_handler);
+  factory.addServerDefinition(PLAIN,AuthUtils.SERVICE,"localhost",null,server_callback_handler);
   LOG.info("SASL PLAIN transport factory will be used");
   return factory;
 }
