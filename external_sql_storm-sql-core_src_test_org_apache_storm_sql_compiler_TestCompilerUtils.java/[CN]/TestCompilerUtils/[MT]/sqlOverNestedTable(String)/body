@@ -1,0 +1,14 @@
+{
+  SchemaPlus schema=Frameworks.createRootSchema(true);
+  JavaTypeFactory typeFactory=new JavaTypeFactoryImpl(RelDataTypeSystem.DEFAULT);
+  StreamableTable streamableTable=new CompilerUtil.TableBuilderInfo(typeFactory).field("ID",SqlTypeName.INTEGER).field("MAPFIELD",SqlTypeName.ANY).field("NESTEDMAPFIELD",SqlTypeName.ANY).field("ARRAYFIELD",SqlTypeName.ANY).build();
+  Table table=streamableTable.stream();
+  schema.add("FOO",table);
+  schema.add("BAR",table);
+  FrameworkConfig config=Frameworks.newConfigBuilder().defaultSchema(schema).build();
+  Planner planner=Frameworks.getPlanner(config);
+  SqlNode parse=planner.parse(sql);
+  SqlNode validate=planner.validate(parse);
+  RelNode tree=planner.convert(validate);
+  return new CalciteState(schema,tree);
+}

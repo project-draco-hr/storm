@@ -1,0 +1,14 @@
+{
+  builder.setSpout("spout1",makeDummySpout());
+  builder.setSpout("spout2",makeDummySpout());
+  builder.setBolt("bolt1",makeDummyStatefulBolt(),1).shuffleGrouping("spout1").shuffleGrouping("spout2");
+  builder.setBolt("bolt2",makeDummyStatefulBolt(),1).shuffleGrouping("spout1");
+  builder.setBolt("bolt3",makeDummyStatefulBolt(),1).shuffleGrouping("bolt1").shuffleGrouping("bolt2");
+  StormTopology topology=builder.createTopology();
+  Assert.assertNotNull(topology);
+  Set<String> spouts=topology.get_spouts().keySet();
+  Assert.assertEquals(ImmutableSet.of("spout1","spout2","$checkpointspout"),spouts);
+  Assert.assertEquals(ImmutableSet.of(new GlobalStreamId("spout1","default"),new GlobalStreamId("spout2","default"),new GlobalStreamId("$checkpointspout","$checkpoint")),topology.get_bolts().get("bolt1").get_common().get_inputs().keySet());
+  Assert.assertEquals(ImmutableSet.of(new GlobalStreamId("spout1","default"),new GlobalStreamId("$checkpointspout","$checkpoint")),topology.get_bolts().get("bolt2").get_common().get_inputs().keySet());
+  Assert.assertEquals(ImmutableSet.of(new GlobalStreamId("bolt1","default"),new GlobalStreamId("bolt1","$checkpoint"),new GlobalStreamId("bolt2","default"),new GlobalStreamId("bolt2","$checkpoint")),topology.get_bolts().get("bolt3").get_common().get_inputs().keySet());
+}
