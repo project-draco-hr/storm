@@ -1,0 +1,4 @@
+{
+  credentials.put(NIMBUS_CRED_KEY,NIMBUS_CRED_RENEW_VAL);
+  credentials.put(GATEWAY_CRED_KEY,GATEWAY_CRED_RENEW_VAL);
+}
