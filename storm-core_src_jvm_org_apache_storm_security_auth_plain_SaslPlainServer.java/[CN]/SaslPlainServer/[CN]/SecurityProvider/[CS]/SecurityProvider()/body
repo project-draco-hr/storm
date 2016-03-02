@@ -1,4 +1,4 @@
 {
-  super("SaslPlainServer",1.0,"SASL PLAIN Authentication Server");
+  super(SASL_PLAIN_SERVER,1.0,"SASL PLAIN Authentication Server");
   put("SaslServerFactory.PLAIN",SaslPlainServerFactory.class.getName());
 }

@@ -1,4 +1,4 @@
 {
-  LOG.debug("handleRealmCallback: " + rc.getDefaultText());
+  LOG.debug("handleRealmCallback: {}",rc.getDefaultText());
   rc.setText(rc.getDefaultText());
 }

@@ -4,6 +4,6 @@
     pc.setPassword(credentials.get(userName).toCharArray());
   }
  else {
-    LOG.warn("No password found for user: " + userName);
+    LOG.warn("No password found for user: {}",userName);
   }
 }
