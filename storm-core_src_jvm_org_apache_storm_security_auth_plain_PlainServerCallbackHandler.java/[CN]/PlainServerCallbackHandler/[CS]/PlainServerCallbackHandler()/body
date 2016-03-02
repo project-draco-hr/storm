@@ -1,4 +1,3 @@
 {
-  userName="username";
-  credentials.put("username","password");
+  userName=null;
 }

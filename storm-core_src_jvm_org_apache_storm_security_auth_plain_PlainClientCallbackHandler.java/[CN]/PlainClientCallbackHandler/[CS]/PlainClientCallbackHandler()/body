@@ -1,4 +1,4 @@
 {
-  _username=USERNAME;
+  _username=System.getProperty("user.name");
   _password=PASSWORD;
 }
