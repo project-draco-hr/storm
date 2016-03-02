@@ -3,7 +3,7 @@
     @Override public Object call() throws Exception {
       for (      Map.Entry<String,InternalRequest> e : outstandingRequests.entrySet()) {
         InternalRequest internalRequest=e.getValue();
-        if (Time.deltaSecs(internalRequest.startTimeSecs) > Utils.getInt(conf.get(Config.DRPC_REQUEST_TIMEOUT_SECS),0)) {
+        if (Time.deltaSecs(internalRequest.startTimeSecs) > Utils.getInt(conf.get(Config.DRPC_REQUEST_TIMEOUT_SECS))) {
           String id=e.getKey();
           Semaphore sem=internalRequest.sem;
           if (sem != null) {
@@ -13,7 +13,6 @@
             sem.release();
           }
           cleanup(id);
-          LOG.info("Clear request " + id);
         }
       }
       return getTimeoutCheckSecs();

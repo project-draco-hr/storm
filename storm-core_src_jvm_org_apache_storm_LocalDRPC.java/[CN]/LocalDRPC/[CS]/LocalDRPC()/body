@@ -1,10 +1,5 @@
 {
-  try {
-    Map conf=ConfigUtils.readStormConfig();
-    handler.launchServer(true,conf);
-  }
- catch (  Exception e) {
-    throw Utils.wrapInRuntime(e);
-  }
+  Map conf=ConfigUtils.readStormConfig();
+  handler=new DrpcServer(conf);
   serviceId=ServiceRegistry.registerService(handler);
 }

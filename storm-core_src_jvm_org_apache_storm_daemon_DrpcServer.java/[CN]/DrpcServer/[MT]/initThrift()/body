@@ -1,15 +1,11 @@
 {
-  handlerServer=initHandlerServer(conf,this);
-  invokeServer=initInvokeServer(conf,this);
+  handlerServer=initHandlerServer(this);
+  invokeServer=initInvokeServer(this);
   httpCredsHandler=AuthUtils.GetDrpcHttpCredentialsPlugin(conf);
   Utils.addShutdownHookWithForceKillIn1Sec(new Runnable(){
     @Override public void run(){
-      if (handlerServer != null) {
-        handlerServer.stop();
-      }
- else {
-        invokeServer.stop();
-      }
+      if (handlerServer != null)       handlerServer.stop();
+      invokeServer.stop();
     }
   }
 );

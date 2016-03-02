@@ -5,9 +5,7 @@
     try {
       aznClass=Class.forName(klassname);
       authorizer=(IAuthorizer)aznClass.newInstance();
-      if (authorizer != null) {
-        authorizer.prepare(conf);
-      }
+      authorizer.prepare(conf);
     }
  catch (    Exception e) {
       LOG.error("mkAuthorizationHandler failed!",e);
