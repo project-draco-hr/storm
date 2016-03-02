@@ -37,6 +37,9 @@
     pending.put(id,curr);
   }
  else   if (ACKER_RESET_TIMEOUT_STREAM_ID.equals(streamId)) {
+    if (curr == null) {
+      curr=new AckObject();
+    }
     pending.put(id,curr);
   }
  else {
