@@ -1,5 +1,5 @@
 {
-  Fields fields=getFields();
+  Fields fields=new Fields("foo","bar");
   Iterator<String> fieldIter=fields.iterator();
   Assert.assertTrue("First item is foo",fieldIter.hasNext());
   Assert.assertEquals(fieldIter.next(),"foo");

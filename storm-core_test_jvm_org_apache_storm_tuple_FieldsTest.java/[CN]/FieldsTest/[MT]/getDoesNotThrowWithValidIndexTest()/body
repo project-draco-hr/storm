@@ -1,5 +1,5 @@
 {
-  Fields fields=getFields();
+  Fields fields=new Fields("foo","bar");
   Assert.assertEquals(fields.get(0),"foo");
   Assert.assertEquals(fields.get(1),"bar");
 }
