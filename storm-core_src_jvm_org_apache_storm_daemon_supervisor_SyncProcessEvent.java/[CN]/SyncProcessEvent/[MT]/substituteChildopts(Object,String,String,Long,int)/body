@@ -1,0 +1,26 @@
+{
+  List<String> rets=new ArrayList<>();
+  if (value instanceof String) {
+    String string=(String)value;
+    string=string.replace("%ID%",String.valueOf(port));
+    string=string.replace("%WORKER-ID%",workerId);
+    string=string.replace("%TOPOLOGY-ID%",stormId);
+    string=string.replace("%WORKER-PORT%",String.valueOf(port));
+    string=string.replace("%HEAP-MEM%",String.valueOf(memOnheap));
+    String[] strings=string.split("\\s+");
+    rets.addAll(Arrays.asList(strings));
+  }
+ else   if (value instanceof List) {
+    List<Object> objects=(List<Object>)value;
+    for (    Object object : objects) {
+      String str=(String)object;
+      str=str.replace("%ID%",String.valueOf(port));
+      str=str.replace("%WORKER-ID%",workerId);
+      str=str.replace("%TOPOLOGY-ID%",stormId);
+      str=str.replace("%WORKER-PORT%",String.valueOf(port));
+      str=str.replace("%HEAP-MEM%",String.valueOf(memOnheap));
+      rets.add(str);
+    }
+  }
+  return rets;
+}

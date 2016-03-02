@@ -1,0 +1,11 @@
+{
+  MetricRegistry metricRegistry=new MetricRegistry();
+  metricRegistry.remove(name);
+  metricRegistry.register(name,new Gauge<Integer>(){
+    @Override public Integer getValue(){
+      Collection<String> pids=SupervisorUtils.myWorkerIds(conf);
+      return pids.size();
+    }
+  }
+);
+}

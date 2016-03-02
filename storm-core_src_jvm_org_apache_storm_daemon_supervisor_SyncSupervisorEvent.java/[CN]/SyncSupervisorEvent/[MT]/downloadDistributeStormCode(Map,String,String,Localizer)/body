@@ -2,6 +2,7 @@
   String tmproot=ConfigUtils.supervisorTmpDir(conf) + Utils.FILE_PATH_SEPARATOR + Utils.uuid();
   String stormroot=ConfigUtils.supervisorStormDistRoot(conf,stormId);
   ClientBlobStore blobStore=Utils.getClientBlobStoreForSupervisor(conf);
+  FileUtils.forceMkdir(new File(tmproot));
   if (Utils.isOnWindows()) {
     if (Utils.getBoolean(conf.get(Config.SUPERVISOR_RUN_WORKER_AS_USER),false)) {
       throw new RuntimeException("ERROR: Windows doesn't implement setting the correct permissions");
@@ -10,7 +11,6 @@
  else {
     Utils.restrictPermissions(tmproot);
   }
-  FileUtils.forceMkdir(new File(tmproot));
   String stormJarKey=ConfigUtils.masterStormJarKey(stormId);
   String stormCodeKey=ConfigUtils.masterStormCodeKey(stormId);
   String stormConfKey=ConfigUtils.masterStormConfKey(stormId);

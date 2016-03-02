@@ -1,0 +1,3 @@
+{
+  return _instance.isWorkerHbTimedOutImpl(now,whb,conf);
+}

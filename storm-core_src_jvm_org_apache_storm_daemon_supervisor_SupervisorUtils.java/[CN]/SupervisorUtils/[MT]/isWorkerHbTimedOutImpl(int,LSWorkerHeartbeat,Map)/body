@@ -1,0 +1,7 @@
+{
+  boolean result=false;
+  if ((now - whb.get_time_secs()) > Utils.getInt(conf.get(Config.SUPERVISOR_WORKER_TIMEOUT_SECS))) {
+    result=true;
+  }
+  return result;
+}

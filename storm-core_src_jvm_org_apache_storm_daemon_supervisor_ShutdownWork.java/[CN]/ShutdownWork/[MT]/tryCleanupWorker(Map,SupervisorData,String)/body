@@ -13,14 +13,14 @@
       ConfigUtils.removeWorkerUserWSE(conf,workerId);
       supervisorData.getDeadWorkers().remove(workerId);
     }
-    if (conf.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN_ENABLE) != null) {
+    if (Utils.getBoolean(conf.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN_ENABLE),false)) {
       supervisorData.getResourceIsolationManager().releaseResourcesForWorker(workerId);
     }
   }
  catch (  IOException e) {
-    LOG.warn("{} Failed to cleanup worker {}. Will retry later",e,workerId);
+    LOG.warn("Failed to cleanup worker {}. Will retry later",workerId,e);
   }
 catch (  RuntimeException e) {
-    LOG.warn("{} Failed to cleanup worker {}. Will retry later",e,workerId);
+    LOG.warn("Failed to cleanup worker {}. Will retry later",workerId,e);
   }
 }

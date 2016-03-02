@@ -6,6 +6,6 @@
   if (!Utils.checkFileExists(stormroot))   return false;
   if (!Utils.checkFileExists(stormcodepath))   return false;
   if (!Utils.checkFileExists(stormconfpath))   return false;
-  if (!ConfigUtils.isLocalMode(conf) && !Utils.checkFileExists(stormjarpath))   return false;
-  return true;
+  if (ConfigUtils.isLocalMode(conf) || Utils.checkFileExists(stormjarpath))   return true;
+  return false;
 }

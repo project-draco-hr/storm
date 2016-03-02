@@ -6,8 +6,7 @@
     assignedExecutors=new HashMap<>();
   }
   int now=Time.currentTimeSecs();
-  SyncProcessEvent syncProcesses=new SyncProcessEvent(supervisorData);
-  Map<String,StateHeartbeat> workerIdHbstate=syncProcesses.getLocalWorkerStats(assignedExecutors,now);
+  Map<String,StateHeartbeat> workerIdHbstate=syncProcesses.getLocalWorkerStats(supervisorData,assignedExecutors,now);
   LOG.debug("Allocated workers ",assignedExecutors);
   for (  Map.Entry<String,StateHeartbeat> entry : workerIdHbstate.entrySet()) {
     String workerId=entry.getKey();

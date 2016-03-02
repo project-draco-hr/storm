@@ -3,7 +3,7 @@
     LocalState localState=new LocalState(schedulerLocalDir);
     String supervisorId=localState.getSupervisorId();
     if (supervisorId == null) {
-      supervisorId=UUID.randomUUID().toString();
+      supervisorId=generateSupervisorId();
       localState.setSupervisorId(supervisorId);
     }
     this.conf=stormConf;

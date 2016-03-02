@@ -2,7 +2,6 @@
   this.conf=supervisorData.getConf();
   this.stormClusterState=supervisorData.getStormClusterState();
   this.hostName=supervisorData.getHostName();
-  this.stormHome=System.getProperty("storm.home");
   this.profileCmd=(String)(conf.get(Config.WORKER_PROFILER_COMMAND));
   this.supervisorData=supervisorData;
 }

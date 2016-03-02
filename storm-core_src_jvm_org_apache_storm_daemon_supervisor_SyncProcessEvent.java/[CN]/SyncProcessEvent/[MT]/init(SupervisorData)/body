@@ -1,0 +1,4 @@
+{
+  this.supervisorData=supervisorData;
+  this.localState=supervisorData.getLocalState();
+}

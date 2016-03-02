@@ -7,7 +7,7 @@
       assignedExecutors=new HashMap<>();
     }
     int now=Time.currentTimeSecs();
-    Map<String,StateHeartbeat> localWorkerStats=getLocalWorkerStats(assignedExecutors,now);
+    Map<String,StateHeartbeat> localWorkerStats=getLocalWorkerStats(supervisorData,assignedExecutors,now);
     Set<String> keeperWorkerIds=new HashSet<>();
     Set<Integer> keepPorts=new HashSet<>();
     for (    Map.Entry<String,StateHeartbeat> entry : localWorkerStats.entrySet()) {

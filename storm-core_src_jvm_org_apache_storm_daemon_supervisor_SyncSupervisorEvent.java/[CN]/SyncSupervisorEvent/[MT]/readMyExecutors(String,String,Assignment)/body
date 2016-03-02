@@ -17,7 +17,7 @@
     for (    Map.Entry<List<Long>,NodeInfo> entry : executorNodePort.entrySet()) {
       if (entry.getValue().get_node().equals(assignmentId)) {
         for (        Long port : entry.getValue().get_port()) {
-          LocalAssignment localAssignment=portTasks.get(port);
+          LocalAssignment localAssignment=portTasks.get(port.intValue());
           if (localAssignment == null) {
             List<ExecutorInfo> executors=new ArrayList<ExecutorInfo>();
             localAssignment=new LocalAssignment(stormId,executors);

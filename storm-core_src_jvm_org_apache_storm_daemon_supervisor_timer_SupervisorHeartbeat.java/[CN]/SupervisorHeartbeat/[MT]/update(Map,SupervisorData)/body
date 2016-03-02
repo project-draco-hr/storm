@@ -6,11 +6,12 @@
   List<Long> usedPorts=new ArrayList<>();
   usedPorts.addAll(supervisorData.getCurrAssignment().keySet());
   supervisorInfo.set_used_ports(usedPorts);
+  List metaDatas=(List)supervisorData.getiSupervisor().getMetadata();
   List<Long> portList=new ArrayList<>();
-  Object metas=supervisorData.getiSupervisor().getMetadata();
-  if (metas != null) {
-    for (    Integer port : (List<Integer>)metas) {
-      portList.add(port.longValue());
+  if (metaDatas != null) {
+    for (    Object data : metaDatas) {
+      Integer port=Utils.getInt(data);
+      if (port != null)       portList.add(port.longValue());
     }
   }
   supervisorInfo.set_meta(portList);

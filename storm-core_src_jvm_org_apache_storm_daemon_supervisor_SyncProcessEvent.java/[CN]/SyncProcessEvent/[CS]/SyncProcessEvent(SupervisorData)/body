@@ -1,5 +1,3 @@
 {
-  this.supervisorData=supervisorData;
-  this.localState=supervisorData.getLocalState();
-  this.stormClusterState=supervisorData.getStormClusterState();
+  init(supervisorData);
 }
