@@ -1,7 +1,7 @@
 {
   if (subject != null && !subject.isReadOnly() && kerbTicket != null) {
     subject.getPrincipals().remove(kerbTicket.getClient());
-    subject.getPrivateCredentials().remove(kerbTicket);
+    AutoTGT.clearCredentials(subject,null);
   }
   kerbTicket=null;
   return true;
