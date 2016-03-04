@@ -1,0 +1,5 @@
+{
+  String combinedErrorMessage="Halting process: " + msg;
+  LOG.error(combinedErrorMessage,new RuntimeException(combinedErrorMessage));
+  Runtime.getRuntime().exit(val);
+}

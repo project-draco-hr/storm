@@ -1,0 +1,13 @@
+{
+  KerberosTicket ret;
+  try {
+    ByteArrayInputStream bin=new ByteArrayInputStream(tgtBytes);
+    ObjectInputStream in=new ObjectInputStream(bin);
+    ret=(KerberosTicket)in.readObject();
+    in.close();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return ret;
+}
