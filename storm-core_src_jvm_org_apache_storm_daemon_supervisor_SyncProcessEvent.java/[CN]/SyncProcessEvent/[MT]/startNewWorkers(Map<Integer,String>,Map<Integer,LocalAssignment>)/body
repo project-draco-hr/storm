@@ -16,10 +16,10 @@
       FileUtils.forceMkdir(new File(pidsPath));
       FileUtils.forceMkdir(new File(hbPath));
       if (clusterMode.endsWith("distributed")) {
-        launchDistributeWorker(conf,supervisorId,supervisorData.getAssignmentId(),stormId,port.longValue(),workerId,resources,supervisorData.getResourceIsolationManager(),supervisorData.getDeadWorkers());
+        launchWorker(conf,supervisorId,supervisorData.getAssignmentId(),stormId,port.longValue(),workerId,resources,supervisorData.getResourceIsolationManager(),supervisorData.getDeadWorkers());
       }
  else       if (clusterMode.endsWith("local")) {
-        launchLocalWorker(supervisorData,stormId,port.longValue(),workerId,resources);
+        launchWorker(supervisorData,stormId,port.longValue(),workerId,resources);
       }
       newValidWorkerIds.put(workerId,port);
     }
