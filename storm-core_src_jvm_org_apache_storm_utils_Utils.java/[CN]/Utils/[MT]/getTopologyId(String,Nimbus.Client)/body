@@ -1,0 +1,14 @@
+{
+  try {
+    ClusterSummary summary=client.getClusterInfo();
+    for (    TopologySummary s : summary.get_topologies()) {
+      if (s.get_name().equals(name)) {
+        return s.get_id();
+      }
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return null;
+}

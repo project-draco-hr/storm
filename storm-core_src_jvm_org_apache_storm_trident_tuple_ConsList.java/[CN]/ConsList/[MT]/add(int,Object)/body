@@ -1,0 +1,8 @@
+{
+  if (index == 0) {
+    _first=element;
+  }
+ else {
+    _elems.add(index - 1,element);
+  }
+}

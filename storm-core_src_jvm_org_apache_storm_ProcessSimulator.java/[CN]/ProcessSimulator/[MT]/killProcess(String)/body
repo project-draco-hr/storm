@@ -1,0 +1,11 @@
+{
+synchronized (lock) {
+    LOG.info("Begin killing process " + pid);
+    Shutdownable shutdownHandle=processMap.get(pid);
+    if (shutdownHandle != null) {
+      shutdownHandle.shutdown();
+    }
+    processMap.remove(pid);
+    LOG.info("Successfully killed process " + pid);
+  }
+}

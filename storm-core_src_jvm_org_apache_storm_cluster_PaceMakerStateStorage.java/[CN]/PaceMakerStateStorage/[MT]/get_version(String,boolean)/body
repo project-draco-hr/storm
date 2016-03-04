@@ -1,0 +1,3 @@
+{
+  return stateStorage.get_version(path,watch);
+}

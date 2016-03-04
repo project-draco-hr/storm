@@ -1,0 +1,9 @@
+{
+  Time.startSimulating();
+  try {
+    Time.advanceTime(-1500);
+  }
+  finally {
+    Time.stopSimulating();
+  }
+}

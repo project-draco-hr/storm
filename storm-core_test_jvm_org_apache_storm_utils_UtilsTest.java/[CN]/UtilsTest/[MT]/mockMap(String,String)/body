@@ -1,0 +1,5 @@
+{
+  Map<String,Object> map=new HashMap<String,Object>();
+  map.put(key,value);
+  return map;
+}

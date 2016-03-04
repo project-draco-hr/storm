@@ -1,0 +1,9 @@
+{
+  if (stateStorage instanceof IStateStorage) {
+    return new StormClusterStateImpl((IStateStorage)stateStorage,acls,context,false);
+  }
+ else {
+    IStateStorage Storage=_instance.mkStateStorageImpl((Map)stateStorage,(Map)stateStorage,acls,context);
+    return new StormClusterStateImpl(Storage,acls,context,true);
+  }
+}

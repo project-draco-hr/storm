@@ -8,13 +8,14 @@
     }
     if (memoryOpts != null) {
       int unit=1;
-      if (memoryOpts.toLowerCase().endsWith("k")) {
+      memoryOpts=memoryOpts.toLowerCase();
+      if (memoryOpts.endsWith("k")) {
         unit=1024;
       }
- else       if (memoryOpts.toLowerCase().endsWith("m")) {
+ else       if (memoryOpts.endsWith("m")) {
         unit=1024 * 1024;
       }
- else       if (memoryOpts.toLowerCase().endsWith("g")) {
+ else       if (memoryOpts.endsWith("g")) {
         unit=1024 * 1024 * 1024;
       }
       memoryOpts=memoryOpts.replaceAll("[a-zA-Z]","");

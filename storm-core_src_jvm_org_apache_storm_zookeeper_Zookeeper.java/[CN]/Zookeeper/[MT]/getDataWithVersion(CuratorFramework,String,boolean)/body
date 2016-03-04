@@ -1,5 +1,5 @@
 {
-  APersistentMap map=null;
+  Map map=new HashMap();
   try {
     byte[] bytes=null;
     Stat stats=new Stat();
@@ -13,12 +13,13 @@
       }
       if (bytes != null) {
         int version=stats.getVersion();
-        map=new PersistentArrayMap(new Object[]{RT.keyword(null,"data"),bytes,RT.keyword(null,"version"),version});
+        map.put(IStateStorage.DATA,bytes);
+        map.put(IStateStorage.VERSION,version);
       }
     }
   }
  catch (  Exception e) {
-    if (exceptionCause(KeeperException.NoNodeException.class,e)) {
+    if (Utils.exceptionCauseIsInstanceOf(KeeperException.NoNodeException.class,e)) {
     }
  else {
       Utils.wrapInRuntime(e);

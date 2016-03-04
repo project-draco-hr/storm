@@ -1,0 +1,11 @@
+{
+  if (kerberosTicket != null) {
+    try {
+      return (deserializeKerberosTicket(serializeKerberosTicket(kerberosTicket)));
+    }
+ catch (    Exception e) {
+      throw new RuntimeException("Failed to clone KerberosTicket TGT!!",e);
+    }
+  }
+  return null;
+}

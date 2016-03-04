@@ -1,0 +1,3 @@
+{
+  stateStorage.delete_node(ClusterUtils.stormPath(stormId));
+}

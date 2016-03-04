@@ -1,0 +1,18 @@
+{
+  int uptime=Integer.parseInt(val);
+  LinkedList<String> tmp=new LinkedList<>();
+  for (  Object[] divider : dividers) {
+    if (uptime > 0) {
+      String state=(String)divider[0];
+      Integer div=(Integer)divider[1];
+      if (div != null) {
+        tmp.addFirst(uptime % div + state);
+        uptime=uptime / div;
+      }
+ else {
+        tmp.addFirst(uptime + state);
+      }
+    }
+  }
+  return Joiner.on(" ").join(tmp);
+}

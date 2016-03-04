@@ -1,0 +1,28 @@
+{
+  Map<String,Object> cl=CLI.opt("l","log-setting",null,new LogLevelsParser(LogLevelAction.UPDATE),CLI.INTO_MAP).opt("r","remove-log-setting",null,new LogLevelsParser(LogLevelAction.REMOVE),CLI.INTO_MAP).arg("topologyName",CLI.FIRST_WINS).parse(args);
+  final String topologyName=(String)cl.get("topologyName");
+  final LogConfig logConfig=new LogConfig();
+  Map<String,LogLevel> logLevelMap=new HashMap<>();
+  Map<String,LogLevel> updateLogLevel=(Map<String,LogLevel>)cl.get("l");
+  if (null != updateLogLevel) {
+    logLevelMap.putAll(updateLogLevel);
+  }
+  Map<String,LogLevel> removeLogLevel=(Map<String,LogLevel>)cl.get("r");
+  if (null != removeLogLevel) {
+    logLevelMap.putAll(removeLogLevel);
+  }
+  for (  Map.Entry<String,LogLevel> entry : logLevelMap.entrySet()) {
+    logConfig.put_to_named_logger_level(entry.getKey(),entry.getValue());
+  }
+  NimbusClient.withConfiguredClient(new NimbusClient.WithNimbus(){
+    @Override public void run(    Nimbus.Client nimbus) throws Exception {
+      String topologyId=Utils.getTopologyId(topologyName,nimbus);
+      if (null == topologyId) {
+        throw new IllegalArgumentException(topologyName + " is not a running topology");
+      }
+      nimbus.setLogConfig(topologyId,logConfig);
+      LOG.info("Log config {} is sent for topology {}",logConfig,topologyName);
+    }
+  }
+);
+}

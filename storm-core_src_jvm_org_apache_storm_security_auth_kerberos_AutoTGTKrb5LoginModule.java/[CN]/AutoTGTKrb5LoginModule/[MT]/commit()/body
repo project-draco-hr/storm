@@ -6,7 +6,8 @@
     kerbTicket=null;
     throw new LoginException("Authentication failed because the Subject is invalid.");
   }
-  subject.getPrivateCredentials().add(kerbTicket);
+  KerberosTicket kerbTicketCopy=AuthUtils.cloneKerberosTicket(kerbTicket);
+  subject.getPrivateCredentials().add(kerbTicketCopy);
   subject.getPrincipals().add(getKerbTicketClient());
   LOG.debug("Commit Succeeded.");
   return true;

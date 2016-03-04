@@ -1,0 +1,3 @@
+{
+  return Zookeeper.mkClient(conf,(List<String>)conf.get(Config.STORM_ZOOKEEPER_SERVERS),conf.get(Config.STORM_ZOOKEEPER_PORT),String.valueOf(conf.get(Config.STORM_ZOOKEEPER_ROOT)),watcher,authConf);
+}

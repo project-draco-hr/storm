@@ -4,4 +4,5 @@
   this.impl.setQuotedCasing(Lex.ORACLE.quotedCasing);
   this.impl.setUnquotedCasing(Lex.ORACLE.unquotedCasing);
   this.impl.setIdentifierMaxLength(DEFAULT_IDENTIFIER_MAX_LENGTH);
+  this.impl.switchTo("DQID");
 }

@@ -1,0 +1,4 @@
+{
+  String serializedData=needSerialize ? JSONValue.toJSONString(data) : (String)data;
+  return callback != null ? wrapJsonInCallback(callback,serializedData) : serializedData;
+}
