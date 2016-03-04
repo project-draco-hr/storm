@@ -1,0 +1,3 @@
+{
+  credentials.put(GATEWAY_CRED_KEY,GATEWAY_CRED_VAL);
+}
