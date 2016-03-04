@@ -1,0 +1,13 @@
+{
+  Map<GlobalStreamId,Grouping> inputs=new HashMap<GlobalStreamId,Grouping>();
+  Set<String> boltIds=topology.get_bolts().keySet();
+  Set<String> spoutIds=topology.get_spouts().keySet();
+  for (  String id : spoutIds) {
+    inputs.put(Utils.getGlobalStreamId(id,ACKER_INIT_STREAM_ID),Thrift.prepareFieldsGrouping(Arrays.asList("id")));
+  }
+  for (  String id : boltIds) {
+    inputs.put(Utils.getGlobalStreamId(id,ACKER_ACK_STREAM_ID),Thrift.prepareFieldsGrouping(Arrays.asList("id")));
+    inputs.put(Utils.getGlobalStreamId(id,ACKER_FAIL_STREAM_ID),Thrift.prepareFieldsGrouping(Arrays.asList("id")));
+  }
+  return inputs;
+}

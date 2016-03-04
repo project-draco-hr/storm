@@ -1,0 +1,5 @@
+{
+  report.prepare(new MetricRegistry(),conf);
+  report.start();
+  LOG.info("Started statistics report plugin...");
+}

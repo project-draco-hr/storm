@@ -1,0 +1,10 @@
+{
+  Map<String,Object> components=new HashMap<String,Object>();
+  List<StormTopology._Fields> topologyFields=Arrays.asList(Thrift.getTopologyFields());
+  for (  StormTopology._Fields field : topologyFields) {
+    if (ThriftTopologyUtils.isWorkerHook(field) == false) {
+      components.putAll(((Map)topology.getFieldValue(field)));
+    }
+  }
+  return components;
+}

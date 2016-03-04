@@ -1,0 +1,13 @@
+{
+  List<String> activeTopologys=stormClusterState.activeStorms();
+  Map<String,StormBase> stormBases=new HashMap<String,StormBase>();
+  if (activeTopologys != null) {
+    for (    String topologyId : activeTopologys) {
+      StormBase base=stormClusterState.stormBase(topologyId,null);
+      if (base != null) {
+        stormBases.put(topologyId,base);
+      }
+    }
+  }
+  return stormBases;
+}

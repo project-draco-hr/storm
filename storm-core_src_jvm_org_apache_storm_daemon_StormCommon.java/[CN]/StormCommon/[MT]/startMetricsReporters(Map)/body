@@ -1,0 +1,6 @@
+{
+  List<PreparableReporter> reporters=MetricsUtils.getPreparableReporters(conf);
+  for (  PreparableReporter reporter : reporters) {
+    startMetricsReporter(reporter,conf);
+  }
+}

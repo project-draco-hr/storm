@@ -1,0 +1,11 @@
+{
+  if (common == null) {
+    return true;
+  }
+ else   if (common.get_inputs() == null) {
+    return true;
+  }
+ else {
+    return common.get_inputs().isEmpty();
+  }
+}

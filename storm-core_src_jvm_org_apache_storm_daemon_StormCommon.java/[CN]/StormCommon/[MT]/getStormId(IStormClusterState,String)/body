@@ -1,0 +1,10 @@
+{
+  List<String> activeTopologys=stormClusterState.activeStorms();
+  IPredicate pred=new IPredicate<String>(){
+    @Override public boolean test(    String obj){
+      return obj != null ? getTopologyNameById(obj).equals(topologyName) : false;
+    }
+  }
+;
+  return Utils.findOne(pred,activeTopologys);
+}

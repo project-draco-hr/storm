@@ -1,0 +1,8 @@
+{
+  ComponentCommon common=getComponentCommon(component);
+  if (common == null) {
+    throw new InvalidTopologyException("unknown component type " + component.getClass().getName());
+  }
+  int parallelismHintNum=Thrift.getParallelismHint(common);
+  return parallelismHintNum;
+}

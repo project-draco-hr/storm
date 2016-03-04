@@ -1,0 +1,9 @@
+{
+  Integer ackerNum=Utils.parseInt(stormConf.get(Config.TOPOLOGY_ACKER_EXECUTORS));
+  if (ackerNum == null || ackerNum > 0) {
+    return true;
+  }
+ else {
+    return false;
+  }
+}

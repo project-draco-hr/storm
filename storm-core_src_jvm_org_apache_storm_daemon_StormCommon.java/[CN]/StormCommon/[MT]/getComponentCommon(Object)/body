@@ -1,0 +1,16 @@
+{
+  if (component == null) {
+    return null;
+  }
+  ComponentCommon common=null;
+  if (component instanceof StateSpoutSpec) {
+    common=((StateSpoutSpec)component).get_common();
+  }
+ else   if (component instanceof SpoutSpec) {
+    common=((SpoutSpec)component).get_common();
+  }
+ else   if (component instanceof Bolt) {
+    common=((Bolt)component).get_common();
+  }
+  return common;
+}

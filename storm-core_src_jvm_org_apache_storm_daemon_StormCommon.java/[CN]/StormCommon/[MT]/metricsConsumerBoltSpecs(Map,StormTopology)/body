@@ -1,0 +1,34 @@
+{
+  Map<String,Bolt> metricsConsumerBolts=new HashMap<String,Bolt>();
+  Set<String> componentIdsEmitMetrics=new HashSet<String>();
+  componentIdsEmitMetrics.addAll(allComponents(topology).keySet());
+  componentIdsEmitMetrics.add(Constants.SYSTEM_COMPONENT_ID);
+  Map<GlobalStreamId,Grouping> inputs=new HashMap<GlobalStreamId,Grouping>();
+  for (  String componentId : componentIdsEmitMetrics) {
+    inputs.put(Utils.getGlobalStreamId(componentId,Constants.METRICS_STREAM_ID),Thrift.prepareShuffleGrouping());
+  }
+  List<Map<String,Object>> registerInfo=(List<Map<String,Object>>)conf.get(Config.TOPOLOGY_METRICS_CONSUMER_REGISTER);
+  if (registerInfo != null) {
+    Map<String,Integer> classOccurrencesMap=new HashMap<String,Integer>();
+    for (    Map<String,Object> info : registerInfo) {
+      String className=(String)info.get("class");
+      Object argument=info.get("argument");
+      Integer phintNum=Utils.parseInt(info.get("parallelism.hint"),1);
+      Map<String,Object> metricsConsumerConf=new HashMap<String,Object>();
+      metricsConsumerConf.put(Config.TOPOLOGY_TASKS,phintNum);
+      Bolt metricsConsumerBolt=Thrift.prepareSerializedBoltDetails(inputs,new MetricsConsumerBolt(className,argument),null,phintNum,metricsConsumerConf);
+      String id=className;
+      if (classOccurrencesMap.containsKey(className)) {
+        int occurrenceNum=classOccurrencesMap.get(className);
+        occurrenceNum++;
+        classOccurrencesMap.put(className,occurrenceNum);
+        id=Constants.METRICS_COMPONENT_ID_PREFIX + className + "#"+ occurrenceNum;
+      }
+ else {
+        classOccurrencesMap.put(className,1);
+      }
+      metricsConsumerBolts.put(id,metricsConsumerBolt);
+    }
+  }
+  return metricsConsumerBolts;
+}

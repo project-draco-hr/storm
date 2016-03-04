@@ -1,0 +1,9 @@
+{
+  for (  Object component : allComponents(topology).values()) {
+    ComponentCommon common=getComponentCommon(component);
+    if (common != null) {
+      StreamInfo streamInfo=Thrift.outputFields(Arrays.asList("event"));
+      common.put_to_streams(SYSTEM_STREAM_ID,streamInfo);
+    }
+  }
+}
