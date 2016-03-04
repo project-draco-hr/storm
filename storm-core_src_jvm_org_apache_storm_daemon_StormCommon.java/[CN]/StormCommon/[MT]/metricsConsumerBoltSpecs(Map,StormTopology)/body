@@ -13,7 +13,7 @@
     for (    Map<String,Object> info : registerInfo) {
       String className=(String)info.get("class");
       Object argument=info.get("argument");
-      Integer phintNum=Utils.parseInt(info.get("parallelism.hint"),1);
+      Integer phintNum=Utils.getInt(info.get("parallelism.hint"),1);
       Map<String,Object> metricsConsumerConf=new HashMap<String,Object>();
       metricsConsumerConf.put(Config.TOPOLOGY_TASKS,phintNum);
       Bolt metricsConsumerBolt=Thrift.prepareSerializedBoltDetails(inputs,new MetricsConsumerBolt(className,argument),null,phintNum,metricsConsumerConf);

@@ -18,8 +18,8 @@
     ComponentCommon common=getComponentCommon(componentObj);
     if (common != null) {
       int parallelismHintNum=Thrift.getParallelismHint(common);
-      Integer taskNum=Utils.parseInt(conf.get(Config.TOPOLOGY_TASKS));
-      if (taskNum != null && taskNum > 0 && parallelismHintNum <= 0) {
+      Integer taskNum=Utils.getInt(conf.get(Config.TOPOLOGY_TASKS),0);
+      if (taskNum > 0 && parallelismHintNum <= 0) {
         throw new InvalidTopologyException("Number of executors must be greater than 0 when number of tasks is greater than 0");
       }
     }

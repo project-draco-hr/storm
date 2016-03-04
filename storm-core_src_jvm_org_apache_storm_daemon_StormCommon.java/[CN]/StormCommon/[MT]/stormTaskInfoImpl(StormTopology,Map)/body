@@ -5,9 +5,9 @@
   Map<String,Integer> componentIdToTaskNum=new TreeMap<String,Integer>();
   for (  Map.Entry<String,Object> entry : components.entrySet()) {
     Map conf=componentConf(entry.getValue());
-    Integer taskNum=Utils.parseInt(conf.get(Config.TOPOLOGY_TASKS));
+    Object taskNum=conf.get(Config.TOPOLOGY_TASKS);
     if (taskNum != null) {
-      componentIdToTaskNum.put(entry.getKey(),taskNum);
+      componentIdToTaskNum.put(entry.getKey(),Utils.getInt(taskNum));
     }
   }
   int taskId=1;
