@@ -3,6 +3,6 @@
   Map ret=new HashMap();
   ret.putAll(valueStats(CommonStats.COMMON_FIELDS));
   ret.putAll(valueStats(BoltExecutorStats.BOLT_FIELDS));
-  StatsUtil.putRawKV(ret,StatsUtil.TYPE,StatsUtil.KW_BOLT);
+  StatsUtil.putKV(ret,StatsUtil.TYPE,StatsUtil.KW_BOLT);
   return ret;
 }

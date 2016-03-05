@@ -1,7 +1,7 @@
 {
   Map ret=new HashMap();
-  putRawKV(ret,ACKED,stats.get_acked());
-  putRawKV(ret,FAILED,stats.get_failed());
-  putRawKV(ret,COMP_LATENCIES,stats.get_complete_ms_avg());
+  putKV(ret,ACKED,stats.get_acked());
+  putKV(ret,FAILED,stats.get_failed());
+  putKV(ret,COMP_LATENCIES,stats.get_complete_ms_avg());
   return ret;
 }

@@ -5,9 +5,9 @@
   }
   for (  Object k : id2execAvg.keySet()) {
     Map subMap=new HashMap();
-    putRawKV(subMap,EXEC_LAT_TOTAL,weightAvg(id2execAvg,id2numExec,k));
-    putRawKV(subMap,PROC_LAT_TOTAL,weightAvg(id2procAvg,id2numExec,k));
-    putRawKV(subMap,EXECUTED,id2numExec.get(k));
+    putKV(subMap,EXEC_LAT_TOTAL,weightAvg(id2execAvg,id2numExec,k));
+    putKV(subMap,PROC_LAT_TOTAL,weightAvg(id2procAvg,id2numExec,k));
+    putKV(subMap,EXECUTED,id2numExec.get(k));
     ret.put(k,subMap);
   }
   return ret;

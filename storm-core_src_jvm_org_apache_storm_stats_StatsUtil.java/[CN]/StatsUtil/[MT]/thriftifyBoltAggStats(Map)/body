@@ -1,7 +1,7 @@
 {
   ComponentAggregateStats stats=new ComponentAggregateStats();
   stats.set_type(ComponentType.BOLT);
-  stats.set_last_error((ErrorInfo)getByKeyword(m,LAST_ERROR));
+  stats.set_last_error((ErrorInfo)getByKey(m,LAST_ERROR));
   thriftifyCommonAggStats(stats,m);
   BoltAggregateStats boltAggStats=new BoltAggregateStats();
   boltAggStats.set_execute_latency_ms(getByKeywordOr0(m,EXEC_LATENCY).doubleValue());

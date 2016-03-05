@@ -2,8 +2,8 @@
   ExecutorStats ret=new ExecutorStats();
   ExecutorSpecificStats specificStats=thriftifySpecificStats(stats);
   ret.set_specific(specificStats);
-  ret.set_emitted(windowSetConverter(getMapByKeyword(stats,EMITTED),TO_STRING,TO_STRING));
-  ret.set_transferred(windowSetConverter(getMapByKeyword(stats,TRANSFERRED),TO_STRING,TO_STRING));
-  ret.set_rate(((Number)getByKeyword(stats,"rate")).doubleValue());
+  ret.set_emitted(windowSetConverter(getMapByKey(stats,EMITTED),TO_STRING,TO_STRING));
+  ret.set_transferred(windowSetConverter(getMapByKey(stats,TRANSFERRED),TO_STRING,TO_STRING));
+  ret.set_rate(((Number)getByKey(stats,"rate")).doubleValue());
   return ret;
 }

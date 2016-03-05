@@ -1,0 +1,4 @@
+{
+  subject.getPublicCredentials().add(credentials.get(NIMBUS_CRED_KEY));
+  subject.getPublicCredentials().add(credentials.get(GATEWAY_CRED_KEY));
+}

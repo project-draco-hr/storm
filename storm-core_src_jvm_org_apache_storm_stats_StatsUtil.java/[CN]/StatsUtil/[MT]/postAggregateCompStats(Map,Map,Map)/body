@@ -1,20 +1,20 @@
 {
   Map ret=new HashMap();
-  String compType=((Keyword)getByKeyword(accData,TYPE)).getName();
-  Map stats=getMapByKeyword(accData,STATS);
+  String compType=((Keyword)getByKey(accData,TYPE)).getName();
+  Map stats=getMapByKey(accData,STATS);
   Integer numTasks=getByKeywordOr0(stats,NUM_TASKS).intValue();
   Integer numExecutors=getByKeywordOr0(stats,NUM_EXECUTORS).intValue();
-  Map outStats=getMapByKeyword(stats,SID_TO_OUT_STATS);
-  putRawKV(ret,TYPE,keyword(compType));
-  putRawKV(ret,NUM_TASKS,numTasks);
-  putRawKV(ret,NUM_EXECUTORS,numExecutors);
-  putRawKV(ret,EXECUTOR_STATS,getByKeyword(stats,EXECUTOR_STATS));
-  putRawKV(ret,WIN_TO_EMITTED,mapKeyStr(getMapByKeyword(accData,WIN_TO_EMITTED)));
-  putRawKV(ret,WIN_TO_TRANSFERRED,mapKeyStr(getMapByKeyword(accData,WIN_TO_TRANSFERRED)));
-  putRawKV(ret,WIN_TO_ACKED,mapKeyStr(getMapByKeyword(accData,WIN_TO_ACKED)));
-  putRawKV(ret,WIN_TO_FAILED,mapKeyStr(getMapByKeyword(accData,WIN_TO_FAILED)));
+  Map outStats=getMapByKey(stats,SID_TO_OUT_STATS);
+  putKV(ret,TYPE,keyword(compType));
+  putKV(ret,NUM_TASKS,numTasks);
+  putKV(ret,NUM_EXECUTORS,numExecutors);
+  putKV(ret,EXECUTOR_STATS,getByKey(stats,EXECUTOR_STATS));
+  putKV(ret,WIN_TO_EMITTED,mapKeyStr(getMapByKey(accData,WIN_TO_EMITTED)));
+  putKV(ret,WIN_TO_TRANSFERRED,mapKeyStr(getMapByKey(accData,WIN_TO_TRANSFERRED)));
+  putKV(ret,WIN_TO_ACKED,mapKeyStr(getMapByKey(accData,WIN_TO_ACKED)));
+  putKV(ret,WIN_TO_FAILED,mapKeyStr(getMapByKey(accData,WIN_TO_FAILED)));
   if (BOLT.equals(compType)) {
-    Map inStats=getMapByKeyword(stats,CID_SID_TO_IN_STATS);
+    Map inStats=getMapByKey(stats,CID_SID_TO_IN_STATS);
     Map inStats2=new HashMap();
     for (    Object o : inStats.entrySet()) {
       Map.Entry e=(Map.Entry)o;
@@ -24,22 +24,22 @@
       if (executed > 0) {
         double executeLatencyTotal=getByKeywordOr0(v,EXEC_LAT_TOTAL).doubleValue();
         double processLatencyTotal=getByKeywordOr0(v,PROC_LAT_TOTAL).doubleValue();
-        putRawKV(v,EXEC_LATENCY,executeLatencyTotal / executed);
-        putRawKV(v,PROC_LATENCY,processLatencyTotal / executed);
+        putKV(v,EXEC_LATENCY,executeLatencyTotal / executed);
+        putKV(v,PROC_LATENCY,processLatencyTotal / executed);
       }
  else {
-        putRawKV(v,EXEC_LATENCY,0.0);
-        putRawKV(v,PROC_LATENCY,0.0);
+        putKV(v,EXEC_LATENCY,0.0);
+        putKV(v,PROC_LATENCY,0.0);
       }
-      removeByKeyword(v,EXEC_LAT_TOTAL);
-      removeByKeyword(v,PROC_LAT_TOTAL);
+      remove(v,EXEC_LAT_TOTAL);
+      remove(v,PROC_LAT_TOTAL);
       inStats2.put(k,v);
     }
-    putRawKV(ret,CID_SID_TO_IN_STATS,inStats2);
-    putRawKV(ret,SID_TO_OUT_STATS,outStats);
-    putRawKV(ret,WIN_TO_EXECUTED,mapKeyStr(getMapByKeyword(accData,WIN_TO_EXECUTED)));
-    putRawKV(ret,WIN_TO_EXEC_LAT,computeWeightedAveragesPerWindow(accData,WIN_TO_EXEC_LAT_WGT_AVG,WIN_TO_EXECUTED));
-    putRawKV(ret,WIN_TO_PROC_LAT,computeWeightedAveragesPerWindow(accData,WIN_TO_PROC_LAT_WGT_AVG,WIN_TO_EXECUTED));
+    putKV(ret,CID_SID_TO_IN_STATS,inStats2);
+    putKV(ret,SID_TO_OUT_STATS,outStats);
+    putKV(ret,WIN_TO_EXECUTED,mapKeyStr(getMapByKey(accData,WIN_TO_EXECUTED)));
+    putKV(ret,WIN_TO_EXEC_LAT,computeWeightedAveragesPerWindow(accData,WIN_TO_EXEC_LAT_WGT_AVG,WIN_TO_EXECUTED));
+    putKV(ret,WIN_TO_PROC_LAT,computeWeightedAveragesPerWindow(accData,WIN_TO_PROC_LAT_WGT_AVG,WIN_TO_EXECUTED));
   }
  else {
     Map outStats2=new HashMap();
@@ -50,16 +50,16 @@
       long acked=getByKeywordOr0(v,ACKED).longValue();
       if (acked > 0) {
         double compLatencyTotal=getByKeywordOr0(v,COMP_LAT_TOTAL).doubleValue();
-        putRawKV(v,COMP_LATENCY,compLatencyTotal / acked);
+        putKV(v,COMP_LATENCY,compLatencyTotal / acked);
       }
  else {
-        putRawKV(v,COMP_LATENCY,0.0);
+        putKV(v,COMP_LATENCY,0.0);
       }
-      removeByKeyword(v,COMP_LAT_TOTAL);
+      remove(v,COMP_LAT_TOTAL);
       outStats2.put(k,v);
     }
-    putRawKV(ret,SID_TO_OUT_STATS,outStats2);
-    putRawKV(ret,WIN_TO_COMP_LAT,computeWeightedAveragesPerWindow(accData,WIN_TO_COMP_LAT_WGT_AVG,WIN_TO_ACKED));
+    putKV(ret,SID_TO_OUT_STATS,outStats2);
+    putKV(ret,WIN_TO_COMP_LAT,computeWeightedAveragesPerWindow(accData,WIN_TO_COMP_LAT_WGT_AVG,WIN_TO_ACKED));
   }
   return ret;
 }

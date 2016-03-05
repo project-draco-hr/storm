@@ -1,13 +1,13 @@
 {
   Map ret=new HashMap();
   if (SPOUT.equals(compType)) {
-    ret.putAll(aggSpoutExecWinStats(accStats,getMapByKeyword(newData,STATS),includeSys));
-    putRawKV(ret,STATS,mergeAggCompStatsCompPageSpout(getMapByKeyword(accStats,STATS),aggPreMergeCompPageSpout(newData,window,includeSys)));
+    ret.putAll(aggSpoutExecWinStats(accStats,getMapByKey(newData,STATS),includeSys));
+    putKV(ret,STATS,mergeAggCompStatsCompPageSpout(getMapByKey(accStats,STATS),aggPreMergeCompPageSpout(newData,window,includeSys)));
   }
  else {
-    ret.putAll(aggBoltExecWinStats(accStats,getMapByKeyword(newData,STATS),includeSys));
-    putRawKV(ret,STATS,mergeAggCompStatsCompPageBolt(getMapByKeyword(accStats,STATS),aggPreMergeCompPageBolt(newData,window,includeSys)));
+    ret.putAll(aggBoltExecWinStats(accStats,getMapByKey(newData,STATS),includeSys));
+    putKV(ret,STATS,mergeAggCompStatsCompPageBolt(getMapByKey(accStats,STATS),aggPreMergeCompPageBolt(newData,window,includeSys)));
   }
-  putRawKV(ret,TYPE,keyword(compType));
+  putKV(ret,TYPE,keyword(compType));
   return ret;
 }

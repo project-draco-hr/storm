@@ -11,8 +11,8 @@
     completeLatencies.add(stat.get_specific().get_spout().get_complete_ms_avg());
   }
   mergeMaps(ret,commonStats);
-  putRawKV(ret,ACKED,aggregateCounts(acked));
-  putRawKV(ret,FAILED,aggregateCounts(failed));
-  putRawKV(ret,COMP_LATENCIES,aggregateAverages(completeLatencies,acked));
+  putKV(ret,ACKED,aggregateCounts(acked));
+  putKV(ret,FAILED,aggregateCounts(failed));
+  putKV(ret,COMP_LATENCIES,aggregateAverages(completeLatencies,acked));
   return ret;
 }

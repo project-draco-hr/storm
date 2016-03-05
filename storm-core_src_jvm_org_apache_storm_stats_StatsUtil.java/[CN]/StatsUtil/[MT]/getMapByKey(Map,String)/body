@@ -2,5 +2,5 @@
   if (map == null) {
     return null;
   }
-  return (Map)map.get(keyword(key));
+  return (Map)map.get(key);
 }

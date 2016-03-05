@@ -1,29 +1,29 @@
 {
   Map ret=new HashMap();
-  Map accOut=getMapByKeyword(accSpoutStats,SID_TO_OUT_STATS);
-  Map spoutOut=getMapByKeyword(spoutStats,SID_TO_OUT_STATS);
+  Map accOut=getMapByKey(accSpoutStats,SID_TO_OUT_STATS);
+  Map spoutOut=getMapByKey(spoutStats,SID_TO_OUT_STATS);
   int numExecutors=getByKeywordOr0(accSpoutStats,NUM_EXECUTORS).intValue();
-  putRawKV(ret,NUM_EXECUTORS,numExecutors + 1);
-  putRawKV(ret,NUM_TASKS,sumOr0(getByKeywordOr0(accSpoutStats,NUM_TASKS),getByKeywordOr0(spoutStats,NUM_TASKS)));
-  putRawKV(ret,SID_TO_OUT_STATS,fullMergeWithSum(accOut,spoutOut));
+  putKV(ret,NUM_EXECUTORS,numExecutors + 1);
+  putKV(ret,NUM_TASKS,sumOr0(getByKeywordOr0(accSpoutStats,NUM_TASKS),getByKeywordOr0(spoutStats,NUM_TASKS)));
+  putKV(ret,SID_TO_OUT_STATS,fullMergeWithSum(accOut,spoutOut));
   Map executorStats=new HashMap();
-  putRawKV(executorStats,EXECUTOR_ID,getByKeyword(spoutStats,EXECUTOR_ID));
-  putRawKV(executorStats,UPTIME,getByKeyword(spoutStats,UPTIME));
-  putRawKV(executorStats,HOST,getByKeyword(spoutStats,HOST));
-  putRawKV(executorStats,PORT,getByKeyword(spoutStats,PORT));
-  putRawKV(executorStats,EMITTED,sumStreamsLong(spoutOut,EMITTED));
-  putRawKV(executorStats,TRANSFERRED,sumStreamsLong(spoutOut,TRANSFERRED));
-  putRawKV(executorStats,FAILED,sumStreamsLong(spoutOut,FAILED));
+  putKV(executorStats,EXECUTOR_ID,getByKey(spoutStats,EXECUTOR_ID));
+  putKV(executorStats,UPTIME,getByKey(spoutStats,UPTIME));
+  putKV(executorStats,HOST,getByKey(spoutStats,HOST));
+  putKV(executorStats,PORT,getByKey(spoutStats,PORT));
+  putKV(executorStats,EMITTED,sumStreamsLong(spoutOut,EMITTED));
+  putKV(executorStats,TRANSFERRED,sumStreamsLong(spoutOut,TRANSFERRED));
+  putKV(executorStats,FAILED,sumStreamsLong(spoutOut,FAILED));
   long acked=sumStreamsLong(spoutOut,ACKED);
-  putRawKV(executorStats,ACKED,acked);
+  putKV(executorStats,ACKED,acked);
   if (acked > 0) {
-    putRawKV(executorStats,COMP_LATENCY,sumStreamsDouble(spoutOut,COMP_LAT_TOTAL) / acked);
+    putKV(executorStats,COMP_LATENCY,sumStreamsDouble(spoutOut,COMP_LAT_TOTAL) / acked);
   }
  else {
-    putRawKV(executorStats,COMP_LATENCY,null);
+    putKV(executorStats,COMP_LATENCY,null);
   }
-  List executorStatsList=((List)getByKeyword(accSpoutStats,EXECUTOR_STATS));
+  List executorStatsList=((List)getByKey(accSpoutStats,EXECUTOR_STATS));
   executorStatsList.add(executorStats);
-  putRawKV(ret,EXECUTOR_STATS,executorStatsList);
+  putKV(ret,EXECUTOR_STATS,executorStatsList);
   return ret;
 }

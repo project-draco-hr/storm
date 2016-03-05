@@ -7,7 +7,7 @@
     emitted.add(stat.get_emitted());
     transferred.add(stat.get_transferred());
   }
-  putRawKV(ret,EMITTED,aggregateCounts(emitted));
-  putRawKV(ret,TRANSFERRED,aggregateCounts(transferred));
+  putKV(ret,EMITTED,aggregateCounts(emitted));
+  putKV(ret,TRANSFERRED,aggregateCounts(transferred));
   return ret;
 }

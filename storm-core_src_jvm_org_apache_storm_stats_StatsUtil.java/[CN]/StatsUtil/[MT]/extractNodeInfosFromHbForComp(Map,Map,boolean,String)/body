@@ -15,8 +15,8 @@
   }
   for (  List hostPort : hostPorts) {
     Map m=new HashMap();
-    putRawKV(m,HOST,hostPort.get(0));
-    putRawKV(m,PORT,hostPort.get(1));
+    putKV(m,HOST,hostPort.get(0));
+    putKV(m,PORT,hostPort.get(1));
     ret.add(m);
   }
   return ret;

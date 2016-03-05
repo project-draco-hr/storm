@@ -1,16 +1,16 @@
 {
   Map initVal=new HashMap();
-  putRawKV(initVal,WORKERS_SET,new HashSet());
-  putRawKV(initVal,BOLT_TO_STATS,new HashMap());
-  putRawKV(initVal,SPOUT_TO_STATS,new HashMap());
-  putRawKV(initVal,WIN_TO_EMITTED,new HashMap());
-  putRawKV(initVal,WIN_TO_TRANSFERRED,new HashMap());
-  putRawKV(initVal,WIN_TO_COMP_LAT_WGT_AVG,new HashMap());
-  putRawKV(initVal,WIN_TO_ACKED,new HashMap());
-  putRawKV(initVal,WIN_TO_FAILED,new HashMap());
+  putKV(initVal,WORKERS_SET,new HashSet());
+  putKV(initVal,BOLT_TO_STATS,new HashMap());
+  putKV(initVal,SPOUT_TO_STATS,new HashMap());
+  putKV(initVal,WIN_TO_EMITTED,new HashMap());
+  putKV(initVal,WIN_TO_TRANSFERRED,new HashMap());
+  putKV(initVal,WIN_TO_COMP_LAT_WGT_AVG,new HashMap());
+  putKV(initVal,WIN_TO_ACKED,new HashMap());
+  putKV(initVal,WIN_TO_FAILED,new HashMap());
   for (  Object o : data) {
     Map newData=(Map)o;
-    String compType=((Keyword)getByKeyword(newData,TYPE)).getName();
+    String compType=((Keyword)getByKey(newData,TYPE)).getName();
     initVal=aggTopoExecStats(win,includeSys,initVal,newData,compType);
   }
   return initVal;

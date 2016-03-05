@@ -15,10 +15,10 @@
     executeLatencies.add(stat.get_specific().get_bolt().get_execute_ms_avg());
   }
   mergeMaps(ret,commonStats);
-  putRawKV(ret,ACKED,aggregateCounts(acked));
-  putRawKV(ret,FAILED,aggregateCounts(failed));
-  putRawKV(ret,EXECUTED,aggregateCounts(executed));
-  putRawKV(ret,PROC_LATENCIES,aggregateAverages(processLatencies,acked));
-  putRawKV(ret,EXEC_LATENCIES,aggregateAverages(executeLatencies,executed));
+  putKV(ret,ACKED,aggregateCounts(acked));
+  putKV(ret,FAILED,aggregateCounts(failed));
+  putKV(ret,EXECUTED,aggregateCounts(executed));
+  putKV(ret,PROC_LATENCIES,aggregateAverages(processLatencies,acked));
+  putKV(ret,EXEC_LATENCIES,aggregateAverages(executeLatencies,executed));
   return ret;
 }

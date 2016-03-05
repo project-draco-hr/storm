@@ -1,10 +1,10 @@
 {
   ExecutorAggregateStats stats=new ExecutorAggregateStats();
   ExecutorSummary executorSummary=new ExecutorSummary();
-  List executor=(List)getByKeyword(m,EXECUTOR_ID);
+  List executor=(List)getByKey(m,EXECUTOR_ID);
   executorSummary.set_executor_info(new ExecutorInfo(((Number)executor.get(0)).intValue(),((Number)executor.get(1)).intValue()));
   executorSummary.set_component_id(compId);
-  executorSummary.set_host((String)getByKeyword(m,HOST));
+  executorSummary.set_host((String)getByKey(m,HOST));
   executorSummary.set_port(getByKeywordOr0(m,PORT).intValue());
   int uptime=getByKeywordOr0(m,UPTIME).intValue();
   executorSummary.set_uptime_secs(uptime);

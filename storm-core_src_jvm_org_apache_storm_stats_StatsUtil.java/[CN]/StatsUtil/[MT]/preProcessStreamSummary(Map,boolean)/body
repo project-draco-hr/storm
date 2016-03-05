@@ -1,7 +1,7 @@
 {
-  Map emitted=getMapByKeyword(streamSummary,EMITTED);
-  Map transferred=getMapByKeyword(streamSummary,TRANSFERRED);
-  putRawKV(streamSummary,EMITTED,filterSysStreams(emitted,includeSys));
-  putRawKV(streamSummary,TRANSFERRED,filterSysStreams(transferred,includeSys));
+  Map emitted=getMapByKey(streamSummary,EMITTED);
+  Map transferred=getMapByKey(streamSummary,TRANSFERRED);
+  putKV(streamSummary,EMITTED,filterSysStreams(emitted,includeSys));
+  putKV(streamSummary,TRANSFERRED,filterSysStreams(transferred,includeSys));
   return streamSummary;
 }

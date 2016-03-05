@@ -6,7 +6,7 @@
  else {
     Map m=aggregateBoltStats(Lists.newArrayList(stats),true);
     m=swapMapOrder(aggregateBoltStreams(m));
-    Map data=getMapByKeyword(m,TEN_MIN_IN_SECONDS_STR);
+    Map data=getMapByKey(m,TEN_MIN_IN_SECONDS_STR);
     int uptime=summ.get_uptime_secs();
     int win=Math.min(uptime,TEN_MIN_IN_SECONDS);
     long executed=getByKeywordOr0(data,EXECUTED).longValue();

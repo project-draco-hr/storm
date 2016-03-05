@@ -3,19 +3,19 @@
   Integer numTasks=getByKeywordOr0(data,NUM_TASKS).intValue();
   Integer numWorkers=getByKeywordOr0(data,NUM_WORKERS).intValue();
   Integer numExecutors=getByKeywordOr0(data,NUM_EXECUTORS).intValue();
-  Map spout2stats=getMapByKeyword(data,SPOUT_TO_STATS);
-  Map bolt2stats=getMapByKeyword(data,BOLT_TO_STATS);
-  Map win2emitted=getMapByKeyword(data,WIN_TO_EMITTED);
-  Map win2transferred=getMapByKeyword(data,WIN_TO_TRANSFERRED);
-  Map win2compLatency=getMapByKeyword(data,WIN_TO_COMP_LAT);
-  Map win2acked=getMapByKeyword(data,WIN_TO_ACKED);
-  Map win2failed=getMapByKeyword(data,WIN_TO_FAILED);
+  Map spout2stats=getMapByKey(data,SPOUT_TO_STATS);
+  Map bolt2stats=getMapByKey(data,BOLT_TO_STATS);
+  Map win2emitted=getMapByKey(data,WIN_TO_EMITTED);
+  Map win2transferred=getMapByKey(data,WIN_TO_TRANSFERRED);
+  Map win2compLatency=getMapByKey(data,WIN_TO_COMP_LAT);
+  Map win2acked=getMapByKey(data,WIN_TO_ACKED);
+  Map win2failed=getMapByKey(data,WIN_TO_FAILED);
   Map<String,ComponentAggregateStats> spoutAggStats=new HashMap<>();
   for (  Object o : spout2stats.entrySet()) {
     Map.Entry e=(Map.Entry)o;
     String id=(String)e.getKey();
     Map v=(Map)e.getValue();
-    putRawKV(v,TYPE,KW_SPOUT);
+    putKV(v,TYPE,KW_SPOUT);
     spoutAggStats.put(id,thriftifySpoutAggStats(v));
   }
   Map<String,ComponentAggregateStats> boltAggStats=new HashMap<>();
@@ -23,7 +23,7 @@
     Map.Entry e=(Map.Entry)o;
     String id=(String)e.getKey();
     Map v=(Map)e.getValue();
-    putRawKV(v,TYPE,KW_BOLT);
+    putKV(v,TYPE,KW_BOLT);
     boltAggStats.put(id,thriftifyBoltAggStats(v));
   }
   TopologyStats topologyStats=new TopologyStats();

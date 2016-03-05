@@ -1,7 +1,7 @@
 {
   if (uptime != null) {
-    Map execAvg=(Map)((Map)getByKeyword(m,EXEC_LATENCIES)).get(TEN_MIN_IN_SECONDS_STR);
-    Map exec=(Map)((Map)getByKeyword(m,EXECUTED)).get(TEN_MIN_IN_SECONDS_STR);
+    Map execAvg=(Map)((Map)getByKey(m,EXEC_LATENCIES)).get(TEN_MIN_IN_SECONDS_STR);
+    Map exec=(Map)((Map)getByKey(m,EXECUTED)).get(TEN_MIN_IN_SECONDS_STR);
     Set<Object> allKeys=new HashSet<>();
     if (execAvg != null) {
       allKeys.addAll(execAvg.keySet());

@@ -1,23 +1,23 @@
 {
   Map ret=new HashMap();
   Map m=new HashMap();
-  for (  Object win : getMapByKeyword(newStats,EXECUTED).keySet()) {
-    m.put(win,aggBoltLatAndCount((Map)(getMapByKeyword(newStats,EXEC_LATENCIES)).get(win),(Map)(getMapByKeyword(newStats,PROC_LATENCIES)).get(win),(Map)(getMapByKeyword(newStats,EXECUTED)).get(win)));
+  for (  Object win : getMapByKey(newStats,EXECUTED).keySet()) {
+    m.put(win,aggBoltLatAndCount((Map)(getMapByKey(newStats,EXEC_LATENCIES)).get(win),(Map)(getMapByKey(newStats,PROC_LATENCIES)).get(win),(Map)(getMapByKey(newStats,EXECUTED)).get(win)));
   }
   m=swapMapOrder(m);
-  Map win2execLatWgtAvg=getMapByKeyword(m,EXEC_LAT_TOTAL);
-  Map win2procLatWgtAvg=getMapByKeyword(m,PROC_LAT_TOTAL);
-  Map win2executed=getMapByKeyword(m,EXECUTED);
-  Map emitted=getMapByKeyword(newStats,EMITTED);
-  emitted=mergeWithSum(aggregateCountStreams(filterSysStreams(emitted,includeSys)),getMapByKeyword(accStats,WIN_TO_EMITTED));
-  putRawKV(ret,WIN_TO_EMITTED,emitted);
-  Map transferred=getMapByKeyword(newStats,TRANSFERRED);
-  transferred=mergeWithSum(aggregateCountStreams(filterSysStreams(transferred,includeSys)),getMapByKeyword(accStats,WIN_TO_TRANSFERRED));
-  putRawKV(ret,WIN_TO_TRANSFERRED,transferred);
-  putRawKV(ret,WIN_TO_EXEC_LAT_WGT_AVG,mergeWithSum(getMapByKeyword(accStats,WIN_TO_EXEC_LAT_WGT_AVG),win2execLatWgtAvg));
-  putRawKV(ret,WIN_TO_PROC_LAT_WGT_AVG,mergeWithSum(getMapByKeyword(accStats,WIN_TO_PROC_LAT_WGT_AVG),win2procLatWgtAvg));
-  putRawKV(ret,WIN_TO_EXECUTED,mergeWithSum(getMapByKeyword(accStats,WIN_TO_EXECUTED),win2executed));
-  putRawKV(ret,WIN_TO_ACKED,mergeWithSum(aggregateCountStreams(getMapByKeyword(newStats,ACKED)),getMapByKeyword(accStats,WIN_TO_ACKED)));
-  putRawKV(ret,WIN_TO_FAILED,mergeWithSum(aggregateCountStreams(getMapByKeyword(newStats,FAILED)),getMapByKeyword(accStats,WIN_TO_FAILED)));
+  Map win2execLatWgtAvg=getMapByKey(m,EXEC_LAT_TOTAL);
+  Map win2procLatWgtAvg=getMapByKey(m,PROC_LAT_TOTAL);
+  Map win2executed=getMapByKey(m,EXECUTED);
+  Map emitted=getMapByKey(newStats,EMITTED);
+  emitted=mergeWithSum(aggregateCountStreams(filterSysStreams(emitted,includeSys)),getMapByKey(accStats,WIN_TO_EMITTED));
+  putKV(ret,WIN_TO_EMITTED,emitted);
+  Map transferred=getMapByKey(newStats,TRANSFERRED);
+  transferred=mergeWithSum(aggregateCountStreams(filterSysStreams(transferred,includeSys)),getMapByKey(accStats,WIN_TO_TRANSFERRED));
+  putKV(ret,WIN_TO_TRANSFERRED,transferred);
+  putKV(ret,WIN_TO_EXEC_LAT_WGT_AVG,mergeWithSum(getMapByKey(accStats,WIN_TO_EXEC_LAT_WGT_AVG),win2execLatWgtAvg));
+  putKV(ret,WIN_TO_PROC_LAT_WGT_AVG,mergeWithSum(getMapByKey(accStats,WIN_TO_PROC_LAT_WGT_AVG),win2procLatWgtAvg));
+  putKV(ret,WIN_TO_EXECUTED,mergeWithSum(getMapByKey(accStats,WIN_TO_EXECUTED),win2executed));
+  putKV(ret,WIN_TO_ACKED,mergeWithSum(aggregateCountStreams(getMapByKey(newStats,ACKED)),getMapByKey(accStats,WIN_TO_ACKED)));
+  putKV(ret,WIN_TO_FAILED,mergeWithSum(aggregateCountStreams(getMapByKey(newStats,FAILED)),getMapByKey(accStats,WIN_TO_FAILED)));
   return ret;
 }

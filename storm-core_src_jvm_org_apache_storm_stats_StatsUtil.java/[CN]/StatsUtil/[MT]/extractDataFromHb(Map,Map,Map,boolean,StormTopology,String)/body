@@ -1,5 +1,5 @@
 {
-  List ret=new ArrayList();
+  List<Map<String,Object>> ret=new ArrayList<>();
   if (executor2hostPort == null) {
     return ret;
   }
@@ -16,21 +16,21 @@
       continue;
     }
     String id=(String)task2component.get(start);
-    Map m=new HashMap();
+    Map<String,Object> m=new HashMap<>();
     if ((compId == null || compId.equals(id)) && (includeSys || !Utils.isSystemId(id))) {
-      putRawKV(m,"exec-id",entry.getKey());
-      putRawKV(m,"comp-id",id);
-      putRawKV(m,NUM_TASKS,end - start + 1);
-      putRawKV(m,HOST,host);
-      putRawKV(m,PORT,port);
-      putRawKV(m,UPTIME,beat.get(keyword(UPTIME)));
-      putRawKV(m,STATS,beat.get(keyword(STATS)));
+      putKV(m,"exec-id",entry.getKey());
+      putKV(m,"comp-id",id);
+      putKV(m,NUM_TASKS,end - start + 1);
+      putKV(m,HOST,host);
+      putKV(m,PORT,port);
+      putKV(m,UPTIME,beat.get(keyword(UPTIME)));
+      putKV(m,STATS,beat.get(keyword(STATS)));
       Keyword type=componentType(topology,compId);
       if (type != null) {
-        putRawKV(m,TYPE,type);
+        putKV(m,TYPE,type);
       }
  else {
-        putRawKV(m,TYPE,getByKeyword(getMapByKeyword(beat,STATS),TYPE));
+        putKV(m,TYPE,getByKey(getMapByKey(beat,STATS),TYPE));
       }
       ret.add(m);
     }
