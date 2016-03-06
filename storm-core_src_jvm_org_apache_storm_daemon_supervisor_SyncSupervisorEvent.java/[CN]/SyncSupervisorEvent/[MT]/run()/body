@@ -61,6 +61,7 @@
     for (    Integer port : killWorkers) {
       supervisorData.getiSupervisor().killedWorker(port);
     }
+    killExistingWorkersWithChangeInComponents(supervisorData,existingAssignment,newAssignment);
     supervisorData.getiSupervisor().assigned(newAssignment.keySet());
     localState.setLocalAssignmentsMap(newAssignment);
     supervisorData.setAssignmentVersions(assignmentsSnapshot);

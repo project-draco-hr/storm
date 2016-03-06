@@ -14,6 +14,7 @@
       String hbPath=ConfigUtils.workerHeartbeatsRoot(conf,workerId);
       LOG.info("Launching worker with assignment {} for this supervisor {} on port {} with id {}",assignment,supervisorData.getSupervisorId(),port,workerId);
       FileUtils.forceMkdir(new File(pidsPath));
+      FileUtils.forceMkdir(new File(ConfigUtils.workerTmpRoot(conf,workerId)));
       FileUtils.forceMkdir(new File(hbPath));
       if (clusterMode.endsWith("distributed")) {
         launchWorker(conf,supervisorId,supervisorData.getAssignmentId(),stormId,port.longValue(),workerId,resources,supervisorData.getResourceIsolationManager(),supervisorData.getDeadWorkers());

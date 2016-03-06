@@ -1,5 +1,4 @@
 {
-  Map conf=supervisorData.getConf();
   LocalState localState=supervisorData.getLocalState();
   Map<Integer,LocalAssignment> assignedExecutors=localState.getLocalAssignmentsMap();
   if (assignedExecutors == null) {
