@@ -1,0 +1,25 @@
+{
+  LOG.debug("List all nodes for path {}",path);
+  if (authenticated) {
+    Set<String> pulseIds=new HashSet<>();
+    for (    Object key : heartbeats.keySet()) {
+      String k=(String)key;
+      String[] replaceStr=k.replaceFirst(path,"").split("/");
+      String trimmmed=null;
+      for (      String str : replaceStr) {
+        if (!str.equals("")) {
+          trimmmed=str;
+          break;
+        }
+      }
+      if (trimmmed != null && k.indexOf(path) == 0) {
+        pulseIds.add(trimmmed);
+      }
+    }
+    HBMessageData hbMessageData=HBMessageData.nodes(new HBNodes(new ArrayList(pulseIds)));
+    return new HBMessage(HBServerMessageType.GET_ALL_NODES_FOR_PATH_RESPONSE,hbMessageData);
+  }
+ else {
+    return notAuthorized();
+  }
+}

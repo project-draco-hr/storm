@@ -1,0 +1,7 @@
+{
+  String prefix=path.endsWith("/") ? path : (path + "/");
+  for (  Object key : heartbeats.keySet()) {
+    if (((String)key).indexOf(prefix) == 0)     deletePulseId((String)key);
+  }
+  return new HBMessage(HBServerMessageType.DELETE_PATH_RESPONSE,null);
+}

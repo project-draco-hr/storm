@@ -1,0 +1,10 @@
+{
+  int newValue=size;
+  while (true) {
+    int oldValue=pacemakerStats.averageHeartbeatSize.get();
+    int count=pacemakerStats.sendPulseCount.get();
+    newValue=((count * oldValue) + newValue) / (count + 1);
+    if (!pacemakerStats.averageHeartbeatSize.compareAndSet(oldValue,newValue))     continue;
+    break;
+  }
+}

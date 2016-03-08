@@ -1,0 +1,6 @@
+{
+  heartbeats=new ConcurrentHashMap();
+  pacemakerStats=new PacemakerStats();
+  this.conf=conf;
+  startStatsThread();
+}

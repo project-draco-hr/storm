@@ -1,0 +1,15 @@
+{
+  Pacemaker handler=new Pacemaker(new ConcurrentHashMap());
+  makeNode(handler,"/some-root/GET_PULSE");
+  messageWithRandId(HBServerMessageType.GET_PULSE,HBMessageData.path("/some-root/GET_PULSE"));
+  HBMessage badResponse=handler.handleMessage(hbMessage,false);
+  HBMessage goodResponse=handler.handleMessage(hbMessage,true);
+  HBPulse goodPulse=goodResponse.get_data().get_pulse();
+  Assert.assertEquals(mid,badResponse.get_message_id());
+  Assert.assertEquals(HBServerMessageType.NOT_AUTHORIZED,badResponse.get_type());
+  Assert.assertNull(badResponse.get_data());
+  Assert.assertEquals(mid,goodResponse.get_message_id());
+  Assert.assertEquals(HBServerMessageType.GET_PULSE_RESPONSE,goodResponse.get_type());
+  Assert.assertEquals("/some-root/GET_PULSE",goodPulse.get_id());
+  Assert.assertEquals("nothing",Utils.javaDeserialize(goodPulse.get_details(),String.class));
+}

@@ -1,0 +1,17 @@
+{
+  if (authenticated) {
+    byte[] details=(byte[])heartbeats.get(path);
+    LOG.debug("Getting Pulse for path [ {} ]...data [ {} ].",path,details);
+    pacemakerStats.getPulseCount.incrementAndGet();
+    if (details != null) {
+      pacemakerStats.totalSentSize.addAndGet(details.length);
+    }
+    HBPulse hbPulse=new HBPulse();
+    hbPulse.set_id(path);
+    hbPulse.set_details(details);
+    return new HBMessage(HBServerMessageType.GET_PULSE_RESPONSE,HBMessageData.pulse(hbPulse));
+  }
+ else {
+    return notAuthorized();
+  }
+}
