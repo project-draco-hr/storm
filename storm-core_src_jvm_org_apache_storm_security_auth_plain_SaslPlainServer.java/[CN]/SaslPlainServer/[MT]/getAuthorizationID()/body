@@ -1,0 +1,4 @@
+{
+  throwIfNotComplete();
+  return authz;
+}

@@ -1,0 +1,4 @@
+{
+  throwIfNotComplete();
+  return Sasl.QOP.equals(propName) ? "auth" : null;
+}

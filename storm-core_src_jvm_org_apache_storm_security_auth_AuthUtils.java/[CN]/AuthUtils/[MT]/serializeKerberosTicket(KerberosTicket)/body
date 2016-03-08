@@ -1,0 +1,8 @@
+{
+  ByteArrayOutputStream bao=new ByteArrayOutputStream();
+  ObjectOutputStream out=new ObjectOutputStream(bao);
+  out.writeObject(tgt);
+  out.flush();
+  out.close();
+  return bao.toByteArray();
+}

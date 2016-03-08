@@ -16,11 +16,6 @@
     }
   }
 ).start();
-  List<PreparableReporter> reporters=MetricsUtils.getPreparableReporters(conf);
-  for (  PreparableReporter reporter : reporters) {
-    reporter.prepare(new MetricRegistry(),conf);
-    reporter.start();
-    LOG.info("Started statistics report plugin: {}",reporter);
-  }
+  StormMetricsRegistry.startMetricsReporters(conf);
   if (handlerServer != null)   handlerServer.serve();
 }
