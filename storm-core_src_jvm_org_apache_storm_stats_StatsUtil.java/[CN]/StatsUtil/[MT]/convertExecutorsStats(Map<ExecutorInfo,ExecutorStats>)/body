@@ -1,0 +1,9 @@
+{
+  Map<List<Integer>,ExecutorStats> ret=new HashMap<>();
+  for (  Map.Entry<ExecutorInfo,ExecutorStats> entry : stats.entrySet()) {
+    ExecutorInfo executorInfo=entry.getKey();
+    ExecutorStats executorStats=entry.getValue();
+    ret.put(Lists.newArrayList(executorInfo.get_task_start(),executorInfo.get_task_end()),executorStats);
+  }
+  return ret;
+}

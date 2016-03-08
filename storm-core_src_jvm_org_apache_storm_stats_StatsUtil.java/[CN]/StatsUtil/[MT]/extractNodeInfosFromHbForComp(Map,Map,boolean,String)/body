@@ -1,5 +1,5 @@
 {
-  List ret=new ArrayList();
+  List<Map<String,Object>> ret=new ArrayList<>();
   Set<List> hostPorts=new HashSet<>();
   for (  Object o : exec2hostPort.entrySet()) {
     Map.Entry entry=(Map.Entry)o;
@@ -14,7 +14,7 @@
     }
   }
   for (  List hostPort : hostPorts) {
-    Map m=new HashMap();
+    Map<String,Object> m=new HashMap<>();
     putKV(m,HOST,hostPort.get(0));
     putKV(m,PORT,hostPort.get(1));
     ret.add(m);

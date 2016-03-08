@@ -1,7 +1,0 @@
-{
-  Map ret=new HashMap();
-  putKV(ret,ACKED,stats.get_acked());
-  putKV(ret,FAILED,stats.get_failed());
-  putKV(ret,COMP_LATENCIES,stats.get_complete_ms_avg());
-  return ret;
-}

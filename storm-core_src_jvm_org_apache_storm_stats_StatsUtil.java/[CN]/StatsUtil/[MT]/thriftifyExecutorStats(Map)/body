@@ -4,6 +4,6 @@
   ret.set_specific(specificStats);
   ret.set_emitted(windowSetConverter(getMapByKey(stats,EMITTED),TO_STRING,TO_STRING));
   ret.set_transferred(windowSetConverter(getMapByKey(stats,TRANSFERRED),TO_STRING,TO_STRING));
-  ret.set_rate(((Number)getByKey(stats,"rate")).doubleValue());
+  ret.set_rate(((Number)getByKey(stats,RATE)).doubleValue());
   return ret;
 }

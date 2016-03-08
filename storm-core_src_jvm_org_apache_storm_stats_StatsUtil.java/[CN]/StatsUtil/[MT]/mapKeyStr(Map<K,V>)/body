@@ -1,0 +1,7 @@
+{
+  Map<String,V> ret=new HashMap<>();
+  for (  Map.Entry<K,V> entry : m.entrySet()) {
+    ret.put(entry.getKey().toString(),entry.getValue());
+  }
+  return ret;
+}

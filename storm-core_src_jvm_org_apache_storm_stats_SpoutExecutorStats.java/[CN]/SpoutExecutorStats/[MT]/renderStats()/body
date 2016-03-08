@@ -1,8 +1,10 @@
 {
   cleanupStats();
-  Map ret=new HashMap();
-  ret.putAll(valueStats(CommonStats.COMMON_FIELDS));
-  ret.putAll(valueStats(SpoutExecutorStats.SPOUT_FIELDS));
-  StatsUtil.putKV(ret,StatsUtil.TYPE,StatsUtil.KW_SPOUT);
+  ExecutorStats ret=new ExecutorStats();
+  ret.set_emitted(valueStat(EMITTED));
+  ret.set_transferred(valueStat(TRANSFERRED));
+  ret.set_rate(this.rate);
+  SpoutStats spoutStats=new SpoutStats(valueStat(ACKED),valueStat(FAILED),valueStat(COMPLETE_LATENCIES));
+  ret.set_specific(ExecutorSpecificStats.spout(spoutStats));
   return ret;
 }

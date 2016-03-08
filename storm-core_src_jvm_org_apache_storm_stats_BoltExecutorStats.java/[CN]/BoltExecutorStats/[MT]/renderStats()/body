@@ -1,8 +1,10 @@
 {
   cleanupStats();
-  Map ret=new HashMap();
-  ret.putAll(valueStats(CommonStats.COMMON_FIELDS));
-  ret.putAll(valueStats(BoltExecutorStats.BOLT_FIELDS));
-  StatsUtil.putKV(ret,StatsUtil.TYPE,StatsUtil.KW_BOLT);
+  ExecutorStats ret=new ExecutorStats();
+  ret.set_emitted(valueStat(EMITTED));
+  ret.set_transferred(valueStat(TRANSFERRED));
+  ret.set_rate(this.rate);
+  BoltStats boltStats=new BoltStats(StatsUtil.windowSetConverter(valueStat(ACKED),StatsUtil.TO_GSID,StatsUtil.IDENTITY),StatsUtil.windowSetConverter(valueStat(FAILED),StatsUtil.TO_GSID,StatsUtil.IDENTITY),StatsUtil.windowSetConverter(valueStat(PROCESS_LATENCIES),StatsUtil.TO_GSID,StatsUtil.IDENTITY),StatsUtil.windowSetConverter(valueStat(EXECUTED),StatsUtil.TO_GSID,StatsUtil.IDENTITY),StatsUtil.windowSetConverter(valueStat(EXECUTE_LATENCIES),StatsUtil.TO_GSID,StatsUtil.IDENTITY));
+  ret.set_specific(ExecutorSpecificStats.bolt(boltStats));
   return ret;
 }

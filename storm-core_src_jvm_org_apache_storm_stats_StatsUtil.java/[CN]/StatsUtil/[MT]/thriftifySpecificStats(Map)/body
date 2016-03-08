@@ -1,6 +1,6 @@
 {
   ExecutorSpecificStats specificStats=new ExecutorSpecificStats();
-  String compType=((Keyword)getByKey(stats,TYPE)).getName();
+  String compType=(String)getByKey(stats,TYPE);
   if (BOLT.equals(compType)) {
     BoltStats boltStats=new BoltStats();
     boltStats.set_acked(windowSetConverter(getMapByKey(stats,ACKED),TO_GSID,TO_STRING));

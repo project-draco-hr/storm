@@ -7,7 +7,7 @@
     Map sub=(Map)v;
     for (    Object o : sub.entrySet()) {
       Map.Entry e=(Map.Entry)o;
-      if (((Keyword)e.getKey()).getName().equals(key)) {
+      if (e.getKey().equals(key)) {
         sum+=((Number)e.getValue()).doubleValue();
       }
     }

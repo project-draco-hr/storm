@@ -1,0 +1,17 @@
+{
+  ClusterWorkerHeartbeat ret=new ClusterWorkerHeartbeat();
+  ret.set_uptime_secs(getByKeyOr0(heartbeat,UPTIME).intValue());
+  ret.set_storm_id((String)getByKey(heartbeat,"storm-id"));
+  ret.set_time_secs(getByKeyOr0(heartbeat,TIME_SECS).intValue());
+  Map<ExecutorInfo,ExecutorStats> convertedStats=new HashMap<>();
+  Map<List<Integer>,ExecutorStats> executorStats=getMapByKey(heartbeat,EXECUTOR_STATS);
+  if (executorStats != null) {
+    for (    Map.Entry<List<Integer>,ExecutorStats> entry : executorStats.entrySet()) {
+      List<Integer> executor=entry.getKey();
+      ExecutorStats stats=entry.getValue();
+      convertedStats.put(new ExecutorInfo(executor.get(0),executor.get(1)),stats);
+    }
+  }
+  ret.set_executor_stats(convertedStats);
+  return ret;
+}

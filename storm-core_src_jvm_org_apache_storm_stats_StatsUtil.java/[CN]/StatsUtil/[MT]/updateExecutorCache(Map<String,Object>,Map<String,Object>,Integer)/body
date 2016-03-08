@@ -1,0 +1,28 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  Integer lastNimbusTime=null, lastReportedTime=null;
+  if (currBeat != null) {
+    lastNimbusTime=(Integer)currBeat.get("nimbus-time");
+    lastReportedTime=(Integer)currBeat.get("executor-reported-time");
+  }
+  Integer reportedTime=null;
+  if (newBeat != null) {
+    reportedTime=(Integer)newBeat.get(TIME_SECS);
+  }
+  if (reportedTime == null) {
+    if (lastReportedTime != null) {
+      reportedTime=lastReportedTime;
+    }
+ else {
+      reportedTime=0;
+    }
+  }
+  if (lastNimbusTime == null || !reportedTime.equals(lastReportedTime)) {
+    lastNimbusTime=Time.currentTimeSecs();
+  }
+  ret.put("is-timed-out",Time.deltaSecs(lastNimbusTime) >= timeout);
+  ret.put("nimbus-time",lastNimbusTime);
+  ret.put("executor-reported-time",reportedTime);
+  ret.put(HEARTBEAT,newBeat);
+  return ret;
+}

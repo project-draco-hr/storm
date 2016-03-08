@@ -1,9 +1,0 @@
-{
-  for (Iterator itr=summs.iterator(); itr.hasNext(); ) {
-    ExecutorSummary summ=(ExecutorSummary)itr.next();
-    if (summ.get_stats() == null) {
-      itr.remove();
-    }
-  }
-  return summs;
-}

@@ -1,9 +1,0 @@
-{
-  Map ret=new HashMap();
-  putKV(ret,ACKED,aggregateCountStreams(getMapByKey(stats,ACKED)));
-  putKV(ret,FAILED,aggregateCountStreams(getMapByKey(stats,FAILED)));
-  putKV(ret,EMITTED,aggregateCountStreams(getMapByKey(stats,EMITTED)));
-  putKV(ret,TRANSFERRED,aggregateCountStreams(getMapByKey(stats,TRANSFERRED)));
-  putKV(ret,COMP_LATENCIES,aggregateAvgStreams(getMapByKey(stats,COMP_LATENCIES),getMapByKey(stats,ACKED)));
-  return ret;
-}

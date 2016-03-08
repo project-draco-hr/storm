@@ -1,0 +1,16 @@
+{
+  Map<List<Integer>,Object> ret=new HashMap<>();
+  if (cache == null && executorBeats == null) {
+    return ret;
+  }
+  if (cache == null) {
+    cache=new HashMap<>();
+  }
+  if (executorBeats == null) {
+    executorBeats=new HashMap<>();
+  }
+  for (  List<Integer> executor : executors) {
+    ret.put(executor,updateExecutorCache(cache.get(executor),executorBeats.get(executor),timeout));
+  }
+  return ret;
+}

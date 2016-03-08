@@ -1,8 +1,0 @@
-String topologyId
-Map exec2nodePort
-Map task2component
-Map beats
-StormTopology topology
-String window
-boolean includeSys
-IStormClusterState clusterState

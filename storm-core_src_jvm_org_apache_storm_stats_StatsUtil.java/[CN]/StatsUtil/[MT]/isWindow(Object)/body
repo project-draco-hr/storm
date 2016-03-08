@@ -1,3 +1,0 @@
-{
-  return key.equals("600") || key.equals("10800") || key.equals("86400")|| key.equals(":all-time");
-}

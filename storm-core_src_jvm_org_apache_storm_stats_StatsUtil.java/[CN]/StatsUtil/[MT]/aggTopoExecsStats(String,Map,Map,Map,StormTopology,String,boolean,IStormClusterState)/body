@@ -1,6 +1,0 @@
-{
-  List beatList=extractDataFromHb(exec2nodePort,task2component,beats,includeSys,topology);
-  Map topoStats=aggregateTopoStats(window,includeSys,beatList);
-  topoStats=postAggregateTopoStats(task2component,exec2nodePort,topoStats,topologyId,clusterState);
-  return thriftifyTopoPageData(topologyId,topoStats);
-}

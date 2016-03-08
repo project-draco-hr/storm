@@ -1,0 +1,17 @@
+{
+  Map<String,Double> ret=new HashMap<>();
+  Map<String,Map<K,List>> expands=expandAverages(avgs,counts);
+  for (  Map.Entry<String,Map<K,List>> entry : expands.entrySet()) {
+    String win=entry.getKey();
+    double avgTotal=0.0;
+    long cntTotal=0l;
+    Map<K,List> inner=entry.getValue();
+    for (    K kk : inner.keySet()) {
+      List vv=inner.get(kk);
+      avgTotal+=((Number)vv.get(0)).doubleValue();
+      cntTotal+=((Number)vv.get(1)).longValue();
+    }
+    ret.put(win,valAvg(avgTotal,cntTotal));
+  }
+  return ret;
+}

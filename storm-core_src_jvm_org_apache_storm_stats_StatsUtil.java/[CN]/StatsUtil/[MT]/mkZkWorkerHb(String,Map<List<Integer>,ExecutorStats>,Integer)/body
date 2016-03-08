@@ -1,0 +1,8 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  ret.put("storm-id",stormId);
+  ret.put(EXECUTOR_STATS,executorStats);
+  ret.put(UPTIME,uptime);
+  ret.put(TIME_SECS,Time.currentTimeSecs());
+  return ret;
+}

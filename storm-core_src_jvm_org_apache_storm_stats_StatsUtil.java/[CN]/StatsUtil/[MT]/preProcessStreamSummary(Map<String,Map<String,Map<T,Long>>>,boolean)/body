@@ -1,0 +1,7 @@
+{
+  Map<String,Map<T,Long>> emitted=getMapByKey(streamSummary,EMITTED);
+  Map<String,Map<T,Long>> transferred=getMapByKey(streamSummary,TRANSFERRED);
+  putKV(streamSummary,EMITTED,filterSysStreams(emitted,includeSys));
+  putKV(streamSummary,TRANSFERRED,filterSysStreams(transferred,includeSys));
+  return streamSummary;
+}

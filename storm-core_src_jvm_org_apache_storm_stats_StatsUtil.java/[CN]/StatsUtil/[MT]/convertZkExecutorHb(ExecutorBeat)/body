@@ -1,0 +1,9 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  if (beat != null) {
+    ret.put(TIME_SECS,beat.getTimeSecs());
+    ret.put(UPTIME,beat.getUptime());
+    ret.put(STATS,convertExecutorStats(beat.getStats()));
+  }
+  return ret;
+}
