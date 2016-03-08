@@ -1,0 +1,11 @@
+{
+  HBMessage response=new HBMessage(HBServerMessageType.SEND_PULSE_RESPONSE,null);
+  PaceMakerClientProxy clientProxy=new PaceMakerClientProxy(response,null);
+  PaceMakerStateStorage stateStorage=new PaceMakerStateStorage(clientProxy,null);
+  stateStorage.set_worker_hb("/foo",Utils.javaSerialize("data"),null);
+  HBMessage sent=clientProxy.checkCaptured();
+  HBPulse pulse=sent.get_data().get_pulse();
+  Assert.assertEquals(HBServerMessageType.SEND_PULSE,sent.get_type());
+  Assert.assertEquals("/foo",pulse.get_id());
+  Assert.assertEquals("data",Utils.javaDeserialize(pulse.get_details(),String.class));
+}

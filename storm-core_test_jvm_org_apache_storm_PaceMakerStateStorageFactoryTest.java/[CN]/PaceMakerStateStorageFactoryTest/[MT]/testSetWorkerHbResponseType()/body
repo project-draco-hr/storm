@@ -1,0 +1,6 @@
+{
+  HBMessage response=new HBMessage(HBServerMessageType.SEND_PULSE,null);
+  PaceMakerClientProxy clientProxy=new PaceMakerClientProxy(response,null);
+  PaceMakerStateStorage stateStorage=new PaceMakerStateStorage(clientProxy,null);
+  stateStorage.set_worker_hb("/foo",Utils.javaSerialize("data"),null);
+}

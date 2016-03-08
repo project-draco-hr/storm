@@ -1,0 +1,6 @@
+{
+  HBMessage response=new HBMessage(HBServerMessageType.DELETE_PATH,null);
+  PaceMakerClientProxy clientProxy=new PaceMakerClientProxy(response,null);
+  PaceMakerStateStorage stateStorage=new PaceMakerStateStorage(clientProxy,null);
+  stateStorage.delete_worker_hb("/foo/bar");
+}
