@@ -81,10 +81,21 @@
   TridentTopologyBuilder builder=new TridentTopologyBuilder();
   Map<Node,String> spoutIds=genSpoutIds(spoutNodes);
   Map<Group,String> boltIds=genBoltIds(mergedGroups);
+  Map defaults=Utils.readDefaultConfig();
   for (  SpoutNode sn : spoutNodes) {
     Integer parallelism=parallelisms.get(grouper.nodeGroup(sn));
+    Map<String,Number> spoutRes=null;
+    if (sn instanceof ITridentResource) {
+      spoutRes=mergeDefaultResources(((ITridentResource)sn).getResources(),defaults);
+    }
+ else {
+      spoutRes=mergeDefaultResources(null,defaults);
+    }
+    Number onHeap=spoutRes.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB);
+    Number offHeap=spoutRes.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB);
+    Number cpuLoad=spoutRes.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT);
     if (sn.type == SpoutNode.SpoutType.DRPC) {
-      builder.setBatchPerTupleSpout(spoutIds.get(sn),sn.streamId,(IRichSpout)sn.spout,parallelism,batchGroupMap.get(sn));
+      builder.setBatchPerTupleSpout(spoutIds.get(sn),sn.streamId,(IRichSpout)sn.spout,parallelism,batchGroupMap.get(sn)).setMemoryLoad(onHeap,offHeap).setCPULoad(cpuLoad);
     }
  else {
       ITridentSpout s;
@@ -97,14 +108,18 @@
  else {
         throw new RuntimeException("Regular rich spouts not supported yet... try wrapping in a RichSpoutBatchExecutor");
       }
-      builder.setSpout(spoutIds.get(sn),sn.streamId,sn.txId,s,parallelism,batchGroupMap.get(sn));
+      builder.setSpout(spoutIds.get(sn),sn.streamId,sn.txId,s,parallelism,batchGroupMap.get(sn)).setMemoryLoad(onHeap,offHeap).setCPULoad(cpuLoad);
     }
   }
   for (  Group g : mergedGroups) {
     if (!isSpoutGroup(g)) {
       Integer p=parallelisms.get(g);
       Map<String,String> streamToGroup=getOutputStreamBatchGroups(g,batchGroupMap);
-      BoltDeclarer d=builder.setBolt(boltIds.get(g),new SubtopologyBolt(graph,g.nodes,batchGroupMap),p,committerBatches(g,batchGroupMap),streamToGroup);
+      Map<String,Number> groupRes=mergeDefaultResources(g.getResources(),defaults);
+      Number onHeap=groupRes.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB);
+      Number offHeap=groupRes.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB);
+      Number cpuLoad=groupRes.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT);
+      BoltDeclarer d=builder.setBolt(boltIds.get(g),new SubtopologyBolt(graph,g.nodes,batchGroupMap),p,committerBatches(g,batchGroupMap),streamToGroup).setMemoryLoad(onHeap,offHeap).setCPULoad(cpuLoad);
       Collection<PartitionNode> inputs=uniquedSubscriptions(externalGroupInputs(g));
       for (      PartitionNode n : inputs) {
         Node parent=TridentUtils.getParent(graph,n);
