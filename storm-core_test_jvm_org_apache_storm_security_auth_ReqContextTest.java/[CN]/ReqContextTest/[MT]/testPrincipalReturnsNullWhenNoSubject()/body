@@ -1,0 +1,4 @@
+{
+  rc.setSubject(new Subject());
+  Assert.assertNull(rc.principal());
+}

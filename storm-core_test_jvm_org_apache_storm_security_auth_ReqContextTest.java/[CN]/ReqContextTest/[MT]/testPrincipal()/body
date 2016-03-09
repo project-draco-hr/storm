@@ -1,0 +1,15 @@
+{
+  final String principalName="Test Principal";
+  Principal testPrincipal=new Principal(){
+    @Override public String getName(){
+      return principalName;
+    }
+  }
+;
+  Set<Principal> principals=ImmutableSet.of(testPrincipal);
+  Subject subject=new Subject(false,principals,new HashSet<>(),new HashSet<>());
+  rc.setSubject(subject);
+  Assert.assertNotNull(rc.principal());
+  Assert.assertEquals(principalName,rc.principal().getName());
+  rc.setSubject(null);
+}
