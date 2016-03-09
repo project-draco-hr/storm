@@ -1,0 +1,7 @@
+{
+  String name="Andy";
+  SaslTransportPlugin.User user=new SaslTransportPlugin.User(name);
+  assertEquals(name,user.toString());
+  assertEquals(user.getName(),user.toString());
+  assertEquals(name.hashCode(),user.hashCode());
+}
