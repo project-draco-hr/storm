@@ -1,11 +1,4 @@
 {
-  if (timer == null) {
-synchronized (Client.class) {
-      if (timer == null) {
-        timer=new Timer("Netty-ChannelAlive-Timer",true);
-      }
-    }
-  }
   timer.schedule(new java.util.TimerTask(){
     public void run(){
       try {
