@@ -1,3 +1,14 @@
 {
-  stateStorage.delete_node(ClusterUtils.backpressurePath(stormId,node,port));
+  try {
+    String path=ClusterUtils.backpressurePath(stormId,node,port);
+    stateStorage.delete_node(path);
+  }
+ catch (  Exception e) {
+    if (Utils.exceptionCauseIsInstanceOf(KeeperException.class,e)) {
+      LOG.warn("Could not teardown worker backpressure node for {} {} {}.",stormId,node,port);
+    }
+ else {
+      throw e;
+    }
+  }
 }
