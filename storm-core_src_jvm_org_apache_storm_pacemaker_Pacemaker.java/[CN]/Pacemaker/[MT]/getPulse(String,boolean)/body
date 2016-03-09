@@ -1,6 +1,6 @@
 {
   if (authenticated) {
-    byte[] details=(byte[])heartbeats.get(path);
+    byte[] details=heartbeats.get(path);
     LOG.debug("Getting Pulse for path [ {} ]...data [ {} ].",path,details);
     pacemakerStats.getPulseCount.incrementAndGet();
     if (details != null) {

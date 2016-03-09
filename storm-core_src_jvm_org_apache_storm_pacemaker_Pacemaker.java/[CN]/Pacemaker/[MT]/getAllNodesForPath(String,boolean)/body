@@ -2,18 +2,17 @@
   LOG.debug("List all nodes for path {}",path);
   if (authenticated) {
     Set<String> pulseIds=new HashSet<>();
-    for (    Object key : heartbeats.keySet()) {
-      String k=(String)key;
-      String[] replaceStr=k.replaceFirst(path,"").split("/");
-      String trimmmed=null;
+    for (    String key : heartbeats.keySet()) {
+      String[] replaceStr=key.replaceFirst(path,"").split("/");
+      String trimmed=null;
       for (      String str : replaceStr) {
         if (!str.equals("")) {
-          trimmmed=str;
+          trimmed=str;
           break;
         }
       }
-      if (trimmmed != null && k.indexOf(path) == 0) {
-        pulseIds.add(trimmmed);
+      if (trimmed != null && key.indexOf(path) == 0) {
+        pulseIds.add(trimmed);
       }
     }
     HBMessageData hbMessageData=HBMessageData.nodes(new HBNodes(new ArrayList(pulseIds)));
