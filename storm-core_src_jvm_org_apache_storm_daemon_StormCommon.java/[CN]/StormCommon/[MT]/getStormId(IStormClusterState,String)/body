@@ -2,7 +2,8 @@
   List<String> activeTopologys=stormClusterState.activeStorms();
   IPredicate pred=new IPredicate<String>(){
     @Override public boolean test(    String obj){
-      return obj != null ? getTopologyNameById(obj).equals(topologyName) : false;
+      String name=stormClusterState.stormBase(obj,null).get_name();
+      return name.equals(topologyName);
     }
   }
 ;

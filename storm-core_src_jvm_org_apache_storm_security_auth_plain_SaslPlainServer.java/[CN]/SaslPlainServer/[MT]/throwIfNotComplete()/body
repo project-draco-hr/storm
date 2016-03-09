@@ -1,0 +1,5 @@
+{
+  if (!completed) {
+    throw new IllegalStateException("PLAIN authentication not completed");
+  }
+}

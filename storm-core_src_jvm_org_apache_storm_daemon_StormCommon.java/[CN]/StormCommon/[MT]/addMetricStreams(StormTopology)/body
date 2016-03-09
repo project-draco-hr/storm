@@ -1,9 +1,7 @@
 {
   for (  Object component : allComponents(topology).values()) {
     ComponentCommon common=getComponentCommon(component);
-    if (common != null) {
-      StreamInfo streamInfo=Thrift.outputFields(Arrays.asList("task-info","data-points"));
-      common.put_to_streams(Constants.METRICS_STREAM_ID,streamInfo);
-    }
+    StreamInfo streamInfo=Thrift.outputFields(Arrays.asList("task-info","data-points"));
+    common.put_to_streams(Constants.METRICS_STREAM_ID,streamInfo);
   }
 }

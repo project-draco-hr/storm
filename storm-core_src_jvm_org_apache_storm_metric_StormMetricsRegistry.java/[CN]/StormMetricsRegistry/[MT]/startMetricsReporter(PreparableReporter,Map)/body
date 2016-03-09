@@ -1,0 +1,5 @@
+{
+  reporter.prepare(StormMetricsRegistry.DEFAULT_REGISTRY,stormConf);
+  reporter.start();
+  LOG.info("Started statistics report plugin...");
+}

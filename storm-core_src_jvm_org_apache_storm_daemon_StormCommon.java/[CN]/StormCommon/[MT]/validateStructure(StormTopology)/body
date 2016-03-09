@@ -3,26 +3,25 @@
   for (  Map.Entry<String,Object> entry : componentMap.entrySet()) {
     String componentId=entry.getKey();
     ComponentCommon common=getComponentCommon(entry.getValue());
-    if (common != null) {
-      Map<GlobalStreamId,Grouping> inputs=common.get_inputs();
-      for (      Map.Entry<GlobalStreamId,Grouping> input : inputs.entrySet()) {
-        String sourceStreamId=input.getKey().get_streamId();
-        String sourceComponentId=input.getKey().get_componentId();
-        if (componentMap.keySet().contains(sourceComponentId) == false) {
-          throw new InvalidTopologyException("Component: [" + componentId + "] subscribes from non-existent component ["+ sourceComponentId+ "]");
-        }
-        ComponentCommon sourceComponent=getComponentCommon(componentMap.get(sourceComponentId));
-        if (sourceComponent == null || sourceComponent.get_streams().containsKey(sourceStreamId) == false) {
-          throw new InvalidTopologyException("Component: [" + componentId + "] subscribes from non-existent stream: "+ "["+ sourceStreamId+ "] of component ["+ sourceComponentId+ "]");
-        }
-        Grouping grouping=input.getValue();
-        if (Thrift.groupingType(grouping) == Grouping._Fields.FIELDS) {
-          List<String> fields=grouping.get_fields();
-          Map<String,StreamInfo> streams=sourceComponent.get_streams();
-          Set<String> sourceOutputFields=getStreamOutputFields(streams);
-          if (sourceOutputFields.containsAll(fields) == false) {
-            throw new InvalidTopologyException("Component: [" + componentId + "] subscribes from stream: ["+ sourceStreamId+ "] of component "+ "["+ sourceComponentId+ "] + with non-existent fields: "+ fields);
-          }
+    Map<GlobalStreamId,Grouping> inputs=common.get_inputs();
+    for (    Map.Entry<GlobalStreamId,Grouping> input : inputs.entrySet()) {
+      String sourceStreamId=input.getKey().get_streamId();
+      String sourceComponentId=input.getKey().get_componentId();
+      if (componentMap.keySet().contains(sourceComponentId) == false) {
+        throw new InvalidTopologyException("Component: [" + componentId + "] subscribes from non-existent component ["+ sourceComponentId+ "]");
+      }
+      ComponentCommon sourceComponent=getComponentCommon(componentMap.get(sourceComponentId));
+      if (sourceComponent.get_streams().containsKey(sourceStreamId) == false) {
+        throw new InvalidTopologyException("Component: [" + componentId + "] subscribes from non-existent stream: "+ "["+ sourceStreamId+ "] of component ["+ sourceComponentId+ "]");
+      }
+      Grouping grouping=input.getValue();
+      if (Thrift.groupingType(grouping) == Grouping._Fields.FIELDS) {
+        List<String> fields=new ArrayList<String>(grouping.get_fields());
+        Map<String,StreamInfo> streams=sourceComponent.get_streams();
+        Set<String> sourceOutputFields=getStreamOutputFields(streams);
+        fields.removeAll(sourceOutputFields);
+        if (fields.size() != 0) {
+          throw new InvalidTopologyException("Component: [" + componentId + "] subscribes from stream: ["+ sourceStreamId+ "] of component "+ "["+ sourceComponentId+ "] + with non-existent fields: "+ fields);
         }
       }
     }

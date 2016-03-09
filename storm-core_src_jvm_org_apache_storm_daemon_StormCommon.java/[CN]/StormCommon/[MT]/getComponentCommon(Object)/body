@@ -1,7 +1,4 @@
 {
-  if (component == null) {
-    return null;
-  }
   ComponentCommon common=null;
   if (component instanceof StateSpoutSpec) {
     common=((StateSpoutSpec)component).get_common();

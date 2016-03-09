@@ -1,7 +1,6 @@
 {
   validateIds(topology);
-  List<StormTopology._Fields> spoutFields=Arrays.asList(Thrift.getSpoutFields());
-  for (  StormTopology._Fields field : spoutFields) {
+  for (  StormTopology._Fields field : Thrift.getSpoutFields()) {
     Map<String,Object> spoutComponents=(Map<String,Object>)topology.getFieldValue(field);
     if (spoutComponents != null) {
       for (      Object obj : spoutComponents.values()) {
@@ -16,12 +15,10 @@
   for (  Object componentObj : componentMap.values()) {
     Map conf=componentConf(componentObj);
     ComponentCommon common=getComponentCommon(componentObj);
-    if (common != null) {
-      int parallelismHintNum=Thrift.getParallelismHint(common);
-      Integer taskNum=Utils.getInt(conf.get(Config.TOPOLOGY_TASKS),0);
-      if (taskNum > 0 && parallelismHintNum <= 0) {
-        throw new InvalidTopologyException("Number of executors must be greater than 0 when number of tasks is greater than 0");
-      }
+    int parallelismHintNum=Thrift.getParallelismHint(common);
+    Integer taskNum=Utils.getInt(conf.get(Config.TOPOLOGY_TASKS),0);
+    if (taskNum > 0 && parallelismHintNum <= 0) {
+      throw new InvalidTopologyException("Number of executors must be greater than 0 when number of tasks is greater than 0");
     }
   }
 }

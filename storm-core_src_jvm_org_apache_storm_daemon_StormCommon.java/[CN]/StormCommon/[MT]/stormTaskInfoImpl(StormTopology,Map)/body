@@ -6,9 +6,7 @@
   for (  Map.Entry<String,Object> entry : components.entrySet()) {
     Map conf=componentConf(entry.getValue());
     Object taskNum=conf.get(Config.TOPOLOGY_TASKS);
-    if (taskNum != null) {
-      componentIdToTaskNum.put(entry.getKey(),Utils.getInt(taskNum));
-    }
+    componentIdToTaskNum.put(entry.getKey(),Utils.getInt(taskNum));
   }
   int taskId=1;
   for (  Map.Entry<String,Integer> entry : componentIdToTaskNum.entrySet()) {
