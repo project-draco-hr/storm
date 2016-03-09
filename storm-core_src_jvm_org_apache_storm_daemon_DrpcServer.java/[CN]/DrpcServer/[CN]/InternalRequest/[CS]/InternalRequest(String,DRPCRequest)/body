@@ -1,0 +1,6 @@
+{
+  sem=new Semaphore(0);
+  startTimeSecs=Time.currentTimeSecs();
+  this.function=function;
+  this.request=request;
+}

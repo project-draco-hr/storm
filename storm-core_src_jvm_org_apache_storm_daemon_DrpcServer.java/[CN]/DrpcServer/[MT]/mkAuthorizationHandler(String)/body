@@ -1,0 +1,16 @@
+{
+  IAuthorizer authorizer=null;
+  Class aznClass=null;
+  if (StringUtils.isNotBlank(klassname)) {
+    try {
+      aznClass=Class.forName(klassname);
+      authorizer=(IAuthorizer)aznClass.newInstance();
+      authorizer.prepare(conf);
+    }
+ catch (    Exception e) {
+      LOG.error("mkAuthorizationHandler failed!",e);
+    }
+  }
+  LOG.debug("authorization class name: {} class: {} handler: {}",klassname,aznClass,authorizer);
+  return authorizer;
+}
