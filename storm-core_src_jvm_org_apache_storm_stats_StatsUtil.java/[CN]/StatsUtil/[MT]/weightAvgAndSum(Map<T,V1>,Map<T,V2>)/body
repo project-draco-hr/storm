@@ -5,9 +5,7 @@
   }
   for (  Map.Entry<T,V1> entry : id2Avg.entrySet()) {
     T k=entry.getKey();
-    double v=entry.getValue().doubleValue();
-    long n=id2num.get(k).longValue();
-    ret+=productOr0(v,n);
+    ret+=productOr0(entry.getValue(),id2num.get(k));
   }
   return ret;
 }

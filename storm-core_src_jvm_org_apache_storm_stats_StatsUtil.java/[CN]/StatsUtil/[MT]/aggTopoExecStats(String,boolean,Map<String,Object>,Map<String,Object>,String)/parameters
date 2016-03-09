@@ -1,5 +1,5 @@
 String window
 boolean includeSys
 Map<String,Object> accStats
-Map<String,Object> newData
+Map<String,Object> beat
 String compType

@@ -1,13 +1,13 @@
 {
-  Map ret=new HashMap();
-  putKV(ret,EXECUTOR_ID,getByKey(m,"exec-id"));
-  putKV(ret,HOST,getByKey(m,HOST));
-  putKV(ret,PORT,getByKey(m,PORT));
-  putKV(ret,UPTIME,getByKey(m,UPTIME));
+  Map<String,Object> ret=new HashMap<>();
+  putKV(ret,EXECUTOR_ID,getByKey(beat,"exec-id"));
+  putKV(ret,HOST,getByKey(beat,HOST));
+  putKV(ret,PORT,getByKey(beat,PORT));
+  putKV(ret,UPTIME,getByKey(beat,UPTIME));
   putKV(ret,NUM_EXECUTORS,1);
-  putKV(ret,NUM_TASKS,getByKey(m,NUM_TASKS));
-  Map stat2win2sid2num=getMapByKey(m,STATS);
-  putKV(ret,CAPACITY,computeAggCapacity(stat2win2sid2num,getByKeyOr0(m,UPTIME).intValue()));
+  putKV(ret,NUM_TASKS,getByKey(beat,NUM_TASKS));
+  Map stat2win2sid2num=getMapByKey(beat,STATS);
+  putKV(ret,CAPACITY,computeAggCapacity(stat2win2sid2num,getByKeyOr0(beat,UPTIME).intValue()));
   Map inputStats=new HashMap();
   Map sid2acked=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,ACKED),TO_STRING).get(window);
   Map sid2failed=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,FAILED),TO_STRING).get(window);

@@ -11,12 +11,12 @@
   boolean isSpout=compType.equals(SPOUT);
   Map<String,Object> cid2stats;
   if (isSpout) {
-    cid2stats=aggPreMergeTopoPageSpout(newData,window,includeSys);
+    cid2stats=aggPreMergeTopoPageSpout(beat,window,includeSys);
   }
  else {
-    cid2stats=aggPreMergeTopoPageBolt(newData,window,includeSys);
+    cid2stats=aggPreMergeTopoPageBolt(beat,window,includeSys);
   }
-  Map stats=getMapByKey(newData,STATS);
+  Map stats=getMapByKey(beat,STATS);
   Map w2compLatWgtAvg, w2acked;
   Map compLatStats=getMapByKey(stats,COMP_LATENCIES);
   if (isSpout) {
@@ -33,7 +33,7 @@
     w2compLatWgtAvg=null;
     w2acked=aggregateCountStreams(getMapByKey(stats,ACKED));
   }
-  workerSet.add(Lists.newArrayList(getByKey(newData,HOST),getByKey(newData,PORT)));
+  workerSet.add(Lists.newArrayList(getByKey(beat,HOST),getByKey(beat,PORT)));
   putKV(ret,WORKERS_SET,workerSet);
   putKV(ret,BOLT_TO_STATS,bolt2stats);
   putKV(ret,SPOUT_TO_STATS,spout2stats);
@@ -44,22 +44,22 @@
   putKV(ret,WIN_TO_FAILED,isSpout ? mergeWithSumLong(aggregateCountStreams(getMapByKey(stats,FAILED)),win2failed) : win2failed);
   putKV(ret,TYPE,getByKey(stats,TYPE));
   if (isSpout) {
-    Set<String> keySet=new HashSet<>();
-    keySet.addAll(spout2stats.keySet());
-    keySet.addAll(cid2stats.keySet());
-    Map mm=new HashMap();
-    for (    String k : keySet) {
-      mm.put(k,mergeAggCompStatsTopoPageSpout((Map)spout2stats.get(k),(Map)cid2stats.get(k)));
+    Set<String> spouts=new HashSet<>();
+    spouts.addAll(spout2stats.keySet());
+    spouts.addAll(cid2stats.keySet());
+    Map<String,Object> mm=new HashMap<>();
+    for (    String spout : spouts) {
+      mm.put(spout,mergeAggCompStatsTopoPageSpout((Map)spout2stats.get(spout),(Map)cid2stats.get(spout)));
     }
     putKV(ret,SPOUT_TO_STATS,mm);
   }
  else {
-    Set<String> keySet=new HashSet<>();
-    keySet.addAll(bolt2stats.keySet());
-    keySet.addAll(cid2stats.keySet());
-    Map mm=new HashMap();
-    for (    String k : keySet) {
-      mm.put(k,mergeAggCompStatsTopoPageBolt((Map)bolt2stats.get(k),(Map)cid2stats.get(k)));
+    Set<String> bolts=new HashSet<>();
+    bolts.addAll(bolt2stats.keySet());
+    bolts.addAll(cid2stats.keySet());
+    Map<String,Object> mm=new HashMap<>();
+    for (    String bolt : bolts) {
+      mm.put(bolt,mergeAggCompStatsTopoPageBolt((Map)bolt2stats.get(bolt),(Map)cid2stats.get(bolt)));
     }
     putKV(ret,BOLT_TO_STATS,mm);
   }
