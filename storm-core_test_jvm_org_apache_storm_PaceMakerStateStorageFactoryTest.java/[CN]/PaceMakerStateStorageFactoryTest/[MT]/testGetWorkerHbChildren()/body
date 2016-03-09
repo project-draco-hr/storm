@@ -1,7 +1,5 @@
 {
-  HBMessage response=new HBMessage(HBServerMessageType.GET_ALL_NODES_FOR_PATH_RESPONSE,HBMessageData.nodes(new HBNodes()));
-  PaceMakerClientProxy clientProxy=new PaceMakerClientProxy(response,null);
-  PaceMakerStateStorage stateStorage=new PaceMakerStateStorage(clientProxy,null);
+  createPaceMakerStateStorage(HBServerMessageType.GET_ALL_NODES_FOR_PATH_RESPONSE,HBMessageData.nodes(new HBNodes()));
   stateStorage.get_worker_hb_children("/foo",false);
   HBMessage sent=clientProxy.checkCaptured();
   Assert.assertEquals(HBServerMessageType.GET_ALL_NODES_FOR_PATH,sent.get_type());

@@ -1,7 +1,5 @@
 {
-  HBMessage response=new HBMessage(HBServerMessageType.DELETE_PATH_RESPONSE,null);
-  PaceMakerClientProxy clientProxy=new PaceMakerClientProxy(response,null);
-  PaceMakerStateStorage stateStorage=new PaceMakerStateStorage(clientProxy,null);
+  createPaceMakerStateStorage(HBServerMessageType.DELETE_PATH_RESPONSE,null);
   stateStorage.delete_worker_hb("/foo/bar");
   HBMessage sent=clientProxy.checkCaptured();
   Assert.assertEquals(HBServerMessageType.DELETE_PATH,sent.get_type());
