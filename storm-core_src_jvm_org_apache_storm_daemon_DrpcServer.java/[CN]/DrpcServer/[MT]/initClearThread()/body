@@ -1,0 +1,22 @@
+{
+  clearThread=Utils.asyncLoop(new Callable(){
+    @Override public Object call() throws Exception {
+      for (      Map.Entry<String,InternalRequest> e : outstandingRequests.entrySet()) {
+        InternalRequest internalRequest=e.getValue();
+        if (Time.deltaSecs(internalRequest.startTimeSecs) > Utils.getInt(conf.get(Config.DRPC_REQUEST_TIMEOUT_SECS))) {
+          String id=e.getKey();
+          Semaphore sem=internalRequest.sem;
+          if (sem != null) {
+            String func=internalRequest.function;
+            acquireQueue(func).remove(internalRequest.request);
+            LOG.warn("Timeout DRPC request id: {} start at {}",id,e.getValue());
+            sem.release();
+          }
+          cleanup(id);
+        }
+      }
+      return getTimeoutCheckSecs();
+    }
+  }
+);
+}

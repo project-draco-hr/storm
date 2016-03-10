@@ -1,0 +1,15 @@
+{
+  meterFetchRequestCalls.mark();
+  Map<String,String> map=new HashMap<>();
+  map.put(DRPCAuthorizerBase.FUNCTION_NAME,functionName);
+  checkAuthorization(authorizer,map,"fetchRequest");
+  ConcurrentLinkedQueue<DRPCRequest> queue=acquireQueue(functionName);
+  DRPCRequest req=queue.poll();
+  if (req != null) {
+    LOG.debug("Fetched request for {} at {}",functionName,System.currentTimeMillis());
+    return req;
+  }
+ else {
+    return new DRPCRequest("","");
+  }
+}
