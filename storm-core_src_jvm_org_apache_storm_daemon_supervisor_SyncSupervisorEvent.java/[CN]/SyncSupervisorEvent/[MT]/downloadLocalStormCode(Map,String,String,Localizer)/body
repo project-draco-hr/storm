@@ -14,12 +14,7 @@
   finally {
     blobStore.shutdown();
   }
-  try {
-    FileUtils.moveDirectory(new File(tmproot),new File(stormroot));
-  }
- catch (  Exception e) {
-    ;
-  }
+  FileUtils.moveDirectory(new File(tmproot),new File(stormroot));
   SupervisorUtils.setupStormCodeDir(conf,ConfigUtils.readSupervisorStormConf(conf,stormId),stormroot);
   ClassLoader classloader=Thread.currentThread().getContextClassLoader();
   String resourcesJar=resourcesJar();

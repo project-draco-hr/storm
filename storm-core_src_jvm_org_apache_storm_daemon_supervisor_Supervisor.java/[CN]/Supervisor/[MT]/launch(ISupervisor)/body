@@ -9,7 +9,7 @@
     supervisorManager=mkSupervisor(conf,null,iSupervisor);
     if (supervisorManager != null)     Utils.addShutdownHookWithForceKillIn1Sec(supervisorManager);
     registerWorkerNumGauge("supervisor:num-slots-used-gauge",conf);
-    startMetricsReporters(conf);
+    StormMetricsRegistry.startMetricsReporters(conf);
   }
  catch (  Exception e) {
     LOG.error("Failed to start supervisor\n",e);

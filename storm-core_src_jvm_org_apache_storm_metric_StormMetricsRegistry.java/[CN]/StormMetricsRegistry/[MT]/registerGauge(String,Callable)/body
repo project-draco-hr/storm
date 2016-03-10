@@ -1,0 +1,15 @@
+{
+  Gauge<Integer> gauge=new Gauge<Integer>(){
+    @Override public Integer getValue(){
+      try {
+        return (Integer)fn.call();
+      }
+ catch (      Exception e) {
+        LOG.error("Error getting gauge value for {}",name,e);
+      }
+      return 0;
+    }
+  }
+;
+  return register(name,gauge);
+}

@@ -1,0 +1,5 @@
+{
+  Map conf=ConfigUtils.readStormConfig();
+  handler=new DrpcServer(conf);
+  serviceId=ServiceRegistry.registerService(handler);
+}

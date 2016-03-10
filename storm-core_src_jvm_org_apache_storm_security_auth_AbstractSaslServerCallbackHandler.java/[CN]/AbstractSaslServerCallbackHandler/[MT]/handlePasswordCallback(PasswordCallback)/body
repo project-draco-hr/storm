@@ -1,0 +1,9 @@
+{
+  LOG.debug("handlePasswordCallback");
+  if (credentials.containsKey(userName)) {
+    pc.setPassword(credentials.get(userName).toCharArray());
+  }
+ else {
+    LOG.warn("No password found for user: {}",userName);
+  }
+}

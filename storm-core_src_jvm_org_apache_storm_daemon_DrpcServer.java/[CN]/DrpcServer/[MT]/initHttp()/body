@@ -1,0 +1,27 @@
+{
+  LOG.info("Starting  RPC Http servers...");
+  Integer drpcHttpPort=(Integer)conf.get(Config.DRPC_HTTP_PORT);
+  if (drpcHttpPort != null && drpcHttpPort > 0) {
+    String filterClass=(String)(conf.get(Config.DRPC_HTTP_FILTER));
+    Map<String,String> filterParams=(Map<String,String>)(conf.get(Config.DRPC_HTTP_FILTER_PARAMS));
+    FilterConfiguration filterConfiguration=new FilterConfiguration(filterParams,filterClass);
+    final List<FilterConfiguration> filterConfigurations=Arrays.asList(filterConfiguration);
+    final Integer httpsPort=Utils.getInt(conf.get(Config.DRPC_HTTPS_PORT),0);
+    final String httpsKsPath=(String)(conf.get(Config.DRPC_HTTPS_KEYSTORE_PATH));
+    final String httpsKsPassword=(String)(conf.get(Config.DRPC_HTTPS_KEYSTORE_PASSWORD));
+    final String httpsKsType=(String)(conf.get(Config.DRPC_HTTPS_KEYSTORE_TYPE));
+    final String httpsKeyPassword=(String)(conf.get(Config.DRPC_HTTPS_KEY_PASSWORD));
+    final String httpsTsPath=(String)(conf.get(Config.DRPC_HTTPS_TRUSTSTORE_PATH));
+    final String httpsTsPassword=(String)(conf.get(Config.DRPC_HTTPS_TRUSTSTORE_PASSWORD));
+    final String httpsTsType=(String)(conf.get(Config.DRPC_HTTPS_TRUSTSTORE_TYPE));
+    final Boolean httpsWantClientAuth=(Boolean)(conf.get(Config.DRPC_HTTPS_WANT_CLIENT_AUTH));
+    final Boolean httpsNeedClientAuth=(Boolean)(conf.get(Config.DRPC_HTTPS_NEED_CLIENT_AUTH));
+    UIHelpers.stormRunJetty(drpcHttpPort,new IConfigurator(){
+      @Override public void execute(      Server s){
+        UIHelpers.configSsl(s,httpsPort,httpsKsPath,httpsKsPassword,httpsKsType,httpsKeyPassword,httpsTsPath,httpsTsPassword,httpsTsType,httpsNeedClientAuth,httpsWantClientAuth);
+        UIHelpers.configFilter(s,httpServlet,filterConfigurations);
+      }
+    }
+);
+  }
+}
