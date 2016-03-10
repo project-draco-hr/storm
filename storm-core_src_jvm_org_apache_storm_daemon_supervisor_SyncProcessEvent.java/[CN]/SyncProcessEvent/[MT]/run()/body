@@ -12,7 +12,7 @@
     Set<Integer> keepPorts=new HashSet<>();
     for (    Map.Entry<String,StateHeartbeat> entry : localWorkerStats.entrySet()) {
       StateHeartbeat stateHeartbeat=entry.getValue();
-      if (stateHeartbeat.getState() == State.valid) {
+      if (stateHeartbeat.getState() == State.VALID) {
         keeperWorkerIds.add(entry.getKey());
         keepPorts.add(stateHeartbeat.getHeartbeat().get_port());
       }
@@ -27,7 +27,7 @@
     LOG.debug("Allocated: {}",localWorkerStats);
     for (    Map.Entry<String,StateHeartbeat> entry : localWorkerStats.entrySet()) {
       StateHeartbeat stateHeartbeat=entry.getValue();
-      if (stateHeartbeat.getState() != State.valid) {
+      if (stateHeartbeat.getState() != State.VALID) {
         LOG.info("Shutting down and clearing state for id {}, Current supervisor time: {}, State: {}, Heartbeat: {}",entry.getKey(),now,stateHeartbeat.getState(),stateHeartbeat.getHeartbeat());
         shutWorker(supervisorData,entry.getKey());
       }

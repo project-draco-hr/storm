@@ -5,7 +5,7 @@
   this.active=true;
   this.upTime=Utils.makeUptimeComputer();
   this.stormVersion=VersionInfo.getVersion();
-  this.workerThreadPidsAtom=new ConcurrentHashMap<String,String>();
+  this.workerThreadPids=new ConcurrentHashMap<String,String>();
   this.deadWorkers=new ConcurrentHashSet();
   List<ACL> acls=null;
   if (Utils.isZkAuthenticationConfiguredStormServer(conf)) {
@@ -33,13 +33,13 @@
  catch (  UnknownHostException e) {
     throw Utils.wrapInRuntime(e);
   }
-  this.currAssignment=new ConcurrentHashMap<>();
+  this.currAssignment=new AtomicReference<Map<Long,LocalAssignment>>(new HashMap<Long,LocalAssignment>());
   this.heartbeatTimer=new StormTimer(null,new DefaultUncaughtExceptionHandler());
   this.eventTimer=new StormTimer(null,new DefaultUncaughtExceptionHandler());
   this.blobUpdateTimer=new StormTimer("blob-update-timer",new DefaultUncaughtExceptionHandler());
-  this.assignmentVersions=new ConcurrentHashMap<>();
+  this.assignmentVersions=new AtomicReference<Map<String,Map<String,Object>>>(new HashMap<String,Map<String,Object>>());
   this.syncRetry=new AtomicInteger(0);
-  this.stormIdToProfileActions=new ConcurrentHashMap<>();
+  this.stormIdToProfileActions=new AtomicReference<Map<String,List<ProfileRequest>>>(new HashMap<String,List<ProfileRequest>>());
   if (Utils.getBoolean(conf.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN_ENABLE),false)) {
     try {
       this.resourceIsolationManager=(CgroupManager)Utils.newInstance((String)conf.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN));

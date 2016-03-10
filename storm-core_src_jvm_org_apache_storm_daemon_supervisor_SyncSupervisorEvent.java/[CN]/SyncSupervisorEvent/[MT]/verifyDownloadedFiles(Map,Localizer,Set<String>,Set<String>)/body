@@ -2,7 +2,7 @@
   Set<String> srashStormIds=new HashSet<>();
   for (  String stormId : allDownloadedTopologyIds) {
     if (assignedStormIds.contains(stormId)) {
-      if (!SupervisorUtils.checkTopoFilesExist(conf,stormId)) {
+      if (!SupervisorUtils.doRequiredTopoFilesExist(conf,stormId)) {
         LOG.debug("Files not present in topology directory");
         rmTopoFiles(conf,stormId,localizer,false);
         srashStormIds.add(stormId);

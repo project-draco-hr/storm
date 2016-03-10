@@ -5,7 +5,7 @@
   if (healthCode != 0) {
     for (    String workerId : workerIds) {
       try {
-        shutWorker(supervisorData,workerId);
+        SupervisorUtils.shutWorker(supervisorData,workerId);
       }
  catch (      Exception e) {
         throw Utils.wrapInRuntime(e);

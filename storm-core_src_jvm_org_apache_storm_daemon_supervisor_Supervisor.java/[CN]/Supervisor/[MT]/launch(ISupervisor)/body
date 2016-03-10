@@ -6,10 +6,9 @@
     if (ConfigUtils.isLocalMode(conf)) {
       throw new IllegalArgumentException("Cannot start server in local mode!");
     }
-    ISupervisor iSupervisor=new StandaloneSupervisor();
     supervisorManager=mkSupervisor(conf,null,iSupervisor);
     if (supervisorManager != null)     Utils.addShutdownHookWithForceKillIn1Sec(supervisorManager);
-    registerWorkerNumGauge("drpc:num-execute-http-requests",conf);
+    registerWorkerNumGauge("supervisor:num-slots-used-gauge",conf);
     startMetricsReporters(conf);
   }
  catch (  Exception e) {

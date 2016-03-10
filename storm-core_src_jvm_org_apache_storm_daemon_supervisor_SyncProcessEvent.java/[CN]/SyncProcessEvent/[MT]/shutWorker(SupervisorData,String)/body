@@ -1,0 +1,3 @@
+{
+  SupervisorUtils.shutWorker(supervisorData,workerId);
+}

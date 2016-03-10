@@ -1,4 +1,3 @@
 {
-  this.currAssignment.clear();
-  this.currAssignment.putAll(currAssignment);
+  this.currAssignment.set(currAssignment);
 }

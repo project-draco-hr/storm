@@ -9,7 +9,7 @@
     String workerId=newWorkerIds.get(port);
     String stormId=assignment.get_topology_id();
     WorkerResources resources=assignment.get_resources();
-    if (SupervisorUtils.checkTopoFilesExist(conf,stormId)) {
+    if (SupervisorUtils.doRequiredTopoFilesExist(conf,stormId)) {
       String pidsPath=ConfigUtils.workerPidsRoot(conf,workerId);
       String hbPath=ConfigUtils.workerHeartbeatsRoot(conf,workerId);
       LOG.info("Launching worker with assignment {} for this supervisor {} on port {} with id {}",assignment,supervisorData.getSupervisorId(),port,workerId);

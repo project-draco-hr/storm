@@ -13,20 +13,20 @@
     LSWorkerHeartbeat whb=entry.getValue();
     State state;
     if (whb == null) {
-      state=State.notStarted;
+      state=State.NOT_STARTED;
     }
  else     if (!approvedIds.contains(workerId) || !matchesAssignment(whb,assignedExecutors)) {
-      state=State.disallowed;
+      state=State.DISALLOWED;
     }
  else     if (supervisorData.getDeadWorkers().contains(workerId)) {
-      LOG.info("Worker Process {}as died",workerId);
-      state=State.timedOut;
+      LOG.info("Worker Process {} has died",workerId);
+      state=State.TIMED_OUT;
     }
  else     if (SupervisorUtils.isWorkerHbTimedOut(now,whb,conf)) {
-      state=State.timedOut;
+      state=State.TIMED_OUT;
     }
  else {
-      state=State.valid;
+      state=State.VALID;
     }
     LOG.debug("Worker:{} state:{} WorkerHeartbeat:{} at supervisor time-secs {}",workerId,state,whb,now);
     workerIdHbstate.put(workerId,new StateHeartbeat(state,whb));

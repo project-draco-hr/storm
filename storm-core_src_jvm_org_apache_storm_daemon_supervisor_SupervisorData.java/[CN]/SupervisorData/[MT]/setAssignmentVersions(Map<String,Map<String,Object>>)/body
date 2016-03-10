@@ -1,4 +1,3 @@
 {
-  this.assignmentVersions.clear();
-  this.assignmentVersions.putAll(assignmentVersions);
+  this.assignmentVersions.set(assignmentVersions);
 }

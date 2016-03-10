@@ -15,5 +15,6 @@
   commands.add(wl);
   commands.add(user);
   commands.addAll(args);
+  LOG.info("Running as user: {} command: {}",user,commands);
   return Utils.launchProcess(commands,environment,logPreFix,exitCodeCallback,dir);
 }

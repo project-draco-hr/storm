@@ -3,7 +3,7 @@
     Map conf=supervisorData.getConf();
     Runnable syncCallback=new EventManagerPushCallback(this,syncSupEventManager);
     List<String> stormIds=stormClusterState.assignments(syncCallback);
-    Map<String,Map<String,Object>> assignmentsSnapshot=getAssignmentsSnapshot(stormClusterState,stormIds,supervisorData.getAssignmentVersions(),syncCallback);
+    Map<String,Map<String,Object>> assignmentsSnapshot=getAssignmentsSnapshot(stormClusterState,stormIds,supervisorData.getAssignmentVersions().get(),syncCallback);
     Map<String,List<ProfileRequest>> stormIdToProfilerActions=getProfileActions(stormClusterState,stormIds);
     Set<String> allDownloadedTopologyIds=SupervisorUtils.readDownLoadedStormIds(conf);
     Map<String,String> stormcodeMap=readStormCodeLocations(assignmentsSnapshot);

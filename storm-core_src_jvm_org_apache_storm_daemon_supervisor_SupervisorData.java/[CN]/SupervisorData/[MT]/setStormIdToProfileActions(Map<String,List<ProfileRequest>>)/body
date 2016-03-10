@@ -1,4 +1,3 @@
 {
-  this.stormIdToProfileActions.clear();
-  this.stormIdToProfileActions.putAll(stormIdToProfileActions);
+  this.stormIdToProfileActions.set(stormIdToProfileActions);
 }

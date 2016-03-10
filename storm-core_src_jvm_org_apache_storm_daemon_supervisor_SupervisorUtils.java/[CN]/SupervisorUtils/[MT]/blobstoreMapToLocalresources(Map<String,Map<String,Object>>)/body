@@ -2,7 +2,7 @@
   List<LocalResource> localResourceList=new ArrayList<>();
   if (blobstoreMap != null) {
     for (    Map.Entry<String,Map<String,Object>> map : blobstoreMap.entrySet()) {
-      LocalResource localResource=new LocalResource(map.getKey(),isShouldUncompressBlob(map.getValue()));
+      LocalResource localResource=new LocalResource(map.getKey(),shouldUncompressBlob(map.getValue()));
       localResourceList.add(localResource);
     }
   }

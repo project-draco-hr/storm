@@ -2,7 +2,7 @@
   Collection<String> workerIds=SupervisorUtils.supervisorWorkerIds(supervisorData.getConf());
   try {
     for (    String workerId : workerIds) {
-      shutWorker(supervisorData,workerId);
+      SupervisorUtils.shutWorker(supervisorData,workerId);
     }
   }
  catch (  Exception e) {

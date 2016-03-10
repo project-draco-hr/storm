@@ -10,7 +10,7 @@
   for (  Map.Entry<String,StateHeartbeat> entry : workerIdHbstate.entrySet()) {
     String workerId=entry.getKey();
     StateHeartbeat stateHeartbeat=entry.getValue();
-    if (stateHeartbeat != null && stateHeartbeat.getState() == State.valid) {
+    if (stateHeartbeat != null && stateHeartbeat.getState() == State.VALID) {
       vaildPortToWorkerIds.put(stateHeartbeat.getHeartbeat().get_port(),workerId);
     }
   }
