@@ -1,0 +1,4 @@
+{
+  List<String> fields=Arrays.asList(EventLoggerBolt.FIELD_COMPONENT_ID,EventLoggerBolt.FIELD_MESSAGE_ID,EventLoggerBolt.FIELD_TS,EventLoggerBolt.FIELD_VALUES);
+  return fields;
+}
