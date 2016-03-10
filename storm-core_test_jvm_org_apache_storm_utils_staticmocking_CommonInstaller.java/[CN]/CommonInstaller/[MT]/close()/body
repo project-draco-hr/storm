@@ -1,5 +1,0 @@
-{
-  if (StormCommon.setInstance(_oldInstance) != _curInstance) {
-    throw new IllegalStateException("Instances of this resource must be closed in reverse order of opening.");
-  }
-}

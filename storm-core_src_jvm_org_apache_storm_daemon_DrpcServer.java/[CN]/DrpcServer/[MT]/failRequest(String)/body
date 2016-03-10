@@ -1,0 +1,14 @@
+{
+  meterFailRequestCalls.mark();
+  InternalRequest internalRequest=this.outstandingRequests.get(id);
+  if (internalRequest != null) {
+    Map<String,String> map=new HashMap<>();
+    map.put(DRPCAuthorizerBase.FUNCTION_NAME,internalRequest.function);
+    checkAuthorization(authorizer,map,"failRequest");
+    Semaphore sem=internalRequest.sem;
+    if (sem != null) {
+      internalRequest.result=new DRPCExecutionException("Request failed");
+      sem.release();
+    }
+  }
+}
