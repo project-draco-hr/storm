@@ -1,0 +1,38 @@
+{
+  meterExecuteCalls.mark();
+  LOG.debug("Received DRPC request for {} ({}) at {} ",functionName,funcArgs,System.currentTimeMillis());
+  Map<String,String> map=new HashMap<>();
+  map.put(DRPCAuthorizerBase.FUNCTION_NAME,functionName);
+  checkAuthorization(authorizer,map,"execute");
+  int newid=0;
+  int orig=0;
+  do {
+    orig=ctr.get();
+    newid=(orig + 1) % 1000000000;
+  }
+ while (!ctr.compareAndSet(orig,newid));
+  String strid=String.valueOf(newid);
+  DRPCRequest req=new DRPCRequest(funcArgs,strid);
+  InternalRequest internalRequest=new InternalRequest(functionName,req);
+  this.outstandingRequests.put(strid,internalRequest);
+  ConcurrentLinkedQueue<DRPCRequest> queue=acquireQueue(functionName);
+  queue.add(req);
+  LOG.debug("Waiting for DRPC request for {} {} at {}",functionName,funcArgs,System.currentTimeMillis());
+  try {
+    internalRequest.sem.acquire();
+  }
+ catch (  InterruptedException e) {
+    LOG.error("acquire fail ",e);
+  }
+  LOG.debug("Acquired for DRPC request for {} {} at {}",functionName,funcArgs,System.currentTimeMillis());
+  Object result=internalRequest.result;
+  LOG.debug("Returning for DRPC request for " + functionName + " "+ funcArgs+ " at "+ (System.currentTimeMillis()));
+  this.cleanup(strid);
+  if (result instanceof DRPCExecutionException) {
+    throw (DRPCExecutionException)result;
+  }
+  if (result == null) {
+    throw new DRPCExecutionException("Request timed out");
+  }
+  return (String)result;
+}

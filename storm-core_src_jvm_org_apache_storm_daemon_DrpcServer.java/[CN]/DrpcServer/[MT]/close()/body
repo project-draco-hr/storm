@@ -1,0 +1,4 @@
+{
+  meterShutdownCalls.mark();
+  clearThread.interrupt();
+}

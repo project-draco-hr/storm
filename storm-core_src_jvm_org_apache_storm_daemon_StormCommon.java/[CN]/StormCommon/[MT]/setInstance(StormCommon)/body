@@ -1,0 +1,5 @@
+{
+  StormCommon oldInstance=_instance;
+  _instance=common;
+  return oldInstance;
+}

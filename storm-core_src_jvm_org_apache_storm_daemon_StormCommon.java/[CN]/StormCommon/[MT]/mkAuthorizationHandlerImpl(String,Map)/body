@@ -1,0 +1,14 @@
+{
+  IAuthorizer aznHandler=null;
+  if (klassName != null) {
+    Class aznClass=Class.forName(klassName);
+    if (aznClass != null) {
+      aznHandler=(IAuthorizer)aznClass.newInstance();
+      if (aznHandler != null) {
+        aznHandler.prepare(conf);
+      }
+      LOG.debug("authorization class name:{}, class:{}, handler:{}",klassName,aznClass,aznHandler);
+    }
+  }
+  return aznHandler;
+}

@@ -1,0 +1,13 @@
+{
+  List<String> rtn=new ArrayList<String>();
+  Set<String> idSet=new HashSet<String>();
+  for (  String id : list) {
+    if (idSet.contains(id)) {
+      rtn.add(id);
+    }
+ else {
+      idSet.add(id);
+    }
+  }
+  return rtn;
+}
