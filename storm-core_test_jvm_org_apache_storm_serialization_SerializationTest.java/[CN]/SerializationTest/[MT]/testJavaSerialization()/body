@@ -1,0 +1,21 @@
+{
+  Object obj=new TestSerObject(1,2);
+  List<Object> vals=Lists.newArrayList(obj);
+  Map<String,Object> conf=new HashMap<>();
+  conf.put(Config.TOPOLOGY_KRYO_REGISTER,new HashMap<String,String>(){
+{
+      put("org.apache.storm.testing.TestSerObject",null);
+    }
+  }
+);
+  conf.put(Config.TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION,false);
+  try {
+    roundtrip(vals,conf);
+    Assert.fail("Expected Exception not Thrown for config: " + conf);
+  }
+ catch (  Exception e) {
+  }
+  conf.clear();
+  conf.put(Config.TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION,true);
+  Assert.assertEquals(vals,roundtrip(vals,conf));
+}
