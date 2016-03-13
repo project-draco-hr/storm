@@ -1,5 +1,5 @@
 {
-  log.debug("onActivation is invoked with events size: {}",events.size());
+  LOG.debug("onActivation is invoked with events size: [{}]",events.size());
   int currentTriggerId=triggerId.incrementAndGet();
   execAggregatorAndStoreResult(currentTriggerId,events);
 }

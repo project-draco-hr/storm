@@ -1,6 +1,6 @@
 {
   Long currentTxId=state.getCurrentTxId();
-  log.debug("Removing triggers using WindowStateUpdater, txnId: {} ",currentTxId);
+  LOG.debug("Removing triggers using WindowStateUpdater, txnId: [{}] ",currentTxId);
   for (  TridentTuple tuple : tuples) {
     try {
       Object fieldValue=tuple.getValueByField(WindowTridentProcessor.TRIGGER_FIELD_NAME);
@@ -9,11 +9,11 @@
       }
       WindowTridentProcessor.TriggerInfo triggerInfo=(WindowTridentProcessor.TriggerInfo)fieldValue;
       String triggerCompletedKey=WindowTridentProcessor.getWindowTriggerInprocessIdPrefix(triggerInfo.windowTaskId) + currentTxId;
-      log.debug("Removing trigger key [{}] and trigger completed key [{}] from store: [{}]",triggerInfo,triggerCompletedKey,windowsStore);
+      LOG.debug("Removing trigger key [{}] and trigger completed key [{}] from store: [{}]",triggerInfo,triggerCompletedKey,windowsStore);
       windowsStore.removeAll(Lists.newArrayList(triggerInfo.generateTriggerKey(),triggerCompletedKey));
     }
  catch (    Exception ex) {
-      log.warn(ex.getMessage());
+      LOG.warn(ex.getMessage());
       collector.reportError(ex);
       throw new FailedException(ex);
     }

@@ -1,3 +1,3 @@
 {
-  log.debug("noop in initialize");
+  LOG.debug("noop in initialize");
 }

@@ -1,4 +1,10 @@
 {
-  log.info("shutting down window manager");
-  tridentWindowManager.shutdown();
+  LOG.info("shutting down window manager");
+  try {
+    tridentWindowManager.shutdown();
+  }
+ catch (  Exception ex) {
+    LOG.error("Error occurred while cleaning up window processor",ex);
+    throw ex;
+  }
 }

@@ -1,4 +1,4 @@
 {
-  log.info("##########Echo.execute: " + tuple);
+  LOG.info("##########Echo.execute: " + tuple);
   collector.emit(tuple.getValues());
 }

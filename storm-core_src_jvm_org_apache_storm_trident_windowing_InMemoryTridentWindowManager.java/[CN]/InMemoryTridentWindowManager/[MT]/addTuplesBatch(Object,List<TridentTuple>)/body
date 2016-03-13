@@ -1,9 +1,9 @@
 {
   if (activeBatches.contains(getBatchTxnId(batchId))) {
-    log.info("Ignoring already added tuples with batch: %s",batchId);
+    LOG.info("Ignoring already added tuples with batch: [{}]",batchId);
     return;
   }
-  log.debug("Adding tuples to window-manager for batch: ",batchId);
+  LOG.debug("Adding tuples to window-manager for batch: [{}]",batchId);
   for (  TridentTuple tridentTuple : tuples) {
     windowManager.add(tridentTuple);
   }
