@@ -1,0 +1,3 @@
+{
+  return roundtrip(vals,new HashMap());
+}
