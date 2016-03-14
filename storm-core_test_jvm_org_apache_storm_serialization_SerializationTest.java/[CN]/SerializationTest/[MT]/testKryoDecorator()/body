@@ -1,0 +1,14 @@
+{
+  Object obj=new TestSerObject(1,2);
+  List<Object> vals=Lists.newArrayList(obj);
+  Map<String,Object> conf=new HashMap<>();
+  conf.put(Config.TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION,false);
+  try {
+    roundtrip(vals,conf);
+    Assert.fail("Expected Exception not Thrown for config: " + conf);
+  }
+ catch (  Exception e) {
+  }
+  conf.put(Config.TOPOLOGY_KRYO_DECORATORS,Lists.newArrayList("org.apache.storm.testing.TestKryoDecorator"));
+  Assert.assertEquals(vals,roundtrip(vals,conf));
+}

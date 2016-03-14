@@ -1,0 +1,4 @@
+{
+  _oldInstance=StormCommon.setInstance(instance);
+  _curInstance=instance;
+}

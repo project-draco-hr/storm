@@ -1,0 +1,12 @@
+{
+  validateBasic(topology);
+  StormTopology ret=topology.deepCopy();
+  addAcker(stormConf,ret);
+  addEventLogger(stormConf,ret);
+  addMetricComponents(stormConf,ret);
+  addSystemComponents(stormConf,ret);
+  addMetricStreams(ret);
+  addSystemStreams(ret);
+  validateStructure(ret);
+  return ret;
+}

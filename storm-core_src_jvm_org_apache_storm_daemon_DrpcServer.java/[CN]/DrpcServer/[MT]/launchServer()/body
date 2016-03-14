@@ -1,0 +1,5 @@
+{
+  LOG.info("Starting drpc server for storm version {}",VersionInfo.getVersion());
+  initHttp();
+  initThrift();
+}

@@ -1,0 +1,4 @@
+{
+  KryoValuesSerializer serializer=new KryoValuesSerializer(mkConf(conf));
+  return serializer.serialize(vals);
+}

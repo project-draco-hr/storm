@@ -1,0 +1,10 @@
+{
+  Map<GlobalStreamId,Grouping> inputs=new HashMap<GlobalStreamId,Grouping>();
+  Set<String> allIds=new HashSet<String>();
+  allIds.addAll(topology.get_bolts().keySet());
+  allIds.addAll(topology.get_spouts().keySet());
+  for (  String id : allIds) {
+    inputs.put(Utils.getGlobalStreamId(id,EVENTLOGGER_STREAM_ID),Thrift.prepareFieldsGrouping(Arrays.asList("component-id")));
+  }
+  return inputs;
+}
