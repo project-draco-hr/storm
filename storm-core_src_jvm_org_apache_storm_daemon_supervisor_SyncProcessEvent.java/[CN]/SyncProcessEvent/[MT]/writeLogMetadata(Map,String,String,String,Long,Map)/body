@@ -11,9 +11,7 @@
   }
   if (stormconf.get(Config.TOPOLOGY_GROUPS) != null) {
     List<String> topGroups=(List<String>)stormconf.get(Config.TOPOLOGY_GROUPS);
-    for (    String group : topGroups) {
-      logsGroups.add(group);
-    }
+    logsGroups.addAll(topGroups);
   }
   data.put(Config.LOGS_GROUPS,logsGroups.toArray());
   Set<String> logsUsers=new HashSet<>();

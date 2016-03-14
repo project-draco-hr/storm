@@ -1,0 +1,13 @@
+{
+  int ret=0;
+  Process process=processLauncher(conf,user,args,environment,logPreFix,null,null);
+  if (StringUtils.isNotBlank(logPreFix))   Utils.readAndLogStream(logPreFix,process.getInputStream());
+  try {
+    process.waitFor();
+  }
+ catch (  InterruptedException e) {
+    LOG.info("{} interrupted.",logPreFix);
+  }
+  ret=process.exitValue();
+  return ret;
+}

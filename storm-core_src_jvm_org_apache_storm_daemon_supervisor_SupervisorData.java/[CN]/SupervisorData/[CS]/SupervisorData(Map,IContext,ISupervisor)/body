@@ -40,17 +40,6 @@
   this.assignmentVersions=new AtomicReference<Map<String,Map<String,Object>>>(new HashMap<String,Map<String,Object>>());
   this.syncRetry=new AtomicInteger(0);
   this.stormIdToProfileActions=new AtomicReference<Map<String,List<ProfileRequest>>>(new HashMap<String,List<ProfileRequest>>());
-  if (Utils.getBoolean(conf.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN_ENABLE),false)) {
-    try {
-      this.resourceIsolationManager=(CgroupManager)Utils.newInstance((String)conf.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN));
-      this.resourceIsolationManager.prepare(conf);
-      LOG.info("Using resource isolation plugin {} {}",conf.get(Config.STORM_RESOURCE_ISOLATION_PLUGIN),resourceIsolationManager);
-    }
- catch (    IOException e) {
-      throw Utils.wrapInRuntime(e);
-    }
-  }
- else {
-    this.resourceIsolationManager=null;
-  }
+  this.workerManager=Utils.newInstance((String)conf.get(Config.STORM_SUPERVISOR_WORKER_MANAGER_PLUGIN));
+  this.workerManager.prepareWorker(conf,localizer);
 }

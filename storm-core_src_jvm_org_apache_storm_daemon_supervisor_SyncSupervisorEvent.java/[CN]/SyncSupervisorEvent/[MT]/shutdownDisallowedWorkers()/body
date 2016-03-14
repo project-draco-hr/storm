@@ -11,7 +11,7 @@
     String workerId=entry.getKey();
     StateHeartbeat stateHeartbeat=entry.getValue();
     if (stateHeartbeat.getState() == State.DISALLOWED) {
-      syncProcesses.shutWorker(supervisorData,workerId);
+      syncProcesses.shutWorker(supervisorData,supervisorData.getWorkerManager(),workerId);
       LOG.debug("{}'s state disallowed, so shutdown this worker");
     }
   }

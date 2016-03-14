@@ -1,0 +1,17 @@
+{
+  Collection<String> workerIds=SupervisorUtils.supervisorWorkerIds(supervisorData.getConf());
+  IWorkerManager workerManager=supervisorData.getWorkerManager();
+  try {
+    for (    String workerId : workerIds) {
+      workerManager.shutdownWorker(supervisorData.getSupervisorId(),workerId,supervisorData.getWorkerThreadPids());
+      boolean success=workerManager.cleanupWorker(workerId);
+      if (success) {
+        supervisorData.getDeadWorkers().remove(workerId);
+      }
+    }
+  }
+ catch (  Exception e) {
+    LOG.error("shutWorker failed");
+    throw Utils.wrapInRuntime(e);
+  }
+}

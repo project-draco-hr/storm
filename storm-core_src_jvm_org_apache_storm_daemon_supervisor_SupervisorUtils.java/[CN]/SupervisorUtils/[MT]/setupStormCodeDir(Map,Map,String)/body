@@ -4,6 +4,6 @@
     List<String> commands=new ArrayList<>();
     commands.add("code-dir");
     commands.add(dir);
-    workerLauncherAndWait(conf,(String)(stormConf.get(Config.TOPOLOGY_SUBMITTER_USER)),commands,null,logPrefix);
+    processLauncherAndWait(conf,(String)(stormConf.get(Config.TOPOLOGY_SUBMITTER_USER)),commands,null,logPrefix);
   }
 }

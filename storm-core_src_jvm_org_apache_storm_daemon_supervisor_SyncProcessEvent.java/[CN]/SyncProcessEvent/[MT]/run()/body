@@ -29,7 +29,7 @@
       StateHeartbeat stateHeartbeat=entry.getValue();
       if (stateHeartbeat.getState() != State.VALID) {
         LOG.info("Shutting down and clearing state for id {}, Current supervisor time: {}, State: {}, Heartbeat: {}",entry.getKey(),now,stateHeartbeat.getState(),stateHeartbeat.getHeartbeat());
-        shutWorker(supervisorData,entry.getKey());
+        shutWorker(supervisorData,supervisorData.getWorkerManager(),entry.getKey());
       }
     }
     Map<String,Integer> newWorkerPortToIds=startNewWorkers(newWorkerIds,reassignExecutors);

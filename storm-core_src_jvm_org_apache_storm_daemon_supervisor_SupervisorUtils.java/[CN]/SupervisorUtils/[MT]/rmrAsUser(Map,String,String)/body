@@ -4,7 +4,7 @@
   List<String> commands=new ArrayList<>();
   commands.add("rmr");
   commands.add(path);
-  SupervisorUtils.workerLauncherAndWait(conf,user,commands,null,logPreFix);
+  SupervisorUtils.processLauncherAndWait(conf,user,commands,null,logPreFix);
   if (Utils.checkFileExists(path)) {
     throw new RuntimeException(path + " was not deleted.");
   }

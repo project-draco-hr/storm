@@ -1,5 +1,5 @@
 {
-  SupervisorManger supervisorManger=null;
+  SupervisorManager supervisorManager=null;
   try {
     LOG.info("Starting Supervisor with conf {}",conf);
     iSupervisor.prepare(conf,ConfigUtils.supervisorIsupervisorDir(conf));
@@ -11,8 +11,8 @@
     hb.run();
     Integer heartbeatFrequency=Utils.getInt(conf.get(Config.SUPERVISOR_HEARTBEAT_FREQUENCY_SECS));
     supervisorData.getHeartbeatTimer().scheduleRecurring(0,heartbeatFrequency,hb);
-    Set<String> downdedStormId=SupervisorUtils.readDownLoadedStormIds(conf);
-    for (    String stormId : downdedStormId) {
+    Set<String> downloadedStormIds=SupervisorUtils.readDownLoadedStormIds(conf);
+    for (    String stormId : downloadedStormIds) {
       SupervisorUtils.addBlobReferences(localizer,stormId,conf);
     }
     localizer.startCleaner();
@@ -38,7 +38,7 @@
       eventTimer.scheduleRecurring(30,30,new EventManagerPushCallback(runProfilerActionThread,syncSupEventManager));
     }
     LOG.info("Starting supervisor with id {} at host {}.",supervisorData.getSupervisorId(),supervisorData.getHostName());
-    supervisorManger=new SupervisorManger(supervisorData,syncSupEventManager,syncProcessManager);
+    supervisorManager=new SupervisorManager(supervisorData,syncSupEventManager,syncProcessManager);
   }
  catch (  Throwable t) {
     if (Utils.exceptionCauseIsInstanceOf(InterruptedIOException.class,t)) {
@@ -52,5 +52,5 @@
       Utils.exitProcess(13,"Error on initialization");
     }
   }
-  return supervisorManger;
+  return supervisorManager;
 }

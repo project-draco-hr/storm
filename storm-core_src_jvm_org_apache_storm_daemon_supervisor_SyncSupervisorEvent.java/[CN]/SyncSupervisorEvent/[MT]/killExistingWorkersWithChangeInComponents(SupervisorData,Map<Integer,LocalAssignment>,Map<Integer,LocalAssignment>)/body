@@ -25,12 +25,12 @@
     List<ExecutorInfo> existExecutors=existingAssignment.get(port).get_executors();
     List<ExecutorInfo> newExecutors=newAssignment.get(port).get_executors();
     if (newExecutors.size() != existExecutors.size()) {
-      syncProcesses.shutWorker(supervisorData,vaildPortToWorkerIds.get(port));
+      syncProcesses.shutWorker(supervisorData,supervisorData.getWorkerManager(),vaildPortToWorkerIds.get(port));
       continue;
     }
     for (    ExecutorInfo executorInfo : newExecutors) {
       if (!existExecutors.contains(executorInfo)) {
-        syncProcesses.shutWorker(supervisorData,vaildPortToWorkerIds.get(port));
+        syncProcesses.shutWorker(supervisorData,supervisorData.getWorkerManager(),vaildPortToWorkerIds.get(port));
         break;
       }
     }
