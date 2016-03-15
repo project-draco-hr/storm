@@ -1,0 +1,12 @@
+{
+  try {
+    Document doc=mapper.toDocument(tuple);
+    Bson filter=queryCreator.createFilter(tuple);
+    mongoClient.update(filter,doc,upsert);
+    this.collector.ack(tuple);
+  }
+ catch (  Exception e) {
+    this.collector.reportError(e);
+    this.collector.fail(tuple);
+  }
+}

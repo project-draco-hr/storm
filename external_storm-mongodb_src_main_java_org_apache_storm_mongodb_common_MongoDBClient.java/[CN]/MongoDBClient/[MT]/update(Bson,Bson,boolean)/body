@@ -1,0 +1,7 @@
+{
+  UpdateOptions options=new UpdateOptions();
+  if (upsert) {
+    options.upsert(true);
+  }
+  collection.updateMany(filter,update,options);
+}
