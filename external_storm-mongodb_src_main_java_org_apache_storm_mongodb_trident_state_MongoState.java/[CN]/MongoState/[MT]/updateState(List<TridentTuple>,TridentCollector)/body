@@ -1,0 +1,8 @@
+{
+  List<Document> documents=Lists.newArrayList();
+  for (  TridentTuple tuple : tuples) {
+    Document document=options.mapper.toDocument(tuple);
+    documents.add(document);
+  }
+  this.mongoClient.insert(documents);
+}
