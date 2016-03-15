@@ -1,0 +1,3 @@
+{
+  return new GlobalStreamId((String)list.get(0),(String)list.get(1));
+}

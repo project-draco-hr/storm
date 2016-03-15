@@ -1,0 +1,19 @@
+{
+  Map<String,Map> ret=new HashMap<>();
+  Map<String,Map<String,Map<String,Long>>> commonStats=aggregateCommonStats(statsSeq);
+  commonStats=preProcessStreamSummary(commonStats,includeSys);
+  List<Map<String,Map<String,Long>>> acked=new ArrayList<>();
+  List<Map<String,Map<String,Long>>> failed=new ArrayList<>();
+  List<Map<String,Map<String,Double>>> completeLatencies=new ArrayList<>();
+  for (  ExecutorSummary summary : statsSeq) {
+    ExecutorStats stats=summary.get_stats();
+    acked.add(stats.get_specific().get_spout().get_acked());
+    failed.add(stats.get_specific().get_spout().get_failed());
+    completeLatencies.add(stats.get_specific().get_spout().get_complete_ms_avg());
+  }
+  ret.putAll(commonStats);
+  putKV(ret,ACKED,aggregateCounts(acked));
+  putKV(ret,FAILED,aggregateCounts(failed));
+  putKV(ret,COMP_LATENCIES,aggregateAverages(completeLatencies,acked));
+  return ret;
+}

@@ -1,0 +1,42 @@
+{
+  Map<String,Map<K,List>> ret=new HashMap<>();
+  Set<String> allKeys=new HashSet<>();
+  if (m1 != null) {
+    allKeys.addAll(m1.keySet());
+  }
+  if (m2 != null) {
+    allKeys.addAll(m2.keySet());
+  }
+  for (  String k : allKeys) {
+    Map<K,List> mm1=(m1 != null) ? m1.get(k) : null;
+    Map<K,List> mm2=(m2 != null) ? m2.get(k) : null;
+    if (mm1 == null && mm2 == null) {
+      continue;
+    }
+ else     if (mm1 == null) {
+      ret.put(k,mm2);
+    }
+ else     if (mm2 == null) {
+      ret.put(k,mm1);
+    }
+ else {
+      Map<K,List> tmp=new HashMap<>();
+      for (      K kk : mm1.keySet()) {
+        List seq1=mm1.get(kk);
+        List seq2=mm2.get(kk);
+        List sums=new ArrayList();
+        for (int i=0; i < seq1.size(); i++) {
+          if (seq1.get(i) instanceof Long) {
+            sums.add(((Number)seq1.get(i)).longValue() + ((Number)seq2.get(i)).longValue());
+          }
+ else {
+            sums.add(((Number)seq1.get(i)).doubleValue() + ((Number)seq2.get(i)).doubleValue());
+          }
+        }
+        tmp.put(kk,sums);
+      }
+      ret.put(k,tmp);
+    }
+  }
+  return ret;
+}

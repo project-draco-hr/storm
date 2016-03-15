@@ -1,0 +1,2 @@
+Map<String,Map<K,Double>> avgs
+Map<String,Map<K,Long>> counts

@@ -1,0 +1,12 @@
+{
+  Map<String,Long> ret=new HashMap<>();
+  for (  Map.Entry<String,Map<K,V>> entry : stats.entrySet()) {
+    Map<K,V> value=entry.getValue();
+    long sum=0l;
+    for (    V num : value.values()) {
+      sum+=num.longValue();
+    }
+    ret.put(entry.getKey(),sum);
+  }
+  return ret;
+}

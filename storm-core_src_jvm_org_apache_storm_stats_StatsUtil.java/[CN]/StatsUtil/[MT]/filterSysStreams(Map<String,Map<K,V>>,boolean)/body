@@ -1,0 +1,15 @@
+{
+  if (!includeSys) {
+    for (Iterator<String> itr=stats.keySet().iterator(); itr.hasNext(); ) {
+      String winOrStream=itr.next();
+      Map<K,V> stream2stat=stats.get(winOrStream);
+      for (Iterator subItr=stream2stat.keySet().iterator(); subItr.hasNext(); ) {
+        Object key=subItr.next();
+        if (key instanceof String && Utils.isSystemId((String)key)) {
+          subItr.remove();
+        }
+      }
+    }
+  }
+  return stats;
+}

@@ -1,0 +1,5 @@
+{
+  for (  Object imetric : this.metricMap.values()) {
+    cleanupStat((IMetric)imetric);
+  }
+}

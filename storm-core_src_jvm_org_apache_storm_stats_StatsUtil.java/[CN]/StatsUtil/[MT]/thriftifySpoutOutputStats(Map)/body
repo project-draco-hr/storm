@@ -1,0 +1,7 @@
+{
+  Map ret=new HashMap();
+  for (  Object k : id2outStats.keySet()) {
+    ret.put(k,thriftifySpoutAggStats((Map)id2outStats.get(k)));
+  }
+  return ret;
+}

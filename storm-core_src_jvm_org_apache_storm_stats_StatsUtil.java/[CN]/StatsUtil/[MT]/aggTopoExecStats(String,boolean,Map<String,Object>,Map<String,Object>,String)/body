@@ -1,0 +1,67 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  Set workerSet=(Set)accStats.get(WORKERS_SET);
+  Map bolt2stats=getMapByKey(accStats,BOLT_TO_STATS);
+  Map spout2stats=getMapByKey(accStats,SPOUT_TO_STATS);
+  Map win2emitted=getMapByKey(accStats,WIN_TO_EMITTED);
+  Map win2transferred=getMapByKey(accStats,WIN_TO_TRANSFERRED);
+  Map win2compLatWgtAvg=getMapByKey(accStats,WIN_TO_COMP_LAT_WGT_AVG);
+  Map win2acked=getMapByKey(accStats,WIN_TO_ACKED);
+  Map win2failed=getMapByKey(accStats,WIN_TO_FAILED);
+  boolean isSpout=compType.equals(SPOUT);
+  Map<String,Object> cid2stats;
+  if (isSpout) {
+    cid2stats=aggPreMergeTopoPageSpout(beat,window,includeSys);
+  }
+ else {
+    cid2stats=aggPreMergeTopoPageBolt(beat,window,includeSys);
+  }
+  Map stats=getMapByKey(beat,STATS);
+  Map w2compLatWgtAvg, w2acked;
+  Map compLatStats=getMapByKey(stats,COMP_LATENCIES);
+  if (isSpout) {
+    Map mm=new HashMap();
+    Map acked=getMapByKey(stats,ACKED);
+    for (    Object win : acked.keySet()) {
+      mm.put(win,aggSpoutLatAndCount((Map)compLatStats.get(win),(Map)acked.get(win)));
+    }
+    mm=swapMapOrder(mm);
+    w2compLatWgtAvg=getMapByKey(mm,COMP_LAT_TOTAL);
+    w2acked=getMapByKey(mm,ACKED);
+  }
+ else {
+    w2compLatWgtAvg=null;
+    w2acked=aggregateCountStreams(getMapByKey(stats,ACKED));
+  }
+  workerSet.add(Lists.newArrayList(getByKey(beat,HOST),getByKey(beat,PORT)));
+  putKV(ret,WORKERS_SET,workerSet);
+  putKV(ret,BOLT_TO_STATS,bolt2stats);
+  putKV(ret,SPOUT_TO_STATS,spout2stats);
+  putKV(ret,WIN_TO_EMITTED,mergeWithSumLong(win2emitted,aggregateCountStreams(filterSysStreams(getMapByKey(stats,EMITTED),includeSys))));
+  putKV(ret,WIN_TO_TRANSFERRED,mergeWithSumLong(win2transferred,aggregateCountStreams(filterSysStreams(getMapByKey(stats,TRANSFERRED),includeSys))));
+  putKV(ret,WIN_TO_COMP_LAT_WGT_AVG,mergeWithSumDouble(win2compLatWgtAvg,w2compLatWgtAvg));
+  putKV(ret,WIN_TO_ACKED,isSpout ? mergeWithSumLong(win2acked,w2acked) : win2acked);
+  putKV(ret,WIN_TO_FAILED,isSpout ? mergeWithSumLong(aggregateCountStreams(getMapByKey(stats,FAILED)),win2failed) : win2failed);
+  putKV(ret,TYPE,getByKey(stats,TYPE));
+  if (isSpout) {
+    Set<String> spouts=new HashSet<>();
+    spouts.addAll(spout2stats.keySet());
+    spouts.addAll(cid2stats.keySet());
+    Map<String,Object> mm=new HashMap<>();
+    for (    String spout : spouts) {
+      mm.put(spout,mergeAggCompStatsTopoPageSpout((Map)spout2stats.get(spout),(Map)cid2stats.get(spout)));
+    }
+    putKV(ret,SPOUT_TO_STATS,mm);
+  }
+ else {
+    Set<String> bolts=new HashSet<>();
+    bolts.addAll(bolt2stats.keySet());
+    bolts.addAll(cid2stats.keySet());
+    Map<String,Object> mm=new HashMap<>();
+    for (    String bolt : bolts) {
+      mm.put(bolt,mergeAggCompStatsTopoPageBolt((Map)bolt2stats.get(bolt),(Map)cid2stats.get(bolt)));
+    }
+    putKV(ret,BOLT_TO_STATS,mm);
+  }
+  return ret;
+}

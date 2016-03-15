@@ -1,0 +1,3 @@
+{
+  return (MultiCountStatAndMetric)this.get(EXECUTED);
+}

@@ -1,0 +1,9 @@
+{
+  List<ExecutorSummary> ret=new ArrayList<>();
+  for (  ExecutorSummary summ : summs) {
+    if (summ.get_stats() != null) {
+      ret.add(summ);
+    }
+  }
+  return ret;
+}

@@ -1,0 +1,3 @@
+{
+  return (MultiLatencyStatAndMetric)this.get(COMPLETE_LATENCIES);
+}

@@ -1,0 +1,9 @@
+{
+  Map<List<Integer>,ExecutorStats> ret=new HashMap<>();
+  for (  Object executorBeat : executorBeats.entrySet()) {
+    Map.Entry entry=(Map.Entry)executorBeat;
+    List startEnd=(List)entry.getKey();
+    ret.put(convertExecutor(startEnd),(ExecutorStats)entry.getValue());
+  }
+  return ret;
+}
