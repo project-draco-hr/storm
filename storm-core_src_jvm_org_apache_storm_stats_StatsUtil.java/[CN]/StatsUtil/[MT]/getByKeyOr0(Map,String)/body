@@ -1,0 +1,10 @@
+{
+  if (m == null) {
+    return 0;
+  }
+  Number n=(Number)m.get(k);
+  if (n == null) {
+    return 0;
+  }
+  return n;
+}

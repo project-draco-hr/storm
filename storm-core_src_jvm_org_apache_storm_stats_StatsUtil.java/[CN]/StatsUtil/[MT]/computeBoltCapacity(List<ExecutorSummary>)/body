@@ -1,0 +1,10 @@
+{
+  double max=0.0;
+  for (  ExecutorSummary summary : executorSumms) {
+    double capacity=computeExecutorCapacity(summary);
+    if (capacity > max) {
+      max=capacity;
+    }
+  }
+  return max;
+}

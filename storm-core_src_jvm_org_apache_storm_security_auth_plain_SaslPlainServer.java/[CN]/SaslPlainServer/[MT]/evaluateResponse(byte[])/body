@@ -1,0 +1,40 @@
+{
+  if (completed) {
+    throw new IllegalStateException("PLAIN authentication has completed");
+  }
+  if (response == null) {
+    throw new IllegalArgumentException("Received null response");
+  }
+  try {
+    String payload;
+    try {
+      payload=new String(response,"UTF-8");
+    }
+ catch (    Exception e) {
+      throw new IllegalArgumentException("Received corrupt response",e);
+    }
+    String[] parts=payload.split("\u0000",3);
+    if (parts.length != 3) {
+      throw new IllegalArgumentException("Received corrupt response");
+    }
+    if (parts[0].isEmpty()) {
+      parts[0]=parts[1];
+    }
+    NameCallback nc=new NameCallback("SASL PLAIN");
+    nc.setName(parts[1]);
+    PasswordCallback pc=new PasswordCallback("SASL PLAIN",false);
+    pc.setPassword(parts[2].toCharArray());
+    AuthorizeCallback ac=new AuthorizeCallback(parts[1],parts[0]);
+    cbh.handle(new Callback[]{nc,pc,ac});
+    if (ac.isAuthorized()) {
+      authz=ac.getAuthorizedID();
+    }
+  }
+ catch (  Exception e) {
+    throw new SaslException("PLAIN auth failed: " + e.toString(),e);
+  }
+ finally {
+    completed=true;
+  }
+  return null;
+}

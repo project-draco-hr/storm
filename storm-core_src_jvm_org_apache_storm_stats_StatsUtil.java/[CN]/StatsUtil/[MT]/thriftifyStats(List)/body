@@ -1,0 +1,13 @@
+{
+  Map ret=new HashMap();
+  for (  Object o : stats) {
+    List stat=(List)o;
+    List executor=(List)stat.get(0);
+    int start=((Number)executor.get(0)).intValue();
+    int end=((Number)executor.get(1)).intValue();
+    Map executorStat=(Map)stat.get(1);
+    ExecutorInfo executorInfo=new ExecutorInfo(start,end);
+    ret.put(executorInfo,thriftifyExecutorStats(executorStat));
+  }
+  return ret;
+}

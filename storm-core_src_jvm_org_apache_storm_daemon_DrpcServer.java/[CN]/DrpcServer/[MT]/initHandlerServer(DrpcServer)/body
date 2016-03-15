@@ -1,0 +1,7 @@
+{
+  int port=(int)conf.get(Config.DRPC_PORT);
+  if (port > 0) {
+    handlerServer=new ThriftServer(conf,new DistributedRPC.Processor<DistributedRPC.Iface>(service),ThriftConnectionType.DRPC);
+  }
+  return handlerServer;
+}

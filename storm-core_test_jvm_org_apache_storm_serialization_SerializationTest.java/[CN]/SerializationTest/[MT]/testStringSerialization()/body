@@ -1,0 +1,6 @@
+{
+  isRoundtrip(Lists.newArrayList("a","bb","cbe"));
+  isRoundtrip(Lists.newArrayList(mkString(64 * 1024)));
+  isRoundtrip(Lists.newArrayList(mkString(1024 * 1024)));
+  isRoundtrip(Lists.newArrayList(mkString(1024 * 1024 * 2)));
+}

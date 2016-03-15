@@ -1,0 +1,12 @@
+{
+  int localPort=-1;
+  try (ServerSocket socket=new ServerSocket(prefferedPort)){
+    localPort=socket.getLocalPort();
+  }
+ catch (  IOException exp) {
+    if (prefferedPort > 0) {
+      return getAvailablePort(0);
+    }
+  }
+  return localPort;
+}

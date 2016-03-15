@@ -1,0 +1,17 @@
+{
+  if (m2 == null) {
+    return m1;
+  }
+  for (  Object o : m2.entrySet()) {
+    Map.Entry entry=(Map.Entry)o;
+    Object k=entry.getKey();
+    Map existing=(Map)m1.get(k);
+    if (existing == null) {
+      m1.put(k,entry.getValue());
+    }
+ else {
+      existing.putAll((Map)m2.get(k));
+    }
+  }
+  return m1;
+}

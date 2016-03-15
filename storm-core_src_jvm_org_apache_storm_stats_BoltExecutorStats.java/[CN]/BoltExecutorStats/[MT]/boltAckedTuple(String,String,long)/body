@@ -1,0 +1,5 @@
+{
+  List key=Lists.newArrayList(component,stream);
+  this.getAcked().incBy(key,this.rate);
+  this.getProcessLatencies().record(key,latencyMs);
+}

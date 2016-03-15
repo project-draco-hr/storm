@@ -1,0 +1,23 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  Map<String,Map<String,Number>> m=new HashMap<>();
+  for (  Object win : getMapByKey(newStats,EXECUTED).keySet()) {
+    m.put((String)win,aggBoltLatAndCount((Map)(getMapByKey(newStats,EXEC_LATENCIES)).get(win),(Map)(getMapByKey(newStats,PROC_LATENCIES)).get(win),(Map)(getMapByKey(newStats,EXECUTED)).get(win)));
+  }
+  m=swapMapOrder(m);
+  Map<String,Double> win2execLatWgtAvg=getMapByKey(m,EXEC_LAT_TOTAL);
+  Map<String,Double> win2procLatWgtAvg=getMapByKey(m,PROC_LAT_TOTAL);
+  Map<String,Long> win2executed=getMapByKey(m,EXECUTED);
+  Map<String,Map<String,Long>> emitted=getMapByKey(newStats,EMITTED);
+  Map<String,Long> win2emitted=mergeWithSumLong(aggregateCountStreams(filterSysStreams(emitted,includeSys)),getMapByKey(accStats,WIN_TO_EMITTED));
+  putKV(ret,WIN_TO_EMITTED,win2emitted);
+  Map<String,Map<String,Long>> transferred=getMapByKey(newStats,TRANSFERRED);
+  Map<String,Long> win2transferred=mergeWithSumLong(aggregateCountStreams(filterSysStreams(transferred,includeSys)),getMapByKey(accStats,WIN_TO_TRANSFERRED));
+  putKV(ret,WIN_TO_TRANSFERRED,win2transferred);
+  putKV(ret,WIN_TO_EXEC_LAT_WGT_AVG,mergeWithSumDouble(getMapByKey(accStats,WIN_TO_EXEC_LAT_WGT_AVG),win2execLatWgtAvg));
+  putKV(ret,WIN_TO_PROC_LAT_WGT_AVG,mergeWithSumDouble(getMapByKey(accStats,WIN_TO_PROC_LAT_WGT_AVG),win2procLatWgtAvg));
+  putKV(ret,WIN_TO_EXECUTED,mergeWithSumLong(getMapByKey(accStats,WIN_TO_EXECUTED),win2executed));
+  putKV(ret,WIN_TO_ACKED,mergeWithSumLong(aggregateCountStreams(getMapByKey(newStats,ACKED)),getMapByKey(accStats,WIN_TO_ACKED)));
+  putKV(ret,WIN_TO_FAILED,mergeWithSumLong(aggregateCountStreams(getMapByKey(newStats,FAILED)),getMapByKey(accStats,WIN_TO_FAILED)));
+  return ret;
+}

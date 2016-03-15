@@ -1,0 +1,11 @@
+{
+  try {
+    Document doc=mapper.toDocument(tuple);
+    mongoClient.insert(doc);
+    this.collector.ack(tuple);
+  }
+ catch (  Exception e) {
+    this.collector.reportError(e);
+    this.collector.fail(tuple);
+  }
+}

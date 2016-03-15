@@ -1,0 +1,3 @@
+{
+  credentials.put(NIMBUS_CRED_KEY,NIMBUS_CRED_VAL);
+}

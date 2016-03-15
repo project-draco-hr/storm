@@ -1,0 +1,10 @@
+{
+  cleanupStats();
+  ExecutorStats ret=new ExecutorStats();
+  ret.set_emitted(valueStat(EMITTED));
+  ret.set_transferred(valueStat(TRANSFERRED));
+  ret.set_rate(this.rate);
+  SpoutStats spoutStats=new SpoutStats(valueStat(ACKED),valueStat(FAILED),valueStat(COMPLETE_LATENCIES));
+  ret.set_specific(ExecutorSpecificStats.spout(spoutStats));
+  return ret;
+}

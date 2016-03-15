@@ -1,0 +1,7 @@
+{
+  if (summs == null) {
+    return new HashMap<>();
+  }
+  List<ExecutorSummary> statsSeq=getFilledStats(summs);
+  return aggregateBoltStreams(aggregateBoltStats(statsSeq,includeSys));
+}

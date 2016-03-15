@@ -1,0 +1,21 @@
+{
+  handlerServer=initHandlerServer(this);
+  invokeServer=initInvokeServer(this);
+  httpCredsHandler=AuthUtils.GetDrpcHttpCredentialsPlugin(conf);
+  Utils.addShutdownHookWithForceKillIn1Sec(new Runnable(){
+    @Override public void run(){
+      if (handlerServer != null)       handlerServer.stop();
+      invokeServer.stop();
+    }
+  }
+);
+  LOG.info("Starting Distributed RPC servers...");
+  new Thread(new Runnable(){
+    @Override public void run(){
+      invokeServer.serve();
+    }
+  }
+).start();
+  StormMetricsRegistry.startMetricsReporters(conf);
+  if (handlerServer != null)   handlerServer.serve();
+}

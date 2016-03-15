@@ -1,0 +1,16 @@
+{
+  Map<K,Double> ret=new HashMap<>();
+  Set<K> allKeys=new HashSet<>();
+  if (m1 != null) {
+    allKeys.addAll(m1.keySet());
+  }
+  if (m2 != null) {
+    allKeys.addAll(m2.keySet());
+  }
+  for (  K k : allKeys) {
+    Number n1=getOr0(m1,k);
+    Number n2=getOr0(m2,k);
+    ret.put(k,n1.doubleValue() + n2.doubleValue());
+  }
+  return ret;
+}

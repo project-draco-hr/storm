@@ -1,0 +1,56 @@
+{
+  ComponentPageInfo ret=new ComponentPageInfo();
+  ret.set_component_id(compId);
+  Map win2stats=new HashMap();
+  putKV(win2stats,EMITTED,getMapByKey(data,WIN_TO_EMITTED));
+  putKV(win2stats,TRANSFERRED,getMapByKey(data,WIN_TO_TRANSFERRED));
+  putKV(win2stats,ACKED,getMapByKey(data,WIN_TO_ACKED));
+  putKV(win2stats,FAILED,getMapByKey(data,WIN_TO_FAILED));
+  String compType=(String)data.get(TYPE);
+  if (compType.equals(SPOUT)) {
+    ret.set_component_type(ComponentType.SPOUT);
+    putKV(win2stats,COMP_LATENCY,getMapByKey(data,WIN_TO_COMP_LAT));
+  }
+ else {
+    ret.set_component_type(ComponentType.BOLT);
+    putKV(win2stats,EXEC_LATENCY,getMapByKey(data,WIN_TO_EXEC_LAT));
+    putKV(win2stats,PROC_LATENCY,getMapByKey(data,WIN_TO_PROC_LAT));
+    putKV(win2stats,EXECUTED,getMapByKey(data,WIN_TO_EXECUTED));
+  }
+  win2stats=swapMapOrder(win2stats);
+  List<ExecutorAggregateStats> execStats=new ArrayList<>();
+  List executorStats=(List)getByKey(data,EXECUTOR_STATS);
+  if (executorStats != null) {
+    for (    Object o : executorStats) {
+      execStats.add(thriftifyExecAggStats(compId,compType,(Map)o));
+    }
+  }
+  Map gsid2inputStats, sid2outputStats;
+  if (compType.equals(SPOUT)) {
+    Map tmp=new HashMap();
+    for (    Object k : win2stats.keySet()) {
+      tmp.put(k,thriftifySpoutAggStats((Map)win2stats.get(k)));
+    }
+    win2stats=tmp;
+    gsid2inputStats=null;
+    sid2outputStats=thriftifySpoutOutputStats(getMapByKey(data,SID_TO_OUT_STATS));
+  }
+ else {
+    Map tmp=new HashMap();
+    for (    Object k : win2stats.keySet()) {
+      tmp.put(k,thriftifyBoltAggStats((Map)win2stats.get(k)));
+    }
+    win2stats=tmp;
+    gsid2inputStats=thriftifyBoltInputStats(getMapByKey(data,CID_SID_TO_IN_STATS));
+    sid2outputStats=thriftifyBoltOutputStats(getMapByKey(data,SID_TO_OUT_STATS));
+  }
+  ret.set_num_executors(getByKeyOr0(data,NUM_EXECUTORS).intValue());
+  ret.set_num_tasks(getByKeyOr0(data,NUM_TASKS).intValue());
+  ret.set_topology_id(topologyId);
+  ret.set_topology_name(null);
+  ret.set_window_to_stats(win2stats);
+  ret.set_sid_to_output_stats(sid2outputStats);
+  ret.set_exec_stats(execStats);
+  ret.set_gsid_to_input_stats(gsid2inputStats);
+  return ret;
+}

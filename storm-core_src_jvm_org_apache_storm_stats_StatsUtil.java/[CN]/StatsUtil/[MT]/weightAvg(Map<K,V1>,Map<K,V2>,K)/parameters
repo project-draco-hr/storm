@@ -1,0 +1,3 @@
+Map<K,V1> id2Avg
+Map<K,V2> id2num
+K key

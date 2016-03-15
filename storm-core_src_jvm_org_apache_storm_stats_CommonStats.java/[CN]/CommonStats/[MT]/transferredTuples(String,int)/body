@@ -1,0 +1,3 @@
+{
+  this.getTransferred().incBy(stream,this.rate * amount);
+}

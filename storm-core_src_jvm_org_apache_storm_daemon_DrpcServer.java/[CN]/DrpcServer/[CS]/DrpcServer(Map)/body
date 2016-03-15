@@ -1,0 +1,5 @@
+{
+  this.conf=conf;
+  this.authorizer=mkAuthorizationHandler((String)(this.conf.get(Config.DRPC_AUTHORIZER)));
+  initClearThread();
+}

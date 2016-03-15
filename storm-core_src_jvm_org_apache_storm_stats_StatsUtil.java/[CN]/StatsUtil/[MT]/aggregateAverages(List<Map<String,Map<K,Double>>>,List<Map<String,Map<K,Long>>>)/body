@@ -1,0 +1,15 @@
+{
+  Map<String,Map<K,Double>> ret=new HashMap<>();
+  Map<String,Map<K,List>> expands=expandAveragesSeq(avgSeq,countSeq);
+  for (  Map.Entry<String,Map<K,List>> entry : expands.entrySet()) {
+    String k=entry.getKey();
+    Map<K,Double> tmp=new HashMap<>();
+    Map<K,List> inner=entry.getValue();
+    for (    K kk : inner.keySet()) {
+      List vv=inner.get(kk);
+      tmp.put(kk,valAvg(((Number)vv.get(0)).doubleValue(),((Number)vv.get(1)).longValue()));
+    }
+    ret.put(k,tmp);
+  }
+  return ret;
+}

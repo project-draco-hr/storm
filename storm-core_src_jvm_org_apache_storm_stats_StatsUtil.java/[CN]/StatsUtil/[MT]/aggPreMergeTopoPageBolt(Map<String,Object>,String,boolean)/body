@@ -1,0 +1,28 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  Map<String,Object> subRet=new HashMap<>();
+  putKV(subRet,NUM_EXECUTORS,1);
+  putKV(subRet,NUM_TASKS,getByKey(beat,NUM_TASKS));
+  Map<String,Object> stat2win2sid2num=getMapByKey(beat,STATS);
+  putKV(subRet,CAPACITY,computeAggCapacity(stat2win2sid2num,getByKeyOr0(beat,UPTIME).intValue()));
+  for (  String key : new String[]{EMITTED,TRANSFERRED,ACKED,FAILED}) {
+    Map<String,Map<K,V>> stat=windowSetConverter(getMapByKey(stat2win2sid2num,key),TO_STRING);
+    if (EMITTED.equals(key) || TRANSFERRED.equals(key)) {
+      stat=filterSysStreams(stat,includeSys);
+    }
+    Map<K,V> winStat=stat.get(window);
+    long sum=0;
+    if (winStat != null) {
+      for (      V v : winStat.values()) {
+        sum+=v.longValue();
+      }
+    }
+    putKV(subRet,key,sum);
+  }
+  Map<String,Map<List<String>,Double>> win2sid2execLat=windowSetConverter(getMapByKey(stat2win2sid2num,EXEC_LATENCIES),TO_STRING);
+  Map<String,Map<List<String>,Double>> win2sid2procLat=windowSetConverter(getMapByKey(stat2win2sid2num,PROC_LATENCIES),TO_STRING);
+  Map<String,Map<List<String>,Long>> win2sid2exec=windowSetConverter(getMapByKey(stat2win2sid2num,EXECUTED),TO_STRING);
+  subRet.putAll(aggBoltLatAndCount(win2sid2execLat.get(window),win2sid2procLat.get(window),win2sid2exec.get(window)));
+  ret.put((String)getByKey(beat,"comp-id"),subRet);
+  return ret;
+}

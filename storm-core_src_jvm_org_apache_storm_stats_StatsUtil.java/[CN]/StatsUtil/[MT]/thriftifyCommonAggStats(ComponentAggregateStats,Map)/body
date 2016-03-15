@@ -1,0 +1,11 @@
+{
+  CommonAggregateStats commonStats=new CommonAggregateStats();
+  commonStats.set_num_tasks(getByKeyOr0(m,NUM_TASKS).intValue());
+  commonStats.set_num_executors(getByKeyOr0(m,NUM_EXECUTORS).intValue());
+  commonStats.set_emitted(getByKeyOr0(m,EMITTED).longValue());
+  commonStats.set_transferred(getByKeyOr0(m,TRANSFERRED).longValue());
+  commonStats.set_acked(getByKeyOr0(m,ACKED).longValue());
+  commonStats.set_failed(getByKeyOr0(m,FAILED).longValue());
+  stats.set_common_stats(commonStats);
+  return stats;
+}

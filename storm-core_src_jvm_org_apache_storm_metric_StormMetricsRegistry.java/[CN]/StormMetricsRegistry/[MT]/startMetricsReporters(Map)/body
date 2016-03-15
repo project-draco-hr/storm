@@ -1,0 +1,5 @@
+{
+  for (  PreparableReporter reporter : MetricsUtils.getPreparableReporters(stormConf)) {
+    startMetricsReporter(reporter,stormConf);
+  }
+}

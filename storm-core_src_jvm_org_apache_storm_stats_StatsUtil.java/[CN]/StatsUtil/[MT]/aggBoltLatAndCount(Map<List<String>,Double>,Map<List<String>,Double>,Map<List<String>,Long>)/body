@@ -1,0 +1,7 @@
+{
+  Map<String,Number> ret=new HashMap<>();
+  putKV(ret,EXEC_LAT_TOTAL,weightAvgAndSum(id2execAvg,id2numExec));
+  putKV(ret,PROC_LAT_TOTAL,weightAvgAndSum(id2procAvg,id2numExec));
+  putKV(ret,EXECUTED,sumValues(id2numExec));
+  return ret;
+}
