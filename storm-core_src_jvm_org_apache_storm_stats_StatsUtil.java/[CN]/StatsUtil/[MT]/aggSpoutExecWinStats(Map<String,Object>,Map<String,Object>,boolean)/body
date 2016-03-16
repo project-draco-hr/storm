@@ -1,0 +1,20 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  Map<String,Map<String,Number>> m=new HashMap<>();
+  for (  Object win : getMapByKey(beat,ACKED).keySet()) {
+    m.put((String)win,aggSpoutLatAndCount((Map<String,Double>)(getMapByKey(beat,COMP_LATENCIES)).get(win),(Map<String,Long>)(getMapByKey(beat,ACKED)).get(win)));
+  }
+  m=swapMapOrder(m);
+  Map<String,Double> win2compLatWgtAvg=getMapByKey(m,COMP_LAT_TOTAL);
+  Map<String,Long> win2acked=getMapByKey(m,ACKED);
+  Map<String,Map<String,Long>> emitted=getMapByKey(beat,EMITTED);
+  Map<String,Long> win2emitted=mergeWithSumLong(aggregateCountStreams(filterSysStreams(emitted,includeSys)),getMapByKey(accStats,WIN_TO_EMITTED));
+  putKV(ret,WIN_TO_EMITTED,win2emitted);
+  Map<String,Map<String,Long>> transferred=getMapByKey(beat,TRANSFERRED);
+  Map<String,Long> win2transferred=mergeWithSumLong(aggregateCountStreams(filterSysStreams(transferred,includeSys)),getMapByKey(accStats,WIN_TO_TRANSFERRED));
+  putKV(ret,WIN_TO_TRANSFERRED,win2transferred);
+  putKV(ret,WIN_TO_COMP_LAT_WGT_AVG,mergeWithSumDouble(getMapByKey(accStats,WIN_TO_COMP_LAT_WGT_AVG),win2compLatWgtAvg));
+  putKV(ret,WIN_TO_ACKED,mergeWithSumLong(getMapByKey(accStats,WIN_TO_ACKED),win2acked));
+  putKV(ret,WIN_TO_FAILED,mergeWithSumLong(aggregateCountStreams(getMapByKey(beat,FAILED)),getMapByKey(accStats,WIN_TO_FAILED)));
+  return ret;
+}

@@ -1,0 +1,3 @@
+{
+  return windowSetConverter(stats,IDENTITY,firstKeyFunc);
+}

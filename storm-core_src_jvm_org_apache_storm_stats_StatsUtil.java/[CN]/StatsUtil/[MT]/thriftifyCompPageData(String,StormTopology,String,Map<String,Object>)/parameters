@@ -1,0 +1,4 @@
+String topologyId
+StormTopology topology
+String compId
+Map<String,Object> data

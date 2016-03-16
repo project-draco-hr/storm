@@ -1,0 +1,11 @@
+{
+  double ret=0;
+  if (id2Avg == null || id2num == null) {
+    return ret;
+  }
+  for (  Map.Entry<T,V1> entry : id2Avg.entrySet()) {
+    T k=entry.getKey();
+    ret+=productOr0(entry.getValue(),id2num.get(k));
+  }
+  return ret;
+}

@@ -1,0 +1,20 @@
+{
+  if (m.size() == 0) {
+    return m;
+  }
+  Map ret=new HashMap();
+  for (  Object k1 : m.keySet()) {
+    Map v=(Map)m.get(k1);
+    if (v != null) {
+      for (      Object k2 : v.keySet()) {
+        Map subRet=(Map)ret.get(k2);
+        if (subRet == null) {
+          subRet=new HashMap();
+          ret.put(k2,subRet);
+        }
+        subRet.put(k1,v.get(k2));
+      }
+    }
+  }
+  return ret;
+}

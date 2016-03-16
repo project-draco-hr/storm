@@ -1,0 +1,5 @@
+{
+  List key=Lists.newArrayList(component,stream);
+  this.getExecuted().incBy(key,this.rate);
+  this.getExecuteLatencies().record(key,latencyMs);
+}

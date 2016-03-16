@@ -1,0 +1,27 @@
+{
+  boolean isSpout=SPOUT.equals(compType);
+  Map<String,Object> initVal=new HashMap<>();
+  putKV(initVal,WIN_TO_ACKED,new HashMap());
+  putKV(initVal,WIN_TO_FAILED,new HashMap());
+  putKV(initVal,WIN_TO_EMITTED,new HashMap());
+  putKV(initVal,WIN_TO_TRANSFERRED,new HashMap());
+  Map<String,Object> stats=new HashMap();
+  putKV(stats,EXECUTOR_STATS,new ArrayList());
+  putKV(stats,SID_TO_OUT_STATS,new HashMap());
+  if (isSpout) {
+    putKV(initVal,TYPE,SPOUT);
+    putKV(initVal,WIN_TO_COMP_LAT_WGT_AVG,new HashMap());
+  }
+ else {
+    putKV(initVal,TYPE,BOLT);
+    putKV(initVal,WIN_TO_EXECUTED,new HashMap());
+    putKV(stats,CID_SID_TO_IN_STATS,new HashMap());
+    putKV(initVal,WIN_TO_EXEC_LAT_WGT_AVG,new HashMap());
+    putKV(initVal,WIN_TO_PROC_LAT_WGT_AVG,new HashMap());
+  }
+  putKV(initVal,STATS,stats);
+  for (  Map<String,Object> beat : beats) {
+    initVal=aggCompExecStats(window,includeSys,initVal,beat,compType);
+  }
+  return initVal;
+}

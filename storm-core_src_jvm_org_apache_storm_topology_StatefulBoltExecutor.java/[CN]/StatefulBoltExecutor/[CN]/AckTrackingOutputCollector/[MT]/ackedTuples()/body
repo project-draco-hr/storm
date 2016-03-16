@@ -1,0 +1,9 @@
+{
+  List<Tuple> result=new ArrayList<>();
+  Iterator<Tuple> it=ackedTuples.iterator();
+  while (it.hasNext()) {
+    result.add(it.next());
+    it.remove();
+  }
+  return result;
+}

@@ -1,0 +1,13 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  if (SPOUT.equals(compType)) {
+    ret.putAll(aggSpoutExecWinStats(accStats,getMapByKey(beat,STATS),includeSys));
+    putKV(ret,STATS,mergeAggCompStatsCompPageSpout(getMapByKey(accStats,STATS),aggPreMergeCompPageSpout(beat,window,includeSys)));
+  }
+ else {
+    ret.putAll(aggBoltExecWinStats(accStats,getMapByKey(beat,STATS),includeSys));
+    putKV(ret,STATS,mergeAggCompStatsCompPageBolt(getMapByKey(accStats,STATS),aggPreMergeCompPageBolt(beat,window,includeSys)));
+  }
+  putKV(ret,TYPE,compType);
+  return ret;
+}

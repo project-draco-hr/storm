@@ -1,0 +1,14 @@
+{
+  double sum=0;
+  if (m == null) {
+    return sum;
+  }
+  for (  Map<K2,?> v : m.values()) {
+    for (    Map.Entry<K2,?> entry : v.entrySet()) {
+      if (entry.getKey().equals(key)) {
+        sum+=((Number)entry.getValue()).doubleValue();
+      }
+    }
+  }
+  return sum;
+}

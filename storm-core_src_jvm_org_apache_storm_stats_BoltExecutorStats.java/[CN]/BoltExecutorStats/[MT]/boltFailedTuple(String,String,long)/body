@@ -1,0 +1,4 @@
+{
+  List key=Lists.newArrayList(component,stream);
+  this.getFailed().incBy(key,this.rate);
+}

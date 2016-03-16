@@ -1,0 +1,2 @@
+Map<K,Double> id2compAvg
+Map<K,Long> id2acked

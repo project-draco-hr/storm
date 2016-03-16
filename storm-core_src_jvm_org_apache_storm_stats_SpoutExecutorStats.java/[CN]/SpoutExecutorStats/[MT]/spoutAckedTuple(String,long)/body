@@ -1,0 +1,4 @@
+{
+  this.getAcked().incBy(stream,this.rate);
+  this.getCompleteLatencies().record(stream,latencyMs);
+}

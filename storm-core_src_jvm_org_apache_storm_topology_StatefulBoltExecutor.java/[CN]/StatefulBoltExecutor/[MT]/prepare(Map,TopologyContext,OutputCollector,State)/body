@@ -1,4 +1,6 @@
 {
-  super.prepare(stormConf,context,collector);
+  init(context,collector);
+  this.collector=new AckTrackingOutputCollector(collector);
+  bolt.prepare(stormConf,context,this.collector);
   this.state=state;
 }

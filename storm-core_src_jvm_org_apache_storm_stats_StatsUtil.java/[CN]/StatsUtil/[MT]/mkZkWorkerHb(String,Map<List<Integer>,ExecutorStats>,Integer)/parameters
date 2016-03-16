@@ -1,0 +1,3 @@
+String stormId
+Map<List<Integer>,ExecutorStats> executorStats
+Integer uptime
