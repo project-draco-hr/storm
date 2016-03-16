@@ -1,0 +1,3 @@
+Map<WorkerSlot,List<ExecutorDetails>> existingSlots
+int numExecutors
+int numWorkers
