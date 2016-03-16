@@ -1,0 +1,7 @@
+{
+  _cluster=schedulingState.cluster;
+  _topologies=schedulingState.topologies;
+  _nodes=schedulingState.nodes;
+  _clusterInfo=schedulingState.cluster.getNetworkTopography();
+  LOG.debug(this.getClusterInfo());
+}

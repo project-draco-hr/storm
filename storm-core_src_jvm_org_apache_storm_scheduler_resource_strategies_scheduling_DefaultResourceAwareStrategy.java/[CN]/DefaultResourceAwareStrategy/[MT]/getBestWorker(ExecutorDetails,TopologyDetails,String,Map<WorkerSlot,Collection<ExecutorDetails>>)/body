@@ -1,15 +1,15 @@
 {
   double taskMem=td.getTotalMemReqTask(exec);
   double taskCPU=td.getTotalCpuReqTask(exec);
-  List<NodeDetails> nodes;
+  List<RAS_Node> nodes;
   if (clusterId != null) {
     nodes=this.getAvailableNodesFromCluster(clusterId);
   }
  else {
     nodes=this.getAvailableNodes();
   }
-  TreeMap<Double,NodeDetails> nodeRankMap=new TreeMap<>();
-  for (  NodeDetails n : nodes) {
+  TreeMap<Double,RAS_Node> nodeRankMap=new TreeMap<>();
+  for (  RAS_Node n : nodes) {
     if (n.getFreeSlots().size() > 0) {
       if (n.getAvailableMemoryResources() >= taskMem && n.getAvailableCpuResources() >= taskCPU) {
         double a=Math.pow(((taskCPU - n.getAvailableCpuResources()) / (n.getAvailableCpuResources() + 1)) * this.CPU_WEIGHT,2);
@@ -23,8 +23,8 @@
       }
     }
   }
-  for (  Map.Entry<Double,NodeDetails> entry : nodeRankMap.entrySet()) {
-    NodeDetails n=entry.getValue();
+  for (  Map.Entry<Double,RAS_Node> entry : nodeRankMap.entrySet()) {
+    RAS_Node n=entry.getValue();
     for (    WorkerSlot ws : n.getFreeSlots()) {
       if (checkWorkerConstraints(exec,ws,td,scheduleAssignmentMap)) {
         return ws;

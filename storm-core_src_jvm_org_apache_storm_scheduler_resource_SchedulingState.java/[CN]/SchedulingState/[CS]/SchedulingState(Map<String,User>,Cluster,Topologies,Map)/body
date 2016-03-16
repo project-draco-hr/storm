@@ -1,0 +1,11 @@
+{
+  for (  Map.Entry<String,User> userMapEntry : userMap.entrySet()) {
+    String userId=userMapEntry.getKey();
+    User user=userMapEntry.getValue();
+    this.userMap.put(userId,new User(user));
+  }
+  this.cluster=new Cluster(cluster);
+  this.topologies=new Topologies(topologies);
+  this.nodes=new RAS_Nodes(this.cluster,this.topologies);
+  this.conf.putAll(conf);
+}

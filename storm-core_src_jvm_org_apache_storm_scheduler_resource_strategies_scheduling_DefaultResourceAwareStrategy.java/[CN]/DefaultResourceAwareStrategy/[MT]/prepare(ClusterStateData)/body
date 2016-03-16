@@ -1,7 +1,0 @@
-{
-  _clusterStateData=clusterStateData;
-  _nodes=clusterStateData.nodes;
-  _availNodes=this.getAvailNodes();
-  _clusterInfo=_clusterStateData.getNetworkTopography();
-  LOG.debug(this.getClusterInfo());
-}

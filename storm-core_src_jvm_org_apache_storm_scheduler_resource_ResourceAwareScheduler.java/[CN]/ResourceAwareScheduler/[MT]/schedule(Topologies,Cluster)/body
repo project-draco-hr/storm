@@ -2,7 +2,7 @@
   LOG.debug("\n\n\nRerunning ResourceAwareScheduler...");
   initialize(topologies,cluster);
   LOG.info("Cluster scheduling:\n{}",ResourceUtils.printScheduling(cluster,topologies));
-  LOG.info("Nodes:\n{}",this.nodes);
+  LOG.info("Nodes:\n{}",this.schedulingState.nodes);
   for (  User user : getUserMap().values()) {
     LOG.info(user.getDetailedInfo());
   }
@@ -17,9 +17,9 @@
         break;
       }
     }
-    TopologyDetails td=null;
+    TopologyDetails td;
     try {
-      schedulingPrioritystrategy.prepare(this.topologies,this.cluster,this.userMap,this.nodes);
+      schedulingPrioritystrategy.prepare(this.schedulingState);
       td=schedulingPrioritystrategy.getNextTopologyToSchedule();
     }
  catch (    Exception ex) {
@@ -30,7 +30,7 @@
       break;
     }
     scheduleTopology(td);
-    LOG.debug("Nodes after scheduling:\n{}",this.nodes);
+    LOG.debug("Nodes after scheduling:\n{}",this.schedulingState.nodes);
   }
-  updateSupervisorsResources(this.cluster,this.topologies);
+  updateChanges(cluster,topologies);
 }
