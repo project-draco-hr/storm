@@ -1,0 +1,5 @@
+{
+  for (  Map.Entry<String,IMetric> entry : metricMap.entrySet()) {
+    BuiltinMetricsUtil.registerMetric("__" + entry.getKey(),entry.getValue(),stormConf,context);
+  }
+}
