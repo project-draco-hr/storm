@@ -1,0 +1,63 @@
+{
+  StormBase stormBase=stormBase(stormId,null);
+  if (stormBase.get_component_executors() != null) {
+    Map<String,Integer> newComponentExecutors=new HashMap<>();
+    Map<String,Integer> componentExecutors=newElems.get_component_executors();
+    for (    Map.Entry<String,Integer> entry : componentExecutors.entrySet()) {
+      newComponentExecutors.put(entry.getKey(),entry.getValue());
+    }
+    for (    Map.Entry<String,Integer> entry : stormBase.get_component_executors().entrySet()) {
+      if (!componentExecutors.containsKey(entry.getKey())) {
+        newComponentExecutors.put(entry.getKey(),entry.getValue());
+      }
+    }
+    if (newComponentExecutors.size() > 0)     newElems.set_component_executors(newComponentExecutors);
+  }
+  Map<String,DebugOptions> ComponentDebug=new HashMap<>();
+  Map<String,DebugOptions> oldComponentDebug=stormBase.get_component_debug();
+  Map<String,DebugOptions> newComponentDebug=newElems.get_component_debug();
+  Set<String> debugOptionsKeys=new HashSet<>();
+  debugOptionsKeys.addAll(oldComponentDebug.keySet());
+  debugOptionsKeys.addAll(newComponentDebug.keySet());
+  for (  String key : debugOptionsKeys) {
+    boolean enable=false;
+    double samplingpct=0;
+    if (oldComponentDebug.containsKey(key)) {
+      enable=oldComponentDebug.get(key).is_enable();
+      samplingpct=oldComponentDebug.get(key).get_samplingpct();
+    }
+    if (newComponentDebug.containsKey(key)) {
+      enable=newComponentDebug.get(key).is_enable();
+      samplingpct+=newComponentDebug.get(key).get_samplingpct();
+    }
+    DebugOptions debugOptions=new DebugOptions();
+    debugOptions.set_enable(enable);
+    debugOptions.set_samplingpct(samplingpct);
+    ComponentDebug.put(key,debugOptions);
+  }
+  if (ComponentDebug.size() > 0) {
+    newElems.set_component_debug(ComponentDebug);
+  }
+  if (StringUtils.isBlank(newElems.get_name())) {
+    newElems.set_name(stormBase.get_name());
+  }
+  if (newElems.get_status() == null) {
+    newElems.set_status(stormBase.get_status());
+  }
+  if (newElems.get_num_workers() == 0) {
+    newElems.set_num_workers(stormBase.get_num_workers());
+  }
+  if (newElems.get_launch_time_secs() == 0) {
+    newElems.set_launch_time_secs(stormBase.get_launch_time_secs());
+  }
+  if (StringUtils.isBlank(newElems.get_owner())) {
+    newElems.set_owner(stormBase.get_owner());
+  }
+  if (newElems.get_topology_action_options() == null) {
+    newElems.set_topology_action_options(stormBase.get_topology_action_options());
+  }
+  if (newElems.get_status() == null) {
+    newElems.set_status(stormBase.get_status());
+  }
+  stateStorage.set_data(ClusterUtils.stormPath(stormId),Utils.serialize(newElems),acls);
+}

@@ -1,0 +1,5 @@
+{
+  byte[] ret=null;
+  ret=Zookeeper.getData(zkReader,path,watch);
+  return ret;
+}

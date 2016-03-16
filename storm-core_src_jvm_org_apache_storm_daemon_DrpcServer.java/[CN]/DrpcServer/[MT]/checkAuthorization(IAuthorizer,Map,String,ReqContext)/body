@@ -1,0 +1,13 @@
+{
+  if (reqContext != null) {
+    ThriftAccessLogger.logAccess(reqContext.requestID(),reqContext.remoteAddress(),reqContext.principal(),operation);
+  }
+  if (aclHandler != null) {
+    if (reqContext == null)     reqContext=ReqContext.context();
+    if (!aclHandler.permit(reqContext,operation,mapping)) {
+      Principal principal=reqContext.principal();
+      String user=(principal != null) ? principal.getName() : "unknown";
+      throw new AuthorizationException("DRPC request '" + operation + "' for '"+ user+ "' user is not authorized");
+    }
+  }
+}

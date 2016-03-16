@@ -1,0 +1,4 @@
+{
+  KryoValuesDeserializer deserializer=new KryoValuesDeserializer(mkConf(conf));
+  return deserializer.deserialize(bytes);
+}

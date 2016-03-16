@@ -48,4 +48,5 @@
   _fetchAPILatencyMean=new ReducedMetric(new MeanReducer());
   _fetchAPICallCount=new CountMetric();
   _fetchAPIMessageCount=new CountMetric();
+  _lostMessageCount=new CountMetric();
 }

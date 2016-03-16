@@ -1,0 +1,4 @@
+{
+  Aggregator<ComparisonAggregator.State> min=new MinWithComparator<>(comparator);
+  return comparableAggregateStream(null,min);
+}

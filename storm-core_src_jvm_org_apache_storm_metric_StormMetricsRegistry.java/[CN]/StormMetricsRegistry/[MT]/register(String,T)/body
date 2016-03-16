@@ -1,0 +1,16 @@
+{
+  T ret;
+  try {
+    ret=DEFAULT_REGISTRY.register(name,metric);
+  }
+ catch (  IllegalArgumentException e) {
+    ret=(T)DEFAULT_REGISTRY.getMetrics().get(name);
+    if (ret == null) {
+      throw e;
+    }
+ else {
+      LOG.warn("Metric {} has already been registered",name);
+    }
+  }
+  return ret;
+}

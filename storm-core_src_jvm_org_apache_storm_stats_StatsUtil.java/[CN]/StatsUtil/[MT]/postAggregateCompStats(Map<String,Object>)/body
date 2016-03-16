@@ -1,0 +1,65 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  String compType=(String)compStats.get(TYPE);
+  Map stats=getMapByKey(compStats,STATS);
+  Integer numTasks=getByKeyOr0(stats,NUM_TASKS).intValue();
+  Integer numExecutors=getByKeyOr0(stats,NUM_EXECUTORS).intValue();
+  Map outStats=getMapByKey(stats,SID_TO_OUT_STATS);
+  putKV(ret,TYPE,compType);
+  putKV(ret,NUM_TASKS,numTasks);
+  putKV(ret,NUM_EXECUTORS,numExecutors);
+  putKV(ret,EXECUTOR_STATS,getByKey(stats,EXECUTOR_STATS));
+  putKV(ret,WIN_TO_EMITTED,mapKeyStr(getMapByKey(compStats,WIN_TO_EMITTED)));
+  putKV(ret,WIN_TO_TRANSFERRED,mapKeyStr(getMapByKey(compStats,WIN_TO_TRANSFERRED)));
+  putKV(ret,WIN_TO_ACKED,mapKeyStr(getMapByKey(compStats,WIN_TO_ACKED)));
+  putKV(ret,WIN_TO_FAILED,mapKeyStr(getMapByKey(compStats,WIN_TO_FAILED)));
+  if (BOLT.equals(compType)) {
+    Map inStats=getMapByKey(stats,CID_SID_TO_IN_STATS);
+    Map inStats2=new HashMap();
+    for (    Object o : inStats.entrySet()) {
+      Map.Entry e=(Map.Entry)o;
+      Object k=e.getKey();
+      Map v=(Map)e.getValue();
+      long executed=getByKeyOr0(v,EXECUTED).longValue();
+      if (executed > 0) {
+        double executeLatencyTotal=getByKeyOr0(v,EXEC_LAT_TOTAL).doubleValue();
+        double processLatencyTotal=getByKeyOr0(v,PROC_LAT_TOTAL).doubleValue();
+        putKV(v,EXEC_LATENCY,executeLatencyTotal / executed);
+        putKV(v,PROC_LATENCY,processLatencyTotal / executed);
+      }
+ else {
+        putKV(v,EXEC_LATENCY,0.0);
+        putKV(v,PROC_LATENCY,0.0);
+      }
+      remove(v,EXEC_LAT_TOTAL);
+      remove(v,PROC_LAT_TOTAL);
+      inStats2.put(k,v);
+    }
+    putKV(ret,CID_SID_TO_IN_STATS,inStats2);
+    putKV(ret,SID_TO_OUT_STATS,outStats);
+    putKV(ret,WIN_TO_EXECUTED,mapKeyStr(getMapByKey(compStats,WIN_TO_EXECUTED)));
+    putKV(ret,WIN_TO_EXEC_LAT,computeWeightedAveragesPerWindow(compStats,WIN_TO_EXEC_LAT_WGT_AVG,WIN_TO_EXECUTED));
+    putKV(ret,WIN_TO_PROC_LAT,computeWeightedAveragesPerWindow(compStats,WIN_TO_PROC_LAT_WGT_AVG,WIN_TO_EXECUTED));
+  }
+ else {
+    Map outStats2=new HashMap();
+    for (    Object o : outStats.entrySet()) {
+      Map.Entry e=(Map.Entry)o;
+      Object k=e.getKey();
+      Map v=(Map)e.getValue();
+      long acked=getByKeyOr0(v,ACKED).longValue();
+      if (acked > 0) {
+        double compLatencyTotal=getByKeyOr0(v,COMP_LAT_TOTAL).doubleValue();
+        putKV(v,COMP_LATENCY,compLatencyTotal / acked);
+      }
+ else {
+        putKV(v,COMP_LATENCY,0.0);
+      }
+      remove(v,COMP_LAT_TOTAL);
+      outStats2.put(k,v);
+    }
+    putKV(ret,SID_TO_OUT_STATS,outStats2);
+    putKV(ret,WIN_TO_COMP_LAT,computeWeightedAveragesPerWindow(compStats,WIN_TO_COMP_LAT_WGT_AVG,WIN_TO_ACKED));
+  }
+  return ret;
+}

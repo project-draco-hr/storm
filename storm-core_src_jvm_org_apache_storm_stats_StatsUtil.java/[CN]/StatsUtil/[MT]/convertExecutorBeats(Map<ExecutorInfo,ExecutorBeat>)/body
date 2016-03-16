@@ -1,0 +1,9 @@
+{
+  Map<List<Integer>,Map<String,Object>> ret=new HashMap<>();
+  for (  Map.Entry<ExecutorInfo,ExecutorBeat> beat : beats.entrySet()) {
+    ExecutorInfo executorInfo=beat.getKey();
+    ExecutorBeat executorBeat=beat.getValue();
+    ret.put(Lists.newArrayList(executorInfo.get_task_start(),executorInfo.get_task_end()),convertZkExecutorHb(executorBeat));
+  }
+  return ret;
+}

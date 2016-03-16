@@ -1,11 +1,7 @@
 {
   try {
-    ByteArrayOutputStream bao=new ByteArrayOutputStream();
-    ObjectOutputStream out=new ObjectOutputStream(bao);
-    out.writeObject(tgt);
-    out.flush();
-    out.close();
-    credentials.put("TGT",DatatypeConverter.printBase64Binary(bao.toByteArray()));
+    byte[] bytes=AuthUtils.serializeKerberosTicket(tgt);
+    credentials.put("TGT",DatatypeConverter.printBase64Binary(bytes));
   }
  catch (  Exception e) {
     throw new RuntimeException(e);

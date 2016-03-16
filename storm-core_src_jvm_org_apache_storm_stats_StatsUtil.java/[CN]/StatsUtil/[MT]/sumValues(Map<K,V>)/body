@@ -1,0 +1,10 @@
+{
+  long ret=0L;
+  if (m == null) {
+    return ret;
+  }
+  for (  Number n : m.values()) {
+    ret+=n.longValue();
+  }
+  return ret;
+}

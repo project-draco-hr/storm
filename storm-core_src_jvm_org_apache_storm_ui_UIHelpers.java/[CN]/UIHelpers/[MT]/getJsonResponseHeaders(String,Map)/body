@@ -1,0 +1,16 @@
+{
+  Map<String,String> headersResult=new HashMap<>();
+  headersResult.put("Cache-Control","no-cache, no-store");
+  headersResult.put("Access-Control-Allow-Origin","*");
+  headersResult.put("Access-Control-Allow-Headers","Content-Type, Access-Control-Allow-Headers, Access-Controler-Allow-Origin, X-Requested-By, X-Csrf-Token, Authorization, X-Requested-With");
+  if (callback != null) {
+    headersResult.put("Content-Type","application/javascript;charset=utf-8");
+  }
+ else {
+    headersResult.put("Content-Type","application/json;charset=utf-8");
+  }
+  if (headers != null) {
+    headersResult.putAll(headers);
+  }
+  return headersResult;
+}

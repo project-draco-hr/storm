@@ -1,0 +1,21 @@
+{
+  Set<K1> allKeys=new HashSet<>();
+  if (m1 != null) {
+    allKeys.addAll(m1.keySet());
+  }
+  if (m2 != null) {
+    allKeys.addAll(m2.keySet());
+  }
+  Map<K1,Map<K2,Number>> ret=new HashMap<>();
+  for (  K1 k : allKeys) {
+    Map<K2,?> mm1=null, mm2=null;
+    if (m1 != null) {
+      mm1=m1.get(k);
+    }
+    if (m2 != null) {
+      mm2=m2.get(k);
+    }
+    ret.put(k,mergeWithSum(mm1,mm2));
+  }
+  return ret;
+}

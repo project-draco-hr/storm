@@ -1,6 +1,6 @@
 {
   TopologyBuilder builder=new TopologyBuilder();
-  SpoutDeclarer spout=builder.setSpout("word",new TestWordSpout(),10);
+  SpoutDeclarer spout=builder.setSpout("word",new TestWordSpout(),5);
   spout.setCPULoad(20);
   spout.setMemoryLoad(64,16);
   BoltDeclarer bolt1=builder.setBolt("exclaim1",new ExclamationBolt(),3).shuffleGrouping("word");

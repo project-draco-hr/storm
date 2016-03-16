@@ -1,0 +1,12 @@
+{
+  Map<String,Map<String,Map<T,Long>>> ret=new HashMap<>();
+  List<Map<String,Map<String,Long>>> emitted=new ArrayList<>();
+  List<Map<String,Map<String,Long>>> transferred=new ArrayList<>();
+  for (  ExecutorSummary summ : statsSeq) {
+    emitted.add(summ.get_stats().get_emitted());
+    transferred.add(summ.get_stats().get_transferred());
+  }
+  putKV(ret,EMITTED,aggregateCounts(emitted));
+  putKV(ret,TRANSFERRED,aggregateCounts(transferred));
+  return ret;
+}

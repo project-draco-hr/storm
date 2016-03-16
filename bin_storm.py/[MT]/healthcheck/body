@@ -1,3 +1,3 @@
 def healthcheck(*args):
     'Syntax: [storm node-health-check]\n\n    Run health checks on the local supervisor.\n    '
-    exec_storm_class('org.apache.storm.command.healthcheck', args=args, jvmtype='-client', extrajars=[USER_CONF_DIR, os.path.join(STORM_DIR, 'bin')])
+    exec_storm_class('org.apache.storm.command.HealthCheck', args=args, jvmtype='-client', extrajars=[USER_CONF_DIR, os.path.join(STORM_DIR, 'bin')])

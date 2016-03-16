@@ -1,0 +1,4 @@
+{
+  invokeServer=new ThriftServer(conf,new DistributedRPCInvocations.Processor<DistributedRPCInvocations.Iface>(service),ThriftConnectionType.DRPC_INVOCATIONS);
+  return invokeServer;
+}

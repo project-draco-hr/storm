@@ -1,0 +1,6 @@
+{
+  Validate.notEmpty(url,"url can not be blank or null");
+  Validate.notEmpty(collectionName,"collectionName can not be blank or null");
+  this.url=url;
+  this.collectionName=collectionName;
+}

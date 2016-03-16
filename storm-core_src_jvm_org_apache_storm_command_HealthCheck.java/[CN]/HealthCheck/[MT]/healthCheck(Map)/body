@@ -1,0 +1,24 @@
+{
+  String healthDir=ConfigUtils.absoluteHealthCheckDir(conf);
+  List<String> results=new ArrayList<>();
+  if (healthDir != null) {
+    File parentFile=new File(healthDir);
+    List<String> healthScripts=new ArrayList<String>();
+    if (parentFile.exists()) {
+      File[] list=parentFile.listFiles();
+      for (      File f : list) {
+        if (!f.isDirectory() && f.canExecute())         healthScripts.add(f.getAbsolutePath());
+      }
+    }
+    for (    String script : healthScripts) {
+      String result=processScript(conf,script);
+      results.add(result);
+    }
+  }
+  if (results.contains(FAILED) || results.contains(TIMEOUT)) {
+    return 1;
+  }
+ else {
+    return 0;
+  }
+}

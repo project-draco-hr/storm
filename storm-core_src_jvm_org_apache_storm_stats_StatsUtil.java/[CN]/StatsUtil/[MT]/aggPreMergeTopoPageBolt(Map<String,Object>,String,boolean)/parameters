@@ -1,0 +1,3 @@
+Map<String,Object> beat
+String window
+boolean includeSys

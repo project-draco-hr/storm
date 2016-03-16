@@ -1,0 +1,8 @@
+{
+  try {
+    return RecordType.valueOf(type.toLowerCase());
+  }
+ catch (  Exception e) {
+    return null;
+  }
+}

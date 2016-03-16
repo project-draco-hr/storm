@@ -1,3 +1,4 @@
 {
   DataSourcesRegistry.providerMap().remove("mock");
+  DataSourcesRegistry.providerMap().remove("mocknested");
 }

@@ -1,0 +1,3 @@
+{
+  return Integer.parseInt(CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,MEMORY_MEMSW_FAILCNT)).get(0));
+}

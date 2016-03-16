@@ -1,0 +1,25 @@
+{
+  Map<String,Map> ret=new HashMap<>();
+  Map<String,Map<String,Map<T,Long>>> commonStats=aggregateCommonStats(statsSeq);
+  commonStats=preProcessStreamSummary(commonStats,includeSys);
+  List<Map<String,Map<GlobalStreamId,Long>>> acked=new ArrayList<>();
+  List<Map<String,Map<GlobalStreamId,Long>>> failed=new ArrayList<>();
+  List<Map<String,Map<GlobalStreamId,Long>>> executed=new ArrayList<>();
+  List<Map<String,Map<GlobalStreamId,Double>>> processLatencies=new ArrayList<>();
+  List<Map<String,Map<GlobalStreamId,Double>>> executeLatencies=new ArrayList<>();
+  for (  ExecutorSummary summary : statsSeq) {
+    ExecutorStats stat=summary.get_stats();
+    acked.add(stat.get_specific().get_bolt().get_acked());
+    failed.add(stat.get_specific().get_bolt().get_failed());
+    executed.add(stat.get_specific().get_bolt().get_executed());
+    processLatencies.add(stat.get_specific().get_bolt().get_process_ms_avg());
+    executeLatencies.add(stat.get_specific().get_bolt().get_execute_ms_avg());
+  }
+  mergeMaps(ret,commonStats);
+  putKV(ret,ACKED,aggregateCounts(acked));
+  putKV(ret,FAILED,aggregateCounts(failed));
+  putKV(ret,EXECUTED,aggregateCounts(executed));
+  putKV(ret,PROC_LATENCIES,aggregateAverages(processLatencies,acked));
+  putKV(ret,EXEC_LATENCIES,aggregateAverages(executeLatencies,executed));
+  return ret;
+}

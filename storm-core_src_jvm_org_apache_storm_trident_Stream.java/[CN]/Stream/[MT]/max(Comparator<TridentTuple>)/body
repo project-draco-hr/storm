@@ -1,0 +1,4 @@
+{
+  Aggregator<ComparisonAggregator.State> max=new MaxWithComparator<>(comparator);
+  return comparableAggregateStream(null,max);
+}

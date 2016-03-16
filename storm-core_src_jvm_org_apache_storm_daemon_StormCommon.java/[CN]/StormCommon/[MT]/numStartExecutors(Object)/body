@@ -1,0 +1,4 @@
+{
+  ComponentCommon common=getComponentCommon(component);
+  return Thrift.getParallelismHint(common);
+}

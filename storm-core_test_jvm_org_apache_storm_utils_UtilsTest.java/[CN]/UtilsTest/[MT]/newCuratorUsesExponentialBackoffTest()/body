@@ -1,0 +1,14 @@
+{
+  final int expectedInterval=2400;
+  final int expectedRetries=10;
+  final int expectedCeiling=3000;
+  Map<String,Object> config=Utils.readDefaultConfig();
+  config.put(Config.STORM_ZOOKEEPER_RETRY_INTERVAL,expectedInterval);
+  config.put(Config.STORM_ZOOKEEPER_RETRY_TIMES,expectedRetries);
+  config.put(Config.STORM_ZOOKEEPER_RETRY_INTERVAL_CEILING,expectedCeiling);
+  CuratorFramework curator=Utils.newCurator(config,Arrays.asList("bogus_server"),42,"");
+  StormBoundedExponentialBackoffRetry policy=(StormBoundedExponentialBackoffRetry)curator.getZookeeperClient().getRetryPolicy();
+  Assert.assertEquals(policy.getBaseSleepTimeMs(),expectedInterval);
+  Assert.assertEquals(policy.getN(),expectedRetries);
+  Assert.assertEquals(policy.getSleepTimeMs(10,0),expectedCeiling);
+}

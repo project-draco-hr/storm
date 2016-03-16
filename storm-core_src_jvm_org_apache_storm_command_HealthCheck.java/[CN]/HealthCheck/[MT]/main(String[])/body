@@ -1,0 +1,4 @@
+{
+  Map conf=ConfigUtils.readStormConfig();
+  System.exit(healthCheck(conf));
+}

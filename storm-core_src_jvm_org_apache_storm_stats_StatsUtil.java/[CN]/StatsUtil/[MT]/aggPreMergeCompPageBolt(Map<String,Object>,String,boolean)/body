@@ -1,0 +1,40 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  putKV(ret,EXECUTOR_ID,getByKey(beat,"exec-id"));
+  putKV(ret,HOST,getByKey(beat,HOST));
+  putKV(ret,PORT,getByKey(beat,PORT));
+  putKV(ret,UPTIME,getByKey(beat,UPTIME));
+  putKV(ret,NUM_EXECUTORS,1);
+  putKV(ret,NUM_TASKS,getByKey(beat,NUM_TASKS));
+  Map stat2win2sid2num=getMapByKey(beat,STATS);
+  putKV(ret,CAPACITY,computeAggCapacity(stat2win2sid2num,getByKeyOr0(beat,UPTIME).intValue()));
+  Map inputStats=new HashMap();
+  Map sid2acked=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,ACKED),TO_STRING).get(window);
+  Map sid2failed=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,FAILED),TO_STRING).get(window);
+  putKV(inputStats,ACKED,sid2acked != null ? sid2acked : new HashMap());
+  putKV(inputStats,FAILED,sid2failed != null ? sid2failed : new HashMap());
+  inputStats=swapMapOrder(inputStats);
+  Map sid2execLat=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,EXEC_LATENCIES),TO_STRING).get(window);
+  Map sid2procLat=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,PROC_LATENCIES),TO_STRING).get(window);
+  Map sid2exec=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,EXECUTED),TO_STRING).get(window);
+  mergeMaps(inputStats,aggBoltStreamsLatAndCount(sid2execLat,sid2procLat,sid2exec));
+  putKV(ret,CID_SID_TO_IN_STATS,inputStats);
+  Map outputStats=new HashMap();
+  Map sid2emitted=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,EMITTED),TO_STRING).get(window);
+  Map sid2transferred=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,TRANSFERRED),TO_STRING).get(window);
+  if (sid2emitted != null) {
+    putKV(outputStats,EMITTED,filterSysStreams(sid2emitted,includeSys));
+  }
+ else {
+    putKV(outputStats,EMITTED,new HashMap());
+  }
+  if (sid2transferred != null) {
+    putKV(outputStats,TRANSFERRED,filterSysStreams(sid2transferred,includeSys));
+  }
+ else {
+    putKV(outputStats,TRANSFERRED,new HashMap());
+  }
+  outputStats=swapMapOrder(outputStats);
+  putKV(ret,SID_TO_OUT_STATS,outputStats);
+  return ret;
+}

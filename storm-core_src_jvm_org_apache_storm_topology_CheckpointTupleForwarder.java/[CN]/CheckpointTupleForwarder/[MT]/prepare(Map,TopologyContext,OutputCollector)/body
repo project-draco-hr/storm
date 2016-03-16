@@ -1,5 +1,4 @@
 {
-  this.collector=new AnchoringOutputCollector(collector);
+  init(context,collector);
   bolt.prepare(stormConf,context,this.collector);
-  checkPointInputTaskCount=getCheckpointInputTaskCount(context);
 }

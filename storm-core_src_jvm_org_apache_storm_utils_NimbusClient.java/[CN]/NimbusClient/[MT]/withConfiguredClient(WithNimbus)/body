@@ -1,0 +1,3 @@
+{
+  withConfiguredClient(cb,ConfigUtils.readStormConfig());
+}

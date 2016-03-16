@@ -1,0 +1,40 @@
+{
+  List<Map<String,Object>> ret=new ArrayList<>();
+  if (executor2hostPort == null || beats == null) {
+    return ret;
+  }
+  for (  Object o : executor2hostPort.entrySet()) {
+    Map.Entry entry=(Map.Entry)o;
+    List executor=(List)entry.getKey();
+    List hostPort=(List)entry.getValue();
+    Integer start=((Number)executor.get(0)).intValue();
+    Integer end=((Number)executor.get(1)).intValue();
+    String host=(String)hostPort.get(0);
+    Integer port=((Number)hostPort.get(1)).intValue();
+    Map<String,Object> beat=beats.get(convertExecutor(executor));
+    if (beat == null) {
+      continue;
+    }
+    String id=(String)task2component.get(start);
+    Map<String,Object> m=new HashMap<>();
+    if ((compId == null || compId.equals(id)) && (includeSys || !Utils.isSystemId(id))) {
+      putKV(m,"exec-id",entry.getKey());
+      putKV(m,"comp-id",id);
+      putKV(m,NUM_TASKS,end - start + 1);
+      putKV(m,HOST,host);
+      putKV(m,PORT,port);
+      Map stats=getMapByKey(getMapByKey(beat,(HEARTBEAT)),STATS);
+      putKV(m,UPTIME,getMapByKey(beat,HEARTBEAT).get(UPTIME));
+      putKV(m,STATS,stats);
+      String type=componentType(topology,compId);
+      if (type != null) {
+        putKV(m,TYPE,type);
+      }
+ else {
+        putKV(m,TYPE,stats.get(TYPE));
+      }
+      ret.add(m);
+    }
+  }
+  return ret;
+}

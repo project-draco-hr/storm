@@ -1,0 +1,3 @@
+{
+  CgroupUtils.writeFileByLine(CgroupUtils.getDir(this.dir,MEMORY_MEMSW_LIMIT_IN_BYTES),String.valueOf(value));
+}

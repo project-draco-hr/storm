@@ -6,7 +6,7 @@
     }
   }
  catch (  Exception e) {
-    if (exceptionCause(KeeperException.NodeExistsException.class,e)) {
+    if (Utils.exceptionCauseIsInstanceOf(KeeperException.NodeExistsException.class,e)) {
       LOG.info("delete {} failed.",path,e);
     }
  else {

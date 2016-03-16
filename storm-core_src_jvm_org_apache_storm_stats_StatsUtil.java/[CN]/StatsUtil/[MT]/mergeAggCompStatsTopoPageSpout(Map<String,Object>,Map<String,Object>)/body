@@ -1,0 +1,12 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  Integer numExecutors=getByKeyOr0(accSpoutStats,NUM_EXECUTORS).intValue();
+  putKV(ret,NUM_EXECUTORS,numExecutors + 1);
+  putKV(ret,NUM_TASKS,sumOr0(getByKeyOr0(accSpoutStats,NUM_TASKS),getByKeyOr0(spoutStats,NUM_TASKS)));
+  putKV(ret,EMITTED,sumOr0(getByKeyOr0(accSpoutStats,EMITTED),getByKeyOr0(spoutStats,EMITTED)));
+  putKV(ret,TRANSFERRED,sumOr0(getByKeyOr0(accSpoutStats,TRANSFERRED),getByKeyOr0(spoutStats,TRANSFERRED)));
+  putKV(ret,COMP_LAT_TOTAL,sumOr0(getByKeyOr0(accSpoutStats,COMP_LAT_TOTAL),getByKeyOr0(spoutStats,COMP_LAT_TOTAL)));
+  putKV(ret,ACKED,sumOr0(getByKeyOr0(accSpoutStats,ACKED),getByKeyOr0(spoutStats,ACKED)));
+  putKV(ret,FAILED,sumOr0(getByKeyOr0(accSpoutStats,FAILED),getByKeyOr0(spoutStats,FAILED)));
+  return ret;
+}

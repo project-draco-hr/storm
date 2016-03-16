@@ -1,5 +1,5 @@
 {
-  long start=System.nanoTime();
+  long start=System.currentTimeMillis();
   Long offset;
   offset=this._failedMsgRetryManager.nextFailedMessageToRetry();
   final boolean processingNewTuples=(offset == null);
@@ -14,16 +14,19 @@
     offset=KafkaUtils.getOffset(_consumer,_partition.topic,_partition.partition,kafka.api.OffsetRequest.EarliestTime());
     if (!processingNewTuples) {
       Set<Long> omitted=this._failedMsgRetryManager.clearInvalidMessages(offset);
+      if (null != omitted) {
+        _lostMessageCount.incrBy(omitted.size());
+      }
       LOG.warn("Removing the failed offsets that are out of range: {}",omitted);
     }
     if (offset > _emittedToOffset) {
+      _lostMessageCount.incrBy(offset - _emittedToOffset);
       _emittedToOffset=offset;
       LOG.warn("{} Using new offset: {}",_partition.partition,_emittedToOffset);
     }
     return;
   }
-  long end=System.nanoTime();
-  long millis=(end - start) / 1000000;
+  long millis=System.currentTimeMillis() - start;
   _fetchAPILatencyMax.update(millis);
   _fetchAPILatencyMean.update(millis);
   _fetchAPICallCount.incr();

@@ -1,0 +1,4 @@
+{
+  throwIfNotComplete();
+  throw new IllegalStateException("PLAIN supports neither integrity nor privacy");
+}

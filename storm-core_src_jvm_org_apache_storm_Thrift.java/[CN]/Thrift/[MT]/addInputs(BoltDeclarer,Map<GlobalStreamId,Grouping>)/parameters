@@ -1,0 +1,2 @@
+BoltDeclarer declarer
+Map<GlobalStreamId,Grouping> inputs

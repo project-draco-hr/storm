@@ -4,5 +4,6 @@
   ret.put(_partition + "/fetchAPILatencyMean",_fetchAPILatencyMean.getValueAndReset());
   ret.put(_partition + "/fetchAPICallCount",_fetchAPICallCount.getValueAndReset());
   ret.put(_partition + "/fetchAPIMessageCount",_fetchAPIMessageCount.getValueAndReset());
+  ret.put(_partition + "/lostMessageCount",_lostMessageCount.getValueAndReset());
   return ret;
 }

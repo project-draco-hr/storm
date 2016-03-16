@@ -1,0 +1,3 @@
+{
+  return State.getStateValue(CgroupUtils.readFileByLine(CgroupUtils.getDir(this.dir,FREEZER_STATE)).get(0));
+}

@@ -1,0 +1,19 @@
+{
+  ExecutorAggregateStats stats=new ExecutorAggregateStats();
+  ExecutorSummary executorSummary=new ExecutorSummary();
+  List executor=(List)getByKey(m,EXECUTOR_ID);
+  executorSummary.set_executor_info(new ExecutorInfo(((Number)executor.get(0)).intValue(),((Number)executor.get(1)).intValue()));
+  executorSummary.set_component_id(compId);
+  executorSummary.set_host((String)getByKey(m,HOST));
+  executorSummary.set_port(getByKeyOr0(m,PORT).intValue());
+  int uptime=getByKeyOr0(m,UPTIME).intValue();
+  executorSummary.set_uptime_secs(uptime);
+  stats.set_exec_summary(executorSummary);
+  if (compType.equals(SPOUT)) {
+    stats.set_stats(thriftifySpoutAggStats(m));
+  }
+ else {
+    stats.set_stats(thriftifyBoltAggStats(m));
+  }
+  return stats;
+}

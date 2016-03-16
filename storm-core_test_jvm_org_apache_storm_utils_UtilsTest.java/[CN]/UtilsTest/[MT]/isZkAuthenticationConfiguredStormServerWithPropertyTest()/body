@@ -1,0 +1,16 @@
+{
+  String key="java.security.auth.login.config";
+  String oldValue=System.getProperty(key);
+  try {
+    System.setProperty("java.security.auth.login.config","anything");
+    Assert.assertTrue(Utils.isZkAuthenticationConfiguredStormServer(emptyMockMap()));
+  }
+  finally {
+    if (oldValue == null) {
+      System.clearProperty(key);
+    }
+ else {
+      System.setProperty(key,oldValue);
+    }
+  }
+}

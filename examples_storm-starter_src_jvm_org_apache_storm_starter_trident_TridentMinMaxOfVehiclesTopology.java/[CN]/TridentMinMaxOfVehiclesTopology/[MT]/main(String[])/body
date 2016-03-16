@@ -1,0 +1,16 @@
+{
+  StormTopology topology=buildVehiclesTopology();
+  Config conf=new Config();
+  conf.setMaxSpoutPending(20);
+  if (args.length == 0) {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("vehicles-topology",conf,topology);
+    Utils.sleep(60 * 1000);
+    cluster.shutdown();
+    System.exit(0);
+  }
+ else {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopologyWithProgressBar("vehicles-topology",conf,topology);
+  }
+}

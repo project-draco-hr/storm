@@ -1,0 +1,3 @@
+{
+  return "Vehicle{" + "name='" + name + '\''+ ", maxSpeed="+ maxSpeed+ ", efficiency="+ efficiency+ '}';
+}

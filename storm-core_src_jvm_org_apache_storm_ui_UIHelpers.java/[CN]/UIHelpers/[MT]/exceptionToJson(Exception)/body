@@ -1,0 +1,5 @@
+{
+  StringWriter sw=new StringWriter();
+  ex.printStackTrace(new PrintWriter(sw));
+  return ImmutableMap.of("error","Internal Server Error","errorMessage",sw.toString());
+}

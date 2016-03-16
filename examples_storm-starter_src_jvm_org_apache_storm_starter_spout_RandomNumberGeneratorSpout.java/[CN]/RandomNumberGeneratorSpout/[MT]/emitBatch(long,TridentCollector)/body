@@ -1,0 +1,20 @@
+{
+  List<List<Object>> values=null;
+  if (batches.containsKey(batchId)) {
+    values=batches.get(batchId);
+  }
+ else {
+    values=new ArrayList<>();
+    for (int i=0; i < batchSize; i++) {
+      List<Object> numbers=new ArrayList<>();
+      for (int x=0; x < fields.size(); x++) {
+        numbers.add(ThreadLocalRandom.current().nextInt(0,maxNumber + 1));
+      }
+      values.add(numbers);
+    }
+    batches.put(batchId,values);
+  }
+  for (  List<Object> value : values) {
+    collector.emit(value);
+  }
+}

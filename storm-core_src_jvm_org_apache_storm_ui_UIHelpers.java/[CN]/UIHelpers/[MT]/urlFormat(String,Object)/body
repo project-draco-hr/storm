@@ -1,0 +1,7 @@
+{
+  String[] argsEncoded=new String[args.length];
+  for (int i=0; i < args.length; i++) {
+    argsEncoded[i]=URLEncoder.encode(String.valueOf(args[i]));
+  }
+  return String.format(fmt,argsEncoded);
+}

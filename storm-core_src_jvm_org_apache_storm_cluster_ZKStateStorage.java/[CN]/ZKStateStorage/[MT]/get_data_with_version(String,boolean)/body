@@ -1,0 +1,3 @@
+{
+  return Zookeeper.getDataWithVersion(zkReader,path,watch);
+}
