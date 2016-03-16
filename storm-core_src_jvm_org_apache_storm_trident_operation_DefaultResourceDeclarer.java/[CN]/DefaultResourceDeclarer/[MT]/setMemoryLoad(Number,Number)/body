@@ -7,5 +7,5 @@
     offHeap=offHeap.doubleValue();
     resources.put(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB,offHeap);
   }
-  return this;
+  return (T)this;
 }

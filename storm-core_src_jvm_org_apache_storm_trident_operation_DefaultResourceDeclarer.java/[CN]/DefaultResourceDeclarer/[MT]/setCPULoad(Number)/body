@@ -3,5 +3,5 @@
     amount=amount.doubleValue();
     resources.put(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT,amount);
   }
-  return this;
+  return (T)this;
 }
