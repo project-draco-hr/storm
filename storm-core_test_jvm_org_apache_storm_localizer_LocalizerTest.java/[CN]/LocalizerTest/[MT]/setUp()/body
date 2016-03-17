@@ -1,5 +1,5 @@
 {
-  baseDir=new File("/tmp/blob-store-localizer-test-" + UUID.randomUUID());
+  baseDir=new File(System.getProperty("java.io.tmpdir") + "/blob-store-localizer-test-" + UUID.randomUUID());
   if (!baseDir.mkdir()) {
     throw new IOException("failed to create base directory");
   }

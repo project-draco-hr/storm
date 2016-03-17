@@ -2,34 +2,34 @@
   Subject admin=getSubject("admin");
   assertStoreHasExactly(store);
   SettableBlobMeta metadata=new SettableBlobMeta(BlobStoreAclHandler.DEFAULT);
-  AtomicOutputStream out=store.createBlob("test",metadata,admin);
-  assertStoreHasExactly(store,"test");
-  out.write(1);
-  out.close();
-  store.deleteBlob("test",admin);
+  try (AtomicOutputStream out=store.createBlob("test",metadata,admin)){
+    assertStoreHasExactly(store,"test");
+    out.write(1);
+  }
+   store.deleteBlob("test",admin);
   Subject supervisor=getSubject("supervisor");
   assertStoreHasExactly(store);
   metadata=new SettableBlobMeta(BlobStoreAclHandler.DEFAULT);
-  out=store.createBlob("test",metadata,supervisor);
-  assertStoreHasExactly(store,"test");
-  out.write(1);
-  out.close();
-  store.deleteBlob("test",supervisor);
+  try (AtomicOutputStream out=store.createBlob("test",metadata,supervisor)){
+    assertStoreHasExactly(store,"test");
+    out.write(1);
+  }
+   store.deleteBlob("test",supervisor);
   Subject nimbus=getNimbusSubject();
   assertStoreHasExactly(store);
   metadata=new SettableBlobMeta(BlobStoreAclHandler.DEFAULT);
-  out=store.createBlob("test",metadata,nimbus);
-  assertStoreHasExactly(store,"test");
-  out.write(1);
-  out.close();
-  store.deleteBlob("test",nimbus);
+  try (AtomicOutputStream out=store.createBlob("test",metadata,nimbus)){
+    assertStoreHasExactly(store,"test");
+    out.write(1);
+  }
+   store.deleteBlob("test",nimbus);
   Subject who=getSubject("test_subject");
   assertStoreHasExactly(store);
   metadata=new SettableBlobMeta(BlobStoreAclHandler.WORLD_EVERYTHING);
-  out=store.createBlob("test",metadata,who);
-  out.write(1);
-  out.close();
-  assertStoreHasExactly(store,"test");
+  try (AtomicOutputStream out=store.createBlob("test",metadata,who)){
+    out.write(1);
+  }
+   assertStoreHasExactly(store,"test");
   assertTrue("ACL does not contain WORLD_EVERYTHING",metadata.toString().contains("AccessControl(type:OTHER, access:7)"));
   readAssertEqualsWithAuth(store,who,"test",1);
   LOG.info("Deleting test");
@@ -37,42 +37,43 @@
   assertStoreHasExactly(store);
   LOG.info("Creating test again");
   metadata=new SettableBlobMeta(BlobStoreAclHandler.DEFAULT);
-  out=store.createBlob("test",metadata,who);
-  out.write(2);
-  out.close();
-  assertStoreHasExactly(store,"test");
+  try (AtomicOutputStream out=store.createBlob("test",metadata,who)){
+    out.write(2);
+  }
+   assertStoreHasExactly(store,"test");
   assertTrue("ACL does not contain WORLD_EVERYTHING",!metadata.toString().contains("AccessControl(type:OTHER, access:7)"));
   readAssertEqualsWithAuth(store,who,"test",2);
   LOG.info("Updating test");
-  out=store.updateBlob("test",who);
-  out.write(3);
-  out.close();
-  assertStoreHasExactly(store,"test");
+  try (AtomicOutputStream out=store.updateBlob("test",who)){
+    out.write(3);
+  }
+   assertStoreHasExactly(store,"test");
   readAssertEqualsWithAuth(store,who,"test",3);
   LOG.info("Updating test again");
-  out=store.updateBlob("test",who);
-  out.write(4);
-  out.flush();
-  LOG.info("SLEEPING");
-  Thread.sleep(2);
-  assertStoreHasExactly(store,"test");
-  readAssertEqualsWithAuth(store,who,"test",3);
-  who=new Subject();
+  try (AtomicOutputStream out=store.updateBlob("test",who)){
+    out.write(4);
+    out.flush();
+    LOG.info("SLEEPING");
+    Thread.sleep(2);
+    assertStoreHasExactly(store,"test");
+    readAssertEqualsWithAuth(store,who,"test",3);
+  }
+   who=new Subject();
   metadata=new SettableBlobMeta(BlobStoreAclHandler.WORLD_EVERYTHING);
   LOG.info("Creating test");
-  out=store.createBlob("test-empty-subject-WE",metadata,who);
-  out.write(2);
-  out.close();
-  assertStoreHasExactly(store,"test-empty-subject-WE","test");
+  try (AtomicOutputStream out=store.createBlob("test-empty-subject-WE",metadata,who)){
+    out.write(2);
+  }
+   assertStoreHasExactly(store,"test-empty-subject-WE","test");
   assertTrue("ACL does not contain WORLD_EVERYTHING",metadata.toString().contains("AccessControl(type:OTHER, access:7)"));
   readAssertEqualsWithAuth(store,who,"test-empty-subject-WE",2);
   who=new Subject();
   metadata=new SettableBlobMeta(BlobStoreAclHandler.DEFAULT);
   LOG.info("Creating other");
-  out=store.createBlob("test-empty-subject-DEF",metadata,who);
-  out.write(2);
-  out.close();
-  assertStoreHasExactly(store,"test-empty-subject-DEF","test","test-empty-subject-WE");
+  try (AtomicOutputStream out=store.createBlob("test-empty-subject-DEF",metadata,who)){
+    out.write(2);
+  }
+   assertStoreHasExactly(store,"test-empty-subject-DEF","test","test-empty-subject-WE");
   assertTrue("ACL does not contain WORLD_EVERYTHING",metadata.toString().contains("AccessControl(type:OTHER, access:7)"));
   readAssertEqualsWithAuth(store,who,"test-empty-subject-DEF",2);
   if (store instanceof LocalFsBlobStore) {
@@ -80,10 +81,5 @@
   }
  else {
     fail("Error the blobstore is of unknowntype");
-  }
-  try {
-    out.close();
-  }
- catch (  IOException e) {
   }
 }
