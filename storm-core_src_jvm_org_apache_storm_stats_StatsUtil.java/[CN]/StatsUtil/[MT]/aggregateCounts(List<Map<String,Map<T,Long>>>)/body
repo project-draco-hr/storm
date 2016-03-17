@@ -1,0 +1,25 @@
+{
+  Map<String,Map<T,Long>> ret=new HashMap<>();
+  for (  Map<String,Map<T,Long>> counts : countsSeq) {
+    for (    Map.Entry<String,Map<T,Long>> entry : counts.entrySet()) {
+      String win=entry.getKey();
+      Map<T,Long> stream2count=entry.getValue();
+      if (!ret.containsKey(win)) {
+        ret.put(win,stream2count);
+      }
+ else {
+        Map<T,Long> existing=ret.get(win);
+        for (        Map.Entry<T,Long> subEntry : stream2count.entrySet()) {
+          T stream=subEntry.getKey();
+          if (!existing.containsKey(stream)) {
+            existing.put(stream,subEntry.getValue());
+          }
+ else {
+            existing.put(stream,subEntry.getValue() + existing.get(stream));
+          }
+        }
+      }
+    }
+  }
+  return ret;
+}

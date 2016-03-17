@@ -1,0 +1,37 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  Map<List<String>,Map<String,?>> accIn=getMapByKey(accBoltStats,CID_SID_TO_IN_STATS);
+  Map<String,Map<String,?>> accOut=getMapByKey(accBoltStats,SID_TO_OUT_STATS);
+  Map<List<String>,Map<String,?>> boltIn=getMapByKey(boltStats,CID_SID_TO_IN_STATS);
+  Map<String,Map<String,?>> boltOut=getMapByKey(boltStats,SID_TO_OUT_STATS);
+  int numExecutors=getByKeyOr0(accBoltStats,NUM_EXECUTORS).intValue();
+  putKV(ret,NUM_EXECUTORS,numExecutors + 1);
+  putKV(ret,NUM_TASKS,sumOr0(getByKeyOr0(accBoltStats,NUM_TASKS),getByKeyOr0(boltStats,NUM_TASKS)));
+  putKV(ret,SID_TO_OUT_STATS,fullMergeWithSum(accOut,boltOut));
+  putKV(ret,CID_SID_TO_IN_STATS,fullMergeWithSum(accIn,boltIn));
+  long executed=sumStreamsLong(boltIn,EXECUTED);
+  putKV(ret,EXECUTED,executed);
+  Map<String,Object> executorStats=new HashMap<>();
+  putKV(executorStats,EXECUTOR_ID,boltStats.get(EXECUTOR_ID));
+  putKV(executorStats,UPTIME,boltStats.get(UPTIME));
+  putKV(executorStats,HOST,boltStats.get(HOST));
+  putKV(executorStats,PORT,boltStats.get(PORT));
+  putKV(executorStats,CAPACITY,boltStats.get(CAPACITY));
+  putKV(executorStats,EMITTED,sumStreamsLong(boltOut,EMITTED));
+  putKV(executorStats,TRANSFERRED,sumStreamsLong(boltOut,TRANSFERRED));
+  putKV(executorStats,ACKED,sumStreamsLong(boltIn,ACKED));
+  putKV(executorStats,FAILED,sumStreamsLong(boltIn,FAILED));
+  putKV(executorStats,EXECUTED,executed);
+  if (executed > 0) {
+    putKV(executorStats,EXEC_LATENCY,sumStreamsDouble(boltIn,EXEC_LAT_TOTAL) / executed);
+    putKV(executorStats,PROC_LATENCY,sumStreamsDouble(boltIn,PROC_LAT_TOTAL) / executed);
+  }
+ else {
+    putKV(executorStats,EXEC_LATENCY,null);
+    putKV(executorStats,PROC_LATENCY,null);
+  }
+  List executorStatsList=((List)getByKey(accBoltStats,EXECUTOR_STATS));
+  executorStatsList.add(executorStats);
+  putKV(ret,EXECUTOR_STATS,executorStatsList);
+  return ret;
+}

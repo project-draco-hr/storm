@@ -1,0 +1,3 @@
+Map<List<String>,Double> id2execAvg
+Map<List<String>,Double> id2procAvg
+Map<List<String>,Long> id2numExec

@@ -1,0 +1,4 @@
+{
+  this.collector=collector;
+  this.mongoClient=new MongoDBClient(url,collectionName);
+}

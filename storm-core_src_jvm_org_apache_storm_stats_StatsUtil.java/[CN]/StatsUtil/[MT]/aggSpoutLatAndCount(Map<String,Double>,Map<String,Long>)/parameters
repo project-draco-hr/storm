@@ -1,0 +1,2 @@
+Map<String,Double> id2compAvg
+Map<String,Long> id2numAcked

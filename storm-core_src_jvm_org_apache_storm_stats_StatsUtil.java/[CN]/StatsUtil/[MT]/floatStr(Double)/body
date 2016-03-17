@@ -1,0 +1,6 @@
+{
+  if (n == null) {
+    return "0";
+  }
+  return String.format("%.3f",n);
+}

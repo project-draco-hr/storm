@@ -1,0 +1,8 @@
+{
+  Set<List<Integer>> convertedExecutors=new HashSet<>();
+  for (  Object executor : executors) {
+    List l=(List)executor;
+    convertedExecutors.add(convertExecutor(l));
+  }
+  return convertedExecutors;
+}

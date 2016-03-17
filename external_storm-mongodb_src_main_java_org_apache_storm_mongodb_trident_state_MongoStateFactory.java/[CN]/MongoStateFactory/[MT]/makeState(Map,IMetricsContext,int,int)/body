@@ -1,0 +1,5 @@
+{
+  MongoState state=new MongoState(conf,options);
+  state.prepare();
+  return state;
+}

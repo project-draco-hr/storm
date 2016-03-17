@@ -1,0 +1,10 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  if (workerHb != null) {
+    ret.put("storm-id",workerHb.get_storm_id());
+    ret.put(EXECUTOR_STATS,convertExecutorsStats(workerHb.get_executor_stats()));
+    ret.put(UPTIME,workerHb.get_uptime_secs());
+    ret.put(TIME_SECS,workerHb.get_time_secs());
+  }
+  return ret;
+}

@@ -1,0 +1,7 @@
+{
+  super(url,collectionName);
+  Validate.notNull(queryCreator,"QueryFilterCreator can not be null");
+  Validate.notNull(mapper,"MongoMapper can not be null");
+  this.queryCreator=queryCreator;
+  this.mapper=mapper;
+}

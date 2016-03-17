@@ -1,0 +1,10 @@
+{
+  IMetric metric=this.get(field);
+  if (metric instanceof MultiCountStatAndMetric) {
+    return ((MultiCountStatAndMetric)metric).getTimeCounts();
+  }
+ else   if (metric instanceof MultiLatencyStatAndMetric) {
+    return ((MultiLatencyStatAndMetric)metric).getTimeLatAvg();
+  }
+  return null;
+}

@@ -1,0 +1,8 @@
+{
+  if (metric instanceof MultiCountStatAndMetric) {
+    ((MultiCountStatAndMetric)metric).close();
+  }
+ else   if (metric instanceof MultiLatencyStatAndMetric) {
+    ((MultiLatencyStatAndMetric)metric).close();
+  }
+}

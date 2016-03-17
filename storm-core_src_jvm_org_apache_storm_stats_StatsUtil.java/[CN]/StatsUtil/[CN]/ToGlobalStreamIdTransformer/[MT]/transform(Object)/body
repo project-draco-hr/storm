@@ -1,0 +1,9 @@
+{
+  if (key instanceof List) {
+    List l=(List)key;
+    if (l.size() > 1) {
+      return new GlobalStreamId((String)l.get(0),(String)l.get(1));
+    }
+  }
+  return new GlobalStreamId("",key.toString());
+}

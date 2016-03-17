@@ -1,0 +1,5 @@
+{
+  this.rate=rate;
+  this.put(EMITTED,new MultiCountStatAndMetric(NUM_STAT_BUCKETS));
+  this.put(TRANSFERRED,new MultiCountStatAndMetric(NUM_STAT_BUCKETS));
+}

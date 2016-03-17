@@ -1,0 +1,8 @@
+{
+  super(rate);
+  this.put(ACKED,new MultiCountStatAndMetric(NUM_STAT_BUCKETS));
+  this.put(FAILED,new MultiCountStatAndMetric(NUM_STAT_BUCKETS));
+  this.put(EXECUTED,new MultiCountStatAndMetric(NUM_STAT_BUCKETS));
+  this.put(PROCESS_LATENCIES,new MultiLatencyStatAndMetric(NUM_STAT_BUCKETS));
+  this.put(EXECUTE_LATENCIES,new MultiLatencyStatAndMetric(NUM_STAT_BUCKETS));
+}
