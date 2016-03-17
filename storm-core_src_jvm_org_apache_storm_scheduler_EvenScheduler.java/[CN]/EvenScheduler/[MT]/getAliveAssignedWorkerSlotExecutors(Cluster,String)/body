@@ -1,0 +1,8 @@
+{
+  SchedulerAssignment existingAssignment=cluster.getAssignmentById(topologyId);
+  Map<ExecutorDetails,WorkerSlot> executorToSlot=null;
+  if (existingAssignment != null) {
+    executorToSlot=existingAssignment.getExecutorToSlot();
+  }
+  return Utils.reverseMap(executorToSlot);
+}

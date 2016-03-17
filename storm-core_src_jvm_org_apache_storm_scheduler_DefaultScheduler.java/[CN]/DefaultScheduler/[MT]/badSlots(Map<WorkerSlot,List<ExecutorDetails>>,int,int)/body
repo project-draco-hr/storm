@@ -1,0 +1,20 @@
+{
+  if (numWorkers != 0) {
+    Map<Integer,Integer> distribution=Utils.integerDivided(numExecutors,numWorkers);
+    Set<WorkerSlot> slots=new HashSet<WorkerSlot>();
+    for (    Entry<WorkerSlot,List<ExecutorDetails>> entry : existingSlots.entrySet()) {
+      Integer executorCount=entry.getValue().size();
+      Integer workerCount=distribution.get(executorCount);
+      if (workerCount != null && workerCount > 0) {
+        slots.add(entry.getKey());
+        workerCount--;
+        distribution.put(executorCount,workerCount);
+      }
+    }
+    for (    WorkerSlot slot : slots) {
+      existingSlots.remove(slot);
+    }
+    return existingSlots.keySet();
+  }
+  return null;
+}
