@@ -1,1 +1,2 @@
 List<Document> documents
+boolean ordered
