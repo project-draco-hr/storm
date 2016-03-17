@@ -6,7 +6,7 @@ case CREATE_PATH:
     response=createPath(data.get_path());
   break;
 case EXISTS:
-response=exists(data.get_path(),authenticated);
+response=pathExists(data.get_path(),authenticated);
 break;
 case SEND_PULSE:
 response=sendPulse(data.get_pulse());

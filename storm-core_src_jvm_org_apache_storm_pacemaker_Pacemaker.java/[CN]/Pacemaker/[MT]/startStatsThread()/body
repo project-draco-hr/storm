@@ -8,10 +8,10 @@
       int largest=pacemakerStats.largestHeartbeatSize.getAndSet(0);
       int average=pacemakerStats.averageHeartbeatSize.getAndSet(0);
       int totalKeys=heartbeats.size();
-      LOG.debug("\nReceived {} heartbeats totaling {} bytes,\nSent {} heartbeats totaling {} bytes,\nThe largest heartbeat was {} bytes,\nThe average heartbeat was {} bytes,\nPacemaker contained {} total keys\nin the last {} second(s)",sendCount,receivedSize,getCount,sentSize,largest,average,totalKeys,sleepSeconds);
+      LOG.debug("\nReceived {} heartbeats totaling {} bytes,\nSent {} heartbeats totaling {} bytes," + "\nThe largest heartbeat was {} bytes,\nThe average heartbeat was {} bytes,\n" + "Pacemaker contained {} total keys\nin the last {} second(s)",sendCount,receivedSize,getCount,sentSize,largest,average,totalKeys,sleepSeconds);
       return sleepSeconds;
     }
   }
 ;
-  Utils.asyncLoop(afn,true,null,Thread.currentThread().getPriority(),false,true,null);
+  Utils.asyncLoop(afn,isDaemon,null,Thread.currentThread().getPriority(),false,startImmediately,null);
 }
