@@ -1,0 +1,4 @@
+{
+  _node.setMemoryLoad(onHeap,offHeap);
+  return this;
+}
