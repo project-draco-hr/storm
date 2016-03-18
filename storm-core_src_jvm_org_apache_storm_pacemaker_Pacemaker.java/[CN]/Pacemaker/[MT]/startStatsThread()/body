@@ -9,6 +9,13 @@
       int average=pacemakerStats.averageHeartbeatSize.getAndSet(0);
       int totalKeys=heartbeats.size();
       LOG.debug("\nReceived {} heartbeats totaling {} bytes,\nSent {} heartbeats totaling {} bytes," + "\nThe largest heartbeat was {} bytes,\nThe average heartbeat was {} bytes,\n" + "Pacemaker contained {} total keys\nin the last {} second(s)",sendCount,receivedSize,getCount,sentSize,largest,average,totalKeys,sleepSeconds);
+      lastOneMinStats.sendPulseCount.set(sendCount);
+      lastOneMinStats.totalReceivedSize.set(receivedSize);
+      lastOneMinStats.getPulseCount.set(getCount);
+      lastOneMinStats.totalSentSize.set(sentSize);
+      lastOneMinStats.largestHeartbeatSize.set(largest);
+      lastOneMinStats.averageHeartbeatSize.set(average);
+      lastOneMinStats.averageHeartbeatSize.set(totalKeys);
       return sleepSeconds;
     }
   }

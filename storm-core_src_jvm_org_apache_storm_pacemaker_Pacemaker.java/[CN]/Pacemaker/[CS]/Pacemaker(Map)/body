@@ -1,6 +1,8 @@
 {
   heartbeats=new ConcurrentHashMap();
   pacemakerStats=new PacemakerStats();
+  lastOneMinStats=new PacemakerStats();
   this.conf=conf;
   startStatsThread();
+  registerJmx(lastOneMinStats);
 }

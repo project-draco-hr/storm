@@ -1,0 +1,15 @@
+{
+  AttributeList list=new AttributeList();
+  if (attributes == null)   return list;
+  final int len=attributes.length;
+  try {
+    for (int i=0; i < len; i++) {
+      final Attribute a=new Attribute(attributes[i],getAttribute(attributes[i]));
+      list.add(a);
+    }
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+  return list;
+}
