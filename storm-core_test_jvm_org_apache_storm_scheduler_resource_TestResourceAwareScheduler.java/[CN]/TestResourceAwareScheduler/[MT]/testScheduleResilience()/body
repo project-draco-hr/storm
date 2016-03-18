@@ -1,0 +1,113 @@
+{
+  INimbus iNimbus=new TestUtilsForResourceAwareScheduler.INimbusTest();
+  Map<String,Number> resourceMap=new HashMap<>();
+  resourceMap.put(Config.SUPERVISOR_CPU_CAPACITY,400.0);
+  resourceMap.put(Config.SUPERVISOR_MEMORY_CAPACITY_MB,2000.0);
+  Map<String,SupervisorDetails> supMap=TestUtilsForResourceAwareScheduler.genSupervisors(2,2,resourceMap);
+  TopologyBuilder builder1=new TopologyBuilder();
+  builder1.setSpout("wordSpout1",new TestWordSpout(),3);
+  StormTopology stormTopology1=builder1.createTopology();
+  Config config1=new Config();
+  config1.putAll(defaultTopologyConf);
+  Map<ExecutorDetails,String> executorMap1=TestUtilsForResourceAwareScheduler.genExecsAndComps(stormTopology1,3,0);
+  TopologyDetails topology1=new TopologyDetails("topology1",config1,stormTopology1,3,executorMap1,0);
+  TopologyBuilder builder2=new TopologyBuilder();
+  builder2.setSpout("wordSpout2",new TestWordSpout(),2);
+  StormTopology stormTopology2=builder2.createTopology();
+  Config config2=new Config();
+  config2.putAll(defaultTopologyConf);
+  config2.put(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB,1280.0);
+  Map<ExecutorDetails,String> executorMap2=TestUtilsForResourceAwareScheduler.genExecsAndComps(stormTopology1,2,0);
+  TopologyDetails topology2=new TopologyDetails("topology2",config2,stormTopology2,2,executorMap2,0);
+  Cluster cluster=new Cluster(iNimbus,supMap,new HashMap<String,SchedulerAssignmentImpl>(),config1);
+  ResourceAwareScheduler rs=new ResourceAwareScheduler();
+  Map<String,TopologyDetails> topoMap=new HashMap<>();
+  topoMap.put(topology2.getId(),topology2);
+  Topologies topologies=new Topologies(topoMap);
+  rs.prepare(config1);
+  rs.schedule(topologies,cluster);
+  SchedulerAssignmentImpl assignment=(SchedulerAssignmentImpl)cluster.getAssignmentById(topology2.getId());
+  WorkerSlot failedWorker=new ArrayList<WorkerSlot>(assignment.getSlots()).get(0);
+  Map<ExecutorDetails,WorkerSlot> executorToSlot=assignment.getExecutorToSlot();
+  List<ExecutorDetails> failedExecutors=new ArrayList<>();
+  for (  Map.Entry<ExecutorDetails,WorkerSlot> entry : executorToSlot.entrySet()) {
+    if (entry.getValue().equals(failedWorker)) {
+      failedExecutors.add(entry.getKey());
+    }
+  }
+  for (  ExecutorDetails executor : failedExecutors) {
+    executorToSlot.remove(executor);
+  }
+  Map<ExecutorDetails,WorkerSlot> copyOfOldMapping=new HashMap<>(executorToSlot);
+  Set<ExecutorDetails> healthyExecutors=copyOfOldMapping.keySet();
+  rs.schedule(topologies,cluster);
+  SchedulerAssignment newAssignment=cluster.getAssignmentById(topology2.getId());
+  Map<ExecutorDetails,WorkerSlot> newExecutorToSlot=newAssignment.getExecutorToSlot();
+  for (  ExecutorDetails executor : healthyExecutors) {
+    Assert.assertEquals(copyOfOldMapping.get(executor),newExecutorToSlot.get(executor));
+  }
+  Assert.assertEquals("Running - Fully Scheduled by DefaultResourceAwareStrategy",cluster.getStatusMap().get(topology2.getId()));
+  executorToSlot=new HashMap<>();
+  executorToSlot.put(new ExecutorDetails(0,0),new WorkerSlot("sup-0",0));
+  executorToSlot.put(new ExecutorDetails(1,1),new WorkerSlot("sup-0",1));
+  executorToSlot.put(new ExecutorDetails(2,2),new WorkerSlot("sup-1",1));
+  Map<String,SchedulerAssignmentImpl> existingAssignments=new HashMap<>();
+  assignment=new SchedulerAssignmentImpl(topology1.getId(),executorToSlot);
+  existingAssignments.put(topology1.getId(),assignment);
+  copyOfOldMapping=new HashMap<>(executorToSlot);
+  Set<ExecutorDetails> existingExecutors=copyOfOldMapping.keySet();
+  Map<String,SupervisorDetails> supMap1=new HashMap<>(supMap);
+  supMap1.remove("sup-0");
+  Cluster cluster1=new Cluster(iNimbus,supMap1,existingAssignments,config1);
+  topoMap=new HashMap<>();
+  topoMap.put(topology1.getId(),topology1);
+  topologies=new Topologies(topoMap);
+  rs.schedule(topologies,cluster1);
+  newAssignment=cluster1.getAssignmentById(topology1.getId());
+  newExecutorToSlot=newAssignment.getExecutorToSlot();
+  for (  ExecutorDetails executor : existingExecutors) {
+    Assert.assertEquals(copyOfOldMapping.get(executor),newExecutorToSlot.get(executor));
+  }
+  Assert.assertEquals("Fully Scheduled",cluster1.getStatusMap().get(topology1.getId()));
+  executorToSlot=new HashMap<>();
+  executorToSlot.put(new ExecutorDetails(0,0),new WorkerSlot("sup-0",1));
+  executorToSlot.put(new ExecutorDetails(1,1),new WorkerSlot("sup-0",2));
+  executorToSlot.put(new ExecutorDetails(2,2),new WorkerSlot("sup-1",1));
+  existingAssignments=new HashMap<>();
+  assignment=new SchedulerAssignmentImpl(topology1.getId(),executorToSlot);
+  existingAssignments.put(topology1.getId(),assignment);
+  executorToSlot.remove(new ExecutorDetails(1,1));
+  copyOfOldMapping=new HashMap<>(executorToSlot);
+  existingExecutors=copyOfOldMapping.keySet();
+  supMap1=new HashMap<>(supMap);
+  supMap1.remove("sup-0");
+  cluster1=new Cluster(iNimbus,supMap1,existingAssignments,config1);
+  topoMap=new HashMap<>();
+  topoMap.put(topology1.getId(),topology1);
+  topologies=new Topologies(topoMap);
+  rs.schedule(topologies,cluster1);
+  newAssignment=cluster1.getAssignmentById(topology1.getId());
+  newExecutorToSlot=newAssignment.getExecutorToSlot();
+  for (  ExecutorDetails executor : existingExecutors) {
+    Assert.assertEquals(copyOfOldMapping.get(executor),newExecutorToSlot.get(executor));
+  }
+  Assert.assertEquals("Fully Scheduled",cluster1.getStatusMap().get(topology1.getId()));
+  cluster1=new Cluster(iNimbus,supMap,new HashMap<String,SchedulerAssignmentImpl>(),config1);
+  topoMap=new HashMap<>();
+  topoMap.put(topology1.getId(),topology1);
+  topologies=new Topologies(topoMap);
+  rs.schedule(topologies,cluster1);
+  assignment=(SchedulerAssignmentImpl)cluster1.getAssignmentById(topology1.getId());
+  executorToSlot=assignment.getExecutorToSlot();
+  copyOfOldMapping=new HashMap<>(executorToSlot);
+  topoMap.put(topology2.getId(),topology2);
+  topologies=new Topologies(topoMap);
+  rs.schedule(topologies,cluster1);
+  newAssignment=(SchedulerAssignmentImpl)cluster1.getAssignmentById(topology1.getId());
+  newExecutorToSlot=newAssignment.getExecutorToSlot();
+  for (  ExecutorDetails executor : copyOfOldMapping.keySet()) {
+    Assert.assertEquals(copyOfOldMapping.get(executor),newExecutorToSlot.get(executor));
+  }
+  Assert.assertEquals("Running - Fully Scheduled by DefaultResourceAwareStrategy",cluster1.getStatusMap().get(topology1.getId()));
+  Assert.assertEquals("Running - Fully Scheduled by DefaultResourceAwareStrategy",cluster1.getStatusMap().get(topology2.getId()));
+}

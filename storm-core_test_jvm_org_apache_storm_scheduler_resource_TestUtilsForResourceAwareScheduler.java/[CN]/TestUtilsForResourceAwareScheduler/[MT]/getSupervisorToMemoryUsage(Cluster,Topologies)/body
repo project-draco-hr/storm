@@ -1,0 +1,32 @@
+{
+  Map<SupervisorDetails,Double> superToMem=new HashMap<>();
+  Collection<SchedulerAssignment> assignments=cluster.getAssignments().values();
+  Collection<SupervisorDetails> supervisors=cluster.getSupervisors().values();
+  for (  SupervisorDetails supervisor : supervisors) {
+    superToMem.put(supervisor,0.0);
+  }
+  for (  SchedulerAssignment assignment : assignments) {
+    Map<ExecutorDetails,SupervisorDetails> executorToSupervisor=new HashMap<>();
+    Map<SupervisorDetails,List<ExecutorDetails>> supervisorToExecutors=new HashMap<>();
+    TopologyDetails topology=topologies.getById(assignment.getTopologyId());
+    for (    Map.Entry<ExecutorDetails,WorkerSlot> entry : assignment.getExecutorToSlot().entrySet()) {
+      executorToSupervisor.put(entry.getKey(),cluster.getSupervisorById(entry.getValue().getNodeId()));
+    }
+    for (    Map.Entry<ExecutorDetails,SupervisorDetails> entry : executorToSupervisor.entrySet()) {
+      List<ExecutorDetails> executorsOnSupervisor=supervisorToExecutors.get(entry.getValue());
+      if (executorsOnSupervisor == null) {
+        executorsOnSupervisor=new ArrayList<>();
+        supervisorToExecutors.put(entry.getValue(),executorsOnSupervisor);
+      }
+      executorsOnSupervisor.add(entry.getKey());
+    }
+    for (    Map.Entry<SupervisorDetails,List<ExecutorDetails>> entry : supervisorToExecutors.entrySet()) {
+      Double supervisorUsedMemory=0.0;
+      for (      ExecutorDetails executor : entry.getValue()) {
+        supervisorUsedMemory+=topology.getTotalMemReqTask(executor);
+      }
+      superToMem.put(entry.getKey(),superToMem.get(entry.getKey()) + supervisorUsedMemory);
+    }
+  }
+  return superToMem;
+}
