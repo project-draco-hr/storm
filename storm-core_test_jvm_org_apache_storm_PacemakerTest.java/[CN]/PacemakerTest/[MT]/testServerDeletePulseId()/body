@@ -1,5 +1,5 @@
 {
-  Pacemaker handler=new Pacemaker(new ConcurrentHashMap());
+  Pacemaker handler=new Pacemaker(new ConcurrentHashMap(),false);
   makeNode(handler,"/some-root/DELETE_PULSE_ID/foo");
   makeNode(handler,"/some-root/DELETE_PULSE_ID/bar");
   makeNode(handler,"/some-root/DELETE_PULSE_ID/baz");

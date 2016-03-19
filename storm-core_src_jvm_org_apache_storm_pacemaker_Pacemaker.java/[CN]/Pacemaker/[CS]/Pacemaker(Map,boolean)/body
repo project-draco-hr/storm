@@ -4,5 +4,7 @@
   lastOneMinStats=new PacemakerStats();
   this.conf=conf;
   startStatsThread();
-  registerJmx(lastOneMinStats);
+  if (isRegisterJmx) {
+    registerJmx(lastOneMinStats);
+  }
 }

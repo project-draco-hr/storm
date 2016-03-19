@@ -1,7 +1,7 @@
 {
   try {
     MBeanServer mbServer=ManagementFactory.getPlatformMBeanServer();
-    DynamicMBean dynamicMBean=new PaceMakerDynamicMBean(lastOneMinStats);
+    DynamicMBean dynamicMBean=new PacemakerDynamicMBean(lastOneMinStats);
     ObjectName objectname=new ObjectName("org.apache.storm.pacemaker.Pacemaker:stats=lastOneMinStats");
     mbServer.registerMBean(dynamicMBean,objectname);
   }

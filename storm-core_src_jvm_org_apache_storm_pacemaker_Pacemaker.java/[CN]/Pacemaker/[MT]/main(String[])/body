@@ -1,6 +1,6 @@
 {
   SysOutOverSLF4J.sendSystemOutAndErrToSLF4J();
   Map conf=ConfigUtils.overrideLoginConfigWithSystemProperty(ConfigUtils.readStormConfig());
-  final Pacemaker serverHandler=new Pacemaker(conf);
+  final Pacemaker serverHandler=new Pacemaker(conf,true);
   serverHandler.launchServer();
 }
