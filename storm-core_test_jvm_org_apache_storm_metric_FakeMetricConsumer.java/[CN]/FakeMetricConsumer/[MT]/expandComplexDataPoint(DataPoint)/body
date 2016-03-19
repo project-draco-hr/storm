@@ -1,0 +1,12 @@
+{
+  Map<String,Object> expanded=new HashMap<>();
+  if (dp.value instanceof Map) {
+    for (    Map.Entry entry : ((Map<Object,Object>)dp.value).entrySet()) {
+      expanded.put(dp.name + "/" + entry.getKey(),entry.getValue());
+    }
+  }
+ else {
+    expanded.put(dp.name,dp.value);
+  }
+  return expanded;
+}
