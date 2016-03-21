@@ -1,0 +1,5 @@
+{
+  this.length=length;
+  this.timeUnit=timeUnit;
+  this.lengthNanos=timeUnit.toNanos(length);
+}

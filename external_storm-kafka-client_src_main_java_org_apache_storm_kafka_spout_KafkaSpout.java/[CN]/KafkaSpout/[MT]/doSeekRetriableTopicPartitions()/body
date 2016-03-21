@@ -1,0 +1,12 @@
+{
+  final Set<TopicPartition> retriableTopicPartitions=retryService.retriableTopicPartitions();
+  for (  TopicPartition rtp : retriableTopicPartitions) {
+    final OffsetAndMetadata offsetAndMeta=acked.get(rtp).findNextCommitOffset();
+    if (offsetAndMeta != null) {
+      kafkaConsumer.seek(rtp,offsetAndMeta.offset() + 1);
+    }
+ else {
+      kafkaConsumer.seekToEnd(rtp);
+    }
+  }
+}

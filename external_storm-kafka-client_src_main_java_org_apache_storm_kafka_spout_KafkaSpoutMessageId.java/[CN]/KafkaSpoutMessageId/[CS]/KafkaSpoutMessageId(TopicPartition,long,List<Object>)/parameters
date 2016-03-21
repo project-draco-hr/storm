@@ -1,3 +1,0 @@
-TopicPartition topicPart
-long offset
-List<Object> tuple

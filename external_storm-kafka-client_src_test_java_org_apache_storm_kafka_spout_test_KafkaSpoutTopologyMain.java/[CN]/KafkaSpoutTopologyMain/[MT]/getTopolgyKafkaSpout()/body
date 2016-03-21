@@ -1,7 +1,7 @@
 {
   final TopologyBuilder tp=new TopologyBuilder();
-  tp.setSpout("kafka_spout",new KafkaSpout<>(getKafkaSpoutConfig(getKafkaSpoutStreams()),getTupleBuilder()),1);
-  tp.setBolt("kafka_bolt",new KafkaTestBolt()).shuffleGrouping("kafka_spout",STREAMS[0]);
-  tp.setBolt("kafka_bolt_1",new KafkaTestBolt()).shuffleGrouping("kafka_spout",STREAMS[2]);
+  tp.setSpout("kafka_spout",new KafkaSpout<>(getKafkaSpoutConfig(getKafkaSpoutStreams())),1);
+  tp.setBolt("kafka_bolt",new KafkaSpoutTestBolt()).shuffleGrouping("kafka_spout",STREAMS[0]);
+  tp.setBolt("kafka_bolt_1",new KafkaSpoutTestBolt()).shuffleGrouping("kafka_spout",STREAMS[2]);
   return tp.createTopology();
 }

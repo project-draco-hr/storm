@@ -3,11 +3,11 @@
     if (commit()) {
       commitOffsetsForAckedTuples();
     }
- else     if (poll()) {
-      emitTuples(pollKafkaBroker());
+    if (poll()) {
+      setWaitingToEmit(pollKafkaBroker());
     }
- else     if (logTimer.isExpiredResetOnTrue()) {
-      log();
+    if (waitingToEmit()) {
+      emit();
     }
   }
  else {

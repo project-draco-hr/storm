@@ -1,0 +1,6 @@
+{
+  if (topics == null || topics.length == 0) {
+    throw new IllegalArgumentException("Must specify at least one topic. It cannot be null or empty");
+  }
+  this.topics=Arrays.asList(topics);
+}

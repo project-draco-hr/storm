@@ -1,4 +1,0 @@
-{
-  this.pollStrategy=pollStrategy;
-  return this;
-}

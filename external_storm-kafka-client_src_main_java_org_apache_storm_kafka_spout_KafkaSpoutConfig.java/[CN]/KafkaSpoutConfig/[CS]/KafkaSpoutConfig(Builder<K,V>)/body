@@ -6,7 +6,8 @@
   this.offsetCommitPeriodMs=builder.offsetCommitPeriodMs;
   this.maxRetries=builder.maxRetries;
   this.firstPollOffsetStrategy=builder.firstPollOffsetStrategy;
-  this.pollStrategy=builder.pollStrategy;
   this.kafkaSpoutStreams=builder.kafkaSpoutStreams;
   this.maxUncommittedOffsets=builder.maxUncommittedOffsets;
+  this.tuplesBuilder=builder.tuplesBuilder;
+  this.retryService=builder.retryService;
 }

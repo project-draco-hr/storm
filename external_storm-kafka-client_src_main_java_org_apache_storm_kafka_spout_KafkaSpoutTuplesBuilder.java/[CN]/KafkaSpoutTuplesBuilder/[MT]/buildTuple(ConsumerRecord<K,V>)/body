@@ -1,0 +1,4 @@
+{
+  final String topic=consumerRecord.topic();
+  return topicToTupleBuilders.get(topic).buildTuple(consumerRecord);
+}

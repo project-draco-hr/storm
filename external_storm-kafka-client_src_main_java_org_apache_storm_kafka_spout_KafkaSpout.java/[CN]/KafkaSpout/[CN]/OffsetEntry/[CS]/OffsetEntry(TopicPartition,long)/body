@@ -2,5 +2,5 @@
   this.tp=tp;
   this.initialFetchOffset=initialFetchOffset;
   this.committedOffset=initialFetchOffset - 1;
-  LOG.debug("Created OffsetEntry. {}",this);
+  LOG.debug("Instantiated {}",this);
 }
