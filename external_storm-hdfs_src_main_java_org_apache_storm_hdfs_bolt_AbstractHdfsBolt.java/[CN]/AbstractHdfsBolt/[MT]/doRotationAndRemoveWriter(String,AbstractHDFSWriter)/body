@@ -1,0 +1,12 @@
+{
+  try {
+    rotateOutputFile(writer);
+  }
+ catch (  IOException e) {
+    this.collector.reportError(e);
+    LOG.error("File could not be rotated");
+  }
+ finally {
+    writers.remove(writerKey);
+  }
+}

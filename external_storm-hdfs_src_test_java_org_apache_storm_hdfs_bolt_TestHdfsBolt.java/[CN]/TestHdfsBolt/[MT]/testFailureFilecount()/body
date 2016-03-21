@@ -19,5 +19,5 @@
  catch (  RuntimeException e) {
   }
   Assert.assertEquals(1,countNonZeroLengthFiles(testRoot));
-  Assert.assertEquals(1,countZeroLengthFiles(testRoot));
+  Assert.assertEquals(0,countZeroLengthFiles(testRoot));
 }

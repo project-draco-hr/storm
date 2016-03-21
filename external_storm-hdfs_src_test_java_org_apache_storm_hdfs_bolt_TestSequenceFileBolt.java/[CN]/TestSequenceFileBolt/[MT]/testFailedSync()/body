@@ -1,6 +1,7 @@
 {
-  SequenceFileBolt bolt=makeSeqBolt(hdfsURI,1,.00001f);
+  SequenceFileBolt bolt=makeSeqBolt(hdfsURI,2,10000f);
   bolt.prepare(new Config(),topologyContext,collector);
+  bolt.execute(tuple1);
   fs.setSafeMode(SafeModeAction.SAFEMODE_ENTER);
   thrown.expect(RuntimeException.class);
   bolt.execute(tuple1);

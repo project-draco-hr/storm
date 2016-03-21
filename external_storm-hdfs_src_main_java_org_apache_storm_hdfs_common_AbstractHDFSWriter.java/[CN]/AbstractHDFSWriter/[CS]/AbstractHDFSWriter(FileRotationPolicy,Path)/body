@@ -1,0 +1,4 @@
+{
+  this.rotationPolicy=policy.copy();
+  this.filePath=path;
+}

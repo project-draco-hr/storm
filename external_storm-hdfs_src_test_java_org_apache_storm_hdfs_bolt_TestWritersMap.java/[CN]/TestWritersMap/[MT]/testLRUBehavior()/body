@@ -1,0 +1,9 @@
+{
+  map.put("FOO",foo);
+  map.put("BAR",bar);
+  map.get("FOO");
+  map.put("BAZ",baz);
+  Assert.assertTrue(map.keySet().contains("FOO"));
+  Assert.assertTrue(map.keySet().contains("BAZ"));
+  Assert.assertFalse(map.keySet().contains("BAR"));
+}

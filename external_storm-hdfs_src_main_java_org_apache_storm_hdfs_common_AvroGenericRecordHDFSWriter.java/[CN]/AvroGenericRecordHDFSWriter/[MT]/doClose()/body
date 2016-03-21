@@ -1,0 +1,4 @@
+{
+  this.avroWriter.close();
+  this.out.close();
+}

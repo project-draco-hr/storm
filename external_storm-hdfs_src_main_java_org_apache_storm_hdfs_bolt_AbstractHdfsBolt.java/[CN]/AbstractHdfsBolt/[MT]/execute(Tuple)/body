@@ -1,14 +1,18 @@
 {
 synchronized (this.writeLock) {
     boolean forceSync=false;
+    AbstractHDFSWriter writer=null;
+    String writerKey=null;
     if (TupleUtils.isTick(tuple)) {
       LOG.debug("TICK! forcing a file system flush");
       this.collector.ack(tuple);
       forceSync=true;
     }
  else {
+      writerKey=getHashKeyForTuple(tuple);
       try {
-        writeTuple(tuple);
+        writer=getOrCreateWriter(writerKey,tuple);
+        this.offset=writer.write(tuple);
         tupleBatch.add(tuple);
       }
  catch (      IOException e) {
@@ -25,7 +29,7 @@ synchronized (this.writeLock) {
       while (success == false && attempts < fileRetryCount) {
         attempts+=1;
         try {
-          syncTuples();
+          syncAllWriters();
           LOG.debug("Data synced to filesystem. Ack'ing [{}] tuples",tupleBatch.size());
           for (          Tuple t : tupleBatch) {
             this.collector.ack(t);
@@ -49,16 +53,8 @@ synchronized (this.writeLock) {
         throw new RuntimeException("Sync failed [" + attempts + "] times.",lastException);
       }
     }
-    if (this.rotationPolicy.mark(tuple,this.offset)) {
-      try {
-        rotateOutputFile();
-        this.rotationPolicy.reset();
-        this.offset=0;
-      }
- catch (      IOException e) {
-        this.collector.reportError(e);
-        LOG.warn("File could not be rotated");
-      }
+    if (writer != null && writer.needsRotation()) {
+      doRotationAndRemoveWriter(writerKey,writer);
     }
   }
 }

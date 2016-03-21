@@ -1,0 +1,14 @@
+{
+  AvroGenericRecordBolt bolt=makeAvroBolt(hdfsURI,1,1000f,schemaV2);
+  bolt.prepare(new Config(),topologyContext,collector);
+  bolt.execute(tuple1);
+  bolt.execute(tuple2);
+  bolt.execute(tuple1);
+  bolt.execute(tuple2);
+  bolt.execute(tuple1);
+  bolt.execute(tuple2);
+  bolt.execute(tuple1);
+  bolt.execute(tuple2);
+  Assert.assertEquals(2,countNonZeroLengthFiles(testRoot));
+  verifyAllAvroFiles(testRoot);
+}
