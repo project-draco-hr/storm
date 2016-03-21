@@ -1,0 +1,7 @@
+{
+  this.initialDelay=initialDelay;
+  this.delayPeriod=delayPeriod;
+  this.maxRetries=maxRetries;
+  this.maxDelay=maxDelay;
+  LOG.debug("Instantiated {}",this);
+}

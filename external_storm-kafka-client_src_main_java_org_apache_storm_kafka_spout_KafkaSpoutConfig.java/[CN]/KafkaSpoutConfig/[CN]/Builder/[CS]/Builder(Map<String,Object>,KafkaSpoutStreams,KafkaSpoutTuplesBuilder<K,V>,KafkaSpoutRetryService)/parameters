@@ -1,0 +1,4 @@
+Map<String,Object> kafkaProps
+KafkaSpoutStreams kafkaSpoutStreams
+KafkaSpoutTuplesBuilder<K,V> tuplesBuilder
+KafkaSpoutRetryService retryService

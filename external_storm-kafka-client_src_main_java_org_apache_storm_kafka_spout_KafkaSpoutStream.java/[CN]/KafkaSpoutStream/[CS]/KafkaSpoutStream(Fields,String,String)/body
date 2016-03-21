@@ -1,4 +1,7 @@
 {
+  if (outputFields == null || streamId == null || topic == null) {
+    throw new IllegalArgumentException(String.format("Constructor parameters cannot be null. " + "[outputFields=%s, streamId=%s, topic=%s]",outputFields,streamId,topic));
+  }
   this.outputFields=outputFields;
   this.streamId=streamId;
   this.topic=topic;

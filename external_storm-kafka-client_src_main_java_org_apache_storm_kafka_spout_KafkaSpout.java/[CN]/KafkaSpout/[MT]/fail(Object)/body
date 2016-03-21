@@ -1,9 +1,9 @@
 {
   final KafkaSpoutMessageId msgId=(KafkaSpoutMessageId)messageId;
+  emitted.remove(msgId);
   if (msgId.numFails() < maxRetries) {
     msgId.incrementNumFails();
-    kafkaSpoutStreams.emit(collector,msgId);
-    LOG.trace("Retried tuple with message id [{}]",msgId);
+    retryService.schedule(msgId);
   }
  else {
     LOG.debug("Reached maximum number of retries. Message [{}] being marked as acked.",msgId);

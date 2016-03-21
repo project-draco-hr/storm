@@ -1,0 +1,8 @@
+{
+  List<ConsumerRecord<K,V>> waitingToEmitList=new LinkedList<>();
+  for (  TopicPartition tp : consumerRecords.partitions()) {
+    waitingToEmitList.addAll(consumerRecords.records(tp));
+  }
+  waitingToEmit=waitingToEmitList.iterator();
+  LOG.trace("Records waiting to be emitted {}",waitingToEmitList);
+}

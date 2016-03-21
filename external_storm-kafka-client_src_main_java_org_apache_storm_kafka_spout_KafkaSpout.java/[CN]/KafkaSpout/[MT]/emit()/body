@@ -1,0 +1,4 @@
+{
+  emitTupleIfNotEmitted(waitingToEmit.next());
+  waitingToEmit.remove();
+}

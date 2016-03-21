@@ -1,0 +1,15 @@
+{
+  final Set<TopicPartition> tps=new TreeSet<>();
+  final long currentTimeNanos=System.nanoTime();
+  for (  RetrySchedule retrySchedule : retrySchedules) {
+    if (retrySchedule.retry(currentTimeNanos)) {
+      final KafkaSpoutMessageId msgId=retrySchedule.msgId;
+      tps.add(new TopicPartition(msgId.topic(),msgId.partition()));
+    }
+ else {
+      break;
+    }
+  }
+  LOG.debug("Topic partitions with entries ready to be retried [{}] ",tps);
+  return tps;
+}

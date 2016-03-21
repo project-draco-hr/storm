@@ -1,0 +1,4 @@
+{
+  this.topicToTupleBuilders=builder.topicToTupleBuilders;
+  LOG.debug("Instantiated {}",this);
+}

@@ -1,0 +1,20 @@
+{
+  final TopicPartition tp=new TopicPartition(record.topic(),record.partition());
+  final KafkaSpoutMessageId msgId=new KafkaSpoutMessageId(record);
+  if (acked.containsKey(tp) && acked.get(tp).contains(msgId)) {
+    LOG.trace("Tuple for record [{}] has already been acked. Skipping",record);
+  }
+ else   if (emitted.contains(msgId)) {
+    LOG.trace("Tuple for record [{}] has already been emitted. Skipping",record);
+  }
+ else   if (!retryService.isScheduled(msgId) || retryService.isReady(msgId)) {
+    final List<Object> tuple=tuplesBuilder.buildTuple(record);
+    kafkaSpoutStreams.emit(collector,tuple,msgId);
+    emitted.add(msgId);
+    numUncommittedOffsets++;
+    if (retryService.isReady(msgId)) {
+      retryService.remove(msgId);
+    }
+    LOG.trace("Emitted tuple [{}] for record [{}]",tuple,record);
+  }
+}

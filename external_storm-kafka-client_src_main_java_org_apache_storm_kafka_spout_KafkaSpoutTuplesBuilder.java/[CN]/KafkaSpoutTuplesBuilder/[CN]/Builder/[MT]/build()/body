@@ -1,0 +1,10 @@
+{
+  for (  KafkaSpoutTupleBuilder<K,V> tupleBuilder : tupleBuilders) {
+    for (    String topic : tupleBuilder.getTopics()) {
+      if (!topicToTupleBuilders.containsKey(topic)) {
+        topicToTupleBuilders.put(topic,tupleBuilder);
+      }
+    }
+  }
+  return new KafkaSpoutTuplesBuilder<>(this);
+}
