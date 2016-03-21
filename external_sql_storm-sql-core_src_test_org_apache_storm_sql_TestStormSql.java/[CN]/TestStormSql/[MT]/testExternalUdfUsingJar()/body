@@ -1,0 +1,10 @@
+{
+  List<String> stmt=new ArrayList<>();
+  stmt.add("CREATE EXTERNAL TABLE FOO (ID INT) LOCATION 'mock:///foo'");
+  stmt.add("CREATE FUNCTION MYPLUS AS 'org.apache.storm.sql.TestUtils$MyPlus' USING JAR 'foo'");
+  stmt.add("SELECT STREAM MYPLUS(ID, 1) FROM FOO WHERE ID > 2");
+  StormSql sql=StormSql.construct();
+  List<Values> values=new ArrayList<>();
+  ChannelHandler h=new TestUtils.CollectDataChannelHandler(values);
+  sql.execute(stmt,h);
+}
