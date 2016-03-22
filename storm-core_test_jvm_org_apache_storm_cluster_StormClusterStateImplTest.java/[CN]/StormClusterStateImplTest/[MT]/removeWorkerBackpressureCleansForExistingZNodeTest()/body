@@ -1,0 +1,5 @@
+{
+  Mockito.when(storage.node_exists(Matchers.anyString(),Matchers.anyBoolean())).thenReturn(true);
+  state.removeWorkerBackpressure("bogus-topo-id","bogus-host",new Long(1234));
+  Mockito.verify(storage).delete_node(ClusterUtils.backpressurePath("bogus-topo-id","bogus-host",new Long(1234)));
+}

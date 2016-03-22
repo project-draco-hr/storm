@@ -1,0 +1,5 @@
+{
+  storage=Mockito.mock(IStateStorage.class);
+  context=new ClusterStateContext();
+  state=new StormClusterStateImpl(storage,null,context,false);
+}

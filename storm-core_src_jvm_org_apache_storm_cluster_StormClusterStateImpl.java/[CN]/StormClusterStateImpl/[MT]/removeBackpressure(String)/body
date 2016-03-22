@@ -1,3 +1,13 @@
 {
-  stateStorage.delete_node(ClusterUtils.backpressureStormRoot(stormId));
+  try {
+    stateStorage.delete_node(ClusterUtils.backpressureStormRoot(stormId));
+  }
+ catch (  Exception e) {
+    if (Utils.exceptionCauseIsInstanceOf(KeeperException.class,e)) {
+      LOG.warn("Could not teardown backpressure node for {}.",stormId);
+    }
+ else {
+      throw e;
+    }
+  }
 }
