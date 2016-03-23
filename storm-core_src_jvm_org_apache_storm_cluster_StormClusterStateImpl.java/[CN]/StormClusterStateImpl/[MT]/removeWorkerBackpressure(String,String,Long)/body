@@ -1,3 +1,7 @@
 {
-  stateStorage.delete_node(ClusterUtils.backpressurePath(stormId,node,port));
+  String path=ClusterUtils.backpressurePath(stormId,node,port);
+  boolean existed=stateStorage.node_exists(path,false);
+  if (existed) {
+    stateStorage.delete_node(path);
+  }
 }

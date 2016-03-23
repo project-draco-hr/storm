@@ -1,7 +1,9 @@
 {
   LocalFsBlobStore store=initLocalFs();
-  AtomicOutputStream out=store.createBlob("test",new SettableBlobMeta(BlobStoreAclHandler.WORLD_EVERYTHING),null);
-  out.write(1);
-  out.close();
-  assertEquals(1,store.getBlob("test",null).getFileLength());
-}
+  try (AtomicOutputStream out=store.createBlob("test",new SettableBlobMeta(BlobStoreAclHandler.WORLD_EVERYTHING),null)){
+    out.write(1);
+  }
+   try (InputStreamWithMeta blobInputStream=store.getBlob("test",null)){
+    assertEquals(1,blobInputStream.getFileLength());
+  }
+ }
