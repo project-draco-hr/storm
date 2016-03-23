@@ -1,0 +1,3 @@
+{
+  super(windowConfig,windowTaskId,windowStore,aggregator,delegateCollector);
+}

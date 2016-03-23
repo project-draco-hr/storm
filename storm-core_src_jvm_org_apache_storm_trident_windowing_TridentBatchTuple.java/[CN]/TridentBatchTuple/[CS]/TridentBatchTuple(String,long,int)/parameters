@@ -1,0 +1,3 @@
+String effectiveBatchId
+long timeStamp
+int tupleIndex

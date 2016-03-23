@@ -1,0 +1,5 @@
+WindowConfig windowConfig
+String windowTaskId
+WindowsStore windowStore
+Aggregator aggregator
+BatchOutputCollector delegateCollector

@@ -1,0 +1,8 @@
+{
+  this.windowConfig=windowConfig;
+  this.windowId=uniqueWindowId;
+  this.windowStoreFactory=windowStoreFactory;
+  this.inputFields=inputFields;
+  this.aggregator=aggregator;
+  this.storeTuplesInStore=storeTuplesInStore;
+}

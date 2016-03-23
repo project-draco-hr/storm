@@ -1,0 +1,13 @@
+{
+  log.debug("Getting current trigger count for this component/task");
+  Object result=windowStore.get(windowTriggerCountId);
+  Integer currentCount=0;
+  if (result == null) {
+    log.info("No current trigger count in windows store.");
+  }
+ else {
+    currentCount=(Integer)result + 1;
+  }
+  windowStore.put(windowTriggerCountId,currentCount);
+  triggerId.set(currentCount);
+}

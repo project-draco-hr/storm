@@ -1,0 +1,3 @@
+{
+  return Type.SLIDING_COUNT;
+}

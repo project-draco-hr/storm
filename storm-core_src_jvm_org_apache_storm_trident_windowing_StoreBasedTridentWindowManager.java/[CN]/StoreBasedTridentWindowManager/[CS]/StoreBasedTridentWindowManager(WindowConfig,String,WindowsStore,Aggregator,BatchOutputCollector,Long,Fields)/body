@@ -1,0 +1,7 @@
+{
+  super(windowConfig,windowTaskId,windowStore,aggregator,delegateCollector);
+  this.maxCachedTuplesSize=maxTuplesCacheSize;
+  this.inputFields=inputFields;
+  freshOutputFactory=new TridentTupleView.FreshOutputFactory(inputFields);
+  windowTupleTaskId=TUPLE_PREFIX + windowTaskId;
+}

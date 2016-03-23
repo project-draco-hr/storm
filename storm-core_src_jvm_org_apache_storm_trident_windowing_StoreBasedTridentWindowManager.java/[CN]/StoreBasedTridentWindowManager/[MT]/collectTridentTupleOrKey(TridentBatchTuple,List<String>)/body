@@ -1,0 +1,7 @@
+{
+  if (tridentBatchTuple.tridentTuple != null) {
+    return tridentBatchTuple.tridentTuple;
+  }
+  keys.add(tupleKey(tridentBatchTuple));
+  return null;
+}

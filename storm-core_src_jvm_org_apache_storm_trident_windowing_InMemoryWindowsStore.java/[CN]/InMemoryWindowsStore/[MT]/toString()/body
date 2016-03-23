@@ -1,0 +1,3 @@
+{
+  return "InMemoryWindowsStore{" + " store:size = " + store.size() + " backingStore = "+ backingStore+ '}';
+}

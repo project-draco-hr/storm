@@ -1,0 +1,14 @@
+{
+  InMemoryWindowsStore store=new InMemoryWindowsStore();
+  String keyPrefix="key";
+  String valuePrefix="valuePrefix";
+  int ct=10;
+  for (int i=0; i < ct; i++) {
+    store.put(keyPrefix + i,valuePrefix + i);
+  }
+  for (int i=0; i < ct; i++) {
+    Assert.assertTrue((valuePrefix + i).equals(store.get(keyPrefix + i)));
+  }
+  store.remove(keyPrefix + 1);
+  Assert.assertNull(store.get(keyPrefix + 1));
+}

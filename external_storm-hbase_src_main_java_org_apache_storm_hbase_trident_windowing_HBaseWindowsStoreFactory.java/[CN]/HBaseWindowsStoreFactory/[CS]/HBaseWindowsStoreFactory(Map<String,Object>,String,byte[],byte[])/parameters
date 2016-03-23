@@ -1,0 +1,4 @@
+Map<String,Object> config
+String tableName
+byte[] family
+byte[] qualifier

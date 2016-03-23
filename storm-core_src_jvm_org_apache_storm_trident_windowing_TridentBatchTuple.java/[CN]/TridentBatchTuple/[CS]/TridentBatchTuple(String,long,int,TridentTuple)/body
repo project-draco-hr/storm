@@ -1,0 +1,6 @@
+{
+  this.effectiveBatchId=effectiveBatchId;
+  this.timeStamp=timeStamp;
+  this.tupleIndex=tupleIndex;
+  this.tridentTuple=tridentTuple;
+}

@@ -1,0 +1,12 @@
+{
+  int lastSepIndex=key.lastIndexOf(WindowsStore.KEY_SEPARATOR);
+  if (lastSepIndex < 0) {
+    throw new IllegalArgumentException("key " + key + " does not have key separator '"+ WindowsStore.KEY_SEPARATOR+ "'");
+  }
+  String trimKey=key.substring(0,lastSepIndex);
+  int secondLastSepIndex=trimKey.lastIndexOf(WindowsStore.KEY_SEPARATOR);
+  if (lastSepIndex < 0) {
+    throw new IllegalArgumentException("key " + key + " does not have second key separator '"+ WindowsStore.KEY_SEPARATOR+ "'");
+  }
+  return key.substring(secondLastSepIndex + 1,lastSepIndex);
+}

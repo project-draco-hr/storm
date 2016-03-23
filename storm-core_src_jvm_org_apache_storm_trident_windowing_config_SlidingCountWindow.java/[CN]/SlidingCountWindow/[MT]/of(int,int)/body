@@ -1,0 +1,3 @@
+{
+  return new SlidingCountWindow(windowCount,slidingCount);
+}

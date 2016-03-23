@@ -1,0 +1,3 @@
+int tupleIndex
+String effectiveBatchId
+TridentTuple tridentTuple

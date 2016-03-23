@@ -1,0 +1,4 @@
+Configuration config
+String tableName
+byte[] family
+byte[] qualifier

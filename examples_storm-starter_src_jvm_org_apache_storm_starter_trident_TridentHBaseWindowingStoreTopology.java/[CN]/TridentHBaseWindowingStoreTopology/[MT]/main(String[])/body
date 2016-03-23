@@ -1,0 +1,19 @@
+{
+  Config conf=new Config();
+  conf.setMaxSpoutPending(20);
+  conf.put(Config.TOPOLOGY_TRIDENT_WINDOWING_INMEMORY_CACHE_LIMIT,2);
+  HBaseWindowsStoreFactory windowStoreFactory=new HBaseWindowsStoreFactory(new HashMap<String,Object>(),"window-state","cf".getBytes("UTF-8"),"tuples".getBytes("UTF-8"));
+  if (args.length == 0) {
+    LocalCluster cluster=new LocalCluster();
+    String topologyName="wordCounterWithWindowing";
+    cluster.submitTopology(topologyName,conf,buildTopology(windowStoreFactory));
+    Utils.sleep(120 * 1000);
+    cluster.killTopology(topologyName);
+    cluster.shutdown();
+    System.exit(0);
+  }
+ else {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopologyWithProgressBar(args[0],conf,buildTopology(windowStoreFactory));
+  }
+}

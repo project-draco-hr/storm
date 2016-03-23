@@ -1,0 +1,4 @@
+{
+  log.info("shutting down window manager");
+  tridentWindowManager.shutdown();
+}

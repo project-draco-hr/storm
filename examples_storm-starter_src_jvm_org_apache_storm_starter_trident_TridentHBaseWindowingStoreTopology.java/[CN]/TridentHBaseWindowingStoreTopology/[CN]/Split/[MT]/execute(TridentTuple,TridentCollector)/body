@@ -1,0 +1,6 @@
+{
+  String sentence=tuple.getString(0);
+  for (  String word : sentence.split(" ")) {
+    collector.emit(new Values(word));
+  }
+}

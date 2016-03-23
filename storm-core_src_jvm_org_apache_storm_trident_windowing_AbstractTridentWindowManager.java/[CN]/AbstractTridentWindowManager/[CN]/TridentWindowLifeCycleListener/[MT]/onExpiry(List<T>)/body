@@ -1,0 +1,4 @@
+{
+  log.debug("onExpiry is invoked");
+  onTuplesExpired(expiredEvents);
+}
