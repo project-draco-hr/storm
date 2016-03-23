@@ -1,0 +1,10 @@
+{
+  Mockito.doThrow(new RuntimeException(new KeeperException.NoNodeException("foo"))).when(storage).delete_node(Matchers.anyString());
+  try {
+    state.removeBackpressure("bogus-topo-id");
+    Mockito.verify(storage).delete_node(ClusterUtils.backpressureStormRoot("bogus-topo-id"));
+  }
+ catch (  Exception e) {
+    Assert.fail("Exception thrown when it shouldn't have: " + e);
+  }
+}

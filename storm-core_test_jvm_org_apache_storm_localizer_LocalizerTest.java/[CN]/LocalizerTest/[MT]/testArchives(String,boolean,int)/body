@@ -1,4 +1,7 @@
 {
+  if (Utils.isOnWindows()) {
+    supportSymlinks=false;
+  }
   Map conf=new HashMap();
   conf.put(Config.SUPERVISOR_LOCALIZER_CACHE_CLEANUP_INTERVAL_MS,60 * 60 * 1000);
   String key1=new File(archivePath).getName();
