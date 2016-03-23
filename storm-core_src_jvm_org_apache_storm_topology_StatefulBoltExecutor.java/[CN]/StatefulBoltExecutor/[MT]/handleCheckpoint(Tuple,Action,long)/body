@@ -4,8 +4,7 @@
     if (boltInitialized) {
       bolt.prePrepare(txid);
       state.prepareCommit(txid);
-      preparedTuples.addAll(executedTuples);
-      executedTuples.clear();
+      preparedTuples.addAll(collector.ackedTuples());
     }
  else {
       LOG.debug("Failing checkpointTuple, PREPARE received when bolt state is not initialized.");
@@ -22,7 +21,7 @@
     bolt.preRollback();
     state.rollback();
     fail(preparedTuples);
-    fail(executedTuples);
+    fail(collector.ackedTuples());
   }
  else   if (action == INITSTATE) {
     if (!boltInitialized) {
@@ -39,5 +38,5 @@
     }
   }
   collector.emit(CheckpointSpout.CHECKPOINT_STREAM_ID,checkpointTuple,new Values(txid,action));
-  collector.ack(checkpointTuple);
+  collector.delegate.ack(checkpointTuple);
 }

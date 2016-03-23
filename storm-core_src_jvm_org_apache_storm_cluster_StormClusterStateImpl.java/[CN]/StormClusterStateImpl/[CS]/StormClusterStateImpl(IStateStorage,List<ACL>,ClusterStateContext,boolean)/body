@@ -55,7 +55,7 @@
     }
   }
 );
-  String[] pathlist={ClusterUtils.ASSIGNMENTS_SUBTREE,ClusterUtils.STORMS_SUBTREE,ClusterUtils.SUPERVISORS_SUBTREE,ClusterUtils.WORKERBEATS_SUBTREE,ClusterUtils.ERRORS_SUBTREE,ClusterUtils.BLOBSTORE_SUBTREE,ClusterUtils.NIMBUSES_SUBTREE,ClusterUtils.LOGCONFIG_SUBTREE};
+  String[] pathlist={ClusterUtils.ASSIGNMENTS_SUBTREE,ClusterUtils.STORMS_SUBTREE,ClusterUtils.SUPERVISORS_SUBTREE,ClusterUtils.WORKERBEATS_SUBTREE,ClusterUtils.ERRORS_SUBTREE,ClusterUtils.BLOBSTORE_SUBTREE,ClusterUtils.NIMBUSES_SUBTREE,ClusterUtils.LOGCONFIG_SUBTREE,ClusterUtils.BACKPRESSURE_SUBTREE};
   for (  String path : pathlist) {
     this.stateStorage.mkdirs(path,acls);
   }

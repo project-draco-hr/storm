@@ -1,0 +1,19 @@
+{
+  ExecutorStats stats=summary.get_stats();
+  if (stats == null) {
+    return 0.0;
+  }
+ else {
+    Map<String,Map> m=aggregateBoltStats(Lists.newArrayList(summary),true);
+    m=swapMapOrder(aggregateBoltStreams(m));
+    Map data=getMapByKey(m,TEN_MIN_IN_SECONDS_STR);
+    int uptime=summary.get_uptime_secs();
+    int win=Math.min(uptime,TEN_MIN_IN_SECONDS);
+    long executed=getByKeyOr0(data,EXECUTED).longValue();
+    double latency=getByKeyOr0(data,EXEC_LATENCIES).doubleValue();
+    if (win > 0) {
+      return executed * latency / (1000 * win);
+    }
+    return 0.0;
+  }
+}

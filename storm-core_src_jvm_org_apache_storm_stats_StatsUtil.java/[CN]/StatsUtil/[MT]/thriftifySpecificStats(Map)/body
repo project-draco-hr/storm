@@ -1,0 +1,21 @@
+{
+  ExecutorSpecificStats specificStats=new ExecutorSpecificStats();
+  String compType=(String)getByKey(stats,TYPE);
+  if (BOLT.equals(compType)) {
+    BoltStats boltStats=new BoltStats();
+    boltStats.set_acked(windowSetConverter(getMapByKey(stats,ACKED),TO_GSID,TO_STRING));
+    boltStats.set_executed(windowSetConverter(getMapByKey(stats,EXECUTED),TO_GSID,TO_STRING));
+    boltStats.set_execute_ms_avg(windowSetConverter(getMapByKey(stats,EXEC_LATENCIES),TO_GSID,TO_STRING));
+    boltStats.set_failed(windowSetConverter(getMapByKey(stats,FAILED),TO_GSID,TO_STRING));
+    boltStats.set_process_ms_avg(windowSetConverter(getMapByKey(stats,PROC_LATENCIES),TO_GSID,TO_STRING));
+    specificStats.set_bolt(boltStats);
+  }
+ else {
+    SpoutStats spoutStats=new SpoutStats();
+    spoutStats.set_acked(windowSetConverter(getMapByKey(stats,ACKED),TO_STRING,TO_STRING));
+    spoutStats.set_failed(windowSetConverter(getMapByKey(stats,FAILED),TO_STRING,TO_STRING));
+    spoutStats.set_complete_ms_avg(windowSetConverter(getMapByKey(stats,COMP_LATENCIES),TO_STRING,TO_STRING));
+    specificStats.set_spout(spoutStats);
+  }
+  return specificStats;
+}

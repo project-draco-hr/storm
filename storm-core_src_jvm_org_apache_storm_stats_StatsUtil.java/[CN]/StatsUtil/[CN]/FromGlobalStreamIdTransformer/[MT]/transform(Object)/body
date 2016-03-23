@@ -1,0 +1,4 @@
+{
+  GlobalStreamId sid=(GlobalStreamId)key;
+  return Lists.newArrayList(sid.get_componentId(),sid.get_streamId());
+}

@@ -1,0 +1,3 @@
+{
+  return Lists.newArrayList(((Number)executor.get(0)).intValue(),((Number)executor.get(1)).intValue());
+}

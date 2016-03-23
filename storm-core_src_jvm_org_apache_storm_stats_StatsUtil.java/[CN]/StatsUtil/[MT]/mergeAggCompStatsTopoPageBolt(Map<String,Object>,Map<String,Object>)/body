@@ -1,0 +1,15 @@
+{
+  Map<String,Object> ret=new HashMap<>();
+  Integer numExecutors=getByKeyOr0(accBoltStats,NUM_EXECUTORS).intValue();
+  putKV(ret,NUM_EXECUTORS,numExecutors + 1);
+  putKV(ret,NUM_TASKS,sumOr0(getByKeyOr0(accBoltStats,NUM_TASKS),getByKeyOr0(boltStats,NUM_TASKS)));
+  putKV(ret,EMITTED,sumOr0(getByKeyOr0(accBoltStats,EMITTED),getByKeyOr0(boltStats,EMITTED)));
+  putKV(ret,TRANSFERRED,sumOr0(getByKeyOr0(accBoltStats,TRANSFERRED),getByKeyOr0(boltStats,TRANSFERRED)));
+  putKV(ret,EXEC_LAT_TOTAL,sumOr0(getByKeyOr0(accBoltStats,EXEC_LAT_TOTAL),getByKeyOr0(boltStats,EXEC_LAT_TOTAL)));
+  putKV(ret,PROC_LAT_TOTAL,sumOr0(getByKeyOr0(accBoltStats,PROC_LAT_TOTAL),getByKeyOr0(boltStats,PROC_LAT_TOTAL)));
+  putKV(ret,EXECUTED,sumOr0(getByKeyOr0(accBoltStats,EXECUTED),getByKeyOr0(boltStats,EXECUTED)));
+  putKV(ret,ACKED,sumOr0(getByKeyOr0(accBoltStats,ACKED),getByKeyOr0(boltStats,ACKED)));
+  putKV(ret,FAILED,sumOr0(getByKeyOr0(accBoltStats,FAILED),getByKeyOr0(boltStats,FAILED)));
+  putKV(ret,CAPACITY,maxOr0(getByKeyOr0(accBoltStats,CAPACITY),getByKeyOr0(boltStats,CAPACITY)));
+  return ret;
+}

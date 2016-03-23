@@ -1,0 +1,6 @@
+{
+  if (isValidNumber(a) && isValidNumber(b)) {
+    return ((Number)a).doubleValue() * ((Number)b).doubleValue();
+  }
+  return 0;
+}

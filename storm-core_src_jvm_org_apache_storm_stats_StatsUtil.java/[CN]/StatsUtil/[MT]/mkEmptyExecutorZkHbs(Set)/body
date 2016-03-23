@@ -1,0 +1,8 @@
+{
+  Map<List<Integer>,ExecutorStats> ret=new HashMap<>();
+  for (  Object executor : executors) {
+    List startEnd=(List)executor;
+    ret.put(convertExecutor(startEnd),null);
+  }
+  return ret;
+}

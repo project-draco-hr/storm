@@ -1,0 +1,5 @@
+{
+  List<Map<String,Object>> beatList=extractDataFromHb(exec2nodePort,task2component,beats,includeSys,topology);
+  Map<String,Object> topoStats=aggregateTopoStats(window,includeSys,beatList);
+  return postAggregateTopoStats(task2component,exec2nodePort,topoStats,topologyId,clusterState);
+}

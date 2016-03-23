@@ -1,0 +1,7 @@
+{
+  Document document=new Document();
+  for (  String field : fields) {
+    document.append(field,tuple.getValueByField(field));
+  }
+  return new Document("$set",document);
+}

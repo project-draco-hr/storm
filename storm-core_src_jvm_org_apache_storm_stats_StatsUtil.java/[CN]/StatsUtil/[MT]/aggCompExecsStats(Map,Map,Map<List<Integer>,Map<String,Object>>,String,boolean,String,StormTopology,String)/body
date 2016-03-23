@@ -1,0 +1,6 @@
+{
+  List<Map<String,Object>> beatList=extractDataFromHb(exec2hostPort,task2component,beats,includeSys,topology,componentId);
+  Map<String,Object> compStats=aggregateCompStats(window,includeSys,beatList,componentType(topology,componentId));
+  compStats=postAggregateCompStats(compStats);
+  return thriftifyCompPageData(topologyId,topology,componentId,compStats);
+}

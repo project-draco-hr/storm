@@ -1,0 +1,5 @@
+{
+  for (  String path : pathlist) {
+    Mockito.verify(storage).mkdirs(path,null);
+  }
+}

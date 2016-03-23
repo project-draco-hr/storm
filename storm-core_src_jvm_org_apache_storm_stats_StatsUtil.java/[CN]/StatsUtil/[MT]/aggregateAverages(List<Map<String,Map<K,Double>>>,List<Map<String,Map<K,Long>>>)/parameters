@@ -1,0 +1,2 @@
+List<Map<String,Map<K,Double>>> avgSeq
+List<Map<String,Map<K,Long>>> countSeq

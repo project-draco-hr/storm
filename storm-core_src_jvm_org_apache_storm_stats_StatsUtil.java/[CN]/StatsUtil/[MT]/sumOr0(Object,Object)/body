@@ -1,0 +1,11 @@
+{
+  if (isValidNumber(a) && isValidNumber(b)) {
+    if (a instanceof Long || a instanceof Integer) {
+      return ((Number)a).longValue() + ((Number)b).longValue();
+    }
+ else {
+      return ((Number)a).doubleValue() + ((Number)b).doubleValue();
+    }
+  }
+  return 0;
+}

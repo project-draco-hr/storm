@@ -1,0 +1,6 @@
+{
+  Validate.notEmpty(options.url,"url can not be blank or null");
+  Validate.notEmpty(options.collectionName,"collectionName can not be blank or null");
+  Validate.notNull(options.mapper,"MongoMapper can not be null");
+  this.mongoClient=new MongoDBClient(options.url,options.collectionName);
+}

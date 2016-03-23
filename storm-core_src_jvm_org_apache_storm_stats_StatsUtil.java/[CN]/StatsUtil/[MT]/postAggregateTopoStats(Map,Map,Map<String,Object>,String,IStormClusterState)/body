@@ -1,0 +1,49 @@
+{
+  TopologyPageInfo ret=new TopologyPageInfo(topologyId);
+  ret.set_num_tasks(task2comp.size());
+  ret.set_num_workers(((Set)getByKey(accData,WORKERS_SET)).size());
+  ret.set_num_executors(exec2nodePort != null ? exec2nodePort.size() : 0);
+  Map bolt2stats=getMapByKey(accData,BOLT_TO_STATS);
+  Map<String,ComponentAggregateStats> aggBolt2stats=new HashMap<>();
+  for (  Object o : bolt2stats.entrySet()) {
+    Map.Entry e=(Map.Entry)o;
+    String id=(String)e.getKey();
+    Map m=(Map)e.getValue();
+    long executed=getByKeyOr0(m,EXECUTED).longValue();
+    if (executed > 0) {
+      double execLatencyTotal=getByKeyOr0(m,EXEC_LAT_TOTAL).doubleValue();
+      putKV(m,EXEC_LATENCY,execLatencyTotal / executed);
+      double procLatencyTotal=getByKeyOr0(m,PROC_LAT_TOTAL).doubleValue();
+      putKV(m,PROC_LATENCY,procLatencyTotal / executed);
+    }
+    remove(m,EXEC_LAT_TOTAL);
+    remove(m,PROC_LAT_TOTAL);
+    putKV(m,"last-error",getLastError(clusterState,topologyId,id));
+    aggBolt2stats.put(id,thriftifyBoltAggStats(m));
+  }
+  Map spout2stats=getMapByKey(accData,SPOUT_TO_STATS);
+  Map<String,ComponentAggregateStats> aggSpout2stats=new HashMap<>();
+  for (  Object o : spout2stats.entrySet()) {
+    Map.Entry e=(Map.Entry)o;
+    String id=(String)e.getKey();
+    Map m=(Map)e.getValue();
+    long acked=getByKeyOr0(m,ACKED).longValue();
+    if (acked > 0) {
+      double compLatencyTotal=getByKeyOr0(m,COMP_LAT_TOTAL).doubleValue();
+      putKV(m,COMP_LATENCY,compLatencyTotal / acked);
+    }
+    remove(m,COMP_LAT_TOTAL);
+    putKV(m,"last-error",getLastError(clusterState,topologyId,id));
+    aggSpout2stats.put(id,thriftifySpoutAggStats(m));
+  }
+  TopologyStats topologyStats=new TopologyStats();
+  topologyStats.set_window_to_acked(mapKeyStr(getMapByKey(accData,WIN_TO_ACKED)));
+  topologyStats.set_window_to_emitted(mapKeyStr(getMapByKey(accData,WIN_TO_EMITTED)));
+  topologyStats.set_window_to_failed(mapKeyStr(getMapByKey(accData,WIN_TO_FAILED)));
+  topologyStats.set_window_to_transferred(mapKeyStr(getMapByKey(accData,WIN_TO_TRANSFERRED)));
+  topologyStats.set_window_to_complete_latencies_ms(computeWeightedAveragesPerWindow(accData,WIN_TO_COMP_LAT_WGT_AVG,WIN_TO_ACKED));
+  ret.set_topology_stats(topologyStats);
+  ret.set_id_to_spout_agg_stats(aggSpout2stats);
+  ret.set_id_to_bolt_agg_stats(aggBolt2stats);
+  return ret;
+}

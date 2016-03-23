@@ -1,0 +1,16 @@
+{
+  Map<String,Object> initVal=new HashMap<>();
+  putKV(initVal,WORKERS_SET,new HashSet());
+  putKV(initVal,BOLT_TO_STATS,new HashMap());
+  putKV(initVal,SPOUT_TO_STATS,new HashMap());
+  putKV(initVal,WIN_TO_EMITTED,new HashMap());
+  putKV(initVal,WIN_TO_TRANSFERRED,new HashMap());
+  putKV(initVal,WIN_TO_COMP_LAT_WGT_AVG,new HashMap());
+  putKV(initVal,WIN_TO_ACKED,new HashMap());
+  putKV(initVal,WIN_TO_FAILED,new HashMap());
+  for (  Map<String,Object> heartbeat : heartbeats) {
+    String compType=(String)getByKey(heartbeat,TYPE);
+    initVal=aggTopoExecStats(win,includeSys,initVal,heartbeat,compType);
+  }
+  return initVal;
+}

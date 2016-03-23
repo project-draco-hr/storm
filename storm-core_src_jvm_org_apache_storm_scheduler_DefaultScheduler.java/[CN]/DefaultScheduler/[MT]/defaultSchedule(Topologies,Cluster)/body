@@ -1,0 +1,24 @@
+{
+  List<TopologyDetails> needsSchedulingTopologies=cluster.needsSchedulingTopologies(topologies);
+  for (  TopologyDetails topology : needsSchedulingTopologies) {
+    List<WorkerSlot> availableSlots=cluster.getAvailableSlots();
+    Set<ExecutorDetails> allExecutors=topology.getExecutors();
+    Map<WorkerSlot,List<ExecutorDetails>> aliveAssigned=EvenScheduler.getAliveAssignedWorkerSlotExecutors(cluster,topology.getId());
+    Set<ExecutorDetails> aliveExecutors=new HashSet<ExecutorDetails>();
+    for (    List<ExecutorDetails> list : aliveAssigned.values()) {
+      aliveExecutors.addAll(list);
+    }
+    Set<WorkerSlot> canReassignSlots=slotsCanReassign(cluster,aliveAssigned.keySet());
+    int totalSlotsToUse=Math.min(topology.getNumWorkers(),canReassignSlots.size() + availableSlots.size());
+    Set<WorkerSlot> badSlots=null;
+    if (totalSlotsToUse > aliveAssigned.size() || !allExecutors.equals(aliveExecutors)) {
+      badSlots=badSlots(aliveAssigned,allExecutors.size(),totalSlotsToUse);
+    }
+    if (badSlots != null) {
+      cluster.freeSlots(badSlots);
+    }
+    Map<String,TopologyDetails> _topologies=new HashMap<String,TopologyDetails>();
+    _topologies.put(topology.getId(),topology);
+    EvenScheduler.scheduleTopologiesEvenly(new Topologies(_topologies),cluster);
+  }
+}

@@ -1,0 +1,3 @@
+{
+  return Filters.eq(field,tuple.getValueByField(field));
+}

@@ -1,0 +1,4 @@
+{
+  _node.setCPULoad(load);
+  return this;
+}

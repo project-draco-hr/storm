@@ -1,0 +1,6 @@
+{
+  MongoClientURI uri=new MongoClientURI(url);
+  this.client=new MongoClient(uri);
+  MongoDatabase db=client.getDatabase(uri.getDatabase());
+  this.collection=db.getCollection(collectionName);
+}

@@ -1,0 +1,19 @@
+{
+  Map ret=new HashMap();
+  for (  Object o : stats.entrySet()) {
+    Map.Entry entry=(Map.Entry)o;
+    K1 key1=firstKeyFunc.transform(entry.getKey());
+    Map subRetMap=(Map)ret.get(key1);
+    if (subRetMap == null) {
+      subRetMap=new HashMap();
+    }
+    ret.put(key1,subRetMap);
+    Map value=(Map)entry.getValue();
+    for (    Object oo : value.entrySet()) {
+      Map.Entry subEntry=(Map.Entry)oo;
+      K2 key2=secKeyFunc.transform(subEntry.getKey());
+      subRetMap.put(key2,subEntry.getValue());
+    }
+  }
+  return ret;
+}
