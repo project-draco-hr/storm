@@ -1,5 +1,5 @@
 {
-  Pacemaker handler=new Pacemaker(new ConcurrentHashMap(),false);
+  Pacemaker handler=new Pacemaker(new ConcurrentHashMap());
   messageWithRandId(HBServerMessageType.GET_ALL_PULSE_FOR_PATH,HBMessageData.path("/testpath"));
   HBMessage badResponse=handler.handleMessage(hbMessage,false);
   HBMessage goodResponse=handler.handleMessage(hbMessage,true);

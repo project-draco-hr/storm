@@ -4,7 +4,6 @@
   lastOneMinStats=new PacemakerStats();
   this.conf=conf;
   startStatsThread();
-  if (isRegisterJmx) {
-    registerJmx(lastOneMinStats);
-  }
+  startRegisterStatsGauge();
+  StormMetricsRegistry.startMetricsReporters(conf);
 }

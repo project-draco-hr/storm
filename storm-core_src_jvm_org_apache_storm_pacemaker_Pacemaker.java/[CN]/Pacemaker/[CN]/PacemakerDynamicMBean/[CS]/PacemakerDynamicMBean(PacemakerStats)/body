@@ -1,4 +1,0 @@
-{
-  this.stats=stats;
-  this.mBeanInfo=new MBeanInfo("org.apache.storm.pacemaker.PaceMakerDynamicMBean","Java Pacemaker Dynamic MBean",PacemakerDynamicMBean.attributeInfos,null,null,null);
-}

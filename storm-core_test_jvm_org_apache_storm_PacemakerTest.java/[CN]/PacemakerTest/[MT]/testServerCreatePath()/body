@@ -1,5 +1,5 @@
 {
-  Pacemaker handler=new Pacemaker(new ConcurrentHashMap(),false);
+  Pacemaker handler=new Pacemaker(new ConcurrentHashMap());
   messageWithRandId(HBServerMessageType.CREATE_PATH,HBMessageData.path("/testpath"));
   HBMessage response=handler.handleMessage(hbMessage,true);
   Assert.assertEquals(mid,response.get_message_id());

@@ -1,7 +1,7 @@
 {
   String path="/exists_path";
   String dataString="pulse data";
-  Pacemaker handler=new Pacemaker(new ConcurrentHashMap(),false);
+  Pacemaker handler=new Pacemaker(new ConcurrentHashMap());
   HBPulse hbPulse=new HBPulse();
   hbPulse.set_id(path);
   hbPulse.set_details(Utils.javaSerialize(dataString));

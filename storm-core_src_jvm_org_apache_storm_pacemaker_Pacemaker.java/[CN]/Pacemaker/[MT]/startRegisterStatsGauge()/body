@@ -1,0 +1,44 @@
+{
+  StormMetricsRegistry.registerGauge("pacemaker:num-send-pulse-1min",new Callable(){
+    @Override public Integer call() throws Exception {
+      return lastOneMinStats.sendPulseCount.get();
+    }
+  }
+);
+  StormMetricsRegistry.registerGauge("pacemaker:num-total-receive-1min",new Callable(){
+    @Override public Integer call() throws Exception {
+      return lastOneMinStats.totalReceivedSize.get();
+    }
+  }
+);
+  StormMetricsRegistry.registerGauge("pacemaker:num-get-pulse-1min",new Callable(){
+    @Override public Integer call() throws Exception {
+      return lastOneMinStats.getPulseCount.get();
+    }
+  }
+);
+  StormMetricsRegistry.registerGauge("pacemaker:num-total-sent-1min",new Callable(){
+    @Override public Integer call() throws Exception {
+      return lastOneMinStats.totalSentSize.get();
+    }
+  }
+);
+  StormMetricsRegistry.registerGauge("pacemaker:size-largest-heartbeat-1min",new Callable(){
+    @Override public Integer call() throws Exception {
+      return lastOneMinStats.largestHeartbeatSize.get();
+    }
+  }
+);
+  StormMetricsRegistry.registerGauge("pacemaker:size-average-heartbeat-1min",new Callable(){
+    @Override public Integer call() throws Exception {
+      return lastOneMinStats.averageHeartbeatSize.get();
+    }
+  }
+);
+  StormMetricsRegistry.registerGauge("pacemaker:size-total-keys-1min",new Callable(){
+    @Override public Integer call() throws Exception {
+      return lastOneMinStats.totalKeys.get();
+    }
+  }
+);
+}
