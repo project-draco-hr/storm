@@ -5,7 +5,7 @@
   this.delegateCollector=delegateCollector;
   windowTriggerCountId=WindowTridentProcessor.TRIGGER_COUNT_PREFIX + windowTaskId;
   windowManager=new WindowManager<>(new TridentWindowLifeCycleListener());
-  WindowStrategy<T> windowStrategy=WindowStrategyFactory.create(windowConfig);
+  WindowStrategy<T> windowStrategy=windowConfig.getWindowStrategy();
   EvictionPolicy<T> evictionPolicy=windowStrategy.getEvictionPolicy();
   windowManager.setEvictionPolicy(evictionPolicy);
   triggerPolicy=windowStrategy.getTriggerPolicy(windowManager,evictionPolicy);
