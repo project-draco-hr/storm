@@ -1,5 +1,5 @@
 BaseWindowedBolt.Duration windowDuration
-BaseWindowedBolt.Duration slideDuration
+BaseWindowedBolt.Duration slidingInterval
 WindowsStoreFactory windowStoreFactory
 Fields inputFields
 Aggregator aggregator

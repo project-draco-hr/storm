@@ -1,7 +1,7 @@
 {
   Config conf=new Config();
   conf.setMaxSpoutPending(20);
-  conf.put(Config.TOPOLOGY_TRIDENT_WINDOWING_INMEMORY_CACHE_LIMIT,2);
+  conf.put(Config.TOPOLOGY_TRIDENT_WINDOWING_INMEMORY_CACHE_LIMIT,100);
   HBaseWindowsStoreFactory windowStoreFactory=new HBaseWindowsStoreFactory(new HashMap<String,Object>(),"window-state","cf".getBytes("UTF-8"),"tuples".getBytes("UTF-8"));
   if (args.length == 0) {
     LocalCluster cluster=new LocalCluster();

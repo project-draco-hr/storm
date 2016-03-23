@@ -1,3 +1,3 @@
 {
-  return window(SlidingDurationWindow.of(windowDuration,slideDuration),windowStoreFactory,inputFields,aggregator,functionFields);
+  return window(SlidingDurationWindow.of(windowDuration,slidingInterval),windowStoreFactory,inputFields,aggregator,functionFields);
 }
