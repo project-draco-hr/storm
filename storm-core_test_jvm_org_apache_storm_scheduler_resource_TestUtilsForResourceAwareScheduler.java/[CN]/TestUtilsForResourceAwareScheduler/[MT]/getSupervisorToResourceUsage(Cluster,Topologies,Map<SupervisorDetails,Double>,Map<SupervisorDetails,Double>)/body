@@ -1,9 +1,9 @@
 {
-  Map<SupervisorDetails,Double> superToCpu=new HashMap<>();
   Collection<SchedulerAssignment> assignments=cluster.getAssignments().values();
   Collection<SupervisorDetails> supervisors=cluster.getSupervisors().values();
   for (  SupervisorDetails supervisor : supervisors) {
     superToCpu.put(supervisor,0.0);
+    superToMem.put(supervisor,0.0);
   }
   for (  SchedulerAssignment assignment : assignments) {
     Map<ExecutorDetails,SupervisorDetails> executorToSupervisor=new HashMap<>();
@@ -22,11 +22,13 @@
     }
     for (    Map.Entry<SupervisorDetails,List<ExecutorDetails>> entry : supervisorToExecutors.entrySet()) {
       Double supervisorUsedCpu=0.0;
+      Double supervisorUsedMemory=0.0;
       for (      ExecutorDetails executor : entry.getValue()) {
         supervisorUsedCpu+=topology.getTotalCpuReqTask(executor);
+        supervisorUsedMemory+=topology.getTotalMemReqTask(executor);
       }
       superToCpu.put(entry.getKey(),superToCpu.get(entry.getKey()) + supervisorUsedCpu);
+      superToMem.put(entry.getKey(),superToMem.get(entry.getKey()) + supervisorUsedMemory);
     }
   }
-  return superToCpu;
 }
