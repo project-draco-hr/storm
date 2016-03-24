@@ -7,13 +7,24 @@
  else {
     client=(DistributedRPCInvocations.Iface)ServiceRegistry.getService(_local_drpc_id);
   }
-  try {
-    client.failRequest(did.id);
-  }
- catch (  AuthorizationException aze) {
-    LOG.error("Not authorized to failREquest from DRPC server",aze);
-  }
-catch (  TException e) {
-    LOG.error("Failed to fail request",e);
+  int retryCnt=0;
+  int maxRetries=3;
+  while (retryCnt < maxRetries) {
+    retryCnt++;
+    try {
+      client.failRequest(did.id);
+      break;
+    }
+ catch (    AuthorizationException aze) {
+      LOG.error("Not authorized to failRequest from DRPC server",aze);
+      throw new RuntimeException(aze);
+    }
+catch (    TException tex) {
+      if (retryCnt >= maxRetries) {
+        LOG.error("Failed to fail request",tex);
+        break;
+      }
+      reconnectSync((DRPCInvocationsClient)client);
+    }
   }
 }
