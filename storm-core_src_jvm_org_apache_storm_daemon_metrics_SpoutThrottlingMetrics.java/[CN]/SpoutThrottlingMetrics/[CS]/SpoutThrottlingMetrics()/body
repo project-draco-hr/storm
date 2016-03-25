@@ -1,0 +1,5 @@
+{
+  this.metricMap.put("skipped-max-spout",skippedMaxSpout);
+  this.metricMap.put("skipped-throttle",skippedThrottle);
+  this.metricMap.put("skipped-inactive",skippedInactive);
+}

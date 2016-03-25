@@ -1,7 +1,7 @@
 {
   boolean gotRequest=false;
   if (_local_drpc_id == null) {
-    int size;
+    int size=0;
 synchronized (_clients) {
       size=_clients.size();
     }
@@ -12,7 +12,7 @@ synchronized (_clients) {
       }
       if (!client.isConnected()) {
         LOG.warn("DRPCInvocationsClient [{}:{}] is not connected.",client.getHost(),client.getPort());
-        reconnect(client);
+        reconnectAsync(client);
         continue;
       }
       try {
@@ -28,11 +28,11 @@ synchronized (_clients) {
         }
       }
  catch (      AuthorizationException aze) {
-        reconnect(client);
+        reconnectAsync(client);
         LOG.error("Not authorized to fetch DRPC result from DRPC server",aze);
       }
 catch (      TException e) {
-        reconnect(client);
+        reconnectAsync(client);
         LOG.error("Failed to fetch DRPC result from DRPC server",e);
       }
 catch (      Exception e) {

@@ -1,7 +1,7 @@
 {
   _futures.add(_backround.submit(new Callable<Void>(){
     @Override public Void call() throws Exception {
-      c.reconnectClient();
+      client.reconnectClient();
       return null;
     }
   }
