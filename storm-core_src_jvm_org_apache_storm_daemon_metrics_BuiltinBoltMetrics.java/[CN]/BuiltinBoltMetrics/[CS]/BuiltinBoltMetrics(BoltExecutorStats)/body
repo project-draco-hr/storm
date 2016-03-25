@@ -1,0 +1,16 @@
+{
+  this.ackCount=stats.getAcked();
+  this.failCount=stats.getFailed();
+  this.emitCount=stats.getEmitted();
+  this.executeCount=stats.getExecuted();
+  this.transferCount=stats.getTransferred();
+  this.executeLatency=stats.getExecuteLatencies();
+  this.processLatency=stats.getProcessLatencies();
+  this.metricMap.put("ack-count",ackCount);
+  this.metricMap.put("fail-count",failCount);
+  this.metricMap.put("emit-count",emitCount);
+  this.metricMap.put("transfer-count",transferCount);
+  this.metricMap.put("execute-count",executeCount);
+  this.metricMap.put("process-latency",processLatency);
+  this.metricMap.put("execute-latency",executeLatency);
+}

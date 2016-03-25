@@ -1,0 +1,3 @@
+{
+  this.skippedThrottle.incrBy(stats.getRate());
+}

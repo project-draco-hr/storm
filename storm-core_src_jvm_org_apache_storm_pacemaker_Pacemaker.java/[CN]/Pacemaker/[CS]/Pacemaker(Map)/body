@@ -1,9 +1,11 @@
 {
   heartbeats=new ConcurrentHashMap();
-  pacemakerStats=new PacemakerStats();
-  lastOneMinStats=new PacemakerStats();
   this.conf=conf;
-  startStatsThread();
-  startRegisterStatsGauge();
+  StormMetricsRegistry.registerGauge("pacemaker:size-total-keys",new Callable(){
+    @Override public Integer call() throws Exception {
+      return heartbeats.size();
+    }
+  }
+);
   StormMetricsRegistry.startMetricsReporters(conf);
 }

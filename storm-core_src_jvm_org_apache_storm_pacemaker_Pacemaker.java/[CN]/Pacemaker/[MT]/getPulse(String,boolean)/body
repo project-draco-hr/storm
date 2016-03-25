@@ -2,9 +2,9 @@
   if (authenticated) {
     byte[] details=heartbeats.get(path);
     LOG.debug("Getting Pulse for path [ {} ]...data [ {} ].",path,details);
-    pacemakerStats.getPulseCount.incrementAndGet();
+    meterGetPulseCount.mark();
     if (details != null) {
-      pacemakerStats.totalSentSize.addAndGet(details.length);
+      meterTotalSentSize.mark(details.length);
     }
     HBPulse hbPulse=new HBPulse();
     hbPulse.set_id(path);

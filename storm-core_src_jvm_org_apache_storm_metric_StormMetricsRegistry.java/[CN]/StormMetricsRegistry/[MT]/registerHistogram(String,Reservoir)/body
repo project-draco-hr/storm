@@ -1,0 +1,4 @@
+{
+  Histogram histogram=new Histogram(reservoir);
+  return register(name,histogram);
+}
