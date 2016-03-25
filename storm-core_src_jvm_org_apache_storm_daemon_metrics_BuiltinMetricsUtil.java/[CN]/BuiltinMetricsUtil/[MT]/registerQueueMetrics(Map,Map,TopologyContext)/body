@@ -1,0 +1,8 @@
+{
+  for (  Object o : queues.entrySet()) {
+    Map.Entry entry=(Map.Entry)o;
+    String name="__" + entry.getKey();
+    IMetric metric=new StateMetric((IStatefulObject)entry.getValue());
+    registerMetric(name,metric,stormConf,context);
+  }
+}

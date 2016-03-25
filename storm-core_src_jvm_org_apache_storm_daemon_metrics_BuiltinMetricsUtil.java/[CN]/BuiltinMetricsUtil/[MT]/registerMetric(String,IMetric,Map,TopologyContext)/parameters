@@ -1,0 +1,4 @@
+String name
+IMetric metric
+Map stormConf
+TopologyContext context

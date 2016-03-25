@@ -1,0 +1,18 @@
+{
+  IMetric metric=new IMetric(){
+    @Override public Object getValueAndReset(){
+      Map<Object,Object> ret=new HashMap<>();
+      for (      Object o : nodePortToSocket.entrySet()) {
+        Map.Entry entry=(Map.Entry)o;
+        Object nodePort=entry.getKey();
+        Object connection=entry.getValue();
+        if (connection instanceof IStatefulObject) {
+          ret.put(nodePort,((IStatefulObject)connection).getState());
+        }
+      }
+      return ret;
+    }
+  }
+;
+  registerMetric("__send-iconnection",metric,stormConf,context);
+}
