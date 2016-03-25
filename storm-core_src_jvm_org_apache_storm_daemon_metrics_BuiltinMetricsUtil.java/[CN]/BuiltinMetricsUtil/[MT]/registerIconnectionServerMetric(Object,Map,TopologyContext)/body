@@ -1,0 +1,5 @@
+{
+  if (server instanceof IStatefulObject) {
+    registerMetric("__recv-iconnection",new StateMetric((IStatefulObject)server),stormConf,context);
+  }
+}

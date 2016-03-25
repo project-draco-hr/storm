@@ -1,11 +1,8 @@
 {
-  Set<T> objToBeRemoved=new HashSet<T>();
-  for (  T obj : objToCounts.keySet()) {
-    if (shouldBeRemovedFromCounter(obj)) {
-      objToBeRemoved.add(obj);
+  for (Iterator<Map.Entry<T,long[]>> it=objToCounts.entrySet().iterator(); it.hasNext(); ) {
+    Map.Entry<T,long[]> entry=it.next();
+    if (shouldBeRemovedFromCounter(entry.getKey())) {
+      it.remove();
     }
-  }
-  for (  T obj : objToBeRemoved) {
-    objToCounts.remove(obj);
   }
 }

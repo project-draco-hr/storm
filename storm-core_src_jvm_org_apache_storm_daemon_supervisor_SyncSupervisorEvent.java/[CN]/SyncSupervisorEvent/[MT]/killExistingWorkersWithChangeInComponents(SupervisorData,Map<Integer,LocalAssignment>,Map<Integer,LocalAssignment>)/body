@@ -24,15 +24,10 @@
   for (  Integer port : intersectAssignment.keySet()) {
     List<ExecutorInfo> existExecutors=existingAssignment.get(port).get_executors();
     List<ExecutorInfo> newExecutors=newAssignment.get(port).get_executors();
-    if (newExecutors.size() != existExecutors.size()) {
-      syncProcesses.shutWorker(supervisorData,supervisorData.getWorkerManager(),vaildPortToWorkerIds.get(port));
-      continue;
-    }
-    for (    ExecutorInfo executorInfo : newExecutors) {
-      if (!existExecutors.contains(executorInfo)) {
-        syncProcesses.shutWorker(supervisorData,supervisorData.getWorkerManager(),vaildPortToWorkerIds.get(port));
-        break;
-      }
+    Set<ExecutorInfo> setExitExecutors=new HashSet<>(existExecutors);
+    Set<ExecutorInfo> setNewExecutors=new HashSet<>(newExecutors);
+    if (setExitExecutors != setNewExecutors) {
+      syncProcesses.killWorker(supervisorData,supervisorData.getWorkerManager(),vaildPortToWorkerIds.get(port));
     }
   }
 }
