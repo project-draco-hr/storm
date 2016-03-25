@@ -1,0 +1,29 @@
+{
+  if (debug) {
+    LOG.info("Emitting: {} {} {}",componentId,stream,values);
+  }
+  List<Integer> outTasks=new ArrayList<>();
+  if (!streamComponentToGrouper.containsKey(stream)) {
+    throw new IllegalArgumentException("Unknown stream ID: " + stream);
+  }
+  if (null != streamComponentToGrouper.get(stream)) {
+    for (    LoadAwareCustomStreamGrouping grouper : streamComponentToGrouper.get(stream).values()) {
+      if (grouper == GrouperFactory.DIRECT) {
+        throw new IllegalArgumentException("Cannot do regular emit to direct stream");
+      }
+      List<Integer> compTasks=grouper.chooseTasks(taskId,values,loadMapping);
+      outTasks.addAll(compTasks);
+    }
+  }
+  new EmitInfo(values,stream,taskId,outTasks).applyOn(userTopologyContext);
+  try {
+    if (emitSampler.call()) {
+      executorStats.emittedTuple(stream);
+      executorStats.transferredTuples(stream,outTasks.size());
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  return outTasks;
+}

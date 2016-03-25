@@ -1,0 +1,30 @@
+{
+  if (debug) {
+    LOG.info("Emitting direct: {}; {} {} {} ",outTaskId,componentId,stream,values);
+  }
+  String targetComponent=workerTopologyContext.getComponentId(outTaskId);
+  Map<String,LoadAwareCustomStreamGrouping> componentGrouping=streamComponentToGrouper.get(stream);
+  LoadAwareCustomStreamGrouping grouping=componentGrouping.get(targetComponent);
+  if (null == grouping) {
+    outTaskId=null;
+  }
+  if (grouping != null && grouping != GrouperFactory.DIRECT) {
+    throw new IllegalArgumentException("Cannot emitDirect to a task expecting a regular grouping");
+  }
+  new EmitInfo(values,stream,taskId,Collections.singletonList(outTaskId)).applyOn(userTopologyContext);
+  try {
+    if (emitSampler.call()) {
+      executorStats.emittedTuple(stream);
+      if (null != outTaskId) {
+        executorStats.transferredTuples(stream,1);
+      }
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+  if (null != outTaskId) {
+    return Collections.singletonList(outTaskId);
+  }
+  return null;
+}

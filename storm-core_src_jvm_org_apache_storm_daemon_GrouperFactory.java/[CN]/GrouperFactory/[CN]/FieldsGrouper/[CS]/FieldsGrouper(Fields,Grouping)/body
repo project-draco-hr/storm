@@ -1,0 +1,4 @@
+{
+  this.outFields=outFields;
+  this.groupFields=new Fields(Thrift.fieldGrouping(thriftGrouping));
+}

@@ -1,0 +1,16 @@
+{
+  final Random random=new Random();
+  return new Callable<Boolean>(){
+    private int curr=-1;
+    private int target=random.nextInt(samplingFreq);
+    @Override public Boolean call() throws Exception {
+      curr++;
+      if (curr >= samplingFreq) {
+        curr=0;
+        target=random.nextInt(samplingFreq);
+      }
+      return (curr == target);
+    }
+  }
+;
+}
