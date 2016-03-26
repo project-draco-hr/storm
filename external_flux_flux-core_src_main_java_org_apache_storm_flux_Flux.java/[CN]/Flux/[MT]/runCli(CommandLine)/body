@@ -28,21 +28,16 @@
   if (!cmd.hasOption(OPTION_DRY_RUN)) {
     if (cmd.hasOption(OPTION_REMOTE)) {
       LOG.info("Running remotely...");
-      try {
-        SubmitOptions submitOptions=null;
-        if (cmd.hasOption(OPTION_INACTIVE)) {
-          LOG.info("Deploying topology in an INACTIVE state...");
-          submitOptions=new SubmitOptions(TopologyInitialStatus.INACTIVE);
-        }
+      SubmitOptions submitOptions=null;
+      if (cmd.hasOption(OPTION_INACTIVE)) {
+        LOG.info("Deploying topology in an INACTIVE state...");
+        submitOptions=new SubmitOptions(TopologyInitialStatus.INACTIVE);
+      }
  else {
-          LOG.info("Deploying topology in an ACTIVE state...");
-          submitOptions=new SubmitOptions(TopologyInitialStatus.ACTIVE);
-        }
-        StormSubmitter.submitTopology(topologyName,conf,topology,submitOptions,null);
+        LOG.info("Deploying topology in an ACTIVE state...");
+        submitOptions=new SubmitOptions(TopologyInitialStatus.ACTIVE);
       }
- catch (      Exception e) {
-        LOG.warn("Unable to deploy topology to remote cluster.",e);
-      }
+      StormSubmitter.submitTopology(topologyName,conf,topology,submitOptions,null);
     }
  else {
       LOG.info("Running in local mode...");

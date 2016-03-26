@@ -1,0 +1,4 @@
+{
+  int bucketSize=((Number)stormConf.get(Config.TOPOLOGY_BUILTIN_METRICS_BUCKET_SIZE_SECS)).intValue();
+  context.registerMetric(name,metric,bucketSize);
+}
