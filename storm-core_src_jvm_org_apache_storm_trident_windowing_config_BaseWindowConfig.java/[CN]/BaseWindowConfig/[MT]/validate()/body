@@ -1,0 +1,5 @@
+{
+  if (slideLength > windowLength) {
+    throw new IllegalArgumentException("slideLength '" + slideLength + "' should always be less than windowLegth '"+ windowLength+ "'");
+  }
+}

@@ -1,0 +1,6 @@
+{
+  _remove(key);
+  if (backingStore != null) {
+    backingStore.remove(key);
+  }
+}

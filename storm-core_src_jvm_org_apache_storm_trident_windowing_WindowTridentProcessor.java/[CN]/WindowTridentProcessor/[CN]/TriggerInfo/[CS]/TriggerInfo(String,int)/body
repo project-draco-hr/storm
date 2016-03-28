@@ -1,0 +1,4 @@
+{
+  this.windowTaskId=windowTaskId;
+  this.triggerId=triggerId;
+}

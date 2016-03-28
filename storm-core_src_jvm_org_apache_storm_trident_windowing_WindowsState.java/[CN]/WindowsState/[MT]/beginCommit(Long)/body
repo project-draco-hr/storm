@@ -1,0 +1,4 @@
+{
+  currentTxId=txId;
+  LOG.debug(" WindowsState.beginCommit:: [{}] ",txId);
+}

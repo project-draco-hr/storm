@@ -1,0 +1,6 @@
+{
+  if (conf.containsKey(Config.TOPOLOGY_TRIDENT_WINDOWING_INMEMORY_CACHE_LIMIT)) {
+    return ((Number)conf.get(Config.TOPOLOGY_TRIDENT_WINDOWING_INMEMORY_CACHE_LIMIT)).longValue();
+  }
+  return DEFAULT_INMEMORY_TUPLE_CACHE_LIMIT;
+}

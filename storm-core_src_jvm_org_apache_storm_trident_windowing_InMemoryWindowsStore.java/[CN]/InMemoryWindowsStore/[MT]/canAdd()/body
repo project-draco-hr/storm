@@ -1,0 +1,3 @@
+{
+  return backingStore == null || currentSize.get() < maxSize;
+}

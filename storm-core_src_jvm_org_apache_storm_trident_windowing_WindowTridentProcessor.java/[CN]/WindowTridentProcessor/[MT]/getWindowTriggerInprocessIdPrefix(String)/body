@@ -1,0 +1,3 @@
+{
+  return TRIGGER_INPROCESS_PREFIX + windowTaskId;
+}

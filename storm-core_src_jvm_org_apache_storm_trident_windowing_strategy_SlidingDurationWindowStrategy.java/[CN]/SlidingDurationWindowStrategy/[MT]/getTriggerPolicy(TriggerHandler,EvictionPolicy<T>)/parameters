@@ -1,0 +1,2 @@
+TriggerHandler triggerHandler
+EvictionPolicy<T> evictionPolicy

@@ -1,0 +1,7 @@
+{
+  if (!canAdd()) {
+    return;
+  }
+  store.put(key,value);
+  incrementCurrentSize();
+}

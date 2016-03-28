@@ -1,0 +1,6 @@
+{
+  LOG.debug("Adding tuples to window-manager for batch: [{}]",batchId);
+  for (  TridentTuple tridentTuple : tuples) {
+    windowManager.add(tridentTuple);
+  }
+}

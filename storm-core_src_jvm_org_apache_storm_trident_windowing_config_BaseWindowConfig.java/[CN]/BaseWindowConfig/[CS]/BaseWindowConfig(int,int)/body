@@ -1,0 +1,4 @@
+{
+  this.windowLength=windowLength;
+  this.slideLength=slideLength;
+}

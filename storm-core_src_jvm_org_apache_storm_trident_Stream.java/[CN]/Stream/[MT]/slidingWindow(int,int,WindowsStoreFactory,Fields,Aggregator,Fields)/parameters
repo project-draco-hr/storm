@@ -1,0 +1,6 @@
+int windowCount
+int slideCount
+WindowsStoreFactory windowStoreFactory
+Fields inputFields
+Aggregator aggregator
+Fields functionFields

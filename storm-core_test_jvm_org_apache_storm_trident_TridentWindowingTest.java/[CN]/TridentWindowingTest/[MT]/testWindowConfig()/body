@@ -1,0 +1,20 @@
+{
+  int windowLength=9;
+  TumblingCountWindow tumblingCountWindow=TumblingCountWindow.of(windowLength);
+  Assert.assertTrue(tumblingCountWindow.getWindowLength() == windowLength);
+  Assert.assertTrue(tumblingCountWindow.getSlidingLength() == windowLength);
+  windowLength=10;
+  int slidingLength=2;
+  SlidingCountWindow slidingCountWindow=SlidingCountWindow.of(10,2);
+  Assert.assertTrue(slidingCountWindow.getWindowLength() == windowLength);
+  Assert.assertTrue(slidingCountWindow.getSlidingLength() == slidingLength);
+  windowLength=20;
+  TumblingDurationWindow tumblingDurationWindow=TumblingDurationWindow.of(new BaseWindowedBolt.Duration(windowLength,TimeUnit.SECONDS));
+  Assert.assertTrue(tumblingDurationWindow.getWindowLength() == windowLength * 1000);
+  Assert.assertTrue(tumblingDurationWindow.getSlidingLength() == windowLength * 1000);
+  windowLength=50;
+  slidingLength=10;
+  SlidingDurationWindow slidingDurationWindow=SlidingDurationWindow.of(new BaseWindowedBolt.Duration(windowLength,TimeUnit.SECONDS),new BaseWindowedBolt.Duration(slidingLength,TimeUnit.SECONDS));
+  Assert.assertTrue(slidingDurationWindow.getWindowLength() == windowLength * 1000);
+  Assert.assertTrue(slidingDurationWindow.getSlidingLength() == slidingLength * 1000);
+}

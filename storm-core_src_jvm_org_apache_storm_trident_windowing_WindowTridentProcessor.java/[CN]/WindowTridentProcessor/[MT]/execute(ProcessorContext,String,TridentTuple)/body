@@ -1,0 +1,4 @@
+{
+  Object state=processorContext.state[tridentContext.getStateIndex()];
+  ((List<TridentTuple>)state).add(projection.create(tuple));
+}

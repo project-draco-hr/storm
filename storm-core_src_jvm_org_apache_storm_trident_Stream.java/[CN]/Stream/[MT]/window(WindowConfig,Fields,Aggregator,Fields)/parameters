@@ -1,0 +1,4 @@
+WindowConfig windowConfig
+Fields inputFields
+Aggregator aggregator
+Fields functionFields
