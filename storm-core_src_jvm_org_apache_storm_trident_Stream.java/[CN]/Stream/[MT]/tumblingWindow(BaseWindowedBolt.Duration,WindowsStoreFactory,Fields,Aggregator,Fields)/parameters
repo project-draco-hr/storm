@@ -1,0 +1,5 @@
+BaseWindowedBolt.Duration windowDuration
+WindowsStoreFactory windowStoreFactory
+Fields inputFields
+Aggregator aggregator
+Fields functionFields

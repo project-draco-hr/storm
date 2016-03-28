@@ -1,0 +1,8 @@
+{
+  for (  Entry entry : entries) {
+    _put(entry.key,entry.value);
+  }
+  if (backingStore != null) {
+    backingStore.putAll(entries);
+  }
+}

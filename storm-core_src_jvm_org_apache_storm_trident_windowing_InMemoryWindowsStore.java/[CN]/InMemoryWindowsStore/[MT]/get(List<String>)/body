@@ -1,0 +1,7 @@
+{
+  List<Object> values=new ArrayList<>();
+  for (  String key : keys) {
+    values.add(get(key));
+  }
+  return values;
+}

@@ -1,0 +1,6 @@
+{
+  if (inMemoryWindowsStore == null) {
+    inMemoryWindowsStore=new InMemoryWindowsStore();
+  }
+  return inMemoryWindowsStore;
+}

@@ -1,0 +1,19 @@
+{
+  WindowsStore.Entry.nonNullCheckForKey(key);
+  byte[] effectiveKey=effectiveKey(key);
+  Get get=new Get(effectiveKey);
+  Result result=null;
+  try {
+    result=htable().get(get);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  if (result.isEmpty()) {
+    return null;
+  }
+  Kryo kryo=new Kryo();
+  Input input=new Input(result.getValue(family,qualifier));
+  Object resultObject=kryo.readClassAndObject(input);
+  return resultObject;
+}

@@ -1,0 +1,6 @@
+WindowConfig windowConfig
+String uniqueWindowId
+WindowsStoreFactory windowStoreFactory
+Fields inputFields
+Aggregator aggregator
+boolean storeTuplesInStore

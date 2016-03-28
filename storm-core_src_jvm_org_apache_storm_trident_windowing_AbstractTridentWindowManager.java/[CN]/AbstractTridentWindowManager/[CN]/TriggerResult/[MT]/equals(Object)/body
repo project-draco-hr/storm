@@ -1,0 +1,6 @@
+{
+  if (this == o)   return true;
+  if (!(o instanceof TriggerResult))   return false;
+  TriggerResult that=(TriggerResult)o;
+  return id == that.id;
+}

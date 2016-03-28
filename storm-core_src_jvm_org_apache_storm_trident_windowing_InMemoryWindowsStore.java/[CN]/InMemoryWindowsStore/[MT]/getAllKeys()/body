@@ -1,0 +1,24 @@
+{
+  if (backingStore != null) {
+    return backingStore.getAllKeys();
+  }
+  final Enumeration<String> storeEnumeration=store.keys();
+  final Iterator<String> resultIterator=new Iterator<String>(){
+    @Override public boolean hasNext(){
+      return storeEnumeration.hasMoreElements();
+    }
+    @Override public String next(){
+      return storeEnumeration.nextElement();
+    }
+    @Override public void remove(){
+      throw new UnsupportedOperationException("remove operation is not supported as it is immutable.");
+    }
+  }
+;
+  return new Iterable<String>(){
+    @Override public Iterator<String> iterator(){
+      return resultIterator;
+    }
+  }
+;
+}

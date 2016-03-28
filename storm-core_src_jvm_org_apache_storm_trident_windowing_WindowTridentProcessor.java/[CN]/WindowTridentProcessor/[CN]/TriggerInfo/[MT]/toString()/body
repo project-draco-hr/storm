@@ -1,0 +1,3 @@
+{
+  return "TriggerInfo{" + "windowTaskId='" + windowTaskId + '\''+ ", triggerId="+ triggerId+ '}';
+}

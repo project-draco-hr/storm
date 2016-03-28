@@ -1,0 +1,10 @@
+{
+  WindowStrategy<Object> tumblingCountStrategy=TumblingCountWindow.of(10).getWindowStrategy();
+  Assert.assertTrue(tumblingCountStrategy instanceof TumblingCountWindowStrategy);
+  WindowStrategy<Object> slidingCountStrategy=SlidingCountWindow.of(100,10).getWindowStrategy();
+  Assert.assertTrue(slidingCountStrategy instanceof SlidingCountWindowStrategy);
+  WindowStrategy<Object> tumblingDurationStrategy=TumblingDurationWindow.of(new BaseWindowedBolt.Duration(10,TimeUnit.SECONDS)).getWindowStrategy();
+  Assert.assertTrue(tumblingDurationStrategy instanceof TumblingDurationWindowStrategy);
+  WindowStrategy<Object> slidingDurationStrategy=SlidingDurationWindow.of(new BaseWindowedBolt.Duration(10,TimeUnit.SECONDS),new BaseWindowedBolt.Duration(2,TimeUnit.SECONDS)).getWindowStrategy();
+  Assert.assertTrue(slidingDurationStrategy instanceof SlidingDurationWindowStrategy);
+}

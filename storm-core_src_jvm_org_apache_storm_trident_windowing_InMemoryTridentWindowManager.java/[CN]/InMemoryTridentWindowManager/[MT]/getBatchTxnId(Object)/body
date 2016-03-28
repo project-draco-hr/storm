@@ -1,0 +1,6 @@
+{
+  if (!(batchId instanceof IBatchID)) {
+    throw new IllegalArgumentException("argument should be an IBatchId instance");
+  }
+  return ((IBatchID)batchId).getId().toString();
+}

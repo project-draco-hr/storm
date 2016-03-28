@@ -1,0 +1,49 @@
+{
+  Object batchId=processorContext.batchId;
+  Object batchTxnId=getBatchTxnId(batchId);
+  LOG.debug("Received finishBatch of : [{}] ",batchId);
+  List<TridentTuple> tuples=(List<TridentTuple>)processorContext.state[tridentContext.getStateIndex()];
+  tridentWindowManager.addTuplesBatch(batchId,tuples);
+  List<Integer> pendingTriggerIds=null;
+  List<String> triggerKeys=new ArrayList<>();
+  Iterable<Object> triggerValues=null;
+  if (retriedAttempt(batchId)) {
+    pendingTriggerIds=(List<Integer>)windowStore.get(inprocessTriggerKey(batchTxnId));
+    for (    Integer pendingTriggerId : pendingTriggerIds) {
+      triggerKeys.add(triggerKey(pendingTriggerId));
+    }
+    triggerValues=windowStore.get(triggerKeys);
+  }
+  if (triggerValues == null) {
+    pendingTriggerIds=new ArrayList<>();
+    Queue<StoreBasedTridentWindowManager.TriggerResult> pendingTriggers=tridentWindowManager.getPendingTriggers();
+    LOG.debug("pending triggers at batch: [{}] and triggers.size: [{}] ",batchId,pendingTriggers.size());
+    try {
+      Iterator<StoreBasedTridentWindowManager.TriggerResult> pendingTriggersIter=pendingTriggers.iterator();
+      List<Object> values=new ArrayList<>();
+      StoreBasedTridentWindowManager.TriggerResult triggerResult=null;
+      while (pendingTriggersIter.hasNext()) {
+        triggerResult=pendingTriggersIter.next();
+        for (        List<Object> aggregatedResult : triggerResult.result) {
+          String triggerKey=triggerKey(triggerResult.id);
+          triggerKeys.add(triggerKey);
+          values.add(aggregatedResult);
+          pendingTriggerIds.add(triggerResult.id);
+        }
+        pendingTriggersIter.remove();
+      }
+      triggerValues=values;
+    }
+  finally {
+      if (!pendingTriggerIds.isEmpty()) {
+        windowStore.put(inprocessTriggerKey(batchTxnId),pendingTriggerIds);
+      }
+    }
+  }
+  collector.setContext(processorContext);
+  int i=0;
+  for (  Object resultValue : triggerValues) {
+    collector.emit(new ConsList(new TriggerInfo(windowTaskId,pendingTriggerIds.get(i++)),(List<Object>)resultValue));
+  }
+  collector.setContext(null);
+}

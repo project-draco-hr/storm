@@ -1,0 +1,15 @@
+{
+  LOG.debug("Adding tuples to window-manager for batch: [{}]",batchId);
+  List<WindowsStore.Entry> entries=new ArrayList<>();
+  for (int i=0; i < tuples.size(); i++) {
+    String key=keyOf(batchId);
+    TridentTuple tridentTuple=tuples.get(i);
+    entries.add(new WindowsStore.Entry(key + i,tridentTuple.select(inputFields)));
+  }
+  windowStore.putAll(entries);
+  for (int i=0; i < tuples.size(); i++) {
+    String key=keyOf(batchId);
+    TridentTuple tridentTuple=tuples.get(i);
+    addToWindowManager(i,key,tridentTuple);
+  }
+}

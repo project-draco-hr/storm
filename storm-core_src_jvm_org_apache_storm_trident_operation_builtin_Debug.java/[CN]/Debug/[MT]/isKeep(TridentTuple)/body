@@ -1,4 +1,4 @@
 {
-  System.out.println(name + tuple.toString());
+  System.out.println("<" + new Date() + "> "+ name+ tuple.toString());
   return true;
 }

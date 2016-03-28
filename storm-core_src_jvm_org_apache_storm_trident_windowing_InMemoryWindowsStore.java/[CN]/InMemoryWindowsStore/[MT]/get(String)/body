@@ -1,0 +1,7 @@
+{
+  Object value=store.get(key);
+  if (value == null && backingStore != null) {
+    value=backingStore.get(key);
+  }
+  return value;
+}

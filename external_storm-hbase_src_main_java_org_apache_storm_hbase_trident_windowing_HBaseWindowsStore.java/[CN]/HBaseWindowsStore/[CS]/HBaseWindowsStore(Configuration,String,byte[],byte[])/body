@@ -1,0 +1,17 @@
+{
+  this.family=family;
+  this.qualifier=qualifier;
+  threadLocalHtable=new ThreadLocal<HTable>(){
+    @Override protected HTable initialValue(){
+      try {
+        HTable hTable=new HTable(config,tableName);
+        htables.add(hTable);
+        return hTable;
+      }
+ catch (      IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
+  }
+;
+}

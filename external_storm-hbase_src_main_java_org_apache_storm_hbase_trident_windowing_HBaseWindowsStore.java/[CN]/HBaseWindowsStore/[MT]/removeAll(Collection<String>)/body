@@ -1,0 +1,14 @@
+{
+  List<Delete> deleteBatch=new ArrayList<>();
+  for (  String key : keys) {
+    WindowsStore.Entry.nonNullCheckForKey(key);
+    Delete delete=new Delete(effectiveKey(key),System.currentTimeMillis());
+    deleteBatch.add(delete);
+  }
+  try {
+    htable().delete(deleteBatch);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

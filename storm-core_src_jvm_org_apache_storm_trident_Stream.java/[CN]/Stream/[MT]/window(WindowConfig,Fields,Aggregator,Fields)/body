@@ -1,0 +1,4 @@
+{
+  InMemoryWindowsStoreFactory inMemoryWindowsStoreFactory=new InMemoryWindowsStoreFactory();
+  return window(windowConfig,inMemoryWindowsStoreFactory,inputFields,aggregator,functionFields,false);
+}

@@ -1,0 +1,6 @@
+{
+  store.clear();
+  if (backingStore != null) {
+    backingStore.shutdown();
+  }
+}

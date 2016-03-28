@@ -1,0 +1,37 @@
+{
+  Scan scan=new Scan();
+  scan.setFilter(new FirstKeyOnlyFilter());
+  final Iterator<Result> resultIterator;
+  try {
+    resultIterator=htable().getScanner(scan).iterator();
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  final Iterator<String> iterator=new Iterator<String>(){
+    @Override public boolean hasNext(){
+      return resultIterator.hasNext();
+    }
+    @Override public String next(){
+      Result result=resultIterator.next();
+      String key=null;
+      try {
+        key=new String(result.getRow(),UTF_8);
+      }
+ catch (      UnsupportedEncodingException e) {
+        throw new RuntimeException(e);
+      }
+      return key;
+    }
+    @Override public void remove(){
+      throw new UnsupportedOperationException("remove operation is not supported");
+    }
+  }
+;
+  return new Iterable<String>(){
+    @Override public Iterator<String> iterator(){
+      return iterator;
+    }
+  }
+;
+}
