@@ -1,3 +1,6 @@
 {
-  abortTxn();
+synchronized (txnBatchLock) {
+    abortTxn();
+    nextTxn(true);
+  }
 }
