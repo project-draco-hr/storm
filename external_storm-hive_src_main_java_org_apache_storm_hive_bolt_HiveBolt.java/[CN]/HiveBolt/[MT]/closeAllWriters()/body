@@ -1,11 +1,11 @@
 {
-  try {
-    for (    Entry<HiveEndPoint,HiveWriter> entry : allWriters.entrySet()) {
+  for (  Entry<HiveEndPoint,HiveWriter> entry : allWriters.entrySet()) {
+    try {
       entry.getValue().close();
     }
-    allWriters.clear();
+ catch (    Exception e) {
+      LOG.warn("unable to close writers. ",e);
+    }
   }
- catch (  Exception e) {
-    LOG.warn("unable to close writers. ",e);
-  }
+  allWriters.clear();
 }

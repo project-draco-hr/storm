@@ -1,0 +1,13 @@
+{
+  if (txnBatch.remainingTransactions() == 0) {
+    closeTxnBatch();
+    txnBatch=null;
+    if (rollToNext) {
+      txnBatch=nextTxnBatch(recordWriter);
+    }
+  }
+ else   if (rollToNext) {
+    LOG.debug("Switching to next Txn for {}",endPoint);
+    txnBatch.beginNextTransaction();
+  }
+}

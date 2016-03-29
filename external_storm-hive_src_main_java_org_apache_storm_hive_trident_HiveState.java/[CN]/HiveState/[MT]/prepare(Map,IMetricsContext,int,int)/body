@@ -18,7 +18,7 @@
         throw new IllegalArgumentException(ex);
       }
     }
-    allWriters=new HashMap<HiveEndPoint,HiveWriter>();
+    allWriters=new ConcurrentHashMap<HiveEndPoint,HiveWriter>();
     String timeoutName="hive-bolt-%d";
     this.callTimeoutPool=Executors.newFixedThreadPool(1,new ThreadFactoryBuilder().setNameFormat(timeoutName).build());
     heartBeatTimer=new Timer();
