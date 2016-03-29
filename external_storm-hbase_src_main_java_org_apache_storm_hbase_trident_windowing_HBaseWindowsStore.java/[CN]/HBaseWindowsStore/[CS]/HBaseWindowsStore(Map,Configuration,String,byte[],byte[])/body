@@ -14,4 +14,10 @@
     }
   }
 ;
+  threadLocalWindowKryoSerializer=new ThreadLocal<WindowKryoSerializer>(){
+    @Override protected WindowKryoSerializer initialValue(){
+      return new WindowKryoSerializer(stormConf);
+    }
+  }
+;
 }
