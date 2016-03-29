@@ -1,8 +1,0 @@
-{
-  this.cluster=cluster;
-  this.topologies=topologies;
-  Map<String,RAS_Node> nodes=RAS_Nodes.getAllNodesFrom(cluster,topologies);
-  for (  Map.Entry<String,RAS_Node> entry : nodes.entrySet()) {
-    this.nodes.put(entry.getKey(),new NodeDetails(entry.getValue()));
-  }
-}

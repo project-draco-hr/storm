@@ -1,7 +1,7 @@
 {
-  if (_nodes.containsKey(id) == false) {
+  RAS_Node ret=_nodes.getNodeById(id);
+  if (ret == null) {
     LOG.error("Cannot find Node with Id: {}",id);
-    return null;
   }
-  return _nodes.get(id);
+  return ret;
 }

@@ -1,0 +1,15 @@
+{
+  this(src.userId,src.resourcePool);
+  for (  TopologyDetails topo : src.pendingQueue) {
+    addTopologyToPendingQueue(topo);
+  }
+  for (  TopologyDetails topo : src.runningQueue) {
+    addTopologyToRunningQueue(topo);
+  }
+  for (  TopologyDetails topo : src.attemptedQueue) {
+    addTopologyToAttemptedQueue(topo);
+  }
+  for (  TopologyDetails topo : src.invalidQueue) {
+    addTopologyToInvalidQueue(topo);
+  }
+}

@@ -1,0 +1,5 @@
+{
+  this.cluster=schedulingState.cluster;
+  this.userMap=schedulingState.userMap;
+  this.nodes=schedulingState.nodes;
+}
