@@ -1,0 +1,37 @@
+{
+  String windowTriggerInprocessId=WindowTridentProcessor.getWindowTriggerInprocessIdPrefix(windowTaskId);
+  String windowTriggerTaskId=WindowTridentProcessor.getWindowTriggerTaskPrefix(windowTaskId);
+  List<String> attemptedTriggerKeys=new ArrayList<>();
+  List<String> triggerKeys=new ArrayList<>();
+  Iterable<String> allEntriesIterable=windowStore.getAllKeys();
+  for (  String key : allEntriesIterable) {
+    if (key.startsWith(windowTupleTaskId)) {
+      int tupleIndexValue=lastPart(key);
+      String batchId=secondLastPart(key);
+      LOG.debug("Received tuple with batch [{}] and tuple index [{}]",batchId,tupleIndexValue);
+      windowManager.add(new TridentBatchTuple(batchId,System.currentTimeMillis(),tupleIndexValue));
+    }
+ else     if (key.startsWith(windowTriggerTaskId)) {
+      triggerKeys.add(key);
+      LOG.debug("Received trigger with key [{}]",key);
+    }
+ else     if (key.startsWith(windowTriggerInprocessId)) {
+      attemptedTriggerKeys.add(key);
+      LOG.debug("Received earlier unsuccessful trigger [{}] from windows store [{}]",key);
+    }
+  }
+  Set<Integer> triggersToBeIgnored=new HashSet<>();
+  Iterable<Object> attemptedTriggers=windowStore.get(attemptedTriggerKeys);
+  for (  Object attemptedTrigger : attemptedTriggers) {
+    triggersToBeIgnored.addAll((List<Integer>)attemptedTrigger);
+  }
+  Iterable<Object> triggerObjects=windowStore.get(triggerKeys);
+  int i=0;
+  for (  Object triggerObject : triggerObjects) {
+    int id=lastPart(triggerKeys.get(i++));
+    if (!triggersToBeIgnored.contains(id)) {
+      LOG.info("Adding pending trigger value [{}]",triggerObject);
+      pendingTriggers.add(new TriggerResult(id,(List<List<Object>>)triggerObject));
+    }
+  }
+}

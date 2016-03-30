@@ -4,13 +4,15 @@
     if (writer == null) {
       LOG.debug("Creating Writer to Hive end point : " + endPoint);
       writer=HiveUtils.makeHiveWriter(endPoint,callTimeoutPool,ugi,options);
-      if (allWriters.size() > options.getMaxOpenConnections()) {
+      if (allWriters.size() > (options.getMaxOpenConnections() - 1)) {
+        LOG.info("cached HiveEndPoint size {} exceeded maxOpenConnections {} ",allWriters.size(),options.getMaxOpenConnections());
         int retired=retireIdleWriters();
         if (retired == 0) {
           retireEldestWriter();
         }
       }
       allWriters.put(endPoint,writer);
+      HiveUtils.logAllHiveEndPoints(allWriters);
     }
     return writer;
   }

@@ -1,0 +1,10 @@
+{
+  String id=pulse.get_id();
+  byte[] details=pulse.get_details();
+  LOG.debug("Saving Pulse for id [ {} ] data [ {} ].",id,details);
+  meterSendPulseCount.mark();
+  meterTotalReceivedSize.mark(details.length);
+  histogramHeartbeatSize.update(details.length);
+  heartbeats.put(id,details);
+  return new HBMessage(HBServerMessageType.SEND_PULSE_RESPONSE,null);
+}

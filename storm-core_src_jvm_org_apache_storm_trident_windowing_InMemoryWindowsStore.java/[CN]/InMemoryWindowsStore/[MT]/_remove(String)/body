@@ -1,0 +1,9 @@
+{
+  Object oldValue=store.remove(key);
+  if (oldValue != null) {
+    decrementSize();
+    if (backingStore != null) {
+      backingStore.remove(key);
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  TopologyBuilder builder1=new TopologyBuilder();
+  builder1.setSpout("wordSpout1",new TestWordSpout(),4);
+  StormTopology stormTopology1=builder1.createTopology();
+  Config config1=new Config();
+  config1.putAll(defaultTopologyConf);
+  config1.put(Config.TOPOLOGY_WORKER_MAX_HEAP_SIZE_MB,128.0);
+  config1.put(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB,129.0);
+  StormSubmitter.submitTopologyWithProgressBar("test",config1,stormTopology1);
+}

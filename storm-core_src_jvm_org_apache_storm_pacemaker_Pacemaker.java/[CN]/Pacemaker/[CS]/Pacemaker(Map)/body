@@ -1,0 +1,11 @@
+{
+  heartbeats=new ConcurrentHashMap();
+  this.conf=conf;
+  StormMetricsRegistry.registerGauge("pacemaker:size-total-keys",new Callable(){
+    @Override public Integer call() throws Exception {
+      return heartbeats.size();
+    }
+  }
+);
+  StormMetricsRegistry.startMetricsReporters(conf);
+}

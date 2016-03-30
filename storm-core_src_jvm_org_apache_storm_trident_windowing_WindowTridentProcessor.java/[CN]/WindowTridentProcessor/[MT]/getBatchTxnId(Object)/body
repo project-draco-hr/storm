@@ -1,0 +1,6 @@
+{
+  if (batchId instanceof IBatchID) {
+    return ((IBatchID)batchId).getId();
+  }
+  return null;
+}

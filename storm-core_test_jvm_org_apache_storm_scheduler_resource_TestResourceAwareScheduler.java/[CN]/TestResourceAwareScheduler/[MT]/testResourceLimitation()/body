@@ -1,0 +1,80 @@
+{
+  INimbus iNimbus=new TestUtilsForResourceAwareScheduler.INimbusTest();
+  Map<String,Number> resourceMap=new HashMap<>();
+  resourceMap.put(Config.SUPERVISOR_CPU_CAPACITY,400.0);
+  resourceMap.put(Config.SUPERVISOR_MEMORY_CAPACITY_MB,2000.0);
+  Map<String,SupervisorDetails> supMap=TestUtilsForResourceAwareScheduler.genSupervisors(2,2,resourceMap);
+  TopologyBuilder builder1=new TopologyBuilder();
+  builder1.setSpout("wordSpout",new TestWordSpout(),2).setCPULoad(250.0).setMemoryLoad(1000.0,200.0);
+  builder1.setBolt("wordCountBolt",new TestWordCounter(),1).shuffleGrouping("wordSpout").setCPULoad(100.0).setMemoryLoad(500.0,100.0);
+  StormTopology stormTopology1=builder1.createTopology();
+  Config config=new Config();
+  config.putAll(defaultTopologyConf);
+  Map<ExecutorDetails,String> executorMap1=TestUtilsForResourceAwareScheduler.genExecsAndComps(stormTopology1,2,1);
+  TopologyDetails topology1=new TopologyDetails("topology1",config,stormTopology1,2,executorMap1,0);
+  Cluster cluster=new Cluster(iNimbus,supMap,new HashMap<String,SchedulerAssignmentImpl>(),config);
+  ResourceAwareScheduler rs=new ResourceAwareScheduler();
+  Map<String,TopologyDetails> topoMap=new HashMap<>();
+  topoMap.put(topology1.getId(),topology1);
+  Topologies topologies=new Topologies(topoMap);
+  rs.prepare(config);
+  rs.schedule(topologies,cluster);
+  SchedulerAssignment assignment1=cluster.getAssignmentById(topology1.getId());
+  Set<WorkerSlot> assignedSlots1=assignment1.getSlots();
+  Set<String> nodesIDs1=new HashSet<>();
+  for (  WorkerSlot slot : assignedSlots1) {
+    nodesIDs1.add(slot.getNodeId());
+  }
+  Collection<ExecutorDetails> executors1=assignment1.getExecutors();
+  List<Double> assignedExecutorMemory=new ArrayList<>();
+  List<Double> assignedExecutorCpu=new ArrayList<>();
+  for (  ExecutorDetails executor : executors1) {
+    assignedExecutorMemory.add(topology1.getTotalMemReqTask(executor));
+    assignedExecutorCpu.add(topology1.getTotalCpuReqTask(executor));
+  }
+  Collections.sort(assignedExecutorCpu);
+  Collections.sort(assignedExecutorMemory);
+  Map<ExecutorDetails,SupervisorDetails> executorToSupervisor=new HashMap<>();
+  Map<SupervisorDetails,List<ExecutorDetails>> supervisorToExecutors=new HashMap<>();
+  Map<Double,Double> cpuAvailableToUsed=new HashMap();
+  Map<Double,Double> memoryAvailableToUsed=new HashMap();
+  for (  Map.Entry<ExecutorDetails,WorkerSlot> entry : assignment1.getExecutorToSlot().entrySet()) {
+    executorToSupervisor.put(entry.getKey(),cluster.getSupervisorById(entry.getValue().getNodeId()));
+  }
+  for (  Map.Entry<ExecutorDetails,SupervisorDetails> entry : executorToSupervisor.entrySet()) {
+    List<ExecutorDetails> executorsOnSupervisor=supervisorToExecutors.get(entry.getValue());
+    if (executorsOnSupervisor == null) {
+      executorsOnSupervisor=new ArrayList<>();
+      supervisorToExecutors.put(entry.getValue(),executorsOnSupervisor);
+    }
+    executorsOnSupervisor.add(entry.getKey());
+  }
+  for (  Map.Entry<SupervisorDetails,List<ExecutorDetails>> entry : supervisorToExecutors.entrySet()) {
+    Double supervisorTotalCpu=entry.getKey().getTotalCPU();
+    Double supervisorTotalMemory=entry.getKey().getTotalMemory();
+    Double supervisorUsedCpu=0.0;
+    Double supervisorUsedMemory=0.0;
+    for (    ExecutorDetails executor : entry.getValue()) {
+      supervisorUsedMemory+=topology1.getTotalCpuReqTask(executor);
+      supervisorTotalCpu+=topology1.getTotalMemReqTask(executor);
+    }
+    cpuAvailableToUsed.put(supervisorTotalCpu,supervisorUsedCpu);
+    memoryAvailableToUsed.put(supervisorTotalMemory,supervisorUsedMemory);
+  }
+  Assert.assertEquals(2,assignedSlots1.size());
+  Assert.assertEquals(2,nodesIDs1.size());
+  Assert.assertEquals(3,executors1.size());
+  Assert.assertEquals(100.0,assignedExecutorCpu.get(0),0.001);
+  Assert.assertEquals(250.0,assignedExecutorCpu.get(1),0.001);
+  Assert.assertEquals(250.0,assignedExecutorCpu.get(2),0.001);
+  Assert.assertEquals(600.0,assignedExecutorMemory.get(0),0.001);
+  Assert.assertEquals(1200.0,assignedExecutorMemory.get(1),0.001);
+  Assert.assertEquals(1200.0,assignedExecutorMemory.get(2),0.001);
+  for (  Map.Entry<Double,Double> entry : memoryAvailableToUsed.entrySet()) {
+    Assert.assertTrue(entry.getKey() - entry.getValue() >= 0);
+  }
+  for (  Map.Entry<Double,Double> entry : cpuAvailableToUsed.entrySet()) {
+    Assert.assertTrue(entry.getKey() - entry.getValue() >= 0);
+  }
+  Assert.assertEquals("Running - Fully Scheduled by DefaultResourceAwareStrategy",cluster.getStatusMap().get(topology1.getId()));
+}

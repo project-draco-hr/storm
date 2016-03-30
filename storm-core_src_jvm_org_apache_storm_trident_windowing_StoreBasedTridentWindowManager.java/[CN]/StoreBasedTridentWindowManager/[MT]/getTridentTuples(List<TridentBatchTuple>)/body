@@ -1,0 +1,18 @@
+{
+  List<TridentTuple> resultTuples=new ArrayList<>();
+  List<String> keys=new ArrayList<>();
+  for (  TridentBatchTuple tridentBatchTuple : tridentBatchTuples) {
+    TridentTuple tuple=collectTridentTupleOrKey(tridentBatchTuple,keys);
+    if (tuple != null) {
+      resultTuples.add(tuple);
+    }
+  }
+  if (keys.size() > 0) {
+    Iterable<Object> storedTupleValues=windowStore.get(keys);
+    for (    Object storedTupleValue : storedTupleValues) {
+      TridentTuple tridentTuple=freshOutputFactory.create((List<Object>)storedTupleValue);
+      resultTuples.add(tridentTuple);
+    }
+  }
+  return resultTuples;
+}

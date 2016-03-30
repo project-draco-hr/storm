@@ -1,0 +1,11 @@
+{
+  Pacemaker handler=new Pacemaker(new ConcurrentHashMap());
+  messageWithRandId(HBServerMessageType.EXISTS,HBMessageData.path("/testpath"));
+  HBMessage badResponse=handler.handleMessage(hbMessage,false);
+  HBMessage goodResponse=handler.handleMessage(hbMessage,true);
+  Assert.assertEquals(mid,badResponse.get_message_id());
+  Assert.assertEquals(HBServerMessageType.NOT_AUTHORIZED,badResponse.get_type());
+  Assert.assertEquals(mid,goodResponse.get_message_id());
+  Assert.assertEquals(HBServerMessageType.EXISTS_RESPONSE,goodResponse.get_type());
+  Assert.assertFalse(goodResponse.get_data().get_boolval());
+}

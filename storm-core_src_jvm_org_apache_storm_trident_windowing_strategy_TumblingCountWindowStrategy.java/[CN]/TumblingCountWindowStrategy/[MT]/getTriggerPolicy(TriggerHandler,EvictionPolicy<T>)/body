@@ -1,0 +1,3 @@
+{
+  return new CountTriggerPolicy<>(windowConfig.getSlidingLength(),triggerHandler,evictionPolicy);
+}

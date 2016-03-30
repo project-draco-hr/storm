@@ -1,0 +1,8 @@
+{
+  List<String> fieldsList=new ArrayList<>();
+  fieldsList.add(WindowTridentProcessor.TRIGGER_FIELD_NAME);
+  for (  String field : functionFields) {
+    fieldsList.add(field);
+  }
+  return new Fields(fieldsList);
+}

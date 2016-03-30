@@ -1,6 +1,7 @@
 {
   for (  Entry<HiveEndPoint,HiveWriter> entry : allWriters.entrySet()) {
     try {
+      sendHeartBeat=false;
       HiveWriter w=entry.getValue();
       LOG.info("Flushing writer to {}",w);
       w.flush(false);

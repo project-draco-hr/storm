@@ -1,0 +1,8 @@
+{
+  TridentTuple actualTuple=null;
+  if (maxCachedTuplesSize == null || currentCachedTuplesSize.get() < maxCachedTuplesSize) {
+    actualTuple=tridentTuple;
+  }
+  currentCachedTuplesSize.incrementAndGet();
+  windowManager.add(new TridentBatchTuple(effectiveBatchId,System.currentTimeMillis(),tupleIndex,actualTuple));
+}

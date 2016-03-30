@@ -1,0 +1,13 @@
+{
+  List<TridentTuple> resultTuples=getTridentTuples(tupleEvents);
+  AccumulatedTuplesCollector collector=new AccumulatedTuplesCollector(delegateCollector);
+  Object state=aggregator.init(currentTriggerId,collector);
+  for (  TridentTuple resultTuple : resultTuples) {
+    aggregator.aggregate(state,resultTuple,collector);
+  }
+  aggregator.complete(state,collector);
+  List<List<Object>> resultantAggregatedValue=collector.values;
+  ArrayList<WindowsStore.Entry> entries=Lists.newArrayList(new WindowsStore.Entry(windowTriggerCountId,currentTriggerId + 1),new WindowsStore.Entry(WindowTridentProcessor.generateWindowTriggerKey(windowTaskId,currentTriggerId),resultantAggregatedValue));
+  windowStore.putAll(entries);
+  pendingTriggers.add(new TriggerResult(currentTriggerId,resultantAggregatedValue));
+}

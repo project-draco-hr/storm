@@ -10,7 +10,7 @@
     for (    Map.Entry<WorkerSlot,Collection<ExecutorDetails>> workerToTasksEntry : schedulerAssignmentMap.entrySet()) {
       WorkerSlot targetSlot=workerToTasksEntry.getKey();
       Collection<ExecutorDetails> execsNeedScheduling=workerToTasksEntry.getValue();
-      RAS_Node targetNode=this.nodes.getNodeById(targetSlot.getNodeId());
+      RAS_Node targetNode=this.schedulingState.nodes.getNodeById(targetSlot.getNodeId());
       targetSlot=allocateResourceToSlot(td,execsNeedScheduling,targetSlot);
       targetNode.assign(targetSlot,td,execsNeedScheduling);
       LOG.debug("ASSIGNMENT    TOPOLOGY: {}  TASKS: {} To Node: {} on Slot: {}",td.getName(),execsNeedScheduling,targetNode.getHostname(),targetSlot.getPort());
@@ -26,7 +26,7 @@
     }
     Double[] resources={requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu};
     LOG.debug("setTopologyResources for {}: requested on-heap mem, off-heap mem, cpu: {} {} {} " + "assigned on-heap mem, off-heap mem, cpu: {} {} {}",td.getId(),requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu);
-    this.cluster.setTopologyResources(td.getId(),resources);
+    this.schedulingState.cluster.setTopologyResources(td.getId(),resources);
     return true;
   }
  else {

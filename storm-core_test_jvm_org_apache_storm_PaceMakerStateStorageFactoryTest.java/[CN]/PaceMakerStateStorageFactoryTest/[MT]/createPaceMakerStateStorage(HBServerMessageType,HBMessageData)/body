@@ -1,0 +1,5 @@
+{
+  HBMessage response=new HBMessage(messageType,messageData);
+  clientProxy=new PaceMakerClientProxy(response,null);
+  stateStorage=new PaceMakerStateStorage(clientProxy,null);
+}

@@ -1,0 +1,7 @@
+{
+  int lastSepIndex=key.lastIndexOf(WindowsStore.KEY_SEPARATOR);
+  if (lastSepIndex < 0) {
+    throw new IllegalArgumentException("primaryKey does not have key separator '" + WindowsStore.KEY_SEPARATOR + "'");
+  }
+  return Integer.parseInt(key.substring(lastSepIndex + 1));
+}

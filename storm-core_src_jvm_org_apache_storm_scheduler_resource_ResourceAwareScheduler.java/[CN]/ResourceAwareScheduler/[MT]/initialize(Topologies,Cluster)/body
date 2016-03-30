@@ -1,6 +1,4 @@
 {
-  this.cluster=cluster;
-  this.topologies=topologies;
-  this.nodes=new RAS_Nodes(this.cluster,this.topologies);
-  initUsers(topologies,cluster);
+  Map<String,User> userMap=getUsers(topologies,cluster);
+  this.schedulingState=new SchedulingState(userMap,cluster,topologies,this.conf);
 }

@@ -1,0 +1,6 @@
+{
+  this.config=config;
+  this.tableName=tableName;
+  this.family=family;
+  this.qualifier=qualifier;
+}

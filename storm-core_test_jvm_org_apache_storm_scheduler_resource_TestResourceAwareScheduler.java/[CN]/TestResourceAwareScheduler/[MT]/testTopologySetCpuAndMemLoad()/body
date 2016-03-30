@@ -1,0 +1,39 @@
+{
+  INimbus iNimbus=new TestUtilsForResourceAwareScheduler.INimbusTest();
+  Map<String,Number> resourceMap=new HashMap<>();
+  resourceMap.put(Config.SUPERVISOR_CPU_CAPACITY,400.0);
+  resourceMap.put(Config.SUPERVISOR_MEMORY_CAPACITY_MB,2000.0);
+  Map<String,SupervisorDetails> supMap=TestUtilsForResourceAwareScheduler.genSupervisors(2,2,resourceMap);
+  TopologyBuilder builder1=new TopologyBuilder();
+  builder1.setSpout("wordSpout",new TestWordSpout(),1).setCPULoad(20.0).setMemoryLoad(200.0);
+  builder1.setBolt("wordCountBolt",new TestWordCounter(),1).shuffleGrouping("wordSpout").setCPULoad(20.0).setMemoryLoad(200.0);
+  StormTopology stormTopology1=builder1.createTopology();
+  Config config=new Config();
+  config.putAll(defaultTopologyConf);
+  Map<ExecutorDetails,String> executorMap1=TestUtilsForResourceAwareScheduler.genExecsAndComps(stormTopology1,1,1);
+  TopologyDetails topology1=new TopologyDetails("topology1",config,stormTopology1,0,executorMap1,0);
+  Cluster cluster=new Cluster(iNimbus,supMap,new HashMap<String,SchedulerAssignmentImpl>(),config);
+  ResourceAwareScheduler rs=new ResourceAwareScheduler();
+  Map<String,TopologyDetails> topoMap=new HashMap<>();
+  topoMap.put(topology1.getId(),topology1);
+  Topologies topologies=new Topologies(topoMap);
+  rs.prepare(config);
+  rs.schedule(topologies,cluster);
+  SchedulerAssignment assignment1=cluster.getAssignmentById(topology1.getId());
+  Set<WorkerSlot> assignedSlots1=assignment1.getSlots();
+  double assignedMemory=0.0;
+  double assignedCpu=0.0;
+  Set<String> nodesIDs1=new HashSet<>();
+  for (  WorkerSlot slot : assignedSlots1) {
+    nodesIDs1.add(slot.getNodeId());
+    assignedMemory+=slot.getAllocatedMemOnHeap() + slot.getAllocatedMemOffHeap();
+    assignedCpu+=slot.getAllocatedCpu();
+  }
+  Collection<ExecutorDetails> executors1=assignment1.getExecutors();
+  Assert.assertEquals(1,assignedSlots1.size());
+  Assert.assertEquals(1,nodesIDs1.size());
+  Assert.assertEquals(2,executors1.size());
+  Assert.assertEquals(400.0,assignedMemory,0.001);
+  Assert.assertEquals(40.0,assignedCpu,0.001);
+  Assert.assertEquals("Running - Fully Scheduled by DefaultResourceAwareStrategy",cluster.getStatusMap().get(topology1.getId()));
+}

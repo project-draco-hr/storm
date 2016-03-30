@@ -1,0 +1,3 @@
+{
+  return window(TumblingCountWindow.of(windowCount),windowStoreFactory,inputFields,aggregator,functionFields);
+}

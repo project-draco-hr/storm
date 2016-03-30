@@ -1,0 +1,3 @@
+{
+  return tridentBatchTuple.effectiveBatchId + tridentBatchTuple.tupleIndex;
+}

@@ -1,0 +1,5 @@
+WindowConfig windowConfig
+WindowsStoreFactory windowStoreFactory
+Fields inputFields
+Aggregator aggregator
+Fields functionFields

@@ -1,0 +1,10 @@
+{
+  if (maxCachedTuplesSize != null) {
+    currentCachedTuplesSize.addAndGet(-expiredTuples.size());
+  }
+  List<String> keys=new ArrayList<>();
+  for (  TridentBatchTuple expiredTuple : expiredTuples) {
+    keys.add(tupleKey(expiredTuple));
+  }
+  windowStore.removeAll(keys);
+}

@@ -1,0 +1,8 @@
+{
+  cluster.setAssignments(schedulingState.cluster.getAssignments());
+  cluster.setBlacklistedHosts(schedulingState.cluster.getBlacklistedHosts());
+  cluster.setStatusMap(schedulingState.cluster.getStatusMap());
+  cluster.setSupervisorsResourcesMap(schedulingState.cluster.getSupervisorsResourcesMap());
+  cluster.setTopologyResourcesMap(schedulingState.cluster.getTopologyResourcesMap());
+  updateSupervisorsResources(cluster,topologies);
+}

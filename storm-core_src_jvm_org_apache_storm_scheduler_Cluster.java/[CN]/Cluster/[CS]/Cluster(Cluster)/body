@@ -1,0 +1,10 @@
+{
+  this(src.inimbus,src.supervisors,new HashMap<String,SchedulerAssignmentImpl>(),new HashMap<String,Object>(src.conf));
+  this.supervisorsResources.putAll(src.supervisorsResources);
+  for (  Map.Entry<String,SchedulerAssignmentImpl> entry : src.assignments.entrySet()) {
+    this.assignments.put(entry.getKey(),new SchedulerAssignmentImpl(entry.getValue().getTopologyId(),entry.getValue().getExecutorToSlot()));
+  }
+  this.status.putAll(src.status);
+  this.topologyResources.putAll(src.topologyResources);
+  this.blackListedHosts.addAll(src.blackListedHosts);
+}

@@ -1,0 +1,35 @@
+{
+  HBMessage response=null;
+  HBMessageData data=m.get_data();
+switch (m.get_type()) {
+case CREATE_PATH:
+    response=createPath(data.get_path());
+  break;
+case EXISTS:
+response=pathExists(data.get_path(),authenticated);
+break;
+case SEND_PULSE:
+response=sendPulse(data.get_pulse());
+break;
+case GET_ALL_PULSE_FOR_PATH:
+response=getAllPulseForPath(data.get_path(),authenticated);
+break;
+case GET_ALL_NODES_FOR_PATH:
+response=getAllNodesForPath(data.get_path(),authenticated);
+break;
+case GET_PULSE:
+response=getPulse(data.get_path(),authenticated);
+break;
+case DELETE_PATH:
+response=deletePath(data.get_path());
+break;
+case DELETE_PULSE_ID:
+response=deletePulseId(data.get_path());
+break;
+default :
+LOG.info("Got Unexpected Type: {}",m.get_type());
+break;
+}
+if (response != null) response.set_message_id(m.get_message_id());
+return response;
+}

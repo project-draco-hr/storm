@@ -1,0 +1,11 @@
+{
+  projectionValidation(inputFields);
+  windowConfig.validate();
+  Fields fields=addTriggerField(functionFields);
+  Stream stream=_topology.addSourcedNode(this,new ProcessorNode(_topology.getUniqueStreamId(),_name,fields,fields,new WindowTridentProcessor(windowConfig,_topology.getUniqueWindowId(),windowStoreFactory,inputFields,aggregator,storeTuplesInStore)));
+  Stream effectiveStream=stream.project(functionFields);
+  StateFactory stateFactory=new WindowsStateFactory();
+  StateUpdater stateUpdater=new WindowsStateUpdater(windowStoreFactory);
+  stream.partitionPersist(stateFactory,new Fields(WindowTridentProcessor.TRIGGER_FIELD_NAME),stateUpdater,new Fields());
+  return effectiveStream;
+}

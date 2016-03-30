@@ -1,7 +1,7 @@
 {
   Double res=0.0;
   for (  String node : cluster) {
-    res+=_availNodes.get(this.NodeHostnameToId(node)).getAvailableMemoryResources() + _availNodes.get(this.NodeHostnameToId(node)).getAvailableCpuResources();
+    res+=_nodes.getNodeById(this.NodeHostnameToId(node)).getAvailableMemoryResources() + _nodes.getNodeById(this.NodeHostnameToId(node)).getAvailableCpuResources();
   }
   return res;
 }

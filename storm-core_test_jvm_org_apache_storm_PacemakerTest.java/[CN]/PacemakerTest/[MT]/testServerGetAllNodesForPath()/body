@@ -1,0 +1,33 @@
+{
+  Pacemaker handler=new Pacemaker(new ConcurrentHashMap());
+  makeNode(handler,"/some-root-path/foo");
+  makeNode(handler,"/some-root-path/bar");
+  makeNode(handler,"/some-root-path/baz");
+  makeNode(handler,"/some-root-path/boo");
+  messageWithRandId(HBServerMessageType.GET_ALL_NODES_FOR_PATH,HBMessageData.path("/some-root-path"));
+  HBMessage badResponse=handler.handleMessage(hbMessage,false);
+  HBMessage goodResponse=handler.handleMessage(hbMessage,true);
+  List<String> pulseIds=goodResponse.get_data().get_nodes().get_pulseIds();
+  Assert.assertEquals(mid,badResponse.get_message_id());
+  Assert.assertEquals(HBServerMessageType.NOT_AUTHORIZED,badResponse.get_type());
+  Assert.assertEquals(mid,goodResponse.get_message_id());
+  Assert.assertEquals(HBServerMessageType.GET_ALL_NODES_FOR_PATH_RESPONSE,goodResponse.get_type());
+  Assert.assertTrue(pulseIds.contains("foo"));
+  Assert.assertTrue(pulseIds.contains("bar"));
+  Assert.assertTrue(pulseIds.contains("baz"));
+  Assert.assertTrue(pulseIds.contains("boo"));
+  makeNode(handler,"/some/deeper/path/foo");
+  makeNode(handler,"/some/deeper/path/bar");
+  makeNode(handler,"/some/deeper/path/baz");
+  messageWithRandId(HBServerMessageType.GET_ALL_NODES_FOR_PATH,HBMessageData.path("/some/deeper/path"));
+  badResponse=handler.handleMessage(hbMessage,false);
+  goodResponse=handler.handleMessage(hbMessage,true);
+  pulseIds=goodResponse.get_data().get_nodes().get_pulseIds();
+  Assert.assertEquals(mid,badResponse.get_message_id());
+  Assert.assertEquals(HBServerMessageType.NOT_AUTHORIZED,badResponse.get_type());
+  Assert.assertEquals(mid,goodResponse.get_message_id());
+  Assert.assertEquals(HBServerMessageType.GET_ALL_NODES_FOR_PATH_RESPONSE,goodResponse.get_type());
+  Assert.assertTrue(pulseIds.contains("foo"));
+  Assert.assertTrue(pulseIds.contains("bar"));
+  Assert.assertTrue(pulseIds.contains("baz"));
+}

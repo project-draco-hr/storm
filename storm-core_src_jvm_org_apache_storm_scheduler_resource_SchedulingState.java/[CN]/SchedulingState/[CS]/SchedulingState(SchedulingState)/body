@@ -1,0 +1,3 @@
+{
+  this(src.userMap,src.cluster,src.topologies,src.conf);
+}

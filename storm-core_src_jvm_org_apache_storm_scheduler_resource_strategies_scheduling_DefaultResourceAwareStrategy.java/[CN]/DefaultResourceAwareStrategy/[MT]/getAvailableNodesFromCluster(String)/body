@@ -1,7 +1,7 @@
 {
-  List<NodeDetails> retList=new ArrayList<>();
+  List<RAS_Node> retList=new ArrayList<>();
   for (  String node_id : _clusterInfo.get(clus)) {
-    retList.add(_availNodes.get(this.NodeHostnameToId(node_id)));
+    retList.add(_nodes.getNodeById(this.NodeHostnameToId(node_id)));
   }
   return retList;
 }

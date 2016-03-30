@@ -1,0 +1,10 @@
+{
+  for (  HTable htable : htables) {
+    try {
+      htable.close();
+    }
+ catch (    IOException e) {
+      LOG.error(e.getMessage(),e);
+    }
+  }
+}
