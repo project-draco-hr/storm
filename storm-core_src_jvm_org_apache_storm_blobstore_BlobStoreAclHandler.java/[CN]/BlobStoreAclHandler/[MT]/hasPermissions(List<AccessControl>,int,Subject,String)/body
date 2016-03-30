@@ -1,4 +1,7 @@
 {
+  if (!doAclValidation) {
+    return;
+  }
   Set<String> user=constructUserFromPrincipals(who);
   LOG.debug("user {}",user);
   if (checkForValidUsers(who,mask)) {
