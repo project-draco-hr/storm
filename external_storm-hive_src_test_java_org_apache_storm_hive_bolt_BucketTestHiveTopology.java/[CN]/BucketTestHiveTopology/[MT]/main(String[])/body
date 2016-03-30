@@ -1,0 +1,43 @@
+{
+  if ((args == null) || (args.length < 7)) {
+    System.out.println("Usage: BucketTestHiveTopology metastoreURI " + "dbName tableName dataFileLocation hiveBatchSize " + "hiveTickTupl]eIntervalSecs workers  [topologyNamey] [keytab file]"+ " [principal name] ");
+    System.exit(1);
+  }
+  String metaStoreURI=args[0];
+  String dbName=args[1];
+  String tblName=args[2];
+  String sourceFileLocation=args[3];
+  Integer hiveBatchSize=Integer.parseInt(args[4]);
+  Integer hiveTickTupleIntervalSecs=Integer.parseInt(args[5]);
+  Integer workers=Integer.parseInt(args[6]);
+  String[] colNames={"ss_sold_date_sk","ss_sold_time_sk","ss_item_sk","ss_customer_sk","ss_cdemo_sk","ss_hdemo_sk","ss_addr_sk","ss_store_sk","ss_promo_sk","ss_ticket_number","ss_quantity","ss_wholesale_cost","ss_list_price","ss_sales_price","ss_ext_discount_amt","ss_ext_sales_price","ss_ext_wholesale_cost","ss_ext_list_price","ss_ext_tax","ss_coupon_amt","ss_net_paid","ss_net_paid_inc_tax","ss_net_profit"};
+  Config config=new Config();
+  config.setNumWorkers(workers);
+  UserDataSpout spout=new UserDataSpout().withDataFile(sourceFileLocation);
+  DelimitedRecordHiveMapper mapper=new DelimitedRecordHiveMapper().withColumnFields(new Fields(colNames)).withTimeAsPartitionField("yyyy/MM/dd");
+  HiveOptions hiveOptions;
+  hiveOptions=new HiveOptions(metaStoreURI,dbName,tblName,mapper).withTxnsPerBatch(10).withBatchSize(hiveBatchSize);
+  if (hiveTickTupleIntervalSecs > 0) {
+    hiveOptions.withTickTupleInterval(hiveTickTupleIntervalSecs);
+  }
+  if (args.length == 10) {
+    hiveOptions.withKerberosKeytab(args[8]).withKerberosPrincipal(args[9]);
+  }
+  HiveBolt hiveBolt=new HiveBolt(hiveOptions);
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(USER_SPOUT_ID,spout,1);
+  builder.setBolt(BOLT_ID,hiveBolt,14).shuffleGrouping(USER_SPOUT_ID);
+  if (args.length == 6) {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology(TOPOLOGY_NAME,config,builder.createTopology());
+    waitForSeconds(20);
+    cluster.killTopology(TOPOLOGY_NAME);
+    System.out.println("cluster begin to shutdown");
+    cluster.shutdown();
+    System.out.println("cluster shutdown");
+    System.exit(0);
+  }
+ else {
+    StormSubmitter.submitTopology(args[7],config,builder.createTopology());
+  }
+}

@@ -1,0 +1,7 @@
+{
+  HBPulse hbPulse=new HBPulse();
+  hbPulse.set_id(path);
+  hbPulse.set_details(Utils.javaSerialize("nothing"));
+  HBMessage message=new HBMessage(HBServerMessageType.SEND_PULSE,HBMessageData.pulse(hbPulse));
+  return handler.handleMessage(message,true);
+}

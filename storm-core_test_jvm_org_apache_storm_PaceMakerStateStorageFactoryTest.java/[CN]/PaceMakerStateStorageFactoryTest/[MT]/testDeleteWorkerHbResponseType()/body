@@ -1,0 +1,4 @@
+{
+  createPaceMakerStateStorage(HBServerMessageType.DELETE_PATH,null);
+  stateStorage.delete_worker_hb("/foo/bar");
+}

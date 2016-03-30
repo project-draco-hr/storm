@@ -1,0 +1,23 @@
+{
+  String line;
+  try {
+    if ((line=br.readLine()) != null) {
+      System.out.println("*********" + line);
+      String[] values=line.split("\\|",-1);
+      values=Arrays.copyOfRange(values,0,this.outputFields.length);
+      Values tupleValues=new Values(values);
+      UUID msgId=UUID.randomUUID();
+      this.pending.put(msgId,tupleValues);
+      this.collector.emit(tupleValues,msgId);
+      count++;
+      total++;
+      if (count > 1000) {
+        count=0;
+        System.out.println("Pending count: " + this.pending.size() + ", total: "+ this.total);
+      }
+    }
+  }
+ catch (  IOException ex) {
+    ex.printStackTrace();
+  }
+}

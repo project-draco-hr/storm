@@ -1,0 +1,4 @@
+{
+  createPaceMakerStateStorage(HBServerMessageType.GET_PULSE_RESPONSE,null);
+  stateStorage.get_worker_hb("/foo",false);
+}

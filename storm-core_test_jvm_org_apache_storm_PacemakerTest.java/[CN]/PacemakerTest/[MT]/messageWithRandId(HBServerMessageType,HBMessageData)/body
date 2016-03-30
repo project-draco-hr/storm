@@ -1,0 +1,5 @@
+{
+  mid=random.nextInt();
+  hbMessage=new HBMessage(type,data);
+  hbMessage.set_message_id(mid);
+}

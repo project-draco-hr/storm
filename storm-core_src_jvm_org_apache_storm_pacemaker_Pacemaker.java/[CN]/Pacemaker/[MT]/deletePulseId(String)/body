@@ -1,0 +1,5 @@
+{
+  LOG.debug("Deleting Pulse for id [ {} ].",path);
+  heartbeats.remove(path);
+  return new HBMessage(HBServerMessageType.DELETE_PULSE_ID_RESPONSE,null);
+}

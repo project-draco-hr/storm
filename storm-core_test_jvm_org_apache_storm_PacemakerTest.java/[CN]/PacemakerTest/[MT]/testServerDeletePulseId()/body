@@ -1,0 +1,18 @@
+{
+  Pacemaker handler=new Pacemaker(new ConcurrentHashMap());
+  makeNode(handler,"/some-root/DELETE_PULSE_ID/foo");
+  makeNode(handler,"/some-root/DELETE_PULSE_ID/bar");
+  makeNode(handler,"/some-root/DELETE_PULSE_ID/baz");
+  makeNode(handler,"/some-root/DELETE_PULSE_ID/boo");
+  messageWithRandId(HBServerMessageType.DELETE_PULSE_ID,HBMessageData.path("/some-root/DELETE_PULSE_ID/foo"));
+  HBMessage response=handler.handleMessage(hbMessage,true);
+  Assert.assertEquals(mid,response.get_message_id());
+  Assert.assertEquals(HBServerMessageType.DELETE_PULSE_ID_RESPONSE,response.get_type());
+  Assert.assertNull(response.get_data());
+  messageWithRandId(HBServerMessageType.GET_ALL_NODES_FOR_PATH,HBMessageData.path("/some-root/DELETE_PULSE_ID"));
+  response=handler.handleMessage(hbMessage,true);
+  List<String> pulseIds=response.get_data().get_nodes().get_pulseIds();
+  Assert.assertEquals(mid,response.get_message_id());
+  Assert.assertEquals(HBServerMessageType.GET_ALL_NODES_FOR_PATH_RESPONSE,response.get_type());
+  Assert.assertFalse(pulseIds.contains("foo"));
+}

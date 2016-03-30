@@ -1,0 +1,4 @@
+{
+  createPaceMakerStateStorage(HBServerMessageType.SEND_PULSE,null);
+  stateStorage.set_worker_hb("/foo",Utils.javaSerialize("data"),null);
+}

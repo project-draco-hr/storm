@@ -1,0 +1,4 @@
+{
+  createPaceMakerStateStorage(HBServerMessageType.DELETE_PATH,null);
+  stateStorage.get_worker_hb_children("/foo",false);
+}

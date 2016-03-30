@@ -1,0 +1,8 @@
+{
+  if (authenticated) {
+    return new HBMessage(HBServerMessageType.GET_ALL_PULSE_FOR_PATH_RESPONSE,null);
+  }
+ else {
+    return notAuthorized();
+  }
+}

@@ -1,3 +1,3 @@
 {
-  return this.userMap.get(user);
+  return this.schedulingState.userMap.get(user);
 }

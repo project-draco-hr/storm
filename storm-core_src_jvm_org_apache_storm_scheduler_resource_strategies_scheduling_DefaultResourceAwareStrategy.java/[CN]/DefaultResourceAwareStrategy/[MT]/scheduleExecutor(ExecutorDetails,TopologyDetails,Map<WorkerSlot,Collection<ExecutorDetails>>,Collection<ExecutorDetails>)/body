@@ -1,7 +1,7 @@
 {
   WorkerSlot targetSlot=this.findWorkerForExec(exec,td,schedulerAssignmentMap);
   if (targetSlot != null) {
-    NodeDetails targetNode=this.idToNode(targetSlot.getNodeId());
+    RAS_Node targetNode=this.idToNode(targetSlot.getNodeId());
     if (!schedulerAssignmentMap.containsKey(targetSlot)) {
       schedulerAssignmentMap.put(targetSlot,new LinkedList<ExecutorDetails>());
     }

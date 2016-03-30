@@ -1,0 +1,12 @@
+{
+  HBMessage response=null;
+  if (authenticated) {
+    boolean itDoes=heartbeats.containsKey(path);
+    LOG.debug("Checking if path [ {} ] exists... {} .",path,itDoes);
+    response=new HBMessage(HBServerMessageType.EXISTS_RESPONSE,HBMessageData.boolval(itDoes));
+  }
+ else {
+    response=notAuthorized();
+  }
+  return response;
+}
