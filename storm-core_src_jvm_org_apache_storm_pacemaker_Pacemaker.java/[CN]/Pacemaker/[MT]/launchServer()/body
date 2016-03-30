@@ -1,0 +1,4 @@
+{
+  LOG.info("Starting pacemaker server for storm version '{}",VersionInfo.getVersion());
+  return new PacemakerServer(this,conf);
+}
