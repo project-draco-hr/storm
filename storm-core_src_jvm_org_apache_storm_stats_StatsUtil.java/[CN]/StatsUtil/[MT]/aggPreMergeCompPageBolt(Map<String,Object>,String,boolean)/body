@@ -23,13 +23,13 @@
   Map sid2emitted=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,EMITTED),TO_STRING).get(window);
   Map sid2transferred=(Map)windowSetConverter(getMapByKey(stat2win2sid2num,TRANSFERRED),TO_STRING).get(window);
   if (sid2emitted != null) {
-    putKV(outputStats,EMITTED,filterSysStreams(sid2emitted,includeSys));
+    putKV(outputStats,EMITTED,filterSysStreams2Stat(sid2emitted,includeSys));
   }
  else {
     putKV(outputStats,EMITTED,new HashMap());
   }
   if (sid2transferred != null) {
-    putKV(outputStats,TRANSFERRED,filterSysStreams(sid2transferred,includeSys));
+    putKV(outputStats,TRANSFERRED,filterSysStreams2Stat(sid2transferred,includeSys));
   }
  else {
     putKV(outputStats,TRANSFERRED,new HashMap());
