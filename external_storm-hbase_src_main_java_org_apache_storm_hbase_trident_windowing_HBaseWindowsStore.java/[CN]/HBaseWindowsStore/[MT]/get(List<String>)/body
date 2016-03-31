@@ -12,7 +12,6 @@
  catch (  IOException e) {
     throw new RuntimeException(e);
   }
-  Kryo kryo=new Kryo();
   List<Object> values=new ArrayList<>();
   for (int i=0; i < results.length; i++) {
     Result result=results[i];
@@ -20,8 +19,7 @@
       LOG.error("Got empty result for key [{}]",keys.get(i));
       throw new RuntimeException("Received empty result for key: " + keys.get(i));
     }
-    Input input=new Input(result.getValue(family,qualifier));
-    Object resultObject=kryo.readClassAndObject(input);
+    Object resultObject=windowKryoSerializer().deserialize(result.getValue(family,qualifier));
     values.add(resultObject);
   }
   return values;
