@@ -1,5 +1,5 @@
 {
-  LOG.info("Shutting down supervisor{}",supervisorData.getSupervisorId());
+  LOG.info("Shutting down supervisor {}",supervisorData.getSupervisorId());
   supervisorData.setActive(false);
   try {
     supervisorData.getHeartbeatTimer().close();

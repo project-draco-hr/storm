@@ -2,16 +2,22 @@
   String tmproot=ConfigUtils.supervisorTmpDir(conf) + Utils.FILE_PATH_SEPARATOR + Utils.uuid();
   String stormroot=ConfigUtils.supervisorStormDistRoot(conf,stormId);
   BlobStore blobStore=Utils.getNimbusBlobStore(conf,masterCodeDir,null);
+  FileOutputStream codeOutStream=null;
+  FileOutputStream confOutStream=null;
   try {
     FileUtils.forceMkdir(new File(tmproot));
     String stormCodeKey=ConfigUtils.masterStormCodeKey(stormId);
     String stormConfKey=ConfigUtils.masterStormConfKey(stormId);
     String codePath=ConfigUtils.supervisorStormCodePath(tmproot);
     String confPath=ConfigUtils.supervisorStormConfPath(tmproot);
-    blobStore.readBlobTo(stormCodeKey,new FileOutputStream(codePath),null);
-    blobStore.readBlobTo(stormConfKey,new FileOutputStream(confPath),null);
+    codeOutStream=new FileOutputStream(codePath);
+    blobStore.readBlobTo(stormCodeKey,codeOutStream,null);
+    confOutStream=new FileOutputStream(confPath);
+    blobStore.readBlobTo(stormConfKey,confOutStream,null);
   }
   finally {
+    if (codeOutStream != null)     codeOutStream.close();
+    if (confOutStream != null)     codeOutStream.close();
     blobStore.shutdown();
   }
   FileUtils.moveDirectory(new File(tmproot),new File(stormroot));

@@ -39,7 +39,7 @@
   this.blobUpdateTimer=new StormTimer("blob-update-timer",new DefaultUncaughtExceptionHandler());
   this.assignmentVersions=new AtomicReference<Map<String,Map<String,Object>>>(new HashMap<String,Map<String,Object>>());
   this.syncRetry=new AtomicInteger(0);
-  this.stormIdToProfileActions=new AtomicReference<Map<String,List<ProfileRequest>>>(new HashMap<String,List<ProfileRequest>>());
+  this.stormIdToProfilerActions=new AtomicReference<Map<String,List<ProfileRequest>>>(new HashMap<String,List<ProfileRequest>>());
   this.workerManager=Utils.newInstance((String)conf.get(Config.STORM_SUPERVISOR_WORKER_MANAGER_PLUGIN));
   this.workerManager.prepareWorker(conf,localizer);
 }

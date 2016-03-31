@@ -7,9 +7,7 @@
  else   if (object instanceof String) {
     topoClasspath.add((String)object);
   }
- else {
-    LOG.error("topology specific classpath is invaild");
-  }
+  LOG.debug("topology specific classpath is {}",object);
   String classPath=Utils.workerClasspath();
   String classAddPath=Utils.addToClasspath(classPath,Arrays.asList(stormJar));
   return Utils.addToClasspath(classAddPath,topoClasspath);

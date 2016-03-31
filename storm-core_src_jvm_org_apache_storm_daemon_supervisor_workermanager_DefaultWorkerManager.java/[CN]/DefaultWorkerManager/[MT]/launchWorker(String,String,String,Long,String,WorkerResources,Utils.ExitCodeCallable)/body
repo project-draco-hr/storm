@@ -156,5 +156,4 @@
  catch (  IOException e) {
     throw Utils.wrapInRuntime(e);
   }
-  return null;
 }

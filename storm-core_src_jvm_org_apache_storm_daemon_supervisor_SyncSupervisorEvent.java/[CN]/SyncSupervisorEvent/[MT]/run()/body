@@ -20,17 +20,17 @@
         assignedStormIds.add(entry.getValue().get_topology_id());
       }
     }
-    Set<String> srashStormIds=verifyDownloadedFiles(conf,supervisorData.getLocalizer(),assignedStormIds,allDownloadedTopologyIds);
+    Set<String> crashedStormIds=verifyDownloadedFiles(conf,supervisorData.getLocalizer(),assignedStormIds,allDownloadedTopologyIds);
     Set<String> downloadedStormIds=new HashSet<>();
     downloadedStormIds.addAll(allDownloadedTopologyIds);
-    downloadedStormIds.removeAll(srashStormIds);
+    downloadedStormIds.removeAll(crashedStormIds);
     LOG.debug("Synchronizing supervisor");
     LOG.debug("Storm code map: {}",stormcodeMap);
     LOG.debug("All assignment: {}",allAssignment);
     LOG.debug("New assignment: {}",newAssignment);
     LOG.debug("Assigned Storm Ids {}",assignedStormIds);
     LOG.debug("All Downloaded Ids {}",allDownloadedTopologyIds);
-    LOG.debug("Checked Downloaded Ids {}",srashStormIds);
+    LOG.debug("Checked Downloaded Ids {}",crashedStormIds);
     LOG.debug("Downloaded Ids {}",downloadedStormIds);
     LOG.debug("Storm Ids Profiler Actions {}",stormIdToProfilerActions);
     for (    Map.Entry<String,String> entry : stormcodeMap.entrySet()) {
@@ -65,7 +65,7 @@
     supervisorData.getiSupervisor().assigned(newAssignment.keySet());
     localState.setLocalAssignmentsMap(newAssignment);
     supervisorData.setAssignmentVersions(assignmentsSnapshot);
-    supervisorData.setStormIdToProfileActions(stormIdToProfilerActions);
+    supervisorData.setStormIdToProfilerActions(stormIdToProfilerActions);
     Map<Long,LocalAssignment> convertNewAssignment=new HashMap<>();
     for (    Map.Entry<Integer,LocalAssignment> entry : newAssignment.entrySet()) {
       convertNewAssignment.put(entry.getKey().longValue(),entry.getValue());

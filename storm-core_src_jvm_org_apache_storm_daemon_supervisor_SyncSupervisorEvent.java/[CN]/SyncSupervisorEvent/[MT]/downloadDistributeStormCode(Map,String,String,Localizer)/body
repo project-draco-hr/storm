@@ -23,11 +23,15 @@
   blobStore.shutdown();
   Utils.extractDirFromJar(jarPath,ConfigUtils.RESOURCES_SUBDIR,tmproot);
   downloadBlobsForTopology(conf,confPath,localizer,tmproot);
-  if (IsDownloadBlobsForTopologySucceed(confPath,tmproot)) {
+  if (didDownloadBlobsForTopologySucceed(confPath,tmproot)) {
     LOG.info("Successfully downloaded blob resources for storm-id {}",stormId);
-    FileUtils.forceMkdir(new File(stormroot));
-    Files.move(new File(tmproot).toPath(),new File(stormroot).toPath(),StandardCopyOption.ATOMIC_MOVE);
-    SupervisorUtils.setupStormCodeDir(conf,ConfigUtils.readSupervisorStormConf(conf,stormId),stormroot);
+    if (Utils.isOnWindows()) {
+      FileUtils.moveDirectory(new File(tmproot),new File(stormroot));
+    }
+ else {
+      FileUtils.forceMkdir(new File(stormroot));
+      Files.move(new File(tmproot).toPath(),new File(stormroot).toPath(),StandardCopyOption.ATOMIC_MOVE);
+    }
   }
  else {
     LOG.info("Failed to download blob resources for storm-id ",stormId);

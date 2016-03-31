@@ -17,5 +17,5 @@
  else   if (stop && action == ProfileAction.JPROFILE_STOP) {
     return jprofileStop(workerPid,targetDir);
   }
-  return null;
+  return Lists.newArrayList();
 }

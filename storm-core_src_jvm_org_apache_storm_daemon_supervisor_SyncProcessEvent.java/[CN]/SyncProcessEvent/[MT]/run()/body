@@ -22,7 +22,6 @@
     for (    Integer port : reassignExecutors.keySet()) {
       newWorkerIds.put(port,Utils.uuid());
     }
-    LOG.debug("Syncing processes");
     LOG.debug("Assigned executors: {}",assignedExecutors);
     LOG.debug("Allocated: {}",localWorkerStats);
     for (    Map.Entry<String,StateHeartbeat> entry : localWorkerStats.entrySet()) {

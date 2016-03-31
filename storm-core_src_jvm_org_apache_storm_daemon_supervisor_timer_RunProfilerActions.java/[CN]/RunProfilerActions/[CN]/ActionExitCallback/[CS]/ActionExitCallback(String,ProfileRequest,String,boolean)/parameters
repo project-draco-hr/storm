@@ -1,3 +1,4 @@
 String stormId
 ProfileRequest profileRequest
 String logPrefix
+boolean stop

@@ -1,0 +1,10 @@
+{
+  if (StringUtils.isNotBlank(string)) {
+    string=string.replace("%ID%",String.valueOf(port));
+    string=string.replace("%WORKER-ID%",workerId);
+    string=string.replace("%TOPOLOGY-ID%",stormId);
+    string=string.replace("%WORKER-PORT%",String.valueOf(port));
+    string=string.replace("%HEAP-MEM%",String.valueOf(memOnheap));
+  }
+  return string;
+}

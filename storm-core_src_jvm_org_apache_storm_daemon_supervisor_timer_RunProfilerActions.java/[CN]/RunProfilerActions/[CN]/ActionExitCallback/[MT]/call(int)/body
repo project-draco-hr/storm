@@ -1,7 +1,7 @@
 {
   LOG.info("{} profile-action exited for {}",logPrefix,exitCode);
   try {
-    stormClusterState.deleteTopologyProfileRequests(stormId,profileRequest);
+    if (stop)     stormClusterState.deleteTopologyProfileRequests(stormId,profileRequest);
   }
  catch (  Exception e) {
     LOG.warn("failed delete profileRequest: " + profileRequest);
