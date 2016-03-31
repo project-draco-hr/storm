@@ -1,0 +1,18 @@
+{
+  this.taskId=taskId;
+  this.executorData=executorData;
+  this.workerData=(Map)executorData.get("worker");
+  this.stormConf=(Map)executorData.get("storm-conf");
+  this.componentId=(String)executorData.get("component-id");
+  this.streamComponentToGrouper=(Map<String,Map<String,LoadAwareCustomStreamGrouping>>)executorData.get("stream->component->grouper");
+  this.executorStats=(CommonStats)executorData.get("stats");
+  this.builtInMetrics=BuiltinMetricsUtil.mkData((String)executorData.get("type"),this.executorStats);
+  this.workerTopologyContext=(WorkerTopologyContext)executorData.get("worker-context");
+  this.emitSampler=ConfigUtils.mkStatsSampler(stormConf);
+  this.loadMapping=(LoadMapping)workerData.get("load-mapping");
+  this.systemTopologyContext=mkTopologyContext((StormTopology)workerData.get("system-topology"));
+  this.userTopologyContext=mkTopologyContext((StormTopology)workerData.get("topology"));
+  this.taskObject=mkTaskObject();
+  this.debug=stormConf.containsKey(Config.TOPOLOGY_DEBUG) && (Boolean)stormConf.get(Config.TOPOLOGY_DEBUG);
+  this.addTaskHooks();
+}

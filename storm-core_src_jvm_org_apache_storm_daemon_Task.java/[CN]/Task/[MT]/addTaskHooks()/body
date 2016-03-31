@@ -1,0 +1,13 @@
+{
+  List<String> hooksClassList=(List<String>)stormConf.get(Config.TOPOLOGY_AUTO_TASK_HOOKS);
+  if (null != hooksClassList) {
+    for (    String hookClass : hooksClassList) {
+      try {
+        userTopologyContext.addTaskHook(((ITaskHook)Class.forName(hookClass).newInstance()));
+      }
+ catch (      InstantiationException|IllegalAccessException|ClassNotFoundException e) {
+        throw new RuntimeException("Failed to add hook: " + hookClass,e);
+      }
+    }
+  }
+}
