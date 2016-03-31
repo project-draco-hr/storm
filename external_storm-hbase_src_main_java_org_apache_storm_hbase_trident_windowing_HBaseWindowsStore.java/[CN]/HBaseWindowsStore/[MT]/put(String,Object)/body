@@ -5,7 +5,10 @@
     throw new IllegalArgumentException("Invalid value of null with key: " + key);
   }
   Put put=new Put(effectiveKey(key));
-  put.addColumn(family,ByteBuffer.wrap(qualifier),System.currentTimeMillis(),windowKryoSerializer().serializeToByteBuffer(value));
+  Kryo kryo=new Kryo();
+  Output output=new Output(new ByteArrayOutputStream());
+  kryo.writeClassAndObject(output,value);
+  put.addColumn(family,ByteBuffer.wrap(qualifier),System.currentTimeMillis(),ByteBuffer.wrap(output.getBuffer(),0,output.position()));
   try {
     htable().put(put);
   }

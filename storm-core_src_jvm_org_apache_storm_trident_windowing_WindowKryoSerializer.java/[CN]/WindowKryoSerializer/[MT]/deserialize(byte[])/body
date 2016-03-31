@@ -1,4 +1,0 @@
-{
-  input.setBuffer(buff);
-  return kryo.readClassAndObject(input);
-}

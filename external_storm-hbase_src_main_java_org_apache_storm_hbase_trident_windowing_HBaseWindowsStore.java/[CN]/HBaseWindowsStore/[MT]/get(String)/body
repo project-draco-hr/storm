@@ -12,5 +12,8 @@
   if (result.isEmpty()) {
     return null;
   }
-  return windowKryoSerializer().deserialize(result.getValue(family,qualifier));
+  Kryo kryo=new Kryo();
+  Input input=new Input(result.getValue(family,qualifier));
+  Object resultObject=kryo.readClassAndObject(input);
+  return resultObject;
 }

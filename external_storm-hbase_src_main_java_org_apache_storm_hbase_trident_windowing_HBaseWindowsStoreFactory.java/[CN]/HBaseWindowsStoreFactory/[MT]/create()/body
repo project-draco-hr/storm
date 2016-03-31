@@ -5,5 +5,5 @@
       configuration.set(entry.getKey(),entry.getValue().toString());
     }
   }
-  return new HBaseWindowsStore(stormConf,configuration,tableName,family,qualifier);
+  return new HBaseWindowsStore(configuration,tableName,family,qualifier);
 }

@@ -1,4 +1,3 @@
-Map stormConf
 Configuration config
 String tableName
 byte[] family

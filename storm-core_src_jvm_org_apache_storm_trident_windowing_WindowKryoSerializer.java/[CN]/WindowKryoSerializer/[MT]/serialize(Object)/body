@@ -1,5 +1,0 @@
-{
-  output.clear();
-  kryo.writeClassAndObject(output,obj);
-  return output.toBytes();
-}

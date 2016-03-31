@@ -1,5 +1,0 @@
-{
-  output.clear();
-  kryo.writeClassAndObject(output,obj);
-  return ByteBuffer.wrap(output.getBuffer(),0,output.position());
-}
