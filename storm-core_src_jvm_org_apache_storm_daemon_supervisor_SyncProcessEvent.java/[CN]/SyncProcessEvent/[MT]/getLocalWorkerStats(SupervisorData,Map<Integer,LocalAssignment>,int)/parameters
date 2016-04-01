@@ -1,0 +1,3 @@
+SupervisorData supervisorData
+Map<Integer,LocalAssignment> assignedExecutors
+int now

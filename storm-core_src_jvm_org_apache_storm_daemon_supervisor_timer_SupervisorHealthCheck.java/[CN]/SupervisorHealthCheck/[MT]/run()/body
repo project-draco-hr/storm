@@ -1,0 +1,8 @@
+{
+  Map conf=supervisorData.getConf();
+  IWorkerManager workerManager=supervisorData.getWorkerManager();
+  int healthCode=HealthCheck.healthCheck(conf);
+  if (healthCode != 0) {
+    SupervisorUtils.shutdownAllWorkers(conf,supervisorData.getSupervisorId(),supervisorData.getWorkerThreadPids(),supervisorData.getDeadWorkers(),workerManager);
+  }
+}

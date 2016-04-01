@@ -1,0 +1,21 @@
+{
+  if (action == ProfileAction.JMAP_DUMP) {
+    return jmapDumpCmd(workerPid,targetDir);
+  }
+ else   if (action == ProfileAction.JSTACK_DUMP) {
+    return jstackDumpCmd(workerPid,targetDir);
+  }
+ else   if (action == ProfileAction.JPROFILE_DUMP) {
+    return jprofileDump(workerPid,targetDir);
+  }
+ else   if (action == ProfileAction.JVM_RESTART) {
+    return jprofileJvmRestart(workerPid);
+  }
+ else   if (!stop && action == ProfileAction.JPROFILE_STOP) {
+    return jprofileStart(workerPid);
+  }
+ else   if (stop && action == ProfileAction.JPROFILE_STOP) {
+    return jprofileStop(workerPid,targetDir);
+  }
+  return Lists.newArrayList();
+}

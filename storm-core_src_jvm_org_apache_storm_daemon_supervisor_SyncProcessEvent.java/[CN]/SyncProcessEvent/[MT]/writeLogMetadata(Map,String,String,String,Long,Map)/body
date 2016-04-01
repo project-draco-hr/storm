@@ -1,0 +1,32 @@
+{
+  Map data=new HashMap();
+  data.put(Config.TOPOLOGY_SUBMITTER_USER,user);
+  data.put("worker-id",workerId);
+  Set<String> logsGroups=new HashSet<>();
+  if (stormconf.get(Config.LOGS_GROUPS) != null) {
+    List<String> groups=(List<String>)stormconf.get(Config.LOGS_GROUPS);
+    for (    String group : groups) {
+      logsGroups.add(group);
+    }
+  }
+  if (stormconf.get(Config.TOPOLOGY_GROUPS) != null) {
+    List<String> topGroups=(List<String>)stormconf.get(Config.TOPOLOGY_GROUPS);
+    logsGroups.addAll(topGroups);
+  }
+  data.put(Config.LOGS_GROUPS,logsGroups.toArray());
+  Set<String> logsUsers=new HashSet<>();
+  if (stormconf.get(Config.LOGS_USERS) != null) {
+    List<String> logUsers=(List<String>)stormconf.get(Config.LOGS_USERS);
+    for (    String logUser : logUsers) {
+      logsUsers.add(logUser);
+    }
+  }
+  if (stormconf.get(Config.TOPOLOGY_USERS) != null) {
+    List<String> topUsers=(List<String>)stormconf.get(Config.TOPOLOGY_USERS);
+    for (    String logUser : topUsers) {
+      logsUsers.add(logUser);
+    }
+  }
+  data.put(Config.LOGS_USERS,logsUsers.toArray());
+  writeLogMetadataToYamlFile(stormId,port,data,conf);
+}

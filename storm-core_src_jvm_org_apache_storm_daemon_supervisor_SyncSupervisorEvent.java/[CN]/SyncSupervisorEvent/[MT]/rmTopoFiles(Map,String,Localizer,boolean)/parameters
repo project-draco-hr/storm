@@ -1,0 +1,4 @@
+Map conf
+String stormId
+Localizer localizer
+boolean isrmBlobRefs

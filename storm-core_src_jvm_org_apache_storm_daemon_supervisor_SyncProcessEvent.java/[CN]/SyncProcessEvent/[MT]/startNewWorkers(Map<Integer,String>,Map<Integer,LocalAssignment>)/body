@@ -1,0 +1,32 @@
+{
+  Map<String,Integer> newValidWorkerIds=new HashMap<>();
+  Map conf=supervisorData.getConf();
+  String supervisorId=supervisorData.getSupervisorId();
+  String clusterMode=ConfigUtils.clusterMode(conf);
+  for (  Map.Entry<Integer,LocalAssignment> entry : reassignExecutors.entrySet()) {
+    Integer port=entry.getKey();
+    LocalAssignment assignment=entry.getValue();
+    String workerId=newWorkerIds.get(port);
+    String stormId=assignment.get_topology_id();
+    WorkerResources resources=assignment.get_resources();
+    if (SupervisorUtils.doRequiredTopoFilesExist(conf,stormId)) {
+      String pidsPath=ConfigUtils.workerPidsRoot(conf,workerId);
+      String hbPath=ConfigUtils.workerHeartbeatsRoot(conf,workerId);
+      LOG.info("Launching worker with assignment {} for this supervisor {} on port {} with id {}",assignment,supervisorData.getSupervisorId(),port,workerId);
+      FileUtils.forceMkdir(new File(pidsPath));
+      FileUtils.forceMkdir(new File(ConfigUtils.workerTmpRoot(conf,workerId)));
+      FileUtils.forceMkdir(new File(hbPath));
+      if (clusterMode.endsWith("distributed")) {
+        launchDistributedWorker(supervisorData.getWorkerManager(),conf,supervisorId,supervisorData.getAssignmentId(),stormId,port.longValue(),workerId,resources,supervisorData.getDeadWorkers());
+      }
+ else       if (clusterMode.endsWith("local")) {
+        launchLocalWorker(supervisorData,stormId,port.longValue(),workerId,resources);
+      }
+      newValidWorkerIds.put(workerId,port);
+    }
+ else {
+      LOG.info("Missing topology storm code, so can't launch worker with assignment {} for this supervisor {} on port {} with id {}",assignment,supervisorData.getSupervisorId(),port,workerId);
+    }
+  }
+  return newValidWorkerIds;
+}

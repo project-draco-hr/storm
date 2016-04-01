@@ -1,0 +1,20 @@
+{
+  Map<String,Map<String,Object>> updateAssignmentVersion=new HashMap<>();
+  for (  String stormId : stormIds) {
+    Integer recordedVersion=-1;
+    Integer version=stormClusterState.assignmentVersion(stormId,callback);
+    if (localAssignmentVersion.containsKey(stormId) && localAssignmentVersion.get(stormId) != null) {
+      recordedVersion=(Integer)localAssignmentVersion.get(stormId).get(IStateStorage.VERSION);
+    }
+    if (version == null) {
+    }
+ else     if (version == recordedVersion) {
+      updateAssignmentVersion.put(stormId,localAssignmentVersion.get(stormId));
+    }
+ else {
+      Map<String,Object> assignmentVersion=(Map<String,Object>)stormClusterState.assignmentInfoWithVersion(stormId,callback);
+      updateAssignmentVersion.put(stormId,assignmentVersion);
+    }
+  }
+  return updateAssignmentVersion;
+}

@@ -1,0 +1,11 @@
+{
+  String user=Utils.getFileOwner(path);
+  String logPreFix="rmr " + id;
+  List<String> commands=new ArrayList<>();
+  commands.add("rmr");
+  commands.add(path);
+  SupervisorUtils.processLauncherAndWait(conf,user,commands,null,logPreFix);
+  if (Utils.checkFileExists(path)) {
+    throw new RuntimeException(path + " was not deleted.");
+  }
+}

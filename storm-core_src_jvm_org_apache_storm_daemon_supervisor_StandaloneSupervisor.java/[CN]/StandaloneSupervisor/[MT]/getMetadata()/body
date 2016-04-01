@@ -1,0 +1,4 @@
+{
+  Object ports=conf.get(Config.SUPERVISOR_SLOTS_PORTS);
+  return ports;
+}

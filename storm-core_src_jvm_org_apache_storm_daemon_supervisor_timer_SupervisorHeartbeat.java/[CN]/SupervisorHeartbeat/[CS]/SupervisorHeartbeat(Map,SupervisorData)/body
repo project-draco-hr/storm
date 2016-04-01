@@ -1,0 +1,6 @@
+{
+  this.stormClusterState=supervisorData.getStormClusterState();
+  this.supervisorId=supervisorData.getSupervisorId();
+  this.supervisorData=supervisorData;
+  this.conf=conf;
+}

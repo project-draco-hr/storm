@@ -1,0 +1,15 @@
+{
+  try {
+    LocalState localState=new LocalState(schedulerLocalDir);
+    String supervisorId=localState.getSupervisorId();
+    if (supervisorId == null) {
+      supervisorId=generateSupervisorId();
+      localState.setSupervisorId(supervisorId);
+    }
+    this.conf=stormConf;
+    this.supervisorId=supervisorId;
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

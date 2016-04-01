@@ -1,0 +1,3 @@
+{
+  this.currAssignment.set(currAssignment);
+}

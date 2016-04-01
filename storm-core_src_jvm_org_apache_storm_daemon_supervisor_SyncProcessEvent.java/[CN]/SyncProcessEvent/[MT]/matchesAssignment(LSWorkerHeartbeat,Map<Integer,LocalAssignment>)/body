@@ -1,0 +1,15 @@
+{
+  LocalAssignment localAssignment=assignedExecutors.get(whb.get_port());
+  if (localAssignment == null || !localAssignment.get_topology_id().equals(whb.get_topology_id())) {
+    return false;
+  }
+  List<ExecutorInfo> executorInfos=new ArrayList<>();
+  executorInfos.addAll(whb.get_executors());
+  executorInfos.remove(SYSTEM_EXECUTOR_INFO);
+  List<ExecutorInfo> localExecuorInfos=localAssignment.get_executors();
+  if (localExecuorInfos.size() != executorInfos.size())   return false;
+  for (  ExecutorInfo executorInfo : localExecuorInfos) {
+    if (!localExecuorInfos.contains(executorInfo))     return false;
+  }
+  return true;
+}

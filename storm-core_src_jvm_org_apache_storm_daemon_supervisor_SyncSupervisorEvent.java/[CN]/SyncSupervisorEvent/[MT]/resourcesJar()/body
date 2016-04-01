@@ -1,0 +1,22 @@
+{
+  String path=Utils.currentClasspath();
+  if (path == null) {
+    return null;
+  }
+  String[] paths=path.split(File.pathSeparator);
+  List<String> jarPaths=new ArrayList<String>();
+  for (  String s : paths) {
+    if (s.endsWith(".jar")) {
+      jarPaths.add(s);
+    }
+  }
+  List<String> rtn=new ArrayList<String>();
+  int size=jarPaths.size();
+  for (int i=0; i < size; i++) {
+    if (Utils.zipDoesContainDir(jarPaths.get(i),ConfigUtils.RESOURCES_SUBDIR)) {
+      rtn.add(jarPaths.get(i));
+    }
+  }
+  if (rtn.size() == 0)   return null;
+  return rtn.get(0);
+}

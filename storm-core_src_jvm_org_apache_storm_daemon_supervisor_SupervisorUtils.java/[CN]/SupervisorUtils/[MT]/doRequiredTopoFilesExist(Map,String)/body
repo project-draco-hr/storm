@@ -1,0 +1,11 @@
+{
+  String stormroot=ConfigUtils.supervisorStormDistRoot(conf,stormId);
+  String stormjarpath=ConfigUtils.supervisorStormJarPath(stormroot);
+  String stormcodepath=ConfigUtils.supervisorStormCodePath(stormroot);
+  String stormconfpath=ConfigUtils.supervisorStormConfPath(stormroot);
+  if (!Utils.checkFileExists(stormroot))   return false;
+  if (!Utils.checkFileExists(stormcodepath))   return false;
+  if (!Utils.checkFileExists(stormconfpath))   return false;
+  if (ConfigUtils.isLocalMode(conf) || Utils.checkFileExists(stormjarpath))   return true;
+  return false;
+}

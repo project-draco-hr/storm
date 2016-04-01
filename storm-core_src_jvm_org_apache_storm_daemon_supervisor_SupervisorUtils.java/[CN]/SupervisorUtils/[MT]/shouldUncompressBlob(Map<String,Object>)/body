@@ -1,0 +1,3 @@
+{
+  return Utils.getBoolean(blobInfo.get("uncompress"),false);
+}

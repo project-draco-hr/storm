@@ -1,0 +1,10 @@
+{
+  try {
+    LocalState localState=ConfigUtils.workerState(conf,workerId);
+    return localState.getWorkerHeartBeat();
+  }
+ catch (  Exception e) {
+    LOG.warn("Failed to read local heartbeat for workerId : {},Ignoring exception.",workerId,e);
+    return null;
+  }
+}

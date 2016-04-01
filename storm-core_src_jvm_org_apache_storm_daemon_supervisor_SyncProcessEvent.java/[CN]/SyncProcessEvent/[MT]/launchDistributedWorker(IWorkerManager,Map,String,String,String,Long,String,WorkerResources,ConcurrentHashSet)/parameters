@@ -1,0 +1,9 @@
+IWorkerManager workerManager
+Map conf
+String supervisorId
+String assignmentId
+String stormId
+Long port
+String workerId
+WorkerResources resources
+ConcurrentHashSet deadWorkers

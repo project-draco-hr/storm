@@ -1,0 +1,3 @@
+SupervisorData supervisorData
+IWorkerManager workerManager
+String workerId

@@ -1,0 +1,15 @@
+{
+  Map stormConf=ConfigUtils.readSupervisorStormConf(conf,stormId);
+  Map<String,Map<String,Object>> blobstoreMap=(Map<String,Map<String,Object>>)stormConf.get(Config.TOPOLOGY_BLOBSTORE_MAP);
+  String user=(String)stormConf.get(Config.TOPOLOGY_SUBMITTER_USER);
+  List<LocalResource> localresources=SupervisorUtils.blobstoreMapToLocalresources(blobstoreMap);
+  try {
+    localizer.updateBlobs(localresources,user);
+  }
+ catch (  AuthorizationException authExp) {
+    LOG.error("AuthorizationException error",authExp);
+  }
+catch (  KeyNotFoundException knf) {
+    LOG.error("KeyNotFoundException error",knf);
+  }
+}

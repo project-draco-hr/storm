@@ -1,0 +1,5 @@
+{
+  this.eventManager=eventManager;
+  this.supervisorData=supervisorData;
+  this.processesEventManager=processesEventManager;
+}

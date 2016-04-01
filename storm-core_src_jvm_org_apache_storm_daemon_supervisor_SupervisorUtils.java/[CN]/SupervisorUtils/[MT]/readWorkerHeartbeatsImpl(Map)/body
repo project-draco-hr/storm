@@ -1,0 +1,9 @@
+{
+  Map<String,LSWorkerHeartbeat> workerHeartbeats=new HashMap<>();
+  Collection<String> workerIds=SupervisorUtils.supervisorWorkerIds(conf);
+  for (  String workerId : workerIds) {
+    LSWorkerHeartbeat whb=readWorkerHeartbeat(conf,workerId);
+    workerHeartbeats.put(workerId,whb);
+  }
+  return workerHeartbeats;
+}

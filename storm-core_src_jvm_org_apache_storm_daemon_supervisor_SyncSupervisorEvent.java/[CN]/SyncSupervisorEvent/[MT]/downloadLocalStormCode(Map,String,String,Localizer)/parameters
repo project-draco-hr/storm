@@ -1,0 +1,4 @@
+Map conf
+String stormId
+String masterCodeDir
+Localizer localizer

@@ -1,0 +1,4 @@
+ProfileAction action
+boolean stop
+String workerPid
+String targetDir

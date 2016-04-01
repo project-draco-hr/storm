@@ -1,0 +1,28 @@
+{
+  try {
+    if (resourceIsolationManager != null) {
+      resourceIsolationManager.releaseResourcesForWorker(workerId);
+    }
+    String workerRoot=ConfigUtils.workerRoot(conf,workerId);
+    if (Utils.checkFileExists(workerRoot)) {
+      if (runWorkerAsUser) {
+        SupervisorUtils.rmrAsUser(conf,workerId,workerRoot);
+      }
+ else {
+        Utils.forceDelete(ConfigUtils.workerHeartbeatsRoot(conf,workerId));
+        Utils.forceDelete(ConfigUtils.workerPidsRoot(conf,workerId));
+        Utils.forceDelete(ConfigUtils.workerTmpRoot(conf,workerId));
+        Utils.forceDelete(ConfigUtils.workerRoot(conf,workerId));
+      }
+      ConfigUtils.removeWorkerUserWSE(conf,workerId);
+    }
+    return true;
+  }
+ catch (  IOException e) {
+    LOG.warn("Failed to cleanup worker {}. Will retry later",workerId,e);
+  }
+catch (  RuntimeException e) {
+    LOG.warn("Failed to cleanup worker {}. Will retry later",workerId,e);
+  }
+  return false;
+}

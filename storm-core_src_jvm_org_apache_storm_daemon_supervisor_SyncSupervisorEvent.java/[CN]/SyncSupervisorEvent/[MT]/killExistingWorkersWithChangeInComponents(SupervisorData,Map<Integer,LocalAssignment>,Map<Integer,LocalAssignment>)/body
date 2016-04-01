@@ -1,0 +1,28 @@
+{
+  int now=Time.currentTimeSecs();
+  Map<String,StateHeartbeat> workerIdHbstate=syncProcesses.getLocalWorkerStats(supervisorData,existingAssignment,now);
+  Map<Integer,String> vaildPortToWorkerIds=new HashMap<>();
+  for (  Map.Entry<String,StateHeartbeat> entry : workerIdHbstate.entrySet()) {
+    String workerId=entry.getKey();
+    StateHeartbeat stateHeartbeat=entry.getValue();
+    if (stateHeartbeat != null && stateHeartbeat.getState() == State.VALID) {
+      vaildPortToWorkerIds.put(stateHeartbeat.getHeartbeat().get_port(),workerId);
+    }
+  }
+  Map<Integer,LocalAssignment> intersectAssignment=new HashMap<>();
+  for (  Map.Entry<Integer,LocalAssignment> entry : newAssignment.entrySet()) {
+    Integer port=entry.getKey();
+    if (existingAssignment.containsKey(port)) {
+      intersectAssignment.put(port,entry.getValue());
+    }
+  }
+  for (  Integer port : intersectAssignment.keySet()) {
+    List<ExecutorInfo> existExecutors=existingAssignment.get(port).get_executors();
+    List<ExecutorInfo> newExecutors=newAssignment.get(port).get_executors();
+    Set<ExecutorInfo> setExitExecutors=new HashSet<>(existExecutors);
+    Set<ExecutorInfo> setNewExecutors=new HashSet<>(newExecutors);
+    if (!setExitExecutors.equals(setNewExecutors)) {
+      syncProcesses.killWorker(supervisorData,supervisorData.getWorkerManager(),vaildPortToWorkerIds.get(port));
+    }
+  }
+}
