@@ -1,9 +1,0 @@
-{
-  return Files.newDirectoryStream(new File(dir).toPath(),new DirectoryStream.Filter<Path>(){
-    @Override public boolean accept(    Path path) throws IOException {
-      final String filePath=path.toAbsolutePath().toString();
-      return filePath.endsWith(FINISHED_VERSION_SUFFIX) && new File(filePath.substring(0,filePath.length() - FINISHED_VERSION_SUFFIX.length())).exists();
-    }
-  }
-);
-}
