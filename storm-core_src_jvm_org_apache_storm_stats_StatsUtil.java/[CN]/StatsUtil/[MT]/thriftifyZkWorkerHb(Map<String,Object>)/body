@@ -9,7 +9,9 @@
     for (    Map.Entry<List<Integer>,ExecutorStats> entry : executorStats.entrySet()) {
       List<Integer> executor=entry.getKey();
       ExecutorStats stats=entry.getValue();
-      convertedStats.put(new ExecutorInfo(executor.get(0),executor.get(1)),stats);
+      if (null != stats) {
+        convertedStats.put(new ExecutorInfo(executor.get(0),executor.get(1)),stats);
+      }
     }
   }
   ret.set_executor_stats(convertedStats);
