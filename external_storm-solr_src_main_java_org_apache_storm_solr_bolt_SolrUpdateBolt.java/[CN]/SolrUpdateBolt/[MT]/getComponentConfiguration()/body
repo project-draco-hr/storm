@@ -1,3 +1,6 @@
 {
+  if (solrConfig.getTickTupleInterval() > 0) {
+    this.tickTupleInterval=solrConfig.getTickTupleInterval();
+  }
   return TupleUtils.putTickFrequencyIntoComponentConfig(super.getComponentConfiguration(),tickTupleInterval);
 }

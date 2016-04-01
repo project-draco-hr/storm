@@ -2,5 +2,4 @@
   this.collector=collector;
   this.solrClient=new CloudSolrClient(solrConfig.getZkHostString());
   this.toCommitTuples=new ArrayList<>(capacity());
-  setTickTupleInterval(stormConf);
 }
