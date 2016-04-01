@@ -1,0 +1,7 @@
+WorkerTopologyContext context
+String componentId
+String streamId
+Fields outFields
+Grouping thriftGrouping
+List<Integer> unsortedTargetTasks
+Map topoConf

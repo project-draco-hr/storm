@@ -1,0 +1,3 @@
+{
+  return (String)kafkaProps.get(Consumer.GROUP_ID);
+}

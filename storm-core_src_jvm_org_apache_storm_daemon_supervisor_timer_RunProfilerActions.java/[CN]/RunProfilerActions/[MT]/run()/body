@@ -9,7 +9,7 @@
           if (profileRequest.get_nodeInfo().get_node().equals(hostName)) {
             boolean stop=System.currentTimeMillis() > profileRequest.get_time_stamp();
             Long port=profileRequest.get_nodeInfo().get_port().iterator().next();
-            String targetDir=ConfigUtils.workerArtifactsRoot(conf,String.valueOf(port));
+            String targetDir=ConfigUtils.workerArtifactsRoot(conf,stormId,port.intValue());
             Map stormConf=ConfigUtils.readSupervisorStormConf(conf,stormId);
             String user=null;
             if (stormConf.get(Config.TOPOLOGY_SUBMITTER_USER) != null) {
@@ -24,14 +24,11 @@
             }
             String str=ConfigUtils.workerArtifactsPidPath(conf,stormId,port.intValue());
             StringBuilder stringBuilder=new StringBuilder();
+            String workerPid=null;
             try (FileReader reader=new FileReader(str);BufferedReader br=new BufferedReader(reader)){
-              int c;
-              while ((c=br.read()) >= 0) {
-                stringBuilder.append(c);
-              }
+              workerPid=br.readLine().trim();
             }
-             String workerPid=stringBuilder.toString().trim();
-            ProfileAction profileAction=profileRequest.get_action();
+             ProfileAction profileAction=profileRequest.get_action();
             String logPrefix="ProfilerAction process " + stormId + ":"+ port+ " PROFILER_ACTION: "+ profileAction+ " ";
             List<String> command=mkCommand(profileAction,stop,workerPid,targetDir);
             try {

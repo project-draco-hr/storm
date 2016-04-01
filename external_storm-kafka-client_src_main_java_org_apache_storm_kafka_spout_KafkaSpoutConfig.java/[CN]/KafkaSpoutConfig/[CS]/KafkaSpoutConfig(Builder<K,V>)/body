@@ -1,0 +1,13 @@
+{
+  this.kafkaProps=setDefaultsAndGetKafkaProps(builder.kafkaProps);
+  this.keyDeserializer=builder.keyDeserializer;
+  this.valueDeserializer=builder.valueDeserializer;
+  this.pollTimeoutMs=builder.pollTimeoutMs;
+  this.offsetCommitPeriodMs=builder.offsetCommitPeriodMs;
+  this.maxRetries=builder.maxRetries;
+  this.firstPollOffsetStrategy=builder.firstPollOffsetStrategy;
+  this.kafkaSpoutStreams=builder.kafkaSpoutStreams;
+  this.maxUncommittedOffsets=builder.maxUncommittedOffsets;
+  this.tuplesBuilder=builder.tuplesBuilder;
+  this.retryService=builder.retryService;
+}

@@ -1,0 +1,4 @@
+{
+  this.topicToStream=builder.topicToStream;
+  LOG.debug("Built {}",this);
+}

@@ -1,0 +1,4 @@
+{
+  this.kafkaSpoutConfig=kafkaSpoutConfig;
+  this.kafkaSpoutStreams=kafkaSpoutConfig.getKafkaSpoutStreams();
+}

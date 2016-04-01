@@ -1,0 +1,8 @@
+{
+  if (topicToStream.containsKey(topic)) {
+    final Fields outputFields=topicToStream.get(topic).getOutputFields();
+    LOG.trace("Topic [{}] has output fields [{}]",topic,outputFields);
+    return outputFields;
+  }
+  throw new IllegalStateException(this.getClass().getName() + " not configured for topic: " + topic);
+}

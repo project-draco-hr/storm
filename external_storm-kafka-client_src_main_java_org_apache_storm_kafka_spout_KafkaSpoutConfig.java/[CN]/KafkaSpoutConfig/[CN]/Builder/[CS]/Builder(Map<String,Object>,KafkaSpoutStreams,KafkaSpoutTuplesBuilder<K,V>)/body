@@ -1,0 +1,3 @@
+{
+  this(kafkaProps,kafkaSpoutStreams,tuplesBuilder,new KafkaSpoutRetryExponentialBackoff(TimeInterval.seconds(0),TimeInterval.milliSeconds(2),DEFAULT_MAX_RETRIES,TimeInterval.seconds(10)));
+}

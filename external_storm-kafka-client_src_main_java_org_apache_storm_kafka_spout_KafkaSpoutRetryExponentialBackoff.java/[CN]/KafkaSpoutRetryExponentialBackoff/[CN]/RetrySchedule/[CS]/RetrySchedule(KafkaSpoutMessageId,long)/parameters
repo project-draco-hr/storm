@@ -1,0 +1,2 @@
+KafkaSpoutMessageId msgId
+long nextRetryTime

@@ -1,0 +1,6 @@
+{
+  if (targetTasks.isEmpty()) {
+    return null;
+  }
+  return Collections.singletonList(targetTasks.get(0));
+}

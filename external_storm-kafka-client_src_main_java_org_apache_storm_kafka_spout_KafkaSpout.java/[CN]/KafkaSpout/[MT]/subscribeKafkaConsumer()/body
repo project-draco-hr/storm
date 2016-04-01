@@ -1,0 +1,5 @@
+{
+  kafkaConsumer=new KafkaConsumer<>(kafkaSpoutConfig.getKafkaProps(),kafkaSpoutConfig.getKeyDeserializer(),kafkaSpoutConfig.getValueDeserializer());
+  kafkaConsumer.subscribe(kafkaSpoutConfig.getSubscribedTopics(),new KafkaSpoutConsumerRebalanceListener());
+  kafkaConsumer.poll(0);
+}

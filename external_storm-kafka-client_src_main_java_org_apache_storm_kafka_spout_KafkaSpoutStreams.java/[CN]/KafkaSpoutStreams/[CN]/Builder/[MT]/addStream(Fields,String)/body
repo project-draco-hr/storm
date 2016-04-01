@@ -1,0 +1,4 @@
+{
+  addStream(outputFields,Utils.DEFAULT_STREAM_ID,topics);
+  return this;
+}

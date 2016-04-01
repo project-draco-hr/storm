@@ -1,0 +1,7 @@
+{
+  InsertManyOptions options=new InsertManyOptions();
+  if (!ordered) {
+    options.ordered(false);
+  }
+  collection.insertMany(documents,options);
+}

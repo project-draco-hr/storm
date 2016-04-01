@@ -1,11 +1,35 @@
 {
+  boolean forceFlush=false;
   try {
-    Document doc=mapper.toDocument(tuple);
-    mongoClient.insert(doc);
-    this.collector.ack(tuple);
+    if (TupleUtils.isTick(tuple)) {
+      LOG.debug("TICK received! current batch status [{}/{}]",tupleBatch.size(),batchSize);
+      collector.ack(tuple);
+      forceFlush=true;
+    }
+ else {
+      tupleBatch.add(tuple);
+      if (tupleBatch.size() >= batchSize) {
+        forceFlush=true;
+      }
+    }
+    if (forceFlush && !tupleBatch.isEmpty()) {
+      List<Document> docs=new LinkedList<>();
+      for (      Tuple t : tupleBatch) {
+        Document doc=mapper.toDocument(t);
+        docs.add(doc);
+      }
+      mongoClient.insert(docs,ordered);
+      for (      Tuple t : tupleBatch) {
+        collector.ack(t);
+      }
+      tupleBatch.clear();
+    }
   }
  catch (  Exception e) {
     this.collector.reportError(e);
-    this.collector.fail(tuple);
+    for (    Tuple t : tupleBatch) {
+      collector.fail(t);
+    }
+    tupleBatch.clear();
   }
 }

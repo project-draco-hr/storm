@@ -1,0 +1,4 @@
+{
+  int targetTaskIndex=Math.abs(TupleUtils.listHashCode(outFields.select(groupFields,values))) % numTasks;
+  return Collections.singletonList(targetTasks.get(targetTaskIndex));
+}

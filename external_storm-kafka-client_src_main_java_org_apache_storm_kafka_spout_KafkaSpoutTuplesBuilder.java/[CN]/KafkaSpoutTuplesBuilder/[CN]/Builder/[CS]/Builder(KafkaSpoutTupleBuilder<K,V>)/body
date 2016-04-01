@@ -1,0 +1,7 @@
+{
+  if (tupleBuilders == null || tupleBuilders.length == 0) {
+    throw new IllegalArgumentException("Must specify at last one tuple builder per topic declared in KafkaSpoutStreams");
+  }
+  this.tupleBuilders=Arrays.asList(tupleBuilders);
+  topicToTupleBuilders=new HashMap<>();
+}

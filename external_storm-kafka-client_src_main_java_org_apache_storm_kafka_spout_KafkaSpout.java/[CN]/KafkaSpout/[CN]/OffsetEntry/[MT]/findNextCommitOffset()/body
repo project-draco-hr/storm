@@ -1,0 +1,31 @@
+{
+  boolean found=false;
+  long currOffset;
+  long nextCommitOffset=committedOffset;
+  KafkaSpoutMessageId nextCommitMsg=null;
+  for (  KafkaSpoutMessageId currAckedMsg : ackedMsgs) {
+    if ((currOffset=currAckedMsg.offset()) == initialFetchOffset || currOffset == nextCommitOffset + 1) {
+      found=true;
+      nextCommitMsg=currAckedMsg;
+      nextCommitOffset=currOffset;
+      LOG.trace("Found offset to commit [{}]. {}",currOffset,this);
+    }
+ else     if (currAckedMsg.offset() > nextCommitOffset + 1) {
+      LOG.debug("Non continuous offset found [{}]. It will be processed in a subsequent batch. {}",currOffset,this);
+      break;
+    }
+ else {
+      LOG.debug("Unexpected offset found [{}]. {}",currOffset,this);
+      break;
+    }
+  }
+  OffsetAndMetadata nextCommitOffsetAndMetadata=null;
+  if (found) {
+    nextCommitOffsetAndMetadata=new OffsetAndMetadata(nextCommitOffset,nextCommitMsg.getMetadata(Thread.currentThread()));
+    LOG.debug("Offset to be committed next: [{}] {}",nextCommitOffsetAndMetadata.offset(),this);
+  }
+ else {
+    LOG.debug("No offsets ready to commit. {}",this);
+  }
+  return nextCommitOffsetAndMetadata;
+}

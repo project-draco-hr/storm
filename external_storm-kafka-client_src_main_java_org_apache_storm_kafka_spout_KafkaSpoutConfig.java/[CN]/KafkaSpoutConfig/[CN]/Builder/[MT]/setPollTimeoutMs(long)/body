@@ -1,0 +1,4 @@
+{
+  this.pollTimeoutMs=pollTimeoutMs;
+  return this;
+}

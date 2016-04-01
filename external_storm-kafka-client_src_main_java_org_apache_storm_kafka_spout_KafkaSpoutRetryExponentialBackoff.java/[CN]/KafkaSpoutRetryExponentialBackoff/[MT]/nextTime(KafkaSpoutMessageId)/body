@@ -1,0 +1,5 @@
+{
+  final long currentTimeNanos=System.nanoTime();
+  final long nextTimeNanos=msgId.numFails() == 1 ? currentTimeNanos + initialDelay.lengthNanos() : (long)(currentTimeNanos + Math.pow(delayPeriod.lengthNanos,msgId.numFails() - 1));
+  return Math.min(nextTimeNanos,currentTimeNanos + maxDelay.lengthNanos);
+}

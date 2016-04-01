@@ -1,0 +1,4 @@
+TimeInterval initialDelay
+TimeInterval delayPeriod
+int maxRetries
+TimeInterval maxDelay
