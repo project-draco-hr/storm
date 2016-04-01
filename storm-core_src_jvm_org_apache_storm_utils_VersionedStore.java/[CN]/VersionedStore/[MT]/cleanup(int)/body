@@ -4,10 +4,12 @@
     versions=versions.subList(0,Math.min(versions.size(),versionsToKeep));
   }
   HashSet<Long> keepers=new HashSet<Long>(versions);
-  for (  String p : listDir(_root)) {
-    Long v=parseVersion(p);
-    if (v != null && !keepers.contains(v)) {
-      deleteVersion(v);
+  try (DirectoryStream<Path> directoryStream=Files.newDirectoryStream(new File(_root).toPath())){
+    for (    Path path : directoryStream) {
+      Long v=parseVersion(path.toAbsolutePath().toString());
+      if (v != null && !keepers.contains(v)) {
+        deleteVersion(v);
+      }
     }
   }
-}
+ }

@@ -1,11 +1,14 @@
 {
-  List<Long> ret=new ArrayList<Long>();
-  for (  String s : listDir(_root)) {
-    if (s.endsWith(FINISHED_VERSION_SUFFIX)) {
-      ret.add(validateAndGetVersion(s));
+  List<Long> versions=new ArrayList<Long>();
+  try (DirectoryStream<Path> pathDirectoryStream=listDirWithFinishedFiles(_root)){
+    for (    Path path : pathDirectoryStream) {
+      String absolutePath=path.toAbsolutePath().toString();
+      if (absolutePath.endsWith(FINISHED_VERSION_SUFFIX)) {
+        versions.add(validateAndGetVersion(absolutePath));
+      }
     }
   }
-  Collections.sort(ret);
-  Collections.reverse(ret);
-  return ret;
+   Collections.sort(versions);
+  Collections.reverse(versions);
+  return versions;
 }
