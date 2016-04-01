@@ -1,0 +1,4 @@
+{
+  this.targetTasks=targetTasks;
+  this.numTasks=targetTasks.size();
+}

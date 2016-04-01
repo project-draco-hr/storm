@@ -1,0 +1,16 @@
+{
+  if (committedOffset != null) {
+    final long numCommittedOffsets=committedOffset.offset() - this.committedOffset;
+    this.committedOffset=committedOffset.offset();
+    for (Iterator<KafkaSpoutMessageId> iterator=ackedMsgs.iterator(); iterator.hasNext(); ) {
+      if (iterator.next().offset() <= committedOffset.offset()) {
+        iterator.remove();
+      }
+ else {
+        break;
+      }
+    }
+    numUncommittedOffsets-=numCommittedOffsets;
+  }
+  LOG.trace("Object state after update: {}, numUncommittedOffsets [{}]",this,numUncommittedOffsets);
+}

@@ -1,0 +1,3 @@
+{
+  return ackedMsgs.contains(msgId);
+}

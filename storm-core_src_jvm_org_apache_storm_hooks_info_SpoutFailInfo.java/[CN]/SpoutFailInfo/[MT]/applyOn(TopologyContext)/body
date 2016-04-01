@@ -1,0 +1,5 @@
+{
+  for (  ITaskHook hook : topologyContext.getHooks()) {
+    hook.spoutFail(this);
+  }
+}

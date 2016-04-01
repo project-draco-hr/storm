@@ -1,0 +1,3 @@
+{
+  return "KafkaSpoutStream{" + "outputFields=" + outputFields + ", streamId='"+ streamId+ '\''+ ", topic='"+ topic+ '\''+ '}';
+}

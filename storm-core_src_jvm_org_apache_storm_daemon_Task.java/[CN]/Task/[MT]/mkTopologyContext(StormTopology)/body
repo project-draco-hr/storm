@@ -1,0 +1,4 @@
+{
+  Map conf=(Map)workerData.get("conf");
+  return new TopologyContext(topology,(Map)workerData.get("storm-conf"),(Map<Integer,String>)workerData.get("task->component"),(Map<String,List<Integer>>)workerData.get("component->sorted-tasks"),(Map<String,Map<String,Fields>>)workerData.get("component->stream->fields"),(String)workerData.get("storm-id"),ConfigUtils.supervisorStormResourcesPath(ConfigUtils.supervisorStormDistRoot(conf,(String)workerData.get("storm-id"))),ConfigUtils.workerPidsRoot(conf,(String)workerData.get("worker-id")),taskId,(Integer)workerData.get("port"),(List<Integer>)workerData.get("task-ids"),(Map<String,Object>)workerData.get("default-shared-resources"),(Map<String,Object>)workerData.get("user-shared-resources"),(Map<String,Object>)executorData.get("shared-executor-data"),(Map<Integer,Map<Integer,Map<String,IMetric>>>)executorData.get("interval->task->metric-registry"),(clojure.lang.Atom)executorData.get("open-or-prepare-was-called?"));
+}

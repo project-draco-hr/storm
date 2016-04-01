@@ -1,0 +1,4 @@
+{
+  int index=random.nextInt(numTasks);
+  return Collections.singletonList(targetTasks.get(index));
+}

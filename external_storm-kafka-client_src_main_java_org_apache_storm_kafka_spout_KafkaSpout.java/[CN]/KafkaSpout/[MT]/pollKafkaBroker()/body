@@ -1,0 +1,7 @@
+{
+  doSeekRetriableTopicPartitions();
+  final ConsumerRecords<K,V> consumerRecords=kafkaConsumer.poll(kafkaSpoutConfig.getPollTimeoutMs());
+  final int numPolledRecords=consumerRecords.count();
+  LOG.debug("Polled [{}] records from Kafka. NumUncommittedOffsets=[{}]",numPolledRecords,numUncommittedOffsets);
+  return consumerRecords;
+}

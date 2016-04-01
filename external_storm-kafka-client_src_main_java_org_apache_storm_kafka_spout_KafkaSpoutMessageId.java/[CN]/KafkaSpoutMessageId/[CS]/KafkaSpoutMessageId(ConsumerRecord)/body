@@ -1,0 +1,3 @@
+{
+  this(new TopicPartition(consumerRecord.topic(),consumerRecord.partition()),consumerRecord.offset());
+}

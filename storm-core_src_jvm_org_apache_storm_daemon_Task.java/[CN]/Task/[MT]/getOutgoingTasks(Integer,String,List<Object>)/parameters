@@ -1,0 +1,3 @@
+Integer outTaskId
+String stream
+List<Object> values

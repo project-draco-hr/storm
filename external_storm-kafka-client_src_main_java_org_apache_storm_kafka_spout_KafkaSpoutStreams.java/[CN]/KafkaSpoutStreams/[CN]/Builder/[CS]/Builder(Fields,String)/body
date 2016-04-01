@@ -1,0 +1,3 @@
+{
+  addStream(outputFields,topics);
+}

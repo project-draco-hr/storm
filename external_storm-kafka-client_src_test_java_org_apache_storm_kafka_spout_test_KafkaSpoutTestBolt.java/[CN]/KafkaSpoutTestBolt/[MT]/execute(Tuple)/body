@@ -1,0 +1,4 @@
+{
+  LOG.debug("input = [" + input + "]");
+  collector.ack(input);
+}

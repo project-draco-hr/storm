@@ -1,0 +1,17 @@
+{
+  initialized=false;
+  this.collector=collector;
+  maxRetries=kafkaSpoutConfig.getMaxTupleRetries();
+  numUncommittedOffsets=0;
+  firstPollOffsetStrategy=kafkaSpoutConfig.getFirstPollOffsetStrategy();
+  consumerAutoCommitMode=kafkaSpoutConfig.isConsumerAutoCommitMode();
+  retryService=kafkaSpoutConfig.getRetryService();
+  tuplesBuilder=kafkaSpoutConfig.getTuplesBuilder();
+  if (!consumerAutoCommitMode) {
+    commitTimer=new Timer(500,kafkaSpoutConfig.getOffsetsCommitPeriodMs(),TimeUnit.MILLISECONDS);
+  }
+  acked=new HashMap<>();
+  emitted=new HashSet<>();
+  waitingToEmit=Collections.emptyListIterator();
+  LOG.info("Kafka Spout opened with the following configuration: {}",kafkaSpoutConfig);
+}

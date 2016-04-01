@@ -1,0 +1,33 @@
+{
+  StormTopology topology=systemTopologyContext.getRawTopology();
+  Map<String,SpoutSpec> spouts=topology.get_spouts();
+  Map<String,Bolt> bolts=topology.get_bolts();
+  Map<String,StateSpoutSpec> stateSpouts=topology.get_state_spouts();
+  Object result=null;
+  ComponentObject componentObject=null;
+  if (spouts.containsKey(componentId)) {
+    componentObject=spouts.get(componentId).get_spout_object();
+  }
+ else   if (bolts.containsKey(componentId)) {
+    componentObject=bolts.get(componentId).get_bolt_object();
+  }
+ else   if (stateSpouts.containsKey(componentId)) {
+    componentObject=stateSpouts.get(componentId).get_state_spout_object();
+  }
+ else {
+    throw new RuntimeException("Could not find " + componentId + " in "+ topology);
+  }
+  result=Utils.getSetComponentObject(componentObject);
+  if (result instanceof ShellComponent) {
+    if (spouts.containsKey(componentId)) {
+      result=new ShellSpout((ShellComponent)result);
+    }
+ else {
+      result=new ShellBolt((ShellComponent)result);
+    }
+  }
+  if (result instanceof JavaObject) {
+    result=Thrift.instantiateJavaObject((JavaObject)result);
+  }
+  return result;
+}

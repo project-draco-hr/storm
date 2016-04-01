@@ -1,0 +1,8 @@
+{
+  Map<String,Object> props=new HashMap<>();
+  props.put(KafkaSpoutConfig.Consumer.BOOTSTRAP_SERVERS,"127.0.0.1:9092");
+  props.put(KafkaSpoutConfig.Consumer.GROUP_ID,"kafkaSpoutTestGroup");
+  props.put(KafkaSpoutConfig.Consumer.KEY_DESERIALIZER,"org.apache.kafka.common.serialization.StringDeserializer");
+  props.put(KafkaSpoutConfig.Consumer.VALUE_DESERIALIZER,"org.apache.kafka.common.serialization.StringDeserializer");
+  return props;
+}

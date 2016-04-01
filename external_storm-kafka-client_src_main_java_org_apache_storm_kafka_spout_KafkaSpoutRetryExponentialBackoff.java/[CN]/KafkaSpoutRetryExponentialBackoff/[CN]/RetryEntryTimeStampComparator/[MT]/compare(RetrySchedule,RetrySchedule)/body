@@ -1,0 +1,3 @@
+{
+  return Long.valueOf(entry1.nextRetryTimeNanos()).compareTo(entry2.nextRetryTimeNanos());
+}

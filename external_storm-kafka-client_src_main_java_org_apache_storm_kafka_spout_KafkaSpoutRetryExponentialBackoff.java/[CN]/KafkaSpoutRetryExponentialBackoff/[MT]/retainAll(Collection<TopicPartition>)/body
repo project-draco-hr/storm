@@ -1,0 +1,16 @@
+{
+  boolean result=false;
+  for (Iterator<RetrySchedule> rsIterator=retrySchedules.iterator(); rsIterator.hasNext(); ) {
+    final RetrySchedule retrySchedule=rsIterator.next();
+    final KafkaSpoutMessageId msgId=retrySchedule.msgId;
+    final TopicPartition tpRetry=new TopicPartition(msgId.topic(),msgId.partition());
+    if (!topicPartitions.contains(tpRetry)) {
+      rsIterator.remove();
+      toRetryMsgs.remove(msgId);
+      LOG.debug("Removed {}",retrySchedule);
+      LOG.trace("Current state {}",retrySchedules);
+      result=true;
+    }
+  }
+  return result;
+}

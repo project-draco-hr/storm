@@ -1,0 +1,5 @@
+{
+  LocalCluster cluster=new LocalCluster();
+  cluster.submitTopology("test",config,topology);
+  stopWaitingForInput();
+}

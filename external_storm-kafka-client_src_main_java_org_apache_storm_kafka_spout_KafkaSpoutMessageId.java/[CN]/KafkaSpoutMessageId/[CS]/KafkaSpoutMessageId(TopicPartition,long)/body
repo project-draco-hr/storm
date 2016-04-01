@@ -1,0 +1,4 @@
+{
+  this.topicPart=topicPart;
+  this.offset=offset;
+}

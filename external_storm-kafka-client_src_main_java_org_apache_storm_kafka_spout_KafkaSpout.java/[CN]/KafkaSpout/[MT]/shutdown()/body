@@ -1,0 +1,11 @@
+{
+  try {
+    kafkaConsumer.wakeup();
+    if (!consumerAutoCommitMode) {
+      commitOffsetsForAckedTuples();
+    }
+  }
+  finally {
+    kafkaConsumer.close();
+  }
+}

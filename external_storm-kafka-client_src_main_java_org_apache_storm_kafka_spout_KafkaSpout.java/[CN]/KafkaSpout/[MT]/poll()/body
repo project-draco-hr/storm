@@ -1,0 +1,3 @@
+{
+  return !waitingToEmit() && numUncommittedOffsets < kafkaSpoutConfig.getMaxUncommittedOffsets();
+}

@@ -1,0 +1,27 @@
+{
+  long fetchOffset;
+  if (committedOffset != null) {
+    if (firstPollOffsetStrategy.equals(EARLIEST)) {
+      kafkaConsumer.seekToBeginning(tp);
+      fetchOffset=kafkaConsumer.position(tp);
+    }
+ else     if (firstPollOffsetStrategy.equals(LATEST)) {
+      kafkaConsumer.seekToEnd(tp);
+      fetchOffset=kafkaConsumer.position(tp);
+    }
+ else {
+      fetchOffset=committedOffset.offset() + 1;
+      kafkaConsumer.seek(tp,fetchOffset);
+    }
+  }
+ else {
+    if (firstPollOffsetStrategy.equals(EARLIEST) || firstPollOffsetStrategy.equals(UNCOMMITTED_EARLIEST)) {
+      kafkaConsumer.seekToBeginning(tp);
+    }
+ else     if (firstPollOffsetStrategy.equals(LATEST) || firstPollOffsetStrategy.equals(UNCOMMITTED_LATEST)) {
+      kafkaConsumer.seekToEnd(tp);
+    }
+    fetchOffset=kafkaConsumer.position(tp);
+  }
+  return fetchOffset;
+}

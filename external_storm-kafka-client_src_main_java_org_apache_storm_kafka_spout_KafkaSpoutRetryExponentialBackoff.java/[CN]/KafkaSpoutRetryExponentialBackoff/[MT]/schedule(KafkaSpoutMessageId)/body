@@ -1,0 +1,21 @@
+{
+  if (msgId.numFails() > maxRetries) {
+    LOG.debug("Not scheduling [{}] because reached maximum number of retries [{}].",msgId,maxRetries);
+  }
+ else {
+    if (toRetryMsgs.contains(msgId)) {
+      for (Iterator<RetrySchedule> iterator=retrySchedules.iterator(); iterator.hasNext(); ) {
+        final RetrySchedule retrySchedule=iterator.next();
+        if (retrySchedule.msgId().equals(msgId)) {
+          iterator.remove();
+          toRetryMsgs.remove(msgId);
+        }
+      }
+    }
+    final RetrySchedule retrySchedule=new RetrySchedule(msgId,nextTime(msgId));
+    retrySchedules.add(retrySchedule);
+    toRetryMsgs.add(msgId);
+    LOG.debug("Scheduled. {}",retrySchedule);
+    LOG.trace("Current state {}",retrySchedules);
+  }
+}

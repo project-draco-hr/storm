@@ -1,0 +1,17 @@
+{
+  boolean removed=false;
+  if (toRetryMsgs.contains(msgId)) {
+    for (Iterator<RetrySchedule> iterator=retrySchedules.iterator(); iterator.hasNext(); ) {
+      final RetrySchedule retrySchedule=iterator.next();
+      if (retrySchedule.msgId().equals(msgId)) {
+        iterator.remove();
+        toRetryMsgs.remove(msgId);
+        removed=true;
+        break;
+      }
+    }
+  }
+  LOG.debug(removed ? "Removed {} " : "Not removed {}",msgId);
+  LOG.trace("Current state {}",retrySchedules);
+  return removed;
+}

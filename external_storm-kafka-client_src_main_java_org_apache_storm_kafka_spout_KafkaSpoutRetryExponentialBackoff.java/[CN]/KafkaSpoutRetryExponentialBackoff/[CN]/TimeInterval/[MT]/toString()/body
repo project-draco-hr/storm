@@ -1,0 +1,3 @@
+{
+  return "TimeInterval{" + "length=" + length + ", timeUnit="+ timeUnit+ '}';
+}
