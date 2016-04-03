@@ -1,37 +1,21 @@
 {
-  boolean flush=false;
   try {
-    if (TupleUtils.isTick(tuple)) {
-      LOG.debug("TICK received! current batch status [{}/{}]",tupleBatch.size(),batchSize);
-      collector.ack(tuple);
-      flush=true;
-    }
- else {
+    if (batchHelper.shouldHandle(tuple)) {
       byte[] rowKey=this.mapper.rowKey(tuple);
       ColumnList cols=this.mapper.columns(tuple);
       List<Mutation> mutations=hBaseClient.constructMutationReq(rowKey,cols,writeToWAL ? Durability.SYNC_WAL : Durability.SKIP_WAL);
       batchMutations.addAll(mutations);
-      tupleBatch.add(tuple);
-      if (tupleBatch.size() >= batchSize) {
-        flush=true;
-      }
+      batchHelper.addBatch(tuple);
     }
-    if (flush && !tupleBatch.isEmpty()) {
+    if (batchHelper.shouldFlush()) {
       this.hBaseClient.batchMutate(batchMutations);
       LOG.debug("acknowledging tuples after batchMutate");
-      for (      Tuple t : tupleBatch) {
-        collector.ack(t);
-      }
-      tupleBatch.clear();
+      batchHelper.ack();
       batchMutations.clear();
     }
   }
  catch (  Exception e) {
-    this.collector.reportError(e);
-    for (    Tuple t : tupleBatch) {
-      collector.fail(t);
-    }
-    tupleBatch.clear();
+    batchHelper.fail(e);
     batchMutations.clear();
   }
 }

@@ -1,0 +1,7 @@
+{
+  if (batchSize > 0) {
+    this.batchSize=batchSize;
+  }
+  this.collector=collector;
+  this.tupleBatch=new LinkedList<>();
+}

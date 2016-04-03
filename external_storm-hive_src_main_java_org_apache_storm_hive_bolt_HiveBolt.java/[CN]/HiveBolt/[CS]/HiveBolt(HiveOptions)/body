@@ -1,4 +1,3 @@
 {
   this.options=options;
-  tupleBatch=new LinkedList<Tuple>();
 }
