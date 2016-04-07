@@ -1,0 +1,4 @@
+{
+  Schema recordSchema=((GenericRecord)tuple.getValue(0)).getSchema();
+  return recordSchema.toString();
+}

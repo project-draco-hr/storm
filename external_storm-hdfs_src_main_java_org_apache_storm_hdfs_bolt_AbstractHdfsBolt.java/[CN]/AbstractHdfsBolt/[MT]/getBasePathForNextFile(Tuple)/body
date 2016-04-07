@@ -1,0 +1,12 @@
+{
+  final String partitionPath=this.partitioner.getPartitionPath(tuple);
+  final int rotation;
+  if (rotationCounterMap.containsKey(partitionPath)) {
+    rotation=rotationCounterMap.get(partitionPath) + 1;
+  }
+ else {
+    rotation=0;
+  }
+  rotationCounterMap.put(partitionPath,rotation);
+  return new Path(this.fsUrl + this.fileNameFormat.getPath() + partitionPath,this.fileNameFormat.getName(rotation,System.currentTimeMillis()));
+}

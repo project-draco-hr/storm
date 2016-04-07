@@ -1,0 +1,5 @@
+{
+  super(policy,path);
+  this.out=out;
+  this.format=format;
+}

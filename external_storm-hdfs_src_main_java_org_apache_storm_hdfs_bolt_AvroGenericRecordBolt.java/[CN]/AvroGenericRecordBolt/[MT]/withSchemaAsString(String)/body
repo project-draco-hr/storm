@@ -1,4 +1,0 @@
-{
-  this.schemaAsString=schemaAsString;
-  return this;
-}

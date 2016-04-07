@@ -1,0 +1,5 @@
+{
+  final String boltKey=getWriterKey(tuple);
+  final String partitionDir=this.partitioner.getPartitionPath(tuple);
+  return boltKey + "****" + partitionDir;
+}

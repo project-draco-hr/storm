@@ -1,0 +1,17 @@
+{
+  HdfsBolt bolt=makeHdfsBolt(hdfsURI,1,1000f);
+  Partitioner partitoner=new Partitioner(){
+    @Override public String getPartitionPath(    Tuple tuple){
+      return Path.SEPARATOR + tuple.getStringByField("city");
+    }
+  }
+;
+  bolt.prepare(new Config(),topologyContext,collector);
+  bolt.withPartitioner(partitoner);
+  bolt.execute(tuple1);
+  bolt.execute(tuple2);
+  verify(collector).ack(tuple1);
+  verify(collector).ack(tuple2);
+  Assert.assertEquals(1,countNonZeroLengthFiles(testRoot + "/SFO"));
+  Assert.assertEquals(1,countNonZeroLengthFiles(testRoot + "/SJO"));
+}

@@ -1,0 +1,13 @@
+{
+  LOG.info("Rotating output file...");
+  long start=System.currentTimeMillis();
+synchronized (this.writeLock) {
+    writer.close();
+    LOG.info("Performing {} file rotation actions.",this.rotationActions.size());
+    for (    RotationAction action : this.rotationActions) {
+      action.execute(this.fs,writer.getFilePath());
+    }
+  }
+  long time=System.currentTimeMillis() - start;
+  LOG.info("File rotation took {} ms.",time);
+}

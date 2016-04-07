@@ -1,6 +1,4 @@
 {
   LOG.info("Preparing AvroGenericRecord Bolt...");
   this.fs=FileSystem.get(URI.create(this.fsUrl),hdfsConfig);
-  Schema.Parser parser=new Schema.Parser();
-  this.schema=parser.parse(this.schemaAsString);
 }
