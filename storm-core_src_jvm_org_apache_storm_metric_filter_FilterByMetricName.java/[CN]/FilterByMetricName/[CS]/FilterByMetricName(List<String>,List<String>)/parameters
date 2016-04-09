@@ -1,0 +1,2 @@
+List<String> whitelistPattern
+List<String> blacklistPattern

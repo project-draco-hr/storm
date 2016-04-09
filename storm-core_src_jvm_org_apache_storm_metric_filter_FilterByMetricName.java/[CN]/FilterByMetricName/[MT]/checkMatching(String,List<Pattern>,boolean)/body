@@ -1,0 +1,8 @@
+{
+  for (  Pattern pattern : patterns) {
+    if (pattern.matcher(metricName).find()) {
+      return valueWhenMatched;
+    }
+  }
+  return !valueWhenMatched;
+}

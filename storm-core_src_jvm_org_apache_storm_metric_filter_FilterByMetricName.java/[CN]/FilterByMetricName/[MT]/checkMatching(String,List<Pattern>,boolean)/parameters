@@ -1,0 +1,3 @@
+String metricName
+List<Pattern> patterns
+boolean valueWhenMatched
