@@ -1,0 +1,22 @@
+{
+  beginAggregateStage(aggregate);
+  pw.println("        Object curGroupValue = _data == null ? null : _data.get(" + aggregate.getGroupSet().asList().get(0) + ");");
+  pw.println("        if (curGroupValue == null || (prevGroupValue != null && ! prevGroupValue.equals(curGroupValue))) {");
+  List<String> res=new ArrayList<>();
+  for (  AggregateCall call : aggregate.getAggCallList()) {
+    res.add(aggregateResult(call));
+  }
+  pw.print(String.format("          ctx.emit(new Values(%s, %s));\n","prevGroupValue",Joiner.on(", ").join(res)));
+  pw.println("          accumulators.clear();");
+  pw.println("        }");
+  pw.println("        if (curGroupValue != null) {");
+  for (  AggregateCall call : aggregate.getAggCallList()) {
+    aggregate(call);
+  }
+  pw.println("        }");
+  pw.println("        if (prevGroupValue != curGroupValue) {");
+  pw.println("          prevGroupValue = curGroupValue;");
+  pw.println("        }");
+  endAggregateStage();
+  return null;
+}

@@ -1,0 +1,8 @@
+{
+  String varName;
+  if ((varName=aggregateCallVarNames.get(call)) == null) {
+    varName=call.getAggregation().getName() + ++nameCount;
+    aggregateCallVarNames.put(call,varName);
+  }
+  return varName;
+}

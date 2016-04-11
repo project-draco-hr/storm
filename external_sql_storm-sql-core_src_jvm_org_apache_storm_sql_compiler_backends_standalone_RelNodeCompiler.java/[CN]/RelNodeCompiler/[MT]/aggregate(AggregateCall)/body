@@ -1,0 +1,26 @@
+{
+  SqlAggFunction aggFunction=call.getAggregation();
+  String aggregationName=call.getAggregation().getName();
+  Type ty=typeFactory.getJavaClass(call.getType());
+  if (call.getArgList().size() != 1) {
+    if (aggregationName.equals("COUNT")) {
+      if (call.getArgList().size() != 0) {
+        throw new UnsupportedOperationException("Count with nullable fields");
+      }
+    }
+ else {
+      throw new IllegalArgumentException("Aggregate call should have one argument");
+    }
+  }
+  if (aggFunction instanceof SqlUserDefinedAggFunction) {
+    AggregateFunction aggregateFunction=((SqlUserDefinedAggFunction)aggFunction).function;
+    doAggregate((AggregateFunctionImpl)aggregateFunction,reserveAggVarName(call),ty,call.getArgList());
+  }
+ else {
+    List<BuiltinAggregateFunctions.TypeClass> typeClasses=BuiltinAggregateFunctions.TABLE.get(aggregationName);
+    if (typeClasses == null) {
+      throw new UnsupportedOperationException(aggregationName + " Not implemented");
+    }
+    doAggregate(AggregateFunctionImpl.create(findMatchingClass(aggregationName,typeClasses,ty)),reserveAggVarName(call),ty,call.getArgList());
+  }
+}

@@ -1,0 +1,14 @@
+{
+  List<String> stmt=new ArrayList<>();
+  stmt.add("CREATE EXTERNAL TABLE FOO (ID INT PRIMARY KEY, SALARY INT, PCT DOUBLE, NAME VARCHAR) LOCATION 'mockgroup:///foo'");
+  stmt.add("SELECT STREAM ID, COUNT(*), AVG(SALARY), AVG(PCT) FROM FOO WHERE ID = 1 GROUP BY (ID)");
+  StormSql sql=StormSql.construct();
+  List<Values> values=new ArrayList<>();
+  ChannelHandler h=new TestUtils.CollectDataChannelHandler(values);
+  sql.execute(stmt,h);
+  Assert.assertEquals(1,values.size());
+  Assert.assertEquals(1,values.get(0).get(0));
+  Assert.assertEquals(3L,values.get(0).get(1));
+  Assert.assertEquals(4,values.get(0).get(2));
+  Assert.assertEquals(2.5,values.get(0).get(3));
+}

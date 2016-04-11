@@ -1,0 +1,4 @@
+{
+  this.ty=ty;
+  this.clazz=clazz;
+}

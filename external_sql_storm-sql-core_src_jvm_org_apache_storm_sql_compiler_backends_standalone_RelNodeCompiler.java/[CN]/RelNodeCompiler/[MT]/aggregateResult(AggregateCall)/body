@@ -1,0 +1,18 @@
+{
+  SqlAggFunction aggFunction=call.getAggregation();
+  String aggregationName=call.getAggregation().getName();
+  Type ty=typeFactory.getJavaClass(call.getType());
+  String result;
+  if (aggFunction instanceof SqlUserDefinedAggFunction) {
+    AggregateFunction aggregateFunction=((SqlUserDefinedAggFunction)aggFunction).function;
+    result=doAggregateResult((AggregateFunctionImpl)aggregateFunction,reserveAggVarName(call),ty);
+  }
+ else {
+    List<BuiltinAggregateFunctions.TypeClass> typeClasses=BuiltinAggregateFunctions.TABLE.get(aggregationName);
+    if (typeClasses == null) {
+      throw new UnsupportedOperationException(aggregationName + " Not implemented");
+    }
+    result=doAggregateResult(AggregateFunctionImpl.create(findMatchingClass(aggregationName,typeClasses,ty)),reserveAggVarName(call),ty);
+  }
+  return result;
+}

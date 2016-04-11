@@ -1,0 +1,8 @@
+{
+  for (  BuiltinAggregateFunctions.TypeClass typeClass : typeClasses) {
+    if (typeClass.ty.equals(BuiltinAggregateFunctions.TypeClass.GenericType.class) || typeClass.ty.equals(ty)) {
+      return typeClass.clazz;
+    }
+  }
+  throw new UnsupportedOperationException(aggregationName + " Not implemeted for type '" + ty+ "'");
+}

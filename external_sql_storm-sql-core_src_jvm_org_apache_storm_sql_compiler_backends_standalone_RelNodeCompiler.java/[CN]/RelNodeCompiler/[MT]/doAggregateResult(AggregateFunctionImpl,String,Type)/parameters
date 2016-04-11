@@ -1,0 +1,3 @@
+AggregateFunctionImpl aggFn
+String varName
+Type ty
