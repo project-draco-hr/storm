@@ -7,7 +7,13 @@
   _state=state;
   _stormConf=stormConf;
   numberAcked=numberFailed=0;
-  _failedMsgRetryManager=new ExponentialBackoffMsgRetryManager(_spoutConfig.retryInitialDelayMs,_spoutConfig.retryDelayMultiplier,_spoutConfig.retryDelayMaxMs);
+  try {
+    _failedMsgRetryManager=(FailedMsgRetryManager)Class.forName(spoutConfig.failedMsgRetryManagerClass).newInstance();
+    _failedMsgRetryManager.prepare(spoutConfig);
+  }
+ catch (  ClassNotFoundException|InstantiationException|IllegalAccessException e) {
+    throw new IllegalArgumentException(String.format("Failed to create an instance of <%s> from: <%s>",FailedMsgRetryManager.class,spoutConfig.failedMsgRetryManagerClass),e);
+  }
   String jsonTopologyId=null;
   Long jsonOffset=null;
   String path=committedPath();
@@ -49,4 +55,5 @@
   _fetchAPICallCount=new CountMetric();
   _fetchAPIMessageCount=new CountMetric();
   _lostMessageCount=new CountMetric();
+  _messageIneligibleForRetryCount=new CountMetric();
 }

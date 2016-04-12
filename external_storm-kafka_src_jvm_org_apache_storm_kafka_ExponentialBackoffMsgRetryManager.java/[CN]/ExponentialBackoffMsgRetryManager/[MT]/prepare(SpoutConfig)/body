@@ -1,0 +1,8 @@
+{
+  this.retryInitialDelayMs=spoutConfig.retryInitialDelayMs;
+  this.retryDelayMultiplier=spoutConfig.retryDelayMultiplier;
+  this.retryDelayMaxMs=spoutConfig.retryDelayMaxMs;
+  this.retryLimit=spoutConfig.retryLimit;
+  this.waiting=new PriorityQueue<MessageRetryRecord>(11,new RetryTimeComparator());
+  this.records=new ConcurrentHashMap<Long,MessageRetryRecord>();
+}
