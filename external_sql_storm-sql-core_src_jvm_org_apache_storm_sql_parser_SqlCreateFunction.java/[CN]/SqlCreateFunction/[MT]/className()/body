@@ -1,0 +1,3 @@
+{
+  return ((NlsString)SqlLiteral.value(className)).getValue();
+}

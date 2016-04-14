@@ -1,0 +1,4 @@
+{
+  String sql="CREATE FUNCTION foo AS 'org.apache.storm.sql.MyUDF'";
+  parse(sql);
+}

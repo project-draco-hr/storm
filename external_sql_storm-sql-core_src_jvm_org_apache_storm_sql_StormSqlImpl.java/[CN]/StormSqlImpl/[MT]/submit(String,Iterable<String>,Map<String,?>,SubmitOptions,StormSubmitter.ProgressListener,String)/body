@@ -6,8 +6,11 @@
     if (node instanceof SqlCreateTable) {
       handleCreateTableForTrident((SqlCreateTable)node,dataSources);
     }
+ else     if (node instanceof SqlCreateFunction) {
+      handleCreateFunction((SqlCreateFunction)node);
+    }
  else {
-      FrameworkConfig config=Frameworks.newConfigBuilder().defaultSchema(schema).build();
+      FrameworkConfig config=buildFrameWorkConfig();
       Planner planner=Frameworks.getPlanner(config);
       SqlNode parse=planner.parse(sql);
       SqlNode validate=planner.validate(parse);

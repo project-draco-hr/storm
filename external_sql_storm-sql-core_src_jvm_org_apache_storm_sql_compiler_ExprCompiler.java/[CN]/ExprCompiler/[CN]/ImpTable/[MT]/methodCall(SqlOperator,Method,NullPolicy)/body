@@ -1,0 +1,28 @@
+{
+  if (nullPolicy != NullPolicy.STRICT) {
+    throw new UnsupportedOperationException();
+  }
+  CallExprPrinter printer=new CallExprPrinter(){
+    @Override public String translate(    ExprCompiler compiler,    RexCall call){
+      PrintWriter pw=compiler.pw;
+      String val=compiler.reserveName();
+      pw.print(String.format("final %s %s;\n",compiler.javaTypeName(call),val));
+      List<String> args=new ArrayList<>();
+      for (      RexNode op : call.getOperands()) {
+        args.add(op.accept(compiler));
+      }
+      pw.print("if (false) {}\n");
+      for (int i=0; i < args.size(); ++i) {
+        String arg=args.get(i);
+        if (call.getOperands().get(i).getType().isNullable()) {
+          pw.print(String.format("else if (%2$s == null) { %1$s = null; }\n",val,arg));
+        }
+      }
+      String calc=printMethodCall(method,args);
+      pw.print(String.format("else { %1$s = %2$s; }\n",val,calc));
+      return val;
+    }
+  }
+;
+  return new AbstractMap.SimpleImmutableEntry<>(op,printer);
+}
