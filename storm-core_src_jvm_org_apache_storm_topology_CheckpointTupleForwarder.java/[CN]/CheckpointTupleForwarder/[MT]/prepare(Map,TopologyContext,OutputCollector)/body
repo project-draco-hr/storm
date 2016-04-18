@@ -1,4 +1,4 @@
 {
-  init(context,collector);
-  bolt.prepare(stormConf,context,this.collector);
+  init(context,new AnchoringOutputCollector(outputCollector));
+  bolt.prepare(stormConf,context,collector);
 }

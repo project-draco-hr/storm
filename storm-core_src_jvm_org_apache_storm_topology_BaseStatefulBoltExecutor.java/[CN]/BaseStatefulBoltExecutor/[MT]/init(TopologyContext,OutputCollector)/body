@@ -1,4 +1,4 @@
 {
-  this.collector=new AnchoringOutputCollector(collector);
+  this.collector=collector;
   this.checkPointInputTaskCount=getCheckpointInputTaskCount(context);
 }

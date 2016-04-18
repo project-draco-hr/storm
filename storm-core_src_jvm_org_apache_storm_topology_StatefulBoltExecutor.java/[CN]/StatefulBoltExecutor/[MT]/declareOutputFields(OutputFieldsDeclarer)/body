@@ -1,4 +1,4 @@
 {
   bolt.declareOutputFields(declarer);
-  super.declareCheckpointStream(declarer);
+  declareCheckpointStream(declarer);
 }
