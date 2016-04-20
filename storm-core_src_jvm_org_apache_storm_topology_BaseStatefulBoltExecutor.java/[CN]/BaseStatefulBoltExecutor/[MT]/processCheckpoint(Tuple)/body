@@ -1,5 +1,5 @@
 {
-  Action action=(Action)input.getValueByField(CHECKPOINT_FIELD_ACTION);
+  CheckPointState.Action action=(CheckPointState.Action)input.getValueByField(CHECKPOINT_FIELD_ACTION);
   long txid=input.getLongByField(CHECKPOINT_FIELD_TXID);
   if (shouldProcessTransaction(action,txid)) {
     LOG.debug("Processing action {}, txid {}",action,txid);
