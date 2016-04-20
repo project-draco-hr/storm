@@ -1,0 +1,4 @@
+{
+  input.setBuffer(byteBuffer.array(),byteBuffer.arrayOffset(),byteBuffer.position());
+  return kryo.readClassAndObject(input);
+}

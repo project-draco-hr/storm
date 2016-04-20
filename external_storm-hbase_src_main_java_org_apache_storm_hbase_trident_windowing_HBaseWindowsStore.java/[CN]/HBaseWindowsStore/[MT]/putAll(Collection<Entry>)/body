@@ -2,10 +2,7 @@
   List<Put> list=new ArrayList<>();
   for (  Entry entry : entries) {
     Put put=new Put(effectiveKey(entry.key));
-    Output output=new Output(new ByteArrayOutputStream());
-    Kryo kryo=new Kryo();
-    kryo.writeClassAndObject(output,entry.value);
-    put.addColumn(family,ByteBuffer.wrap(qualifier),System.currentTimeMillis(),ByteBuffer.wrap(output.getBuffer(),0,output.position()));
+    put.addColumn(family,ByteBuffer.wrap(qualifier),System.currentTimeMillis(),windowKryoSerializer().serializeToByteBuffer(entry.value));
     list.add(put);
   }
   try {
