@@ -1,8 +1,0 @@
-{
-  Path path=new Path(this.fileNameFormat.getPath(),this.fileNameFormat.getName(this.rotation,System.currentTimeMillis()));
-  this.out=this.fs.create(path);
-  DatumWriter<GenericRecord> datumWriter=new GenericDatumWriter<>(schema);
-  avroWriter=new DataFileWriter<>(datumWriter);
-  avroWriter.create(this.schema,this.out);
-  return path;
-}

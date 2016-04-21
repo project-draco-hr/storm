@@ -2,5 +2,5 @@
   SyncPolicy fieldsSyncPolicy=new CountSyncPolicy(countSync);
   FileNameFormat fieldsFileNameFormat=new DefaultFileNameFormat().withPath(testRoot);
   FileRotationPolicy rotationPolicy=new FileSizeRotationPolicy(rotationSizeMB,FileSizeRotationPolicy.Units.MB);
-  return new AvroGenericRecordBolt().withFsUrl(nameNodeAddr).withFileNameFormat(fieldsFileNameFormat).withSchemaAsString(schemaAsString).withRotationPolicy(rotationPolicy).withSyncPolicy(fieldsSyncPolicy);
+  return new AvroGenericRecordBolt().withFsUrl(nameNodeAddr).withFileNameFormat(fieldsFileNameFormat).withRotationPolicy(rotationPolicy).withSyncPolicy(fieldsSyncPolicy);
 }

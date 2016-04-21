@@ -1,0 +1,4 @@
+{
+  Schema recordSchema=((GenericRecord)tuple.getValue(0)).getSchema();
+  return new AvroGenericRecordHDFSWriter(this.rotationPolicy,path,this.fs.create(path),recordSchema);
+}

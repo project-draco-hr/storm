@@ -1,0 +1,5 @@
+{
+  for (  AbstractHDFSWriter writer : writers.values()) {
+    writer.sync();
+  }
+}

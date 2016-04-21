@@ -1,0 +1,18 @@
+{
+  DatumReader<GenericRecord> datumReader=new GenericDatumReader<>();
+  FSDataInputStream in=fs.open(path,0);
+  FileOutputStream out=new FileOutputStream("target/FOO.avro");
+  byte[] buffer=new byte[100];
+  int bytesRead;
+  while ((bytesRead=in.read(buffer)) > 0) {
+    out.write(buffer,0,bytesRead);
+  }
+  out.close();
+  java.io.File file=new File("target/FOO.avro");
+  DataFileReader<GenericRecord> dataFileReader=new DataFileReader<>(file,datumReader);
+  GenericRecord user=null;
+  while (dataFileReader.hasNext()) {
+    user=dataFileReader.next(user);
+  }
+  file.delete();
+}

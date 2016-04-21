@@ -1,0 +1,4 @@
+{
+  SequenceFile.Writer writer=SequenceFile.createWriter(this.hdfsConfig,SequenceFile.Writer.file(path),SequenceFile.Writer.keyClass(this.format.keyClass()),SequenceFile.Writer.valueClass(this.format.valueClass()),SequenceFile.Writer.compression(this.compressionType,this.codecFactory.getCodecByName(this.compressionCodec)));
+  return new SequenceFileWriter(this.rotationPolicy,path,writer,this.format);
+}

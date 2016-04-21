@@ -1,0 +1,5 @@
+{
+  super(policy,path);
+  this.writer=writer;
+  this.format=format;
+}

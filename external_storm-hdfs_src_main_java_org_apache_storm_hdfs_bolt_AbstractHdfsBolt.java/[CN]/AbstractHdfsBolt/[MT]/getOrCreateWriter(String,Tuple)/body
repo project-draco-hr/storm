@@ -1,0 +1,10 @@
+{
+  AbstractHDFSWriter writer;
+  writer=writers.get(writerKey);
+  if (writer == null) {
+    Path pathForNextFile=getBasePathForNextFile(tuple);
+    writer=makeNewWriter(pathForNextFile,tuple);
+    writers.put(writerKey,writer);
+  }
+  return writer;
+}

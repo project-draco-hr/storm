@@ -1,0 +1,4 @@
+FileRotationPolicy policy
+Path path
+FSDataOutputStream out
+RecordFormat format

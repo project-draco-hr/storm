@@ -1,0 +1,6 @@
+{
+  super(pos);
+  this.functionName=functionName;
+  this.className=className;
+  this.jarName=jarName;
+}

@@ -1,0 +1,13 @@
+{
+  if (translators.containsKey(op)) {
+    return translators.get(op);
+  }
+ else   if (op instanceof SqlUserDefinedFunction) {
+    Function function=((SqlUserDefinedFunction)op).getFunction();
+    if (function instanceof ReflectiveFunctionBase) {
+      Method method=((ReflectiveFunctionBase)function).method;
+      return methodCall(op,method,NullPolicy.STRICT).getValue();
+    }
+  }
+  return null;
+}

@@ -1,0 +1,5 @@
+{
+  doWrite(tuple);
+  this.needsRotation=rotationPolicy.mark(tuple,offset);
+  return this.offset;
+}

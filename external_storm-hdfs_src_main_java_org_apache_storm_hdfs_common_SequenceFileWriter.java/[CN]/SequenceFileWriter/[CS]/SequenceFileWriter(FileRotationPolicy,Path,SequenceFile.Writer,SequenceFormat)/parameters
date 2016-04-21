@@ -1,0 +1,4 @@
+FileRotationPolicy policy
+Path path
+SequenceFile.Writer writer
+SequenceFormat format

@@ -1,0 +1,4 @@
+{
+  this.out=this.fs.create(path);
+  return new HDFSWriter(rotationPolicy,path,out,format);
+}

@@ -1,0 +1,4 @@
+{
+  this.maxOpenFiles=maxOpenFiles;
+  return this;
+}

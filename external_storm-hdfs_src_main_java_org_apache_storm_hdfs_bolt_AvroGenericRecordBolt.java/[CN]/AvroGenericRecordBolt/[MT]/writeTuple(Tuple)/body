@@ -1,5 +1,0 @@
-{
-  GenericRecord avroRecord=(GenericRecord)tuple.getValue(0);
-  avroWriter.append(avroRecord);
-  offset=this.out.getPos();
-}

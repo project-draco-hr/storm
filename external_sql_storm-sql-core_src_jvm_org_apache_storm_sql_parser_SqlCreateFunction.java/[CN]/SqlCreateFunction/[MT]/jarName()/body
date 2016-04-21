@@ -1,0 +1,3 @@
+{
+  return jarName == null ? null : ((NlsString)SqlLiteral.value(jarName)).getValue();
+}

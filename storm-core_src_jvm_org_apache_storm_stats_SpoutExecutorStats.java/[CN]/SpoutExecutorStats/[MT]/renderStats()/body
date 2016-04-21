@@ -1,5 +1,4 @@
 {
-  cleanupStats();
   ExecutorStats ret=new ExecutorStats();
   ret.set_emitted(valueStat(EMITTED));
   ret.set_transferred(valueStat(TRANSFERRED));

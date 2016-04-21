@@ -1,0 +1,8 @@
+{
+  super(policy,path);
+  this.out=stream;
+  this.schema=schema;
+  DatumWriter<GenericRecord> datumWriter=new GenericDatumWriter<>(schema);
+  avroWriter=new DataFileWriter<>(datumWriter);
+  avroWriter.create(this.schema,this.out);
+}
