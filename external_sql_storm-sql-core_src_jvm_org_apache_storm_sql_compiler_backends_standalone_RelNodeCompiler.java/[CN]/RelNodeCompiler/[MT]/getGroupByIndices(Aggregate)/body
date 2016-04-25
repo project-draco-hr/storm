@@ -1,0 +1,11 @@
+{
+  StringBuilder res=new StringBuilder();
+  int count=0;
+  for (  int i : n.getGroupSet()) {
+    if (++count > 1) {
+      res.append(", ");
+    }
+    res.append(i);
+  }
+  return res.toString();
+}

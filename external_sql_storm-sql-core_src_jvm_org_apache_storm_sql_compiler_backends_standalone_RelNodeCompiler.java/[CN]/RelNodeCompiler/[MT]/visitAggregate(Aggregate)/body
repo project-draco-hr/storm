@@ -1,21 +1,21 @@
 {
   beginAggregateStage(aggregate);
-  pw.println("        Object curGroupValue = _data == null ? null : _data.get(" + aggregate.getGroupSet().asList().get(0) + ");");
-  pw.println("        if (curGroupValue == null || (prevGroupValue != null && ! prevGroupValue.equals(curGroupValue))) {");
+  pw.println("        List<Object> curGroupValues = _data == null ? null : getGroupValues(_data);");
+  pw.println("        if (curGroupValues == null || (prevGroupValues != null && ! prevGroupValues.equals(curGroupValues))) {");
   List<String> res=new ArrayList<>();
   for (  AggregateCall call : aggregate.getAggCallList()) {
     res.add(aggregateResult(call));
   }
-  pw.print(String.format("          ctx.emit(new Values(%s, %s));\n","prevGroupValue",Joiner.on(", ").join(res)));
+  pw.print(String.format("          ctx.emit(new Values(%s, %s));\n",groupValueEmitStr("prevGroupValues",aggregate.getGroupSet().cardinality()),Joiner.on(", ").join(res)));
   pw.println("          accumulators.clear();");
   pw.println("        }");
-  pw.println("        if (curGroupValue != null) {");
+  pw.println("        if (curGroupValues != null) {");
   for (  AggregateCall call : aggregate.getAggCallList()) {
     aggregate(call);
   }
   pw.println("        }");
-  pw.println("        if (prevGroupValue != curGroupValue) {");
-  pw.println("          prevGroupValue = curGroupValue;");
+  pw.println("        if (prevGroupValues != curGroupValues) {");
+  pw.println("          prevGroupValues = curGroupValues;");
   pw.println("        }");
   endAggregateStage();
   return null;
