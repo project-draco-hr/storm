@@ -17,12 +17,12 @@
       if (null != omitted) {
         _lostMessageCount.incrBy(omitted.size());
       }
-      LOG.warn("Removing the failed offsets that are out of range: {}",omitted);
+      LOG.warn("Removing the failed offsets for {} that are out of range: {}",_partition,omitted);
     }
     if (offset > _emittedToOffset) {
       _lostMessageCount.incrBy(offset - _emittedToOffset);
       _emittedToOffset=offset;
-      LOG.warn("{} Using new offset: {}",_partition.partition,_emittedToOffset);
+      LOG.warn("{} Using new offset: {}",_partition,_emittedToOffset);
     }
     return;
   }
