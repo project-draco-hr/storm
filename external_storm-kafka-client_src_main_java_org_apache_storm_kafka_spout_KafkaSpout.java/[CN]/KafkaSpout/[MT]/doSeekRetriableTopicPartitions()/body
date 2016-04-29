@@ -6,7 +6,7 @@
       kafkaConsumer.seek(rtp,offsetAndMeta.offset() + 1);
     }
  else {
-      kafkaConsumer.seekToEnd(rtp);
+      kafkaConsumer.seekToEnd(toArrayList(rtp));
     }
   }
 }
