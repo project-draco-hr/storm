@@ -1,8 +1,8 @@
 {
-  Map<Integer,String> taskIdToComponentId=new HashMap<Integer,String>();
+  Map<Integer,String> taskIdToComponentId=new HashMap<>();
   StormTopology systemTopology=systemTopology(stormConf,userTopology);
   Map<String,Object> components=allComponents(systemTopology);
-  Map<String,Integer> componentIdToTaskNum=new TreeMap<String,Integer>();
+  Map<String,Integer> componentIdToTaskNum=new TreeMap<>();
   for (  Map.Entry<String,Object> entry : components.entrySet()) {
     Map conf=componentConf(entry.getValue());
     Object taskNum=conf.get(Config.TOPOLOGY_TASKS);

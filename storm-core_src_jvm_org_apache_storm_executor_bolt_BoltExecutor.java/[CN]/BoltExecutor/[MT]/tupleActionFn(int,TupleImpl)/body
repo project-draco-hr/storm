@@ -1,0 +1,34 @@
+{
+  String streamId=tuple.getSourceStreamId();
+  if (Constants.CREDENTIALS_CHANGED_STREAM_ID.equals(streamId)) {
+    Object taskObject=idToTask.get(taskId).getTaskObject();
+    if (taskObject instanceof ICredentialsListener) {
+      ((ICredentialsListener)taskObject).setCredentials((Map<String,String>)tuple.getValue(0));
+    }
+  }
+ else   if (Constants.METRICS_TICK_STREAM_ID.equals(streamId)) {
+    metricsTick(idToTask.get(taskId),tuple);
+  }
+ else {
+    IBolt boltObject=(IBolt)idToTask.get(taskId).getTaskObject();
+    boolean isSampled=sampler.call();
+    boolean isExecuteSampler=executeSampler.call();
+    Long now=(isSampled || isExecuteSampler) ? System.currentTimeMillis() : null;
+    if (isSampled) {
+      tuple.setProcessSampleStartTime(now);
+    }
+    if (isExecuteSampler) {
+      tuple.setExecuteSampleStartTime(now);
+    }
+    boltObject.execute(tuple);
+    Long ms=tuple.getExecuteSampleStartTime();
+    long delta=(ms != null) ? Time.deltaMs(ms) : 0;
+    if (isDebug) {
+      LOG.info("Execute done TUPLE {} TASK: {} DELTA: {}",tuple,taskId,delta);
+    }
+    new BoltExecuteInfo(tuple,taskId,delta).applyOn(idToTask.get(taskId).getUserContext());
+    if (delta != 0) {
+      ((BoltExecutorStats)stats).boltExecuteTuple(tuple.getSourceComponent(),tuple.getSourceStreamId(),delta);
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  Map<GlobalStreamId,Grouping> inputs=new HashMap<GlobalStreamId,Grouping>();
+  Map<GlobalStreamId,Grouping> inputs=new HashMap<>();
   Set<String> boltIds=topology.get_bolts().keySet();
   Set<String> spoutIds=topology.get_spouts().keySet();
   for (  String id : spoutIds) {

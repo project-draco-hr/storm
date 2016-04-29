@@ -1,0 +1,16 @@
+{
+  long ackValue=((TupleImpl)input).getAckVal();
+  Map<Long,Long> anchorsToIds=input.getMessageId().getAnchorsToIds();
+  for (  Map.Entry<Long,Long> entry : anchorsToIds.entrySet()) {
+    executor.sendUnanchored(taskData,Acker.ACKER_ACK_STREAM_ID,new Values(entry.getKey(),Utils.bitXor(entry.getValue(),ackValue)),executor.getExecutorTransfer());
+  }
+  long delta=tupleTimeDelta((TupleImpl)input);
+  if (isDebug) {
+    LOG.info("BOLT ack TASK: {} TIME: {} TUPLE: {}",taskId,delta,input);
+  }
+  BoltAckInfo boltAckInfo=new BoltAckInfo(input,taskId,delta);
+  boltAckInfo.applyOn(taskData.getUserContext());
+  if (delta != 0) {
+    ((BoltExecutorStats)executor.getStats()).boltAckedTuple(input.getSourceComponent(),input.getSourceStreamId(),delta);
+  }
+}

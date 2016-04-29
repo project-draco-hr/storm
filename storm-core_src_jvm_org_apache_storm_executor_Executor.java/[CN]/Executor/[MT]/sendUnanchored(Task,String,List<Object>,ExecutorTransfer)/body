@@ -1,0 +1,7 @@
+{
+  Tuple tuple=task.getTuple(stream,values);
+  List<Integer> tasks=task.getOutgoingTasks(stream,values);
+  for (  Integer t : tasks) {
+    transfer.transfer(t,tuple);
+  }
+}

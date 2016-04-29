@@ -1,0 +1,31 @@
+{
+  List<Integer> outTasks;
+  if (targetTaskId != null) {
+    outTasks=taskData.getOutgoingTasks(targetTaskId,streamId,values);
+  }
+ else {
+    outTasks=taskData.getOutgoingTasks(streamId,values);
+  }
+  for (  Integer t : outTasks) {
+    Map<Long,Long> anchorsToIds=new HashMap<>();
+    if (anchors != null) {
+      for (      Tuple a : anchors) {
+        Set<Long> rootIds=a.getMessageId().getAnchorsToIds().keySet();
+        if (rootIds.size() > 0) {
+          long edgeId=MessageId.generateId(random);
+          ((TupleImpl)a).updateAckVal(edgeId);
+          for (          Long root_id : rootIds) {
+            putXor(anchorsToIds,root_id,edgeId);
+          }
+        }
+      }
+    }
+    MessageId msgId=MessageId.makeId(anchorsToIds);
+    TupleImpl tupleExt=new TupleImpl(executor.getWorkerTopologyContext(),values,taskId,streamId,msgId);
+    executor.getExecutorTransfer().transfer(t,tupleExt);
+  }
+  if (isEventLoggers) {
+    executor.sendToEventLogger(executor,taskData,values,executor.getComponentId(),null,random);
+  }
+  return outTasks;
+}
