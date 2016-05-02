@@ -1,5 +1,9 @@
 {
-  kafka.shutdown();
+  if (kafka != null) {
+    kafka.shutdown();
+    kafka.awaitShutdown();
+  }
+  kafka=null;
   if (zookeeper.getState().equals(CuratorFrameworkState.STARTED)) {
     zookeeper.close();
   }
