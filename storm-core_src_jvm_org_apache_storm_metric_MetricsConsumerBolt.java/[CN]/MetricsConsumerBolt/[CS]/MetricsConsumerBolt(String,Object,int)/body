@@ -1,4 +1,5 @@
 {
   _consumerClassName=consumerClassName;
   _registrationArgument=registrationArgument;
+  _maxRetainMetricTuples=maxRetainMetricTuples;
 }
