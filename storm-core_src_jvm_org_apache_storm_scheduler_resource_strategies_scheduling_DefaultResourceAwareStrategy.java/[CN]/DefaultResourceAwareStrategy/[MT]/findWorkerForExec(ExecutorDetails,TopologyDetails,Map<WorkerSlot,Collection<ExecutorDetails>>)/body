@@ -1,8 +1,13 @@
 {
-  WorkerSlot ws;
+  WorkerSlot ws=null;
   if (this.refNode == null) {
-    String clus=this.getBestClustering();
-    ws=this.getBestWorker(exec,td,clus,scheduleAssignmentMap);
+    for (    RackResources rack : sortRacks(td.getId())) {
+      ws=this.getBestWorker(exec,td,rack.id,scheduleAssignmentMap);
+      if (ws != null) {
+        LOG.debug("best rack: {}",rack.id);
+        break;
+      }
+    }
   }
  else {
     ws=this.getBestWorker(exec,td,scheduleAssignmentMap);

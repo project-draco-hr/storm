@@ -1,0 +1,7 @@
+{
+  List<RAS_Node> retList=new ArrayList<>();
+  for (  String node_id : _clusterInfo.get(rackId)) {
+    retList.add(_nodes.getNodeById(this.NodeHostnameToId(node_id)));
+  }
+  return retList;
+}

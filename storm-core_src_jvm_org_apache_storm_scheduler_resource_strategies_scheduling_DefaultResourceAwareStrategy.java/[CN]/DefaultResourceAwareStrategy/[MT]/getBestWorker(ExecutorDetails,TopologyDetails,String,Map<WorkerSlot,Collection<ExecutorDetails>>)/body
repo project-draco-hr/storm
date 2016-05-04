@@ -2,8 +2,8 @@
   double taskMem=td.getTotalMemReqTask(exec);
   double taskCPU=td.getTotalCpuReqTask(exec);
   List<RAS_Node> nodes;
-  if (clusterId != null) {
-    nodes=this.getAvailableNodesFromCluster(clusterId);
+  if (rackId != null) {
+    nodes=this.getAvailableNodesFromRack(rackId);
   }
  else {
     nodes=this.getAvailableNodes();
