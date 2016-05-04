@@ -1,0 +1,4 @@
+PrintWriter pw
+RelNode node
+Set<TableScan> tables
+String parentCtx

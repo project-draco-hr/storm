@@ -1,0 +1,10 @@
+{
+  pw.print(String.format("    ChannelContext CTX_%d = Channels.chain(%2$s, %3$s);\n",node.getId(),parentCtx,RelNodeCompiler.getStageName(node)));
+  String currentCtx=String.format("CTX_%d",node.getId());
+  if (node instanceof TableScan) {
+    tables.add((TableScan)node);
+  }
+  for (  RelNode i : node.getInputs()) {
+    doChainOperators(pw,i,tables,currentCtx);
+  }
+}
