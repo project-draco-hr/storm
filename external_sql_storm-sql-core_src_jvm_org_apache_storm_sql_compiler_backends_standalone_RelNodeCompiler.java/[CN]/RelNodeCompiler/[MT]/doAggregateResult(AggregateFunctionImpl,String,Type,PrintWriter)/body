@@ -7,14 +7,14 @@
     boolean genericType=aggFn.initMethod.getDeclaringClass().getTypeParameters().length > 0;
     if (genericType) {
       pw.println("          @SuppressWarnings(\"unchecked\")");
-      pw.println(String.format("          final %1$s<%3$s> %2$s = (%1$s<%3$s>) accumulators.get(\"%2$s\");",aggObjClassName,aggObjName,Primitives.wrap((Class<?>)ty).getCanonicalName()));
+      pw.print(String.format("          final %1$s<%3$s> %2$s = (%1$s<%3$s>) accumulators.get(\"%2$s\");",aggObjClassName,aggObjName,Primitives.wrap((Class<?>)ty).getCanonicalName()));
     }
  else {
-      pw.println(String.format("          final %1$s %2$s = (%1$s) accumulators.get(\"%2$s\");",aggObjClassName,aggObjName));
+      pw.print(String.format("          final %1$s %2$s = (%1$s) accumulators.get(\"%2$s\");",aggObjClassName,aggObjName));
     }
     args.add(aggObjName);
   }
   args.add(String.format("(%s)accumulators.get(\"%s\")",((Class<?>)ty).getCanonicalName(),varName));
-  pw.println(String.format("          final %s %s = %s;",((Class<?>)ty).getCanonicalName(),resultName,ExprCompiler.printMethodCall(aggFn.resultMethod,args)));
+  pw.print(String.format("          final %s %s = %s;",((Class<?>)ty).getCanonicalName(),resultName,ExprCompiler.printMethodCall(aggFn.resultMethod,args)));
   return resultName;
 }

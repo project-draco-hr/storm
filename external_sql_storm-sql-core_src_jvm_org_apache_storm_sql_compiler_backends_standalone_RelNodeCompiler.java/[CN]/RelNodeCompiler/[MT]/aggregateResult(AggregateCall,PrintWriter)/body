@@ -5,14 +5,14 @@
   String result;
   if (aggFunction instanceof SqlUserDefinedAggFunction) {
     AggregateFunction aggregateFunction=((SqlUserDefinedAggFunction)aggFunction).function;
-    result=doAggregateResult((AggregateFunctionImpl)aggregateFunction,reserveAggVarName(call),ty);
+    result=doAggregateResult((AggregateFunctionImpl)aggregateFunction,reserveAggVarName(call),ty,pw);
   }
  else {
     List<BuiltinAggregateFunctions.TypeClass> typeClasses=BuiltinAggregateFunctions.TABLE.get(aggregationName);
     if (typeClasses == null) {
       throw new UnsupportedOperationException(aggregationName + " Not implemented");
     }
-    result=doAggregateResult(AggregateFunctionImpl.create(findMatchingClass(aggregationName,typeClasses,ty)),reserveAggVarName(call),ty);
+    result=doAggregateResult(AggregateFunctionImpl.create(findMatchingClass(aggregationName,typeClasses,ty)),reserveAggVarName(call),ty,pw);
   }
   return result;
 }

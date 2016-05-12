@@ -1,6 +1,3 @@
 {
-  pw.println("      } else {");
-  pw.println("        ctx.emit(_data);");
-  pw.println("      }");
   pw.print("  }\n  };\n");
 }
