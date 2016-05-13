@@ -1,0 +1,7 @@
+{
+  if (this == o)   return true;
+  if (!(o instanceof TopologyDetails))   return false;
+  TopologyDetails that=(TopologyDetails)o;
+  if (topologyName != null ? !topologyName.equals(that.topologyName) : that.topologyName != null)   return false;
+  return !(stormTopology != null ? !stormTopology.equals(that.stormTopology) : that.stormTopology != null);
+}

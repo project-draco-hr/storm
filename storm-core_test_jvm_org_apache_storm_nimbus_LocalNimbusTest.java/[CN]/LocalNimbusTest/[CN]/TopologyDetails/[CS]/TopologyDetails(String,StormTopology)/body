@@ -1,0 +1,4 @@
+{
+  this.topologyName=topologyName;
+  this.stormTopology=stormTopology;
+}
