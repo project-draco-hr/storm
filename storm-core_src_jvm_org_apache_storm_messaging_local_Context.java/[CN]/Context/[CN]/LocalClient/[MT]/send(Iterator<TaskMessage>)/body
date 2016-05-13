@@ -1,9 +1,15 @@
 {
   if (_server._cb != null) {
+    flushPending();
     ArrayList<TaskMessage> ret=new ArrayList<>();
     while (msgs.hasNext()) {
       ret.add(msgs.next());
     }
     _server._cb.recv(ret);
+  }
+ else {
+    while (msgs.hasNext()) {
+      _pendingDueToUnregisteredServer.add(msgs.next());
+    }
   }
 }

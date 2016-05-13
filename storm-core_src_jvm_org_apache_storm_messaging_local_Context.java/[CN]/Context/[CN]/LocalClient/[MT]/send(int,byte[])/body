@@ -1,5 +1,10 @@
 {
+  TaskMessage message=new TaskMessage(taskId,payload);
   if (_server._cb != null) {
-    _server._cb.recv(Arrays.asList(new TaskMessage(taskId,payload)));
+    flushPending();
+    _server._cb.recv(Arrays.asList(message));
+  }
+ else {
+    _pendingDueToUnregisteredServer.add(message);
   }
 }
