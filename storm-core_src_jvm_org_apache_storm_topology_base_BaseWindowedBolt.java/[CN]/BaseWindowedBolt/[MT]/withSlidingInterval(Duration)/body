@@ -1,4 +1,7 @@
 {
+  if (duration.value < 0) {
+    throw new IllegalArgumentException("Negative sliding interval [" + duration + "]");
+  }
   windowConfiguration.put(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_DURATION_MS,duration.value);
   return this;
 }
