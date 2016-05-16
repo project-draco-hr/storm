@@ -1,4 +1,5 @@
 {
+  LOG.trace("Filter Sys Streams {}",stats);
   if (!includeSys) {
     for (Iterator<String> itr=stats.keySet().iterator(); itr.hasNext(); ) {
       String winOrStream=itr.next();

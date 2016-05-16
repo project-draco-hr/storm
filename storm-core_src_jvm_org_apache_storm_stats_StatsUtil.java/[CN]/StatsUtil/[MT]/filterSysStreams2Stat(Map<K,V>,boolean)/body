@@ -1,0 +1,12 @@
+{
+  LOG.trace("Filter Sys Streams2Stat {}",stream2stat);
+  if (!includeSys) {
+    for (Iterator itr=stream2stat.keySet().iterator(); itr.hasNext(); ) {
+      Object key=itr.next();
+      if (key instanceof String && Utils.isSystemId((String)key)) {
+        itr.remove();
+      }
+    }
+  }
+  return stream2stat;
+}
