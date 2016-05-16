@@ -2,5 +2,4 @@
   super(url,collectionName);
   Validate.notNull(mapper,"MongoMapper can not be null");
   this.mapper=mapper;
-  this.tupleBatch=new LinkedList<>();
 }

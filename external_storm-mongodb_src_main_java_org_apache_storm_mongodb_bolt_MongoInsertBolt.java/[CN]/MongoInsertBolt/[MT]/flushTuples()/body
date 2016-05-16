@@ -1,0 +1,8 @@
+{
+  List<Document> docs=new LinkedList<>();
+  for (  Tuple t : batchHelper.getBatchTuples()) {
+    Document doc=mapper.toDocument(t);
+    docs.add(doc);
+  }
+  mongoClient.insert(docs,ordered);
+}
