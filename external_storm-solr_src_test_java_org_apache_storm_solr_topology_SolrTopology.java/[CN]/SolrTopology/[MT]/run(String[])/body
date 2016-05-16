@@ -5,6 +5,6 @@
     submitTopologyLocalCluster(topology,config);
   }
  else {
-    submitTopologyRemoteCluster(args[1],topology,config);
+    submitTopologyRemoteCluster(args[0],topology,config);
   }
 }
