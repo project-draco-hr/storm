@@ -23,6 +23,15 @@ break;
 case HYPER_LOG_LOG:
 jedisCommand.pfadd(key,value);
 break;
+case GEO:
+String[] array=value.split(":");
+if (array.length != 2) {
+throw new IllegalArgumentException("value structure should be longitude:latitude");
+}
+double longitude=Double.valueOf(array[0]);
+double latitude=Double.valueOf(array[1]);
+jedisCommand.geoadd(additionalKey,longitude,latitude,key);
+break;
 default :
 throw new IllegalArgumentException("Cannot process such data type: " + dataType);
 }

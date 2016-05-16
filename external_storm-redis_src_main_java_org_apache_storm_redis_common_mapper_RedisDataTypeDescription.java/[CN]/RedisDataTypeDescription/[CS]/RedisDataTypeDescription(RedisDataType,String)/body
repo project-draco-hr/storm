@@ -1,9 +1,9 @@
 {
   this.dataType=dataType;
   this.additionalKey=additionalKey;
-  if (dataType == RedisDataType.HASH || dataType == RedisDataType.SORTED_SET) {
+  if (dataType == RedisDataType.HASH || dataType == RedisDataType.SORTED_SET || dataType == RedisDataType.GEO) {
     if (additionalKey == null) {
-      throw new IllegalArgumentException("Hash and Sorted Set should have additional key");
+      throw new IllegalArgumentException("Hash, Sorted Set and GEO should have additional key");
     }
   }
 }
