@@ -1,3 +1,3 @@
 TransactionAttempt tx
-Integer coordinatorMeta
+Object coordinatorMeta
 TridentCollector collector
