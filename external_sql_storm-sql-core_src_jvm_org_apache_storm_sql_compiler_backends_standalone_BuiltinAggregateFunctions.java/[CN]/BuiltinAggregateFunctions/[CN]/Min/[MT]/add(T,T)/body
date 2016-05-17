@@ -1,0 +1,3 @@
+{
+  return (accumulator == null || accumulator.compareTo(val) > 0) ? val : accumulator;
+}

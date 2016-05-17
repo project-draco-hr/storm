@@ -1,0 +1,4 @@
+AggregateFunctionImpl aggFn
+String varName
+Type ty
+List<Integer> argList

@@ -1,0 +1,8 @@
+{
+  List<String> res=new ArrayList<>();
+  StringWriter sw=new StringWriter();
+  for (  AggregateCall call : aggregate.getAggCallList()) {
+    res.add(aggregateResult(call,new PrintWriter(sw)));
+  }
+  return NEW_LINE_JOINER.join(sw.toString(),String.format("          ctx.emit(new Values(%s, %s));",groupValueEmitStr("prevGroupValues",aggregate.getGroupSet().cardinality()),Joiner.on(", ").join(res)),"          accumulators.clear();");
+}

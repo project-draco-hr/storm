@@ -1,0 +1,8 @@
+{
+  for (  Object val : vals) {
+    if (val == null) {
+      return accumulator;
+    }
+  }
+  return accumulator + 1;
+}

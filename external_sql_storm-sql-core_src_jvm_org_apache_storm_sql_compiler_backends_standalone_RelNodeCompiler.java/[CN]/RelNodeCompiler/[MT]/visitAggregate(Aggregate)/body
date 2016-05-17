@@ -1,0 +1,17 @@
+{
+  beginAggregateStage(aggregate);
+  pw.println("        List<Object> curGroupValues = _data == null ? null : getGroupValues(_data);");
+  pw.println("        if (prevGroupValues != null && !prevGroupValues.equals(curGroupValues)) {");
+  pw.println("          emitAggregateResults(ctx);");
+  pw.println("        }");
+  pw.println("        if (curGroupValues != null) {");
+  for (  AggregateCall call : aggregate.getAggCallList()) {
+    aggregate(call);
+  }
+  pw.println("        }");
+  pw.println("        if (prevGroupValues != curGroupValues) {");
+  pw.println("          prevGroupValues = curGroupValues;");
+  pw.println("        }");
+  endStage();
+  return null;
+}
