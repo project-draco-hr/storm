@@ -1,0 +1,26 @@
+{
+  List<KafkaOffsetLagResult> result=new ArrayList<>();
+  Map<String,List<TopicPartition>> leaders=getLeadersAndTopicPartitions(oldKafkaSpoutOffsetQuery);
+  if (leaders != null) {
+    Map<String,Map<Integer,Long>> logHeadOffsets=getLogHeadOffsets(leaders);
+    Map<String,List<Integer>> topicPartitions=new HashMap<>();
+    for (    Map.Entry<String,List<TopicPartition>> entry : leaders.entrySet()) {
+      for (      TopicPartition topicPartition : entry.getValue()) {
+        if (!topicPartitions.containsKey(topicPartition.topic())) {
+          topicPartitions.put(topicPartition.topic(),new ArrayList<Integer>());
+        }
+        topicPartitions.get(topicPartition.topic()).add(topicPartition.partition());
+      }
+    }
+    Map<String,Map<Integer,Long>> oldConsumerOffsets=getOldConsumerOffsetsFromZk(topicPartitions,oldKafkaSpoutOffsetQuery);
+    for (    Map.Entry<String,Map<Integer,Long>> topicOffsets : logHeadOffsets.entrySet()) {
+      for (      Map.Entry<Integer,Long> partitionOffsets : topicOffsets.getValue().entrySet()) {
+        Long consumerCommittedOffset=oldConsumerOffsets.get(topicOffsets.getKey()) != null ? oldConsumerOffsets.get(topicOffsets.getKey()).get(partitionOffsets.getKey()) : -1;
+        consumerCommittedOffset=(consumerCommittedOffset == null ? -1 : consumerCommittedOffset);
+        KafkaOffsetLagResult kafkaOffsetLagResult=new KafkaOffsetLagResult(topicOffsets.getKey(),partitionOffsets.getKey(),consumerCommittedOffset,partitionOffsets.getValue());
+        result.add(kafkaOffsetLagResult);
+      }
+    }
+  }
+  return result;
+}

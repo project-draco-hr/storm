@@ -1,0 +1,14 @@
+{
+  Options options=new Options();
+  options.addOption(OPTION_TOPIC_SHORT,OPTION_TOPIC_LONG,true,"REQUIRED Topics (comma separated list) for fetching log head and spout committed " + "offset");
+  options.addOption(OPTION_OLD_CONSUMER_SHORT,OPTION_OLD_CONSUMER_LONG,false,"Whether request is for old spout");
+  options.addOption(OPTION_BOOTSTRAP_BROKERS_SHORT,OPTION_BOOTSTRAP_BROKERS_LONG,true,"Comma separated list of bootstrap broker hosts for new " + "consumer/spout e.g. hostname1:9092,hostname2:9092");
+  options.addOption(OPTION_GROUP_ID_SHORT,OPTION_GROUP_ID_LONG,true,"Group id of consumer (applicable only for new kafka spout) ");
+  options.addOption(OPTION_TOPIC_WILDCARD_SHORT,OPTION_TOPIC_WILDCARD_LONG,false,"Whether topic provided is a wildcard as supported by ZkHosts in " + "old spout");
+  options.addOption(OPTION_PARTITIONS_SHORT,OPTION_PARTITIONS_LONG,true,"Comma separated list of partitions corresponding to " + OPTION_LEADERS_LONG + " for old spout with StaticHosts");
+  options.addOption(OPTION_LEADERS_SHORT,OPTION_LEADERS_LONG,true,"Comma separated list of broker leaders corresponding to " + OPTION_PARTITIONS_LONG + " for old spout with StaticHosts e.g. hostname1:9092,hostname2:9092");
+  options.addOption(OPTION_ZK_SERVERS_SHORT,OPTION_ZK_SERVERS_LONG,true,"Comma separated list of zk servers for fetching spout committed offsets  " + "and/or topic metadata for ZkHosts e.g hostname1:2181,hostname2:2181");
+  options.addOption(OPTION_ZK_COMMITTED_NODE_SHORT,OPTION_ZK_COMMITTED_NODE_LONG,true,"Zk node prefix where old kafka spout stores the committed" + " offsets without the topic and partition nodes");
+  options.addOption(OPTION_ZK_BROKERS_ROOT_SHORT,OPTION_ZK_BROKERS_ROOT_LONG,true,"Zk node prefix where kafka stores broker information e.g. " + "/brokers (applicable only for old kafka spout) ");
+  return options;
+}

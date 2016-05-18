@@ -1,0 +1,3 @@
+{
+  return getLagResultForKafka(spoutId,spoutSpec,topologyConf,true);
+}

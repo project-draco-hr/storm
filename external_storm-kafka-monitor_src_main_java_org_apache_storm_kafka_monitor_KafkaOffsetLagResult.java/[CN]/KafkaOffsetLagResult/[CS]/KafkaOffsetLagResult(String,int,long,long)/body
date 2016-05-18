@@ -1,0 +1,7 @@
+{
+  this.topic=topic;
+  this.partition=parition;
+  this.consumerCommittedOffset=consumerCommittedOffset;
+  this.logHeadOffset=logHeadOffset;
+  this.lag=this.logHeadOffset - this.consumerCommittedOffset;
+}

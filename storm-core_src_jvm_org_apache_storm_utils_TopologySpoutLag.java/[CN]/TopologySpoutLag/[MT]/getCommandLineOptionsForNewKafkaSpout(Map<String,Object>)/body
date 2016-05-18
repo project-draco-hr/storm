@@ -1,0 +1,11 @@
+{
+  List<String> commands=new ArrayList<>();
+  String configKeyPrefix="config.";
+  commands.add("-t");
+  commands.add((String)jsonConf.get(configKeyPrefix + "topics"));
+  commands.add("-g");
+  commands.add((String)jsonConf.get(configKeyPrefix + "groupid"));
+  commands.add("-b");
+  commands.add((String)jsonConf.get(configKeyPrefix + "bootstrap.servers"));
+  return commands;
+}

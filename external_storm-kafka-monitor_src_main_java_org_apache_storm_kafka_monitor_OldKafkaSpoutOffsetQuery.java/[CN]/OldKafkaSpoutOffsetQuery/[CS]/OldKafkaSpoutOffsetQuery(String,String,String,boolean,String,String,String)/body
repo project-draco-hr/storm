@@ -1,0 +1,9 @@
+{
+  this.topic=topic;
+  this.zkServers=zkServers;
+  this.zkPath=zkPath;
+  this.isWildCardTopic=isWildCardTopic;
+  this.brokersZkPath=brokersZkPath;
+  this.partitions=partitions;
+  this.leaders=leaders;
+}

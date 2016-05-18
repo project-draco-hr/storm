@@ -1,0 +1,4 @@
+String spoutId
+SpoutSpec spoutSpec
+Map topologyConf
+boolean old

@@ -1,0 +1,6 @@
+{
+  int result=topics != null ? topics.hashCode() : 0;
+  result=31 * result + (consumerGroupId != null ? consumerGroupId.hashCode() : 0);
+  result=31 * result + (bootStrapBrokers != null ? bootStrapBrokers.hashCode() : 0);
+  return result;
+}

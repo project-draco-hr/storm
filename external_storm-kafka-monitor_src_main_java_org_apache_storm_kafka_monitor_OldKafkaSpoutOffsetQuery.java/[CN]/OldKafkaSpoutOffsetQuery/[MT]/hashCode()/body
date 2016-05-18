@@ -1,0 +1,10 @@
+{
+  int result=topic != null ? topic.hashCode() : 0;
+  result=31 * result + (zkServers != null ? zkServers.hashCode() : 0);
+  result=31 * result + (zkPath != null ? zkPath.hashCode() : 0);
+  result=31 * result + (isWildCardTopic ? 1 : 0);
+  result=31 * result + (brokersZkPath != null ? brokersZkPath.hashCode() : 0);
+  result=31 * result + (partitions != null ? partitions.hashCode() : 0);
+  result=31 * result + (leaders != null ? leaders.hashCode() : 0);
+  return result;
+}

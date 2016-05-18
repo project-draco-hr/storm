@@ -1,0 +1,7 @@
+String topic
+String zkServers
+String zkPath
+boolean isWildCardTopic
+String brokersZkPath
+String partitions
+String leaders

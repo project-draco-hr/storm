@@ -1,0 +1,3 @@
+{
+  this(topic,zkServers,zkPath,false,null,partitions,leaders);
+}

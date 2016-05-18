@@ -1,0 +1,21 @@
+{
+  ComponentCommon componentCommon=spoutSpec.get_common();
+  String json=componentCommon.get_json_conf();
+  String result="Offset lags for kafka not supported for older versions. Please update kafka spout to latest version.";
+  if (json != null && !json.isEmpty()) {
+    List<String> commands=new ArrayList<>();
+    String stormHomeDir=System.getenv("STORM_BASE_DIR");
+    if (stormHomeDir != null && !stormHomeDir.endsWith("/")) {
+      stormHomeDir+=File.separator;
+    }
+    commands.add(stormHomeDir != null ? stormHomeDir + "bin" + File.separator+ "storm-kafka-monitor" : "storm-kafka-monitor");
+    Map<String,Object> jsonMap=(Map<String,Object>)JSONValue.parse(json);
+    commands.addAll(old ? getCommandLineOptionsForOldKafkaSpout(jsonMap,topologyConf) : getCommandLineOptionsForNewKafkaSpout(jsonMap));
+    result=ShellUtils.execCommand(commands.toArray(new String[0]));
+  }
+  Map<String,Object> kafkaSpoutLagInfo=new HashMap<>();
+  kafkaSpoutLagInfo.put(SPOUT_ID,spoutId);
+  kafkaSpoutLagInfo.put(SPOUT_TYPE,"KAFKA");
+  kafkaSpoutLagInfo.put(SPOUT_LAG_RESULT,result);
+  return kafkaSpoutLagInfo;
+}

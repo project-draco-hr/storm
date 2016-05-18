@@ -1,0 +1,3 @@
+{
+  return "NewKafkaSpoutOffsetQuery{" + "topics='" + topics + '\''+ ", consumerGroupId='"+ consumerGroupId+ '\''+ ", bootStrapBrokers='"+ bootStrapBrokers+ '\''+ '}';
+}

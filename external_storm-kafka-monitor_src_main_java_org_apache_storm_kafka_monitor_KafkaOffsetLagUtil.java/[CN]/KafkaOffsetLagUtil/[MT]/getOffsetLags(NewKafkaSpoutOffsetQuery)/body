@@ -1,0 +1,36 @@
+{
+  KafkaConsumer<String,String> consumer=null;
+  List<KafkaOffsetLagResult> result=new ArrayList<>();
+  try {
+    Properties props=new Properties();
+    props.put("bootstrap.servers",newKafkaSpoutOffsetQuery.getBootStrapBrokers());
+    props.put("group.id",newKafkaSpoutOffsetQuery.getConsumerGroupId());
+    props.put("enable.auto.commit","false");
+    props.put("session.timeout.ms","30000");
+    props.put("key.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
+    props.put("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
+    List<TopicPartition> topicPartitionList=new ArrayList<>();
+    consumer=new KafkaConsumer<>(props);
+    for (    String topic : newKafkaSpoutOffsetQuery.getTopics().split(",")) {
+      List<PartitionInfo> partitionInfoList=consumer.partitionsFor(topic);
+      if (partitionInfoList != null) {
+        for (        PartitionInfo partitionInfo : partitionInfoList) {
+          topicPartitionList.add(new TopicPartition(partitionInfo.topic(),partitionInfo.partition()));
+        }
+      }
+    }
+    consumer.assign(topicPartitionList);
+    for (    TopicPartition topicPartition : topicPartitionList) {
+      OffsetAndMetadata offsetAndMetadata=consumer.committed(topicPartition);
+      long committedOffset=offsetAndMetadata != null ? offsetAndMetadata.offset() : -1;
+      consumer.seekToEnd(topicPartition);
+      result.add(new KafkaOffsetLagResult(topicPartition.topic(),topicPartition.partition(),committedOffset,consumer.position(topicPartition)));
+    }
+  }
+  finally {
+    if (consumer != null) {
+      consumer.close();
+    }
+  }
+  return result;
+}

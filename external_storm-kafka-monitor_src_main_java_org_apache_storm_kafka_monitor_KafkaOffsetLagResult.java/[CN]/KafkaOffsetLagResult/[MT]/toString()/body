@@ -1,0 +1,3 @@
+{
+  return "KafkaOffsetLagResult{" + "topic='" + topic + '\''+ ", partition="+ partition+ ", consumerCommittedOffset="+ consumerCommittedOffset+ ", logHeadOffset="+ logHeadOffset+ ", lag="+ lag+ '}';
+}

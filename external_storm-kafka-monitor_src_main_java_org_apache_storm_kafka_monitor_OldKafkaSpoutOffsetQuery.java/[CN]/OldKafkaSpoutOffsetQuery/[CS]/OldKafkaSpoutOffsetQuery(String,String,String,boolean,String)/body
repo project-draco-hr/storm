@@ -1,0 +1,3 @@
+{
+  this(topic,zkServers,zkPath,isWildCardTopic,brokersZkPath,null,null);
+}

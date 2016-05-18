@@ -1,0 +1,63 @@
+{
+  try {
+    List<KafkaOffsetLagResult> results;
+    Options options=buildOptions();
+    CommandLineParser parser=new DefaultParser();
+    CommandLine commandLine=parser.parse(options,args);
+    if (!commandLine.hasOption(OPTION_TOPIC_LONG)) {
+      printUsageAndExit(options,OPTION_TOPIC_LONG + " is required");
+    }
+    if (commandLine.hasOption(OPTION_OLD_CONSUMER_LONG)) {
+      OldKafkaSpoutOffsetQuery oldKafkaSpoutOffsetQuery;
+      if (commandLine.hasOption(OPTION_GROUP_ID_LONG) || commandLine.hasOption(OPTION_BOOTSTRAP_BROKERS_LONG)) {
+        printUsageAndExit(options,OPTION_GROUP_ID_LONG + " or " + OPTION_BOOTSTRAP_BROKERS_LONG+ " is not accepted with option "+ OPTION_OLD_CONSUMER_LONG);
+      }
+      if (!commandLine.hasOption(OPTION_ZK_SERVERS_LONG) || !commandLine.hasOption(OPTION_ZK_COMMITTED_NODE_LONG)) {
+        printUsageAndExit(options,OPTION_ZK_SERVERS_LONG + " and " + OPTION_ZK_COMMITTED_NODE_LONG+ " are required  with "+ OPTION_OLD_CONSUMER_LONG);
+      }
+      String[] topics=commandLine.getOptionValue(OPTION_TOPIC_LONG).split(",");
+      if (topics != null && topics.length > 1) {
+        printUsageAndExit(options,"Multiple topics not supported with option " + OPTION_OLD_CONSUMER_LONG + ". Either a single topic or a "+ "wildcard string for matching topics is supported");
+      }
+      if (commandLine.hasOption(OPTION_ZK_BROKERS_ROOT_LONG)) {
+        if (commandLine.hasOption(OPTION_PARTITIONS_LONG) || commandLine.hasOption(OPTION_LEADERS_LONG)) {
+          printUsageAndExit(options,OPTION_PARTITIONS_LONG + " or " + OPTION_LEADERS_LONG+ " is not accepted with "+ OPTION_ZK_BROKERS_ROOT_LONG);
+        }
+        oldKafkaSpoutOffsetQuery=new OldKafkaSpoutOffsetQuery(commandLine.getOptionValue(OPTION_TOPIC_LONG),commandLine.getOptionValue(OPTION_ZK_SERVERS_LONG),commandLine.getOptionValue(OPTION_ZK_COMMITTED_NODE_LONG),commandLine.hasOption(OPTION_TOPIC_WILDCARD_LONG),commandLine.getOptionValue(OPTION_ZK_BROKERS_ROOT_LONG));
+      }
+ else {
+        if (commandLine.hasOption(OPTION_TOPIC_WILDCARD_LONG)) {
+          printUsageAndExit(options,OPTION_TOPIC_WILDCARD_LONG + " is not supported without " + OPTION_ZK_BROKERS_ROOT_LONG);
+        }
+        if (!commandLine.hasOption(OPTION_PARTITIONS_LONG) || !commandLine.hasOption(OPTION_LEADERS_LONG)) {
+          printUsageAndExit(options,OPTION_PARTITIONS_LONG + " and " + OPTION_LEADERS_LONG+ " are required if "+ OPTION_ZK_BROKERS_ROOT_LONG+ " is not provided");
+        }
+        String[] partitions=commandLine.getOptionValue(OPTION_PARTITIONS_LONG).split(",");
+        String[] leaders=commandLine.getOptionValue(OPTION_LEADERS_LONG).split(",");
+        if (partitions.length != leaders.length) {
+          printUsageAndExit(options,OPTION_PARTITIONS_LONG + " and " + OPTION_LEADERS_LONG+ " need to be of same size");
+        }
+        oldKafkaSpoutOffsetQuery=new OldKafkaSpoutOffsetQuery(commandLine.getOptionValue(OPTION_TOPIC_LONG),commandLine.getOptionValue(OPTION_ZK_SERVERS_LONG),commandLine.getOptionValue(OPTION_ZK_COMMITTED_NODE_LONG),commandLine.getOptionValue(OPTION_PARTITIONS_LONG),commandLine.getOptionValue(OPTION_LEADERS_LONG));
+      }
+      results=getOffsetLags(oldKafkaSpoutOffsetQuery);
+    }
+ else {
+      String[] oldSpoutOptions={OPTION_TOPIC_WILDCARD_LONG,OPTION_PARTITIONS_LONG,OPTION_LEADERS_LONG,OPTION_ZK_SERVERS_LONG,OPTION_ZK_COMMITTED_NODE_LONG,OPTION_ZK_BROKERS_ROOT_LONG};
+      for (      String oldOption : oldSpoutOptions) {
+        if (commandLine.hasOption(oldOption)) {
+          printUsageAndExit(options,oldOption + " is not accepted without " + OPTION_OLD_CONSUMER_LONG);
+        }
+      }
+      if (!commandLine.hasOption(OPTION_GROUP_ID_LONG) || !commandLine.hasOption(OPTION_BOOTSTRAP_BROKERS_LONG)) {
+        printUsageAndExit(options,OPTION_GROUP_ID_LONG + " and " + OPTION_BOOTSTRAP_BROKERS_LONG+ " are required if "+ OPTION_OLD_CONSUMER_LONG+ " is not specified");
+      }
+      NewKafkaSpoutOffsetQuery newKafkaSpoutOffsetQuery=new NewKafkaSpoutOffsetQuery(commandLine.getOptionValue(OPTION_TOPIC_LONG),commandLine.getOptionValue(OPTION_BOOTSTRAP_BROKERS_LONG),commandLine.getOptionValue(OPTION_GROUP_ID_LONG));
+      results=getOffsetLags(newKafkaSpoutOffsetQuery);
+    }
+    System.out.print(JSONValue.toJSONString(results));
+  }
+ catch (  Exception ex) {
+    System.out.print("Unable to get offset lags for kafka. Reason: ");
+    ex.printStackTrace(System.out);
+  }
+}
