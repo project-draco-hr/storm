@@ -5,6 +5,7 @@
       windowManager.add(input,ts);
     }
  else {
+      windowedOutputCollector.ack(input);
       LOG.info("Received a late tuple {} with ts {}. This will not processed.",input,ts);
     }
   }
