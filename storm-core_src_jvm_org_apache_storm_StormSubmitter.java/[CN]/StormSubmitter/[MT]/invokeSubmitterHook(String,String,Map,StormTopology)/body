@@ -1,12 +1,17 @@
 {
+  String submissionNotifierClassName=null;
   try {
     if (stormConf.containsKey(Config.STORM_TOPOLOGY_SUBMISSION_NOTIFIER_PLUGIN)) {
-      ISubmitterHook submitterHook=(ISubmitterHook)Class.forName(stormConf.get(Config.STORM_TOPOLOGY_SUBMISSION_NOTIFIER_PLUGIN).toString()).newInstance();
+      submissionNotifierClassName=stormConf.get(Config.STORM_TOPOLOGY_SUBMISSION_NOTIFIER_PLUGIN).toString();
+      LOG.info("Initializing the registered ISubmitterHook [{}]",submissionNotifierClassName);
+      ISubmitterHook submitterHook=(ISubmitterHook)Class.forName(submissionNotifierClassName).newInstance();
       TopologyInfo topologyInfo=Utils.getTopologyInfo(name,asUser,stormConf);
+      LOG.info("Invoking the registered ISubmitterHook [{}]",submissionNotifierClassName);
       submitterHook.notify(topologyInfo,stormConf,topology);
     }
   }
  catch (  Exception e) {
-    throw new RuntimeException(e);
+    LOG.warn("Error occurred in invoking submitter hook: " + submissionNotifierClassName,e);
+    throw new SubmitterHookException(e);
   }
 }
