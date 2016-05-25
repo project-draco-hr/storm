@@ -1,0 +1,4 @@
+int numSup
+int numPorts
+int start
+Map resourceMap

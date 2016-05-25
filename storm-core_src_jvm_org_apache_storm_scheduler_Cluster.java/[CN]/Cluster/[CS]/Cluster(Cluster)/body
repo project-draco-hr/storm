@@ -7,4 +7,7 @@
   this.status.putAll(src.status);
   this.topologyResources.putAll(src.topologyResources);
   this.blackListedHosts.addAll(src.blackListedHosts);
+  if (src.networkTopography != null) {
+    this.networkTopography=new HashMap<String,List<String>>(src.networkTopography);
+  }
 }

@@ -2,7 +2,7 @@
   if (src.getId().equals(dest.getId())) {
     return 0.0;
   }
- else   if (this.NodeToCluster(src).equals(this.NodeToCluster(dest))) {
+ else   if (this.nodeToRack(src).equals(this.nodeToRack(dest))) {
     return 0.5;
   }
  else {

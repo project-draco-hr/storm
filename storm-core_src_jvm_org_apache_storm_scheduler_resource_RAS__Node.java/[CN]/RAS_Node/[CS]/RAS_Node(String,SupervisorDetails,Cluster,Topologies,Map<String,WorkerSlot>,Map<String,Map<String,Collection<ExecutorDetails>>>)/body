@@ -19,8 +19,6 @@
     _sup=sup;
     _availMemory=getTotalMemoryResources();
     _availCPU=getTotalCpuResources();
-    LOG.debug("Found a {} Node {} {}",_isAlive ? "living" : "dead",_nodeId,sup.getAllPorts());
-    LOG.debug("resources_mem: {}, resources_CPU: {}",sup.getTotalMemory(),sup.getTotalCPU());
     intializeResources();
   }
 }
