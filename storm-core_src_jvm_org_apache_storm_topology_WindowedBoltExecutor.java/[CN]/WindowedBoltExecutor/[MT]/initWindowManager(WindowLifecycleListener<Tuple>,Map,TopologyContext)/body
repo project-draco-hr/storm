@@ -21,6 +21,12 @@
   }
   if (stormConf.containsKey(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_FIELD_NAME)) {
     tupleTsFieldName=(String)stormConf.get(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_FIELD_NAME);
+    lateTupleStream=(String)stormConf.get(Config.TOPOLOGY_BOLTS_LATE_TUPLE_STREAM);
+    if (lateTupleStream != null) {
+      if (!context.getThisStreams().contains(lateTupleStream)) {
+        throw new IllegalArgumentException("Stream for late tuples must be defined with the builder method withLateTupleStream");
+      }
+    }
     if (stormConf.containsKey(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_MAX_LAG_MS)) {
       maxLagMs=((Number)stormConf.get(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_MAX_LAG_MS)).intValue();
     }
@@ -35,6 +41,11 @@
       watermarkInterval=DEFAULT_WATERMARK_EVENT_INTERVAL_MS;
     }
     waterMarkEventGenerator=new WaterMarkEventGenerator<>(manager,watermarkInterval,maxLagMs,getComponentStreams(context));
+  }
+ else {
+    if (stormConf.containsKey(Config.TOPOLOGY_BOLTS_LATE_TUPLE_STREAM)) {
+      throw new IllegalArgumentException("Late tuple stream can be defined only when specifying a timestamp field");
+    }
   }
   validate(stormConf,windowLengthCount,windowLengthDuration,slidingIntervalCount,slidingIntervalDuration);
   evictionPolicy=getEvictionPolicy(windowLengthCount,windowLengthDuration,manager);

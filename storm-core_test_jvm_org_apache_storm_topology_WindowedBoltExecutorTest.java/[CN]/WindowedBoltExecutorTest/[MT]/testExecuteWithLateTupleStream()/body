@@ -1,0 +1,28 @@
+{
+  testWindowedBolt=new TestWindowedBolt();
+  executor=new WindowedBoltExecutor(testWindowedBolt);
+  TopologyContext context=getTopologyContext();
+  Mockito.when(context.getThisStreams()).thenReturn(new HashSet<>(Arrays.asList("default","$late")));
+  OutputCollector outputCollector=Mockito.mock(OutputCollector.class);
+  Map<String,Object> conf=new HashMap<>();
+  conf.put(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS,100000);
+  conf.put(Config.TOPOLOGY_BOLTS_WINDOW_LENGTH_DURATION_MS,20);
+  conf.put(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_DURATION_MS,10);
+  conf.put(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_FIELD_NAME,"ts");
+  conf.put(Config.TOPOLOGY_BOLTS_LATE_TUPLE_STREAM,"$late");
+  conf.put(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_MAX_LAG_MS,5);
+  conf.put(Config.TOPOLOGY_BOLTS_WATERMARK_EVENT_INTERVAL_MS,10);
+  executor.prepare(conf,context,outputCollector);
+  long[] timstamps={603,605,607,618,626,636,600};
+  List<Tuple> tuples=new ArrayList<>(timstamps.length);
+  executor.waterMarkEventGenerator.run();
+  for (  long ts : timstamps) {
+    Tuple tuple=getTuple("s1",new Fields("ts"),new Values(ts));
+    tuples.add(tuple);
+    executor.execute(tuple);
+    Time.sleep(10);
+  }
+  System.out.println(testWindowedBolt.tupleWindows);
+  Tuple tuple=tuples.get(tuples.size() - 1);
+  Mockito.verify(outputCollector).emit("$late",Arrays.asList(tuple),new Values(tuple));
+}
