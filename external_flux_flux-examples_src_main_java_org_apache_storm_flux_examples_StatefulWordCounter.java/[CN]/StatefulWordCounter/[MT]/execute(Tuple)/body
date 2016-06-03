@@ -1,0 +1,8 @@
+{
+  String word=tuple.getString(0);
+  Long count=wordCounts.get(word,0L);
+  count++;
+  wordCounts.put(word,count);
+  collector.emit(tuple,new Values(word,count));
+  collector.ack(tuple);
+}
