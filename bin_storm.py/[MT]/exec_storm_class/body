@@ -6,8 +6,9 @@ def exec_storm_class(klass, jvmtype='-server', jvmopts=[], extrajars=[], args=[]
     all_args = ((([JAVA_CMD, jvmtype, ('-Ddaemon.name=' + daemonName), get_config_opts(), ('-Dstorm.home=' + STORM_DIR), ('-Dstorm.log.dir=' + storm_log_dir), ('-Djava.library.path=' + confvalue('java.library.path', extrajars, daemon)), ('-Dstorm.conf.file=' + CONFFILE), '-cp', get_classpath(extrajars, daemon)] + jvmopts) + [klass]) + list(args))
     print ('Running: ' + ' '.join(all_args))
     sys.stdout.flush()
+    exit_code = 0
     if fork:
-        os.spawnvp(os.P_WAIT, JAVA_CMD, all_args)
+        exit_code = os.spawnvp(os.P_WAIT, JAVA_CMD, all_args)
     elif is_windows():
         try:
             ret = sub.check_output(all_args, stderr=sub.STDOUT)
@@ -16,4 +17,4 @@ def exec_storm_class(klass, jvmtype='-server', jvmopts=[], extrajars=[], args=[]
             sys.exit(e.returncode)
     else:
         os.execvp(JAVA_CMD, all_args)
-        os._exit()
+    return exit_code
