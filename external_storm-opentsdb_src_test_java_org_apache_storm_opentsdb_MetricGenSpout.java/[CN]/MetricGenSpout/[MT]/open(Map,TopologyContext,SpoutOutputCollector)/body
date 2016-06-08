@@ -1,0 +1,5 @@
+{
+  this.conf=conf;
+  this.context=context;
+  this.collector=collector;
+}

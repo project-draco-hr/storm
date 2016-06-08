@@ -1,0 +1,20 @@
+{
+  try {
+    List<OpenTsdbMetricDatapoint> metricDataPoints=new ArrayList<>();
+    for (    TridentTuple tridentTuple : tridentTuples) {
+      for (      TupleOpenTsdbDatapointMapper tupleOpenTsdbDatapointMapper : tupleMetricPointMappers) {
+        metricDataPoints.add(tupleOpenTsdbDatapointMapper.getMetricPoint(tridentTuple));
+      }
+    }
+    final ClientResponse.Details details=openTsdbClient.writeMetricPoints(metricDataPoints);
+    if (details != null && (details.getFailed() > 0)) {
+      final String errorMsg="Failed in writing metrics to TSDB with details: " + details;
+      LOG.error(errorMsg);
+      throw new RuntimeException(errorMsg);
+    }
+  }
+ catch (  Exception e) {
+    collector.reportError(e);
+    throw new FailedException(e);
+  }
+}

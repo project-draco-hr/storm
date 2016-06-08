@@ -1,0 +1,7 @@
+{
+  int result=metricField.hashCode();
+  result=31 * result + timestampField.hashCode();
+  result=31 * result + valueField.hashCode();
+  result=31 * result + tagsField.hashCode();
+  return result;
+}

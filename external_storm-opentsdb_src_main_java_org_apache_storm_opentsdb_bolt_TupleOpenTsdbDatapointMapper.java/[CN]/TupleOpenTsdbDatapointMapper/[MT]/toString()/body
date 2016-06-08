@@ -1,0 +1,3 @@
+{
+  return "TupleOpenTsdbDatapointMapper{" + "metricField='" + metricField + '\''+ ", timestampField='"+ timestampField+ '\''+ ", valueField='"+ valueField+ '\''+ ", tagsField='"+ tagsField+ '\''+ '}';
+}

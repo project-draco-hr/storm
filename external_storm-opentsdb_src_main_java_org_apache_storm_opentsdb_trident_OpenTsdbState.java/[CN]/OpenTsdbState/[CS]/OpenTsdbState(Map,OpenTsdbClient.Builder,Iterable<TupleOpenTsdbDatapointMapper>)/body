@@ -1,0 +1,5 @@
+{
+  this.conf=conf;
+  this.openTsdbClientBuilder=openTsdbClientBuilder;
+  this.tupleMetricPointMappers=tupleMetricPointMappers;
+}

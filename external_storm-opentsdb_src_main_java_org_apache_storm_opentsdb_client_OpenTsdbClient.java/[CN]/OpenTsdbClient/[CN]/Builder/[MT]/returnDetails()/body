@@ -1,0 +1,4 @@
+{
+  responseType=ResponseType.Details;
+  return this;
+}

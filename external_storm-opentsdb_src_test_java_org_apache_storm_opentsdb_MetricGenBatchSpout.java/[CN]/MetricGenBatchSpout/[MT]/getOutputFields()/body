@@ -1,0 +1,3 @@
+{
+  return MetricGenSpout.DEFAULT_METRIC_FIELDS;
+}

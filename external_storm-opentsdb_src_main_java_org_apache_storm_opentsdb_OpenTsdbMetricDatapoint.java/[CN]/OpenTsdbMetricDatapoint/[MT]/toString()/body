@@ -1,0 +1,3 @@
+{
+  return "OpenTsdbMetricDataPoint{" + "metric='" + metric + '\''+ ", tags="+ tags+ ", timestamp="+ timestamp+ ", value="+ value+ '}';
+}

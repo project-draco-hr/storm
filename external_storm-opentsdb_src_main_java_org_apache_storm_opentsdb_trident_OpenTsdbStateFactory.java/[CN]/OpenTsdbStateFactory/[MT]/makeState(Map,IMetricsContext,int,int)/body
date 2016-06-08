@@ -1,0 +1,5 @@
+{
+  final OpenTsdbState openTsdbState=new OpenTsdbState(conf,builder,tridentTupleOpenTsdbDatapointMappers);
+  openTsdbState.prepare();
+  return openTsdbState;
+}

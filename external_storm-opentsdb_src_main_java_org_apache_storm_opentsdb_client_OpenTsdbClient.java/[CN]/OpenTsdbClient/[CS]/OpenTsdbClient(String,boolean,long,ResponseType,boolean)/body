@@ -1,0 +1,8 @@
+{
+  this.urlString=urlString;
+  this.sync=sync;
+  this.syncTimeout=syncTimeOut;
+  this.responseType=responseType;
+  this.enableChunkedEncoding=enableChunkedEncoding;
+  init();
+}
