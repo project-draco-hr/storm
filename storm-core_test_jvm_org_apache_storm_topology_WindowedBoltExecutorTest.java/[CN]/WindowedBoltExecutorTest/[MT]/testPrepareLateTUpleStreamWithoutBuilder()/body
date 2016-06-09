@@ -1,0 +1,20 @@
+{
+  Map<String,Object> conf=new HashMap<>();
+  conf.put(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS,100000);
+  conf.put(Config.TOPOLOGY_BOLTS_WINDOW_LENGTH_DURATION_MS,20);
+  conf.put(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_DURATION_MS,10);
+  conf.put(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_FIELD_NAME,"ts");
+  conf.put(Config.TOPOLOGY_BOLTS_LATE_TUPLE_STREAM,"$late");
+  conf.put(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_MAX_LAG_MS,5);
+  conf.put(Config.TOPOLOGY_BOLTS_WATERMARK_EVENT_INTERVAL_MS,10);
+  testWindowedBolt=new TestWindowedBolt();
+  executor=new WindowedBoltExecutor(testWindowedBolt);
+  TopologyContext context=getTopologyContext();
+  try {
+    executor.prepare(conf,context,getOutputCollector());
+    fail();
+  }
+ catch (  IllegalArgumentException e) {
+    assertThat(e.getMessage(),is("Stream for late tuples must be defined with the builder method withLateTupleStream"));
+  }
+}

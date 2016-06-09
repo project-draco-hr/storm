@@ -1,3 +1,7 @@
 {
+  String lateTupleStream=(String)getComponentConfiguration().get(Config.TOPOLOGY_BOLTS_LATE_TUPLE_STREAM);
+  if (lateTupleStream != null) {
+    declarer.declareStream(lateTupleStream,new Fields(LATE_TUPLE_FIELD));
+  }
   bolt.declareOutputFields(declarer);
 }
