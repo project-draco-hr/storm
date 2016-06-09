@@ -12,6 +12,7 @@
       this._failedMsgRetryManager.failed(offset);
     }
  else {
+      LOG.warn("Will not retry failed kafka offset {} further",offset);
       _messageIneligibleForRetryCount.incr();
       _pending.remove(offset);
       this._failedMsgRetryManager.acked(offset);

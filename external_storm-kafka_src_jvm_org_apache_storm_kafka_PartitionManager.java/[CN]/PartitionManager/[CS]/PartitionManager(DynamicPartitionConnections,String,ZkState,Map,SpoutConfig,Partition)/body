@@ -9,7 +9,7 @@
   numberAcked=numberFailed=0;
   try {
     _failedMsgRetryManager=(FailedMsgRetryManager)Class.forName(spoutConfig.failedMsgRetryManagerClass).newInstance();
-    _failedMsgRetryManager.prepare(spoutConfig);
+    _failedMsgRetryManager.prepare(spoutConfig,_stormConf);
   }
  catch (  ClassNotFoundException|InstantiationException|IllegalAccessException e) {
     throw new IllegalArgumentException(String.format("Failed to create an instance of <%s> from: <%s>",FailedMsgRetryManager.class,spoutConfig.failedMsgRetryManagerClass),e);
