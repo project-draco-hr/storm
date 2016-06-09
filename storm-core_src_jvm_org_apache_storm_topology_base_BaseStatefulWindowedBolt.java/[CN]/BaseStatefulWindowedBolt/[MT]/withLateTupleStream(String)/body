@@ -1,0 +1,4 @@
+{
+  super.withLateTupleStream(streamName);
+  return this;
+}
