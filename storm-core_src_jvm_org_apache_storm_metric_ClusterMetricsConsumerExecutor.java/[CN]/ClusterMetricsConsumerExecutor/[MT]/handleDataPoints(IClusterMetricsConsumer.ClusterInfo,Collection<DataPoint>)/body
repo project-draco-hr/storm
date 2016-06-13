@@ -1,0 +1,8 @@
+{
+  try {
+    metricsConsumer.handleDataPoints(clusterInfo,dataPoints);
+  }
+ catch (  Throwable e) {
+    LOG.error("Error while handling cluster data points, consumer class: " + consumerClassName,e);
+  }
+}
