@@ -7,4 +7,7 @@
   }
   _metricsConsumer.prepare(stormConf,_registrationArgument,context,collector);
   _collector=collector;
+  _taskExecuteThread=new Thread(new MetricsHandlerRunnable());
+  _taskExecuteThread.setDaemon(true);
+  _taskExecuteThread.start();
 }

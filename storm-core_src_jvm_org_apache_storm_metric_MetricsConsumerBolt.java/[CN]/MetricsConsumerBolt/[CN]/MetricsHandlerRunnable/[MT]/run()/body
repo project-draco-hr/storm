@@ -1,0 +1,14 @@
+{
+  while (_running) {
+    try {
+      MetricsTask task=_taskQueue.take();
+      _metricsConsumer.handleDataPoints(task.getTaskInfo(),task.getDataPoints());
+    }
+ catch (    InterruptedException e) {
+      break;
+    }
+catch (    Throwable t) {
+      LOG.error("Exception occurred during handle metrics",t);
+    }
+  }
+}

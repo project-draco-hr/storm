@@ -1,0 +1,10 @@
+{
+  FilterByMetricName sut=new FilterByMetricName(null,null);
+  Map<String,Boolean> testMetricNamesAndExpected=Maps.newHashMap();
+  testMetricNamesAndExpected.put("__storm.metric.hello",true);
+  testMetricNamesAndExpected.put("storm.metric.__hello",true);
+  testMetricNamesAndExpected.put("test.hello.world",true);
+  testMetricNamesAndExpected.put("storm.test.123",true);
+  testMetricNamesAndExpected.put("metric.world",true);
+  assertTests(sut,testMetricNamesAndExpected);
+}
