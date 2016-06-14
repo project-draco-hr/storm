@@ -2,6 +2,17 @@
   if (sqlCreateFunction.jarName() != null) {
     throw new UnsupportedOperationException("UDF 'USING JAR' not implemented");
   }
-  schema.add(sqlCreateFunction.functionName().toUpperCase(),ScalarFunctionImpl.create(Class.forName(sqlCreateFunction.className()),"evaluate"));
+  Method method;
+  Function function;
+  if ((method=findMethod(sqlCreateFunction.className(),"evaluate")) != null) {
+    function=ScalarFunctionImpl.create(method);
+  }
+ else   if (findMethod(sqlCreateFunction.className(),"add") != null) {
+    function=AggregateFunctionImpl.create(Class.forName(sqlCreateFunction.className()));
+  }
+ else {
+    throw new RuntimeException("Invalid scalar or aggregate function");
+  }
+  schema.add(sqlCreateFunction.functionName().toUpperCase(),function);
   hasUdf=true;
 }

@@ -19,6 +19,7 @@
       }
     }
     this.collector=collector;
+    this.batchHelper=new BatchHelper(options.getBatchSize(),collector);
     allWriters=new ConcurrentHashMap<HiveEndPoint,HiveWriter>();
     String timeoutName="hive-bolt-%d";
     this.callTimeoutPool=Executors.newFixedThreadPool(1,new ThreadFactoryBuilder().setNameFormat(timeoutName).build());

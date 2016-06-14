@@ -1,0 +1,5 @@
+{
+  Double result=accumulator / count;
+  count=0;
+  return result;
+}

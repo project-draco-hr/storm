@@ -1,0 +1,3 @@
+{
+  metricsConsumer.cleanup();
+}

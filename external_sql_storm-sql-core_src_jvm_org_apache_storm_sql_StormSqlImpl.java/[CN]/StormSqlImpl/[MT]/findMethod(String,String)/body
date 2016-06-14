@@ -1,0 +1,9 @@
+{
+  Class<?> clazz=Class.forName(clazzName);
+  for (  Method method : clazz.getMethods()) {
+    if (method.getName().equals(methodName)) {
+      return method;
+    }
+  }
+  return null;
+}

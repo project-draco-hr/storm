@@ -1,0 +1,9 @@
+{
+  try {
+    metricsConsumer=(IClusterMetricsConsumer)Class.forName(consumerClassName).newInstance();
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("Could not instantiate a class listed in config under section " + Config.STORM_CLUSTER_METRICS_CONSUMER_REGISTER + " with fully qualified name "+ consumerClassName,e);
+  }
+  metricsConsumer.prepare(registrationArgument);
+}

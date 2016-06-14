@@ -1,0 +1,15 @@
+{
+  if (noneSpecified) {
+    return true;
+  }
+  String metricName=dataPoint.name;
+  Boolean cachedFilteredIn=filterCache.getIfPresent(metricName);
+  if (cachedFilteredIn != null) {
+    return cachedFilteredIn;
+  }
+ else {
+    boolean filteredIn=isFilteredIn(metricName);
+    filterCache.put(metricName,filteredIn);
+    return filteredIn;
+  }
+}

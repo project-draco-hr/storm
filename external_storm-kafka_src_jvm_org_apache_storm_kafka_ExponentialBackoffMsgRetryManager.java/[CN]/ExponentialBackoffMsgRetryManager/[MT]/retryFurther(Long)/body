@@ -1,0 +1,4 @@
+{
+  MessageRetryRecord record=this.records.get(offset);
+  return !(record != null && this.retryLimit > 0 && this.retryLimit <= record.retryNum);
+}

@@ -1,4 +1,4 @@
 {
-  ExponentialBackoffMsgRetryManager manager=new ExponentialBackoffMsgRetryManager(0,0d,0);
+  ExponentialBackoffMsgRetryManager manager=buildExponentialBackoffMsgRetryManager(0,0d,0,Integer.MAX_VALUE);
   manager.retryStarted(TEST_OFFSET);
 }

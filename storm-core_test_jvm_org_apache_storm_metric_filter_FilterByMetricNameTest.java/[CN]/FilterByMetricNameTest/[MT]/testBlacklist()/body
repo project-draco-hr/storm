@@ -1,0 +1,11 @@
+{
+  List<String> blacklistPattern=Lists.newArrayList("^__","test\\.");
+  FilterByMetricName sut=new FilterByMetricName(null,blacklistPattern);
+  Map<String,Boolean> testMetricNamesAndExpected=Maps.newHashMap();
+  testMetricNamesAndExpected.put("__storm.metric.hello",false);
+  testMetricNamesAndExpected.put("storm.metric.__hello",true);
+  testMetricNamesAndExpected.put("test.hello.world",false);
+  testMetricNamesAndExpected.put("storm.test.123",false);
+  testMetricNamesAndExpected.put("metric.world",true);
+  assertTests(sut,testMetricNamesAndExpected);
+}

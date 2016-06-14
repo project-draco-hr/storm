@@ -1,0 +1,20 @@
+{
+  String resultName=varName + "_result";
+  List<String> args=new ArrayList<>();
+  if (!aggFn.isStatic) {
+    String aggObjName=String.format("%s_obj",varName);
+    String aggObjClassName=(aggFn.initMethod.getDeclaringClass().getCanonicalName());
+    boolean genericType=aggFn.initMethod.getDeclaringClass().getTypeParameters().length > 0;
+    if (genericType) {
+      pw.println("          @SuppressWarnings(\"unchecked\")");
+      pw.print(String.format("          final %1$s<%3$s> %2$s = (%1$s<%3$s>) accumulators.get(\"%2$s\");",aggObjClassName,aggObjName,Primitives.wrap((Class<?>)ty).getCanonicalName()));
+    }
+ else {
+      pw.print(String.format("          final %1$s %2$s = (%1$s) accumulators.get(\"%2$s\");",aggObjClassName,aggObjName));
+    }
+    args.add(aggObjName);
+  }
+  args.add(String.format("(%s)accumulators.get(\"%s\")",((Class<?>)ty).getCanonicalName(),varName));
+  pw.print(String.format("          final %s %s = %s;",((Class<?>)ty).getCanonicalName(),resultName,ExprCompiler.printMethodCall(aggFn.resultMethod,args)));
+  return resultName;
+}

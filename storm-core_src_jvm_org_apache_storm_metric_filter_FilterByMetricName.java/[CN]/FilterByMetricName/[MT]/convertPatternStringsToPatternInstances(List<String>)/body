@@ -1,0 +1,8 @@
+{
+  return Lists.newArrayList(Iterators.transform(patterns.iterator(),new Function<String,Pattern>(){
+    @Override public Pattern apply(    String s){
+      return Pattern.compile(s);
+    }
+  }
+));
+}

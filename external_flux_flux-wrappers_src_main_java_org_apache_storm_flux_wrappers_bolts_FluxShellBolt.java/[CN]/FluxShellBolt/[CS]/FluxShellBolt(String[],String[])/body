@@ -1,4 +1,4 @@
 {
-  super(command);
-  this.outputFields=outputFields;
+  this(command);
+  this.setDefaultStream(outputFields);
 }

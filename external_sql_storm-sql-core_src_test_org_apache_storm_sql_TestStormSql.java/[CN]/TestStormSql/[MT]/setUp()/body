@@ -1,4 +1,5 @@
 {
   DataSourcesRegistry.providerMap().put("mock",new MockDataSourceProvider());
   DataSourcesRegistry.providerMap().put("mocknested",new MockNestedDataSourceProvider());
+  DataSourcesRegistry.providerMap().put("mockgroup",new MockGroupDataSourceProvider());
 }

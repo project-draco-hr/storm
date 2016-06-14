@@ -1,0 +1,14 @@
+{
+  Collection<ExecutorDetails> execs=new LinkedList<ExecutorDetails>();
+  if (_cluster.getAssignmentById(topoId) != null) {
+    for (    Entry<ExecutorDetails,WorkerSlot> entry : _cluster.getAssignmentById(topoId).getExecutorToSlot().entrySet()) {
+      String nodeId=entry.getValue().getNodeId();
+      String hostname=idToNode(nodeId).getHostname();
+      ExecutorDetails exec=entry.getKey();
+      if (nodeToRack.get(hostname) != null && nodeToRack.get(hostname).equals(rackId)) {
+        execs.add(exec);
+      }
+    }
+  }
+  return execs;
+}

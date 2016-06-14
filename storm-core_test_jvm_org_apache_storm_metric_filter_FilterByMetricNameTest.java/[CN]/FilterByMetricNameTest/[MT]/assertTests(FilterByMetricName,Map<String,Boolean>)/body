@@ -1,0 +1,5 @@
+{
+  for (  Map.Entry<String,Boolean> testEntry : testMetricNamesAndExpected.entrySet()) {
+    assertEquals("actual filter result is not same: " + testEntry.getKey(),testEntry.getValue(),sut.apply(new IMetricsConsumer.DataPoint(testEntry.getKey(),1)));
+  }
+}

@@ -5,7 +5,13 @@
       windowManager.add(input,ts);
     }
  else {
-      LOG.info("Received a late tuple {} with ts {}. This will not processed.",input,ts);
+      if (lateTupleStream != null) {
+        windowedOutputCollector.emit(lateTupleStream,input,new Values(input));
+      }
+ else {
+        LOG.info("Received a late tuple {} with ts {}. This will not be processed.",input,ts);
+      }
+      windowedOutputCollector.ack(input);
     }
   }
  else {

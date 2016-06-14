@@ -1,0 +1,7 @@
+{
+  for (  Tuple t : tupleBatch) {
+    collector.ack(t);
+  }
+  tupleBatch.clear();
+  forceFlush=false;
+}

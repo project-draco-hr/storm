@@ -21,7 +21,7 @@
       Iterator<ExecutorDetails> it=entry.getValue().iterator();
       if (it.hasNext()) {
         ExecutorDetails exec=it.next();
-        LOG.debug("\n\nAttempting to schedule: {} of component {}[avail {}] with rank {}",new Object[]{exec,td.getExecutorToComponent().get(exec),td.getTaskResourceReqList(exec),entry.getKey()});
+        LOG.debug("\n\nAttempting to schedule: {} of component {}[ REQ {} ] with rank {}",new Object[]{exec,td.getExecutorToComponent().get(exec),td.getTaskResourceReqList(exec),entry.getKey()});
         scheduleExecutor(exec,td,schedulerAssignmentMap,scheduledTasks);
         it.remove();
       }

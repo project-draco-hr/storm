@@ -1,0 +1,4 @@
+{
+  this.consumerClassName=consumerClassName;
+  this.registrationArgument=registrationArgument;
+}

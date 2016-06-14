@@ -1,3 +1,8 @@
 {
-  this.jedisCluster.close();
+  try {
+    this.jedisCluster.close();
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
 }

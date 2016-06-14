@@ -1,25 +1,16 @@
 {
   try {
-    boolean forceFlush=false;
-    if (TupleUtils.isTick(tuple)) {
-      LOG.debug("TICK received! current batch status [{}/{}]",tupleBatch.size(),options.getBatchSize());
-      forceFlush=true;
-    }
- else {
+    if (batchHelper.shouldHandle(tuple)) {
       List<String> partitionVals=options.getMapper().mapPartitions(tuple);
       HiveEndPoint endPoint=HiveUtils.makeEndPoint(partitionVals,options);
       HiveWriter writer=getOrCreateWriter(endPoint);
       writer.write(options.getMapper().mapRecord(tuple));
-      tupleBatch.add(tuple);
-      if (tupleBatch.size() >= options.getBatchSize())       forceFlush=true;
+      batchHelper.addBatch(tuple);
     }
-    if (forceFlush && !tupleBatch.isEmpty()) {
+    if (batchHelper.shouldFlush()) {
       flushAllWriters(true);
       LOG.info("acknowledging tuples after writers flushed ");
-      for (      Tuple t : tupleBatch) {
-        collector.ack(t);
-      }
-      tupleBatch.clear();
+      batchHelper.ack();
     }
   }
  catch (  SerializationError se) {
@@ -28,12 +19,7 @@
     collector.ack(tuple);
   }
 catch (  Exception e) {
-    this.collector.reportError(e);
-    collector.fail(tuple);
-    for (    Tuple t : tupleBatch) {
-      collector.fail(t);
-    }
-    tupleBatch.clear();
+    batchHelper.fail(e);
     abortAndCloseWriters();
   }
 }

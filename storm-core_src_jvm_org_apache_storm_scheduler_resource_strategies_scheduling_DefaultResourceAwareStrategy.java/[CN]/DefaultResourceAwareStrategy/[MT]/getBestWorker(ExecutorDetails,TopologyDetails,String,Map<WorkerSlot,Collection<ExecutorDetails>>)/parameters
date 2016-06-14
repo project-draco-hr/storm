@@ -1,4 +1,4 @@
 ExecutorDetails exec
 TopologyDetails td
-String clusterId
+String rackId
 Map<WorkerSlot,Collection<ExecutorDetails>> scheduleAssignmentMap
