@@ -1,0 +1,21 @@
+{
+  if (whitelistPattern == null) {
+    this.whitelistPattern=Collections.emptyList();
+  }
+ else {
+    this.whitelistPattern=convertPatternStringsToPatternInstances(whitelistPattern);
+  }
+  if (blacklistPattern == null) {
+    this.blacklistPattern=Collections.emptyList();
+  }
+ else {
+    this.blacklistPattern=convertPatternStringsToPatternInstances(blacklistPattern);
+  }
+  if (this.whitelistPattern.isEmpty() && this.blacklistPattern.isEmpty()) {
+    noneSpecified=true;
+  }
+ else   if (!this.whitelistPattern.isEmpty() && !this.blacklistPattern.isEmpty()) {
+    throw new IllegalArgumentException("You have to specify either includes or excludes, or none.");
+  }
+  filterCache=CacheBuilder.newBuilder().maximumSize(1000).build();
+}

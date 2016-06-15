@@ -8,6 +8,14 @@
     if (numberAcked == 0 && numberFailed > _spoutConfig.maxOffsetBehind) {
       throw new RuntimeException("Too many tuple failures");
     }
-    this._failedMsgRetryManager.failed(offset);
+    if (this._failedMsgRetryManager.retryFurther(offset)) {
+      this._failedMsgRetryManager.failed(offset);
+    }
+ else {
+      LOG.warn("Will not retry failed kafka offset {} further",offset);
+      _messageIneligibleForRetryCount.incr();
+      _pending.remove(offset);
+      this._failedMsgRetryManager.acked(offset);
+    }
   }
 }

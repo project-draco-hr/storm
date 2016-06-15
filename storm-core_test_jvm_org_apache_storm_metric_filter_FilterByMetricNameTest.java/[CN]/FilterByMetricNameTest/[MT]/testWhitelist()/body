@@ -1,0 +1,11 @@
+{
+  List<String> whitelistPattern=Lists.newArrayList("^metric\\.","test\\.hello\\.[0-9]+");
+  FilterByMetricName sut=new FilterByMetricName(whitelistPattern,null);
+  Map<String,Boolean> testMetricNamesAndExpected=Maps.newHashMap();
+  testMetricNamesAndExpected.put("storm.metric.hello",false);
+  testMetricNamesAndExpected.put("test.hello.world",false);
+  testMetricNamesAndExpected.put("test.hello.123",true);
+  testMetricNamesAndExpected.put("test.metric.world",false);
+  testMetricNamesAndExpected.put("metric.world",true);
+  assertTests(sut,testMetricNamesAndExpected);
+}
