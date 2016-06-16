@@ -1,0 +1,17 @@
+{
+  SimpleFileNameFormat format=new SimpleFileNameFormat().withName("$TIME.$HOST.$PARTITION.$NUM.txt").withPath("/mypath").withTimeFormat("yyyy-MM-dd HH:mm:ss");
+  format.prepare(null,3,5);
+  long now=System.currentTimeMillis();
+  String path=format.getPath();
+  String name=format.getName(1,now);
+  Assert.assertEquals("/mypath",path);
+  String time=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(now);
+  String host=null;
+  try {
+    host=Utils.localHostname();
+  }
+ catch (  UnknownHostException e) {
+    e.printStackTrace();
+  }
+  Assert.assertEquals(time + "." + host+ ".3.1.txt",name);
+}
