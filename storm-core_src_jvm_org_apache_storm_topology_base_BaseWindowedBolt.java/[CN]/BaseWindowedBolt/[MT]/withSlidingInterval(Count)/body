@@ -1,6 +1,6 @@
 {
-  if (count.value < 0) {
-    throw new IllegalArgumentException("Negative sliding interval [" + count + "]");
+  if (count.value <= 0) {
+    throw new IllegalArgumentException("Sliding interval must be positive [" + count + "]");
   }
   windowConfiguration.put(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_COUNT,count.value);
   return this;
