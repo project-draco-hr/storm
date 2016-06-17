@@ -43,10 +43,23 @@
       d.addConfigurations(conf);
     }
   }
-  for (  Map.Entry<String,List<String>> entry : batchesToCommitIds.entrySet()) {
-    String batch=entry.getKey();
-    List<String> commitIds=entry.getValue();
-    builder.setSpout(masterCoordinator(batch),new MasterBatchCoordinator(commitIds,batchesToSpouts.get(batch)));
+  Number onHeap=masterCoordResources.get(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB);
+  Number offHeap=masterCoordResources.get(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB);
+  Number cpuLoad=masterCoordResources.get(Config.TOPOLOGY_COMPONENT_CPU_PCORE_PERCENT);
+  for (  String batch : batchesToCommitIds.keySet()) {
+    List<String> commitIds=batchesToCommitIds.get(batch);
+    SpoutDeclarer masterCoord=builder.setSpout(masterCoordinator(batch),new MasterBatchCoordinator(commitIds,batchesToSpouts.get(batch)));
+    if (onHeap != null) {
+      if (offHeap != null) {
+        masterCoord.setMemoryLoad(onHeap,offHeap);
+      }
+ else {
+        masterCoord.setMemoryLoad(onHeap);
+      }
+    }
+    if (cpuLoad != null) {
+      masterCoord.setCPULoad(cpuLoad);
+    }
   }
   for (  String id : _bolts.keySet()) {
     Component c=_bolts.get(id);

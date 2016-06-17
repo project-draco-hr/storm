@@ -1,0 +1,4 @@
+{
+  _resourceDefaults=defaults.getResources();
+  return this;
+}

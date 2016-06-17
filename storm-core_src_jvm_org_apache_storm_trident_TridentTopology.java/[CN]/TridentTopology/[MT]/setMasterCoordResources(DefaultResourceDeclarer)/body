@@ -1,0 +1,4 @@
+{
+  _masterCoordResources=resources.getResources();
+  return this;
+}
