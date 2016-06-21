@@ -1,0 +1,9 @@
+{
+  String basePath=StringUtils.join(classpath,CLASS_PATH_SEPARATOR);
+  if (!basePath.equals("")) {
+    return addToClasspath(basePath,paths);
+  }
+ else {
+    return StringUtils.join(paths,CLASS_PATH_SEPARATOR);
+  }
+}
