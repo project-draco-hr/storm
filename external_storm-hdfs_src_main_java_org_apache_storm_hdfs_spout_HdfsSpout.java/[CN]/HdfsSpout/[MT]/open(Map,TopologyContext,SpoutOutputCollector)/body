@@ -5,8 +5,6 @@
   this.tracker=new ProgressTracker();
   this.hdfsConfig=new Configuration();
   this.collector=collector;
-  this.hdfsConfig=new Configuration();
-  this.tupleCounter=0;
   if (conf.containsKey(Configs.HDFS_URI)) {
     this.hdfsUri=conf.get(Configs.HDFS_URI).toString();
   }
