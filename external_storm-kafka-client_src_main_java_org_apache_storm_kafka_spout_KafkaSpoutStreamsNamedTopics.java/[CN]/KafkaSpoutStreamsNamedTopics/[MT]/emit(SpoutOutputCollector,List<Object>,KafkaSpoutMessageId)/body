@@ -1,0 +1,3 @@
+{
+  getStream(messageId.topic()).emit(collector,tuple,messageId);
+}

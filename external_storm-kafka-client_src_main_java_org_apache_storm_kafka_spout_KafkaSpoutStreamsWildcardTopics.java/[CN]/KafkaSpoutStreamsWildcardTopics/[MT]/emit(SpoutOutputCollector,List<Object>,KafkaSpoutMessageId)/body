@@ -1,0 +1,3 @@
+{
+  kafkaSpoutStream.emit(collector,tuple,messageId);
+}

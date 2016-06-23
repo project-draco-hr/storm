@@ -1,0 +1,6 @@
+{
+  if (topicToStream.containsKey(topic)) {
+    return topicToStream.get(topic);
+  }
+  throw new IllegalStateException(this.getClass().getName() + " not configured for topic: " + topic);
+}

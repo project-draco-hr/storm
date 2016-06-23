@@ -1,5 +1,0 @@
-{
-  final Fields outputFields=new Fields("topic","partition","offset","key","value");
-  final Fields outputFields1=new Fields("topic","partition","offset");
-  return new KafkaSpoutStreams.Builder(outputFields,STREAMS[0],new String[]{TOPICS[0],TOPICS[1]}).addStream(outputFields,STREAMS[0],new String[]{TOPICS[2]}).addStream(outputFields1,STREAMS[2],new String[]{TOPICS[2]}).build();
-}

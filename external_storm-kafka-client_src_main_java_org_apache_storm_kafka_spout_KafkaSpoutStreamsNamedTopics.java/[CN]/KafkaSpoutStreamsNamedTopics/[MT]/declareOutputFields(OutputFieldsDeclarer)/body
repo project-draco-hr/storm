@@ -1,0 +1,7 @@
+{
+  for (  KafkaSpoutStream stream : topicToStream.values()) {
+    if (!((OutputFieldsGetter)declarer).getFieldsDeclaration().containsKey(stream.getStreamId())) {
+      stream.declareOutputFields(declarer);
+    }
+  }
+}

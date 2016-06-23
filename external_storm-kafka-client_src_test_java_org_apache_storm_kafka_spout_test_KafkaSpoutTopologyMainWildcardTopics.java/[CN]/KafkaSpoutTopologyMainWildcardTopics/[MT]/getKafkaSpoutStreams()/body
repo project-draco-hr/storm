@@ -1,0 +1,5 @@
+{
+  final Fields outputFields=new Fields("topic","partition","offset","key","value");
+  final KafkaSpoutStream kafkaSpoutStream=new KafkaSpoutStream(outputFields,STREAM,Pattern.compile(TOPIC_WILDCARD_PATTERN));
+  return new KafkaSpoutStreamsWildcardTopics(kafkaSpoutStream);
+}

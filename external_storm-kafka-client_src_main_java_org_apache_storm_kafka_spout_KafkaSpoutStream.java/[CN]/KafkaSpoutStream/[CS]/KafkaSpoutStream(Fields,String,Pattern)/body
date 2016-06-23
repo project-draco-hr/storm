@@ -1,0 +1,9 @@
+{
+  if (outputFields == null || streamId == null || topicWildcardPattern == null) {
+    throw new IllegalArgumentException(String.format("Constructor parameters cannot be null. " + "[outputFields=%s, streamId=%s, topicWildcardPattern=%s]",outputFields,streamId,topicWildcardPattern));
+  }
+  this.outputFields=outputFields;
+  this.streamId=streamId;
+  this.topic=null;
+  this.topicWildcardPattern=topicWildcardPattern;
+}
