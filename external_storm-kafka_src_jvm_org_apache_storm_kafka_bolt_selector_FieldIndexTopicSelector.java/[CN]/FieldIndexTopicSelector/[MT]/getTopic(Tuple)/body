@@ -1,0 +1,9 @@
+{
+  if (fieldIndex < tuple.size()) {
+    return tuple.getString(fieldIndex);
+  }
+ else {
+    LOG.warn("Field Index " + fieldIndex + " Out of bound . Using default topic "+ defaultTopicName);
+    return defaultTopicName;
+  }
+}

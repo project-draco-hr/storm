@@ -1,0 +1,9 @@
+{
+  if (tuple.contains(fieldName)) {
+    return tuple.getStringByField(fieldName);
+  }
+ else {
+    LOG.warn("Field " + fieldName + " Not Found . Using default topic "+ defaultTopicName);
+    return defaultTopicName;
+  }
+}
