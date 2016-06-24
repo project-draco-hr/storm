@@ -1,4 +1,5 @@
 def shell(resourcesdir, command, *args):
+    'Syntax: [storm shell resourcesdir command args]\n\n    Archives resources to jar and uploads jar to Nimbus, and executes following arguments on "local". Useful for non JVM languages.\n    eg: `storm shell resources/ python topology.py arg1 arg2`\n    '
     tmpjarpath = (('stormshell' + str(random.randint(0, 10000000))) + '.jar')
     os.system(('jar cf %s %s' % (tmpjarpath, resourcesdir)))
     runnerargs = [tmpjarpath, command]
