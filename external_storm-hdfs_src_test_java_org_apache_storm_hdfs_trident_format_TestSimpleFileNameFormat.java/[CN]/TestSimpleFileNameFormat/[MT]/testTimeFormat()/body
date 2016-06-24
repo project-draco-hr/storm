@@ -1,0 +1,4 @@
+{
+  SimpleFileNameFormat format=new SimpleFileNameFormat().withTimeFormat("xyz");
+  format.prepare(null,3,5);
+}
