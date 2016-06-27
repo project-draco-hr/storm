@@ -1,5 +1,6 @@
 {
   try {
+    markWaitingSubprocess();
     _process.writeSpoutMsg(_spoutMsg);
     while (true) {
       ShellMsg shellMsg=_process.readShellMsg();
@@ -43,5 +44,8 @@
  catch (  Exception e) {
     String processInfo=_process.getProcessInfoString() + _process.getProcessTerminationInfoString();
     throw new RuntimeException(processInfo,e);
+  }
+ finally {
+    completedWaitingSubprocess();
   }
 }
