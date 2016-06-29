@@ -61,7 +61,6 @@
     for (    Integer port : killWorkers) {
       supervisorData.getiSupervisor().killedWorker(port);
     }
-    killExistingWorkersWithChangeInComponents(supervisorData,existingAssignment,newAssignment);
     supervisorData.getiSupervisor().assigned(newAssignment.keySet());
     localState.setLocalAssignmentsMap(newAssignment);
     supervisorData.setAssignmentVersions(assignmentsSnapshot);
@@ -71,15 +70,6 @@
       convertNewAssignment.put(entry.getKey().longValue(),entry.getValue());
     }
     supervisorData.setCurrAssignment(convertNewAssignment);
-    if (Utils.isOnWindows()) {
-      shutdownDisallowedWorkers();
-    }
-    for (    String stormId : allDownloadedTopologyIds) {
-      if (!stormcodeMap.containsKey(stormId)) {
-        LOG.info("Removing code for storm id {}.",stormId);
-        rmTopoFiles(conf,stormId,supervisorData.getLocalizer(),true);
-      }
-    }
     syncProcessManager.add(syncProcesses);
   }
  catch (  Exception e) {

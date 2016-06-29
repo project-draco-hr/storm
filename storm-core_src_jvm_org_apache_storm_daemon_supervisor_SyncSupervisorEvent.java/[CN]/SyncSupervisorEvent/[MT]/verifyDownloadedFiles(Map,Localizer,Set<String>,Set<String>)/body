@@ -4,7 +4,7 @@
     if (assignedStormIds.contains(stormId)) {
       if (!SupervisorUtils.doRequiredTopoFilesExist(conf,stormId)) {
         LOG.debug("Files not present in topology directory");
-        rmTopoFiles(conf,stormId,localizer,false);
+        SupervisorUtils.rmTopoFiles(conf,stormId,localizer,false);
         srashStormIds.add(stormId);
       }
     }

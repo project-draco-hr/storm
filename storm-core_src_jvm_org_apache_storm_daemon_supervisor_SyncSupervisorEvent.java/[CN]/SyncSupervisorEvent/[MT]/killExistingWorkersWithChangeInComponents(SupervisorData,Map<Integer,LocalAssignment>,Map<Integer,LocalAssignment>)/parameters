@@ -1,3 +1,0 @@
-SupervisorData supervisorData
-Map<Integer,LocalAssignment> existingAssignment
-Map<Integer,LocalAssignment> newAssignment
