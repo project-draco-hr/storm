@@ -1,0 +1,22 @@
+{
+  String section="user-pass-section";
+  Map<String,String> optionMap=new HashMap<String,String>();
+  String user="user";
+  String pass="pass";
+  optionMap.put("username",user);
+  optionMap.put("password",pass);
+  AppConfigurationEntry entry=Mockito.mock(AppConfigurationEntry.class);
+  Mockito.<Map<String,?>>when(entry.getOptions()).thenReturn(optionMap);
+  Configuration mockConfig=Mockito.mock(Configuration.class);
+  Mockito.when(mockConfig.getAppConfigurationEntry(section)).thenReturn(new AppConfigurationEntry[]{entry});
+  MessageDigest digest=MessageDigest.getInstance("SHA-512");
+  byte[] output=digest.digest((user + ":" + pass).getBytes());
+  String sha=Hex.encodeHexString(output);
+  StringBuilder builder=new StringBuilder();
+  for (  byte b : output) {
+    builder.append(String.format("%02x",b));
+  }
+  String stringFormatMethod=builder.toString();
+  Assert.assertEquals(AuthUtils.makeDigestPayload(mockConfig,"user-pass-section"),sha);
+  Assert.assertEquals(sha,stringFormatMethod);
+}

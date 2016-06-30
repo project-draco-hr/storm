@@ -1,11 +1,7 @@
 {
-  if (conf == null) {
-    return null;
-  }
-  AppConfigurationEntry configurationEntries[]=conf.getAppConfigurationEntry(conf_entry);
+  AppConfigurationEntry[] configurationEntries=AuthUtils.getEntries(configuration,section);
   if (configurationEntries == null) {
-    String errorMessage="Could not find a '" + conf_entry + "' entry in this configuration: Client cannot start.";
-    throw new IOException(errorMessage);
+    return null;
   }
   TreeMap<String,Object> results=new TreeMap<>();
   for (  AppConfigurationEntry entry : configurationEntries) {

@@ -1,0 +1,3 @@
+{
+  AuthUtils.updateSubject(new Subject(),null,null);
+}

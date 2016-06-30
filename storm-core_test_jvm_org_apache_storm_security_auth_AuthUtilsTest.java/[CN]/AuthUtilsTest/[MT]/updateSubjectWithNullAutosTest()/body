@@ -1,0 +1,7 @@
+{
+  AuthUtilsTestMock mock=Mockito.mock(AuthUtilsTestMock.class);
+  Collection<IAutoCredentials> autos=Arrays.asList(new IAutoCredentials[]{mock});
+  Subject s=new Subject();
+  AuthUtils.updateSubject(s,autos,null);
+  Mockito.verify(mock,Mockito.times(1)).updateSubject(s,null);
+}

@@ -4,7 +4,7 @@
     Collection<String> clazzes=(Collection<String>)storm_conf.get(Config.TOPOLOGY_AUTO_CREDENTIALS);
     if (clazzes != null) {
       for (      String clazz : clazzes) {
-        IAutoCredentials a=(IAutoCredentials)Class.forName(clazz).newInstance();
+        IAutoCredentials a=Utils.newInstance(clazz);
         a.prepare(storm_conf);
         autos.add(a);
       }

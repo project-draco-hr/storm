@@ -1,0 +1,6 @@
+{
+  Assert.assertNull(AuthUtils.pullConfig(null,"foo"));
+  Assert.assertNull(AuthUtils.get(null,"foo","bar"));
+  Map emptyMap=new HashMap<String,String>();
+  Assert.assertNull(AuthUtils.GetConfiguration(emptyMap));
+}
