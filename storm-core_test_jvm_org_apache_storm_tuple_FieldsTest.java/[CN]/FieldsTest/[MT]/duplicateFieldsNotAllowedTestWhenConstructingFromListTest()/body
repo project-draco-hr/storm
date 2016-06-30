@@ -1,0 +1,3 @@
+{
+  new Fields(new String[]{"foo","bar","foo"});
+}
