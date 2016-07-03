@@ -9,10 +9,12 @@
   Iterable<Object> triggerValues=null;
   if (retriedAttempt(batchId)) {
     pendingTriggerIds=(List<Integer>)windowStore.get(inprocessTriggerKey(batchTxnId));
-    for (    Integer pendingTriggerId : pendingTriggerIds) {
-      triggerKeys.add(triggerKey(pendingTriggerId));
+    if (pendingTriggerIds != null) {
+      for (      Integer pendingTriggerId : pendingTriggerIds) {
+        triggerKeys.add(triggerKey(pendingTriggerId));
+      }
+      triggerValues=windowStore.get(triggerKeys);
     }
-    triggerValues=windowStore.get(triggerKeys);
   }
   if (triggerValues == null) {
     pendingTriggerIds=new ArrayList<>();
