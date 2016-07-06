@@ -1,0 +1,3 @@
+{
+  return (this.component_to_num_tasks == null) ? 0 : this.component_to_num_tasks.size();
+}

@@ -1,0 +1,13 @@
+{
+  getSupervisorPageInfo_result result=new getSupervisorPageInfo_result();
+  try {
+    result.success=iface.getSupervisorPageInfo(args.id,args.host,args.is_include_sys);
+  }
+ catch (  NotAliveException e) {
+    result.e=e;
+  }
+catch (  AuthorizationException aze) {
+    result.aze=aze;
+  }
+  return result;
+}

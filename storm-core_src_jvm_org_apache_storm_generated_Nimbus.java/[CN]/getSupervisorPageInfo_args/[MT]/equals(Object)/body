@@ -1,0 +1,5 @@
+{
+  if (that == null)   return false;
+  if (that instanceof getSupervisorPageInfo_args)   return this.equals((getSupervisorPageInfo_args)that);
+  return false;
+}

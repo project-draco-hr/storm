@@ -138,6 +138,17 @@
     sb.append(this.replication_count);
     first=false;
   }
+  if (is_set_workers()) {
+    if (!first)     sb.append(", ");
+    sb.append("workers:");
+    if (this.workers == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.workers);
+    }
+    first=false;
+  }
   if (is_set_requested_memonheap()) {
     if (!first)     sb.append(", ");
     sb.append("requested_memonheap:");

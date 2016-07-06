@@ -1,0 +1,16 @@
+{
+  if (that == null)   return false;
+  boolean this_present_supervisor_summaries=true && this.is_set_supervisor_summaries();
+  boolean that_present_supervisor_summaries=true && that.is_set_supervisor_summaries();
+  if (this_present_supervisor_summaries || that_present_supervisor_summaries) {
+    if (!(this_present_supervisor_summaries && that_present_supervisor_summaries))     return false;
+    if (!this.supervisor_summaries.equals(that.supervisor_summaries))     return false;
+  }
+  boolean this_present_worker_summaries=true && this.is_set_worker_summaries();
+  boolean that_present_worker_summaries=true && that.is_set_worker_summaries();
+  if (this_present_worker_summaries || that_present_worker_summaries) {
+    if (!(this_present_worker_summaries && that_present_worker_summaries))     return false;
+    if (!this.worker_summaries.equals(that.worker_summaries))     return false;
+  }
+  return true;
+}

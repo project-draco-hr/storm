@@ -1,0 +1,7 @@
+{
+  getSupervisorPageInfo_args args=new getSupervisorPageInfo_args();
+  args.set_id(id);
+  args.set_host(host);
+  args.set_is_include_sys(is_include_sys);
+  sendBase("getSupervisorPageInfo",args);
+}

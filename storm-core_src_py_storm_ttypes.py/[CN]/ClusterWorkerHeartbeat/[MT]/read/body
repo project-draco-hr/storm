@@ -15,13 +15,13 @@ def read(self, iprot):
         elif (fid == 2):
             if (ftype == TType.MAP):
                 self.executor_stats = {}
-                (_ktype559, _vtype560, _size558) = iprot.readMapBegin()
-                for _i562 in xrange(_size558):
-                    _key563 = ExecutorInfo()
-                    _key563.read(iprot)
-                    _val564 = ExecutorStats()
-                    _val564.read(iprot)
-                    self.executor_stats[_key563] = _val564
+                (_ktype589, _vtype590, _size588) = iprot.readMapBegin()
+                for _i592 in xrange(_size588):
+                    _key593 = ExecutorInfo()
+                    _key593.read(iprot)
+                    _val594 = ExecutorStats()
+                    _val594.read(iprot)
+                    self.executor_stats[_key593] = _val594
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

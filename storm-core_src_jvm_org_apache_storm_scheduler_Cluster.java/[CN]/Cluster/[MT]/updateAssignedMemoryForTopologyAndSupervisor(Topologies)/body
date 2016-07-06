@@ -2,12 +2,31 @@
   Map<String,Double> supervisorToAssignedMem=new HashMap<String,Double>();
   for (  Map.Entry<String,SchedulerAssignment> entry : this.getAssignments().entrySet()) {
     String topId=entry.getValue().getTopologyId();
+    if (topologies.getById(topId) == null) {
+      continue;
+    }
     Map topConf=topologies.getById(topId).getConf();
     Double assignedMemForTopology=0.0;
     Double assignedMemPerSlot=getAssignedMemoryForSlot(topConf);
+    Map<WorkerSlot,Double[]> workerResources;
+    if (this.workerResources.containsKey(topId)) {
+      workerResources=this.workerResources.get(topId);
+    }
+ else {
+      workerResources=new HashMap<WorkerSlot,Double[]>();
+      this.workerResources.put(topId,workerResources);
+    }
     for (    WorkerSlot ws : entry.getValue().getSlots()) {
       assignedMemForTopology+=assignedMemPerSlot;
       String nodeId=ws.getNodeId();
+      if (workerResources.containsKey(ws)) {
+        Double[] worker_resources=workerResources.get(ws);
+        worker_resources[0]=assignedMemPerSlot;
+      }
+ else {
+        Double[] worker_resources={assignedMemPerSlot,0.0,0.0};
+        workerResources.put(ws,worker_resources);
+      }
       if (supervisorToAssignedMem.containsKey(nodeId)) {
         supervisorToAssignedMem.put(nodeId,supervisorToAssignedMem.get(nodeId) + assignedMemPerSlot);
       }
@@ -15,8 +34,8 @@
         supervisorToAssignedMem.put(nodeId,assignedMemPerSlot);
       }
     }
-    if (this.getTopologyResourcesMap().containsKey(topId)) {
-      Double[] topo_resources=getTopologyResourcesMap().get(topId);
+    if (topologyResources.containsKey(topId)) {
+      Double[] topo_resources=topologyResources.get(topId);
       topo_resources[3]=assignedMemForTopology;
     }
  else {

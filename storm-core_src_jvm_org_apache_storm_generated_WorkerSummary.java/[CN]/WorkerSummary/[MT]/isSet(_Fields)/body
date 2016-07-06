@@ -1,0 +1,38 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case SUPERVISOR_ID:
+    return is_set_supervisor_id();
+case HOST:
+  return is_set_host();
+case PORT:
+return is_set_port();
+case TOPOLOGY_ID:
+return is_set_topology_id();
+case TOPOLOGY_NAME:
+return is_set_topology_name();
+case NUM_EXECUTORS:
+return is_set_num_executors();
+case COMPONENT_TO_NUM_TASKS:
+return is_set_component_to_num_tasks();
+case TIME_SECS:
+return is_set_time_secs();
+case UPTIME_SECS:
+return is_set_uptime_secs();
+case REQUESTED_MEMONHEAP:
+return is_set_requested_memonheap();
+case REQUESTED_MEMOFFHEAP:
+return is_set_requested_memoffheap();
+case REQUESTED_CPU:
+return is_set_requested_cpu();
+case ASSIGNED_MEMONHEAP:
+return is_set_assigned_memonheap();
+case ASSIGNED_MEMOFFHEAP:
+return is_set_assigned_memoffheap();
+case ASSIGNED_CPU:
+return is_set_assigned_cpu();
+}
+throw new IllegalStateException();
+}

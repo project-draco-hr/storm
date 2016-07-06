@@ -1,0 +1,3 @@
+def __init__(self, supervisor_summaries=None, worker_summaries=None):
+    self.supervisor_summaries = supervisor_summaries
+    self.worker_summaries = worker_summaries

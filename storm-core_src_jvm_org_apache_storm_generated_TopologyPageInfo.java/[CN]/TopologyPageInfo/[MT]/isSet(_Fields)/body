@@ -33,6 +33,8 @@ case DEBUG_OPTIONS:
 return is_set_debug_options();
 case REPLICATION_COUNT:
 return is_set_replication_count();
+case WORKERS:
+return is_set_workers();
 case REQUESTED_MEMONHEAP:
 return is_set_requested_memonheap();
 case REQUESTED_MEMOFFHEAP:

@@ -1,0 +1,16 @@
+self
+supervisor_id
+host
+port
+topology_id
+topology_name
+num_executors
+component_to_num_tasks
+time_secs
+uptime_secs
+requested_memonheap
+requested_memoffheap
+requested_cpu
+assigned_memonheap
+assigned_memoffheap
+assigned_cpu

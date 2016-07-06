@@ -1,0 +1,8 @@
+{
+  makeTopoInfoWithMissingBeats();
+  List<WorkerSummary> summaries=checkWorkerStats(false,true,"node3");
+  WorkerSummary ws=getWorkerSummaryForPort(summaries,3);
+  Assert.assertEquals(1,ws.get_component_to_num_tasks().size());
+  Assert.assertEquals(1,ws.get_component_to_num_tasks().get("my-component2").intValue());
+  Assert.assertEquals(1,summaries.size());
+}

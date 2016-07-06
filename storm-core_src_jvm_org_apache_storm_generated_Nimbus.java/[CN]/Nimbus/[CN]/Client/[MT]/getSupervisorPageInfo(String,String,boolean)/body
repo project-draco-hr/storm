@@ -1,0 +1,4 @@
+{
+  send_getSupervisorPageInfo(id,host,is_include_sys);
+  return recv_getSupervisorPageInfo();
+}

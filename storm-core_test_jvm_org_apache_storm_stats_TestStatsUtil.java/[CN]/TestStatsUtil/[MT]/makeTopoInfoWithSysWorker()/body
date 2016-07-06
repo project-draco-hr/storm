@@ -1,0 +1,7 @@
+{
+  makeTopoInfo();
+  List<Object> secondWorker=new ArrayList<Object>();
+  secondWorker.add("node2");
+  secondWorker.add(new Long(2));
+  exec2NodePort.put(makeExecutorId(2,4),secondWorker);
+}

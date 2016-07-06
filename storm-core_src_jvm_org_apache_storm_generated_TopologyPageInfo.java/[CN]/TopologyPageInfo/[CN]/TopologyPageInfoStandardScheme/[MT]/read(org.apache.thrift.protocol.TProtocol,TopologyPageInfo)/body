@@ -82,15 +82,15 @@ break;
 case 9:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map402=iprot.readMapBegin();
-struct.id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map402.size);
-String _key403;
-ComponentAggregateStats _val404;
-for (int _i405=0; _i405 < _map402.size; ++_i405) {
-_key403=iprot.readString();
-_val404=new ComponentAggregateStats();
-_val404.read(iprot);
-struct.id_to_spout_agg_stats.put(_key403,_val404);
+org.apache.thrift.protocol.TMap _map428=iprot.readMapBegin();
+struct.id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map428.size);
+String _key429;
+ComponentAggregateStats _val430;
+for (int _i431=0; _i431 < _map428.size; ++_i431) {
+_key429=iprot.readString();
+_val430=new ComponentAggregateStats();
+_val430.read(iprot);
+struct.id_to_spout_agg_stats.put(_key429,_val430);
 }
 iprot.readMapEnd();
 }
@@ -103,15 +103,15 @@ break;
 case 10:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map406=iprot.readMapBegin();
-struct.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map406.size);
-String _key407;
-ComponentAggregateStats _val408;
-for (int _i409=0; _i409 < _map406.size; ++_i409) {
-_key407=iprot.readString();
-_val408=new ComponentAggregateStats();
-_val408.read(iprot);
-struct.id_to_bolt_agg_stats.put(_key407,_val408);
+org.apache.thrift.protocol.TMap _map432=iprot.readMapBegin();
+struct.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map432.size);
+String _key433;
+ComponentAggregateStats _val434;
+for (int _i435=0; _i435 < _map432.size; ++_i435) {
+_key433=iprot.readString();
+_val434=new ComponentAggregateStats();
+_val434.read(iprot);
+struct.id_to_bolt_agg_stats.put(_key433,_val434);
 }
 iprot.readMapEnd();
 }
@@ -163,6 +163,25 @@ case 15:
 if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
 struct.replication_count=iprot.readI32();
 struct.set_replication_count_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 16:
+if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+{
+org.apache.thrift.protocol.TList _list436=iprot.readListBegin();
+struct.workers=new ArrayList<WorkerSummary>(_list436.size);
+WorkerSummary _elem437;
+for (int _i438=0; _i438 < _list436.size; ++_i438) {
+_elem437=new WorkerSummary();
+_elem437.read(iprot);
+struct.workers.add(_elem437);
+}
+iprot.readListEnd();
+}
+struct.set_workers_isSet(true);
 }
  else {
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);

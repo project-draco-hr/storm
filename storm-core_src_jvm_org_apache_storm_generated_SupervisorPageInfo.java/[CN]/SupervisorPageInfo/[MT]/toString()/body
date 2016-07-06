@@ -1,0 +1,27 @@
+{
+  StringBuilder sb=new StringBuilder("SupervisorPageInfo(");
+  boolean first=true;
+  if (is_set_supervisor_summaries()) {
+    sb.append("supervisor_summaries:");
+    if (this.supervisor_summaries == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.supervisor_summaries);
+    }
+    first=false;
+  }
+  if (is_set_worker_summaries()) {
+    if (!first)     sb.append(", ");
+    sb.append("worker_summaries:");
+    if (this.worker_summaries == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.worker_summaries);
+    }
+    first=false;
+  }
+  sb.append(")");
+  return sb.toString();
+}
