@@ -1,0 +1,9 @@
+{
+  Subject expected=new Subject();
+  Assert.assertFalse(expected.isReadOnly());
+  rc.setSubject(expected);
+  Assert.assertEquals(expected,rc.subject());
+  expected.setReadOnly();
+  rc.setSubject(expected);
+  Assert.assertEquals(expected,rc.subject());
+}

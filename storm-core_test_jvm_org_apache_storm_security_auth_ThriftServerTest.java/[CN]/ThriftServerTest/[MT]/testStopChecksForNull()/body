@@ -1,0 +1,4 @@
+{
+  ThriftServer server=new ThriftServer(Utils.readDefaultConfig(),null,ThriftConnectionType.DRPC);
+  server.stop();
+}
