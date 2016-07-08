@@ -1,4 +1,5 @@
 {
+  logger.debug("json configuration: {}",jsonConf);
   List<String> commands=new ArrayList<>();
   String configKeyPrefix="config.";
   commands.add("-t");

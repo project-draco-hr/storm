@@ -1,0 +1,12 @@
+{
+  try {
+    Object object=Utils.getSetComponentObject(componentObject);
+    return object.getClass().getCanonicalName();
+  }
+ catch (  RuntimeException e) {
+    if (e.getCause() instanceof ClassNotFoundException) {
+      return e.getCause().getMessage().trim();
+    }
+    throw e;
+  }
+}
