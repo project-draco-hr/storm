@@ -1,0 +1,10 @@
+{
+  super(config);
+  this.filterMapper=filterMapper;
+  RedisDataTypeDescription dataTypeDescription=filterMapper.getDataTypeDescription();
+  this.dataType=dataTypeDescription.getDataType();
+  this.additionalKey=dataTypeDescription.getAdditionalKey();
+  if (dataType == RedisDataTypeDescription.RedisDataType.SET && additionalKey == null) {
+    throw new IllegalArgumentException("additionalKey should be defined");
+  }
+}
