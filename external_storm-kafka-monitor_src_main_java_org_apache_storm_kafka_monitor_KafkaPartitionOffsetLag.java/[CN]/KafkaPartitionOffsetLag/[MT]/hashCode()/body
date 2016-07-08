@@ -1,0 +1,6 @@
+{
+  int result=(int)(getConsumerCommittedOffset() ^ (getConsumerCommittedOffset() >>> 32));
+  result=31 * result + (int)(getLogHeadOffset() ^ (getLogHeadOffset() >>> 32));
+  result=31 * result + (int)(getLag() ^ (getLag() >>> 32));
+  return result;
+}

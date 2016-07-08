@@ -1,5 +1,5 @@
 {
-  List<Map<String,Object>> result=new ArrayList<>();
+  Map<String,Map<String,Object>> result=new HashMap<>();
   Map<String,SpoutSpec> spouts=stormTopology.get_spouts();
   String className=null;
   for (  Map.Entry<String,SpoutSpec> spout : spouts.entrySet()) {
@@ -9,10 +9,10 @@
       className=getClassNameFromComponentObject(componentObject);
       logger.debug("spout classname: {}",className);
       if (className.endsWith("storm.kafka.spout.KafkaSpout")) {
-        result.add(getLagResultForNewKafkaSpout(spout.getKey(),spoutSpec,topologyConf));
+        result.put(spout.getKey(),getLagResultForNewKafkaSpout(spout.getKey(),spoutSpec,topologyConf));
       }
  else       if (className.endsWith("storm.kafka.KafkaSpout")) {
-        result.add(getLagResultForOldKafkaSpout(spout.getKey(),spoutSpec,topologyConf));
+        result.put(spout.getKey(),getLagResultForOldKafkaSpout(spout.getKey(),spoutSpec,topologyConf));
       }
     }
  catch (    Exception e) {
