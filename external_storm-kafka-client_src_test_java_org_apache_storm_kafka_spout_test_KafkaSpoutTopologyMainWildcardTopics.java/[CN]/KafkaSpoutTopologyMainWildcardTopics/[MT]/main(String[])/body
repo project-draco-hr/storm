@@ -1,0 +1,3 @@
+{
+  new KafkaSpoutTopologyMainWildcardTopics().runMain(args);
+}

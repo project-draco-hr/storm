@@ -1,0 +1,4 @@
+{
+  LOG.info("Declared [streamId = {}], [outputFields = {}] for [topic = {}]",streamId,outputFields,topic);
+  declarer.declareStream(streamId,outputFields);
+}

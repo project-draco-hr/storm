@@ -1,0 +1,3 @@
+{
+  return new TopicsTest0Test1TupleBuilder<>(TOPIC_WILDCARD_PATTERN);
+}

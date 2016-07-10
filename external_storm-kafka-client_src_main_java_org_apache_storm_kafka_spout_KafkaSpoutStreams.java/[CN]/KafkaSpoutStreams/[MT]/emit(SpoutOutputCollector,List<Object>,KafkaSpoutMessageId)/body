@@ -1,3 +1,0 @@
-{
-  collector.emit(getStreamId(messageId.topic()),tuple,messageId);
-}
