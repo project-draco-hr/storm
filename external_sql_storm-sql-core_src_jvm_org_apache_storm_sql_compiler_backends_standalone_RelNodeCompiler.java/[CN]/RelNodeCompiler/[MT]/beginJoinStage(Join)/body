@@ -1,0 +1,7 @@
+{
+  int[] ordinals=new int[2];
+  if (!RelOptUtil.analyzeSimpleEquiJoin((LogicalJoin)join,ordinals)) {
+    throw new UnsupportedOperationException("Only simple equi joins are supported");
+  }
+  pw.print(String.format(JOIN_STAGE_PROLOGUE,getStageName(join),getStageName(join.getLeft()),getStageName(join.getRight()),ordinals[0],ordinals[1]));
+}

@@ -1,0 +1,15 @@
+{
+  List<String> stmt=new ArrayList<>();
+  stmt.add("CREATE EXTERNAL TABLE EMP (EMPID INT PRIMARY KEY, EMPNAME VARCHAR, DEPTID INT) LOCATION 'mockemp:///foo'");
+  stmt.add("CREATE EXTERNAL TABLE DEPT (DEPTID INT PRIMARY KEY, DEPTNAME VARCHAR) LOCATION 'mockdept:///foo'");
+  stmt.add("SELECT STREAM d.DEPTID, count(EMPID) FROM EMP AS e JOIN DEPT AS d ON e.DEPTID = d.DEPTID WHERE e.empid > 0" + "GROUP BY d.DEPTID");
+  StormSql sql=StormSql.construct();
+  List<Values> values=new ArrayList<>();
+  ChannelHandler h=new TestUtils.CollectDataChannelHandler(values);
+  sql.execute(stmt,h);
+  Assert.assertEquals(2,values.size());
+  Assert.assertEquals(1,values.get(0).get(0));
+  Assert.assertEquals(2L,values.get(0).get(1));
+  Assert.assertEquals(2,values.get(1).get(0));
+  Assert.assertEquals(1L,values.get(1).get(1));
+}

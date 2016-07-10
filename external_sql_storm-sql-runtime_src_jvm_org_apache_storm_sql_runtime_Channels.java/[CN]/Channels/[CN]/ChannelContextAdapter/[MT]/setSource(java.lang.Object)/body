@@ -1,0 +1,4 @@
+{
+  handler.setSource(next,source);
+  next.setSource(source);
+}

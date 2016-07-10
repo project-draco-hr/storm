@@ -1,4 +1,4 @@
 {
-  pw.print(String.format(STAGE_PASSTHROUGH,getStageName(scan)));
+  pw.print(String.format(STAGE_ENUMERABLE_TABLE_SCAN,getStageName(scan)));
   return null;
 }

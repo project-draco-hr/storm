@@ -1,0 +1,18 @@
+{
+  List<String> stmt=new ArrayList<>();
+  stmt.add("CREATE EXTERNAL TABLE EMP (EMPID INT PRIMARY KEY, EMPNAME VARCHAR, DEPTID INT) LOCATION 'mockemp:///foo'");
+  stmt.add("CREATE EXTERNAL TABLE DEPT (DEPTID INT PRIMARY KEY, DEPTNAME VARCHAR) LOCATION 'mockdept:///foo'");
+  stmt.add("SELECT STREAM EMPID, EMPNAME, DEPTNAME FROM EMP AS e JOIN DEPT AS d ON e.DEPTID = d.DEPTID WHERE e.empid > 0");
+  StormSql sql=StormSql.construct();
+  List<Values> values=new ArrayList<>();
+  ChannelHandler h=new TestUtils.CollectDataChannelHandler(values);
+  sql.execute(stmt,h);
+  System.out.println(values);
+  Assert.assertEquals(3,values.size());
+  Assert.assertEquals("emp1",values.get(0).get(1));
+  Assert.assertEquals("dept1",values.get(0).get(2));
+  Assert.assertEquals("emp2",values.get(1).get(1));
+  Assert.assertEquals("dept1",values.get(1).get(2));
+  Assert.assertEquals("emp3",values.get(2).get(1));
+  Assert.assertEquals("dept2",values.get(2).get(2));
+}
