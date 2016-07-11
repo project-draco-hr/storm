@@ -1,0 +1,3 @@
+{
+  return super.shortString() + ", processor: " + processor+ ", selfOutFields: "+ selfOutFields;
+}
