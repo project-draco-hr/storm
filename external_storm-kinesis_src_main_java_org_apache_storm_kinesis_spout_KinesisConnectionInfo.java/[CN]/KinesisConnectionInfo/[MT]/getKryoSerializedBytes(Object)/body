@@ -1,0 +1,9 @@
+{
+  final Kryo kryo=new Kryo();
+  final ByteArrayOutputStream os=new ByteArrayOutputStream();
+  final Output output=new Output(os);
+  kryo.setInstantiatorStrategy(new StdInstantiatorStrategy());
+  kryo.writeClassAndObject(output,obj);
+  output.flush();
+  return os.toByteArray();
+}

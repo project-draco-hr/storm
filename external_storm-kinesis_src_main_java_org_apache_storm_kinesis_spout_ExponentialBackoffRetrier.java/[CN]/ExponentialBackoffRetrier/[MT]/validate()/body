@@ -1,0 +1,11 @@
+{
+  if (initialDelayMillis < 0) {
+    throw new IllegalArgumentException("initialDelayMillis cannot be negative.");
+  }
+  if (baseSeconds < 0) {
+    throw new IllegalArgumentException("baseSeconds cannot be negative.");
+  }
+  if (maxRetries < 0) {
+    throw new IllegalArgumentException("maxRetries cannot be negative.");
+  }
+}

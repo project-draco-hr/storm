@@ -1,0 +1,9 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  KinesisConnectionInfo that=(KinesisConnectionInfo)o;
+  if (!Arrays.equals(serializedKinesisCredsProvider,that.serializedKinesisCredsProvider))   return false;
+  if (!Arrays.equals(serializedkinesisClientConfig,that.serializedkinesisClientConfig))   return false;
+  if (region != null ? !region.equals(that.region) : that.region != null)   return false;
+  return !(recordsLimit != null ? !recordsLimit.equals(that.recordsLimit) : that.recordsLimit != null);
+}

@@ -1,0 +1,5 @@
+{
+  LOG.debug("input = [" + input + "]");
+  System.out.println("input = [" + input + "]");
+  collector.ack(input);
+}

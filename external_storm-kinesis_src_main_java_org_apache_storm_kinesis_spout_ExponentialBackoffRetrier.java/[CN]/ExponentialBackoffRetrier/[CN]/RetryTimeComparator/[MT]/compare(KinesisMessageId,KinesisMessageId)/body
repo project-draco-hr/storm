@@ -1,0 +1,3 @@
+{
+  return retryTimes.get(o1).compareTo(retryTimes.get(o2));
+}

@@ -1,0 +1,3 @@
+{
+  kinesisRecordsManager.ack((KinesisMessageId)msgId);
+}

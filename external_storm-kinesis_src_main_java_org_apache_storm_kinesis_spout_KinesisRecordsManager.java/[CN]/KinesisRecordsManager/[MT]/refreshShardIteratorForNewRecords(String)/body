@@ -1,0 +1,10 @@
+{
+  String shardIterator=null;
+  String lastFetchedSequenceNumber=fetchedSequenceNumberPerShard.get(shardId);
+  ShardIteratorType shardIteratorType=(lastFetchedSequenceNumber == null ? config.getShardIteratorType() : ShardIteratorType.AFTER_SEQUENCE_NUMBER);
+  shardIterator=this.getShardIterator(shardId,shardIteratorType,lastFetchedSequenceNumber,config.getTimestamp());
+  if (shardIterator != null && !shardIterator.isEmpty()) {
+    LOG.debug("Refreshing shard iterator for new records for shardId " + shardId + " with shardIterator "+ shardIterator);
+    shardIteratorPerShard.put(shardId,shardIterator);
+  }
+}

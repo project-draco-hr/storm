@@ -1,0 +1,17 @@
+{
+  deactivated=false;
+  lastCommitTime=System.currentTimeMillis();
+  initializeKinesisClient();
+  initializeCurator();
+  List<Shard> shards=this.getShards();
+  LOG.info("myTaskIndex is " + myTaskIndex);
+  LOG.info("totalTasks is " + totalTasks);
+  int i=myTaskIndex;
+  while (i < shards.size()) {
+    LOG.info("Shard id " + shards.get(i).getShardId() + " assigned to task "+ myTaskIndex);
+    toEmitPerShard.put(shards.get(i).getShardId(),new LinkedList<Record>());
+    i+=totalTasks;
+  }
+  initializeFetchedSequenceNumbers();
+  refreshShardIteratorsForNewRecords();
+}

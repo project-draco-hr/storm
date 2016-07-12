@@ -1,0 +1,2 @@
+SpoutOutputCollector collector
+KinesisMessageId kinesisMessageId

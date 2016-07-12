@@ -1,0 +1,7 @@
+{
+  int result=serializedKinesisCredsProvider != null ? Arrays.hashCode(serializedKinesisCredsProvider) : 0;
+  result=31 * result + (serializedkinesisClientConfig != null ? Arrays.hashCode(serializedkinesisClientConfig) : 0);
+  result=31 * result + (region != null ? region.hashCode() : 0);
+  result=31 * result + (recordsLimit != null ? recordsLimit.hashCode() : 0);
+  return result;
+}

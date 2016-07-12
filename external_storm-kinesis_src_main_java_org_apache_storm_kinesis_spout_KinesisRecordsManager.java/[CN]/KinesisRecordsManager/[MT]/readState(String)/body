@@ -1,0 +1,16 @@
+{
+  try {
+    Map<Object,Object> state=null;
+    byte[] b=null;
+    if (curatorFramework.checkExists().forPath(path) != null) {
+      b=curatorFramework.getData().forPath(path);
+    }
+    if (b != null) {
+      state=(Map<Object,Object>)JSONValue.parse(new String(b,"UTF-8"));
+    }
+    return state;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

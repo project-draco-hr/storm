@@ -1,0 +1,13 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  Config config=(Config)o;
+  if (streamName != null ? !streamName.equals(config.streamName) : config.streamName != null)   return false;
+  if (shardIteratorType != config.shardIteratorType)   return false;
+  if (recordToTupleMapper != null ? !recordToTupleMapper.equals(config.recordToTupleMapper) : config.recordToTupleMapper != null)   return false;
+  if (timestamp != null ? !timestamp.equals(config.timestamp) : config.timestamp != null)   return false;
+  if (zkInfo != null ? !zkInfo.equals(config.zkInfo) : config.zkInfo != null)   return false;
+  if (kinesisConnectionInfo != null ? !kinesisConnectionInfo.equals(config.kinesisConnectionInfo) : config.kinesisConnectionInfo != null)   return false;
+  if (maxUncommittedRecords != null ? !maxUncommittedRecords.equals(config.maxUncommittedRecords) : config.maxUncommittedRecords != null)   return false;
+  return !(failedMessageRetryHandler != null ? !failedMessageRetryHandler.equals(config.failedMessageRetryHandler) : config.failedMessageRetryHandler != null);
+}

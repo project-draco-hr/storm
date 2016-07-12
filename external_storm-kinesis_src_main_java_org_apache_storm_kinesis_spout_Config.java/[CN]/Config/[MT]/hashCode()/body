@@ -1,0 +1,11 @@
+{
+  int result=streamName != null ? streamName.hashCode() : 0;
+  result=31 * result + (shardIteratorType != null ? shardIteratorType.hashCode() : 0);
+  result=31 * result + (recordToTupleMapper != null ? recordToTupleMapper.hashCode() : 0);
+  result=31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+  result=31 * result + (zkInfo != null ? zkInfo.hashCode() : 0);
+  result=31 * result + (kinesisConnectionInfo != null ? kinesisConnectionInfo.hashCode() : 0);
+  result=31 * result + (failedMessageRetryHandler != null ? failedMessageRetryHandler.hashCode() : 0);
+  result=31 * result + (maxUncommittedRecords != null ? maxUncommittedRecords.hashCode() : 0);
+  return result;
+}

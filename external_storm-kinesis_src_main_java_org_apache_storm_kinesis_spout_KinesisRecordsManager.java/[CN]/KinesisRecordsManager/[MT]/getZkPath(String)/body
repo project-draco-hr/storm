@@ -1,0 +1,12 @@
+{
+  String path="";
+  if (!config.getZkInfo().getZkNode().startsWith("/")) {
+    path+="/";
+  }
+  path+=config.getZkInfo().getZkNode();
+  if (!config.getZkInfo().getZkNode().endsWith("/")) {
+    path+="/";
+  }
+  path+=(config.getStreamName() + "/" + shardId);
+  return path;
+}

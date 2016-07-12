@@ -1,0 +1,14 @@
+{
+  byte[] bytes=JSONValue.toJSONString(state).getBytes(Charset.forName("UTF-8"));
+  try {
+    if (curatorFramework.checkExists().forPath(path) == null) {
+      curatorFramework.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path,bytes);
+    }
+ else {
+      curatorFramework.setData().forPath(path,bytes);
+    }
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

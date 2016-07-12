@@ -1,0 +1,7 @@
+String zkUrl
+String zkNode
+Integer sessionTimeoutMs
+Integer connectionTimeoutMs
+Long commitIntervalMs
+Integer retryAttempts
+Integer retryIntervalMs

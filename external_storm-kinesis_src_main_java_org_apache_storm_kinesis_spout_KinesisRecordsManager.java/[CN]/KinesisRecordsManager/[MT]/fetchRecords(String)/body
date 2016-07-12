@@ -1,0 +1,8 @@
+{
+  List<Record> records=new ArrayList<>();
+  GetRecordsRequest getRecordsRequest=new GetRecordsRequest();
+  getRecordsRequest.setShardIterator(shardIterator);
+  getRecordsRequest.setLimit(config.getKinesisConnectionInfo().getRecordsLimit());
+  GetRecordsResult getRecordsResult=kinesisClient.getRecords(getRecordsRequest);
+  return getRecordsResult;
+}

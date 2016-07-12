@@ -1,0 +1,5 @@
+{
+  ZkInfo zkInfo=config.getZkInfo();
+  curatorFramework=CuratorFrameworkFactory.newClient(zkInfo.getZkUrl(),zkInfo.getSessionTimeoutMs(),zkInfo.getConnectionTimeoutMs(),new RetryNTimes(zkInfo.getRetryAttempts(),zkInfo.getRetryIntervalMs()));
+  curatorFramework.start();
+}

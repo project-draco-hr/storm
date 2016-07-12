@@ -1,0 +1,13 @@
+{
+  for (  Map.Entry<String,LinkedList<Record>> entry : toEmitPerShard.entrySet()) {
+    String shardId=entry.getKey();
+    LinkedList<Record> listOfRecords=entry.getValue();
+    Record record;
+    while ((record=listOfRecords.pollFirst()) != null) {
+      KinesisMessageId kinesisMessageId=new KinesisMessageId(config.getStreamName(),shardId,record.getSequenceNumber());
+      if (emitRecord(collector,record,kinesisMessageId)) {
+        return;
+      }
+    }
+  }
+}

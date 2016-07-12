@@ -1,0 +1,39 @@
+{
+  for (  Map.Entry<String,LinkedList<Record>> entry : toEmitPerShard.entrySet()) {
+    String shardId=entry.getKey();
+    try {
+      String shardIterator=shardIteratorPerShard.get(shardId);
+      LOG.debug("Fetching new records for shard id :" + shardId + " using shardIterator "+ shardIterator+ " after sequence number "+ fetchedSequenceNumberPerShard.get(shardId));
+      GetRecordsResult getRecordsResult=fetchRecords(shardIterator);
+      if (getRecordsResult != null) {
+        List<Record> records=getRecordsResult.getRecords();
+        LOG.debug("Records size from fetchNewRecords is " + records.size());
+        shardIteratorPerShard.put(shardId,getRecordsResult.getNextShardIterator());
+        if (records.size() == 0) {
+          LOG.debug("No records returned from kinesis. Hence sleeping for 1 second");
+          Thread.sleep(1000);
+        }
+ else {
+          entry.getValue().addAll(records);
+          fetchedSequenceNumberPerShard.put(shardId,records.get(records.size() - 1).getSequenceNumber());
+        }
+      }
+    }
+ catch (    InterruptedException ie) {
+      LOG.debug("Thread interrupted while sleeping",ie);
+    }
+catch (    ExpiredIteratorException ex) {
+      LOG.debug("shardIterator for shardId " + shardId + " has expired. Refreshing shardIterator");
+      refreshShardIteratorForNewRecords(shardId);
+    }
+catch (    ProvisionedThroughputExceededException pe) {
+      try {
+        LOG.debug("ProvisionedThroughputExceededException occured. Check your limits. Sleeping for 1 second.",pe);
+        Thread.sleep(1000);
+      }
+ catch (      InterruptedException e) {
+        LOG.debug("Thread interrupted exception",e);
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  Long retryTime=System.nanoTime();
+  Long nanoMultiplierForMillis=1000000L;
+  if (retryNum == 1) {
+    retryTime+=initialDelayMillis * nanoMultiplierForMillis;
+  }
+ else {
+    Long maxValue=Long.MAX_VALUE;
+    double time=Math.pow(baseSeconds,retryNum - 1) * 1000 * nanoMultiplierForMillis;
+    if ((time >= maxValue.doubleValue()) || ((retryTime + (long)time) < retryTime)) {
+      retryTime=maxValue;
+    }
+ else {
+      retryTime+=(long)time;
+    }
+  }
+  return retryTime;
+}
