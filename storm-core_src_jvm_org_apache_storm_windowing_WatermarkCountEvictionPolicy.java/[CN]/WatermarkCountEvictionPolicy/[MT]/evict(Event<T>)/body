@@ -1,8 +1,13 @@
 {
-  if (event.getTimestamp() <= referenceTime) {
-    return super.evict(event);
+  Action action;
+  if (event.getTimestamp() <= referenceTime && processed < currentCount.get()) {
+    action=super.evict(event);
+    if (action == Action.PROCESS) {
+      ++processed;
+    }
   }
  else {
-    return Action.KEEP;
+    action=Action.KEEP;
   }
+  return action;
 }

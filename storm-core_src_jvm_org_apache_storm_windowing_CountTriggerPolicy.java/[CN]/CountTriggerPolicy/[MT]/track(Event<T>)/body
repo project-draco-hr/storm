@@ -1,7 +1,7 @@
 {
   if (started && !event.isWatermark()) {
     if (currentCount.incrementAndGet() >= count) {
-      evictionPolicy.setContext(System.currentTimeMillis());
+      evictionPolicy.setContext(new DefaultEvictionContext(System.currentTimeMillis()));
       handler.onTrigger();
     }
   }
