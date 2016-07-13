@@ -1,0 +1,4 @@
+{
+  this.expandMapType=expandMapType;
+  this.metricNameSeparator=metricNameSeparator;
+}
