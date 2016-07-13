@@ -1,8 +1,0 @@
-{
-  HdfsSpout spout=new HdfsSpout().withOutputFields(outputFields);
-  MockCollector collector=new MockCollector();
-  conf.put(Configs.READER_TYPE,readerType);
-  spout.open(conf,new MockTopologyContext(spoutId),collector);
-  conf.put(Configs.HDFS_URI,hdfsCluster.getURI().toString());
-  return spout;
-}

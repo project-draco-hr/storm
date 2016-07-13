@@ -1,0 +1,5 @@
+{
+  Map conf=new HashMap();
+  conf.put(Config.TOPOLOGY_ACKER_EXECUTORS,"0");
+  return conf;
+}

@@ -1,10 +1,11 @@
 {
   Path file1=new Path(source.toString() + "/file1.txt");
   createTextFile(file1,10);
-  Map conf=getDefaultConfig();
-  conf.put(Configs.COMMIT_FREQ_COUNT,"1");
-  conf.put(Configs.COMMIT_FREQ_SEC,"100");
-  HdfsSpout spout=makeSpout(0,conf,Configs.TEXT,TextFileReader.defaultFields);
+  HdfsSpout spout=makeSpout(Configs.TEXT,TextFileReader.defaultFields);
+  spout.setCommitFrequencyCount(1);
+  spout.setCommitFrequencySec(1000);
+  Map conf=getCommonConfigs();
+  openSpout(spout,0,conf);
   List<String> res=runSpout(spout,"r5");
   Assert.assertEquals(5,res.size());
   List<String> lockFiles=listDir(spout.getLockDirPath());

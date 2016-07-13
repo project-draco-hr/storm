@@ -1,0 +1,4 @@
+{
+  this.commitFrequencyCount=commitFrequencyCount;
+  return this;
+}

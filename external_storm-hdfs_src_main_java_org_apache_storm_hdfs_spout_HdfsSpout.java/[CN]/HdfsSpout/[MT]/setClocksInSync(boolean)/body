@@ -1,0 +1,4 @@
+{
+  this.clocksInSync=clocksInSync;
+  return this;
+}
