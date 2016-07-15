@@ -1,0 +1,8 @@
+{
+  Map<String,Object> value=new HashMap<>();
+  value.put("a",1.0);
+  value.put("b",2.5);
+  value.put("c",null);
+  value.put("d","hello");
+  return value;
+}
