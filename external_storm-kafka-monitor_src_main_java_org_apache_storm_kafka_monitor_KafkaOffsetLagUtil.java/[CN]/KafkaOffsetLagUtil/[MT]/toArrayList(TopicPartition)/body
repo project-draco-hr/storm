@@ -1,0 +1,8 @@
+{
+  return new ArrayList<TopicPartition>(1){
+{
+      add(tp);
+    }
+  }
+;
+}
