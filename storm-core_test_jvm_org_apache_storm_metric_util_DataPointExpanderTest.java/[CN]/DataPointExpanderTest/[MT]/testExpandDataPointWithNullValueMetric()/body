@@ -1,0 +1,6 @@
+{
+  DataPointExpander populator=new DataPointExpander(true,".");
+  IMetricsConsumer.DataPoint point=new IMetricsConsumer.DataPoint("point",null);
+  Collection<IMetricsConsumer.DataPoint> expandedDataPoints=populator.expandDataPoint(point);
+  assertEquals(0,expandedDataPoints.size());
+}

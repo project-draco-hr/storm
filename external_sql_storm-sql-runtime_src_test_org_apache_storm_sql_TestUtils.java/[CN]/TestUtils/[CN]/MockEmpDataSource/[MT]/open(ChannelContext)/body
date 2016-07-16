@@ -1,0 +1,7 @@
+{
+  for (  Values v : RECORDS) {
+    ctx.emit(v);
+  }
+  ctx.flush();
+  ctx.fireChannelInactive();
+}

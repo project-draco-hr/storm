@@ -1,4 +1,0 @@
-String consumerClassName
-Object registrationArgument
-int maxRetainMetricTuples
-Predicate<IMetricsConsumer.DataPoint> filterPredicate

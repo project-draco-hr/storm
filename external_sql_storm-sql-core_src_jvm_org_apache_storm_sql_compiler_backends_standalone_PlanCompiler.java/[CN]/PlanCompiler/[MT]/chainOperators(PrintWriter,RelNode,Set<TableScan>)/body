@@ -1,16 +1,3 @@
 {
-  String lastCtx="r";
-  Queue<RelNode> q=new ArrayDeque<>();
-  q.add(root);
-  RelNode n;
-  while ((n=q.poll()) != null) {
-    pw.print(String.format("    ChannelContext CTX_%d = Channels.chain(%2$s, %3$s);\n",n.getId(),lastCtx,RelNodeCompiler.getStageName(n)));
-    lastCtx=String.format("CTX_%d",n.getId());
-    if (n instanceof TableScan) {
-      tables.add((TableScan)n);
-    }
-    for (    RelNode i : n.getInputs()) {
-      q.add(i);
-    }
-  }
+  doChainOperators(pw,root,tables,"r");
 }

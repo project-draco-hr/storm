@@ -1,0 +1,5 @@
+{
+  HashMap<String,String> conf=new HashMap<String,String>();
+  conf.put("java.security.auth.login.config","__FAKE_FILE__");
+  Assert.assertNotNull(AuthUtils.GetConfiguration(conf));
+}

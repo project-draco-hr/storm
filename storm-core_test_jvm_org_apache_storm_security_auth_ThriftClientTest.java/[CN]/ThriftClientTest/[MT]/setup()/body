@@ -1,0 +1,4 @@
+{
+  conf=Utils.readDefaultConfig();
+  conf.put(Config.STORM_NIMBUS_RETRY_TIMES,0);
+}

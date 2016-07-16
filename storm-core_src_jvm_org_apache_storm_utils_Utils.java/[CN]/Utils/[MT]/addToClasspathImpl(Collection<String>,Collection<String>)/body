@@ -1,0 +1,10 @@
+{
+  List<String> allPaths=new ArrayList<>();
+  if (classpaths != null) {
+    allPaths.addAll(classpaths);
+  }
+  if (paths != null) {
+    allPaths.addAll(paths);
+  }
+  return StringUtils.join(allPaths,CLASS_PATH_SEPARATOR);
+}

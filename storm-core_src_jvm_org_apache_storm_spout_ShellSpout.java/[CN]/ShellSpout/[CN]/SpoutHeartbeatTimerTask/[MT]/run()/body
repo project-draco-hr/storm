@@ -1,8 +1,9 @@
 {
-  long currentTimeMillis=System.currentTimeMillis();
   long lastHeartbeat=getLastHeartbeat();
-  LOG.debug("current time : {}, last heartbeat : {}, worker timeout (ms) : {}",currentTimeMillis,lastHeartbeat,workerTimeoutMills);
-  if (currentTimeMillis - lastHeartbeat > workerTimeoutMills) {
+  long currentTimestamp=System.currentTimeMillis();
+  boolean isWaitingOnSubprocess=waitingOnSubprocess.get();
+  LOG.debug("last heartbeat : {}, waiting subprocess now : {}, worker timeout (ms) : {}",lastHeartbeat,isWaitingOnSubprocess,workerTimeoutMills);
+  if (isWaitingOnSubprocess && currentTimestamp - lastHeartbeat > workerTimeoutMills) {
     spout.die(new RuntimeException("subprocess heartbeat timeout"));
   }
 }

@@ -1,0 +1,4 @@
+{
+  this.failTupleForFailedMetrics=true;
+  return this;
+}

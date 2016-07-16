@@ -1,0 +1,18 @@
+{
+  String k="the-key";
+  String expected="good-value";
+  Map<String,String> optionMap=new HashMap<String,String>();
+  optionMap.put(k,expected);
+  Map<String,String> badOptionMap=new HashMap<String,String>();
+  badOptionMap.put(k,"bad-value");
+  AppConfigurationEntry emptyEntry=Mockito.mock(AppConfigurationEntry.class);
+  AppConfigurationEntry badEntry=Mockito.mock(AppConfigurationEntry.class);
+  AppConfigurationEntry goodEntry=Mockito.mock(AppConfigurationEntry.class);
+  Mockito.<Map<String,?>>when(emptyEntry.getOptions()).thenReturn(new HashMap<String,String>());
+  Mockito.<Map<String,?>>when(badEntry.getOptions()).thenReturn(badOptionMap);
+  Mockito.<Map<String,?>>when(goodEntry.getOptions()).thenReturn(optionMap);
+  String section="bogus-section";
+  Configuration mockConfig=Mockito.mock(Configuration.class);
+  Mockito.when(mockConfig.getAppConfigurationEntry(section)).thenReturn(new AppConfigurationEntry[]{emptyEntry,goodEntry,badEntry});
+  Assert.assertEquals(AuthUtils.get(mockConfig,section,k),expected);
+}

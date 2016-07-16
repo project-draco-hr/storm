@@ -1,0 +1,6 @@
+{
+  Preconditions.checkArgument(timeoutInMilliSecs > 0,"timeout value should be more than zero.");
+  sync=true;
+  syncTimeOut=timeoutInMilliSecs;
+  return this;
+}

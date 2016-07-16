@@ -1,0 +1,24 @@
+{
+  Map<String,Map<String,Object>> result=new HashMap<>();
+  Map<String,SpoutSpec> spouts=stormTopology.get_spouts();
+  String className=null;
+  for (  Map.Entry<String,SpoutSpec> spout : spouts.entrySet()) {
+    try {
+      SpoutSpec spoutSpec=spout.getValue();
+      ComponentObject componentObject=spoutSpec.get_spout_object();
+      className=getClassNameFromComponentObject(componentObject);
+      logger.debug("spout classname: {}",className);
+      if (className.endsWith("storm.kafka.spout.KafkaSpout")) {
+        result.put(spout.getKey(),getLagResultForNewKafkaSpout(spout.getKey(),spoutSpec,topologyConf));
+      }
+ else       if (className.endsWith("storm.kafka.KafkaSpout")) {
+        result.put(spout.getKey(),getLagResultForOldKafkaSpout(spout.getKey(),spoutSpec,topologyConf));
+      }
+    }
+ catch (    Exception e) {
+      logger.warn("Exception thrown while getting lag for spout id: " + spout.getKey() + " and spout class: "+ className);
+      logger.warn("Exception message:" + e.getMessage(),e);
+    }
+  }
+  return result;
+}

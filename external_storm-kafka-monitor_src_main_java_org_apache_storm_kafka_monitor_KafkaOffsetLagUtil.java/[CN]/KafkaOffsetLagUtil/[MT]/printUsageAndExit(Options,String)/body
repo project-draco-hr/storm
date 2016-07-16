@@ -1,0 +1,6 @@
+{
+  System.out.println(message);
+  HelpFormatter formatter=new HelpFormatter();
+  formatter.printHelp("storm-kafka-monitor ",options);
+  System.exit(1);
+}

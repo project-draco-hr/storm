@@ -1,0 +1,3 @@
+HdfsSpout spout
+int spoutId
+Map conf

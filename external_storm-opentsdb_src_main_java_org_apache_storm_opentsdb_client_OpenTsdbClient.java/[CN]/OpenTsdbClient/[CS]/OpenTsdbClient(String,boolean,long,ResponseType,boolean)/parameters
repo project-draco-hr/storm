@@ -1,0 +1,5 @@
+String urlString
+boolean sync
+long syncTimeOut
+ResponseType responseType
+boolean enableChunkedEncoding

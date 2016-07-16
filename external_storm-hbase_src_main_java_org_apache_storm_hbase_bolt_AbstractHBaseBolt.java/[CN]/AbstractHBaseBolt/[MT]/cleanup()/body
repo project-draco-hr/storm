@@ -1,0 +1,8 @@
+{
+  try {
+    hBaseClient.close();
+  }
+ catch (  IOException e) {
+    LOG.error("HBase Client Close Failed ",e);
+  }
+}

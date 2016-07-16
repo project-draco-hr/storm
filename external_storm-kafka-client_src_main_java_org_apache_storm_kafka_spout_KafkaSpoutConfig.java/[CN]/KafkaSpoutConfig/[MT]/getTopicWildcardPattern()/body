@@ -1,0 +1,3 @@
+{
+  return kafkaSpoutStreams instanceof KafkaSpoutStreamsWildcardTopics ? ((KafkaSpoutStreamsWildcardTopics)kafkaSpoutStreams).getTopicWildcardPattern() : null;
+}

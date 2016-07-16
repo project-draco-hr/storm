@@ -1,0 +1,6 @@
+{
+  this.kafkaSpoutStream=kafkaSpoutStream;
+  if (kafkaSpoutStream.getTopicWildcardPattern() == null) {
+    throw new IllegalStateException("KafkaSpoutStream must be configured for wildcard topic");
+  }
+}

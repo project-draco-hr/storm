@@ -1,0 +1,8 @@
+{
+  int result=topic != null ? topic.hashCode() : 0;
+  result=31 * result + partition;
+  result=31 * result + (int)(consumerCommittedOffset ^ (consumerCommittedOffset >>> 32));
+  result=31 * result + (int)(logHeadOffset ^ (logHeadOffset >>> 32));
+  result=31 * result + (int)(lag ^ (lag >>> 32));
+  return result;
+}

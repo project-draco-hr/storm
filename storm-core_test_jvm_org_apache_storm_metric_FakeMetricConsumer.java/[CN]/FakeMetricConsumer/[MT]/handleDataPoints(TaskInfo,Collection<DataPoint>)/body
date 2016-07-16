@@ -1,0 +1,18 @@
+{
+synchronized (buffer) {
+    for (    DataPoint dp : dataPoints) {
+      for (      Map.Entry<String,Object> entry : expandComplexDataPoint(dp).entrySet()) {
+        String metricName=entry.getKey();
+        Multimap<Integer,Object> taskIdToBucket=buffer.get(taskInfo.srcComponentId,metricName);
+        if (null == taskIdToBucket) {
+          taskIdToBucket=ArrayListMultimap.create();
+          taskIdToBucket.put(taskInfo.srcTaskId,entry.getValue());
+        }
+ else {
+          taskIdToBucket.get(taskInfo.srcTaskId).add(entry.getValue());
+        }
+        buffer.put(taskInfo.srcComponentId,metricName,taskIdToBucket);
+      }
+    }
+  }
+}

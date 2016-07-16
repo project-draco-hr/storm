@@ -1,0 +1,4 @@
+String metric
+Map<String,String> tags
+long timestamp
+Number value

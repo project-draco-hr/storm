@@ -1,0 +1,3 @@
+{
+  return "OldKafkaSpoutOffsetQuery{" + "topic='" + topic + '\''+ ", zkServers='"+ zkServers+ '\''+ ", zkPath='"+ zkPath+ '\''+ ", isWildCardTopic="+ isWildCardTopic+ ", brokersZkPath='"+ brokersZkPath+ '\''+ ", partitions='"+ partitions+ '\''+ ", leaders='"+ leaders+ '\''+ '}';
+}

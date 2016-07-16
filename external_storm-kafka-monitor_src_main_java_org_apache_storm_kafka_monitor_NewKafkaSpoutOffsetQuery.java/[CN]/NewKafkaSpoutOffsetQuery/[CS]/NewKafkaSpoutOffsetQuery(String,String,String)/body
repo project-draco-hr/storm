@@ -1,0 +1,5 @@
+{
+  this.topics=topics;
+  this.bootStrapBrokers=bootstrapBrokers;
+  this.consumerGroupId=consumerGroupId;
+}

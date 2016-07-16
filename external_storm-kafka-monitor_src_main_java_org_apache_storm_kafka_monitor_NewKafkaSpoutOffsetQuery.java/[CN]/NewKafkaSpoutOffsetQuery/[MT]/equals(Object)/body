@@ -1,0 +1,8 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  NewKafkaSpoutOffsetQuery that=(NewKafkaSpoutOffsetQuery)o;
+  if (topics != null ? !topics.equals(that.topics) : that.topics != null)   return false;
+  if (consumerGroupId != null ? !consumerGroupId.equals(that.consumerGroupId) : that.consumerGroupId != null)   return false;
+  return !(bootStrapBrokers != null ? !bootStrapBrokers.equals(that.bootStrapBrokers) : that.bootStrapBrokers != null);
+}

@@ -1,0 +1,3 @@
+{
+  new BlowfishTupleSerializer(null,new HashMap());
+}

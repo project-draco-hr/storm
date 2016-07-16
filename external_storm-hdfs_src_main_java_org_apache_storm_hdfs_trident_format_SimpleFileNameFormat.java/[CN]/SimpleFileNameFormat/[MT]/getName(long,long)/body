@@ -1,0 +1,5 @@
+{
+  SimpleDateFormat dateFormat=new SimpleDateFormat(timeFormat);
+  String ret=name.replace("$TIME",dateFormat.format(new Date(timeStamp))).replace("$NUM",String.valueOf(rotation)).replace("$HOST",host).replace("$PARTITION",String.valueOf(partitionIndex));
+  return ret;
+}

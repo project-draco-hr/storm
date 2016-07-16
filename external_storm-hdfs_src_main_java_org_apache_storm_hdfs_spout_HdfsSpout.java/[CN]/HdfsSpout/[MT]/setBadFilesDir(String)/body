@@ -1,0 +1,4 @@
+{
+  this.badFilesDir=badFilesDir;
+  return this;
+}

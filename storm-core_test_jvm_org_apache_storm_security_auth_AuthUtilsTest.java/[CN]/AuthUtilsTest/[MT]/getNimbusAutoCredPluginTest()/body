@@ -1,0 +1,7 @@
+{
+  Map emptyMap=new HashMap<String,String>();
+  Map<String,Collection<String>> map=new HashMap<String,Collection<String>>();
+  map.put(Config.NIMBUS_AUTO_CRED_PLUGINS,Arrays.asList(new String[]{"org.apache.storm.security.auth.AuthUtilsTestMock"}));
+  Assert.assertTrue(AuthUtils.getNimbusAutoCredPlugins(emptyMap).isEmpty());
+  Assert.assertEquals(AuthUtils.getNimbusAutoCredPlugins(map).size(),1);
+}

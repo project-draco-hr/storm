@@ -1,6 +1,6 @@
 {
-  if (subject == null) {
-    throw new RuntimeException("The subject cannot be null when updating a subject with credentials");
+  if (subject == null || autos == null) {
+    throw new RuntimeException("The subject or auto credentials cannot be null when updating a subject with credentials");
   }
   try {
     for (    IAutoCredentials autoCred : autos) {

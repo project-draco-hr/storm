@@ -1,0 +1,61 @@
+{
+  Map<String,List<TopicPartition>> result=new HashMap<>();
+  if (oldKafkaSpoutOffsetQuery.getPartitions() != null) {
+    String[] partitions=oldKafkaSpoutOffsetQuery.getPartitions().split(",");
+    String[] leaders=oldKafkaSpoutOffsetQuery.getLeaders().split(",");
+    for (int i=0; i < leaders.length; ++i) {
+      if (!result.containsKey(leaders[i])) {
+        result.put(leaders[i],new ArrayList<TopicPartition>());
+      }
+      result.get(leaders[i]).add(new TopicPartition(oldKafkaSpoutOffsetQuery.getTopic(),Integer.parseInt(partitions[i])));
+    }
+  }
+ else {
+    CuratorFramework curatorFramework=null;
+    try {
+      String brokersZkNode=oldKafkaSpoutOffsetQuery.getBrokersZkPath();
+      if (!brokersZkNode.endsWith("/")) {
+        brokersZkNode+="/";
+      }
+      String topicsZkPath=brokersZkNode + "topics";
+      curatorFramework=CuratorFrameworkFactory.newClient(oldKafkaSpoutOffsetQuery.getZkServers(),20000,15000,new RetryOneTime(1000));
+      curatorFramework.start();
+      List<String> topics=new ArrayList<>();
+      if (oldKafkaSpoutOffsetQuery.isWildCardTopic()) {
+        List<String> children=curatorFramework.getChildren().forPath(topicsZkPath);
+        for (        String child : children) {
+          if (child.matches(oldKafkaSpoutOffsetQuery.getTopic())) {
+            topics.add(child);
+          }
+        }
+      }
+ else {
+        topics.add(oldKafkaSpoutOffsetQuery.getTopic());
+      }
+      for (      String topic : topics) {
+        String partitionsPath=topicsZkPath + "/" + topic+ "/partitions";
+        List<String> children=curatorFramework.getChildren().forPath(partitionsPath);
+        for (int i=0; i < children.size(); ++i) {
+          byte[] leaderData=curatorFramework.getData().forPath(partitionsPath + "/" + i+ "/state");
+          Map<Object,Object> value=(Map<Object,Object>)JSONValue.parse(new String(leaderData,"UTF-8"));
+          Integer leader=((Number)value.get("leader")).intValue();
+          byte[] brokerData=curatorFramework.getData().forPath(brokersZkNode + "ids/" + leader);
+          Map<Object,Object> broker=(Map<Object,Object>)JSONValue.parse(new String(brokerData,"UTF-8"));
+          String host=(String)broker.get("host");
+          Integer port=((Long)broker.get("port")).intValue();
+          String leaderBroker=host + ":" + port;
+          if (!result.containsKey(leaderBroker)) {
+            result.put(leaderBroker,new ArrayList<TopicPartition>());
+          }
+          result.get(leaderBroker).add(new TopicPartition(topic,i));
+        }
+      }
+    }
+  finally {
+      if (curatorFramework != null) {
+        curatorFramework.close();
+      }
+    }
+  }
+  return result;
+}

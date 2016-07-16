@@ -1,0 +1,6 @@
+{
+  this.metricField=metricField;
+  this.timestampField=timestampField;
+  this.tagsField=tagsField;
+  this.valueField=valueField;
+}

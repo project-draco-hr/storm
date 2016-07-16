@@ -1,8 +1,5 @@
 {
-  if (onHeap != null) {
-    onHeap=onHeap.doubleValue();
-    resources.put(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB,onHeap);
-  }
+  setMemoryLoad(onHeap);
   if (offHeap != null) {
     offHeap=offHeap.doubleValue();
     resources.put(Config.TOPOLOGY_COMPONENT_RESOURCES_OFFHEAP_MEMORY_MB,offHeap);

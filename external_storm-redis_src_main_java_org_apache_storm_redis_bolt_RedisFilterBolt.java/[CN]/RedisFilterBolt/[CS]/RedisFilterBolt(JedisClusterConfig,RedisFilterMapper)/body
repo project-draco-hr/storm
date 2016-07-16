@@ -1,0 +1,7 @@
+{
+  super(config);
+  this.filterMapper=filterMapper;
+  RedisDataTypeDescription dataTypeDescription=filterMapper.getDataTypeDescription();
+  this.dataType=dataTypeDescription.getDataType();
+  this.additionalKey=dataTypeDescription.getAdditionalKey();
+}

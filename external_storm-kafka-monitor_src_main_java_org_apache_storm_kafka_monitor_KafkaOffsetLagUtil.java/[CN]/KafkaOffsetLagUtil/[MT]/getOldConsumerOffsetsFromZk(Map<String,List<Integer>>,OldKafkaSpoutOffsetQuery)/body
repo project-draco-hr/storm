@@ -1,0 +1,33 @@
+{
+  Map<String,Map<Integer,Long>> result=new HashMap<>();
+  CuratorFramework curatorFramework=CuratorFrameworkFactory.newClient(oldKafkaSpoutOffsetQuery.getZkServers(),20000,15000,new RetryOneTime(1000));
+  curatorFramework.start();
+  String partitionPrefix="partition_";
+  String zkPath=oldKafkaSpoutOffsetQuery.getZkPath();
+  if (!zkPath.endsWith("/")) {
+    zkPath+="/";
+  }
+  byte[] zkData;
+  try {
+    if (topicPartitions != null) {
+      for (      Map.Entry<String,List<Integer>> topicEntry : topicPartitions.entrySet()) {
+        Map<Integer,Long> partitionOffsets=new HashMap<>();
+        for (        Integer partition : topicEntry.getValue()) {
+          String path=zkPath + (oldKafkaSpoutOffsetQuery.isWildCardTopic() ? topicEntry.getKey() + "/" : "") + partitionPrefix+ partition;
+          if (curatorFramework.checkExists().forPath(path) != null) {
+            zkData=curatorFramework.getData().forPath(path);
+            Map<Object,Object> offsetData=(Map<Object,Object>)JSONValue.parse(new String(zkData,"UTF-8"));
+            partitionOffsets.put(partition,(Long)offsetData.get("offset"));
+          }
+        }
+        result.put(topicEntry.getKey(),partitionOffsets);
+      }
+    }
+  }
+  finally {
+    if (curatorFramework != null) {
+      curatorFramework.close();
+    }
+  }
+  return result;
+}

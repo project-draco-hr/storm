@@ -1,5 +1,14 @@
 {
   kafkaConsumer=new KafkaConsumer<>(kafkaSpoutConfig.getKafkaProps(),kafkaSpoutConfig.getKeyDeserializer(),kafkaSpoutConfig.getValueDeserializer());
-  kafkaConsumer.subscribe(kafkaSpoutConfig.getSubscribedTopics(),new KafkaSpoutConsumerRebalanceListener());
+  if (kafkaSpoutStreams instanceof KafkaSpoutStreamsNamedTopics) {
+    final List<String> topics=((KafkaSpoutStreamsNamedTopics)kafkaSpoutStreams).getTopics();
+    kafkaConsumer.subscribe(topics,new KafkaSpoutConsumerRebalanceListener());
+    LOG.info("Kafka consumer subscribed topics {}",topics);
+  }
+ else   if (kafkaSpoutStreams instanceof KafkaSpoutStreamsWildcardTopics) {
+    final Pattern pattern=((KafkaSpoutStreamsWildcardTopics)kafkaSpoutStreams).getTopicWildcardPattern();
+    kafkaConsumer.subscribe(pattern,new KafkaSpoutConsumerRebalanceListener());
+    LOG.info("Kafka consumer subscribed topics matching wildcard pattern [{}]",pattern);
+  }
   kafkaConsumer.poll(0);
 }

@@ -5,4 +5,5 @@
   this.outputFields=outputFields;
   this.streamId=streamId;
   this.topic=topic;
+  this.topicWildcardPattern=null;
 }

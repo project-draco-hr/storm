@@ -1,0 +1,9 @@
+{
+  this.partitionIndex=partitionIndex;
+  try {
+    this.host=Utils.localHostname();
+  }
+ catch (  UnknownHostException e) {
+    throw new RuntimeException(e);
+  }
+}

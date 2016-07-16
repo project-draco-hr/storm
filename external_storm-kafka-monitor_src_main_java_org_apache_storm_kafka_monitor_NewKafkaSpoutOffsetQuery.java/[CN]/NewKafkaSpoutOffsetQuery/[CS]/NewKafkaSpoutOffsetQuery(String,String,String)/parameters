@@ -1,0 +1,3 @@
+String topics
+String bootstrapBrokers
+String consumerGroupId

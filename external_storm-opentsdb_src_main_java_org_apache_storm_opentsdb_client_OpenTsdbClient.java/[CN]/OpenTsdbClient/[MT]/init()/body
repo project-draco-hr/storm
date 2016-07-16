@@ -1,0 +1,14 @@
+{
+  final ApacheConnectorProvider apacheConnectorProvider=new ApacheConnectorProvider();
+  final ClientConfig clientConfig=new ClientConfig().connectorProvider(apacheConnectorProvider);
+  clientConfig.property(ClientProperties.REQUEST_ENTITY_PROCESSING,enableChunkedEncoding ? RequestEntityProcessing.CHUNKED : RequestEntityProcessing.BUFFERED);
+  client=ClientBuilder.newClient(clientConfig);
+  target=client.target(urlString).path(PUT_PATH);
+  if (sync) {
+    target=target.queryParam("sync","").queryParam("sync_timeout",syncTimeout);
+  }
+  if (responseType != ResponseType.None) {
+    target=target.queryParam(responseType.value,"");
+  }
+  LOG.info("target uri [{}]",target.getUri());
+}

@@ -1,0 +1,48 @@
+{
+  try {
+    if (batchHelper.shouldHandle(tuple)) {
+      final List<OpenTsdbMetricDatapoint> metricDataPoints=getMetricPoints(tuple);
+      for (      OpenTsdbMetricDatapoint metricDataPoint : metricDataPoints) {
+        metricPointsWithTuple.put(metricDataPoint,tuple);
+      }
+      batchHelper.addBatch(tuple);
+    }
+    if (batchHelper.shouldFlush()) {
+      LOG.debug("Sending metrics of size [{}]",metricPointsWithTuple.size());
+      ClientResponse.Details clientResponse=openTsdbClient.writeMetricPoints(metricPointsWithTuple.keySet());
+      if (failTupleForFailedMetrics && clientResponse != null && clientResponse.getFailed() > 0) {
+        final List<ClientResponse.Details.Error> errors=clientResponse.getErrors();
+        LOG.error("Some of the metric points failed with errors: [{}]",clientResponse);
+        if (errors != null && !errors.isEmpty()) {
+          Set<Tuple> failedTuples=new HashSet<>();
+          for (          ClientResponse.Details.Error error : errors) {
+            final Tuple failedTuple=metricPointsWithTuple.get(error.getDatapoint());
+            if (failedTuple != null) {
+              failedTuples.add(failedTuple);
+            }
+          }
+          for (          Tuple batchedTuple : batchHelper.getBatchTuples()) {
+            if (failedTuples.contains(batchedTuple)) {
+              collector.fail(batchedTuple);
+            }
+ else {
+              collector.ack(batchedTuple);
+            }
+          }
+        }
+ else {
+          throw new RuntimeException("Some of the metric points failed with details: " + errors);
+        }
+      }
+ else {
+        LOG.debug("Acknowledging batched tuples");
+        batchHelper.ack();
+      }
+      metricPointsWithTuple.clear();
+    }
+  }
+ catch (  Exception e) {
+    batchHelper.fail(e);
+    metricPointsWithTuple.clear();
+  }
+}

@@ -1,0 +1,9 @@
+{
+  if (this == o)   return true;
+  if (!(o instanceof OpenTsdbMetricDatapoint))   return false;
+  OpenTsdbMetricDatapoint that=(OpenTsdbMetricDatapoint)o;
+  if (timestamp != that.timestamp)   return false;
+  if (value != that.value)   return false;
+  if (!metric.equals(that.metric))   return false;
+  return tags.equals(that.tags);
+}

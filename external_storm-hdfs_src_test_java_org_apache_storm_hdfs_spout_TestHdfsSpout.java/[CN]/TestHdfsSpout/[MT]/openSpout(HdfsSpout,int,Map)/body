@@ -1,0 +1,4 @@
+{
+  MockCollector collector=new MockCollector();
+  spout.open(conf,new MockTopologyContext(spoutId),collector);
+}

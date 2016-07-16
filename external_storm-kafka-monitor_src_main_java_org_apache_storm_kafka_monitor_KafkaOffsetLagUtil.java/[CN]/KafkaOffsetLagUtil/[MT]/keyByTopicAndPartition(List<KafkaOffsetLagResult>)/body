@@ -1,0 +1,13 @@
+{
+  Map<String,Map<Integer,KafkaPartitionOffsetLag>> resultKeyedByTopic=new HashMap<>();
+  for (  KafkaOffsetLagResult result : results) {
+    String topic=result.getTopic();
+    Map<Integer,KafkaPartitionOffsetLag> topicResultKeyedByPartition=resultKeyedByTopic.get(topic);
+    if (topicResultKeyedByPartition == null) {
+      topicResultKeyedByPartition=new HashMap<>();
+      resultKeyedByTopic.put(topic,topicResultKeyedByPartition);
+    }
+    topicResultKeyedByPartition.put(result.getPartition(),new KafkaPartitionOffsetLag(result.getConsumerCommittedOffset(),result.getLogHeadOffset()));
+  }
+  return resultKeyedByTopic;
+}
