@@ -1,0 +1,8 @@
+{
+  DataPointExpander populator=new DataPointExpander(false,".");
+  Map<String,Object> value=getDummyMetricMapValue();
+  IMetricsConsumer.DataPoint point=new IMetricsConsumer.DataPoint("test",value);
+  Collection<IMetricsConsumer.DataPoint> expandedDataPoints=populator.expandDataPoint(point);
+  assertEquals(1,expandedDataPoints.size());
+  assertEquals(point,expandedDataPoints.iterator().next());
+}

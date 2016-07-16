@@ -1,0 +1,13 @@
+{
+  _consumerClassName=consumerClassName;
+  _registrationArgument=registrationArgument;
+  _maxRetainMetricTuples=maxRetainMetricTuples;
+  _filterPredicate=filterPredicate;
+  _expander=expander;
+  if (_maxRetainMetricTuples > 0) {
+    _taskQueue=new LinkedBlockingDeque<>(_maxRetainMetricTuples);
+  }
+ else {
+    _taskQueue=new LinkedBlockingDeque<>();
+  }
+}

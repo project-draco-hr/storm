@@ -3,10 +3,11 @@
   createTextFile(file1,5);
   Path file2=new Path(source.toString() + "/file2.txt");
   createTextFile(file2,5);
-  Map conf=getDefaultConfig();
-  conf.put(Configs.COMMIT_FREQ_COUNT,"1");
-  conf.put(Configs.COMMIT_FREQ_SEC,"1");
-  HdfsSpout spout=makeSpout(0,conf,Configs.TEXT,TextFileReader.defaultFields);
+  HdfsSpout spout=makeSpout(Configs.TEXT,TextFileReader.defaultFields);
+  spout.setCommitFrequencyCount(1);
+  spout.setCommitFrequencySec(1);
+  Map conf=getCommonConfigs();
+  openSpout(spout,0,conf);
   runSpout(spout,"r11");
   Path arc1=new Path(archive.toString() + "/file1.txt");
   Path arc2=new Path(archive.toString() + "/file2.txt");

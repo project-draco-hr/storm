@@ -23,7 +23,7 @@
     for (    TopicPartition topicPartition : topicPartitionList) {
       OffsetAndMetadata offsetAndMetadata=consumer.committed(topicPartition);
       long committedOffset=offsetAndMetadata != null ? offsetAndMetadata.offset() : -1;
-      consumer.seekToEnd(topicPartition);
+      consumer.seekToEnd(toArrayList(topicPartition));
       result.add(new KafkaOffsetLagResult(topicPartition.topic(),topicPartition.partition(),committedOffset,consumer.position(topicPartition)));
     }
   }

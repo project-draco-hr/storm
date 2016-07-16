@@ -1,0 +1,4 @@
+{
+  this.commitFrequencySec=commitFrequencySec;
+  return this;
+}

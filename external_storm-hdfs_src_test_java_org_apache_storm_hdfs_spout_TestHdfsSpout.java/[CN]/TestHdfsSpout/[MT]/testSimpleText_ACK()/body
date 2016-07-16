@@ -3,11 +3,12 @@
   createTextFile(file1,5);
   Path file2=new Path(source.toString() + "/file2.txt");
   createTextFile(file2,5);
-  Map conf=getDefaultConfig();
-  conf.put(Configs.COMMIT_FREQ_COUNT,"1");
-  conf.put(Configs.COMMIT_FREQ_SEC,"1");
+  HdfsSpout spout=makeSpout(Configs.TEXT,TextFileReader.defaultFields);
+  spout.setCommitFrequencyCount(1);
+  spout.setCommitFrequencySec(1);
+  Map conf=getCommonConfigs();
   conf.put(Config.TOPOLOGY_ACKER_EXECUTORS,"1");
-  HdfsSpout spout=makeSpout(0,conf,Configs.TEXT,TextFileReader.defaultFields);
+  openSpout(spout,0,conf);
   runSpout(spout,"r6","a0","a1","a2","a3","a4");
   Path arc1=new Path(archive.toString() + "/file1.txt");
   checkCollectorOutput_txt((MockCollector)spout.getCollector(),arc1);

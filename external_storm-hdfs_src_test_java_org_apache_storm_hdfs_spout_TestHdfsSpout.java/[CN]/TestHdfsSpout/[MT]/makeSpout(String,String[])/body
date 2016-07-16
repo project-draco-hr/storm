@@ -1,0 +1,4 @@
+{
+  HdfsSpout spout=new HdfsSpout().withOutputFields(outputFields).setReaderType(readerType).setHdfsUri(hdfsCluster.getURI().toString()).setSourceDir(source.toString()).setArchiveDir(archive.toString()).setBadFilesDir(badfiles.toString());
+  return spout;
+}
