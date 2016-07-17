@@ -1,0 +1,4 @@
+{
+  this.ignoreSuffix=ignoreSuffix;
+  return this;
+}

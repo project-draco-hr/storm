@@ -1,0 +1,10 @@
+{
+  if (!expandMapType) {
+    return dataPoints;
+  }
+  List<IMetricsConsumer.DataPoint> expandedDataPoints=new ArrayList<>();
+  for (  IMetricsConsumer.DataPoint dataPoint : dataPoints) {
+    expandedDataPoints.addAll(expandDataPoint(dataPoint));
+  }
+  return expandedDataPoints;
+}
