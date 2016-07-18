@@ -1,7 +1,7 @@
 {
   if (LeaderLatch.State.CLOSED.equals(leaderLatch.get().getState())) {
     leaderLatch.set(new LeaderLatch(zk,leaderlockPath));
-    leaderLatchListener.set(Zookeeper.leaderLatchListenerImpl(conf,zk,leaderLatch.get()));
+    leaderLatchListener.set(Zookeeper.leaderLatchListenerImpl(conf,zk,blobStore,leaderLatch.get()));
     LOG.info("LeaderLatch was in closed state. Resetted the leaderLatch and listeners.");
   }
   if (LeaderLatch.State.LATENT.equals(leaderLatch.get().getState())) {

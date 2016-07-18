@@ -1,3 +1,4 @@
 Map conf
 CuratorFramework zk
+BlobStore blobStore
 LeaderLatch leaderLatch
