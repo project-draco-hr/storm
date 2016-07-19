@@ -1,0 +1,35 @@
+{
+  final String hostName=InetAddress.getLocalHost().getCanonicalHostName();
+  return new LeaderLatchListener(){
+    @Override public void isLeader(){
+      Set<String> activeTopologyIds=new HashSet<>(Zookeeper.getChildren(zk,conf.get(Config.STORM_ZOOKEEPER_ROOT) + ClusterUtils.STORMS_SUBTREE,false));
+      Set<String> localTopologyIds=blobStore.filterAndListKeys(new KeyFilter<String>(){
+        @Override public String filter(        String key){
+          return ConfigUtils.getIdFromBlobKey(key);
+        }
+      }
+);
+      Sets.SetView<String> diffTopology=Sets.difference(activeTopologyIds,localTopologyIds);
+      LOG.info("active-topology-ids [{}] local-topology-ids [{}] diff-topology [{}]",generateJoinedString(activeTopologyIds),generateJoinedString(localTopologyIds),generateJoinedString(diffTopology));
+      if (diffTopology.isEmpty()) {
+        LOG.info("Accepting leadership, all active topology found locally.");
+      }
+ else {
+        LOG.info("code for all active topologies not available locally, giving up leadership.");
+        try {
+          leaderLatch.close();
+        }
+ catch (        IOException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    }
+    @Override public void notLeader(){
+      LOG.info("{} lost leadership.",hostName);
+    }
+    private String generateJoinedString(    Set<String> activeTopologyIds){
+      return Joiner.on(",").join(activeTopologyIds);
+    }
+  }
+;
+}

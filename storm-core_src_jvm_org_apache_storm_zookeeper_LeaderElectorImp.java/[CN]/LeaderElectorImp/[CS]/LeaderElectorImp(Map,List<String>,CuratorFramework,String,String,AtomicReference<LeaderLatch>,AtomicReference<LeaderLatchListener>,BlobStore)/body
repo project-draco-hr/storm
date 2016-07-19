@@ -6,4 +6,5 @@
   this.id=id;
   this.leaderLatch=leaderLatch;
   this.leaderLatchListener=leaderLatchListener;
+  this.blobStore=blobStore;
 }

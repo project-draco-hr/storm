@@ -5,3 +5,4 @@ String leaderlockPath
 String id
 AtomicReference<LeaderLatch> leaderLatch
 AtomicReference<LeaderLatchListener> leaderLatchListener
+BlobStore blobStore
