@@ -1,0 +1,24 @@
+{
+  List<E> events=new ArrayList<>(tuples.size());
+  for (  TridentTuple tuple : tuples) {
+    events.add(druidEventMapper.getEvent(tuple));
+  }
+  LOG.info("Sending [{}] events",events.size());
+  scala.collection.immutable.List<E> scalaList=scala.collection.JavaConversions.collectionAsScalaIterable(events).toList();
+  Collection<Future<SendResult>> futureList=scala.collection.JavaConversions.asJavaCollection(beam.sendAll(scalaList));
+  List<E> discardedEvents=new ArrayList<>();
+  int index=0;
+  for (  Future<SendResult> future : futureList) {
+    try {
+      SendResult result=Await.result(future);
+      if (!result.sent()) {
+        discardedEvents.add(events.get(index));
+      }
+    }
+ catch (    Exception e) {
+      LOG.error("Failed in writing messages to Druid",e);
+    }
+    index++;
+  }
+  return discardedEvents;
+}

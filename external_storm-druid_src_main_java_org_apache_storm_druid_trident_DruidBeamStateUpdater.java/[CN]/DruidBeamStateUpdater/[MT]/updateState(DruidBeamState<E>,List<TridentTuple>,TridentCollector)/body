@@ -1,0 +1,4 @@
+{
+  List<E> discardedTuples=state.update(tuples,collector);
+  processDiscardedTuples(discardedTuples);
+}

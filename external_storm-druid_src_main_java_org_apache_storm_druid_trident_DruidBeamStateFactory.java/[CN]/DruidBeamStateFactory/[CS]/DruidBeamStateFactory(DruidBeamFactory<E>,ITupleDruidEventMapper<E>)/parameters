@@ -1,0 +1,2 @@
+DruidBeamFactory<E> beamFactory
+ITupleDruidEventMapper<E> druidEventMapper
