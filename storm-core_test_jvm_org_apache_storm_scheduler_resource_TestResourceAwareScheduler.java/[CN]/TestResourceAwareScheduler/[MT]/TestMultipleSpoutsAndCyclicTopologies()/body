@@ -20,7 +20,7 @@
   config.put(Config.TOPOLOGY_COMPONENT_RESOURCES_ONHEAP_MEMORY_MB,500);
   config.put(Config.TOPOLOGY_WORKER_MAX_HEAP_SIZE_MB,Double.MAX_VALUE);
   StormTopology stormTopology=builder.createTopology();
-  TopologyDetails topo=new TopologyDetails("topo-1",config,stormTopology,0,TestUtilsForResourceAwareScheduler.genExecsAndComps(stormTopology,5,5),0);
+  TopologyDetails topo=new TopologyDetails("topo-1",config,stormTopology,0,genExecsAndComps(stormTopology),0);
   Cluster cluster=new Cluster(iNimbus,supMap,new HashMap<String,SchedulerAssignmentImpl>(),config);
   config.put(Config.TOPOLOGY_SUBMITTER_USER,"jerry");
   Map<String,TopologyDetails> topoMap=new HashMap<String,TopologyDetails>();

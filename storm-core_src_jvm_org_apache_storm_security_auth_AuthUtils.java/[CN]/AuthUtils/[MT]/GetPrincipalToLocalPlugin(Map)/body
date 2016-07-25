@@ -2,8 +2,7 @@
   IPrincipalToLocal ptol;
   try {
     String ptol_klassName=(String)storm_conf.get(Config.STORM_PRINCIPAL_TO_LOCAL_PLUGIN);
-    Class klass=Class.forName(ptol_klassName);
-    ptol=(IPrincipalToLocal)klass.newInstance();
+    ptol=Utils.newInstance(ptol_klassName);
     ptol.prepare(storm_conf);
   }
  catch (  Exception e) {

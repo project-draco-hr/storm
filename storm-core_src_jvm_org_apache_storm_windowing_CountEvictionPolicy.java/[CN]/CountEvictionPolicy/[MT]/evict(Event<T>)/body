@@ -1,6 +1,6 @@
 {
   while (true) {
-    int curVal=currentCount.get();
+    long curVal=currentCount.get();
     if (curVal > threshold) {
       if (currentCount.compareAndSet(curVal,curVal - 1)) {
         return Action.EXPIRE;

@@ -1,0 +1,8 @@
+{
+  if (this == o)   return true;
+  if (!(o instanceof KafkaPartitionOffsetLag))   return false;
+  KafkaPartitionOffsetLag that=(KafkaPartitionOffsetLag)o;
+  if (getConsumerCommittedOffset() != that.getConsumerCommittedOffset())   return false;
+  if (getLogHeadOffset() != that.getLogHeadOffset())   return false;
+  return getLag() == that.getLag();
+}

@@ -1,0 +1,2 @@
+Map<String,List<Integer>> topicPartitions
+OldKafkaSpoutOffsetQuery oldKafkaSpoutOffsetQuery

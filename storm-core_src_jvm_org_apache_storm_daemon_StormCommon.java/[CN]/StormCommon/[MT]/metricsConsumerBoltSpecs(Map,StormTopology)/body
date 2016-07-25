@@ -11,12 +11,20 @@
   if (registerInfo != null) {
     Map<String,Integer> classOccurrencesMap=new HashMap<String,Integer>();
     for (    Map<String,Object> info : registerInfo) {
-      String className=(String)info.get("class");
-      Object argument=info.get("argument");
-      Integer phintNum=Utils.getInt(info.get("parallelism.hint"),1);
+      String className=(String)info.get(TOPOLOGY_METRICS_CONSUMER_CLASS);
+      Object argument=info.get(TOPOLOGY_METRICS_CONSUMER_ARGUMENT);
+      Integer maxRetainMetricTuples=Utils.getInt(info.get(TOPOLOGY_METRICS_CONSUMER_MAX_RETAIN_METRIC_TUPLES),100);
+      Integer phintNum=Utils.getInt(info.get(TOPOLOGY_METRICS_CONSUMER_PARALLELISM_HINT),1);
       Map<String,Object> metricsConsumerConf=new HashMap<String,Object>();
       metricsConsumerConf.put(Config.TOPOLOGY_TASKS,phintNum);
-      Bolt metricsConsumerBolt=Thrift.prepareSerializedBoltDetails(inputs,new MetricsConsumerBolt(className,argument),null,phintNum,metricsConsumerConf);
+      List<String> whitelist=(List<String>)info.get(TOPOLOGY_METRICS_CONSUMER_WHITELIST);
+      List<String> blacklist=(List<String>)info.get(TOPOLOGY_METRICS_CONSUMER_BLACKLIST);
+      FilterByMetricName filterPredicate=new FilterByMetricName(whitelist,blacklist);
+      Boolean expandMapType=Utils.getBoolean(info.get(TOPOLOGY_METRICS_CONSUMER_EXPAND_MAP_TYPE),false);
+      String metricNameSeparator=Utils.getString(info.get(TOPOLOGY_METRICS_CONSUMER_METRIC_NAME_SEPARATOR),".");
+      DataPointExpander expander=new DataPointExpander(expandMapType,metricNameSeparator);
+      MetricsConsumerBolt boltInstance=new MetricsConsumerBolt(className,argument,maxRetainMetricTuples,filterPredicate,expander);
+      Bolt metricsConsumerBolt=Thrift.prepareSerializedBoltDetails(inputs,boltInstance,null,phintNum,metricsConsumerConf);
       String id=className;
       if (classOccurrencesMap.containsKey(className)) {
         int occurrenceNum=classOccurrencesMap.get(className);

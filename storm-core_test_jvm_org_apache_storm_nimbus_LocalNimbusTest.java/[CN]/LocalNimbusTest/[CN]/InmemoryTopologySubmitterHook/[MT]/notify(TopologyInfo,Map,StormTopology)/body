@@ -1,0 +1,3 @@
+{
+  submittedTopologies.add(new TopologyDetails(topologyInfo.get_name(),topology));
+}

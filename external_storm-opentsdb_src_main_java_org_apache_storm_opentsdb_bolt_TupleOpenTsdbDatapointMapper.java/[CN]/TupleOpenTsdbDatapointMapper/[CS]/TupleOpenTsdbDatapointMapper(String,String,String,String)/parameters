@@ -1,0 +1,4 @@
+String metricField
+String timestampField
+String tagsField
+String valueField

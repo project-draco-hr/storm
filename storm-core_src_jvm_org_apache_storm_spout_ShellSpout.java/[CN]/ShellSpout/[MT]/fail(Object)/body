@@ -1,4 +1,7 @@
 {
+  if (_exception != null) {
+    throw _exception;
+  }
   if (_spoutMsg == null) {
     _spoutMsg=new SpoutMsg();
   }

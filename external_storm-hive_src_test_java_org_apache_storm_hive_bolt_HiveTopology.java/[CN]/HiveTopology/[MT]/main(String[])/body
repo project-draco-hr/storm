@@ -6,7 +6,7 @@
   Config config=new Config();
   config.setNumWorkers(1);
   UserDataSpout spout=new UserDataSpout();
-  DelimitedRecordHiveMapper mapper=new DelimitedRecordHiveMapper().withTimeAsPartitionField("yyyy/MM/dd/hh").withColumnFields(new Fields(colNames));
+  DelimitedRecordHiveMapper mapper=new DelimitedRecordHiveMapper().withColumnFields(new Fields(colNames));
   HiveOptions hiveOptions;
   if (args.length == 6) {
     hiveOptions=new HiveOptions(metaStoreURI,dbName,tblName,mapper).withTxnsPerBatch(10).withBatchSize(100).withIdleTimeout(10).withKerberosKeytab(args[4]).withKerberosPrincipal(args[5]);

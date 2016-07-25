@@ -1,0 +1,4 @@
+{
+  expectedException.expect(ThrowableNestedCauseMatcher.isCausedBy(TTransportException.class));
+  new ThriftClient(conf,ThriftConnectionType.DRPC,"",4242,NIMBUS_TIMEOUT);
+}

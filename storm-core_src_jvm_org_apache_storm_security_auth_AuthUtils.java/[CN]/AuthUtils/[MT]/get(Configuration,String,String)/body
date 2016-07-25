@@ -1,8 +1,7 @@
 {
-  AppConfigurationEntry configurationEntries[]=configuration.getAppConfigurationEntry(section);
+  AppConfigurationEntry[] configurationEntries=AuthUtils.getEntries(configuration,section);
   if (configurationEntries == null) {
-    String errorMessage="Could not find a '" + section + "' entry in this configuration.";
-    throw new IOException(errorMessage);
+    return null;
   }
   for (  AppConfigurationEntry entry : configurationEntries) {
     Object val=entry.getOptions().get(key);

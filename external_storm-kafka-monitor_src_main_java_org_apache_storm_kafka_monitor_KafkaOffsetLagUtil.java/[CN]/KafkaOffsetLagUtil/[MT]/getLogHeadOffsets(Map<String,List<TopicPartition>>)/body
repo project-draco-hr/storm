@@ -1,0 +1,30 @@
+{
+  Map<String,Map<Integer,Long>> result=new HashMap<>();
+  if (leadersAndTopicPartitions != null) {
+    PartitionOffsetRequestInfo partitionOffsetRequestInfo=new PartitionOffsetRequestInfo(OffsetRequest.LatestTime(),1);
+    SimpleConsumer simpleConsumer=null;
+    for (    Map.Entry<String,List<TopicPartition>> leader : leadersAndTopicPartitions.entrySet()) {
+      try {
+        simpleConsumer=new SimpleConsumer(leader.getKey().split(":")[0],Integer.parseInt(leader.getKey().split(":")[1]),10000,64 * 1024,"LogHeadOffsetRequest");
+        Map<TopicAndPartition,PartitionOffsetRequestInfo> requestInfo=new HashMap<TopicAndPartition,PartitionOffsetRequestInfo>();
+        for (        TopicPartition topicPartition : leader.getValue()) {
+          requestInfo.put(new TopicAndPartition(topicPartition.topic(),topicPartition.partition()),partitionOffsetRequestInfo);
+          if (!result.containsKey(topicPartition.topic())) {
+            result.put(topicPartition.topic(),new HashMap<Integer,Long>());
+          }
+        }
+        kafka.javaapi.OffsetRequest request=new kafka.javaapi.OffsetRequest(requestInfo,kafka.api.OffsetRequest.CurrentVersion(),"LogHeadOffsetRequest");
+        OffsetResponse response=simpleConsumer.getOffsetsBefore(request);
+        for (        TopicPartition topicPartition : leader.getValue()) {
+          result.get(topicPartition.topic()).put(topicPartition.partition(),response.offsets(topicPartition.topic(),topicPartition.partition())[0]);
+        }
+      }
+  finally {
+        if (simpleConsumer != null) {
+          simpleConsumer.close();
+        }
+      }
+    }
+  }
+  return result;
+}

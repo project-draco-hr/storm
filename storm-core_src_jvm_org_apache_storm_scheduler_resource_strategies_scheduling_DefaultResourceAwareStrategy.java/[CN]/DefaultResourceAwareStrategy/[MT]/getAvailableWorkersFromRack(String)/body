@@ -1,0 +1,8 @@
+{
+  List<RAS_Node> nodes=this.getAvailableNodesFromRack(rackId);
+  List<WorkerSlot> workers=new LinkedList<>();
+  for (  RAS_Node node : nodes) {
+    workers.addAll(node.getFreeSlots());
+  }
+  return workers;
+}

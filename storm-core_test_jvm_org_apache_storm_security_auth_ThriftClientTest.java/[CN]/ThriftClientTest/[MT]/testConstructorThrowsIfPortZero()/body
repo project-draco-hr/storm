@@ -1,0 +1,4 @@
+{
+  expectedException.expect(ThrowableNestedCauseMatcher.isCausedBy(IllegalArgumentException.class));
+  new ThriftClient(conf,ThriftConnectionType.DRPC,"bogushost",0,NIMBUS_TIMEOUT);
+}

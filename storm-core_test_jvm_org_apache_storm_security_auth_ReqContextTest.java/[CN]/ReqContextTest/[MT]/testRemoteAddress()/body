@@ -1,0 +1,5 @@
+{
+  InetAddress expected=InetAddress.getByAddress("ABCD".getBytes());
+  rc.setRemoteAddress(expected);
+  Assert.assertEquals(expected,rc.remoteAddress());
+}

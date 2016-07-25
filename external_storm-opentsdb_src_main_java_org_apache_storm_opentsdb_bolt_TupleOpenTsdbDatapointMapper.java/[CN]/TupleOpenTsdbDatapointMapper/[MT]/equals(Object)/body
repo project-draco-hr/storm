@@ -1,0 +1,9 @@
+{
+  if (this == o)   return true;
+  if (!(o instanceof TupleOpenTsdbDatapointMapper))   return false;
+  TupleOpenTsdbDatapointMapper that=(TupleOpenTsdbDatapointMapper)o;
+  if (!metricField.equals(that.metricField))   return false;
+  if (!timestampField.equals(that.timestampField))   return false;
+  if (!valueField.equals(that.valueField))   return false;
+  return tagsField.equals(that.tagsField);
+}

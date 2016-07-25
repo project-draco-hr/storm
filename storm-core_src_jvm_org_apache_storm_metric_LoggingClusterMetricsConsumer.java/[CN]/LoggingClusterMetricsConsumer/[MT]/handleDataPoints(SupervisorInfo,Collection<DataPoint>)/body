@@ -1,0 +1,10 @@
+{
+  StringBuilder sb=new StringBuilder();
+  String header=String.format("%d\t%15s\t%40s\t",supervisorInfo.getTimestamp(),supervisorInfo.getSrcSupervisorHost(),supervisorInfo.getSrcSupervisorId());
+  sb.append(header);
+  for (  DataPoint p : dataPoints) {
+    sb.delete(header.length(),sb.length());
+    sb.append(p.getName()).append(padding).delete(header.length() + 23,sb.length()).append("\t").append(p.getValue());
+    LOG.info(sb.toString());
+  }
+}

@@ -1,0 +1,4 @@
+{
+  LOG.debug("Writing metric points to OpenTSDB [{}]",metricDataPoints.size());
+  return target.request().post(Entity.json(metricDataPoints),ClientResponse.Details.class);
+}

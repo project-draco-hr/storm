@@ -1,0 +1,4 @@
+{
+  windowConfiguration.put(Config.TOPOLOGY_BOLTS_LATE_TUPLE_STREAM,streamId);
+  return this;
+}

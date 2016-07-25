@@ -1,0 +1,7 @@
+{
+  List<OpenTsdbMetricDatapoint> metricDataPoints=new ArrayList<>();
+  for (  TupleOpenTsdbDatapointMapper tupleOpenTsdbDatapointMapper : tupleOpenTsdbDatapointMappers) {
+    metricDataPoints.add(tupleOpenTsdbDatapointMapper.getMetricPoint(tuple));
+  }
+  return metricDataPoints;
+}

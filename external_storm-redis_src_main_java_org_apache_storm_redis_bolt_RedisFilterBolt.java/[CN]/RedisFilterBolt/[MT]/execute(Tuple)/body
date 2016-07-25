@@ -1,0 +1,42 @@
+{
+  String key=filterMapper.getKeyFromTuple(input);
+  boolean found;
+  JedisCommands jedisCommand=null;
+  try {
+    jedisCommand=getInstance();
+switch (dataType) {
+case STRING:
+      found=jedisCommand.exists(key);
+    break;
+case SET:
+  found=jedisCommand.sismember(additionalKey,key);
+break;
+case HASH:
+found=jedisCommand.hexists(additionalKey,key);
+break;
+case SORTED_SET:
+found=jedisCommand.zrank(additionalKey,key) != null;
+break;
+case HYPER_LOG_LOG:
+found=jedisCommand.pfcount(key) > 0;
+break;
+case GEO:
+List<GeoCoordinate> geopos=jedisCommand.geopos(additionalKey,key);
+found=(geopos != null && geopos.size() > 0);
+break;
+default :
+throw new IllegalArgumentException("Cannot process such data type: " + dataType);
+}
+if (found) {
+collector.emit(input,input.getValues());
+}
+collector.ack(input);
+}
+ catch (Exception e) {
+this.collector.reportError(e);
+this.collector.fail(input);
+}
+ finally {
+returnInstance(jedisCommand);
+}
+}

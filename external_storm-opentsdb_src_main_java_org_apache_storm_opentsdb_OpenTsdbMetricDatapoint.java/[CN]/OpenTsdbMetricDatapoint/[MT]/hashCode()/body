@@ -1,0 +1,7 @@
+{
+  int result=metric.hashCode();
+  result=31 * result + tags.hashCode();
+  result=31 * result + (int)(timestamp ^ (timestamp >>> 32));
+  result=31 * result + value.hashCode();
+  return result;
+}

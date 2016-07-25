@@ -1,0 +1,10 @@
+{
+  SpoutConfig spoutConfig=new SpoutConfig(null,null,null,null);
+  spoutConfig.retryInitialDelayMs=retryInitialDelayMs;
+  spoutConfig.retryDelayMultiplier=retryDelayMultiplier;
+  spoutConfig.retryDelayMaxMs=retryDelayMaxMs;
+  spoutConfig.retryLimit=retryLimit;
+  ExponentialBackoffMsgRetryManager exponentialBackoffMsgRetryManager=new ExponentialBackoffMsgRetryManager();
+  exponentialBackoffMsgRetryManager.prepare(spoutConfig,null);
+  return exponentialBackoffMsgRetryManager;
+}

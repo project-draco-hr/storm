@@ -1,0 +1,3 @@
+{
+  return new KafkaSpoutTuplesBuilderNamedTopics.Builder<>(new TopicsTest0Test1TupleBuilder<String,String>(TOPICS[0],TOPICS[1]),new TopicTest2TupleBuilder<String,String>(TOPICS[2])).build();
+}

@@ -1,0 +1,3 @@
+{
+  filterMapper.declareOutputFields(declarer);
+}

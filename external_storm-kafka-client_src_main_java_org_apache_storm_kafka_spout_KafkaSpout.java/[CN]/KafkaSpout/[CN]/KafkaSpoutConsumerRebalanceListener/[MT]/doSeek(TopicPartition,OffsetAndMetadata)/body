@@ -2,11 +2,11 @@
   long fetchOffset;
   if (committedOffset != null) {
     if (firstPollOffsetStrategy.equals(EARLIEST)) {
-      kafkaConsumer.seekToBeginning(tp);
+      kafkaConsumer.seekToBeginning(toArrayList(tp));
       fetchOffset=kafkaConsumer.position(tp);
     }
  else     if (firstPollOffsetStrategy.equals(LATEST)) {
-      kafkaConsumer.seekToEnd(tp);
+      kafkaConsumer.seekToEnd(toArrayList(tp));
       fetchOffset=kafkaConsumer.position(tp);
     }
  else {
@@ -16,10 +16,10 @@
   }
  else {
     if (firstPollOffsetStrategy.equals(EARLIEST) || firstPollOffsetStrategy.equals(UNCOMMITTED_EARLIEST)) {
-      kafkaConsumer.seekToBeginning(tp);
+      kafkaConsumer.seekToBeginning(toArrayList(tp));
     }
  else     if (firstPollOffsetStrategy.equals(LATEST) || firstPollOffsetStrategy.equals(UNCOMMITTED_LATEST)) {
-      kafkaConsumer.seekToEnd(tp);
+      kafkaConsumer.seekToEnd(toArrayList(tp));
     }
     fetchOffset=kafkaConsumer.position(tp);
   }

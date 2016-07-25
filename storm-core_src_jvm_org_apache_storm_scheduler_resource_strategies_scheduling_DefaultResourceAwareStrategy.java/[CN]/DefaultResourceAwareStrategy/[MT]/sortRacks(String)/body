@@ -1,0 +1,75 @@
+{
+  List<RackResources> racks=new LinkedList<RackResources>();
+  final Map<String,String> nodeIdToRackId=new HashMap<String,String>();
+  double availMemResourcesOverall=0.0;
+  double totalMemResourcesOverall=0.0;
+  double availCpuResourcesOverall=0.0;
+  double totalCpuResourcesOverall=0.0;
+  int freeSlotsOverall=0;
+  int totalSlotsOverall=0;
+  for (  Entry<String,List<String>> entry : _clusterInfo.entrySet()) {
+    String rackId=entry.getKey();
+    List<String> nodeIds=entry.getValue();
+    RackResources rack=new RackResources(rackId);
+    racks.add(rack);
+    for (    String nodeId : nodeIds) {
+      RAS_Node node=_nodes.getNodeById(this.NodeHostnameToId(nodeId));
+      double availMem=node.getAvailableMemoryResources();
+      double availCpu=node.getAvailableCpuResources();
+      double freeSlots=node.totalSlotsFree();
+      double totalMem=node.getTotalMemoryResources();
+      double totalCpu=node.getTotalCpuResources();
+      double totalSlots=node.totalSlots();
+      rack.availMem+=availMem;
+      rack.totalMem+=totalMem;
+      rack.availCpu+=availCpu;
+      rack.totalCpu+=totalCpu;
+      rack.freeSlots+=freeSlots;
+      rack.totalSlots+=totalSlots;
+      nodeIdToRackId.put(nodeId,rack.id);
+      availMemResourcesOverall+=availMem;
+      availCpuResourcesOverall+=availCpu;
+      freeSlotsOverall+=freeSlots;
+      totalMemResourcesOverall+=totalMem;
+      totalCpuResourcesOverall+=totalCpu;
+      totalSlotsOverall+=totalSlots;
+    }
+  }
+  LOG.debug("Cluster Overall Avail [ CPU {} MEM {} Slots {} ] Total [ CPU {} MEM {} Slots {} ]",availCpuResourcesOverall,availMemResourcesOverall,freeSlotsOverall,totalCpuResourcesOverall,totalMemResourcesOverall,totalSlotsOverall);
+  for (  RackResources rack : racks) {
+    if (availCpuResourcesOverall <= 0.0 || availMemResourcesOverall <= 0.0 || freeSlotsOverall <= 0.0) {
+      rack.effectiveResources=0.0;
+    }
+ else {
+      rack.effectiveResources=Math.min(Math.min((rack.availCpu / availCpuResourcesOverall),(rack.availMem / availMemResourcesOverall)),((double)rack.freeSlots / (double)freeSlotsOverall));
+    }
+    LOG.debug("rack: {} Avail [ CPU {}({}%) MEM {}({}%) Slots {}({}%) ] Total [ CPU {} MEM {} Slots {} ] effective resources: {}",rack.id,rack.availCpu,rack.availCpu / availCpuResourcesOverall * 100.0,rack.availMem,rack.availMem / availMemResourcesOverall * 100.0,rack.freeSlots,((double)rack.freeSlots / (double)freeSlotsOverall) * 100.0,rack.totalCpu,rack.totalMem,rack.totalSlots,rack.effectiveResources);
+  }
+  TreeSet<RackResources> sortedRacks=new TreeSet<RackResources>(new Comparator<RackResources>(){
+    @Override public int compare(    RackResources o1,    RackResources o2){
+      int execsScheduledInRack1=getExecutorsScheduledinRack(topoId,o1.id,nodeIdToRackId).size();
+      int execsScheduledInRack2=getExecutorsScheduledinRack(topoId,o2.id,nodeIdToRackId).size();
+      if (execsScheduledInRack1 > execsScheduledInRack2) {
+        return -1;
+      }
+ else       if (execsScheduledInRack1 < execsScheduledInRack2) {
+        return 1;
+      }
+ else {
+        if (o1.effectiveResources > o2.effectiveResources) {
+          return -1;
+        }
+ else         if (o1.effectiveResources < o2.effectiveResources) {
+          return 1;
+        }
+ else {
+          return o1.id.compareTo(o2.id);
+        }
+      }
+    }
+  }
+);
+  sortedRacks.addAll(racks);
+  LOG.debug("Sorted rack: {}",sortedRacks);
+  return sortedRacks;
+}

@@ -1,0 +1,10 @@
+{
+  beginJoinStage(join);
+  pw.println("        if (source == left) {");
+  pw.println("            leftRows.add(_data);");
+  pw.println("        } else if (source == right) {");
+  pw.println("            rightRows.add(_data);");
+  pw.println("        }");
+  endStage();
+  return null;
+}

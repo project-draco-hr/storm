@@ -1,0 +1,5 @@
+{
+  RECORDS.add(new Values(1,"emp1",1));
+  RECORDS.add(new Values(2,"emp2",1));
+  RECORDS.add(new Values(3,"emp3",2));
+}

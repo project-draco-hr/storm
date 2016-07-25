@@ -1,0 +1,5 @@
+{
+  List<String> whitelistPattern=Lists.newArrayList("^metric\\.","test\\.hello\\.[0-9]+");
+  List<String> blacklistPattern=Lists.newArrayList("^__","test\\.");
+  new FilterByMetricName(whitelistPattern,blacklistPattern);
+}

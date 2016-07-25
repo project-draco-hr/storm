@@ -15,7 +15,7 @@
   for (  int i : seq(WindowManager.EXPIRE_EVENTS_THRESHOLD + 1,WindowManager.EXPIRE_EVENTS_THRESHOLD + 100)) {
     windowManager.add(i,now - 1000);
   }
-  evictionPolicy.setContext(now + 100);
+  evictionPolicy.setContext(new DefaultEvictionContext(now + 100));
   windowManager.onTrigger();
   assertEquals(100,listener.onExpiryEvents.size());
   assertEquals(seq(WindowManager.EXPIRE_EVENTS_THRESHOLD + 1,WindowManager.EXPIRE_EVENTS_THRESHOLD + 100),listener.onExpiryEvents);
@@ -31,7 +31,7 @@
     windowManager.add(i,now);
   }
   activationsEvents.addAll(newEvents);
-  evictionPolicy.setContext(now + 200);
+  evictionPolicy.setContext(new DefaultEvictionContext(now + 200));
   windowManager.onTrigger();
   assertTrue(listener.onExpiryEvents.isEmpty());
   assertEquals(activationsEvents,listener.onActivationEvents);

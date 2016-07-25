@@ -1,0 +1,9 @@
+{
+  this.metric=metric;
+  this.tags=Collections.unmodifiableMap(tags);
+  this.timestamp=timestamp;
+  this.value=value;
+  if (!(value instanceof Integer || value instanceof Long || value instanceof Float)) {
+    throw new RuntimeException("Received tuple contains unsupported value: " + value + " field. It must be Integer/Long/Float.");
+  }
+}

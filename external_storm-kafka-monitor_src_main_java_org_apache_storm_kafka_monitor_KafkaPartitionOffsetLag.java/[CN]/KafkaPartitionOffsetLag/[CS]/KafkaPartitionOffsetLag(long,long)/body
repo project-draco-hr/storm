@@ -1,0 +1,5 @@
+{
+  this.consumerCommittedOffset=consumerCommittedOffset;
+  this.logHeadOffset=logHeadOffset;
+  this.lag=logHeadOffset - consumerCommittedOffset;
+}

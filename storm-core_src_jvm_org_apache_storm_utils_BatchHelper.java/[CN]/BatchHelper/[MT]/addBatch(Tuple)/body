@@ -1,0 +1,6 @@
+{
+  tupleBatch.add(tuple);
+  if (tupleBatch.size() >= batchSize) {
+    forceFlush=true;
+  }
+}

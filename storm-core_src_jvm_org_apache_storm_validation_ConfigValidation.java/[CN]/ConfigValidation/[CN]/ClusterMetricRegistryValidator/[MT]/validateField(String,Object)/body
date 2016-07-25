@@ -1,0 +1,10 @@
+{
+  if (o == null) {
+    return;
+  }
+  SimpleTypeValidator.validateField(name,Map.class,o);
+  if (!((Map)o).containsKey("class")) {
+    throw new IllegalArgumentException("Field " + name + " must have map entry with key: class");
+  }
+  SimpleTypeValidator.validateField(name,String.class,((Map)o).get("class"));
+}

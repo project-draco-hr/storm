@@ -6,8 +6,8 @@
     for (    String nodeHostname : clusterEntry.getValue()) {
       RAS_Node node=this.idToNode(this.NodeHostnameToId(nodeHostname));
       retVal+="-> Node: " + node.getHostname() + " "+ node.getId()+ "\n";
-      retVal+="--> Avail Resources: {Mem " + node.getAvailableMemoryResources() + ", CPU "+ node.getAvailableCpuResources()+ "}\n";
-      retVal+="--> Total Resources: {Mem " + node.getTotalMemoryResources() + ", CPU "+ node.getTotalCpuResources()+ "}\n";
+      retVal+="--> Avail Resources: {Mem " + node.getAvailableMemoryResources() + ", CPU "+ node.getAvailableCpuResources()+ " Slots: "+ node.totalSlotsFree()+ "}\n";
+      retVal+="--> Total Resources: {Mem " + node.getTotalMemoryResources() + ", CPU "+ node.getTotalCpuResources()+ " Slots: "+ node.totalSlots()+ "}\n";
     }
   }
   return retVal;

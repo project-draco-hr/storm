@@ -1,0 +1,10 @@
+{
+  DataPointExpander populator=new DataPointExpander(true,".");
+  IMetricsConsumer.DataPoint point=new IMetricsConsumer.DataPoint("point",getDummyMetricMapValue());
+  Collection<IMetricsConsumer.DataPoint> expandedDataPoints=populator.expandDataPoints(Collections.singletonList(point));
+  assertEquals(4,expandedDataPoints.size());
+  assertTrue(expandedDataPoints.contains(new IMetricsConsumer.DataPoint("point.a",1.0)));
+  assertTrue(expandedDataPoints.contains(new IMetricsConsumer.DataPoint("point.b",2.5)));
+  assertTrue(expandedDataPoints.contains(new IMetricsConsumer.DataPoint("point.c",null)));
+  assertTrue(expandedDataPoints.contains(new IMetricsConsumer.DataPoint("point.d","hello")));
+}

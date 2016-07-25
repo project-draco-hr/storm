@@ -1,0 +1,4 @@
+{
+  this.lockDir=lockDir;
+  return this;
+}

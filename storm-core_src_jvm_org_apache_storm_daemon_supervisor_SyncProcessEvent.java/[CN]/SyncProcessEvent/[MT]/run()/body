@@ -6,6 +6,10 @@
     if (assignedExecutors == null) {
       assignedExecutors=new HashMap<>();
     }
+    Set<String> assignedStormIds=new HashSet<>();
+    for (    Map.Entry<Integer,LocalAssignment> entry : assignedExecutors.entrySet()) {
+      assignedStormIds.add(entry.getValue().get_topology_id());
+    }
     int now=Time.currentTimeSecs();
     Map<String,StateHeartbeat> localWorkerStats=getLocalWorkerStats(supervisorData,assignedExecutors,now);
     Set<String> keeperWorkerIds=new HashSet<>();
@@ -22,6 +26,7 @@
     for (    Integer port : reassignExecutors.keySet()) {
       newWorkerIds.put(port,Utils.uuid());
     }
+    Set<String> allDownloadedTopologyIds=SupervisorUtils.readDownLoadedStormIds(conf);
     LOG.debug("Assigned executors: {}",assignedExecutors);
     LOG.debug("Allocated: {}",localWorkerStats);
     for (    Map.Entry<String,StateHeartbeat> entry : localWorkerStats.entrySet()) {
@@ -29,6 +34,12 @@
       if (stateHeartbeat.getState() != State.VALID) {
         LOG.info("Shutting down and clearing state for id {}, Current supervisor time: {}, State: {}, Heartbeat: {}",entry.getKey(),now,stateHeartbeat.getState(),stateHeartbeat.getHeartbeat());
         killWorker(supervisorData,supervisorData.getWorkerManager(),entry.getKey());
+      }
+    }
+    for (    String downloadedTopologyId : allDownloadedTopologyIds) {
+      if (!assignedStormIds.contains(downloadedTopologyId)) {
+        LOG.info("Removing code for storm id {}.",downloadedTopologyId);
+        SupervisorUtils.rmTopoFiles(conf,downloadedTopologyId,supervisorData.getLocalizer(),true);
       }
     }
     Map<String,Integer> newWorkerPortToIds=startNewWorkers(newWorkerIds,reassignExecutors);

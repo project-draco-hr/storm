@@ -1,0 +1,3 @@
+{
+  return new OpenTsdbMetricDatapoint(tuple.getStringByField(metricField),(Map<String,String>)tuple.getValueByField(tagsField),tuple.getLongByField(timestampField),(Number)tuple.getValueByField(valueField));
+}

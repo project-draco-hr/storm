@@ -1,0 +1,2 @@
+ClusterInfo clusterInfo
+Collection<DataPoint> dataPoints

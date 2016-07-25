@@ -1,4 +1,11 @@
 {
-  _metricsConsumer.handleDataPoints((IMetricsConsumer.TaskInfo)input.getValue(0),(Collection)input.getValue(1));
+  IMetricsConsumer.TaskInfo taskInfo=(IMetricsConsumer.TaskInfo)input.getValue(0);
+  Collection<IMetricsConsumer.DataPoint> dataPoints=(Collection)input.getValue(1);
+  Collection<IMetricsConsumer.DataPoint> expandedDataPoints=_expander.expandDataPoints(dataPoints);
+  List<IMetricsConsumer.DataPoint> filteredDataPoints=getFilteredDataPoints(expandedDataPoints);
+  MetricsTask metricsTask=new MetricsTask(taskInfo,filteredDataPoints);
+  while (!_taskQueue.offer(metricsTask)) {
+    _taskQueue.poll();
+  }
   _collector.ack(input);
 }

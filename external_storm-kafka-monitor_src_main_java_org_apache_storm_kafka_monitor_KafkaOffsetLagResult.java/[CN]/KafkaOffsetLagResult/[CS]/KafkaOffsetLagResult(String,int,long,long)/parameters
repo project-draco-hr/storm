@@ -1,0 +1,4 @@
+String topic
+int parition
+long consumerCommittedOffset
+long logHeadOffset

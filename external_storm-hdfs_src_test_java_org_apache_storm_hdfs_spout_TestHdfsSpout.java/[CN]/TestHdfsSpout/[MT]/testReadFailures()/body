@@ -4,8 +4,9 @@
   createTextFile(file1,6);
   createTextFile(file2,7);
   Assert.assertEquals(2,listDir(source).size());
-  Map conf=getDefaultConfig();
-  HdfsSpout spout=makeSpout(0,conf,MockTextFailingReader.class.getName(),MockTextFailingReader.defaultFields);
+  HdfsSpout spout=makeSpout(MockTextFailingReader.class.getName(),MockTextFailingReader.defaultFields);
+  Map conf=getCommonConfigs();
+  openSpout(spout,0,conf);
   List<String> res=runSpout(spout,"r11");
   String[] expected=new String[]{"[line 0]","[line 1]","[line 2]","[line 0]","[line 1]","[line 2]"};
   Assert.assertArrayEquals(expected,res.toArray());

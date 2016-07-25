@@ -1,0 +1,10 @@
+{
+  SimpleFileNameFormat format=new SimpleFileNameFormat();
+  format.prepare(null,3,5);
+  long now=System.currentTimeMillis();
+  String path=format.getPath();
+  String name=format.getName(1,now);
+  Assert.assertEquals("/storm",path);
+  String time=new SimpleDateFormat("yyyyMMddHHmmss").format(now);
+  Assert.assertEquals(time + ".1.txt",name);
+}

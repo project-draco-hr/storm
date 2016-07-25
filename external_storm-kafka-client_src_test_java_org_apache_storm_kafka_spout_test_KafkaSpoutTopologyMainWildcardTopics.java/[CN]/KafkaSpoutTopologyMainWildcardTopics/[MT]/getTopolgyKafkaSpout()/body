@@ -1,0 +1,6 @@
+{
+  final TopologyBuilder tp=new TopologyBuilder();
+  tp.setSpout("kafka_spout",new KafkaSpout<>(getKafkaSpoutConfig(getKafkaSpoutStreams())),1);
+  tp.setBolt("kafka_bolt",new KafkaSpoutTestBolt()).shuffleGrouping("kafka_spout",STREAM);
+  return tp.createTopology();
+}

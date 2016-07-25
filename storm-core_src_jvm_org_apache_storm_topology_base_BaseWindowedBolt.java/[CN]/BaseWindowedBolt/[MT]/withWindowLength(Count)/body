@@ -1,4 +1,7 @@
 {
+  if (count.value <= 0) {
+    throw new IllegalArgumentException("Window length must be positive [" + count + "]");
+  }
   windowConfiguration.put(Config.TOPOLOGY_BOLTS_WINDOW_LENGTH_COUNT,count.value);
   return this;
 }

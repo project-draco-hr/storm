@@ -1,9 +1,0 @@
-{
-  this.conf=conf;
-  this.servers=servers;
-  this.zk=zk;
-  this.leaderlockPath=leaderlockPath;
-  this.id=id;
-  this.leaderLatch=leaderLatch;
-  this.leaderLatchListener=leaderLatchListener;
-}

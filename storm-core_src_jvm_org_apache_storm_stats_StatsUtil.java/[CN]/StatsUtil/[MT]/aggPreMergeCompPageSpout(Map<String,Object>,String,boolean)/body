@@ -15,8 +15,16 @@
   Map win2sid2compLat=windowSetConverter(getMapByKey(stat2win2sid2num,COMP_LATENCIES),TO_STRING);
   putKV(outputStats,ACKED,win2sid2acked.get(window));
   putKV(outputStats,FAILED,win2sid2failed.get(window));
-  putKV(outputStats,EMITTED,filterSysStreams((Map)win2sid2emitted.get(window),includeSys));
-  putKV(outputStats,TRANSFERRED,filterSysStreams((Map)win2sid2transferred.get(window),includeSys));
+  Map<String,Long> sid2emitted=(Map)win2sid2emitted.get(window);
+  if (sid2emitted == null) {
+    sid2emitted=new HashMap<>();
+  }
+  putKV(outputStats,EMITTED,filterSysStreams2Stat(sid2emitted,includeSys));
+  Map<String,Long> sid2transferred=(Map)win2sid2transferred.get(window);
+  if (sid2transferred == null) {
+    sid2transferred=new HashMap<>();
+  }
+  putKV(outputStats,TRANSFERRED,filterSysStreams2Stat(sid2transferred,includeSys));
   outputStats=swapMapOrder(outputStats);
   Map sid2compLat=(Map)win2sid2compLat.get(window);
   Map sid2acked=(Map)win2sid2acked.get(window);

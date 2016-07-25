@@ -1,0 +1,4 @@
+{
+  enableChunkedEncoding=true;
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  this.openTsdbClientBuilder=openTsdbClientBuilder;
+  this.tupleOpenTsdbDatapointMappers=tupleOpenTsdbDatapointMappers;
+}

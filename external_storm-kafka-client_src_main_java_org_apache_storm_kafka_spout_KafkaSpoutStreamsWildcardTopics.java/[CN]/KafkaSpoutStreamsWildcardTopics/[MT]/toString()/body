@@ -1,0 +1,3 @@
+{
+  return "KafkaSpoutStreamsWildcardTopics{" + "kafkaSpoutStream=" + kafkaSpoutStream + '}';
+}

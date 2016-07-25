@@ -1,0 +1,4 @@
+{
+  this.taskInfo=taskInfo;
+  this.dataPoints=dataPoints;
+}

@@ -1,0 +1,3 @@
+{
+  return TupleUtils.putTickFrequencyIntoComponentConfig(super.getComponentConfiguration(),flushIntervalInSeconds);
+}

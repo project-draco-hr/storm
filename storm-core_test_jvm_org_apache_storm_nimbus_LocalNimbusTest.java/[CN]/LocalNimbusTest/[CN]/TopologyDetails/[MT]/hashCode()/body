@@ -1,0 +1,5 @@
+{
+  int result=topologyName != null ? topologyName.hashCode() : 0;
+  result=31 * result + (stormTopology != null ? stormTopology.hashCode() : 0);
+  return result;
+}

@@ -1,0 +1,5 @@
+{
+  this.collector=collector;
+  batchHelper=new BatchHelper(batchSize,collector);
+  openTsdbClient=openTsdbClientBuilder.build();
+}

@@ -1,0 +1,30 @@
+{
+  if (args.length == 0) {
+    throw new IllegalArgumentException("There should be at least one argument. Run as `SampleOpenTsdbTridentTopology <tsdb-url>`");
+  }
+  String tsdbUrl=args[0];
+  final OpenTsdbClient.Builder openTsdbClientBuilder=OpenTsdbClient.newBuilder(tsdbUrl);
+  final OpenTsdbStateFactory openTsdbStateFactory=new OpenTsdbStateFactory(openTsdbClientBuilder,Collections.singletonList(TupleOpenTsdbDatapointMapper.DEFAULT_MAPPER));
+  TridentTopology tridentTopology=new TridentTopology();
+  final Stream stream=tridentTopology.newStream("metric-tsdb-stream",new MetricGenBatchSpout(10));
+  stream.peek(new Consumer(){
+    @Override public void accept(    TridentTuple input){
+      LOG.info("########### Received tuple: [{}]",input);
+    }
+  }
+).partitionPersist(openTsdbStateFactory,MetricGenSpout.DEFAULT_METRIC_FIELDS,new OpenTsdbStateUpdater());
+  Config conf=new Config();
+  conf.setDebug(true);
+  if (args.length > 1) {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopologyWithProgressBar(args[1],conf,tridentTopology.build());
+  }
+ else {
+    conf.setMaxTaskParallelism(3);
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("word-count",conf,tridentTopology.build());
+    Thread.sleep(30000);
+    cluster.shutdown();
+    System.exit(0);
+  }
+}

@@ -1,3 +1,0 @@
-{
-  referenceTime=((Number)context).longValue();
-}

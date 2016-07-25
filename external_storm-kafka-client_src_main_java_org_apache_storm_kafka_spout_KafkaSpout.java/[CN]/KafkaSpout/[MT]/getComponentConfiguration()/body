@@ -1,0 +1,16 @@
+{
+  Map<String,Object> configuration=super.getComponentConfiguration();
+  if (configuration == null) {
+    configuration=new HashMap<>();
+  }
+  String configKeyPrefix="config.";
+  if (kafkaSpoutStreams instanceof KafkaSpoutStreamsNamedTopics) {
+    configuration.put(configKeyPrefix + "topics",getNamedTopics());
+  }
+ else   if (kafkaSpoutStreams instanceof KafkaSpoutStreamsWildcardTopics) {
+    configuration.put(configKeyPrefix + "topics",getWildCardTopics());
+  }
+  configuration.put(configKeyPrefix + "groupid",kafkaSpoutConfig.getConsumerGroupId());
+  configuration.put(configKeyPrefix + "bootstrap.servers",kafkaSpoutConfig.getKafkaProps().get("bootstrap.servers"));
+  return configuration;
+}

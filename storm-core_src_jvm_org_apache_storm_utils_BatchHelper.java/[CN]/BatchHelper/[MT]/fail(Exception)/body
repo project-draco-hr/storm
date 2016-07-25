@@ -1,0 +1,8 @@
+{
+  collector.reportError(e);
+  for (  Tuple t : tupleBatch) {
+    collector.fail(t);
+  }
+  tupleBatch.clear();
+  forceFlush=false;
+}

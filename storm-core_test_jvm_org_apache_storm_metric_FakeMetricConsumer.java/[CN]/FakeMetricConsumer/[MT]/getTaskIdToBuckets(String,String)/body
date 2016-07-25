@@ -1,0 +1,6 @@
+{
+synchronized (buffer) {
+    Multimap<Integer,Object> taskIdToBuckets=buffer.get(componentName,metricName);
+    return (null != taskIdToBuckets) ? taskIdToBuckets.asMap() : null;
+  }
+}

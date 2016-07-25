@@ -2,15 +2,15 @@
   final long initial=10;
   final double mult=2d;
   final long max=20;
-  ExponentialBackoffMsgRetryManager manager=new ExponentialBackoffMsgRetryManager(initial,mult,max);
+  ExponentialBackoffMsgRetryManager manager=buildExponentialBackoffMsgRetryManager(initial,mult,max,Integer.MAX_VALUE);
   manager.failed(TEST_OFFSET);
   Thread.sleep(initial);
   manager.retryStarted(TEST_OFFSET);
   manager.failed(TEST_OFFSET);
   manager.failed(TEST_OFFSET2);
   Thread.sleep(initial * 2);
-  assertTrue("message " + TEST_OFFSET + "should be ready for retry",manager.shouldRetryMsg(TEST_OFFSET));
-  assertTrue("message " + TEST_OFFSET2 + "should be ready for retry",manager.shouldRetryMsg(TEST_OFFSET2));
+  assertTrue("message " + TEST_OFFSET + "should be ready for retry",manager.shouldReEmitMsg(TEST_OFFSET));
+  assertTrue("message " + TEST_OFFSET2 + "should be ready for retry",manager.shouldReEmitMsg(TEST_OFFSET2));
   Long next=manager.nextFailedMessageToRetry();
   assertEquals("expect first message to retry is " + TEST_OFFSET2,TEST_OFFSET2,next);
   Thread.sleep(initial);

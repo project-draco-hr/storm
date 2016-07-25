@@ -1,0 +1,7 @@
+{
+  for (  DataPoint p : dataPoints) {
+    sb.delete(header.length(),sb.length());
+    sb.append(p.getName()).append(padding).delete(header.length() + 23,sb.length()).append("\t").append(p.getValue());
+    LOG.info(sb.toString());
+  }
+}

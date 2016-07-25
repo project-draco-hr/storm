@@ -1,0 +1,4 @@
+{
+  this.archiveDir=archiveDir;
+  return this;
+}

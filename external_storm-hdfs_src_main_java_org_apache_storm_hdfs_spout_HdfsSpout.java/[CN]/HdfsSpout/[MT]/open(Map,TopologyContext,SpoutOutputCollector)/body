@@ -5,13 +5,11 @@
   this.tracker=new ProgressTracker();
   this.hdfsConfig=new Configuration();
   this.collector=collector;
-  this.hdfsConfig=new Configuration();
-  this.tupleCounter=0;
-  if (conf.containsKey(Configs.HDFS_URI)) {
+  if (this.hdfsUri == null && conf.containsKey(Configs.HDFS_URI)) {
     this.hdfsUri=conf.get(Configs.HDFS_URI).toString();
   }
- else {
-    throw new RuntimeException(Configs.HDFS_URI + " setting is required");
+  if (this.hdfsUri == null) {
+    throw new RuntimeException("HDFS Uri not set on spout");
   }
   try {
     this.hdfs=FileSystem.get(URI.create(hdfsUri),hdfsConfig);
@@ -36,31 +34,45 @@
       }
     }
   }
-  if (conf.containsKey(Configs.READER_TYPE)) {
+  if (readerType == null && conf.containsKey(Configs.READER_TYPE)) {
     readerType=conf.get(Configs.READER_TYPE).toString();
-    checkValidReader(readerType);
   }
-  if (!conf.containsKey(Configs.SOURCE_DIR)) {
+  checkValidReader(readerType);
+  if (sourceDir == null && conf.containsKey(Configs.SOURCE_DIR)) {
+    sourceDir=conf.get(Configs.SOURCE_DIR).toString();
+  }
+  if (sourceDir == null) {
     LOG.error(Configs.SOURCE_DIR + " setting is required");
     throw new RuntimeException(Configs.SOURCE_DIR + " setting is required");
   }
-  this.sourceDirPath=new Path(conf.get(Configs.SOURCE_DIR).toString());
-  if (!conf.containsKey(Configs.ARCHIVE_DIR)) {
+  this.sourceDirPath=new Path(sourceDir);
+  if (archiveDir == null && conf.containsKey(Configs.ARCHIVE_DIR)) {
+    archiveDir=conf.get(Configs.ARCHIVE_DIR).toString();
+  }
+  if (archiveDir == null) {
     LOG.error(Configs.ARCHIVE_DIR + " setting is required");
     throw new RuntimeException(Configs.ARCHIVE_DIR + " setting is required");
   }
-  this.archiveDirPath=new Path(conf.get(Configs.ARCHIVE_DIR).toString());
+  this.archiveDirPath=new Path(archiveDir);
   validateOrMakeDir(hdfs,archiveDirPath,"Archive");
-  if (!conf.containsKey(Configs.BAD_DIR)) {
+  if (badFilesDir == null && conf.containsKey(Configs.BAD_DIR)) {
+    badFilesDir=conf.get(Configs.BAD_DIR).toString();
+  }
+  if (badFilesDir == null) {
     LOG.error(Configs.BAD_DIR + " setting is required");
     throw new RuntimeException(Configs.BAD_DIR + " setting is required");
   }
-  this.badFilesDirPath=new Path(conf.get(Configs.BAD_DIR).toString());
+  this.badFilesDirPath=new Path(badFilesDir);
   validateOrMakeDir(hdfs,badFilesDirPath,"bad files");
   if (conf.containsKey(Configs.IGNORE_SUFFIX)) {
     this.ignoreSuffix=conf.get(Configs.IGNORE_SUFFIX).toString();
   }
-  String lockDir=!conf.containsKey(Configs.LOCK_DIR) ? getDefaultLockDir(sourceDirPath) : conf.get(Configs.LOCK_DIR).toString();
+  if (lockDir == null && conf.containsKey(Configs.LOCK_DIR)) {
+    lockDir=conf.get(Configs.LOCK_DIR).toString();
+  }
+  if (lockDir == null) {
+    lockDir=getDefaultLockDir(sourceDirPath);
+  }
   this.lockDirPath=new Path(lockDir);
   validateOrMakeDir(hdfs,lockDirPath,"locks");
   if (conf.get(Configs.LOCK_TIMEOUT) != null) {

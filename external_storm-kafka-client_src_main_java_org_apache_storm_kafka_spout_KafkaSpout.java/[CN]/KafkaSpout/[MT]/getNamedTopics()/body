@@ -1,0 +1,7 @@
+{
+  StringBuilder topics=new StringBuilder();
+  for (  String topic : kafkaSpoutConfig.getSubscribedTopics()) {
+    topics.append(topic).append(",");
+  }
+  return topics.toString();
+}

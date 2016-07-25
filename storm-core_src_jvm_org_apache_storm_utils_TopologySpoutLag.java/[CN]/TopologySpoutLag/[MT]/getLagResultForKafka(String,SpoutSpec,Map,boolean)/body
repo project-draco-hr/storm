@@ -1,0 +1,37 @@
+{
+  ComponentCommon componentCommon=spoutSpec.get_common();
+  String json=componentCommon.get_json_conf();
+  Map<String,Object> result=null;
+  String errorMsg="Offset lags for kafka not supported for older versions. Please update kafka spout to latest version.";
+  if (json != null && !json.isEmpty()) {
+    List<String> commands=new ArrayList<>();
+    String stormHomeDir=System.getenv("STORM_BASE_DIR");
+    if (stormHomeDir != null && !stormHomeDir.endsWith("/")) {
+      stormHomeDir+=File.separator;
+    }
+    commands.add(stormHomeDir != null ? stormHomeDir + "bin" + File.separator+ "storm-kafka-monitor" : "storm-kafka-monitor");
+    Map<String,Object> jsonMap=(Map<String,Object>)JSONValue.parse(json);
+    commands.addAll(old ? getCommandLineOptionsForOldKafkaSpout(jsonMap,topologyConf) : getCommandLineOptionsForNewKafkaSpout(jsonMap));
+    logger.debug("Command to run: {}",commands);
+    if (!commands.contains(null)) {
+      String resultFromMonitor=ShellUtils.execCommand(commands.toArray(new String[0]));
+      try {
+        result=(Map<String,Object>)JSONValue.parseWithException(resultFromMonitor);
+      }
+ catch (      ParseException e) {
+        logger.debug("JSON parsing failed, assuming message as error message: {}",resultFromMonitor);
+        errorMsg=resultFromMonitor;
+      }
+    }
+  }
+  Map<String,Object> kafkaSpoutLagInfo=new HashMap<>();
+  kafkaSpoutLagInfo.put(SPOUT_ID,spoutId);
+  kafkaSpoutLagInfo.put(SPOUT_TYPE,"KAFKA");
+  if (result != null) {
+    kafkaSpoutLagInfo.put(SPOUT_LAG_RESULT,result);
+  }
+ else {
+    kafkaSpoutLagInfo.put(ERROR_INFO,errorMsg);
+  }
+  return kafkaSpoutLagInfo;
+}

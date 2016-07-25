@@ -1,0 +1,9 @@
+{
+  if (!whitelistPattern.isEmpty()) {
+    return checkMatching(metricName,whitelistPattern,true);
+  }
+ else   if (!blacklistPattern.isEmpty()) {
+    return checkMatching(metricName,blacklistPattern,false);
+  }
+  throw new IllegalStateException("Shouldn't reach here");
+}

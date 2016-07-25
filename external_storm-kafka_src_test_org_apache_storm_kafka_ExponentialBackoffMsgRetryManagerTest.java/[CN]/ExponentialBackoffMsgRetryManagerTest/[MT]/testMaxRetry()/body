@@ -1,0 +1,12 @@
+{
+  final long initial=100;
+  final double mult=2d;
+  final long max=2000;
+  final int maxRetries=2;
+  ExponentialBackoffMsgRetryManager manager=buildExponentialBackoffMsgRetryManager(initial,mult,max,maxRetries);
+  assertTrue(manager.retryFurther(TEST_OFFSET));
+  manager.failed(TEST_OFFSET);
+  assertTrue(manager.retryFurther(TEST_OFFSET));
+  manager.failed(TEST_OFFSET);
+  assertFalse(manager.retryFurther(TEST_OFFSET));
+}

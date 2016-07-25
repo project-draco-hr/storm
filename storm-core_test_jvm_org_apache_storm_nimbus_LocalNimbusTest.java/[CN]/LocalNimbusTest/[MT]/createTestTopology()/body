@@ -1,0 +1,7 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout("words",new TestWordSpout(),generateParallelismHint());
+  builder.setBolt("count",new TestWordCounter(),generateParallelismHint()).shuffleGrouping("words");
+  builder.setBolt("globalCount",new TestGlobalCount(),generateParallelismHint()).shuffleGrouping("count");
+  return builder.createTopology();
+}

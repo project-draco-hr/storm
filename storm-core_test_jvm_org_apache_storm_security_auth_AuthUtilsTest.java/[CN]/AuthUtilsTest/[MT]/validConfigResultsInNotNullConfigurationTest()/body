@@ -1,0 +1,6 @@
+{
+  File file1=folder.newFile("mockfile.txt");
+  HashMap<String,String> conf=new HashMap<String,String>();
+  conf.put("java.security.auth.login.config",file1.getAbsolutePath());
+  Assert.assertNotNull(AuthUtils.GetConfiguration(conf));
+}
