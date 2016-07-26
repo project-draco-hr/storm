@@ -2,7 +2,7 @@
   String shardIterator="";
   try {
     GetShardIteratorRequest getShardIteratorRequest=new GetShardIteratorRequest();
-    getShardIteratorRequest.setStreamName(config.getStreamName());
+    getShardIteratorRequest.setStreamName(kinesisConfig.getStreamName());
     getShardIteratorRequest.setShardId(shardId);
     getShardIteratorRequest.setShardIteratorType(shardIteratorType);
     if (shardIteratorType.equals(ShardIteratorType.AFTER_SEQUENCE_NUMBER) || shardIteratorType.equals(ShardIteratorType.AT_SEQUENCE_NUMBER)) {
@@ -17,8 +17,8 @@
     }
   }
  catch (  Exception e) {
-    LOG.debug("Exception occured while getting shardIterator for shard " + shardId + " shardIteratorType "+ shardIteratorType+ " sequence number "+ sequenceNumber+ " timestamp "+ timestamp,e);
+    LOG.warn("Exception occured while getting shardIterator for shard " + shardId + " shardIteratorType "+ shardIteratorType+ " sequence number "+ sequenceNumber+ " timestamp "+ timestamp,e);
   }
-  LOG.debug("Returning shardIterator " + shardIterator + " for shardId "+ shardId+ " shardIteratorType "+ shardIteratorType+ " sequenceNumber "+ sequenceNumber+ " timestamp"+ timestamp);
+  LOG.warn("Returning shardIterator " + shardIterator + " for shardId "+ shardId+ " shardIteratorType "+ shardIteratorType+ " sequenceNumber "+ sequenceNumber+ " timestamp"+ timestamp);
   return shardIterator;
 }

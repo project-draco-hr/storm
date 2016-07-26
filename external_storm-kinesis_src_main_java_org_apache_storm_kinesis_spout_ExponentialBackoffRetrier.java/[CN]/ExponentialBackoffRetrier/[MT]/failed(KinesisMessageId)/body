@@ -1,7 +1,7 @@
 {
   LOG.debug("Handling failed message " + messageId);
   if (maxRetries == 0) {
-    LOG.debug("maxRetries set to 0. Hence not queueing " + messageId);
+    LOG.warn("maxRetries set to 0. Hence not queueing " + messageId);
     return false;
   }
   if (!failCounts.containsKey(messageId)) {
@@ -10,7 +10,7 @@
   Long failCount=failCounts.get(messageId);
   failCounts.put(messageId,++failCount);
   if (failCount > maxRetries) {
-    LOG.debug("maxRetries reached so dropping " + messageId);
+    LOG.warn("maxRetries reached so dropping " + messageId);
     failCounts.remove(messageId);
     return false;
   }

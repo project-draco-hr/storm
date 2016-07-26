@@ -1,3 +1,0 @@
-{
-  return "Config{" + "streamName='" + streamName + '\''+ ", shardIteratorType="+ shardIteratorType+ ", recordToTupleMapper="+ recordToTupleMapper+ ", timestamp="+ timestamp+ ", zkInfo="+ zkInfo+ ", kinesisConnectionInfo="+ kinesisConnectionInfo+ ", failedMessageRetryHandler ="+ failedMessageRetryHandler+ ", maxUncommittedRecords="+ maxUncommittedRecords+ '}';
-}

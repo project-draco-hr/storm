@@ -2,7 +2,7 @@
   String shardId=kinesisMessageId.getShardId();
   BigInteger sequenceNumber=new BigInteger(kinesisMessageId.getSequenceNumber());
   LOG.debug("Fail received for shardId: " + shardId + " sequenceNumber: "+ sequenceNumber);
-  if (config.getFailedMessageRetryHandler().failed(kinesisMessageId)) {
+  if (kinesisConfig.getFailedMessageRetryHandler().failed(kinesisMessageId)) {
     if (!failedPerShard.containsKey(shardId)) {
       failedPerShard.put(shardId,new TreeSet<BigInteger>());
     }

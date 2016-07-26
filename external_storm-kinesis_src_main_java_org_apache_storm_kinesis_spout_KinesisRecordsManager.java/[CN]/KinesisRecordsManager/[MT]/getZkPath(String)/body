@@ -1,12 +1,12 @@
 {
   String path="";
-  if (!config.getZkInfo().getZkNode().startsWith("/")) {
+  if (!kinesisConfig.getZkInfo().getZkNode().startsWith("/")) {
     path+="/";
   }
-  path+=config.getZkInfo().getZkNode();
-  if (!config.getZkInfo().getZkNode().endsWith("/")) {
+  path+=kinesisConfig.getZkInfo().getZkNode();
+  if (!kinesisConfig.getZkInfo().getZkNode().endsWith("/")) {
     path+="/";
   }
-  path+=(config.getStreamName() + "/" + shardId);
+  path+=(kinesisConfig.getStreamName() + "/" + shardId);
   return path;
 }

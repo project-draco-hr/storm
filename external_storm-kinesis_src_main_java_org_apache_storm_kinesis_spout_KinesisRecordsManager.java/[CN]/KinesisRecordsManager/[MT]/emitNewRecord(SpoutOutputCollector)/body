@@ -4,7 +4,7 @@
     LinkedList<Record> listOfRecords=entry.getValue();
     Record record;
     while ((record=listOfRecords.pollFirst()) != null) {
-      KinesisMessageId kinesisMessageId=new KinesisMessageId(config.getStreamName(),shardId,record.getSequenceNumber());
+      KinesisMessageId kinesisMessageId=new KinesisMessageId(kinesisConfig.getStreamName(),shardId,record.getSequenceNumber());
       if (emitRecord(collector,record,kinesisMessageId)) {
         return;
       }

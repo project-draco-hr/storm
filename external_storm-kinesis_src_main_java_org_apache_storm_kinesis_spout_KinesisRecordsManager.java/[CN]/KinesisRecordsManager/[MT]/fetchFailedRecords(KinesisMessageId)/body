@@ -11,7 +11,7 @@
       LOG.debug("Records size from fetchFailedRecords is " + records.size());
       shardIteratorPerFailedMessage.put(kinesisMessageId,getRecordsResult.getNextShardIterator());
       if (records.size() == 0) {
-        LOG.debug("No records returned from kinesis. Hence sleeping for 1 second");
+        LOG.warn("No records returned from kinesis. Hence sleeping for 1 second");
         Thread.sleep(1000);
       }
  else {
@@ -26,19 +26,19 @@
     }
   }
  catch (  InterruptedException ie) {
-    LOG.debug("Thread interrupted while sleeping",ie);
+    LOG.warn("Thread interrupted while sleeping",ie);
   }
 catch (  ExpiredIteratorException ex) {
-    LOG.debug("shardIterator for failedRecord " + kinesisMessageId + " has expired. Refreshing shardIterator");
+    LOG.warn("shardIterator for failedRecord " + kinesisMessageId + " has expired. Refreshing shardIterator");
     refreshShardIteratorForFailedRecord(kinesisMessageId);
   }
 catch (  ProvisionedThroughputExceededException pe) {
     try {
-      LOG.debug("ProvisionedThroughputExceededException occured. Check your limits. Sleeping for 1 second.",pe);
+      LOG.warn("ProvisionedThroughputExceededException occured. Check your limits. Sleeping for 1 second.",pe);
       Thread.sleep(1000);
     }
  catch (    InterruptedException e) {
-      LOG.debug("Thread interrupted exception",e);
+      LOG.warn("Thread interrupted exception",e);
     }
   }
 }

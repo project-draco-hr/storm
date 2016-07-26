@@ -2,7 +2,7 @@
   String shardIterator=null;
   shardIterator=this.getShardIterator(kinesisMessageId.getShardId(),ShardIteratorType.AT_SEQUENCE_NUMBER,kinesisMessageId.getSequenceNumber(),null);
   if (shardIterator != null && !shardIterator.isEmpty()) {
-    LOG.debug("Refreshing shard iterator for failed records for message " + kinesisMessageId + " with shardIterator "+ shardIterator);
+    LOG.warn("Refreshing shard iterator for failed records for message " + kinesisMessageId + " with shardIterator "+ shardIterator);
     shardIteratorPerFailedMessage.put(kinesisMessageId,shardIterator);
   }
 }

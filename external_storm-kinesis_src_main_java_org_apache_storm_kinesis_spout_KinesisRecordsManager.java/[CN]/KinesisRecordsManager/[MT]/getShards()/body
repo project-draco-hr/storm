@@ -1,6 +1,6 @@
 {
   DescribeStreamRequest describeStreamRequest=new DescribeStreamRequest();
-  describeStreamRequest.setStreamName(config.getStreamName());
+  describeStreamRequest.setStreamName(kinesisConfig.getStreamName());
   List<Shard> shards=new ArrayList<>();
   String exclusiveStartShardId=null;
   do {
@@ -15,6 +15,6 @@
     }
   }
  while (exclusiveStartShardId != null);
-  LOG.info("Number of shards for stream " + config.getStreamName() + " are "+ shards.size());
+  LOG.info("Number of shards for stream " + kinesisConfig.getStreamName() + " are "+ shards.size());
   return shards;
 }

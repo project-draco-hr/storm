@@ -2,7 +2,7 @@
   List<Record> records=new ArrayList<>();
   GetRecordsRequest getRecordsRequest=new GetRecordsRequest();
   getRecordsRequest.setShardIterator(shardIterator);
-  getRecordsRequest.setLimit(config.getKinesisConnectionInfo().getRecordsLimit());
+  getRecordsRequest.setLimit(kinesisConfig.getKinesisConnectionInfo().getRecordsLimit());
   GetRecordsResult getRecordsResult=kinesisClient.getRecords(getRecordsRequest);
   return getRecordsResult;
 }

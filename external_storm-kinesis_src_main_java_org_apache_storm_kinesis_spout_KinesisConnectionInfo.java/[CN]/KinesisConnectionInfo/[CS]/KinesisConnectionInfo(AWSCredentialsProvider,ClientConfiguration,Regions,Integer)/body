@@ -9,6 +9,4 @@
   serializedkinesisClientConfig=getKryoSerializedBytes(clientConfiguration);
   this.recordsLimit=recordsLimit;
   this.region=region;
-  this.credentialsProvider=null;
-  this.clientConfiguration=null;
 }

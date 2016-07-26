@@ -14,7 +14,7 @@
     failedPerShard.get(shardId).remove(sequenceNumber);
   }
   if (failedandFetchedRecords.containsKey(kinesisMessageId)) {
-    config.getFailedMessageRetryHandler().acked(kinesisMessageId);
+    kinesisConfig.getFailedMessageRetryHandler().acked(kinesisMessageId);
     failedandFetchedRecords.remove(kinesisMessageId);
   }
   if (deactivated) {

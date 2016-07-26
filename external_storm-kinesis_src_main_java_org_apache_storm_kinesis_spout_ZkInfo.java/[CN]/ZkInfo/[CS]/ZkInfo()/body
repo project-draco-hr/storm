@@ -1,3 +1,0 @@
-{
-  this("localhost:2181","/kinesisOffsets",20000,15000,10000L,3,2000);
-}

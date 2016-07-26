@@ -1,6 +1,6 @@
 {
   boolean result=false;
-  List<Object> tuple=config.getRecordToTupleMapper().getTuple(record);
+  List<Object> tuple=kinesisConfig.getRecordToTupleMapper().getTuple(record);
   if (tuple != null && tuple.size() > 0) {
     collector.emit(tuple,kinesisMessageId);
     if (!emittedPerShard.containsKey(kinesisMessageId.getShardId())) {
@@ -10,7 +10,7 @@
     result=true;
   }
  else {
-    LOG.debug("Record " + record + " did not return a tuple to emit. Hence acking it");
+    LOG.warn("Record " + record + " did not return a tuple to emit. Hence acking it");
     ack(kinesisMessageId);
   }
   return result;
