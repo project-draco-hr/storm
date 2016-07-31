@@ -1,0 +1,10 @@
+{
+  try {
+    IOUtils.copy(is,os);
+    os.close();
+  }
+ catch (  Exception e) {
+    os.cancel();
+    throw e;
+  }
+}

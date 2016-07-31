@@ -1,0 +1,9 @@
+{
+  ClientBlobStore.withConfiguredClient(new ClientBlobStore.WithBlobstore(){
+    @Override public void run(    ClientBlobStore blobStore) throws Exception {
+      AtomicOutputStream os=blobStore.createBlob(key,meta);
+      copyInputStreamToBlobOutputStream(is,os);
+    }
+  }
+);
+}

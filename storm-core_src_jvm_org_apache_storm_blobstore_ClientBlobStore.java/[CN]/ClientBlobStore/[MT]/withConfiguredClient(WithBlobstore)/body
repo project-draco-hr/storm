@@ -1,0 +1,10 @@
+{
+  Map<String,Object> conf=ConfigUtils.readStormConfig();
+  ClientBlobStore blobStore=Utils.getClientBlobStore(conf);
+  try {
+    withBlobstore.run(blobStore);
+  }
+  finally {
+    blobStore.shutdown();
+  }
+}
