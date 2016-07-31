@@ -1,0 +1,27 @@
+{
+  if (args.length < 2) {
+    throw new IllegalArgumentException("Command and path arguments must be provided.");
+  }
+  String command=args[0];
+  String path=args[1];
+  Map<String,Object> conf=ConfigUtils.readStormConfig();
+  IStateStorage cluster=ClusterUtils.mkStateStorage(conf,conf,null,new ClusterStateContext());
+  LOG.info("Command: [{}]",command);
+switch (command) {
+case "list":
+    handleListCommand(cluster,path);
+  break;
+case "get":
+handleGetCommand(cluster,path);
+break;
+default :
+LOG.info("Usage: heartbeats [list|get] path");
+}
+try {
+cluster.close();
+}
+ catch (Exception e) {
+LOG.info("Caught exception: {} on close.",e);
+}
+System.exit(0);
+}
