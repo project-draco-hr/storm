@@ -2,7 +2,7 @@
   String shardIterator="";
   try {
     GetShardIteratorRequest getShardIteratorRequest=new GetShardIteratorRequest();
-    getShardIteratorRequest.setStreamName(kinesisConfig.getStreamName());
+    getShardIteratorRequest.setStreamName(stream);
     getShardIteratorRequest.setShardId(shardId);
     getShardIteratorRequest.setShardIteratorType(shardIteratorType);
     if (shardIteratorType.equals(ShardIteratorType.AFTER_SEQUENCE_NUMBER) || shardIteratorType.equals(ShardIteratorType.AT_SEQUENCE_NUMBER)) {

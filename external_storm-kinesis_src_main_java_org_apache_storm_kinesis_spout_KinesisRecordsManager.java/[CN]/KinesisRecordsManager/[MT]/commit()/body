@@ -27,8 +27,7 @@
         Map<Object,Object> state=new HashMap<>();
         state.put("committedSequenceNumber",ackedSequenceNumberToCommit.toString());
         LOG.debug("Committing sequence number " + ackedSequenceNumberToCommit.toString() + " for shardId "+ shardId);
-        String path=getZkPath(shardId);
-        commitState(path,state);
+        zkConnection.commitState(kinesisConfig.getStreamName(),shardId,state);
       }
     }
   }

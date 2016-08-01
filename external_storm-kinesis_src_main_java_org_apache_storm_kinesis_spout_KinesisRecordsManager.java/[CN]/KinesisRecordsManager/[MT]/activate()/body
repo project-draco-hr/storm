@@ -1,5 +1,5 @@
 {
   LOG.info("Activate called");
   deactivated=false;
-  initializeKinesisClient();
+  kinesisConnection.initialize();
 }

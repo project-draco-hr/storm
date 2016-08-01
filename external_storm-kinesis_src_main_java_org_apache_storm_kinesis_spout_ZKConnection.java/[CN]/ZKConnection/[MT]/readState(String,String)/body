@@ -1,5 +1,6 @@
 {
   try {
+    String path=getZkPath(stream,shardId);
     Map<Object,Object> state=null;
     byte[] b=null;
     if (curatorFramework.checkExists().forPath(path) != null) {

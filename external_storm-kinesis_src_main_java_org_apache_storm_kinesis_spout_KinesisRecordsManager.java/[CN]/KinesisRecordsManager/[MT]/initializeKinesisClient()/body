@@ -1,4 +1,0 @@
-{
-  kinesisClient=new AmazonKinesisClient(kinesisConfig.getKinesisConnectionInfo().getCredentialsProvider(),kinesisConfig.getKinesisConnectionInfo().getClientConfiguration());
-  kinesisClient.setRegion(Region.getRegion(kinesisConfig.getKinesisConnectionInfo().getRegion()));
-}

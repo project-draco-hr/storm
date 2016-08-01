@@ -1,9 +1,9 @@
 {
   deactivated=false;
   lastCommitTime=System.currentTimeMillis();
-  initializeKinesisClient();
-  initializeCurator();
-  List<Shard> shards=this.getShards();
+  kinesisConnection.initialize();
+  zkConnection.initialize();
+  List<Shard> shards=kinesisConnection.getShardsForStream(kinesisConfig.getStreamName());
   LOG.info("myTaskIndex is " + myTaskIndex);
   LOG.info("totalTasks is " + totalTasks);
   int i=myTaskIndex;

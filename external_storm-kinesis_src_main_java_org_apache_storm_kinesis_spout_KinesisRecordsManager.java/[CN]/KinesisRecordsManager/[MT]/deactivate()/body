@@ -2,5 +2,5 @@
   LOG.info("Deactivate called");
   deactivated=true;
   commit();
-  shutdownKinesisClient();
+  kinesisConnection.shutdown();
 }

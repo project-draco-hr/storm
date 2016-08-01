@@ -5,7 +5,7 @@
   String shardIterator=shardIteratorPerFailedMessage.get(kinesisMessageId);
   LOG.debug("Fetching failed records for shard id :" + kinesisMessageId.getShardId() + " at sequence number "+ kinesisMessageId.getSequenceNumber()+ " using shardIterator "+ shardIterator);
   try {
-    GetRecordsResult getRecordsResult=fetchRecords(shardIterator);
+    GetRecordsResult getRecordsResult=kinesisConnection.fetchRecords(shardIterator);
     if (getRecordsResult != null) {
       List<Record> records=getRecordsResult.getRecords();
       LOG.debug("Records size from fetchFailedRecords is " + records.size());

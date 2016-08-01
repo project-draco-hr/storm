@@ -1,6 +1,6 @@
 {
   for (  String shardId : toEmitPerShard.keySet()) {
-    Map<Object,Object> state=readState(getZkPath(shardId));
+    Map<Object,Object> state=zkConnection.readState(kinesisConfig.getStreamName(),shardId);
     if (state != null) {
       Object committedSequenceNumber=state.get("committedSequenceNumber");
       LOG.info("State read is committedSequenceNumber: " + committedSequenceNumber + " shardId:"+ shardId);

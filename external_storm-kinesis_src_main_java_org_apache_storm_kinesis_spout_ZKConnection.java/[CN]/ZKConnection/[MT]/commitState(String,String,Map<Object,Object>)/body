@@ -1,6 +1,7 @@
 {
   byte[] bytes=JSONValue.toJSONString(state).getBytes(Charset.forName("UTF-8"));
   try {
+    String path=getZkPath(stream,shardId);
     if (curatorFramework.checkExists().forPath(path) == null) {
       curatorFramework.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path,bytes);
     }
