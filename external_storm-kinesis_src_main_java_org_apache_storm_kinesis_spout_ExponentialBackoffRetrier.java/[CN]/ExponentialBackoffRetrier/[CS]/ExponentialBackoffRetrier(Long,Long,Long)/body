@@ -1,0 +1,6 @@
+{
+  this.initialDelayMillis=initialDelayMillis;
+  this.baseSeconds=baseSeconds;
+  this.maxRetries=maxRetries;
+  validate();
+}

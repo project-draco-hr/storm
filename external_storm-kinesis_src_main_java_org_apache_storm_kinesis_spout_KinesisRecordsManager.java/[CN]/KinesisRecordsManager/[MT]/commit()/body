@@ -1,0 +1,35 @@
+{
+  for (  String shardId : toEmitPerShard.keySet()) {
+    if (ackedPerShard.containsKey(shardId)) {
+      BigInteger commitSequenceNumberBound=null;
+      if (failedPerShard.containsKey(shardId) && !failedPerShard.get(shardId).isEmpty()) {
+        commitSequenceNumberBound=failedPerShard.get(shardId).first();
+      }
+      if (emittedPerShard.containsKey(shardId) && !emittedPerShard.get(shardId).isEmpty()) {
+        BigInteger smallestEmittedSequenceNumber=emittedPerShard.get(shardId).first();
+        if (commitSequenceNumberBound == null || (commitSequenceNumberBound.compareTo(smallestEmittedSequenceNumber) == 1)) {
+          commitSequenceNumberBound=smallestEmittedSequenceNumber;
+        }
+      }
+      Iterator<BigInteger> ackedSequenceNumbers=ackedPerShard.get(shardId).iterator();
+      BigInteger ackedSequenceNumberToCommit=null;
+      while (ackedSequenceNumbers.hasNext()) {
+        BigInteger ackedSequenceNumber=ackedSequenceNumbers.next();
+        if (commitSequenceNumberBound == null || (commitSequenceNumberBound.compareTo(ackedSequenceNumber) == 1)) {
+          ackedSequenceNumberToCommit=ackedSequenceNumber;
+          ackedSequenceNumbers.remove();
+        }
+ else {
+          break;
+        }
+      }
+      if (ackedSequenceNumberToCommit != null) {
+        Map<Object,Object> state=new HashMap<>();
+        state.put("committedSequenceNumber",ackedSequenceNumberToCommit.toString());
+        LOG.debug("Committing sequence number " + ackedSequenceNumberToCommit.toString() + " for shardId "+ shardId);
+        zkConnection.commitState(kinesisConfig.getStreamName(),shardId,state);
+      }
+    }
+  }
+  lastCommitTime=System.currentTimeMillis();
+}

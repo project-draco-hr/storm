@@ -1,0 +1,4 @@
+{
+  LOG.debug("Ack received for " + messageId + ". Hence cleaning state.");
+  failCounts.remove(messageId);
+}

@@ -1,0 +1,5 @@
+{
+  this.streamName=streamName;
+  this.shardId=shardId;
+  this.sequenceNumber=sequenceNumber;
+}

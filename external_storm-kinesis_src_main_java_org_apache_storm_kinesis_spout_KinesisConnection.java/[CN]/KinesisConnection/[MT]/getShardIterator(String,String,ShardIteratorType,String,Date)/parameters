@@ -1,0 +1,5 @@
+String stream
+String shardId
+ShardIteratorType shardIteratorType
+String sequenceNumber
+Date timestamp

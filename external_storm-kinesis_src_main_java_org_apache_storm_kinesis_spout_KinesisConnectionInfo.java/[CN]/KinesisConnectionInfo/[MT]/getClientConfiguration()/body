@@ -1,0 +1,6 @@
+{
+  if (clientConfiguration == null) {
+    clientConfiguration=(ClientConfiguration)this.getKryoDeserializedObject(serializedkinesisClientConfig);
+  }
+  return clientConfiguration;
+}

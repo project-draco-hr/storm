@@ -1,0 +1,6 @@
+{
+  if (credentialsProvider == null) {
+    credentialsProvider=(AWSCredentialsProvider)this.getKryoDeserializedObject(serializedKinesisCredsProvider);
+  }
+  return credentialsProvider;
+}

@@ -1,0 +1,5 @@
+{
+  this.kinesisConfig=kinesisConfig;
+  this.zkConnection=new ZKConnection(kinesisConfig.getZkInfo());
+  this.kinesisConnection=new KinesisConnection(kinesisConfig.getKinesisConnectionInfo());
+}

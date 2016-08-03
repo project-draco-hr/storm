@@ -1,0 +1,8 @@
+String streamName
+ShardIteratorType shardIteratorType
+RecordToTupleMapper recordToTupleMapper
+Date timestamp
+FailedMessageRetryHandler failedMessageRetryHandler
+ZkInfo zkInfo
+KinesisConnectionInfo kinesisConnectionInfo
+Long maxUncommittedRecords

@@ -1,0 +1,13 @@
+{
+  if (zkUrl == null || zkUrl.length() < 1) {
+    throw new IllegalArgumentException("zkUrl must be specified to connect to zookeeper");
+  }
+  if (zkNode == null || zkNode.length() < 1) {
+    throw new IllegalArgumentException("zkNode must be specified");
+  }
+  checkPositive(sessionTimeoutMs,"sessionTimeoutMs");
+  checkPositive(connectionTimeoutMs,"connectionTimeoutMs");
+  checkPositive(commitIntervalMs,"commitIntervalMs");
+  checkPositive(retryAttempts,"retryAttempts");
+  checkPositive(retryIntervalMs,"retryIntervalMs");
+}

@@ -1,0 +1,23 @@
+{
+  String shardId=kinesisMessageId.getShardId();
+  BigInteger sequenceNumber=new BigInteger(kinesisMessageId.getSequenceNumber());
+  LOG.debug("Ack received for shardId: " + shardId + " sequenceNumber: "+ sequenceNumber);
+  if (!ackedPerShard.containsKey(shardId)) {
+    ackedPerShard.put(shardId,new TreeSet<BigInteger>());
+  }
+  ackedPerShard.get(shardId).add(sequenceNumber);
+  if (emittedPerShard.containsKey(shardId)) {
+    TreeSet<BigInteger> emitted=emittedPerShard.get(shardId);
+    emitted.remove(sequenceNumber);
+  }
+  if (failedPerShard.containsKey(shardId)) {
+    failedPerShard.get(shardId).remove(sequenceNumber);
+  }
+  if (failedandFetchedRecords.containsKey(kinesisMessageId)) {
+    kinesisConfig.getFailedMessageRetryHandler().acked(kinesisMessageId);
+    failedandFetchedRecords.remove(kinesisMessageId);
+  }
+  if (deactivated) {
+    commit();
+  }
+}

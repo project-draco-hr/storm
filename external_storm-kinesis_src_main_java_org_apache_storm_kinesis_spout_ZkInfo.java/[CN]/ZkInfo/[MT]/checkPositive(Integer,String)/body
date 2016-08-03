@@ -1,0 +1,5 @@
+{
+  if (argument == null && argument <= 0) {
+    throw new IllegalArgumentException(name + " must be positive");
+  }
+}

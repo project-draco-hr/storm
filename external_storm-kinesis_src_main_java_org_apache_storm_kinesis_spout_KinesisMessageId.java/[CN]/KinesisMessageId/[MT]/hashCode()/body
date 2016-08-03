@@ -1,0 +1,6 @@
+{
+  int result=streamName != null ? streamName.hashCode() : 0;
+  result=31 * result + (shardId != null ? shardId.hashCode() : 0);
+  result=31 * result + (sequenceNumber != null ? sequenceNumber.hashCode() : 0);
+  return result;
+}

@@ -1,0 +1,3 @@
+{
+  return "KinesisMessageId{" + "streamName='" + streamName + '\''+ ", shardId='"+ shardId+ '\''+ ", sequenceNumber='"+ sequenceNumber+ '\''+ '}';
+}
