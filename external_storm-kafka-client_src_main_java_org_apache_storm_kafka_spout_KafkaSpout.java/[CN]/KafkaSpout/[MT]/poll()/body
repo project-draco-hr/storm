@@ -1,3 +1,13 @@
 {
-  return !waitingToEmit() && numUncommittedOffsets < kafkaSpoutConfig.getMaxUncommittedOffsets();
+  final int maxUncommittedOffsets=kafkaSpoutConfig.getMaxUncommittedOffsets();
+  final boolean poll=!waitingToEmit() && numUncommittedOffsets < maxUncommittedOffsets;
+  if (!poll) {
+    if (waitingToEmit()) {
+      LOG.debug("Not polling. Tuples waiting to be emitted. [{}] uncommitted offsets across all topic partitions",numUncommittedOffsets);
+    }
+    if (numUncommittedOffsets >= maxUncommittedOffsets) {
+      LOG.debug("Not polling. [{}] uncommitted offsets across all topic partitions has reached the threshold of [{}]",numUncommittedOffsets,maxUncommittedOffsets);
+    }
+  }
+  return poll;
 }
