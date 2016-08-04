@@ -1,8 +1,3 @@
 {
-  try {
-    return base64Decoder.decodeBuffer(s);
-  }
- catch (  IOException ex) {
-    throw new RuntimeException("Error while decoding string " + s);
-  }
+  return Base64.decodeBase64(s);
 }
