@@ -1,5 +1,5 @@
 {
-  Map map=new HashMap();
+  VersionedData<byte[]> data=null;
   try {
     byte[] bytes=null;
     Stat stats=new Stat();
@@ -13,8 +13,7 @@
       }
       if (bytes != null) {
         int version=stats.getVersion();
-        map.put(IStateStorage.DATA,bytes);
-        map.put(IStateStorage.VERSION,version);
+        data=new VersionedData<>(version,bytes);
       }
     }
   }
@@ -25,5 +24,5 @@
       Utils.wrapInRuntime(e);
     }
   }
-  return map;
+  return data;
 }

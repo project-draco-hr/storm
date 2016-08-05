@@ -1,0 +1,12 @@
+{
+  if (actions != null) {
+    while (true) {
+      Set<TopoProfileAction> orig=profiling.get();
+      Set<TopoProfileAction> newActions=new HashSet<>(orig);
+      newActions.addAll(actions);
+      if (profiling.compareAndSet(orig,newActions)) {
+        return;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  final String topologyId=assignment.get_topology_id();
+  LocalDownloadedResource localResource=_basicPending.get(topologyId);
+  if (localResource == null) {
+    localResource=new LocalDownloadedResource(new AllDoneFuture());
+    _basicPending.put(topologyId,localResource);
+  }
+  localResource.reserve(port,assignment);
+  LOG.debug("Recovered basic {} {}",topologyId,localResource);
+  localResource=_blobPending.get(topologyId);
+  if (localResource == null) {
+    localResource=new LocalDownloadedResource(new AllDoneFuture());
+    _blobPending.put(topologyId,localResource);
+  }
+  localResource.reserve(port,assignment);
+  LOG.debug("Recovered blobs {} {}",topologyId,localResource);
+}

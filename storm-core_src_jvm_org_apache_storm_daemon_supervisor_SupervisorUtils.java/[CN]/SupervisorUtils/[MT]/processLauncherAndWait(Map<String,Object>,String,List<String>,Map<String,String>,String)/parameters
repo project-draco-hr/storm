@@ -1,0 +1,5 @@
+Map<String,Object> conf
+String user
+List<String> args
+Map<String,String> environment
+String logPreFix

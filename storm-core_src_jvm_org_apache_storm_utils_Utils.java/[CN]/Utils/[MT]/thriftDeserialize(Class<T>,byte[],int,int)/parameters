@@ -1,0 +1,4 @@
+Class<T> c
+byte[] b
+int offset
+int length

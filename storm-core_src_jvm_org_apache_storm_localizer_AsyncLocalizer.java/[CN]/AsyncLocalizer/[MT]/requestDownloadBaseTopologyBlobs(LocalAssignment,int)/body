@@ -1,0 +1,18 @@
+{
+  final String topologyId=assignment.get_topology_id();
+  LocalDownloadedResource localResource=_basicPending.get(topologyId);
+  if (localResource == null) {
+    Callable<Void> c;
+    if (_isLocalMode) {
+      c=new DownloadBaseBlobsLocal(topologyId);
+    }
+ else {
+      c=new DownloadBaseBlobsDistributed(topologyId);
+    }
+    localResource=new LocalDownloadedResource(_execService.submit(c));
+    _basicPending.put(topologyId,localResource);
+  }
+  Future<Void> ret=localResource.reserve(port,assignment);
+  LOG.debug("Reserved basic {} {}",topologyId,localResource);
+  return ret;
+}

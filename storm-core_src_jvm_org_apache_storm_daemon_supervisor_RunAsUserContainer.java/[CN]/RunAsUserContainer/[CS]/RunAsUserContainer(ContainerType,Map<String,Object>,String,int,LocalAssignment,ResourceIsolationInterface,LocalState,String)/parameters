@@ -1,0 +1,8 @@
+ContainerType type
+Map<String,Object> conf
+String supervisorId
+int port
+LocalAssignment assignment
+ResourceIsolationInterface resourceIsolationManager
+LocalState localState
+String workerId

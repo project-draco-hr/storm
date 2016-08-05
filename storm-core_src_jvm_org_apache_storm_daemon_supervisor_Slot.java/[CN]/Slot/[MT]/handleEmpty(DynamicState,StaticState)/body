@@ -1,0 +1,11 @@
+{
+  if (!equivalent(dynamicState.newAssignment,dynamicState.currentAssignment)) {
+    return prepareForNewAssignmentNoWorkersRunning(dynamicState,staticState);
+  }
+  if (dynamicState.profileActions != null && !dynamicState.profileActions.isEmpty()) {
+    LOG.warn("Dropping {} no topology is running",dynamicState.profileActions);
+    dynamicState=dynamicState.withProfileActions(Collections.<TopoProfileAction>emptySet(),Collections.<TopoProfileAction>emptySet());
+  }
+  Time.sleep(1000);
+  return dynamicState;
+}

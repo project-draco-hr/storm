@@ -1,0 +1,3 @@
+{
+  return FileUtils.readFileToString(location,"UTF-8");
+}

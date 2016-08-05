@@ -1,0 +1,2 @@
+String workerId
+Map<String,Number> resourcesMap

@@ -1,4 +1,0 @@
-{
-  this.logPrefix=logPrefix;
-  this.workerId=workerId;
-}

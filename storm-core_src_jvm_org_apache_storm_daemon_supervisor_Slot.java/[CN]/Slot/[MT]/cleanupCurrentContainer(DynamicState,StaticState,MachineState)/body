@@ -1,0 +1,12 @@
+{
+  assert(dynamicState.container != null);
+  assert(dynamicState.currentAssignment != null);
+  assert(dynamicState.container.areAllProcessesDead());
+  dynamicState.container.cleanUp();
+  staticState.localizer.releaseSlotFor(dynamicState.currentAssignment,staticState.port);
+  DynamicState ret=dynamicState.withCurrentAssignment(null,null);
+  if (nextState != null) {
+    ret=ret.withState(nextState);
+  }
+  return ret;
+}

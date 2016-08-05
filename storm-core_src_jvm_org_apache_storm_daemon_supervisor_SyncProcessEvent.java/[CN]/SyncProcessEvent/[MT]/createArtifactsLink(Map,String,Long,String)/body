@@ -1,8 +1,0 @@
-{
-  String workerDir=ConfigUtils.workerRoot(conf,workerId);
-  String topoDir=ConfigUtils.workerArtifactsRoot(conf,stormId);
-  if (Utils.checkFileExists(workerDir)) {
-    LOG.debug("Creating symlinks for worker-id: {} storm-id: {} to its port artifacts directory",workerId,stormId);
-    Utils.createSymlink(workerDir,topoDir,"artifacts",String.valueOf(port));
-  }
-}

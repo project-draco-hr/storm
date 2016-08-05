@@ -1,0 +1,4 @@
+{
+  long newStartTime=Time.currentTimeMillis();
+  return new DynamicState(state,this.newAssignment,this.container,this.currentAssignment,this.pendingLocalization,newStartTime,this.pendingDownload,this.profileActions,this.pendingStopProfileActions);
+}

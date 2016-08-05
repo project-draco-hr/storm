@@ -1,0 +1,19 @@
+{
+  try {
+    LOG.info("Shutting down supervisor {}",getId());
+    this.active=false;
+    heartbeatTimer.close();
+    eventTimer.close();
+    blobUpdateTimer.close();
+    if (eventManager != null) {
+      eventManager.close();
+    }
+    if (readState != null) {
+      readState.close();
+    }
+    getStormClusterState().disconnect();
+  }
+ catch (  Exception e) {
+    LOG.error("Error Shutting down",e);
+  }
+}

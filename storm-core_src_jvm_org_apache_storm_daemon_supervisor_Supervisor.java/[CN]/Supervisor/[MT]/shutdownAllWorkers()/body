@@ -1,0 +1,14 @@
+{
+  if (readState != null) {
+    readState.shutdownAllWorkers();
+  }
+ else {
+    try {
+      ContainerLauncher launcher=ContainerLauncher.make(getConf(),getId(),getSharedContext());
+      killWorkers(SupervisorUtils.supervisorWorkerIds(conf),launcher);
+    }
+ catch (    Exception e) {
+      throw Utils.wrapInRuntime(e);
+    }
+  }
+}

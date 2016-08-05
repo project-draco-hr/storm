@@ -1,0 +1,30 @@
+{
+  super("SLOT_" + port);
+  this.cachedCurrentAssignments=cachedCurrentAssignments;
+  this.clusterState=clusterState;
+  Map<Integer,LocalAssignment> assignments=localState.getLocalAssignmentsMap();
+  LocalAssignment currentAssignment=null;
+  if (assignments != null) {
+    currentAssignment=assignments.get(port);
+  }
+  Container container=null;
+  if (currentAssignment != null) {
+    try {
+      container=containerLauncher.recoverContainer(port,currentAssignment,localState);
+    }
+ catch (    ContainerRecoveryException e) {
+    }
+  }
+  LocalAssignment newAssignment=currentAssignment;
+  if (currentAssignment != null && container == null) {
+    currentAssignment=null;
+  }
+  dynamicState=new DynamicState(currentAssignment,container,newAssignment);
+  staticState=new StaticState(localizer,Utils.getInt(conf.get(Config.SUPERVISOR_WORKER_TIMEOUT_SECS)) * 1000,Utils.getInt(conf.get(Config.SUPERVISOR_WORKER_START_TIMEOUT_SECS)) * 1000,Utils.getInt(conf.get(Config.SUPERVISOR_WORKER_SHUTDOWN_SLEEP_SECS)) * 1000,Utils.getInt(conf.get(Config.SUPERVISOR_MONITOR_FREQUENCY_SECS)) * 1000,containerLauncher,host,port,iSupervisor,localState);
+  this.newAssignment.set(dynamicState.newAssignment);
+  if (MachineState.RUNNING == dynamicState.state) {
+    staticState.localizer.recoverRunningTopology(currentAssignment,port);
+    saveNewAssignment(currentAssignment);
+  }
+  LOG.warn("SLOT {}:{} Starting in state {} - assignment {}",staticState.host,staticState.port,dynamicState.state,dynamicState.currentAssignment);
+}

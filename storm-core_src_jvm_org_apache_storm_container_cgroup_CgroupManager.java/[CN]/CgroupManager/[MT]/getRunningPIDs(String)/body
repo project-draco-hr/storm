@@ -1,0 +1,8 @@
+{
+  CgroupCommon workerGroup=new CgroupCommon(workerId,this.hierarchy,this.rootCgroup);
+  if (!this.rootCgroup.getChildren().contains(workerGroup)) {
+    LOG.warn("cgroup {} doesn't exist!",workerGroup);
+    return Collections.emptySet();
+  }
+  return workerGroup.getPids();
+}

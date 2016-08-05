@@ -1,0 +1,10 @@
+ILocalizer localizer
+long hbTimeoutMs
+long firstHbTimeoutMs
+long killSleepMs
+long monitorFreqMs
+ContainerLauncher containerLauncher
+String host
+int port
+ISupervisor iSupervisor
+LocalState localState

@@ -1,0 +1,18 @@
+{
+  AtomicBoolean ab=getHasReader(port);
+  long start=Time.currentTimeMillis();
+  while (!ab.get()) {
+    if (Time.isSimulating()) {
+      Time.advanceTime(100);
+    }
+    try {
+      Thread.sleep(10);
+    }
+ catch (    InterruptedException e) {
+    }
+    if (Time.currentTimeMillis() - start > 20000) {
+      LOG.error("DONE WAITING FOR READER AFTER {} ms",Time.currentTimeMillis() - start);
+      break;
+    }
+  }
+}

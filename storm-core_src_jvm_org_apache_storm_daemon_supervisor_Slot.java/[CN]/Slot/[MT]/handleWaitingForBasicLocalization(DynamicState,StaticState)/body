@@ -1,0 +1,13 @@
+{
+  assert(dynamicState.pendingLocalization != null);
+  assert(dynamicState.pendingDownload != null);
+  assert(dynamicState.container == null);
+  try {
+    dynamicState.pendingDownload.get(1000,TimeUnit.MILLISECONDS);
+    Future<Void> pendingDownload=staticState.localizer.requestDownloadTopologyBlobs(dynamicState.pendingLocalization,staticState.port);
+    return dynamicState.withPendingLocalization(pendingDownload).withState(MachineState.WAITING_FOR_BLOB_LOCALIZATION);
+  }
+ catch (  TimeoutException e) {
+    return dynamicState;
+  }
+}

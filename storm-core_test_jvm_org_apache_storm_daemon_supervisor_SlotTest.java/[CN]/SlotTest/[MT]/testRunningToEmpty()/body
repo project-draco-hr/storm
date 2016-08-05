@@ -1,0 +1,52 @@
+{
+  Time.startSimulatingAutoAdvanceOnSleep(1010);
+  try {
+    int port=8080;
+    String cTopoId="CURRENT";
+    List<ExecutorInfo> cExecList=mkExecutorInfoList(1,2,3,4,5);
+    LocalAssignment cAssignment=mkLocalAssignment(cTopoId,cExecList,mkWorkerResources(100.0,100.0,100.0));
+    Container cContainer=mock(Container.class);
+    LSWorkerHeartbeat chb=mkWorkerHB(cTopoId,port,cExecList,Time.currentTimeSecs());
+    when(cContainer.readHeartbeat()).thenReturn(chb);
+    when(cContainer.areAllProcessesDead()).thenReturn(false,true);
+    ILocalizer localizer=mock(ILocalizer.class);
+    ContainerLauncher containerLauncher=mock(ContainerLauncher.class);
+    ISupervisor iSuper=mock(ISupervisor.class);
+    LocalState state=mock(LocalState.class);
+    StaticState staticState=new StaticState(localizer,5000,120000,1000,1000,containerLauncher,"localhost",port,iSuper,state);
+    DynamicState dynamicState=new DynamicState(cAssignment,cContainer,null);
+    DynamicState nextState=Slot.stateMachineStep(dynamicState,staticState);
+    assertEquals(MachineState.KILL,nextState.state);
+    verify(cContainer).kill();
+    verify(localizer,never()).requestDownloadBaseTopologyBlobs(null,port);
+    assertSame("pendingDownload not set properly",null,nextState.pendingDownload);
+    assertEquals(null,nextState.pendingLocalization);
+    assertTrue(Time.currentTimeMillis() > 1000);
+    nextState=Slot.stateMachineStep(nextState,staticState);
+    assertEquals(MachineState.KILL,nextState.state);
+    verify(cContainer).forceKill();
+    assertSame("pendingDownload not set properly",null,nextState.pendingDownload);
+    assertEquals(null,nextState.pendingLocalization);
+    assertTrue(Time.currentTimeMillis() > 2000);
+    nextState=Slot.stateMachineStep(nextState,staticState);
+    assertEquals(MachineState.EMPTY,nextState.state);
+    verify(cContainer).cleanUp();
+    verify(localizer).releaseSlotFor(cAssignment,port);
+    assertEquals(null,nextState.container);
+    assertEquals(null,nextState.currentAssignment);
+    assertTrue(Time.currentTimeMillis() > 2000);
+    nextState=Slot.stateMachineStep(nextState,staticState);
+    assertEquals(MachineState.EMPTY,nextState.state);
+    assertEquals(null,nextState.container);
+    assertEquals(null,nextState.currentAssignment);
+    assertTrue(Time.currentTimeMillis() > 3000);
+    nextState=Slot.stateMachineStep(nextState,staticState);
+    assertEquals(MachineState.EMPTY,nextState.state);
+    assertEquals(null,nextState.container);
+    assertEquals(null,nextState.currentAssignment);
+    assertTrue(Time.currentTimeMillis() > 3000);
+  }
+  finally {
+    Time.stopSimulating();
+  }
+}

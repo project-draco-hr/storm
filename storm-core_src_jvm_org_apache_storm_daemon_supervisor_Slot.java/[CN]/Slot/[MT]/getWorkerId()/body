@@ -1,0 +1,8 @@
+{
+  String workerId=null;
+  Container c=dynamicState.container;
+  if (c != null) {
+    workerId=c.getWorkerId();
+  }
+  return workerId;
+}

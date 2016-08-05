@@ -5,12 +5,4 @@
     Object msgId=toEmit.get(1);
     _collector.emit(tuple,msgId);
   }
- else {
-    try {
-      Thread.sleep(1);
-    }
- catch (    InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
 }

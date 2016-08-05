@@ -1,0 +1,42 @@
+{
+  this.superConf=supervisor.getConf();
+  this.stormClusterState=supervisor.getStormClusterState();
+  this.syncSupEventManager=supervisor.getEventManger();
+  this.assignmentVersions=new AtomicReference<>(new HashMap<>());
+  this.assignmentId=supervisor.getAssignmentId();
+  this.iSuper=supervisor.getiSupervisor();
+  this.localizer=supervisor.getAsyncLocalizer();
+  this.host=supervisor.getHostName();
+  this.localState=supervisor.getLocalState();
+  this.clusterState=supervisor.getStormClusterState();
+  this.cachedAssignments=supervisor.getCurrAssignment();
+  this.launcher=ContainerLauncher.make(superConf,assignmentId,supervisor.getSharedContext());
+  @SuppressWarnings("unchecked") List<Number> ports=(List<Number>)superConf.get(Config.SUPERVISOR_SLOTS_PORTS);
+  for (  Number port : ports) {
+    slots.put(port.intValue(),mkSlot(port.intValue()));
+  }
+  try {
+    Collection<String> workers=SupervisorUtils.supervisorWorkerIds(superConf);
+    for (    Slot slot : slots.values()) {
+      String workerId=slot.getWorkerId();
+      if (workerId != null) {
+        workers.remove(workerId);
+      }
+    }
+    if (!workers.isEmpty()) {
+      supervisor.killWorkers(workers,launcher);
+    }
+  }
+ catch (  Exception e) {
+    LOG.warn("Error trying to clean up old workers",e);
+  }
+  try {
+    localizer.cleanupUnusedTopologies();
+  }
+ catch (  Exception e) {
+    LOG.warn("Error trying to clean up old topologies",e);
+  }
+  for (  Slot slot : slots.values()) {
+    slot.start();
+  }
+}

@@ -1,0 +1,5 @@
+{
+  _type.assertFull();
+  LOG.info("SET worker-user {} {}",_workerId,user);
+  _ops.dump(new File(ConfigUtils.workerUserFile(_conf,_workerId)),user);
+}

@@ -1,0 +1,7 @@
+{
+  List<String> workerProfilerChildopts=new ArrayList<>();
+  if (Utils.getBoolean(_conf.get(Config.WORKER_PROFILER_ENABLED),false)) {
+    workerProfilerChildopts=substituteChildopts(_conf.get(Config.WORKER_PROFILER_CHILDOPTS),memOnheap);
+  }
+  return workerProfilerChildopts;
+}

@@ -1,0 +1,11 @@
+{
+  assert(dynamicState.container != null);
+  staticState.iSupervisor.killedWorker(staticState.port);
+  dynamicState.container.kill();
+  Future<Void> pendingDownload=null;
+  if (dynamicState.newAssignment != null) {
+    pendingDownload=staticState.localizer.requestDownloadBaseTopologyBlobs(dynamicState.newAssignment,staticState.port);
+  }
+  Time.sleep(staticState.killSleepMs);
+  return dynamicState.withPendingLocalization(dynamicState.newAssignment,pendingDownload).withState(MachineState.KILL);
+}

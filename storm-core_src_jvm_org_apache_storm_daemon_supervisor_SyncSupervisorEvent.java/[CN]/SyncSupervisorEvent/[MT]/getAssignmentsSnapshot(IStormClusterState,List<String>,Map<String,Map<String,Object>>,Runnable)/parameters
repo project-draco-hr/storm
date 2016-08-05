@@ -1,4 +1,0 @@
-IStormClusterState stormClusterState
-List<String> stormIds
-Map<String,Map<String,Object>> localAssignmentVersion
-Runnable callback

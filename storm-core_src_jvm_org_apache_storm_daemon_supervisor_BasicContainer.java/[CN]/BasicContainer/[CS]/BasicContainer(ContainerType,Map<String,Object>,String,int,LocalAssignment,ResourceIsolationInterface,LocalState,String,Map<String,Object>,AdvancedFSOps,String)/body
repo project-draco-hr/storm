@@ -1,0 +1,28 @@
+{
+  super(type,conf,supervisorId,port,assignment,resourceIsolationManager,workerId,topoConf,ops);
+  assert(localState != null);
+  _localState=localState;
+  if (type.isRecovery() && !type.isOnlyKillable()) {
+synchronized (localState) {
+      String wid=null;
+      Map<String,Integer> workerToPort=localState.getApprovedWorkers();
+      for (      Map.Entry<String,Integer> entry : workerToPort.entrySet()) {
+        if (port == entry.getValue().intValue()) {
+          wid=entry.getKey();
+        }
+      }
+      if (wid == null) {
+        throw new ContainerRecoveryException("Could not find worker id for " + port + " "+ assignment);
+      }
+      LOG.info("Recovered Worker {}",wid);
+      _workerId=wid;
+    }
+  }
+ else   if (_workerId == null) {
+    createNewWorkerId();
+  }
+  if (profileCmd == null) {
+    profileCmd=_stormHome + Utils.FILE_PATH_SEPARATOR + "bin"+ Utils.FILE_PATH_SEPARATOR+ conf.get(Config.WORKER_PROFILER_COMMAND);
+  }
+  _profileCmd=profileCmd;
+}

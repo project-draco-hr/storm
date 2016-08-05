@@ -1,0 +1,12 @@
+{
+  assert(dynamicState.container != null);
+  assert(dynamicState.currentAssignment != null);
+  if (dynamicState.container.areAllProcessesDead()) {
+    LOG.warn("SLOT {} all processes are dead...",staticState.port);
+    return cleanupCurrentContainer(dynamicState,staticState,dynamicState.pendingLocalization == null ? MachineState.EMPTY : MachineState.WAITING_FOR_BASIC_LOCALIZATION);
+  }
+  LOG.warn("SLOT {} force kill and wait...",staticState.port);
+  dynamicState.container.forceKill();
+  Time.sleep(staticState.killSleepMs);
+  return dynamicState;
+}

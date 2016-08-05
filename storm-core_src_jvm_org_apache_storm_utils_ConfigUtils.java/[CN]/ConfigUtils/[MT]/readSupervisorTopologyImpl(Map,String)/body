@@ -1,5 +1,0 @@
-{
-  String stormRoot=supervisorStormDistRoot(conf,stormId);
-  String topologyPath=supervisorStormCodePath(stormRoot);
-  return readSupervisorStormCodeGivenPath(topologyPath);
-}

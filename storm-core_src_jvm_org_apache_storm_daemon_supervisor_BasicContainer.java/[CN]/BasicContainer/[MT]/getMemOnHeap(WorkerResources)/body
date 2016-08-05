@@ -1,0 +1,10 @@
+{
+  int memOnheap=0;
+  if (resources != null && resources.is_set_mem_on_heap() && resources.get_mem_on_heap() > 0) {
+    memOnheap=(int)Math.ceil(resources.get_mem_on_heap());
+  }
+ else {
+    memOnheap=Utils.getInt(_topoConf.get(Config.WORKER_HEAP_MEMORY_MB),768);
+  }
+  return memOnheap;
+}

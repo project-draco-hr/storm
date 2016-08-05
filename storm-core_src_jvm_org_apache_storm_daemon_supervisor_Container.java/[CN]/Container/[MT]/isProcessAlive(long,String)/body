@@ -1,0 +1,6 @@
+{
+  if (Utils.IS_ON_WINDOWS) {
+    return isWindowsProcessAlive(pid,user);
+  }
+  return isPosixProcessAlive(pid,user);
+}

@@ -1,0 +1,6 @@
+{
+  if (Utils.isOnWindows()) {
+    throw new UnsupportedOperationException("ERROR: Windows doesn't support running workers as different users yet");
+  }
+  _conf=conf;
+}

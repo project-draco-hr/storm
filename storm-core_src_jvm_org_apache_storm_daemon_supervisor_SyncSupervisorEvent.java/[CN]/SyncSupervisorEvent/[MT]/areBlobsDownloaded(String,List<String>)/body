@@ -1,9 +1,0 @@
-{
-  for (  String string : blobFileNames) {
-    if (!Utils.checkFileExists(targetDir,string)) {
-      LOG.info("Fail to find downloaded file: dir {} filename {}",targetDir,string);
-      return false;
-    }
-  }
-  return true;
-}

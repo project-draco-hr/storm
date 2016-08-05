@@ -1,0 +1,11 @@
+{
+  LOG.info("Deleting path {}",path);
+  Path p=path.toPath();
+  if (Files.exists(p)) {
+    try {
+      FileUtils.forceDelete(path);
+    }
+ catch (    FileNotFoundException ignored) {
+    }
+  }
+}

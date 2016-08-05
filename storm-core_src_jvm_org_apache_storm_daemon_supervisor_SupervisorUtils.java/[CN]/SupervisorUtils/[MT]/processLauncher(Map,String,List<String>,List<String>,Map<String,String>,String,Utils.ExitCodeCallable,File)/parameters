@@ -1,8 +1,0 @@
-Map conf
-String user
-List<String> commandPrefix
-List<String> args
-Map<String,String> environment
-String logPreFix
-Utils.ExitCodeCallable exitCodeCallback
-File dir

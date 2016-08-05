@@ -1,0 +1,9 @@
+{
+  _type.assertFull();
+  File workerDir=new File(ConfigUtils.workerRoot(_conf,_workerId));
+  File topoDir=new File(ConfigUtils.workerArtifactsRoot(_conf,_topologyId,_port));
+  if (_ops.fileExists(workerDir)) {
+    LOG.debug("Creating symlinks for worker-id: {} topology-id: {} to its port artifacts directory",_workerId,_topologyId);
+    _ops.createSymlink(new File(workerDir,"artifacts"),topoDir);
+  }
+}

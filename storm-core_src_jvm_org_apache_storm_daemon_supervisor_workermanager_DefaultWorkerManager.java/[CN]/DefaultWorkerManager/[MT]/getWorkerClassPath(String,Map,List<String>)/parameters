@@ -1,3 +1,0 @@
-String stormJar
-Map stormConf
-List<String> dependencyLocations

@@ -1,0 +1,21 @@
+{
+  Map<String,VersionedData<Assignment>> updateAssignmentVersion=new HashMap<>();
+  for (  String topoId : topoIds) {
+    Integer recordedVersion=-1;
+    Integer version=stormClusterState.assignmentVersion(topoId,callback);
+    VersionedData<Assignment> locAssignment=localAssignmentVersion.get(topoId);
+    if (locAssignment != null) {
+      recordedVersion=locAssignment.getVersion();
+    }
+    if (version == null) {
+    }
+ else     if (version == recordedVersion) {
+      updateAssignmentVersion.put(topoId,locAssignment);
+    }
+ else {
+      VersionedData<Assignment> assignmentVersion=stormClusterState.assignmentInfoWithVersion(topoId,callback);
+      updateAssignmentVersion.put(topoId,assignmentVersion);
+    }
+  }
+  return updateAssignmentVersion;
+}

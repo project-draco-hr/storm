@@ -1,0 +1,9 @@
+{
+  if (!active) {
+    return true;
+  }
+  if (heartbeatTimer.isTimerWaiting() && eventTimer.isTimerWaiting() && eventManager.waiting()) {
+    return true;
+  }
+  return false;
+}

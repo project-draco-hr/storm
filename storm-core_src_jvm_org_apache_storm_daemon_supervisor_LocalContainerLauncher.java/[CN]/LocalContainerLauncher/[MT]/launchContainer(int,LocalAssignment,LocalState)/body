@@ -1,0 +1,6 @@
+{
+  LocalContainer ret=new LocalContainer(_conf,_supervisorId,port,assignment,_sharedContext);
+  ret.setup();
+  ret.launch();
+  return ret;
+}

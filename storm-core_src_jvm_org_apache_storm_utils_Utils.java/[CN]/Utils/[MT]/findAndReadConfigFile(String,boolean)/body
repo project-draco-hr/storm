@@ -5,9 +5,9 @@
     in=getConfigFileInputStream(name);
     if (null != in) {
       Yaml yaml=new Yaml(new SafeConstructor());
-      Map ret=(Map)yaml.load(new InputStreamReader(in));
+      @SuppressWarnings("unchecked") Map<String,Object> ret=(Map<String,Object>)yaml.load(new InputStreamReader(in));
       if (null != ret) {
-        return new HashMap(ret);
+        return new HashMap<>(ret);
       }
  else {
         confFileEmpty=true;
@@ -18,7 +18,7 @@
  else       throw new RuntimeException("Could not find config file on classpath " + name);
     }
  else {
-      return new HashMap();
+      return new HashMap<>();
     }
   }
  catch (  IOException e) {

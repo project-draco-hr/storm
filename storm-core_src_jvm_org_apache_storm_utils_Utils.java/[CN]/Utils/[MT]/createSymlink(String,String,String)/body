@@ -1,3 +1,0 @@
-{
-  Utils.createSymlink(dir,targetDir,targetFilename,targetFilename);
-}

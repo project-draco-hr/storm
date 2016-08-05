@@ -1,5 +1,0 @@
-Map conf
-String supervisorId
-Map<String,String> workerThreadPids
-Set<String> deadWorkers
-IWorkerManager workerManager

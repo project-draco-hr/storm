@@ -1,0 +1,7 @@
+{
+  if (!(other instanceof PortNAssignment)) {
+    return false;
+  }
+  PortNAssignment pna=(PortNAssignment)other;
+  return pna._port == _port && _assignment.equals(pna._assignment);
+}

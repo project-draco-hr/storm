@@ -1,0 +1,3 @@
+List<String> cmd
+Map<String,String> env
+File pwd

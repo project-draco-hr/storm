@@ -1,0 +1,3 @@
+DynamicState dynamicState
+StaticState staticState
+MachineState nextState

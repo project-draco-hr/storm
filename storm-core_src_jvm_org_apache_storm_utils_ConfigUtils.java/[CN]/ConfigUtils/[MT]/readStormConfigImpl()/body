@@ -1,5 +1,5 @@
 {
-  Map conf=Utils.readStormConfig();
+  Map<String,Object> conf=Utils.readStormConfig();
   ConfigValidation.validateFields(conf);
   return conf;
 }

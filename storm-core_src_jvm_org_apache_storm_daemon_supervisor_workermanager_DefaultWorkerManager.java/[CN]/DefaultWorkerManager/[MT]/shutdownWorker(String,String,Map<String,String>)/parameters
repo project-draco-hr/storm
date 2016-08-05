@@ -1,3 +1,0 @@
-String supervisorId
-String workerId
-Map<String,String> workerThreadPids

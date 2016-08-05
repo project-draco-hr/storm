@@ -1,0 +1,9 @@
+{
+  List<String> workercp=new ArrayList<>();
+  workercp.addAll(asStringList(_topoConf.get(Config.TOPOLOGY_CLASSPATH_BEGINNING)));
+  workercp.addAll(frameworkClasspath());
+  workercp.add(stormJar);
+  workercp.addAll(dependencyLocations);
+  workercp.addAll(asStringList(_topoConf.get(Config.TOPOLOGY_CLASSPATH)));
+  return CPJ.join(workercp);
+}

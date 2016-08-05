@@ -1,0 +1,44 @@
+{
+  final String topologyId=assignment.get_topology_id();
+  LOG.debug("Releasing slot for {} {}",topologyId,port);
+  LocalDownloadedResource localResource=_blobPending.get(topologyId);
+  if (localResource == null || !localResource.release(port,assignment)) {
+    LOG.warn("Released blob reference {} {} for something that we didn't have {}",topologyId,port,localResource);
+  }
+ else   if (localResource.isDone()) {
+    LOG.info("Released blob reference {} {} Cleaning up BLOB references...",topologyId,port);
+    _blobPending.remove(topologyId);
+    Map<String,Object> topoConf=ConfigUtils.readSupervisorStormConf(_conf,topologyId);
+    @SuppressWarnings("unchecked") Map<String,Map<String,Object>> blobstoreMap=(Map<String,Map<String,Object>>)topoConf.get(Config.TOPOLOGY_BLOBSTORE_MAP);
+    if (blobstoreMap != null) {
+      String user=(String)topoConf.get(Config.TOPOLOGY_SUBMITTER_USER);
+      String topoName=(String)topoConf.get(Config.TOPOLOGY_NAME);
+      for (      Map.Entry<String,Map<String,Object>> entry : blobstoreMap.entrySet()) {
+        String key=entry.getKey();
+        Map<String,Object> blobInfo=entry.getValue();
+        try {
+          _localizer.removeBlobReference(key,user,topoName,SupervisorUtils.shouldUncompressBlob(blobInfo));
+        }
+ catch (        Exception e) {
+          throw new IOException(e);
+        }
+      }
+    }
+  }
+ else {
+    LOG.debug("Released blob reference {} {} still waiting on {}",topologyId,port,localResource);
+  }
+  localResource=_basicPending.get(topologyId);
+  if (localResource == null || !localResource.release(port,assignment)) {
+    LOG.warn("Released basic reference {} {} for something that we didn't have {}",topologyId,port,localResource);
+  }
+ else   if (localResource.isDone()) {
+    LOG.info("Released blob reference {} {} Cleaning up basic files...",topologyId,port);
+    _basicPending.remove(topologyId);
+    String path=ConfigUtils.supervisorStormDistRoot(_conf,topologyId);
+    _fsOps.deleteIfExists(new File(path),null,"rmr " + topologyId);
+  }
+ else {
+    LOG.debug("Released basic reference {} {} still waiting on {}",topologyId,port,localResource);
+  }
+}

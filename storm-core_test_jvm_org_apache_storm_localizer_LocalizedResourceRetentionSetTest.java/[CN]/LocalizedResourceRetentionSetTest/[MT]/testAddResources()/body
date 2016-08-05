@@ -4,8 +4,8 @@
   LocalizedResource localresource1=new LocalizedResource("key1","testfile1",false,"topo1");
   LocalizedResource localresource2=new LocalizedResource("key2","testfile2",false,"topo1");
   localresource2.addReference(("topo2"));
-  lrset.addResource("key1",localresource1,false);
-  lrset.addResource("key2",localresource2,false);
+  lrset.add("key1",localresource1,false);
+  lrset.add("key2",localresource2,false);
   lrretset.addResources(lrset);
   assertEquals("number to clean is not 0",0,lrretset.getSizeWithNoReferences());
   localresource1.removeReference(("topo1"));

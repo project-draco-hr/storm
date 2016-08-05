@@ -1,3 +1,0 @@
-{
-  return Utils.deserialize(FileUtils.readFileToByteArray(new File(stormCodePath)),StormTopology.class);
-}

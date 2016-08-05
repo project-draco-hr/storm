@@ -1,0 +1,4 @@
+{
+  fail("THIS IS NOT UNDER TEST");
+  return false;
+}

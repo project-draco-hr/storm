@@ -1,0 +1,14 @@
+{
+  String absolutePath=path.getAbsolutePath();
+  LOG.info("Deleting path {}",absolutePath);
+  if (user == null) {
+    user=Files.getOwner(path.toPath()).getName();
+  }
+  List<String> commands=new ArrayList<>();
+  commands.add("rmr");
+  commands.add(absolutePath);
+  SupervisorUtils.processLauncherAndWait(_conf,user,commands,null,logPrefix);
+  if (Utils.checkFileExists(absolutePath)) {
+    throw new RuntimeException(path + " was not deleted.");
+  }
+}

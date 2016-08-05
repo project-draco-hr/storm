@@ -1,0 +1,7 @@
+{
+  LOG.info("Force Killing {}:{}",_supervisorId,_workerId);
+  Set<Long> pids=getAllPids();
+  for (  Long pid : pids) {
+    forceKill(pid);
+  }
+}

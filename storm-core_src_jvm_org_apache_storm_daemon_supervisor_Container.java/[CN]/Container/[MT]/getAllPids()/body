@@ -1,0 +1,12 @@
+{
+  Set<Long> ret=new HashSet<>();
+  for (  String listing : Utils.readDirContents(ConfigUtils.workerPidsRoot(_conf,_workerId))) {
+    ret.add(Long.valueOf(listing));
+  }
+  if (_resourceIsolationManager != null) {
+    Set<Long> morePids=_resourceIsolationManager.getRunningPIDs(_workerId);
+    assert(morePids != null);
+    ret.addAll(morePids);
+  }
+  return ret;
+}

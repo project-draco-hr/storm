@@ -1,0 +1,24 @@
+{
+  if (a == null && b == null) {
+    return true;
+  }
+  if (a != null && b != null) {
+    if (a.get_topology_id().equals(b.get_topology_id())) {
+      Set<ExecutorInfo> aexec=new HashSet<>(a.get_executors());
+      Set<ExecutorInfo> bexec=new HashSet<>(b.get_executors());
+      if (aexec.equals(bexec)) {
+        boolean aHasResources=a.is_set_resources();
+        boolean bHasResources=b.is_set_resources();
+        if (!aHasResources && !bHasResources) {
+          return true;
+        }
+        if (aHasResources && bHasResources) {
+          if (a.get_resources().equals(b.get_resources())) {
+            return true;
+          }
+        }
+      }
+    }
+  }
+  return false;
+}

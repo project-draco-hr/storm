@@ -1,0 +1,6 @@
+{
+  _type.assertFull();
+  Process p=SupervisorUtils.launchProcess(command,env,logPrefix,null,targetDir);
+  int ret=p.waitFor();
+  return ret == 0;
+}

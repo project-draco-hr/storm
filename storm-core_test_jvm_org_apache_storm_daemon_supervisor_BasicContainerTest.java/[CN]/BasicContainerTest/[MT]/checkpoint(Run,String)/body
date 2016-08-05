@@ -1,0 +1,20 @@
+{
+  if (newValues.length % 2 != 0) {
+    throw new IllegalArgumentException("Parameters are of the form system property name, new value");
+  }
+  Map<String,String> orig=new HashMap<>();
+  try {
+    for (int index=0; index < newValues.length; index+=2) {
+      String key=newValues[index];
+      String value=newValues[index + 1];
+      orig.put(key,System.getProperty(key));
+      setSystemProp(key,value);
+    }
+    r.run();
+  }
+  finally {
+    for (    Map.Entry<String,String> entry : orig.entrySet()) {
+      setSystemProp(entry.getKey(),entry.getValue());
+    }
+  }
+}

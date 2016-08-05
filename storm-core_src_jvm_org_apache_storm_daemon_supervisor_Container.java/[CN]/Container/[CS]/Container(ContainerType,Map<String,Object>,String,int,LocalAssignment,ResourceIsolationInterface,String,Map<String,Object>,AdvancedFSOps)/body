@@ -1,0 +1,38 @@
+{
+  assert(type != null);
+  assert(conf != null);
+  assert(supervisorId != null);
+  if (ops == null) {
+    ops=AdvancedFSOps.make(conf);
+  }
+  _workerId=workerId;
+  _type=type;
+  _port=port;
+  _ops=ops;
+  _conf=conf;
+  _supervisorId=supervisorId;
+  _resourceIsolationManager=resourceIsolationManager;
+  _assignment=assignment;
+  if (_type.isOnlyKillable()) {
+    assert(_assignment == null);
+    assert(_port <= 0);
+    assert(_workerId != null);
+    _topologyId=null;
+    _topoConf=null;
+  }
+ else {
+    assert(assignment != null);
+    assert(port > 0);
+    _topologyId=assignment.get_topology_id();
+    if (!_ops.doRequiredTopoFilesExist(_conf,_topologyId)) {
+      LOG.info("Missing topology storm code, so can't launch  worker with assignment {} for this supervisor {} on port {} with id {}",_assignment,_supervisorId,_port,_workerId);
+      throw new ContainerRecoveryException("Missing required topology files...");
+    }
+    if (topoConf == null) {
+      _topoConf=readTopoConf();
+    }
+ else {
+      _topoConf=topoConf;
+    }
+  }
+}

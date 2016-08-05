@@ -1,0 +1,9 @@
+{
+  File parent=location.getParentFile();
+  if (!parent.exists()) {
+    forceMkdir(parent);
+  }
+  try (Writer w=getWriter(location)){
+    w.write(data);
+  }
+ }

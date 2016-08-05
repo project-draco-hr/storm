@@ -1,0 +1,3 @@
+{
+  return workerPidPath(conf,id,String.valueOf(pid));
+}

@@ -1,0 +1,11 @@
+{
+  this.state=state;
+  this.newAssignment=newAssignment;
+  this.currentAssignment=currentAssignment;
+  this.container=container;
+  this.pendingLocalization=pendingLocalization;
+  this.startTime=startTime;
+  this.pendingDownload=pendingDownload;
+  this.profileActions=profileActions;
+  this.pendingStopProfileActions=pendingStopProfileActions;
+}

@@ -4,7 +4,7 @@
   String message=String.format("Halting process: ShellBolt died. Command: %s, ProcessInfo %s",Arrays.toString(_command),processInfo);
   LOG.error(message,exception);
   _collector.reportError(exception);
-  if (_running || (exception instanceof Error)) {
+  if (!_isLocalMode && (_running || (exception instanceof Error))) {
     System.exit(11);
   }
 }

@@ -1,0 +1,37 @@
+{
+  _fsOps.forceMkdir(tmproot);
+  String stormCodeKey=ConfigUtils.masterStormCodeKey(_topologyId);
+  String stormConfKey=ConfigUtils.masterStormConfKey(_topologyId);
+  File codePath=new File(ConfigUtils.supervisorStormCodePath(tmproot.getAbsolutePath()));
+  File confPath=new File(ConfigUtils.supervisorStormConfPath(tmproot.getAbsolutePath()));
+  BlobStore blobStore=Utils.getNimbusBlobStore(_conf,null);
+  try {
+    try (OutputStream codeOutStream=_fsOps.getOutputStream(codePath)){
+      blobStore.readBlobTo(stormCodeKey,codeOutStream,null);
+    }
+     try (OutputStream confOutStream=_fsOps.getOutputStream(confPath)){
+      blobStore.readBlobTo(stormConfKey,confOutStream,null);
+    }
+   }
+  finally {
+    blobStore.shutdown();
+  }
+  ClassLoader classloader=Thread.currentThread().getContextClassLoader();
+  String resourcesJar=AsyncLocalizer.resourcesJar();
+  URL url=classloader.getResource(ConfigUtils.RESOURCES_SUBDIR);
+  String targetDir=tmproot + Utils.FILE_PATH_SEPARATOR + ConfigUtils.RESOURCES_SUBDIR;
+  if (resourcesJar != null) {
+    LOG.info("Extracting resources from jar at {} to {}",resourcesJar,targetDir);
+    Utils.extractDirFromJar(resourcesJar,ConfigUtils.RESOURCES_SUBDIR,_stormRoot);
+  }
+ else   if (url != null) {
+    LOG.info("Copying resources at {} to {} ",url.toString(),targetDir);
+    if ("jar".equals(url.getProtocol())) {
+      JarURLConnection urlConnection=(JarURLConnection)url.openConnection();
+      Utils.extractDirFromJar(urlConnection.getJarFileURL().getFile(),ConfigUtils.RESOURCES_SUBDIR,_stormRoot);
+    }
+ else {
+      _fsOps.copyDirectory(new File(url.getFile()),new File(targetDir));
+    }
+  }
+}

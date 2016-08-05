@@ -1,0 +1,6 @@
+{
+synchronized (sleepTimesLock) {
+    startSimulating();
+    autoAdvanceOnSleep.set(ms);
+  }
+}

@@ -1,0 +1,6 @@
+{
+  if (_resourceIsolationManager != null) {
+    command=_resourceIsolationManager.getLaunchCommand(_workerId,command);
+  }
+  SupervisorUtils.launchProcess(command,env,logPrefix,processExitCallback,targetDir);
+}

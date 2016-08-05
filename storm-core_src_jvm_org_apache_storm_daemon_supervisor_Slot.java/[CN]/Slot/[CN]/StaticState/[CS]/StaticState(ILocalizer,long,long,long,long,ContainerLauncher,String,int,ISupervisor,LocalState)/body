@@ -1,0 +1,12 @@
+{
+  this.localizer=localizer;
+  this.hbTimeoutMs=hbTimeoutMs;
+  this.firstHbTimeoutMs=firstHbTimeoutMs;
+  this.containerLauncher=containerLauncher;
+  this.killSleepMs=killSleepMs;
+  this.monitorFreqMs=monitorFreqMs;
+  this.host=host;
+  this.port=port;
+  this.iSupervisor=iSupervisor;
+  this.localState=localState;
+}

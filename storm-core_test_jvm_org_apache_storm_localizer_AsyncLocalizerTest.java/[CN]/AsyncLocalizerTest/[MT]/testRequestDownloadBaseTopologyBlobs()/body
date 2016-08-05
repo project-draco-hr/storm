@@ -1,0 +1,52 @@
+{
+  final String topoId="TOPO";
+  LocalAssignment la=new LocalAssignment();
+  la.set_topology_id(topoId);
+  ExecutorInfo ei=new ExecutorInfo();
+  ei.set_task_start(1);
+  ei.set_task_end(1);
+  la.add_to_executors(ei);
+  final int port=8080;
+  final String jarKey=topoId + "-stormjar.jar";
+  final String codeKey=topoId + "-stormcode.ser";
+  final String confKey=topoId + "-stormconf.ser";
+  final String stormLocal="/tmp/storm-local/";
+  final String stormRoot=stormLocal + topoId + "/";
+  final File fStormRoot=new File(stormRoot);
+  ClientBlobStore blobStore=mock(ClientBlobStore.class);
+  Map<String,Object> conf=new HashMap<>();
+  conf.put(Config.SUPERVISOR_BLOBSTORE,ClientBlobStore.class.getName());
+  conf.put(Config.STORM_PRINCIPAL_TO_LOCAL_PLUGIN,DefaultPrincipalToLocal.class.getName());
+  conf.put(Config.STORM_CLUSTER_MODE,"distributed");
+  conf.put(Config.STORM_LOCAL_DIR,stormLocal);
+  Localizer localizer=mock(Localizer.class);
+  AdvancedFSOps ops=mock(AdvancedFSOps.class);
+  ConfigUtils mockedCU=mock(ConfigUtils.class);
+  Utils mockedU=mock(Utils.class);
+  Map<String,Object> topoConf=new HashMap<>(conf);
+  AsyncLocalizer al=new AsyncLocalizer(conf,localizer,ops);
+  ConfigUtils orig=ConfigUtils.setInstance(mockedCU);
+  Utils origUtils=Utils.setInstance(mockedU);
+  try {
+    when(mockedCU.supervisorStormDistRootImpl(conf,topoId)).thenReturn(stormRoot);
+    when(mockedCU.supervisorLocalDirImpl(conf)).thenReturn(stormLocal);
+    when(mockedU.newInstanceImpl(ClientBlobStore.class)).thenReturn(blobStore);
+    when(mockedCU.readSupervisorStormConfImpl(conf,topoId)).thenReturn(topoConf);
+    Future<Void> f=al.requestDownloadBaseTopologyBlobs(la,port);
+    f.get(20,TimeUnit.SECONDS);
+    verify(blobStore).prepare(conf);
+    verify(mockedU).downloadResourcesAsSupervisorImpl(eq(jarKey),startsWith(stormLocal),eq(blobStore));
+    verify(mockedU).downloadResourcesAsSupervisorImpl(eq(codeKey),startsWith(stormLocal),eq(blobStore));
+    verify(mockedU).downloadResourcesAsSupervisorImpl(eq(confKey),startsWith(stormLocal),eq(blobStore));
+    verify(blobStore).shutdown();
+    verify(mockedU).extractDirFromJarImpl(endsWith("stormjar.jar"),eq("resources"),any(File.class));
+    verify(ops).moveDirectoryPreferAtomic(any(File.class),eq(fStormRoot));
+    verify(ops).setupStormCodeDir(topoConf,fStormRoot);
+    verify(ops,never()).deleteIfExists(any(File.class));
+  }
+  finally {
+    al.shutdown();
+    ConfigUtils.setInstance(orig);
+    Utils.setInstance(origUtils);
+  }
+}

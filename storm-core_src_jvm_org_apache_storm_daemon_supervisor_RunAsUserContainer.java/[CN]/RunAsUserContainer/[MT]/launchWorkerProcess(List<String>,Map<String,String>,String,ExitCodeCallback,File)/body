@@ -1,0 +1,10 @@
+{
+  String workerDir=targetDir.getAbsolutePath();
+  String user=this.getWorkerUser();
+  List<String> args=Arrays.asList("worker",workerDir,Utils.writeScript(workerDir,command,env));
+  List<String> commandPrefix=null;
+  if (_resourceIsolationManager != null) {
+    commandPrefix=_resourceIsolationManager.getLaunchCommandPrefix(_workerId);
+  }
+  SupervisorUtils.processLauncher(_conf,user,commandPrefix,args,null,logPrefix,processExitCallback,targetDir);
+}

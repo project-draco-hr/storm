@@ -1,0 +1,24 @@
+{
+  LOG.info("Starting Supervisor with conf {}",conf);
+  String path=ConfigUtils.supervisorTmpDir(conf);
+  FileUtils.cleanDirectory(new File(path));
+  Localizer localizer=getLocalizer();
+  SupervisorHeartbeat hb=new SupervisorHeartbeat(conf,this);
+  hb.run();
+  Integer heartbeatFrequency=Utils.getInt(conf.get(Config.SUPERVISOR_HEARTBEAT_FREQUENCY_SECS));
+  heartbeatTimer.scheduleRecurring(0,heartbeatFrequency,hb);
+  this.eventManager=new EventManagerImp(false);
+  this.readState=new ReadClusterState(this);
+  Set<String> downloadedTopoIds=SupervisorUtils.readDownloadedTopologyIds(conf);
+  for (  String topoId : downloadedTopoIds) {
+    SupervisorUtils.addBlobReferences(localizer,topoId,conf);
+  }
+  localizer.startCleaner();
+  UpdateBlobs updateBlobsThread=new UpdateBlobs(this);
+  if ((Boolean)conf.get(Config.SUPERVISOR_ENABLE)) {
+    eventTimer.scheduleRecurring(0,10,new EventManagerPushCallback(readState,eventManager));
+    blobUpdateTimer.scheduleRecurring(30,30,new EventManagerPushCallback(updateBlobsThread,eventManager));
+    eventTimer.scheduleRecurring(300,300,new SupervisorHealthCheck(this));
+  }
+  LOG.info("Starting supervisor with id {} at host {}.",getId(),getHostName());
+}

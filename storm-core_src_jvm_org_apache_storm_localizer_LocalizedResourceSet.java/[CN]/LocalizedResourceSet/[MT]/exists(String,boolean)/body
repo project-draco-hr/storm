@@ -1,6 +1,6 @@
 {
   if (uncompress) {
-    return (_localrsrcArchives.get(resourceName) != null);
+    return _localrsrcArchives.containsKey(resourceName);
   }
-  return (_localrsrcFiles.get(resourceName) != null);
+  return _localrsrcFiles.containsKey(resourceName);
 }

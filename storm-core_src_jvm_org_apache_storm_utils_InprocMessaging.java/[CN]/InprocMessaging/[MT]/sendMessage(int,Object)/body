@@ -1,3 +1,4 @@
 {
+  waitForReader(port);
   getQueue(port).add(msg);
 }

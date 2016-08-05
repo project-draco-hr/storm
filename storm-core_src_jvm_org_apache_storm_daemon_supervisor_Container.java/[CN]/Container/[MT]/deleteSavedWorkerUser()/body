@@ -1,0 +1,4 @@
+{
+  LOG.info("REMOVE worker-user {}",_workerId);
+  _ops.deleteIfExists(new File(ConfigUtils.workerUserFile(_conf,_workerId)));
+}

@@ -1,0 +1,61 @@
+{
+  Time.startSimulatingAutoAdvanceOnSleep(1010);
+  try {
+    int port=8080;
+    String cTopoId="CURRENT";
+    List<ExecutorInfo> cExecList=mkExecutorInfoList(1,2,3,4,5);
+    LocalAssignment cAssignment=mkLocalAssignment(cTopoId,cExecList,mkWorkerResources(100.0,100.0,100.0));
+    Container cContainer=mock(Container.class);
+    LSWorkerHeartbeat chb=mkWorkerHB(cTopoId,port,cExecList,Time.currentTimeSecs() + 100);
+    when(cContainer.readHeartbeat()).thenReturn(chb,chb,chb,chb,chb,chb);
+    when(cContainer.runProfiling(any(ProfileRequest.class),anyBoolean())).thenReturn(true);
+    ILocalizer localizer=mock(ILocalizer.class);
+    ContainerLauncher containerLauncher=mock(ContainerLauncher.class);
+    ISupervisor iSuper=mock(ISupervisor.class);
+    LocalState state=mock(LocalState.class);
+    StaticState staticState=new StaticState(localizer,5000,120000,1000,1000,containerLauncher,"localhost",port,iSuper,state);
+    Set<TopoProfileAction> profileActions=new HashSet<>();
+    ProfileRequest request=new ProfileRequest();
+    request.set_action(ProfileAction.JPROFILE_STOP);
+    NodeInfo info=new NodeInfo();
+    info.set_node("localhost");
+    info.add_to_port(port);
+    request.set_nodeInfo(info);
+    request.set_time_stamp(Time.currentTimeMillis() + 3000);
+    TopoProfileAction profile=new TopoProfileAction(cTopoId,request);
+    profileActions.add(profile);
+    Set<TopoProfileAction> expectedPending=new HashSet<>();
+    expectedPending.add(profile);
+    DynamicState dynamicState=new DynamicState(cAssignment,cContainer,cAssignment).withProfileActions(profileActions,Collections.<TopoProfileAction>emptySet());
+    DynamicState nextState=Slot.stateMachineStep(dynamicState,staticState);
+    assertEquals(MachineState.RUNNING,nextState.state);
+    verify(cContainer).runProfiling(request,false);
+    assertEquals(expectedPending,nextState.pendingStopProfileActions);
+    assertEquals(expectedPending,nextState.profileActions);
+    assertTrue(Time.currentTimeMillis() > 1000);
+    nextState=Slot.stateMachineStep(nextState,staticState);
+    assertEquals(MachineState.RUNNING,nextState.state);
+    assertEquals(expectedPending,nextState.pendingStopProfileActions);
+    assertEquals(expectedPending,nextState.profileActions);
+    assertTrue(Time.currentTimeMillis() > 2000);
+    nextState=Slot.stateMachineStep(nextState,staticState);
+    assertEquals(MachineState.RUNNING,nextState.state);
+    assertEquals(expectedPending,nextState.pendingStopProfileActions);
+    assertEquals(expectedPending,nextState.profileActions);
+    assertTrue(Time.currentTimeMillis() > 3000);
+    nextState=Slot.stateMachineStep(nextState,staticState);
+    assertEquals(MachineState.RUNNING,nextState.state);
+    verify(cContainer).runProfiling(request,true);
+    assertEquals(Collections.<TopoProfileAction>emptySet(),nextState.pendingStopProfileActions);
+    assertEquals(Collections.<TopoProfileAction>emptySet(),nextState.profileActions);
+    assertTrue(Time.currentTimeMillis() > 4000);
+    nextState=Slot.stateMachineStep(nextState,staticState);
+    assertEquals(MachineState.RUNNING,nextState.state);
+    assertEquals(Collections.<TopoProfileAction>emptySet(),nextState.pendingStopProfileActions);
+    assertEquals(Collections.<TopoProfileAction>emptySet(),nextState.profileActions);
+    assertTrue(Time.currentTimeMillis() > 5000);
+  }
+  finally {
+    Time.stopSimulating();
+  }
+}

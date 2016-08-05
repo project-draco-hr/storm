@@ -1,0 +1,40 @@
+{
+  this.conf=conf;
+  this.iSupervisor=iSupervisor;
+  this.active=true;
+  this.upTime=Utils.makeUptimeComputer();
+  this.stormVersion=VersionInfo.getVersion();
+  this.sharedContext=sharedContext;
+  iSupervisor.prepare(conf,ConfigUtils.supervisorIsupervisorDir(conf));
+  List<ACL> acls=null;
+  if (Utils.isZkAuthenticationConfiguredStormServer(conf)) {
+    acls=SupervisorUtils.supervisorZkAcls();
+  }
+  try {
+    this.stormClusterState=ClusterUtils.mkStormClusterState(conf,acls,new ClusterStateContext(DaemonType.SUPERVISOR));
+  }
+ catch (  Exception e) {
+    LOG.error("supervisor can't create stormClusterState");
+    throw Utils.wrapInRuntime(e);
+  }
+  try {
+    this.localState=ConfigUtils.supervisorState(conf);
+    this.localizer=Utils.createLocalizer(conf,ConfigUtils.supervisorLocalDir(conf));
+    this.asyncLocalizer=new AsyncLocalizer(conf,this.localizer);
+  }
+ catch (  IOException e) {
+    throw Utils.wrapInRuntime(e);
+  }
+  this.supervisorId=iSupervisor.getSupervisorId();
+  this.assignmentId=iSupervisor.getAssignmentId();
+  try {
+    this.hostName=Utils.hostname(conf);
+  }
+ catch (  UnknownHostException e) {
+    throw Utils.wrapInRuntime(e);
+  }
+  this.currAssignment=new AtomicReference<Map<Long,LocalAssignment>>(new HashMap<Long,LocalAssignment>());
+  this.heartbeatTimer=new StormTimer(null,new DefaultUncaughtExceptionHandler());
+  this.eventTimer=new StormTimer(null,new DefaultUncaughtExceptionHandler());
+  this.blobUpdateTimer=new StormTimer("blob-update-timer",new DefaultUncaughtExceptionHandler());
+}

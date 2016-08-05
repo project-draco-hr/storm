@@ -1,0 +1,37 @@
+{
+  _type.assertFull();
+  Map<String,Object> data=new HashMap<>();
+  data.put(Config.TOPOLOGY_SUBMITTER_USER,user);
+  data.put("worker-id",_workerId);
+  Set<String> logsGroups=new HashSet<>();
+  if (_topoConf.get(Config.LOGS_GROUPS) != null) {
+    List<String> groups=(List<String>)_topoConf.get(Config.LOGS_GROUPS);
+    for (    String group : groups) {
+      logsGroups.add(group);
+    }
+  }
+  if (_topoConf.get(Config.TOPOLOGY_GROUPS) != null) {
+    List<String> topGroups=(List<String>)_topoConf.get(Config.TOPOLOGY_GROUPS);
+    logsGroups.addAll(topGroups);
+  }
+  data.put(Config.LOGS_GROUPS,logsGroups.toArray());
+  Set<String> logsUsers=new HashSet<>();
+  if (_topoConf.get(Config.LOGS_USERS) != null) {
+    List<String> logUsers=(List<String>)_topoConf.get(Config.LOGS_USERS);
+    for (    String logUser : logUsers) {
+      logsUsers.add(logUser);
+    }
+  }
+  if (_topoConf.get(Config.TOPOLOGY_USERS) != null) {
+    List<String> topUsers=(List<String>)_topoConf.get(Config.TOPOLOGY_USERS);
+    for (    String logUser : topUsers) {
+      logsUsers.add(logUser);
+    }
+  }
+  data.put(Config.LOGS_USERS,logsUsers.toArray());
+  File file=ConfigUtils.getLogMetaDataFile(_conf,_topologyId,_port);
+  Yaml yaml=new Yaml();
+  try (Writer writer=_ops.getWriter(file)){
+    yaml.dump(data,writer);
+  }
+ }

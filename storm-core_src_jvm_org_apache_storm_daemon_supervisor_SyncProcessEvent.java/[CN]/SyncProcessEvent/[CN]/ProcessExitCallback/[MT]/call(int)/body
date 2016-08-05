@@ -1,5 +1,0 @@
-{
-  LOG.info("{} exited with code: {}",logPrefix,exitCode);
-  supervisorData.getDeadWorkers().add(workerId);
-  return null;
-}

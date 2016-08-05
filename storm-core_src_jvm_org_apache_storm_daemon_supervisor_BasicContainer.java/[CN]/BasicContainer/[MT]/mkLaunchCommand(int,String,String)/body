@@ -1,0 +1,32 @@
+{
+  final String javaCmd=javaCmd("java");
+  final String stormOptions=ConfigUtils.concatIfNotNull(System.getProperty("storm.options"));
+  final String stormConfFile=ConfigUtils.concatIfNotNull(System.getProperty("storm.conf.file"));
+  final String workerTmpDir=ConfigUtils.workerTmpRoot(_conf,_workerId);
+  List<String> classPathParams=getClassPathParams(stormRoot);
+  List<String> commonParams=getCommonParams();
+  List<String> commandList=new ArrayList<>();
+  commandList.add(javaCmd);
+  commandList.addAll(classPathParams);
+  commandList.addAll(substituteChildopts(_topoConf.get(Config.TOPOLOGY_WORKER_LOGWRITER_CHILDOPTS)));
+  commandList.addAll(commonParams);
+  commandList.add("org.apache.storm.LogWriter");
+  commandList.add(javaCmd);
+  commandList.add("-server");
+  commandList.addAll(commonParams);
+  commandList.addAll(substituteChildopts(_conf.get(Config.WORKER_CHILDOPTS),memOnheap));
+  commandList.addAll(substituteChildopts(_topoConf.get(Config.TOPOLOGY_WORKER_CHILDOPTS),memOnheap));
+  commandList.addAll(substituteChildopts(OR(_topoConf.get(Config.TOPOLOGY_WORKER_GC_CHILDOPTS),_conf.get(Config.WORKER_GC_CHILDOPTS)),memOnheap));
+  commandList.addAll(getWorkerProfilerChildOpts(memOnheap));
+  commandList.add("-Djava.library.path=" + jlp);
+  commandList.add("-Dstorm.conf.file=" + stormConfFile);
+  commandList.add("-Dstorm.options=" + stormOptions);
+  commandList.add("-Djava.io.tmpdir=" + workerTmpDir);
+  commandList.addAll(classPathParams);
+  commandList.add("org.apache.storm.daemon.worker");
+  commandList.add(_topologyId);
+  commandList.add(_supervisorId);
+  commandList.add(String.valueOf(_port));
+  commandList.add(_workerId);
+  return commandList;
+}

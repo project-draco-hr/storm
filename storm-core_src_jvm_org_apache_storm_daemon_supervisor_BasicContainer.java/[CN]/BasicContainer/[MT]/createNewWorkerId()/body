@@ -1,0 +1,15 @@
+{
+  _type.assertFull();
+  assert(_workerId == null);
+synchronized (_localState) {
+    _workerId=Utils.uuid();
+    Map<String,Integer> workerToPort=_localState.getApprovedWorkers();
+    if (workerToPort == null) {
+      workerToPort=new HashMap<>(1);
+    }
+    removeWorkersOn(workerToPort,_port);
+    workerToPort.put(_workerId,_port);
+    _localState.setApprovedWorkers(workerToPort);
+    LOG.info("Created Worker ID {}",_workerId);
+  }
+}

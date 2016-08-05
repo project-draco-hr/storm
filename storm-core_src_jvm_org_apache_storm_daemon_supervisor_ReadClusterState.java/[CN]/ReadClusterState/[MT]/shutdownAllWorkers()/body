@@ -1,0 +1,27 @@
+{
+  for (  Slot slot : slots.values()) {
+    slot.setNewAssignment(null);
+  }
+  for (  Slot slot : slots.values()) {
+    try {
+      int count=0;
+      while (slot.getMachineState() != MachineState.EMPTY) {
+        if (count > 10) {
+          LOG.warn("DONE waiting for {} to finish {}",slot,slot.getMachineState());
+          break;
+        }
+        if (Time.isSimulating()) {
+          Time.advanceTime(1000);
+          Thread.sleep(100);
+        }
+ else {
+          Time.sleep(100);
+        }
+        count++;
+      }
+    }
+ catch (    Exception e) {
+      LOG.error("Error trying to shutdown workers in {}",slot,e);
+    }
+  }
+}

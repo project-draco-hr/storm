@@ -1,0 +1,11 @@
+{
+  try {
+    T ret=c.newInstance();
+    TDeserializer des=getDes();
+    des.deserialize((TBase)ret,b,offset,length);
+    return ret;
+  }
+ catch (  Exception e) {
+    throw new RuntimeException(e);
+  }
+}

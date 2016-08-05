@@ -1,0 +1,14 @@
+{
+  String path=Utils.currentClasspath();
+  if (path == null) {
+    return null;
+  }
+  for (  String jpath : path.split(File.pathSeparator)) {
+    if (jpath.endsWith(".jar")) {
+      if (Utils.zipDoesContainDir(jpath,ConfigUtils.RESOURCES_SUBDIR)) {
+        return jpath;
+      }
+    }
+  }
+  return null;
+}

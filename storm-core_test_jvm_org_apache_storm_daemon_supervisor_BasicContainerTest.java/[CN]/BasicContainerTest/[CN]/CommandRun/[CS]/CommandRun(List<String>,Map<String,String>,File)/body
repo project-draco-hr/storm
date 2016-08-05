@@ -1,0 +1,5 @@
+{
+  this.cmd=cmd;
+  this.env=env;
+  this.pwd=pwd;
+}

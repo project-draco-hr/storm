@@ -1,0 +1,5 @@
+List<String> command
+Map<String,String> env
+String logPrefix
+ExitCodeCallback processExitCallback
+File targetDir

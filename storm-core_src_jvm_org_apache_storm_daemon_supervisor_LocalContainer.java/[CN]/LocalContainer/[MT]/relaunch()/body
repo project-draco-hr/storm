@@ -1,0 +1,3 @@
+{
+  LOG.warn("NOOP relaunch in local mode...");
+}

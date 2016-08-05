@@ -1,0 +1,17 @@
+{
+  String user=this.getWorkerUser();
+  String td=targetDir.getAbsolutePath();
+  LOG.info("Running as user: {} command: {}",user,command);
+  String containerFile=Utils.containerFilePath(td);
+  if (Utils.checkFileExists(containerFile)) {
+    SupervisorUtils.rmrAsUser(_conf,containerFile,containerFile);
+  }
+  String scriptFile=Utils.scriptFilePath(td);
+  if (Utils.checkFileExists(scriptFile)) {
+    SupervisorUtils.rmrAsUser(_conf,scriptFile,scriptFile);
+  }
+  String script=Utils.writeScript(td,command,env);
+  List<String> args=Arrays.asList("profiler",td,script);
+  int ret=SupervisorUtils.processLauncherAndWait(_conf,user,args,env,logPrefix);
+  return ret == 0;
+}

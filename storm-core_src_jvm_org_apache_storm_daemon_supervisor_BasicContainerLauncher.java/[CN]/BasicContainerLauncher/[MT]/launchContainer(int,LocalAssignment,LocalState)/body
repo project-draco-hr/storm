@@ -1,0 +1,6 @@
+{
+  Container container=new BasicContainer(ContainerType.LAUNCH,_conf,_supervisorId,port,assignment,_resourceIsolationManager,state,null);
+  container.setup();
+  container.launch();
+  return container;
+}

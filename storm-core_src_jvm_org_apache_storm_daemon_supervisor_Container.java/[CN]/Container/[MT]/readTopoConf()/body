@@ -1,0 +1,4 @@
+{
+  assert(_topologyId != null);
+  return ConfigUtils.readSupervisorStormConf(_conf,_topologyId);
+}

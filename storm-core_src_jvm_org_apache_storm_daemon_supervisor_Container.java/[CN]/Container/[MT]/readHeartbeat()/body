@@ -1,0 +1,6 @@
+{
+  LocalState localState=ConfigUtils.workerState(_conf,_workerId);
+  LSWorkerHeartbeat hb=localState.getWorkerHeartBeat();
+  LOG.trace("{}: Reading heartbeat {}",_workerId,hb);
+  return hb;
+}

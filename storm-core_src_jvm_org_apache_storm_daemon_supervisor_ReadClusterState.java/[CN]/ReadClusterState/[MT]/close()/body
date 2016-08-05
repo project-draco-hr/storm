@@ -1,0 +1,10 @@
+{
+  for (  Slot slot : slots.values()) {
+    try {
+      slot.close();
+    }
+ catch (    Exception e) {
+      LOG.error("Error trying to shutdown {}",slot,e);
+    }
+  }
+}

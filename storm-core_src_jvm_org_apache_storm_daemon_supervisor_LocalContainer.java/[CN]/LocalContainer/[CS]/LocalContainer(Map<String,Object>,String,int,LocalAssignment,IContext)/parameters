@@ -1,0 +1,5 @@
+Map<String,Object> conf
+String supervisorId
+int port
+LocalAssignment assignment
+IContext sharedContext

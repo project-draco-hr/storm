@@ -1,0 +1,6 @@
+{
+  Container container=new RunAsUserContainer(ContainerType.LAUNCH,_conf,_supervisorId,port,assignment,_resourceIsolationManager,state,null,null,null,null);
+  container.setup();
+  container.launch();
+  return container;
+}

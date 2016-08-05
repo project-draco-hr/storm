@@ -1,0 +1,4 @@
+String id
+int port
+List<ExecutorInfo> exec
+Integer timeSecs

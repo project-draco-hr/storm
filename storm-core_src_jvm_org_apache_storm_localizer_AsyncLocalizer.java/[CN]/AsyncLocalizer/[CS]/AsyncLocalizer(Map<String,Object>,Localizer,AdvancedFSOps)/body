@@ -1,0 +1,9 @@
+{
+  _conf=conf;
+  _isLocalMode=ConfigUtils.isLocalMode(conf);
+  _localizer=localizer;
+  _execService=Executors.newFixedThreadPool(1,new ThreadFactoryBuilder().setNameFormat("Async Localizer").build());
+  _basicPending=new HashMap<>();
+  _blobPending=new HashMap<>();
+  _fsOps=ops;
+}

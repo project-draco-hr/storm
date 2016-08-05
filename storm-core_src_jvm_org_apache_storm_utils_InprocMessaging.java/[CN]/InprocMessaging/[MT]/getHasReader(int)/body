@@ -1,0 +1,8 @@
+{
+  AtomicBoolean ab=_hasReader.get(port);
+  if (ab == null) {
+    _hasReader.putIfAbsent(port,new AtomicBoolean(false));
+    ab=_hasReader.get(port);
+  }
+  return ab;
+}

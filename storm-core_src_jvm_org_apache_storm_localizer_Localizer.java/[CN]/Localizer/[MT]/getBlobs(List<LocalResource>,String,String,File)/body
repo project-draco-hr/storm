@@ -45,7 +45,7 @@
     for (    Future<LocalizedResource> futureRsrc : futures) {
       LocalizedResource lrsrc=futureRsrc.get();
       lrsrc.addReference(topo);
-      lrsrcSet.addResource(lrsrc.getKey(),lrsrc,lrsrc.isUncompressed());
+      lrsrcSet.add(lrsrc.getKey(),lrsrc,lrsrc.isUncompressed());
       results.add(lrsrc);
     }
   }

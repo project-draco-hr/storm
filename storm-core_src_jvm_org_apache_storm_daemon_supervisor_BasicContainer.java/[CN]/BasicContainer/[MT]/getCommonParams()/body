@@ -1,0 +1,18 @@
+{
+  final String workersArtifacts=ConfigUtils.workerArtifactsRoot(_conf);
+  String stormLogDir=ConfigUtils.getLogDir();
+  String log4jConfigurationFile=getWorkerLoggingConfigFile();
+  List<String> commonParams=new ArrayList<>();
+  commonParams.add("-Dlogging.sensitivity=" + OR((String)_topoConf.get(Config.TOPOLOGY_LOGGING_SENSITIVITY),"S3"));
+  commonParams.add("-Dlogfile.name=worker.log");
+  commonParams.add("-Dstorm.home=" + OR(_stormHome,""));
+  commonParams.add("-Dworkers.artifacts=" + workersArtifacts);
+  commonParams.add("-Dstorm.id=" + _topologyId);
+  commonParams.add("-Dworker.id=" + _workerId);
+  commonParams.add("-Dworker.port=" + _port);
+  commonParams.add("-Dstorm.log.dir=" + stormLogDir);
+  commonParams.add("-Dlog4j.configurationFile=" + log4jConfigurationFile);
+  commonParams.add("-DLog4jContextSelector=org.apache.logging.log4j.core.selector.BasicContextSelector");
+  commonParams.add("-Dstorm.local.dir=" + _conf.get(Config.STORM_LOCAL_DIR));
+  return commonParams;
+}

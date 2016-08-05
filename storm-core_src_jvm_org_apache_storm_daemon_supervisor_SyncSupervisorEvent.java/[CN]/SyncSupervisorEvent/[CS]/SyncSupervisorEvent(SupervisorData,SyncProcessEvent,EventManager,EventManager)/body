@@ -1,8 +1,0 @@
-{
-  this.syncProcesses=syncProcesses;
-  this.syncSupEventManager=syncSupEventManager;
-  this.syncProcessManager=syncProcessManager;
-  this.stormClusterState=supervisorData.getStormClusterState();
-  this.localState=supervisorData.getLocalState();
-  this.supervisorData=supervisorData;
-}

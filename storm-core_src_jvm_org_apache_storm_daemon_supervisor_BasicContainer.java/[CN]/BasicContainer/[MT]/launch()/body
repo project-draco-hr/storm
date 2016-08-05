@@ -1,0 +1,32 @@
+{
+  _type.assertFull();
+  LOG.info("Launching worker with assignment {} for this supervisor {} on port {} with id {}",_assignment,_supervisorId,_port,_workerId);
+  String logPrefix="Worker Process " + _workerId;
+  ProcessExitCallback processExitCallback=new ProcessExitCallback(logPrefix);
+  _exitedEarly=false;
+  final WorkerResources resources=_assignment.get_resources();
+  final int memOnheap=getMemOnHeap(resources);
+  final String stormRoot=ConfigUtils.supervisorStormDistRoot(_conf,_topologyId);
+  final String jlp=javaLibraryPath(stormRoot,_conf);
+  List<String> commandList=mkLaunchCommand(memOnheap,stormRoot,jlp);
+  Map<String,String> topEnvironment=new HashMap<String,String>();
+  @SuppressWarnings("unchecked") Map<String,String> environment=(Map<String,String>)_topoConf.get(Config.TOPOLOGY_ENVIRONMENT);
+  if (environment != null) {
+    topEnvironment.putAll(environment);
+  }
+  topEnvironment.put("LD_LIBRARY_PATH",jlp);
+  if (_resourceIsolationManager != null) {
+    int memoffheap=(int)Math.ceil(resources.get_mem_off_heap());
+    int cpu=(int)Math.ceil(resources.get_cpu());
+    int cGroupMem=(int)(Math.ceil((double)_conf.get(Config.STORM_CGROUP_MEMORY_LIMIT_TOLERANCE_MARGIN_MB)));
+    int memoryValue=memoffheap + memOnheap + cGroupMem;
+    int cpuValue=cpu;
+    Map<String,Number> map=new HashMap<>();
+    map.put("cpu",cpuValue);
+    map.put("memory",memoryValue);
+    _resourceIsolationManager.reserveResourcesForWorker(_workerId,map);
+  }
+  LOG.info("Launching worker with command: {}. ",Utils.shellCmd(commandList));
+  String workerDir=ConfigUtils.workerRoot(_conf,_workerId);
+  launchWorkerProcess(commandList,topEnvironment,logPrefix,processExitCallback,new File(workerDir));
+}

@@ -1,0 +1,9 @@
+ILocalizer localizer
+Map<String,Object> conf
+ContainerLauncher containerLauncher
+String host
+int port
+LocalState localState
+IStormClusterState clusterState
+ISupervisor iSupervisor
+AtomicReference<Map<Long,LocalAssignment>> cachedCurrentAssignments

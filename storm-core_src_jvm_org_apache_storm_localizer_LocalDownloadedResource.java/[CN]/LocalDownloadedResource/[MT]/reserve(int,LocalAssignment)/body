@@ -1,0 +1,7 @@
+{
+  PortNAssignment pna=new PortNAssignment(port,la);
+  if (!_references.add(pna)) {
+    LOG.warn("Resources {} already reserved {} for this topology",pna,_references);
+  }
+  return _pending;
+}

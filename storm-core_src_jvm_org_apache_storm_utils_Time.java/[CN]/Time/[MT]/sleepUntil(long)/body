@@ -15,6 +15,10 @@ synchronized (sleepTimesLock) {
             throw new InterruptedException();
           }
         }
+        long autoAdvance=autoAdvanceOnSleep.get();
+        if (autoAdvance > 0) {
+          advanceTime(autoAdvance);
+        }
         Thread.sleep(10);
       }
     }

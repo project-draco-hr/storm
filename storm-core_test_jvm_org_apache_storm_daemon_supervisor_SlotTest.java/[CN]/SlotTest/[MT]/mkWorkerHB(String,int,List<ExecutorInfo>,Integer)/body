@@ -1,0 +1,8 @@
+{
+  LSWorkerHeartbeat ret=new LSWorkerHeartbeat();
+  ret.set_topology_id(id);
+  ret.set_port(port);
+  ret.set_executors(exec);
+  ret.set_time_secs(timeSecs);
+  return ret;
+}

@@ -1,9 +1,0 @@
-{
-  if (!supervisorData.isActive()) {
-    return true;
-  }
-  if (supervisorData.getHeartbeatTimer().isTimerWaiting() && supervisorData.getEventTimer().isTimerWaiting() && eventManager.waiting()&& processesEventManager.waiting()) {
-    return true;
-  }
-  return false;
-}

@@ -1,0 +1,3 @@
+Map<String,Object> conf
+Map<String,Object> stormConf
+String dir

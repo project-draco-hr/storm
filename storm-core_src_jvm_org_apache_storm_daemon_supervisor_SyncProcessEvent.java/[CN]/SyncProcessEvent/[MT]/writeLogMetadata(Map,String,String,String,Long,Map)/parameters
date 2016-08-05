@@ -1,6 +1,0 @@
-Map stormconf
-String user
-String workerId
-String stormId
-Long port
-Map conf

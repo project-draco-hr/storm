@@ -1,0 +1,3 @@
+{
+  this(type,conf,supervisorId,port,assignment,resourceIsolationManager,localState,workerId,null,null,null);
+}

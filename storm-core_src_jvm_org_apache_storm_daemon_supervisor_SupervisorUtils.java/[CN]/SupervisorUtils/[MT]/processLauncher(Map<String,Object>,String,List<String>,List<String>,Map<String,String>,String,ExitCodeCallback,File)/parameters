@@ -1,0 +1,8 @@
+Map<String,Object> conf
+String user
+List<String> commandPrefix
+List<String> args
+Map<String,String> environment
+String logPreFix
+ExitCodeCallback exitCodeCallback
+File dir

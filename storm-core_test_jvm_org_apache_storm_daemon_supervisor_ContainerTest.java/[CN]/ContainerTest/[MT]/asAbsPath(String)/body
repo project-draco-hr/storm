@@ -1,0 +1,3 @@
+{
+  return (File.separator + PATH_JOIN.join(parts)).replace(DOUBLE_SEP,File.separator);
+}

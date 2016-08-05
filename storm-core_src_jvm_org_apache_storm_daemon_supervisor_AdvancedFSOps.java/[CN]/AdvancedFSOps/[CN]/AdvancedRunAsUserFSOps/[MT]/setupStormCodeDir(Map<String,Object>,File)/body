@@ -1,0 +1,3 @@
+{
+  SupervisorUtils.setupStormCodeDir(_conf,topologyConf,path.getCanonicalPath());
+}

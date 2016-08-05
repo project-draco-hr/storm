@@ -1,0 +1,37 @@
+{
+  final int port=8080;
+  final long pid=100;
+  final String topoId="test_topology";
+  final String workerId="worker_id";
+  final String user="me";
+  final String stormLocal=asAbsPath("tmp","testing");
+  final File workerArtifacts=asAbsFile(stormLocal,topoId,String.valueOf(port));
+  final File logMetadataFile=new File(workerArtifacts,"worker.yaml");
+  final File workerUserFile=asAbsFile(stormLocal,"workers-users",workerId);
+  final File workerRoot=asAbsFile(stormLocal,"workers",workerId);
+  final File workerPidsRoot=new File(workerRoot,"pids");
+  final Map<String,Object> topoConf=new HashMap<>();
+  topoConf.put(Config.TOPOLOGY_SUBMITTER_USER,user);
+  final Map<String,Object> superConf=new HashMap<>();
+  superConf.put(Config.STORM_LOCAL_DIR,stormLocal);
+  superConf.put(Config.STORM_WORKERS_ARTIFACTS_DIR,stormLocal);
+  final StringWriter yamlDump=new StringWriter();
+  AdvancedFSOps ops=mock(AdvancedFSOps.class);
+  when(ops.doRequiredTopoFilesExist(superConf,topoId)).thenReturn(true);
+  when(ops.fileExists(workerArtifacts)).thenReturn(true);
+  when(ops.fileExists(workerRoot)).thenReturn(true);
+  when(ops.getWriter(logMetadataFile)).thenReturn(yamlDump);
+  ResourceIsolationInterface iso=mock(ResourceIsolationInterface.class);
+  LocalAssignment la=new LocalAssignment();
+  la.set_topology_id(topoId);
+  MockContainer mc=new MockContainer(ContainerType.LAUNCH,superConf,"SUPERVISOR",port,la,iso,workerId,topoConf,ops);
+  mc.allPids.add(pid);
+  mc.cleanUp();
+  verify(ops).deleteIfExists(eq(new File(workerPidsRoot,String.valueOf(pid))),eq(user),any(String.class));
+  verify(iso).releaseResourcesForWorker(workerId);
+  verify(ops).deleteIfExists(eq(new File(workerRoot,"pids")),eq(user),any(String.class));
+  verify(ops).deleteIfExists(eq(new File(workerRoot,"tmp")),eq(user),any(String.class));
+  verify(ops).deleteIfExists(eq(new File(workerRoot,"heartbeats")),eq(user),any(String.class));
+  verify(ops).deleteIfExists(eq(workerRoot),eq(user),any(String.class));
+  verify(ops).deleteIfExists(workerUserFile);
+}

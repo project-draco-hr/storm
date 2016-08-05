@@ -1,4 +1,0 @@
-{
-  IWorkerManager workerManager=supervisorData.getWorkerManager();
-  SupervisorUtils.shutdownAllWorkers(supervisorData.getConf(),supervisorData.getSupervisorId(),supervisorData.getWorkerThreadPids(),supervisorData.getDeadWorkers(),workerManager);
-}

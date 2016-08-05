@@ -1,0 +1,29 @@
+{
+synchronized (staticState.localState) {
+    Map<Integer,LocalAssignment> assignments=staticState.localState.getLocalAssignmentsMap();
+    if (assignments == null) {
+      assignments=new HashMap<>();
+    }
+    if (assignment == null) {
+      assignments.remove(staticState.port);
+    }
+ else {
+      assignments.put(staticState.port,assignment);
+    }
+    staticState.localState.setLocalAssignmentsMap(assignments);
+  }
+  Map<Long,LocalAssignment> update=null;
+  Map<Long,LocalAssignment> orig=null;
+  do {
+    Long lport=new Long(staticState.port);
+    orig=cachedCurrentAssignments.get();
+    update=new HashMap<>(orig);
+    if (assignment == null) {
+      update.remove(lport);
+    }
+ else {
+      update.put(lport,assignment);
+    }
+  }
+ while (!cachedCurrentAssignments.compareAndSet(orig,update));
+}

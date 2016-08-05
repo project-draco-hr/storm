@@ -1,0 +1,20 @@
+{
+  final String topoId="test_topology";
+  final int port=8080;
+  final String workerId="worker-id";
+  LocalAssignment la=new LocalAssignment();
+  la.set_topology_id(topoId);
+  Map<String,Object> superConf=new HashMap<>();
+  AdvancedFSOps ops=mock(AdvancedFSOps.class);
+  when(ops.doRequiredTopoFilesExist(superConf,topoId)).thenReturn(true);
+  Map<String,Integer> workerState=new HashMap<String,Integer>();
+  workerState.put(workerId,port);
+  LocalState ls=mock(LocalState.class);
+  when(ls.getApprovedWorkers()).thenReturn(new HashMap<>(workerState));
+  MockBasicContainer mc=new MockBasicContainer(ContainerType.LAUNCH,superConf,"SUPERVISOR",port,la,null,ls,workerId,new HashMap<>(),ops,"profile");
+  mc.cleanUp();
+  assertNull(mc._workerId);
+  verify(ls).getApprovedWorkers();
+  Map<String,Integer> expectedNewState=new HashMap<String,Integer>();
+  verify(ls).setApprovedWorkers(expectedNewState);
+}

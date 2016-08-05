@@ -1,0 +1,12 @@
+{
+  final String topologyId=assignment.get_topology_id();
+  LocalDownloadedResource localResource=_blobPending.get(topologyId);
+  if (localResource == null) {
+    Callable<Void> c=new DownloadBlobs(topologyId);
+    localResource=new LocalDownloadedResource(_execService.submit(c));
+    _blobPending.put(topologyId,localResource);
+  }
+  Future<Void> ret=localResource.reserve(port,assignment);
+  LOG.debug("Reserved blobs {} {}",topologyId,localResource);
+  return ret;
+}

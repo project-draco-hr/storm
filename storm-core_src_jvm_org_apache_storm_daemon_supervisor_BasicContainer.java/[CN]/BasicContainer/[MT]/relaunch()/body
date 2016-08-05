@@ -1,0 +1,7 @@
+{
+  _type.assertFull();
+  _type=ContainerType.LAUNCH;
+  createNewWorkerId();
+  setup();
+  launch();
+}

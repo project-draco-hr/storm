@@ -11,7 +11,7 @@
         i.remove();
       }
  else {
-        set.addResource(resource.getKey(),resource,resource.isUncompressed());
+        set.add(resource.getKey(),resource,resource.isUncompressed());
       }
     }
   }

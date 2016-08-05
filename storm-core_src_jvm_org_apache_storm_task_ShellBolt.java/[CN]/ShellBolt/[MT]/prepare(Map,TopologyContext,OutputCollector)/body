@@ -1,4 +1,7 @@
 {
+  if (ConfigUtils.isLocalMode(stormConf)) {
+    _isLocalMode=true;
+  }
   Object maxPending=stormConf.get(Config.TOPOLOGY_SHELLBOLT_MAX_PENDING);
   if (maxPending != null) {
     this._pendingWrites=new ShellBoltMessageQueue(((Number)maxPending).intValue());

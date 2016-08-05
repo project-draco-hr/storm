@@ -1,0 +1,24 @@
+{
+  final String topoId="test_topology";
+  final Map<String,Object> superConf=new HashMap<>();
+  AdvancedFSOps ops=mock(AdvancedFSOps.class);
+  when(ops.doRequiredTopoFilesExist(superConf,topoId)).thenReturn(true);
+  LocalAssignment la=new LocalAssignment();
+  la.set_topology_id(topoId);
+  MockContainer mc=new MockContainer(ContainerType.LAUNCH,superConf,"SUPERVISOR",8080,la,null,"worker",new HashMap<>(),ops);
+  mc.kill();
+  assertEquals(Collections.EMPTY_LIST,mc.killedPids);
+  assertEquals(Collections.EMPTY_LIST,mc.forceKilledPids);
+  mc.forceKill();
+  assertEquals(Collections.EMPTY_LIST,mc.killedPids);
+  assertEquals(Collections.EMPTY_LIST,mc.forceKilledPids);
+  long pid=987654321;
+  mc.allPids.add(pid);
+  mc.kill();
+  assertEquals(mc.allPids,new HashSet<>(mc.killedPids));
+  assertEquals(Collections.EMPTY_LIST,mc.forceKilledPids);
+  mc.killedPids.clear();
+  mc.forceKill();
+  assertEquals(Collections.EMPTY_LIST,mc.killedPids);
+  assertEquals(mc.allPids,new HashSet<>(mc.forceKilledPids));
+}

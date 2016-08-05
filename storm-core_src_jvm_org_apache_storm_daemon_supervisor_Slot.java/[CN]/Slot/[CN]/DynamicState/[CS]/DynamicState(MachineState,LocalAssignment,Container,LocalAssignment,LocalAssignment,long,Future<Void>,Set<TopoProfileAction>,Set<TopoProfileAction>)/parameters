@@ -1,0 +1,9 @@
+MachineState state
+LocalAssignment newAssignment
+Container container
+LocalAssignment currentAssignment
+LocalAssignment pendingLocalization
+long startTime
+Future<Void> pendingDownload
+Set<TopoProfileAction> profileActions
+Set<TopoProfileAction> pendingStopProfileActions

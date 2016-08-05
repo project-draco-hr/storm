@@ -1,0 +1,16 @@
+{
+  final String topoId="test_topology";
+  final int port=8080;
+  LocalAssignment la=new LocalAssignment();
+  la.set_topology_id(topoId);
+  Map<String,Integer> workerState=new HashMap<String,Integer>();
+  workerState.put("somethingelse",port + 1);
+  LocalState ls=mock(LocalState.class);
+  when(ls.getApprovedWorkers()).thenReturn(workerState);
+  try {
+    new MockBasicContainer(ContainerType.RECOVER_FULL,new HashMap<String,Object>(),"SUPERVISOR",port,la,null,ls,null,new HashMap<>(),null,"profile");
+    fail("Container recovered worker incorrectly");
+  }
+ catch (  ContainerRecoveryException e) {
+  }
+}

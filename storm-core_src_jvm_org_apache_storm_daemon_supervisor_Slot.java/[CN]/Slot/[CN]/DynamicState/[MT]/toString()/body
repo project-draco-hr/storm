@@ -1,0 +1,11 @@
+{
+  StringBuffer sb=new StringBuffer();
+  sb.append(state);
+  sb.append(" msInState: ");
+  sb.append(Time.currentTimeMillis() - startTime);
+  if (container != null) {
+    sb.append(" ");
+    sb.append(container);
+  }
+  return sb.toString();
+}

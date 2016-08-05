@@ -1,0 +1,55 @@
+{
+  try {
+    Runnable syncCallback=new EventManagerPushCallback(this,syncSupEventManager);
+    List<String> stormIds=stormClusterState.assignments(syncCallback);
+    Map<String,VersionedData<Assignment>> assignmentsSnapshot=getAssignmentsSnapshot(stormClusterState,stormIds,assignmentVersions.get(),syncCallback);
+    Map<Integer,LocalAssignment> allAssignments=readAssignments(assignmentsSnapshot);
+    if (allAssignments == null) {
+      return;
+    }
+    Map<String,List<ProfileRequest>> topoIdToProfilerActions=getProfileActions(stormClusterState,stormIds);
+    HashSet<Integer> assignedPorts=new HashSet<>();
+    LOG.debug("Synchronizing supervisor");
+    LOG.debug("All assignment: {}",allAssignments);
+    LOG.debug("Topology Ids -> Profiler Actions {}",topoIdToProfilerActions);
+    for (    Integer port : allAssignments.keySet()) {
+      if (iSuper.confirmAssigned(port)) {
+        assignedPorts.add(port);
+      }
+    }
+    HashSet<Integer> allPorts=new HashSet<>(assignedPorts);
+    allPorts.addAll(slots.keySet());
+    Map<Integer,Set<TopoProfileAction>> filtered=new HashMap<>();
+    for (    Entry<String,List<ProfileRequest>> entry : topoIdToProfilerActions.entrySet()) {
+      String topoId=entry.getKey();
+      if (entry.getValue() != null) {
+        for (        ProfileRequest req : entry.getValue()) {
+          NodeInfo ni=req.get_nodeInfo();
+          if (host.equals(ni.get_node())) {
+            Long port=ni.get_port().iterator().next();
+            Set<TopoProfileAction> actions=filtered.get(port);
+            if (actions == null) {
+              actions=new HashSet<>();
+              filtered.put(port.intValue(),actions);
+            }
+            actions.add(new TopoProfileAction(topoId,req));
+          }
+        }
+      }
+    }
+    for (    Integer port : allPorts) {
+      Slot slot=slots.get(port);
+      if (slot == null) {
+        slot=mkSlot(port);
+        slots.put(port,slot);
+        slot.start();
+      }
+      slot.setNewAssignment(allAssignments.get(port));
+      slot.addProfilerActions(filtered.get(port));
+    }
+  }
+ catch (  Exception e) {
+    LOG.error("Failed to Sync Supervisor",e);
+    throw new RuntimeException(e);
+  }
+}

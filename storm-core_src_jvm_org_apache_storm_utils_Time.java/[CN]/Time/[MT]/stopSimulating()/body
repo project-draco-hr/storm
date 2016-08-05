@@ -1,6 +1,7 @@
 {
 synchronized (sleepTimesLock) {
     simulating.set(false);
+    autoAdvanceOnSleep.set(0);
     threadSleepTimes=null;
   }
 }

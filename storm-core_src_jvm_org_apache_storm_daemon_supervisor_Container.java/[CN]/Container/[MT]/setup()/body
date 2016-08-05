@@ -1,0 +1,21 @@
+{
+  _type.assertFull();
+  if (!_ops.doRequiredTopoFilesExist(_conf,_topologyId)) {
+    LOG.info("Missing topology storm code, so can't launch  worker with assignment {} for this supervisor {} on port {} with id {}",_assignment,_supervisorId,_port,_workerId);
+    throw new IllegalStateException("Not all needed files are here!!!!");
+  }
+  LOG.info("Setting up {}:{}",_supervisorId,_workerId);
+  _ops.forceMkdir(new File(ConfigUtils.workerPidsRoot(_conf,_workerId)));
+  _ops.forceMkdir(new File(ConfigUtils.workerTmpRoot(_conf,_workerId)));
+  _ops.forceMkdir(new File(ConfigUtils.workerHeartbeatsRoot(_conf,_workerId)));
+  File workerArtifacts=new File(ConfigUtils.workerArtifactsRoot(_conf,_topologyId,_port));
+  if (!_ops.fileExists(workerArtifacts)) {
+    _ops.forceMkdir(workerArtifacts);
+    _ops.setupStormCodeDir(_topoConf,workerArtifacts);
+  }
+  String user=getWorkerUser();
+  writeLogMetadata(user);
+  saveWorkerUser(user);
+  createArtifactsLink();
+  createBlobstoreLinks();
+}

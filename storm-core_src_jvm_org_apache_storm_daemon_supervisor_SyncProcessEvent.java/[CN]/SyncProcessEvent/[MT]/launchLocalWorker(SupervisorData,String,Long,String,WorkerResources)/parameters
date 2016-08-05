@@ -1,5 +1,0 @@
-SupervisorData supervisorData
-String stormId
-Long port
-String workerId
-WorkerResources resources

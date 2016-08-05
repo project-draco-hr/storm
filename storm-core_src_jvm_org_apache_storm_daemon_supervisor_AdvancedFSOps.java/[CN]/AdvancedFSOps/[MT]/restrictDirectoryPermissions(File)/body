@@ -1,0 +1,4 @@
+{
+  Set<PosixFilePermission> perms=new HashSet<>(Arrays.asList(PosixFilePermission.OWNER_READ,PosixFilePermission.OWNER_WRITE,PosixFilePermission.OWNER_EXECUTE,PosixFilePermission.GROUP_READ,PosixFilePermission.GROUP_EXECUTE));
+  Files.setPosixFilePermissions(dir.toPath(),perms);
+}

@@ -1,0 +1,3 @@
+String id
+List<ExecutorInfo> exec
+WorkerResources resources

@@ -1,0 +1,75 @@
+{
+  assert(dynamicState.container != null);
+  assert(dynamicState.currentAssignment != null);
+  if (!equivalent(dynamicState.newAssignment,dynamicState.currentAssignment)) {
+    LOG.warn("SLOT {}: Assignment Changed from {} to {}",staticState.port,dynamicState.currentAssignment,dynamicState.newAssignment);
+    return killContainerForChangedAssignment(dynamicState,staticState);
+  }
+  if (dynamicState.container.didMainProcessExit()) {
+    LOG.warn("SLOT {}: main process has exited",staticState.port);
+    return killAndRelaunchContainer(dynamicState,staticState);
+  }
+  LSWorkerHeartbeat hb=dynamicState.container.readHeartbeat();
+  if (hb == null) {
+    LOG.warn("SLOT {}: HB returned as null",staticState.port);
+    return killAndRelaunchContainer(dynamicState,staticState);
+  }
+  long timeDiffMs=(Time.currentTimeSecs() - hb.get_time_secs()) * 1000;
+  if (timeDiffMs > staticState.hbTimeoutMs) {
+    LOG.warn("SLOT {}: HB is too old {} > {}",staticState.port,timeDiffMs,staticState.hbTimeoutMs);
+    return killAndRelaunchContainer(dynamicState,staticState);
+  }
+  if (!dynamicState.profileActions.isEmpty()) {
+    HashSet<TopoProfileAction> mod=new HashSet<>(dynamicState.profileActions);
+    HashSet<TopoProfileAction> modPending=new HashSet<>(dynamicState.pendingStopProfileActions);
+    Iterator<TopoProfileAction> iter=mod.iterator();
+    while (iter.hasNext()) {
+      TopoProfileAction action=iter.next();
+      if (!action.topoId.equals(dynamicState.currentAssignment.get_topology_id())) {
+        iter.remove();
+        LOG.warn("Dropping {} wrong topology is running",action);
+      }
+ else {
+        if (modPending.contains(action)) {
+          boolean isTimeForStop=Time.currentTimeMillis() > action.request.get_time_stamp();
+          if (isTimeForStop) {
+            if (dynamicState.container.runProfiling(action.request,true)) {
+              LOG.debug("Stopped {} action finished",action);
+              iter.remove();
+              modPending.remove(action);
+            }
+ else {
+              LOG.warn("Stopping {} failed, will be retried",action);
+            }
+          }
+ else {
+            LOG.debug("Still pending {} now: {}",action,Time.currentTimeMillis());
+          }
+        }
+ else {
+          if (action.request.get_action() == ProfileAction.JPROFILE_STOP) {
+            if (dynamicState.container.runProfiling(action.request,false)) {
+              modPending.add(action);
+              LOG.debug("Started {} now: {}",action,Time.currentTimeMillis());
+            }
+ else {
+              LOG.warn("Starting {} failed, will be retried",action);
+            }
+          }
+ else {
+            if (dynamicState.container.runProfiling(action.request,false)) {
+              LOG.debug("Started {} action finished",action);
+              iter.remove();
+            }
+ else {
+              LOG.warn("Starting {} failed, will be retried",action);
+            }
+          }
+        }
+      }
+    }
+    dynamicState=dynamicState.withProfileActions(mod,modPending);
+  }
+  Time.sleep(staticState.monitorFreqMs);
+  return dynamicState;
+}

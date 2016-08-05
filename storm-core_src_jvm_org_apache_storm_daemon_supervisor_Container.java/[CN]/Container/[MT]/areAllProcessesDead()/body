@@ -1,0 +1,15 @@
+{
+  Set<Long> pids=getAllPids();
+  String user=getWorkerUser();
+  boolean allDead=true;
+  for (  Long pid : pids) {
+    if (!isProcessAlive(pid,user)) {
+      LOG.debug("{}: PID {} is dead",_workerId,pid);
+    }
+ else {
+      allDead=false;
+      break;
+    }
+  }
+  return allDead;
+}

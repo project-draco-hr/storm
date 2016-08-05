@@ -1,0 +1,3 @@
+Map<String,Object> conf
+String id
+String path

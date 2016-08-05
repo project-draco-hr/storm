@@ -1,0 +1,3 @@
+String jarpath
+String dir
+File destdir

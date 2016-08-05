@@ -1,0 +1,35 @@
+{
+  try {
+    if (_fsOps.fileExists(_stormRoot)) {
+      if (!_fsOps.supportsAtomicDirectoryMove()) {
+        LOG.warn("{} may have partially downloaded blobs, recovering",_topologyId);
+        _fsOps.deleteIfExists(_stormRoot);
+      }
+ else {
+        LOG.warn("{} already downloaded blobs, skipping",_topologyId);
+        return null;
+      }
+    }
+    boolean deleteAll=true;
+    String tmproot=ConfigUtils.supervisorTmpDir(_conf) + Utils.FILE_PATH_SEPARATOR + Utils.uuid();
+    File tr=new File(tmproot);
+    try {
+      downloadBaseBlobs(tr);
+      _fsOps.moveDirectoryPreferAtomic(tr,_stormRoot);
+      _fsOps.setupStormCodeDir(ConfigUtils.readSupervisorStormConf(_conf,_topologyId),_stormRoot);
+      deleteAll=false;
+    }
+  finally {
+      if (deleteAll) {
+        LOG.warn("Failed to download basic resources for topology-id {}",_topologyId);
+        _fsOps.deleteIfExists(tr);
+        _fsOps.deleteIfExists(_stormRoot);
+      }
+    }
+    return null;
+  }
+ catch (  Exception e) {
+    LOG.warn("Caught Exception While Downloading (rethrowing)... ",e);
+    throw e;
+  }
+}

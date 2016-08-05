@@ -1,7 +1,7 @@
 {
-  Map ret=readDefaultConfig();
+  Map<String,Object> ret=readDefaultConfig();
   String confFile=System.getProperty("storm.conf.file");
-  Map storm;
+  Map<String,Object> storm;
   if (confFile == null || confFile.equals("")) {
     storm=findAndReadConfigFile("storm.yaml",false);
   }

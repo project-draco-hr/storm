@@ -1,0 +1,13 @@
+{
+  File distRoot=new File(ConfigUtils.supervisorStormDistRoot(_conf));
+  LOG.info("Cleaning up unused topologies in {}",distRoot);
+  File[] children=distRoot.listFiles();
+  if (children != null) {
+    for (    File topoDir : children) {
+      String topoId=URLDecoder.decode(topoDir.getName(),"UTF-8");
+      if (_basicPending.get(topoId) == null && _blobPending.get(topoId) == null) {
+        _fsOps.deleteIfExists(topoDir,null,"rmr " + topoId);
+      }
+    }
+  }
+}

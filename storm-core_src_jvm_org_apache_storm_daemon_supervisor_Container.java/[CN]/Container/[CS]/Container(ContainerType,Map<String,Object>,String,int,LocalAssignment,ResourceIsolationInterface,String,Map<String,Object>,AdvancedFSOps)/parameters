@@ -1,0 +1,9 @@
+ContainerType type
+Map<String,Object> conf
+String supervisorId
+int port
+LocalAssignment assignment
+ResourceIsolationInterface resourceIsolationManager
+String workerId
+Map<String,Object> topoConf
+AdvancedFSOps ops

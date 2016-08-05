@@ -1,0 +1,5 @@
+{
+  _pending=new NoCancelFuture<>(pending);
+  _references=new HashSet<>();
+  _isDone=false;
+}

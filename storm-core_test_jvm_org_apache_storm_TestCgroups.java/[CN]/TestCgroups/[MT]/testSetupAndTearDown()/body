@@ -6,7 +6,7 @@
   Assert.assertTrue("Check if STORM_SUPERVISOR_CGROUP_ROOTDIR exists",stormCgroupSupervisorRootDirExists(config));
   CgroupManager manager=new CgroupManager();
   manager.prepare(config);
-  Map<String,Object> resourcesMap=new HashMap<String,Object>();
+  Map<String,Number> resourcesMap=new HashMap<>();
   resourcesMap.put("cpu",200);
   resourcesMap.put("memory",1024);
   String workerId=UUID.randomUUID().toString();

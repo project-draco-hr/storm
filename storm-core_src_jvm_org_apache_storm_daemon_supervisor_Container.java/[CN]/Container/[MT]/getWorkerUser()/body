@@ -1,0 +1,20 @@
+{
+  LOG.info("GET worker-user for {}",_workerId);
+  File file=new File(ConfigUtils.workerUserFile(_conf,_workerId));
+  if (_ops.fileExists(file)) {
+    return _ops.slurpString(file).trim();
+  }
+ else   if (_topoConf != null) {
+    return (String)_topoConf.get(Config.TOPOLOGY_SUBMITTER_USER);
+  }
+  if (ConfigUtils.isLocalMode(_conf)) {
+    return System.getProperty("user.name");
+  }
+ else {
+    File f=new File(ConfigUtils.workerArtifactsRoot(_conf));
+    if (f.exists()) {
+      return Files.getOwner(f.toPath()).getName();
+    }
+    throw new IllegalStateException("Could not recover the user for " + _workerId);
+  }
+}

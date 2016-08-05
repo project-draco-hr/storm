@@ -1,0 +1,17 @@
+{
+  Time.startSimulatingAutoAdvanceOnSleep(1010);
+  try {
+    ILocalizer localizer=mock(ILocalizer.class);
+    LocalState state=mock(LocalState.class);
+    ContainerLauncher containerLauncher=mock(ContainerLauncher.class);
+    ISupervisor iSuper=mock(ISupervisor.class);
+    StaticState staticState=new StaticState(localizer,1000,1000,1000,1000,containerLauncher,"localhost",8080,iSuper,state);
+    DynamicState dynamicState=new DynamicState(null,null,null);
+    DynamicState nextState=Slot.handleEmpty(dynamicState,staticState);
+    assertEquals(MachineState.EMPTY,nextState.state);
+    assertTrue(Time.currentTimeMillis() > 1000);
+  }
+  finally {
+    Time.stopSimulating();
+  }
+}

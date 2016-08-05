@@ -1,0 +1,12 @@
+{
+  Path plink=link.toPath().toAbsolutePath();
+  Path ptarget=target.toPath().toAbsolutePath();
+  LOG.debug("Creating symlink [{}] to [{}]",plink,ptarget);
+  if (Files.exists(plink)) {
+    if (Files.isSameFile(plink,ptarget)) {
+      return;
+    }
+    FileUtils.forceDelete(link);
+  }
+  Files.createSymbolicLink(plink,ptarget);
+}

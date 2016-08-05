@@ -1,0 +1,20 @@
+{
+  String stormJarKey=ConfigUtils.masterStormJarKey(_topologyId);
+  String stormCodeKey=ConfigUtils.masterStormCodeKey(_topologyId);
+  String stormConfKey=ConfigUtils.masterStormConfKey(_topologyId);
+  String jarPath=ConfigUtils.supervisorStormJarPath(tmproot.getAbsolutePath());
+  String codePath=ConfigUtils.supervisorStormCodePath(tmproot.getAbsolutePath());
+  String confPath=ConfigUtils.supervisorStormConfPath(tmproot.getAbsolutePath());
+  _fsOps.forceMkdir(tmproot);
+  _fsOps.restrictDirectoryPermissions(tmproot);
+  ClientBlobStore blobStore=Utils.getClientBlobStoreForSupervisor(_conf);
+  try {
+    Utils.downloadResourcesAsSupervisor(stormJarKey,jarPath,blobStore);
+    Utils.downloadResourcesAsSupervisor(stormCodeKey,codePath,blobStore);
+    Utils.downloadResourcesAsSupervisor(stormConfKey,confPath,blobStore);
+  }
+  finally {
+    blobStore.shutdown();
+  }
+  Utils.extractDirFromJar(jarPath,ConfigUtils.RESOURCES_SUBDIR,tmproot);
+}

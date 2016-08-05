@@ -1,0 +1,3 @@
+{
+  Utils.forceKillProcess(String.valueOf(pid));
+}

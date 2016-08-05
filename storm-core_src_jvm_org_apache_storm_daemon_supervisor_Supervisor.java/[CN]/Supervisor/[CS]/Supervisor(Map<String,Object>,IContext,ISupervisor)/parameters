@@ -1,0 +1,3 @@
+Map<String,Object> conf
+IContext sharedContext
+ISupervisor iSupervisor

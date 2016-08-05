@@ -1,0 +1,9 @@
+{
+  for (Iterator<Entry<String,Integer>> i=workerToPort.entrySet().iterator(); i.hasNext(); ) {
+    Entry<String,Integer> found=i.next();
+    if (_port == found.getValue().intValue()) {
+      LOG.warn("Deleting worker {} from state",found.getKey());
+      i.remove();
+    }
+  }
+}

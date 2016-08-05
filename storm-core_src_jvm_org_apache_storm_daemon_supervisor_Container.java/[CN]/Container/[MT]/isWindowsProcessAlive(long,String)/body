@@ -1,0 +1,29 @@
+{
+  boolean ret=false;
+  ProcessBuilder pb=new ProcessBuilder("tasklist","/fo","list","/fi","pid eq " + pid,"/v");
+  pb.redirectError(Redirect.INHERIT);
+  Process p=pb.start();
+  try (BufferedReader in=new BufferedReader(new InputStreamReader(p.getInputStream()))){
+    String read;
+    while ((read=in.readLine()) != null) {
+      if (read.contains("User Name:")) {
+        List<String> userNameLineSplitOnWhitespace=Arrays.asList(read.split(":"));
+        if (userNameLineSplitOnWhitespace.size() == 2) {
+          List<String> userAndMaybeDomain=Arrays.asList(userNameLineSplitOnWhitespace.get(1).trim().split("\\\\"));
+          String processUser=userAndMaybeDomain.size() == 2 ? userAndMaybeDomain.get(1) : userAndMaybeDomain.get(0);
+          if (user.equals(processUser)) {
+            ret=true;
+          }
+ else {
+            LOG.info("Found {} running as {}, but expected it to be {}",pid,processUser,user);
+          }
+        }
+ else {
+          LOG.error("Received unexpected output from tasklist command. Expected one colon in user name line. Line was {}",read);
+        }
+        break;
+      }
+    }
+  }
+   return ret;
+}

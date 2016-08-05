@@ -1,0 +1,3 @@
+{
+  _instance.extractDirFromJarImpl(jarpath,dir,destdir);
+}

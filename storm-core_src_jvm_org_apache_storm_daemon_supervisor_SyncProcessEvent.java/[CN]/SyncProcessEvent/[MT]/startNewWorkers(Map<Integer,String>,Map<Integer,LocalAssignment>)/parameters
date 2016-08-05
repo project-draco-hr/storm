@@ -1,2 +1,0 @@
-Map<Integer,String> newWorkerIds
-Map<Integer,LocalAssignment> reassignExecutors

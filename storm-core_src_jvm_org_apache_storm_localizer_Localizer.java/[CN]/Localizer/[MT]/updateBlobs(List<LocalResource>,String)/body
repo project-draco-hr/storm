@@ -38,7 +38,7 @@
         if (newlrsrcSet == null) {
           newlrsrcSet=newSet;
         }
-        newlrsrcSet.updateResource(lrsrc.getKey(),lrsrc,lrsrc.isUncompressed());
+        newlrsrcSet.putIfAbsent(lrsrc.getKey(),lrsrc,lrsrc.isUncompressed());
         results.add(lrsrc);
       }
  catch (      ExecutionException e) {

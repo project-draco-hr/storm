@@ -1,0 +1,13 @@
+{
+  WorkerResources resources=new WorkerResources();
+  if (cpu != null) {
+    resources.set_cpu(cpu);
+  }
+  if (mem_on_heap != null) {
+    resources.set_mem_on_heap(mem_on_heap);
+  }
+  if (mem_off_heap != null) {
+    resources.set_mem_off_heap(mem_off_heap);
+  }
+  return resources;
+}

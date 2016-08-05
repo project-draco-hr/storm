@@ -1,0 +1,13 @@
+{
+  if (a == null) {
+    assertNull(b);
+  }
+  if (b == null) {
+    assertNull(a);
+  }
+  int commonLen=Math.min(a.size(),b.size());
+  for (int i=0; i < commonLen; i++) {
+    assertEquals("at index " + i + "\n"+ a+ " !=\n"+ b+ "\n",a.get(i),b.get(i));
+  }
+  assertEquals("size of lists don't match \n" + a + " !=\n"+ b,a.size(),b.size());
+}

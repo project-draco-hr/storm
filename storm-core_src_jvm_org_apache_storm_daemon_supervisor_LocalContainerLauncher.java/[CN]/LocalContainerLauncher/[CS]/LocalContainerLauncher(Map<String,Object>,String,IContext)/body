@@ -1,0 +1,5 @@
+{
+  _conf=conf;
+  _supervisorId=supervisorId;
+  _sharedContext=sharedContext;
+}

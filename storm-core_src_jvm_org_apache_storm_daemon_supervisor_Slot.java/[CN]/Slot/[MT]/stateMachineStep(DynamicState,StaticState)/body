@@ -1,0 +1,21 @@
+{
+  LOG.debug("STATE {}",dynamicState.state);
+switch (dynamicState.state) {
+case EMPTY:
+    return handleEmpty(dynamicState,staticState);
+case RUNNING:
+  return handleRunning(dynamicState,staticState);
+case WAITING_FOR_WORKER_START:
+return handleWaitingForWorkerStart(dynamicState,staticState);
+case KILL_AND_RELAUNCH:
+return handleKillAndRelaunch(dynamicState,staticState);
+case KILL:
+return handleKill(dynamicState,staticState);
+case WAITING_FOR_BASIC_LOCALIZATION:
+return handleWaitingForBasicLocalization(dynamicState,staticState);
+case WAITING_FOR_BLOB_LOCALIZATION:
+return handleWaitingForBlobLocalization(dynamicState,staticState);
+default :
+throw new IllegalStateException("Code not ready to handle a state of " + dynamicState.state);
+}
+}

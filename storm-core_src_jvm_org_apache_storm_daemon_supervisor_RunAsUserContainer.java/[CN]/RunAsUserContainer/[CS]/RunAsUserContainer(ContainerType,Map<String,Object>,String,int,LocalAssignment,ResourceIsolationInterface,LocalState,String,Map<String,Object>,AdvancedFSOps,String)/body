@@ -1,0 +1,6 @@
+{
+  super(type,conf,supervisorId,port,assignment,resourceIsolationManager,localState,workerId,topoConf,ops,profileCmd);
+  if (Utils.isOnWindows()) {
+    throw new UnsupportedOperationException("ERROR: Windows doesn't support running workers as different users yet");
+  }
+}

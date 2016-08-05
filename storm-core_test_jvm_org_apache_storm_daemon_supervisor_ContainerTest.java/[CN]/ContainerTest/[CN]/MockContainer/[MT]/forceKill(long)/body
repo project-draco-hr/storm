@@ -1,0 +1,3 @@
+{
+  forceKilledPids.add(pid);
+}

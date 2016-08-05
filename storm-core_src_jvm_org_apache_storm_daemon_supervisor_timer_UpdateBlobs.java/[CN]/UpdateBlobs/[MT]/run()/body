@@ -1,8 +1,8 @@
 {
   try {
-    Map conf=supervisorData.getConf();
-    Set<String> downloadedStormIds=SupervisorUtils.readDownLoadedStormIds(conf);
-    AtomicReference<Map<Long,LocalAssignment>> newAssignment=supervisorData.getCurrAssignment();
+    Map<String,Object> conf=supervisor.getConf();
+    Set<String> downloadedStormIds=SupervisorUtils.readDownloadedTopologyIds(conf);
+    AtomicReference<Map<Long,LocalAssignment>> newAssignment=supervisor.getCurrAssignment();
     Set<String> assignedStormIds=new HashSet<>();
     for (    LocalAssignment localAssignment : newAssignment.get().values()) {
       assignedStormIds.add(localAssignment.get_topology_id());
@@ -11,7 +11,7 @@
       if (assignedStormIds.contains(stormId)) {
         String stormRoot=ConfigUtils.supervisorStormDistRoot(conf,stormId);
         LOG.debug("Checking Blob updates for storm topology id {} With target_dir: {}",stormId,stormRoot);
-        updateBlobsForTopology(conf,stormId,supervisorData.getLocalizer());
+        updateBlobsForTopology(conf,stormId,supervisor.getLocalizer());
       }
     }
   }

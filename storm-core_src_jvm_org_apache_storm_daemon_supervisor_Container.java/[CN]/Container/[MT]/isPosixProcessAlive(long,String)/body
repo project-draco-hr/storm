@@ -1,0 +1,21 @@
+{
+  boolean ret=false;
+  ProcessBuilder pb=new ProcessBuilder("ps","-o","user","-p",String.valueOf(pid));
+  pb.redirectError(Redirect.INHERIT);
+  Process p=pb.start();
+  try (BufferedReader in=new BufferedReader(new InputStreamReader(p.getInputStream()))){
+    String first=in.readLine();
+    assert("USER".equals(first));
+    String processUser;
+    while ((processUser=in.readLine()) != null) {
+      if (user.equals(processUser)) {
+        ret=true;
+        break;
+      }
+ else {
+        LOG.info("Found {} running as {}, but expected it to be {}",pid,processUser,user);
+      }
+    }
+  }
+   return ret;
+}

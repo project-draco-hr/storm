@@ -1,0 +1,7 @@
+{
+  IFn mkWorker=Clojure.var("org.apache.storm.daemon.worker","mk-worker");
+  Shutdownable worker=(Shutdownable)mkWorker.invoke(_conf,_sharedContext,_topologyId,_supervisorId,_port,_workerId);
+  saveWorkerUser(System.getProperty("user.name"));
+  ProcessSimulator.registerProcess(_workerId,worker);
+  _isAlive=true;
+}

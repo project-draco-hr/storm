@@ -1,0 +1,8 @@
+{
+  assert(dynamicState.container != null);
+  dynamicState.container.kill();
+  Time.sleep(staticState.killSleepMs);
+  HashSet<TopoProfileAction> mod=new HashSet<>(dynamicState.profileActions);
+  mod.addAll(dynamicState.pendingStopProfileActions);
+  return dynamicState.withState(MachineState.KILL_AND_RELAUNCH).withProfileActions(mod,Collections.<TopoProfileAction>emptySet());
+}

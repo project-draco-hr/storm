@@ -1,0 +1,19 @@
+{
+switch (action) {
+case JMAP_DUMP:
+    return jmapDumpCmd(workerPid,targetDir);
+case JSTACK_DUMP:
+  return jstackDumpCmd(workerPid,targetDir);
+case JPROFILE_DUMP:
+return jprofileDump(workerPid,targetDir);
+case JVM_RESTART:
+return jprofileJvmRestart(workerPid);
+case JPROFILE_STOP:
+if (stop) {
+return jprofileStop(workerPid,targetDir);
+}
+return jprofileStart(workerPid);
+default :
+return Lists.newArrayList();
+}
+}

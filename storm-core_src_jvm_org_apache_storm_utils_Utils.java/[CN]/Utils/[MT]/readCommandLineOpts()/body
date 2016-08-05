@@ -1,5 +1,5 @@
 {
-  Map ret=new HashMap();
+  Map<String,Object> ret=new HashMap<>();
   String commandOptions=System.getProperty("storm.options");
   if (commandOptions != null) {
     String[] configs=commandOptions.split(",(?![^\\[\\]{}]*(]|}))");

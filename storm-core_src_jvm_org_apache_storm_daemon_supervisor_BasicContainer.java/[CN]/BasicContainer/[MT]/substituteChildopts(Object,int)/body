@@ -1,0 +1,20 @@
+{
+  List<String> rets=new ArrayList<>();
+  if (value instanceof String) {
+    String string=substituteChildOptsInternal((String)value,memOnheap);
+    if (StringUtils.isNotBlank(string)) {
+      String[] strings=string.split("\\s+");
+      rets.addAll(Arrays.asList(strings));
+    }
+  }
+ else   if (value instanceof List) {
+    @SuppressWarnings("unchecked") List<String> objects=(List<String>)value;
+    for (    String object : objects) {
+      String str=substituteChildOptsInternal(object,memOnheap);
+      if (StringUtils.isNotBlank(str)) {
+        rets.add(str);
+      }
+    }
+  }
+  return rets;
+}

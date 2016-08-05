@@ -1,0 +1,4 @@
+{
+  this.topoId=topoId;
+  this.request=request;
+}

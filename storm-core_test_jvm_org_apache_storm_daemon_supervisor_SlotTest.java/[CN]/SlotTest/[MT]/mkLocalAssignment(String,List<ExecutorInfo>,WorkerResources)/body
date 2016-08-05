@@ -1,0 +1,9 @@
+{
+  LocalAssignment ret=new LocalAssignment();
+  ret.set_topology_id(id);
+  ret.set_executors(exec);
+  if (resources != null) {
+    ret.set_resources(resources);
+  }
+  return ret;
+}

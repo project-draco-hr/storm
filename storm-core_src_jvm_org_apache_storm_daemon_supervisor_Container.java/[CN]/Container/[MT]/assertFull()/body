@@ -1,0 +1,5 @@
+{
+  if (_onlyKillable) {
+    throw new IllegalStateException("Container is only Killable.");
+  }
+}

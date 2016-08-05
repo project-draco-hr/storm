@@ -1,0 +1,19 @@
+{
+  this.currentAssignment=currentAssignment;
+  this.container=container;
+  if ((currentAssignment == null) ^ (container == null)) {
+    throw new IllegalArgumentException("Container and current assignment must both be null, or neither can be null");
+  }
+  if (currentAssignment == null) {
+    state=MachineState.EMPTY;
+  }
+ else {
+    state=MachineState.RUNNING;
+  }
+  this.startTime=System.currentTimeMillis();
+  this.newAssignment=newAssignment;
+  this.pendingLocalization=null;
+  this.pendingDownload=null;
+  this.profileActions=new HashSet<>();
+  this.pendingStopProfileActions=new HashSet<>();
+}

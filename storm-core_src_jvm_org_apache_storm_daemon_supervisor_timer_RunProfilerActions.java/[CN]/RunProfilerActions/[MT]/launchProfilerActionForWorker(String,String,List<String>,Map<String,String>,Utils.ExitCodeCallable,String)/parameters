@@ -1,6 +1,0 @@
-String user
-String targetDir
-List<String> commands
-Map<String,String> environment
-Utils.ExitCodeCallable exitCodeCallable
-String logPrefix

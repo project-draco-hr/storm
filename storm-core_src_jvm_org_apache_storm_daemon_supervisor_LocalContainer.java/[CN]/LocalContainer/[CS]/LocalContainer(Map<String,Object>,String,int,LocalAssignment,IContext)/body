@@ -1,0 +1,5 @@
+{
+  super(ContainerType.LAUNCH,conf,supervisorId,port,assignment,null,null,null,null);
+  _sharedContext=sharedContext;
+  _workerId=Utils.uuid();
+}

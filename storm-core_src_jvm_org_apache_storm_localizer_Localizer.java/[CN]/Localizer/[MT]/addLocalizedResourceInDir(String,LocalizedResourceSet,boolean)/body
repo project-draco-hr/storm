@@ -10,7 +10,7 @@
       }
       LOG.debug("local file is: {} path is: {}",rsrc.getPath(),path);
       LocalizedResource lrsrc=new LocalizedResource(new File(path).getName(),path,uncompress);
-      lrsrcSet.addResource(lrsrc.getKey(),lrsrc,uncompress);
+      lrsrcSet.add(lrsrc.getKey(),lrsrc,uncompress);
     }
   }
 }

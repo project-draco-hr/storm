@@ -1,0 +1,10 @@
+{
+  ArrayList<ExecutorInfo> ret=new ArrayList<>(executors.length);
+  for (  int exec : executors) {
+    ExecutorInfo execInfo=new ExecutorInfo();
+    execInfo.set_task_start(exec);
+    execInfo.set_task_end(exec);
+    ret.add(execInfo);
+  }
+  return ret;
+}

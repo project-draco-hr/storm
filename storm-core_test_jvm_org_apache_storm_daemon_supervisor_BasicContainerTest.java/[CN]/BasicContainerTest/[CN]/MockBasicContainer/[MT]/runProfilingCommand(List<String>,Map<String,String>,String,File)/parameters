@@ -1,0 +1,4 @@
+List<String> command
+Map<String,String> env
+String logPrefix
+File targetDir

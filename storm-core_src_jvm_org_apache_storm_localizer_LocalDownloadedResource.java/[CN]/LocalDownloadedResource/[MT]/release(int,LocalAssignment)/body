@@ -1,0 +1,8 @@
+{
+  PortNAssignment pna=new PortNAssignment(port,la);
+  boolean ret=_references.remove(pna);
+  if (ret && _references.isEmpty()) {
+    _isDone=true;
+  }
+  return ret;
+}

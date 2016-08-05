@@ -1,0 +1,4 @@
+{
+  this.version=version;
+  this.data=data;
+}

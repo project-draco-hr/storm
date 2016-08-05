@@ -1,2 +1,0 @@
-LSWorkerHeartbeat whb
-Map<Integer,LocalAssignment> assignedExecutors

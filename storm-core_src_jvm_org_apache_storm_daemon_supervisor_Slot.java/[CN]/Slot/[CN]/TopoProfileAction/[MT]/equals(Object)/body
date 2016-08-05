@@ -1,0 +1,7 @@
+{
+  if (!(other instanceof TopoProfileAction)) {
+    return false;
+  }
+  TopoProfileAction o=(TopoProfileAction)other;
+  return topoId.equals(o.topoId) && request.equals(o.request);
+}

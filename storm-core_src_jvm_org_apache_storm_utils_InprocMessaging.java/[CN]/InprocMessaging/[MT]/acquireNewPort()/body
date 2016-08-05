@@ -1,8 +1,5 @@
 {
-  int ret;
-synchronized (_lock) {
-    ret=port;
-    port++;
-  }
+  int ret=port;
+  port++;
   return ret;
 }

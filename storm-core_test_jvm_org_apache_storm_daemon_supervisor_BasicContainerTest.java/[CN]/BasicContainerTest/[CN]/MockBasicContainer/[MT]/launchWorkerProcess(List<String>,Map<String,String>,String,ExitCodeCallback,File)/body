@@ -1,0 +1,3 @@
+{
+  workerCmds.add(new CommandRun(command,env,targetDir));
+}

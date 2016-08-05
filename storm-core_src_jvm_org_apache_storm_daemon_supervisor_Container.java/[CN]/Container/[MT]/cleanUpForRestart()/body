@@ -1,0 +1,18 @@
+{
+  LOG.info("Cleaning up {}:{}",_supervisorId,_workerId);
+  Set<Long> pids=getAllPids();
+  String user=getWorkerUser();
+  for (  Long pid : pids) {
+    File path=new File(ConfigUtils.workerPidPath(_conf,_workerId,pid));
+    _ops.deleteIfExists(path,user,_workerId);
+  }
+  if (_resourceIsolationManager != null) {
+    _resourceIsolationManager.releaseResourcesForWorker(_workerId);
+  }
+  _ops.deleteIfExists(new File(ConfigUtils.workerHeartbeatsRoot(_conf,_workerId)),user,_workerId);
+  _ops.deleteIfExists(new File(ConfigUtils.workerPidsRoot(_conf,_workerId)),user,_workerId);
+  _ops.deleteIfExists(new File(ConfigUtils.workerTmpRoot(_conf,_workerId)),user,_workerId);
+  _ops.deleteIfExists(new File(ConfigUtils.workerRoot(_conf,_workerId)),user,_workerId);
+  deleteSavedWorkerUser();
+  _workerId=null;
+}

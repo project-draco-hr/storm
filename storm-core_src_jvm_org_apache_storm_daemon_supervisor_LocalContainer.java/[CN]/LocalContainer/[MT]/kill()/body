@@ -1,0 +1,5 @@
+{
+  ProcessSimulator.killProcess(_workerId);
+  _isAlive=false;
+  super.kill();
+}

@@ -1,0 +1,22 @@
+{
+  assert(dynamicState.container != null);
+  assert(dynamicState.currentAssignment != null);
+  LSWorkerHeartbeat hb=dynamicState.container.readHeartbeat();
+  if (hb != null) {
+    long hbAgeMs=(Time.currentTimeSecs() - hb.get_time_secs()) * 1000;
+    if (hbAgeMs <= staticState.hbTimeoutMs) {
+      return dynamicState.withState(MachineState.RUNNING);
+    }
+  }
+  if (!equivalent(dynamicState.newAssignment,dynamicState.currentAssignment)) {
+    LOG.warn("SLOT {}: Assignment Changed from {} to {}",staticState.port,dynamicState.currentAssignment,dynamicState.newAssignment);
+    return killContainerForChangedAssignment(dynamicState,staticState);
+  }
+  long timeDiffms=(Time.currentTimeMillis() - dynamicState.startTime);
+  if (timeDiffms > staticState.firstHbTimeoutMs) {
+    LOG.warn("SLOT {}: Container {} failed to launch in {} ms.",staticState.port,dynamicState.container,staticState.firstHbTimeoutMs);
+    return killAndRelaunchContainer(dynamicState,staticState);
+  }
+  Time.sleep(1000);
+  return dynamicState;
+}

@@ -1,0 +1,40 @@
+{
+  try {
+    while (!done) {
+      Set<TopoProfileAction> origProfileActions=new HashSet<>(profiling.get());
+      Set<TopoProfileAction> removed=new HashSet<>(origProfileActions);
+      DynamicState nextState=stateMachineStep(dynamicState.withNewAssignment(newAssignment.get()).withProfileActions(origProfileActions,dynamicState.pendingStopProfileActions),staticState);
+      if (LOG.isDebugEnabled() || dynamicState.state != nextState.state) {
+        LOG.info("STATE {} -> {}",dynamicState,nextState);
+      }
+      if (!equivalent(nextState.currentAssignment,dynamicState.currentAssignment)) {
+        LOG.info("SLOT {}: Changing current assignment from {} to {}",staticState.port,dynamicState.currentAssignment,nextState.currentAssignment);
+        saveNewAssignment(nextState.currentAssignment);
+      }
+      removed.removeAll(dynamicState.profileActions);
+      removed.removeAll(dynamicState.pendingStopProfileActions);
+      for (      TopoProfileAction action : removed) {
+        try {
+          clusterState.deleteTopologyProfileRequests(action.topoId,action.request);
+        }
+ catch (        Exception e) {
+          LOG.error("Error trying to remove profiling request, it will be retried",e);
+        }
+      }
+      Set<TopoProfileAction> orig, copy;
+      do {
+        orig=profiling.get();
+        copy=new HashSet<>(orig);
+        copy.removeAll(removed);
+      }
+ while (!profiling.compareAndSet(orig,copy));
+      dynamicState=nextState;
+    }
+  }
+ catch (  Throwable e) {
+    if (!Utils.exceptionCauseIsInstanceOf(InterruptedException.class,e)) {
+      LOG.error("Error when processing event",e);
+      Utils.exitProcess(20,"Error when processing an event");
+    }
+  }
+}

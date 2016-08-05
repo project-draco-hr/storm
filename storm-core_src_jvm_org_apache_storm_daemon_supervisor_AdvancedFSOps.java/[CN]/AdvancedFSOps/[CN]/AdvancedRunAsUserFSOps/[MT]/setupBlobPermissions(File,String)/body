@@ -1,0 +1,4 @@
+{
+  String logPrefix="setup blob permissions for " + path;
+  SupervisorUtils.processLauncherAndWait(_conf,user,Arrays.asList("blob",path.toString()),null,logPrefix);
+}

@@ -1,0 +1,4 @@
+{
+  profileCmds.add(new CommandRun(command,env,targetDir));
+  return true;
+}

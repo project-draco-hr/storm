@@ -1,5 +1,5 @@
 {
   Utils.setupDefaultUncaughtExceptionHandler();
-  Supervisor instance=new Supervisor();
-  instance.launch(new StandaloneSupervisor());
+  @SuppressWarnings("resource") Supervisor instance=new Supervisor(new StandaloneSupervisor());
+  instance.launchDaemon();
 }

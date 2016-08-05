@@ -1,0 +1,8 @@
+{
+  assert(dynamicState.container == null);
+  if (dynamicState.newAssignment == null) {
+    return dynamicState.withState(MachineState.EMPTY);
+  }
+  Future<Void> pendingDownload=staticState.localizer.requestDownloadBaseTopologyBlobs(dynamicState.newAssignment,staticState.port);
+  return dynamicState.withPendingLocalization(dynamicState.newAssignment,pendingDownload).withState(MachineState.WAITING_FOR_BASIC_LOCALIZATION);
+}

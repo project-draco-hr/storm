@@ -1,0 +1,9 @@
+{
+  if (o instanceof String) {
+    return Arrays.asList((String)o);
+  }
+ else   if (o instanceof List) {
+    return (List<String>)o;
+  }
+  return Collections.EMPTY_LIST;
+}

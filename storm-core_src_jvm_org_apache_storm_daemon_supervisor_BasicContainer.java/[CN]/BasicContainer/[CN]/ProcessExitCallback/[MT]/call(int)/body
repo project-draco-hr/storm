@@ -1,0 +1,4 @@
+{
+  LOG.info("{} exited with code: {}",_logPrefix,exitCode);
+  _exitedEarly=true;
+}
