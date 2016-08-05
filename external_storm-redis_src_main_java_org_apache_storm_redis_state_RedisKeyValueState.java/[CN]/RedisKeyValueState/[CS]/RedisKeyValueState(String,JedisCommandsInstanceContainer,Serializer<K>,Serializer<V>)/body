@@ -1,6 +1,4 @@
 {
-  base64Encoder=new BASE64Encoder();
-  base64Decoder=new BASE64Decoder();
   this.namespace=namespace;
   this.prepareNamespace=namespace + "$prepare";
   this.txidNamespace=namespace + "$txid";
