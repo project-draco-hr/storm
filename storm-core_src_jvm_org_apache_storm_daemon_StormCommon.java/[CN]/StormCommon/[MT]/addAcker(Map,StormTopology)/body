@@ -5,7 +5,7 @@
   outputStreams.put(Acker.ACKER_ACK_STREAM_ID,Thrift.directOutputFields(Arrays.asList("id","time-delta-ms")));
   outputStreams.put(Acker.ACKER_FAIL_STREAM_ID,Thrift.directOutputFields(Arrays.asList("id","time-delta-ms")));
   outputStreams.put(Acker.ACKER_RESET_TIMEOUT_STREAM_ID,Thrift.directOutputFields(Arrays.asList("id","time-delta-ms")));
-  Map<String,Object> ackerConf=new HashMap<String,Object>();
+  Map<String,Object> ackerConf=new HashMap<>();
   ackerConf.put(Config.TOPOLOGY_TASKS,ackerNum);
   ackerConf.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS,Utils.getInt(conf.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS)));
   Bolt acker=Thrift.prepareSerializedBoltDetails(inputs,makeAckerBolt(),outputStreams,ackerNum,ackerConf);

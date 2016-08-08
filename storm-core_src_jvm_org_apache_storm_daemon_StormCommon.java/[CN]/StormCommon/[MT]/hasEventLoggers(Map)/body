@@ -1,9 +1,4 @@
 {
   Object eventLoggerNum=stormConf.get(Config.TOPOLOGY_EVENTLOGGER_EXECUTORS);
-  if (eventLoggerNum == null || Utils.getInt(eventLoggerNum) > 0) {
-    return true;
-  }
- else {
-    return false;
-  }
+  return eventLoggerNum == null || Utils.getInt(eventLoggerNum) > 0;
 }

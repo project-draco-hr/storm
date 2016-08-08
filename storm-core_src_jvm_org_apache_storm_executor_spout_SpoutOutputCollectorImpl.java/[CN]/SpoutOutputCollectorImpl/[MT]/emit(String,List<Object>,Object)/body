@@ -1,0 +1,3 @@
+{
+  return sendSpoutMsg(streamId,tuple,messageId,null);
+}

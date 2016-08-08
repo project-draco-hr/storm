@@ -1,0 +1,4 @@
+String stream
+List<Object> values
+Object messageId
+Integer outTaskId

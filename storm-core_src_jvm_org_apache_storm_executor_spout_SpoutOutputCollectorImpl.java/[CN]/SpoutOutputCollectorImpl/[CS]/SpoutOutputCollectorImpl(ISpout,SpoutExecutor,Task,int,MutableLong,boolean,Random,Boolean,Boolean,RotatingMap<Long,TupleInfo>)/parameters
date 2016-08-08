@@ -1,0 +1,10 @@
+ISpout spout
+SpoutExecutor executor
+Task taskData
+int taskId
+MutableLong emittedCount
+boolean hasAckers
+Random random
+Boolean isEventLoggers
+Boolean isDebug
+RotatingMap<Long,TupleInfo> pending

@@ -1,0 +1,14 @@
+{
+  Map<String,Object> ret=new HashMap<>(map.size());
+  for (  Object obj : map.entrySet()) {
+    Map.Entry entry=(Map.Entry)obj;
+    Keyword keyword=(Keyword)entry.getKey();
+    String key=keyword.getName();
+    if (key.startsWith(":")) {
+      key=key.substring(1,key.length());
+    }
+    Object value=entry.getValue();
+    ret.put(key,value);
+  }
+  return ret;
+}

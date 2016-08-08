@@ -1,0 +1,54 @@
+{
+  while (!stormActive.get()) {
+    Utils.sleep(100);
+  }
+  return new Callable<Object>(){
+    @Override public Object call() throws Exception {
+      receiveQueue.consumeBatch(SpoutExecutor.this);
+      long currCount=emittedCount.get();
+      boolean throttleOn=backPressureEnabled && SpoutExecutor.this.throttleOn.get();
+      boolean reachedMaxSpoutPending=(maxSpoutPending != 0) && (pending.size() >= maxSpoutPending);
+      boolean isActive=stormActive.get();
+      if (isActive) {
+        if (!lastActive.get()) {
+          lastActive.set(true);
+          LOG.info("Activating spout {}:{}",componentId,idToTask.keySet());
+          for (          ISpout spout : spouts) {
+            spout.activate();
+          }
+        }
+        if (!transferQueue.isFull() && !throttleOn && !reachedMaxSpoutPending) {
+          for (          ISpout spout : spouts) {
+            spout.nextTuple();
+          }
+        }
+      }
+ else {
+        if (lastActive.get()) {
+          lastActive.set(false);
+          LOG.info("Deactivating spout {}:{}",componentId,idToTask.keySet());
+          for (          ISpout spout : spouts) {
+            spout.deactivate();
+          }
+        }
+        Time.sleep(100);
+        spoutThrottlingMetrics.skippedInactive(stats);
+      }
+      if (currCount == emittedCount.get() && isActive) {
+        emptyEmitStreak.increment();
+        spoutWaitStrategy.emptyEmit(emptyEmitStreak.get());
+        if (throttleOn) {
+          spoutThrottlingMetrics.skippedThrottle(stats);
+        }
+ else         if (reachedMaxSpoutPending) {
+          spoutThrottlingMetrics.skippedMaxSpout(stats);
+        }
+      }
+ else {
+        emptyEmitStreak.set(0);
+      }
+      return 0L;
+    }
+  }
+;
+}

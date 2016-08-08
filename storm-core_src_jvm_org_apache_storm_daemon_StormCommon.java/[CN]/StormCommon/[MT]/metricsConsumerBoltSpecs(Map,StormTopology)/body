@@ -1,9 +1,9 @@
 {
-  Map<String,Bolt> metricsConsumerBolts=new HashMap<String,Bolt>();
-  Set<String> componentIdsEmitMetrics=new HashSet<String>();
+  Map<String,Bolt> metricsConsumerBolts=new HashMap<>();
+  Set<String> componentIdsEmitMetrics=new HashSet<>();
   componentIdsEmitMetrics.addAll(allComponents(topology).keySet());
   componentIdsEmitMetrics.add(Constants.SYSTEM_COMPONENT_ID);
-  Map<GlobalStreamId,Grouping> inputs=new HashMap<GlobalStreamId,Grouping>();
+  Map<GlobalStreamId,Grouping> inputs=new HashMap<>();
   for (  String componentId : componentIdsEmitMetrics) {
     inputs.put(Utils.getGlobalStreamId(componentId,Constants.METRICS_STREAM_ID),Thrift.prepareShuffleGrouping());
   }

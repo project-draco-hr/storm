@@ -1,0 +1,7 @@
+{
+  this.batchTransferQueue=batchTransferQueue;
+  this.serializer=new KryoTupleSerializer(stormConf,workerTopologyContext);
+  this.cachedEmit=new MutableObject(new ArrayList<>());
+  this.transferFn=transferFn;
+  this.isDebug=Utils.getBoolean(stormConf.get(Config.TOPOLOGY_DEBUG),false);
+}

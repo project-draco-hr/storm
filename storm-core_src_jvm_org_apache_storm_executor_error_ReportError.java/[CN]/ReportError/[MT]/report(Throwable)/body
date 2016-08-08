@@ -1,0 +1,15 @@
+{
+  LOG.error("Error",error);
+  if (Time.deltaSecs(intervalStartTime.get()) > errorIntervalSecs) {
+    intervalErrors.set(0);
+    intervalStartTime.set(Time.currentTimeSecs());
+  }
+  if (intervalErrors.incrementAndGet() <= maxPerInterval) {
+    try {
+      stormClusterState.reportError(stormId,componentId,Utils.hostname(stormConf),workerTopologyContext.getThisWorkerPort().longValue(),error);
+    }
+ catch (    UnknownHostException e) {
+      throw Utils.wrapInRuntime(e);
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  String streamId=tuple.getSourceStreamId();
+  if (streamId.equals(Constants.SYSTEM_TICK_STREAM_ID)) {
+    pending.rotate();
+  }
+ else   if (streamId.equals(Constants.METRICS_TICK_STREAM_ID)) {
+    metricsTick(idToTask.get(taskId),tuple);
+  }
+ else   if (streamId.equals(Constants.CREDENTIALS_CHANGED_STREAM_ID)) {
+    Object spoutObj=idToTask.get(taskId).getTaskObject();
+    if (spoutObj instanceof ICredentialsListener) {
+      ((ICredentialsListener)spoutObj).setCredentials((Map<String,String>)tuple.getValue(0));
+    }
+  }
+ else   if (streamId.equals(Acker.ACKER_RESET_TIMEOUT_STREAM_ID)) {
+    Long id=(Long)tuple.getValue(0);
+    TupleInfo pendingForId=pending.get(id);
+    if (pendingForId != null) {
+      pending.put(id,pendingForId);
+    }
+  }
+ else {
+    Long id=(Long)tuple.getValue(0);
+    Long timeDeltaMs=(Long)tuple.getValue(1);
+    TupleInfo tupleInfo=(TupleInfo)pending.remove(id);
+    if (tupleInfo.getMessageId() != null) {
+      if (taskId != tupleInfo.getTaskId()) {
+        throw new RuntimeException("Fatal error, mismatched task ids: " + taskId + " "+ tupleInfo.getTaskId());
+      }
+      long startTimeMs=tupleInfo.getTimestamp();
+      Long timeDelta=null;
+      if (startTimeMs != 0) {
+        timeDelta=timeDeltaMs;
+      }
+      if (streamId.equals(Acker.ACKER_ACK_STREAM_ID)) {
+        ackSpoutMsg(this,idToTask.get(taskId),timeDelta,tupleInfo);
+      }
+ else       if (streamId.equals(Acker.ACKER_FAIL_STREAM_ID)) {
+        failSpoutMsg(this,idToTask.get(taskId),timeDelta,tupleInfo,"FAIL-STREAM");
+      }
+    }
+  }
+}

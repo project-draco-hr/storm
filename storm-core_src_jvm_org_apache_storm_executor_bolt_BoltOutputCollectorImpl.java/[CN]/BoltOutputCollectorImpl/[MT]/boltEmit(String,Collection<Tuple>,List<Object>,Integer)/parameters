@@ -1,0 +1,4 @@
+String streamId
+Collection<Tuple> anchors
+List<Object> values
+Integer targetTaskId

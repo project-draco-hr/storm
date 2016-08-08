@@ -1,0 +1,61 @@
+{
+  emittedCount.increment();
+  List<Integer> outTasks;
+  if (outTaskId != null) {
+    outTasks=taskData.getOutgoingTasks(outTaskId,stream,values);
+  }
+ else {
+    outTasks=taskData.getOutgoingTasks(stream,values);
+  }
+  List<Long> ackSeq=new ArrayList<>();
+  boolean needAck=(messageId != null) && hasAckers;
+  long rootId=MessageId.generateId(random);
+  for (  Integer t : outTasks) {
+    MessageId msgId;
+    if (needAck) {
+      long as=MessageId.generateId(random);
+      msgId=MessageId.makeRootId(rootId,as);
+      ackSeq.add(as);
+    }
+ else {
+      msgId=MessageId.makeUnanchored();
+    }
+    TupleImpl tuple=new TupleImpl(executor.getWorkerTopologyContext(),values,this.taskId,stream,msgId);
+    executor.getExecutorTransfer().transfer(t,tuple);
+  }
+  if (isEventLoggers) {
+    executor.sendToEventLogger(executor,taskData,values,executor.getComponentId(),messageId,random);
+  }
+  boolean sample=false;
+  try {
+    sample=executor.getSampler().call();
+  }
+ catch (  Exception ignored) {
+  }
+  if (needAck) {
+    TupleInfo info=new TupleInfo();
+    info.setTaskId(this.taskId);
+    info.setStream(stream);
+    info.setMessageId(messageId);
+    if (isDebug) {
+      info.setValues(values);
+    }
+    if (sample) {
+      info.setTimestamp(System.currentTimeMillis());
+    }
+    pending.put(rootId,info);
+    List<Object> ackInitTuple=new Values(rootId,Utils.bitXorVals(ackSeq),this.taskId);
+    executor.sendUnanchored(taskData,Acker.ACKER_INIT_STREAM_ID,ackInitTuple,executor.getExecutorTransfer());
+  }
+ else   if (messageId != null) {
+    TupleInfo info=new TupleInfo();
+    info.setStream(stream);
+    info.setValues(values);
+    info.setMessageId(messageId);
+    info.setTimestamp(0);
+    Long timeDelta=sample ? 0L : null;
+    info.setId("0:");
+    executor.ackSpoutMsg(executor,taskData,timeDelta,info);
+  }
+  return outTasks;
+}

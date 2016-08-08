@@ -1,0 +1,4 @@
+WorkerTopologyContext workerTopologyContext
+DisruptorQueue batchTransferQueue
+Map stormConf
+IFn transferFn

@@ -1,0 +1,29 @@
+{
+  this.idToTask=idToTask;
+  LOG.info("Preparing bolt {}:{}",componentId,idToTask.keySet());
+  for (  Map.Entry<Integer,Task> entry : idToTask.entrySet()) {
+    Task taskData=entry.getValue();
+    IBolt boltObject=(IBolt)taskData.getTaskObject();
+    TopologyContext userContext=taskData.getUserContext();
+    taskData.getBuiltInMetrics().registerAll(stormConf,userContext);
+    if (boltObject instanceof ICredentialsListener) {
+      ((ICredentialsListener)boltObject).setCredentials(credentials);
+    }
+    if (Constants.SYSTEM_COMPONENT_ID.equals(componentId)) {
+      Map<String,DisruptorQueue> map=ImmutableMap.of("sendqueue",transferQueue,"receive",receiveQueue,"transfer",(DisruptorQueue)workerData.get("transfer-queue"));
+      BuiltinMetricsUtil.registerQueueMetrics(map,stormConf,userContext);
+      Map cachedNodePortToSocket=(Map)((Atom)workerData.get("cached-node+port->socket")).deref();
+      BuiltinMetricsUtil.registerIconnectionClientMetrics(cachedNodePortToSocket,stormConf,userContext);
+      BuiltinMetricsUtil.registerIconnectionServerMetric(workerData.get("receiver"),stormConf,userContext);
+    }
+ else {
+      Map<String,DisruptorQueue> map=ImmutableMap.of("sendqueue",transferQueue,"receive",receiveQueue);
+      BuiltinMetricsUtil.registerQueueMetrics(map,stormConf,userContext);
+    }
+    IOutputCollector outputCollector=new BoltOutputCollectorImpl(this,taskData,entry.getKey(),rand,hasEventLoggers,isDebug);
+    boltObject.prepare(stormConf,userContext,new OutputCollector(outputCollector));
+  }
+  openOrPrepareWasCalled.set(true);
+  LOG.info("Prepared bolt {}:{}",componentId,idToTask.keySet());
+  setupMetrics();
+}

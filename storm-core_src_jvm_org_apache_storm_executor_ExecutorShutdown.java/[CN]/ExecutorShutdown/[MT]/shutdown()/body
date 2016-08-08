@@ -1,0 +1,37 @@
+{
+  try {
+    LOG.info("Shutting down executor " + executor.getComponentId() + ":"+ executor.getExecutorId());
+    executor.getReceiveQueue().haltWithInterrupt();
+    executor.getTransferWorkerQueue().haltWithInterrupt();
+    for (    Utils.SmartThread t : threads) {
+      t.interrupt();
+      t.join();
+    }
+    executor.getStats().cleanupStats();
+    for (    Task task : taskDatas.values()) {
+      TopologyContext userContext=task.getUserContext();
+      for (      ITaskHook hook : userContext.getHooks()) {
+        hook.cleanup();
+      }
+    }
+    executor.getStormClusterState().disconnect();
+    if (executor.getOpenOrPrepareWasCalled().get()) {
+      for (      Task task : taskDatas.values()) {
+        Object object=task.getTaskObject();
+        if (object instanceof ISpout) {
+          ((ISpout)object).close();
+        }
+ else         if (object instanceof IBolt) {
+          ((IBolt)object).cleanup();
+        }
+ else {
+          LOG.error("unknown component object");
+        }
+      }
+    }
+    LOG.info("Shut down executor " + executor.getComponentId() + ":"+ executor.getExecutorId());
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}

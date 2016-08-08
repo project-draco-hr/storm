@@ -1,0 +1,29 @@
+{
+  try {
+    Integer interval=tuple.getInteger(0);
+    int taskId=taskData.getTaskId();
+    Map<Integer,Map<String,IMetric>> taskToMetricToRegistry=intervalToTaskToMetricToRegistry.get(interval);
+    Map<String,IMetric> nameToRegistry=null;
+    if (taskToMetricToRegistry != null) {
+      nameToRegistry=taskToMetricToRegistry.get(taskId);
+    }
+    if (nameToRegistry != null) {
+      IMetricsConsumer.TaskInfo taskInfo=new IMetricsConsumer.TaskInfo(hostname,workerTopologyContext.getThisWorkerPort(),componentId,taskId,Time.currentTimeSecs(),interval);
+      List<IMetricsConsumer.DataPoint> dataPoints=new ArrayList<>();
+      for (      Map.Entry<String,IMetric> entry : nameToRegistry.entrySet()) {
+        IMetric metric=entry.getValue();
+        Object value=metric.getValueAndReset();
+        if (value != null) {
+          IMetricsConsumer.DataPoint dataPoint=new IMetricsConsumer.DataPoint(entry.getKey(),value);
+          dataPoints.add(dataPoint);
+        }
+      }
+      if (!dataPoints.isEmpty()) {
+        sendUnanchored(taskData,Constants.METRICS_STREAM_ID,new Values(taskInfo,dataPoints),executorTransfer);
+      }
+    }
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}

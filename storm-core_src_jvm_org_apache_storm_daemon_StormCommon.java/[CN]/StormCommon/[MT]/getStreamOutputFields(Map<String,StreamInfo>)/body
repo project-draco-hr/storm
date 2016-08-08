@@ -1,5 +1,5 @@
 {
-  Set<String> outputFields=new HashSet<String>();
+  Set<String> outputFields=new HashSet<>();
   for (  StreamInfo streamInfo : streams.values()) {
     outputFields.addAll(streamInfo.get_output_fields());
   }

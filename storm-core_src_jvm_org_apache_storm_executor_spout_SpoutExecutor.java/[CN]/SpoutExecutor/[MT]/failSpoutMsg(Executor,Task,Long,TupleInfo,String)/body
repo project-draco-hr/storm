@@ -1,0 +1,17 @@
+{
+  try {
+    ISpout spout=(ISpout)taskData.getTaskObject();
+    int taskId=taskData.getTaskId();
+    if (executor.getIsDebug()) {
+      LOG.info("SPOUT Failing {} : {} REASON: {}",tupleInfo.getId(),tupleInfo,reason);
+    }
+    spout.fail(tupleInfo.getMessageId());
+    new SpoutFailInfo(tupleInfo.getMessageId(),taskId,timeDelta).applyOn(taskData.getUserContext());
+    if (timeDelta != null) {
+      ((SpoutExecutorStats)executor.getStats()).spoutFailedTuple(tupleInfo.getStream(),timeDelta);
+    }
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}
