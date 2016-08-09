@@ -1,0 +1,8 @@
+{
+  try {
+    Await.result(beam.close());
+  }
+ catch (  Exception e) {
+    LOG.error("Error while closing Druid beam client",e);
+  }
+}

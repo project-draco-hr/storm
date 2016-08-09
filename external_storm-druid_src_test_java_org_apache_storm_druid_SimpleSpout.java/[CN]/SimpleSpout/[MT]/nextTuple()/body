@@ -1,0 +1,9 @@
+{
+  Utils.sleep(1000);
+  Map<String,Object> event=new LinkedHashMap<>();
+  event.put("timestamp",new DateTime().toString());
+  event.put("publisher","foo.com");
+  event.put("advertiser","google.com");
+  event.put("click",i++);
+  _collector.emit(new Values(event));
+}

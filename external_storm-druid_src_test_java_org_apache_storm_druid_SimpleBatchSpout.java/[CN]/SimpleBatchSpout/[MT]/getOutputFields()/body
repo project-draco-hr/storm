@@ -1,0 +1,3 @@
+{
+  return SimpleSpout.DEFAULT_FIELDS;
+}

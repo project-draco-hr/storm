@@ -1,0 +1,3 @@
+DruidBeamState<E> state
+List<TridentTuple> tuples
+TridentCollector collector

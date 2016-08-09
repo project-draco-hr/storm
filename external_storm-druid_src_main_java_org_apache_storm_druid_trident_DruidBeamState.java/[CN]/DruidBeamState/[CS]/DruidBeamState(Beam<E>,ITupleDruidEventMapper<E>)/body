@@ -1,0 +1,4 @@
+{
+  this.beam=beam;
+  this.druidEventMapper=druidEventMapper;
+}
