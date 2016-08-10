@@ -24,6 +24,6 @@
       throw Utils.wrapInRuntime(ex);
     }
   }
-  executor.init(idToTask);
+  executor.idToTask=idToTask;
   return executor;
 }

@@ -1,5 +1,7 @@
 {
-  this.idToTask=idToTask;
+  while (!stormActive.get()) {
+    Utils.sleep(100);
+  }
   LOG.info("Preparing bolt {}:{}",componentId,idToTask.keySet());
   for (  Map.Entry<Integer,Task> entry : idToTask.entrySet()) {
     Task taskData=entry.getValue();
