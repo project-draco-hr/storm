@@ -1,0 +1,6 @@
+{
+  Assert.assertFalse("deny execute to unauthorized user for correct function",isPermitted(permissiveHandler,ReqContext.context(),"execute",function));
+  Assert.assertTrue("allow execute for user for incorrect function when permissive",isPermitted(permissiveHandler,aliceContext,"execute",wrongFunction));
+  Assert.assertTrue("allow execute for user for incorrect function when permissive",isPermitted(permissiveHandler,aliceKerbContext,"execute",wrongFunction));
+  Assert.assertTrue("allow execute to authorized user for correct function",isPermitted(permissiveHandler,bobContext,"execute",function));
+}
