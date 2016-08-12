@@ -1,0 +1,3 @@
+{
+  return f.equals(StormTopology._Fields.DEPENDENCY_JARS) || f.equals(StormTopology._Fields.DEPENDENCY_ARTIFACTS);
+}

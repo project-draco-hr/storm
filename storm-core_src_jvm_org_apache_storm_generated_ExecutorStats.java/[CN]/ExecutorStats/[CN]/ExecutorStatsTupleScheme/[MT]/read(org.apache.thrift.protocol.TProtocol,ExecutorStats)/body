@@ -1,46 +1,46 @@
 {
   TTupleProtocol iprot=(TTupleProtocol)prot;
 {
-    org.apache.thrift.protocol.TMap _map300=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
-    struct.emitted=new HashMap<String,Map<String,Long>>(2 * _map300.size);
-    String _key301;
-    Map<String,Long> _val302;
-    for (int _i303=0; _i303 < _map300.size; ++_i303) {
-      _key301=iprot.readString();
+    org.apache.thrift.protocol.TMap _map316=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
+    struct.emitted=new HashMap<String,Map<String,Long>>(2 * _map316.size);
+    String _key317;
+    Map<String,Long> _val318;
+    for (int _i319=0; _i319 < _map316.size; ++_i319) {
+      _key317=iprot.readString();
 {
-        org.apache.thrift.protocol.TMap _map304=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
-        _val302=new HashMap<String,Long>(2 * _map304.size);
-        String _key305;
-        long _val306;
-        for (int _i307=0; _i307 < _map304.size; ++_i307) {
-          _key305=iprot.readString();
-          _val306=iprot.readI64();
-          _val302.put(_key305,_val306);
+        org.apache.thrift.protocol.TMap _map320=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+        _val318=new HashMap<String,Long>(2 * _map320.size);
+        String _key321;
+        long _val322;
+        for (int _i323=0; _i323 < _map320.size; ++_i323) {
+          _key321=iprot.readString();
+          _val322=iprot.readI64();
+          _val318.put(_key321,_val322);
         }
       }
-      struct.emitted.put(_key301,_val302);
+      struct.emitted.put(_key317,_val318);
     }
   }
   struct.set_emitted_isSet(true);
 {
-    org.apache.thrift.protocol.TMap _map308=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
-    struct.transferred=new HashMap<String,Map<String,Long>>(2 * _map308.size);
-    String _key309;
-    Map<String,Long> _val310;
-    for (int _i311=0; _i311 < _map308.size; ++_i311) {
-      _key309=iprot.readString();
+    org.apache.thrift.protocol.TMap _map324=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.MAP,iprot.readI32());
+    struct.transferred=new HashMap<String,Map<String,Long>>(2 * _map324.size);
+    String _key325;
+    Map<String,Long> _val326;
+    for (int _i327=0; _i327 < _map324.size; ++_i327) {
+      _key325=iprot.readString();
 {
-        org.apache.thrift.protocol.TMap _map312=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
-        _val310=new HashMap<String,Long>(2 * _map312.size);
-        String _key313;
-        long _val314;
-        for (int _i315=0; _i315 < _map312.size; ++_i315) {
-          _key313=iprot.readString();
-          _val314=iprot.readI64();
-          _val310.put(_key313,_val314);
+        org.apache.thrift.protocol.TMap _map328=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+        _val326=new HashMap<String,Long>(2 * _map328.size);
+        String _key329;
+        long _val330;
+        for (int _i331=0; _i331 < _map328.size; ++_i331) {
+          _key329=iprot.readString();
+          _val330=iprot.readI64();
+          _val326.put(_key329,_val330);
         }
       }
-      struct.transferred.put(_key309,_val310);
+      struct.transferred.put(_key325,_val326);
     }
   }
   struct.set_transferred_isSet(true);

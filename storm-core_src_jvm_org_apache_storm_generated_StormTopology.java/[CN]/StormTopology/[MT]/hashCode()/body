@@ -12,5 +12,11 @@
   boolean present_worker_hooks=true && (is_set_worker_hooks());
   list.add(present_worker_hooks);
   if (present_worker_hooks)   list.add(worker_hooks);
+  boolean present_dependency_jars=true && (is_set_dependency_jars());
+  list.add(present_dependency_jars);
+  if (present_dependency_jars)   list.add(dependency_jars);
+  boolean present_dependency_artifacts=true && (is_set_dependency_artifacts());
+  list.add(present_dependency_artifacts);
+  if (present_dependency_artifacts)   list.add(dependency_artifacts);
   return list.hashCode();
 }

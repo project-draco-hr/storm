@@ -50,24 +50,24 @@ def read(self, iprot):
         elif (fid == 9):
             if (ftype == TType.MAP):
                 self.id_to_spout_agg_stats = {}
-                (_ktype384, _vtype385, _size383) = iprot.readMapBegin()
-                for _i387 in xrange(_size383):
-                    _key388 = iprot.readString().decode('utf-8')
-                    _val389 = ComponentAggregateStats()
-                    _val389.read(iprot)
-                    self.id_to_spout_agg_stats[_key388] = _val389
+                (_ktype398, _vtype399, _size397) = iprot.readMapBegin()
+                for _i401 in xrange(_size397):
+                    _key402 = iprot.readString().decode('utf-8')
+                    _val403 = ComponentAggregateStats()
+                    _val403.read(iprot)
+                    self.id_to_spout_agg_stats[_key402] = _val403
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 10):
             if (ftype == TType.MAP):
                 self.id_to_bolt_agg_stats = {}
-                (_ktype391, _vtype392, _size390) = iprot.readMapBegin()
-                for _i394 in xrange(_size390):
-                    _key395 = iprot.readString().decode('utf-8')
-                    _val396 = ComponentAggregateStats()
-                    _val396.read(iprot)
-                    self.id_to_bolt_agg_stats[_key395] = _val396
+                (_ktype405, _vtype406, _size404) = iprot.readMapBegin()
+                for _i408 in xrange(_size404):
+                    _key409 = iprot.readString().decode('utf-8')
+                    _val410 = ComponentAggregateStats()
+                    _val410.read(iprot)
+                    self.id_to_bolt_agg_stats[_key409] = _val410
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
@@ -101,11 +101,11 @@ def read(self, iprot):
         elif (fid == 16):
             if (ftype == TType.LIST):
                 self.workers = []
-                (_etype400, _size397) = iprot.readListBegin()
-                for _i401 in xrange(_size397):
-                    _elem402 = WorkerSummary()
-                    _elem402.read(iprot)
-                    self.workers.append(_elem402)
+                (_etype414, _size411) = iprot.readListBegin()
+                for _i415 in xrange(_size411):
+                    _elem416 = WorkerSummary()
+                    _elem416.read(iprot)
+                    self.workers.append(_elem416)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

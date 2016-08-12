@@ -1,0 +1,6 @@
+{
+  if (this.dependency_artifacts == null) {
+    this.dependency_artifacts=new ArrayList<String>();
+  }
+  this.dependency_artifacts.add(elem);
+}

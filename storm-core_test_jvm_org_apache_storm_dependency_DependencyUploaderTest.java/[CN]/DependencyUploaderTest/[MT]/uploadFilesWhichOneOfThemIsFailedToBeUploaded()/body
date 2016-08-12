@@ -1,0 +1,24 @@
+{
+  File mockFile=createTemporaryDummyFile();
+  File mockFile2=mock(File.class);
+  when(mockFile2.getName()).thenReturn("dummy.jar");
+  when(mockFile2.isFile()).thenReturn(true);
+  when(mockFile2.exists()).thenReturn(true);
+  when(mockFile2.getPath()).thenThrow(new RuntimeException("just for test!"));
+  when(mockFile2.toPath()).thenThrow(new RuntimeException("just for test!"));
+  String mockFileFileNameWithoutExtension=Files.getNameWithoutExtension(mockFile.getName());
+  String mockFile2FileNameWithoutExtension=Files.getNameWithoutExtension(mockFile2.getName());
+  when(mockBlobStore.getBlobMeta(contains(mockFileFileNameWithoutExtension))).thenReturn(new ReadableBlobMeta());
+  when(mockBlobStore.getBlobMeta(contains(mockFile2FileNameWithoutExtension))).thenThrow(new KeyNotFoundException());
+  List<File> dependencies=Lists.newArrayList(mockFile,mockFile2);
+  try {
+    sut.uploadFiles(dependencies,true);
+    fail("Should pass RuntimeException");
+  }
+ catch (  RuntimeException e) {
+  }
+  verify(mockBlobStore).getBlobMeta(contains(mockFileFileNameWithoutExtension));
+  verify(mockBlobStore).getBlobMeta(contains(mockFile2FileNameWithoutExtension));
+  verify(mockBlobStore).deleteBlob(contains(mockFileFileNameWithoutExtension));
+  verify(mockBlobStore,never()).deleteBlob(contains(mockFile2FileNameWithoutExtension));
+}

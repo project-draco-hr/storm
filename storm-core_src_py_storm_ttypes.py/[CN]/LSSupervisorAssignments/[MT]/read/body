@@ -10,12 +10,12 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.assignments = {}
-                (_ktype623, _vtype624, _size622) = iprot.readMapBegin()
-                for _i626 in xrange(_size622):
-                    _key627 = iprot.readI32()
-                    _val628 = LocalAssignment()
-                    _val628.read(iprot)
-                    self.assignments[_key627] = _val628
+                (_ktype637, _vtype638, _size636) = iprot.readMapBegin()
+                for _i640 in xrange(_size636):
+                    _key641 = iprot.readI32()
+                    _val642 = LocalAssignment()
+                    _val642.read(iprot)
+                    self.assignments[_key641] = _val642
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

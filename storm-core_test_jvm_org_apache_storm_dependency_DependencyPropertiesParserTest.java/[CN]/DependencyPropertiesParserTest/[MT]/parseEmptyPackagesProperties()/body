@@ -1,0 +1,4 @@
+{
+  Map<String,File> parsed=sut.parseArtifactsProperties("{}");
+  assertEquals(0,parsed.size());
+}

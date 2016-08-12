@@ -1,0 +1,6 @@
+{
+  if (this.dependency_jars == null) {
+    this.dependency_jars=new ArrayList<String>();
+  }
+  this.dependency_jars.add(elem);
+}

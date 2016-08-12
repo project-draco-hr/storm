@@ -1,3 +1,3 @@
 {
-  return checkFileExists(dir + "/" + file);
+  return checkFileExists(dir + FILE_PATH_SEPARATOR + file);
 }

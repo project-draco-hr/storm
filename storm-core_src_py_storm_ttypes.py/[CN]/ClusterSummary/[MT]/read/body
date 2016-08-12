@@ -10,11 +10,11 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.LIST):
                 self.supervisors = []
-                (_etype85, _size82) = iprot.readListBegin()
-                for _i86 in xrange(_size82):
-                    _elem87 = SupervisorSummary()
-                    _elem87.read(iprot)
-                    self.supervisors.append(_elem87)
+                (_etype99, _size96) = iprot.readListBegin()
+                for _i100 in xrange(_size96):
+                    _elem101 = SupervisorSummary()
+                    _elem101.read(iprot)
+                    self.supervisors.append(_elem101)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
@@ -26,22 +26,22 @@ def read(self, iprot):
         elif (fid == 3):
             if (ftype == TType.LIST):
                 self.topologies = []
-                (_etype91, _size88) = iprot.readListBegin()
-                for _i92 in xrange(_size88):
-                    _elem93 = TopologySummary()
-                    _elem93.read(iprot)
-                    self.topologies.append(_elem93)
+                (_etype105, _size102) = iprot.readListBegin()
+                for _i106 in xrange(_size102):
+                    _elem107 = TopologySummary()
+                    _elem107.read(iprot)
+                    self.topologies.append(_elem107)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 4):
             if (ftype == TType.LIST):
                 self.nimbuses = []
-                (_etype97, _size94) = iprot.readListBegin()
-                for _i98 in xrange(_size94):
-                    _elem99 = NimbusSummary()
-                    _elem99.read(iprot)
-                    self.nimbuses.append(_elem99)
+                (_etype111, _size108) = iprot.readListBegin()
+                for _i112 in xrange(_size108):
+                    _elem113 = NimbusSummary()
+                    _elem113.read(iprot)
+                    self.nimbuses.append(_elem113)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

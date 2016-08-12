@@ -1,0 +1,7 @@
+{
+  StormTopology stormCode=ConfigUtils.readSupervisorStormCodeGivenPath(stormcodePath);
+  List<String> blobFileNames=new ArrayList<>();
+  blobFileNames.addAll(stormCode.get_dependency_jars());
+  blobFileNames.addAll(stormCode.get_dependency_artifacts());
+  return areBlobsDownloaded(targetDir,blobFileNames);
+}

@@ -26,9 +26,9 @@
   if (struct.is_set_component_executors()) {
 {
       oprot.writeI32(struct.component_executors.size());
-      for (      Map.Entry<String,Integer> _iter614 : struct.component_executors.entrySet()) {
-        oprot.writeString(_iter614.getKey());
-        oprot.writeI32(_iter614.getValue());
+      for (      Map.Entry<String,Integer> _iter664 : struct.component_executors.entrySet()) {
+        oprot.writeString(_iter664.getKey());
+        oprot.writeI32(_iter664.getValue());
       }
     }
   }
@@ -47,9 +47,9 @@
   if (struct.is_set_component_debug()) {
 {
       oprot.writeI32(struct.component_debug.size());
-      for (      Map.Entry<String,DebugOptions> _iter615 : struct.component_debug.entrySet()) {
-        oprot.writeString(_iter615.getKey());
-        _iter615.getValue().write(oprot);
+      for (      Map.Entry<String,DebugOptions> _iter665 : struct.component_debug.entrySet()) {
+        oprot.writeString(_iter665.getKey());
+        _iter665.getValue().write(oprot);
       }
     }
   }

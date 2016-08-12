@@ -1,0 +1,11 @@
+{
+  List<String> artifacts=Arrays.asList(artifactArgs.split(","));
+  List<Dependency> dependencies=new ArrayList<>(artifacts.size());
+  for (  String artifactOpt : artifacts) {
+    if (artifactOpt.trim().isEmpty()) {
+      continue;
+    }
+    dependencies.add(AetherUtils.parseDependency(artifactOpt));
+  }
+  return dependencies;
+}

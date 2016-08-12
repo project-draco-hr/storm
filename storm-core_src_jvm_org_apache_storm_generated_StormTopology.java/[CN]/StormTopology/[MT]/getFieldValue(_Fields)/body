@@ -8,6 +8,10 @@ case STATE_SPOUTS:
 return get_state_spouts();
 case WORKER_HOOKS:
 return get_worker_hooks();
+case DEPENDENCY_JARS:
+return get_dependency_jars();
+case DEPENDENCY_ARTIFACTS:
+return get_dependency_artifacts();
 }
 throw new IllegalStateException();
 }

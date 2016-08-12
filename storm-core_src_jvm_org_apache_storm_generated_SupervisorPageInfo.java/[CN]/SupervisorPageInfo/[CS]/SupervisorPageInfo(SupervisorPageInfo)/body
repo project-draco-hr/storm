@@ -9,7 +9,7 @@
   if (other.is_set_worker_summaries()) {
     List<WorkerSummary> __this__worker_summaries=new ArrayList<WorkerSummary>(other.worker_summaries.size());
     for (    WorkerSummary other_element : other.worker_summaries) {
-      __this__worker_summaries.add(other_element);
+      __this__worker_summaries.add(new WorkerSummary(other_element));
     }
     this.worker_summaries=__this__worker_summaries;
   }

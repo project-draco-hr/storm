@@ -18,8 +18,8 @@
     oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.executors.size()));
-      for (      ExecutorSummary _iter330 : struct.executors) {
-        _iter330.write(oprot);
+      for (      ExecutorSummary _iter346 : struct.executors) {
+        _iter346.write(oprot);
       }
       oprot.writeListEnd();
     }
@@ -34,12 +34,12 @@
     oprot.writeFieldBegin(ERRORS_FIELD_DESC);
 {
       oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.LIST,struct.errors.size()));
-      for (      Map.Entry<String,List<ErrorInfo>> _iter331 : struct.errors.entrySet()) {
-        oprot.writeString(_iter331.getKey());
+      for (      Map.Entry<String,List<ErrorInfo>> _iter347 : struct.errors.entrySet()) {
+        oprot.writeString(_iter347.getKey());
 {
-          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,_iter331.getValue().size()));
-          for (          ErrorInfo _iter332 : _iter331.getValue()) {
-            _iter332.write(oprot);
+          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,_iter347.getValue().size()));
+          for (          ErrorInfo _iter348 : _iter347.getValue()) {
+            _iter348.write(oprot);
           }
           oprot.writeListEnd();
         }
@@ -53,9 +53,9 @@
       oprot.writeFieldBegin(COMPONENT_DEBUG_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.component_debug.size()));
-        for (        Map.Entry<String,DebugOptions> _iter333 : struct.component_debug.entrySet()) {
-          oprot.writeString(_iter333.getKey());
-          _iter333.getValue().write(oprot);
+        for (        Map.Entry<String,DebugOptions> _iter349 : struct.component_debug.entrySet()) {
+          oprot.writeString(_iter349.getKey());
+          _iter349.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }

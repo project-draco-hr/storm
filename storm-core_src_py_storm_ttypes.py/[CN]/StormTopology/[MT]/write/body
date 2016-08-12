@@ -6,32 +6,46 @@ def write(self, oprot):
     if (self.spouts is not None):
         oprot.writeFieldBegin('spouts', TType.MAP, 1)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.spouts))
-        for (kiter66, viter67) in self.spouts.items():
-            oprot.writeString(kiter66.encode('utf-8'))
-            viter67.write(oprot)
+        for (kiter78, viter79) in self.spouts.items():
+            oprot.writeString(kiter78.encode('utf-8'))
+            viter79.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.bolts is not None):
         oprot.writeFieldBegin('bolts', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.bolts))
-        for (kiter68, viter69) in self.bolts.items():
-            oprot.writeString(kiter68.encode('utf-8'))
-            viter69.write(oprot)
+        for (kiter80, viter81) in self.bolts.items():
+            oprot.writeString(kiter80.encode('utf-8'))
+            viter81.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.state_spouts is not None):
         oprot.writeFieldBegin('state_spouts', TType.MAP, 3)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.state_spouts))
-        for (kiter70, viter71) in self.state_spouts.items():
-            oprot.writeString(kiter70.encode('utf-8'))
-            viter71.write(oprot)
+        for (kiter82, viter83) in self.state_spouts.items():
+            oprot.writeString(kiter82.encode('utf-8'))
+            viter83.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.worker_hooks is not None):
         oprot.writeFieldBegin('worker_hooks', TType.LIST, 4)
         oprot.writeListBegin(TType.STRING, len(self.worker_hooks))
-        for iter72 in self.worker_hooks:
-            oprot.writeString(iter72)
+        for iter84 in self.worker_hooks:
+            oprot.writeString(iter84)
+        oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    if (self.dependency_jars is not None):
+        oprot.writeFieldBegin('dependency_jars', TType.LIST, 5)
+        oprot.writeListBegin(TType.STRING, len(self.dependency_jars))
+        for iter85 in self.dependency_jars:
+            oprot.writeString(iter85.encode('utf-8'))
+        oprot.writeListEnd()
+        oprot.writeFieldEnd()
+    if (self.dependency_artifacts is not None):
+        oprot.writeFieldBegin('dependency_artifacts', TType.LIST, 6)
+        oprot.writeListBegin(TType.STRING, len(self.dependency_artifacts))
+        for iter86 in self.dependency_artifacts:
+            oprot.writeString(iter86.encode('utf-8'))
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

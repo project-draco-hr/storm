@@ -23,7 +23,8 @@
   blobStore.shutdown();
   Utils.extractDirFromJar(jarPath,ConfigUtils.RESOURCES_SUBDIR,tmproot);
   downloadBlobsForTopology(conf,confPath,localizer,tmproot);
-  if (didDownloadBlobsForTopologySucceed(confPath,tmproot)) {
+  downloadDependenciesForTopology(conf,confPath,codePath,localizer,tmproot);
+  if (areBlobsInBlobStoreMapDownloaded(confPath,tmproot) && areDependencyFilesDownloaded(codePath,tmproot)) {
     LOG.info("Successfully downloaded blob resources for storm-id {}",stormId);
     if (Utils.isOnWindows()) {
       FileUtils.moveDirectory(new File(tmproot),new File(stormroot));

@@ -1,0 +1,18 @@
+{
+  String testDependency="testgroup:testartifact:1.0.0^testgroup:testexcartifact^testgroup:*";
+  Dependency dependency=AetherUtils.parseDependency(testDependency);
+  assertEquals("testgroup",dependency.getArtifact().getGroupId());
+  assertEquals("testartifact",dependency.getArtifact().getArtifactId());
+  assertEquals("1.0.0",dependency.getArtifact().getVersion());
+  assertEquals(JavaScopes.COMPILE,dependency.getScope());
+  assertEquals(2,dependency.getExclusions().size());
+  List<Exclusion> exclusions=Lists.newArrayList(dependency.getExclusions());
+  Exclusion exclusion=exclusions.get(0);
+  assertEquals("testgroup",exclusion.getGroupId());
+  assertEquals("testexcartifact",exclusion.getArtifactId());
+  assertEquals(JavaScopes.COMPILE,dependency.getScope());
+  exclusion=exclusions.get(1);
+  assertEquals("testgroup",exclusion.getGroupId());
+  assertEquals("*",exclusion.getArtifactId());
+  assertEquals(JavaScopes.COMPILE,dependency.getScope());
+}
