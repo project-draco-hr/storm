@@ -1,18 +1,12 @@
 {
   receiveQueue.registerBackpressureCallback(new DisruptorBackpressureCallback(){
     @Override public void highWaterMark() throws Exception {
-      if (!backpressure.get()) {
-        backpressure.set(true);
-        LOG.debug("executor " + executorId + " is congested, set backpressure flag true");
-        WorkerBackpressureThread.notifyBackpressureChecker(workerData.get("backpressure-trigger"));
-      }
+      LOG.debug("executor " + executorId + " is congested, set backpressure flag true");
+      WorkerBackpressureThread.notifyBackpressureChecker(workerData.get("backpressure-trigger"));
     }
     @Override public void lowWaterMark() throws Exception {
-      if (backpressure.get()) {
-        backpressure.set(false);
-        LOG.debug("executor " + executorId + " is not-congested, set backpressure flag false");
-        WorkerBackpressureThread.notifyBackpressureChecker(workerData.get("backpressure-trigger"));
-      }
+      LOG.debug("executor " + executorId + " is not-congested, set backpressure flag false");
+      WorkerBackpressureThread.notifyBackpressureChecker(workerData.get("backpressure-trigger"));
     }
   }
 );
