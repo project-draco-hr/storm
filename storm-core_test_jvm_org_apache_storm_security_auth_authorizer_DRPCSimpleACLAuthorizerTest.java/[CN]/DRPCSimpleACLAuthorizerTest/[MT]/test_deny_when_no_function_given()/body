@@ -1,0 +1,6 @@
+{
+  Assert.assertFalse(strictHandler.permit(aliceContext,"execute",new HashMap()));
+  Assert.assertFalse(isPermitted(strictHandler,aliceContext,"execute",null));
+  Assert.assertFalse(permissiveHandler.permit(bobContext,"execute",new HashMap()));
+  Assert.assertFalse(isPermitted(permissiveHandler,bobContext,"execute",null));
+}

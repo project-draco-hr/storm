@@ -1,0 +1,7 @@
+{
+  Map conf=Utils.readDefaultConfig();
+  String className=(String)conf.get(Config.TOPOLOGY_TUPLE_SERIALIZER);
+  Class configuredClass=Class.forName(className);
+  Kryo kryo=SerializationFactory.getKryo(conf);
+  Assert.assertEquals(configuredClass,kryo.getSerializer(ListDelegate.class).getClass());
+}

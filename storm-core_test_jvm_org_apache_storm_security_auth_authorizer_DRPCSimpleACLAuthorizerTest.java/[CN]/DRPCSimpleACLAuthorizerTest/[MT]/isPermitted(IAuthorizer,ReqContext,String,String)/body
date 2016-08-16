@@ -1,0 +1,5 @@
+{
+  Map config=new HashMap();
+  config.put(DRPCSimpleACLAuthorizer.FUNCTION_KEY,function);
+  return authorizer.permit(context,operation,config);
+}

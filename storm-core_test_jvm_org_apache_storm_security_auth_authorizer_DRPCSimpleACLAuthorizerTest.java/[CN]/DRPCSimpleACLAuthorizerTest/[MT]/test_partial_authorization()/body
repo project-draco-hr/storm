@@ -1,0 +1,5 @@
+{
+  Assert.assertFalse("Deny execute to unauthroized user",isPermitted(strictHandler,ReqContext.context(),"execute",partialFunction));
+  Assert.assertTrue("Allow execute to authorized kerb user for correct function",isPermitted(strictHandler,aliceKerbContext,"execute",partialFunction));
+  Assert.assertFalse("Deny fetchRequest to unauthorized user for correct function",isPermitted(strictHandler,aliceKerbContext,"fetchRequest",partialFunction));
+}

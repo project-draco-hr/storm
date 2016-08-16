@@ -1,0 +1,5 @@
+{
+  ReqContext mockContext=Mockito.mock(ReqContext.class);
+  Mockito.when(mockContext.principal()).thenReturn(new SingleUserPrincipal(user));
+  return mockContext;
+}
