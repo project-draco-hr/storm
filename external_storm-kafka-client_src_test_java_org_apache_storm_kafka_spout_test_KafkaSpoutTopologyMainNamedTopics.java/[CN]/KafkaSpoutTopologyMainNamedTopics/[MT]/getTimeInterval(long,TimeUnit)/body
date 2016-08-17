@@ -1,3 +1,0 @@
-{
-  return new TimeInterval(delay,timeUnit);
-}
