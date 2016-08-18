@@ -1,0 +1,7 @@
+{
+  Object value;
+  if (tuple == null) {
+    throw new IllegalArgumentException("Tuple is null");
+  }
+  return (T)tuple.getValueByField(inputFieldName);
+}

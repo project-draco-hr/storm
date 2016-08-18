@@ -1,53 +1,54 @@
 {
+  List<T> inputStreams=new ArrayList<>();
   for (  RelNode input : n.getInputs()) {
-    traverse(input);
+    inputStreams.add(traverse(input));
   }
   if (n instanceof Aggregate) {
-    return visitAggregate((Aggregate)n);
+    return visitAggregate((Aggregate)n,inputStreams);
   }
  else   if (n instanceof Calc) {
-    return visitCalc((Calc)n);
+    return visitCalc((Calc)n,inputStreams);
   }
  else   if (n instanceof Collect) {
-    return visitCollect((Collect)n);
+    return visitCollect((Collect)n,inputStreams);
   }
  else   if (n instanceof Correlate) {
-    return visitCorrelate((Correlate)n);
+    return visitCorrelate((Correlate)n,inputStreams);
   }
  else   if (n instanceof Delta) {
-    return visitDelta((Delta)n);
+    return visitDelta((Delta)n,inputStreams);
   }
  else   if (n instanceof Exchange) {
-    return visitExchange((Exchange)n);
+    return visitExchange((Exchange)n,inputStreams);
   }
  else   if (n instanceof Project) {
-    return visitProject((Project)n);
+    return visitProject((Project)n,inputStreams);
   }
  else   if (n instanceof Filter) {
-    return visitFilter((Filter)n);
+    return visitFilter((Filter)n,inputStreams);
   }
  else   if (n instanceof Sample) {
-    return visitSample((Sample)n);
+    return visitSample((Sample)n,inputStreams);
   }
  else   if (n instanceof Sort) {
-    return visitSort((Sort)n);
+    return visitSort((Sort)n,inputStreams);
   }
  else   if (n instanceof TableModify) {
-    return visitTableModify((TableModify)n);
+    return visitTableModify((TableModify)n,inputStreams);
   }
  else   if (n instanceof TableScan) {
-    return visitTableScan((TableScan)n);
+    return visitTableScan((TableScan)n,inputStreams);
   }
  else   if (n instanceof Uncollect) {
-    return visitUncollect((Uncollect)n);
+    return visitUncollect((Uncollect)n,inputStreams);
   }
  else   if (n instanceof Window) {
-    return visitWindow((Window)n);
+    return visitWindow((Window)n,inputStreams);
   }
  else   if (n instanceof Join) {
-    return visitJoin((Join)n);
+    return visitJoin((Join)n,inputStreams);
   }
  else {
-    return defaultValue(n);
+    return defaultValue(n,inputStreams);
   }
 }

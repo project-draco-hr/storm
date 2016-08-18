@@ -1,7 +1,0 @@
-{
-  pw.print(INITIALIZER_PROLOGUE);
-  MainFuncCompiler compiler=new MainFuncCompiler(pw);
-  compiler.traverse(root);
-  pw.print(String.format("  this.outputStream = _%s;\n",RelNodeCompiler.getStageName(root)));
-  pw.print("  return topo; \n}\n");
-}

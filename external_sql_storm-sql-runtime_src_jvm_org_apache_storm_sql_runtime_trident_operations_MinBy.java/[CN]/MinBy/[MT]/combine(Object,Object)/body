@@ -1,0 +1,15 @@
+{
+  if (val1 == null) {
+    return val2;
+  }
+  if (Number.class.isAssignableFrom(targetClazz)) {
+    return NumberConverter.convert((Number)Numbers.min(val1,val2),(Class<? extends Number>)targetClazz);
+  }
+  if (!val1.getClass().equals(val2.getClass())) {
+    throw new IllegalArgumentException("The type of values are different! - class of val1: " + val1.getClass().getCanonicalName() + " and class of val2: "+ val2.getClass().getCanonicalName());
+  }
+ else   if (!(val1 instanceof Comparable)) {
+    throw new IllegalArgumentException("Value is not Comparable - class of value: " + val1.getClass().getCanonicalName());
+  }
+  return ((Comparable)val1).compareTo(val2) > 0 ? val2 : val1;
+}

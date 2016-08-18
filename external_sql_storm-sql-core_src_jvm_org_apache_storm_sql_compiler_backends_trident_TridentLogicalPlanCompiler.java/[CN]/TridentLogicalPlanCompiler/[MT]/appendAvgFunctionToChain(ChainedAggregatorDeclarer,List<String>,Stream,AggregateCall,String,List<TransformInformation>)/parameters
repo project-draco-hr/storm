@@ -1,0 +1,6 @@
+ChainedAggregatorDeclarer chainedDeclarer
+List<String> groupByFieldNames
+Stream inputStream
+AggregateCall call
+String outputField
+List<TransformInformation> transformsAfterChained

@@ -1,0 +1,6 @@
+{
+  if (TridentUtils.valueFromTuple(tuple,inputFieldName) == null) {
+    return 0L;
+  }
+  return 1L;
+}
