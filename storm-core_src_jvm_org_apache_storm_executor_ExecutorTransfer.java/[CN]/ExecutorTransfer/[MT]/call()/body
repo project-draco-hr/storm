@@ -1,0 +1,4 @@
+{
+  batchTransferQueue.consumeBatchWhenAvailable(this);
+  return 0L;
+}

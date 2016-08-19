@@ -1,5 +1,5 @@
 {
-  if ((Boolean)_openOrPrepareWasCalled.deref()) {
+  if (_openOrPrepareWasCalled.get()) {
     throw new RuntimeException("TopologyContext.registerMetric can only be called from within overridden " + "IBolt::prepare() or ISpout::open() method.");
   }
   if (metric == null) {

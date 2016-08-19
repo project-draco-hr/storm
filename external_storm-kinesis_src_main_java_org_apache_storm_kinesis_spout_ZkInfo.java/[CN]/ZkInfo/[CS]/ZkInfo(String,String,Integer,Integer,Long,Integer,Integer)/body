@@ -1,0 +1,10 @@
+{
+  this.zkUrl=zkUrl;
+  this.zkNode=zkNode;
+  this.sessionTimeoutMs=sessionTimeoutMs;
+  this.connectionTimeoutMs=connectionTimeoutMs;
+  this.commitIntervalMs=commitIntervalMs;
+  this.retryAttempts=retryAttempts;
+  this.retryIntervalMs=retryIntervalMs;
+  validate();
+}

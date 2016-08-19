@@ -1,0 +1,5 @@
+{
+  this.collector=collector;
+  kinesisRecordsManager=new KinesisRecordsManager(kinesisConfig);
+  kinesisRecordsManager.initialize(context.getThisTaskIndex(),context.getComponentTasks(context.getThisComponentId()).size());
+}

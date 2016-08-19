@@ -1,0 +1,3 @@
+{
+  return boltEmit(streamId,anchors,tuple,null);
+}

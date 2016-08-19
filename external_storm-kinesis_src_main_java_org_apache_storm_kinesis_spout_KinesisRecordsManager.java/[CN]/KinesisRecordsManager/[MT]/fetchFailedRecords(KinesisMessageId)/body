@@ -1,0 +1,44 @@
+{
+  if (!shardIteratorPerFailedMessage.containsKey(kinesisMessageId)) {
+    refreshShardIteratorForFailedRecord(kinesisMessageId);
+  }
+  String shardIterator=shardIteratorPerFailedMessage.get(kinesisMessageId);
+  LOG.debug("Fetching failed records for shard id :" + kinesisMessageId.getShardId() + " at sequence number "+ kinesisMessageId.getSequenceNumber()+ " using shardIterator "+ shardIterator);
+  try {
+    GetRecordsResult getRecordsResult=kinesisConnection.fetchRecords(shardIterator);
+    if (getRecordsResult != null) {
+      List<Record> records=getRecordsResult.getRecords();
+      LOG.debug("Records size from fetchFailedRecords is " + records.size());
+      shardIteratorPerFailedMessage.put(kinesisMessageId,getRecordsResult.getNextShardIterator());
+      if (records.size() == 0) {
+        LOG.warn("No records returned from kinesis. Hence sleeping for 1 second");
+        Thread.sleep(1000);
+      }
+ else {
+        for (        Record record : records) {
+          KinesisMessageId current=new KinesisMessageId(kinesisMessageId.getStreamName(),kinesisMessageId.getShardId(),record.getSequenceNumber());
+          if (failedPerShard.get(kinesisMessageId.getShardId()).contains(new BigInteger(current.getSequenceNumber()))) {
+            failedandFetchedRecords.put(current,record);
+            shardIteratorPerFailedMessage.remove(current);
+          }
+        }
+      }
+    }
+  }
+ catch (  InterruptedException ie) {
+    LOG.warn("Thread interrupted while sleeping",ie);
+  }
+catch (  ExpiredIteratorException ex) {
+    LOG.warn("shardIterator for failedRecord " + kinesisMessageId + " has expired. Refreshing shardIterator");
+    refreshShardIteratorForFailedRecord(kinesisMessageId);
+  }
+catch (  ProvisionedThroughputExceededException pe) {
+    try {
+      LOG.warn("ProvisionedThroughputExceededException occured. Check your limits. Sleeping for 1 second.",pe);
+      Thread.sleep(1000);
+    }
+ catch (    InterruptedException e) {
+      LOG.warn("Thread interrupted exception",e);
+    }
+  }
+}

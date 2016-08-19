@@ -1,0 +1,8 @@
+{
+  this.executor=executor;
+  this.taskData=taskData;
+  this.taskId=taskId;
+  this.random=random;
+  this.isEventLoggers=isEventLoggers;
+  this.isDebug=isDebug;
+}

@@ -1,0 +1,6 @@
+{
+  if (!failedandFetchedRecords.containsKey(kinesisMessageId)) {
+    return false;
+  }
+  return emitRecord(collector,failedandFetchedRecords.get(kinesisMessageId),kinesisMessageId);
+}

@@ -1,0 +1,6 @@
+{
+  final Kryo kryo=new Kryo();
+  final Input input=new Input(new ByteArrayInputStream(ser));
+  kryo.setInstantiatorStrategy(new StdInstantiatorStrategy());
+  return kryo.readClassAndObject(input);
+}

@@ -1,0 +1,11 @@
+{
+  Map<String,DebugOptions> componentDebug=executor.getStormComponentDebug().get();
+  DebugOptions debugOptions=componentDebug.get(componentId);
+  if (debugOptions == null) {
+    debugOptions=componentDebug.get(executor.getStormId());
+  }
+  double spct=((debugOptions != null) && (debugOptions.is_enable())) ? debugOptions.get_samplingpct() : 0;
+  if (spct > 0 && (random.nextDouble() * 100) < spct) {
+    sendUnanchored(taskData,StormCommon.EVENTLOGGER_STREAM_ID,new Values(componentId,messageId,System.currentTimeMillis(),values),executor.getExecutorTransfer());
+  }
+}

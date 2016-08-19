@@ -1,0 +1,7 @@
+{
+  Long curr=pending.get(key);
+  if (curr == null) {
+    curr=0l;
+  }
+  pending.put(key,Utils.bitXor(curr,id));
+}

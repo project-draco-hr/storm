@@ -1,0 +1,6 @@
+BoltExecutor executor
+Task taskData
+int taskId
+Random random
+boolean isEventLoggers
+boolean isDebug

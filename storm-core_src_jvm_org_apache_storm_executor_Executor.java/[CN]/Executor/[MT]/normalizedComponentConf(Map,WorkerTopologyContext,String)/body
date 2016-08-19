@@ -1,0 +1,35 @@
+{
+  List<Object> keysToRemove=ConfigUtils.All_CONFIGS();
+  keysToRemove.remove(Config.TOPOLOGY_DEBUG);
+  keysToRemove.remove(Config.TOPOLOGY_MAX_SPOUT_PENDING);
+  keysToRemove.remove(Config.TOPOLOGY_MAX_TASK_PARALLELISM);
+  keysToRemove.remove(Config.TOPOLOGY_TRANSACTIONAL_ID);
+  keysToRemove.remove(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS);
+  keysToRemove.remove(Config.TOPOLOGY_SLEEP_SPOUT_WAIT_STRATEGY_TIME_MS);
+  keysToRemove.remove(Config.TOPOLOGY_SPOUT_WAIT_STRATEGY);
+  keysToRemove.remove(Config.TOPOLOGY_BOLTS_WINDOW_LENGTH_COUNT);
+  keysToRemove.remove(Config.TOPOLOGY_BOLTS_WINDOW_LENGTH_DURATION_MS);
+  keysToRemove.remove(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_COUNT);
+  keysToRemove.remove(Config.TOPOLOGY_BOLTS_SLIDING_INTERVAL_DURATION_MS);
+  keysToRemove.remove(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_FIELD_NAME);
+  keysToRemove.remove(Config.TOPOLOGY_BOLTS_TUPLE_TIMESTAMP_MAX_LAG_MS);
+  keysToRemove.remove(Config.TOPOLOGY_BOLTS_MESSAGE_ID_FIELD_NAME);
+  keysToRemove.remove(Config.TOPOLOGY_STATE_PROVIDER);
+  keysToRemove.remove(Config.TOPOLOGY_STATE_PROVIDER_CONFIG);
+  keysToRemove.remove(Config.TOPOLOGY_BOLTS_LATE_TUPLE_STREAM);
+  Map<Object,Object> componentConf;
+  String specJsonConf=topologyContext.getComponentCommon(componentId).get_json_conf();
+  if (specJsonConf != null) {
+    componentConf=(Map<Object,Object>)JSONValue.parse(specJsonConf);
+    for (    Object p : keysToRemove) {
+      componentConf.remove(p);
+    }
+  }
+ else {
+    componentConf=new HashMap<>();
+  }
+  Map<Object,Object> ret=new HashMap<>();
+  ret.putAll(stormConf);
+  ret.putAll(componentConf);
+  return ret;
+}

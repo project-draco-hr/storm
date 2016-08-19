@@ -1,0 +1,7 @@
+{
+  int arbitraryTestClients=42;
+  ZookeeperServerCnxnFactory zkcfNegative=new ZookeeperServerCnxnFactory(-42,arbitraryTestClients);
+  int nextPort=zkcfNegative.port() + 1;
+  ZookeeperServerCnxnFactory zkcfNext=new ZookeeperServerCnxnFactory(nextPort,arbitraryTestClients);
+  Assert.assertEquals(zkcfNext.factory().getMaxClientCnxnsPerHost(),arbitraryTestClients);
+}

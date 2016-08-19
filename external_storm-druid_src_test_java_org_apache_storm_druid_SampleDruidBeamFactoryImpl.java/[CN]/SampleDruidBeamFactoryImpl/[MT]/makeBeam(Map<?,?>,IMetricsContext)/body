@@ -1,0 +1,18 @@
+{
+  final String indexService="druid/overlord";
+  final String discoveryPath="/druid/discovery";
+  final String dataSource="test";
+  final List<String> dimensions=ImmutableList.of("publisher","advertiser");
+  List<AggregatorFactory> aggregator=ImmutableList.<AggregatorFactory>of(new CountAggregatorFactory("click"));
+  final Timestamper<Map<String,Object>> timestamper=new Timestamper<Map<String,Object>>(){
+    @Override public DateTime timestamp(    Map<String,Object> theMap){
+      return new DateTime(theMap.get("timestamp"));
+    }
+  }
+;
+  final CuratorFramework curator=CuratorFrameworkFactory.builder().connectString((String)conf.get("druid.tranquility.zk.connect")).retryPolicy(new ExponentialBackoffRetry(1000,20,30000)).build();
+  curator.start();
+  final TimestampSpec timestampSpec=new TimestampSpec("timestamp","auto",null);
+  final Beam<Map<String,Object>> beam=DruidBeams.builder(timestamper).curator(curator).discoveryPath(discoveryPath).location(DruidLocation.create(indexService,dataSource)).timestampSpec(timestampSpec).rollup(DruidRollup.create(DruidDimensions.specific(dimensions),aggregator,QueryGranularities.MINUTE)).tuning(ClusteredBeamTuning.builder().segmentGranularity(Granularity.HOUR).windowPeriod(new Period("PT10M")).partitions(1).replicants(1).build()).druidBeamConfig(DruidBeamConfig.builder().indexRetryPeriod(new Period("PT10M")).build()).buildBeam();
+  return beam;
+}

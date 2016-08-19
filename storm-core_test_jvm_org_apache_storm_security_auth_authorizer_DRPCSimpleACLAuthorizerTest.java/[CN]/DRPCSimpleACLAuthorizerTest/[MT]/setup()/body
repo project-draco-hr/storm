@@ -1,0 +1,6 @@
+{
+  strictHandler=new DRPCSimpleACLAuthorizer();
+  strictHandler.prepare(ImmutableMap.of(Config.DRPC_AUTHORIZER_ACL_STRICT,true,Config.DRPC_AUTHORIZER_ACL_FILENAME,aclFile,Config.STORM_PRINCIPAL_TO_LOCAL_PLUGIN,KerberosPrincipalToLocal.class.getName()));
+  permissiveHandler=new DRPCSimpleACLAuthorizer();
+  permissiveHandler.prepare(ImmutableMap.of(Config.DRPC_AUTHORIZER_ACL_STRICT,false,Config.DRPC_AUTHORIZER_ACL_FILENAME,aclFile,Config.STORM_PRINCIPAL_TO_LOCAL_PLUGIN,KerberosPrincipalToLocal.class.getName()));
+}

@@ -1,0 +1,5 @@
+{
+  commit();
+  kinesisConnection.shutdown();
+  zkConnection.shutdown();
+}

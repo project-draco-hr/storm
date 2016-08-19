@@ -1,0 +1,5 @@
+{
+  Long ms=tuple.getProcessSampleStartTime();
+  if (ms != null)   return Time.deltaMs(ms);
+  return 0;
+}

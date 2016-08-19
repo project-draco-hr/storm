@@ -1,0 +1,4 @@
+{
+  super(workerData,executorId,credentials);
+  this.executeSampler=ConfigUtils.mkStatsSampler(stormConf);
+}

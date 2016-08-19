@@ -1,5 +1,5 @@
 {
-  Map<Object,Object> conf=new HashMap<Object,Object>();
+  Map<Object,Object> conf=new HashMap<>();
   ComponentCommon common=getComponentCommon(component);
   String jconf=common.get_json_conf();
   if (jconf != null) {

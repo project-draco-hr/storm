@@ -1,7 +1,7 @@
 {
-  List<String> componentIds=new ArrayList<String>();
+  List<String> componentIds=new ArrayList<>();
   for (  StormTopology._Fields field : Thrift.getTopologyFields()) {
-    if (ThriftTopologyUtils.isWorkerHook(field) == false) {
+    if (!ThriftTopologyUtils.isWorkerHook(field)) {
       Object value=topology.getFieldValue(field);
       Map<String,Object> componentMap=(Map<String,Object>)value;
       componentIds.addAll(componentMap.keySet());
@@ -22,7 +22,7 @@
     }
   }
   List<String> offending=Utils.getRepeat(componentIds);
-  if (offending.isEmpty() == false) {
+  if (!offending.isEmpty()) {
     throw new InvalidTopologyException("Duplicate component ids: " + offending);
   }
 }

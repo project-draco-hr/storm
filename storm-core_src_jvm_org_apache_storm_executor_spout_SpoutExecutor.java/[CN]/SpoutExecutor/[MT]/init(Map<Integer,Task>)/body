@@ -1,0 +1,41 @@
+{
+  while (!stormActive.get()) {
+    Utils.sleep(100);
+  }
+  LOG.info("Opening spout {}:{}",componentId,idToTask.keySet());
+  this.idToTask=idToTask;
+  this.maxSpoutPending=Utils.getInt(stormConf.get(Config.TOPOLOGY_MAX_SPOUT_PENDING),0) * idToTask.size();
+  this.spouts=new ArrayList<>();
+  for (  Task task : idToTask.values()) {
+    this.spouts.add((ISpout)task.getTaskObject());
+  }
+  this.pending=new RotatingMap<>(2,new RotatingMap.ExpiredCallback<Long,TupleInfo>(){
+    @Override public void expire(    Long key,    TupleInfo tupleInfo){
+      Long timeDelta=null;
+      if (tupleInfo.getTimestamp() != 0) {
+        timeDelta=Time.deltaMs(tupleInfo.getTimestamp());
+      }
+      failSpoutMsg(SpoutExecutor.this,idToTask.get(tupleInfo.getTaskId()),timeDelta,tupleInfo,"TIMEOUT");
+    }
+  }
+);
+  this.spoutThrottlingMetrics.registerAll(stormConf,idToTask.values().iterator().next().getUserContext());
+  this.outputCollectors=new ArrayList<>();
+  for (  Map.Entry<Integer,Task> entry : idToTask.entrySet()) {
+    Task taskData=entry.getValue();
+    ISpout spoutObject=(ISpout)taskData.getTaskObject();
+    SpoutOutputCollectorImpl spoutOutputCollector=new SpoutOutputCollectorImpl(spoutObject,this,taskData,entry.getKey(),emittedCount,hasAckers,rand,hasEventLoggers,isDebug,pending);
+    SpoutOutputCollector outputCollector=new SpoutOutputCollector(spoutOutputCollector);
+    this.outputCollectors.add(outputCollector);
+    taskData.getBuiltInMetrics().registerAll(stormConf,taskData.getUserContext());
+    Map<String,DisruptorQueue> map=ImmutableMap.of("sendqueue",transferQueue,"receive",receiveQueue);
+    BuiltinMetricsUtil.registerQueueMetrics(map,stormConf,taskData.getUserContext());
+    if (spoutObject instanceof ICredentialsListener) {
+      ((ICredentialsListener)spoutObject).setCredentials(credentials);
+    }
+    spoutObject.open(stormConf,taskData.getUserContext(),outputCollector);
+  }
+  openOrPrepareWasCalled.set(true);
+  LOG.info("Opened spout {}:{}",componentId,idToTask.keySet());
+  setupMetrics();
+}

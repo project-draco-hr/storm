@@ -1,0 +1,4 @@
+{
+  this.reportError=reportError;
+  this.suicideFn=suicideFn;
+}

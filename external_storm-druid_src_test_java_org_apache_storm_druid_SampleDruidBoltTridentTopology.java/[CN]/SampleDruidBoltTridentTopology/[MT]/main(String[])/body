@@ -1,0 +1,30 @@
+{
+  if (args.length == 0) {
+    throw new IllegalArgumentException("There should be at least one argument. Run as `SampleDruidBoltTridentTopology <zk-url>`");
+  }
+  TridentTopology tridentTopology=new TridentTopology();
+  DruidBeamFactory druidBeamFactory=new SampleDruidBeamFactoryImpl(new HashMap<String,Object>());
+  ITupleDruidEventMapper<Map<String,Object>> eventMapper=new TupleDruidEventMapper<>(TupleDruidEventMapper.DEFAULT_FIELD_NAME);
+  final Stream stream=tridentTopology.newStream("batch-event-gen",new SimpleBatchSpout(10));
+  stream.peek(new Consumer(){
+    @Override public void accept(    TridentTuple input){
+      LOG.info("########### Received tuple: [{}]",input);
+    }
+  }
+).partitionPersist(new DruidBeamStateFactory<Map<String,Object>>(druidBeamFactory,eventMapper),new Fields("event"),new DruidBeamStateUpdater());
+  Config conf=new Config();
+  conf.setDebug(true);
+  conf.put("druid.tranquility.zk.connect",args[0]);
+  if (args.length > 1) {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopologyWithProgressBar(args[1],conf,tridentTopology.build());
+  }
+ else {
+    conf.setMaxTaskParallelism(3);
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("druid-test",conf,tridentTopology.build());
+    Thread.sleep(30000);
+    cluster.shutdown();
+    System.exit(0);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  this.maxBatchSize=builder.maxBatchSize;
+  this.maxPendingBatches=builder.maxPendingBatches;
+  this.lingerMillis=builder.lingerMillis;
+  this.blockOnFull=builder.blockOnFull;
+  this.discardStreamId=builder.discardStreamId;
+}

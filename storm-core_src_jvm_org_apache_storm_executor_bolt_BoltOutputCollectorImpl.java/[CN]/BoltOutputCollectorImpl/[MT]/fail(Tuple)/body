@@ -1,0 +1,15 @@
+{
+  Set<Long> roots=input.getMessageId().getAnchors();
+  for (  Long root : roots) {
+    executor.sendUnanchored(taskData,Acker.ACKER_FAIL_STREAM_ID,new Values(root),executor.getExecutorTransfer());
+  }
+  long delta=tupleTimeDelta((TupleImpl)input);
+  if (isDebug) {
+    LOG.info("BOLT fail TASK: {} TIME: {} TUPLE: {}",taskId,delta,input);
+  }
+  BoltFailInfo boltFailInfo=new BoltFailInfo(input,taskId,delta);
+  boltFailInfo.applyOn(taskData.getUserContext());
+  if (delta != 0) {
+    ((BoltExecutorStats)executor.getStats()).boltFailedTuple(input.getSourceComponent(),input.getSourceStreamId(),delta);
+  }
+}

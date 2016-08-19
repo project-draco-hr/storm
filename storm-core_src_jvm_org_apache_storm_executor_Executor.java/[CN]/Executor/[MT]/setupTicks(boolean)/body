@@ -1,0 +1,20 @@
+{
+  final Integer tickTimeSecs=Utils.getInt(stormConf.get(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS),null);
+  boolean enableMessageTimeout=(Boolean)stormConf.get(Config.TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS);
+  if (tickTimeSecs != null) {
+    if (Utils.isSystemId(componentId) || (!enableMessageTimeout && isSpout)) {
+      LOG.info("Timeouts disabled for executor " + componentId + ":"+ executorId);
+    }
+ else {
+      StormTimer timerTask=(StormTimer)workerData.get(Constants.USER_TIMER);
+      timerTask.scheduleRecurring(tickTimeSecs,tickTimeSecs,new Runnable(){
+        @Override public void run(){
+          TupleImpl tuple=new TupleImpl(workerTopologyContext,new Values(tickTimeSecs),(int)Constants.SYSTEM_TASK_ID,Constants.SYSTEM_TICK_STREAM_ID);
+          List<AddressedTuple> tickTuple=Lists.newArrayList(new AddressedTuple(AddressedTuple.BROADCAST_DEST,tuple));
+          receiveQueue.publish(tickTuple);
+        }
+      }
+);
+    }
+  }
+}

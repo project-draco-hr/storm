@@ -1,0 +1,8 @@
+{
+  ArrayList cachedEvents=(ArrayList)cachedEmit.getObject();
+  cachedEvents.add(event);
+  if (endOfBatch) {
+    transferFn.invoke(serializer,cachedEvents);
+    cachedEmit.setObject(new ArrayList<>());
+  }
+}
