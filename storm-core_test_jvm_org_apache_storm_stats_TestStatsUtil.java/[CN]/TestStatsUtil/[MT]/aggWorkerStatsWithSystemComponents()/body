@@ -1,0 +1,10 @@
+{
+  makeTopoInfoWithSysWorker();
+  List<WorkerSummary> summaries=checkWorkerStats(true,true,null);
+  WorkerSummary ws=getWorkerSummaryForPort(summaries,2);
+  Assert.assertEquals(3,ws.get_component_to_num_tasks().size());
+  Assert.assertEquals(1,ws.get_component_to_num_tasks().get("__sys1").intValue());
+  Assert.assertEquals(1,ws.get_component_to_num_tasks().get("__sys2").intValue());
+  Assert.assertEquals(1,ws.get_component_to_num_tasks().get("__sys3").intValue());
+  Assert.assertEquals(2,summaries.size());
+}

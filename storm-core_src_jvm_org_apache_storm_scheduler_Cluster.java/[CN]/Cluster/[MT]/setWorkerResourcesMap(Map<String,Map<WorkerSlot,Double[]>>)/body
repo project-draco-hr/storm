@@ -1,0 +1,3 @@
+{
+  this.workerResources.putAll(resources);
+}

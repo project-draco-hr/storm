@@ -52,9 +52,9 @@
       oprot.writeFieldBegin(ID_TO_SPOUT_AGG_STATS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.id_to_spout_agg_stats.size()));
-        for (        Map.Entry<String,ComponentAggregateStats> _iter410 : struct.id_to_spout_agg_stats.entrySet()) {
-          oprot.writeString(_iter410.getKey());
-          _iter410.getValue().write(oprot);
+        for (        Map.Entry<String,ComponentAggregateStats> _iter439 : struct.id_to_spout_agg_stats.entrySet()) {
+          oprot.writeString(_iter439.getKey());
+          _iter439.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }
@@ -66,9 +66,9 @@
       oprot.writeFieldBegin(ID_TO_BOLT_AGG_STATS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.id_to_bolt_agg_stats.size()));
-        for (        Map.Entry<String,ComponentAggregateStats> _iter411 : struct.id_to_bolt_agg_stats.entrySet()) {
-          oprot.writeString(_iter411.getKey());
-          _iter411.getValue().write(oprot);
+        for (        Map.Entry<String,ComponentAggregateStats> _iter440 : struct.id_to_bolt_agg_stats.entrySet()) {
+          oprot.writeString(_iter440.getKey());
+          _iter440.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }
@@ -107,6 +107,19 @@
     oprot.writeFieldBegin(REPLICATION_COUNT_FIELD_DESC);
     oprot.writeI32(struct.replication_count);
     oprot.writeFieldEnd();
+  }
+  if (struct.workers != null) {
+    if (struct.is_set_workers()) {
+      oprot.writeFieldBegin(WORKERS_FIELD_DESC);
+{
+        oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.workers.size()));
+        for (        WorkerSummary _iter441 : struct.workers) {
+          _iter441.write(oprot);
+        }
+        oprot.writeListEnd();
+      }
+      oprot.writeFieldEnd();
+    }
   }
   if (struct.is_set_requested_memonheap()) {
     oprot.writeFieldBegin(REQUESTED_MEMONHEAP_FIELD_DESC);

@@ -51,6 +51,13 @@
     this.debug_options=new DebugOptions(other.debug_options);
   }
   this.replication_count=other.replication_count;
+  if (other.is_set_workers()) {
+    List<WorkerSummary> __this__workers=new ArrayList<WorkerSummary>(other.workers.size());
+    for (    WorkerSummary other_element : other.workers) {
+      __this__workers.add(new WorkerSummary(other_element));
+    }
+    this.workers=__this__workers;
+  }
   this.requested_memonheap=other.requested_memonheap;
   this.requested_memoffheap=other.requested_memoffheap;
   this.requested_cpu=other.requested_cpu;

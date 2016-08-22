@@ -1,0 +1,3 @@
+{
+  return (this.supervisor_summaries == null) ? null : this.supervisor_summaries.iterator();
+}

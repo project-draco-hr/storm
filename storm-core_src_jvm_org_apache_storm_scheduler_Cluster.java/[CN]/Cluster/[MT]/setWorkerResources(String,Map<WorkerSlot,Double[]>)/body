@@ -1,0 +1,3 @@
+{
+  this.workerResources.put(topologyId,resources);
+}

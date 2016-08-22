@@ -10,39 +10,39 @@ def write(self, oprot):
     if (self.node_host is not None):
         oprot.writeFieldBegin('node_host', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRING, TType.STRING, len(self.node_host))
-        for (kiter530, viter531) in self.node_host.items():
-            oprot.writeString(kiter530.encode('utf-8'))
-            oprot.writeString(viter531.encode('utf-8'))
+        for (kiter560, viter561) in self.node_host.items():
+            oprot.writeString(kiter560.encode('utf-8'))
+            oprot.writeString(viter561.encode('utf-8'))
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.executor_node_port is not None):
         oprot.writeFieldBegin('executor_node_port', TType.MAP, 3)
         oprot.writeMapBegin(TType.LIST, TType.STRUCT, len(self.executor_node_port))
-        for (kiter532, viter533) in self.executor_node_port.items():
-            oprot.writeListBegin(TType.I64, len(kiter532))
-            for iter534 in kiter532:
-                oprot.writeI64(iter534)
+        for (kiter562, viter563) in self.executor_node_port.items():
+            oprot.writeListBegin(TType.I64, len(kiter562))
+            for iter564 in kiter562:
+                oprot.writeI64(iter564)
             oprot.writeListEnd()
-            viter533.write(oprot)
+            viter563.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.executor_start_time_secs is not None):
         oprot.writeFieldBegin('executor_start_time_secs', TType.MAP, 4)
         oprot.writeMapBegin(TType.LIST, TType.I64, len(self.executor_start_time_secs))
-        for (kiter535, viter536) in self.executor_start_time_secs.items():
-            oprot.writeListBegin(TType.I64, len(kiter535))
-            for iter537 in kiter535:
-                oprot.writeI64(iter537)
+        for (kiter565, viter566) in self.executor_start_time_secs.items():
+            oprot.writeListBegin(TType.I64, len(kiter565))
+            for iter567 in kiter565:
+                oprot.writeI64(iter567)
             oprot.writeListEnd()
-            oprot.writeI64(viter536)
+            oprot.writeI64(viter566)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.worker_resources is not None):
         oprot.writeFieldBegin('worker_resources', TType.MAP, 5)
         oprot.writeMapBegin(TType.STRUCT, TType.STRUCT, len(self.worker_resources))
-        for (kiter538, viter539) in self.worker_resources.items():
-            kiter538.write(oprot)
-            viter539.write(oprot)
+        for (kiter568, viter569) in self.worker_resources.items():
+            kiter568.write(oprot)
+            viter569.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

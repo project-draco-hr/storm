@@ -153,6 +153,16 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_workers()).compareTo(other.is_set_workers());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_workers()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.workers,other.workers);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   lastComparison=Boolean.valueOf(is_set_requested_memonheap()).compareTo(other.is_set_requested_memonheap());
   if (lastComparison != 0) {
     return lastComparison;

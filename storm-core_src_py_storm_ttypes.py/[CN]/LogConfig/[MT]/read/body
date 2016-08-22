@@ -10,12 +10,12 @@ def read(self, iprot):
         if (fid == 2):
             if (ftype == TType.MAP):
                 self.named_logger_level = {}
-                (_ktype630, _vtype631, _size629) = iprot.readMapBegin()
-                for _i633 in xrange(_size629):
-                    _key634 = iprot.readString().decode('utf-8')
-                    _val635 = LogLevel()
-                    _val635.read(iprot)
-                    self.named_logger_level[_key634] = _val635
+                (_ktype660, _vtype661, _size659) = iprot.readMapBegin()
+                for _i663 in xrange(_size659):
+                    _key664 = iprot.readString().decode('utf-8')
+                    _val665 = LogLevel()
+                    _val665.read(iprot)
+                    self.named_logger_level[_key664] = _val665
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

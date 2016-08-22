@@ -1,0 +1,3 @@
+{
+  return (this.supervisor_summaries == null) ? 0 : this.supervisor_summaries.size();
+}

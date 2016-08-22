@@ -1,0 +1,98 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.supervisor_id != null) {
+    if (struct.is_set_supervisor_id()) {
+      oprot.writeFieldBegin(SUPERVISOR_ID_FIELD_DESC);
+      oprot.writeString(struct.supervisor_id);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.host != null) {
+    if (struct.is_set_host()) {
+      oprot.writeFieldBegin(HOST_FIELD_DESC);
+      oprot.writeString(struct.host);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.is_set_port()) {
+    oprot.writeFieldBegin(PORT_FIELD_DESC);
+    oprot.writeI32(struct.port);
+    oprot.writeFieldEnd();
+  }
+  if (struct.topology_id != null) {
+    if (struct.is_set_topology_id()) {
+      oprot.writeFieldBegin(TOPOLOGY_ID_FIELD_DESC);
+      oprot.writeString(struct.topology_id);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.topology_name != null) {
+    if (struct.is_set_topology_name()) {
+      oprot.writeFieldBegin(TOPOLOGY_NAME_FIELD_DESC);
+      oprot.writeString(struct.topology_name);
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.is_set_num_executors()) {
+    oprot.writeFieldBegin(NUM_EXECUTORS_FIELD_DESC);
+    oprot.writeI32(struct.num_executors);
+    oprot.writeFieldEnd();
+  }
+  if (struct.component_to_num_tasks != null) {
+    if (struct.is_set_component_to_num_tasks()) {
+      oprot.writeFieldBegin(COMPONENT_TO_NUM_TASKS_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,struct.component_to_num_tasks.size()));
+        for (        Map.Entry<String,Long> _iter422 : struct.component_to_num_tasks.entrySet()) {
+          oprot.writeString(_iter422.getKey());
+          oprot.writeI64(_iter422.getValue());
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.is_set_time_secs()) {
+    oprot.writeFieldBegin(TIME_SECS_FIELD_DESC);
+    oprot.writeI32(struct.time_secs);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_uptime_secs()) {
+    oprot.writeFieldBegin(UPTIME_SECS_FIELD_DESC);
+    oprot.writeI32(struct.uptime_secs);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_requested_memonheap()) {
+    oprot.writeFieldBegin(REQUESTED_MEMONHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.requested_memonheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    oprot.writeFieldBegin(REQUESTED_MEMOFFHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.requested_memoffheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_requested_cpu()) {
+    oprot.writeFieldBegin(REQUESTED_CPU_FIELD_DESC);
+    oprot.writeDouble(struct.requested_cpu);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    oprot.writeFieldBegin(ASSIGNED_MEMONHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.assigned_memonheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    oprot.writeFieldBegin(ASSIGNED_MEMOFFHEAP_FIELD_DESC);
+    oprot.writeDouble(struct.assigned_memoffheap);
+    oprot.writeFieldEnd();
+  }
+  if (struct.is_set_assigned_cpu()) {
+    oprot.writeFieldBegin(ASSIGNED_CPU_FIELD_DESC);
+    oprot.writeDouble(struct.assigned_cpu);
+    oprot.writeFieldEnd();
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

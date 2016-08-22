@@ -1,0 +1,6 @@
+{
+  if (this.component_to_num_tasks == null) {
+    this.component_to_num_tasks=new HashMap<String,Long>();
+  }
+  this.component_to_num_tasks.put(key,val);
+}

@@ -90,6 +90,12 @@
     if (!(this_present_replication_count && that_present_replication_count))     return false;
     if (this.replication_count != that.replication_count)     return false;
   }
+  boolean this_present_workers=true && this.is_set_workers();
+  boolean that_present_workers=true && that.is_set_workers();
+  if (this_present_workers || that_present_workers) {
+    if (!(this_present_workers && that_present_workers))     return false;
+    if (!this.workers.equals(that.workers))     return false;
+  }
   boolean this_present_requested_memonheap=true && this.is_set_requested_memonheap();
   boolean that_present_requested_memonheap=true && that.is_set_requested_memonheap();
   if (this_present_requested_memonheap || that_present_requested_memonheap) {
