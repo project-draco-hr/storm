@@ -1,0 +1,10 @@
+{
+  Map<String,String> testInputMap=new HashMap<>();
+  testInputMap.put("org.apache.storm:storm-core:1.0.0","storm-core-1.0.0.jar");
+  testInputMap.put("com.googlecode.json-simple:json-simple:1.1","json-simple-1.1.jar");
+  String testJson=JSONValue.toJSONString(testInputMap);
+  Map<String,File> parsed=sut.parseArtifactsProperties(testJson);
+  assertEquals(2,parsed.size());
+  assertEquals("storm-core-1.0.0.jar",parsed.get("org.apache.storm:storm-core:1.0.0").getName());
+  assertEquals("json-simple-1.1.jar",parsed.get("com.googlecode.json-simple:json-simple:1.1").getName());
+}

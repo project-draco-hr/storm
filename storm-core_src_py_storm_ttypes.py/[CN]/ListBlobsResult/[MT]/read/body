@@ -10,10 +10,10 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.LIST):
                 self.keys = []
-                (_etype477, _size474) = iprot.readListBegin()
-                for _i478 in xrange(_size474):
-                    _elem479 = iprot.readString().decode('utf-8')
-                    self.keys.append(_elem479)
+                (_etype491, _size488) = iprot.readListBegin()
+                for _i492 in xrange(_size488):
+                    _elem493 = iprot.readString().decode('utf-8')
+                    self.keys.append(_elem493)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

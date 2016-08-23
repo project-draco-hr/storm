@@ -1,0 +1,8 @@
+{
+  Map<String,String> artifactToPath=new LinkedHashMap<>();
+  for (  ArtifactResult artifactResult : artifactResults) {
+    Artifact artifact=artifactResult.getArtifact();
+    artifactToPath.put(AetherUtils.artifactToString(artifact),artifact.getFile().getAbsolutePath());
+  }
+  return artifactToPath;
+}

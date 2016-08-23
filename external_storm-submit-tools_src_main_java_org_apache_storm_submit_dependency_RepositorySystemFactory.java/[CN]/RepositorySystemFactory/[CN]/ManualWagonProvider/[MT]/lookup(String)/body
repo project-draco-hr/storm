@@ -1,0 +1,9 @@
+{
+  if ("http".equals(roleHint)) {
+    return new LightweightHttpWagon();
+  }
+  if ("https".equals(roleHint)) {
+    return new HttpWagon();
+  }
+  return null;
+}

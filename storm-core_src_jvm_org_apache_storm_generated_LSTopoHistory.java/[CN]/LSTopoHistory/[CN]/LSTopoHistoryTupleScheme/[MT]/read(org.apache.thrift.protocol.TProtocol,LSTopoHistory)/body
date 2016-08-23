@@ -5,22 +5,22 @@
   struct.time_stamp=iprot.readI64();
   struct.set_time_stamp_isSet(true);
 {
-    org.apache.thrift.protocol.TList _list690=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
-    struct.users=new ArrayList<String>(_list690.size);
-    String _elem691;
-    for (int _i692=0; _i692 < _list690.size; ++_i692) {
-      _elem691=iprot.readString();
-      struct.users.add(_elem691);
+    org.apache.thrift.protocol.TList _list740=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
+    struct.users=new ArrayList<String>(_list740.size);
+    String _elem741;
+    for (int _i742=0; _i742 < _list740.size; ++_i742) {
+      _elem741=iprot.readString();
+      struct.users.add(_elem741);
     }
   }
   struct.set_users_isSet(true);
 {
-    org.apache.thrift.protocol.TList _list693=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
-    struct.groups=new ArrayList<String>(_list693.size);
-    String _elem694;
-    for (int _i695=0; _i695 < _list693.size; ++_i695) {
-      _elem694=iprot.readString();
-      struct.groups.add(_elem694);
+    org.apache.thrift.protocol.TList _list743=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
+    struct.groups=new ArrayList<String>(_list743.size);
+    String _elem744;
+    for (int _i745=0; _i745 < _list743.size; ++_i745) {
+      _elem744=iprot.readString();
+      struct.groups.add(_elem744);
     }
   }
   struct.set_groups_isSet(true);

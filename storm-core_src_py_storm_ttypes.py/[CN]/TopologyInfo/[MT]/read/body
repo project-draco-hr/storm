@@ -25,11 +25,11 @@ def read(self, iprot):
         elif (fid == 4):
             if (ftype == TType.LIST):
                 self.executors = []
-                (_etype286, _size283) = iprot.readListBegin()
-                for _i287 in xrange(_size283):
-                    _elem288 = ExecutorSummary()
-                    _elem288.read(iprot)
-                    self.executors.append(_elem288)
+                (_etype300, _size297) = iprot.readListBegin()
+                for _i301 in xrange(_size297):
+                    _elem302 = ExecutorSummary()
+                    _elem302.read(iprot)
+                    self.executors.append(_elem302)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
@@ -41,29 +41,29 @@ def read(self, iprot):
         elif (fid == 6):
             if (ftype == TType.MAP):
                 self.errors = {}
-                (_ktype290, _vtype291, _size289) = iprot.readMapBegin()
-                for _i293 in xrange(_size289):
-                    _key294 = iprot.readString().decode('utf-8')
-                    _val295 = []
-                    (_etype299, _size296) = iprot.readListBegin()
-                    for _i300 in xrange(_size296):
-                        _elem301 = ErrorInfo()
-                        _elem301.read(iprot)
-                        _val295.append(_elem301)
+                (_ktype304, _vtype305, _size303) = iprot.readMapBegin()
+                for _i307 in xrange(_size303):
+                    _key308 = iprot.readString().decode('utf-8')
+                    _val309 = []
+                    (_etype313, _size310) = iprot.readListBegin()
+                    for _i314 in xrange(_size310):
+                        _elem315 = ErrorInfo()
+                        _elem315.read(iprot)
+                        _val309.append(_elem315)
                     iprot.readListEnd()
-                    self.errors[_key294] = _val295
+                    self.errors[_key308] = _val309
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 7):
             if (ftype == TType.MAP):
                 self.component_debug = {}
-                (_ktype303, _vtype304, _size302) = iprot.readMapBegin()
-                for _i306 in xrange(_size302):
-                    _key307 = iprot.readString().decode('utf-8')
-                    _val308 = DebugOptions()
-                    _val308.read(iprot)
-                    self.component_debug[_key307] = _val308
+                (_ktype317, _vtype318, _size316) = iprot.readMapBegin()
+                for _i320 in xrange(_size316):
+                    _key321 = iprot.readString().decode('utf-8')
+                    _val322 = DebugOptions()
+                    _val322.read(iprot)
+                    self.component_debug[_key321] = _val322
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

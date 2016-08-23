@@ -6,8 +6,8 @@
       oprot.writeFieldBegin(SUPERVISOR_SUMMARIES_FIELD_DESC);
 {
         oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.supervisor_summaries.size()));
-        for (        SupervisorSummary _iter408 : struct.supervisor_summaries) {
-          _iter408.write(oprot);
+        for (        SupervisorSummary _iter434 : struct.supervisor_summaries) {
+          _iter434.write(oprot);
         }
         oprot.writeListEnd();
       }
@@ -19,8 +19,8 @@
       oprot.writeFieldBegin(WORKER_SUMMARIES_FIELD_DESC);
 {
         oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.worker_summaries.size()));
-        for (        WorkerSummary _iter409 : struct.worker_summaries) {
-          _iter409.write(oprot);
+        for (        WorkerSummary _iter435 : struct.worker_summaries) {
+          _iter435.write(oprot);
         }
         oprot.writeListEnd();
       }

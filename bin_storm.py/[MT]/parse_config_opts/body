@@ -3,6 +3,8 @@ def parse_config_opts(args):
     curr.reverse()
     config_list = []
     args_list = []
+    jars_list = []
+    artifacts_list = []
     while (len(curr) > 0):
         token = curr.pop()
         if (token == '-c'):
@@ -10,6 +12,10 @@ def parse_config_opts(args):
         elif (token == '--config'):
             global CONFFILE
             CONFFILE = curr.pop()
+        elif (token == '--jars'):
+            jars_list.extend(curr.pop().split(','))
+        elif (token == '--artifacts'):
+            artifacts_list.extend(curr.pop().split(','))
         else:
             args_list.append(token)
-    return (config_list, args_list)
+    return (config_list, jars_list, artifacts_list, args_list)

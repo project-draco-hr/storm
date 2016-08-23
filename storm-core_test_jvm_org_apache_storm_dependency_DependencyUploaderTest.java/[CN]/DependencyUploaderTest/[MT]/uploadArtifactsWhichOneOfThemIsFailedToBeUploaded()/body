@@ -1,0 +1,28 @@
+{
+  String artifact="group:artifact:1.0.0";
+  String expectedBlobKeyForArtifact="group-artifact-1.0.0.jar";
+  File mockFile=createTemporaryDummyFile();
+  String artifact2="group:artifact2:2.0.0";
+  String expectedBlobKeyForArtifact2="group-artifact2-2.0.0.jar";
+  File mockFile2=mock(File.class);
+  when(mockFile2.getName()).thenReturn("dummy.jar");
+  when(mockFile2.isFile()).thenReturn(true);
+  when(mockFile2.exists()).thenReturn(true);
+  when(mockFile2.getPath()).thenThrow(new RuntimeException("just for test!"));
+  when(mockFile2.toPath()).thenThrow(new RuntimeException("just for test!"));
+  when(mockBlobStore.getBlobMeta(contains(expectedBlobKeyForArtifact))).thenReturn(new ReadableBlobMeta());
+  when(mockBlobStore.getBlobMeta(contains(expectedBlobKeyForArtifact2))).thenThrow(new KeyNotFoundException());
+  Map<String,File> artifacts=new LinkedHashMap<>();
+  artifacts.put(artifact,mockFile);
+  artifacts.put(artifact2,mockFile2);
+  try {
+    sut.uploadArtifacts(artifacts);
+    fail("Should pass RuntimeException");
+  }
+ catch (  RuntimeException e) {
+  }
+  verify(mockBlobStore).getBlobMeta(contains(expectedBlobKeyForArtifact));
+  verify(mockBlobStore).getBlobMeta(contains(expectedBlobKeyForArtifact2));
+  verify(mockBlobStore,never()).deleteBlob(contains(expectedBlobKeyForArtifact));
+  verify(mockBlobStore,never()).deleteBlob(contains(expectedBlobKeyForArtifact2));
+}

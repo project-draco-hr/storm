@@ -53,6 +53,26 @@ def read(self, iprot):
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
+        elif (fid == 5):
+            if (ftype == TType.LIST):
+                self.dependency_jars = []
+                (_etype69, _size66) = iprot.readListBegin()
+                for _i70 in xrange(_size66):
+                    _elem71 = iprot.readString().decode('utf-8')
+                    self.dependency_jars.append(_elem71)
+                iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 6):
+            if (ftype == TType.LIST):
+                self.dependency_artifacts = []
+                (_etype75, _size72) = iprot.readListBegin()
+                for _i76 in xrange(_size72):
+                    _elem77 = iprot.readString().decode('utf-8')
+                    self.dependency_artifacts.append(_elem77)
+                iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
         else:
             iprot.skip(ftype)
         iprot.readFieldEnd()

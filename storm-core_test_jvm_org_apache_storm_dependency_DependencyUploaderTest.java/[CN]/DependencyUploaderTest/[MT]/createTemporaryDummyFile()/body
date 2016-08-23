@@ -1,0 +1,7 @@
+{
+  File tempFile=File.createTempFile("tempfile",".tmp");
+  BufferedWriter bw=new BufferedWriter(new FileWriter(tempFile));
+  bw.write("This is the temporary file content");
+  bw.close();
+  return tempFile;
+}

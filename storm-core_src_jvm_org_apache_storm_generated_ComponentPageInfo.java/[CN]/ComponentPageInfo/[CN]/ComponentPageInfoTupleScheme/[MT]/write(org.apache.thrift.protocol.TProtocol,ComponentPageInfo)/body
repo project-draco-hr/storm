@@ -58,43 +58,43 @@
   if (struct.is_set_window_to_stats()) {
 {
       oprot.writeI32(struct.window_to_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter445 : struct.window_to_stats.entrySet()) {
-        oprot.writeString(_iter445.getKey());
-        _iter445.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter495 : struct.window_to_stats.entrySet()) {
+        oprot.writeString(_iter495.getKey());
+        _iter495.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_gsid_to_input_stats()) {
 {
       oprot.writeI32(struct.gsid_to_input_stats.size());
-      for (      Map.Entry<GlobalStreamId,ComponentAggregateStats> _iter446 : struct.gsid_to_input_stats.entrySet()) {
-        _iter446.getKey().write(oprot);
-        _iter446.getValue().write(oprot);
+      for (      Map.Entry<GlobalStreamId,ComponentAggregateStats> _iter496 : struct.gsid_to_input_stats.entrySet()) {
+        _iter496.getKey().write(oprot);
+        _iter496.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_sid_to_output_stats()) {
 {
       oprot.writeI32(struct.sid_to_output_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter447 : struct.sid_to_output_stats.entrySet()) {
-        oprot.writeString(_iter447.getKey());
-        _iter447.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter497 : struct.sid_to_output_stats.entrySet()) {
+        oprot.writeString(_iter497.getKey());
+        _iter497.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_exec_stats()) {
 {
       oprot.writeI32(struct.exec_stats.size());
-      for (      ExecutorAggregateStats _iter448 : struct.exec_stats) {
-        _iter448.write(oprot);
+      for (      ExecutorAggregateStats _iter498 : struct.exec_stats) {
+        _iter498.write(oprot);
       }
     }
   }
   if (struct.is_set_errors()) {
 {
       oprot.writeI32(struct.errors.size());
-      for (      ErrorInfo _iter449 : struct.errors) {
-        _iter449.write(oprot);
+      for (      ErrorInfo _iter499 : struct.errors) {
+        _iter499.write(oprot);
       }
     }
   }

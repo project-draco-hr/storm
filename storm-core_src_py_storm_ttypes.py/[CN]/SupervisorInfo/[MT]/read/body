@@ -25,31 +25,31 @@ def read(self, iprot):
         elif (fid == 4):
             if (ftype == TType.LIST):
                 self.used_ports = []
-                (_etype484, _size481) = iprot.readListBegin()
-                for _i485 in xrange(_size481):
-                    _elem486 = iprot.readI64()
-                    self.used_ports.append(_elem486)
+                (_etype498, _size495) = iprot.readListBegin()
+                for _i499 in xrange(_size495):
+                    _elem500 = iprot.readI64()
+                    self.used_ports.append(_elem500)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 5):
             if (ftype == TType.LIST):
                 self.meta = []
-                (_etype490, _size487) = iprot.readListBegin()
-                for _i491 in xrange(_size487):
-                    _elem492 = iprot.readI64()
-                    self.meta.append(_elem492)
+                (_etype504, _size501) = iprot.readListBegin()
+                for _i505 in xrange(_size501):
+                    _elem506 = iprot.readI64()
+                    self.meta.append(_elem506)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 6):
             if (ftype == TType.MAP):
                 self.scheduler_meta = {}
-                (_ktype494, _vtype495, _size493) = iprot.readMapBegin()
-                for _i497 in xrange(_size493):
-                    _key498 = iprot.readString().decode('utf-8')
-                    _val499 = iprot.readString().decode('utf-8')
-                    self.scheduler_meta[_key498] = _val499
+                (_ktype508, _vtype509, _size507) = iprot.readMapBegin()
+                for _i511 in xrange(_size507):
+                    _key512 = iprot.readString().decode('utf-8')
+                    _val513 = iprot.readString().decode('utf-8')
+                    self.scheduler_meta[_key512] = _val513
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
@@ -66,11 +66,11 @@ def read(self, iprot):
         elif (fid == 9):
             if (ftype == TType.MAP):
                 self.resources_map = {}
-                (_ktype501, _vtype502, _size500) = iprot.readMapBegin()
-                for _i504 in xrange(_size500):
-                    _key505 = iprot.readString().decode('utf-8')
-                    _val506 = iprot.readDouble()
-                    self.resources_map[_key505] = _val506
+                (_ktype515, _vtype516, _size514) = iprot.readMapBegin()
+                for _i518 in xrange(_size514):
+                    _key519 = iprot.readString().decode('utf-8')
+                    _val520 = iprot.readDouble()
+                    self.resources_map[_key519] = _val520
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

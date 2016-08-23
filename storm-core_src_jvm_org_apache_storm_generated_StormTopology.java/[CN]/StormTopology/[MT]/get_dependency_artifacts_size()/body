@@ -1,0 +1,3 @@
+{
+  return (this.dependency_artifacts == null) ? 0 : this.dependency_artifacts.size();
+}

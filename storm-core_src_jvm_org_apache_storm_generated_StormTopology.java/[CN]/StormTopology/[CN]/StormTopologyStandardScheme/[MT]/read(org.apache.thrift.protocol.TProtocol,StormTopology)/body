@@ -88,6 +88,42 @@ struct.set_worker_hooks_isSet(true);
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }
 break;
+case 5:
+if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+{
+org.apache.thrift.protocol.TList _list59=iprot.readListBegin();
+struct.dependency_jars=new ArrayList<String>(_list59.size);
+String _elem60;
+for (int _i61=0; _i61 < _list59.size; ++_i61) {
+_elem60=iprot.readString();
+struct.dependency_jars.add(_elem60);
+}
+iprot.readListEnd();
+}
+struct.set_dependency_jars_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 6:
+if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+{
+org.apache.thrift.protocol.TList _list62=iprot.readListBegin();
+struct.dependency_artifacts=new ArrayList<String>(_list62.size);
+String _elem63;
+for (int _i64=0; _i64 < _list62.size; ++_i64) {
+_elem63=iprot.readString();
+struct.dependency_artifacts.add(_elem63);
+}
+iprot.readListEnd();
+}
+struct.set_dependency_artifacts_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
 default :
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
 }

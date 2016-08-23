@@ -25,11 +25,11 @@ def read(self, iprot):
         elif (fid == 4):
             if (ftype == TType.MAP):
                 self.component_executors = {}
-                (_ktype571, _vtype572, _size570) = iprot.readMapBegin()
-                for _i574 in xrange(_size570):
-                    _key575 = iprot.readString().decode('utf-8')
-                    _val576 = iprot.readI32()
-                    self.component_executors[_key575] = _val576
+                (_ktype585, _vtype586, _size584) = iprot.readMapBegin()
+                for _i588 in xrange(_size584):
+                    _key589 = iprot.readString().decode('utf-8')
+                    _val590 = iprot.readI32()
+                    self.component_executors[_key589] = _val590
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
@@ -57,12 +57,12 @@ def read(self, iprot):
         elif (fid == 9):
             if (ftype == TType.MAP):
                 self.component_debug = {}
-                (_ktype578, _vtype579, _size577) = iprot.readMapBegin()
-                for _i581 in xrange(_size577):
-                    _key582 = iprot.readString().decode('utf-8')
-                    _val583 = DebugOptions()
-                    _val583.read(iprot)
-                    self.component_debug[_key582] = _val583
+                (_ktype592, _vtype593, _size591) = iprot.readMapBegin()
+                for _i595 in xrange(_size591):
+                    _key596 = iprot.readString().decode('utf-8')
+                    _val597 = DebugOptions()
+                    _val597.read(iprot)
+                    self.component_debug[_key596] = _val597
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

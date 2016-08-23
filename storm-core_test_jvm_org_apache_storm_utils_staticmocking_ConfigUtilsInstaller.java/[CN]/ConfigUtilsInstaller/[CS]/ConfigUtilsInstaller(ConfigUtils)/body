@@ -1,4 +1,5 @@
 {
   _oldInstance=ConfigUtils.setInstance(instance);
   _curInstance=instance;
+  System.out.println("DEBUG: instance changed: " + _curInstance);
 }

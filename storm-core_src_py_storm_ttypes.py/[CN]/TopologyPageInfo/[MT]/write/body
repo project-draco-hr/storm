@@ -38,17 +38,17 @@ def write(self, oprot):
     if (self.id_to_spout_agg_stats is not None):
         oprot.writeFieldBegin('id_to_spout_agg_stats', TType.MAP, 9)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.id_to_spout_agg_stats))
-        for (kiter403, viter404) in self.id_to_spout_agg_stats.items():
-            oprot.writeString(kiter403.encode('utf-8'))
-            viter404.write(oprot)
+        for (kiter417, viter418) in self.id_to_spout_agg_stats.items():
+            oprot.writeString(kiter417.encode('utf-8'))
+            viter418.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.id_to_bolt_agg_stats is not None):
         oprot.writeFieldBegin('id_to_bolt_agg_stats', TType.MAP, 10)
         oprot.writeMapBegin(TType.STRING, TType.STRUCT, len(self.id_to_bolt_agg_stats))
-        for (kiter405, viter406) in self.id_to_bolt_agg_stats.items():
-            oprot.writeString(kiter405.encode('utf-8'))
-            viter406.write(oprot)
+        for (kiter419, viter420) in self.id_to_bolt_agg_stats.items():
+            oprot.writeString(kiter419.encode('utf-8'))
+            viter420.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.sched_status is not None):
@@ -74,8 +74,8 @@ def write(self, oprot):
     if (self.workers is not None):
         oprot.writeFieldBegin('workers', TType.LIST, 16)
         oprot.writeListBegin(TType.STRUCT, len(self.workers))
-        for iter407 in self.workers:
-            iter407.write(oprot)
+        for iter421 in self.workers:
+            iter421.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.requested_memonheap is not None):

@@ -33,30 +33,30 @@
   }
   if (incoming.get(7)) {
 {
-      org.apache.thrift.protocol.TMap _map445=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-      struct.id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map445.size);
-      String _key446;
-      ComponentAggregateStats _val447;
-      for (int _i448=0; _i448 < _map445.size; ++_i448) {
-        _key446=iprot.readString();
-        _val447=new ComponentAggregateStats();
-        _val447.read(iprot);
-        struct.id_to_spout_agg_stats.put(_key446,_val447);
+      org.apache.thrift.protocol.TMap _map461=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.id_to_spout_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map461.size);
+      String _key462;
+      ComponentAggregateStats _val463;
+      for (int _i464=0; _i464 < _map461.size; ++_i464) {
+        _key462=iprot.readString();
+        _val463=new ComponentAggregateStats();
+        _val463.read(iprot);
+        struct.id_to_spout_agg_stats.put(_key462,_val463);
       }
     }
     struct.set_id_to_spout_agg_stats_isSet(true);
   }
   if (incoming.get(8)) {
 {
-      org.apache.thrift.protocol.TMap _map449=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-      struct.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map449.size);
-      String _key450;
-      ComponentAggregateStats _val451;
-      for (int _i452=0; _i452 < _map449.size; ++_i452) {
-        _key450=iprot.readString();
-        _val451=new ComponentAggregateStats();
-        _val451.read(iprot);
-        struct.id_to_bolt_agg_stats.put(_key450,_val451);
+      org.apache.thrift.protocol.TMap _map465=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.id_to_bolt_agg_stats=new HashMap<String,ComponentAggregateStats>(2 * _map465.size);
+      String _key466;
+      ComponentAggregateStats _val467;
+      for (int _i468=0; _i468 < _map465.size; ++_i468) {
+        _key466=iprot.readString();
+        _val467=new ComponentAggregateStats();
+        _val467.read(iprot);
+        struct.id_to_bolt_agg_stats.put(_key466,_val467);
       }
     }
     struct.set_id_to_bolt_agg_stats_isSet(true);
@@ -85,13 +85,13 @@
   }
   if (incoming.get(14)) {
 {
-      org.apache.thrift.protocol.TList _list453=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-      struct.workers=new ArrayList<WorkerSummary>(_list453.size);
-      WorkerSummary _elem454;
-      for (int _i455=0; _i455 < _list453.size; ++_i455) {
-        _elem454=new WorkerSummary();
-        _elem454.read(iprot);
-        struct.workers.add(_elem454);
+      org.apache.thrift.protocol.TList _list469=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.workers=new ArrayList<WorkerSummary>(_list469.size);
+      WorkerSummary _elem470;
+      for (int _i471=0; _i471 < _list469.size; ++_i471) {
+        _elem470=new WorkerSummary();
+        _elem470.read(iprot);
+        struct.workers.add(_elem470);
       }
     }
     struct.set_workers_isSet(true);

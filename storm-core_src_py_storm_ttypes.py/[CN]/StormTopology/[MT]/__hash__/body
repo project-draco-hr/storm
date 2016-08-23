@@ -4,4 +4,6 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.bolts))
     value = ((value * 31) ^ hash(self.state_spouts))
     value = ((value * 31) ^ hash(self.worker_hooks))
+    value = ((value * 31) ^ hash(self.dependency_jars))
+    value = ((value * 31) ^ hash(self.dependency_artifacts))
     return value

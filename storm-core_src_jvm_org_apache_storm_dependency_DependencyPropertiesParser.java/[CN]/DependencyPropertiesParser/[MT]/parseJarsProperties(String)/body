@@ -1,0 +1,12 @@
+{
+  if (prop.trim().isEmpty()) {
+    return Collections.emptyList();
+  }
+  List<String> dependencies=Arrays.asList(prop.split(","));
+  return Lists.transform(dependencies,new Function<String,File>(){
+    @Override public File apply(    String filePath){
+      return new File(filePath);
+    }
+  }
+);
+}

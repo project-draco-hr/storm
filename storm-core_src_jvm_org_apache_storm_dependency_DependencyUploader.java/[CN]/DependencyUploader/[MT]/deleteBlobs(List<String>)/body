@@ -1,0 +1,10 @@
+{
+  for (  String key : keys) {
+    try {
+      blobStore.deleteBlob(key);
+    }
+ catch (    Throwable e) {
+      LOG.warn("blob delete failed - key: {} continue...",key);
+    }
+  }
+}

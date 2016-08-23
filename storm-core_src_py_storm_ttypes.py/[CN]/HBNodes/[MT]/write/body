@@ -6,8 +6,8 @@ def write(self, oprot):
     if (self.pulseIds is not None):
         oprot.writeFieldBegin('pulseIds', TType.LIST, 1)
         oprot.writeListBegin(TType.STRING, len(self.pulseIds))
-        for iter688 in self.pulseIds:
-            oprot.writeString(iter688.encode('utf-8'))
+        for iter702 in self.pulseIds:
+            oprot.writeString(iter702.encode('utf-8'))
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

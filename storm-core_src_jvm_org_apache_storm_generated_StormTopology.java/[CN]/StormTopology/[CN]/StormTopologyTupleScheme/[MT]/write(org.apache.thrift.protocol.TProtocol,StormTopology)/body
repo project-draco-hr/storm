@@ -2,35 +2,57 @@
   TTupleProtocol oprot=(TTupleProtocol)prot;
 {
     oprot.writeI32(struct.spouts.size());
-    for (    Map.Entry<String,SpoutSpec> _iter63 : struct.spouts.entrySet()) {
-      oprot.writeString(_iter63.getKey());
-      _iter63.getValue().write(oprot);
+    for (    Map.Entry<String,SpoutSpec> _iter71 : struct.spouts.entrySet()) {
+      oprot.writeString(_iter71.getKey());
+      _iter71.getValue().write(oprot);
     }
   }
 {
     oprot.writeI32(struct.bolts.size());
-    for (    Map.Entry<String,Bolt> _iter64 : struct.bolts.entrySet()) {
-      oprot.writeString(_iter64.getKey());
-      _iter64.getValue().write(oprot);
+    for (    Map.Entry<String,Bolt> _iter72 : struct.bolts.entrySet()) {
+      oprot.writeString(_iter72.getKey());
+      _iter72.getValue().write(oprot);
     }
   }
 {
     oprot.writeI32(struct.state_spouts.size());
-    for (    Map.Entry<String,StateSpoutSpec> _iter65 : struct.state_spouts.entrySet()) {
-      oprot.writeString(_iter65.getKey());
-      _iter65.getValue().write(oprot);
+    for (    Map.Entry<String,StateSpoutSpec> _iter73 : struct.state_spouts.entrySet()) {
+      oprot.writeString(_iter73.getKey());
+      _iter73.getValue().write(oprot);
     }
   }
   BitSet optionals=new BitSet();
   if (struct.is_set_worker_hooks()) {
     optionals.set(0);
   }
-  oprot.writeBitSet(optionals,1);
+  if (struct.is_set_dependency_jars()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_dependency_artifacts()) {
+    optionals.set(2);
+  }
+  oprot.writeBitSet(optionals,3);
   if (struct.is_set_worker_hooks()) {
 {
       oprot.writeI32(struct.worker_hooks.size());
-      for (      ByteBuffer _iter66 : struct.worker_hooks) {
-        oprot.writeBinary(_iter66);
+      for (      ByteBuffer _iter74 : struct.worker_hooks) {
+        oprot.writeBinary(_iter74);
+      }
+    }
+  }
+  if (struct.is_set_dependency_jars()) {
+{
+      oprot.writeI32(struct.dependency_jars.size());
+      for (      String _iter75 : struct.dependency_jars) {
+        oprot.writeString(_iter75);
+      }
+    }
+  }
+  if (struct.is_set_dependency_artifacts()) {
+{
+      oprot.writeI32(struct.dependency_artifacts.size());
+      for (      String _iter76 : struct.dependency_artifacts) {
+        oprot.writeString(_iter76);
       }
     }
   }

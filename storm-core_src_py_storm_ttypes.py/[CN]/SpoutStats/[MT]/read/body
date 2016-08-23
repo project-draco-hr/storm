@@ -10,23 +10,6 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.acked = {}
-                (_ktype194, _vtype195, _size193) = iprot.readMapBegin()
-                for _i197 in xrange(_size193):
-                    _key198 = iprot.readString().decode('utf-8')
-                    _val199 = {}
-                    (_ktype201, _vtype202, _size200) = iprot.readMapBegin()
-                    for _i204 in xrange(_size200):
-                        _key205 = iprot.readString().decode('utf-8')
-                        _val206 = iprot.readI64()
-                        _val199[_key205] = _val206
-                    iprot.readMapEnd()
-                    self.acked[_key198] = _val199
-                iprot.readMapEnd()
-            else:
-                iprot.skip(ftype)
-        elif (fid == 2):
-            if (ftype == TType.MAP):
-                self.failed = {}
                 (_ktype208, _vtype209, _size207) = iprot.readMapBegin()
                 for _i211 in xrange(_size207):
                     _key212 = iprot.readString().decode('utf-8')
@@ -37,13 +20,13 @@ def read(self, iprot):
                         _val220 = iprot.readI64()
                         _val213[_key219] = _val220
                     iprot.readMapEnd()
-                    self.failed[_key212] = _val213
+                    self.acked[_key212] = _val213
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
-        elif (fid == 3):
+        elif (fid == 2):
             if (ftype == TType.MAP):
-                self.complete_ms_avg = {}
+                self.failed = {}
                 (_ktype222, _vtype223, _size221) = iprot.readMapBegin()
                 for _i225 in xrange(_size221):
                     _key226 = iprot.readString().decode('utf-8')
@@ -51,10 +34,27 @@ def read(self, iprot):
                     (_ktype229, _vtype230, _size228) = iprot.readMapBegin()
                     for _i232 in xrange(_size228):
                         _key233 = iprot.readString().decode('utf-8')
-                        _val234 = iprot.readDouble()
+                        _val234 = iprot.readI64()
                         _val227[_key233] = _val234
                     iprot.readMapEnd()
-                    self.complete_ms_avg[_key226] = _val227
+                    self.failed[_key226] = _val227
+                iprot.readMapEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 3):
+            if (ftype == TType.MAP):
+                self.complete_ms_avg = {}
+                (_ktype236, _vtype237, _size235) = iprot.readMapBegin()
+                for _i239 in xrange(_size235):
+                    _key240 = iprot.readString().decode('utf-8')
+                    _val241 = {}
+                    (_ktype243, _vtype244, _size242) = iprot.readMapBegin()
+                    for _i246 in xrange(_size242):
+                        _key247 = iprot.readString().decode('utf-8')
+                        _val248 = iprot.readDouble()
+                        _val241[_key247] = _val248
+                    iprot.readMapEnd()
+                    self.complete_ms_avg[_key240] = _val241
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

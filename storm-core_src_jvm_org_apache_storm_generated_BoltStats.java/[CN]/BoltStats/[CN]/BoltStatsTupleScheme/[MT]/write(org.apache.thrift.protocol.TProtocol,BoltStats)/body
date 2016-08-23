@@ -2,65 +2,65 @@
   TTupleProtocol oprot=(TTupleProtocol)prot;
 {
     oprot.writeI32(struct.acked.size());
-    for (    Map.Entry<String,Map<GlobalStreamId,Long>> _iter166 : struct.acked.entrySet()) {
-      oprot.writeString(_iter166.getKey());
+    for (    Map.Entry<String,Map<GlobalStreamId,Long>> _iter182 : struct.acked.entrySet()) {
+      oprot.writeString(_iter182.getKey());
 {
-        oprot.writeI32(_iter166.getValue().size());
-        for (        Map.Entry<GlobalStreamId,Long> _iter167 : _iter166.getValue().entrySet()) {
-          _iter167.getKey().write(oprot);
-          oprot.writeI64(_iter167.getValue());
+        oprot.writeI32(_iter182.getValue().size());
+        for (        Map.Entry<GlobalStreamId,Long> _iter183 : _iter182.getValue().entrySet()) {
+          _iter183.getKey().write(oprot);
+          oprot.writeI64(_iter183.getValue());
         }
       }
     }
   }
 {
     oprot.writeI32(struct.failed.size());
-    for (    Map.Entry<String,Map<GlobalStreamId,Long>> _iter168 : struct.failed.entrySet()) {
-      oprot.writeString(_iter168.getKey());
+    for (    Map.Entry<String,Map<GlobalStreamId,Long>> _iter184 : struct.failed.entrySet()) {
+      oprot.writeString(_iter184.getKey());
 {
-        oprot.writeI32(_iter168.getValue().size());
-        for (        Map.Entry<GlobalStreamId,Long> _iter169 : _iter168.getValue().entrySet()) {
-          _iter169.getKey().write(oprot);
-          oprot.writeI64(_iter169.getValue());
+        oprot.writeI32(_iter184.getValue().size());
+        for (        Map.Entry<GlobalStreamId,Long> _iter185 : _iter184.getValue().entrySet()) {
+          _iter185.getKey().write(oprot);
+          oprot.writeI64(_iter185.getValue());
         }
       }
     }
   }
 {
     oprot.writeI32(struct.process_ms_avg.size());
-    for (    Map.Entry<String,Map<GlobalStreamId,Double>> _iter170 : struct.process_ms_avg.entrySet()) {
-      oprot.writeString(_iter170.getKey());
+    for (    Map.Entry<String,Map<GlobalStreamId,Double>> _iter186 : struct.process_ms_avg.entrySet()) {
+      oprot.writeString(_iter186.getKey());
 {
-        oprot.writeI32(_iter170.getValue().size());
-        for (        Map.Entry<GlobalStreamId,Double> _iter171 : _iter170.getValue().entrySet()) {
-          _iter171.getKey().write(oprot);
-          oprot.writeDouble(_iter171.getValue());
+        oprot.writeI32(_iter186.getValue().size());
+        for (        Map.Entry<GlobalStreamId,Double> _iter187 : _iter186.getValue().entrySet()) {
+          _iter187.getKey().write(oprot);
+          oprot.writeDouble(_iter187.getValue());
         }
       }
     }
   }
 {
     oprot.writeI32(struct.executed.size());
-    for (    Map.Entry<String,Map<GlobalStreamId,Long>> _iter172 : struct.executed.entrySet()) {
-      oprot.writeString(_iter172.getKey());
+    for (    Map.Entry<String,Map<GlobalStreamId,Long>> _iter188 : struct.executed.entrySet()) {
+      oprot.writeString(_iter188.getKey());
 {
-        oprot.writeI32(_iter172.getValue().size());
-        for (        Map.Entry<GlobalStreamId,Long> _iter173 : _iter172.getValue().entrySet()) {
-          _iter173.getKey().write(oprot);
-          oprot.writeI64(_iter173.getValue());
+        oprot.writeI32(_iter188.getValue().size());
+        for (        Map.Entry<GlobalStreamId,Long> _iter189 : _iter188.getValue().entrySet()) {
+          _iter189.getKey().write(oprot);
+          oprot.writeI64(_iter189.getValue());
         }
       }
     }
   }
 {
     oprot.writeI32(struct.execute_ms_avg.size());
-    for (    Map.Entry<String,Map<GlobalStreamId,Double>> _iter174 : struct.execute_ms_avg.entrySet()) {
-      oprot.writeString(_iter174.getKey());
+    for (    Map.Entry<String,Map<GlobalStreamId,Double>> _iter190 : struct.execute_ms_avg.entrySet()) {
+      oprot.writeString(_iter190.getKey());
 {
-        oprot.writeI32(_iter174.getValue().size());
-        for (        Map.Entry<GlobalStreamId,Double> _iter175 : _iter174.getValue().entrySet()) {
-          _iter175.getKey().write(oprot);
-          oprot.writeDouble(_iter175.getValue());
+        oprot.writeI32(_iter190.getValue().size());
+        for (        Map.Entry<GlobalStreamId,Double> _iter191 : _iter190.getValue().entrySet()) {
+          _iter191.getKey().write(oprot);
+          oprot.writeDouble(_iter191.getValue());
         }
       }
     }

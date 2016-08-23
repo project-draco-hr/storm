@@ -1,0 +1,5 @@
+{
+  for (  ArtifactResult artifactResult : missingArtifacts) {
+    System.err.println("ArtifactResult : " + artifactResult + " / Errors : "+ artifactResult.getExceptions());
+  }
+}
