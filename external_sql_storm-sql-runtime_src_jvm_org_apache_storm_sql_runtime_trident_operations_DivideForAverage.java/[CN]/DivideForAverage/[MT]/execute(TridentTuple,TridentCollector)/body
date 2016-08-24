@@ -1,0 +1,5 @@
+{
+  Number n1=(Number)tuple.get(0);
+  Long n2=(Long)tuple.get(1);
+  collector.emit(new Values(NumberConverter.convert(Numbers.divide(n1,n2),targetClazz)));
+}

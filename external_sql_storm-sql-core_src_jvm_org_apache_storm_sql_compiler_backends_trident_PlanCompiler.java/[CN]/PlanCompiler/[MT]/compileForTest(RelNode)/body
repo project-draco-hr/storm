@@ -1,0 +1,14 @@
+{
+  final TridentTopology topology=new TridentTopology();
+  TridentLogicalPlanCompiler compiler=new TridentLogicalPlanCompiler(sources,typeFactory,topology);
+  final IAggregatableStream stream=compiler.traverse(plan);
+  return new AbstractTridentProcessor(){
+    @Override public Stream outputStream(){
+      return stream.toStream();
+    }
+    @Override public TridentTopology build(    Map<String,ISqlTridentDataSource> sources){
+      return topology;
+    }
+  }
+;
+}

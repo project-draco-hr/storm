@@ -1,0 +1,16 @@
+{
+  List<String> inputFields=new ArrayList<>(groupByFieldNames);
+  Integer fieldIdx=call.getArgList().get(0);
+  String inputFieldName=inputStream.getOutputFields().get(fieldIdx);
+  inputFields.add(inputFieldName);
+  Class<?> capturedTargetClazz=getAggrCallReturnJavaType(call);
+  if (!Number.class.isAssignableFrom(capturedTargetClazz)) {
+    throw new IllegalStateException("Return type of aggregation call should be a Number");
+  }
+  Class<? extends Number> targetClazz=(Class<? extends Number>)capturedTargetClazz;
+  String tempCountFieldName="__cnt__" + outputField;
+  String tempSumFieldName="__sum__" + outputField;
+  chainedDeclarer.aggregate(new Fields(inputFields),new CountBy(inputFieldName),new Fields(tempCountFieldName)).aggregate(new Fields(inputFields),new SumBy(inputFieldName,targetClazz),new Fields(tempSumFieldName));
+  TransformInformation divForAverage=new TransformInformation(new Fields(tempSumFieldName,tempCountFieldName),new DivideForAverage(targetClazz),new Fields(outputField));
+  transformsAfterChained.add(divForAverage);
+}

@@ -1,5 +1,6 @@
 {
-  String javaCode=generateJavaSource(plan);
-  compilingClassLoader=new CompilingClassLoader(getClass().getClassLoader(),PACKAGE_NAME + ".TridentProcessor",javaCode,null);
-  return (AbstractTridentProcessor)compilingClassLoader.loadClass(PACKAGE_NAME + ".TridentProcessor").newInstance();
+  TridentTopology topology=new TridentTopology();
+  TridentLogicalPlanCompiler compiler=new TridentLogicalPlanCompiler(sources,typeFactory,topology);
+  compiler.traverse(plan);
+  return topology;
 }

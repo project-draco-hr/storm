@@ -1,0 +1,14 @@
+{
+  if (inputStreams.size() > 1) {
+    throw new RuntimeException("Filter is a SingleRel");
+  }
+  Stream inputStream=inputStreams.get(0).toStream();
+  String stageName=getStageName(filter);
+  try (StringWriter sw=new StringWriter();PrintWriter pw=new PrintWriter(sw)){
+    ExprCompiler compiler=new ExprCompiler(pw,typeFactory);
+    String ret=filter.getCondition().accept(compiler);
+    pw.write(String.format("\nreturn %s;",ret));
+    final String expression=sw.toString();
+    return inputStream.filter(new EvaluationFilter(expression)).name(stageName);
+  }
+ }

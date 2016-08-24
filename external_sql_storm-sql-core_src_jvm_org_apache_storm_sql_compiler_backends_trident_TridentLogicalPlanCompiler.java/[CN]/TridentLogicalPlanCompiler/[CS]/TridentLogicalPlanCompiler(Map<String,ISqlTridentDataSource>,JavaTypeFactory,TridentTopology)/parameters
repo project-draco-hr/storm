@@ -1,0 +1,3 @@
+Map<String,ISqlTridentDataSource> sources
+JavaTypeFactory typeFactory
+TridentTopology topology

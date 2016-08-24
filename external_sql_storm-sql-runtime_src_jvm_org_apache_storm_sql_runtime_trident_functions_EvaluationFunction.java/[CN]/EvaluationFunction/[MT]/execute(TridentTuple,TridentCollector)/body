@@ -1,0 +1,8 @@
+{
+  try {
+    collector.emit((Values)evaluator.evaluate(new Object[]{tuple.getValues()}));
+  }
+ catch (  InvocationTargetException e) {
+    throw new RuntimeException(e);
+  }
+}

@@ -1,4 +1,0 @@
-{
-  visitTransformation(filter);
-  return null;
-}

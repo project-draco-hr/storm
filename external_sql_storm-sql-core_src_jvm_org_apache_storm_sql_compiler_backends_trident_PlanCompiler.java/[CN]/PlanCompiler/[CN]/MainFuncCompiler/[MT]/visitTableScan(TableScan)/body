@@ -1,5 +1,0 @@
-{
-  String name=RelNodeCompiler.getStageName(scan);
-  pw.print(String.format(TABLESCAN_TMPL,name,CompilerUtil.escapeJavaString(Joiner.on('.').join(scan.getTable().getQualifiedName()),true)));
-  return null;
-}
