@@ -1,0 +1,4 @@
+{
+  Object val=invokeMethod(initMethod);
+  return new UDAFAggregateState(val);
+}

@@ -1,0 +1,18 @@
+{
+  Class<?> declaringClass;
+  try {
+    declaringClass=Class.forName(declaringClassName);
+  }
+ catch (  ClassNotFoundException e) {
+    throw new RuntimeException("UDAF class is not located to classpath: " + declaringClassName);
+  }
+  setupAggregateMethods(declaringClass);
+  if (!isMethodsStatic) {
+    try {
+      aggrInstance=declaringClass.newInstance();
+    }
+ catch (    InstantiationException|IllegalAccessException e) {
+      throw new RuntimeException("Failed to instantiate an instance of the UDAF class");
+    }
+  }
+}
