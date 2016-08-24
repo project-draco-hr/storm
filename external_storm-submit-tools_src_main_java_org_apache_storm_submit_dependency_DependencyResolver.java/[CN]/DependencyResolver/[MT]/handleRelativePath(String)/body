@@ -1,0 +1,11 @@
+{
+  File repoDir=new File(localRepoPath);
+  if (!repoDir.isAbsolute()) {
+    String home=System.getProperty("storm.home");
+    if (home == null) {
+      home=".";
+    }
+    localRepoPath=home + "/" + localRepoPath;
+  }
+  return localRepoPath;
+}

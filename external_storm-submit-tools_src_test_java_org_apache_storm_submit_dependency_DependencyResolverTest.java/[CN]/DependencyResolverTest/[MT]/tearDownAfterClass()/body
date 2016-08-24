@@ -1,0 +1,3 @@
+{
+  FileUtils.deleteQuietly(tempDirForTest.toFile());
+}
