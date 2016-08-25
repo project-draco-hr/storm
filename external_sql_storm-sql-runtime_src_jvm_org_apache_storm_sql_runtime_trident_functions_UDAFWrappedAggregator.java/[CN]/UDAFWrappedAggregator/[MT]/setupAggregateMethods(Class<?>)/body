@@ -1,0 +1,8 @@
+{
+  initMethod=findMethod(declaringClass,"init");
+  addMethod=findMethod(declaringClass,"add");
+  resultMethod=findMethod(declaringClass,"result");
+  if (initMethod == null || addMethod == null) {
+    throw new RuntimeException("UDAF class must implement both 'init' and 'add' methods");
+  }
+}

@@ -1,5 +1,6 @@
 {
   String outputField=call.getName();
+  SqlAggFunction aggFunction=call.getAggregation();
   String aggregationName=call.getAggregation().getName();
   if (call.getArgList().size() != 1) {
     if (aggregationName.toUpperCase().equals("COUNT")) {
@@ -11,12 +12,16 @@
       throw new IllegalArgumentException("Aggregate call should have one argument");
     }
   }
+  if (aggFunction instanceof SqlUserDefinedAggFunction) {
+    appendUDAFToChain(chainedDeclarer,groupByFieldNames,inputStream,call,outputField);
+  }
+ else {
 switch (aggregationName.toUpperCase()) {
 case "COUNT":
-    appendCountFunctionToChain(chainedDeclarer,groupByFieldNames,inputStream,call,outputField);
-  break;
+      appendCountFunctionToChain(chainedDeclarer,groupByFieldNames,inputStream,call,outputField);
+    break;
 case "MAX":
-appendMaxFunctionToChain(chainedDeclarer,groupByFieldNames,inputStream,call,outputField);
+  appendMaxFunctionToChain(chainedDeclarer,groupByFieldNames,inputStream,call,outputField);
 break;
 case "MIN":
 appendMinFunctionToChain(chainedDeclarer,groupByFieldNames,inputStream,call,outputField);
@@ -29,5 +34,6 @@ appendAvgFunctionToChain(chainedDeclarer,groupByFieldNames,inputStream,call,outp
 break;
 default :
 throw new UnsupportedOperationException("Not supported function: " + aggregationName.toUpperCase());
+}
 }
 }

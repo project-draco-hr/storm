@@ -1,0 +1,14 @@
+{
+  int EXPECTED_VALUE_SIZE=1;
+  String sql="SELECT GRPID, COUNT(*) AS CNT, MYSTATICSUM(AGE) AS MY_STATIC_SUM, MYSUM(AGE) AS MY_SUM FROM FOO GROUP BY GRPID";
+  TestCompilerUtils.CalciteState state=TestCompilerUtils.sqlOverDummyGroupByTable(sql);
+  Map<String,ISqlTridentDataSource> data=new HashMap<>();
+  data.put("FOO",new TestUtils.MockSqlTridentGroupedDataSource());
+  PlanCompiler compiler=new PlanCompiler(data,typeFactory);
+  AbstractTridentProcessor proc=compiler.compileForTest(state.tree());
+  final TridentTopology topo=proc.build(data);
+  Fields f=proc.outputStream().getOutputFields();
+  proc.outputStream().each(f,new CollectDataFunction(),new Fields()).toStream();
+  runTridentTopology(EXPECTED_VALUE_SIZE,proc,topo);
+  Assert.assertArrayEquals(new Values[]{new Values(0,5L,15L,15L)},getCollectedValues().toArray());
+}

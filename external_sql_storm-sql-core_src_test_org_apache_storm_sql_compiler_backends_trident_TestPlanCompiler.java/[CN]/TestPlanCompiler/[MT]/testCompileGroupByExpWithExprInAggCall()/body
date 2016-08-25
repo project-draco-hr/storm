@@ -1,0 +1,14 @@
+{
+  final int EXPECTED_VALUE_SIZE=1;
+  final Map<String,ISqlTridentDataSource> data=new HashMap<>();
+  data.put("FOO",new TestUtils.MockSqlTridentGroupedDataSource());
+  String sql="SELECT GRPID, COUNT(*) AS CNT, MAX(SCORE - AGE) AS MAX_SCORE_MINUS_AGE FROM FOO GROUP BY GRPID";
+  TestCompilerUtils.CalciteState state=TestCompilerUtils.sqlOverDummyGroupByTable(sql);
+  PlanCompiler compiler=new PlanCompiler(data,typeFactory);
+  final AbstractTridentProcessor proc=compiler.compileForTest(state.tree());
+  final TridentTopology topo=proc.build(data);
+  Fields f=proc.outputStream().getOutputFields();
+  proc.outputStream().each(f,new CollectDataFunction(),new Fields()).toStream();
+  runTridentTopology(EXPECTED_VALUE_SIZE,proc,topo);
+  Assert.assertArrayEquals(new Values[]{new Values(0,5L,39)},getCollectedValues().toArray());
+}
