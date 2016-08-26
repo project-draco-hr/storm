@@ -12,7 +12,12 @@
 );
   _pendingFlusher.scheduleAtFixedRate(new Runnable(){
     @Override public void run(){
-      flushPending();
+      try {
+        flushPending();
+      }
+ catch (      Throwable t) {
+        LOG.error("Uncaught throwable in pending message flusher thread, messages may be lost",t);
+      }
     }
   }
 ,5,5,TimeUnit.SECONDS);

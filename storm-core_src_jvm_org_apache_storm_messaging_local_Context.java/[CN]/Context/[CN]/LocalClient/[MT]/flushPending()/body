@@ -1,5 +1,5 @@
 {
-  if (!_pendingDueToUnregisteredServer.isEmpty()) {
+  if (_server._cb != null && !_pendingDueToUnregisteredServer.isEmpty()) {
     ArrayList<TaskMessage> ret=new ArrayList<>();
     _pendingDueToUnregisteredServer.drainTo(ret);
     _server._cb.recv(ret);
