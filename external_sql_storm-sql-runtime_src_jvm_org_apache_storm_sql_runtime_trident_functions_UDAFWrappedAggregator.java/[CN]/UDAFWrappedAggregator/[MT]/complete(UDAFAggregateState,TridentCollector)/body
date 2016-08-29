@@ -1,0 +1,18 @@
+{
+  Object emitValue=state.getAccumulator();
+  if (resultMethod != null) {
+    emitValue=invokeMethod(resultMethod,emitValue);
+  }
+  if (Number.class.isAssignableFrom(targetClazz)) {
+    if (emitValue instanceof Number) {
+      emitValue=NumberConverter.convert((Number)emitValue,(Class<? extends Number>)targetClazz);
+    }
+ else {
+      throw new RuntimeException("Type of aggregated value should be Number");
+    }
+  }
+ else   if (!targetClazz.isAssignableFrom(emitValue.getClass())) {
+    throw new RuntimeException("Type of aggregated value should be " + targetClazz.getCanonicalName());
+  }
+  collector.emit(new Values(emitValue));
+}

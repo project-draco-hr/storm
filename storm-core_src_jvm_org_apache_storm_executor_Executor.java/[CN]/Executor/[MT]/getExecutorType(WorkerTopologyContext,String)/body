@@ -1,0 +1,14 @@
+{
+  StormTopology topology=workerTopologyContext.getRawTopology();
+  Map<String,SpoutSpec> spouts=topology.get_spouts();
+  Map<String,Bolt> bolts=topology.get_bolts();
+  if (spouts.containsKey(componentId)) {
+    return StatsUtil.SPOUT;
+  }
+ else   if (bolts.containsKey(componentId)) {
+    return StatsUtil.BOLT;
+  }
+ else {
+    throw new RuntimeException("Could not find " + componentId + " in "+ topology);
+  }
+}

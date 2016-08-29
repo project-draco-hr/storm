@@ -1,0 +1,22 @@
+{
+  if (args.length < 1) {
+    throw new IllegalArgumentException("artifacts must be presented.");
+  }
+  String artifactsArg=args[0];
+  System.err.println("DependencyResolver input - artifacts: " + artifactsArg);
+  List<Dependency> dependencies=parseArtifactArgs(artifactsArg);
+  try {
+    DependencyResolver resolver=new DependencyResolver("local-repo");
+    List<ArtifactResult> artifactResults=resolver.resolve(dependencies);
+    Iterable<ArtifactResult> missingArtifacts=filterMissingArtifacts(artifactResults);
+    if (missingArtifacts.iterator().hasNext()) {
+      printMissingArtifactsToSysErr(missingArtifacts);
+      throw new RuntimeException("Some artifacts are not resolved");
+    }
+    System.out.println(JSONValue.toJSONString(transformArtifactResultToArtifactToPaths(artifactResults)));
+    System.out.flush();
+  }
+ catch (  Throwable e) {
+    throw new RuntimeException(e);
+  }
+}

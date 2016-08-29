@@ -1,0 +1,12 @@
+{
+  try {
+    DefaultHttpCredentialsPlugin handler=new DefaultHttpCredentialsPlugin();
+    handler.prepare(new HashMap());
+    Subject subject=new Subject(false,ImmutableSet.<Principal>of(new SingleUserPrincipal("test")),new HashSet<>(),new HashSet<>());
+    ReqContext context=new ReqContext(subject);
+    Assert.assertEquals(0,handler.populateContext(context,Mockito.mock(HttpServletRequest.class)).subject().getPrincipals().size());
+  }
+  finally {
+    ReqContext.reset();
+  }
+}

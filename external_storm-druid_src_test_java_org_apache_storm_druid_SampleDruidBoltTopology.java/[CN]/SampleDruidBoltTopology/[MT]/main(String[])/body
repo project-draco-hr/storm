@@ -1,0 +1,28 @@
+{
+  if (args.length == 0) {
+    throw new IllegalArgumentException("There should be at least one argument. Run as `SampleDruidBoltTopology <zk-url>`");
+  }
+  TopologyBuilder topologyBuilder=new TopologyBuilder();
+  topologyBuilder.setSpout("event-gen",new SimpleSpout(),5);
+  DruidBeamFactory druidBeamFactory=new SampleDruidBeamFactoryImpl(new HashMap<String,Object>());
+  DruidConfig druidConfig=DruidConfig.newBuilder().discardStreamId(DruidConfig.DEFAULT_DISCARD_STREAM_ID).build();
+  ITupleDruidEventMapper<Map<String,Object>> eventMapper=new TupleDruidEventMapper<>(TupleDruidEventMapper.DEFAULT_FIELD_NAME);
+  DruidBeamBolt<Map<String,Object>> druidBolt=new DruidBeamBolt<Map<String,Object>>(druidBeamFactory,eventMapper,druidConfig);
+  topologyBuilder.setBolt("druid-bolt",druidBolt).shuffleGrouping("event-gen");
+  topologyBuilder.setBolt("printer-bolt",new PrinterBolt()).shuffleGrouping("druid-bolt",druidConfig.getDiscardStreamId());
+  Config conf=new Config();
+  conf.setDebug(true);
+  conf.put("druid.tranquility.zk.connect",args[0]);
+  if (args.length > 1) {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopologyWithProgressBar(args[1],conf,topologyBuilder.createTopology());
+  }
+ else {
+    conf.setMaxTaskParallelism(3);
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("druid-test",conf,topologyBuilder.createTopology());
+    Thread.sleep(30000);
+    cluster.shutdown();
+    System.exit(0);
+  }
+}

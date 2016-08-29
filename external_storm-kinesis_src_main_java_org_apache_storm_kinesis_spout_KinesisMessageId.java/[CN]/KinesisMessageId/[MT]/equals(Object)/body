@@ -1,0 +1,8 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  KinesisMessageId that=(KinesisMessageId)o;
+  if (streamName != null ? !streamName.equals(that.streamName) : that.streamName != null)   return false;
+  if (shardId != null ? !shardId.equals(that.shardId) : that.shardId != null)   return false;
+  return !(sequenceNumber != null ? !sequenceNumber.equals(that.sequenceNumber) : that.sequenceNumber != null);
+}

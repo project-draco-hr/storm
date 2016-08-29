@@ -5,19 +5,19 @@
   oprot.writeI32(struct.uptime_secs);
 {
     oprot.writeI32(struct.executors.size());
-    for (    ExecutorSummary _iter334 : struct.executors) {
-      _iter334.write(oprot);
+    for (    ExecutorSummary _iter350 : struct.executors) {
+      _iter350.write(oprot);
     }
   }
   oprot.writeString(struct.status);
 {
     oprot.writeI32(struct.errors.size());
-    for (    Map.Entry<String,List<ErrorInfo>> _iter335 : struct.errors.entrySet()) {
-      oprot.writeString(_iter335.getKey());
+    for (    Map.Entry<String,List<ErrorInfo>> _iter351 : struct.errors.entrySet()) {
+      oprot.writeString(_iter351.getKey());
 {
-        oprot.writeI32(_iter335.getValue().size());
-        for (        ErrorInfo _iter336 : _iter335.getValue()) {
-          _iter336.write(oprot);
+        oprot.writeI32(_iter351.getValue().size());
+        for (        ErrorInfo _iter352 : _iter351.getValue()) {
+          _iter352.write(oprot);
         }
       }
     }
@@ -57,9 +57,9 @@
   if (struct.is_set_component_debug()) {
 {
       oprot.writeI32(struct.component_debug.size());
-      for (      Map.Entry<String,DebugOptions> _iter337 : struct.component_debug.entrySet()) {
-        oprot.writeString(_iter337.getKey());
-        _iter337.getValue().write(oprot);
+      for (      Map.Entry<String,DebugOptions> _iter353 : struct.component_debug.entrySet()) {
+        oprot.writeString(_iter353.getKey());
+        _iter353.getValue().write(oprot);
       }
     }
   }

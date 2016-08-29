@@ -1,0 +1,6 @@
+{
+  Assert.assertFalse("Deny execute to unauthroized user",isPermitted(strictHandler,ReqContext.context(),"execute",function));
+  Assert.assertFalse("Deny execute to valid user for incorrect function",isPermitted(strictHandler,aliceContext,"execute",wrongFunction));
+  Assert.assertTrue("Allow execute to authorized kerb user for correct function",isPermitted(strictHandler,aliceKerbContext,"execute",function));
+  Assert.assertTrue("Allow execute to authorized user for correct function",isPermitted(strictHandler,aliceContext,"execute",function));
+}

@@ -1,0 +1,17 @@
+{
+  try {
+    ISpout spout=(ISpout)taskData.getTaskObject();
+    int taskId=taskData.getTaskId();
+    if (executor.getIsDebug()) {
+      LOG.info("SPOUT Acking message {} {}",tupleInfo.getId(),tupleInfo.getMessageId());
+    }
+    spout.ack(tupleInfo.getMessageId());
+    new SpoutAckInfo(tupleInfo.getMessageId(),taskId,timeDelta).applyOn(taskData.getUserContext());
+    if (timeDelta != null) {
+      ((SpoutExecutorStats)executor.getStats()).spoutAckedTuple(tupleInfo.getStream(),timeDelta);
+    }
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}

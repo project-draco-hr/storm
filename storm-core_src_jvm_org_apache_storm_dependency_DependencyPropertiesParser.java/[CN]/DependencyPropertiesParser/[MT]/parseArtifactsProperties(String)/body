@@ -1,0 +1,13 @@
+{
+  try {
+    Map<String,String> parsed=(Map<String,String>)JSONValue.parseWithException(prop);
+    Map<String,File> packages=new LinkedHashMap<>(parsed.size());
+    for (    Map.Entry<String,String> artifactToFilePath : parsed.entrySet()) {
+      packages.put(artifactToFilePath.getKey(),new File(artifactToFilePath.getValue()));
+    }
+    return packages;
+  }
+ catch (  ParseException e) {
+    throw new RuntimeException(e);
+  }
+}

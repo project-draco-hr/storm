@@ -1,0 +1,9 @@
+{
+  LOG.info("Expression: {}",expression);
+  try {
+    evaluator=new ScriptEvaluator(expression,Boolean.class,new String[]{"_data"},new Class[]{List.class});
+  }
+ catch (  CompileException e) {
+    throw new RuntimeException(e);
+  }
+}

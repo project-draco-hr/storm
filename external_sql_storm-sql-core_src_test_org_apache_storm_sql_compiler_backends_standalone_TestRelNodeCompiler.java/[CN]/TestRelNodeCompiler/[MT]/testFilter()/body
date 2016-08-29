@@ -6,13 +6,13 @@
   LogicalFilter filter=(LogicalFilter)project.getInput();
   try (StringWriter sw=new StringWriter();PrintWriter pw=new PrintWriter(sw)){
     RelNodeCompiler compiler=new RelNodeCompiler(pw,typeFactory);
-    compiler.visitFilter(filter);
+    compiler.visitFilter(filter,Collections.EMPTY_LIST);
     pw.flush();
     Assert.assertThat(sw.toString(),containsString("> 3"));
   }
    try (StringWriter sw=new StringWriter();PrintWriter pw=new PrintWriter(sw)){
     RelNodeCompiler compiler=new RelNodeCompiler(pw,typeFactory);
-    compiler.visitProject(project);
+    compiler.visitProject(project,Collections.EMPTY_LIST);
     pw.flush();
     Assert.assertThat(sw.toString(),containsString("plus("));
   }

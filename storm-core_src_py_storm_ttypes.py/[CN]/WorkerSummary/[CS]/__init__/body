@@ -1,0 +1,16 @@
+def __init__(self, supervisor_id=None, host=None, port=None, topology_id=None, topology_name=None, num_executors=None, component_to_num_tasks=None, time_secs=None, uptime_secs=None, requested_memonheap=None, requested_memoffheap=None, requested_cpu=None, assigned_memonheap=None, assigned_memoffheap=None, assigned_cpu=None):
+    self.supervisor_id = supervisor_id
+    self.host = host
+    self.port = port
+    self.topology_id = topology_id
+    self.topology_name = topology_name
+    self.num_executors = num_executors
+    self.component_to_num_tasks = component_to_num_tasks
+    self.time_secs = time_secs
+    self.uptime_secs = uptime_secs
+    self.requested_memonheap = requested_memonheap
+    self.requested_memoffheap = requested_memoffheap
+    self.requested_cpu = requested_cpu
+    self.assigned_memonheap = assigned_memonheap
+    self.assigned_memoffheap = assigned_memoffheap
+    self.assigned_cpu = assigned_cpu

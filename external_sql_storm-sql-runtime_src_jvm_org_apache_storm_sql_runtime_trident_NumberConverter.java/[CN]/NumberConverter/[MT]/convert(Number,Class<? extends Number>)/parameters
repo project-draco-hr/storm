@@ -1,0 +1,2 @@
+Number num
+Class<? extends Number> toType

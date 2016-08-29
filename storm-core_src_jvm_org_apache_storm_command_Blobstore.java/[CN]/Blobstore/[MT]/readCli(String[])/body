@@ -1,0 +1,13 @@
+{
+  Map<String,Object> cl=CLI.opt("f","file",null,CLI.AS_STRING).arg("key",CLI.FIRST_WINS).parse(args);
+  final String key=(String)cl.get("key");
+  final String file=(String)cl.get("f");
+  if (StringUtils.isNotEmpty(file)) {
+    try (BufferedOutputStream f=new BufferedOutputStream(new FileOutputStream(file))){
+      BlobStoreSupport.readBlob(key,f);
+    }
+   }
+ else {
+    BlobStoreSupport.readBlob(key,System.out);
+  }
+}

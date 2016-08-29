@@ -1,0 +1,6 @@
+{
+  if (this.workers == null) {
+    this.workers=new ArrayList<WorkerSummary>();
+  }
+  this.workers.add(elem);
+}

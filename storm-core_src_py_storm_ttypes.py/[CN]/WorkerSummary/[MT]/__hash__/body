@@ -1,0 +1,18 @@
+def __hash__(self):
+    value = 17
+    value = ((value * 31) ^ hash(self.supervisor_id))
+    value = ((value * 31) ^ hash(self.host))
+    value = ((value * 31) ^ hash(self.port))
+    value = ((value * 31) ^ hash(self.topology_id))
+    value = ((value * 31) ^ hash(self.topology_name))
+    value = ((value * 31) ^ hash(self.num_executors))
+    value = ((value * 31) ^ hash(self.component_to_num_tasks))
+    value = ((value * 31) ^ hash(self.time_secs))
+    value = ((value * 31) ^ hash(self.uptime_secs))
+    value = ((value * 31) ^ hash(self.requested_memonheap))
+    value = ((value * 31) ^ hash(self.requested_memoffheap))
+    value = ((value * 31) ^ hash(self.requested_cpu))
+    value = ((value * 31) ^ hash(self.assigned_memonheap))
+    value = ((value * 31) ^ hash(self.assigned_memoffheap))
+    value = ((value * 31) ^ hash(self.assigned_cpu))
+    return value

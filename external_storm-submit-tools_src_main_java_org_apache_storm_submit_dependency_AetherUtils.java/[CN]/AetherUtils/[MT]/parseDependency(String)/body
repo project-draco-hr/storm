@@ -1,0 +1,9 @@
+{
+  List<String> dependencyAndExclusions=Arrays.asList(dependency.split("\\^"));
+  Collection<Exclusion> exclusions=new ArrayList<>();
+  for (int idx=1; idx < dependencyAndExclusions.size(); idx++) {
+    exclusions.add(AetherUtils.createExclusion(dependencyAndExclusions.get(idx)));
+  }
+  Artifact artifact=new DefaultArtifact(dependencyAndExclusions.get(0));
+  return new Dependency(artifact,JavaScopes.COMPILE,false,exclusions);
+}

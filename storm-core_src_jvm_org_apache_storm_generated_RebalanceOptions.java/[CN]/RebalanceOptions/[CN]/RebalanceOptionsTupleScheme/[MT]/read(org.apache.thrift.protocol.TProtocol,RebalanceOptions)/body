@@ -11,14 +11,14 @@
   }
   if (incoming.get(2)) {
 {
-      org.apache.thrift.protocol.TMap _map474=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
-      struct.num_executors=new HashMap<String,Integer>(2 * _map474.size);
-      String _key475;
-      int _val476;
-      for (int _i477=0; _i477 < _map474.size; ++_i477) {
-        _key475=iprot.readString();
-        _val476=iprot.readI32();
-        struct.num_executors.put(_key475,_val476);
+      org.apache.thrift.protocol.TMap _map524=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
+      struct.num_executors=new HashMap<String,Integer>(2 * _map524.size);
+      String _key525;
+      int _val526;
+      for (int _i527=0; _i527 < _map524.size; ++_i527) {
+        _key525=iprot.readString();
+        _val526=iprot.readI32();
+        struct.num_executors.put(_key525,_val526);
       }
     }
     struct.set_num_executors_isSet(true);

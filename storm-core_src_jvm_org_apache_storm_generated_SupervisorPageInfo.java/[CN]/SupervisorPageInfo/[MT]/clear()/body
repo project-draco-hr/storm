@@ -1,0 +1,4 @@
+{
+  this.supervisor_summaries=null;
+  this.worker_summaries=null;
+}

@@ -1,0 +1,14 @@
+{
+  final int EXPECTED_VALUE_SIZE=1;
+  String sql="SELECT ID > 0 OR ID < 1, ID > 0 AND ID < 1, NOT (ID > 0 AND ID < 1) FROM FOO WHERE ID > 0 AND ID < 2";
+  TestCompilerUtils.CalciteState state=TestCompilerUtils.sqlOverDummyTable(sql);
+  Map<String,ISqlTridentDataSource> data=new HashMap<>();
+  data.put("FOO",new TestUtils.MockSqlTridentDataSource());
+  PlanCompiler compiler=new PlanCompiler(data,typeFactory);
+  AbstractTridentProcessor proc=compiler.compileForTest(state.tree());
+  final TridentTopology topo=proc.build(data);
+  Fields f=proc.outputStream().getOutputFields();
+  proc.outputStream().each(f,new CollectDataFunction(),new Fields()).toStream();
+  runTridentTopology(EXPECTED_VALUE_SIZE,proc,topo);
+  Assert.assertArrayEquals(new Values[]{new Values(true,false,true)},getCollectedValues().toArray());
+}

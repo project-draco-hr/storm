@@ -1,5 +1,5 @@
 {
-  List<Integer> taskIds=new ArrayList<Integer>();
+  List<Integer> taskIds=new ArrayList<>();
   int taskId=executorId.get(0).intValue();
   while (taskId <= executorId.get(1).intValue()) {
     taskIds.add(taskId);

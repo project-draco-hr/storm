@@ -21,8 +21,20 @@
     String stormRoot=ConfigUtils.supervisorStormDistRoot(conf,stormId);
     String jlp=jlp(stormRoot,conf);
     String stormJar=ConfigUtils.supervisorStormJarPath(stormRoot);
+    StormTopology stormTopology=ConfigUtils.readSupervisorTopology(conf,stormId);
+    List<String> dependencyLocations=new ArrayList<>();
+    if (stormTopology.get_dependency_jars() != null) {
+      for (      String dependency : stormTopology.get_dependency_jars()) {
+        dependencyLocations.add(new File(stormRoot,dependency).getAbsolutePath());
+      }
+    }
+    if (stormTopology.get_dependency_artifacts() != null) {
+      for (      String dependency : stormTopology.get_dependency_artifacts()) {
+        dependencyLocations.add(new File(stormRoot,dependency).getAbsolutePath());
+      }
+    }
     Map stormConf=ConfigUtils.readSupervisorStormConf(conf,stormId);
-    String workerClassPath=getWorkerClassPath(stormJar,stormConf);
+    String workerClassPath=getWorkerClassPath(stormJar,stormConf,dependencyLocations);
     Object topGcOptsObject=stormConf.get(Config.TOPOLOGY_WORKER_GC_CHILDOPTS);
     List<String> topGcOpts=new ArrayList<>();
     if (topGcOptsObject instanceof String) {

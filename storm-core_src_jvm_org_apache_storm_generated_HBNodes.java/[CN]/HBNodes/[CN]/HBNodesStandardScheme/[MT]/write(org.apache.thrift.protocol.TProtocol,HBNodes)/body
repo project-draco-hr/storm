@@ -5,8 +5,8 @@
     oprot.writeFieldBegin(PULSE_IDS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,struct.pulseIds.size()));
-      for (      String _iter733 : struct.pulseIds) {
-        oprot.writeString(_iter733);
+      for (      String _iter783 : struct.pulseIds) {
+        oprot.writeString(_iter783);
       }
       oprot.writeListEnd();
     }

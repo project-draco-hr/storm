@@ -8,8 +8,8 @@
   if (struct.is_set_success()) {
 {
       oprot.writeI32(struct.success.size());
-      for (      ProfileRequest _iter742 : struct.success) {
-        _iter742.write(oprot);
+      for (      ProfileRequest _iter792 : struct.success) {
+        _iter792.write(oprot);
       }
     }
   }

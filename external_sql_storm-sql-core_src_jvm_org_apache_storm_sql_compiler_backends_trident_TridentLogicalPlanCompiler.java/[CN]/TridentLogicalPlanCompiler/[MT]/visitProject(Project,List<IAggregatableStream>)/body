@@ -1,0 +1,25 @@
+{
+  if (inputStreams.size() > 1) {
+    throw new RuntimeException("Project is a SingleRel");
+  }
+  Stream inputStream=inputStreams.get(0).toStream();
+  Fields inputFields=inputStream.getOutputFields();
+  String stageName=getStageName(project);
+  List<String> outputFieldNames=project.getRowType().getFieldNames();
+  List<String> temporaryOutputFieldNames=new ArrayList<>();
+  for (  String outputFieldName : outputFieldNames) {
+    temporaryOutputFieldNames.add("__" + outputFieldName + "__");
+  }
+  try (StringWriter sw=new StringWriter();PrintWriter pw=new PrintWriter(sw)){
+    pw.write("import org.apache.storm.tuple.Values;\n");
+    ExprCompiler compiler=new ExprCompiler(pw,typeFactory);
+    int size=project.getChildExps().size();
+    String[] res=new String[size];
+    for (int i=0; i < size; ++i) {
+      res[i]=project.getChildExps().get(i).accept(compiler);
+    }
+    pw.write(String.format("\nreturn new Values(%s);",Joiner.on(',').join(res)));
+    final String expression=sw.toString();
+    return inputStream.each(inputFields,new EvaluationFunction(expression),new Fields(temporaryOutputFieldNames)).project(new Fields(temporaryOutputFieldNames)).each(new Fields(temporaryOutputFieldNames),new ForwardFunction(),new Fields(outputFieldNames)).project(new Fields(outputFieldNames)).name(stageName);
+  }
+ }

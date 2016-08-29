@@ -1,0 +1,6 @@
+{
+  if (this.worker_summaries == null) {
+    this.worker_summaries=new ArrayList<WorkerSummary>();
+  }
+  this.worker_summaries.add(elem);
+}

@@ -44,25 +44,28 @@
   if (struct.is_set_replication_count()) {
     optionals.set(13);
   }
-  if (struct.is_set_requested_memonheap()) {
+  if (struct.is_set_workers()) {
     optionals.set(14);
   }
-  if (struct.is_set_requested_memoffheap()) {
+  if (struct.is_set_requested_memonheap()) {
     optionals.set(15);
   }
-  if (struct.is_set_requested_cpu()) {
+  if (struct.is_set_requested_memoffheap()) {
     optionals.set(16);
   }
-  if (struct.is_set_assigned_memonheap()) {
+  if (struct.is_set_requested_cpu()) {
     optionals.set(17);
   }
-  if (struct.is_set_assigned_memoffheap()) {
+  if (struct.is_set_assigned_memonheap()) {
     optionals.set(18);
   }
-  if (struct.is_set_assigned_cpu()) {
+  if (struct.is_set_assigned_memoffheap()) {
     optionals.set(19);
   }
-  oprot.writeBitSet(optionals,20);
+  if (struct.is_set_assigned_cpu()) {
+    optionals.set(20);
+  }
+  oprot.writeBitSet(optionals,21);
   if (struct.is_set_name()) {
     oprot.writeString(struct.name);
   }
@@ -87,18 +90,18 @@
   if (struct.is_set_id_to_spout_agg_stats()) {
 {
       oprot.writeI32(struct.id_to_spout_agg_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter412 : struct.id_to_spout_agg_stats.entrySet()) {
-        oprot.writeString(_iter412.getKey());
-        _iter412.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter458 : struct.id_to_spout_agg_stats.entrySet()) {
+        oprot.writeString(_iter458.getKey());
+        _iter458.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_id_to_bolt_agg_stats()) {
 {
       oprot.writeI32(struct.id_to_bolt_agg_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter413 : struct.id_to_bolt_agg_stats.entrySet()) {
-        oprot.writeString(_iter413.getKey());
-        _iter413.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter459 : struct.id_to_bolt_agg_stats.entrySet()) {
+        oprot.writeString(_iter459.getKey());
+        _iter459.getValue().write(oprot);
       }
     }
   }
@@ -116,6 +119,14 @@
   }
   if (struct.is_set_replication_count()) {
     oprot.writeI32(struct.replication_count);
+  }
+  if (struct.is_set_workers()) {
+{
+      oprot.writeI32(struct.workers.size());
+      for (      WorkerSummary _iter460 : struct.workers) {
+        _iter460.write(oprot);
+      }
+    }
   }
   if (struct.is_set_requested_memonheap()) {
     oprot.writeDouble(struct.requested_memonheap);

@@ -1,6 +1,0 @@
-{
-  String name=RelNodeCompiler.getStageName(node);
-  RelNode input=node.getInput();
-  String inputName=RelNodeCompiler.getStageName(input);
-  pw.print(String.format(TRANSFORMATION_TMPL,name,inputName,getFieldString(input),getFieldString(node)));
-}

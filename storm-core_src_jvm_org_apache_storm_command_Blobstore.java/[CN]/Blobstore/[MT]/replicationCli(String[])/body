@@ -1,0 +1,37 @@
+{
+  if (args.length == 0) {
+    throw new IllegalArgumentException("replication command needs at least subcommand as parameter.");
+  }
+  final String subCommand=args[0];
+  final String[] newArgs=Arrays.copyOfRange(args,1,args.length);
+  ClientBlobStore.withConfiguredClient(new ClientBlobStore.WithBlobstore(){
+    @Override public void run(    ClientBlobStore blobStore) throws Exception {
+switch (subCommand) {
+case "--read":
+        if (newArgs.length == 0) {
+          throw new IllegalArgumentException("replication --read needs key as parameter.");
+        }
+      String key=newArgs[0];
+    int blobReplication=blobStore.getBlobReplication(key);
+  LOG.info("Current replication factor {}",blobReplication);
+break;
+case "--update":
+updateReplicationFactor(blobStore,newArgs);
+break;
+default :
+throw new RuntimeException("" + subCommand + " is not a supported blobstore command");
+}
+}
+private void updateReplicationFactor(ClientBlobStore blobStore,String[] args) throws Exception {
+Map<String,Object> cl=CLI.opt("r","replication-factor",null,CLI.AS_INT).arg("key",CLI.FIRST_WINS).parse(args);
+final String key=(String)cl.get("key");
+final Integer replicationFactor=(Integer)cl.get("r");
+if (replicationFactor == null) {
+throw new RuntimeException("Please set the replication factor");
+}
+int blobReplication=blobStore.updateBlobReplication(key,replicationFactor);
+LOG.info("Replication factor is set to {}",blobReplication);
+}
+}
+);
+}

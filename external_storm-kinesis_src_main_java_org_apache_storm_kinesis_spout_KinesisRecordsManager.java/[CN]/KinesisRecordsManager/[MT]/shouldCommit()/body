@@ -1,0 +1,3 @@
+{
+  return (System.currentTimeMillis() - lastCommitTime >= kinesisConfig.getZkInfo().getCommitIntervalMs());
+}

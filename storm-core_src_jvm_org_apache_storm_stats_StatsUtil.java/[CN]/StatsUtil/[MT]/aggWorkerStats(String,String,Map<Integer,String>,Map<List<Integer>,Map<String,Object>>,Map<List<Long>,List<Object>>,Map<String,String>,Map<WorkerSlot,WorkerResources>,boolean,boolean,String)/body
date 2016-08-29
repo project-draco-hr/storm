@@ -1,0 +1,65 @@
+{
+  HashMap<WorkerSlot,WorkerSummary> workerSummaryMap=new HashMap<>();
+  if (exec2NodePort != null) {
+    for (    Map.Entry<List<Long>,List<Object>> execNodePort : exec2NodePort.entrySet()) {
+      List<Object> nodePort=execNodePort.getValue();
+      String node=(String)nodePort.get(0);
+      Long port=(Long)nodePort.get(1);
+      String host=nodeHost.get(node);
+      WorkerSlot slot=new WorkerSlot(node,port);
+      WorkerResources resources=worker2Resources.get(slot);
+      if (filterSupervisor == null || node.equals(filterSupervisor)) {
+        WorkerSummary ws=workerSummaryMap.get(slot);
+        if (ws == null) {
+          ws=new WorkerSummary();
+          ws.set_host(host);
+          ws.set_port(port.intValue());
+          ws.set_supervisor_id(node);
+          ws.set_topology_id(stormId);
+          ws.set_topology_name(stormName);
+          ws.set_num_executors(0);
+          if (resources != null) {
+            ws.set_assigned_memonheap(resources.get_mem_on_heap());
+            ws.set_assigned_memoffheap(resources.get_mem_off_heap());
+            ws.set_assigned_cpu(resources.get_cpu());
+          }
+ else {
+            ws.set_assigned_memonheap(0);
+            ws.set_assigned_memoffheap(0);
+            ws.set_assigned_cpu(0);
+          }
+          ws.set_component_to_num_tasks(new HashMap<String,Long>());
+          workerSummaryMap.put(slot,ws);
+        }
+        Map<String,Long> componentToNumTasks=ws.get_component_to_num_tasks();
+        List<Long> exec=execNodePort.getKey();
+        int hbeatSecs=0;
+        if (beats != null) {
+          Map<String,Object> beat=beats.get(convertExecutor(exec));
+          if (beat != null) {
+            Map<String,Object> hbeat=(Map<String,Object>)beat.get("heartbeat");
+            hbeatSecs=hbeat == null ? 0 : (int)hbeat.get("uptime");
+          }
+        }
+        ws.set_uptime_secs(hbeatSecs);
+        ws.set_num_executors(ws.get_num_executors() + 1);
+        if (userAuthorized) {
+          int firstTask=exec.get(0).intValue();
+          int lastTask=exec.get(1).intValue();
+          for (int task=firstTask; task <= lastTask; task++) {
+            String component=task2Component.get(task);
+            if (!includeSys && Utils.isSystemId(component)) {
+              continue;
+            }
+            Long counter=componentToNumTasks.get(component);
+            if (counter == null) {
+              counter=new Long(0);
+            }
+            componentToNumTasks.put(component,counter + 1);
+          }
+        }
+      }
+    }
+  }
+  return new ArrayList<WorkerSummary>(workerSummaryMap.values());
+}

@@ -1,0 +1,9 @@
+def send_getSupervisorPageInfo(self, id, host, is_include_sys):
+    self._oprot.writeMessageBegin('getSupervisorPageInfo', TMessageType.CALL, self._seqid)
+    args = getSupervisorPageInfo_args()
+    args.id = id
+    args.host = host
+    args.is_include_sys = is_include_sys
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()

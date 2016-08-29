@@ -1,0 +1,3 @@
+{
+  return "KinesisConnectionInfo{" + "serializedKinesisCredsProvider=" + Arrays.toString(serializedKinesisCredsProvider) + ", serializedkinesisClientConfig="+ Arrays.toString(serializedkinesisClientConfig)+ ", region="+ region+ ", recordsLimit="+ recordsLimit+ '}';
+}

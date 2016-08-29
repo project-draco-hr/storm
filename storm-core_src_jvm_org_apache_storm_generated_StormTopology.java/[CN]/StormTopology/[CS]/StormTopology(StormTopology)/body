@@ -36,4 +36,12 @@
     List<ByteBuffer> __this__worker_hooks=new ArrayList<ByteBuffer>(other.worker_hooks);
     this.worker_hooks=__this__worker_hooks;
   }
+  if (other.is_set_dependency_jars()) {
+    List<String> __this__dependency_jars=new ArrayList<String>(other.dependency_jars);
+    this.dependency_jars=__this__dependency_jars;
+  }
+  if (other.is_set_dependency_artifacts()) {
+    List<String> __this__dependency_artifacts=new ArrayList<String>(other.dependency_artifacts);
+    this.dependency_artifacts=__this__dependency_artifacts;
+  }
 }

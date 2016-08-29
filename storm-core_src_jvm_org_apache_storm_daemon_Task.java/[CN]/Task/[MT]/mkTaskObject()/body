@@ -3,8 +3,8 @@
   Map<String,SpoutSpec> spouts=topology.get_spouts();
   Map<String,Bolt> bolts=topology.get_bolts();
   Map<String,StateSpoutSpec> stateSpouts=topology.get_state_spouts();
-  Object result=null;
-  ComponentObject componentObject=null;
+  Object result;
+  ComponentObject componentObject;
   if (spouts.containsKey(componentId)) {
     componentObject=spouts.get(componentId).get_spout_object();
   }

@@ -1,0 +1,3 @@
+{
+  new ZookeeperServerCnxnFactory(65536,42);
+}

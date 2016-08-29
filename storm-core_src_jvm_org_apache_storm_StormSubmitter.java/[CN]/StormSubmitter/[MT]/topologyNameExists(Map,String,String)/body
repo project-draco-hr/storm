@@ -1,6 +1,5 @@
 {
-  NimbusClient client=NimbusClient.getConfiguredClientAs(conf,asUser);
-  try {
+  try (NimbusClient client=NimbusClient.getConfiguredClientAs(conf,asUser)){
     ClusterSummary summary=client.getClient().getClusterInfo();
     for (    TopologySummary s : summary.get_topologies()) {
       if (s.get_name().equals(name)) {
@@ -11,8 +10,5 @@
   }
  catch (  Exception e) {
     throw new RuntimeException(e);
-  }
- finally {
-    client.close();
   }
 }

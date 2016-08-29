@@ -1,0 +1,10 @@
+{
+  ClientBlobStore.withConfiguredClient(new ClientBlobStore.WithBlobstore(){
+    @Override public void run(    ClientBlobStore blobStore) throws Exception {
+      try (InputStreamWithMeta is=blobStore.getBlob(key)){
+        IOUtils.copy(is,os);
+      }
+     }
+  }
+);
+}

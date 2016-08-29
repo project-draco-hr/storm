@@ -20,45 +20,45 @@
   if (struct.is_set_window_to_emitted()) {
 {
       oprot.writeI32(struct.window_to_emitted.size());
-      for (      Map.Entry<String,Long> _iter377 : struct.window_to_emitted.entrySet()) {
-        oprot.writeString(_iter377.getKey());
-        oprot.writeI64(_iter377.getValue());
+      for (      Map.Entry<String,Long> _iter393 : struct.window_to_emitted.entrySet()) {
+        oprot.writeString(_iter393.getKey());
+        oprot.writeI64(_iter393.getValue());
       }
     }
   }
   if (struct.is_set_window_to_transferred()) {
 {
       oprot.writeI32(struct.window_to_transferred.size());
-      for (      Map.Entry<String,Long> _iter378 : struct.window_to_transferred.entrySet()) {
-        oprot.writeString(_iter378.getKey());
-        oprot.writeI64(_iter378.getValue());
+      for (      Map.Entry<String,Long> _iter394 : struct.window_to_transferred.entrySet()) {
+        oprot.writeString(_iter394.getKey());
+        oprot.writeI64(_iter394.getValue());
       }
     }
   }
   if (struct.is_set_window_to_complete_latencies_ms()) {
 {
       oprot.writeI32(struct.window_to_complete_latencies_ms.size());
-      for (      Map.Entry<String,Double> _iter379 : struct.window_to_complete_latencies_ms.entrySet()) {
-        oprot.writeString(_iter379.getKey());
-        oprot.writeDouble(_iter379.getValue());
+      for (      Map.Entry<String,Double> _iter395 : struct.window_to_complete_latencies_ms.entrySet()) {
+        oprot.writeString(_iter395.getKey());
+        oprot.writeDouble(_iter395.getValue());
       }
     }
   }
   if (struct.is_set_window_to_acked()) {
 {
       oprot.writeI32(struct.window_to_acked.size());
-      for (      Map.Entry<String,Long> _iter380 : struct.window_to_acked.entrySet()) {
-        oprot.writeString(_iter380.getKey());
-        oprot.writeI64(_iter380.getValue());
+      for (      Map.Entry<String,Long> _iter396 : struct.window_to_acked.entrySet()) {
+        oprot.writeString(_iter396.getKey());
+        oprot.writeI64(_iter396.getValue());
       }
     }
   }
   if (struct.is_set_window_to_failed()) {
 {
       oprot.writeI32(struct.window_to_failed.size());
-      for (      Map.Entry<String,Long> _iter381 : struct.window_to_failed.entrySet()) {
-        oprot.writeString(_iter381.getKey());
-        oprot.writeI64(_iter381.getValue());
+      for (      Map.Entry<String,Long> _iter397 : struct.window_to_failed.entrySet()) {
+        oprot.writeString(_iter397.getKey());
+        oprot.writeI64(_iter397.getValue());
       }
     }
   }

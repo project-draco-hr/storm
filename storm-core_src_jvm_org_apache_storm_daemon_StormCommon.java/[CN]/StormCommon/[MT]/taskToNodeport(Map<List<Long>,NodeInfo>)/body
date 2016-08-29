@@ -1,10 +1,10 @@
 {
-  Map<Integer,NodeInfo> tasksToNodeport=new HashMap<Integer,NodeInfo>();
-  for (  Map.Entry<List<Long>,NodeInfo> entry : executorToNodeport.entrySet()) {
+  Map<Integer,NodeInfo> tasksToNodePort=new HashMap<>();
+  for (  Map.Entry<List<Long>,NodeInfo> entry : executorToNodePort.entrySet()) {
     List<Integer> taskIds=executorIdToTasks(entry.getKey());
     for (    Integer taskId : taskIds) {
-      tasksToNodeport.put(taskId,entry.getValue());
+      tasksToNodePort.put(taskId,entry.getValue());
     }
   }
-  return tasksToNodeport;
+  return tasksToNodePort;
 }

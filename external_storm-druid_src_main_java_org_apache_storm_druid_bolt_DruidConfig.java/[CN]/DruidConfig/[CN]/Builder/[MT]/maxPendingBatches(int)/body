@@ -1,0 +1,4 @@
+{
+  this.maxPendingBatches=maxPendingBatches;
+  return this;
+}

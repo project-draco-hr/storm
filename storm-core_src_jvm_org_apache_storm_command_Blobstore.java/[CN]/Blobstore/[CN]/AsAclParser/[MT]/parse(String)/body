@@ -1,0 +1,7 @@
+{
+  List<AccessControl> accessControls=new ArrayList<>();
+  for (  String part : value.split(",")) {
+    accessControls.add(asAccessControl(part));
+  }
+  return accessControls;
+}

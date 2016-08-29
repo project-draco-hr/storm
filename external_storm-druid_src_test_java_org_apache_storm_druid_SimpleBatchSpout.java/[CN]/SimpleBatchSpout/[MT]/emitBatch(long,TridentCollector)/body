@@ -1,0 +1,23 @@
+{
+  List<List<Object>> values;
+  if (batches.containsKey(batchId)) {
+    values=batches.get(batchId);
+  }
+ else {
+    values=new ArrayList<>();
+    for (int i=0; i < batchSize; i++) {
+      List<Object> value=new ArrayList<>();
+      Map<String,Object> event=new LinkedHashMap<>();
+      event.put("timestamp",new DateTime().toString());
+      event.put("publisher","foo.com");
+      event.put("advertiser","google.com");
+      event.put("click",i);
+      value.add(event);
+      values.add(value);
+    }
+    batches.put(batchId,values);
+  }
+  for (  List<Object> value : values) {
+    collector.emit(value);
+  }
+}

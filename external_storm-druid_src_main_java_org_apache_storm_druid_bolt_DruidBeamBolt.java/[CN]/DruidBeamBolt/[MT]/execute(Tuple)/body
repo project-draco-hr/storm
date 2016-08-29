@@ -1,0 +1,18 @@
+{
+  Future future=tranquilizer.send((druidEventMapper.getEvent(tuple)));
+  future.addEventListener(new FutureEventListener(){
+    @Override public void onFailure(    Throwable cause){
+      if (cause instanceof MessageDroppedException) {
+        collector.ack(tuple);
+        if (druidConfig.getDiscardStreamId() != null)         collector.emit(druidConfig.getDiscardStreamId(),new Values(tuple,System.currentTimeMillis()));
+      }
+ else {
+        collector.fail(tuple);
+      }
+    }
+    @Override public void onSuccess(    Object value){
+      collector.ack(tuple);
+    }
+  }
+);
+}

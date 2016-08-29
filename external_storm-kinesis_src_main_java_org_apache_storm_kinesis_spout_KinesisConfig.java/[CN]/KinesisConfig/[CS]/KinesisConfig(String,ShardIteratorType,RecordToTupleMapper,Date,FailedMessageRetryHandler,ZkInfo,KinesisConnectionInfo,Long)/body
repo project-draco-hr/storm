@@ -1,0 +1,11 @@
+{
+  this.streamName=streamName;
+  this.shardIteratorType=shardIteratorType;
+  this.recordToTupleMapper=recordToTupleMapper;
+  this.timestamp=timestamp;
+  this.failedMessageRetryHandler=failedMessageRetryHandler;
+  this.zkInfo=zkInfo;
+  this.kinesisConnectionInfo=kinesisConnectionInfo;
+  this.maxUncommittedRecords=maxUncommittedRecords;
+  validate();
+}

@@ -1,6 +1,6 @@
 {
   Integer numExecutors=Utils.getInt(conf.get(Config.TOPOLOGY_EVENTLOGGER_EXECUTORS),Utils.getInt(conf.get(Config.TOPOLOGY_WORKERS)));
-  HashMap<String,Object> componentConf=new HashMap<String,Object>();
+  HashMap<String,Object> componentConf=new HashMap<>();
   componentConf.put(Config.TOPOLOGY_TASKS,numExecutors);
   componentConf.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS,Utils.getInt(conf.get(Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS)));
   Bolt eventLoggerBolt=Thrift.prepareSerializedBoltDetails(eventLoggerInputs(topology),new EventLoggerBolt(),null,numExecutors,componentConf);

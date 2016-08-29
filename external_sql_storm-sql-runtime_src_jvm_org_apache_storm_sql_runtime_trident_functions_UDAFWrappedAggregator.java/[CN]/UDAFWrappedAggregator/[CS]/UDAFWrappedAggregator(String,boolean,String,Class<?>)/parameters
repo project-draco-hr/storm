@@ -1,0 +1,4 @@
+String declaringClassName
+boolean isMethodsStatic
+String inputFieldName
+Class<?> targetClazz

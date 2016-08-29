@@ -1,0 +1,6 @@
+{
+  LOG.info("Deactivate called");
+  deactivated=true;
+  commit();
+  kinesisConnection.shutdown();
+}

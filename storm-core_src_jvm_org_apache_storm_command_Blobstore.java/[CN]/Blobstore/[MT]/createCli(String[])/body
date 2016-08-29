@@ -1,0 +1,20 @@
+{
+  Map<String,Object> cl=CLI.opt("f","file",null,CLI.AS_STRING).opt("a","acl",Collections.emptyList(),new AsAclParser()).opt("r","replication-factor",-1,CLI.AS_INT).arg("key",CLI.FIRST_WINS).parse(args);
+  final String key=(String)cl.get("key");
+  final String file=(String)cl.get("f");
+  final List<AccessControl> acl=(List<AccessControl>)cl.get("a");
+  final Integer replicationFactor=(Integer)cl.get("r");
+  SettableBlobMeta meta=new SettableBlobMeta(acl);
+  meta.set_replication_factor(replicationFactor);
+  Utils.validateKeyName(key);
+  LOG.info("Creating {} with ACL {}",key,generateAccessControlsInfo(acl));
+  if (StringUtils.isNotEmpty(file)) {
+    try (BufferedInputStream f=new BufferedInputStream(new FileInputStream(file))){
+      BlobStoreSupport.createBlobFromStream(key,f,meta);
+    }
+   }
+ else {
+    BlobStoreSupport.createBlobFromStream(key,System.in,meta);
+  }
+  LOG.info("Successfully created {}",key);
+}

@@ -1,0 +1,13 @@
+{
+  if (inputStreams.size() > 1) {
+    throw new RuntimeException("TableModify is a SingleRel");
+  }
+  Preconditions.checkArgument(modify.isInsert(),"Only INSERT statement is supported.");
+  RelNode input=modify.getInput();
+  String tableName=Joiner.on('.').join(modify.getTable().getQualifiedName());
+  Stream inputStream=inputStreams.get(0).toStream();
+  String stageName=getStageName(modify);
+  List<String> inputFields=input.getRowType().getFieldNames();
+  List<String> outputFields=modify.getRowType().getFieldNames();
+  return inputStream.each(new Fields(inputFields),sources.get(tableName).getConsumer(),new Fields(outputFields)).name(stageName);
+}

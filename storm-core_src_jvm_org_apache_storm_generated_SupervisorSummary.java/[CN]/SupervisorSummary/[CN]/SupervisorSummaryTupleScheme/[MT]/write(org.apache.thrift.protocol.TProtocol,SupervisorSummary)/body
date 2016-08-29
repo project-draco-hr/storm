@@ -25,9 +25,9 @@
   if (struct.is_set_total_resources()) {
 {
       oprot.writeI32(struct.total_resources.size());
-      for (      Map.Entry<String,Double> _iter87 : struct.total_resources.entrySet()) {
-        oprot.writeString(_iter87.getKey());
-        oprot.writeDouble(_iter87.getValue());
+      for (      Map.Entry<String,Double> _iter103 : struct.total_resources.entrySet()) {
+        oprot.writeString(_iter103.getKey());
+        oprot.writeDouble(_iter103.getValue());
       }
     }
   }

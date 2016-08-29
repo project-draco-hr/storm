@@ -1,0 +1,6 @@
+{
+  List<File> parsed=sut.parseJarsProperties("storm-core-1.0.0.jar,json-simple-1.1.jar");
+  assertEquals(2,parsed.size());
+  assertEquals("storm-core-1.0.0.jar",parsed.get(0).getName());
+  assertEquals("json-simple-1.1.jar",parsed.get(1).getName());
+}

@@ -38,6 +38,28 @@
     }
     first=false;
   }
+  if (is_set_dependency_jars()) {
+    if (!first)     sb.append(", ");
+    sb.append("dependency_jars:");
+    if (this.dependency_jars == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.dependency_jars);
+    }
+    first=false;
+  }
+  if (is_set_dependency_artifacts()) {
+    if (!first)     sb.append(", ");
+    sb.append("dependency_artifacts:");
+    if (this.dependency_artifacts == null) {
+      sb.append("null");
+    }
+ else {
+      sb.append(this.dependency_artifacts);
+    }
+    first=false;
+  }
   sb.append(")");
   return sb.toString();
 }

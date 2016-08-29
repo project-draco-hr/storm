@@ -1,0 +1,57 @@
+{
+  this.workerData=workerData;
+  this.executorId=executorId;
+  this.workerTopologyContext=StormCommon.makeWorkerContext(workerData);
+  this.taskIds=StormCommon.executorIdToTasks(executorId);
+  this.componentId=workerTopologyContext.getComponentId(taskIds.get(0));
+  this.openOrPrepareWasCalled=new AtomicBoolean(false);
+  this.stormConf=normalizedComponentConf((Map)workerData.get(Constants.STORM_CONF),workerTopologyContext,componentId);
+  this.receiveQueue=(DisruptorQueue)(((Map)workerData.get(Constants.EXECUTOR_RECEIVE_QUEUE_MAP)).get(executorId));
+  this.stormId=(String)workerData.get(Constants.STORM_ID);
+  this.conf=(Map)workerData.get(Constants.CONF);
+  this.sharedExecutorData=new HashMap();
+  this.stormActive=(AtomicBoolean)workerData.get(Constants.STORM_ACTIVE_ATOM);
+  this.stormComponentDebug=(AtomicReference<Map<String,DebugOptions>>)workerData.get(Constants.COMPONENT_TO_DEBUG_ATOM);
+  this.transferQueue=mkExecutorBatchQueue(stormConf,executorId);
+  this.transferFn=(IFn)workerData.get(Constants.TRANSFER_FN);
+  this.executorTransfer=new ExecutorTransfer(workerTopologyContext,transferQueue,stormConf,transferFn);
+  this.suicideFn=(Runnable)workerData.get(Constants.SUICIDE_FN);
+  try {
+    this.stormClusterState=ClusterUtils.mkStormClusterState(workerData.get("state-store"),Utils.getWorkerACL(stormConf),new ClusterStateContext(DaemonType.WORKER));
+  }
+ catch (  Exception e) {
+    throw Utils.wrapInRuntime(e);
+  }
+  StormTopology topology=workerTopologyContext.getRawTopology();
+  Map<String,SpoutSpec> spouts=topology.get_spouts();
+  Map<String,Bolt> bolts=topology.get_bolts();
+  if (spouts.containsKey(componentId)) {
+    this.type=StatsUtil.SPOUT;
+    this.stats=new SpoutExecutorStats(ConfigUtils.samplingRate(stormConf));
+  }
+ else   if (bolts.containsKey(componentId)) {
+    this.type=StatsUtil.BOLT;
+    this.stats=new BoltExecutorStats(ConfigUtils.samplingRate(stormConf));
+  }
+ else {
+    throw new RuntimeException("Could not find " + componentId + " in "+ topology);
+  }
+  this.intervalToTaskToMetricToRegistry=new HashMap<>();
+  this.taskToComponent=(Map<Integer,String>)workerData.get(Constants.TASK_TO_COMPONENT);
+  this.streamToComponentToGrouper=outboundComponents(workerTopologyContext,componentId,stormConf);
+  this.reportError=new ReportError(stormConf,stormClusterState,stormId,componentId,workerTopologyContext);
+  this.reportErrorDie=new ReportErrorAndDie(reportError,suicideFn);
+  this.sampler=ConfigUtils.mkStatsSampler(stormConf);
+  this.backpressure=new AtomicBoolean(false);
+  this.throttleOn=(AtomicBoolean)workerData.get(Constants.THROTTLE_ON);
+  this.isDebug=Utils.getBoolean(stormConf.get(Config.TOPOLOGY_DEBUG),false);
+  this.rand=new Random(Utils.secureRandomLong());
+  this.credentials=credentials;
+  this.hasEventLoggers=StormCommon.hasEventLoggers(stormConf);
+  try {
+    this.hostname=Utils.hostname(stormConf);
+  }
+ catch (  UnknownHostException ignored) {
+    this.hostname="";
+  }
+}

@@ -1,0 +1,11 @@
+{
+  KinesisMessageId result=null;
+  if (!retryMessageSet.isEmpty()) {
+    result=retryMessageSet.first();
+    if (!(retryTimes.get(result) <= System.nanoTime())) {
+      result=null;
+    }
+  }
+  LOG.debug("Returning " + result + " to spout for retrying.");
+  return result;
+}

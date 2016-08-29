@@ -1,0 +1,11 @@
+{
+  File mockFile=mock(File.class);
+  when(mockFile.isFile()).thenReturn(true);
+  when(mockFile.exists()).thenReturn(true);
+  File mockFile2=mock(File.class);
+  when(mockFile.isFile()).thenReturn(false);
+  when(mockFile.exists()).thenReturn(true);
+  List<File> dependencies=Lists.newArrayList(mockFile,mockFile2);
+  sut.uploadFiles(dependencies,false);
+  fail("Should throw FileNotAvailableException");
+}

@@ -1,0 +1,13 @@
+{
+  for (  final Integer interval : intervalToTaskToMetricToRegistry.keySet()) {
+    StormTimer timerTask=(StormTimer)workerData.get(Constants.USER_TIMER);
+    timerTask.scheduleRecurring(interval,interval,new Runnable(){
+      @Override public void run(){
+        TupleImpl tuple=new TupleImpl(workerTopologyContext,new Values(interval),(int)Constants.SYSTEM_TASK_ID,Constants.METRICS_TICK_STREAM_ID);
+        List<AddressedTuple> metricsTickTuple=Lists.newArrayList(new AddressedTuple(AddressedTuple.BROADCAST_DEST,tuple));
+        receiveQueue.publish(metricsTickTuple);
+      }
+    }
+);
+  }
+}

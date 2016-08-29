@@ -1,0 +1,36 @@
+{
+  Map stormConf=ConfigUtils.readSupervisorStormConfGivenPath(conf,stormconfPath);
+  StormTopology stormCode=ConfigUtils.readSupervisorStormCodeGivenPath(stormcodePath);
+  List<String> dependencies=new ArrayList<>();
+  dependencies.addAll(stormCode.get_dependency_jars());
+  dependencies.addAll(stormCode.get_dependency_artifacts());
+  String user=(String)stormConf.get(Config.TOPOLOGY_SUBMITTER_USER);
+  String topoName=(String)stormConf.get(Config.TOPOLOGY_NAME);
+  File userDir=localizer.getLocalUserFileCacheDir(user);
+  List<LocalResource> localResourceList=new ArrayList<>();
+  for (  String dependency : dependencies) {
+    localResourceList.add(new LocalResource(dependency,false));
+  }
+  if (localResourceList.size() > 0) {
+    if (!userDir.exists()) {
+      FileUtils.forceMkdir(userDir);
+    }
+    try {
+      List<LocalizedResource> localizedResources=localizer.getBlobs(localResourceList,user,topoName,userDir);
+      setupBlobPermission(conf,user,userDir.toString());
+      for (      LocalizedResource localizedResource : localizedResources) {
+        File rsrcFilePath=new File(localizedResource.getFilePath());
+        String keyName=rsrcFilePath.getName();
+        String blobSymlinkTargetName=new File(localizedResource.getCurrentSymlinkPath()).getName();
+        String symlinkName=keyName;
+        Utils.createSymlink(tmpRoot,rsrcFilePath.getParent(),symlinkName,blobSymlinkTargetName);
+      }
+    }
+ catch (    AuthorizationException authExp) {
+      LOG.error("AuthorizationException error {}",authExp);
+    }
+catch (    KeyNotFoundException knf) {
+      LOG.error("KeyNotFoundException error {}",knf);
+    }
+  }
+}

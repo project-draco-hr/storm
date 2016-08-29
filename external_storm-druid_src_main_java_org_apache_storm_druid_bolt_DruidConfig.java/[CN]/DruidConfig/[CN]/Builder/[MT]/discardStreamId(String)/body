@@ -1,0 +1,4 @@
+{
+  this.discardStreamId=discardStreamId;
+  return this;
+}

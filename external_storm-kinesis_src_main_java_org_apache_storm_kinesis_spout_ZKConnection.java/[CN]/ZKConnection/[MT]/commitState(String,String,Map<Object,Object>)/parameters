@@ -1,0 +1,3 @@
+String stream
+String shardId
+Map<Object,Object> state

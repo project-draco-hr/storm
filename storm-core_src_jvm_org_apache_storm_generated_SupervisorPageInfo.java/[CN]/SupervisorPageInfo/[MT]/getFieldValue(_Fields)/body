@@ -1,0 +1,9 @@
+{
+switch (field) {
+case SUPERVISOR_SUMMARIES:
+    return get_supervisor_summaries();
+case WORKER_SUMMARIES:
+  return get_worker_summaries();
+}
+throw new IllegalStateException();
+}

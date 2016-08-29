@@ -1,0 +1,3 @@
+Executor executor
+List<Utils.SmartThread> threads
+Map<Integer,Task> taskDatas

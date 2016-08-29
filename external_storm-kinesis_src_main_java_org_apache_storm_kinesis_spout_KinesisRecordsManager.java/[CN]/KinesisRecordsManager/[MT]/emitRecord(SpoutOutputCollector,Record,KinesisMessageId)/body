@@ -1,0 +1,17 @@
+{
+  boolean result=false;
+  List<Object> tuple=kinesisConfig.getRecordToTupleMapper().getTuple(record);
+  if (tuple != null && tuple.size() > 0) {
+    collector.emit(tuple,kinesisMessageId);
+    if (!emittedPerShard.containsKey(kinesisMessageId.getShardId())) {
+      emittedPerShard.put(kinesisMessageId.getShardId(),new TreeSet<BigInteger>());
+    }
+    emittedPerShard.get(kinesisMessageId.getShardId()).add(new BigInteger(record.getSequenceNumber()));
+    result=true;
+  }
+ else {
+    LOG.warn("Record " + record + " did not return a tuple to emit. Hence acking it");
+    ack(kinesisMessageId);
+  }
+  return result;
+}

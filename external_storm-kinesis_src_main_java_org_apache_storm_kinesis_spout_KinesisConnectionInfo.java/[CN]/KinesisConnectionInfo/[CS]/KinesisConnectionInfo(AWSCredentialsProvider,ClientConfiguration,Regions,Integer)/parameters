@@ -1,0 +1,4 @@
+AWSCredentialsProvider credentialsProvider
+ClientConfiguration clientConfiguration
+Regions region
+Integer recordsLimit

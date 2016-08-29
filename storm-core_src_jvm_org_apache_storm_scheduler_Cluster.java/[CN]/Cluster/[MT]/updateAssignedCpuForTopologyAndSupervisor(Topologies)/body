@@ -1,0 +1,59 @@
+{
+  Map<String,Double> supervisorToAssignedCpu=new HashMap<String,Double>();
+  for (  Map.Entry<String,SchedulerAssignment> entry : getAssignments().entrySet()) {
+    String topId=entry.getValue().getTopologyId();
+    if (topologies.getById(topId) == null) {
+      continue;
+    }
+    Map topConf=topologies.getById(topId).getConf();
+    Double assignedCpuForTopology=0.0;
+    Map<WorkerSlot,Double[]> workerResources;
+    if (this.workerResources.containsKey(topId)) {
+      workerResources=this.workerResources.get(topId);
+    }
+ else {
+      workerResources=new HashMap<WorkerSlot,Double[]>();
+      this.workerResources.put(topId,workerResources);
+    }
+    for (    WorkerSlot ws : entry.getValue().getSlots()) {
+      assignedCpuForTopology+=PER_WORKER_CPU_SWAG;
+      String nodeId=ws.getNodeId();
+      if (workerResources.containsKey(ws)) {
+        Double[] worker_resources=workerResources.get(ws);
+        worker_resources[2]=PER_WORKER_CPU_SWAG;
+      }
+ else {
+        Double[] worker_resources={0.0,0.0,PER_WORKER_CPU_SWAG};
+        workerResources.put(ws,worker_resources);
+      }
+      if (supervisorToAssignedCpu.containsKey(nodeId)) {
+        supervisorToAssignedCpu.put(nodeId,supervisorToAssignedCpu.get(nodeId) + PER_WORKER_CPU_SWAG);
+      }
+ else {
+        supervisorToAssignedCpu.put(nodeId,PER_WORKER_CPU_SWAG);
+      }
+    }
+    this.setWorkerResources(topId,workerResources);
+    if (getTopologyResourcesMap().containsKey(topId)) {
+      Double[] topo_resources=getTopologyResourcesMap().get(topId);
+      topo_resources[5]=assignedCpuForTopology;
+    }
+ else {
+      Double[] topo_resources={0.0,0.0,0.0,0.0,0.0,0.0};
+      topo_resources[5]=assignedCpuForTopology;
+      setTopologyResources(topId,topo_resources);
+    }
+  }
+  for (  Map.Entry<String,Double> entry : supervisorToAssignedCpu.entrySet()) {
+    String nodeId=entry.getKey();
+    if (supervisorsResources.containsKey(nodeId)) {
+      Double[] supervisor_resources=supervisorsResources.get(nodeId);
+      supervisor_resources[3]=entry.getValue();
+    }
+ else {
+      Double[] supervisor_resources={0.0,0.0,0.0,0.0};
+      supervisor_resources[3]=entry.getValue();
+      supervisorsResources.put(nodeId,supervisor_resources);
+    }
+  }
+}

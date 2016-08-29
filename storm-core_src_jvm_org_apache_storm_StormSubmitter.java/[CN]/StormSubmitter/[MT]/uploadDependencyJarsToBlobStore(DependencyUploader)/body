@@ -1,0 +1,12 @@
+{
+  LOG.info("Uploading dependencies - jars...");
+  DependencyPropertiesParser propertiesParser=new DependencyPropertiesParser();
+  String depJarsProp=System.getProperty("storm.dependency.jars","");
+  List<File> depJars=propertiesParser.parseJarsProperties(depJarsProp);
+  try {
+    return uploader.uploadFiles(depJars,true);
+  }
+ catch (  Throwable e) {
+    throw new RuntimeException(e);
+  }
+}

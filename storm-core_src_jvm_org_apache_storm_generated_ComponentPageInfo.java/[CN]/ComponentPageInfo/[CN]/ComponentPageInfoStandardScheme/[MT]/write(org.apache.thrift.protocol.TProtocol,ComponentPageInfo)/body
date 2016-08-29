@@ -40,9 +40,9 @@
       oprot.writeFieldBegin(WINDOW_TO_STATS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.window_to_stats.size()));
-        for (        Map.Entry<String,ComponentAggregateStats> _iter440 : struct.window_to_stats.entrySet()) {
-          oprot.writeString(_iter440.getKey());
-          _iter440.getValue().write(oprot);
+        for (        Map.Entry<String,ComponentAggregateStats> _iter490 : struct.window_to_stats.entrySet()) {
+          oprot.writeString(_iter490.getKey());
+          _iter490.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }
@@ -54,9 +54,9 @@
       oprot.writeFieldBegin(GSID_TO_INPUT_STATS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.STRUCT,struct.gsid_to_input_stats.size()));
-        for (        Map.Entry<GlobalStreamId,ComponentAggregateStats> _iter441 : struct.gsid_to_input_stats.entrySet()) {
-          _iter441.getKey().write(oprot);
-          _iter441.getValue().write(oprot);
+        for (        Map.Entry<GlobalStreamId,ComponentAggregateStats> _iter491 : struct.gsid_to_input_stats.entrySet()) {
+          _iter491.getKey().write(oprot);
+          _iter491.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }
@@ -68,9 +68,9 @@
       oprot.writeFieldBegin(SID_TO_OUTPUT_STATS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.sid_to_output_stats.size()));
-        for (        Map.Entry<String,ComponentAggregateStats> _iter442 : struct.sid_to_output_stats.entrySet()) {
-          oprot.writeString(_iter442.getKey());
-          _iter442.getValue().write(oprot);
+        for (        Map.Entry<String,ComponentAggregateStats> _iter492 : struct.sid_to_output_stats.entrySet()) {
+          oprot.writeString(_iter492.getKey());
+          _iter492.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }
@@ -82,8 +82,8 @@
       oprot.writeFieldBegin(EXEC_STATS_FIELD_DESC);
 {
         oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.exec_stats.size()));
-        for (        ExecutorAggregateStats _iter443 : struct.exec_stats) {
-          _iter443.write(oprot);
+        for (        ExecutorAggregateStats _iter493 : struct.exec_stats) {
+          _iter493.write(oprot);
         }
         oprot.writeListEnd();
       }
@@ -95,8 +95,8 @@
       oprot.writeFieldBegin(ERRORS_FIELD_DESC);
 {
         oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.errors.size()));
-        for (        ErrorInfo _iter444 : struct.errors) {
-          _iter444.write(oprot);
+        for (        ErrorInfo _iter494 : struct.errors) {
+          _iter494.write(oprot);
         }
         oprot.writeListEnd();
       }

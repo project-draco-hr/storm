@@ -1,0 +1,6 @@
+{
+  checkReady();
+  getSupervisorPageInfo_call method_call=new getSupervisorPageInfo_call(id,host,is_include_sys,resultHandler,this,___protocolFactory,___transport);
+  this.___currentMethod=method_call;
+  ___manager.call(method_call);
+}

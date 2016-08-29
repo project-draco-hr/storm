@@ -1,0 +1,3 @@
+{
+  return "This file is not available: " + fileName;
+}

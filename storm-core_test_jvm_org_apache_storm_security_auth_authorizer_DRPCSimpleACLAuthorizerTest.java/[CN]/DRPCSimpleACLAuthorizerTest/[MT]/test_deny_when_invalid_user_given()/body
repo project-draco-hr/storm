@@ -1,0 +1,6 @@
+{
+  Assert.assertFalse(isPermitted(strictHandler,Mockito.mock(ReqContext.class),"execute",function));
+  Assert.assertFalse(isPermitted(strictHandler,null,"execute",function));
+  Assert.assertFalse(isPermitted(permissiveHandler,Mockito.mock(ReqContext.class),"execute",function));
+  Assert.assertFalse(isPermitted(permissiveHandler,null,"execute",function));
+}

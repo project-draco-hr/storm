@@ -24,5 +24,17 @@
     if (!(this_present_worker_hooks && that_present_worker_hooks))     return false;
     if (!this.worker_hooks.equals(that.worker_hooks))     return false;
   }
+  boolean this_present_dependency_jars=true && this.is_set_dependency_jars();
+  boolean that_present_dependency_jars=true && that.is_set_dependency_jars();
+  if (this_present_dependency_jars || that_present_dependency_jars) {
+    if (!(this_present_dependency_jars && that_present_dependency_jars))     return false;
+    if (!this.dependency_jars.equals(that.dependency_jars))     return false;
+  }
+  boolean this_present_dependency_artifacts=true && this.is_set_dependency_artifacts();
+  boolean that_present_dependency_artifacts=true && that.is_set_dependency_artifacts();
+  if (this_present_dependency_artifacts || that_present_dependency_artifacts) {
+    if (!(this_present_dependency_artifacts && that_present_dependency_artifacts))     return false;
+    if (!this.dependency_artifacts.equals(that.dependency_artifacts))     return false;
+  }
   return true;
 }
