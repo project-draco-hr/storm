@@ -2,7 +2,7 @@
   meterFetchRequestCalls.mark();
   Map<String,String> map=new HashMap<>();
   map.put(DRPCAuthorizerBase.FUNCTION_NAME,functionName);
-  checkAuthorization(authorizer,map,"fetchRequest");
+  checkAuthorization(authorizer,map,"fetchRequest",functionName);
   ConcurrentLinkedQueue<DRPCRequest> queue=acquireQueue(functionName);
   DRPCRequest req=queue.poll();
   if (req != null) {
