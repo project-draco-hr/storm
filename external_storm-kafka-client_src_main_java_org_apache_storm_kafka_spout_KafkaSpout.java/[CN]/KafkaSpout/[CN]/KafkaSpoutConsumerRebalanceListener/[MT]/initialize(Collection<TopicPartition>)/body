@@ -9,5 +9,5 @@
     setAcked(tp,fetchOffset);
   }
   initialized=true;
-  LOG.debug("Initialization complete");
+  LOG.info("Initialization complete");
 }

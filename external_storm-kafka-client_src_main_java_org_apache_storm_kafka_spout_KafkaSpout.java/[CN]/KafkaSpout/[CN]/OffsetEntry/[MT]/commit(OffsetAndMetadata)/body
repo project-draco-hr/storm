@@ -1,6 +1,8 @@
 {
+  long numCommittedOffsets=0;
   if (committedOffset != null) {
-    final long numCommittedOffsets=committedOffset.offset() - this.committedOffset;
+    final long oldCommittedOffset=this.committedOffset;
+    numCommittedOffsets=committedOffset.offset() - this.committedOffset;
     this.committedOffset=committedOffset.offset();
     for (Iterator<KafkaSpoutMessageId> iterator=ackedMsgs.iterator(); iterator.hasNext(); ) {
       if (iterator.next().offset() <= committedOffset.offset()) {
@@ -11,6 +13,10 @@
       }
     }
     numUncommittedOffsets-=numCommittedOffsets;
+    LOG.debug("Committed offsets [{}-{} = {}] for topic-partition [{}]. [{}] uncommitted offsets across all topic partitions",oldCommittedOffset + 1,this.committedOffset,numCommittedOffsets,tp,numUncommittedOffsets);
   }
-  LOG.trace("Object state after update: {}, numUncommittedOffsets [{}]",this,numUncommittedOffsets);
+ else {
+    LOG.debug("Committed [{}] offsets for topic-partition [{}]. [{}] uncommitted offsets across all topic partitions",numCommittedOffsets,tp,numUncommittedOffsets);
+  }
+  LOG.trace("{}",this);
 }
