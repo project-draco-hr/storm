@@ -17,6 +17,7 @@
       }
  catch (      Throwable t) {
         LOG.error("Uncaught throwable in pending message flusher thread, messages may be lost",t);
+        throw t;
       }
     }
   }

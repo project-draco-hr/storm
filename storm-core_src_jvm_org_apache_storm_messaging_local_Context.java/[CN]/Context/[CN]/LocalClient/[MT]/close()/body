@@ -1,3 +1,9 @@
 {
   _pendingFlusher.shutdown();
+  try {
+    _pendingFlusher.awaitTermination(5,TimeUnit.SECONDS);
+  }
+ catch (  InterruptedException e) {
+    throw new RuntimeException("Interrupted while awaiting flusher shutdown",e);
+  }
 }
