@@ -1,0 +1,7 @@
+{
+  _types=types;
+  _originFields=origins;
+  _joiningFields=joins;
+  _sideFields=sides;
+  _numGroupFields=numGroupFields;
+}

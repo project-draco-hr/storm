@@ -15,5 +15,6 @@
   SqlNode parse=planner.parse(sql);
   SqlNode validate=planner.validate(parse);
   RelNode tree=planner.convert(validate);
+  System.out.println(RelOptUtil.toString(tree,SqlExplainLevel.ALL_ATTRIBUTES));
   return new CalciteState(schema,tree);
 }

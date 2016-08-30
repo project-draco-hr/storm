@@ -1,0 +1,7 @@
+JoinState state
+int overrideIndex
+TridentTuple overrideTuple
+List<List>[] sides
+int[] indices
+List[] combined
+int streamIdx

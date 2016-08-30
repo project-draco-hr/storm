@@ -1,0 +1,17 @@
+{
+  List<List>[] sides=state.sides;
+  int[] indices=state.indices;
+  for (int i=0; i < indices.length; i++) {
+    indices[i]=0;
+  }
+  boolean keepGoing=true;
+  while (keepGoing) {
+    List[] combined=new List[sides.length];
+    for (int i=0; i < sides.length; i++) {
+      List<Object> values=buildValuesForStream(state,overrideIndex,overrideTuple,sides,indices,combined,i);
+      combined[i]=values;
+    }
+    collector.emit(_factory.create(combined));
+    keepGoing=increment(sides,indices,indices.length - 1,overrideIndex);
+  }
+}

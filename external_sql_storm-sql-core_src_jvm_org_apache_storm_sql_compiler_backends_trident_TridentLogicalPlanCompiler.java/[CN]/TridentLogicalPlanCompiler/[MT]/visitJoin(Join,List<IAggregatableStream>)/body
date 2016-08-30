@@ -1,0 +1,36 @@
+{
+  if (inputStreams.size() != 2) {
+    throw new RuntimeException("Join is a BiRel");
+  }
+  int[] ordinals=new int[2];
+  if (!RelOptUtil.analyzeSimpleEquiJoin((LogicalJoin)join,ordinals)) {
+    throw new UnsupportedOperationException("Only simple equi joins are supported");
+  }
+  List<JoinType> joinTypes=new ArrayList<>();
+switch (join.getJoinType()) {
+case INNER:
+    joinTypes.add(JoinType.INNER);
+  joinTypes.add(JoinType.INNER);
+break;
+case LEFT:
+joinTypes.add(JoinType.INNER);
+joinTypes.add(JoinType.OUTER);
+break;
+case RIGHT:
+joinTypes.add(JoinType.OUTER);
+joinTypes.add(JoinType.INNER);
+break;
+case FULL:
+joinTypes.add(JoinType.OUTER);
+joinTypes.add(JoinType.OUTER);
+break;
+default :
+throw new UnsupportedOperationException("Unsupported join type: " + join.getJoinType());
+}
+String leftJoinFieldName=join.getLeft().getRowType().getFieldNames().get(ordinals[0]);
+String rightJoinFieldName=join.getRight().getRowType().getFieldNames().get(ordinals[1]);
+Stream leftInputStream=inputStreams.get(0).toStream();
+Stream rightInputStream=inputStreams.get(1).toStream();
+String stageName=getStageName(join);
+return topology.join(leftInputStream,new Fields(leftJoinFieldName),rightInputStream,new Fields(rightJoinFieldName),new Fields(join.getRowType().getFieldNames()),joinTypes,JoinOutFieldsMode.PRESERVE).name(stageName);
+}

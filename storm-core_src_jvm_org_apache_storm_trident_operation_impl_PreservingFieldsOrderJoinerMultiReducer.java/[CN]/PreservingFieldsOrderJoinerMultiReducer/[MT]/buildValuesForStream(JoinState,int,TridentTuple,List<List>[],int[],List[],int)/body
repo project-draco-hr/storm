@@ -1,0 +1,28 @@
+{
+  List sideValues;
+  if (streamIdx == overrideIndex) {
+    sideValues=overrideTuple;
+  }
+ else {
+    sideValues=sides[streamIdx].get(indices[streamIdx]);
+  }
+  Fields originFields=_originFields.get(streamIdx);
+  if (sideValues == null) {
+    return makeNullList(originFields.size());
+  }
+ else {
+    List<Object> ret=new ArrayList<>(originFields.size());
+    Fields sideFields=_sideFields.get(streamIdx);
+    Fields joinFields=_joiningFields.get(streamIdx);
+    int sideIdx=0;
+    for (    String field : originFields) {
+      if (sideFields.contains(field)) {
+        ret.add(sideValues.get(sideIdx++));
+      }
+ else {
+        ret.add(state.group.get(joinFields.fieldIndex(field)));
+      }
+    }
+    return ret;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  final int EXPECTED_VALUE_SIZE=3;
+  final Map<String,ISqlTridentDataSource> data=new HashMap<>();
+  data.put("EMP",new TestUtils.MockSqlTridentJoinDataSourceEmp());
+  data.put("DEPT",new TestUtils.MockSqlTridentJoinDataSourceDept());
+  String sql="SELECT d.DEPTID, e.DEPTID FROM DEPT AS d LEFT OUTER JOIN EMP AS e ON d.DEPTID = e.DEPTID WHERE e.EMPID is null";
+  TestCompilerUtils.CalciteState state=TestCompilerUtils.sqlOverSimpleEquiJoinTables(sql);
+  PlanCompiler compiler=new PlanCompiler(data,typeFactory);
+  final AbstractTridentProcessor proc=compiler.compileForTest(state.tree());
+  final TridentTopology topo=proc.build(data);
+  Fields f=proc.outputStream().getOutputFields();
+  proc.outputStream().each(f,new CollectDataFunction(),new Fields()).toStream();
+  runTridentTopology(EXPECTED_VALUE_SIZE,proc,topo);
+  Assert.assertArrayEquals(new Values[]{new Values(2,null),new Values(3,null),new Values(4,null)},getCollectedValues().toArray());
+}

@@ -1,0 +1,5 @@
+List<Stream> streams
+List<Fields> joinFields
+Fields outFields
+List<JoinType> mixed
+JoinOutFieldsMode mode
