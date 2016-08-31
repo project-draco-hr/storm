@@ -5,9 +5,9 @@
   long expectedWaitTime=initial;
   for (long i=0L; i < 3L; ++i) {
     manager.failed(TEST_OFFSET);
-    Thread.sleep((expectedWaitTime + 1L) / 2L);
+    Time.advanceTime((expectedWaitTime + 1L) / 2L);
     assertFalse("message should not be ready for retry yet",manager.shouldReEmitMsg(TEST_OFFSET));
-    Thread.sleep((expectedWaitTime + 1L) / 2L);
+    Time.advanceTime((expectedWaitTime + 1L) / 2L);
     Long next=manager.nextFailedMessageToRetry();
     assertEquals("expect test offset next available for retry",TEST_OFFSET,next);
     assertTrue("message should be ready for retry",manager.shouldReEmitMsg(TEST_OFFSET));
