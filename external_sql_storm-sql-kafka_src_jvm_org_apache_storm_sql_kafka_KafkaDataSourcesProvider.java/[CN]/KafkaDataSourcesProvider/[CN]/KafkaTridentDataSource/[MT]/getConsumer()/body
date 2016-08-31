@@ -1,3 +1,15 @@
 {
-  return new KafkaTridentSink(topic,primaryKeyIndex,producerProperties,fields);
+  Preconditions.checkNotNull(producerProperties,"Writable Kafka Table " + topic + " must contain producer config");
+  Properties props=new Properties();
+  try {
+    ObjectMapper mapper=new ObjectMapper();
+    @SuppressWarnings("unchecked") HashMap<String,Object> map=mapper.readValue(producerProperties,HashMap.class);
+    @SuppressWarnings("unchecked") HashMap<String,Object> producerConfig=(HashMap<String,Object>)map.get("producer");
+    props.putAll(producerConfig);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+  Preconditions.checkState(props.containsKey("bootstrap.servers"),"Writable Kafka Table " + topic + " must contain \"bootstrap.servers\" config");
+  return new KafkaTridentSink(topic,primaryKeyIndex,props,fields);
 }
