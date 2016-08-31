@@ -3,3 +3,5 @@ spouts
 bolts
 state_spouts
 worker_hooks
+dependency_jars
+dependency_artifacts

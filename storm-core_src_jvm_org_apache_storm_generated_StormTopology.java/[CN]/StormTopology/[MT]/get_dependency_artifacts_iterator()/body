@@ -1,0 +1,3 @@
+{
+  return (this.dependency_artifacts == null) ? null : this.dependency_artifacts.iterator();
+}

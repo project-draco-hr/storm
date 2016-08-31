@@ -2,11 +2,11 @@
   final int EXPECTED_VALUE_SIZE=1;
   String sql="INSERT INTO BAR SELECT ID, NAME, ADDR FROM FOO WHERE ID > 3";
   TestCompilerUtils.CalciteState state=TestCompilerUtils.sqlOverDummyTable(sql);
-  PlanCompiler compiler=new PlanCompiler(typeFactory);
-  final AbstractTridentProcessor proc=compiler.compile(state.tree());
   final Map<String,ISqlTridentDataSource> data=new HashMap<>();
   data.put("FOO",new TestUtils.MockSqlTridentDataSource());
   data.put("BAR",new TestUtils.MockSqlTridentDataSource());
+  PlanCompiler compiler=new PlanCompiler(data,typeFactory);
+  final AbstractTridentProcessor proc=compiler.compileForTest(state.tree());
   final TridentTopology topo=proc.build(data);
   runTridentTopology(EXPECTED_VALUE_SIZE,proc,topo);
   Assert.assertArrayEquals(new Values[]{new Values(4,"x","y")},getCollectedValues().toArray());

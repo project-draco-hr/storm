@@ -1,0 +1,5 @@
+{
+  Artifact testArtifact=new DefaultArtifact("org.apache.storm:storm-core:1.0.0");
+  String ret=AetherUtils.artifactToString(testArtifact);
+  assertEquals("org.apache.storm:storm-core:jar:1.0.0",ret);
+}

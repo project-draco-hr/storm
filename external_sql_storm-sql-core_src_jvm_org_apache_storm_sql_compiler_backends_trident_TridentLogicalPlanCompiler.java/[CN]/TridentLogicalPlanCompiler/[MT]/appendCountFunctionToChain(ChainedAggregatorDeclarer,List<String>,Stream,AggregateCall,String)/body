@@ -1,0 +1,12 @@
+{
+  List<String> inputFields=new ArrayList<>(groupByFieldNames);
+  if (call.getArgList().size() == 0) {
+    chainedDeclarer.aggregate(new Fields(inputFields),new Count(),new Fields(outputField));
+  }
+ else {
+    Integer fieldIdx=call.getArgList().get(0);
+    String inputFieldName=inputStream.getOutputFields().get(fieldIdx);
+    inputFields.add(inputFieldName);
+    chainedDeclarer.aggregate(new Fields(inputFields),new CountBy(inputFieldName),new Fields(outputField));
+  }
+}

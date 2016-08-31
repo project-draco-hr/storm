@@ -1,0 +1,3 @@
+UDAFAggregateState state
+TridentTuple tuple
+TridentCollector collector

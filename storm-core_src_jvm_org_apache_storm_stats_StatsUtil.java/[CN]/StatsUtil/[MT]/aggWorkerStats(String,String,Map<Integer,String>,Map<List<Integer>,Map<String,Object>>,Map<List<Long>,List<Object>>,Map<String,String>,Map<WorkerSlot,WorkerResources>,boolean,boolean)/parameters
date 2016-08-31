@@ -1,0 +1,9 @@
+String stormId
+String stormName
+Map<Integer,String> task2Component
+Map<List<Integer>,Map<String,Object>> beats
+Map<List<Long>,List<Object>> exec2NodePort
+Map<String,String> nodeHost
+Map<WorkerSlot,WorkerResources> worker2Resources
+boolean includeSys
+boolean userAuthorized

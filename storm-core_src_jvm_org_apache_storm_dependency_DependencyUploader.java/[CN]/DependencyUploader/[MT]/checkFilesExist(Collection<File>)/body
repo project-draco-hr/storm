@@ -1,0 +1,7 @@
+{
+  for (  File dependency : dependencies) {
+    if (!dependency.isFile() || !dependency.exists()) {
+      throw new FileNotAvailableException(dependency.getAbsolutePath());
+    }
+  }
+}

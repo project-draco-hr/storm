@@ -1,0 +1,29 @@
+{
+  if (num.getClass().equals(toType)) {
+    return num;
+  }
+  if (toType.equals(Byte.class)) {
+    return num.byteValue();
+  }
+ else   if (toType.equals(Short.class)) {
+    return num.shortValue();
+  }
+ else   if (toType.equals(Integer.class)) {
+    return num.intValue();
+  }
+ else   if (toType.equals(Long.class)) {
+    return num.longValue();
+  }
+ else   if (toType.equals(Float.class)) {
+    return num.floatValue();
+  }
+ else   if (toType.equals(Double.class)) {
+    return num.doubleValue();
+  }
+ else   if (toType.isAssignableFrom(num.getClass())) {
+    return num;
+  }
+ else {
+    throw new IllegalArgumentException("Can't convert Number " + num + " (class "+ num.getClass()+ " to "+ toType);
+  }
+}

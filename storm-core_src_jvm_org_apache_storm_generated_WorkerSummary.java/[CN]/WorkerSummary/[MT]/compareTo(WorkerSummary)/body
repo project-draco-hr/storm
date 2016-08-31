@@ -1,0 +1,157 @@
+{
+  if (!getClass().equals(other.getClass())) {
+    return getClass().getName().compareTo(other.getClass().getName());
+  }
+  int lastComparison=0;
+  lastComparison=Boolean.valueOf(is_set_supervisor_id()).compareTo(other.is_set_supervisor_id());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_supervisor_id()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.supervisor_id,other.supervisor_id);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_host()).compareTo(other.is_set_host());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_host()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.host,other.host);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_port()).compareTo(other.is_set_port());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_port()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.port,other.port);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_topology_id()).compareTo(other.is_set_topology_id());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_topology_id()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topology_id,other.topology_id);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_topology_name()).compareTo(other.is_set_topology_name());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_topology_name()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.topology_name,other.topology_name);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_num_executors()).compareTo(other.is_set_num_executors());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_num_executors()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.num_executors,other.num_executors);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_component_to_num_tasks()).compareTo(other.is_set_component_to_num_tasks());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_component_to_num_tasks()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.component_to_num_tasks,other.component_to_num_tasks);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_time_secs()).compareTo(other.is_set_time_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_time_secs()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.time_secs,other.time_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_uptime_secs()).compareTo(other.is_set_uptime_secs());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_uptime_secs()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.uptime_secs,other.uptime_secs);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_requested_memonheap()).compareTo(other.is_set_requested_memonheap());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_requested_memonheap()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.requested_memonheap,other.requested_memonheap);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_requested_memoffheap()).compareTo(other.is_set_requested_memoffheap());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_requested_memoffheap()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.requested_memoffheap,other.requested_memoffheap);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_requested_cpu()).compareTo(other.is_set_requested_cpu());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_requested_cpu()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.requested_cpu,other.requested_cpu);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_assigned_memonheap()).compareTo(other.is_set_assigned_memonheap());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_assigned_memonheap()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.assigned_memonheap,other.assigned_memonheap);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_assigned_memoffheap()).compareTo(other.is_set_assigned_memoffheap());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_assigned_memoffheap()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.assigned_memoffheap,other.assigned_memoffheap);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  lastComparison=Boolean.valueOf(is_set_assigned_cpu()).compareTo(other.is_set_assigned_cpu());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_assigned_cpu()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.assigned_cpu,other.assigned_cpu);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
+  return 0;
+}

@@ -45,6 +45,9 @@
   boolean present_replication_count=true && (is_set_replication_count());
   list.add(present_replication_count);
   if (present_replication_count)   list.add(replication_count);
+  boolean present_workers=true && (is_set_workers());
+  list.add(present_workers);
+  if (present_workers)   list.add(workers);
   boolean present_requested_memonheap=true && (is_set_requested_memonheap());
   list.add(present_requested_memonheap);
   if (present_requested_memonheap)   list.add(requested_memonheap);

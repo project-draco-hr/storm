@@ -1,0 +1,14 @@
+{
+  List<String> inputFields=new ArrayList<>(groupByFieldNames);
+  Integer fieldIdx=call.getArgList().get(0);
+  String inputFieldName=inputStream.getOutputFields().get(fieldIdx);
+  inputFields.add(inputFieldName);
+  Class<?> capturedTargetClazz=getAggrCallReturnJavaType(call);
+  if (!Number.class.isAssignableFrom(capturedTargetClazz)) {
+    throw new IllegalStateException("Return type of aggregation call should be a Number");
+  }
+  Class<? extends Number> targetClazz=(Class<? extends Number>)capturedTargetClazz;
+  List<String> outputFields=new ArrayList<>(groupByFieldNames);
+  outputFields.add(outputField);
+  chainedDeclarer.aggregate(new Fields(inputFields),new SumBy(inputFieldName,targetClazz),new Fields(outputField));
+}

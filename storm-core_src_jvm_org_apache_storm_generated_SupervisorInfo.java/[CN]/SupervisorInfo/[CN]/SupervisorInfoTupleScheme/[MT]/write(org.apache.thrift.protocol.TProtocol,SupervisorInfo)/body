@@ -31,25 +31,25 @@
   if (struct.is_set_used_ports()) {
 {
       oprot.writeI32(struct.used_ports.size());
-      for (      long _iter522 : struct.used_ports) {
-        oprot.writeI64(_iter522);
+      for (      long _iter572 : struct.used_ports) {
+        oprot.writeI64(_iter572);
       }
     }
   }
   if (struct.is_set_meta()) {
 {
       oprot.writeI32(struct.meta.size());
-      for (      long _iter523 : struct.meta) {
-        oprot.writeI64(_iter523);
+      for (      long _iter573 : struct.meta) {
+        oprot.writeI64(_iter573);
       }
     }
   }
   if (struct.is_set_scheduler_meta()) {
 {
       oprot.writeI32(struct.scheduler_meta.size());
-      for (      Map.Entry<String,String> _iter524 : struct.scheduler_meta.entrySet()) {
-        oprot.writeString(_iter524.getKey());
-        oprot.writeString(_iter524.getValue());
+      for (      Map.Entry<String,String> _iter574 : struct.scheduler_meta.entrySet()) {
+        oprot.writeString(_iter574.getKey());
+        oprot.writeString(_iter574.getValue());
       }
     }
   }
@@ -62,9 +62,9 @@
   if (struct.is_set_resources_map()) {
 {
       oprot.writeI32(struct.resources_map.size());
-      for (      Map.Entry<String,Double> _iter525 : struct.resources_map.entrySet()) {
-        oprot.writeString(_iter525.getKey());
-        oprot.writeDouble(_iter525.getValue());
+      for (      Map.Entry<String,Double> _iter575 : struct.resources_map.entrySet()) {
+        oprot.writeString(_iter575.getKey());
+        oprot.writeDouble(_iter575.getValue());
       }
     }
   }

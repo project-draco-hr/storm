@@ -8,24 +8,24 @@
       found=true;
       nextCommitMsg=currAckedMsg;
       nextCommitOffset=currOffset;
-      LOG.trace("Found offset to commit [{}]. {}",currOffset,this);
     }
  else     if (currAckedMsg.offset() > nextCommitOffset + 1) {
-      LOG.debug("Non continuous offset found [{}]. It will be processed in a subsequent batch. {}",currOffset,this);
+      LOG.debug("topic-partition [{}] has non-continuous offset [{}]. It will be processed in a subsequent batch.",tp,currOffset);
       break;
     }
  else {
-      LOG.debug("Unexpected offset found [{}]. {}",currOffset,this);
+      LOG.debug("topic-partition [{}] has unexpected offset [{}].",tp,currOffset);
       break;
     }
   }
   OffsetAndMetadata nextCommitOffsetAndMetadata=null;
   if (found) {
     nextCommitOffsetAndMetadata=new OffsetAndMetadata(nextCommitOffset,nextCommitMsg.getMetadata(Thread.currentThread()));
-    LOG.debug("Offset to be committed next: [{}] {}",nextCommitOffsetAndMetadata.offset(),this);
+    LOG.debug("topic-partition [{}] has offsets [{}-{}] ready to be committed",tp,committedOffset + 1,nextCommitOffsetAndMetadata.offset());
   }
  else {
-    LOG.debug("No offsets ready to commit. {}",this);
+    LOG.debug("topic-partition [{}] has NO offsets ready to be committed",tp);
   }
+  LOG.trace("{}",this);
   return nextCommitOffsetAndMetadata;
 }

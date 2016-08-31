@@ -1,0 +1,24 @@
+def process_getSupervisorPageInfo(self, seqid, iprot, oprot):
+    args = getSupervisorPageInfo_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = getSupervisorPageInfo_result()
+    try:
+        result.success = self._handler.getSupervisorPageInfo(args.id, args.host, args.is_include_sys)
+        msg_type = TMessageType.REPLY
+    except (TTransport.TTransportException, KeyboardInterrupt, SystemExit):
+        raise
+    except NotAliveException as e:
+        msg_type = TMessageType.REPLY
+        result.e = e
+    except AuthorizationException as aze:
+        msg_type = TMessageType.REPLY
+        result.aze = aze
+    except Exception as ex:
+        msg_type = TMessageType.EXCEPTION
+        logging.exception(ex)
+        result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+    oprot.writeMessageBegin('getSupervisorPageInfo', msg_type, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()

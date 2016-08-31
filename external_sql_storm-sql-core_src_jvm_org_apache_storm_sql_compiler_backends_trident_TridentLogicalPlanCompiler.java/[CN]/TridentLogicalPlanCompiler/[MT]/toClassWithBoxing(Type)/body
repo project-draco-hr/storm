@@ -1,0 +1,7 @@
+{
+  Class clazz=(Class<?>)type;
+  if (clazz.isPrimitive()) {
+    clazz=Primitives.wrap(clazz);
+  }
+  return clazz;
+}

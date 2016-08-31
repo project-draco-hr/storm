@@ -1,0 +1,55 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 1:
+      if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+{
+          org.apache.thrift.protocol.TList _list428=iprot.readListBegin();
+          struct.supervisor_summaries=new ArrayList<SupervisorSummary>(_list428.size);
+          SupervisorSummary _elem429;
+          for (int _i430=0; _i430 < _list428.size; ++_i430) {
+            _elem429=new SupervisorSummary();
+            _elem429.read(iprot);
+            struct.supervisor_summaries.add(_elem429);
+          }
+          iprot.readListEnd();
+        }
+        struct.set_supervisor_summaries_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 2:
+  if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+{
+      org.apache.thrift.protocol.TList _list431=iprot.readListBegin();
+      struct.worker_summaries=new ArrayList<WorkerSummary>(_list431.size);
+      WorkerSummary _elem432;
+      for (int _i433=0; _i433 < _list431.size; ++_i433) {
+        _elem432=new WorkerSummary();
+        _elem432.read(iprot);
+        struct.worker_summaries.add(_elem432);
+      }
+      iprot.readListEnd();
+    }
+    struct.set_worker_summaries_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

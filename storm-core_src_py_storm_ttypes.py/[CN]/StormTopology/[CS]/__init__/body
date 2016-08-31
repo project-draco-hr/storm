@@ -1,5 +1,7 @@
-def __init__(self, spouts=None, bolts=None, state_spouts=None, worker_hooks=None):
+def __init__(self, spouts=None, bolts=None, state_spouts=None, worker_hooks=None, dependency_jars=None, dependency_artifacts=None):
     self.spouts = spouts
     self.bolts = bolts
     self.state_spouts = state_spouts
     self.worker_hooks = worker_hooks
+    self.dependency_jars = dependency_jars
+    self.dependency_artifacts = dependency_artifacts

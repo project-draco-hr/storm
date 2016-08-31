@@ -1,0 +1,8 @@
+{
+  for (  WorkerSummary ws : summaries) {
+    if (ws.get_port() == port) {
+      return ws;
+    }
+  }
+  return null;
+}

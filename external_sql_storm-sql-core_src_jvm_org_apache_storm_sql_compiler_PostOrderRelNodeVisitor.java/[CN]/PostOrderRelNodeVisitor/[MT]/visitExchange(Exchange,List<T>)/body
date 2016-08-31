@@ -1,0 +1,3 @@
+{
+  return defaultValue(exchange,inputStreams);
+}

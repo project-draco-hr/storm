@@ -1,0 +1,13 @@
+{
+  boolean uploadNew=false;
+  try {
+    blobStore.getBlobMeta(key);
+  }
+ catch (  KeyNotFoundException e) {
+    AtomicOutputStream blob=blobStore.createBlob(key,new SettableBlobMeta(new ArrayList<AccessControl>()));
+    Files.copy(dependency.toPath(),blob);
+    blob.close();
+    uploadNew=true;
+  }
+  return uploadNew;
+}

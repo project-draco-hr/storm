@@ -1,0 +1,3 @@
+{
+  this.supervisorsResources.put(supervisorId,resources);
+}

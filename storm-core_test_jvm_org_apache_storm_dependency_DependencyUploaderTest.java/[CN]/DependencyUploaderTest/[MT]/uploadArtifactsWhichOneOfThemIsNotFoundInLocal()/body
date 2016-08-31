@@ -1,0 +1,13 @@
+{
+  File mockFile=mock(File.class);
+  when(mockFile.isFile()).thenReturn(true);
+  when(mockFile.exists()).thenReturn(true);
+  File mockFile2=mock(File.class);
+  when(mockFile.isFile()).thenReturn(true);
+  when(mockFile.exists()).thenReturn(false);
+  Map<String,File> artifacts=new LinkedHashMap<>();
+  artifacts.put("group:artifact:1.0.0",mockFile);
+  artifacts.put("group:artifact:1.1.0",mockFile2);
+  sut.uploadArtifacts(artifacts);
+  fail("Should throw FileNotAvailableException");
+}

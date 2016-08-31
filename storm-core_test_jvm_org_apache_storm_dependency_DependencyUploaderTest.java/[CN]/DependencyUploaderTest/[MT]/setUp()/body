@@ -1,0 +1,6 @@
+{
+  sut=new DependencyUploader();
+  mockBlobStore=mock(ClientBlobStore.class);
+  sut.setBlobStore(mockBlobStore);
+  doNothing().when(mockBlobStore).shutdown();
+}

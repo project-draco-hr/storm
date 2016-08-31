@@ -6,6 +6,7 @@
     double assignedMemOnHeap=0.0;
     double assignedMemOffHeap=0.0;
     double assignedCpu=0.0;
+    Map<WorkerSlot,Double[]> workerResources=new HashMap<WorkerSlot,Double[]>();
     Set<String> nodesUsed=new HashSet<String>();
     for (    Map.Entry<WorkerSlot,Collection<ExecutorDetails>> workerToTasksEntry : schedulerAssignmentMap.entrySet()) {
       WorkerSlot targetSlot=workerToTasksEntry.getKey();
@@ -23,10 +24,13 @@
       assignedMemOnHeap+=targetSlot.getAllocatedMemOnHeap();
       assignedMemOffHeap+=targetSlot.getAllocatedMemOffHeap();
       assignedCpu+=targetSlot.getAllocatedCpu();
+      Double[] worker_resources={requestedMemOnHeap,requestedMemOffHeap,requestedCpu,targetSlot.getAllocatedMemOnHeap(),targetSlot.getAllocatedMemOffHeap(),targetSlot.getAllocatedCpu()};
+      workerResources.put(targetSlot,worker_resources);
     }
     Double[] resources={requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu};
     LOG.debug("setTopologyResources for {}: requested on-heap mem, off-heap mem, cpu: {} {} {} " + "assigned on-heap mem, off-heap mem, cpu: {} {} {}",td.getId(),requestedMemOnHeap,requestedMemOffHeap,requestedCpu,assignedMemOnHeap,assignedMemOffHeap,assignedCpu);
     this.schedulingState.cluster.setTopologyResources(td.getId(),resources);
+    this.schedulingState.cluster.setWorkerResources(td.getId(),workerResources);
     return true;
   }
  else {

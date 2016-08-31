@@ -32,9 +32,9 @@
       oprot.writeFieldBegin(TOTAL_RESOURCES_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.DOUBLE,struct.total_resources.size()));
-        for (        Map.Entry<String,Double> _iter86 : struct.total_resources.entrySet()) {
-          oprot.writeString(_iter86.getKey());
-          oprot.writeDouble(_iter86.getValue());
+        for (        Map.Entry<String,Double> _iter102 : struct.total_resources.entrySet()) {
+          oprot.writeString(_iter102.getKey());
+          oprot.writeDouble(_iter102.getValue());
         }
         oprot.writeMapEnd();
       }

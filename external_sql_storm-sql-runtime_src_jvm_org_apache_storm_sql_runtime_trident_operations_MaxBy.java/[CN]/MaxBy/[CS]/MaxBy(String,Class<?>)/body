@@ -1,0 +1,4 @@
+{
+  this.inputFieldName=inputFieldName;
+  this.targetClazz=targetClazz;
+}

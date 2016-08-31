@@ -42,7 +42,6 @@
   this.reportError=new ReportError(stormConf,stormClusterState,stormId,componentId,workerTopologyContext);
   this.reportErrorDie=new ReportErrorAndDie(reportError,suicideFn);
   this.sampler=ConfigUtils.mkStatsSampler(stormConf);
-  this.backpressure=new AtomicBoolean(false);
   this.throttleOn=(AtomicBoolean)workerData.get(Constants.THROTTLE_ON);
   this.isDebug=Utils.getBoolean(stormConf.get(Config.TOPOLOGY_DEBUG),false);
   this.rand=new Random(Utils.secureRandomLong());

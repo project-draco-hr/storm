@@ -1,5 +1,5 @@
 {
-  LOG.debug("Partitions revoked. [consumer-group={}, consumer={}, topic-partitions={}]",kafkaSpoutConfig.getConsumerGroupId(),kafkaConsumer,partitions);
+  LOG.info("Partitions revoked. [consumer-group={}, consumer={}, topic-partitions={}]",kafkaSpoutConfig.getConsumerGroupId(),kafkaConsumer,partitions);
   if (!consumerAutoCommitMode && initialized) {
     initialized=false;
     commitOffsetsForAckedTuples();

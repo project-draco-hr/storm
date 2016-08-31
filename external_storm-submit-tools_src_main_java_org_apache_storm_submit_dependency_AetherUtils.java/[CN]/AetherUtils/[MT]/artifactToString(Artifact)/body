@@ -1,0 +1,11 @@
+{
+  StringBuilder buffer=new StringBuilder(128);
+  buffer.append(artifact.getGroupId());
+  buffer.append(':').append(artifact.getArtifactId());
+  buffer.append(':').append(artifact.getExtension());
+  if (artifact.getClassifier().length() > 0) {
+    buffer.append(':').append(artifact.getClassifier());
+  }
+  buffer.append(':').append(artifact.getVersion());
+  return buffer.toString();
+}

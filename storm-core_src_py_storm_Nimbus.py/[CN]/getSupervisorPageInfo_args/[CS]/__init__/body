@@ -1,0 +1,4 @@
+def __init__(self, id=None, host=None, is_include_sys=None):
+    self.id = id
+    self.host = host
+    self.is_include_sys = is_include_sys

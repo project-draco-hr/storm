@@ -1,0 +1,2 @@
+Aggregate aggregate
+List<IAggregatableStream> inputStreams

@@ -1,0 +1,101 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_supervisor_id()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_host()) {
+    optionals.set(1);
+  }
+  if (struct.is_set_port()) {
+    optionals.set(2);
+  }
+  if (struct.is_set_topology_id()) {
+    optionals.set(3);
+  }
+  if (struct.is_set_topology_name()) {
+    optionals.set(4);
+  }
+  if (struct.is_set_num_executors()) {
+    optionals.set(5);
+  }
+  if (struct.is_set_component_to_num_tasks()) {
+    optionals.set(6);
+  }
+  if (struct.is_set_time_secs()) {
+    optionals.set(7);
+  }
+  if (struct.is_set_uptime_secs()) {
+    optionals.set(8);
+  }
+  if (struct.is_set_requested_memonheap()) {
+    optionals.set(9);
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    optionals.set(10);
+  }
+  if (struct.is_set_requested_cpu()) {
+    optionals.set(11);
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    optionals.set(12);
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    optionals.set(13);
+  }
+  if (struct.is_set_assigned_cpu()) {
+    optionals.set(14);
+  }
+  oprot.writeBitSet(optionals,15);
+  if (struct.is_set_supervisor_id()) {
+    oprot.writeString(struct.supervisor_id);
+  }
+  if (struct.is_set_host()) {
+    oprot.writeString(struct.host);
+  }
+  if (struct.is_set_port()) {
+    oprot.writeI32(struct.port);
+  }
+  if (struct.is_set_topology_id()) {
+    oprot.writeString(struct.topology_id);
+  }
+  if (struct.is_set_topology_name()) {
+    oprot.writeString(struct.topology_name);
+  }
+  if (struct.is_set_num_executors()) {
+    oprot.writeI32(struct.num_executors);
+  }
+  if (struct.is_set_component_to_num_tasks()) {
+{
+      oprot.writeI32(struct.component_to_num_tasks.size());
+      for (      Map.Entry<String,Long> _iter423 : struct.component_to_num_tasks.entrySet()) {
+        oprot.writeString(_iter423.getKey());
+        oprot.writeI64(_iter423.getValue());
+      }
+    }
+  }
+  if (struct.is_set_time_secs()) {
+    oprot.writeI32(struct.time_secs);
+  }
+  if (struct.is_set_uptime_secs()) {
+    oprot.writeI32(struct.uptime_secs);
+  }
+  if (struct.is_set_requested_memonheap()) {
+    oprot.writeDouble(struct.requested_memonheap);
+  }
+  if (struct.is_set_requested_memoffheap()) {
+    oprot.writeDouble(struct.requested_memoffheap);
+  }
+  if (struct.is_set_requested_cpu()) {
+    oprot.writeDouble(struct.requested_cpu);
+  }
+  if (struct.is_set_assigned_memonheap()) {
+    oprot.writeDouble(struct.assigned_memonheap);
+  }
+  if (struct.is_set_assigned_memoffheap()) {
+    oprot.writeDouble(struct.assigned_memoffheap);
+  }
+  if (struct.is_set_assigned_cpu()) {
+    oprot.writeDouble(struct.assigned_cpu);
+  }
+}

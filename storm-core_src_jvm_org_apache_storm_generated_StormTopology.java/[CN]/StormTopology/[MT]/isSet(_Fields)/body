@@ -11,6 +11,10 @@ case STATE_SPOUTS:
 return is_set_state_spouts();
 case WORKER_HOOKS:
 return is_set_worker_hooks();
+case DEPENDENCY_JARS:
+return is_set_dependency_jars();
+case DEPENDENCY_ARTIFACTS:
+return is_set_dependency_artifacts();
 }
 throw new IllegalStateException();
 }

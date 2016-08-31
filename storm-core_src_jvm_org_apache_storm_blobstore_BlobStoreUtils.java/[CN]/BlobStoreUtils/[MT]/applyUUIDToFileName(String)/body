@@ -1,0 +1,11 @@
+{
+  String fileNameWithExt=com.google.common.io.Files.getNameWithoutExtension(fileName);
+  String ext=com.google.common.io.Files.getFileExtension(fileName);
+  if (StringUtils.isEmpty(ext)) {
+    fileName=fileName + "-" + UUID.randomUUID();
+  }
+ else {
+    fileName=fileNameWithExt + "-" + UUID.randomUUID()+ "."+ ext;
+  }
+  return fileName;
+}

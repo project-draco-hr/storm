@@ -1,0 +1,19 @@
+def resolve_dependencies(artifacts):
+    if (len(artifacts) == 0):
+        return {}
+    print(('Resolving dependencies on demand: artifacts (%s)' % artifacts))
+    sys.stdout.flush()
+    extrajars = get_jars_full((STORM_DIR + '/external/storm-submit-tools'))
+    classpath = normclasspath(os.pathsep.join(extrajars))
+    command = [JAVA_CMD, '-client', '-cp', classpath, 'org.apache.storm.submit.command.DependencyResolverMain', ','.join(artifacts)]
+    p = sub.Popen(command, stdout=sub.PIPE)
+    (output, errors) = p.communicate()
+    if (p.returncode != 0):
+        raise RuntimeError(('dependency handler returns non-zero code: code<%s> syserr<%s>' % (p.returncode, errors)))
+    if (not isinstance(output, str)):
+        output = output.decode('utf-8')
+    try:
+        out_dict = json.loads(output)
+        return out_dict
+    except:
+        raise RuntimeError('dependency handler returns non-json response: sysout<%s>', output)

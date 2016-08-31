@@ -1,0 +1,5 @@
+{
+  if (blobStore == null) {
+    blobStore=Utils.getClientBlobStore(conf);
+  }
+}

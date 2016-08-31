@@ -1,0 +1,23 @@
+{
+  String jar=submitJarAs(conf,System.getProperty("storm.jar"),progressListener,asUser);
+  try {
+    LOG.info("Submitting topology " + name + " in distributed mode with conf "+ serConf);
+    try (NimbusClient client=NimbusClient.getConfiguredClientAs(conf,asUser)){
+      if (opts != null) {
+        client.getClient().submitTopologyWithOpts(name,jar,serConf,topology,opts);
+      }
+ else {
+        client.getClient().submitTopology(name,jar,serConf,topology);
+      }
+    }
+     LOG.info("Finished submitting topology: " + name);
+  }
+ catch (  InvalidTopologyException e) {
+    LOG.warn("Topology submission exception: " + e.get_msg());
+    throw e;
+  }
+catch (  AlreadyAliveException e) {
+    LOG.warn("Topology already alive exception",e);
+    throw e;
+  }
+}

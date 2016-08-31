@@ -1,0 +1,25 @@
+{
+  if (inputStreams.size() > 1) {
+    throw new RuntimeException("Aggregate is a SingleRel");
+  }
+  Stream inputStream=inputStreams.get(0).toStream();
+  String stageName=getStageName(aggregate);
+  List<String> groupByFieldNames=new ArrayList<>();
+  for (  Integer idx : aggregate.getGroupSet()) {
+    String fieldName=inputStream.getOutputFields().get(idx);
+    groupByFieldNames.add(fieldName);
+  }
+  Fields groupByFields=new Fields(groupByFieldNames);
+  GroupedStream groupedStream=inputStream.groupBy(groupByFields);
+  ChainedAggregatorDeclarer chainedAggregatorDeclarer=groupedStream.chainedAgg();
+  List<TransformInformation> transformsAfterChained=new ArrayList<>();
+  for (  AggregateCall call : aggregate.getAggCallList()) {
+    appendAggregationInChain(chainedAggregatorDeclarer,groupByFieldNames,inputStream,call,transformsAfterChained);
+  }
+  Stream stream=chainedAggregatorDeclarer.chainEnd();
+  for (  TransformInformation transformInformation : transformsAfterChained) {
+    stream=stream.each(transformInformation.getInputFields(),transformInformation.getFunction(),transformInformation.getFunctionFields());
+  }
+  List<String> outputFields=aggregate.getRowType().getFieldNames();
+  return stream.project(new Fields(outputFields)).name(stageName);
+}

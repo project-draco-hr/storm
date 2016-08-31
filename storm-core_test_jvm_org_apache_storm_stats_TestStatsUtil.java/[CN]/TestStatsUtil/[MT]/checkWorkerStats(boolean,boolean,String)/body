@@ -1,0 +1,40 @@
+{
+  List<WorkerSummary> summaries=StatsUtil.aggWorkerStats("my-storm-id","my-storm-name",task2Component,beats,exec2NodePort,nodeHost,worker2Resources,includeSys,userAuthorized,filterSupervisor);
+  for (  WorkerSummary ws : summaries) {
+    String host=ws.get_host();
+    int port=ws.get_port();
+    Assert.assertEquals("my-storm-id",ws.get_topology_id());
+    Assert.assertEquals("my-storm-name",ws.get_topology_name());
+    boolean includeSupervisor=filterSupervisor == null || filterSupervisor.equals(host);
+switch (port) {
+case 1:
+      Assert.assertEquals("host1",ws.get_host());
+    Assert.assertEquals("node1",ws.get_supervisor_id());
+  Assert.assertEquals(1,ws.get_num_executors());
+Assert.assertEquals(100,ws.get_uptime_secs());
+Assert.assertEquals(1.0,ws.get_assigned_memonheap(),0.001);
+Assert.assertEquals(2.0,ws.get_assigned_memoffheap(),0.001);
+Assert.assertEquals(3.0,ws.get_assigned_cpu(),0.001);
+break;
+case 2:
+Assert.assertEquals("host2",ws.get_host());
+Assert.assertEquals("node2",ws.get_supervisor_id());
+Assert.assertEquals(1,ws.get_num_executors());
+Assert.assertEquals(200,ws.get_uptime_secs());
+Assert.assertEquals(4.0,ws.get_assigned_memonheap(),0.001);
+Assert.assertEquals(8.0,ws.get_assigned_memoffheap(),0.001);
+Assert.assertEquals(12.0,ws.get_assigned_cpu(),0.001);
+break;
+case 3:
+Assert.assertEquals("host3",ws.get_host());
+Assert.assertEquals("node3",ws.get_supervisor_id());
+Assert.assertEquals(1,ws.get_num_executors());
+Assert.assertEquals(0,ws.get_uptime_secs());
+Assert.assertEquals(16.0,ws.get_assigned_memonheap(),0.001);
+Assert.assertEquals(32.0,ws.get_assigned_memoffheap(),0.001);
+Assert.assertEquals(48.0,ws.get_assigned_cpu(),0.001);
+break;
+}
+}
+return summaries;
+}

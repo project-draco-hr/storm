@@ -1,6 +1,13 @@
 def sql(sql_file, topology_name):
-    'Syntax: [storm sql sql-file topology-name]\n\n    Compiles the SQL statements into a Trident topology and submits it to Storm.\n    '
+    'Syntax: [storm sql sql-file topology-name]\n\n    Compiles the SQL statements into a Trident topology and submits it to Storm.\n\n    --jars and --artifacts options available for jar are also applied to sql command.\n    Please refer "help jar" to see how to use --jars and --artifacts options.\n    You normally want to pass these options since you need to set data source to your sql which is an external storage in many cases.\n    '
+    global DEP_JARS_OPTS, DEP_ARTIFACTS_OPTS
+    local_jars = DEP_JARS_OPTS
+    artifact_to_file_jars = resolve_dependencies(DEP_ARTIFACTS_OPTS)
+    sql_core_jars = get_jars_full((STORM_DIR + '/external/sql/storm-sql-core'))
+    sql_runtime_jars = get_jars_full((STORM_DIR + '/external/sql/storm-sql-runtime'))
+    local_jars.extend(sql_runtime_jars)
     extrajars = [USER_CONF_DIR, STORM_BIN_DIR]
-    extrajars.extend(get_jars_full((STORM_DIR + '/external/sql/storm-sql-core')))
-    extrajars.extend(get_jars_full((STORM_DIR + '/external/sql/storm-sql-runtime')))
-    exec_storm_class('org.apache.storm.sql.StormSqlRunner', jvmtype='-client', extrajars=extrajars, args=[sql_file, topology_name], daemon=False)
+    extrajars.extend(local_jars)
+    extrajars.extend(artifact_to_file_jars.values())
+    extrajars.extend(sql_core_jars)
+    exec_storm_class('org.apache.storm.sql.StormSqlRunner', jvmtype='-client', extrajars=extrajars, args=[sql_file, topology_name], daemon=False, jvmopts=([('-Dstorm.dependency.jars=' + ','.join(local_jars))] + [('-Dstorm.dependency.artifacts=' + json.dumps(artifact_to_file_jars))]))

@@ -1,0 +1,3 @@
+{
+  iface.getSupervisorPageInfo(args.id,args.host,args.is_include_sys,resultHandler);
+}

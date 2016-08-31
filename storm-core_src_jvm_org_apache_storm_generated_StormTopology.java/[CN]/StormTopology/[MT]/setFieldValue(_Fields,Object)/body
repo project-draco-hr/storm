@@ -32,5 +32,21 @@ unset_worker_hooks();
 set_worker_hooks((List<ByteBuffer>)value);
 }
 break;
+case DEPENDENCY_JARS:
+if (value == null) {
+unset_dependency_jars();
+}
+ else {
+set_dependency_jars((List<String>)value);
+}
+break;
+case DEPENDENCY_ARTIFACTS:
+if (value == null) {
+unset_dependency_artifacts();
+}
+ else {
+set_dependency_artifacts((List<String>)value);
+}
+break;
 }
 }

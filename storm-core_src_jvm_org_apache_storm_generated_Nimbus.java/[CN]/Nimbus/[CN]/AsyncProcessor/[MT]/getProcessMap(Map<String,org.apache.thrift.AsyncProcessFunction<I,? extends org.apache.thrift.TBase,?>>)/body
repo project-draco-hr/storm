@@ -36,6 +36,7 @@
   processMap.put("getTopologyInfo",new getTopologyInfo());
   processMap.put("getTopologyInfoWithOpts",new getTopologyInfoWithOpts());
   processMap.put("getTopologyPageInfo",new getTopologyPageInfo());
+  processMap.put("getSupervisorPageInfo",new getSupervisorPageInfo());
   processMap.put("getComponentPageInfo",new getComponentPageInfo());
   processMap.put("getTopologyConf",new getTopologyConf());
   processMap.put("getTopology",new getTopology());

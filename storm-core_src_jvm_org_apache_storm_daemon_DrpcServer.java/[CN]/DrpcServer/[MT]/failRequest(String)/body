@@ -4,7 +4,7 @@
   if (internalRequest != null) {
     Map<String,String> map=new HashMap<>();
     map.put(DRPCAuthorizerBase.FUNCTION_NAME,internalRequest.function);
-    checkAuthorization(authorizer,map,"failRequest");
+    checkAuthorization(authorizer,map,"failRequest",internalRequest.function);
     Semaphore sem=internalRequest.sem;
     if (sem != null) {
       internalRequest.result=new DRPCExecutionException("Request failed");

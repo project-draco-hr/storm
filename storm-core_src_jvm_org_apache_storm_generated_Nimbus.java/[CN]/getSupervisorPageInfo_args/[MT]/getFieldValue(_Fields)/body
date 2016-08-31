@@ -1,0 +1,11 @@
+{
+switch (field) {
+case ID:
+    return get_id();
+case HOST:
+  return get_host();
+case IS_INCLUDE_SYS:
+return is_is_include_sys();
+}
+throw new IllegalStateException();
+}

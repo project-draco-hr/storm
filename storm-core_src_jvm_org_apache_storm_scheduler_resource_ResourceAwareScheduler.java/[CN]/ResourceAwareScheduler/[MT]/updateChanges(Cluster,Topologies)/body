@@ -4,5 +4,6 @@
   cluster.setStatusMap(schedulingState.cluster.getStatusMap());
   cluster.setSupervisorsResourcesMap(schedulingState.cluster.getSupervisorsResourcesMap());
   cluster.setTopologyResourcesMap(schedulingState.cluster.getTopologyResourcesMap());
+  cluster.setWorkerResourcesMap(schedulingState.cluster.getWorkerResourcesMap());
   updateSupervisorsResources(cluster,topologies);
 }

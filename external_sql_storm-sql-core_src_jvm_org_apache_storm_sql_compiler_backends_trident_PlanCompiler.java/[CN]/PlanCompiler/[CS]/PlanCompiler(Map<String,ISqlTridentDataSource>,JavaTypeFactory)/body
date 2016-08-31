@@ -1,0 +1,4 @@
+{
+  this.sources=sources;
+  this.typeFactory=typeFactory;
+}

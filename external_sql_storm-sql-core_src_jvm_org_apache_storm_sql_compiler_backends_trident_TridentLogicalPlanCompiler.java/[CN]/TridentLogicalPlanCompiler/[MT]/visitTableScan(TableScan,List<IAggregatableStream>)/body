@@ -1,0 +1,8 @@
+{
+  String sourceName=Joiner.on('.').join(scan.getTable().getQualifiedName());
+  if (!sources.containsKey(sourceName)) {
+    throw new RuntimeException("Cannot find table " + sourceName);
+  }
+  String stageName=getStageName(scan);
+  return topology.newStream(stageName,sources.get(sourceName).getProducer());
+}

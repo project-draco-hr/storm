@@ -30,6 +30,8 @@ case 14:
 return DEBUG_OPTIONS;
 case 15:
 return REPLICATION_COUNT;
+case 16:
+return WORKERS;
 case 521:
 return REQUESTED_MEMONHEAP;
 case 522:

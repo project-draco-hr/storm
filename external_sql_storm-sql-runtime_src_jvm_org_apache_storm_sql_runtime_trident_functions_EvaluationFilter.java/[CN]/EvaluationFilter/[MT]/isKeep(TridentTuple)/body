@@ -1,0 +1,8 @@
+{
+  try {
+    return (Boolean)evaluator.evaluate(new Object[]{tuple.getValues()});
+  }
+ catch (  InvocationTargetException e) {
+    throw new RuntimeException(e);
+  }
+}
