@@ -3,7 +3,7 @@
   InternalRequest internalRequest=this.outstandingRequests.get(id);
   if (internalRequest != null) {
     Map<String,String> map=ImmutableMap.of(DRPCAuthorizerBase.FUNCTION_NAME,internalRequest.function);
-    checkAuthorization(authorizer,map,"result");
+    checkAuthorization(authorizer,map,"result",internalRequest.function);
     Semaphore sem=internalRequest.sem;
     LOG.debug("Received result {} for {} at {}",result,id,System.currentTimeMillis());
     if (sem != null) {

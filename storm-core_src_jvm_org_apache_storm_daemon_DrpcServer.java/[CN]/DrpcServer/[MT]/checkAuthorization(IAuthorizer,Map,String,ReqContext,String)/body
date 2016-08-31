@@ -1,6 +1,6 @@
 {
   if (reqContext != null) {
-    ThriftAccessLogger.logAccess(reqContext.requestID(),reqContext.remoteAddress(),reqContext.principal(),operation);
+    ThriftAccessLogger.logAccessFunction(reqContext.requestID(),reqContext.remoteAddress(),reqContext.principal(),operation,function);
   }
   if (aclHandler != null) {
     if (reqContext == null)     reqContext=ReqContext.context();
