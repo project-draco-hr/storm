@@ -1,0 +1,7 @@
+{
+  String functionPart="";
+  if (function != null) {
+    functionPart=" function: {}";
+  }
+  LOG.info(accessLogBase + functionPart,requestId,remoteAddress,principal,operation,function);
+}
