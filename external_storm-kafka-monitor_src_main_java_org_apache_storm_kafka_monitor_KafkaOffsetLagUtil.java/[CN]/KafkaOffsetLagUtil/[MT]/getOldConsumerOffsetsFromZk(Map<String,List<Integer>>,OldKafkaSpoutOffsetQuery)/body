@@ -8,8 +8,7 @@
     zkPath=zkPath.substring(0,zkPath.length() - 1);
   }
   if (curatorFramework.checkExists().forPath(zkPath) == null) {
-    System.out.printf("--zk-node '%s' is not exists.%n",zkPath);
-    System.exit(1);
+    throw new IllegalArgumentException(OPTION_ZK_COMMITTED_NODE_LONG + " '" + zkPath+ "' dose not exists.");
   }
   byte[] zkData;
   try {

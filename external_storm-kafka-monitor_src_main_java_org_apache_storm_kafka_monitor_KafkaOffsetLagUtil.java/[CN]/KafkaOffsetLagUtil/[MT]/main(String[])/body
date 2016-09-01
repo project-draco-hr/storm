@@ -15,10 +15,6 @@
       if (!commandLine.hasOption(OPTION_ZK_SERVERS_LONG) || !commandLine.hasOption(OPTION_ZK_COMMITTED_NODE_LONG)) {
         printUsageAndExit(options,OPTION_ZK_SERVERS_LONG + " and " + OPTION_ZK_COMMITTED_NODE_LONG+ " are required  with "+ OPTION_OLD_CONSUMER_LONG);
       }
-      String zkNode=commandLine.getOptionValue(OPTION_ZK_COMMITTED_NODE_LONG);
-      if (zkNode == null || zkNode.length() <= 1) {
-        printUsageAndExit(options,OPTION_ZK_COMMITTED_NODE_LONG + " '" + zkNode+ "' is invalid.");
-      }
       String[] topics=commandLine.getOptionValue(OPTION_TOPIC_LONG).split(",");
       if (topics != null && topics.length > 1) {
         printUsageAndExit(options,"Multiple topics not supported with option " + OPTION_OLD_CONSUMER_LONG + ". Either a single topic or a "+ "wildcard string for matching topics is supported");
