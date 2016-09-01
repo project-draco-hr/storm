@@ -1,0 +1,4 @@
+List<ArtifactResult> results
+String groupId
+String artifactId
+String version

@@ -1,0 +1,5 @@
+{
+  for (  String shardId : toEmitPerShard.keySet()) {
+    refreshShardIteratorForNewRecords(shardId);
+  }
+}

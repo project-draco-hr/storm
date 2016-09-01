@@ -1,0 +1,36 @@
+{
+switch (fieldId) {
+case 1:
+    return SUPERVISOR_ID;
+case 2:
+  return HOST;
+case 3:
+return PORT;
+case 4:
+return TOPOLOGY_ID;
+case 5:
+return TOPOLOGY_NAME;
+case 6:
+return NUM_EXECUTORS;
+case 7:
+return COMPONENT_TO_NUM_TASKS;
+case 8:
+return TIME_SECS;
+case 9:
+return UPTIME_SECS;
+case 521:
+return REQUESTED_MEMONHEAP;
+case 522:
+return REQUESTED_MEMOFFHEAP;
+case 523:
+return REQUESTED_CPU;
+case 524:
+return ASSIGNED_MEMONHEAP;
+case 525:
+return ASSIGNED_MEMOFFHEAP;
+case 526:
+return ASSIGNED_CPU;
+default :
+return null;
+}
+}

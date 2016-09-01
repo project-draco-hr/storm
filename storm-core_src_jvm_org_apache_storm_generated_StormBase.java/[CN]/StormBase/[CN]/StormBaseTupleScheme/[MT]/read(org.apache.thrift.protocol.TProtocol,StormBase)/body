@@ -9,14 +9,14 @@
   BitSet incoming=iprot.readBitSet(6);
   if (incoming.get(0)) {
 {
-      org.apache.thrift.protocol.TMap _map616=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
-      struct.component_executors=new HashMap<String,Integer>(2 * _map616.size);
-      String _key617;
-      int _val618;
-      for (int _i619=0; _i619 < _map616.size; ++_i619) {
-        _key617=iprot.readString();
-        _val618=iprot.readI32();
-        struct.component_executors.put(_key617,_val618);
+      org.apache.thrift.protocol.TMap _map666=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,iprot.readI32());
+      struct.component_executors=new HashMap<String,Integer>(2 * _map666.size);
+      String _key667;
+      int _val668;
+      for (int _i669=0; _i669 < _map666.size; ++_i669) {
+        _key667=iprot.readString();
+        _val668=iprot.readI32();
+        struct.component_executors.put(_key667,_val668);
       }
     }
     struct.set_component_executors_isSet(true);
@@ -40,15 +40,15 @@
   }
   if (incoming.get(5)) {
 {
-      org.apache.thrift.protocol.TMap _map620=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-      struct.component_debug=new HashMap<String,DebugOptions>(2 * _map620.size);
-      String _key621;
-      DebugOptions _val622;
-      for (int _i623=0; _i623 < _map620.size; ++_i623) {
-        _key621=iprot.readString();
-        _val622=new DebugOptions();
-        _val622.read(iprot);
-        struct.component_debug.put(_key621,_val622);
+      org.apache.thrift.protocol.TMap _map670=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.component_debug=new HashMap<String,DebugOptions>(2 * _map670.size);
+      String _key671;
+      DebugOptions _val672;
+      for (int _i673=0; _i673 < _map670.size; ++_i673) {
+        _key671=iprot.readString();
+        _val672=new DebugOptions();
+        _val672.read(iprot);
+        struct.component_debug.put(_key671,_val672);
       }
     }
     struct.set_component_debug_isSet(true);

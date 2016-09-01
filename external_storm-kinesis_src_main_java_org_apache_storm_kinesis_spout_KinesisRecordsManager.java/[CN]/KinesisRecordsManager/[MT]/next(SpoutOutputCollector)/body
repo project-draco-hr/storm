@@ -1,0 +1,38 @@
+{
+  if (shouldCommit()) {
+    commit();
+  }
+  KinesisMessageId failedMessageId=kinesisConfig.getFailedMessageRetryHandler().getNextFailedMessageToRetry();
+  if (failedMessageId != null) {
+    BigInteger failedSequenceNumber=new BigInteger(failedMessageId.getSequenceNumber());
+    if (failedPerShard.containsKey(failedMessageId.getShardId()) && failedPerShard.get(failedMessageId.getShardId()).contains(failedSequenceNumber)) {
+      if (!failedandFetchedRecords.containsKey(failedMessageId)) {
+        fetchFailedRecords(failedMessageId);
+      }
+      if (emitFailedRecord(collector,failedMessageId)) {
+        failedPerShard.get(failedMessageId.getShardId()).remove(failedSequenceNumber);
+        kinesisConfig.getFailedMessageRetryHandler().failedMessageEmitted(failedMessageId);
+        return;
+      }
+ else {
+        LOG.warn("failedMessageEmitted not called on retrier for " + failedMessageId + ". This can happen a few times but should not happen "+ "infinitely");
+      }
+    }
+ else {
+      LOG.warn("failedPerShard does not contain " + failedMessageId + ". This should never happen.");
+    }
+  }
+  LOG.debug("No failed record to emit for now. Hence will try to emit new records");
+  if (!(getUncommittedRecordsCount() < kinesisConfig.getMaxUncommittedRecords())) {
+    LOG.warn("maximum uncommitted records count has reached. so not emitting any new records and returning");
+    return;
+  }
+  if (toEmitPerShard.isEmpty()) {
+    LOG.warn("No shard is assigned to this task. Hence not emitting any tuple.");
+    return;
+  }
+  if (shouldFetchNewRecords()) {
+    fetchNewRecords();
+  }
+  emitNewRecord(collector);
+}

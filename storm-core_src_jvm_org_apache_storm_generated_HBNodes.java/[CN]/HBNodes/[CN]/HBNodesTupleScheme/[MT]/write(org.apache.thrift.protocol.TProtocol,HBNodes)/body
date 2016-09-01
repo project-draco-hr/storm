@@ -8,8 +8,8 @@
   if (struct.is_set_pulseIds()) {
 {
       oprot.writeI32(struct.pulseIds.size());
-      for (      String _iter734 : struct.pulseIds) {
-        oprot.writeString(_iter734);
+      for (      String _iter784 : struct.pulseIds) {
+        oprot.writeString(_iter784);
       }
     }
   }

@@ -1,0 +1,12 @@
+{
+  String message;
+  byte[] hb=cluster.get_worker_hb(path,false);
+  if (hb != null) {
+    Map<String,Object> heartbeatMap=StatsUtil.convertZkWorkerHb(Utils.deserialize(hb,ClusterWorkerHeartbeat.class));
+    message=JSONValue.toJSONString(heartbeatMap);
+  }
+ else {
+    message="No Heartbeats found";
+  }
+  LOG.info(message);
+}

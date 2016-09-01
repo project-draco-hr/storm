@@ -1,0 +1,10 @@
+{
+  boolean fetchRecords=true;
+  for (  Map.Entry<String,LinkedList<Record>> entry : toEmitPerShard.entrySet()) {
+    if (!entry.getValue().isEmpty()) {
+      fetchRecords=false;
+      break;
+    }
+  }
+  return fetchRecords;
+}

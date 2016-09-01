@@ -120,6 +120,14 @@ unset_replication_count();
 set_replication_count((Integer)value);
 }
 break;
+case WORKERS:
+if (value == null) {
+unset_workers();
+}
+ else {
+set_workers((List<WorkerSummary>)value);
+}
+break;
 case REQUESTED_MEMONHEAP:
 if (value == null) {
 unset_requested_memonheap();

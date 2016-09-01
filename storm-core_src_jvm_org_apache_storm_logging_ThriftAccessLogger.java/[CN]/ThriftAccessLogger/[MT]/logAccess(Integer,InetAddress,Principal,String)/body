@@ -1,3 +1,0 @@
-{
-  LOG.info("Request ID: {} access from: {} principal: {} operation: {}",requestId,remoteAddress,principal,operation);
-}

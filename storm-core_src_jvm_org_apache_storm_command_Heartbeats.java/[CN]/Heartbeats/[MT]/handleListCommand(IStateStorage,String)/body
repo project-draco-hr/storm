@@ -1,0 +1,4 @@
+{
+  String message=Joiner.on("\n").join(cluster.get_worker_hb_children(path,false));
+  LOG.info("list {}:\n{}\n",path,message);
+}

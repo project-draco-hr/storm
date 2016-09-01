@@ -1,0 +1,13 @@
+{
+  try {
+    if (isMethodsStatic) {
+      return method.invoke(null,params);
+    }
+ else {
+      return method.invoke(aggrInstance,params);
+    }
+  }
+ catch (  IllegalAccessException|InvocationTargetException e) {
+    throw new RuntimeException(e);
+  }
+}

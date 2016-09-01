@@ -1,0 +1,5 @@
+{
+  LOG.debug("Spout says " + messageId + " emitted. Hence removing it from queue and wait for its ack or fail");
+  retryMessageSet.remove(messageId);
+  retryTimes.remove(messageId);
+}

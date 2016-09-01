@@ -1,0 +1,8 @@
+{
+  Type ty=typeFactory.getJavaClass(node.getType());
+  Class clazz=(Class<?>)ty;
+  if (clazz.isPrimitive()) {
+    clazz=Primitives.wrap(clazz);
+  }
+  return clazz.getCanonicalName();
+}

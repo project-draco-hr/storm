@@ -1,0 +1,20 @@
+{
+  SchemaPlus schema=Frameworks.createRootSchema(true);
+  JavaTypeFactory typeFactory=new JavaTypeFactoryImpl(RelDataTypeSystem.DEFAULT);
+  StreamableTable streamableTable=new CompilerUtil.TableBuilderInfo(typeFactory).field("ID",SqlTypeName.INTEGER).field("GRPID",SqlTypeName.INTEGER).field("NAME",typeFactory.createType(String.class)).field("ADDR",typeFactory.createType(String.class)).field("AGE",SqlTypeName.INTEGER).field("SCORE",SqlTypeName.INTEGER).build();
+  Table table=streamableTable.stream();
+  schema.add("FOO",table);
+  schema.add("BAR",table);
+  schema.add("MYSTATICSUM",AggregateFunctionImpl.create(MyStaticSumFunction.class));
+  schema.add("MYSUM",AggregateFunctionImpl.create(MySumFunction.class));
+  List<SqlOperatorTable> sqlOperatorTables=new ArrayList<>();
+  sqlOperatorTables.add(SqlStdOperatorTable.instance());
+  sqlOperatorTables.add(new CalciteCatalogReader(CalciteSchema.from(schema),false,Collections.<String>emptyList(),typeFactory));
+  SqlOperatorTable chainedSqlOperatorTable=new ChainedSqlOperatorTable(sqlOperatorTables);
+  FrameworkConfig config=Frameworks.newConfigBuilder().defaultSchema(schema).operatorTable(chainedSqlOperatorTable).build();
+  Planner planner=Frameworks.getPlanner(config);
+  SqlNode parse=planner.parse(sql);
+  SqlNode validate=planner.validate(parse);
+  RelNode tree=planner.convert(validate);
+  return new CalciteState(schema,tree);
+}

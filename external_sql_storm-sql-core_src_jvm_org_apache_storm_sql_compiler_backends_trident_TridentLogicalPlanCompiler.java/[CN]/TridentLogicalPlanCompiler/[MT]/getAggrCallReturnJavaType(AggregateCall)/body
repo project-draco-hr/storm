@@ -1,0 +1,3 @@
+{
+  return toClassWithBoxing(typeFactory.getJavaClass(call.getType()));
+}

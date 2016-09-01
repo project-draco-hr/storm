@@ -1,7 +1,7 @@
 {
   if (this.waiting.size() > 0) {
     MessageRetryRecord first=this.waiting.peek();
-    if (System.currentTimeMillis() >= first.retryTimeUTC) {
+    if (Time.currentTimeMillis() >= first.retryTimeUTC) {
       if (this.records.containsKey(first.offset)) {
         return first.offset;
       }

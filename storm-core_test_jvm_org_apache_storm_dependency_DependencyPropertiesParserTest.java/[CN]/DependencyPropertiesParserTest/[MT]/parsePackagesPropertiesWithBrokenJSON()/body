@@ -1,0 +1,3 @@
+{
+  sut.parseArtifactsProperties("{\"group:artifact:version\": \"a.jar\"");
+}

@@ -26,5 +26,5 @@
   if (null != outTaskId) {
     return Collections.singletonList(outTaskId);
   }
-  return null;
+  return new ArrayList<>(0);
 }

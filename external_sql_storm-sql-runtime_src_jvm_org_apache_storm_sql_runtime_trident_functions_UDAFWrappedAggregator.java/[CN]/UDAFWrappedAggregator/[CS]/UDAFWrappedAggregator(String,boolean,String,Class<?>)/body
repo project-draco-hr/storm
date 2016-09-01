@@ -1,0 +1,6 @@
+{
+  this.declaringClassName=declaringClassName;
+  this.isMethodsStatic=isMethodsStatic;
+  this.inputFieldName=inputFieldName;
+  this.targetClazz=targetClazz;
+}

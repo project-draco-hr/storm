@@ -1,0 +1,4 @@
+{
+  LOG.info("input = [" + input + "]");
+  collector.ack(input);
+}

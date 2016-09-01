@@ -1,0 +1,3 @@
+{
+  super(new EnvironmentVariableCredentialsProvider(),new SystemPropertiesCredentialsProvider(),new ClasspathPropertiesFileCredentialsProvider(),new InstanceProfileCredentialsProvider(),new ProfileCredentialsProvider());
+}

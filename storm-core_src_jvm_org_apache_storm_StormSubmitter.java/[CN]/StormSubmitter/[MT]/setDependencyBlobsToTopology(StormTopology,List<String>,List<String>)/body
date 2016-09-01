@@ -1,0 +1,5 @@
+{
+  LOG.info("Dependency Blob keys - jars : {} / artifacts : {}",jarsBlobKeys,artifactsBlobKeys);
+  topology.set_dependency_jars(jarsBlobKeys);
+  topology.set_dependency_artifacts(artifactsBlobKeys);
+}

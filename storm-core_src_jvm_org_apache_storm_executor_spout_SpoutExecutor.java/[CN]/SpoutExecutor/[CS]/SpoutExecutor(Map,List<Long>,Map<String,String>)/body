@@ -1,0 +1,11 @@
+{
+  super(workerData,executorId,credentials);
+  this.spoutWaitStrategy=Utils.newInstance((String)stormConf.get(Config.TOPOLOGY_SPOUT_WAIT_STRATEGY));
+  this.spoutWaitStrategy.prepare(stormConf);
+  this.backPressureEnabled=Utils.getBoolean(stormConf.get(Config.TOPOLOGY_BACKPRESSURE_ENABLE),false);
+  this.lastActive=new AtomicBoolean(false);
+  this.hasAckers=StormCommon.hasAckers(stormConf);
+  this.emittedCount=new MutableLong(0);
+  this.emptyEmitStreak=new MutableLong(0);
+  this.spoutThrottlingMetrics=new SpoutThrottlingMetrics();
+}

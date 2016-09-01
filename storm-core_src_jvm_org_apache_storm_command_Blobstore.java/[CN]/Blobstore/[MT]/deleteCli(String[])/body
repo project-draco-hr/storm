@@ -1,0 +1,11 @@
+{
+  ClientBlobStore.withConfiguredClient(new ClientBlobStore.WithBlobstore(){
+    @Override public void run(    ClientBlobStore blobStore) throws Exception {
+      for (      String key : args) {
+        blobStore.deleteBlob(key);
+        LOG.info("deleted {}",key);
+      }
+    }
+  }
+);
+}

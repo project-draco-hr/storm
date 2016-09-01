@@ -1,0 +1,29 @@
+{
+  __isset_bitfield=other.__isset_bitfield;
+  if (other.is_set_supervisor_id()) {
+    this.supervisor_id=other.supervisor_id;
+  }
+  if (other.is_set_host()) {
+    this.host=other.host;
+  }
+  this.port=other.port;
+  if (other.is_set_topology_id()) {
+    this.topology_id=other.topology_id;
+  }
+  if (other.is_set_topology_name()) {
+    this.topology_name=other.topology_name;
+  }
+  this.num_executors=other.num_executors;
+  if (other.is_set_component_to_num_tasks()) {
+    Map<String,Long> __this__component_to_num_tasks=new HashMap<String,Long>(other.component_to_num_tasks);
+    this.component_to_num_tasks=__this__component_to_num_tasks;
+  }
+  this.time_secs=other.time_secs;
+  this.uptime_secs=other.uptime_secs;
+  this.requested_memonheap=other.requested_memonheap;
+  this.requested_memoffheap=other.requested_memoffheap;
+  this.requested_cpu=other.requested_cpu;
+  this.assigned_memonheap=other.assigned_memonheap;
+  this.assigned_memoffheap=other.assigned_memoffheap;
+  this.assigned_cpu=other.assigned_cpu;
+}

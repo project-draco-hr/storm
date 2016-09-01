@@ -1,0 +1,163 @@
+{
+  org.apache.thrift.protocol.TField schemeField;
+  iprot.readStructBegin();
+  while (true) {
+    schemeField=iprot.readFieldBegin();
+    if (schemeField.type == org.apache.thrift.protocol.TType.STOP) {
+      break;
+    }
+switch (schemeField.id) {
+case 1:
+      if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+        struct.supervisor_id=iprot.readString();
+        struct.set_supervisor_id_isSet(true);
+      }
+ else {
+        org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+      }
+    break;
+case 2:
+  if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+    struct.host=iprot.readString();
+    struct.set_host_isSet(true);
+  }
+ else {
+    org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+  }
+break;
+case 3:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.port=iprot.readI32();
+struct.set_port_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 4:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+struct.topology_id=iprot.readString();
+struct.set_topology_id_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 5:
+if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+struct.topology_name=iprot.readString();
+struct.set_topology_name_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 6:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.num_executors=iprot.readI32();
+struct.set_num_executors_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 7:
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map418=iprot.readMapBegin();
+struct.component_to_num_tasks=new HashMap<String,Long>(2 * _map418.size);
+String _key419;
+long _val420;
+for (int _i421=0; _i421 < _map418.size; ++_i421) {
+_key419=iprot.readString();
+_val420=iprot.readI64();
+struct.component_to_num_tasks.put(_key419,_val420);
+}
+iprot.readMapEnd();
+}
+struct.set_component_to_num_tasks_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 8:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.time_secs=iprot.readI32();
+struct.set_time_secs_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 9:
+if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+struct.uptime_secs=iprot.readI32();
+struct.set_uptime_secs_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 521:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.requested_memonheap=iprot.readDouble();
+struct.set_requested_memonheap_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 522:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.requested_memoffheap=iprot.readDouble();
+struct.set_requested_memoffheap_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 523:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.requested_cpu=iprot.readDouble();
+struct.set_requested_cpu_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 524:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.assigned_memonheap=iprot.readDouble();
+struct.set_assigned_memonheap_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 525:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.assigned_memoffheap=iprot.readDouble();
+struct.set_assigned_memoffheap_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 526:
+if (schemeField.type == org.apache.thrift.protocol.TType.DOUBLE) {
+struct.assigned_cpu=iprot.readDouble();
+struct.set_assigned_cpu_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+default :
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+iprot.readFieldEnd();
+}
+iprot.readStructEnd();
+struct.validate();
+}

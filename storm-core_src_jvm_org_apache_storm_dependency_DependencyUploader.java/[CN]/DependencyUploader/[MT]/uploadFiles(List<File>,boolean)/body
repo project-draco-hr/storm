@@ -1,0 +1,24 @@
+{
+  checkFilesExist(dependencies);
+  List<String> keys=new ArrayList<>(dependencies.size());
+  try {
+    for (    File dependency : dependencies) {
+      String fileName=dependency.getName();
+      String key=BlobStoreUtils.generateDependencyBlobKey(BlobStoreUtils.applyUUIDToFileName(fileName));
+      try {
+        uploadDependencyToBlobStore(key,dependency);
+      }
+ catch (      KeyAlreadyExistsException e) {
+        throw new RuntimeException(e);
+      }
+      keys.add(key);
+    }
+  }
+ catch (  Throwable e) {
+    if (blobStore != null && cleanupIfFails) {
+      deleteBlobs(keys);
+    }
+    throw new RuntimeException(e);
+  }
+  return keys;
+}

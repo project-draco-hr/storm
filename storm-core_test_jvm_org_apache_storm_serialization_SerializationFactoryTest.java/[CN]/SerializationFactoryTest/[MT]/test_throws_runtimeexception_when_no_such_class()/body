@@ -1,0 +1,5 @@
+{
+  Map conf=Utils.readDefaultConfig();
+  conf.put(Config.TOPOLOGY_TUPLE_SERIALIZER,"null.this.class.does.not.exist");
+  SerializationFactory.getKryo(conf);
+}

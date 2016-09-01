@@ -3,12 +3,12 @@
   BitSet incoming=iprot.readBitSet(1);
   if (incoming.get(0)) {
 {
-      org.apache.thrift.protocol.TList _list719=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
-      struct.topo_ids=new ArrayList<String>(_list719.size);
-      String _elem720;
-      for (int _i721=0; _i721 < _list719.size; ++_i721) {
-        _elem720=iprot.readString();
-        struct.topo_ids.add(_elem720);
+      org.apache.thrift.protocol.TList _list769=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
+      struct.topo_ids=new ArrayList<String>(_list769.size);
+      String _elem770;
+      for (int _i771=0; _i771 < _list769.size; ++_i771) {
+        _elem770=iprot.readString();
+        struct.topo_ids.add(_elem770);
       }
     }
     struct.set_topo_ids_isSet(true);

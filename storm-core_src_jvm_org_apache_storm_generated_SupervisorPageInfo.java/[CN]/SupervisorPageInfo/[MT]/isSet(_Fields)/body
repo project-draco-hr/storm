@@ -1,0 +1,12 @@
+{
+  if (field == null) {
+    throw new IllegalArgumentException();
+  }
+switch (field) {
+case SUPERVISOR_SUMMARIES:
+    return is_set_supervisor_summaries();
+case WORKER_SUMMARIES:
+  return is_set_worker_summaries();
+}
+throw new IllegalStateException();
+}

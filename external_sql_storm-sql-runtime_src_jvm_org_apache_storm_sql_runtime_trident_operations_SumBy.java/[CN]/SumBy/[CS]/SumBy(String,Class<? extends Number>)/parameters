@@ -1,0 +1,2 @@
+String inputFieldName
+Class<? extends Number> targetClazz

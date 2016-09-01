@@ -1,0 +1,3 @@
+{
+  return (this.workers == null) ? null : this.workers.iterator();
+}

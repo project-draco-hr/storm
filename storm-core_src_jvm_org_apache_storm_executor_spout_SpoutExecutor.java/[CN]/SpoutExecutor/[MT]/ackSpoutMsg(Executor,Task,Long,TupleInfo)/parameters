@@ -1,0 +1,4 @@
+Executor executor
+Task taskData
+Long timeDelta
+TupleInfo tupleInfo

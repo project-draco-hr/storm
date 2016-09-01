@@ -1,0 +1,34 @@
+{
+  ClientBlobStore.withConfiguredClient(new ClientBlobStore.WithBlobstore(){
+    @Override public void run(    ClientBlobStore blobStore) throws Exception {
+      Iterator<String> keys;
+      boolean isArgsEmpty=(args == null || args.length == 0);
+      if (isArgsEmpty) {
+        keys=blobStore.listKeys();
+      }
+ else {
+        keys=Arrays.asList(args).iterator();
+      }
+      while (keys.hasNext()) {
+        String key=keys.next();
+        try {
+          ReadableBlobMeta meta=blobStore.getBlobMeta(key);
+          long version=meta.get_version();
+          List<AccessControl> acl=meta.get_settable().get_acl();
+          LOG.info("{} {} {}",key,version,generateAccessControlsInfo(acl));
+        }
+ catch (        AuthorizationException ae) {
+          if (!isArgsEmpty) {
+            LOG.error("ACCESS DENIED to key: {}",key);
+          }
+        }
+catch (        KeyNotFoundException knf) {
+          if (!isArgsEmpty) {
+            LOG.error("{} NOT FOUND",key);
+          }
+        }
+      }
+    }
+  }
+);
+}

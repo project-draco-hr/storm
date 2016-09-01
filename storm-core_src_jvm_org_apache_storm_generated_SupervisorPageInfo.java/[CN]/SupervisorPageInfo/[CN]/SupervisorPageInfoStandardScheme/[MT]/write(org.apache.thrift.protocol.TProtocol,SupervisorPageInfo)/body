@@ -1,0 +1,32 @@
+{
+  struct.validate();
+  oprot.writeStructBegin(STRUCT_DESC);
+  if (struct.supervisor_summaries != null) {
+    if (struct.is_set_supervisor_summaries()) {
+      oprot.writeFieldBegin(SUPERVISOR_SUMMARIES_FIELD_DESC);
+{
+        oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.supervisor_summaries.size()));
+        for (        SupervisorSummary _iter434 : struct.supervisor_summaries) {
+          _iter434.write(oprot);
+        }
+        oprot.writeListEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  if (struct.worker_summaries != null) {
+    if (struct.is_set_worker_summaries()) {
+      oprot.writeFieldBegin(WORKER_SUMMARIES_FIELD_DESC);
+{
+        oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.worker_summaries.size()));
+        for (        WorkerSummary _iter435 : struct.worker_summaries) {
+          _iter435.write(oprot);
+        }
+        oprot.writeListEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
+  oprot.writeFieldStop();
+  oprot.writeStructEnd();
+}

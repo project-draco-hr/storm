@@ -1,0 +1,29 @@
+{
+  Executor executor;
+  Map<String,Object> convertedWorkerData=Utils.convertClojureMapToJavaMap(workerData);
+  WorkerTopologyContext workerTopologyContext=StormCommon.makeWorkerContext(convertedWorkerData);
+  List<Integer> taskIds=StormCommon.executorIdToTasks(executorId);
+  String componentId=workerTopologyContext.getComponentId(taskIds.get(0));
+  String type=getExecutorType(workerTopologyContext,componentId);
+  if (StatsUtil.SPOUT.equals(type)) {
+    executor=new SpoutExecutor(convertedWorkerData,executorId,credentials);
+    executor.stats=new SpoutExecutorStats(ConfigUtils.samplingRate(executor.getStormConf()));
+  }
+ else {
+    executor=new BoltExecutor(convertedWorkerData,executorId,credentials);
+    executor.stats=new BoltExecutorStats(ConfigUtils.samplingRate(executor.getStormConf()));
+  }
+  Map<Integer,Task> idToTask=new HashMap<>();
+  for (  Integer taskId : taskIds) {
+    try {
+      Task task=new Task(executor,taskId);
+      executor.sendUnanchored(task,StormCommon.SYSTEM_STREAM_ID,new Values("startup"),executor.getExecutorTransfer());
+      idToTask.put(taskId,task);
+    }
+ catch (    IOException ex) {
+      throw Utils.wrapInRuntime(ex);
+    }
+  }
+  executor.idToTask=idToTask;
+  return executor;
+}

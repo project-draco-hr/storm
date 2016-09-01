@@ -1,0 +1,26 @@
+{
+  Map<String,Map<String,LoadAwareCustomStreamGrouping>> ret=new HashMap<>();
+  Map<String,Map<String,Grouping>> outputGroupings=workerTopologyContext.getTargets(componentId);
+  for (  Map.Entry<String,Map<String,Grouping>> entry : outputGroupings.entrySet()) {
+    String streamId=entry.getKey();
+    Map<String,Grouping> componentGrouping=entry.getValue();
+    Fields outFields=workerTopologyContext.getComponentOutputFields(componentId,streamId);
+    Map<String,LoadAwareCustomStreamGrouping> componentGrouper=new HashMap<String,LoadAwareCustomStreamGrouping>();
+    for (    Map.Entry<String,Grouping> cg : componentGrouping.entrySet()) {
+      String component=cg.getKey();
+      Grouping grouping=cg.getValue();
+      List<Integer> outTasks=workerTopologyContext.getComponentTasks(component);
+      LoadAwareCustomStreamGrouping grouper=GrouperFactory.mkGrouper(workerTopologyContext,componentId,streamId,outFields,grouping,outTasks,stormConf);
+      componentGrouper.put(component,grouper);
+    }
+    if (componentGrouper.size() > 0) {
+      ret.put(streamId,componentGrouper);
+    }
+  }
+  for (  String stream : workerTopologyContext.getComponentCommon(componentId).get_streams().keySet()) {
+    if (!ret.containsKey(stream)) {
+      ret.put(stream,null);
+    }
+  }
+  return ret;
+}

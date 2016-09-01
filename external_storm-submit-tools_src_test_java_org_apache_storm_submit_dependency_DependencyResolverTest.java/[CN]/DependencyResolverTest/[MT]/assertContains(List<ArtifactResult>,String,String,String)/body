@@ -1,0 +1,8 @@
+{
+  for (  ArtifactResult result : results) {
+    if (result.getArtifact().getGroupId().equals(groupId) && result.getArtifact().getArtifactId().equals(artifactId) && result.getArtifact().getVersion().equals(version)&& result.isResolved()) {
+      return;
+    }
+  }
+  throw new AssertionError("Result doesn't contain expected artifact > " + groupId + ":"+ artifactId+ ":"+ version);
+}

@@ -1,0 +1,2 @@
+TableScan scan
+List<IAggregatableStream> inputStreams

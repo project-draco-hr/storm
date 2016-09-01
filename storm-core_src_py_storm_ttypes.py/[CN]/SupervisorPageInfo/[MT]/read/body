@@ -1,0 +1,35 @@
+def read(self, iprot):
+    if ((iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and isinstance(iprot.trans, TTransport.CReadableTransport) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+        return
+    iprot.readStructBegin()
+    while True:
+        (fname, ftype, fid) = iprot.readFieldBegin()
+        if (ftype == TType.STOP):
+            break
+        if (fid == 1):
+            if (ftype == TType.LIST):
+                self.supervisor_summaries = []
+                (_etype386, _size383) = iprot.readListBegin()
+                for _i387 in xrange(_size383):
+                    _elem388 = SupervisorSummary()
+                    _elem388.read(iprot)
+                    self.supervisor_summaries.append(_elem388)
+                iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
+        elif (fid == 2):
+            if (ftype == TType.LIST):
+                self.worker_summaries = []
+                (_etype392, _size389) = iprot.readListBegin()
+                for _i393 in xrange(_size389):
+                    _elem394 = WorkerSummary()
+                    _elem394.read(iprot)
+                    self.worker_summaries.append(_elem394)
+                iprot.readListEnd()
+            else:
+                iprot.skip(ftype)
+        else:
+            iprot.skip(ftype)
+        iprot.readFieldEnd()
+    iprot.readStructEnd()

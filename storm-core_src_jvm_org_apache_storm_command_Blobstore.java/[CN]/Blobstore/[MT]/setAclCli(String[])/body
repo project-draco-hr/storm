@@ -1,0 +1,22 @@
+{
+  Map<String,Object> cl=CLI.opt("s","set",Collections.emptyList(),new AsAclParser()).arg("key",CLI.FIRST_WINS).parse(args);
+  final String key=(String)cl.get("key");
+  final List<AccessControl> setAcl=(List<AccessControl>)cl.get("s");
+  ClientBlobStore.withConfiguredClient(new ClientBlobStore.WithBlobstore(){
+    @Override public void run(    ClientBlobStore blobStore) throws Exception {
+      ReadableBlobMeta meta=blobStore.getBlobMeta(key);
+      List<AccessControl> acl=meta.get_settable().get_acl();
+      List<AccessControl> newAcl;
+      if (setAcl != null && !setAcl.isEmpty()) {
+        newAcl=setAcl;
+      }
+ else {
+        newAcl=acl;
+      }
+      SettableBlobMeta newMeta=new SettableBlobMeta(newAcl);
+      LOG.info("Setting ACL for {} to {}",key,generateAccessControlsInfo(newAcl));
+      blobStore.setBlobMeta(key,newMeta);
+    }
+  }
+);
+}

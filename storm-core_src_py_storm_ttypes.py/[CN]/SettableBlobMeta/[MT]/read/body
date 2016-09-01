@@ -10,11 +10,11 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.LIST):
                 self.acl = []
-                (_etype440, _size437) = iprot.readListBegin()
-                for _i441 in xrange(_size437):
-                    _elem442 = AccessControl()
-                    _elem442.read(iprot)
-                    self.acl.append(_elem442)
+                (_etype484, _size481) = iprot.readListBegin()
+                for _i485 in xrange(_size481):
+                    _elem486 = AccessControl()
+                    _elem486.read(iprot)
+                    self.acl.append(_elem486)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

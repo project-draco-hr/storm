@@ -1,0 +1,10 @@
+{
+  referenceTime=context.getReferenceTime();
+  if (context.getCurrentCount() != null) {
+    currentCount.set(context.getCurrentCount());
+  }
+ else {
+    currentCount.set(processed + context.getSlidingCount());
+  }
+  processed=0;
+}

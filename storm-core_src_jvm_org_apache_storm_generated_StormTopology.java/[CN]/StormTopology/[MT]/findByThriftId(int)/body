@@ -8,6 +8,10 @@ case 3:
 return STATE_SPOUTS;
 case 4:
 return WORKER_HOOKS;
+case 5:
+return DEPENDENCY_JARS;
+case 6:
+return DEPENDENCY_ARTIFACTS;
 default :
 return null;
 }

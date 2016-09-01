@@ -1,0 +1,35 @@
+{
+switch (field) {
+case SUPERVISOR_ID:
+    return get_supervisor_id();
+case HOST:
+  return get_host();
+case PORT:
+return get_port();
+case TOPOLOGY_ID:
+return get_topology_id();
+case TOPOLOGY_NAME:
+return get_topology_name();
+case NUM_EXECUTORS:
+return get_num_executors();
+case COMPONENT_TO_NUM_TASKS:
+return get_component_to_num_tasks();
+case TIME_SECS:
+return get_time_secs();
+case UPTIME_SECS:
+return get_uptime_secs();
+case REQUESTED_MEMONHEAP:
+return get_requested_memonheap();
+case REQUESTED_MEMOFFHEAP:
+return get_requested_memoffheap();
+case REQUESTED_CPU:
+return get_requested_cpu();
+case ASSIGNED_MEMONHEAP:
+return get_assigned_memonheap();
+case ASSIGNED_MEMOFFHEAP:
+return get_assigned_memoffheap();
+case ASSIGNED_CPU:
+return get_assigned_cpu();
+}
+throw new IllegalStateException();
+}

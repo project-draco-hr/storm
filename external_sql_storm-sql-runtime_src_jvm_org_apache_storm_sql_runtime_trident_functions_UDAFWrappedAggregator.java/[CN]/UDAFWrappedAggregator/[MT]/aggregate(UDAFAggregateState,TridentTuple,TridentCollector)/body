@@ -1,0 +1,5 @@
+{
+  Object fieldValue=TridentUtils.valueFromTuple(tuple,inputFieldName);
+  Object newValue=invokeMethod(addMethod,state.getAccumulator(),fieldValue);
+  state.setAccumulator(newValue);
+}

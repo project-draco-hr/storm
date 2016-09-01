@@ -1,0 +1,27 @@
+{
+  TTupleProtocol oprot=(TTupleProtocol)prot;
+  BitSet optionals=new BitSet();
+  if (struct.is_set_supervisor_summaries()) {
+    optionals.set(0);
+  }
+  if (struct.is_set_worker_summaries()) {
+    optionals.set(1);
+  }
+  oprot.writeBitSet(optionals,2);
+  if (struct.is_set_supervisor_summaries()) {
+{
+      oprot.writeI32(struct.supervisor_summaries.size());
+      for (      SupervisorSummary _iter436 : struct.supervisor_summaries) {
+        _iter436.write(oprot);
+      }
+    }
+  }
+  if (struct.is_set_worker_summaries()) {
+{
+      oprot.writeI32(struct.worker_summaries.size());
+      for (      WorkerSummary _iter437 : struct.worker_summaries) {
+        _iter437.write(oprot);
+      }
+    }
+  }
+}

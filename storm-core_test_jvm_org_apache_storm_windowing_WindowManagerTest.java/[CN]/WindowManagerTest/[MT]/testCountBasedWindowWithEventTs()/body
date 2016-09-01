@@ -1,5 +1,5 @@
 {
-  EvictionPolicy<Integer> evictionPolicy=new WatermarkCountEvictionPolicy<>(3,windowManager);
+  EvictionPolicy<Integer> evictionPolicy=new WatermarkCountEvictionPolicy<>(3);
   windowManager.setEvictionPolicy(evictionPolicy);
   TriggerPolicy<Integer> triggerPolicy=new WatermarkTimeTriggerPolicy<Integer>(10,windowManager,evictionPolicy,windowManager);
   triggerPolicy.start();

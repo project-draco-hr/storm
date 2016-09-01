@@ -1,0 +1,14 @@
+{
+  Map<String,Object> cl=CLI.opt("f","file",null,CLI.AS_STRING).arg("key",CLI.FIRST_WINS).parse(args);
+  final String key=(String)cl.get("key");
+  final String file=(String)cl.get("f");
+  if (StringUtils.isNotEmpty(file)) {
+    try (BufferedInputStream f=new BufferedInputStream(new FileInputStream(file))){
+      BlobStoreSupport.updateBlobFromStream(key,f);
+    }
+   }
+ else {
+    BlobStoreSupport.updateBlobFromStream(key,System.in);
+  }
+  LOG.info("Successfully updated {}",key);
+}

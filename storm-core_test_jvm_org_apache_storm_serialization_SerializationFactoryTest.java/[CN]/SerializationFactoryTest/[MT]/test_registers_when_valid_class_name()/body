@@ -1,0 +1,9 @@
+{
+  Class arbitraryClass=BlowfishTupleSerializer.class;
+  String secretKey="0123456789abcdef";
+  Map conf=Utils.readDefaultConfig();
+  conf.put(Config.TOPOLOGY_TUPLE_SERIALIZER,arbitraryClass.getName());
+  conf.put(BlowfishTupleSerializer.SECRET_KEY,secretKey);
+  Kryo kryo=SerializationFactory.getKryo(conf);
+  Assert.assertEquals(arbitraryClass,kryo.getSerializer(ListDelegate.class).getClass());
+}

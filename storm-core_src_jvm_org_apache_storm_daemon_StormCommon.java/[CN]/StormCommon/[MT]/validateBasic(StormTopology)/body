@@ -5,7 +5,7 @@
     if (spoutComponents != null) {
       for (      Object obj : spoutComponents.values()) {
         ComponentCommon common=getComponentCommon(obj);
-        if (isEmptyInputs(common) == false) {
+        if (!isEmptyInputs(common)) {
           throw new InvalidTopologyException("May not declare inputs for a spout");
         }
       }

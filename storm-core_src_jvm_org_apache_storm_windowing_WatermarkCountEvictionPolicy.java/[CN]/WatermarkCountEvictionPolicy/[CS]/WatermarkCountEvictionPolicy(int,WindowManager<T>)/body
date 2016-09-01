@@ -1,4 +1,0 @@
-{
-  super(count);
-  this.windowManager=windowManager;
-}

@@ -1,0 +1,71 @@
+def write(self, oprot):
+    if ((oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated) and (self.thrift_spec is not None) and (fastbinary is not None)):
+        oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+        return
+    oprot.writeStructBegin('WorkerSummary')
+    if (self.supervisor_id is not None):
+        oprot.writeFieldBegin('supervisor_id', TType.STRING, 1)
+        oprot.writeString(self.supervisor_id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.host is not None):
+        oprot.writeFieldBegin('host', TType.STRING, 2)
+        oprot.writeString(self.host.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.port is not None):
+        oprot.writeFieldBegin('port', TType.I32, 3)
+        oprot.writeI32(self.port)
+        oprot.writeFieldEnd()
+    if (self.topology_id is not None):
+        oprot.writeFieldBegin('topology_id', TType.STRING, 4)
+        oprot.writeString(self.topology_id.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.topology_name is not None):
+        oprot.writeFieldBegin('topology_name', TType.STRING, 5)
+        oprot.writeString(self.topology_name.encode('utf-8'))
+        oprot.writeFieldEnd()
+    if (self.num_executors is not None):
+        oprot.writeFieldBegin('num_executors', TType.I32, 6)
+        oprot.writeI32(self.num_executors)
+        oprot.writeFieldEnd()
+    if (self.component_to_num_tasks is not None):
+        oprot.writeFieldBegin('component_to_num_tasks', TType.MAP, 7)
+        oprot.writeMapBegin(TType.STRING, TType.I64, len(self.component_to_num_tasks))
+        for (kiter381, viter382) in self.component_to_num_tasks.items():
+            oprot.writeString(kiter381.encode('utf-8'))
+            oprot.writeI64(viter382)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
+    if (self.time_secs is not None):
+        oprot.writeFieldBegin('time_secs', TType.I32, 8)
+        oprot.writeI32(self.time_secs)
+        oprot.writeFieldEnd()
+    if (self.uptime_secs is not None):
+        oprot.writeFieldBegin('uptime_secs', TType.I32, 9)
+        oprot.writeI32(self.uptime_secs)
+        oprot.writeFieldEnd()
+    if (self.requested_memonheap is not None):
+        oprot.writeFieldBegin('requested_memonheap', TType.DOUBLE, 521)
+        oprot.writeDouble(self.requested_memonheap)
+        oprot.writeFieldEnd()
+    if (self.requested_memoffheap is not None):
+        oprot.writeFieldBegin('requested_memoffheap', TType.DOUBLE, 522)
+        oprot.writeDouble(self.requested_memoffheap)
+        oprot.writeFieldEnd()
+    if (self.requested_cpu is not None):
+        oprot.writeFieldBegin('requested_cpu', TType.DOUBLE, 523)
+        oprot.writeDouble(self.requested_cpu)
+        oprot.writeFieldEnd()
+    if (self.assigned_memonheap is not None):
+        oprot.writeFieldBegin('assigned_memonheap', TType.DOUBLE, 524)
+        oprot.writeDouble(self.assigned_memonheap)
+        oprot.writeFieldEnd()
+    if (self.assigned_memoffheap is not None):
+        oprot.writeFieldBegin('assigned_memoffheap', TType.DOUBLE, 525)
+        oprot.writeDouble(self.assigned_memoffheap)
+        oprot.writeFieldEnd()
+    if (self.assigned_cpu is not None):
+        oprot.writeFieldBegin('assigned_cpu', TType.DOUBLE, 526)
+        oprot.writeDouble(self.assigned_cpu)
+        oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()

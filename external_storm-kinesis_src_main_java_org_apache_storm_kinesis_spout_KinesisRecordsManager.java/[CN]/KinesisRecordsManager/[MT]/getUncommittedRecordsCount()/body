@@ -1,0 +1,14 @@
+{
+  Long result=0L;
+  for (  Map.Entry<String,TreeSet<BigInteger>> emitted : emittedPerShard.entrySet()) {
+    result+=emitted.getValue().size();
+  }
+  for (  Map.Entry<String,TreeSet<BigInteger>> acked : ackedPerShard.entrySet()) {
+    result+=acked.getValue().size();
+  }
+  for (  Map.Entry<String,TreeSet<BigInteger>> failed : failedPerShard.entrySet()) {
+    result+=failed.getValue().size();
+  }
+  LOG.debug("Returning uncommittedRecordsCount as " + result);
+  return result;
+}

@@ -1,0 +1,7 @@
+{
+  AddressedTuple val=new AddressedTuple(task,tuple);
+  if (isDebug) {
+    LOG.info("TRANSFERRING tuple {}",val);
+  }
+  batchTransferQueue.publish(val);
+}

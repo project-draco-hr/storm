@@ -1,0 +1,4 @@
+{
+  List<File> parsed=sut.parseJarsProperties("");
+  assertEquals(0,parsed.size());
+}

@@ -1,0 +1,14 @@
+{
+  getSupervisorPageInfo_result result=new getSupervisorPageInfo_result();
+  receiveBase(result,"getSupervisorPageInfo");
+  if (result.is_set_success()) {
+    return result.success;
+  }
+  if (result.e != null) {
+    throw result.e;
+  }
+  if (result.aze != null) {
+    throw result.aze;
+  }
+  throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT,"getSupervisorPageInfo failed: unknown result");
+}

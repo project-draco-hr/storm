@@ -1,0 +1,20 @@
+{
+switch (field) {
+case SUPERVISOR_SUMMARIES:
+    if (value == null) {
+      unset_supervisor_summaries();
+    }
+ else {
+      set_supervisor_summaries((List<SupervisorSummary>)value);
+    }
+  break;
+case WORKER_SUMMARIES:
+if (value == null) {
+  unset_worker_summaries();
+}
+ else {
+  set_worker_summaries((List<WorkerSummary>)value);
+}
+break;
+}
+}

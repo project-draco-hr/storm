@@ -1,0 +1,5 @@
+{
+  this.referenceTime=referenceTime;
+  this.currentCount=currentCount;
+  this.slidingCount=slidingCount;
+}

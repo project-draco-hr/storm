@@ -1,6 +1,7 @@
 {
   String name=reserveName();
   String typeName=javaTypeName(rexInputRef);
-  pw.print(String.format("%s %s = (%s)(_data.get(%d));\n",typeName,name,typeName,rexInputRef.getIndex()));
+  String boxedTypeName=boxedJavaTypeName(rexInputRef);
+  pw.print(String.format("%s %s = (%s)(_data.get(%d));\n",typeName,name,boxedTypeName,rexInputRef.getIndex()));
   return name;
 }

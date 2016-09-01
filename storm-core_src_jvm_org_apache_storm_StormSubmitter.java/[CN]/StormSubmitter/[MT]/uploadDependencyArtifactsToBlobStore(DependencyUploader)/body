@@ -1,0 +1,12 @@
+{
+  LOG.info("Uploading dependencies - artifacts...");
+  DependencyPropertiesParser propertiesParser=new DependencyPropertiesParser();
+  String depArtifactsProp=System.getProperty("storm.dependency.artifacts","{}");
+  Map<String,File> depArtifacts=propertiesParser.parseArtifactsProperties(depArtifactsProp);
+  try {
+    return uploader.uploadArtifacts(depArtifacts);
+  }
+ catch (  Throwable e) {
+    throw new RuntimeException(e);
+  }
+}

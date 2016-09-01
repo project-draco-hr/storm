@@ -3,7 +3,7 @@
     @Override public void run(){
       try {
         if (evictionPolicy != null) {
-          evictionPolicy.setContext(System.currentTimeMillis());
+          evictionPolicy.setContext(new DefaultEvictionContext(System.currentTimeMillis()));
         }
         handler.onTrigger();
       }

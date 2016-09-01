@@ -1,0 +1,74 @@
+{
+  TTupleProtocol iprot=(TTupleProtocol)prot;
+  BitSet incoming=iprot.readBitSet(15);
+  if (incoming.get(0)) {
+    struct.supervisor_id=iprot.readString();
+    struct.set_supervisor_id_isSet(true);
+  }
+  if (incoming.get(1)) {
+    struct.host=iprot.readString();
+    struct.set_host_isSet(true);
+  }
+  if (incoming.get(2)) {
+    struct.port=iprot.readI32();
+    struct.set_port_isSet(true);
+  }
+  if (incoming.get(3)) {
+    struct.topology_id=iprot.readString();
+    struct.set_topology_id_isSet(true);
+  }
+  if (incoming.get(4)) {
+    struct.topology_name=iprot.readString();
+    struct.set_topology_name_isSet(true);
+  }
+  if (incoming.get(5)) {
+    struct.num_executors=iprot.readI32();
+    struct.set_num_executors_isSet(true);
+  }
+  if (incoming.get(6)) {
+{
+      org.apache.thrift.protocol.TMap _map424=new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,iprot.readI32());
+      struct.component_to_num_tasks=new HashMap<String,Long>(2 * _map424.size);
+      String _key425;
+      long _val426;
+      for (int _i427=0; _i427 < _map424.size; ++_i427) {
+        _key425=iprot.readString();
+        _val426=iprot.readI64();
+        struct.component_to_num_tasks.put(_key425,_val426);
+      }
+    }
+    struct.set_component_to_num_tasks_isSet(true);
+  }
+  if (incoming.get(7)) {
+    struct.time_secs=iprot.readI32();
+    struct.set_time_secs_isSet(true);
+  }
+  if (incoming.get(8)) {
+    struct.uptime_secs=iprot.readI32();
+    struct.set_uptime_secs_isSet(true);
+  }
+  if (incoming.get(9)) {
+    struct.requested_memonheap=iprot.readDouble();
+    struct.set_requested_memonheap_isSet(true);
+  }
+  if (incoming.get(10)) {
+    struct.requested_memoffheap=iprot.readDouble();
+    struct.set_requested_memoffheap_isSet(true);
+  }
+  if (incoming.get(11)) {
+    struct.requested_cpu=iprot.readDouble();
+    struct.set_requested_cpu_isSet(true);
+  }
+  if (incoming.get(12)) {
+    struct.assigned_memonheap=iprot.readDouble();
+    struct.set_assigned_memonheap_isSet(true);
+  }
+  if (incoming.get(13)) {
+    struct.assigned_memoffheap=iprot.readDouble();
+    struct.set_assigned_memoffheap_isSet(true);
+  }
+  if (incoming.get(14)) {
+    struct.assigned_cpu=iprot.readDouble();
+    struct.set_assigned_cpu_isSet(true);
+  }
+}

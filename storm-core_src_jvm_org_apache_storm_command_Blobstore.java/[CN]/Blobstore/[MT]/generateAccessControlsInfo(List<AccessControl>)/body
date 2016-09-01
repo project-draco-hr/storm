@@ -1,0 +1,7 @@
+{
+  List<String> accessControlStrings=new ArrayList<>();
+  for (  AccessControl ac : acl) {
+    accessControlStrings.add(BlobStoreAclHandler.accessControlToString(ac));
+  }
+  return accessControlStrings;
+}

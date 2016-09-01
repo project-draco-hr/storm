@@ -1,0 +1,5 @@
+{
+  this.collector=collector;
+  tranquilizer=Tranquilizer.builder().maxBatchSize(druidConfig.getMaxBatchSize()).maxPendingBatches(druidConfig.getMaxPendingBatches()).lingerMillis(druidConfig.getLingerMillis()).blockOnFull(druidConfig.isBlockOnFull()).build(beamFactory.makeBeam(stormConf,context));
+  this.tranquilizer.start();
+}

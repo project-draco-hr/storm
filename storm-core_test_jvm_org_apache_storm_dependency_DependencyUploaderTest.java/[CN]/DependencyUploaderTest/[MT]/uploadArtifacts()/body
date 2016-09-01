@@ -1,0 +1,28 @@
+{
+  AtomicOutputStream mockOutputStream=mock(AtomicOutputStream.class);
+  doNothing().when(mockOutputStream).cancel();
+  final AtomicInteger counter=new AtomicInteger();
+  final Answer incrementCounter=new Answer(){
+    public Object answer(    InvocationOnMock invocation) throws Throwable {
+      counter.addAndGet(1);
+      return null;
+    }
+  }
+;
+  doAnswer(incrementCounter).when(mockOutputStream).write(anyInt());
+  doAnswer(incrementCounter).when(mockOutputStream).write(any(byte[].class));
+  doAnswer(incrementCounter).when(mockOutputStream).write(any(byte[].class),anyInt(),anyInt());
+  doNothing().when(mockOutputStream).close();
+  when(mockBlobStore.getBlobMeta(anyString())).thenThrow(new KeyNotFoundException());
+  when(mockBlobStore.createBlob(anyString(),any(SettableBlobMeta.class))).thenReturn(mockOutputStream);
+  String artifact="group:artifact:1.0.0";
+  String expectedBlobKeyForArtifact="group-artifact-1.0.0.jar";
+  File mockFile=createTemporaryDummyFile();
+  Map<String,File> artifacts=new LinkedHashMap<>();
+  artifacts.put(artifact,mockFile);
+  List<String> keys=sut.uploadArtifacts(artifacts);
+  assertEquals(1,keys.size());
+  assertTrue(keys.get(0).contains(expectedBlobKeyForArtifact));
+  assertTrue(counter.get() > 0);
+  verify(mockOutputStream).close();
+}

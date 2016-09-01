@@ -38,24 +38,29 @@
       if (topologyNameExists(conf,name,asUser)) {
         throw new RuntimeException("Topology with name `" + name + "` already exists on cluster");
       }
-      String jar=submitJarAs(conf,System.getProperty("storm.jar"),progressListener,asUser);
-      try (NimbusClient client=NimbusClient.getConfiguredClientAs(conf,asUser)){
-        LOG.info("Submitting topology " + name + " in distributed mode with conf "+ serConf);
-        if (opts != null) {
-          client.getClient().submitTopologyWithOpts(name,jar,serConf,topology,opts);
-        }
- else {
-          client.getClient().submitTopology(name,jar,serConf,topology);
-        }
-        LOG.info("Finished submitting topology: " + name);
+      List<String> jarsBlobKeys=Collections.emptyList();
+      List<String> artifactsBlobKeys;
+      DependencyUploader uploader=new DependencyUploader();
+      try {
+        uploader.init();
+        jarsBlobKeys=uploadDependencyJarsToBlobStore(uploader);
+        artifactsBlobKeys=uploadDependencyArtifactsToBlobStore(uploader);
       }
- catch (      InvalidTopologyException e) {
-        LOG.warn("Topology submission exception: " + e.get_msg());
+ catch (      Throwable e) {
+        uploader.deleteBlobs(jarsBlobKeys);
+        uploader.shutdown();
         throw e;
       }
-catch (      AlreadyAliveException e) {
-        LOG.warn("Topology already alive exception",e);
+      try {
+        setDependencyBlobsToTopology(topology,jarsBlobKeys,artifactsBlobKeys);
+        submitTopologyInDistributeMode(name,topology,opts,progressListener,asUser,conf,serConf);
+      }
+ catch (      AlreadyAliveException|InvalidTopologyException|AuthorizationException e) {
+        uploader.deleteBlobs(jarsBlobKeys);
         throw e;
+      }
+ finally {
+        uploader.shutdown();
       }
     }
   }

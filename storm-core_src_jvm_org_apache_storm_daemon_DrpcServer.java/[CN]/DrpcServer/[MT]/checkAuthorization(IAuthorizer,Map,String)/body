@@ -1,3 +1,0 @@
-{
-  checkAuthorization(aclHandler,mapping,operation,ReqContext.context());
-}

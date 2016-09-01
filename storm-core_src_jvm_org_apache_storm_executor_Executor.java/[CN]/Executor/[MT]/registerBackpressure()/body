@@ -1,0 +1,16 @@
+{
+  receiveQueue.registerBackpressureCallback(new DisruptorBackpressureCallback(){
+    @Override public void highWaterMark() throws Exception {
+      LOG.debug("executor " + executorId + " is congested, set backpressure flag true");
+      WorkerBackpressureThread.notifyBackpressureChecker(workerData.get("backpressure-trigger"));
+    }
+    @Override public void lowWaterMark() throws Exception {
+      LOG.debug("executor " + executorId + " is not-congested, set backpressure flag false");
+      WorkerBackpressureThread.notifyBackpressureChecker(workerData.get("backpressure-trigger"));
+    }
+  }
+);
+  receiveQueue.setHighWaterMark(Utils.getDouble(stormConf.get(Config.BACKPRESSURE_DISRUPTOR_HIGH_WATERMARK)));
+  receiveQueue.setLowWaterMark(Utils.getDouble(stormConf.get(Config.BACKPRESSURE_DISRUPTOR_LOW_WATERMARK)));
+  receiveQueue.setEnableBackpressure(Utils.getBoolean(stormConf.get(Config.TOPOLOGY_BACKPRESSURE_ENABLE),false));
+}

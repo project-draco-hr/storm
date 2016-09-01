@@ -6,8 +6,8 @@ def write(self, oprot):
     if (self.supervisors is not None):
         oprot.writeFieldBegin('supervisors', TType.LIST, 1)
         oprot.writeListBegin(TType.STRUCT, len(self.supervisors))
-        for iter100 in self.supervisors:
-            iter100.write(oprot)
+        for iter114 in self.supervisors:
+            iter114.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.nimbus_uptime_secs is not None):
@@ -17,15 +17,15 @@ def write(self, oprot):
     if (self.topologies is not None):
         oprot.writeFieldBegin('topologies', TType.LIST, 3)
         oprot.writeListBegin(TType.STRUCT, len(self.topologies))
-        for iter101 in self.topologies:
-            iter101.write(oprot)
+        for iter115 in self.topologies:
+            iter115.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     if (self.nimbuses is not None):
         oprot.writeFieldBegin('nimbuses', TType.LIST, 4)
         oprot.writeListBegin(TType.STRUCT, len(self.nimbuses))
-        for iter102 in self.nimbuses:
-            iter102.write(oprot)
+        for iter116 in self.nimbuses:
+            iter116.write(oprot)
         oprot.writeListEnd()
         oprot.writeFieldEnd()
     oprot.writeFieldStop()

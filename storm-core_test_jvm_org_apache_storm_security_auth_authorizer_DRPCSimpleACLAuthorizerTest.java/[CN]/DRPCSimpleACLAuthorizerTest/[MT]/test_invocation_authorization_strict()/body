@@ -1,0 +1,7 @@
+{
+  for (  String operation : new String[]{"fetchRequest","failRequest","result"}) {
+    Assert.assertFalse("Deny " + operation + " to unauthorized user for correct function",isPermitted(strictHandler,aliceContext,operation,function));
+    Assert.assertFalse("Deny " + operation + " to user for incorrect function when strict",isPermitted(strictHandler,charlieContext,operation,wrongFunction));
+    Assert.assertTrue("allow " + operation + " to authorized user for correct function",isPermitted(strictHandler,charlieContext,operation,function));
+  }
+}

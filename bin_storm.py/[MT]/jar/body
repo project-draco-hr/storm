@@ -1,11 +1,20 @@
 def jar(jarfile, klass, *args):
-    'Syntax: [storm jar topology-jar-path class ...]\n\n    Runs the main method of class with the specified arguments.\n    The storm jars and configs in ~/.storm are put on the classpath.\n    The process is configured so that StormSubmitter\n    (http://storm.apache.org/releases/current/javadocs/org/apache/storm/StormSubmitter.html)\n    will upload the jar at topology-jar-path when the topology is submitted.\n    '
+    'Syntax: [storm jar topology-jar-path class ...]\n\n    Runs the main method of class with the specified arguments.\n    The storm jars and configs in ~/.storm are put on the classpath.\n    The process is configured so that StormSubmitter\n    (http://storm.apache.org/releases/current/javadocs/org/apache/storm/StormSubmitter.html)\n    will upload the jar at topology-jar-path when the topology is submitted.\n\n    When you want to ship other jars which is not included to application jar, you can pass them to --jars option with comma-separated string.\n    For example, --jars "your-local-jar.jar,your-local-jar2.jar" will load your-local-jar.jar and your-local-jar2.jar.\n    And when you want to ship maven artifacts and its transitive dependencies, you can pass them to --artifacts with comma-separated string.\n    You can also exclude some dependencies like what you\'re doing in maven pom.\n    Please add exclusion artifacts with \'^\' separated string after the artifact.\n    For example, --artifacts "redis.clients:jedis:2.9.0,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12" will load jedis and kafka artifact and all of transitive dependencies but exclude slf4j-log4j12 from kafka.\n\n    Complete example of both options is here: `./bin/storm jar example/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.RollingTopWords blobstore-remote2 remote --jars "./external/storm-redis/storm-redis-1.1.0.jar,./external/storm-kafka/storm-kafka-1.1.0.jar" --artifacts "redis.clients:jedis:2.9.0,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12"`\n\n    When you pass jars and/or artifacts options, StormSubmitter will upload them when the topology is submitted, and they will be included to classpath of both the process which runs the class, and also workers for that topology.\n    '
+    global DEP_JARS_OPTS, DEP_ARTIFACTS_OPTS
+    local_jars = DEP_JARS_OPTS
+    artifact_to_file_jars = resolve_dependencies(DEP_ARTIFACTS_OPTS)
     transform_class = confvalue('client.jartransformer.class', [CLUSTER_CONF_DIR])
     if ((transform_class != None) and (transform_class != 'null')):
         tmpjar = os.path.join(tempfile.gettempdir(), (uuid.uuid1().hex + '.jar'))
         exec_storm_class('org.apache.storm.daemon.ClientJarTransformerRunner', args=[transform_class, jarfile, tmpjar], fork=True, daemon=False)
-        topology_runner_exit_code = exec_storm_class(klass, jvmtype='-client', extrajars=[tmpjar, USER_CONF_DIR, STORM_BIN_DIR], args=args, daemon=False, fork=True, jvmopts=(JAR_JVM_OPTS + [('-Dstorm.jar=' + tmpjar)]))
+        extra_jars = [tmpjar, USER_CONF_DIR, STORM_BIN_DIR]
+        extra_jars.extend(local_jars)
+        extra_jars.extend(artifact_to_file_jars.values())
+        topology_runner_exit_code = exec_storm_class(klass, jvmtype='-client', extrajars=extra_jars, args=args, daemon=False, fork=True, jvmopts=(((JAR_JVM_OPTS + [('-Dstorm.jar=' + tmpjar)]) + [('-Dstorm.dependency.jars=' + ','.join(local_jars))]) + [('-Dstorm.dependency.artifacts=' + json.dumps(artifact_to_file_jars))]))
         os.remove(tmpjar)
         sys.exit(topology_runner_exit_code)
     else:
-        exec_storm_class(klass, jvmtype='-client', extrajars=[jarfile, USER_CONF_DIR, STORM_BIN_DIR], args=args, daemon=False, jvmopts=(JAR_JVM_OPTS + [('-Dstorm.jar=' + jarfile)]))
+        extra_jars = [jarfile, USER_CONF_DIR, STORM_BIN_DIR]
+        extra_jars.extend(local_jars)
+        extra_jars.extend(artifact_to_file_jars.values())
+        exec_storm_class(klass, jvmtype='-client', extrajars=extra_jars, args=args, daemon=False, jvmopts=(((JAR_JVM_OPTS + [('-Dstorm.jar=' + jarfile)]) + [('-Dstorm.dependency.jars=' + ','.join(local_jars))]) + [('-Dstorm.dependency.artifacts=' + json.dumps(artifact_to_file_jars))]))

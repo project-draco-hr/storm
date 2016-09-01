@@ -1,0 +1,15 @@
+{
+  DependencyFilter classpathFilter=DependencyFilterUtils.classpathFilter(JavaScopes.COMPILE,JavaScopes.RUNTIME);
+  if (dependencies.size() == 0) {
+    return Collections.EMPTY_LIST;
+  }
+  CollectRequest collectRequest=new CollectRequest();
+  collectRequest.setRoot(dependencies.get(0));
+  for (int idx=1; idx < dependencies.size(); idx++) {
+    collectRequest.addDependency(dependencies.get(idx));
+  }
+  collectRequest.addRepository(mavenCentral);
+  collectRequest.addRepository(mavenLocal);
+  DependencyRequest dependencyRequest=new DependencyRequest(collectRequest,classpathFilter);
+  return system.resolveDependencies(session,dependencyRequest).getArtifactResults();
+}

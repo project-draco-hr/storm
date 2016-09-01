@@ -1,5 +1,3 @@
 {
-  String stormRoot=supervisorStormDistRoot(conf,stormId);
-  String topologyPath=supervisorStormCodePath(stormRoot);
-  return Utils.deserialize(FileUtils.readFileToByteArray(new File(topologyPath)),StormTopology.class);
+  return _instance.readSupervisorTopologyImpl(conf,stormId);
 }

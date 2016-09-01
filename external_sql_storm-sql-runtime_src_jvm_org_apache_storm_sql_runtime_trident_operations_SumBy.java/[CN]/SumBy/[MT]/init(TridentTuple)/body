@@ -1,0 +1,7 @@
+{
+  Object value=TridentUtils.valueFromTuple(tuple,inputFieldName);
+  if (value == null) {
+    return zero();
+  }
+  return (Number)value;
+}

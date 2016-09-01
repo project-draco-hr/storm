@@ -1,0 +1,5 @@
+{
+  if (!value) {
+    this.dependency_jars=null;
+  }
+}

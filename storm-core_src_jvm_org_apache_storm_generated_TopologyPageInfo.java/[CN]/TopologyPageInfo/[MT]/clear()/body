@@ -19,6 +19,7 @@
   this.debug_options=null;
   set_replication_count_isSet(false);
   this.replication_count=0;
+  this.workers=null;
   set_requested_memonheap_isSet(false);
   this.requested_memonheap=0.0;
   set_requested_memoffheap_isSet(false);

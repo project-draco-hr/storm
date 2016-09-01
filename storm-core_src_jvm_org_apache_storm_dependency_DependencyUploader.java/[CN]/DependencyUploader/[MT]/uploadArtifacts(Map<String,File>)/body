@@ -1,0 +1,21 @@
+{
+  checkFilesExist(artifacts.values());
+  List<String> keys=new ArrayList<>(artifacts.size());
+  try {
+    for (    Map.Entry<String,File> artifactToFile : artifacts.entrySet()) {
+      String artifact=artifactToFile.getKey();
+      File dependency=artifactToFile.getValue();
+      String key=BlobStoreUtils.generateDependencyBlobKey(convertArtifactToJarFileName(artifact));
+      try {
+        uploadDependencyToBlobStore(key,dependency);
+      }
+ catch (      KeyAlreadyExistsException e) {
+      }
+      keys.add(key);
+    }
+  }
+ catch (  Throwable e) {
+    throw new RuntimeException(e);
+  }
+  return keys;
+}

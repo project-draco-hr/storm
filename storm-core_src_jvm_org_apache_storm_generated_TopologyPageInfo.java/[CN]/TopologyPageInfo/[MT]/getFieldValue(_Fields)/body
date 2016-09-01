@@ -30,6 +30,8 @@ case DEBUG_OPTIONS:
 return get_debug_options();
 case REPLICATION_COUNT:
 return get_replication_count();
+case WORKERS:
+return get_workers();
 case REQUESTED_MEMONHEAP:
 return get_requested_memonheap();
 case REQUESTED_MEMOFFHEAP:

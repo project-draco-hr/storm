@@ -1,0 +1,4 @@
+def getSupervisorPageInfo(self, id, host, is_include_sys):
+    '\n    Parameters:\n     - id\n     - host\n     - is_include_sys\n    '
+    self.send_getSupervisorPageInfo(id, host, is_include_sys)
+    return self.recv_getSupervisorPageInfo()

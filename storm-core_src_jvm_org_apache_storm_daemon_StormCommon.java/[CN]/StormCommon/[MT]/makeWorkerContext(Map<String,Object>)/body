@@ -1,0 +1,21 @@
+{
+  try {
+    StormTopology stormTopology=(StormTopology)workerData.get(Constants.SYSTEM_TOPOLOGY);
+    Map stormConf=(Map)workerData.get(Constants.STORM_CONF);
+    Map<Integer,String> taskToComponent=(Map<Integer,String>)workerData.get(Constants.TASK_TO_COMPONENT);
+    Map<String,List<Integer>> componentToSortedTasks=(Map<String,List<Integer>>)workerData.get(Constants.COMPONENT_TO_SORTED_TASKS);
+    Map<String,Map<String,Fields>> componentToStreamToFields=(Map<String,Map<String,Fields>>)workerData.get(Constants.COMPONENT_TO_STREAM_TO_FIELDS);
+    String stormId=(String)workerData.get(Constants.STORM_ID);
+    Map conf=(Map)workerData.get(Constants.CONF);
+    Integer port=(Integer)workerData.get(Constants.PORT);
+    String codeDir=ConfigUtils.supervisorStormResourcesPath(ConfigUtils.supervisorStormDistRoot(conf,stormId));
+    String pidDir=ConfigUtils.workerPidsRoot(conf,stormId);
+    List<Integer> workerTasks=(List<Integer>)workerData.get(Constants.TASK_IDS);
+    Map<String,Object> defaultResources=(Map<String,Object>)workerData.get(Constants.DEFAULT_SHARED_RESOURCES);
+    Map<String,Object> userResources=(Map<String,Object>)workerData.get(Constants.USER_SHARED_RESOURCES);
+    return new WorkerTopologyContext(stormTopology,stormConf,taskToComponent,componentToSortedTasks,componentToStreamToFields,stormId,codeDir,pidDir,port,workerTasks,defaultResources,userResources);
+  }
+ catch (  IOException e) {
+    throw Utils.wrapInRuntime(e);
+  }
+}

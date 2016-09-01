@@ -1,0 +1,5 @@
+{
+  this.inputFields=inputFields;
+  this.function=function;
+  this.functionFields=functionFields;
+}

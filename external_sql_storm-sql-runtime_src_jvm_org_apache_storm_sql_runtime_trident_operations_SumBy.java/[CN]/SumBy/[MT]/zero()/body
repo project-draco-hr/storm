@@ -1,0 +1,3 @@
+{
+  return NumberConverter.convert(0,targetClazz);
+}

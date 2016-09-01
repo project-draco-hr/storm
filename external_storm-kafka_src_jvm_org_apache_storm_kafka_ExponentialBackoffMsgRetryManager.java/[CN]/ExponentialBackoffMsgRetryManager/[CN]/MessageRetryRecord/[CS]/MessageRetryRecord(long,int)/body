@@ -1,5 +1,5 @@
 {
   this.offset=offset;
   this.retryNum=retryNum;
-  this.retryTimeUTC=System.currentTimeMillis() + calculateRetryDelay();
+  this.retryTimeUTC=Time.currentTimeMillis() + calculateRetryDelay();
 }
