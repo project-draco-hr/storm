@@ -1,5 +1,5 @@
 TridentKafkaConfig conf
 String topic
 int primaryKeyIndex
-Properties producerProperties
+String producerProperties
 List<String> fields
