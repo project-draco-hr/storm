@@ -1,4 +1,3 @@
 {
-  String tempDir=System.getProperty("java.io.tmpdir",".");
-  tempDirForTest=Files.createTempDirectory(new File(tempDir).toPath(),"dr-test");
+  tempDirForTest=Files.createTempDirectory("dr-test");
 }
