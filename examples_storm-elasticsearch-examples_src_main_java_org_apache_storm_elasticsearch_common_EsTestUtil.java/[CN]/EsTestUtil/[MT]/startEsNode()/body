@@ -1,0 +1,5 @@
+{
+  Node node=NodeBuilder.nodeBuilder().data(true).settings(ImmutableSettings.builder().put(ClusterName.SETTING,EsConstants.clusterName).put(IndexMetaData.SETTING_NUMBER_OF_SHARDS,1).put(IndexMetaData.SETTING_NUMBER_OF_REPLICAS,0).put(EsExecutors.PROCESSORS,1).put("http.enabled",false).put("index.percolator.map_unmapped_fields_as_string",true).put("index.store.type","memory")).build();
+  node.start();
+  return node;
+}
