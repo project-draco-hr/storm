@@ -1,9 +1,10 @@
 {
   ISqlTridentDataSource ds=DataSourcesRegistry.constructTridentDataSource(URI.create("kafka://mock?topic=foo"),null,null,TBL_PROPERTIES,FIELDS);
   Assert.assertNotNull(ds);
-  KafkaTridentSink sink=(KafkaTridentSink)ds.getConsumer();
-  sink.prepare(null,null);
-  TridentKafkaState state=(TridentKafkaState)Whitebox.getInternalState(sink,"state");
+  ISqlTridentDataSource.SqlTridentConsumer consumer=ds.getConsumer();
+  Assert.assertEquals(TridentKafkaStateFactory.class,consumer.getStateFactory().getClass());
+  Assert.assertEquals(TridentKafkaUpdater.class,consumer.getStateUpdater().getClass());
+  TridentKafkaState state=(TridentKafkaState)consumer.getStateFactory().makeState(Collections.emptyMap(),null,0,1);
   KafkaProducer producer=mock(KafkaProducer.class);
   doReturn(mock(Future.class)).when(producer).send(any(ProducerRecord.class));
   Whitebox.setInternalState(state,"producer",producer);

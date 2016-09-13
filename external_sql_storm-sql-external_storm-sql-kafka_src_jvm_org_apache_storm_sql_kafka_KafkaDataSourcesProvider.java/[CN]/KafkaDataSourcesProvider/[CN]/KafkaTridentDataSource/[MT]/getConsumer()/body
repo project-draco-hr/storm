@@ -11,5 +11,9 @@
     throw new RuntimeException(e);
   }
   Preconditions.checkState(props.containsKey("bootstrap.servers"),"Writable Kafka Table " + topic + " must contain \"bootstrap.servers\" config");
-  return new KafkaTridentSink(topic,primaryKeyIndex,props,fields);
+  JsonSerializer serializer=new JsonSerializer(fields);
+  SqlKafkaMapper mapper=new SqlKafkaMapper(primaryKeyIndex,serializer);
+  TridentKafkaStateFactory stateFactory=new TridentKafkaStateFactory().withKafkaTopicSelector(new DefaultTopicSelector(topic)).withProducerProperties(props).withTridentTupleToKafkaMapper(mapper);
+  TridentKafkaUpdater stateUpdater=new TridentKafkaUpdater();
+  return new SimpleSqlTridentConsumer(stateFactory,stateUpdater);
 }
