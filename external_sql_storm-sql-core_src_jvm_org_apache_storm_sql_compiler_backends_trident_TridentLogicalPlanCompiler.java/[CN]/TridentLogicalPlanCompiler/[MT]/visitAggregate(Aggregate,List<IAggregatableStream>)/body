@@ -1,5 +1,5 @@
 {
-  if (inputStreams.size() > 1) {
+  if (inputStreams.size() != 1) {
     throw new RuntimeException("Aggregate is a SingleRel");
   }
   Stream inputStream=inputStreams.get(0).toStream();

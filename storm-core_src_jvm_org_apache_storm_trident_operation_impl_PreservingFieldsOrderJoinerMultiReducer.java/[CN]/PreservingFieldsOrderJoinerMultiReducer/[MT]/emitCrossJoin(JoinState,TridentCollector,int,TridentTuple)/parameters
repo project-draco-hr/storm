@@ -1,0 +1,4 @@
+JoinState state
+TridentCollector collector
+int overrideIndex
+TridentTuple overrideTuple

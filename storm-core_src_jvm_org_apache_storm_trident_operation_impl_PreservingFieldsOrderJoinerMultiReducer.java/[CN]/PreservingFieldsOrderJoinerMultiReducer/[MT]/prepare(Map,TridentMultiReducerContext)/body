@@ -1,0 +1,7 @@
+{
+  int[] sizes=new int[_originFields.size()];
+  for (int i=0; i < _originFields.size(); i++) {
+    sizes[i]=_originFields.get(i).size();
+  }
+  _factory=new ComboList.Factory(sizes);
+}

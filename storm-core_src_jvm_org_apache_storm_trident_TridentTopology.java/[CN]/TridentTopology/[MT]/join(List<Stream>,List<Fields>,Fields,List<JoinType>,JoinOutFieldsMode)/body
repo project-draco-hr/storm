@@ -1,0 +1,10 @@
+{
+switch (mode) {
+case COMPACT:
+    return multiReduce(strippedInputFields(streams,joinFields),groupedStreams(streams,joinFields),new JoinerMultiReducer(mixed,joinFields.get(0).size(),strippedInputFields(streams,joinFields)),outFields);
+case PRESERVE:
+  return multiReduce(strippedInputFields(streams,joinFields),groupedStreams(streams,joinFields),new PreservingFieldsOrderJoinerMultiReducer(mixed,joinFields.get(0).size(),getAllOutputFields(streams),joinFields,strippedInputFields(streams,joinFields)),outFields);
+default :
+throw new IllegalArgumentException("Unsupported out-fields mode: " + mode);
+}
+}

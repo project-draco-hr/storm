@@ -1,0 +1,5 @@
+List<JoinType> types
+int numGroupFields
+List<Fields> origins
+List<Fields> joins
+List<Fields> sides
