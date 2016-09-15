@@ -1,0 +1,5 @@
+{
+  List<Integer> res=new ArrayList<>(accumulator);
+  Collections.reverse(res);
+  return res;
+}

@@ -1,0 +1,7 @@
+{
+  if (accumulator.size() >= n) {
+    accumulator.remove();
+  }
+  accumulator.add(val);
+  return accumulator;
+}
