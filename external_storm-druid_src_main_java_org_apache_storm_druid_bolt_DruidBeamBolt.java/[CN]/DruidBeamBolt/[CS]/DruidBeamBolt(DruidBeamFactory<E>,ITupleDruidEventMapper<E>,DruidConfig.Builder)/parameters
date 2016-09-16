@@ -1,3 +1,3 @@
 DruidBeamFactory<E> beamFactory
 ITupleDruidEventMapper<E> druidEventMapper
-DruidConfig druidConfig
+DruidConfig.Builder druidConfigBuilder

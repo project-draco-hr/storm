@@ -1,5 +1,5 @@
 {
   this.beamFactory=beamFactory;
-  this.druidConfig=druidConfig;
+  this.druidConfig=druidConfigBuilder.build();
   this.druidEventMapper=druidEventMapper;
 }
