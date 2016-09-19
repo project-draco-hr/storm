@@ -1,0 +1,7 @@
+{
+  this.windowSec=windowSec;
+  this.slideSec=slideSec;
+  final String prefix=this.getClass().getSimpleName() + "-winSec" + windowSec+ "slideSec"+ slideSec;
+  spoutName=prefix + "IncrementingSpout";
+  boltName=prefix + "VerificationBolt";
+}

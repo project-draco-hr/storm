@@ -1,0 +1,3 @@
+{
+  submitSuccessfully(ImmutableMap.<String,Object>of());
+}

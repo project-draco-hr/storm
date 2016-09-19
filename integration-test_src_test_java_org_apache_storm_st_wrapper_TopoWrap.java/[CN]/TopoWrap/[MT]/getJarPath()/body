@@ -1,0 +1,28 @@
+{
+  final String USER_DIR="user.dir";
+  String userDirVal=System.getProperty(USER_DIR);
+  Assert.assertNotNull(userDirVal,"property " + USER_DIR + " was not set.");
+  File projectDir=new File(userDirVal);
+  AssertUtil.exists(projectDir);
+  Collection<File> allJars=FileUtils.listFiles(projectDir,new String[]{"jar"},true);
+  final Collection<File> jarFiles=Collections2.filter(allJars,new Predicate<File>(){
+    @Override public boolean apply(    @Nullable File input){
+      return input != null && !input.getName().contains("surefirebooter");
+    }
+  }
+);
+  log.info("Found jar files: " + jarFiles);
+  AssertUtil.nonEmpty(jarFiles,"The jar file is missing - did you run 'mvn clean package -DskipTests' before running tests ?");
+  String jarFile=null;
+  for (  File jarPath : jarFiles) {
+    log.info("jarPath = " + jarPath);
+    if (jarPath != null && !jarPath.getPath().contains("original")) {
+      AssertUtil.exists(jarPath);
+      jarFile=jarPath.getAbsolutePath();
+      break;
+    }
+  }
+  Assert.assertNotNull(jarFile,"Couldn't detect a suitable jar file for uploading.");
+  log.info("jarFile = " + jarFile);
+  return jarFile;
+}

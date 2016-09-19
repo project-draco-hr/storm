@@ -1,0 +1,7 @@
+{
+  for (  String oneExpectedOutput : expectedOutput) {
+    final int matchCount=StringUtils.countMatches(actualOutput,oneExpectedOutput);
+    log.info("In output, found " + matchCount + " occurrences of: "+ oneExpectedOutput);
+    Assert.assertTrue(matchCount > requiredMatchCount,"Found " + matchCount + "occurrence of "+ oneExpectedOutput+ " in urls, expected"+ requiredMatchCount);
+  }
+}

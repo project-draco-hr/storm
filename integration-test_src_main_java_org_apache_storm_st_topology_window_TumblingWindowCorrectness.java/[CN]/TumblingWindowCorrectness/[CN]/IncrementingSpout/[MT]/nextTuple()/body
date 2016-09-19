@@ -1,0 +1,8 @@
+{
+  TimeUtil.sleepMilliSec(rng.nextInt(10));
+  currentNum++;
+  final String numAsStr="str(" + currentNum + ")str";
+  final Values tuple=new Values(currentNum,numAsStr);
+  LOG.info(StringDecorator.decorate(componentId,tuple.toString()));
+  collector.emit(tuple,currentNum);
+}

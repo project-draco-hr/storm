@@ -1,0 +1,6 @@
+{
+  int result=num;
+  result=31 * result + now.hashCode();
+  result=31 * result + (int)(timestamp ^ (timestamp >>> 32));
+  return result;
+}

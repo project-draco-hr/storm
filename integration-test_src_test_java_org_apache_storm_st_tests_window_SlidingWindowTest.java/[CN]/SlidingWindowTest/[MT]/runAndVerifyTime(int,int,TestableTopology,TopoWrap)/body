@@ -1,0 +1,31 @@
+{
+  topo.submitSuccessfully();
+  final int minSpoutEmits=1000 + windowSec;
+  final int minBoltEmits=5;
+  String boltName=testable.getBoltName();
+  String spoutName=testable.getSpoutName();
+  topo.waitForProgress(minSpoutEmits,spoutName,60 + 10 * (windowSec + slideSec));
+  topo.waitForProgress(minBoltEmits,boltName,60 + 10 * (windowSec + slideSec));
+  final List<TimeData> allSpoutData=topo.getLogData(spoutName,TimeData.CLS);
+  final List<LogData> allBoltLog=topo.getLogData(boltName);
+  final List<TimeDataWindow> allBoltData=topo.getLogData(boltName,TimeDataWindow.CLS);
+  Assert.assertTrue(allBoltLog.size() >= minBoltEmits,"Expecting min " + minBoltEmits + " bolt emits, found: "+ allBoltLog.size()+ " \n\t"+ allBoltLog);
+  final DateTime firstEndTime=TimeUtil.ceil(new DateTime(allSpoutData.get(0).getDate()).withZone(DateTimeZone.UTC),slideSec);
+  final int numberOfWindows=allBoltLog.size() - windowSec / slideSec;
+  for (int i=0; i < numberOfWindows; ++i) {
+    final DateTime toDate=firstEndTime.plusSeconds(i * slideSec);
+    final DateTime fromDate=toDate.minusSeconds(windowSec);
+    log.info("Comparing window: " + fromDate + " to "+ toDate+ " iter "+ (i + 1)+ "/"+ numberOfWindows);
+    final TimeDataWindow computedWindow=TimeDataWindow.newInstance(allSpoutData,fromDate,toDate);
+    final LogData oneBoltLog=allBoltLog.get(i);
+    final TimeDataWindow actualWindow=allBoltData.get(i);
+    log.info("Actual window: " + actualWindow.getDescription());
+    log.info("Computed window: " + computedWindow.getDescription());
+    for (    TimeData oneLog : computedWindow) {
+      Assert.assertTrue(actualWindow.contains(oneLog),String.format("Missing: '%s' \n\tActual: '%s' \n\tComputed window: '%s'",oneLog,oneBoltLog,computedWindow));
+    }
+    for (    TimeData oneLog : actualWindow) {
+      Assert.assertTrue(computedWindow.contains(oneLog),String.format("Extra: '%s' \n\tActual: '%s' \n\tComputed window: '%s'",oneLog,oneBoltLog,computedWindow));
+    }
+  }
+}

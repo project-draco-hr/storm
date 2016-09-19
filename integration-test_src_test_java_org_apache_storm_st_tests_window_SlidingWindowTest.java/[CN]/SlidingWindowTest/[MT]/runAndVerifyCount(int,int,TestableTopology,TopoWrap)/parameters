@@ -1,0 +1,4 @@
+int windowSize
+int slideSize
+TestableTopology testable
+TopoWrap topo

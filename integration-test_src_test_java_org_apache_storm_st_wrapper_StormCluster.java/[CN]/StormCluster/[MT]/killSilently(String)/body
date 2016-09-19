@@ -1,0 +1,9 @@
+{
+  try {
+    client.killTopologyWithOpts(topologyName,new KillOptions());
+    log.info("Topology killed: " + topologyName);
+  }
+ catch (  Throwable e) {
+    log.warn("Couldn't kill topology: " + topologyName + " Exception: "+ ExceptionUtils.getFullStackTrace(e));
+  }
+}

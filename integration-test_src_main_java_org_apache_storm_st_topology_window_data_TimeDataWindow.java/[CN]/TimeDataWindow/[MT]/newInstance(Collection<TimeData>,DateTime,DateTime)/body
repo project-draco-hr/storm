@@ -1,0 +1,12 @@
+{
+  return TimeDataWindow.newInstance(data,new Predicate<TimeData>(){
+    @Override public boolean apply(    @Nullable TimeData input){
+      if (input == null) {
+        return false;
+      }
+      final DateTime inputDate=new DateTime(input.getDate());
+      return inputDate.isAfter(fromDate) && inputDate.isBefore(toDate.plusMillis(1));
+    }
+  }
+);
+}

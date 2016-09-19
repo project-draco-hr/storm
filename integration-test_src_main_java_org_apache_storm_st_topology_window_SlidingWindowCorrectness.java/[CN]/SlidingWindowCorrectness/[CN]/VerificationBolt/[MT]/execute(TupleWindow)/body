@@ -1,0 +1,10 @@
+{
+  List<Tuple> tuplesInWindow=inputWindow.get();
+  List<Tuple> newTuples=inputWindow.getNew();
+  List<Tuple> expiredTuples=inputWindow.getExpired();
+  LOG.info("tuplesInWindow.size() = " + tuplesInWindow.size());
+  LOG.info("newTuples.size() = " + newTuples.size());
+  LOG.info("expiredTuples.size() = " + expiredTuples.size());
+  LOG.info(StringDecorator.decorate(componentId,"tuplesInWindow = " + tuplesInWindow.toString()));
+  collector.emit(new Values("dummyValue"));
+}

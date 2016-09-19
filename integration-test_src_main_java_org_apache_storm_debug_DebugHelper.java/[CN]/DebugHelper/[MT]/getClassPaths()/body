@@ -1,0 +1,4 @@
+{
+  ClassLoader cl=ClassLoader.getSystemClassLoader();
+  return ((URLClassLoader)cl).getURLs();
+}

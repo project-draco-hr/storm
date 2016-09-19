@@ -1,0 +1,10 @@
+{
+  Collection<TopologySummary> topologySummaries=getSummaries();
+  Collection<TopologySummary> filteredSummary=Collections2.filter(topologySummaries,new Predicate<TopologySummary>(){
+    @Override public boolean apply(    @Nullable TopologySummary input){
+      return input != null && input.get_status().toLowerCase().equals(expectedStatus.toLowerCase());
+    }
+  }
+);
+  return new ArrayList<>(filteredSummary);
+}

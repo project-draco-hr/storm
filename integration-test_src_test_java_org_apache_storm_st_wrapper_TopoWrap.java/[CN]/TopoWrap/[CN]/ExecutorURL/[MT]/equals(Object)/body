@@ -1,0 +1,8 @@
+{
+  if (this == o)   return true;
+  if (!(o instanceof ExecutorURL))   return false;
+  ExecutorURL that=(ExecutorURL)o;
+  if (componentId != null ? !componentId.equals(that.componentId) : that.componentId != null)   return false;
+  if (getViewUrl() != null ? !getViewUrl().equals(that.getViewUrl()) : that.getViewUrl() != null)   return false;
+  return getDownloadUrl() != null ? getDownloadUrl().equals(that.getDownloadUrl()) : that.getDownloadUrl() == null;
+}

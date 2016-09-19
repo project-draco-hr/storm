@@ -1,0 +1,3 @@
+{
+  return "LogData{" + "logDate=" + dateFormat.print(logDate) + ", data='"+ getData()+ '\''+ '}';
+}

@@ -1,0 +1,5 @@
+{
+  final String thriftConfig="" + getConfig().get("storm.thrift.transport");
+  final String thriftConfigInSecCluster="org.apache.storm.security.auth.kerberos.KerberosSaslTransportPlugin";
+  return thriftConfigInSecCluster.equals(thriftConfig.trim());
+}

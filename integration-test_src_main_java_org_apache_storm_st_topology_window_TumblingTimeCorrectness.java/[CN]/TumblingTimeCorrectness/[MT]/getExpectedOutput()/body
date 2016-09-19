@@ -1,0 +1,3 @@
+{
+  return Lists.newArrayList(StringDecorator.decorate(getBoltName(),"tuplesInWindow.size() = " + tumbleSec),StringDecorator.decorate(getBoltName(),"newTuples.size() = " + tumbleSec),StringDecorator.decorate(getBoltName(),"expiredTuples.size() = " + tumbleSec));
+}

@@ -1,0 +1,4 @@
+{
+  long modValue=dateTime.getMillis() % (1000 * sec);
+  return dateTime.minus(modValue).plusSeconds(sec);
+}

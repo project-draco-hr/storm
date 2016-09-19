@@ -1,0 +1,7 @@
+{
+  List<TopologySummary> activeTopologies=getActive();
+  for (  TopologySummary activeTopology : activeTopologies) {
+    killSilently(activeTopology.get_name());
+  }
+  AssertUtil.empty(getActive());
+}

@@ -1,0 +1,17 @@
+{
+  List<Tuple> tuplesInWindow=inputWindow.get();
+  List<Tuple> newTuples=inputWindow.getNew();
+  List<Tuple> expiredTuples=inputWindow.getExpired();
+  LOG.info("tuplesInWindow.size() = " + tuplesInWindow.size());
+  LOG.info("newTuples.size() = " + newTuples.size());
+  LOG.info("expiredTuples.size() = " + expiredTuples.size());
+  Collection<TimeData> dataInWindow=Collections2.transform(tuplesInWindow,new Function<Tuple,TimeData>(){
+    @Nullable @Override public TimeData apply(    @Nullable Tuple input){
+      return TimeData.fromTuple(input);
+    }
+  }
+);
+  final String jsonData=TimeData.toString(dataInWindow);
+  LOG.info(StringDecorator.decorate(componentId,jsonData));
+  collector.emit(new Values("dummyValue"));
+}

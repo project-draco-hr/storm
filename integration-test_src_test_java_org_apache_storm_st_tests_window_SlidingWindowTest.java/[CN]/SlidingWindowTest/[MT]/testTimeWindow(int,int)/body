@@ -1,0 +1,15 @@
+{
+  final SlidingTimeCorrectness testable=new SlidingTimeCorrectness(windowSec,slideSec);
+  final String topologyName=this.getClass().getSimpleName() + "w" + windowSec+ "s"+ slideSec;
+  if (windowSec <= 0 || slideSec <= 0) {
+    try {
+      testable.newTopology();
+      Assert.fail("Expected IllegalArgumentException was not thrown.");
+    }
+ catch (    IllegalArgumentException ignore) {
+      return;
+    }
+  }
+  topo=new TopoWrap(cluster,topologyName,testable.newTopology());
+  runAndVerifyTime(windowSec,slideSec,testable,topo);
+}

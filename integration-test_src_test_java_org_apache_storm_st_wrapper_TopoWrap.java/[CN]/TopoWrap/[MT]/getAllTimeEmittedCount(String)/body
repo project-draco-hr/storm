@@ -1,0 +1,22 @@
+{
+  TopologyInfo info=getInfo();
+  final List<ExecutorSummary> executors=info.get_executors();
+  List<Long> ackCounts=Lists.transform(executors,new Function<ExecutorSummary,Long>(){
+    @Nullable @Override public Long apply(    @Nullable ExecutorSummary input){
+      if (input == null || !input.get_component_id().equals(componentId))       return 0L;
+      String since=":all-time";
+      return getEmittedCount(input,since);
+    }
+    public Long getEmittedCount(    @Nonnull ExecutorSummary input,    @Nonnull String since){
+      ExecutorStats executorStats=input.get_stats();
+      if (executorStats == null)       return 0L;
+      Map<String,Map<String,Long>> emitted=executorStats.get_emitted();
+      if (emitted == null)       return 0L;
+      Map<String,Long> allTime=emitted.get(since);
+      if (allTime == null)       return 0L;
+      return allTime.get("default");
+    }
+  }
+);
+  return sum(ackCounts).longValue();
+}

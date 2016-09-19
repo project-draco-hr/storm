@@ -1,0 +1,6 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(getSpoutName(),new IncrementingSpout(),2);
+  builder.setBolt(getBoltName(),new VerificationBolt().withWindow(new BaseWindowedBolt.Duration(windowSec,TimeUnit.SECONDS),new BaseWindowedBolt.Duration(slideSec,TimeUnit.SECONDS)).withTimestampField(TimeData.getTimestampFieldName()).withLag(new BaseWindowedBolt.Duration(10,TimeUnit.SECONDS)),1).globalGrouping(getSpoutName());
+  return builder.createTopology();
+}

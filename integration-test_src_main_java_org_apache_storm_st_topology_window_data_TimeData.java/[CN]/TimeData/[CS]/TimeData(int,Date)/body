@@ -1,0 +1,5 @@
+{
+  this.num=num;
+  this.now=date;
+  this.timestamp=date.getTime();
+}

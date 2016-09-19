@@ -1,0 +1,6 @@
+{
+  int result=componentId != null ? componentId.hashCode() : 0;
+  result=31 * result + (getViewUrl() != null ? getViewUrl().hashCode() : 0);
+  result=31 * result + (getDownloadUrl() != null ? getDownloadUrl().hashCode() : 0);
+  return result;
+}

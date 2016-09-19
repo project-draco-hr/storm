@@ -1,0 +1,16 @@
+{
+  ComponentPageInfo componentPageInfo=cluster.getNimbusClient().getComponentPageInfo(id,componentId,null,false);
+  Map<String,ComponentAggregateStats> windowToStats=componentPageInfo.get_window_to_stats();
+  ComponentAggregateStats allTimeStats=windowToStats.get(":all-time");
+  List<ExecutorAggregateStats> execStats=componentPageInfo.get_exec_stats();
+  Set<ExecutorURL> urls=new HashSet<>();
+  for (  ExecutorAggregateStats execStat : execStats) {
+    ExecutorSummary execSummary=execStat.get_exec_summary();
+    String host=execSummary.get_host();
+    int executorPort=execSummary.get_port();
+    int logViewerPort=8000;
+    ExecutorURL executorURL=new ExecutorURL(componentId,host,logViewerPort,executorPort,id);
+    urls.add(executorURL);
+  }
+  return new ArrayList<>(urls);
+}

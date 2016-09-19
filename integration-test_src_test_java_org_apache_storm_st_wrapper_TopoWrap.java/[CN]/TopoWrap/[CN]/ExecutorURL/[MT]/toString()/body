@@ -1,0 +1,3 @@
+{
+  return "ExecutorURL{" + "componentId='" + componentId + '\''+ ", viewUrl="+ viewUrl+ ", downloadUrl="+ downloadUrl+ '}';
+}

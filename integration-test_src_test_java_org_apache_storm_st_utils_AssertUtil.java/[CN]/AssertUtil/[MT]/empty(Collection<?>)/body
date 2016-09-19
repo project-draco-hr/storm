@@ -1,0 +1,3 @@
+{
+  Assert.assertTrue(collection == null || collection.size() == 0,"Expected collection to be non-null, found: " + collection);
+}

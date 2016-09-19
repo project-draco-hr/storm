@@ -1,0 +1,3 @@
+{
+  return new TimeData(tuple.getIntegerByField(NUMBER_FIELD_NAME),new Date(tuple.getLongByField(TIMESTAMP_FIELD_NAME)));
+}

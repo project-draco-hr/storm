@@ -1,0 +1,5 @@
+{
+  final ClusterSummary clusterInfo=client.getClusterInfo();
+  log.info("Cluster info: " + clusterInfo);
+  return clusterInfo.get_topologies();
+}

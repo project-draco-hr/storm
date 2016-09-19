@@ -1,0 +1,4 @@
+{
+  URL[] urls=getClassPaths();
+  LOG.info("classpath:" + StringUtils.join(urls,':'));
+}

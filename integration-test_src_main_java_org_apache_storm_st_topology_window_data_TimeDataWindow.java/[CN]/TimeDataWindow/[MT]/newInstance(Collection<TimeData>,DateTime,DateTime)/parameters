@@ -1,0 +1,3 @@
+Collection<TimeData> data
+DateTime fromDate
+DateTime toDate

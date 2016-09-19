@@ -1,0 +1,7 @@
+{
+  Map<String,Object> submitConf=new HashMap<>();
+  submitConf.put("storm.zookeeper.topology.auth.scheme","digest");
+  submitConf.put("topology.workers",3);
+  submitConf.put("topology.debug",true);
+  return submitConf;
+}

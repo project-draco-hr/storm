@@ -1,0 +1,9 @@
+{
+  Double retVal=0.0;
+  for (  Number num : nums) {
+    if (num != null) {
+      retVal+=num.doubleValue();
+    }
+  }
+  return retVal;
+}

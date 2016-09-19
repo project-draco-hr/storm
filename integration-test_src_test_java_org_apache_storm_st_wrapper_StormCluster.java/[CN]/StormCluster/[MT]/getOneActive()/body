@@ -1,0 +1,6 @@
+{
+  List<TopologySummary> topoSummaries=getActive();
+  AssertUtil.nonEmpty(topoSummaries,"Expecting one active topology.");
+  Assert.assertEquals(topoSummaries.size(),1,"Expected one topology to be running, found: " + topoSummaries);
+  return topoSummaries.get(0);
+}

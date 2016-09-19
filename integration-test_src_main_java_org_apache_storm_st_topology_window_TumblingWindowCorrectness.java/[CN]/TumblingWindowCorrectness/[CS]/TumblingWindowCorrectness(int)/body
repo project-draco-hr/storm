@@ -1,0 +1,6 @@
+{
+  this.tumbleSize=tumbleSize;
+  final String prefix=this.getClass().getSimpleName() + "-tubleSize" + tumbleSize;
+  spoutName=prefix + "IncrementingSpout";
+  boltName=prefix + "VerificationBolt";
+}

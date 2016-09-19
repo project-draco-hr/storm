@@ -1,0 +1,3 @@
+{
+  return str != null && str.contains(UNIQUE_PREFIX);
+}

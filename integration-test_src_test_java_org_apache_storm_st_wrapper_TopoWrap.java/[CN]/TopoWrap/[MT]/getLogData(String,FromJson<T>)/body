@@ -1,0 +1,11 @@
+{
+  final List<LogData> logData=getLogData(componentId);
+  final List<T> data=new ArrayList<>(Collections2.transform(logData,new Function<LogData,T>(){
+    @Nullable @Override public T apply(    @Nullable LogData input){
+      Assert.assertNotNull(input,"Expected LogData to be non-null.");
+      return cls.fromJson(input.getData());
+    }
+  }
+));
+  return data;
+}

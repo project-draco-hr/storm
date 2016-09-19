@@ -1,0 +1,45 @@
+{
+  log.info("Fetching logs for componentId = " + componentId);
+  List<ExecutorURL> exclaim2Urls=getLogUrls(componentId);
+  log.info("Found " + exclaim2Urls.size() + " urls: "+ exclaim2Urls.toString());
+  Collection<String> urlOuputs=Collections2.transform(exclaim2Urls,new Function<ExecutorURL,String>(){
+    @Nullable @Override public String apply(    @Nullable ExecutorURL executorURL){
+      if (executorURL == null || executorURL.getDownloadUrl() == null) {
+        return "";
+      }
+      String warnMessage="Couldn't fetch executorURL: " + executorURL;
+      try {
+        log.info("Fetching: " + executorURL);
+        final URL downloadUrl=executorURL.downloadUrl;
+        final String urlContent=IOUtils.toString(downloadUrl);
+        if (urlContent.length() < 500) {
+          log.info("Fetched: " + urlContent);
+        }
+ else {
+          log.info("Fetched: " + NumberFormat.getNumberInstance(Locale.US).format(urlContent.length()) + " bytes.");
+        }
+        if (System.getProperty("regression.downloadWorkerLogs").equalsIgnoreCase("true")) {
+          final String userDir=System.getProperty("user.dir");
+          final File target=new File(userDir,"target");
+          final File logDir=new File(target,"logs");
+          final File logFile=new File(logDir,downloadUrl.getHost() + "-" + downloadUrl.getFile().split("/")[2]);
+          try {
+            FileUtils.forceMkdir(logDir);
+            FileUtils.write(logFile,urlContent);
+          }
+ catch (          Throwable throwable) {
+            log.info("Caught exteption: " + ExceptionUtils.getFullStackTrace(throwable));
+          }
+        }
+        return urlContent;
+      }
+ catch (      IOException e) {
+        log.warn(warnMessage);
+      }
+      String stars=StringUtils.repeat("*",30);
+      return stars + "   " + warnMessage+ "   "+ stars;
+    }
+  }
+);
+  return StringUtils.join(urlOuputs,'\n');
+}
