@@ -1,5 +1,11 @@
 {
-  if (_server._cb != null) {
-    _server._cb.recv(Arrays.asList(new TaskMessage(taskId,payload)));
+  TaskMessage message=new TaskMessage(taskId,payload);
+  IConnectionCallback serverCb=_server._cb;
+  if (serverCb != null) {
+    flushPending();
+    serverCb.recv(Arrays.asList(message));
+  }
+ else {
+    _pendingDueToUnregisteredServer.add(message);
   }
 }

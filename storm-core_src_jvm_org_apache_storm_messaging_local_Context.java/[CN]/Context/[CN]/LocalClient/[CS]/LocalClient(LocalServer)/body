@@ -1,3 +1,25 @@
 {
   _server=server;
+  _pendingDueToUnregisteredServer=new LinkedBlockingQueue<>();
+  _pendingFlusher=Executors.newScheduledThreadPool(1,new ThreadFactory(){
+    @Override public Thread newThread(    Runnable runnable){
+      Thread thread=new Thread(runnable);
+      thread.setName("LocalClientFlusher-" + thread.getId());
+      thread.setDaemon(true);
+      return thread;
+    }
+  }
+);
+  _pendingFlusher.scheduleAtFixedRate(new Runnable(){
+    @Override public void run(){
+      try {
+        flushPending();
+      }
+ catch (      Throwable t) {
+        LOG.error("Uncaught throwable in pending message flusher thread, messages may be lost",t);
+        throw new RuntimeException(t);
+      }
+    }
+  }
+,5,5,TimeUnit.SECONDS);
 }

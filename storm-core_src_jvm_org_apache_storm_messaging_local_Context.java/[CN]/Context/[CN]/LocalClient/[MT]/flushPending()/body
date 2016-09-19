@@ -1,0 +1,8 @@
+{
+  IConnectionCallback serverCb=_server._cb;
+  if (serverCb != null && !_pendingDueToUnregisteredServer.isEmpty()) {
+    ArrayList<TaskMessage> ret=new ArrayList<>();
+    _pendingDueToUnregisteredServer.drainTo(ret);
+    serverCb.recv(ret);
+  }
+}

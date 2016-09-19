@@ -1,9 +1,16 @@
 {
-  if (_server._cb != null) {
+  IConnectionCallback serverCb=_server._cb;
+  if (serverCb != null) {
+    flushPending();
     ArrayList<TaskMessage> ret=new ArrayList<>();
     while (msgs.hasNext()) {
       ret.add(msgs.next());
     }
-    _server._cb.recv(ret);
+    serverCb.recv(ret);
+  }
+ else {
+    while (msgs.hasNext()) {
+      _pendingDueToUnregisteredServer.add(msgs.next());
+    }
   }
 }
