@@ -11,5 +11,5 @@
   Fields f=proc.outputStream().getOutputFields();
   proc.outputStream().each(f,new CollectDataFunction(),new Fields()).toStream();
   runTridentTopology(EXPECTED_VALUE_SIZE,proc,topo);
-  Assert.assertArrayEquals(new Values[]{new Values(null,"dept-2"),new Values(null,"dept-3"),new Values(null,"dept-4"),new Values(10,null),new Values(11,null),new Values(12,null),new Values(13,null),new Values(14,null)},getCollectedValues().toArray());
+  assertListsAreEqualIgnoringOrder(Lists.newArrayList(new Values(null,"dept-2"),new Values(null,"dept-3"),new Values(null,"dept-4"),new Values(10,null),new Values(11,null),new Values(12,null),new Values(13,null),new Values(14,null)),getCollectedValues());
 }
