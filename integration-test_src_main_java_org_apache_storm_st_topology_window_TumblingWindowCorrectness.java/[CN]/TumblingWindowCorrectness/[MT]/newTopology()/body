@@ -1,0 +1,6 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(getSpoutName(),new IncrementingSpout(),1);
+  builder.setBolt(getBoltName(),new VerificationBolt().withLag(new BaseWindowedBolt.Duration(10,TimeUnit.SECONDS)).withTumblingWindow(new BaseWindowedBolt.Count(tumbleSize)),1).shuffleGrouping(getSpoutName());
+  return builder.createTopology();
+}

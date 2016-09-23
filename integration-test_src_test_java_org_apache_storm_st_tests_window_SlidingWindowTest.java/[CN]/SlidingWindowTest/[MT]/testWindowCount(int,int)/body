@@ -1,0 +1,15 @@
+{
+  final SlidingWindowCorrectness testable=new SlidingWindowCorrectness(windowSize,slideSize);
+  final String topologyName=this.getClass().getSimpleName() + "w" + windowSize+ "s"+ slideSize;
+  if (windowSize <= 0 || slideSize <= 0) {
+    try {
+      testable.newTopology();
+      Assert.fail("Expected IllegalArgumentException was not thrown.");
+    }
+ catch (    IllegalArgumentException ignore) {
+      return;
+    }
+  }
+  topo=new TopoWrap(cluster,topologyName,testable.newTopology());
+  runAndVerifyCount(windowSize,slideSize,testable,topo);
+}

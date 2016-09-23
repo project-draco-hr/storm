@@ -1,0 +1,22 @@
+{
+  final String logs=getLogs(componentId);
+  final String dateRegex="\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}";
+  Pattern pattern=Pattern.compile("(?=\\n" + dateRegex + ")");
+  final String[] strings=pattern.split(logs);
+  final Collection<String> interestingLogs=Collections2.filter(Arrays.asList(strings),new Predicate<String>(){
+    @Override public boolean apply(    @Nullable String input){
+      return input != null && StringDecorator.isDecorated(input);
+    }
+  }
+);
+  final Collection<LogData> logData=Collections2.transform(interestingLogs,new Function<String,LogData>(){
+    @Nullable @Override public LogData apply(    @Nullable String input){
+      return new LogData(input);
+    }
+  }
+);
+  final ArrayList<LogData> sortedLogs=new ArrayList<>(logData);
+  Collections.sort(sortedLogs);
+  log.info("Found " + sortedLogs.size() + " items for component: "+ componentId);
+  return sortedLogs;
+}

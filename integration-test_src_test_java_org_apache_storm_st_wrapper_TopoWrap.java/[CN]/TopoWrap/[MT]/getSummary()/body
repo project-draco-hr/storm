@@ -1,0 +1,11 @@
+{
+  List<TopologySummary> allTopos=cluster.getSummaries();
+  Collection<TopologySummary> oneTopo=Collections2.filter(allTopos,new Predicate<TopologySummary>(){
+    @Override public boolean apply(    @Nullable TopologySummary input){
+      return input != null && input.get_name().equals(name);
+    }
+  }
+);
+  AssertUtil.assertOneElement(oneTopo);
+  return oneTopo.iterator().next();
+}

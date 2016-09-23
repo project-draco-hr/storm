@@ -1,0 +1,6 @@
+{
+  this.tumbleSec=timbleSec;
+  final String prefix=this.getClass().getSimpleName() + "-timbleSec" + timbleSec;
+  spoutName=prefix + "IncrementingSpout";
+  boltName=prefix + "VerificationBolt";
+}

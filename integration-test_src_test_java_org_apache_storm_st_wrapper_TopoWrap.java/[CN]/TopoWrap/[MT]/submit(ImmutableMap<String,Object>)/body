@@ -1,0 +1,5 @@
+{
+  final HashMap<String,Object> newConfig=new HashMap<>(submitConf);
+  newConfig.putAll(of);
+  StormSubmitter.submitTopologyWithProgressBar(name,newConfig,topology);
+}

@@ -1,0 +1,8 @@
+{
+  TimeUtil.sleepMilliSec(rng.nextInt(800));
+  currentNum++;
+  TimeData data=TimeData.newData(currentNum);
+  final Values tuple=data.getValues();
+  collector.emit(tuple);
+  LOG.info(StringDecorator.decorate(componentId,data.toString()));
+}

@@ -1,0 +1,4 @@
+{
+  Map conf=getConfig();
+  this.client=NimbusClient.getConfiguredClient(conf).getClient();
+}

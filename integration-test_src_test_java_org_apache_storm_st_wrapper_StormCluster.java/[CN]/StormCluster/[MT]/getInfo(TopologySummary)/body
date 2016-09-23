@@ -1,0 +1,3 @@
+{
+  return client.getTopologyInfo(topologySummary.get_id());
+}

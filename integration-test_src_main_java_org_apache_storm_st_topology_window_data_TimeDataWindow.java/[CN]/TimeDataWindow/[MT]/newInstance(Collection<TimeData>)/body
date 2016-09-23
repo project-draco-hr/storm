@@ -1,0 +1,5 @@
+{
+  final List<TimeData> dataCopy=new ArrayList<>(data);
+  Collections.sort(dataCopy);
+  return new TimeDataWindow(dataCopy);
+}

@@ -1,0 +1,6 @@
+{
+  submit(config);
+  TopologySummary topologySummary=getSummary();
+  Assert.assertEquals(topologySummary.get_status().toLowerCase(),"active","Topology must be active.");
+  id=topologySummary.get_id();
+}

@@ -1,0 +1,3 @@
+{
+  endOfTestHook(result,RunResult.TestFailedButWithinSuccessPercentage);
+}

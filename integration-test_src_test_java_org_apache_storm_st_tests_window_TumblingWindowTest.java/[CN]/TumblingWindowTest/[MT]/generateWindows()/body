@@ -1,0 +1,4 @@
+{
+  final Object[][] objects=new Object[][]{{-1},{0},{1},{10},{250},{500}};
+  return objects;
+}

@@ -1,0 +1,7 @@
+{
+  TopologyBuilder builder=new TopologyBuilder();
+  builder.setSpout(WORD,new TestWordSpout(),10);
+  builder.setBolt(EXCLAIM_1,new ExclamationTopology.ExclamationBolt(),3).shuffleGrouping(WORD);
+  builder.setBolt(EXCLAIM_2,new ExclamationTopology.ExclamationBolt(),2).shuffleGrouping(EXCLAIM_1);
+  return builder.createTopology();
+}

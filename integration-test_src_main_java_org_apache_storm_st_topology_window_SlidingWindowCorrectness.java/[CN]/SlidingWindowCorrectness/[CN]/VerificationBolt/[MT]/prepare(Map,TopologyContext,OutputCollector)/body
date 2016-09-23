@@ -1,0 +1,4 @@
+{
+  componentId=context.getThisComponentId();
+  this.collector=collector;
+}

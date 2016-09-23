@@ -1,0 +1,4 @@
+{
+  Assert.assertNotNull(collection,message + " Expected collection to be non-null, found: " + collection);
+  greater(collection.size(),0,message + " Expected collection to be non-empty, found: " + collection);
+}

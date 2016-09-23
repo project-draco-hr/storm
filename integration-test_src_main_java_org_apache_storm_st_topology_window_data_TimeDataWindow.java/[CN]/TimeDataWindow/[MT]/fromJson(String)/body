@@ -1,0 +1,5 @@
+{
+  final List<TimeData> dataList=TimeData.gson.fromJson(jsonStr,listType);
+  Collections.sort(dataList);
+  return TimeDataWindow.newInstance(dataList);
+}

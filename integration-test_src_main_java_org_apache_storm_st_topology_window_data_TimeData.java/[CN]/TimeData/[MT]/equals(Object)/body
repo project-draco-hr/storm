@@ -1,0 +1,8 @@
+{
+  if (this == o)   return true;
+  if (o == null || getClass() != o.getClass())   return false;
+  TimeData data=(TimeData)o;
+  if (num != data.num)   return false;
+  if (timestamp != data.timestamp)   return false;
+  return now.equals(data.now);
+}

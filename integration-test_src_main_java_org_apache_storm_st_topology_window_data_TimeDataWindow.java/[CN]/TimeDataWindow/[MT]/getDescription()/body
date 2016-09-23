@@ -1,0 +1,9 @@
+{
+  final int size=size();
+  if (size > 0) {
+    final TimeData first=first();
+    final TimeData last=last();
+    return "Total " + size + " items: "+ first+ " to "+ last;
+  }
+  return "Total " + size + " items.";
+}

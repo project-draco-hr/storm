@@ -1,0 +1,3 @@
+{
+  assertNElements(collection,2);
+}

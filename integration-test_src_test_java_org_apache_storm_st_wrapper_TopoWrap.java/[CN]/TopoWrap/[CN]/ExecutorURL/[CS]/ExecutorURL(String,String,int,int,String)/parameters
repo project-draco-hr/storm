@@ -1,0 +1,5 @@
+String componentId
+String host
+int logViewerPort
+int executorPort
+String topoId

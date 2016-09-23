@@ -1,0 +1,26 @@
+{
+  topo=new TopoWrap(cluster,topologyName,ExclamationTopology.getStormTopology());
+  topo.submitSuccessfully();
+  final int minExclaim2Emits=500;
+  final int minSpountEmits=10000;
+  for (int i=0; i < 10; ++i) {
+    TopologyInfo topologyInfo=topo.getInfo();
+    log.info(topologyInfo.toString());
+    long wordSpoutEmittedCount=topo.getAllTimeEmittedCount(ExclamationTopology.WORD);
+    long exclaim1EmittedCount=topo.getAllTimeEmittedCount(ExclamationTopology.EXCLAIM_1);
+    long exclaim2EmittedCount=topo.getAllTimeEmittedCount(ExclamationTopology.EXCLAIM_2);
+    log.info("wordSpoutEmittedCount for spout 'word' = " + wordSpoutEmittedCount);
+    log.info("exclaim1EmittedCount = " + exclaim1EmittedCount);
+    log.info("exclaim2EmittedCount = " + exclaim2EmittedCount);
+    if (exclaim2EmittedCount > minExclaim2Emits || wordSpoutEmittedCount > minSpountEmits) {
+      break;
+    }
+    TimeUtil.sleepSec(6);
+  }
+  List<TopoWrap.ExecutorURL> boltUrls=topo.getLogUrls(ExclamationTopology.WORD);
+  log.info(boltUrls.toString());
+  final String actualOutput=topo.getLogs(ExclamationTopology.EXCLAIM_2);
+  for (  String oneExpectedOutput : exclaim2Oputput) {
+    Assert.assertTrue(actualOutput.contains(oneExpectedOutput),"Couldn't find " + oneExpectedOutput + " in urls");
+  }
+}

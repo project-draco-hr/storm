@@ -1,0 +1,9 @@
+{
+  DateTime tempDate;
+  final String[] pair=StringDecorator.split2(StringUtils.strip(logLine));
+  final List<String> pairList=Arrays.asList(pair);
+  AssertUtil.assertTwoElements(pairList);
+  tempDate=dateFormat.parseDateTime(pairList.get(0).substring(0,dateLen));
+  this.logDate=tempDate;
+  this.data=pairList.get(1);
+}

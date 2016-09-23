@@ -1,0 +1,7 @@
+{
+  this.windowSize=windowSize;
+  this.slideSize=slideSize;
+  final String prefix=this.getClass().getSimpleName() + "-winSize" + windowSize+ "slideSize"+ slideSize;
+  spoutName=prefix + "IncrementingSpout";
+  boltName=prefix + "VerificationBolt";
+}

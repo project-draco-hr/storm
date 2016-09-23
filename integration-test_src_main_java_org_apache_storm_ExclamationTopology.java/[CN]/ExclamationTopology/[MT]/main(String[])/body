@@ -1,0 +1,16 @@
+{
+  StormTopology topology=getStormTopology();
+  Config conf=new Config();
+  conf.setDebug(true);
+  if (args != null && args.length > 0) {
+    conf.setNumWorkers(3);
+    StormSubmitter.submitTopologyWithProgressBar(args[0],conf,topology);
+  }
+ else {
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology("test",conf,topology);
+    Utils.sleep(10000);
+    cluster.killTopology("test");
+    cluster.shutdown();
+  }
+}

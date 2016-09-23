@@ -1,0 +1,8 @@
+{
+  String sep="%2F";
+  String viewUrlStr=String.format("http://%s:%s/log?file=",host,logViewerPort);
+  String downloadUrlStr=String.format("http://%s:%s/download",host,logViewerPort);
+  viewUrl=new URL(String.format("%s/%s%s%d%sworker.log",viewUrlStr,topoId,sep,executorPort,sep));
+  downloadUrl=new URL(String.format("%s/%s%s%d%sworker.log",downloadUrlStr,topoId,sep,executorPort,sep));
+  this.componentId=componentId;
+}

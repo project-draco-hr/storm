@@ -1,0 +1,3 @@
+{
+  return StringUtils.splitByWholeSeparator(decoratedString,UNIQUE_PREFIX,2);
+}

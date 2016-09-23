@@ -1,0 +1,15 @@
+{
+  final TumblingWindowCorrectness testable=new TumblingWindowCorrectness(tumbleSize);
+  final String topologyName=this.getClass().getSimpleName() + "t" + tumbleSize;
+  if (tumbleSize <= 0) {
+    try {
+      testable.newTopology();
+      Assert.fail("Expected IllegalArgumentException was not thrown.");
+    }
+ catch (    IllegalArgumentException ignore) {
+      return;
+    }
+  }
+  topo=new TopoWrap(cluster,topologyName,testable.newTopology());
+  SlidingWindowTest.runAndVerifyCount(tumbleSize,tumbleSize,testable,topo);
+}

@@ -1,0 +1,5 @@
+{
+  endOfTestHook(result,RunResult.FAILED);
+  LOGGER.info(ExceptionUtils.getStackTrace(result.getThrowable()));
+  LOGGER.info(hr);
+}

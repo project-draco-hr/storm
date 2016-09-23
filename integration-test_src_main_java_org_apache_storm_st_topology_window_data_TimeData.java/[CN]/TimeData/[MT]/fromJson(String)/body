@@ -1,0 +1,3 @@
+{
+  return gson.fromJson(jsonStr,TimeData.class);
+}
