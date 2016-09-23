@@ -1,0 +1,7 @@
+{
+  List<String> data;
+synchronized (this) {
+    data=_data;
+  }
+  return "DEP_LOCS for " + _topologyId + " => "+ data;
+}

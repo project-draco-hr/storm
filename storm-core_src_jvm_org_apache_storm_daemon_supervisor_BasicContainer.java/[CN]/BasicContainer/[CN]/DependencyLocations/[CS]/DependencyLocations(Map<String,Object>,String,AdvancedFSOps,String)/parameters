@@ -1,0 +1,4 @@
+Map<String,Object> conf
+String topologyId
+AdvancedFSOps ops
+String stormRoot
