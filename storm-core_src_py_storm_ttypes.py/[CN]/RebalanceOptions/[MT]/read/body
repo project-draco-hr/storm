@@ -20,11 +20,11 @@ def read(self, iprot):
         elif (fid == 3):
             if (ftype == TType.MAP):
                 self.num_executors = {}
-                (_ktype464, _vtype465, _size463) = iprot.readMapBegin()
-                for _i467 in xrange(_size463):
-                    _key468 = iprot.readString().decode('utf-8')
-                    _val469 = iprot.readI32()
-                    self.num_executors[_key468] = _val469
+                (_ktype482, _vtype483, _size481) = iprot.readMapBegin()
+                for _i485 in xrange(_size481):
+                    _key486 = iprot.readString().decode('utf-8')
+                    _val487 = iprot.readI32()
+                    self.num_executors[_key486] = _val487
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

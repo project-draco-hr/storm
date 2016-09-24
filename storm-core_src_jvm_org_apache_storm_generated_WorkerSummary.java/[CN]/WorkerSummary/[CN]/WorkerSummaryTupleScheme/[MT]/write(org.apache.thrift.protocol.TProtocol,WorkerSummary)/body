@@ -68,9 +68,9 @@
   if (struct.is_set_component_to_num_tasks()) {
 {
       oprot.writeI32(struct.component_to_num_tasks.size());
-      for (      Map.Entry<String,Long> _iter423 : struct.component_to_num_tasks.entrySet()) {
-        oprot.writeString(_iter423.getKey());
-        oprot.writeI64(_iter423.getValue());
+      for (      Map.Entry<String,Long> _iter433 : struct.component_to_num_tasks.entrySet()) {
+        oprot.writeString(_iter433.getKey());
+        oprot.writeI64(_iter433.getValue());
       }
     }
   }

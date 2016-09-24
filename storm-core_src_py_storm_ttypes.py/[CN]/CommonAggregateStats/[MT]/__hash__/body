@@ -6,4 +6,5 @@ def __hash__(self):
     value = ((value * 31) ^ hash(self.transferred))
     value = ((value * 31) ^ hash(self.acked))
     value = ((value * 31) ^ hash(self.failed))
+    value = ((value * 31) ^ hash(self.resources_map))
     return value

@@ -90,18 +90,18 @@
   if (struct.is_set_id_to_spout_agg_stats()) {
 {
       oprot.writeI32(struct.id_to_spout_agg_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter458 : struct.id_to_spout_agg_stats.entrySet()) {
-        oprot.writeString(_iter458.getKey());
-        _iter458.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter468 : struct.id_to_spout_agg_stats.entrySet()) {
+        oprot.writeString(_iter468.getKey());
+        _iter468.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_id_to_bolt_agg_stats()) {
 {
       oprot.writeI32(struct.id_to_bolt_agg_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter459 : struct.id_to_bolt_agg_stats.entrySet()) {
-        oprot.writeString(_iter459.getKey());
-        _iter459.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter469 : struct.id_to_bolt_agg_stats.entrySet()) {
+        oprot.writeString(_iter469.getKey());
+        _iter469.getValue().write(oprot);
       }
     }
   }
@@ -123,8 +123,8 @@
   if (struct.is_set_workers()) {
 {
       oprot.writeI32(struct.workers.size());
-      for (      WorkerSummary _iter460 : struct.workers) {
-        _iter460.write(oprot);
+      for (      WorkerSummary _iter470 : struct.workers) {
+        _iter470.write(oprot);
       }
     }
   }

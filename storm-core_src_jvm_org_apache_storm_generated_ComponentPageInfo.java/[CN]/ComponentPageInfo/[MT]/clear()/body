@@ -17,4 +17,5 @@
   this.eventlog_port=0;
   this.debug_options=null;
   this.topology_status=null;
+  this.resources_map=null;
 }

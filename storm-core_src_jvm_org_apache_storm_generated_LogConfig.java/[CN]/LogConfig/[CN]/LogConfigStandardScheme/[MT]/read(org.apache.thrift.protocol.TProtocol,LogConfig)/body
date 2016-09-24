@@ -10,15 +10,15 @@ switch (schemeField.id) {
 case 2:
       if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-          org.apache.thrift.protocol.TMap _map754=iprot.readMapBegin();
-          struct.named_logger_level=new HashMap<String,LogLevel>(2 * _map754.size);
-          String _key755;
-          LogLevel _val756;
-          for (int _i757=0; _i757 < _map754.size; ++_i757) {
-            _key755=iprot.readString();
-            _val756=new LogLevel();
-            _val756.read(iprot);
-            struct.named_logger_level.put(_key755,_val756);
+          org.apache.thrift.protocol.TMap _map774=iprot.readMapBegin();
+          struct.named_logger_level=new HashMap<String,LogLevel>(2 * _map774.size);
+          String _key775;
+          LogLevel _val776;
+          for (int _i777=0; _i777 < _map774.size; ++_i777) {
+            _key775=iprot.readString();
+            _val776=new LogLevel();
+            _val776.read(iprot);
+            struct.named_logger_level.put(_key775,_val776);
           }
           iprot.readMapEnd();
         }

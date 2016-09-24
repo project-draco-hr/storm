@@ -5,8 +5,8 @@
     oprot.writeFieldBegin(ACL_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.acl.size()));
-      for (      AccessControl _iter541 : struct.acl) {
-        _iter541.write(oprot);
+      for (      AccessControl _iter561 : struct.acl) {
+        _iter561.write(oprot);
       }
       oprot.writeListEnd();
     }

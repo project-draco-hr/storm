@@ -2,8 +2,8 @@
   TTupleProtocol oprot=(TTupleProtocol)prot;
 {
     oprot.writeI32(struct.acl.size());
-    for (    AccessControl _iter542 : struct.acl) {
-      _iter542.write(oprot);
+    for (    AccessControl _iter562 : struct.acl) {
+      _iter562.write(oprot);
     }
   }
   BitSet optionals=new BitSet();

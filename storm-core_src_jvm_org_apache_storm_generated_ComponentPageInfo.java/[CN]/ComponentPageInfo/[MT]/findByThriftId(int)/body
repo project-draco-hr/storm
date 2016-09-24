@@ -30,6 +30,8 @@ case 14:
 return DEBUG_OPTIONS;
 case 15:
 return TOPOLOGY_STATUS;
+case 16:
+return RESOURCES_MAP;
 default :
 return null;
 }

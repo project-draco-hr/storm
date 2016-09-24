@@ -6,4 +6,8 @@
   this.transferred=other.transferred;
   this.acked=other.acked;
   this.failed=other.failed;
+  if (other.is_set_resources_map()) {
+    Map<String,Double> __this__resources_map=new HashMap<String,Double>(other.resources_map);
+    this.resources_map=__this__resources_map;
+  }
 }

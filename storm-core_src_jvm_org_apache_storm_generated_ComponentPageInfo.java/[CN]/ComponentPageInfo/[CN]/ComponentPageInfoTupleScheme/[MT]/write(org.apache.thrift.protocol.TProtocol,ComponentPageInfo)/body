@@ -42,7 +42,10 @@
   if (struct.is_set_topology_status()) {
     optionals.set(12);
   }
-  oprot.writeBitSet(optionals,13);
+  if (struct.is_set_resources_map()) {
+    optionals.set(13);
+  }
+  oprot.writeBitSet(optionals,14);
   if (struct.is_set_topology_id()) {
     oprot.writeString(struct.topology_id);
   }
@@ -58,43 +61,43 @@
   if (struct.is_set_window_to_stats()) {
 {
       oprot.writeI32(struct.window_to_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter495 : struct.window_to_stats.entrySet()) {
-        oprot.writeString(_iter495.getKey());
-        _iter495.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter510 : struct.window_to_stats.entrySet()) {
+        oprot.writeString(_iter510.getKey());
+        _iter510.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_gsid_to_input_stats()) {
 {
       oprot.writeI32(struct.gsid_to_input_stats.size());
-      for (      Map.Entry<GlobalStreamId,ComponentAggregateStats> _iter496 : struct.gsid_to_input_stats.entrySet()) {
-        _iter496.getKey().write(oprot);
-        _iter496.getValue().write(oprot);
+      for (      Map.Entry<GlobalStreamId,ComponentAggregateStats> _iter511 : struct.gsid_to_input_stats.entrySet()) {
+        _iter511.getKey().write(oprot);
+        _iter511.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_sid_to_output_stats()) {
 {
       oprot.writeI32(struct.sid_to_output_stats.size());
-      for (      Map.Entry<String,ComponentAggregateStats> _iter497 : struct.sid_to_output_stats.entrySet()) {
-        oprot.writeString(_iter497.getKey());
-        _iter497.getValue().write(oprot);
+      for (      Map.Entry<String,ComponentAggregateStats> _iter512 : struct.sid_to_output_stats.entrySet()) {
+        oprot.writeString(_iter512.getKey());
+        _iter512.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_exec_stats()) {
 {
       oprot.writeI32(struct.exec_stats.size());
-      for (      ExecutorAggregateStats _iter498 : struct.exec_stats) {
-        _iter498.write(oprot);
+      for (      ExecutorAggregateStats _iter513 : struct.exec_stats) {
+        _iter513.write(oprot);
       }
     }
   }
   if (struct.is_set_errors()) {
 {
       oprot.writeI32(struct.errors.size());
-      for (      ErrorInfo _iter499 : struct.errors) {
-        _iter499.write(oprot);
+      for (      ErrorInfo _iter514 : struct.errors) {
+        _iter514.write(oprot);
       }
     }
   }
@@ -109,5 +112,14 @@
   }
   if (struct.is_set_topology_status()) {
     oprot.writeString(struct.topology_status);
+  }
+  if (struct.is_set_resources_map()) {
+{
+      oprot.writeI32(struct.resources_map.size());
+      for (      Map.Entry<String,Double> _iter515 : struct.resources_map.entrySet()) {
+        oprot.writeString(_iter515.getKey());
+        oprot.writeDouble(_iter515.getValue());
+      }
+    }
   }
 }

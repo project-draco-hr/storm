@@ -10,55 +10,55 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.window_to_emitted = {}
-                (_ktype330, _vtype331, _size329) = iprot.readMapBegin()
-                for _i333 in xrange(_size329):
-                    _key334 = iprot.readString().decode('utf-8')
-                    _val335 = iprot.readI64()
-                    self.window_to_emitted[_key334] = _val335
+                (_ktype339, _vtype340, _size338) = iprot.readMapBegin()
+                for _i342 in xrange(_size338):
+                    _key343 = iprot.readString().decode('utf-8')
+                    _val344 = iprot.readI64()
+                    self.window_to_emitted[_key343] = _val344
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 2):
             if (ftype == TType.MAP):
                 self.window_to_transferred = {}
-                (_ktype337, _vtype338, _size336) = iprot.readMapBegin()
-                for _i340 in xrange(_size336):
-                    _key341 = iprot.readString().decode('utf-8')
-                    _val342 = iprot.readI64()
-                    self.window_to_transferred[_key341] = _val342
+                (_ktype346, _vtype347, _size345) = iprot.readMapBegin()
+                for _i349 in xrange(_size345):
+                    _key350 = iprot.readString().decode('utf-8')
+                    _val351 = iprot.readI64()
+                    self.window_to_transferred[_key350] = _val351
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 3):
             if (ftype == TType.MAP):
                 self.window_to_complete_latencies_ms = {}
-                (_ktype344, _vtype345, _size343) = iprot.readMapBegin()
-                for _i347 in xrange(_size343):
-                    _key348 = iprot.readString().decode('utf-8')
-                    _val349 = iprot.readDouble()
-                    self.window_to_complete_latencies_ms[_key348] = _val349
+                (_ktype353, _vtype354, _size352) = iprot.readMapBegin()
+                for _i356 in xrange(_size352):
+                    _key357 = iprot.readString().decode('utf-8')
+                    _val358 = iprot.readDouble()
+                    self.window_to_complete_latencies_ms[_key357] = _val358
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 4):
             if (ftype == TType.MAP):
                 self.window_to_acked = {}
-                (_ktype351, _vtype352, _size350) = iprot.readMapBegin()
-                for _i354 in xrange(_size350):
-                    _key355 = iprot.readString().decode('utf-8')
-                    _val356 = iprot.readI64()
-                    self.window_to_acked[_key355] = _val356
+                (_ktype360, _vtype361, _size359) = iprot.readMapBegin()
+                for _i363 in xrange(_size359):
+                    _key364 = iprot.readString().decode('utf-8')
+                    _val365 = iprot.readI64()
+                    self.window_to_acked[_key364] = _val365
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 5):
             if (ftype == TType.MAP):
                 self.window_to_failed = {}
-                (_ktype358, _vtype359, _size357) = iprot.readMapBegin()
-                for _i361 in xrange(_size357):
-                    _key362 = iprot.readString().decode('utf-8')
-                    _val363 = iprot.readI64()
-                    self.window_to_failed[_key362] = _val363
+                (_ktype367, _vtype368, _size366) = iprot.readMapBegin()
+                for _i370 in xrange(_size366):
+                    _key371 = iprot.readString().decode('utf-8')
+                    _val372 = iprot.readI64()
+                    self.window_to_failed[_key371] = _val372
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

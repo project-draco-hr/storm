@@ -19,7 +19,10 @@
   if (struct.is_set_failed()) {
     optionals.set(5);
   }
-  oprot.writeBitSet(optionals,6);
+  if (struct.is_set_resources_map()) {
+    optionals.set(6);
+  }
+  oprot.writeBitSet(optionals,7);
   if (struct.is_set_num_executors()) {
     oprot.writeI32(struct.num_executors);
   }
@@ -37,5 +40,14 @@
   }
   if (struct.is_set_failed()) {
     oprot.writeI64(struct.failed);
+  }
+  if (struct.is_set_resources_map()) {
+{
+      oprot.writeI32(struct.resources_map.size());
+      for (      Map.Entry<String,Double> _iter373 : struct.resources_map.entrySet()) {
+        oprot.writeString(_iter373.getKey());
+        oprot.writeDouble(_iter373.getValue());
+      }
+    }
   }
 }

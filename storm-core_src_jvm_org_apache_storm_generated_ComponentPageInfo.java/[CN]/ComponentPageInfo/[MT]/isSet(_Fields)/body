@@ -33,6 +33,8 @@ case DEBUG_OPTIONS:
 return is_set_debug_options();
 case TOPOLOGY_STATUS:
 return is_set_topology_status();
+case RESOURCES_MAP:
+return is_set_resources_map();
 }
 throw new IllegalStateException();
 }

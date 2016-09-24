@@ -10,13 +10,13 @@ switch (schemeField.id) {
 case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-          org.apache.thrift.protocol.TList _list428=iprot.readListBegin();
-          struct.supervisor_summaries=new ArrayList<SupervisorSummary>(_list428.size);
-          SupervisorSummary _elem429;
-          for (int _i430=0; _i430 < _list428.size; ++_i430) {
-            _elem429=new SupervisorSummary();
-            _elem429.read(iprot);
-            struct.supervisor_summaries.add(_elem429);
+          org.apache.thrift.protocol.TList _list438=iprot.readListBegin();
+          struct.supervisor_summaries=new ArrayList<SupervisorSummary>(_list438.size);
+          SupervisorSummary _elem439;
+          for (int _i440=0; _i440 < _list438.size; ++_i440) {
+            _elem439=new SupervisorSummary();
+            _elem439.read(iprot);
+            struct.supervisor_summaries.add(_elem439);
           }
           iprot.readListEnd();
         }
@@ -29,13 +29,13 @@ case 1:
 case 2:
   if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-      org.apache.thrift.protocol.TList _list431=iprot.readListBegin();
-      struct.worker_summaries=new ArrayList<WorkerSummary>(_list431.size);
-      WorkerSummary _elem432;
-      for (int _i433=0; _i433 < _list431.size; ++_i433) {
-        _elem432=new WorkerSummary();
-        _elem432.read(iprot);
-        struct.worker_summaries.add(_elem432);
+      org.apache.thrift.protocol.TList _list441=iprot.readListBegin();
+      struct.worker_summaries=new ArrayList<WorkerSummary>(_list441.size);
+      WorkerSummary _elem442;
+      for (int _i443=0; _i443 < _list441.size; ++_i443) {
+        _elem442=new WorkerSummary();
+        _elem442.read(iprot);
+        struct.worker_summaries.add(_elem442);
       }
       iprot.readListEnd();
     }

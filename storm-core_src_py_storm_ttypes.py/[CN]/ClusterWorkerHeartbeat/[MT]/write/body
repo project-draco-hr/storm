@@ -10,9 +10,9 @@ def write(self, oprot):
     if (self.executor_stats is not None):
         oprot.writeFieldBegin('executor_stats', TType.MAP, 2)
         oprot.writeMapBegin(TType.STRUCT, TType.STRUCT, len(self.executor_stats))
-        for (kiter609, viter610) in self.executor_stats.items():
-            kiter609.write(oprot)
-            viter610.write(oprot)
+        for (kiter627, viter628) in self.executor_stats.items():
+            kiter627.write(oprot)
+            viter628.write(oprot)
         oprot.writeMapEnd()
         oprot.writeFieldEnd()
     if (self.time_secs is not None):

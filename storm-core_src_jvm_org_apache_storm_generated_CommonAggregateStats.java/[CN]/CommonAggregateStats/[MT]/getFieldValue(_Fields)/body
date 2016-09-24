@@ -12,6 +12,8 @@ case ACKED:
 return get_acked();
 case FAILED:
 return get_failed();
+case RESOURCES_MAP:
+return get_resources_map();
 }
 throw new IllegalStateException();
 }

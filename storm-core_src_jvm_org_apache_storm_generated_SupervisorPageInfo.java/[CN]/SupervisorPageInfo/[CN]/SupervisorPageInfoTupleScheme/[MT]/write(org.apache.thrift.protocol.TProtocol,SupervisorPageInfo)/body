@@ -11,16 +11,16 @@
   if (struct.is_set_supervisor_summaries()) {
 {
       oprot.writeI32(struct.supervisor_summaries.size());
-      for (      SupervisorSummary _iter436 : struct.supervisor_summaries) {
-        _iter436.write(oprot);
+      for (      SupervisorSummary _iter446 : struct.supervisor_summaries) {
+        _iter446.write(oprot);
       }
     }
   }
   if (struct.is_set_worker_summaries()) {
 {
       oprot.writeI32(struct.worker_summaries.size());
-      for (      WorkerSummary _iter437 : struct.worker_summaries) {
-        _iter437.write(oprot);
+      for (      WorkerSummary _iter447 : struct.worker_summaries) {
+        _iter447.write(oprot);
       }
     }
   }

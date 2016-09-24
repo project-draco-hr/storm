@@ -31,6 +31,20 @@
     oprot.writeI64(struct.failed);
     oprot.writeFieldEnd();
   }
+  if (struct.resources_map != null) {
+    if (struct.is_set_resources_map()) {
+      oprot.writeFieldBegin(RESOURCES_MAP_FIELD_DESC);
+{
+        oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.DOUBLE,struct.resources_map.size()));
+        for (        Map.Entry<String,Double> _iter372 : struct.resources_map.entrySet()) {
+          oprot.writeString(_iter372.getKey());
+          oprot.writeDouble(_iter372.getValue());
+        }
+        oprot.writeMapEnd();
+      }
+      oprot.writeFieldEnd();
+    }
+  }
   oprot.writeFieldStop();
   oprot.writeStructEnd();
 }

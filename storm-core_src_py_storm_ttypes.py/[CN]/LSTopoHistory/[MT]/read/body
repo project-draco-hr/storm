@@ -20,20 +20,20 @@ def read(self, iprot):
         elif (fid == 3):
             if (ftype == TType.LIST):
                 self.users = []
-                (_etype655, _size652) = iprot.readListBegin()
-                for _i656 in xrange(_size652):
-                    _elem657 = iprot.readString().decode('utf-8')
-                    self.users.append(_elem657)
+                (_etype673, _size670) = iprot.readListBegin()
+                for _i674 in xrange(_size670):
+                    _elem675 = iprot.readString().decode('utf-8')
+                    self.users.append(_elem675)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)
         elif (fid == 4):
             if (ftype == TType.LIST):
                 self.groups = []
-                (_etype661, _size658) = iprot.readListBegin()
-                for _i662 in xrange(_size658):
-                    _elem663 = iprot.readString().decode('utf-8')
-                    self.groups.append(_elem663)
+                (_etype679, _size676) = iprot.readListBegin()
+                for _i680 in xrange(_size676):
+                    _elem681 = iprot.readString().decode('utf-8')
+                    self.groups.append(_elem681)
                 iprot.readListEnd()
             else:
                 iprot.skip(ftype)

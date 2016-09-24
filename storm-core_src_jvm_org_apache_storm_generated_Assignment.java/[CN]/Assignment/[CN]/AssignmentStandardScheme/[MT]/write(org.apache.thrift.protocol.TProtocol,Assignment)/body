@@ -11,9 +11,9 @@
       oprot.writeFieldBegin(NODE_HOST_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRING,struct.node_host.size()));
-        for (        Map.Entry<String,String> _iter620 : struct.node_host.entrySet()) {
-          oprot.writeString(_iter620.getKey());
-          oprot.writeString(_iter620.getValue());
+        for (        Map.Entry<String,String> _iter640 : struct.node_host.entrySet()) {
+          oprot.writeString(_iter640.getKey());
+          oprot.writeString(_iter640.getValue());
         }
         oprot.writeMapEnd();
       }
@@ -25,15 +25,15 @@
       oprot.writeFieldBegin(EXECUTOR_NODE_PORT_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.LIST,org.apache.thrift.protocol.TType.STRUCT,struct.executor_node_port.size()));
-        for (        Map.Entry<List<Long>,NodeInfo> _iter621 : struct.executor_node_port.entrySet()) {
+        for (        Map.Entry<List<Long>,NodeInfo> _iter641 : struct.executor_node_port.entrySet()) {
 {
-            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64,_iter621.getKey().size()));
-            for (            long _iter622 : _iter621.getKey()) {
-              oprot.writeI64(_iter622);
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64,_iter641.getKey().size()));
+            for (            long _iter642 : _iter641.getKey()) {
+              oprot.writeI64(_iter642);
             }
             oprot.writeListEnd();
           }
-          _iter621.getValue().write(oprot);
+          _iter641.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }
@@ -45,15 +45,15 @@
       oprot.writeFieldBegin(EXECUTOR_START_TIME_SECS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.LIST,org.apache.thrift.protocol.TType.I64,struct.executor_start_time_secs.size()));
-        for (        Map.Entry<List<Long>,Long> _iter623 : struct.executor_start_time_secs.entrySet()) {
+        for (        Map.Entry<List<Long>,Long> _iter643 : struct.executor_start_time_secs.entrySet()) {
 {
-            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64,_iter623.getKey().size()));
-            for (            long _iter624 : _iter623.getKey()) {
-              oprot.writeI64(_iter624);
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I64,_iter643.getKey().size()));
+            for (            long _iter644 : _iter643.getKey()) {
+              oprot.writeI64(_iter644);
             }
             oprot.writeListEnd();
           }
-          oprot.writeI64(_iter623.getValue());
+          oprot.writeI64(_iter643.getValue());
         }
         oprot.writeMapEnd();
       }
@@ -65,9 +65,9 @@
       oprot.writeFieldBegin(WORKER_RESOURCES_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRUCT,org.apache.thrift.protocol.TType.STRUCT,struct.worker_resources.size()));
-        for (        Map.Entry<NodeInfo,WorkerResources> _iter625 : struct.worker_resources.entrySet()) {
-          _iter625.getKey().write(oprot);
-          _iter625.getValue().write(oprot);
+        for (        Map.Entry<NodeInfo,WorkerResources> _iter645 : struct.worker_resources.entrySet()) {
+          _iter645.getKey().write(oprot);
+          _iter645.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }

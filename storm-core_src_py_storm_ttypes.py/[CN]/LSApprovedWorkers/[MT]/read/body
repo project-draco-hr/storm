@@ -10,11 +10,11 @@ def read(self, iprot):
         if (fid == 1):
             if (ftype == TType.MAP):
                 self.approved_workers = {}
-                (_ktype628, _vtype629, _size627) = iprot.readMapBegin()
-                for _i631 in xrange(_size627):
-                    _key632 = iprot.readString().decode('utf-8')
-                    _val633 = iprot.readI32()
-                    self.approved_workers[_key632] = _val633
+                (_ktype646, _vtype647, _size645) = iprot.readMapBegin()
+                for _i649 in xrange(_size645):
+                    _key650 = iprot.readString().decode('utf-8')
+                    _val651 = iprot.readI32()
+                    self.approved_workers[_key650] = _val651
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)
