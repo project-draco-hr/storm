@@ -8,9 +8,6 @@
         throw new UnsupportedOperationException("Count with nullable fields");
       }
     }
- else {
-      throw new IllegalArgumentException("Aggregate call should have one argument");
-    }
   }
   if (aggFunction instanceof SqlUserDefinedAggFunction) {
     AggregateFunction aggregateFunction=((SqlUserDefinedAggFunction)aggFunction).function;

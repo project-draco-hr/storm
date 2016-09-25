@@ -1,0 +1,15 @@
+{
+  if (n <= 0) {
+    return accumulator;
+  }
+  if (accumulator.size() >= n) {
+    if (val > accumulator.peek()) {
+      accumulator.remove();
+      accumulator.add(val);
+    }
+  }
+ else {
+    accumulator.add(val);
+  }
+  return accumulator;
+}
