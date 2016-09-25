@@ -1,0 +1,6 @@
+{
+  _conf=conf;
+  _topologyId=topologyId;
+  _ops=ops;
+  _stormRoot=stormRoot;
+}

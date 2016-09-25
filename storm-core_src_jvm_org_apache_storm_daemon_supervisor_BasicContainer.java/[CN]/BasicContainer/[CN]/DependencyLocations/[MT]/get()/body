@@ -1,0 +1,19 @@
+{
+  if (_data != null) {
+    return _data;
+  }
+  final StormTopology stormTopology=ConfigUtils.readSupervisorTopology(_conf,_topologyId,_ops);
+  final List<String> dependencyLocations=new ArrayList<>();
+  if (stormTopology.get_dependency_jars() != null) {
+    for (    String dependency : stormTopology.get_dependency_jars()) {
+      dependencyLocations.add(new File(_stormRoot,dependency).getAbsolutePath());
+    }
+  }
+  if (stormTopology.get_dependency_artifacts() != null) {
+    for (    String dependency : stormTopology.get_dependency_artifacts()) {
+      dependencyLocations.add(new File(_stormRoot,dependency).getAbsolutePath());
+    }
+  }
+  _data=dependencyLocations;
+  return _data;
+}

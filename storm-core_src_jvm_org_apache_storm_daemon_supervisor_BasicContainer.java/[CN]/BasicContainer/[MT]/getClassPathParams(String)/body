@@ -1,17 +1,6 @@
 {
   final String stormJar=ConfigUtils.supervisorStormJarPath(stormRoot);
-  final StormTopology stormTopology=ConfigUtils.readSupervisorTopology(_conf,_topologyId,_ops);
-  final List<String> dependencyLocations=new ArrayList<>();
-  if (stormTopology.get_dependency_jars() != null) {
-    for (    String dependency : stormTopology.get_dependency_jars()) {
-      dependencyLocations.add(new File(stormRoot,dependency).getAbsolutePath());
-    }
-  }
-  if (stormTopology.get_dependency_artifacts() != null) {
-    for (    String dependency : stormTopology.get_dependency_artifacts()) {
-      dependencyLocations.add(new File(stormRoot,dependency).getAbsolutePath());
-    }
-  }
+  final List<String> dependencyLocations=getDependencyLocationsFor(_conf,_topologyId,_ops,stormRoot);
   final String workerClassPath=getWorkerClassPath(stormJar,dependencyLocations);
   List<String> classPathParams=new ArrayList<>();
   classPathParams.add("-cp");
