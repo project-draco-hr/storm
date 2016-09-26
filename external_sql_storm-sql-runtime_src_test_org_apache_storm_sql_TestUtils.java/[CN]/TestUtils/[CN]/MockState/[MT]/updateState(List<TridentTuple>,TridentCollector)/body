@@ -1,0 +1,5 @@
+{
+  for (  TridentTuple tuple : tuples) {
+    VALUES.add(tuple.getValues());
+  }
+}

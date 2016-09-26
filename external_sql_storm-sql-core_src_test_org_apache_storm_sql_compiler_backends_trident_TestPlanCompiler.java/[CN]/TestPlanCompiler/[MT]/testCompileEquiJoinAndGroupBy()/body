@@ -9,7 +9,7 @@
   final AbstractTridentProcessor proc=compiler.compileForTest(state.tree());
   final TridentTopology topo=proc.build(data);
   Fields f=proc.outputStream().getOutputFields();
-  proc.outputStream().each(f,new CollectDataFunction(),new Fields()).toStream();
+  proc.outputStream().partitionPersist(new TestUtils.MockStateFactory(),f,new TestUtils.MockStateUpdater(),new Fields());
   runTridentTopology(EXPECTED_VALUE_SIZE,proc,topo);
   assertListsAreEqualIgnoringOrder(Lists.newArrayList(new Values(1,2L),new Values(0,2L)),getCollectedValues());
 }

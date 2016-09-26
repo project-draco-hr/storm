@@ -1,0 +1,4 @@
+{
+  this.stateFactory=stateFactory;
+  this.stateUpdater=stateUpdater;
+}

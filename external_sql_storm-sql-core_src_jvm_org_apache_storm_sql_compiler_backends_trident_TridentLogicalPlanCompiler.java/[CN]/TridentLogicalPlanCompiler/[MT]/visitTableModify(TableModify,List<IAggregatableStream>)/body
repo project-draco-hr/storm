@@ -9,5 +9,6 @@
   String stageName=getStageName(modify);
   List<String> inputFields=input.getRowType().getFieldNames();
   List<String> outputFields=modify.getRowType().getFieldNames();
-  return inputStream.each(new Fields(inputFields),sources.get(tableName).getConsumer(),new Fields(outputFields)).name(stageName);
+  ISqlTridentDataSource.SqlTridentConsumer consumer=sources.get(tableName).getConsumer();
+  return inputStream.partitionPersist(consumer.getStateFactory(),new Fields(inputFields),consumer.getStateUpdater(),new Fields(outputFields)).newValuesStream().name(stageName);
 }

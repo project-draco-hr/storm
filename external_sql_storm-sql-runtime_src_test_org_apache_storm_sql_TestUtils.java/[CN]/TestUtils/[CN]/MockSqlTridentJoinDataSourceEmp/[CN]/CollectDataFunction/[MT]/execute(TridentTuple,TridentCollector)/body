@@ -1,3 +1,0 @@
-{
-  VALUES.add(tuple.getValues());
-}
