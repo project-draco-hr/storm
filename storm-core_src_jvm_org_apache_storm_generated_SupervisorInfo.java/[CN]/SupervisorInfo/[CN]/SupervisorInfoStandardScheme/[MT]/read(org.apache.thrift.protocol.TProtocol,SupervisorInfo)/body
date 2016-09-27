@@ -37,12 +37,12 @@ break;
 case 4:
 if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-org.apache.thrift.protocol.TList _list554=iprot.readListBegin();
-struct.used_ports=new ArrayList<Long>(_list554.size);
-long _elem555;
-for (int _i556=0; _i556 < _list554.size; ++_i556) {
-_elem555=iprot.readI64();
-struct.used_ports.add(_elem555);
+org.apache.thrift.protocol.TList _list574=iprot.readListBegin();
+struct.used_ports=new ArrayList<Long>(_list574.size);
+long _elem575;
+for (int _i576=0; _i576 < _list574.size; ++_i576) {
+_elem575=iprot.readI64();
+struct.used_ports.add(_elem575);
 }
 iprot.readListEnd();
 }
@@ -55,12 +55,12 @@ break;
 case 5:
 if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-org.apache.thrift.protocol.TList _list557=iprot.readListBegin();
-struct.meta=new ArrayList<Long>(_list557.size);
-long _elem558;
-for (int _i559=0; _i559 < _list557.size; ++_i559) {
-_elem558=iprot.readI64();
-struct.meta.add(_elem558);
+org.apache.thrift.protocol.TList _list577=iprot.readListBegin();
+struct.meta=new ArrayList<Long>(_list577.size);
+long _elem578;
+for (int _i579=0; _i579 < _list577.size; ++_i579) {
+_elem578=iprot.readI64();
+struct.meta.add(_elem578);
 }
 iprot.readListEnd();
 }
@@ -73,14 +73,14 @@ break;
 case 6:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map560=iprot.readMapBegin();
-struct.scheduler_meta=new HashMap<String,String>(2 * _map560.size);
-String _key561;
-String _val562;
-for (int _i563=0; _i563 < _map560.size; ++_i563) {
-_key561=iprot.readString();
-_val562=iprot.readString();
-struct.scheduler_meta.put(_key561,_val562);
+org.apache.thrift.protocol.TMap _map580=iprot.readMapBegin();
+struct.scheduler_meta=new HashMap<String,String>(2 * _map580.size);
+String _key581;
+String _val582;
+for (int _i583=0; _i583 < _map580.size; ++_i583) {
+_key581=iprot.readString();
+_val582=iprot.readString();
+struct.scheduler_meta.put(_key581,_val582);
 }
 iprot.readMapEnd();
 }
@@ -111,14 +111,14 @@ break;
 case 9:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map564=iprot.readMapBegin();
-struct.resources_map=new HashMap<String,Double>(2 * _map564.size);
-String _key565;
-double _val566;
-for (int _i567=0; _i567 < _map564.size; ++_i567) {
-_key565=iprot.readString();
-_val566=iprot.readDouble();
-struct.resources_map.put(_key565,_val566);
+org.apache.thrift.protocol.TMap _map584=iprot.readMapBegin();
+struct.resources_map=new HashMap<String,Double>(2 * _map584.size);
+String _key585;
+double _val586;
+for (int _i587=0; _i587 < _map584.size; ++_i587) {
+_key585=iprot.readString();
+_val586=iprot.readDouble();
+struct.resources_map.put(_key585,_val586);
 }
 iprot.readMapEnd();
 }

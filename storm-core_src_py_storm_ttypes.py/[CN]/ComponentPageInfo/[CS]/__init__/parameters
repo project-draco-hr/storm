@@ -14,3 +14,4 @@ eventlog_host
 eventlog_port
 debug_options
 topology_status
+resources_map

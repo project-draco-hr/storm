@@ -18,46 +18,46 @@
   if (struct.is_set_node_host()) {
 {
       oprot.writeI32(struct.node_host.size());
-      for (      Map.Entry<String,String> _iter626 : struct.node_host.entrySet()) {
-        oprot.writeString(_iter626.getKey());
-        oprot.writeString(_iter626.getValue());
+      for (      Map.Entry<String,String> _iter646 : struct.node_host.entrySet()) {
+        oprot.writeString(_iter646.getKey());
+        oprot.writeString(_iter646.getValue());
       }
     }
   }
   if (struct.is_set_executor_node_port()) {
 {
       oprot.writeI32(struct.executor_node_port.size());
-      for (      Map.Entry<List<Long>,NodeInfo> _iter627 : struct.executor_node_port.entrySet()) {
+      for (      Map.Entry<List<Long>,NodeInfo> _iter647 : struct.executor_node_port.entrySet()) {
 {
-          oprot.writeI32(_iter627.getKey().size());
-          for (          long _iter628 : _iter627.getKey()) {
-            oprot.writeI64(_iter628);
+          oprot.writeI32(_iter647.getKey().size());
+          for (          long _iter648 : _iter647.getKey()) {
+            oprot.writeI64(_iter648);
           }
         }
-        _iter627.getValue().write(oprot);
+        _iter647.getValue().write(oprot);
       }
     }
   }
   if (struct.is_set_executor_start_time_secs()) {
 {
       oprot.writeI32(struct.executor_start_time_secs.size());
-      for (      Map.Entry<List<Long>,Long> _iter629 : struct.executor_start_time_secs.entrySet()) {
+      for (      Map.Entry<List<Long>,Long> _iter649 : struct.executor_start_time_secs.entrySet()) {
 {
-          oprot.writeI32(_iter629.getKey().size());
-          for (          long _iter630 : _iter629.getKey()) {
-            oprot.writeI64(_iter630);
+          oprot.writeI32(_iter649.getKey().size());
+          for (          long _iter650 : _iter649.getKey()) {
+            oprot.writeI64(_iter650);
           }
         }
-        oprot.writeI64(_iter629.getValue());
+        oprot.writeI64(_iter649.getValue());
       }
     }
   }
   if (struct.is_set_worker_resources()) {
 {
       oprot.writeI32(struct.worker_resources.size());
-      for (      Map.Entry<NodeInfo,WorkerResources> _iter631 : struct.worker_resources.entrySet()) {
-        _iter631.getKey().write(oprot);
-        _iter631.getValue().write(oprot);
+      for (      Map.Entry<NodeInfo,WorkerResources> _iter651 : struct.worker_resources.entrySet()) {
+        _iter651.getKey().write(oprot);
+        _iter651.getValue().write(oprot);
       }
     }
   }

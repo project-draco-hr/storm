@@ -44,9 +44,9 @@
       oprot.writeFieldBegin(COMPONENT_TO_NUM_TASKS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I64,struct.component_to_num_tasks.size()));
-        for (        Map.Entry<String,Long> _iter422 : struct.component_to_num_tasks.entrySet()) {
-          oprot.writeString(_iter422.getKey());
-          oprot.writeI64(_iter422.getValue());
+        for (        Map.Entry<String,Long> _iter432 : struct.component_to_num_tasks.entrySet()) {
+          oprot.writeString(_iter432.getKey());
+          oprot.writeI64(_iter432.getValue());
         }
         oprot.writeMapEnd();
       }

@@ -13,8 +13,8 @@
     oprot.writeFieldBegin(USERS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,struct.users.size()));
-      for (      String _iter736 : struct.users) {
-        oprot.writeString(_iter736);
+      for (      String _iter756 : struct.users) {
+        oprot.writeString(_iter756);
       }
       oprot.writeListEnd();
     }
@@ -24,8 +24,8 @@
     oprot.writeFieldBegin(GROUPS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,struct.groups.size()));
-      for (      String _iter737 : struct.groups) {
-        oprot.writeString(_iter737);
+      for (      String _iter757 : struct.groups) {
+        oprot.writeString(_iter757);
       }
       oprot.writeListEnd();
     }

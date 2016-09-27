@@ -3,13 +3,13 @@
   BitSet incoming=iprot.readBitSet(1);
   if (incoming.get(0)) {
 {
-      org.apache.thrift.protocol.TList _list777=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
-      struct.pulses=new ArrayList<HBPulse>(_list777.size);
-      HBPulse _elem778;
-      for (int _i779=0; _i779 < _list777.size; ++_i779) {
-        _elem778=new HBPulse();
-        _elem778.read(iprot);
-        struct.pulses.add(_elem778);
+      org.apache.thrift.protocol.TList _list797=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,iprot.readI32());
+      struct.pulses=new ArrayList<HBPulse>(_list797.size);
+      HBPulse _elem798;
+      for (int _i799=0; _i799 < _list797.size; ++_i799) {
+        _elem798=new HBPulse();
+        _elem798.read(iprot);
+        struct.pulses.add(_elem798);
       }
     }
     struct.set_pulses_isSet(true);

@@ -12,6 +12,8 @@ case 5:
 return ACKED;
 case 6:
 return FAILED;
+case 7:
+return RESOURCES_MAP;
 default :
 return null;
 }

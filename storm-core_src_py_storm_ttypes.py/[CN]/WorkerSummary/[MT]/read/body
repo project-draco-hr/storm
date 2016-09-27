@@ -40,11 +40,11 @@ def read(self, iprot):
         elif (fid == 7):
             if (ftype == TType.MAP):
                 self.component_to_num_tasks = {}
-                (_ktype375, _vtype376, _size374) = iprot.readMapBegin()
-                for _i378 in xrange(_size374):
-                    _key379 = iprot.readString().decode('utf-8')
-                    _val380 = iprot.readI64()
-                    self.component_to_num_tasks[_key379] = _val380
+                (_ktype384, _vtype385, _size383) = iprot.readMapBegin()
+                for _i387 in xrange(_size383):
+                    _key388 = iprot.readString().decode('utf-8')
+                    _val389 = iprot.readI64()
+                    self.component_to_num_tasks[_key388] = _val389
                 iprot.readMapEnd()
             else:
                 iprot.skip(ftype)

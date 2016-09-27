@@ -10,8 +10,8 @@
     oprot.writeFieldBegin(PORT_FIELD_DESC);
 {
       oprot.writeSetBegin(new org.apache.thrift.protocol.TSet(org.apache.thrift.protocol.TType.I64,struct.port.size()));
-      for (      long _iter593 : struct.port) {
-        oprot.writeI64(_iter593);
+      for (      long _iter613 : struct.port) {
+        oprot.writeI64(_iter613);
       }
       oprot.writeSetEnd();
     }

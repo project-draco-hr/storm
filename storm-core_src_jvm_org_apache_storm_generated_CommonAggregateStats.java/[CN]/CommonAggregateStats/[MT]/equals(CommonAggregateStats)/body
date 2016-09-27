@@ -36,5 +36,11 @@
     if (!(this_present_failed && that_present_failed))     return false;
     if (this.failed != that.failed)     return false;
   }
+  boolean this_present_resources_map=true && this.is_set_resources_map();
+  boolean that_present_resources_map=true && that.is_set_resources_map();
+  if (this_present_resources_map || that_present_resources_map) {
+    if (!(this_present_resources_map && that_present_resources_map))     return false;
+    if (!this.resources_map.equals(that.resources_map))     return false;
+  }
   return true;
 }

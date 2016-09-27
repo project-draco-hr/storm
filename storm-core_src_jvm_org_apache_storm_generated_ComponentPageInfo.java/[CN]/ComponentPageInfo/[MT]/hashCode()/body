@@ -45,5 +45,8 @@
   boolean present_topology_status=true && (is_set_topology_status());
   list.add(present_topology_status);
   if (present_topology_status)   list.add(topology_status);
+  boolean present_resources_map=true && (is_set_resources_map());
+  list.add(present_resources_map);
+  if (present_resources_map)   list.add(resources_map);
   return list.hashCode();
 }

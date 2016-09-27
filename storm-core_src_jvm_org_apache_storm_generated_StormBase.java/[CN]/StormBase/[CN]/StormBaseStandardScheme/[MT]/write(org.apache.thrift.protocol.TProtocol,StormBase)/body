@@ -19,9 +19,9 @@
       oprot.writeFieldBegin(COMPONENT_EXECUTORS_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.I32,struct.component_executors.size()));
-        for (        Map.Entry<String,Integer> _iter662 : struct.component_executors.entrySet()) {
-          oprot.writeString(_iter662.getKey());
-          oprot.writeI32(_iter662.getValue());
+        for (        Map.Entry<String,Integer> _iter682 : struct.component_executors.entrySet()) {
+          oprot.writeString(_iter682.getKey());
+          oprot.writeI32(_iter682.getValue());
         }
         oprot.writeMapEnd();
       }
@@ -59,9 +59,9 @@
       oprot.writeFieldBegin(COMPONENT_DEBUG_FIELD_DESC);
 {
         oprot.writeMapBegin(new org.apache.thrift.protocol.TMap(org.apache.thrift.protocol.TType.STRING,org.apache.thrift.protocol.TType.STRUCT,struct.component_debug.size()));
-        for (        Map.Entry<String,DebugOptions> _iter663 : struct.component_debug.entrySet()) {
-          oprot.writeString(_iter663.getKey());
-          _iter663.getValue().write(oprot);
+        for (        Map.Entry<String,DebugOptions> _iter683 : struct.component_debug.entrySet()) {
+          oprot.writeString(_iter683.getKey());
+          _iter683.getValue().write(oprot);
         }
         oprot.writeMapEnd();
       }

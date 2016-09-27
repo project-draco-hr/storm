@@ -64,14 +64,14 @@ break;
 case 7:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map418=iprot.readMapBegin();
-struct.component_to_num_tasks=new HashMap<String,Long>(2 * _map418.size);
-String _key419;
-long _val420;
-for (int _i421=0; _i421 < _map418.size; ++_i421) {
-_key419=iprot.readString();
-_val420=iprot.readI64();
-struct.component_to_num_tasks.put(_key419,_val420);
+org.apache.thrift.protocol.TMap _map428=iprot.readMapBegin();
+struct.component_to_num_tasks=new HashMap<String,Long>(2 * _map428.size);
+String _key429;
+long _val430;
+for (int _i431=0; _i431 < _map428.size; ++_i431) {
+_key429=iprot.readString();
+_val430=iprot.readI64();
+struct.component_to_num_tasks.put(_key429,_val430);
 }
 iprot.readMapEnd();
 }

@@ -20,9 +20,9 @@
   if (struct.is_set_num_executors()) {
 {
       oprot.writeI32(struct.num_executors.size());
-      for (      Map.Entry<String,Integer> _iter523 : struct.num_executors.entrySet()) {
-        oprot.writeString(_iter523.getKey());
-        oprot.writeI32(_iter523.getValue());
+      for (      Map.Entry<String,Integer> _iter543 : struct.num_executors.entrySet()) {
+        oprot.writeString(_iter543.getKey());
+        oprot.writeI32(_iter543.getValue());
       }
     }
   }

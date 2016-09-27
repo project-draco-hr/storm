@@ -1,12 +1,12 @@
 {
   TTupleProtocol iprot=(TTupleProtocol)prot;
 {
-    org.apache.thrift.protocol.TList _list551=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
-    struct.keys=new ArrayList<String>(_list551.size);
-    String _elem552;
-    for (int _i553=0; _i553 < _list551.size; ++_i553) {
-      _elem552=iprot.readString();
-      struct.keys.add(_elem552);
+    org.apache.thrift.protocol.TList _list571=new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING,iprot.readI32());
+    struct.keys=new ArrayList<String>(_list571.size);
+    String _elem572;
+    for (int _i573=0; _i573 < _list571.size; ++_i573) {
+      _elem572=iprot.readString();
+      struct.keys.add(_elem572);
     }
   }
   struct.set_keys_isSet(true);

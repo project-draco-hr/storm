@@ -153,5 +153,15 @@
       return lastComparison;
     }
   }
+  lastComparison=Boolean.valueOf(is_set_resources_map()).compareTo(other.is_set_resources_map());
+  if (lastComparison != 0) {
+    return lastComparison;
+  }
+  if (is_set_resources_map()) {
+    lastComparison=org.apache.thrift.TBaseHelper.compareTo(this.resources_map,other.resources_map);
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+  }
   return 0;
 }

@@ -4,14 +4,14 @@
   oprot.writeI64(struct.time_stamp);
 {
     oprot.writeI32(struct.users.size());
-    for (    String _iter738 : struct.users) {
-      oprot.writeString(_iter738);
+    for (    String _iter758 : struct.users) {
+      oprot.writeString(_iter758);
     }
   }
 {
     oprot.writeI32(struct.groups.size());
-    for (    String _iter739 : struct.groups) {
-      oprot.writeString(_iter739);
+    for (    String _iter759 : struct.groups) {
+      oprot.writeString(_iter759);
     }
   }
 }

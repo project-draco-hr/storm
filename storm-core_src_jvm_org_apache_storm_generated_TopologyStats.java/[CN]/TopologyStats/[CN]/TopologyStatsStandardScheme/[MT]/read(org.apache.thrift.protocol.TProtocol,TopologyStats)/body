@@ -10,14 +10,14 @@ switch (schemeField.id) {
 case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-          org.apache.thrift.protocol.TMap _map368=iprot.readMapBegin();
-          struct.window_to_emitted=new HashMap<String,Long>(2 * _map368.size);
-          String _key369;
-          long _val370;
-          for (int _i371=0; _i371 < _map368.size; ++_i371) {
-            _key369=iprot.readString();
-            _val370=iprot.readI64();
-            struct.window_to_emitted.put(_key369,_val370);
+          org.apache.thrift.protocol.TMap _map378=iprot.readMapBegin();
+          struct.window_to_emitted=new HashMap<String,Long>(2 * _map378.size);
+          String _key379;
+          long _val380;
+          for (int _i381=0; _i381 < _map378.size; ++_i381) {
+            _key379=iprot.readString();
+            _val380=iprot.readI64();
+            struct.window_to_emitted.put(_key379,_val380);
           }
           iprot.readMapEnd();
         }
@@ -30,14 +30,14 @@ case 1:
 case 2:
   if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-      org.apache.thrift.protocol.TMap _map372=iprot.readMapBegin();
-      struct.window_to_transferred=new HashMap<String,Long>(2 * _map372.size);
-      String _key373;
-      long _val374;
-      for (int _i375=0; _i375 < _map372.size; ++_i375) {
-        _key373=iprot.readString();
-        _val374=iprot.readI64();
-        struct.window_to_transferred.put(_key373,_val374);
+      org.apache.thrift.protocol.TMap _map382=iprot.readMapBegin();
+      struct.window_to_transferred=new HashMap<String,Long>(2 * _map382.size);
+      String _key383;
+      long _val384;
+      for (int _i385=0; _i385 < _map382.size; ++_i385) {
+        _key383=iprot.readString();
+        _val384=iprot.readI64();
+        struct.window_to_transferred.put(_key383,_val384);
       }
       iprot.readMapEnd();
     }
@@ -50,14 +50,14 @@ break;
 case 3:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-  org.apache.thrift.protocol.TMap _map376=iprot.readMapBegin();
-  struct.window_to_complete_latencies_ms=new HashMap<String,Double>(2 * _map376.size);
-  String _key377;
-  double _val378;
-  for (int _i379=0; _i379 < _map376.size; ++_i379) {
-    _key377=iprot.readString();
-    _val378=iprot.readDouble();
-    struct.window_to_complete_latencies_ms.put(_key377,_val378);
+  org.apache.thrift.protocol.TMap _map386=iprot.readMapBegin();
+  struct.window_to_complete_latencies_ms=new HashMap<String,Double>(2 * _map386.size);
+  String _key387;
+  double _val388;
+  for (int _i389=0; _i389 < _map386.size; ++_i389) {
+    _key387=iprot.readString();
+    _val388=iprot.readDouble();
+    struct.window_to_complete_latencies_ms.put(_key387,_val388);
   }
   iprot.readMapEnd();
 }
@@ -70,14 +70,14 @@ break;
 case 4:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map380=iprot.readMapBegin();
-struct.window_to_acked=new HashMap<String,Long>(2 * _map380.size);
-String _key381;
-long _val382;
-for (int _i383=0; _i383 < _map380.size; ++_i383) {
-_key381=iprot.readString();
-_val382=iprot.readI64();
-struct.window_to_acked.put(_key381,_val382);
+org.apache.thrift.protocol.TMap _map390=iprot.readMapBegin();
+struct.window_to_acked=new HashMap<String,Long>(2 * _map390.size);
+String _key391;
+long _val392;
+for (int _i393=0; _i393 < _map390.size; ++_i393) {
+_key391=iprot.readString();
+_val392=iprot.readI64();
+struct.window_to_acked.put(_key391,_val392);
 }
 iprot.readMapEnd();
 }
@@ -90,14 +90,14 @@ break;
 case 5:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map384=iprot.readMapBegin();
-struct.window_to_failed=new HashMap<String,Long>(2 * _map384.size);
-String _key385;
-long _val386;
-for (int _i387=0; _i387 < _map384.size; ++_i387) {
-_key385=iprot.readString();
-_val386=iprot.readI64();
-struct.window_to_failed.put(_key385,_val386);
+org.apache.thrift.protocol.TMap _map394=iprot.readMapBegin();
+struct.window_to_failed=new HashMap<String,Long>(2 * _map394.size);
+String _key395;
+long _val396;
+for (int _i397=0; _i397 < _map394.size; ++_i397) {
+_key395=iprot.readString();
+_val396=iprot.readI64();
+struct.window_to_failed.put(_key395,_val396);
 }
 iprot.readMapEnd();
 }

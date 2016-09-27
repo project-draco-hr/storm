@@ -64,15 +64,15 @@ break;
 case 7:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map472=iprot.readMapBegin();
-struct.window_to_stats=new HashMap<String,ComponentAggregateStats>(2 * _map472.size);
-String _key473;
-ComponentAggregateStats _val474;
-for (int _i475=0; _i475 < _map472.size; ++_i475) {
-_key473=iprot.readString();
-_val474=new ComponentAggregateStats();
-_val474.read(iprot);
-struct.window_to_stats.put(_key473,_val474);
+org.apache.thrift.protocol.TMap _map482=iprot.readMapBegin();
+struct.window_to_stats=new HashMap<String,ComponentAggregateStats>(2 * _map482.size);
+String _key483;
+ComponentAggregateStats _val484;
+for (int _i485=0; _i485 < _map482.size; ++_i485) {
+_key483=iprot.readString();
+_val484=new ComponentAggregateStats();
+_val484.read(iprot);
+struct.window_to_stats.put(_key483,_val484);
 }
 iprot.readMapEnd();
 }
@@ -85,16 +85,16 @@ break;
 case 8:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map476=iprot.readMapBegin();
-struct.gsid_to_input_stats=new HashMap<GlobalStreamId,ComponentAggregateStats>(2 * _map476.size);
-GlobalStreamId _key477;
-ComponentAggregateStats _val478;
-for (int _i479=0; _i479 < _map476.size; ++_i479) {
-_key477=new GlobalStreamId();
-_key477.read(iprot);
-_val478=new ComponentAggregateStats();
-_val478.read(iprot);
-struct.gsid_to_input_stats.put(_key477,_val478);
+org.apache.thrift.protocol.TMap _map486=iprot.readMapBegin();
+struct.gsid_to_input_stats=new HashMap<GlobalStreamId,ComponentAggregateStats>(2 * _map486.size);
+GlobalStreamId _key487;
+ComponentAggregateStats _val488;
+for (int _i489=0; _i489 < _map486.size; ++_i489) {
+_key487=new GlobalStreamId();
+_key487.read(iprot);
+_val488=new ComponentAggregateStats();
+_val488.read(iprot);
+struct.gsid_to_input_stats.put(_key487,_val488);
 }
 iprot.readMapEnd();
 }
@@ -107,15 +107,15 @@ break;
 case 9:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map480=iprot.readMapBegin();
-struct.sid_to_output_stats=new HashMap<String,ComponentAggregateStats>(2 * _map480.size);
-String _key481;
-ComponentAggregateStats _val482;
-for (int _i483=0; _i483 < _map480.size; ++_i483) {
-_key481=iprot.readString();
-_val482=new ComponentAggregateStats();
-_val482.read(iprot);
-struct.sid_to_output_stats.put(_key481,_val482);
+org.apache.thrift.protocol.TMap _map490=iprot.readMapBegin();
+struct.sid_to_output_stats=new HashMap<String,ComponentAggregateStats>(2 * _map490.size);
+String _key491;
+ComponentAggregateStats _val492;
+for (int _i493=0; _i493 < _map490.size; ++_i493) {
+_key491=iprot.readString();
+_val492=new ComponentAggregateStats();
+_val492.read(iprot);
+struct.sid_to_output_stats.put(_key491,_val492);
 }
 iprot.readMapEnd();
 }
@@ -128,13 +128,13 @@ break;
 case 10:
 if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-org.apache.thrift.protocol.TList _list484=iprot.readListBegin();
-struct.exec_stats=new ArrayList<ExecutorAggregateStats>(_list484.size);
-ExecutorAggregateStats _elem485;
-for (int _i486=0; _i486 < _list484.size; ++_i486) {
-_elem485=new ExecutorAggregateStats();
-_elem485.read(iprot);
-struct.exec_stats.add(_elem485);
+org.apache.thrift.protocol.TList _list494=iprot.readListBegin();
+struct.exec_stats=new ArrayList<ExecutorAggregateStats>(_list494.size);
+ExecutorAggregateStats _elem495;
+for (int _i496=0; _i496 < _list494.size; ++_i496) {
+_elem495=new ExecutorAggregateStats();
+_elem495.read(iprot);
+struct.exec_stats.add(_elem495);
 }
 iprot.readListEnd();
 }
@@ -147,13 +147,13 @@ break;
 case 11:
 if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-org.apache.thrift.protocol.TList _list487=iprot.readListBegin();
-struct.errors=new ArrayList<ErrorInfo>(_list487.size);
-ErrorInfo _elem488;
-for (int _i489=0; _i489 < _list487.size; ++_i489) {
-_elem488=new ErrorInfo();
-_elem488.read(iprot);
-struct.errors.add(_elem488);
+org.apache.thrift.protocol.TList _list497=iprot.readListBegin();
+struct.errors=new ArrayList<ErrorInfo>(_list497.size);
+ErrorInfo _elem498;
+for (int _i499=0; _i499 < _list497.size; ++_i499) {
+_elem498=new ErrorInfo();
+_elem498.read(iprot);
+struct.errors.add(_elem498);
 }
 iprot.readListEnd();
 }
@@ -195,6 +195,26 @@ case 15:
 if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
 struct.topology_status=iprot.readString();
 struct.set_topology_status_isSet(true);
+}
+ else {
+org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);
+}
+break;
+case 16:
+if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
+{
+org.apache.thrift.protocol.TMap _map500=iprot.readMapBegin();
+struct.resources_map=new HashMap<String,Double>(2 * _map500.size);
+String _key501;
+double _val502;
+for (int _i503=0; _i503 < _map500.size; ++_i503) {
+_key501=iprot.readString();
+_val502=iprot.readDouble();
+struct.resources_map.put(_key501,_val502);
+}
+iprot.readMapEnd();
+}
+struct.set_resources_map_isSet(true);
 }
  else {
 org.apache.thrift.protocol.TProtocolUtil.skip(iprot,schemeField.type);

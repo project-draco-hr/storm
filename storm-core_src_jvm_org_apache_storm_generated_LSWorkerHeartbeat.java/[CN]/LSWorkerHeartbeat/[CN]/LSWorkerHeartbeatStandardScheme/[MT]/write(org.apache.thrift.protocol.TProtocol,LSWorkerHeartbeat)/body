@@ -13,8 +13,8 @@
     oprot.writeFieldBegin(EXECUTORS_FIELD_DESC);
 {
       oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT,struct.executors.size()));
-      for (      ExecutorInfo _iter725 : struct.executors) {
-        _iter725.write(oprot);
+      for (      ExecutorInfo _iter745 : struct.executors) {
+        _iter745.write(oprot);
       }
       oprot.writeListEnd();
     }

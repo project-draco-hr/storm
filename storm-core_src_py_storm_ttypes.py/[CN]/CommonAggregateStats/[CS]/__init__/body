@@ -1,7 +1,8 @@
-def __init__(self, num_executors=None, num_tasks=None, emitted=None, transferred=None, acked=None, failed=None):
+def __init__(self, num_executors=None, num_tasks=None, emitted=None, transferred=None, acked=None, failed=None, resources_map=None):
     self.num_executors = num_executors
     self.num_tasks = num_tasks
     self.emitted = emitted
     self.transferred = transferred
     self.acked = acked
     self.failed = failed
+    self.resources_map = resources_map

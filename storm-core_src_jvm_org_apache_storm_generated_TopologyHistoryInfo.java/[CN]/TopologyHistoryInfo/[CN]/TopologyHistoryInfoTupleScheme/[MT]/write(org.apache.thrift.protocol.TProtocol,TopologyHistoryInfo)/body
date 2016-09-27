@@ -8,8 +8,8 @@
   if (struct.is_set_topo_ids()) {
 {
       oprot.writeI32(struct.topo_ids.size());
-      for (      String _iter768 : struct.topo_ids) {
-        oprot.writeString(_iter768);
+      for (      String _iter788 : struct.topo_ids) {
+        oprot.writeString(_iter788);
       }
     }
   }

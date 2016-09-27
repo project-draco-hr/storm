@@ -10,12 +10,12 @@ switch (schemeField.id) {
 case 1:
       if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
 {
-          org.apache.thrift.protocol.TList _list780=iprot.readListBegin();
-          struct.pulseIds=new ArrayList<String>(_list780.size);
-          String _elem781;
-          for (int _i782=0; _i782 < _list780.size; ++_i782) {
-            _elem781=iprot.readString();
-            struct.pulseIds.add(_elem781);
+          org.apache.thrift.protocol.TList _list800=iprot.readListBegin();
+          struct.pulseIds=new ArrayList<String>(_list800.size);
+          String _elem801;
+          for (int _i802=0; _i802 < _list800.size; ++_i802) {
+            _elem801=iprot.readString();
+            struct.pulseIds.add(_elem801);
           }
           iprot.readListEnd();
         }

@@ -11,4 +11,5 @@
   this.acked=0;
   set_failed_isSet(false);
   this.failed=0;
+  this.resources_map=null;
 }

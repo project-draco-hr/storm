@@ -15,10 +15,10 @@ def read(self, iprot):
         elif (fid == 2):
             if (ftype == TType.SET):
                 self.port = set()
-                (_etype530, _size527) = iprot.readSetBegin()
-                for _i531 in xrange(_size527):
-                    _elem532 = iprot.readI64()
-                    self.port.add(_elem532)
+                (_etype548, _size545) = iprot.readSetBegin()
+                for _i549 in xrange(_size545):
+                    _elem550 = iprot.readI64()
+                    self.port.add(_elem550)
                 iprot.readSetEnd()
             else:
                 iprot.skip(ftype)

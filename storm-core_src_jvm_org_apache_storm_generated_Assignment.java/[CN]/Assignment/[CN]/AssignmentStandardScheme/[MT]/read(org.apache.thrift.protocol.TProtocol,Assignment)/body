@@ -19,14 +19,14 @@ case 1:
 case 2:
   if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-      org.apache.thrift.protocol.TMap _map598=iprot.readMapBegin();
-      struct.node_host=new HashMap<String,String>(2 * _map598.size);
-      String _key599;
-      String _val600;
-      for (int _i601=0; _i601 < _map598.size; ++_i601) {
-        _key599=iprot.readString();
-        _val600=iprot.readString();
-        struct.node_host.put(_key599,_val600);
+      org.apache.thrift.protocol.TMap _map618=iprot.readMapBegin();
+      struct.node_host=new HashMap<String,String>(2 * _map618.size);
+      String _key619;
+      String _val620;
+      for (int _i621=0; _i621 < _map618.size; ++_i621) {
+        _key619=iprot.readString();
+        _val620=iprot.readString();
+        struct.node_host.put(_key619,_val620);
       }
       iprot.readMapEnd();
     }
@@ -39,24 +39,24 @@ break;
 case 3:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-  org.apache.thrift.protocol.TMap _map602=iprot.readMapBegin();
-  struct.executor_node_port=new HashMap<List<Long>,NodeInfo>(2 * _map602.size);
-  List<Long> _key603;
-  NodeInfo _val604;
-  for (int _i605=0; _i605 < _map602.size; ++_i605) {
+  org.apache.thrift.protocol.TMap _map622=iprot.readMapBegin();
+  struct.executor_node_port=new HashMap<List<Long>,NodeInfo>(2 * _map622.size);
+  List<Long> _key623;
+  NodeInfo _val624;
+  for (int _i625=0; _i625 < _map622.size; ++_i625) {
 {
-      org.apache.thrift.protocol.TList _list606=iprot.readListBegin();
-      _key603=new ArrayList<Long>(_list606.size);
-      long _elem607;
-      for (int _i608=0; _i608 < _list606.size; ++_i608) {
-        _elem607=iprot.readI64();
-        _key603.add(_elem607);
+      org.apache.thrift.protocol.TList _list626=iprot.readListBegin();
+      _key623=new ArrayList<Long>(_list626.size);
+      long _elem627;
+      for (int _i628=0; _i628 < _list626.size; ++_i628) {
+        _elem627=iprot.readI64();
+        _key623.add(_elem627);
       }
       iprot.readListEnd();
     }
-    _val604=new NodeInfo();
-    _val604.read(iprot);
-    struct.executor_node_port.put(_key603,_val604);
+    _val624=new NodeInfo();
+    _val624.read(iprot);
+    struct.executor_node_port.put(_key623,_val624);
   }
   iprot.readMapEnd();
 }
@@ -69,23 +69,23 @@ break;
 case 4:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map609=iprot.readMapBegin();
-struct.executor_start_time_secs=new HashMap<List<Long>,Long>(2 * _map609.size);
-List<Long> _key610;
-long _val611;
-for (int _i612=0; _i612 < _map609.size; ++_i612) {
+org.apache.thrift.protocol.TMap _map629=iprot.readMapBegin();
+struct.executor_start_time_secs=new HashMap<List<Long>,Long>(2 * _map629.size);
+List<Long> _key630;
+long _val631;
+for (int _i632=0; _i632 < _map629.size; ++_i632) {
 {
-  org.apache.thrift.protocol.TList _list613=iprot.readListBegin();
-  _key610=new ArrayList<Long>(_list613.size);
-  long _elem614;
-  for (int _i615=0; _i615 < _list613.size; ++_i615) {
-    _elem614=iprot.readI64();
-    _key610.add(_elem614);
+  org.apache.thrift.protocol.TList _list633=iprot.readListBegin();
+  _key630=new ArrayList<Long>(_list633.size);
+  long _elem634;
+  for (int _i635=0; _i635 < _list633.size; ++_i635) {
+    _elem634=iprot.readI64();
+    _key630.add(_elem634);
   }
   iprot.readListEnd();
 }
-_val611=iprot.readI64();
-struct.executor_start_time_secs.put(_key610,_val611);
+_val631=iprot.readI64();
+struct.executor_start_time_secs.put(_key630,_val631);
 }
 iprot.readMapEnd();
 }
@@ -98,16 +98,16 @@ break;
 case 5:
 if (schemeField.type == org.apache.thrift.protocol.TType.MAP) {
 {
-org.apache.thrift.protocol.TMap _map616=iprot.readMapBegin();
-struct.worker_resources=new HashMap<NodeInfo,WorkerResources>(2 * _map616.size);
-NodeInfo _key617;
-WorkerResources _val618;
-for (int _i619=0; _i619 < _map616.size; ++_i619) {
-_key617=new NodeInfo();
-_key617.read(iprot);
-_val618=new WorkerResources();
-_val618.read(iprot);
-struct.worker_resources.put(_key617,_val618);
+org.apache.thrift.protocol.TMap _map636=iprot.readMapBegin();
+struct.worker_resources=new HashMap<NodeInfo,WorkerResources>(2 * _map636.size);
+NodeInfo _key637;
+WorkerResources _val638;
+for (int _i639=0; _i639 < _map636.size; ++_i639) {
+_key637=new NodeInfo();
+_key637.read(iprot);
+_val638=new WorkerResources();
+_val638.read(iprot);
+struct.worker_resources.put(_key637,_val638);
 }
 iprot.readMapEnd();
 }

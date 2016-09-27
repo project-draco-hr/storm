@@ -27,5 +27,13 @@ def write(self, oprot):
         oprot.writeFieldBegin('failed', TType.I64, 6)
         oprot.writeI64(self.failed)
         oprot.writeFieldEnd()
+    if (self.resources_map is not None):
+        oprot.writeFieldBegin('resources_map', TType.MAP, 7)
+        oprot.writeMapBegin(TType.STRING, TType.DOUBLE, len(self.resources_map))
+        for (kiter336, viter337) in self.resources_map.items():
+            oprot.writeString(kiter336.encode('utf-8'))
+            oprot.writeDouble(viter337)
+        oprot.writeMapEnd()
+        oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
