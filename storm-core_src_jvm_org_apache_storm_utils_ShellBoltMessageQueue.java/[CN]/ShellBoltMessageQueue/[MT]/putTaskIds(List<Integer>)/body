@@ -1,7 +1,7 @@
 {
-  taskIdsQueue.add(taskIds);
   takeLock.lock();
   try {
+    taskIdsQueue.add(taskIds);
     notEmpty.signal();
   }
   finally {
